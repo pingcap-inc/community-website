@@ -1,0 +1,32 @@
+@import 'styles/common';
+
+.wrapper {
+  padding: {
+    top: 4rem;
+    bottom: 16rem;
+  };
+  background-color: #000;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  @include H1;
+  color: #B49243;
+}
+
+.summary {
+  @include P1;
+  color: $M2;
+  margin-top: 2rem;
+}
+
+.buttons {
+  margin-top: 3rem;
+}
+

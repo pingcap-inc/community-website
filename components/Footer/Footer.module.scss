@@ -1,0 +1,54 @@
+@import "styles/common";
+
+$size-logo: 14rem;
+
+.wrapper {
+  background: $M2;
+  padding: 3rem 0;
+}
+
+.container {
+}
+
+.main {
+  &_left {
+    &_column {
+      &_title {
+        @include H4;
+      }
+      &_list {
+        list-style: none;
+        padding: 0;
+        li {
+          margin: 1rem 0;
+          a {
+            @include P1;
+          }
+        }
+      }
+    }
+  }
+  &_right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    &_logo {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      img {
+        width: $size-logo;
+        height: auto;
+      }
+    }
+  }
+}
+
+.copyright {
+  @include P1;
+  text-align: center;
+}

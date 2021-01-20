@@ -1,0 +1,91 @@
+@import "variable";
+
+@mixin H0($language: EN) {
+  font-size: 1.875rem;
+  line-height: 38px;
+  color: $F1;
+
+  @if($language == ZH) {
+    font-weight: $W3-ZH
+  } @else {
+    font-weight: $W3-EN
+  }
+}
+
+@mixin H1($language: EN) {
+  font-size: 1.5rem;
+  line-height: 32px;
+  color: $F1;
+
+  @if($language == ZH) {
+    font-weight: $W3-ZH
+  } @else {
+    font-weight: $W2-EN
+  }
+}
+
+@mixin H2($language: EN) {
+  font-size: 1.25rem;
+  line-height: 28px;
+  color: $F1;
+
+  @if($language == ZH) {
+    font-weight: $W2-ZH
+  } @else {
+    font-weight: $W2-EN
+  }
+}
+
+@mixin H3($language: EN) {
+  font-size: 1.125rem;
+  line-height: 26px;
+  color: $F1;
+
+  @if($language == ZH) {
+    font-weight: $W2-ZH
+  } @else {
+    font-weight: $W2-EN
+  }
+}
+
+@mixin H4($language: EN) {
+  font-size: 1rem;
+  line-height: 24px;
+  color: $F1;
+
+  @if($language == ZH) {
+    font-weight: $W2-ZH
+  } @else {
+    font-weight: $W2-EN
+  }
+}
+
+@mixin P1($language: EN) {
+  font-size: 1rem;
+  line-height: 24px;
+  color: $F2;
+
+  @if($language == ZH) {
+    font-weight: $W1-ZH
+  } @else {
+    font-weight: $W1-EN
+  }
+}
+
+@mixin P2($language: EN) {
+  font-size: .875rem;
+  line-height: 22px;
+  color: $F2;
+
+  @if($language == ZH) {
+    font-weight: $W1-ZH
+  } @else {
+    font-weight: $W1-EN
+  }
+}
+
+@mixin anchor {
+  a {
+    color: $B1;
+  }
+}

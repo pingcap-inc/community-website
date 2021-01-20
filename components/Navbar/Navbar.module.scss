@@ -1,0 +1,110 @@
+@import "styles/common";
+
+@mixin text {
+  color: $F1;
+  a:hover {
+    color: $F1;
+  }
+  &_transparent {
+    color: $M1;
+    a:hover {
+      color: $M1;
+    }
+  }
+}
+
+.wrapper {
+  @include transition;
+  @include text;
+  position: sticky;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: $height-navbar;
+  backdrop-filter: blur(.5rem);
+  background-color: rgba($M2, .9);
+  box-shadow: $shadow;
+  &_transparent {
+    background-color: rgba(#000, 0);
+    box-shadow: 0 0;
+    backdrop-filter: none;
+  }
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left, .right {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  img {
+    height: 3rem;
+  }
+}
+
+.title {
+  @include text;
+  margin-left: 1rem;
+  font: {
+    size: 1.5rem;
+    weight: 600;
+    family: $family-sans-serif;
+  };
+}
+
+@media screen and (max-width: $md - 1px) {
+  .menu {
+    display: none;
+
+    &_mobile {
+      display: block;
+      &_popup {
+        @include H3;
+        padding-bottom: 2rem;
+        background-color: rgba($M2, 1);
+        box-shadow: $shadow;
+        &_item {
+          padding: 1rem 2rem;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $md) {
+  .menu {
+    display: flex;
+    align-items: center;
+    &_item {
+      @include text;
+      margin: 0 1.5rem;
+      padding: .5rem 0;
+
+      @include transition;
+      @include H3;
+      display: inline-block;
+      border: {
+        bottom: 3px solid rgba($B1, 0);
+      };
+      &:hover {
+        border-bottom-color: $B1;
+      }
+    }
+
+    &_mobile {
+      display: none;
+    }
+
+  }
+}
+
+.buttons {
+  margin-left: 1rem;
+}

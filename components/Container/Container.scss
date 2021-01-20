@@ -1,0 +1,75 @@
+@import "styles/common";
+
+/**
+normal container
+-----------------------------------------------------
+          screen width <=  576 px , container width =  100  % , gutter = 16 px
+ 576 px < screen width <=  768 px , container width =  512 px , gutter = 16 px
+ 768 px < screen width <=  922 px , container width =  752 px , gutter = 16 px
+ 922 px < screen width <= 1200 px , container width =  992 px , gutter = 16 px
+1200 px < screen width <= 1680 px , container width = 1200 px , gutter = 36 px
+1680 px < screen width <= 1920 px , container width = 1600 px , gutter = 44 px
+        < screen width <= 1920 px , container width = 1920 px , gutter = 44 px
+
+fluid container ( used by navbar and Footer )
+-----------------------------------------------------
+   0 px < screen width <=  922 px , side margin = 20 px
+ 922 px < screen width <= 1200 px , side margin = 40 px
+1200 px < screen width            , side margin = 80 px
+ */
+
+.PingCAPContainer {
+  box-sizing: border-box;
+  // both sides padding of page is 1rem
+  padding: 0 1rem;
+  // center horizontally
+  margin: 0 auto;
+
+  width: 100%;
+
+  &-normal {
+    // (0 , 576]
+    @include responsive-lte-xs {
+      width: 100%;
+    }
+    // (576 , 768]
+    @include responsive-gt-sm {
+      width: 512px;
+    }
+    // (768 , 992]
+    @include responsive-gt-md {
+      width: 752px;
+    }
+    // (992 , 1200]
+    @include responsive-gt-lg {
+      width: 992px;
+    }
+    // (1200 , 1600]
+    @include responsive-gt-xl {
+      width: 1200px;
+    }
+    // (1600 , 1920]
+    @include responsive-gt-xxl {
+      width: 1600px;
+    }
+    // (1920 , ∞]
+    @include responsive-gt-xxl {
+      width: 1920px;
+    }
+  }
+
+  &-fluid {
+    // (0 , 922]
+    @media screen and (max-width: $md) {
+      padding: 0 20px;
+    }
+    // (922 , 1200]
+    @include responsive-gt-lg {
+      padding: 0 40px;
+    }
+    // (1200 , ∞]
+    @include responsive-gt-xl {
+      padding: 0 80px;
+    }
+  }
+}

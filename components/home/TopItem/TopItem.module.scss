@@ -1,0 +1,67 @@
+@import 'styles/common';
+
+$size-split: 1rem;
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  margin-bottom: $size-split;
+  padding-bottom: $size-split;
+  border-bottom: 1px solid #E8E8E8;
+  a:hover {
+    color: $B1;
+  }
+}
+
+.left {
+  &_avatar {
+
+  }
+}
+
+.right {
+  width: 100%;
+  margin-left: 1rem;
+  &_title {
+    @include P1;
+    font-weight: 600;
+  }
+  &_metadata {
+    @include P2;
+    margin-top: .5rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    &_category {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    &_statistics {
+      display: flex;
+      &_reply_count {
+        width: 4rem;
+        text-align: right;
+      }
+      &_last_posted_at {
+        width: 4rem;
+        text-align: right;
+        margin-left: 1rem;
+      }
+    }
+  }
+}
+
+$size-tag-color: .75rem;
+.tag {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  &_color {
+    width: $size-tag-color;
+    height: $size-tag-color;
+  }
+  &_name {
+    margin-left: .5rem;
+  }
+}

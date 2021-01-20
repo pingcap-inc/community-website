@@ -1,0 +1,56 @@
+@import 'styles/common';
+
+$size-avatar: 1.5rem;
+
+@mixin hover($color) {
+  &:hover {
+    color: $color;
+    border-bottom: {
+      color: $color;
+    };
+  }
+}
+
+.wrapper {
+  border-bottom: 1px solid $T2;
+  padding: 1rem 0;
+  a:hover {
+    color: $B1;
+  }
+}
+
+.title {
+  @include H3;
+  color: $F1;
+}
+
+.metadata {
+  @include P2;
+  color: rgba($B4, .5);
+  display: flex;
+  align-items: center;
+  padding: 1rem 0;
+  &_author {
+    display: flex;
+    align-items: center;
+    &_avatar {
+      img {
+        @include radius($size-avatar);
+      }
+    }
+    &_name {
+      line-height: $size-avatar;
+      margin-left: .5rem;
+    }
+  }
+  &_views {
+    margin: 0 2rem;
+  }
+}
+
+.excerpt {
+  @include P1;
+  font-weight: 300;
+  color: $F2;
+}
+

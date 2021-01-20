@@ -1,0 +1,23 @@
+@import "styles/common";
+
+.list_item {
+  @include card;
+  height: 100%;
+  padding-bottom: 3rem;
+  background-color: #fff;
+  &_image {
+    & img {
+      width: 100%;
+    }
+  }
+  &_title {
+    @include H1;
+    margin-top: 4rem;
+    padding: 0 3rem;
+  }
+  &_summary {
+    @include P1;
+    margin-top: 2rem;
+    padding: 0 3rem;
+  }
+}

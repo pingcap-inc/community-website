@@ -1,0 +1,67 @@
+
+@import "variable";
+@import "typography";
+
+@mixin title {
+  h1 {
+    @include H1;
+    margin: {
+      top: 2rem;
+      bottom: 1rem;
+    };
+  }
+  h2 {
+    @include H2;
+    margin: {
+      top: 2rem;
+      bottom: 1rem;
+    };
+  }
+  h3 {
+    @include H3;
+  }
+  h4 {
+    @include H4;
+  }
+}
+
+@mixin table {
+  table {
+    margin: 2rem 0;
+    tr {
+      th, td {
+        padding: .5rem 1rem;
+        border: 1px solid rgba($B3, .25);
+      }
+    }
+  }
+}
+
+@mixin paragraph {
+  p {
+    margin: 1rem 0;
+  }
+}
+
+@mixin list {
+  ul {
+    list-style: disc;
+    margin: .5rem 0;
+    padding: {
+      left: 1.5rem;
+    }
+    // if markdown is likes ul > li > ul, the gatsby's markdown renderer will add `p` tag automatically
+    // so we should reduce the margin
+    p {
+      margin: 0;
+    }
+  }
+}
+
+@mixin markdown {
+  @include anchor;
+  @include table;
+  @include title;
+  @include paragraph;
+  @include list;
+}

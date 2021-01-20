@@ -1,0 +1,138 @@
+@import "styles/common";
+
+.Button {
+  display: inline-block;
+  border-radius: 6px;
+  transition: all .25s;
+  user-select: none;
+  cursor: pointer;
+
+  &:focus {
+    outline: 0;
+    text-decoration: {
+      line: underline;
+    };
+  }
+
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  &-icon {
+    display: flex;
+    &.small {
+      margin-right: 8px;
+      font-size: 16px;
+    }
+    &.medium {
+      margin-right: 10px;
+      font-size: 20px;
+    }
+    &.large {
+      margin-right: 12px;
+      font-size: 24px;
+    }
+  }
+
+  &.small {
+    height: 32px;
+    font-size: $P2;
+    padding: 0 10px;
+  }
+  &.medium {
+    height: 40px;
+    font-size: $P1;
+    padding: 0 16px;
+  }
+  &.large {
+    height: 48px;
+    font-size: $H3;
+    padding: 0 22px;
+  }
+
+  &.primary {
+    color: #FFF;
+    background-color: $B1;
+    border: 1px solid $B1;
+
+    &.disabled {
+      //background-color: mix($B1, rgba($F2, .6), .5);
+      filter: alpha(rgba(#000, .6));
+    }
+  }
+
+  &.outline {
+    color: $B1;
+    background-color: #FFF;
+    border: 1px solid $B1;
+
+    &.disabled {
+      border: 1px solid $T2;
+      background-color: rgba($T2, .6);
+      color: rgba($F2, .6);
+      filter: alpha(rgba(#000, .6));
+    }
+
+    &:hover {
+      color: #FFF;
+      border: 1px solid $B1;
+      background-color: mix($B1, #000, 90%);
+    }
+  }
+
+  &.ghost {
+    color: $M1;
+    background-color: rgba(#FFF, 0);
+    border: 1px solid $M1;
+
+    &.disabled {
+      border: 1px solid $T2;
+      background-color: rgba($T2, .6);
+      color: rgba($F2, .6);
+      filter: alpha(rgba(#000, .6));
+    }
+
+    &:hover {
+      color: #FFF;
+      border: 1px solid $B1;
+      background-color: mix($B1, #000, 90%);
+    }
+  }
+
+  &.text {
+    color: $B1;
+    background-color: rgba(#FFF, 0);
+    border: 1px solid rgba(#FFF, 0);
+
+    &.disabled {
+      color: rgba($F2, .6);
+      &:hover {
+        background-color: rgba(#FFF, 0) !important;
+      }
+    }
+
+    &:hover {
+      background-color: rgba($B1, .1);
+    }
+  }
+
+  &:hover {
+    //filter: brightness(.9);
+    background-color: mix($B1, #000, 90%);
+  }
+
+  &.rounded {
+    border-radius: 40px;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+
+  &.block {
+    width: 100%;
+  }
+}

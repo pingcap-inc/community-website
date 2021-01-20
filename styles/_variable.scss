@@ -1,0 +1,113 @@
+$size-1: 4rem;
+$size-2: 3rem;
+$size-3: 2rem;
+$size-4: 1.5rem;
+$size-5: 1.25rem;
+$size-6: 1.12rem;
+$size-7: 1rem;
+$size-8: 0.875rem;
+
+$H0: 1.875rem;
+$H1: 1.5rem;
+$H2: 1.25rem;
+$H3: 1.125rem;
+$P1: 1rem;
+$P2: 0.875rem;
+
+$LH1: 3;
+$LH2: 2.5;
+$LH3: 2;
+$LH4: 1.75;
+$LH5: 1.5;
+$LH6: 1.25;
+$LH7: 1;
+$LH8: 0.5;
+
+$W1-ZH: 400;
+$W2-ZH: 500;
+$W3-ZH: 700;
+
+$W1-EN: 500;
+$W2-EN: 600;
+$W3-EN: 700;
+
+$M1: #FFFFFF; // Card Backround
+$M2: #F7F8F9; // Main Background
+
+$F1: #2C2C2C; // Text - 1 Title，H0，H1，H2
+$F2: #505050; // Text - 2 General，P1，P2，H3
+
+$C1: #e7f0fc;
+$C2: #dbe4f0;
+$C3: #b8c4d6;
+$C4: #9fa8b9;
+$C5: #5d6d86;
+
+$B1: #3D3FEA; // Theme，Button, highlight, link
+$B2: #27BBE0; // Blue，Minor
+$B3: #4C5470; // Dark 100%，dark bg
+$B4: #2D3758; // Dark 85%， bg
+
+$T1: #A9D359; // tag，Success
+$T2: #E9EAEE; // line，divider, 10 % B3
+$T3: #F9746C; // tag, Warning, Notice, Attention
+$T4: #7D3F98; // tag
+$T5: #F8C200; // tag
+$T6: #F15A24; // tag
+
+$family-sans-serif: 'pingfang SC','helvetica neue',arial,'hiragino sans gb','microsoft yahei ui','microsoft yahei',simsun,sans-serif;
+
+$primary: $B1;
+$button-hover-color: #5051C9;
+
+// widescreen false
+$widescreen-enabled: false;
+
+$shadow: 0 0.1875em 0.5em rgba(#000, 0.06);
+$shadow-hover: 0 0.375em 0.75em #eaeaea;
+
+// box
+$box-shadow: $shadow;
+$box-radius: 0;
+
+// card
+$card-shadow: $shadow;
+
+// navbar
+$navbar-item-hover-background-color: #e9ecef;
+$height-navbar: 5.25rem; // 84px
+$height-navbar-mobile: 4.25rem; // 68px
+
+// promotion
+$height-promotion: 4rem;
+
+// page
+$padding-page-mobile: 1rem;
+
+// title
+$title-line-height: 1.2;
+
+// mobile section
+$mobile-section-padding: 1rem;
+
+
+@mixin transition($property: all, $duration: .25s) {
+  transition: $property $duration;
+}
+
+@mixin shadow($hover-translate: false) {
+  @include transition;
+  box-shadow: $shadow;
+  @if($hover-translate) {
+    &:hover {
+      box-shadow: $shadow-hover;
+      transform: translate(0, -4px);
+    }
+  }
+}
+
+@mixin card {
+  @include shadow;
+  border-radius: 0;
+  border: 1px solid $T2;
+}

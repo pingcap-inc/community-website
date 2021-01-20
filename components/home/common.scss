@@ -1,0 +1,10 @@
+@import 'styles/common';
+
+$color-1: $B2;
+$color-2: $T3;
+$color-3: $T4;
+
+@mixin with-color($color) {
+  background-color: $color;
+  border-color: $color;
+}

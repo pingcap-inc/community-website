@@ -1,0 +1,37 @@
+@import "variable";
+@import "typography";
+@import "responsive";
+@import "markdown";
+
+$socials: github twitter linkedin facebook reddit slack youtube yc;
+
+// Use in navbar and Footer item
+@mixin has-item-active($bottom: false) {
+  position: relative;
+  color: $B4;
+
+  &:hover {
+    background: none;
+    color: $primary;
+
+    @if type-of($bottom) == number {
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: $bottom;
+        left: 50%;
+        width: 20px;
+        height: 3px;
+        background: $primary;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+
+@mixin radius($size) {
+  width: $size;
+  height: $size;
+  border-radius: $size;
+  overflow: hidden;
+}

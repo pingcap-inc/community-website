@@ -1,0 +1,36 @@
+@import 'styles/common';
+
+$size-slideshow: 20rem;
+$size-split: 5rem;
+
+.wrapper {
+
+}
+
+.slideshow {
+  width: 100%;
+  //height: $size-slideshow;
+  &_item {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+      //height: $size-slideshow;
+    }
+  }
+  // rewrite antd Carousel style
+  li {
+    box-shadow: 0 0 .1rem .1rem rgba(#000, .25);
+  }
+}
+
+
+.articles {
+  //margin: $size-split auto;
+  padding: $size-split 0;
+}
+
+.top {
+  //margin: $size-split auto;
+  padding: $size-split 0;
+}

@@ -28,10 +28,18 @@ jobs:
           command: yarn export
           no_output_timeout: 20m
 
+#      - deploy:
+#          name: 'Publish Website Could JP_1_HOST'
+#          command:
+#            ssh-keyscan "${HOST_JP_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+#            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' out/ "${HOST_JP_1_USER}@${HOST_JP_1_IP}:${DEPLOY_PATH}";
+##            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete / "${HOST_JP_1_USER}@${HOST_JP_1_IP}:${DEPLOY_SERVICE_PATH}";
+##            sshpass -p ${HOST_JP_1_PASSWORD} ssh ${HOST_JP_1_USER}@${HOST_JP_1_IP} 'cd ${DEPLOY_PATH} && yarn server'
+
       - deploy:
-          name: 'Publish Website Could JP_1_HOST'
+          name: 'Publish Website Could HK_1_HOST'
           command:
-            ssh-keyscan "${HOST_JP_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' out/ "${HOST_JP_1_USER}@${HOST_JP_1_IP}:${DEPLOY_PATH}";
+            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' out/ "${HOST_JP_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
 #            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete / "${HOST_JP_1_USER}@${HOST_JP_1_IP}:${DEPLOY_SERVICE_PATH}";
 #            sshpass -p ${HOST_JP_1_PASSWORD} ssh ${HOST_JP_1_USER}@${HOST_JP_1_IP} 'cd ${DEPLOY_PATH} && yarn server'

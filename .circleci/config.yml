@@ -1,0 +1,37 @@
+version: 2.1
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - dev
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:14.13.0
+    steps:
+      - checkout
+      - run: sudo apt update && sudo apt install rsync sshpass
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "yarn.lock" }}
+      - run:
+          command: yarn export
+          no_output_timeout: 20m
+
+      - deploy:
+          name: 'Publish Website Could JP_1_HOST'
+          command:
+            ssh-keyscan "${HOST_JP_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
+            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete --exclude css --exclude js --exclude images out/ "${HOST_JP_1_USER}@${HOST_JP_1_IP}:${DEPLOY_PATH}";
+#            sshpass -p ${HOST_JP_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete / "${HOST_JP_1_USER}@${HOST_JP_1_IP}:${DEPLOY_SERVICE_PATH}";
+#            sshpass -p ${HOST_JP_1_PASSWORD} ssh ${HOST_JP_1_USER}@${HOST_JP_1_IP} 'cd ${DEPLOY_PATH} && yarn server'

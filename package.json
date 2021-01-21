@@ -6,7 +6,8 @@
     "dev": "cross-env host=0.0.0.0 && next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build && next export"
+    "export": "next build && next export",
+    "server": "next build && next start"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",

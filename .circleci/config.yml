@@ -7,7 +7,7 @@ workflows:
           filters:
             branches:
               only:
-                - dev
+                - main
 
 jobs:
   build:

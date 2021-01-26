@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "export": "next build && next export",
-    "server": "next build && next start"
+    "server:init": "next build && pm2 start --name tug-website-next-server npm -- run start",
+    "server:reload": "next build && pm2 reload tug-website-next-server"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",

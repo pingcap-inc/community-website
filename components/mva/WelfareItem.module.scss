@@ -1,0 +1,39 @@
+@import "styles/common";
+
+$color: $color-mva;
+
+.wrapper {
+  position: relative;
+  background-color: $color;
+  width: 320px;
+  height: 80px;
+  text-align: center;
+}
+
+.content {
+  @include H2(ZH);
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: $M1;
+}
+
+$offset: .5rem;
+$line-width: 2px;
+.wireframe {
+  position: absolute;
+  left: $offset;
+  top: $offset;
+  border: $line-width solid $color;
+  width: 100%;
+  height: 100%;
+}
+
+.icon {
+
+}
+
+.name {
+
+}

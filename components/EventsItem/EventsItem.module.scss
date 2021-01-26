@@ -11,12 +11,12 @@
     }
   }
   &_title {
-    @include H1;
+    @include H2(ZH);
     margin-top: 4rem;
     padding: 0 3rem;
   }
   &_summary {
-    @include P1;
+    @include P1(ZH);
     margin-top: 2rem;
     padding: 0 3rem;
   }

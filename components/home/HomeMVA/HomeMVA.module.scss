@@ -17,7 +17,7 @@
 
 .title {
   @include H1;
-  color: #B49243;
+  color: $color-mva;
 }
 
 .summary {

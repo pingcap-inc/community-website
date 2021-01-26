@@ -1,0 +1,20 @@
+@import "styles/common";
+
+$size-social: 2.5rem;
+
+.wrapper {
+  width: 160px;
+  .item {
+    @each $social in $socials {
+      .#{$social} {
+        width: $size-social;
+        height: $size-social;
+        background-image: url('/images/socials/#{$social}.svg');
+        background-size: cover;
+        &:hover {
+          background-image: url('/images/socials/#{$social}-hl.svg');
+        }
+      }
+    }
+  }
+}

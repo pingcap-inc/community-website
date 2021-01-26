@@ -1,0 +1,40 @@
+@import "styles/common";
+
+$color-background: #100836;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: $color-background;
+  padding: 2rem;
+  border: 2px solid rgba($color-mva, 0);
+  &:hover {
+    border-color: $color-mva;
+  }
+}
+
+.avatar {
+  @include radius(100px)
+}
+
+.name {
+  @include H2;
+  color: $color-mva;
+  margin-top: 2rem;
+}
+
+.organization {
+  @include P2(ZH);
+  color: $M1;
+  margin-top: 1.5rem;
+}
+
+
+.position {
+  @include P2(ZH);
+  color: $M1;
+  margin-top: .5rem;
+}

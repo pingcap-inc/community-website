@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="73" height="73" viewBox="0 0 73 73">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="矩形_4419" data-name="矩形 4419" width="73" height="73" transform="translate(1231 13046)" fill="none" stroke="#707070" stroke-width="1"/>
+    </clipPath>
+  </defs>
+  <g id="蒙版组_136" data-name="蒙版组 136" transform="translate(-1231 -13046)" clip-path="url(#clip-path)">
+    <g id="组_5168" data-name="组 5168" transform="translate(91 -2)">
+      <path id="路径_14270" data-name="路径 14270" d="M602.354,769.24c6.48,21-44.712,17.144-48.056,10.456-5.13-10.262,6.369-23.6,25.237-29.84C587.317,747.283,597.566,753.723,602.354,769.24Z" transform="translate(370.003 12557.095) rotate(-20)" fill="#594b9f"/>
+      <g id="Layer_1" transform="translate(1154 13066)">
+        <g id="组_5162" data-name="组 5162" transform="translate(2 5)">
+          <path id="路径_14266" data-name="路径 14266" d="M40.692,23V38.07a3.776,3.776,0,0,1-3.776,3.776H6.776A3.776,3.776,0,0,1,3,38.07V23" transform="translate(-2.103 -6.846)" fill="none" stroke="#190f4b" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <ellipse id="椭圆_1273" data-name="椭圆 1273" cx="2" cy="1.5" rx="2" ry="1.5" transform="translate(18 11)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="路径_14267" data-name="路径 14267" d="M18,8.59V6.864A1.864,1.864,0,0,1,19.864,5H26.9a1.864,1.864,0,0,1,1.864,1.864V8.59" transform="translate(-3.641 -5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+          <path id="路径_14268" data-name="路径 14268" d="M41.487,20.769,23.612,25.644a7.1,7.1,0,0,1-3.738,0L2,20.769V11.795A1.8,1.8,0,0,1,3.795,10h35.9a1.8,1.8,0,0,1,1.795,1.795Z" transform="translate(-2 -5.513)" fill="none" stroke="#190f4b" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

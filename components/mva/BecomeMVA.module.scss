@@ -1,0 +1,24 @@
+@import "styles/common";
+
+.wrapper {
+  width: 320px;
+  border: 2px solid $color-mva;
+  padding: 2rem;
+  text-align: center;
+}
+
+.icon {
+
+}
+
+.title {
+  @include H2(ZH);
+  color: $color-mva;
+  margin-top: .5rem;
+}
+
+.summary {
+  @include P1(ZH);
+  color: $M1;
+  margin-top: .5rem;
+}

@@ -27,7 +27,10 @@ jobs:
 #          export static HTML file for deploying
 #      - run:
 #          command: yarn export
-#          no_output_timeout: 20m
+#          build server side render file for deploying
+      - run:
+          command: yarn build
+          no_output_timeout: 10m
 
 #            copy the static HTML file by 'yarn export' script to nginx webroot
 #            sshpass -p ${HOST_HK_1_PASSWORD} rsync -avz -e 'ssh -p 22' out/ "${HOST_HK_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";

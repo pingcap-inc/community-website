@@ -4,7 +4,7 @@ import HomeSection from "components/home/HomeSection/HomeSection";
 import ArticleItemWithExcerpt from "components/home/ArticleItemWithExcerpt/ArticleItemWithExcerpt";
 import {getAvatarUrlByAvatarTemplateString, getCategoryById, getTopicUrlById, getUserUrlByUsername, getExcerptByTopicId} from "../utils";
 import TopItem from "components/home/TopItem/TopItem";
-import {Col, Carousel} from "antd";
+import {Col, Carousel, Row} from "antd";
 import banners from "../data/banners";
 import events from "../data/events";
 import ResponsiveRow from "components/ResponsiveRow/ResponsiveRow";
@@ -97,7 +97,7 @@ export default function Home({topics}) {
           iconUrl={articleImageUrl}
           right={<LinkWithArrow href={'https://asktug.com/c/blog/l/latest'}>查看全部</LinkWithArrow>}
         >
-          <ResponsiveRow gutter={[32, 32]}>
+          <Row gutter={[32, 32]}>
             <Col md={24} lg={8}>
               <ArticleCategory
                 title={'经验教程'}
@@ -185,7 +185,7 @@ export default function Home({topics}) {
                 })}
               </ArticleCategory>
             </Col>
-          </ResponsiveRow>
+          </Row>
         </HomeSection>
         
         <HomeSection
@@ -195,7 +195,7 @@ export default function Home({topics}) {
           backgroundGray
           right={<LinkWithArrow href={'https://asktug.com/top'}>查看全部</LinkWithArrow>}
         >
-          <ResponsiveRow>
+          <Row gutter={[32, 0]}>
             {top.topic_list.topics.slice(0, 10).map((topic, index) => {
               const author = top.users.filter(user => user.id === topic.posters[0].user_id)[0]
               const category = getCategoryById(topic.category_id)
@@ -212,12 +212,12 @@ export default function Home({topics}) {
                 link: getTopicUrlById(topic.id),
               }
               return (
-                <Col key={index} sm={24} md={12}>
+                <Col key={index} xs={24} sm={24} md={24} lg={12}>
                   <TopItem {...itemProps}/>
                 </Col>
               )
             })}
-          </ResponsiveRow>
+          </Row>
         </HomeSection>
         
         <HomeSection
@@ -226,13 +226,13 @@ export default function Home({topics}) {
           iconUrl={activityImageUrl}
           right={<LinkWithArrow href={'https://asktug.com'}>查看全部</LinkWithArrow>}
         >
-          <ResponsiveRow justify="space-around" gutter={[32, 32]}>
+          <Row justify={'space-around'} gutter={[32, 32]}>
             {events.map(((item, index) =>
               <Col key={index} xs={24} sm={16} md={16} lg={8}>
                 <EventsItem {...item} />
               </Col>
             ))}
-          </ResponsiveRow>
+          </Row>
         </HomeSection>
   
         <HomeMVA/>

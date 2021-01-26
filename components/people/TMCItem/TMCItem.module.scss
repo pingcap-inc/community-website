@@ -1,0 +1,23 @@
+@import 'styles/common';
+
+$size-avatar: 8rem;
+
+.wrapper {
+
+}
+
+.avatar {
+  img {
+    @include radius($size-avatar);
+  }
+}
+
+.name {
+  @include H3(ZH);
+  margin-top: 1rem;
+}
+
+.metadata {
+  @include P2(ZH);
+  margin-top: .5rem;
+}

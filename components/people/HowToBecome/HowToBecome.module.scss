@@ -1,0 +1,35 @@
+@import 'styles/common';
+
+$size-avatar: 8rem;
+
+.wrapper {
+  @include shadow;
+  position: relative;
+  //width: 100%;
+  padding: 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $M1;
+}
+
+$size-index: 4rem;
+.index {
+  @include H3;
+  @include radius($size-index);
+  position: absolute;
+  left: -$size-index / 2;
+  top: -$size-index / 2;
+  background-color: $B1;
+  color: $M2;
+  text-align: center;
+  line-height: $size-index;
+}
+
+.avatar {
+}
+
+.title {
+  @include H3(ZH);
+  margin-top: 1rem;
+}

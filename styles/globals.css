@@ -2,7 +2,7 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: Titillium Web, Helvetica Neue, Arial, 'pingfang SC','helvetica neue','hiragino sans gb','microsoft yahei ui','microsoft yahei', simsun, sans-serif;
+  font-family: Titillium Web, Helvetica Neue, Arial, noto sans, 'pingfang SC', 'microsoft yahei', sans-serif;
   /*font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,*/
   /*  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;*/
 }

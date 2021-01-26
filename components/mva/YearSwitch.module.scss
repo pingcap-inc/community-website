@@ -1,0 +1,32 @@
+@import "styles/common";
+
+@mixin item-with-border {
+  border: 2px solid $color-mva;
+}
+
+.wrapper {
+  display: flex;
+  user-select: none;
+}
+
+.label {
+  padding: 0 1rem;
+  color: $color-mva;
+  background-color: rgba(#fff, .1);
+}
+
+.options {
+  margin-left: 1rem;
+  &_item {
+    cursor: pointer;
+    padding: 0 1rem;
+    color: $color-mva;
+    border: 2px solid rgba($color-mva, 0);
+    &_selected {
+      @include item-with-border
+    }
+    &:hover {
+      @include item-with-border
+    }
+  }
+}

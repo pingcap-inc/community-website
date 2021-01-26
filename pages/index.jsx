@@ -4,7 +4,7 @@ import HomeSection from "components/home/HomeSection/HomeSection";
 import ArticleItemWithExcerpt from "components/home/ArticleItemWithExcerpt/ArticleItemWithExcerpt";
 import {getAvatarUrlByAvatarTemplateString, getCategoryById, getTopicUrlById, getUserUrlByUsername, getExcerptByTopicId} from "../utils";
 import TopItem from "components/home/TopItem/TopItem";
-import {Row, Col, Carousel} from "antd";
+import {Col, Carousel} from "antd";
 import banners from "../data/banners";
 import events from "../data/events";
 import ResponsiveRow from "components/ResponsiveRow/ResponsiveRow";

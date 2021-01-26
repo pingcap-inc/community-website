@@ -47,12 +47,12 @@ $size-avatar: 1.5rem;
 }
 
 .wrapper {
-  @include P1;
+  @include P1(ZH);
   border-bottom: 1px solid $T2;
   padding: 1rem 0;
   a {
     color: $F1;
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 

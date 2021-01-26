@@ -20,7 +20,7 @@ $size-avatar: 1.5rem;
 }
 
 .title {
-  @include H3;
+  @include H3(ZH);
   color: $F1;
 }
 
@@ -49,8 +49,7 @@ $size-avatar: 1.5rem;
 }
 
 .excerpt {
-  @include P1;
-  font-weight: 300;
+  @include P1(ZH);
   color: $F2;
 }
 

@@ -15,11 +15,11 @@ $size-split: 1rem;
 .title {
   @include P1;
   @include limit-line-count(1);
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .metadata {
-  @include P2;
+  @include P2(ZH);
   margin-top: .5rem;
   width: 100%;
   display: flex;
@@ -43,16 +43,17 @@ $size-split: 1rem;
   }
 }
 
-$size-tag-color: .75rem;
+$size-tag-color: .5rem;
 .tag {
   display: flex;
   align-items: center;
   margin-right: 1rem;
   &_color {
-    width: $size-tag-color;
-    height: $size-tag-color;
+    @include radius($size-tag-color);
   }
   &_name {
+    @include P2(ZH);
+    color: rgba($B4, .7);
     margin-left: .5rem;
   }
 }

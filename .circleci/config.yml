@@ -30,7 +30,7 @@ jobs:
 #          no_output_timeout: 20m
 
       - deploy:
-          name: 'Publish Website Could HK_1_HOST'
+          name: Publish Website Could HK_1_HOST
           command:
             ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
 #            copy the static HTML file by 'yarn export' script to nginx webroot

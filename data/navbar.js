@@ -4,19 +4,11 @@ export default {
     links: [
       {
         title: 'MVA',
-        link: '/MVA/',
+        link: '/MVA',
       },
       {
         title: '会员',
-        link: '/',
-      },
-      {
-        title: '活动',
-        link: '/events/',
-      },
-      {
-        title: '博客',
-        link: 'https://pingcap.com/community-cn/careers/join/',
+        link: '/people',
       },
       {
         title: 'AskTUG',

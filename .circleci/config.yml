@@ -29,12 +29,12 @@ jobs:
 #          command: yarn export
 #          no_output_timeout: 20m
 
+#            copy the static HTML file by 'yarn export' script to nginx webroot
+#            sshpass -p ${HOST_HK_1_PASSWORD} rsync -avz -e 'ssh -p 22' out/ "${HOST_HK_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
+#            use server:reload script to run with server side render instead of export script.
       - deploy:
           name: Publish Website Could HK_1_HOST
           command:
             ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-#            copy the static HTML file by 'yarn export' script to nginx webroot
-#            sshpass -p ${HOST_HK_1_PASSWORD} rsync -avz -e 'ssh -p 22' out/ "${HOST_HK_1_USER}@${HOST_HK_1_IP}:${DEPLOY_PATH}";
-#            use server:reload script to run with server side render instead of export script.
             sshpass -p ${HOST_HK_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete / "${HOST_HK_1_USER}@${HOST_HK_1_IP}:${DEPLOY_SERVICE_PATH}";
             sshpass -p ${HOST_HK_1_PASSWORD} ssh ${HOST_HK_1_USER}@${HOST_HK_1_IP} 'cd ${DEPLOY_SERVICE_PATH} && yarn server:reload'

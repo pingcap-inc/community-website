@@ -56,9 +56,12 @@ $color-background: #100836;
   text-align: left;
   li {
     margin-bottom: .5rem;
+    &:hover {
+      color: $color-mva;
+    }
   }
   a {
-    @include P2;
+    @include P2(ZH);
     color: $M1;
     &:hover {
       color: $color-mva;

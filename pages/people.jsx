@@ -121,31 +121,27 @@ export default function People({howToBecome, tmc, leader}) {
         </div>
       </Container>
       
-      <div className={styles.tmc}>
-        <Container className={styles.tmc_content}>
-          <div className={styles.tmc_content_title}>
+      <div className={styles.people}>
+        <Container className={styles.people_content}>
+          <div className={styles.people_content_title}>
             TMC 成员
           </div>
-          <div className={styles.tmc_content_summary}>
+          <div className={styles.people_content_summary}>
             TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
           </div>
-          <div className={styles.tmc_content_list}>
+          <div className={styles.people_content_list}>
             <Row gutter={[64, 32]}>
               {tmc.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
             </Row>
           </div>
-        </Container>
-      </div>
-      
-      <div className={styles.leader}>
-        <Container className={styles.leader_content}>
-          <div className={styles.leader_content_title}>
-            TMC 成员
+          <div className={styles.people_content_split}/>
+          <div className={styles.people_content_title}>
+            LEADER
           </div>
-          <div className={styles.leader_content_summary}>
+          <div className={styles.people_content_summary}>
             TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
           </div>
-          <div className={styles.leader_content_list}>
+          <div className={styles.people_content_list}>
             <Row gutter={[64, 32]}>
               {leader.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
             </Row>

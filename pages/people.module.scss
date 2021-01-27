@@ -1,11 +1,6 @@
 @import 'styles/common';
 
 .wrapper {
-  padding: {
-    bottom: 9rem;
-  }
-  //background-color: #190F4B;
-  //color: $M1;
 }
 
 .header {
@@ -172,7 +167,7 @@
   }
 }
 
-.tmc {
+.people {
   background-color: $M2;
   &_content {
     display: flex;
@@ -181,36 +176,19 @@
     align-items: center;
     padding: 4rem 0;
     &_title {
-      @include H2(ZH);
+      @include H1(ZH);
+      color: $F1;
     }
     &_summary {
       @include P1(ZH);
-      margin-top: 2rem;
+      color: $F1;
+      margin-top: 1.5rem;
     }
     &_list {
-      @include H2(ZH);
-      margin-top: 2rem;
+      margin-top: 4rem;
     }
-  }
-}
-
-.leader {
-  &_content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 4rem 0;
-    &_title {
-      @include H2(ZH);
-    }
-    &_summary {
-      @include P1(ZH);
-      margin-top: 2rem;
-    }
-    &_list {
-      @include H2(ZH);
-      margin-top: 2rem;
+    &_split {
+      height: 6rem;
     }
   }
 }

@@ -3,7 +3,6 @@
 .wrapper {
   padding: {
     top: 4rem;
-    bottom: 16rem;
   };
   background-color: #000;
 }
@@ -28,5 +27,12 @@
 
 .buttons {
   margin-top: 3rem;
+}
+
+.image {
+  margin-top: 6rem;
+  img {
+    width: 100%;
+  }
 }
 

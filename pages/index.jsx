@@ -224,7 +224,6 @@ export default function Home({topics}) {
           title={'TUG 活动'}
           className={styles.top}
           iconUrl={activityImageUrl}
-          right={<LinkWithArrow href={'https://asktug.com'}>查看全部</LinkWithArrow>}
         >
           <Row justify={'space-around'} gutter={[32, 32]}>
             {events.map(((item, index) =>

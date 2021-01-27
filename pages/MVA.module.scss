@@ -58,6 +58,8 @@
       padding: 1rem;
       border: 2px solid $color-mva;
       margin-bottom: 1rem;
+      position: relative;
+      top: 8px;
     }
     &_text {
       max-width: 560px;

@@ -52,112 +52,112 @@ export default {
             "name": "黄潇",
             "company": "美团点评",
             "title": "DBA",
-            "role": "Leader"
+            "role": "内容组 Leader"
         },
         {
             "avatar": "",
             "name": "崔春华",
             "company": "小米",
             "title": "DBA 主管",
-            "role": "Co-Leader"
+            "role": "内容组 Co-Leader"
         },
         {
             "avatar": "",
             "name": "高海涛",
             "company": "美团点评",
             "title": "RD",
-            "role": "Co-Leader"
+            "role": "内容组 Co-Leader"
         },
         {
             "avatar": "",
             "name": "王志广",
             "company": "平安科技",
             "title": "数据库架构师",
-            "role": "Co-Leader"
+            "role": "内容组 Co-Leader"
         },
         {
             "avatar": "",
             "name": "黄潇",
             "company": "美团点评",
             "title": "DBA",
-            "role": "Leader"
+            "role": "北京区 Leader"
         },
         {
             "avatar": "",
             "name": "朱博帅",
             "company": "爱奇艺",
             "title": "数据库开发工程师",
-            "role": "Co-Leader"
+            "role": "北京区 Co-Leader"
         },
         {
             "avatar": "",
             "name": "杜蓉",
             "company": "光大银行",
             "title": "DBA",
-            "role": "Co-Leader"
+            "role": "北京区 Co-Leader"
         },
         {
             "avatar": "",
             "name": "张雯",
             "company": "bilibili",
             "title": "DBA",
-            "role": "Leader"
+            "role": "上海区 Leader"
         },
         {
             "avatar": "",
             "name": "常彦德",
             "company": "UCloud",
             "title": "副经理",
-            "role": "Co-Leader"
+            "role": "上海区 Co-Leader"
         },
         {
             "avatar": "",
             "name": "闫晓宇",
             "company": "同程艺龙",
             "title": "技术专家",
-            "role": "Co-Leader"
+            "role": "上海区 Co-Leader"
         },
         {
             "avatar": "",
             "name": "火烧",
             "company": "小电科技",
             "title": "首席架构师",
-            "role": "Leader"
+            "role": "杭州区 Leader"
         },
         {
             "avatar": "",
             "name": "彭兴",
             "company": "曹操专车",
             "title": "数据库负责人",
-            "role": "Co-Leader"
+            "role": "杭州区 Co-Leader"
         },
         {
             "avatar": "",
             "name": "杨文",
             "company": "POP",
             "title": "后端技术负责人",
-            "role": "Leader"
+            "role": "华南区 Leader"
         },
         {
             "avatar": "",
             "name": "何志勇",
             "company": "平安科技",
             "title": "资深云数据库工程师",
-            "role": "Co-Leader"
+            "role": "华南区 Co-Leader"
         },
         {
             "avatar": "",
             "name": "李银龙",
             "company": "马上消费金融",
             "title": "容器云数据库负责人",
-            "role": "Leader"
+            "role": "西南区 Leader"
         },
         {
             "avatar": "",
             "name": "袁文学",
             "company": "聚美集团",
             "title": "DBA",
-            "role": "Co-Leader"
+            "role": "西南区 Co-Leader"
         }
     ],
 

@@ -86,7 +86,7 @@ export default function Navbar({initTransparent, forceNonTransparent}) {
               </div>
             ))}
             <div className={styles.buttons}>
-              <Button href={'https://accounts.pingcap.com/login?redirect_to=https%3A//accounts.pingcap.com/discourse/sso%3Fsso%3Dbm9uY2U9ODI0YTQ2MjNmZTk2OWQ0MTVjNjMyOTc1NzE3MzUwNzgmcmV0dXJuX3Nzb191cmw9aHR0cHMlM0ElMkYlMkZhc2t0dWcuY29tJTJGc2Vzc2lvbiUyRnNzb19sb2dpbg%253D%253D%26sig%3Db85501909e73837e9c6d94a8589b14622068afc212b3120f88e838d2ff8bb010'}>
+              <Button href={'https://asktug.com/t/topic/633'}>
                 加入 TUG
               </Button>
             </div>
@@ -128,7 +128,7 @@ export default function Navbar({initTransparent, forceNonTransparent}) {
             </div>
           ))}
           <div className={styles.buttons}>
-            <Button as={MyLink} href={'https://accounts.pingcap.com/login?redirect_to=https%3A//accounts.pingcap.com/discourse/sso%3Fsso%3Dbm9uY2U9ODI0YTQ2MjNmZTk2OWQ0MTVjNjMyOTc1NzE3MzUwNzgmcmV0dXJuX3Nzb191cmw9aHR0cHMlM0ElMkYlMkZhc2t0dWcuY29tJTJGc2Vzc2lvbiUyRnNzb19sb2dpbg%253D%253D%26sig%3Db85501909e73837e9c6d94a8589b14622068afc212b3120f88e838d2ff8bb010'}>
+            <Button href={'https://asktug.com/t/topic/633'}>
               加入 TUG
             </Button>
           </div>

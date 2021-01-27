@@ -8,6 +8,8 @@ import WelfareItem from "components/mva/WelfareItem";
 import BecomeMVA from "components/mva/BecomeMVA";
 import Container from "components/Container/Container";
 import tugData from '../data/tug_data.js'
+import {ArrowRightOutlined} from '@ant-design/icons'
+import MyLink from "components/MyLink";
 
 
 export async function getStaticProps(context) {
@@ -118,8 +120,15 @@ export default function MVA({MVAs, welfare, become}) {
         </div>
         
         <div className={styles.welfare}>
-          <div className={styles.welfare_title}>
-            专属福利
+          <div className={styles.welfare_header}>
+            <div className={styles.welfare_header_title}>
+              专属福利
+            </div>
+            <div className={styles.welfare_header_link}>
+              <MyLink href="https://asktug.com/t/topic/633" className={styles.welfare_header_link_button}>
+                <ArrowRightOutlined /> 查看全部
+              </MyLink>
+            </div>
           </div>
           <div className={styles.welfare_list}>
             <Row justify={'center'} gutter={[48, 48]}>
@@ -136,7 +145,9 @@ export default function MVA({MVAs, welfare, become}) {
             成为 MVA
           </div>
           <div className={styles.become_summary}>
-            在一年内（自然年）为 TUG 社区贡献优质技术内容的数量 ≥ 3 可成为当年度的 TiDB MVA。每年为社区贡献优质技术内容达到 10+，可成为当年度 TiDB MOA。
+            在一年内（自然年）为 TUG 社区贡献优质技术内容的数量 ≥ 3 可成为当年度的 TiDB MVA。
+            <br/>
+            每年为社区贡献优质技术内容达到 10+，可成为当年度 TiDB MOA。
           </div>
           <div className={styles.become_list}>
             <Row justify={'center'} gutter={[48, 48]}>

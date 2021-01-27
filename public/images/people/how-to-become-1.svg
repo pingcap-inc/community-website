@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64.002" viewBox="0 0 64 64.002">
   <g id="组_7635" data-name="组 7635" transform="translate(-364 -1537.998)">
     <g id="组_7628" data-name="组 7628" transform="translate(369.162 1554.515)">
-      <rect id="矩形_4554" data-name="矩形 4554" width="42.324" height="2.065" fill="#f9746c"/>
-      <rect id="矩形_4555" data-name="矩形 4555" width="42.324" height="2.065" transform="translate(0 5.161)" fill="#f9746c"/>
-      <rect id="矩形_4556" data-name="矩形 4556" width="42.324" height="2.065" transform="translate(0 10.323)" fill="#f9746c"/>
-      <rect id="矩形_4557" data-name="矩形 4557" width="42.324" height="2.065" transform="translate(0 15.484)" fill="#f9746c"/>
-      <path id="路径_14697" data-name="路径 14697" d="M230.576,369.475l1-6.966,4.351-2.51,4.129,4.129-2.51,4.351Z" transform="translate(-205.986 -330.064)" fill="#f9746c"/>
+      <rect id="矩形_4554" data-name="矩形 4554" width="42.324" height="2.065" fill="#27bbe0"/>
+      <rect id="矩形_4555" data-name="矩形 4555" width="42.324" height="2.065" transform="translate(0 5.161)" fill="#27bbe0"/>
+      <rect id="矩形_4556" data-name="矩形 4556" width="42.324" height="2.065" transform="translate(0 10.323)" fill="#27bbe0"/>
+      <rect id="矩形_4557" data-name="矩形 4557" width="42.324" height="2.065" transform="translate(0 15.484)" fill="#27bbe0"/>
+      <path id="路径_14697" data-name="路径 14697" d="M230.576,369.475l1-6.966,4.351-2.51,4.129,4.129-2.51,4.351Z" transform="translate(-205.986 -330.064)" fill="#27bbe0"/>
     </g>
     <g id="组_7629" data-name="组 7629" transform="translate(364 1537.998)">
       <path id="路径_14698" data-name="路径 14698" d="M82.7,389.856l-4.406,4.406H56.008v2.065H79.751v-.6l4.406-4.406Z" transform="translate(-48.782 -339.55)" fill="#4d5152"/>

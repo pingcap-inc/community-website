@@ -5,25 +5,10 @@ import Container from "components/Container/Container";
 import TMCItem from "components/people/TMCItem/TMCItem";
 import {Col, Row} from "antd";
 import HowToBecome from "components/people/HowToBecome/HowToBecome";
-
+import tugData from '../data/tug_data.js'
 
 export async function getStaticProps(context) {
-  
-  const peopleMockData = [{
-    avatarUrl: 'images/mva/avatar.svg',
-    name: '孙晓刚',
-    organization: '京东云',
-    position: '高级DBA',
-  }, {
-    avatarUrl: 'images/mva/avatar.svg',
-    name: '张大山',
-    organization: '平凯星辰技术团队',
-    position: '数据库与中间件团队负责人',
-  }, ]
-  const people = []
-  for (let i = 0; i < 12 / 2; i++) {
-    people.push(...peopleMockData)
-  }
+  const {tmc, leader} = tugData
   
   const howToBecome = [
     {index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息'},
@@ -32,11 +17,11 @@ export async function getStaticProps(context) {
   ]
   
   return {
-    props: {howToBecome, people}, // will be passed to the page component as props
+    props: {howToBecome, tmc, leader}, // will be passed to the page component as props
   }
 }
 
-export default function MVA({howToBecome, people}) {
+export default function People({howToBecome, tmc, leader}) {
   return (
     <div className={styles.wrapper}>
       <SEO
@@ -44,21 +29,28 @@ export default function MVA({howToBecome, people}) {
         description="TUG 为 TiDB 用户提供了一个开放的交流平台。成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。"
       />
       
-      <Container className={styles.header}>
-        <div className={styles.header_title}>
-          TUG 会员
-        </div>
-        <div className={styles.header_summary}>
-          TUG 为 TiDB 用户提供了一个开放的交流平台。成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。
-        </div>
-      </Container>
+      <div className={styles.header}>
+        <Container className={styles.header_content}>
+          <div className={styles.header_content_left}>
+            <div className={styles.header_content_left_title}>
+              TUG 会员
+            </div>
+            <div className={styles.header_content_left_summary}>
+              TUG 为 TiDB 用户提供了一个开放的交流平台。成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。
+            </div>
+          </div>
+          <div className={styles.header_content_right}>
+            <img src="images/people/header-right.svg" alt=""/>
+          </div>
+        </Container>
+      </div>
       
       <Container className={styles.organization_chart}>
         <div className={styles.organization_chart_title}>
           TUG 组织架构
         </div>
         <div className={styles.organization_chart_image}>
-          <img src="images/people/tug-organization-chart.svg" alt="tug-organization-chart"/>
+          <img src="images/people/tug-organization-chart.svg" alt="tug-company-chart"/>
         </div>
       </Container>
       
@@ -75,33 +67,91 @@ export default function MVA({howToBecome, people}) {
         </Container>
       </div>
       
-      <Container className={styles.tmc}>
-        <div className={styles.tmc_title}>
-          TMC 成员
+      <Container className={styles.progress}>
+        <div className={styles.progress_left}>
+          <div className={styles.progress_left_header}>
+            <div className={styles.progress_left_header_icon}>
+              <img src="images/people/progress-header-left.svg" alt=""/>
+            </div>
+            <div className={styles.progress_left_header_text}>
+              <div className={styles.progress_left_header_text_title}>
+                TUG 会员进阶路线
+              </div>
+              <div className={styles.progress_left_header_text_summary}>
+                TUG 核心成员包括 TUG 管理成员、Active Ambassador、Ambassador。积极活跃的 TUG 成员可被提名为 Ambassador，Ambassador 在社区贡献优质内容可升级为 “Active Ambassador” 之后有两种不同的发展方向。
+              </div>
+            </div>
+          </div>
+          <div className={styles.progress_left_step}>
+            <div className={styles.progress_left_step_1}>
+              <div className={styles.progress_left_step_1_header}>
+                <div className={styles.progress_left_step_1_header_index}>
+                  1
+                </div>
+                <div className={styles.progress_left_step_1_header_widget}>
+                  <img src="images/people/progress-widget-1.svg" alt=""/>
+                </div>
+              </div>
+              <div className={styles.progress_left_step_1_text}>
+                管理线：上升通道为 TUG 管理成员，包括 Team Co-Leader、Team Leader、TMC 成员。TUG 管理成员任期为一年。TMC 成员、Team Leader 每年通过换届选举产生，Team Co-Leader 在换届选举后由 Team Leader 进行委任。
+              </div>
+            </div>
+            <div className={styles.progress_left_step_2}>
+              <div className={styles.progress_left_step_2_header}>
+                <div className={styles.progress_left_step_2_header_index}>
+                  2
+                </div>
+                <div className={styles.progress_left_step_2_header_widget}>
+                  <img src="images/people/progress-widget-2.svg" alt=""/>
+                </div>
+              </div>
+              <div className={styles.progress_left_step_2_text}>
+                专业线：上升通道为 TiDB MVA (Most Valuable Advocate)，或者更高级别的 TiDB MOA (Most Outstanding Advocate)。
+              </div>
+            </div>
+          </div>
         </div>
-        <div className={styles.tmc_summary}>
-          TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
-        </div>
-        <div className={styles.tmc_list}>
-          <Row justify={'space-between'} gutter={[64, 32]}>
-            {people.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
-          </Row>
+        <div className={styles.progress_right}>
+          <div className={styles.progress_right_icon}>
+            <img src="images/people/progress-header-right.svg" alt=""/>
+          </div>
+          <div className={styles.progress_right_chart}>
+            <img src="images/people/progress-chart.svg" alt=""/>
+          </div>
         </div>
       </Container>
       
-      <Container className={styles.tmc}>
-        <div className={styles.tmc_title}>
-          Leader
-        </div>
-        <div className={styles.tmc_summary}>
-          TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
-        </div>
-        <div className={styles.tmc_list}>
-          <Row justify={'space-between'} gutter={[64, 32]}>
-            {people.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
-          </Row>
-        </div>
-      </Container>
+      <div className={styles.tmc}>
+        <Container className={styles.tmc_content}>
+          <div className={styles.tmc_content_title}>
+            TMC 成员
+          </div>
+          <div className={styles.tmc_content_summary}>
+            TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
+          </div>
+          <div className={styles.tmc_content_list}>
+            <Row gutter={[64, 32]}>
+              {tmc.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
+            </Row>
+          </div>
+        </Container>
+      </div>
+      
+      <div className={styles.leader}>
+        <Container className={styles.leader_content}>
+          <div className={styles.leader_content_title}>
+            TMC 成员
+          </div>
+          <div className={styles.leader_content_summary}>
+            TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
+          </div>
+          <div className={styles.leader_content_list}>
+            <Row gutter={[64, 32]}>
+              {leader.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
+            </Row>
+          </div>
+        </Container>
+      </div>
       
     </div>
   )

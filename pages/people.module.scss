@@ -9,18 +9,30 @@
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 0;
-  &_title {
-    @include H2(ZH);
-    color: $M2;
-  }
-  &_summary {
-    @include H2(ZH);
-    color: $M2;
+  background-color: #190F4C;
+  &_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5rem 0;
+    margin-bottom: 6rem;
+    &_left {
+      padding-top: 2rem;
+      padding-right: 4rem;
+      &_title {
+        @include H1(ZH);
+        color: $M1;
+      }
+      &_summary {
+        @include P1(ZH);
+        color: $M1;
+        margin-top: 2rem;
+        line-height: 2;
+      }
+    }
+    &_right {
+      height: 10rem;
+    }
   }
 }
 
@@ -57,21 +69,148 @@
   }
 }
 
-.tmc {
+@mixin progress-step-header {
+  padding: 0 2rem;
+  margin-top: 3rem;
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: -4rem;
+    &_index {
+      font: {
+        size: 5rem;
+        weight: 700;
+      };
+    }
+    &_widget {
+      position: relative;
+      top: 2rem;
+    }
+  }
+  &_text {
+    margin-top: -5rem;
+    padding-left: 4rem;
+    padding-bottom: 2rem;
+  }
+}
+.progress {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+  //align-items: center;
+  flex-wrap: wrap;
   padding: 4rem 0;
-  &_title {
-    @include H2(ZH);
+  &_left {
+    width: calc(100% - 360px);
+    min-width: 500px;
+    padding-right: 4rem;
+    &_header {
+      display: flex;
+      &_icon {
+      }
+      &_text {
+        margin-left: 1rem;
+        //max-width: 600px;
+        &_title {
+          @include H1;
+          color: $F1;
+        }
+        &_summary {
+          @include P1;
+          line-height: 2;
+          margin-top: 1.5rem;
+          color: $F1;
+        }
+      }
+    }
+    &_step {
+      &_1 {
+        @include progress-step-header;
+        background-color: #F2F7FB;
+        &_header {
+          &_index {
+            color: $B1;
+          }
+          &_widget {
+
+          }
+        }
+        &_text {
+          @include P1;
+          line-height: 2;
+          color: $F1;
+        }
+      }
+      &_2 {
+        @include progress-step-header;
+        background-color: #3738C6;
+        &_header {
+          &_index {
+            color: $B2;
+          }
+          &_widget {
+
+          }
+        }
+        &_text {
+          @include P1;
+          line-height: 2;
+          color: $M1;
+        }
+      }
+    }
   }
-  &_summary {
-    @include P1(ZH);
-    margin-top: 2rem;
+  &_right {
+    width: 360px;
+    text-align: right;
+    &_icon {
+
+    }
+    &_chart {
+      margin-top: 4rem;
+    }
   }
-  &_list {
-    @include H2(ZH);
-    margin-top: 2rem;
+}
+
+.tmc {
+  background-color: $M2;
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    &_title {
+      @include H2(ZH);
+    }
+    &_summary {
+      @include P1(ZH);
+      margin-top: 2rem;
+    }
+    &_list {
+      @include H2(ZH);
+      margin-top: 2rem;
+    }
+  }
+}
+
+.leader {
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    &_title {
+      @include H2(ZH);
+    }
+    &_summary {
+      @include P1(ZH);
+      margin-top: 2rem;
+    }
+    &_list {
+      @include H2(ZH);
+      margin-top: 2rem;
+    }
   }
 }

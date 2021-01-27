@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import styles from './MVAItem.module.scss'
 import MyLink from "components/MyLink";
 

@@ -15,7 +15,7 @@ export default function HomeMVA({}) {
           TiDB MVA (Most Valuable Advocate) 通过分享优质的技术内容，帮助大家更好地使用 TiDB，是经过认证的技术先锋，享受极高的社区荣誉。
         </div>
         <div className={styles.buttons}>
-          <Button as={MyLink} to={'/MVA'}>查看更多</Button>
+          <Button as={MyLink} href={'/MVA'}>查看更多</Button>
         </div>
       </Container>
       <div className={styles.image}>

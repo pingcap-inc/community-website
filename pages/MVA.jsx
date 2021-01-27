@@ -1,33 +1,27 @@
 import React, {useState} from 'react'
 import styles from './MVA.module.scss'
 import SEO from "components/SEO";
-import {Col, Row, Space} from "antd";
+import {Col, Row} from "antd";
 import MVAItem from "components/mva/MVAItem";
 import YearSwitch from "components/mva/YearSwitch";
 import WelfareItem from "components/mva/WelfareItem";
 import BecomeMVA from "components/mva/BecomeMVA";
 import Container from "components/Container/Container";
+import tugData from '../data/tug_data.js'
 
 
 export async function getStaticProps(context) {
-  
-  const years = [2020, 2019, 2018]
-  
-  const MVAMockData = [{
-    avatarUrl: 'images/mva/avatar.svg',
-    name: '孙晓刚',
-    organization: '京东云',
-    position: '高级DBA',
-  }, {
-    avatarUrl: 'images/mva/avatar.svg',
-    name: '张大山',
-    organization: '平凯星辰技术团队',
-    position: '数据库与中间件团队负责人',
-  }, ]
-  const MVAs = []
-  for (let i = 0; i < 12 / 2; i++) {
-    MVAs.push(...MVAMockData)
-  }
+  const {mva2020, mva2019} = tugData
+  const MVAs = [
+    {
+      year: 2020,
+      data: mva2020,
+    },
+    {
+      year: 2019,
+      data: mva2019,
+    },
+  ]
   
   const welfare = [
     {iconUrl: 'images/mva/welfare-icon-1.svg', name: '社区荣誉'},
@@ -45,12 +39,12 @@ export async function getStaticProps(context) {
   ]
   
   return {
-    props: {years, MVAs, welfare, become}, // will be passed to the page component as props
+    props: {MVAs, welfare, become}, // will be passed to the page component as props
   }
 }
 
-export default function MVA({years, MVAs, welfare, become}) {
-  const [year, setYear] = useState(years[0])
+export default function MVA({MVAs, welfare, become}) {
+  const [year, setYear] = useState(MVAs[0].year)
   return (
     <div className={styles.wrapper}>
       <SEO
@@ -90,12 +84,12 @@ export default function MVA({years, MVAs, welfare, become}) {
           </div>
           <YearSwitch
             value={year}
-            items={years.map(item => ({name: item, value: item}))}
+            items={MVAs.map(item => ({name: item.year, value: item.year}))}
             onClick={setYear}
           />
           <div className={styles.MVAs_list}>
             <Row gutter={[48, 48]}>
-              {MVAs.map((mva, index) =>
+              {MVAs.filter(subMva => subMva.year === year)[0].data.map((mva, index) =>
                 <Col key={index} md={12} lg={6}>
                   <MVAItem {...mva} />
                 </Col>

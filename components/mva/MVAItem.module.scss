@@ -28,8 +28,12 @@ $color-background: #100836;
   }
 }
 
+$size-avatar: 100px;
 .avatar {
-  @include radius(100px)
+  @include radius($size-avatar);
+  img {
+    @include radius($size-avatar);
+  }
 }
 
 .name {

@@ -3,9 +3,10 @@ export default {
     "tmc": [
         {
             "avatar": "",
-            "name": "房晓乐 - TMC Leader",
+            "name": "房晓乐",
             "company": "PingCAP",
-            "title": "互联网首席架构师"
+            "title": "互联网首席架构师",
+            "role": "TMC Leader"
         },
         {
             "avatar": "",
@@ -48,99 +49,115 @@ export default {
     "leader": [
         {
             "avatar": "",
-            "name": "黄潇 - Leader",
+            "name": "黄潇",
             "company": "美团点评",
-            "title": "DBA"
+            "title": "DBA",
+            "role": "Leader"
         },
         {
             "avatar": "",
-            "name": "崔春华 - Co-Leader",
+            "name": "崔春华",
             "company": "小米",
-            "title": "DBA 主管"
+            "title": "DBA 主管",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "高海淘 - Co-Leader",
+            "name": "高海涛",
             "company": "美团点评",
-            "title": "RD"
+            "title": "RD",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "王志广 - Co-Leader",
+            "name": "王志广",
             "company": "平安科技",
-            "title": "数据库架构师"
+            "title": "数据库架构师",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "黄潇 Leader",
+            "name": "黄潇",
             "company": "美团点评",
-            "title": "DBA"
+            "title": "DBA",
+            "role": "Leader"
         },
         {
             "avatar": "",
-            "name": "朱博帅 Co-Leader",
+            "name": "朱博帅",
             "company": "爱奇艺",
-            "title": "数据库开发工程师"
+            "title": "数据库开发工程师",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "杜蓉 Co-Leader",
+            "name": "杜蓉",
             "company": "光大银行",
-            "title": "DBA"
+            "title": "DBA",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "张雯 Leader",
+            "name": "张雯",
             "company": "bilibili",
-            "title": "DBA"
+            "title": "DBA",
+            "role": "Leader"
         },
         {
             "avatar": "",
-            "name": "常彦德 Co-Leader",
+            "name": "常彦德",
             "company": "UCloud",
-            "title": "副经理"
+            "title": "副经理",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "闫晓宇 Co-Leader",
+            "name": "闫晓宇",
             "company": "同程艺龙",
-            "title": "技术专家"
+            "title": "技术专家",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "火烧 Leader",
+            "name": "火烧",
             "company": "小电科技",
-            "title": "首席架构师"
+            "title": "首席架构师",
+            "role": "Leader"
         },
         {
             "avatar": "",
-            "name": "彭兴 Co-Leader",
+            "name": "彭兴",
             "company": "曹操专车",
-            "title": "数据库负责人"
+            "title": "数据库负责人",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "杨文 Leader",
+            "name": "杨文",
             "company": "POP",
-            "title": "后端技术负责人"
+            "title": "后端技术负责人",
+            "role": "Leader"
         },
         {
             "avatar": "",
-            "name": "何志勇 Co-Leader",
+            "name": "何志勇",
             "company": "平安科技",
-            "title": "资深云数据库工程师"
+            "title": "资深云数据库工程师",
+            "role": "Co-Leader"
         },
         {
             "avatar": "",
-            "name": "李银龙 Leader",
+            "name": "李银龙",
             "company": "马上消费金融",
-            "title": "容器云数据库负责人"
+            "title": "容器云数据库负责人",
+            "role": "Leader"
         },
         {
             "avatar": "",
-            "name": "袁文学 Co-Leader",
+            "name": "袁文学",
             "company": "聚美集团",
-            "title": "DBA"
+            "title": "DBA",
+            "role": "Co-Leader"
         }
     ],
 
@@ -690,7 +707,7 @@ export default {
             ]
         },
         {
-            "name": "傅绍峰",
+            "name": "傅少峰",
             "avatar": "",
             "company": "新东方",
             "title": "数据服务团队负责人",

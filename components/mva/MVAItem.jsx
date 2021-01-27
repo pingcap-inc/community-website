@@ -7,8 +7,8 @@ export default function MVAItem({avatarUrl, name, company, title, links}) {
     <div className={styles.wrapper}>
       <div className={styles.main}>
         <div className={styles.avatar}>
-          {/*<img src={`images/avatar/${name}.jpg`} alt={name}/>*/}
-          <img src={`images/mva/avatar.svg`} alt={name}/>
+          <img src={`images/avatar/${name}.jpg`} alt={name}/>
+          {/*<img src={`images/mva/avatar.svg`} alt={name}/>*/}
         </div>
         <div className={styles.name}>
           {name}

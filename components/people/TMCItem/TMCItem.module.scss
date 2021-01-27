@@ -8,13 +8,21 @@ $size-avatar: 8rem;
 
 .avatar {
   img {
-    @include radius($size-avatar);
+    width: $size-avatar;
+    height: $size-avatar;
+    border-radius: .5rem;
+    overflow: hidden;
   }
 }
 
 .name {
   @include H3(ZH);
   margin-top: 1rem;
+}
+
+.role {
+  @include P2(ZH);
+  margin-top: .5rem;
 }
 
 .metadata {

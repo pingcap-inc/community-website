@@ -66,10 +66,10 @@ export default function MVA({MVAs, welfare, become}) {
               </div>
               <div className={styles.header_intro_text}>
                 <div className={styles.header_intro_text_title}>
-                  TUG最高荣誉: MVA / MOA
+                  TUG 至高荣誉：MVA/MOA
                 </div>
                 <div className={styles.header_intro_text_summary}>
-                  TiDB MOA（Most Outstanding  Advocate）、TiDB MVA （Most Valuable Advocate）是为 TUG 贡献高质量技术内容的 TiDB 用户，他们帮助他人充分了解 TiDB，是 TUG 社区认定的 TiDB 技术先驱者与技术领袖，享受极高的社区荣誉和权益。
+                  TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
                 </div>
               </div>
             </div>
@@ -110,10 +110,10 @@ export default function MVA({MVAs, welfare, become}) {
             </div>
             <div className={styles.about_right_detail}>
               <p>
-                TiDB 作为全球顶级开源项目，得到很多用户的青睐，也被越来越多的技术工程师认可，其中有很多人开始自发地输出 TiDB 使用案例、功能解析、最佳实践等内容。这些内容源自社区，同时也是对社区的回馈，很好地促进了 TiDB 技术的传播。为了鼓励更多社区用户输出优质技术内容，感谢他们对 TiDB 社区的付出，TUG 发起了“TiDB MVA”计划。
+                TiDB 作为全球顶级开源项目，受到很多用户青睐，也被越来越多的技术工程师所认可，其中有很多人开始自发地输出 TiDB 使用案例、最佳实践、原理解读、数据架构等内容。这些内容源自社区，也回馈于社区，促进了 TiDB 技术的传播。为了鼓励更多用户输出优质技术内容，感谢他们在 TUG 社区内所做出的贡献，TUG 社区发起了“ MVA计划 ”， 是社区颁发给技术专家的一项荣誉认证。
               </p>
               <p>
-                TiDB MOA（Most Outstanding Advocate）、TiDB MVA （Most Valuable Advocate）是为 TUG 社区贡献了高质量技术内容的 TiDB 用户，他们通过总结沉淀优质内容帮助他人充分了解和使用 TiDB，是 TUG 社区认证的 TiDB 技术先锋与意见领袖。
+                TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
               </p>
             </div>
           </div>
@@ -145,9 +145,9 @@ export default function MVA({MVAs, welfare, become}) {
             成为 MVA
           </div>
           <div className={styles.become_summary}>
-            在一年内（自然年）为 TUG 社区贡献优质技术内容的数量 ≥ 3 可成为当年度的 TiDB MVA。
+            在一年内（自然年）为 TUG 社区贡献优质技术内容的数量 3 个及以上，即可当选 TUG 年度  MVA。
             <br/>
-            每年为社区贡献优质技术内容达到 10+，可成为当年度 TiDB MOA。
+            在一年内（自然年）为 TUG 社区贡献优质技术内容达到 10 个及以上，即可当选 TUG 年度  MOA。
           </div>
           <div className={styles.become_list}>
             <Row justify={'center'} gutter={[48, 48]}>

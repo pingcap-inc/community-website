@@ -139,7 +139,7 @@ export default function People({howToBecome, tmc, leader}) {
             LEADER
           </div>
           <div className={styles.people_content_summary}>
-            TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
+            TUG 各区域负责人，负责统筹本区域内TUG 的发展以及活动规划
           </div>
           <div className={styles.people_content_list}>
             <Row gutter={[64, 32]}>

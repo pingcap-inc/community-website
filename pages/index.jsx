@@ -74,7 +74,7 @@ export default function Home({topics}) {
     <>
       <SEO
         title="Home"
-        description="TUG（TiDB User Group） 是由 TiDB 用户自发组织、管理的独立社区，PingCAP 官方提供赞助与支持。TUG 成立的初衷是“连接用户，共建社区”，汇聚了全球数据库、大数据技术从业者，是一个独立、自发、不以盈利为目的的组织。"
+        description="TUG（TiDB User Group） 是由 TiDB 技术爱好者、使用者自发组织、管理的独立组织。TUG 社区的理念是“连接用户，共建社区”；愿景是打造一个前沿的、活跃的、自治的、汇聚全球数据库、大数据从业者的技术社区"
       />
       
       <main className={styles.wrapper}>

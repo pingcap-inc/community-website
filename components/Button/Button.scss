@@ -62,6 +62,10 @@
       //background-color: mix($B1, rgba($F2, .6), .5);
       filter: alpha(rgba(#000, .6));
     }
+
+    &:hover {
+      color: #FFF;
+    }
   }
 
   &.outline {

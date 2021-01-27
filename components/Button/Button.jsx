@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import MyLink from "components/MyLink";
 
 const Button = ({
   as,
@@ -25,10 +26,11 @@ const Button = ({
     children = lowerCase ? children : children.toUpperCase()
   }
 
-  const TagName = as ?? 'button'
+  let TagName = as || 'button'
   
   // href is outbound link
   if (rest.href) {
+    TagName = MyLink
     rest.target = '_blank'
     rest.rel = 'noopener noreferrer'
   }

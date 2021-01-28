@@ -10,6 +10,8 @@ import {useDebounce} from 'ahooks'
 import Container from "components/Container/Container";
 import Button from "components/Button/Button";
 
+const joinTUGLink = 'https://forms.pingcap.com/f/0569186a-719f-4863-90f2-b5a2a5c668ed'
+
 export default function Navbar({initTransparent, forceNonTransparent}) {
   
   // const intl = useIntl()
@@ -86,7 +88,7 @@ export default function Navbar({initTransparent, forceNonTransparent}) {
               </div>
             ))}
             <div className={styles.buttons}>
-              <Button href={'https://asktug.com/t/topic/633'}>
+              <Button href={joinTUGLink}>
                 加入 TUG
               </Button>
             </div>
@@ -128,7 +130,7 @@ export default function Navbar({initTransparent, forceNonTransparent}) {
             </div>
           ))}
           <div className={styles.buttons}>
-            <Button href={'https://asktug.com/t/topic/633'}>
+            <Button href={joinTUGLink}>
               加入 TUG
             </Button>
           </div>

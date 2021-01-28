@@ -53,27 +53,36 @@ export default function MVA({MVAs, welfare, become}) {
         title="MVA"
         description="TiDB MOA（Most Outstanding  Advocate）、TiDB MVA （Most Valuable Advocate）是为 TUG 贡献高质量技术内容的 TiDB 用户，他们帮助他人充分了解 TiDB，是 TUG 社区认定的 TiDB 技术先驱者与技术领袖，享受极高的社区荣誉和权益。"
       />
-      
-        <div>
-          <img className={styles.header_widget_line} src="images/mva/banner-line.svg" alt=""/>
-          <img className={styles.header_widget_1} src="images/mva/banner-widget-1.png" alt=""/>
-          <img className={styles.header_widget_2} src="images/mva/banner-widget-2.png" alt=""/>
-          <img className={styles.header_widget_3} src="images/mva/banner-widget-3.png" alt=""/>
-          <Container className={styles.header}>
-            <div className={styles.header_intro}>
-              <div className={styles.header_intro_logo}>
+        <div className={styles.header}>
+          
+          <div className={styles.header_widget_line}>
+            <img src="images/mva/banner-line.svg" alt=""/>
+          </div>
+          <div className={styles.header_widget_1}>
+            <img src="images/mva/banner-widget-1.png" alt=""/>
+          </div>
+          <div className={styles.header_widget_2}>
+            <img src="images/mva/banner-widget-2.png" alt=""/>
+          </div>
+          <div className={styles.header_widget_3}>
+            <img src="images/mva/banner-widget-3.png" alt=""/>
+          </div>
+          
+          <Container className={styles.header_content}>
+            <div className={styles.header_content_intro}>
+              <div className={styles.header_content_intro_logo}>
                 <img src="images/mva/mva-logo.svg" alt=""/>
               </div>
-              <div className={styles.header_intro_text}>
-                <div className={styles.header_intro_text_title}>
+              <div className={styles.header_content_intro_text}>
+                <div className={styles.header_content_intro_text_title}>
                   TUG 至高荣誉：MVA/MOA
                 </div>
-                <div className={styles.header_intro_text_summary}>
+                <div className={styles.header_content_intro_text_summary}>
                   TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
                 </div>
               </div>
             </div>
-            <div className={styles.header_cup}>
+            <div className={styles.header_content_cup}>
               <img src="images/mva/header-cup.png" alt=""/>
             </div>
           </Container>
@@ -90,9 +99,10 @@ export default function MVA({MVAs, welfare, become}) {
             onClick={setYear}
           />
           <div className={styles.MVAs_list}>
-            <Row gutter={[48, 48]}>
+            <Row justify={'center'} gutter={[16, 64
+            ]}>
               {MVAs.filter(subMva => subMva.year === year)[0].data.map((mva, index) =>
-                <Col key={index} md={12} lg={6}>
+                <Col key={index} xs={12} sm={12} md={8} lg={6}>
                   <MVAItem {...mva} />
                 </Col>
               )}

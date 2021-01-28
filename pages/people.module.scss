@@ -9,12 +9,12 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap-reverse;
     padding: 5rem 0;
     margin-bottom: 6rem;
+    @include responsive-lte-md {
+      flex-direction: column;
+    }
     &_left {
-      min-width: 480px;
-      max-width: calc(100% - 34rem);
       padding: 1rem;
       &_title {
         @include H1(ZH);
@@ -29,7 +29,7 @@
     }
     &_right {
       padding: 1rem;
-      width: 30rem;
+      min-width: 20rem;
     }
   }
 }
@@ -73,6 +73,17 @@
   &_list {
     @include P1(ZH);
     margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    @include responsive-lte-md {
+      flex-direction: column;
+      &_arrow {
+        transform: rotate(90deg);
+      }
+    }
+    &_arrow {
+      margin: 2rem;
+    }
   }
 }
 
@@ -104,30 +115,32 @@
 .progress {
   display: flex;
   justify-content: space-between;
-  //align-items: center;
-  flex-wrap: wrap;
   margin-top: 6rem;
   padding: {
     top: 4rem;
     bottom: 6rem;
   }
+  @include responsive-lte-md {
+    flex-direction: column;
+    align-items: center;
+  }
   &_left {
-    width: calc(100% - 360px);
-    min-width: 500px;
-    padding-right: 4rem;
+    margin-right: 4rem;
+    @include responsive-lte-md {
+      margin-right: 0;
+    }
     &_header {
       display: flex;
       &_icon {
       }
       &_text {
         margin-left: 1rem;
-        //max-width: 600px;
         &_title {
-          @include H1;
+          @include H1(ZH);
           color: $F1;
         }
         &_summary {
-          @include P1;
+          @include P1(ZH);
           line-height: 2;
           margin-top: 1.5rem;
           color: $F1;
@@ -147,7 +160,7 @@
           }
         }
         &_text {
-          @include P1;
+          @include P1(ZH);
           line-height: 2;
           color: $F1;
         }
@@ -164,7 +177,7 @@
           }
         }
         &_text {
-          @include P1;
+          @include P1(ZH);
           line-height: 2;
           color: $M1;
         }
@@ -172,12 +185,16 @@
     }
   }
   &_right {
-    width: 360px;
     text-align: right;
+    @include responsive-lte-md {
+      text-align: left;
+      margin-top: 4rem;
+    }
     &_icon {
 
     }
     &_chart {
+      width: 360px;
       margin-top: 2rem;
     }
   }
@@ -185,12 +202,12 @@
 
 .people {
   background-color: $M2;
+  padding: 4rem 0;
   &_content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4rem 0;
     &_title {
       @include H1(ZH);
       color: $F1;
@@ -202,6 +219,10 @@
     }
     &_list {
       margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+      //align-items: center;
+      flex-wrap: wrap;
     }
     &_split {
       height: 6rem;

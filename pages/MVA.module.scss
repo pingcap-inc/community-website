@@ -21,11 +21,60 @@
   user-select: none;
 }
 .header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: relative;
   padding-top: 6rem;
+  position: relative;
+  &_content {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap-reverse;
+    @include responsive-lte-md {
+      //flex-direction: column;
+    }
+    &_intro {
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      @include responsive-lte-md {
+        flex-direction: column;
+      }
+      &_logo {
+        @include hover-with-blur;
+        width: 140px;
+        padding: 1rem;
+        border: 2px solid $color-mva;
+        margin-bottom: 1rem;
+        position: relative;
+        top: 8px;
+      }
+      &_text {
+        max-width: 560px;
+        margin: 0 3rem;
+        @include responsive-lte-md {
+          margin: 1rem 0;
+        }
+        &_title {
+          @include hover-with-blur;
+          @include H1(ZH);
+          font-weight: 400;
+          color: $color-mva;
+        }
+        &_summary {
+          @include hover-with-blur;
+          @include P1(ZH);
+          font-weight: 300;
+          color: $M1;
+          margin-top: 1.75rem;
+        }
+      }
+    }
+    &_cup {
+      z-index: 1;
+      img {
+        width: 360px;
+      }
+    }
+  }
 
   &_widget_1 {
     @include widget;
@@ -33,56 +82,22 @@
   }
   &_widget_2 {
     @include widget;
-    width: 100px;
-    left: 25%;
-    bottom: 35%;
+    //width: 100px;
+    //left: 5%;
+    //bottom: 12rem;
   }
   &_widget_3 {
     @include widget;
-    width: 100px;
-    right: 35%;
-    top: 15%;
+    //width: 100px;
+    //right: 35%;
+    //top: 15%;
   }
   &_widget_line {
     @include widget;
     left: 20%;
-  }
-
-  &_intro {
-    z-index: 1;
-    display: flex;
-    align-items: flex-start;
-    &_logo {
-      @include hover-with-blur;
-      width: 140px;
-      padding: 1rem;
-      border: 2px solid $color-mva;
-      margin-bottom: 1rem;
-      position: relative;
-      top: 8px;
-    }
-    &_text {
-      max-width: 560px;
-      margin: 0 3rem;
-      &_title {
-        @include hover-with-blur;
-        @include H1(ZH);
-        font-weight: 400;
-        color: $color-mva;
-      }
-      &_summary {
-        @include hover-with-blur;
-        @include P1(ZH);
-        font-weight: 300;
-        color: $M1;
-        margin-top: 1.75rem;
-      }
-    }
-  }
-  &_cup {
-    z-index: 1;
+    //width: 50%;
     img {
-      width: 360px;
+      //width: 50%;
     }
   }
 }
@@ -90,6 +105,12 @@
 .MVAs {
   text-align: center;
   margin-top: 6rem;
+  @include responsive-lte-md {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   &_title {
     @include H1(ZH);
     color: $color-mva;
@@ -103,9 +124,18 @@
 .about {
   display: flex;
   margin-top: 9rem;
-  position: relative;
+  @include responsive-lte-md {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
   &_left {
+    @include responsive-lte-md {
+      margin-right: 0;
+      margin-bottom: 4rem;
+    }
     margin-right: 4rem;
+    width: 360px;
     img {
       width: 360px;
     }

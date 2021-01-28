@@ -3,15 +3,17 @@ import styles from './people.module.scss'
 import SEO from "components/SEO";
 import Container from "components/Container/Container";
 import TMCItem from "components/people/TMCItem/TMCItem";
-import {Col, Row} from "antd";
 import HowToBecome from "components/people/HowToBecome/HowToBecome";
 import tugData from '../data/tug_data.js'
+import tugConfig from '../tug.config'
+
+const {joinTUGLink} = tugConfig
 
 export async function getStaticProps(context) {
   const {tmc, leader} = tugData
   
   const howToBecome = [
-    {index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息'},
+    {index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: joinTUGLink},
     {index: 2, iconUrl: 'images/people/how-to-become-2.svg', title: '信息审核'},
     {index: 3, iconUrl: 'images/people/how-to-become-3.svg', title: '邀请加入'},
   ]
@@ -22,6 +24,13 @@ export async function getStaticProps(context) {
 }
 
 export default function People({howToBecome, tmc, leader}) {
+  const howToBecomeDom = []
+  howToBecome.forEach((item, index) => {
+    howToBecomeDom.push(<HowToBecome {...item} />)
+    if (index !== howToBecome.length - 1) {
+      howToBecomeDom.push(<div className={styles.how_to_become_list_arrow}><img src="images/people/arrow.svg" alt=">"/></div>)
+    }
+  })
   return (
     <div className={styles.wrapper}>
       <SEO
@@ -60,9 +69,7 @@ export default function People({howToBecome, tmc, leader}) {
             如何成为 TUG 会员
           </div>
           <div className={styles.how_to_become_list}>
-            <Row justify={'space-between'} gutter={[128, 64]}>
-              {howToBecome.map((item, index) => <Col xs={24} sm={24} md={8} key={index}><HowToBecome {...item} /></Col>)}
-            </Row>
+            {howToBecomeDom}
           </div>
         </Container>
       </div>
@@ -130,9 +137,10 @@ export default function People({howToBecome, tmc, leader}) {
             TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等
           </div>
           <div className={styles.people_content_list}>
-            <Row gutter={[64, 32]}>
-              {tmc.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
-            </Row>
+            {tmc.map((item, index) => <TMCItem key={index} {...item} />)}
+            {/*<Row justify={'center'} gutter={[0, 32]}>*/}
+            {/*  {tmc.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}*/}
+            {/*</Row>*/}
           </div>
           <div className={styles.people_content_split}/>
           <div className={styles.people_content_title}>
@@ -142,9 +150,10 @@ export default function People({howToBecome, tmc, leader}) {
             TUG 各区域负责人，负责统筹本区域内TUG 的发展以及活动规划
           </div>
           <div className={styles.people_content_list}>
-            <Row gutter={[64, 32]}>
-              {leader.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}
-            </Row>
+            {leader.map((item, index) => <TMCItem key={index} {...item} />)}
+            {/*<Row justify={'center'} gutter={[0, 32]}>*/}
+            {/*  {leader.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}*/}
+            {/*</Row>*/}
           </div>
         </Container>
       </div>

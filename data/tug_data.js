@@ -6,7 +6,6 @@ export default {
             "name": "房晓乐",
             "company": "PingCAP",
             "title": "互联网首席架构师",
-            "role": "TMC Leader"
         },
         {
             "avatar": "",
@@ -52,7 +51,7 @@ export default {
             "name": "黄潇",
             "company": "美团点评",
             "title": "DBA",
-            "role": "内容组 Leader"
+            "role": "内容组 & 北京区 Leader"
         },
         {
             "avatar": "",
@@ -74,13 +73,6 @@ export default {
             "company": "平安科技",
             "title": "数据库架构师",
             "role": "内容组 Co-Leader"
-        },
-        {
-            "avatar": "",
-            "name": "黄潇",
-            "company": "美团点评",
-            "title": "DBA",
-            "role": "北京区 Leader"
         },
         {
             "avatar": "",
@@ -285,8 +277,8 @@ export default {
         {
             "name": "罗瑞星",
             "avatar": "",
-            "company": "前易果集团",
-            "title": "数据架构专家",
+            "company": "百胜中国",
+            "title": "大数据经理",
             "links": [
                 {
                     "name": "易果 TiDB 的使用以及数据中台的思考",

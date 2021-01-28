@@ -3,10 +3,14 @@
 $color-background: #100836;
 
 .wrapper {
-  height: 300px;
+  max-width: 220px;
+  height: 330px;
   background-color: $color-background;
   padding: 2rem;
   overflow: auto;
+  @include responsive-lte-md {
+    padding: 1rem;
+  }
   .main {
     display: flex;
     flex-direction: column;

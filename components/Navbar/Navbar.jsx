@@ -9,8 +9,9 @@ import i18n from '../../data/navbar'
 import {useDebounce} from 'ahooks'
 import Container from "components/Container/Container";
 import Button from "components/Button/Button";
+import tugConfig from '../../tug.config'
 
-const joinTUGLink = 'https://forms.pingcap.com/f/0569186a-719f-4863-90f2-b5a2a5c668ed'
+const {joinTUGLink} = tugConfig
 
 export default function Navbar({initTransparent, forceNonTransparent}) {
   

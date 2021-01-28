@@ -1,9 +1,20 @@
 @import 'styles/common';
 
-$size-avatar: 8rem;
+$size-margin: 2rem;
+$size-margin-mobile: 1.5rem;
+$size-avatar: 150px;
+$size-avatar-mobile: 120px;
 
 .wrapper {
-
+  width: $size-avatar;
+  height: 100%;
+  margin: $size-margin;
+  display: flex;
+  flex-direction: column;
+  @include responsive-lte-md {
+    width: $size-avatar-mobile;
+    margin: $size-margin-mobile;
+  }
 }
 
 .avatar {
@@ -12,6 +23,10 @@ $size-avatar: 8rem;
     height: $size-avatar;
     border-radius: .5rem;
     overflow: hidden;
+    @include responsive-lte-md {
+      width: $size-avatar-mobile;
+      height: $size-avatar-mobile;
+    }
   }
 }
 
@@ -20,9 +35,17 @@ $size-avatar: 8rem;
   margin-top: 1rem;
 }
 
+$height-role: 1.5rem;
 .role {
-  @include P2(ZH);
+  @include P2;
   margin-top: .5rem;
+  //position: absolute;
+  //width: $size-avatar;
+  //height: $height-role;
+  //text-align: center;
+  //line-height: $height-role;
+  //background-color: $color-mva;
+  //color: $M1;
 }
 
 .metadata {

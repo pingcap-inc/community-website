@@ -49,3 +49,41 @@ $xxl: 1920px;
     @content
   }
 }
+
+
+///// less than or equal to /////
+@mixin responsive-lte-xs {
+  @media screen and (max-width: $xs) {
+    @content
+  }
+}
+
+@mixin responsive-lte-sm {
+  @media screen and (max-width: $sm) {
+    @content
+  }
+}
+
+@mixin responsive-lte-md {
+  @media screen and (max-width: $md) {
+    @content
+  }
+}
+
+@mixin responsive-lte-lg {
+  @media screen and (max-width: $lg) {
+    @content
+  }
+}
+
+@mixin responsive-lte-xl {
+  @media screen and (max-width: $xl) {
+    @content
+  }
+}
+
+@mixin responsive-lte-xxl {
+  @media screen and (max-width: $xxl) {
+    @content
+  }
+}

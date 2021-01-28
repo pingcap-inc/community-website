@@ -22,6 +22,9 @@ $size-avatar: 1.5rem;
 .title {
   @include H3(ZH);
   color: $F1;
+  a {
+    @include limit-line-count(1);
+  }
 }
 
 .metadata {

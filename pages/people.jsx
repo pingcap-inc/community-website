@@ -6,6 +6,7 @@ import TMCItem from "components/people/TMCItem/TMCItem";
 import HowToBecome from "components/people/HowToBecome/HowToBecome";
 import tugData from '../data/tug_data.js'
 import tugConfig from '../tug.config'
+import MyLink from "components/MyLink";
 
 const {joinTUGLink} = tugConfig
 
@@ -55,11 +56,15 @@ export default function People({howToBecome, tmc, leader}) {
       </div>
       
       <Container className={styles.organization_chart}>
-        <div className={styles.organization_chart_title}>
-          TUG 组织架构
-        </div>
-        <div className={styles.organization_chart_image}>
-          <img src="images/people/tug-organization-chart.svg" alt="tug-company-chart"/>
+        <div className={styles.organization_chart_content}>
+          <div className={styles.organization_chart_content_title}>
+            TUG 组织架构
+          </div>
+          <div className={styles.organization_chart_content_image}>
+            <MyLink href={'/images/people/tug-organization-chart.svg'}>
+              <img src="/images/people/tug-organization-chart.svg" alt="tug-company-chart"/>
+            </MyLink>
+          </div>
         </div>
       </Container>
       

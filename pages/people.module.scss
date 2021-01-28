@@ -35,20 +35,25 @@
 }
 
 .organization_chart {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 4rem 0;
-  width: 100%;
-  &_title {
-    @include H1(ZH);
-    color: $F1;
-  }
-  &_image {
-    margin-top: 2rem;
-    img {
-      width: 100%;
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    width: 100%;
+    @include responsive-lte-md {
+      padding: 0;
+    }
+    &_title {
+      @include H1(ZH);
+      color: $F1;
+    }
+    &_image {
+      margin-top: 2rem;
+      img {
+        width: 100%;
+      }
     }
   }
 }

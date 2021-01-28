@@ -40,7 +40,7 @@ $size-logo: 4rem;
     &_column {
       margin-right: 8rem;
       &_title {
-        @include H3;
+        @include H3(ZH);
         color: $B4;
       }
       &_list {
@@ -52,7 +52,7 @@ $size-logo: 4rem;
         }
         li {
           a {
-            @include P1;
+            @include P1(ZH);
             color: $B3;
             &:hover {
               color: $B1;
@@ -80,7 +80,7 @@ $size-logo: 4rem;
         }
       }
       &_copyright {
-        @include P1;
+        @include P1(ZH);
         text-align: center;
         margin-top: 1.5rem;
       }

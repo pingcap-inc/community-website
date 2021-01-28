@@ -17,7 +17,7 @@ export default function Footer() {
   
   const data = i18n[locale]
   
-  const copyrightNode = `©${new Date().getFullYear()} TiDB Author.`
+  const copyrightNode = `©${new Date().getFullYear()} TiDB Community.`
   
   return (
     <div className={styles.wrapper}>

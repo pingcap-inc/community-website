@@ -131,26 +131,28 @@ export default function MVA({MVAs, welfare, become}) {
             </div>
           </div>
           <div className={styles.welfare_list}>
-            <Row justify={'center'} gutter={[48, 48]}>
+            <Row justify={'space-around'} gutter={[48, 48]}>
               {welfare.map((item, index) => <Col key={index}><WelfareItem {...item}/></Col> )}
             </Row>
           </div>
         </div>
       </Container>
       
-      <div>
-        <img className={styles.become_widget_line} src="images/mva/become-line.svg" alt=""/>
-        <Container className={styles.become}>
-          <div className={styles.become_title}>
+      <div className={styles.become}>
+        <div className={styles.become_widget_line}>
+          <img src="images/mva/become-line.svg" alt=""/>
+        </div>
+        <Container className={styles.become_content}>
+          <div className={styles.become_content_title}>
             成为 MVA
           </div>
-          <div className={styles.become_summary}>
+          <div className={styles.become_content_summary}>
             在一年内（自然年）为 TUG 社区贡献优质技术内容的数量 3 个及以上，即可当选 TUG 年度  MVA。
             <br/>
             在一年内（自然年）为 TUG 社区贡献优质技术内容达到 10 个及以上，即可当选 TUG 年度  MOA。
           </div>
-          <div className={styles.become_list}>
-            <Row justify={'center'} gutter={[48, 48]}>
+          <div className={styles.become_content_list}>
+            <Row justify={'space-around'} gutter={[48, 48]}>
               {become.map((item, index) => <Col key={index}><BecomeMVA {...item}/></Col> )}
             </Row>
           </div>

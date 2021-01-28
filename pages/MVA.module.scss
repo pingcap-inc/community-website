@@ -154,27 +154,36 @@
 
 .become {
   margin-top: 9rem;
-  &_title {
-    @include H1(ZH);
-    color: $color-mva;
-    text-align: center;
-    z-index: 1;
-  }
-  &_summary {
-    @include P1(ZH);
-    color: $M1;
-    margin-top: 2rem;
-    text-align: center;
-    z-index: 1;
-  }
-  &_list {
-    margin-top: 4rem;
-    text-align: center;
-    z-index: 1;
-  }
+  $width-widget-line: 480px;
   &_widget_line {
     @include widget;
-    width: 480px;
-    right: 5%;
+    overflow: hidden;
+    width: $width-widget-line;
+    right: 0;
+    img {
+      position: relative;
+      width: $width-widget-line;
+      right: -$width-widget-line / 3 * 1;
+    }
+  }
+  &_content {
+    &_title {
+      @include H1(ZH);
+      color: $color-mva;
+      text-align: center;
+      z-index: 1;
+    }
+    &_summary {
+      @include P1(ZH);
+      color: $M1;
+      margin-top: 2rem;
+      text-align: center;
+      z-index: 1;
+    }
+    &_list {
+      margin-top: 4rem;
+      text-align: center;
+      z-index: 1;
+    }
   }
 }

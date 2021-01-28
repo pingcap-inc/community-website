@@ -51,6 +51,7 @@ $size-avatar: 1.5rem;
   border-bottom: 1px solid $T2;
   padding: 1rem 0;
   a {
+    @include limit-line-count(1);
     color: $F1;
     font-weight: 400;
   }

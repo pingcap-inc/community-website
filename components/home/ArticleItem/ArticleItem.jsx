@@ -6,7 +6,7 @@ import classnames from "classnames";
 export default function ArticleItem({title, link, color}) {
   return (
     <div className={classnames(styles.wrapper, styles[`with_color_${color}`])}>
-      <span className={styles.dot}>·</span> <MyLink href={link}>{title}</MyLink>
+      <MyLink href={link}><span className={styles.dot}>·</span> {title}</MyLink>
     </div>
   )
 }

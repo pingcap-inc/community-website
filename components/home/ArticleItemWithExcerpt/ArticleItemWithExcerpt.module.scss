@@ -50,6 +50,7 @@ $size-avatar: 1.5rem;
 
 .excerpt {
   @include P1(ZH);
+  @include limit-line-count(3);
   color: $F2;
 }
 

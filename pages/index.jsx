@@ -7,7 +7,6 @@ import TopItem from "components/home/TopItem/TopItem";
 import {Col, Carousel, Row} from "antd";
 import banners from "../data/banners";
 import events from "../data/events";
-import ResponsiveRow from "components/ResponsiveRow/ResponsiveRow";
 import MyLink from "components/MyLink";
 import EventsItem from "components/EventsItem/EventsItem";
 import LinkWithArrow from "components/LinkWithArrow/LinkWithArrow";
@@ -30,7 +29,7 @@ async function getTopTopicFromAskTUG() {
   return await response.json()
 }
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   const [howTo, practice, theory, top] = await Promise.all([
     getTopicFromAskTUG('how-to'),
     getTopicFromAskTUG('practice'),

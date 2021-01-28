@@ -1,6 +1,6 @@
 @import "styles/common";
 
-$size-logo: 4rem;
+$width-logo: 8.75rem;
 
 .wrapper {
   background: $M2;
@@ -75,8 +75,7 @@ $size-logo: 4rem;
         justify-content: center;
         align-items: center;
         img {
-          width: auto;
-          height: $size-logo;
+          width: $width-logo;
         }
       }
       &_copyright {

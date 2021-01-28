@@ -7,13 +7,15 @@
   background-color: #190F4C;
   &_content {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap-reverse;
     padding: 5rem 0;
     margin-bottom: 6rem;
     &_left {
-      padding-top: 2rem;
-      padding-right: 4rem;
+      min-width: 480px;
+      max-width: calc(100% - 34rem);
+      padding: 1rem;
       &_title {
         @include H1(ZH);
         color: $M1;
@@ -26,7 +28,8 @@
       }
     }
     &_right {
-      height: 10rem;
+      padding: 1rem;
+      width: 30rem;
     }
   }
 }
@@ -44,6 +47,9 @@
   }
   &_image {
     margin-top: 2rem;
+    img {
+      width: 100%;
+    }
   }
 }
 
@@ -172,7 +178,7 @@
 
     }
     &_chart {
-      margin-top: 4rem;
+      margin-top: 2rem;
     }
   }
 }

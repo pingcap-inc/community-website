@@ -55,18 +55,18 @@ export default function MVA({MVAs, welfare, become}) {
       />
         <div className={styles.header}>
           
-          <div className={styles.header_widget_line}>
-            <img src="images/mva/banner-line.svg" alt=""/>
-          </div>
-          <div className={styles.header_widget_1}>
-            <img src="images/mva/banner-widget-1.png" alt=""/>
-          </div>
-          <div className={styles.header_widget_2}>
-            <img src="images/mva/banner-widget-2.png" alt=""/>
-          </div>
-          <div className={styles.header_widget_3}>
-            <img src="images/mva/banner-widget-3.png" alt=""/>
-          </div>
+          {/*<div className={styles.header_widget_line}>*/}
+          {/*  <img src="images/mva/banner-line.svg" alt=""/>*/}
+          {/*</div>*/}
+          {/*<div className={styles.header_widget_1}>*/}
+          {/*  <img src="images/mva/banner-widget-1.png" alt=""/>*/}
+          {/*</div>*/}
+          {/*<div className={styles.header_widget_2}>*/}
+          {/*  <img src="images/mva/banner-widget-2.png" alt=""/>*/}
+          {/*</div>*/}
+          {/*<div className={styles.header_widget_3}>*/}
+          {/*  <img src="images/mva/banner-widget-3.png" alt=""/>*/}
+          {/*</div>*/}
           
           <Container className={styles.header_content}>
             <div className={styles.header_content_intro}>

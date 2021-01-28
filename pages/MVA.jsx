@@ -82,7 +82,7 @@ export default function MVA({MVAs, welfare, become}) {
       <Container>
         <div className={styles.MVAs}>
           <div className={styles.MVAs_title}>
-            {year} 年度 TiDB MVA
+            {year} 年度 TUG MVA
           </div>
           <YearSwitch
             value={year}

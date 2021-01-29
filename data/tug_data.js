@@ -725,7 +725,7 @@ export default {
             "name": "李银龙",
             "avatar": "",
             "company": "马上消费金融",
-            "title": "容器云负责人",
+            "title": "容器云数据库负责人",
             "links": [
                 {
                     "name": "TiDB 在马上消费金融核心账务系统归档及跑批业务下的实践",

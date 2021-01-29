@@ -77,8 +77,8 @@ export default {
         {
             "avatar": "",
             "name": "朱博帅",
-            "company": "爱奇艺",
-            "title": "数据库开发工程师",
+            "company": "阿里云",
+            "title": "数据库技术服务专家",
             "role": "北京区 Co-Leader"
         },
         {
@@ -99,7 +99,7 @@ export default {
             "avatar": "",
             "name": "常彦德",
             "company": "UCloud",
-            "title": "副经理",
+            "title": "存储组件产品部负责人",
             "role": "上海区 Co-Leader"
         },
         {
@@ -578,7 +578,7 @@ export default {
             "name": "常彦德",
             "avatar": "",
             "company": "UCloud",
-            "title": "副经理",
+            "title": "存储组件产品部负责人",
             "links": [
                 {
                     "name": "TiDB 在 UCloud 公有云上的实践",
@@ -1064,8 +1064,8 @@ export default {
         {
             "name": "于振华",
             "avatar": "",
-            "company": "北银金科云计算",
-            "title": "应用部副总经理",
+            "company": "北银金科",
+            "title": "云计算应用部副总经理",
             "links": [
                 {
                     "name": "TiDB 在金融场景里那些不得不说的事",
@@ -1169,7 +1169,7 @@ export default {
             "name": "胡然",
             "avatar": "",
             "company": "龙湖地产",
-            "title": "高级运维工程师",
+            "title": "DBA 负责人",
             "links": [
                 {
                     "name": "地产TiDB使用初探索",

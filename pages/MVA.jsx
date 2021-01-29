@@ -78,7 +78,7 @@ export default function MVA({MVAs, welfare, become}) {
                   TUG 至高荣誉：MVA/MOA
                 </div>
                 <div className={styles.header_content_intro_text_summary}>
-                  TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
+                  TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在 TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@ export default function MVA({MVAs, welfare, become}) {
             成为 MVA
           </div>
           <div className={styles.become_content_summary}>
-            在一年内（自然年）为 TUG 社区贡献优质技术内容的数量 3 个及以上，即可当选 TUG 年度  MVA。
+            在一年内（自然年）为 TUG 社区贡献优质技术内容达到 3 个及以上，即可当选 TUG 年度  MVA。
             <br/>
             在一年内（自然年）为 TUG 社区贡献优质技术内容达到 10 个及以上，即可当选 TUG 年度  MOA。
           </div>

@@ -74,8 +74,23 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### data/social.js
 底部页脚社交平台渠道数据
 
-## component
+## components
 相关组件，其中小写开头的目录名为该目录名所对应的 page 的组件，并非通用组件
+### SEO.jsx
+该组件通过 next/Head 组件向 HTML文档注入 SEO 相关信息
+例如网站的icon，网站作者，标题，描述信息，关键词，用于生成分享内容的元数据
+
+其中 meta name 为 og 开头的为 Open Graph 协议所需字段，用于生成 Facebook 等社交平台的分享信息
+其中 meta name 为 twitter 开头的为 Open Graph 协议所需字段，用于生成 Twitter 等社交平台的分享信息
+
+### MyLink.jsx
+判断是通过 href 还是 to 属性传入链接，正确返回 next/Link 组件或者 a 标签
+
+### Container
+页面容器组件，包括 normal 标准容器和 fluid 非固定容器。
+前者不会占满整个屏幕宽度，后者会占满整个屏幕宽度。
+其中对于 normal 容器，将会通过媒体查询功能获取屏幕宽度，根据不同的屏幕宽度选择不同的容器宽度。
+具体的响应式策略请参考 Container.scss 代码以及该代码文件顶部的注释。
 
 ## public
 该目录下存放相关静态资源，例如图片，icon等。如需要修改，请对应页面或者组件代码中的路径进行修改。

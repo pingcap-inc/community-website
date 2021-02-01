@@ -89,4 +89,35 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 next.js 配置文件，可重写 webpack 以及相关工具链的配置
 
 # Deploy
-TODO
+## next.js
+该项目使用 next.js 开发。
+next.js 支持以两种方式发布
+- 静态发布 `yarn build && yarn run export`
+- 动态发布 `yarn build && yarn start`
+
+静态发布意味着所有数据在 build 时就填充进 HTML 文件，并且生成纯静态 HTML 文件，可以直接交给 nginx 发布。
+无论用户何时访问，数据永远定格在 build 的那一刻。
+
+动态发布则是通过 yarn start 启动 next.js 内置的服务器，开始服务端动态渲染。
+用户每次访问该网站，next.js 都会执行目标页面中的 getServerSideProps 函数获取数据并且填充进 HTML 然后返回给客户端。
+数据是动态生成，可以保证实时性。
+
+目前 TUG 网站线上版本为**动态发布**，
+并且使用 pm2 这个 node.js 进程管理工具启动服务端渲染程序，
+通过 nginx 反向代理 http://127.0.0.1:3000 将 SSR 服务端对外发布。
+
+阅读后续内容前请先观察 package.json 文件中的 scripts 部分以及 /.circleci/config.yml
+
+首次启动服务器时，需要运维人员手动执行 `npm run server:init` ，该命令通过 pm2 执行 npm start 启动一个名为 `tug-website-next-server` 的进程
+
+后续如果代码仓库的 main 分支有新的变更，则会触发 CircleCI 执行 yarn build 构建新的服务端程序，并且通过 rsync 将最新构建的服务端程序同步至线上服务器，
+然后 SSH 连接线上服务器，执行 `npm run server:reload` ，该命令通过执行 pm2 reload 重新载入名为 `tug-website-next-server` 的进程，实现平滑升级上线。
+
+如果出现构建失败，请前往 [CircleCI 控制台](https://app.circleci.com/pipelines/github/pingcap/tug-website) 查看失败原因。
+如果发布后访问线上版本出现 CSS，JS，图片错乱等情况，请手动通过 SSH 连接至线上服务器，通过 cd 命令进入服务端所在目录后，执行 `npm run server:reload` 。
+
+## nginx
+已部署 tidb.io 根域名 SSL 证书，并且在 443 端口监听所有请求。在 80 端口将所有请求强制重定向至 https 协议的同名路径下。
+已开启 gzip
+
+欲了解更多关于 nginx 的配置请直接参考线上服务器的nginx配置文件或者请教 SRE 同学。

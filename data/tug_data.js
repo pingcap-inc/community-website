@@ -892,8 +892,8 @@ export default {
         {
             "name": "胡国青",
             "avatar": "",
-            "company": "同程艺龙",
-            "title": "数据库负责人",
+            "company": "数据库从业者",
+            "title": "",
             "links": [
                 {
                     "name": "TiDB in Action-MongoDB 到 TiDB",

@@ -5,6 +5,7 @@ import i18n from '../../data/footer'
 import MyLink from 'components/MyLink'
 import Container from "components/Container/Container";
 // import { useIntl } from 'react-intl'
+import tugConfig from '../../tug.config'
 
 const logoImageUrl = 'images/logo.svg'
 
@@ -17,7 +18,7 @@ export default function Footer() {
   
   const data = i18n[locale]
   
-  const copyrightNode = `©${new Date().getFullYear()} TiDB Community.`
+  const copyrightNode = `©${new Date().getFullYear()} ${tugConfig.author}.`
   
   return (
     <div className={styles.wrapper}>

@@ -4,7 +4,6 @@ import '../styles/globals.css'
 
 import 'components/Container/Container.scss'
 import 'components/Button/Button.scss'
-// import 'components/Footer/Footer.scss'
 
 import Navbar from "components/Navbar/Navbar";
 import Footer from "components/Footer/Footer";

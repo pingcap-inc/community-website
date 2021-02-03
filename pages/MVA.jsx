@@ -123,7 +123,7 @@ export default function MVA({MVAs, welfare, become}) {
                 TiDB 作为全球顶级开源项目，受到很多用户青睐，也被越来越多的技术工程师所认可，其中有很多人开始自发地输出 TiDB 使用案例、最佳实践、原理解读、数据架构等内容。这些内容源自社区，也回馈于社区，促进了 TiDB 技术的传播。为了鼓励更多用户输出优质技术内容，感谢他们在 TUG 社区内所做出的贡献，TUG 社区发起了“ MVA计划 ”， 是社区颁发给技术专家的一项荣誉认证。
               </p>
               <p>
-                TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
+                TUG MVA （Most Valuable Advocate）、TUG  MOA（Most Outstanding  Advocate）是在 TUG 社区里涌现的技术布道师，他们在 TiDB、前沿数据库与大数据技术、热门技术话题等领域，通过分享高质量 Talk、编写高质量技术文章等方式，与社区成员进行同侪学习。是 TUG 社区认定的 TiDB 技术先驱与技术领袖，享受最高的社区荣誉和权益。
               </p>
             </div>
           </div>

@@ -57,6 +57,16 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ## data
 数据文件存放目录
+
+数据文件中所有图片路径均相对于 public 目录，
+例如你想在 Banner 轮播图中使用 `public/images/home/banner-welcome.png` 这张图，
+则需要在 `data/banners.js` 文件中的 imageUrl 字段填入 `/images/home/banner-welcome.png` ，也就是不带 public 的路径。
+
+数据文件也可以使用外部图片，
+例如你可以在图片路径相关的字段中直接填入 `https://en.pingcap.com/static/1d8632a2b41f24161ffae995844556f2/pingcap-logo.svg` 
+
+请注意：所有 public 目录下的文件将都会对外发布。
+
 ### data/tug_data.js
 该数据文件默认导出一个 object 含有 /people 页面中的 TUG 会员信息。
 ### data/asktug_site.json

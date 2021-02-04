@@ -23,7 +23,9 @@ export default function MVAItem({avatarUrl, name, company, title, links}) {
   
       <div className={styles.hover}>
         <ol className={styles.links}>
-          {links.map((link, index) => link.href && <li key={index}><MyLink href={link.href}>{link.name}</MyLink></li> )}
+          {links.map((link, index) => link.href && (link.href === '#' ?
+            <li key={index}>{link.name}</li> :
+            <li key={index}><MyLink href={link.href}>{link.name}</MyLink></li> ))}
         </ol>
       </div>
       

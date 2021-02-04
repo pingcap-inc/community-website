@@ -1212,7 +1212,20 @@ export default {
                     "href": "https://www.bilibili.com/video/BV1Lt4y1C7AH"
                 }
             ]
-        }
+        },
+        {
+            "name": "闫晓宇",
+            "avatar": "",
+            "company": "得物",
+            "title": "数据库团队负责人",
+            "links": [
+                {
+                    "name": "【圆桌讨论】数字化转型下的新数据架构选型",
+                    "href": "#"
+                },
+            ]
+        },
+      
     ]
 
 }

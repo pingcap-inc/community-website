@@ -44,6 +44,9 @@
 }
 
 .logo {
+  &:hover {
+    cursor: pointer;
+  }
   img {
     height: 3rem;
   }

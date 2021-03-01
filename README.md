@@ -37,6 +37,39 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+# copy-writing
+## navbar
+- data/navbar.js
+
+## footer
+- data/footer.js
+- data/socials.js
+
+## /
+### banner
+- data/banner.js
+### 列表公共信息
+- data/asktug_site.json ( download from https://asktug.com/site.json )
+### 精选文章列表
+- https://asktug.com/c/blog/how-to/l/latest.json?order=default&page=0&per_page=10
+### 用户实践列表
+- https://asktug.com/c/blog/practice/l/latest.json?order=default&page=0&per_page=10
+### 原理解读列表
+- https://asktug.com/c/blog/theory/l/latest.json?order=default&page=0&per_page=10
+### 热门问答列表
+- https://asktug.com/top/weekly.json?order=default&page=0&per_page=10
+
+### /MVA
+- pages/MVA.jsx
+- data/tug_data.js -> mva2020
+- data/tug_data.js -> mva2019
+
+### /people
+- pages/people.jsx
+- data/tug_data.js -> tmc
+- data/tug_data.js -> leader
+
+
 # Folder Structure
 
 ## pages

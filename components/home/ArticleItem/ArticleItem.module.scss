@@ -7,7 +7,7 @@ $size-avatar: 1.5rem;
   color: $color;
   border-bottom: {
     color: $color;
-  };
+  }
 }
 
 .with_color_1 {
@@ -17,7 +17,7 @@ $size-avatar: 1.5rem;
       background-color: $color-1;
     }
     a {
-      @include hover-title($color-1)
+      @include hover-title($color-1);
     }
   }
 }
@@ -29,7 +29,7 @@ $size-avatar: 1.5rem;
       background-color: $color-2;
     }
     a {
-      @include hover-title($color-2)
+      @include hover-title($color-2);
     }
   }
 }
@@ -41,7 +41,7 @@ $size-avatar: 1.5rem;
       background-color: $color-3;
     }
     a {
-      @include hover-title($color-3)
+      @include hover-title($color-3);
     }
   }
 }
@@ -58,8 +58,8 @@ $size-avatar: 1.5rem;
 }
 
 .dot {
-  @include radius(.75rem);
+  @include radius(0.75rem);
   background-color: $B3;
   display: inline-block;
-  margin-right: .5rem;
+  margin-right: 0.5rem;
 }

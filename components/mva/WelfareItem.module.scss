@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 $color: $color-mva;
 
@@ -19,7 +19,7 @@ $color: $color-mva;
   color: $M1;
 }
 
-$offset: .5rem;
+$offset: 0.5rem;
 $line-width: 2px;
 .wireframe {
   position: absolute;
@@ -31,9 +31,7 @@ $line-width: 2px;
 }
 
 .icon {
-
 }
 
 .name {
-
 }

@@ -1,89 +1,87 @@
-$xs:   576px;
-$sm:   768px;
-$md:   922px;
-$lg:  1200px;
-$xl:  1600px;
+$xs: 576px;
+$sm: 768px;
+$md: 922px;
+$lg: 1200px;
+$xl: 1600px;
 $xxl: 1920px;
-
 
 // less than or equal to xs
 @mixin responsive-lte-xs {
   @media screen and (max-width: $xs) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-gt-sm {
   @media screen and (min-width: $xs + 1) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-gt-md {
   @media screen and (min-width: $sm + 1) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-gt-lg {
   @media screen and (min-width: $md + 1) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-gt-xl {
   @media screen and (min-width: $lg + 1) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-gt-xxl {
   @media screen and (min-width: $xl + 1) {
-    @content
+    @content;
   }
 }
 
 // gather than xll
 @mixin responsive-gt-xxl {
   @media screen and (min-width: $xxl + 1) {
-    @content
+    @content;
   }
 }
-
 
 ///// less than or equal to /////
 @mixin responsive-lte-xs {
   @media screen and (max-width: $xs) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-lte-sm {
   @media screen and (max-width: $sm) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-lte-md {
   @media screen and (max-width: $md) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-lte-lg {
   @media screen and (max-width: $lg) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-lte-xl {
   @media screen and (max-width: $xl) {
-    @content
+    @content;
   }
 }
 
 @mixin responsive-lte-xxl {
   @media screen and (max-width: $xxl) {
-    @content
+    @content;
   }
 }

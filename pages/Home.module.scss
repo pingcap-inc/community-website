@@ -4,7 +4,6 @@ $size-slideshow: 20rem;
 $size-split: 5rem;
 
 .wrapper {
-
 }
 
 $size-dot: 1rem;
@@ -21,9 +20,10 @@ $size-dot: 1rem;
   }
   // rewrite antd Carousel style
   li {
-    margin: 0 .5rem !important;
+    margin: 0 0.5rem !important;
   }
-  li, button {
+  li,
+  button {
     overflow: hidden;
     border-radius: $size-dot;
     border: 1px solid #8f8f8f;
@@ -32,7 +32,6 @@ $size-dot: 1rem;
     //box-shadow: 0 0 .1rem .1rem rgba(#000, .5);
   }
 }
-
 
 .articles {
   //margin: $size-split auto;

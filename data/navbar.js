@@ -15,6 +15,5 @@ export default {
         link: 'https://asktug.com/',
       },
     ],
-    
-  }
-}
+  },
+};

@@ -29,7 +29,7 @@ const en = [
       },
     ],
   },
-  
+
   {
     name: '资源',
     items: [
@@ -65,7 +65,7 @@ const en = [
       },
     ],
   },
-  
+
   {
     name: 'Learning',
     items: [
@@ -91,8 +91,7 @@ const en = [
       },
     ],
   },
-  
-]
+];
 
 const zh = [
   {
@@ -125,7 +124,7 @@ const zh = [
       },
     ],
   },
-  
+
   {
     name: '资源',
     items: [
@@ -161,7 +160,7 @@ const zh = [
       },
     ],
   },
-  
+
   {
     name: '学习',
     items: [
@@ -187,9 +186,9 @@ const zh = [
       },
     ],
   },
-]
+];
 
 export default {
   zh,
   en,
-}
+};

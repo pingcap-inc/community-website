@@ -1,5 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
+import React from 'react';
+import Link from 'next/link';
 
 export default function MyLink({ to, href, children, ...rest }) {
   return href ? (
@@ -10,5 +10,5 @@ export default function MyLink({ to, href, children, ...rest }) {
     <Link {...rest} href={to}>
       {children}
     </Link>
-  )
+  );
 }

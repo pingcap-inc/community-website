@@ -4,14 +4,14 @@
   padding: {
     bottom: 9rem;
   }
-  background-color: #190F4B;
+  background-color: #190f4b;
   color: $M1;
 }
 
 @mixin hover-with-blur {
   @include transition;
   &:hover {
-    backdrop-filter: blur(.5rem);
+    backdrop-filter: blur(0.5rem);
   }
 }
 
@@ -167,7 +167,7 @@
         display: inline-block;
         user-select: none;
         cursor: pointer;
-        padding: .25rem 1rem;
+        padding: 0.25rem 1rem;
         border: 2px solid $color-mva;
         color: $color-mva;
         &:hover {

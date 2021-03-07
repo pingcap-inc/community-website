@@ -1,9 +1,9 @@
-@import "styles/common";
+@import 'styles/common';
 
 .Button {
   display: inline-block;
   border-radius: 6px;
-  transition: all .25s;
+  transition: all 0.25s;
   user-select: none;
   cursor: pointer;
 
@@ -11,7 +11,7 @@
     outline: 0;
     text-decoration: {
       line: underline;
-    };
+    }
   }
 
   &-content {
@@ -54,34 +54,34 @@
   }
 
   &.primary {
-    color: #FFF;
+    color: #fff;
     background-color: $B1;
     border: 1px solid $B1;
 
     &.disabled {
       //background-color: mix($B1, rgba($F2, .6), .5);
-      filter: alpha(rgba(#000, .6));
+      filter: alpha(rgba(#000, 0.6));
     }
 
     &:hover {
-      color: #FFF;
+      color: #fff;
     }
   }
 
   &.outline {
     color: $B1;
-    background-color: #FFF;
+    background-color: #fff;
     border: 1px solid $B1;
 
     &.disabled {
       border: 1px solid $T2;
-      background-color: rgba($T2, .6);
-      color: rgba($F2, .6);
-      filter: alpha(rgba(#000, .6));
+      background-color: rgba($T2, 0.6);
+      color: rgba($F2, 0.6);
+      filter: alpha(rgba(#000, 0.6));
     }
 
     &:hover {
-      color: #FFF;
+      color: #fff;
       border: 1px solid $B1;
       background-color: mix($B1, #000, 90%);
     }
@@ -89,18 +89,18 @@
 
   &.ghost {
     color: $M1;
-    background-color: rgba(#FFF, 0);
+    background-color: rgba(#fff, 0);
     border: 1px solid $M1;
 
     &.disabled {
       border: 1px solid $T2;
-      background-color: rgba($T2, .6);
-      color: rgba($F2, .6);
-      filter: alpha(rgba(#000, .6));
+      background-color: rgba($T2, 0.6);
+      color: rgba($F2, 0.6);
+      filter: alpha(rgba(#000, 0.6));
     }
 
     &:hover {
-      color: #FFF;
+      color: #fff;
       border: 1px solid $B1;
       background-color: mix($B1, #000, 90%);
     }
@@ -108,18 +108,18 @@
 
   &.text {
     color: $B1;
-    background-color: rgba(#FFF, 0);
-    border: 1px solid rgba(#FFF, 0);
+    background-color: rgba(#fff, 0);
+    border: 1px solid rgba(#fff, 0);
 
     &.disabled {
-      color: rgba($F2, .6);
+      color: rgba($F2, 0.6);
       &:hover {
-        background-color: rgba(#FFF, 0) !important;
+        background-color: rgba(#fff, 0) !important;
       }
     }
 
     &:hover {
-      background-color: rgba($B1, .1);
+      background-color: rgba($B1, 0.1);
     }
   }
 

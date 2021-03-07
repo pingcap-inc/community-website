@@ -1,14 +1,14 @@
-@import "variable";
+@import 'variable';
 
 @mixin H0($language: EN) {
   font-size: 1.875rem;
   line-height: 38px;
   color: $F1;
 
-  @if($language == ZH) {
-    font-weight: $W3-ZH
+  @if ($language == ZH) {
+    font-weight: $W3-ZH;
   } @else {
-    font-weight: $W3-EN
+    font-weight: $W3-EN;
   }
 }
 
@@ -17,10 +17,10 @@
   line-height: 32px;
   color: $F1;
 
-  @if($language == ZH) {
-    font-weight: $W2-ZH
+  @if ($language == ZH) {
+    font-weight: $W2-ZH;
   } @else {
-    font-weight: $W2-EN
+    font-weight: $W2-EN;
   }
 }
 
@@ -29,10 +29,10 @@
   line-height: 28px;
   color: $F1;
 
-  @if($language == ZH) {
-    font-weight: $W2-ZH
+  @if ($language == ZH) {
+    font-weight: $W2-ZH;
   } @else {
-    font-weight: $W2-EN
+    font-weight: $W2-EN;
   }
 }
 
@@ -41,10 +41,10 @@
   line-height: 26px;
   color: $F1;
 
-  @if($language == ZH) {
-    font-weight: $W2-ZH
+  @if ($language == ZH) {
+    font-weight: $W2-ZH;
   } @else {
-    font-weight: $W2-EN
+    font-weight: $W2-EN;
   }
 }
 
@@ -53,10 +53,10 @@
   line-height: 24px;
   color: $F1;
 
-  @if($language == ZH) {
-    font-weight: $W2-ZH
+  @if ($language == ZH) {
+    font-weight: $W2-ZH;
   } @else {
-    font-weight: $W2-EN
+    font-weight: $W2-EN;
   }
 }
 
@@ -65,22 +65,22 @@
   line-height: 24px;
   color: $F2;
 
-  @if($language == ZH) {
-    font-weight: $W1-ZH
+  @if ($language == ZH) {
+    font-weight: $W1-ZH;
   } @else {
-    font-weight: $W1-EN
+    font-weight: $W1-EN;
   }
 }
 
 @mixin P2($language: EN) {
-  font-size: .875rem;
+  font-size: 0.875rem;
   line-height: 22px;
   color: $F2;
 
-  @if($language == ZH) {
-    font-weight: $W1-ZH
+  @if ($language == ZH) {
+    font-weight: $W1-ZH;
   } @else {
-    font-weight: $W1-EN
+    font-weight: $W1-EN;
   }
 }
 

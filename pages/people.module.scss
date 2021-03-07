@@ -4,7 +4,7 @@
 }
 
 .header {
-  background-color: #190F4C;
+  background-color: #190f4c;
   &_content {
     display: flex;
     justify-content: space-around;
@@ -104,7 +104,7 @@
       font: {
         size: 5rem;
         weight: 700;
-      };
+      }
     }
     &_widget {
       position: relative;
@@ -155,13 +155,12 @@
     &_step {
       &_1 {
         @include progress-step-header;
-        background-color: #F2F7FB;
+        background-color: #f2f7fb;
         &_header {
           &_index {
             color: $B1;
           }
           &_widget {
-
           }
         }
         &_text {
@@ -172,13 +171,12 @@
       }
       &_2 {
         @include progress-step-header;
-        background-color: #3738C6;
+        background-color: #3738c6;
         &_header {
           &_index {
             color: $B2;
           }
           &_widget {
-
           }
         }
         &_text {
@@ -196,7 +194,6 @@
       margin-top: 4rem;
     }
     &_icon {
-
     }
     &_chart {
       width: 360px;

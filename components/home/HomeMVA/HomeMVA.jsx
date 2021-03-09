@@ -21,7 +21,7 @@ export default function HomeMVA({}) {
         </div>
       </Container>
       <div className={styles.image}>
-        <Image src="/images/home/home-mva.png" alt="" width={1713} height={226} />
+        <Image src="/images/home/home-mva.png" alt="" width={1712} height={226} />
       </div>
     </div>
   );

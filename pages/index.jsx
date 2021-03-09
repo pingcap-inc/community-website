@@ -20,6 +20,7 @@ import HomeMVA from 'components/home/HomeMVA/HomeMVA';
 import SEO from 'components/SEO';
 import ArticleCategory from 'components/home/ArticleCategory/ArticleCategory';
 import ArticleItem from 'components/home/ArticleItem/ArticleItem';
+import Image from 'next/image';
 
 async function getTopicFromAskTUG(key) {
   const api = `https://asktug.com/c/blog/${key}/l/latest.json?order=default&page=0&per_page=10`;
@@ -82,7 +83,7 @@ export default function Home({ topics }) {
             {banners.map((banner, index) => (
               <div key={index} className={styles.slideshow_item}>
                 <MyLink href={banner.linkUrl}>
-                  <img src={banner.imageUrl} alt={banner.title} />
+                  <Image src={banner.imageUrl} alt={banner.title} width={1920} height={556}/>
                 </MyLink>
               </div>
             ))}

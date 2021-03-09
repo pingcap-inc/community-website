@@ -9,4 +9,4 @@ export default [
     linkUrl: 'https://asktug.com/t/topic/68382',
     title: 'TUG 社区 2020 年度盘点',
   },
-]
+];

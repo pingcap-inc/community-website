@@ -6,7 +6,7 @@ $size-split: 1rem;
   width: 100%;
   margin-bottom: $size-split;
   padding-bottom: $size-split;
-  border-bottom: 1px solid #E8E8E8;
+  border-bottom: 1px solid #e8e8e8;
   a:hover {
     color: $B1;
   }
@@ -20,7 +20,7 @@ $size-split: 1rem;
 
 .metadata {
   @include P2(ZH);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -43,7 +43,7 @@ $size-split: 1rem;
   }
 }
 
-$size-tag-color: .5rem;
+$size-tag-color: 0.5rem;
 .tag {
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@ $size-tag-color: .5rem;
   }
   &_name {
     @include P2(ZH);
-    color: rgba($B4, .7);
-    margin-left: .5rem;
+    color: rgba($B4, 0.7);
+    margin-left: 0.5rem;
   }
 }

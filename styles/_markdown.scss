@@ -1,6 +1,5 @@
-
-@import "variable";
-@import "typography";
+@import 'variable';
+@import 'typography';
 
 @mixin title {
   h1 {
@@ -8,14 +7,14 @@
     margin: {
       top: 2rem;
       bottom: 1rem;
-    };
+    }
   }
   h2 {
     @include H2;
     margin: {
       top: 2rem;
       bottom: 1rem;
-    };
+    }
   }
   h3 {
     @include H3;
@@ -29,9 +28,10 @@
   table {
     margin: 2rem 0;
     tr {
-      th, td {
-        padding: .5rem 1rem;
-        border: 1px solid rgba($B3, .25);
+      th,
+      td {
+        padding: 0.5rem 1rem;
+        border: 1px solid rgba($B3, 0.25);
       }
     }
   }
@@ -46,7 +46,7 @@
 @mixin list {
   ul {
     list-style: disc;
-    margin: .5rem 0;
+    margin: 0.5rem 0;
     padding: {
       left: 1.5rem;
     }

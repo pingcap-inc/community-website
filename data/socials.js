@@ -23,7 +23,7 @@ const followSocials = [
     name: 'youtube',
     href: 'https://youtube.com/channel/UCuq4puT32DzHKT5rU1IZpIA',
   },
-]
+];
 
 const shareSocials = (link, title) => [
   {
@@ -46,6 +46,6 @@ const shareSocials = (link, title) => [
     name: 'yc',
     href: `https://news.ycombinator.com/submitlink?u=${link}&t=${title}`,
   },
-]
+];
 
-export { followSocials, shareSocials }
+export { followSocials, shareSocials };

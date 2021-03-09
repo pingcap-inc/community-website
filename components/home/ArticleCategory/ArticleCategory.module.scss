@@ -14,8 +14,8 @@
 }
 
 .wrapper {
-  box-shadow: 0 0.1875em 0.5em rgba($B1, .1);
-  border-radius: .5rem;
+  box-shadow: 0 0.1875em 0.5em rgba($B1, 0.1);
+  border-radius: 0.5rem;
   overflow: hidden;
   height: 100%;
 }
@@ -29,7 +29,7 @@
 
 .body {
   padding: 1rem 2rem;
-  &>div:last-child {
+  & > div:last-child {
     border: none;
     margin-bottom: 0;
   }

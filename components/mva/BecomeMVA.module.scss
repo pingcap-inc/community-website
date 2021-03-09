@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 .wrapper {
   width: 320px;
@@ -8,17 +8,16 @@
 }
 
 .icon {
-
 }
 
 .title {
   @include H2(ZH);
   color: $color-mva;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }
 
 .summary {
   @include P1(ZH);
   color: $M1;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }

@@ -3,12 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env host=0.0.0.0 && next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "cross-env host=0.0.0.0 && next dev",
     "export": "next build && next export",
+    "lint": "eslint . --ext .js,.jsx",
     "server:init": "next build && pm2 start --name tug-website-next-server npm -- run start",
-    "server:reload": "pm2 reload tug-website-next-server"
+    "server:reload": "pm2 reload tug-website-next-server",
+    "start": "next start"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "npm run lint"
+    }
+  },
+  "lint-staged": {
+    "*": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "engines": {
+    "node": "14.13.0",
+    "yarn": "1.22.5"
   },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
@@ -23,6 +40,19 @@
     "sass": "^1.32.4"
   },
   "devDependencies": {
-    "cross-env": "^7.0.3"
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
+    "babel-eslint": "^10.0.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.5.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^5.1.3",
+    "lint-staged": "^10.5.4",
+    "prettier-eslint": "^12.0.0"
   }
 }

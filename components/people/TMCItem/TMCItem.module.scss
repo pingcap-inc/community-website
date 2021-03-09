@@ -21,7 +21,7 @@ $size-avatar-mobile: 120px;
   img {
     width: $size-avatar;
     height: $size-avatar;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     overflow: hidden;
     @include responsive-lte-md {
       width: $size-avatar-mobile;
@@ -38,7 +38,7 @@ $size-avatar-mobile: 120px;
 $height-role: 1.5rem;
 .role {
   @include P2;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   //position: absolute;
   //width: $size-avatar;
   //height: $height-role;
@@ -50,5 +50,5 @@ $height-role: 1.5rem;
 
 .metadata {
   @include P2(ZH);
-  margin-top: .5rem;
+  margin-top: 0.5rem;
 }

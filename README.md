@@ -1,4 +1,4 @@
-# TiDB User Group - website 
+# TiDB User Group - website
 
 [![CircleCI Status](https://circleci.com/gh/pingcap/tug-website.svg?style=svg)](https://circleci.com/gh/pingcap/tug-website)
 
@@ -38,42 +38,59 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
 # copy-writing
+
 ## navbar
+
 - data/navbar.js
 
 ## footer
+
 - data/footer.js
 - data/socials.js
 
 ## /
+
 ### banner
+
 - data/banner.js
+
 ### 列表公共信息
+
 - data/asktug_site.json ( download from https://asktug.com/site.json )
+
 ### 精选文章列表
+
 - https://asktug.com/c/blog/how-to/l/latest.json?order=default&page=0&per_page=10
+
 ### 用户实践列表
+
 - https://asktug.com/c/blog/practice/l/latest.json?order=default&page=0&per_page=10
+
 ### 原理解读列表
+
 - https://asktug.com/c/blog/theory/l/latest.json?order=default&page=0&per_page=10
+
 ### 热门问答列表
+
 - https://asktug.com/top/weekly.json?order=default&page=0&per_page=10
 
 ### /MVA
+
 - pages/MVA.jsx
 - data/tug_data.js -> mva2020
 - data/tug_data.js -> mva2019
 
 ### /people
+
 - pages/people.jsx
 - data/tug_data.js -> tmc
 - data/tug_data.js -> leader
 
-
 # Folder Structure
 
 ## pages
-页面文件，next.js 将会自动根据该目录下的文件夹层次结构构建URL路由（基于文件系统的路由）
+
+页面文件，next.js 将会自动根据该目录下的文件夹层次结构构建 URL 路由（基于文件系统的路由）
 
 其中的 jsx 文件将会导出一个名为 getServerSideProps 的 async 函数，该函数将会在每次客户端请求时执行一次；getStaticProps 将会在 build 时执行一次。
 这些函数都将在获取到数据后返回一个带有 props 属性的 object ，在默认导出函数的参数中可以获取到该函数所返回的数据。
@@ -84,11 +101,14 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 若您要修改页面上的动态数据或者 API 地址，例如首页的热门问答 API 数据源，则可以到相关页面下的 getServerSideProps 函数中寻找相关业务逻辑代码进行修改
 
 需要了解更多有关 next.js 获取数据的流程，可以参考 next.js 官方文档 [data-fetching](https://nextjs.org/docs/basic-features/data-fetching)
-### pages/_app.jsx
+
+### pages/\_app.jsx
+
 该文件为全局 App 组件，其中导入了 Button.sass ，原因是 next.js 要求组件所附带的 css 样式必须为 css module，而该组件样式并非 css module，因此只能在该处全局导入。
 另外还引入了一些 UI 框架的全局 CSS 文件
 
 ## data
+
 数据文件存放目录
 
 数据文件中所有图片路径均相对于 public 目录，
@@ -96,64 +116,90 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 则需要在 `data/banners.js` 文件中的 imageUrl 字段填入 `/images/home/banner-welcome.png` ，也就是不带 public 的路径。
 
 数据文件也可以使用外部图片，
-例如你可以在图片路径相关的字段中直接填入 `https://en.pingcap.com/static/1d8632a2b41f24161ffae995844556f2/pingcap-logo.svg` 
+例如你可以在图片路径相关的字段中直接填入 `https://en.pingcap.com/static/1d8632a2b41f24161ffae995844556f2/pingcap-logo.svg`
 
 请注意：所有 public 目录下的文件将都会对外发布。
 
 ### data/tug_data.js
+
 该数据文件默认导出一个 object 含有 /people 页面中的 TUG 会员信息。
+
 ### data/asktug_site.json
+
 该文件来源于 [https://asktug.com/site.json](https://asktug.com/site.json) 需要在 AskTUG 网站有相关论坛版块信息更新后手动更新（后续可考虑通过 CircleCI 定时更新该数据）
 
-首页问答中通过 API 获取的帖子信息中只包含论坛版块ID，不包括具体版块信息，因此需要依赖该文件获取相关论坛板块信息。
+首页问答中通过 API 获取的帖子信息中只包含论坛版块 ID，不包括具体版块信息，因此需要依赖该文件获取相关论坛板块信息。
+
 ### data/banner.js
+
 首页 banner 轮播图的相关数据
+
 ### data/events.js
+
 首页 TUG 活动信息数据
+
 ### data/navbar.js
+
 导航栏数据
+
 ### data/footer.js
+
 底部页脚链接数据
+
 ### data/social.js
+
 底部页脚社交平台渠道数据
 
 ## components
+
 相关组件，其中小写开头的目录名为该目录名所对应的 page 的组件，并非通用组件
+
 ### SEO.jsx
-该组件通过 next/Head 组件向 HTML文档注入 SEO 相关信息
-例如网站的icon，网站作者，标题，描述信息，关键词，用于生成分享内容的元数据
+
+该组件通过 next/Head 组件向 HTML 文档注入 SEO 相关信息
+例如网站的 icon，网站作者，标题，描述信息，关键词，用于生成分享内容的元数据
 
 其中 meta name 为 og 开头的为 Open Graph 协议所需字段，用于生成 Facebook 等社交平台的分享信息
 其中 meta name 为 twitter 开头的为 Open Graph 协议所需字段，用于生成 Twitter 等社交平台的分享信息
 
 ### MyLink.jsx
+
 判断是通过 href 还是 to 属性传入链接，正确返回 next/Link 组件或者 a 标签
 
 ### Container
+
 页面容器组件，包括 normal 标准容器和 fluid 非固定容器。
 前者不会占满整个屏幕宽度，后者会占满整个屏幕宽度。
 其中对于 normal 容器，将会通过媒体查询功能获取屏幕宽度，根据不同的屏幕宽度选择不同的容器宽度。
 具体的响应式策略请参考 Container.scss 代码以及该代码文件顶部的注释。
 
 ## public
-该目录下存放相关静态资源，例如图片，icon等。如需要修改，请对应页面或者组件代码中的路径进行修改。
+
+该目录下存放相关静态资源，例如图片，icon 等。如需要修改，请对应页面或者组件代码中的路径进行修改。
 
 ## styles
-该目录存放相关样式表，其中 global.css 有副作用，其他文件均为 variable 或者 mixin 声明代码 
+
+该目录存放相关样式表，其中 global.css 有副作用，其他文件均为 variable 或者 mixin 声明代码
 
 ## utils.js
+
 工具函数
 
 ## tug.config.js
+
 存放网站相关配置信息
 
 ## next.config.js
+
 next.js 配置文件，可重写 webpack 以及相关工具链的配置
 
 # Deploy
+
 ## next.js
+
 该项目使用 next.js 开发。
 next.js 支持以两种方式发布
+
 - 静态发布 `yarn build && yarn run export`
 - 动态发布 `yarn build && yarn start`
 
@@ -179,7 +225,8 @@ next.js 支持以两种方式发布
 如果发布后访问线上版本出现 CSS，JS，图片错乱等情况，请手动通过 SSH 连接至线上服务器，通过 cd 命令进入服务端所在目录后，执行 `npm run server:reload` 。
 
 ## nginx
+
 已部署 tidb.io 根域名 SSL 证书，并且在 443 端口监听所有请求。在 80 端口将所有请求强制重定向至 https 协议的同名路径下。
 已开启 gzip
 
-欲了解更多关于 nginx 的配置请直接参考线上服务器的nginx配置文件或者请教 SRE 同学。
+欲了解更多关于 nginx 的配置请直接参考线上服务器的 nginx 配置文件或者请教 SRE 同学。

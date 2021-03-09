@@ -1,4 +1,4 @@
-@import "styles/common";
+@import 'styles/common';
 
 @mixin text {
   color: $F1;
@@ -21,8 +21,8 @@
   z-index: 99999;
   width: 100%;
   height: $height-navbar;
-  backdrop-filter: blur(.5rem);
-  background-color: rgba($M2, .9);
+  backdrop-filter: blur(0.5rem);
+  background-color: rgba($M2, 0.9);
   box-shadow: $shadow;
   &_transparent {
     background-color: rgba(#000, 0);
@@ -38,7 +38,8 @@
   align-items: center;
 }
 
-.left, .right {
+.left,
+.right {
   display: flex;
   align-items: center;
 }
@@ -59,7 +60,7 @@
     size: 1.5rem;
     weight: 600;
     family: $family-sans-serif;
-  };
+  }
 }
 
 @media screen and (max-width: $md) {
@@ -87,14 +88,14 @@
     &_item {
       @include text;
       margin: 0 1.5rem;
-      padding: .5rem 0;
+      padding: 0.5rem 0;
 
       @include transition;
       @include H3;
       display: inline-block;
       border: {
         bottom: 3px solid rgba($B1, 0);
-      };
+      }
       &:hover {
         border-bottom-color: $B1;
       }

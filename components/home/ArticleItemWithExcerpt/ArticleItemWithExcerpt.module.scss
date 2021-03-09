@@ -7,7 +7,7 @@ $size-avatar: 1.5rem;
     color: $color;
     border-bottom: {
       color: $color;
-    };
+    }
   }
 }
 
@@ -29,7 +29,7 @@ $size-avatar: 1.5rem;
 
 .metadata {
   @include P2;
-  color: rgba($B4, .5);
+  color: rgba($B4, 0.5);
   display: flex;
   align-items: center;
   padding: 1rem 0;
@@ -43,7 +43,7 @@ $size-avatar: 1.5rem;
     }
     &_name {
       line-height: $size-avatar;
-      margin-left: .5rem;
+      margin-left: 0.5rem;
     }
   }
   &_views {
@@ -56,4 +56,3 @@ $size-avatar: 1.5rem;
   @include limit-line-count(3);
   color: $F2;
 }
-

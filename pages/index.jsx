@@ -35,7 +35,7 @@ async function getTopTopicFromAskTUG() {
   return await response.json();
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   const [howTo, practice, theory, top] = await Promise.all([
     getTopicFromAskTUG('how-to'),
     getTopicFromAskTUG('practice'),
@@ -58,6 +58,7 @@ export async function getServerSideProps(context) {
 
   return {
     props: { topics }, // will be passed to the page component as props
+    revalidate: 60 * 30, // In seconds
   };
 }
 

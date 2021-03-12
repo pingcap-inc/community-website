@@ -12,8 +12,8 @@ import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
 import MyLink from 'components/MyLink';
 import SEO from 'components/SEO';
 import TopItem from 'components/home/TopItem/TopItem';
-import banners from '../../data/banners';
-import events from '../../data/events';
+import banners from 'data/banners';
+import events from 'data/events';
 import styles from './home.module.scss';
 import {
   getAvatarUrlByAvatarTemplateString,
@@ -21,7 +21,7 @@ import {
   getExcerptByTopicId,
   getTopicUrlById,
   getUserUrlByUsername,
-} from '../../utils';
+} from 'utils';
 
 async function getTopicFromAskTUG(key) {
   const api = `https://asktug.com/c/blog/${key}/l/latest.json?order=default&page=0&per_page=10`;

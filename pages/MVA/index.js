@@ -10,7 +10,7 @@ import SEO from 'components/SEO';
 import WelfareItem from 'components/mva/WelfareItem';
 import YearSwitch from 'components/mva/YearSwitch';
 import styles from './mva.module.scss';
-import tugData from '../../data/tug_data.js';
+import tugData from 'data/tug_data.js';
 
 export const getStaticProps = () => {
   const { mva2020, mva2019 } = tugData;

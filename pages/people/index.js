@@ -7,8 +7,8 @@ import MyLink from 'components/MyLink';
 import SEO from 'components/SEO';
 import TMCItem from 'components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
-import tugConfig from '../../tug.config';
-import tugData from '../../data/tug_data.js';
+import tugConfig from 'tug.config';
+import tugData from 'data/tug_data.js';
 
 const { joinTUGLink } = tugConfig;
 

@@ -1,4 +1,4 @@
-export default {
+const data = {
   tmc: [
     {
       avatar: '',
@@ -1233,3 +1233,5 @@ export default {
     },
   ],
 };
+
+export default data;

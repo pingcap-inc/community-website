@@ -1,4 +1,5 @@
 import React from 'react';
+
 import styles from './ArticleItemWithExcerpt.module.scss';
 import MyLink from 'components/MyLink';
 
@@ -17,7 +18,7 @@ export default function ArticleItemWithExcerpt({
         <MyLink href={link}>{title}</MyLink>
       </div>
       <div className={styles.metadata}>
-        <a className={styles.metadata_author} href={authorUrl} target="_blank" rel="noopener noreferer">
+        <a className={styles.metadata_author} href={authorUrl} target="_blank" rel="noopener noreferrer">
           <div className={styles.metadata_author_avatar}>
             <img src={authorAvatarUrl} alt="" />
           </div>

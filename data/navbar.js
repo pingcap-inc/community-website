@@ -1,4 +1,4 @@
-export default {
+const data = {
   en: {
     title: 'TiDB User Group',
     links: [
@@ -17,3 +17,5 @@ export default {
     ],
   },
 };
+
+export default data;

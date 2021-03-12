@@ -13,26 +13,31 @@ import { Row } from 'antd';
 
 export default function ResponsiveRow({ children, gutter, ...rest }) {
   gutter = gutter ?? [0, 0];
+
   const [responsiveGutter, setResponsiveGutter] = useState(gutter);
-  const resizeHandle = () => {
-    if (window.matchMedia('(max-width: 1599px)').matches) {
-      console.log(`matchMedia('(max-width: 1599px)'`);
-      setResponsiveGutter([16, gutter[1]]);
-    } else if (window.matchMedia('(min-width: 1600px)').matches) {
-      console.log(`window.matchMedia('(min-width: 1600px)'`);
-      setResponsiveGutter([44, gutter[1]]);
-    } else if (window.matchMedia('(min-width: 1200px)').matches) {
-      console.log(`window.matchMedia('(min-width: 1200px)'`);
-      setResponsiveGutter([36, gutter[1]]);
-    }
-  };
+
   useEffect(() => {
+    const resizeHandle = () => {
+      if (window.matchMedia('(max-width: 1599px)').matches) {
+        console.log(`matchMedia('(max-width: 1599px)'`);
+        setResponsiveGutter([16, gutter[1]]);
+      } else if (window.matchMedia('(min-width: 1600px)').matches) {
+        console.log(`window.matchMedia('(min-width: 1600px)'`);
+        setResponsiveGutter([44, gutter[1]]);
+      } else if (window.matchMedia('(min-width: 1200px)').matches) {
+        console.log(`window.matchMedia('(min-width: 1200px)'`);
+        setResponsiveGutter([36, gutter[1]]);
+      }
+    };
+
     resizeHandle();
     window.addEventListener('resize', resizeHandle);
+
     return () => {
       window.removeEventListener('resize', resizeHandle);
     };
-  }, []);
+  }, [gutter]);
+
   return (
     <Row {...rest} gutter={responsiveGutter}>
       {children}

@@ -14,7 +14,7 @@ import SEO from 'components/SEO';
 import TopItem from 'components/home/TopItem/TopItem';
 import banners from '../../data/banners';
 import events from '../../data/events';
-import styles from './Home.module.scss';
+import styles from './home.module.scss';
 import {
   getAvatarUrlByAvatarTemplateString,
   getCategoryById,

@@ -7,12 +7,12 @@ import MyLink from 'components/MyLink';
 import SEO from 'components/SEO';
 import TMCItem from 'components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
-import tugConfig from '../tug.config';
-import tugData from '../data/tug_data.js';
+import tugConfig from 'tug.config';
+import tugData from 'data/tug_data.js';
 
 const { joinTUGLink } = tugConfig;
 
-export async function getStaticProps(context) {
+export const getStaticProps = () => {
   const { tmc, leader } = tugData;
 
   const howToBecome = [
@@ -22,12 +22,13 @@ export async function getStaticProps(context) {
   ];
 
   return {
-    props: { howToBecome, tmc, leader }, // will be passed to the page component as props
+    props: { howToBecome, tmc, leader },
   };
-}
+};
 
-export default function People({ howToBecome, tmc, leader }) {
+const People = ({ howToBecome, tmc, leader }) => {
   const howToBecomeDom = [];
+
   howToBecome.forEach((item, index) => {
     howToBecomeDom.push(<HowToBecome {...item} />);
     if (index !== howToBecome.length - 1) {
@@ -38,6 +39,7 @@ export default function People({ howToBecome, tmc, leader }) {
       );
     }
   });
+
   return (
     <div className={styles.wrapper}>
       <SEO
@@ -144,9 +146,6 @@ export default function People({ howToBecome, tmc, leader }) {
             {tmc.map((item, index) => (
               <TMCItem key={index} {...item} />
             ))}
-            {/*<Row justify={'center'} gutter={[0, 32]}>*/}
-            {/*  {tmc.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}*/}
-            {/*</Row>*/}
           </div>
           <div className={styles.people_content_split} />
           <div className={styles.people_content_title}>LEADER</div>
@@ -155,12 +154,11 @@ export default function People({ howToBecome, tmc, leader }) {
             {leader.map((item, index) => (
               <TMCItem key={index} {...item} />
             ))}
-            {/*<Row justify={'center'} gutter={[0, 32]}>*/}
-            {/*  {leader.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}*/}
-            {/*</Row>*/}
           </div>
         </Container>
       </div>
     </div>
   );
-}
+};
+
+export default People;

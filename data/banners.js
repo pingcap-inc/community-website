@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     imageUrl: '/images/home/banner-welcome.png',
     linkUrl: 'https://asktug.com/t/topic/306',
@@ -10,3 +10,5 @@ export default [
     title: 'TUG 社区 2020 年度盘点',
   },
 ];
+
+export default data;

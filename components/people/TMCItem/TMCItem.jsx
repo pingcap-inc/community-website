@@ -1,6 +1,7 @@
-import React from 'react';
-import styles from './TMCItem.module.scss';
 import Image from 'next/image';
+import React from 'react';
+
+import styles from './TMCItem.module.scss';
 
 export default function TMCItem({ name, role, company, title }) {
   return (

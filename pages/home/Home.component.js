@@ -12,60 +12,18 @@ import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
 import MyLink from 'components/MyLink';
 import SEO from 'components/SEO';
 import TopItem from 'components/home/TopItem/TopItem';
-import banners from '../data/banners';
-import events from '../data/events';
+import banners from '../../data/banners';
+import events from '../../data/events';
 import styles from './Home.module.scss';
 import {
   getAvatarUrlByAvatarTemplateString,
   getCategoryById,
   getTopicUrlById,
   getUserUrlByUsername,
-  getExcerptByTopicId,
-} from '../utils';
-
-async function getTopicFromAskTUG(key) {
-  const api = `https://asktug.com/c/blog/${key}/l/latest.json?order=default&page=0&per_page=10`;
-  const response = await fetch(api);
-  const json = await response.json();
-  json.topic_list.topics[0].excerpt = await getExcerptByTopicId(json.topic_list.topics[0].id);
-  return json;
-}
-
-async function getTopTopicFromAskTUG() {
-  const api = `https://asktug.com/top/weekly.json?order=default&page=0&per_page=10`;
-  const response = await fetch(api);
-  return await response.json();
-}
-
-export async function getServerSideProps(context) {
-  const [howTo, practice, theory, top] = await Promise.all([
-    getTopicFromAskTUG('how-to'),
-    getTopicFromAskTUG('practice'),
-    getTopicFromAskTUG('theory'),
-    getTopTopicFromAskTUG(),
-  ]);
-
-  const topics = {
-    howTo,
-    practice,
-    theory,
-    top,
-  };
-
-  // if (false) {
-  //   return {
-  //     notFound: true,
-  //   }
-  // }
-
-  return {
-    props: { topics }, // will be passed to the page component as props
-  };
-}
+} from '../../utils';
 
 export default function Home({ topics }) {
   const { howTo, practice, theory, top } = topics;
-  // console.log('topics', topics)
 
   const articleImageUrl = '/images/home/article.svg';
   const qaImageUrl = '/images/home/qa.svg';

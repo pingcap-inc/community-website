@@ -1,4 +1,4 @@
-export default [
+const data = [
   {
     imageUrl: '/images/events/event-score.jpg',
     title: 'AskTUG 积分系统正式上线  一起晒积分 赢好礼！',
@@ -21,3 +21,5 @@ export default [
     link: 'https://asktug.com/t/topic/64050',
   },
 ];
+
+export default data;

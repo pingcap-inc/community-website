@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import styles from './Navbar.module.scss';
 import classNames from 'classnames';
-import MyLink from 'components/MyLink';
-import { Dropdown, Menu } from 'antd';
 import { DownOutlined, MenuOutlined } from '@ant-design/icons';
-import i18n from '../../data/navbar';
-// import {useIntl} from "react-intl";
+import { Dropdown, Menu } from 'antd';
 import { useDebounce } from 'ahooks';
-import Container from 'components/Container/Container';
+
 import Button from 'components/Button/Button';
-import tugConfig from '../../tug.config';
+import Container from 'components/Container/Container';
+import MyLink from 'components/MyLink';
+import i18n from 'data/navbar';
+import styles from './Navbar.module.scss';
+import tugConfig from 'tug.config';
 
 const { joinTUGLink } = tugConfig;
 
@@ -42,7 +42,7 @@ export default function Navbar({ initTransparent, forceNonTransparent }) {
     return () => {
       window.removeEventListener(eventName, scrollListener);
     };
-  }, []);
+  }, [forceNonTransparent]);
 
   return (
     <div className={classNames(styles.wrapper, { [styles.wrapper_transparent]: transparentDebounced })}>

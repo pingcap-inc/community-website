@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
-import styles from './MVA.module.scss';
-import SEO from 'components/SEO';
+import { ArrowRightOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
-import MVAItem from 'components/mva/MVAItem';
-import YearSwitch from 'components/mva/YearSwitch';
-import WelfareItem from 'components/mva/WelfareItem';
+
 import BecomeMVA from 'components/mva/BecomeMVA';
 import Container from 'components/Container/Container';
-import tugData from '../data/tug_data.js';
-import { ArrowRightOutlined } from '@ant-design/icons';
+import MVAItem from 'components/mva/MVAItem';
 import MyLink from 'components/MyLink';
+import SEO from 'components/SEO';
+import WelfareItem from 'components/mva/WelfareItem';
+import YearSwitch from 'components/mva/YearSwitch';
+import styles from './mva.module.scss';
+import tugData from 'data/tug_data.js';
 
-export async function getStaticProps(context) {
+export const getStaticProps = () => {
   const { mva2020, mva2019 } = tugData;
+
   const MVAs = [
     {
       year: 2020,
@@ -40,12 +42,13 @@ export async function getStaticProps(context) {
   ];
 
   return {
-    props: { MVAs, welfare, become }, // will be passed to the page component as props
+    props: { MVAs, welfare, become },
   };
-}
+};
 
-export default function MVA({ MVAs, welfare, become }) {
+const MostValuableAdvocate = ({ MVAs, welfare, become }) => {
   const [year, setYear] = useState(MVAs[0].year);
+
   return (
     <div className={styles.wrapper}>
       <SEO
@@ -53,19 +56,6 @@ export default function MVA({ MVAs, welfare, become }) {
         description="TiDB MOA（Most Outstanding  Advocate）、TiDB MVA （Most Valuable Advocate）是为 TUG 贡献高质量技术内容的 TiDB 用户，他们帮助他人充分了解 TiDB，是 TUG 社区认定的 TiDB 技术先驱者与技术领袖，享受极高的社区荣誉和权益。"
       />
       <div className={styles.header}>
-        {/*<div className={styles.header_widget_line}>*/}
-        {/*  <img src="images/mva/banner-line.svg" alt=""/>*/}
-        {/*</div>*/}
-        {/*<div className={styles.header_widget_1}>*/}
-        {/*  <img src="images/mva/banner-widget-1.png" alt=""/>*/}
-        {/*</div>*/}
-        {/*<div className={styles.header_widget_2}>*/}
-        {/*  <img src="images/mva/banner-widget-2.png" alt=""/>*/}
-        {/*</div>*/}
-        {/*<div className={styles.header_widget_3}>*/}
-        {/*  <img src="images/mva/banner-widget-3.png" alt=""/>*/}
-        {/*</div>*/}
-
         <Container className={styles.header_content}>
           <div className={styles.header_content_intro}>
             <div className={styles.header_content_intro_logo}>
@@ -174,4 +164,6 @@ export default function MVA({ MVAs, welfare, become }) {
       </div>
     </div>
   );
-}
+};
+
+export default MostValuableAdvocate;

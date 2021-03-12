@@ -5,7 +5,7 @@ import MyLink from 'components/MyLink';
 import Container from 'components/Container/Container';
 import Image from 'next/image';
 
-export default function HomeMVA({}) {
+export default function HomeMVA() {
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>

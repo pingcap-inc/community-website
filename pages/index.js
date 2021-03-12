@@ -1,5 +1,5 @@
-import Home from './home';
+import Home, { getServerSideProps } from './home';
 
-export { getServerSideProps } from './home';
+export { getServerSideProps };
 
 export default Home;

@@ -7,26 +7,8 @@ import MyLink from 'components/MyLink';
 import SEO from 'components/SEO';
 import TMCItem from 'components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
-import tugConfig from '../tug.config';
-import tugData from '../data/tug_data.js';
 
-const { joinTUGLink } = tugConfig;
-
-export async function getStaticProps(context) {
-  const { tmc, leader } = tugData;
-
-  const howToBecome = [
-    { index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: joinTUGLink },
-    { index: 2, iconUrl: 'images/people/how-to-become-2.svg', title: '信息审核' },
-    { index: 3, iconUrl: 'images/people/how-to-become-3.svg', title: '邀请加入' },
-  ];
-
-  return {
-    props: { howToBecome, tmc, leader }, // will be passed to the page component as props
-  };
-}
-
-export default function People({ howToBecome, tmc, leader }) {
+const People = ({ howToBecome, tmc, leader }) => {
   const howToBecomeDom = [];
   howToBecome.forEach((item, index) => {
     howToBecomeDom.push(<HowToBecome {...item} />);
@@ -163,4 +145,6 @@ export default function People({ howToBecome, tmc, leader }) {
       </div>
     </div>
   );
-}
+};
+
+export default People;

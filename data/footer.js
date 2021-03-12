@@ -188,7 +188,9 @@ const zh = [
   },
 ];
 
-export default {
+const data = {
   zh,
   en,
 };
+
+export default data;

@@ -3,8 +3,9 @@ import styles from './HomeMVA.module.scss';
 import Button from 'components/Button/Button';
 import MyLink from 'components/MyLink';
 import Container from 'components/Container/Container';
+import Image from 'next/image';
 
-export default function HomeMVA({}) {
+export default function HomeMVA() {
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>
@@ -20,7 +21,7 @@ export default function HomeMVA({}) {
         </div>
       </Container>
       <div className={styles.image}>
-        <img src="images/home/home-mva.png" alt="" />
+        <Image src="/images/home/home-mva.png" alt="" width={1712} height={226} />
       </div>
     </div>
   );

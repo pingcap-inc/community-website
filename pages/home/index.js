@@ -1,25 +1,27 @@
+import Image from 'next/image';
 import React from 'react';
-import styles from './Home.module.scss';
-import HomeSection from 'components/home/HomeSection/HomeSection';
+import { Col, Carousel, Row } from 'antd';
+
+import ArticleCategory from 'components/home/ArticleCategory/ArticleCategory';
+import ArticleItem from 'components/home/ArticleItem/ArticleItem';
 import ArticleItemWithExcerpt from 'components/home/ArticleItemWithExcerpt/ArticleItemWithExcerpt';
+import EventsItem from 'components/EventsItem/EventsItem';
+import HomeMVA from 'components/home/HomeMVA/HomeMVA';
+import HomeSection from 'components/home/HomeSection/HomeSection';
+import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
+import MyLink from 'components/MyLink';
+import SEO from 'components/SEO';
+import TopItem from 'components/home/TopItem/TopItem';
+import banners from 'data/banners';
+import events from 'data/events';
+import styles from './home.module.scss';
 import {
   getAvatarUrlByAvatarTemplateString,
   getCategoryById,
+  getExcerptByTopicId,
   getTopicUrlById,
   getUserUrlByUsername,
-  getExcerptByTopicId,
-} from '../utils';
-import TopItem from 'components/home/TopItem/TopItem';
-import { Col, Carousel, Row } from 'antd';
-import banners from '../data/banners';
-import events from '../data/events';
-import MyLink from 'components/MyLink';
-import EventsItem from 'components/EventsItem/EventsItem';
-import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
-import HomeMVA from 'components/home/HomeMVA/HomeMVA';
-import SEO from 'components/SEO';
-import ArticleCategory from 'components/home/ArticleCategory/ArticleCategory';
-import ArticleItem from 'components/home/ArticleItem/ArticleItem';
+} from 'utils';
 
 async function getTopicFromAskTUG(key) {
   const api = `https://asktug.com/c/blog/${key}/l/latest.json?order=default&page=0&per_page=10`;
@@ -35,7 +37,7 @@ async function getTopTopicFromAskTUG() {
   return await response.json();
 }
 
-export async function getServerSideProps(context) {
+export const getServerSideProps = async () => {
   const [howTo, practice, theory, top] = await Promise.all([
     getTopicFromAskTUG('how-to'),
     getTopicFromAskTUG('practice'),
@@ -50,20 +52,13 @@ export async function getServerSideProps(context) {
     top,
   };
 
-  // if (false) {
-  //   return {
-  //     notFound: true,
-  //   }
-  // }
-
   return {
-    props: { topics }, // will be passed to the page component as props
+    props: { topics },
   };
-}
+};
 
-export default function Home({ topics }) {
+const Home = ({ topics }) => {
   const { howTo, practice, theory, top } = topics;
-  // console.log('topics', topics)
 
   const articleImageUrl = '/images/home/article.svg';
   const qaImageUrl = '/images/home/qa.svg';
@@ -82,7 +77,7 @@ export default function Home({ topics }) {
             {banners.map((banner, index) => (
               <div key={index} className={styles.slideshow_item}>
                 <MyLink href={banner.linkUrl}>
-                  <img src={banner.imageUrl} alt={banner.title} />
+                  <Image src={banner.imageUrl} alt={banner.title} width={1920} height={556} />
                 </MyLink>
               </div>
             ))}
@@ -220,4 +215,6 @@ export default function Home({ topics }) {
       </main>
     </>
   );
-}
+};
+
+export default Home;

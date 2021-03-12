@@ -10,6 +10,7 @@ import styles from './people.module.scss';
 
 const People = ({ howToBecome, tmc, leader }) => {
   const howToBecomeDom = [];
+
   howToBecome.forEach((item, index) => {
     howToBecomeDom.push(<HowToBecome {...item} />);
     if (index !== howToBecome.length - 1) {
@@ -20,6 +21,7 @@ const People = ({ howToBecome, tmc, leader }) => {
       );
     }
   });
+
   return (
     <div className={styles.wrapper}>
       <SEO
@@ -126,9 +128,6 @@ const People = ({ howToBecome, tmc, leader }) => {
             {tmc.map((item, index) => (
               <TMCItem key={index} {...item} />
             ))}
-            {/*<Row justify={'center'} gutter={[0, 32]}>*/}
-            {/*  {tmc.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}*/}
-            {/*</Row>*/}
           </div>
           <div className={styles.people_content_split} />
           <div className={styles.people_content_title}>LEADER</div>
@@ -137,9 +136,6 @@ const People = ({ howToBecome, tmc, leader }) => {
             {leader.map((item, index) => (
               <TMCItem key={index} {...item} />
             ))}
-            {/*<Row justify={'center'} gutter={[0, 32]}>*/}
-            {/*  {leader.map((item, index) => <Col xs={12} sm={6} md={4} lg={4} key={index}><TMCItem {...item} /></Col>)}*/}
-            {/*</Row>*/}
           </div>
         </Container>
       </div>

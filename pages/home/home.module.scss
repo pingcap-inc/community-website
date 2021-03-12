@@ -2,26 +2,15 @@
 
 $size-slideshow: 20rem;
 $size-split: 5rem;
-
-.wrapper {
-}
-
 $size-dot: 1rem;
+
 .slideshow {
   width: 100%;
-  //height: $size-slideshow;
-  &_item {
-    width: 100%;
-    height: 100%;
-    img {
-      width: 100%;
-      //height: $size-slideshow;
-    }
-  }
-  // rewrite antd Carousel style
+
   li {
     margin: 0 0.5rem !important;
   }
+
   li,
   button {
     overflow: hidden;
@@ -29,16 +18,21 @@ $size-dot: 1rem;
     border: 1px solid #8f8f8f;
     width: $size-dot !important;
     height: $size-dot !important;
-    //box-shadow: 0 0 .1rem .1rem rgba(#000, .5);
+  }
+
+  &_item {
+    width: 100%;
+    height: 100%;
+    img {
+      width: 100%;
+    }
   }
 }
 
 .articles {
-  //margin: $size-split auto;
   padding: $size-split 0;
 }
 
 .top {
-  //margin: $size-split auto;
   padding: $size-split 0;
 }

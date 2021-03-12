@@ -1,7 +1,20 @@
+import Image from 'next/image';
 import React from 'react';
-import styles from './Home.module.scss';
-import HomeSection from 'components/home/HomeSection/HomeSection';
+import { Col, Carousel, Row } from 'antd';
+
+import ArticleCategory from 'components/home/ArticleCategory/ArticleCategory';
+import ArticleItem from 'components/home/ArticleItem/ArticleItem';
 import ArticleItemWithExcerpt from 'components/home/ArticleItemWithExcerpt/ArticleItemWithExcerpt';
+import EventsItem from 'components/EventsItem/EventsItem';
+import HomeMVA from 'components/home/HomeMVA/HomeMVA';
+import HomeSection from 'components/home/HomeSection/HomeSection';
+import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
+import MyLink from 'components/MyLink';
+import SEO from 'components/SEO';
+import TopItem from 'components/home/TopItem/TopItem';
+import banners from '../data/banners';
+import events from '../data/events';
+import styles from './Home.module.scss';
 import {
   getAvatarUrlByAvatarTemplateString,
   getCategoryById,
@@ -9,17 +22,6 @@ import {
   getUserUrlByUsername,
   getExcerptByTopicId,
 } from '../utils';
-import TopItem from 'components/home/TopItem/TopItem';
-import { Col, Carousel, Row } from 'antd';
-import banners from '../data/banners';
-import events from '../data/events';
-import MyLink from 'components/MyLink';
-import EventsItem from 'components/EventsItem/EventsItem';
-import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
-import HomeMVA from 'components/home/HomeMVA/HomeMVA';
-import SEO from 'components/SEO';
-import ArticleCategory from 'components/home/ArticleCategory/ArticleCategory';
-import ArticleItem from 'components/home/ArticleItem/ArticleItem';
 
 async function getTopicFromAskTUG(key) {
   const api = `https://asktug.com/c/blog/${key}/l/latest.json?order=default&page=0&per_page=10`;
@@ -82,7 +84,7 @@ export default function Home({ topics }) {
             {banners.map((banner, index) => (
               <div key={index} className={styles.slideshow_item}>
                 <MyLink href={banner.linkUrl}>
-                  <img src={banner.imageUrl} alt={banner.title} />
+                  <Image src={banner.imageUrl} alt={banner.title} width={1920} height={556} />
                 </MyLink>
               </div>
             ))}

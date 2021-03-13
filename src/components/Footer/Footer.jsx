@@ -1,17 +1,15 @@
 import React from 'react';
-import styles from './Footer.module.scss';
-import Socials from '../socials/Socials';
-import i18n from '../../data/footer';
-import MyLink from 'components/MyLink';
+
 import Container from 'components/Container/Container';
-// import { useIntl } from 'react-intl'
-import tugConfig from '../../tug.config';
+import MyLink from 'components/MyLink';
+import Socials from 'components/socials/Socials';
+import i18n from 'data/footer';
+import styles from './Footer.module.scss';
+import tugConfig from 'tug.config';
 
 const logoImageUrl = 'images/logo.svg';
 
 export default function Footer() {
-  // const intl = useIntl()
-  // const locale = intl.locale
   const locale = 'zh';
 
   const data = i18n[locale];

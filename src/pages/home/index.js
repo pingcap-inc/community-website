@@ -15,6 +15,7 @@ import TopItem from 'components/home/TopItem/TopItem';
 import banners from 'data/banners';
 import events from 'data/events';
 import styles from './home.module.scss';
+import { LegacyLayout } from 'layouts';
 import {
   getAvatarUrlByAvatarTemplateString,
   getCategoryById,
@@ -65,7 +66,7 @@ const Home = ({ topics }) => {
   const activityImageUrl = '/images/home/activity.svg';
 
   return (
-    <>
+    <LegacyLayout>
       <SEO
         title="Home"
         description="TUG（TiDB User Group） 是由 TiDB 技术爱好者、使用者自发组织、管理的独立组织。TUG 社区的理念是“连接用户，共建社区”；愿景是打造一个前沿的、活跃的、自治的、汇聚全球数据库、大数据从业者的技术社区"
@@ -213,7 +214,7 @@ const Home = ({ topics }) => {
 
         <HomeMVA />
       </main>
-    </>
+    </LegacyLayout>
   );
 };
 

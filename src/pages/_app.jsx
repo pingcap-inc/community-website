@@ -1,21 +1,18 @@
-import React from 'react';
 import 'antd/dist/antd.css';
+import React from 'react';
 
-import 'styles/globals.css';
-import 'components/Container/Container.scss';
 import 'components/Button/Button.scss';
+import 'components/Container/Container.scss';
+import 'styles/globals.css';
+import { createAppGlobalStyle } from 'styled';
 
-import Navbar from 'components/Navbar/Navbar';
-import Footer from 'components/Footer/Footer';
+const GlobalStyle = createAppGlobalStyle();
 
-function MyApp({ Component, pageProps }) {
-  return (
-    <div>
-      <Navbar forceNonTransparent />
-      <Component {...pageProps} />
-      <Footer />
-    </div>
-  );
-}
+const App = ({ Component, pageProps }) => (
+  <>
+    <GlobalStyle />
+    <Component {...pageProps} />
+  </>
+);
 
-export default MyApp;
+export default App;

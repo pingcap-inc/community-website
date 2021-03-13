@@ -38,14 +38,15 @@
     "ramda": "^0.27.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-intl": "^5.10.16",
     "sass": "^1.32.4",
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
-    "babel-eslint": "^10.0.0",
+    "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.12.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.5.0",

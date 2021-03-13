@@ -3,3 +3,4 @@
 *.png binary
 *.svg binary
 package-lock.json binary
+yarn.lock binary

@@ -42,8 +42,6 @@
     "styled-components": "^5.2.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.13.10",
-    "@babel/plugin-proposal-export-default-from": "^7.12.13",
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
     "babel-eslint": "^10.1.0",

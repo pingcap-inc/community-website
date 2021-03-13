@@ -1,5 +1,7 @@
 import React from 'react';
 
-const Community = () => <>Community</>;
+import { CoreLayout } from 'layouts';
+
+const Community = () => <CoreLayout>Community</CoreLayout>;
 
 export default Community;

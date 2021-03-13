@@ -1,7 +1,7 @@
 import React from 'react';
 import 'antd/dist/antd.css';
-import '../styles/globals.css';
 
+import 'styles/globals.css';
 import 'components/Container/Container.scss';
 import 'components/Button/Button.scss';
 

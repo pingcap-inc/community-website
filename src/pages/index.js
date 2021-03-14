@@ -1,5 +1,5 @@
-import Home, { getServerSideProps } from './home';
+import Home, { getStaticProps } from './home';
 
-export { getServerSideProps };
+export { getStaticProps };
 
 export default Home;

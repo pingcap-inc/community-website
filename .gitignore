@@ -39,4 +39,4 @@ yarn-error.log*
 .npm/
 .vscode/
 .yarn/
-package-lock.json
+yarn.lock

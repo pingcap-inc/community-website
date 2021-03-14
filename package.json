@@ -4,8 +4,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "cross-env host=0.0.0.0 && next dev",
-    "export": "next build && next export",
+    "dev": "next dev",
     "lint": "eslint . --ext .js,.jsx",
     "server:init": "next build && pm2 start --name tug-website-next-server npm -- run start",
     "server:restart": "pm2 restart tug-website-next-server",
@@ -25,28 +24,27 @@
   },
   "engines": {
     "node": "14.13.0",
-    "yarn": "1.22.5"
+    "npm": "6.14.8"
   },
   "dependencies": {
-    "@ant-design/icons": "^4.3.0",
-    "ahooks": "^2.9.4",
-    "antd": "^4.10.3",
-    "classnames": "^2.2.6",
-    "dayjs": "^1.10.3",
+    "@ant-design/icons": "4.5.0",
+    "ahooks": "2.9.6",
+    "antd": "4.13.1",
+    "classnames": "2.2.6",
+    "dayjs": "1.10.4",
     "next": "10.0.8",
-    "polished": "^4.1.1",
-    "ramda": "^0.27.1",
+    "polished": "4.1.1",
+    "ramda": "0.27.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "sass": "^1.32.4",
-    "styled-components": "^5.2.1"
+    "sass": "^1.32.8",
+    "styled-components": "5.2.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^4.0.0",
     "@typescript-eslint/parser": "^4.0.0",
     "babel-eslint": "^10.1.0",
     "babel-plugin-styled-components": "^1.12.0",
-    "cross-env": "^7.0.3",
     "eslint": "^7.5.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-plugin-flowtype": "^5.2.0",

@@ -38,7 +38,7 @@ async function getTopTopicFromAskTUG() {
   return await response.json();
 }
 
-export async function getStaticProps() {
+export const getStaticProps = async () => {
   const [howTo, practice, theory, top] = await Promise.all([
     getTopicFromAskTUG('how-to'),
     getTopicFromAskTUG('practice'),
@@ -59,7 +59,7 @@ export async function getStaticProps() {
     props: { topics },
     revalidate: HALF_HOUR,
   };
-}
+};
 
 const Home = ({ topics }) => {
   const { howTo, practice, theory, top } = topics;

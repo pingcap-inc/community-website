@@ -1,24 +1,27 @@
 version: 2.1
 
 commands:
-  install-dependencies:
+  install-deps:
     steps:
       - checkout
       - run: sudo apt update && sudo apt install rsync sshpass
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
-      - run: yarn install
+            - v1-deps-{{ checksum "package-lock.json" }}
+            - v1-deps
+      - run: |
+          npm -v
+          npm install
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v1-deps-{{ checksum "package-lock.json" }}
 
   lint-and-build:
     steps:
-      - run: yarn run lint
+      - run: npm run lint
       - run:
-          command: yarn build
+          command: npm build
           no_output_timeout: 5m
 
   deploy-website:
@@ -26,8 +29,8 @@ commands:
       - run:
           name: Deploy to HK_1_HOST
           command: |
-            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null;
-            sshpass -p ${HOST_HK_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete . "${HOST_HK_1_USER}@${HOST_HK_1_IP}:${DEPLOY_SERVICE_PATH}";
+            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
+            sshpass -p ${HOST_HK_1_PASSWORD} rsync -avz -e 'ssh -p 22' --delete . "${HOST_HK_1_USER}@${HOST_HK_1_IP}:${DEPLOY_SERVICE_PATH}"
             sshpass -p ${HOST_HK_1_PASSWORD} ssh ${HOST_HK_1_USER}@${HOST_HK_1_IP} "cd ${DEPLOY_SERVICE_PATH} && npm run server:restart"
 
 jobs:
@@ -35,13 +38,13 @@ jobs:
     docker:
       - image: circleci/node:14.13.0
     steps:
-      - install-dependencies
+      - install-deps
       - lint-and-build
   deploy:
     docker:
       - image: circleci/node:14.13.0
     steps:
-      - install-dependencies
+      - install-deps
       - lint-and-build
       - deploy-website
 

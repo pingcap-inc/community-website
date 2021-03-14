@@ -1,6 +1,5 @@
 {
-  "name": "tug",
-  "version": "0.1.0",
+  "name": "@pingcap/tug-website",
   "private": true,
   "scripts": {
     "build": "next build",
@@ -53,6 +52,7 @@
     "eslint-plugin-react": "^7.20.3",
     "eslint-plugin-react-hooks": "^4.0.8",
     "husky": "^5.1.3",
+    "lerna": "^4.0.0",
     "lint-staged": "^10.5.4",
     "prettier-eslint": "^12.0.0"
   }

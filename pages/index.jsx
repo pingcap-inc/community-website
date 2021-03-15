@@ -55,10 +55,12 @@ export async function getStaticProps(context) {
   //     notFound: true,
   //   }
   // }
+  
+  const HALF_HOUR = 60 * 30;
 
   return {
     props: { topics }, // will be passed to the page component as props
-    revalidate: 60 * 30, // In seconds
+    revalidate: HALF_HOUR,
   };
 }
 

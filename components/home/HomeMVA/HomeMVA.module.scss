@@ -31,8 +31,11 @@
 
 .image {
   width: 90%;
-  margin: 0 auto;
-  margin-top: 6rem;
-  height: 226px;
+  margin: {
+    top: 6rem;
+    bottom: -.3rem;
+    left: auto;
+    right: auto;
+  };
   text-align: center;
 }

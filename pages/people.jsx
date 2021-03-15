@@ -1,13 +1,15 @@
+import Image from 'next/image';
 import React from 'react';
-import styles from './people.module.scss';
-import SEO from 'components/SEO';
+
 import Container from 'components/Container/Container';
-import TMCItem from 'components/people/TMCItem/TMCItem';
 import HowToBecome from 'components/people/HowToBecome/HowToBecome';
-import tugData from '../data/tug_data.js';
-import tugConfig from '../tug.config';
 import MyLink from 'components/MyLink';
 import Image from 'next/image';
+import SEO from 'components/SEO';
+import TMCItem from 'components/people/TMCItem/TMCItem';
+import styles from './people.module.scss';
+import tugConfig from '../tug.config';
+import tugData from '../data/tug_data.js';
 
 const { joinTUGLink } = tugConfig;
 
@@ -64,7 +66,12 @@ export default function People({ howToBecome, tmc, leader }) {
           <div className={styles.organization_chart_content_title}>TUG 组织架构</div>
           <div className={styles.organization_chart_content_image}>
             <MyLink href={'/images/people/tug-organization-chart.svg'}>
-              <Image src="/images/people/tug-organization-chart.svg" alt="tug-company-chart" width={1200} height={520} />
+              <Image
+                src="/images/people/tug-organization-chart.svg"
+                alt="tug-company-chart"
+                width={1200}
+                height={520}
+              />
             </MyLink>
           </div>
         </div>

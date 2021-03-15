@@ -2,7 +2,6 @@ import Image from 'next/image';
 import React from 'react';
 
 import MyLink from 'components/MyLink';
-import Image from 'next/image';
 import styles from './MVAItem.module.scss';
 
 export default function MVAItem({ avatarUrl, name, company, title, links }) {

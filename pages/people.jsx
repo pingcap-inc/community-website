@@ -4,7 +4,6 @@ import React from 'react';
 import Container from 'components/Container/Container';
 import HowToBecome from 'components/people/HowToBecome/HowToBecome';
 import MyLink from 'components/MyLink';
-import Image from 'next/image';
 import SEO from 'components/SEO';
 import TMCItem from 'components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';

@@ -1,7 +1,12 @@
 import React from 'react';
+import test from '@pingcap/pingpac-ui';
 
 import { CoreLayout } from 'layouts';
 
-const Community = () => <CoreLayout>Community</CoreLayout>;
+const Community = () => {
+  test();
+
+  return <CoreLayout>Community</CoreLayout>;
+};
 
 export default Community;

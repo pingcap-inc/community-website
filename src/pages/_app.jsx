@@ -1,10 +1,10 @@
 import 'antd/dist/antd.css';
 import React from 'react';
+import { createAppGlobalStyle } from '@pingcap/pingpac-ui';
 
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
-import { createAppGlobalStyle } from 'styled';
 
 const GlobalStyle = createAppGlobalStyle();
 

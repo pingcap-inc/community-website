@@ -5,8 +5,6 @@ import resetAntStyles from './antd';
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   #__next {
-    background: red;
-
     .clearfix {
       ${clearFix()};
     }

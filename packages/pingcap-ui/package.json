@@ -6,10 +6,6 @@
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
-  "dependencies": {
-    "react": "17.0.1",
-    "styled-components": "5.2.1"
-  },
   "devDependencies": {
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",

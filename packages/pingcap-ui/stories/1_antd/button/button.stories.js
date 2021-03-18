@@ -1,8 +1,10 @@
 import React from 'react';
 import { Button } from 'antd';
 
+import { getTitle } from '../utils';
+
 export default {
-  title: 'Ant Design/Button',
+  title: getTitle('Button'),
   component: Button,
 };
 

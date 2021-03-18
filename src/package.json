@@ -1,6 +1,6 @@
 {
   "private": true,
   "dependencies": {
-    "@pingcap/pingpac-ui": "*"
+    "@pingcap/pingcap-ui": "*"
   }
 }

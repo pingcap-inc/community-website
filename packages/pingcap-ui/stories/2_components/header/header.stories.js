@@ -1,4 +1,4 @@
-import { Header } from '@pingcap/pingpac-ui';
+import { Header } from '@pingcap/pingcap-ui';
 
 import { getTitle } from '../utils';
 

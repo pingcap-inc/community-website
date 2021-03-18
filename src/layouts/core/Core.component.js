@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Header, Footer } from '@pingcap/pingpac-ui';
+import { Header, Footer } from '@pingcap/pingcap-ui';
 
 const Core = ({ children }) => (
   <>

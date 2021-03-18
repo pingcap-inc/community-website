@@ -18,7 +18,7 @@ module.exports = {
         ...resolve,
         alias: {
           ...resolve.alias,
-          '@pingcap/pingpac-ui': resolveRoot('src'),
+          '@pingcap/pingcap-ui': resolveRoot('src'),
         },
       },
     };

@@ -12,3 +12,5 @@ export const createAppGlobalStyle = () => createGlobalStyle`
     ${resetAntStyles};
   }
 `;
+
+export { Header, Footer } from './components';

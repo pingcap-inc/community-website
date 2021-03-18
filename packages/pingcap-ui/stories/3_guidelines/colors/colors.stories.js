@@ -24,30 +24,28 @@ const useCases = {
   T6: 'Tag',
 };
 
-const Palette = () => {
-  return (
-    <Row gutter={[16, 16]}>
-      {R.toPairs(colors).map(([name, color]) => (
-        <Col key={name} xs={24} sm={12} md={8} lg={6}>
-          <Styled.Item>
-            <Styled.Box color={color} border={readableColor(color)} />
-            <Styled.Text>
-              <li>
-                <b>Name:</b> {name}
-              </li>
-              <li>
-                <b>Hex:</b> {color}
-              </li>
-              <li>
-                <b>Use Case:</b> {useCases[name]}
-              </li>
-            </Styled.Text>
-          </Styled.Item>
-        </Col>
-      ))}
-    </Row>
-  );
-};
+const Palette = () => (
+  <Row gutter={[16, 16]}>
+    {R.toPairs(colors).map(([name, color]) => (
+      <Col key={name} xs={24} sm={12} md={8} lg={6}>
+        <Styled.Item>
+          <Styled.Box color={color} border={readableColor(color)} />
+          <Styled.Text>
+            <li>
+              <b>Name:</b> {name}
+            </li>
+            <li>
+              <b>Hex:</b> {color}
+            </li>
+            <li>
+              <b>Use Case:</b> {useCases[name]}
+            </li>
+          </Styled.Text>
+        </Styled.Item>
+      </Col>
+    ))}
+  </Row>
+);
 
 export default {
   title: getTitle('Color Palette'),

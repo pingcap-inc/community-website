@@ -2,6 +2,8 @@ import React from 'react';
 
 import { CoreLayout } from 'layouts';
 
-const Community = () => <CoreLayout>Community</CoreLayout>;
+const Community = () => {
+  return <CoreLayout>Community</CoreLayout>;
+};
 
 export default Community;

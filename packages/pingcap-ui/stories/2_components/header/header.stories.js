@@ -8,6 +8,9 @@ export default {
   component: Header,
 };
 
-const Template = (args) => <Header navItems={navItems} {...args} />;
+const Template = (args) => <Header {...args} />;
 
 export const WithNav = Template.bind({});
+WithNav.args = {
+  navItems,
+};

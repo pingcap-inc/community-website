@@ -2,10 +2,11 @@ import { clearFix } from 'polished';
 import { createGlobalStyle } from 'styled-components';
 
 import * as colors from './colors';
+import * as constants from './constants';
 import * as mixins from './mixins';
 import resetAntStyles from './antd';
 
-export { colors, mixins };
+export { colors, constants, mixins };
 
 export { Header, Footer } from './components';
 

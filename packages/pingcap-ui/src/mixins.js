@@ -6,7 +6,7 @@ export const typography = (level) => {
   const levels = {
     h0: css`
       font-size: 1.875rem;
-      line-height: 38/30;
+      line-height: ${38 / 30};
       color: ${colors.F1};
       font-weight: 700;
       &:lang(zh-CN) {
@@ -16,7 +16,7 @@ export const typography = (level) => {
 
     h1: css`
       font-size: 1.5rem;
-      line-height: 32/24;
+      line-height: ${32 / 24};
       color: ${colors.F1};
       font-weight: 600;
       &:lang(zh-CN) {
@@ -26,7 +26,7 @@ export const typography = (level) => {
 
     h2: css`
       font-size: 1.25rem;
-      line-height: 28/20;
+      line-height: ${28 / 20};
       color: ${colors.F1};
       font-weight: 600;
       &:lang(zh-CN) {
@@ -36,7 +36,7 @@ export const typography = (level) => {
 
     h3: css`
       font-size: 1.25rem;
-      line-height: 26/18;
+      line-height: ${26 / 18};
       color: ${colors.F1};
       font-weight: 600;
       &:lang(zh-CN) {
@@ -46,7 +46,7 @@ export const typography = (level) => {
 
     p1: css`
       font-size: 1rem;
-      line-height: 24/16;
+      line-height: ${24 / 16};
       color: ${colors.F2};
       font-weight: 500;
       &:lang(zh-CN) {
@@ -56,7 +56,7 @@ export const typography = (level) => {
 
     p2: css`
       font-size: 0.875rem;
-      line-height: 22/14;
+      line-height: ${22 / 14};
       color: ${colors.F2};
       font-weight: 500;
       &:lang(zh-CN) {
@@ -98,4 +98,7 @@ export const flexCenter = (type = 'block') => `
 export const size = (width, height = width) => `
   width: ${width};
   height: ${height};
+`;
+
+export const widthQuery = () => `
 `;

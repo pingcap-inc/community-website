@@ -11,6 +11,8 @@ export const Container = styled.div`
 export const Logo = styled.div``;
 
 export const Title = styled.h1`
+  ${mixins.typography('h1')};
+
   img {
     ${mixins.size('45px', '52px')};
     margin-right: 0.5rem;

@@ -6,7 +6,7 @@ import * as Styled from './header.styled';
 
 const { SubMenu } = Menu;
 
-const Header = ({ navItems, onNavClick }) => {
+const Header = ({ logo, title, navItems, onTitleClick, onNavClick }) => {
   const genMenu = (items) =>
     items.map((item) => {
       const { title, items } = item;
@@ -31,12 +31,21 @@ const Header = ({ navItems, onNavClick }) => {
 
   return (
     <Styled.Container>
-      <Menu mode="horizontal">{genMenu(navItems)}</Menu>
+      <Styled.Title onTitleClick={onTitleClick}>
+        <Styled.Logo>
+          {logo}
+          {title}
+        </Styled.Logo>
+      </Styled.Title>
+      <Styled.Menu>{genMenu(navItems)}</Styled.Menu>
     </Styled.Container>
   );
 };
 
 Header.propTypes = {
+  logo: PropTypes.node,
+  onTitleClick: PropTypes.func,
+  title: PropTypes.string,
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
 };

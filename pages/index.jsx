@@ -83,7 +83,7 @@ export default function Home({ topics }) {
 
       <main className={styles.wrapper}>
         <div className={styles.slideshow}>
-          <Carousel>
+          <Carousel autoplay>
             {banners.map((banner, index) => (
               <MyLink key={index} href={banner.linkUrl}>
                 <Image src={banner.imageUrl} alt={banner.title} width={1920} height={556} layout="responsive" />

@@ -104,8 +104,6 @@ export const size = (width, height = width) => css`
   height: ${height};
 `;
 
-console.log('breakPonts!!', breakPoints);
-
 export const responsive = () => css`
   @media screen and (min-width: ${breakPoints.md}) {
     max-width: ${responsiveWidths.md};

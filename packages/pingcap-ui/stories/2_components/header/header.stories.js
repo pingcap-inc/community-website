@@ -12,8 +12,9 @@ export default {
 const Template = (args) => <Header {...args} />;
 
 export const WithNav = Template.bind({});
+const title = 'Community';
 WithNav.args = {
-  logo: <img alt=" Community" src="/images/community/logo.svg" />,
-  title: 'Community',
   navItems,
+  title,
+  logo: <img alt={title} src="/images/community/logo.svg" />,
 };

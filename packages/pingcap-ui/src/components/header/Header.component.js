@@ -43,7 +43,7 @@ const Header = ({ logo, title, navItems, onTitleClick, onNavClick }) => {
 };
 
 Header.propTypes = {
-  logo: PropTypes.node.isRequired,
+  logo: PropTypes.element.isRequired,
   onTitleClick: PropTypes.func.isRequired,
   title: PropTypes.string,
   navItems: PropTypes.array.isRequired,

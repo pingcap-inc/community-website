@@ -7,10 +7,14 @@ import { headerNavItems } from './core.data';
 const Core = ({ children }) => {
   const router = useRouter();
 
+  const title = 'Community';
+
   const headerProps = {
+    title,
+    logo: <img alt={title} src="/images/community/logo.svg" />,
     navItems: headerNavItems,
 
-    onTitleClick: () => {},
+    onTitleClick: () => router.push('/'),
 
     onNavClick: ({ link }) => {
       if (link.startsWith('http')) {

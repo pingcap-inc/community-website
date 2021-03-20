@@ -1,15 +1,12 @@
-import * as R from 'ramda';
+import * as polished from 'polished';
 
-export const pageWidths = {
-  xl: 1344,
-  lg: 1152,
-  md: 960,
+export const responsiveWidths = {
+  xl: '1344px',
+  lg: '1152px',
+  md: '960px',
 };
 
-export const breakPoints = R.reduce(
-  ([k, v]) => ({
-    [k]: v + 32,
-  }),
-  {},
-  R.toPairs(pageWidths)
-);
+export const breakPoints = Object.entries(responsiveWidths).reduce((acc, [k, v]) => {
+  acc[k] = `${polished.stripUnit(v) + 64}px`;
+  return acc;
+}, {});

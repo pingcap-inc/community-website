@@ -10,6 +10,8 @@ const Core = ({ children }) => {
   const headerProps = {
     navItems: headerNavItems,
 
+    onTitleClick: () => {},
+
     onNavClick: ({ link }) => {
       if (link.startsWith('http')) {
         return window.open(link, '_blank');

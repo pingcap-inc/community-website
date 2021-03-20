@@ -1,6 +1,7 @@
 import { css } from 'styled-components';
 
 import * as colors from './colors';
+import { responsiveWidths, breakPoints } from './constants';
 
 export const typography = (level) => {
   const levels = {
@@ -68,37 +69,51 @@ export const typography = (level) => {
   return levels[level];
 };
 
-export const reset = () => `
+export const reset = () => css`
   margin: 0;
   padding: 0;
 `;
 
-export const centerBlock = (width) => `
+export const centerBlock = (width) => css`
   display: block;
   margin-left: auto;
   margin-right: auto;
-  ${width && 'width: ' + width};
+  ${width &&
+  css`
+    width: ${width};
+  `};
 `;
 
-export const verticalLineMiddle = (height = 0) => `
+export const verticalLineMiddle = (height = 0) => css`
   line-height: ${height};
   height: ${height};
 `;
 
-export const flexVerticalCenter = (type = 'block') => `
+export const flexVerticalCenter = (type = 'block') => css`
   display: ${type === 'inline' ? 'inline-flex' : 'flex'};
   align-items: center;
 `;
 
-export const flexCenter = (type = 'block') => `
+export const flexCenter = (type = 'block') => css`
   ${flexVerticalCenter(type)};
   justify-content: center;
 `;
 
-export const size = (width, height = width) => `
+export const size = (width, height = width) => css`
   width: ${width};
   height: ${height};
 `;
 
-export const widthQuery = () => `
+console.log('breakPonts!!', breakPoints);
+
+export const responsive = () => css`
+  @media screen and (min-width: ${breakPoints.md}) {
+    max-width: ${responsiveWidths.md};
+  }
+  @media screen and (min-width: ${breakPoints.lg}) {
+    max-width: ${responsiveWidths.lg};
+  }
+  @media screen and (min-width: ${breakPoints.xl}) {
+    max-width: ${responsiveWidths.lx};
+  }
 `;

@@ -1,4 +1,5 @@
 {
+  "name": "@pingcap/tug-website-src",
   "private": true,
   "dependencies": {
     "@pingcap/pingcap-ui": "*"

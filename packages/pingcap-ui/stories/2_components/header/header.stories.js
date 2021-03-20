@@ -13,7 +13,7 @@ const Template = (args) => <Header {...args} />;
 
 export const WithNav = Template.bind({});
 WithNav.args = {
-  logo: <img alt="PingCAP Community" src="/images/community/logo.svg" />,
+  logo: <img alt=" Community" src="/images/community/logo.svg" />,
   title: 'Community',
   navItems,
 };

@@ -18,8 +18,8 @@ const Socials = ({ type, title }) => {
       <Row gutter={[24, 16]}>
         {data &&
           data.map((social) => (
-            <Col span={8}>
-              <a key={social.name} className={styles.item} target="_blank" rel="noopener noreferrer" href={social.href}>
+            <Col key={social.name} span={8}>
+              <a className={styles.item} target="_blank" rel="noopener noreferrer" href={social.href}>
                 <div className={styles[social.name]} />
               </a>
             </Col>

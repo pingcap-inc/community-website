@@ -57,7 +57,7 @@ export async function getStaticProps(context) {
   //     notFound: true,
   //   }
   // }
-  
+
   const HALF_HOUR = 60 * 30;
 
   return {
@@ -83,13 +83,11 @@ export default function Home({ topics }) {
 
       <main className={styles.wrapper}>
         <div className={styles.slideshow}>
-          <Carousel autoplay>
+          <Carousel>
             {banners.map((banner, index) => (
-              <div key={index} className={styles.slideshow_item}>
-                <MyLink href={banner.linkUrl}>
-                  <Image src={banner.imageUrl} alt={banner.title} width={1920} height={556} />
-                </MyLink>
-              </div>
+              <MyLink key={index} href={banner.linkUrl}>
+                <Image src={banner.imageUrl} alt={banner.title} width={1920} height={556} layout="responsive" />
+              </MyLink>
             ))}
           </Carousel>
         </div>

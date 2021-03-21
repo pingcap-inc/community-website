@@ -2,34 +2,44 @@ import React from 'react';
 import { Header, Footer, data, utils } from '@pingcap/pingcap-ui';
 import { useRouter } from 'next/router';
 
-const { navItems } = data.header;
+const { navItems: headerNavItems } = data.header;
+const { navItems: footerNavItems } = data.footer;
 
 const Core = ({ children }) => {
   const router = useRouter();
 
   const title = 'Community';
+  const logo = <img alt={title} src="/images/community/logo.svg" />;
+
+  const onNavClick = link => {
+    if (!link) return;
+    if (link.startsWith('http')) {
+      return window.open(link, '_blank');
+    }
+    router.push(link);
+  };
 
   const headerProps = {
+    logo,
     title,
-    navItems,
-    logo: <img alt={title} src="/images/community/logo.svg" />,
-    currentNav: utils.header.getCurrentNav(navItems, router.pathname),
+    onNavClick,
+    navItems: headerNavItems,
+    currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
+    onTitleClick: () => router.push('/community')
+  };
 
-    onTitleClick: () => router.push('/community'),
-
-    onNavClick: ({ link }) => {
-      if (link.startsWith('http')) {
-        return window.open(link, '_blank');
-      }
-      router.push(link);
-    }
+  const footerProps = {
+    logo,
+    title,
+    onNavClick,
+    navItems: footerNavItems
   };
 
   return (
     <>
       <Header {...headerProps} />
       {children}
-      <Footer />
+      <Footer {...footerProps} />
     </>
   );
 };

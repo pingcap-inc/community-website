@@ -7,11 +7,13 @@ import * as mixins from './mixins';
 import resetAntStyles from './antd';
 
 // Data
+import * as footerData from './components/footer/footer.data';
 import * as headerData from './components/header/header.data';
 // Utils
 import * as headerUtils from './components/header/header.utils';
 
 export const data = {
+  footer: footerData,
   header: headerData
 };
 

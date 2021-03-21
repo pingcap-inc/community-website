@@ -8,7 +8,7 @@ const { SubMenu } = Menu;
 
 const genMenu = ({ items, onNavClick }) =>
   items.map(item => {
-    const { title, items } = item;
+    const { title, items, link } = item;
 
     if (items) {
       return (
@@ -20,7 +20,7 @@ const genMenu = ({ items, onNavClick }) =>
     }
 
     return (
-      <Menu.Item key={title} onClick={e => onNavClick(item)}>
+      <Menu.Item key={title} onClick={e => onNavClick(link)}>
         {title}
       </Menu.Item>
     );
@@ -44,7 +44,7 @@ Header.propTypes = {
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string.isRequired
 };
 
 export default Header;

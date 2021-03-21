@@ -4,7 +4,7 @@ export const navItems = [
     items: [
       {
         title: 'Code of Conduct',
-        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md '
+        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md'
       },
       {
         title: 'TiDB and PingCAP',

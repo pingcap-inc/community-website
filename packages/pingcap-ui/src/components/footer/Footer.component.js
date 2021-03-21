@@ -1,6 +1,7 @@
 import React from 'react';
 
 import * as Styled from './footer.styled';
+import * as data from './footer.data';
 
 const Footer = () => (
   <Styled.Container>

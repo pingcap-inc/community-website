@@ -6,39 +6,37 @@ import * as Styled from './header.styled';
 
 const { SubMenu } = Menu;
 
-const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
-  const genMenu = items =>
-    items.map(item => {
-      const { title, items } = item;
+const genMenu = ({ items, onNavClick }) =>
+  items.map(item => {
+    const { title, items } = item;
 
-      if (items) {
-        return (
-          <SubMenu key={title} title={title}>
-            {// eslint-disable-next-line no-unused-vars
-            genMenu(items)}
-          </SubMenu>
-        );
-      }
-
+    if (items) {
       return (
-        <Menu.Item key={title} onClick={e => onNavClick(item)}>
-          {title}
-        </Menu.Item>
+        <SubMenu key={title} title={title}>
+          {// eslint-disable-next-line no-unused-vars
+          genMenu({ items, onNavClick })}
+        </SubMenu>
       );
-    });
+    }
 
-  return (
-    <Styled.Container>
-      <Styled.Title onClick={onTitleClick}>
-        <Styled.Logo>
-          {logo}
-          {title}
-        </Styled.Logo>
-      </Styled.Title>
-      <Styled.Menu selectedKeys={currentNav && [currentNav]}>{genMenu(navItems)}</Styled.Menu>
-    </Styled.Container>
-  );
-};
+    return (
+      <Menu.Item key={title} onClick={e => onNavClick(item)}>
+        {title}
+      </Menu.Item>
+    );
+  });
+
+const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => (
+  <Styled.Container>
+    <Styled.Title onClick={onTitleClick}>
+      <Styled.Logo>
+        {logo}
+        {title}
+      </Styled.Logo>
+    </Styled.Title>
+    <Styled.Menu selectedKeys={currentNav && [currentNav]}>{genMenu({ items: navItems, onNavClick })}</Styled.Menu>
+  </Styled.Container>
+);
 
 Header.propTypes = {
   currentNav: PropTypes.string,

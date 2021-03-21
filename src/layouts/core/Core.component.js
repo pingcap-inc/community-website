@@ -1,8 +1,8 @@
 import React from 'react';
-import { Header, Footer, utils } from '@pingcap/pingcap-ui';
+import { Header, Footer, data, utils } from '@pingcap/pingcap-ui';
 import { useRouter } from 'next/router';
 
-import { headerNavItems } from './core.data';
+const { navItems } = data.header;
 
 const Core = ({ children }) => {
   const router = useRouter();
@@ -11,9 +11,9 @@ const Core = ({ children }) => {
 
   const headerProps = {
     title,
+    navItems,
     logo: <img alt={title} src="/images/community/logo.svg" />,
-    navItems: headerNavItems,
-    currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
+    currentNav: utils.header.getCurrentNav(navItems, router.pathname),
 
     onTitleClick: () => router.push('/community'),
 
@@ -22,7 +22,7 @@ const Core = ({ children }) => {
         return window.open(link, '_blank');
       }
       router.push(link);
-    },
+    }
   };
 
   return (

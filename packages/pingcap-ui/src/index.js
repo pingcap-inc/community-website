@@ -6,17 +6,21 @@ import * as constants from './constants';
 import * as mixins from './mixins';
 import resetAntStyles from './antd';
 
+// Data
+import * as headerData from './components/header/header.data';
 // Utils
-import { getCurrentNav } from './components/header/header.utils';
+import * as headerUtils from './components/header/header.utils';
+
+export const data = {
+  header: headerData
+};
+
+export const utils = {
+  header: headerUtils
+};
 
 export { colors, constants, mixins };
 export { Header, Footer } from './components';
-
-export const utils = {
-  header: {
-    getCurrentNav,
-  },
-};
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   html, body {

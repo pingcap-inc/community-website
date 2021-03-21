@@ -1,4 +1,4 @@
-import { Footer } from '@pingcap/pingpac-ui';
+import { Footer } from '@pingcap/pingcap-ui';
 
 import { getTitle } from '../utils';
 

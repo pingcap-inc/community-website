@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-import { createAppGlobalStyle } from '@pingcap/pingpac-ui';
+import { createAppGlobalStyle } from '@pingcap/pingcap-ui';
 
 const GlobalStyle = createAppGlobalStyle();
 

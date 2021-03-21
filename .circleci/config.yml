@@ -17,9 +17,10 @@ commands:
             - node_modules
           key: v1-deps-{{ checksum "package-lock.json" }}
 
-  lint-and-build:
+  verify-and-build:
     steps:
       - run: npm run lint
+      - run: npm test
       - run:
           command: npm build
           no_output_timeout: 5m
@@ -39,13 +40,13 @@ jobs:
       - image: circleci/node:14.13.0
     steps:
       - install-deps
-      - lint-and-build
+      - verify-and-build
   deploy:
     docker:
       - image: circleci/node:14.13.0
     steps:
       - install-deps
-      - lint-and-build
+      - verify-and-build
       - deploy-website
 
 workflows:

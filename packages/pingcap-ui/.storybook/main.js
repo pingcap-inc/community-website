@@ -7,6 +7,11 @@ module.exports = {
   stories: ['../stories/**/*.stories.mdx', '../stories/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
 
+  babel: async (options) => ({
+    ...options,
+    plugins: ['styled-components', ...options.plugins],
+  }),
+
   // https://storybook.js.org/docs/react/configure/webpack
   webpackFinal: async (config) => {
     const { resolve } = config;
@@ -18,7 +23,7 @@ module.exports = {
         ...resolve,
         alias: {
           ...resolve.alias,
-          '@pingcap/pingpac-ui': resolveRoot('src'),
+          '@pingcap/pingcap-ui': resolveRoot('src'),
         },
       },
     };

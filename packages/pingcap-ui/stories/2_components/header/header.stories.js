@@ -16,5 +16,6 @@ const title = 'Community';
 WithNav.args = {
   navItems,
   title,
+  currentNav: 'Committer',
   logo: <img alt={title} src="/images/community/logo.svg" />,
 };

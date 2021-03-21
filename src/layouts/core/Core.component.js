@@ -13,8 +13,9 @@ const Core = ({ children }) => {
     title,
     logo: <img alt={title} src="/images/community/logo.svg" />,
     navItems: headerNavItems,
+    selectedKeys: ['About'],
 
-    onTitleClick: () => router.push('/'),
+    onTitleClick: () => router.push('/community'),
 
     onNavClick: ({ link }) => {
       if (link.startsWith('http')) {

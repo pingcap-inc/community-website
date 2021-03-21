@@ -6,7 +6,7 @@ import * as Styled from './header.styled';
 
 const { SubMenu } = Menu;
 
-const Header = ({ logo, title, navItems, onTitleClick, onNavClick }) => {
+const Header = ({ logo, title, currentNav, navItems, onTitleClick, onNavClick }) => {
   const genMenu = (items) =>
     items.map((item) => {
       const { title, items } = item;
@@ -37,7 +37,7 @@ const Header = ({ logo, title, navItems, onTitleClick, onNavClick }) => {
           {title}
         </Styled.Logo>
       </Styled.Title>
-      <Styled.Menu>{genMenu(navItems)}</Styled.Menu>
+      <Styled.Menu selectedKeys={[currentNav]}>{genMenu(navItems)}</Styled.Menu>
     </Styled.Container>
   );
 };
@@ -46,6 +46,7 @@ Header.propTypes = {
   logo: PropTypes.element.isRequired,
   onTitleClick: PropTypes.func.isRequired,
   title: PropTypes.string,
+  currentNav: PropTypes.string,
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
 };

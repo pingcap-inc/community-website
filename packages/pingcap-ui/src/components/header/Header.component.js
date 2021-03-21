@@ -6,24 +6,22 @@ import * as Styled from './header.styled';
 
 const { SubMenu } = Menu;
 
-const Header = ({ logo, title, currentNav, navItems, onTitleClick, onNavClick }) => {
-  const genMenu = (items) =>
-    items.map((item) => {
+const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
+  const genMenu = items =>
+    items.map(item => {
       const { title, items } = item;
 
       if (items) {
         return (
           <SubMenu key={title} title={title}>
-            {
-              // eslint-disable-next-line no-unused-vars
-              genMenu(items)
-            }
+            {// eslint-disable-next-line no-unused-vars
+            genMenu(items)}
           </SubMenu>
         );
       }
 
       return (
-        <Menu.Item key={title} onClick={(e) => onNavClick(item)}>
+        <Menu.Item key={title} onClick={e => onNavClick(item)}>
           {title}
         </Menu.Item>
       );
@@ -43,12 +41,12 @@ const Header = ({ logo, title, currentNav, navItems, onTitleClick, onNavClick })
 };
 
 Header.propTypes = {
-  logo: PropTypes.element.isRequired,
-  onTitleClick: PropTypes.func.isRequired,
-  title: PropTypes.string,
   currentNav: PropTypes.string,
+  logo: PropTypes.element.isRequired,
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
+  onTitleClick: PropTypes.func.isRequired,
+  title: PropTypes.string
 };
 
 export default Header;

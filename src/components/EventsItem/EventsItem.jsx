@@ -8,7 +8,7 @@ export default function EventsItem({ imageUrl, title, summary, link }) {
     <div className={styles.list_item}>
       <MyLink href={link}>
         <div className={styles.list_item_image}>
-          <Image src={imageUrl} alt={title} width={594} height={372} />
+          <Image src={imageUrl} alt={title} width={594} height={372} layout="responsive" />
         </div>
       </MyLink>
       <MyLink href={link}>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, Footer } from '@pingcap/pingcap-ui';
+import { Header, Footer, utils } from '@pingcap/pingcap-ui';
 import { useRouter } from 'next/router';
 
 import { headerNavItems } from './core.data';
@@ -13,7 +13,7 @@ const Core = ({ children }) => {
     title,
     logo: <img alt={title} src="/images/community/logo.svg" />,
     navItems: headerNavItems,
-    selectedKeys: ['About'],
+    currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
 
     onTitleClick: () => router.push('/community'),
 

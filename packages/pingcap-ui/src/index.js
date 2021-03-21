@@ -6,9 +6,17 @@ import * as constants from './constants';
 import * as mixins from './mixins';
 import resetAntStyles from './antd';
 
-export { colors, constants, mixins };
+// Utils
+import { getCurrentNav } from './components/header/header.utils';
 
+export { colors, constants, mixins };
 export { Header, Footer } from './components';
+
+export const utils = {
+  header: {
+    getCurrentNav,
+  },
+};
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   html, body {

@@ -4,37 +4,23 @@ import { v4 as uuidV4 } from 'uuid';
 
 import * as Styled from './footer.styled';
 
-const genNav = ({ items, onNavClick }) => {
-  const { NavContainer, NavCol, NavTitle, NavItem } = Styled;
-
-  return (
-    <NavContainer>
-      {items.map(item => {
-        const { title, items, link } = item;
-        const key = uuidV4();
-
-        if (items) {
-          return (
-            <NavCol key={key}>
-              <NavTitle>{title}</NavTitle>
-              {genNav({ items, onNavClick })}
-            </NavCol>
-          );
-        }
-
-        return (
-          <NavItem key={key} onClick={e => onNavClick(link)}>
-            {title}
-          </NavItem>
-        );
-      })}
-    </NavContainer>
-  );
-};
-
 const Footer = ({ logo, title, navItems, onNavClick }) => (
   <Styled.Container>
-    <Styled.Content>{genNav({ items: navItems, onNavClick })}</Styled.Content>
+    <Styled.Content>
+      <Styled.NavRow gutter={16}>
+        {navItems.map(({ title, items }) => (
+          <Styled.NavCol key={uuidV4()} span={8}>
+            <Styled.NavTitle>{title}</Styled.NavTitle>
+
+            {items.map(({ title, link }) => (
+              <Styled.NavItem key={uuidV4()} onClick={e => onNavClick(link)}>
+                {title}
+              </Styled.NavItem>
+            ))}
+          </Styled.NavCol>
+        ))}
+      </Styled.NavRow>
+    </Styled.Content>
   </Styled.Container>
 );
 

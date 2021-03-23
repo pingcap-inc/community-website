@@ -41,14 +41,23 @@ export const NavItem = styled.div`
   }
 `;
 
-export const SocialMediaContainer = styled(Col)``;
+export const SocialMediaContainer = styled(Col)`
+  margin-right: -1.3rem;
+  margin-bottom: -1rem;
+  overflow: hidden;
+`;
 
 export const SocialMediaItem = styled.div`
-  ${mixins.size('50px')};
+  cursor: pointer;
+  margin-right: 1.3rem;
+  margin-bottom: 1rem;
+  --iconColor: ${colors.B3};
 
   svg {
-    * {
-      fill: red;
-    }
+    ${mixins.size('36px')};
+  }
+
+  &:hover {
+    --iconColor: ${colors.B1};
   }
 `;

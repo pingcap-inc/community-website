@@ -41,16 +41,16 @@ export const NavItem = styled.div`
   }
 `;
 
-export const SocialMediaContainer = styled(Col)`
-  margin-right: -1.3rem;
-  margin-bottom: -1rem;
-  overflow: hidden;
+export const SocialsRow = styled(Row)``;
+
+export const SocialsCol = styled(Col).attrs({
+  span: 8
+})`
+  text-align: right;
 `;
 
-export const SocialMediaItem = styled.div`
+export const IconWrapper = styled.span`
   cursor: pointer;
-  margin-right: 1.3rem;
-  margin-bottom: 1rem;
   --iconColor: ${colors.B3};
 
   svg {

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { Row, Col } from 'antd';
-import { v4 as uuidV4 } from 'uuid';
 
 import GithubIcon from './icons/github.svg';
 import TwitterIcon from './icons/twitter.svg';
@@ -20,11 +19,11 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
         <Col xs={24} md={18}>
           <Styled.NavRow gutter={16}>
             {navItems.map(({ title, items }) => (
-              <Styled.NavCol key={uuidV4()} span={8}>
+              <Styled.NavCol key={title} span={8}>
                 <Styled.NavTitle>{title}</Styled.NavTitle>
 
                 {items.map(({ title, link }) => (
-                  <Styled.NavItem key={uuidV4()} onClick={e => onNavClick(link)}>
+                  <Styled.NavItem key={title} onClick={e => onNavClick(link)}>
                     {title}
                   </Styled.NavItem>
                 ))}
@@ -35,8 +34,8 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
 
         <Styled.SocialsContainer xs={24} md={6}>
           <Styled.SocialsList>
-            {icons.map(Icon => (
-              <Styled.SocialsItem>
+            {icons.map((Icon, idx) => (
+              <Styled.SocialsItem key={idx}>
                 <Styled.IconWrapper>
                   <Icon />
                 </Styled.IconWrapper>

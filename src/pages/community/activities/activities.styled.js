@@ -25,4 +25,7 @@ export const Desc = styled.p`
   margin-bottom: 3rem;
 `;
 
-export const Card = styled.div``;
+export const Card = styled.div`
+  height: 200px;
+  border: 1px solid #999;
+`;

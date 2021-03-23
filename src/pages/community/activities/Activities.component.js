@@ -2,6 +2,7 @@ import React from 'react';
 import { Row, Col } from 'antd';
 
 import * as Styled from './activities.styled';
+import * as data from './activities.data';
 
 const Activities = () => (
   <Styled.Container>
@@ -15,12 +16,12 @@ const Activities = () => (
       </Styled.Header>
     </Row>
 
-    <Row justify="center">
-      <Col xs={24} sm={12} md={8}>
-        <Styled.Card>1</Styled.Card>
-        <Styled.Card>2</Styled.Card>
-        <Styled.Card>3</Styled.Card>
-      </Col>
+    <Row gutter={32} justify="center">
+      {data.activies.map(item => (
+        <Col xs={24} sm={12} md={8}>
+          <Styled.Card>{item.title}</Styled.Card>
+        </Col>
+      ))}
     </Row>
   </Styled.Container>
 );

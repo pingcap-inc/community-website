@@ -45,6 +45,16 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
           </Styled.SocialsList>
         </Styled.SocialsContainer>
       </Row>
+
+      <Row>
+        <Styled.Copyright xs={24} md={18}>
+          <span>&copy;</span>2021 TiDB Community.
+        </Styled.Copyright>
+        <Styled.Logo xs={24} md={6}>
+          {logo}
+          {title}
+        </Styled.Logo>
+      </Row>
     </Styled.Content>
   </Styled.Container>
 );

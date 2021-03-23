@@ -30,6 +30,7 @@ export const createAppGlobalStyle = () => createGlobalStyle`
     &:lang(zh-CN) {
       font-family: "Noto Sans", "Noto Sans CJK", "Helvetica Neue", Arial, sans-serif;
     }
+    color: ${colors.F1};
     font-size: 16px;
     line-height: 1.75;
   }

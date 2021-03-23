@@ -14,7 +14,9 @@ export const Content = styled.div`
   padding: 3rem 0;
 `;
 
-export const NavRow = styled(Row)``;
+export const NavRow = styled(Row)`
+  margin-bottom: 3rem;
+`;
 
 export const NavCol = styled(Col)`
   max-width: 250px;
@@ -22,7 +24,7 @@ export const NavCol = styled(Col)`
 
 export const NavTitle = styled.h3`
   ${mixins.reset()};
-  ${mixins.typography('h2')};
+  ${mixins.typography('h3')};
   margin-bottom: 2rem;
 `;
 
@@ -43,6 +45,7 @@ export const NavItem = styled.div`
 
 export const SocialsContainer = styled(Col)`
   ${mixins.flexEnd()};
+  margin-bottom: 3rem;
 `;
 
 export const SocialsList = styled(Row).attrs({
@@ -72,3 +75,13 @@ export const IconWrapper = styled.span`
     --iconColor: ${colors.B1};
   }
 `;
+
+export const Copyright = styled(Col)`
+  span {
+    font-size: 1.2em;
+    position: relative;
+    top: 0.15em;
+  }
+`;
+
+export const Logo = styled(Col)``;

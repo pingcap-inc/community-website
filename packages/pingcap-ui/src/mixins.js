@@ -36,7 +36,7 @@ export const typography = level => {
     `,
 
     h3: css`
-      font-size: 1.25rem;
+      font-size: 1.125rem;
       line-height: ${26 / 18};
       color: ${colors.F1};
       font-weight: 600;

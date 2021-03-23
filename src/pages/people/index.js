@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
+import { v4 as uuidV4 } from 'uuid';
 
 import Container from 'components/Container/Container';
 import HowToBecome from 'components/people/HowToBecome/HowToBecome';
@@ -19,11 +20,11 @@ export const getStaticProps = () => {
   const howToBecome = [
     { index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: joinTUGLink },
     { index: 2, iconUrl: 'images/people/how-to-become-2.svg', title: '信息审核' },
-    { index: 3, iconUrl: 'images/people/how-to-become-3.svg', title: '邀请加入' },
+    { index: 3, iconUrl: 'images/people/how-to-become-3.svg', title: '邀请加入' }
   ];
 
   return {
-    props: { howToBecome, tmc, leader },
+    props: { howToBecome, tmc, leader }
   };
 };
 
@@ -31,10 +32,10 @@ const People = ({ howToBecome, tmc, leader }) => {
   const howToBecomeDom = [];
 
   howToBecome.forEach((item, index) => {
-    howToBecomeDom.push(<HowToBecome {...item} />);
+    howToBecomeDom.push(<HowToBecome key={uuidV4()} {...item} />);
     if (index !== howToBecome.length - 1) {
       howToBecomeDom.push(
-        <div className={styles.how_to_become_list_arrow}>
+        <div key={uuidV4()} className={styles.how_to_become_list_arrow}>
           <img src="images/people/arrow.svg" alt=">" />
         </div>
       );

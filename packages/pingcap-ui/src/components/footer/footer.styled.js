@@ -14,11 +14,11 @@ export const Content = styled.div`
   padding: 3rem 0;
 `;
 
-export const NavRow = styled(Row)`
-  max-width: 750px;
-`;
+export const NavRow = styled(Row)``;
 
-export const NavCol = styled(Col)``;
+export const NavCol = styled(Col)`
+  max-width: 250px;
+`;
 
 export const NavTitle = styled.h3`
   ${mixins.reset()};
@@ -38,5 +38,17 @@ export const NavItem = styled.div`
 
   &:last-child {
     margin-bottom: 0;
+  }
+`;
+
+export const SocialMediaContainer = styled(Col)``;
+
+export const SocialMediaItem = styled.div`
+  ${mixins.size('50px')};
+
+  svg {
+    path {
+      fill: red;
+    }
   }
 `;

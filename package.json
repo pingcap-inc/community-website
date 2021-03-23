@@ -20,7 +20,7 @@
     }
   },
   "lint-staged": {
-    "*": [
+    "*.{js,jsx,json,css,scss,md}": [
       "prettier-eslint --write",
       "git add"
     ]
@@ -47,6 +47,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
+    "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "5.11.9",
     "@testing-library/react": "11.2.5",
     "@typescript-eslint/eslint-plugin": "4.18.0",

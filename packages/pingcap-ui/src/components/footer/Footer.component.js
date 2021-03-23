@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
+import GithubIcon from './github.svg';
 import * as Styled from './footer.styled';
 
 const Footer = ({ logo, title, navItems, onNavClick }) => (
@@ -20,6 +21,12 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
           </Styled.NavCol>
         ))}
       </Styled.NavRow>
+
+      <Styled.SocialMediaContainer>
+        <Styled.SocialMediaItem>
+          <GithubIcon />
+        </Styled.SocialMediaItem>
+      </Styled.SocialMediaContainer>
     </Styled.Content>
   </Styled.Container>
 );

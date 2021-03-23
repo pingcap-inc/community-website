@@ -11,9 +11,7 @@ export const Container = styled.div`
   justify-content: space-between;
 `;
 
-export const Logo = styled.div``;
-
-export const Title = styled.h1`
+export const Logo = styled.h1`
   ${mixins.reset()};
   ${mixins.typography('h1')};
   cursor: pointer;
@@ -25,5 +23,5 @@ export const Title = styled.h1`
 `;
 
 export const Menu = styled(AntMenu).attrs({
-  mode: 'horizontal',
+  mode: 'horizontal'
 })``;

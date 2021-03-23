@@ -41,16 +41,27 @@ export const NavItem = styled.div`
   }
 `;
 
-export const SocialsRow = styled(Row)``;
+export const SocialsContainer = styled(Col)`
+  ${mixins.flexEnd()};
+`;
 
-export const SocialsCol = styled(Col).attrs({
+export const SocialsList = styled(Row).attrs({
+  justify: 'end',
+  align: 'top',
+  gutter: [16, 12]
+})`
+  width: 180px;
+`;
+
+export const SocialsItem = styled(Col).attrs({
   span: 8
 })`
-  text-align: right;
+  ${mixins.flexEnd()};
 `;
 
 export const IconWrapper = styled.span`
   cursor: pointer;
+  font-size: 0;
   --iconColor: ${colors.B3};
 
   svg {

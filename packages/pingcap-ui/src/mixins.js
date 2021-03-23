@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import * as colors from './colors';
 import { responsiveWidths, breakPoints } from './constants';
 
-export const typography = (level) => {
+export const typography = level => {
   const levels = {
     h0: css`
       font-size: 1.875rem;
@@ -63,7 +63,7 @@ export const typography = (level) => {
       &:lang(zh-CN) {
         font-weight: 300;
       }
-    `,
+    `
   };
 
   return levels[level];
@@ -74,14 +74,14 @@ export const reset = () => css`
   padding: 0;
 `;
 
-export const centerBlock = (width) => css`
+export const centerBlock = width => css`
   display: block;
   margin-left: auto;
   margin-right: auto;
   ${width &&
-  css`
-    width: ${width};
-  `};
+    css`
+      width: ${width};
+    `};
 `;
 
 export const verticalLineMiddle = (height = 0) => css`
@@ -97,6 +97,11 @@ export const flexVerticalCenter = (type = 'block') => css`
 export const flexCenter = (type = 'block') => css`
   ${flexVerticalCenter(type)};
   justify-content: center;
+`;
+
+export const flexEnd = (type = 'block') => css`
+  ${flexVerticalCenter(type)};
+  justify-content: flex-end;
 `;
 
 export const size = (width, height = width) => css`

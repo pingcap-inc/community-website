@@ -16,7 +16,7 @@ const icons = [GithubIcon, TwitterIcon, FacebookIcon, LinkedInIcon, SlackIcon, Y
 const Footer = ({ logo, title, navItems, onNavClick }) => (
   <Styled.Container>
     <Styled.Content>
-      <Row>
+      <Row align="top">
         <Col xs={24} md={18}>
           <Styled.NavRow gutter={16}>
             {navItems.map(({ title, items }) => (
@@ -33,17 +33,17 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
           </Styled.NavRow>
         </Col>
 
-        <Col xs={24} md={6}>
-          <Styled.SocialsRow>
+        <Styled.SocialsContainer xs={24} md={6}>
+          <Styled.SocialsList>
             {icons.map(Icon => (
-              <Styled.SocialsCol>
+              <Styled.SocialsItem>
                 <Styled.IconWrapper>
                   <Icon />
                 </Styled.IconWrapper>
-              </Styled.SocialsCol>
+              </Styled.SocialsItem>
             ))}
-          </Styled.SocialsRow>
-        </Col>
+          </Styled.SocialsList>
+        </Styled.SocialsContainer>
       </Row>
     </Styled.Content>
   </Styled.Container>

@@ -28,12 +28,10 @@ const genMenu = ({ items, onNavClick }) =>
 
 const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => (
   <Styled.Container>
-    <Styled.Title onClick={onTitleClick}>
-      <Styled.Logo>
-        {logo}
-        {title}
-      </Styled.Logo>
-    </Styled.Title>
+    <Styled.Logo onClick={onTitleClick}>
+      {logo}
+      {title}
+    </Styled.Logo>
     <Styled.Menu selectedKeys={currentNav && [currentNav]}>{genMenu({ items: navItems, onNavClick })}</Styled.Menu>
   </Styled.Container>
 );

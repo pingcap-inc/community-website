@@ -47,7 +47,7 @@ export const SocialMediaItem = styled.div`
   ${mixins.size('50px')};
 
   svg {
-    path {
+    * {
       fill: red;
     }
   }

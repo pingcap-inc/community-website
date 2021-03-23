@@ -2,8 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
-import GithubIcon from './github.svg';
+import GithubIcon from './icons/github.svg';
+import TwitterIcon from './icons/twitter.svg';
+import FacebookIcon from './icons/facebook.svg';
+import LinkedInIcon from './icons/linkedin.svg';
+import SlackIcon from './icons/slack.svg';
+import YoutubeIcon from './icons/youtube.svg';
 import * as Styled from './footer.styled';
+
+const icons = [GithubIcon, TwitterIcon, FacebookIcon, LinkedInIcon, SlackIcon, YoutubeIcon];
 
 const Footer = ({ logo, title, navItems, onNavClick }) => (
   <Styled.Container>
@@ -23,9 +30,11 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
       </Styled.NavRow>
 
       <Styled.SocialMediaContainer>
-        <Styled.SocialMediaItem>
-          <GithubIcon />
-        </Styled.SocialMediaItem>
+        {icons.map(Icon => (
+          <Styled.SocialMediaItem>
+            <Icon />
+          </Styled.SocialMediaItem>
+        ))}
       </Styled.SocialMediaContainer>
     </Styled.Content>
   </Styled.Container>

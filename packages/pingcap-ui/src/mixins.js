@@ -110,12 +110,19 @@ export const size = (width, height = width) => css`
 `;
 
 export const responsive = () => css`
+  @media screen and (max-width: ${breakPoints.md}) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   @media screen and (min-width: ${breakPoints.md}) {
     max-width: ${responsiveWidths.md};
   }
+
   @media screen and (min-width: ${breakPoints.lg}) {
     max-width: ${responsiveWidths.lg};
   }
+
   @media screen and (min-width: ${breakPoints.xl}) {
     max-width: ${responsiveWidths.lx};
   }

@@ -24,9 +24,3 @@ export const Desc = styled.p`
   ${mixins.typography('p1')};
   margin-bottom: 3rem;
 `;
-
-export const Card = styled.div`
-  height: 525px;
-  border: 1px solid #e9eaee;
-  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.08);
-`;

@@ -6,7 +6,7 @@ import { Row, Col } from 'antd';
 import * as Styled from './activityCards.styled';
 
 const ActivityCards = props => {
-  const { cards, onCardClick, renderImage } = R.mergeRight(
+  const { activities, onCardClick, renderImage } = R.mergeRight(
     {
       cards: [],
       onCardClick: () => {},
@@ -17,7 +17,7 @@ const ActivityCards = props => {
 
   return (
     <Row gutter={[32, 24]} justify="center">
-      {cards.map(({ desc, img, link, title }) => (
+      {activities.map(({ desc, img, link, title }) => (
         <Col key={title} xs={24} sm={12} md={8}>
           <Styled.Card onClick={e => onCardClick(link)}>
             <Styled.Image>
@@ -26,7 +26,10 @@ const ActivityCards = props => {
                 title
               })}
             </Styled.Image>
-            <Styled.Content></Styled.Content>
+            <Styled.Content>
+              <Styled.Title>{title}</Styled.Title>
+              <Styled.Desc>{desc}</Styled.Desc>
+            </Styled.Content>
           </Styled.Card>
         </Col>
       ))}
@@ -35,15 +38,15 @@ const ActivityCards = props => {
 };
 
 ActivityCards.propTypes = {
-  cards: PropTypes.shape([
-    {
+  activities: PropTypes.arrayOf(
+    PropTypes.shape({
       desc: PropTypes.string.isRequired,
       img: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired
-    }
-  ]),
-  onCardClick: PropTypes.func,
+    })
+  ),
+  onCardClick: PropTypes.func.isRequired,
   renderImage: PropTypes.func
 };
 

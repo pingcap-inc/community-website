@@ -20,7 +20,7 @@ const Button = ({ as, icon, className, children, size, type, rounded, disabled, 
   if (rest.href) {
     TagName = MyLink;
     rest.target = '_blank';
-    rest.rel = 'noopener noreferrer';
+    rest.rel = 'noopener';
   }
 
   const props = {

@@ -1,3 +1,6 @@
 {
-  "extends": "react-app"
+  "extends": "react-app",
+  "rules": {
+    "react/jsx-no-target-blank": [1, { "allowReferrer": false, "enforceDynamicLinks": true }]
+  }
 }

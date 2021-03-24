@@ -19,7 +19,7 @@ const Socials = ({ type, title }) => {
         {data &&
           data.map((social) => (
             <Col key={social.name} span={8}>
-              <a className={styles.item} target="_blank" rel="noopener noreferrer" href={social.href}>
+              <a className={styles.item} target="_blank" rel="noopener" href={social.href}>
                 <div className={styles[social.name]} />
               </a>
             </Col>

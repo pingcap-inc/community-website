@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function MyLink({ to, href, children, ...rest }) {
   return href ? (
-    <a {...rest} href={href} target="_blank" rel="noreferrer noopener">
+    <a {...rest} href={href} target="_blank" rel="noopener">
       {children}
     </a>
   ) : (

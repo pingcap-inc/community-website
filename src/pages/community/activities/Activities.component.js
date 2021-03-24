@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'antd';
+import { ActivityCards } from '@pingcap/pingcap-ui';
+import { Row } from 'antd';
 
 import * as Styled from './activities.styled';
 import * as data from './activities.data';
@@ -16,13 +17,7 @@ const Activities = () => (
       </Styled.Header>
     </Row>
 
-    <Row gutter={[32, 24]} justify="center">
-      {data.activies.map(item => (
-        <Col key={item.title} xs={24} sm={12} md={8}>
-          <Styled.Card>{item.title}</Styled.Card>
-        </Col>
-      ))}
-    </Row>
+    <ActivityCards activities={data.activies} />
   </Styled.Container>
 );
 

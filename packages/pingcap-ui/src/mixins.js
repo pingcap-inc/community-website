@@ -127,3 +127,14 @@ export const responsive = () => css`
     max-width: ${responsiveWidths.lx};
   }
 `;
+
+export const boxShadow = () => css`
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.08);
+`;
+
+export const lineClamp = lineNum => css`
+  display: -webkit-box;
+  -webkit-line-clamp: ${lineNum};
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+`;

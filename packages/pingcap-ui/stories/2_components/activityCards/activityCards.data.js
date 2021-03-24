@@ -1,4 +1,4 @@
-export const cards = [
+export const activities = [
   {
     title: 'TiDB Hackathon 2020',
     desc:

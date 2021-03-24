@@ -1,4 +1,4 @@
-import site from './data/asktug_site.json';
+import site from 'data/asktug_site.json';
 
 export function getAvatarUrlByAvatarTemplateString(tplStr, size = 64) {
   return 'https://asktug.com/' + tplStr.replace('{size}', size);
@@ -13,7 +13,7 @@ export function getUserUrlByUsername(username) {
 }
 
 export function getCategoryById(id) {
-  return site.categories.filter((category) => category.id === id)[0];
+  return site.categories.filter(category => category.id === id)[0];
 }
 
 export async function getExcerptByTopicId(id, wordCountLimit = 70) {
@@ -23,3 +23,5 @@ export async function getExcerptByTopicId(id, wordCountLimit = 70) {
   const fullExcerpt = json.post_stream.posts[0].cooked.replace(/<\/?.+?>/g, '');
   return fullExcerpt.length > wordCountLimit ? fullExcerpt.slice(0, wordCountLimit) + ' ...' : fullExcerpt;
 }
+
+export * as link from './link.utils';

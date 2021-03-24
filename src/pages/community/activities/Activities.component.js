@@ -16,9 +16,9 @@ const Activities = () => (
       </Styled.Header>
     </Row>
 
-    <Row gutter={32} justify="center">
+    <Row gutter={[32, 24]} justify="center">
       {data.activies.map(item => (
-        <Col xs={24} sm={12} md={8}>
+        <Col key={item.title} xs={24} sm={12} md={8}>
           <Styled.Card>{item.title}</Styled.Card>
         </Col>
       ))}

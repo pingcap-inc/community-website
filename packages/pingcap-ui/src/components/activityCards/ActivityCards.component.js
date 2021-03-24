@@ -38,15 +38,15 @@ const ActivityCards = props => {
 };
 
 ActivityCards.propTypes = {
-  activities: PropTypes.shape([
-    {
+  activities: PropTypes.arrayOf(
+    PropTypes.shape({
       desc: PropTypes.string.isRequired,
       img: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired
-    }
-  ]),
-  onCardClick: PropTypes.func,
+    })
+  ),
+  onCardClick: PropTypes.func.isRequired,
   renderImage: PropTypes.func
 };
 

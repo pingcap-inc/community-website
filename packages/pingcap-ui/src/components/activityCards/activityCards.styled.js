@@ -7,6 +7,7 @@ export const Card = styled.div`
   ${mixins.boxShadow()};
   height: 400px;
   border: 1px solid ${colors.T2};
+  cursor: pointer;
 `;
 
 export const Image = styled.div`

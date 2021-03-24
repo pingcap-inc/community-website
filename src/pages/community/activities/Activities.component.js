@@ -10,10 +10,9 @@ import { link as linkUtils } from 'utils';
 
 const Activities = () => {
   const router = useRouter();
-  const handleRedirection = R.curry(linkUtils.handleRedirect)(router);
 
   const activityCardsProps = {
-    onCardClick: handleRedirection,
+    onCardClick: R.curry(linkUtils.handleRedirect)(router),
     activities: data.activities
   };
 

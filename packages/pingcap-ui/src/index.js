@@ -22,7 +22,7 @@ export const utils = {
 };
 
 export { colors, constants, mixins };
-export { ActivityCard, Footer, Header } from './components';
+export { ActivityCards, Footer, Header } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   html, body {

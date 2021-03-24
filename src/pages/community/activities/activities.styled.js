@@ -26,6 +26,7 @@ export const Desc = styled.p`
 `;
 
 export const Card = styled.div`
-  height: 200px;
-  border: 1px solid #999;
+  height: 525px;
+  border: 1px solid #e9eaee;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.08);
 `;

@@ -33,6 +33,19 @@ export default function SEO({ title, description, keyword }) {
       <link rel="icon" href="/favicon(32x32).ico" sizes="32x32" />
       <link rel="icon" href="/favicon(48x48).ico" sizes="48x48" />
       <link rel="icon" href="/favicon(64x64).ico" sizes="64x64" />
+
+      {/* GA setup: https://stackoverflow.com/a/62552263/14257627 */}
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-6W0S4GLFZ1"></script>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-6W0S4GLFZ1');
+        `,
+        }}
+      />
     </Head>
   );
 }

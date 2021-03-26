@@ -5,3 +5,8 @@ export const Container = styled.div`
   padding: 5rem 0;
   background: ${colors.M2};
 `;
+
+export const Content = styled.div`
+  ${mixins.centerBlock()};
+  ${mixins.responsive()};
+`;

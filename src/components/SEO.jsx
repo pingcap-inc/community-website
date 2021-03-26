@@ -1,13 +1,12 @@
 import React from 'react';
 import Head from 'next/head';
 
-import tugConfig from '../tug.config';
-
-const iconUrl = '/images/icon.svg';
+import tugConfig from 'tug.config';
 
 export default function SEO({ title, description, keyword }) {
   const keywordStr = keyword && Array.isArray(keyword) ? keyword.join(',') : keyword;
   const fullTitle = title + tugConfig.titleSuffix;
+
   return (
     <Head>
       <title>{fullTitle}</title>
@@ -19,7 +18,7 @@ export default function SEO({ title, description, keyword }) {
       <meta name="og:title" content={fullTitle} />
       <meta name="og:description" content={description} />
       <meta name="og:type" content="website" />
-      <meta name="og:image" content={iconUrl} />
+      <meta name="og:image" content="/images/icon.svg" />
       <meta name="og:image:width" content="200" />
       <meta name="og:image:height" content="200" />
 

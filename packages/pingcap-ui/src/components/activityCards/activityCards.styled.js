@@ -11,8 +11,13 @@ export const Card = styled.div`
 `;
 
 export const Image = styled.div`
+  &,
   img {
+    position: relative;
     ${mixins.size('100%', '200px')};
+  }
+
+  img {
     object-fit: cover;
   }
 `;

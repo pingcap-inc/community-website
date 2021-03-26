@@ -1,4 +1,5 @@
 import * as R from 'ramda';
+import Image from 'next/image';
 import React from 'react';
 import { ActivityCards } from '@pingcap/pingcap-ui';
 import { Row } from 'antd';
@@ -12,8 +13,9 @@ const Activities = () => {
   const router = useRouter();
 
   const activityCardsProps = {
+    activities: data.activities,
     onCardClick: R.curry(linkUtils.handleRedirect)(router),
-    activities: data.activities
+    renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />
   };
 
   return (

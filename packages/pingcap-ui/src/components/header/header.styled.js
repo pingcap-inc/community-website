@@ -12,13 +12,12 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.h1`
-  ${mixins.reset()};
-  ${mixins.typography('h1')};
+  ${mixins.logoTitle('h1')};
   cursor: pointer;
 
   img {
-    ${mixins.size('45px', '52px')};
-    margin-right: 0.5rem;
+    ${mixins.size('32px', '37px')};
+    margin-right: 0.3rem;
   }
 `;
 

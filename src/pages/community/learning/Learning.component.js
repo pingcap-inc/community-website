@@ -1,12 +1,17 @@
+import * as R from 'ramda';
 import Image from 'next/image';
 import React from 'react';
 import { Row, Col } from 'antd';
+import { useRouter } from 'next/router';
 
 import * as Styled from './learning.styled';
 import data from './learning.data';
+import { link as linkUtils } from 'utils';
 
 const Learning = () => {
+  const router = useRouter();
   const { title, desc, btns } = data;
+  const onBtnClick = R.curry(linkUtils.handleRedirect)(router);
 
   return (
     <Styled.Container>
@@ -26,8 +31,10 @@ const Learning = () => {
             </Styled.Desc>
 
             <Styled.Buttons>
-              <Styled.Button ghost>{btns.pu}</Styled.Button>
-              <Styled.Button>{btns.docs}</Styled.Button>
+              <Styled.Button ghost onClick={e => onBtnClick(btns.pu.link)}>
+                {btns.pu.label}
+              </Styled.Button>
+              <Styled.Button onClick={e => onBtnClick(btns.docs.link)}>{btns.docs.label}</Styled.Button>
             </Styled.Buttons>
           </Col>
         </Row>

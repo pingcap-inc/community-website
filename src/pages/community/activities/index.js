@@ -1,3 +1,1 @@
-import Activities from './Activities.component';
-
-export default Activities;
+export { default, Header } from './Activities.component';

@@ -2,13 +2,17 @@ const data = {
   title: 'Become a Contributor',
   items: [
     {
-      title: '1'
+      title: 'Contributing Guide',
+      desc: 'Development workflow, commit message formatting, contact points and other resources.'
     },
     {
-      title: '2'
+      title: 'Join Developer Group',
+      desc:
+        'Learning knowledge and skills, sharing best practices, become a database expert, develop database standards.'
     },
     {
-      title: '3'
+      title: 'Code of Conduct',
+      desc: 'Agreement on rules of behaviour for the members of TiDB Community.'
     }
   ]
 };

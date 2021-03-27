@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { Row, Col } from 'antd';
 
@@ -9,9 +10,12 @@ const Contributor = () => (
     <Styled.Title>{data.title}</Styled.Title>
 
     <Row gutter={32} justify="center">
-      {data.items.map(({ title }, idx) => (
+      {data.items.map(({ title, desc }, idx) => (
         <Col key={idx} xs={24} sm={12} md={8}>
-          <Styled.Card>{title}</Styled.Card>
+          <Styled.Card>
+            <h3>{title}</h3>
+            <p>{desc}</p>
+          </Styled.Card>
         </Col>
       ))}
     </Row>

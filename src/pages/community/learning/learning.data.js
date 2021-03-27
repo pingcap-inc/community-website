@@ -5,8 +5,14 @@ const data = {
     'You can also read the official document to learn the usage of TiDB.'
   ],
   btns: {
-    pu: 'PingCAP University',
-    docs: 'Docs'
+    pu: {
+      label: 'PingCAP University',
+      link: 'https://university.pingcap.com'
+    },
+    docs: {
+      label: 'Docs',
+      link: 'https://docs.pingcap.com/tidb/stable'
+    }
   }
 };
 

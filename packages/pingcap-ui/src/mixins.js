@@ -110,6 +110,8 @@ export const size = (width, height = width) => css`
 `;
 
 export const responsive = () => css`
+  ${centerBlock()};
+
   @media screen and (max-width: ${breakPoints.md}) {
     padding-left: 16px;
     padding-right: 16px;

@@ -4,7 +4,6 @@ import { Col } from 'antd';
 import { mixins } from '@pingcap/pingcap-ui';
 
 export const Container = styled.div`
-  ${mixins.centerBlock()};
   ${mixins.responsive()};
   padding: 5rem 0;
 `;

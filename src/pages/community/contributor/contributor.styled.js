@@ -21,6 +21,7 @@ export const Card = styled.div`
   height: 480px;
   padding: 0 3rem;
   text-align: center;
+  cursor: pointer;
 
   h3,
   p {

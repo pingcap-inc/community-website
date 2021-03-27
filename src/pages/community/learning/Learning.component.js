@@ -17,7 +17,7 @@ const Learning = () => {
   return (
     <Styled.Container>
       <Styled.Content>
-        <Row gutter={[32, 32]} justify="space-between">
+        <Row gutter={[48, 32]} justify="space-between">
           <Col xs={24} md={10}>
             <Image alt={title} src="/images/community/learn.svg" width="452" height="247" />
           </Col>

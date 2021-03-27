@@ -17,7 +17,7 @@ const Learning = () => {
   return (
     <Styled.Container>
       <Styled.Content>
-        <Row gutter={[32, 32]} justify="space-between">
+        <Row gutter={[48, 32]} justify="space-between">
           <Col xs={24} md={14}>
             <Styled.Title>{title}</Styled.Title>
 
@@ -32,7 +32,7 @@ const Learning = () => {
           </Col>
 
           <Col xs={24} md={10}>
-            <Image alt={title} src="/images/community/learn.svg" width="452" height="247" />
+            <Image alt={title} src="/images/community/join.svg" width="455.5" height="336.5" />
           </Col>
         </Row>
       </Styled.Content>

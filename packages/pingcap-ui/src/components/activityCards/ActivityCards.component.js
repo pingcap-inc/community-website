@@ -17,8 +17,8 @@ const ActivityCards = props => {
 
   return (
     <Row gutter={[32, 24]} justify="center">
-      {activities.map(({ desc, img, link, title }) => (
-        <Col key={title} xs={24} sm={12} md={8}>
+      {activities.map(({ desc, img, link, title }, idx) => (
+        <Col key={idx} xs={24} sm={12} md={8}>
           <Styled.Card onClick={e => onCardClick(link)}>
             <Styled.Image>
               {renderImage({

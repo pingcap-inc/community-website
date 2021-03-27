@@ -4,7 +4,6 @@ import { Menu as AntMenu } from 'antd';
 import * as mixins from '../../mixins';
 
 export const Container = styled.div`
-  ${mixins.centerBlock()};
   ${mixins.responsive()};
   ${mixins.flexVerticalCenter()};
   height: 84px;

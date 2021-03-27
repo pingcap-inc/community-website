@@ -5,8 +5,8 @@ import * as mixins from '../../mixins';
 
 export const Card = styled.div`
   ${mixins.boxShadow()};
-  height: 400px;
   border: 1px solid ${colors.T2};
+  height: 400px;
   cursor: pointer;
 `;
 

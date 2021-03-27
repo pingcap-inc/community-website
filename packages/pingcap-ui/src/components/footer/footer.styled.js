@@ -9,7 +9,6 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  ${mixins.centerBlock()};
   ${mixins.responsive()};
   padding-top: 3rem;
   padding-bottom: 3rem;

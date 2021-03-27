@@ -12,11 +12,12 @@ const Learning = () => {
   const router = useRouter();
   const { title, desc, btns } = data;
   const onBtnClick = R.curry(linkUtils.handleRedirect)(router);
+  const { pu: puBtn, docs: docsBtn } = btns;
 
   return (
     <Styled.Container>
       <Styled.Content>
-        <Row gutter={[32, 0]}>
+        <Row gutter={[32, 32]} justify="space-between">
           <Col xs={24} md={10}>
             <Image alt={title} src="/images/community/learn.svg" width="452" height="247" />
           </Col>
@@ -31,10 +32,10 @@ const Learning = () => {
             </Styled.Desc>
 
             <Styled.Buttons>
-              <Styled.Button ghost onClick={e => onBtnClick(btns.pu.link)}>
-                {btns.pu.label}
+              <Styled.Button ghost onClick={e => onBtnClick(puBtn.link)}>
+                {puBtn.label}
               </Styled.Button>
-              <Styled.Button onClick={e => onBtnClick(btns.docs.link)}>{btns.docs.label}</Styled.Button>
+              <Styled.Button onClick={e => onBtnClick(docsBtn.link)}>{docsBtn.label}</Styled.Button>
             </Styled.Buttons>
           </Col>
         </Row>

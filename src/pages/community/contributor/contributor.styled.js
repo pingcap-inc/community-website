@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { colors, mixins } from '@pingcap/pingcap-ui';
+import styled, { css } from 'styled-components';
+import { mixins } from '@pingcap/pingcap-ui';
 
 import { Header } from 'pages/community/activities';
 
@@ -13,12 +13,13 @@ export const Title = styled(Header)`
 `;
 
 export const Card = styled.div`
-  ${mixins.flexCenter()}
+  display: flex;
+  align-items: center;
   flex-direction: column;
   box-shadow: 0px 0px 8px rgba(219, 228, 240, 0.8);
   border-radius: 8px;
   height: 480px;
-  padding: 2rem 4rem;
+  padding: 0 3rem;
   text-align: center;
 
   h3,
@@ -33,7 +34,17 @@ export const Card = styled.div`
 
   p {
     ${mixins.typography('p1')};
+    ${mixins.lineClamp(5)};
   }
 `;
 
-export const CardImg = styled.div``;
+export const CardImg = styled.div`
+  ${mixins.flexVerticalCenter()};
+  height: 300px;
+
+  ${props =>
+    props.small &&
+    css`
+      height: 260px;
+    `};
+`;

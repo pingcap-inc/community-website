@@ -8,7 +8,7 @@ import * as Styled from './activityCards.styled';
 const ActivityCards = props => {
   const { activities, onCardClick, renderImage } = R.mergeRight(
     {
-      cards: [],
+      activities: [],
       onCardClick: () => {},
       renderImage: ({ img, title }) => <img alt={title} src={img} />
     },

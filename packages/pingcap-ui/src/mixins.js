@@ -138,3 +138,12 @@ export const lineClamp = lineNum => css`
   -webkit-box-orient: vertical;
   overflow: hidden;
 `;
+
+export const logoTitle = level => css`
+  ${reset()};
+  ${typography(level)};
+  ${flexVerticalCenter()};
+  color: #172d72;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+`;

@@ -86,11 +86,11 @@ export const Copyright = styled(Col)`
 `;
 
 export const Logo = styled(Col)`
-  ${mixins.typography('h2')};
+  ${mixins.logoTitle('h2')};
   ${mixins.flexEnd()};
 
   img {
-    ${mixins.size('30px', '34.5px')};
-    margin-right: 0.5rem;
+    ${mixins.size('24px', '28px')};
+    margin-right: 0.25rem;
   }
 `;

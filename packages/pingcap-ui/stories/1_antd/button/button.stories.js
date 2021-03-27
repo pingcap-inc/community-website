@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import React from 'react';
 import { Button } from 'antd';
 
@@ -13,6 +12,12 @@ export default {
     },
     ghost: {
       control: false
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'default', 'large']
+      }
     }
   }
 };
@@ -21,15 +26,17 @@ const Template = args => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
-  type: 'primary',
+  children: 'Button',
   disabled: false,
-  children: 'Button'
+  size: 'small',
+  type: 'primary'
 };
 
 export const Outline = Template.bind({});
 Outline.args = {
-  type: 'primary',
-  ghost: true,
+  children: 'Button',
   disabled: false,
-  children: 'Button'
+  ghost: true,
+  size: 'small',
+  type: 'primary'
 };

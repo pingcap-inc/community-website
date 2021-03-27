@@ -9,11 +9,11 @@ import data from './activities.data';
 import * as Styled from './activities.styled';
 import { link as linkUtils } from 'utils';
 
-export const Header = ({ title, desc }) => (
-  <Row justify="center">
+export const Header = ({ className, title, desc, children }) => (
+  <Row className={className} justify="center">
     <Styled.Header xs={24} md={12}>
-      <Styled.Title>{title}</Styled.Title>
-      <Styled.Desc>{desc}</Styled.Desc>
+      <Styled.Title>{title || children}</Styled.Title>
+      {desc && <Styled.Desc>{desc}</Styled.Desc>}
     </Styled.Header>
   </Row>
 );

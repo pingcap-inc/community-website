@@ -1,26 +1,26 @@
 const data = {
   title: 'Connect the Dots, Code the Future',
   desc: 'TiDB is An open-source, cloud-native, distributed SQL database for elastic scale and real-time analytics',
-  items: [
+  navs: [
     {
       title: 'AskTUG',
       label: 'View',
-      link: ''
+      link: 'https://asktug.com'
     },
     {
       title: 'Slack',
       label: 'Join',
-      link: ''
+      link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone'
     },
     {
       title: 'Mailing List',
       label: 'Subscribe',
-      link: ''
+      link: 'https://lists.tidb.io/g/main/subgroups'
     },
     {
       title: 'Docs',
       label: 'Read',
-      link: ''
+      link: 'https://docs.pingcap.com/tidb/stable'
     }
   ]
 };

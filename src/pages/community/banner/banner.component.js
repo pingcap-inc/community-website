@@ -14,10 +14,11 @@ const Banner = () => {
   const size = useSize(ref);
   const router = useRouter();
 
+  const { width: sizeWidth } = size;
   const onCardClick = R.curry(linkUtils.handleRedirect)(router);
 
   const imgSizeProps =
-    size.width > bgWidth
+    sizeWidth > bgWidth
       ? {
           layout: 'fill',
           objectFit: 'cover'
@@ -38,11 +39,13 @@ const Banner = () => {
         <h2>{data.title}</h2>
         <p>{data.desc}</p>
 
-        <Styled.Navs>
+        <Styled.Navs sm={sizeWidth < 700} md={sizeWidth < 900}>
           {data.navs.map(({ title, label, link }, idx) => (
             <Styled.NavCard key={idx} onClick={e => onCardClick(link)}>
               <h3>{title}</h3>
-              <div>{label} &gt;</div>
+              <Styled.NavDesc>
+                <span>{label}</span> &gt;
+              </Styled.NavDesc>
             </Styled.NavCard>
           ))}
         </Styled.Navs>

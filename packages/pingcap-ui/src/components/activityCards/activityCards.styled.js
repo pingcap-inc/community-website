@@ -4,7 +4,7 @@ import * as colors from '../../colors';
 import * as mixins from '../../mixins';
 
 export const Card = styled.div`
-  ${mixins.boxShadow()};
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.08);
   border: 1px solid ${colors.T2};
   height: 400px;
   cursor: pointer;

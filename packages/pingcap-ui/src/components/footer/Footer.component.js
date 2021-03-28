@@ -17,9 +17,9 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
     <Styled.Content>
       <Row align="top">
         <Col xs={24} md={18}>
-          <Styled.NavRow gutter={16}>
+          <Styled.NavRow gutter={[16, 48]}>
             {navItems.map(({ title, items }) => (
-              <Styled.NavCol key={title} span={8}>
+              <Styled.NavCol key={title} xs={24} md={8}>
                 <Styled.NavTitle>{title}</Styled.NavTitle>
 
                 {items.map(({ title, link }) => (

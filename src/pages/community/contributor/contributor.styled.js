@@ -3,10 +3,7 @@ import { mixins } from '@pingcap/pingcap-ui';
 
 import { Header } from 'pages/community/activities';
 
-export const Container = styled.div`
-  ${mixins.responsive()};
-  padding: 5rem 0;
-`;
+export { Container } from 'pages/community/activities/activities.styled';
 
 export const Title = styled(Header)`
   margin-bottom: 3rem;

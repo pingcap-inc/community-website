@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import Image from 'next/image';
 import React from 'react';
-import { Row } from 'antd';
+import { Row, Col } from 'antd';
 import { useRouter } from 'next/router';
 
 import * as Styled from './career.styled';
@@ -35,6 +35,21 @@ const Career = () => {
 
       <Styled.JobSection>
         <Styled.Title>{jobData.title}</Styled.Title>
+        <Row gutter={[32, 24]}>
+          {jobData.items.map(({ icon, position, location }, idx) => (
+            <Col key={idx} xs={24} sm={12} md={6}>
+              <Styled.JobCard>
+                <Styled.JobImg>
+                  <Image alt={position} src={icon} width="134" height="57" />
+                </Styled.JobImg>
+                <Styled.JobContent>
+                  <Styled.JobPosition title={position}>{position}</Styled.JobPosition>
+                  <Styled.JobLocation title={location}>{location}</Styled.JobLocation>
+                </Styled.JobContent>
+              </Styled.JobCard>
+            </Col>
+          ))}
+        </Row>
       </Styled.JobSection>
     </Styled.Container>
   );

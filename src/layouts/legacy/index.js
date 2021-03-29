@@ -1,3 +1,1 @@
-import Legacy from './Legacy.component';
-
-export default Legacy;
+export { default } from './Legacy.component';

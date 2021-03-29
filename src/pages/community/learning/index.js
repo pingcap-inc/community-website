@@ -1,3 +1,1 @@
-import Learning from './Learning.component';
-
-export default Learning;
+export { default } from './Learning.component';

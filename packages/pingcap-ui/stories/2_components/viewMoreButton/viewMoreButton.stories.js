@@ -1,5 +1,6 @@
 import { ViewMoreButton } from '@pingcap/pingcap-ui';
 
+import * as Styled from './viewMoreButton.styled';
 import { getTitle } from '../utils';
 
 export default {
@@ -7,7 +8,11 @@ export default {
   component: ViewMoreButton,
 };
 
-const Template = (args) => <ViewMoreButton {...args} />;
+const Template = (args) => (
+  <Styled.Container>
+    <ViewMoreButton {...args} />
+  </Styled.Container>
+);
 
 export const WithLabel = Template.bind({});
 

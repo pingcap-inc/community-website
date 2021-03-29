@@ -21,14 +21,13 @@ const Career = () => {
 
       <Styled.CertSection>
         <Styled.Title>{certData.title}</Styled.Title>
-        <Row gutter={[32, 32]}>
+        <Row gutter={[32, 24]}>
           {['PCTA', 'PCTP'].map(name => (
-            <Styled.CertCol
-              key={name}
-              onClick={e => onCertClick(`https://university.pingcap.com/certificate/${name}/`)}
-            >
-              <Image alt={name} src={`/images/community/${name}.svg`} width="642" height="257" />
-            </Styled.CertCol>
+            <Col key={name} xs={24} md={12}>
+              <Styled.CertContainer onClick={e => onCertClick(`https://university.pingcap.com/certificate/${name}/`)}>
+                <Image alt={name} src={`/images/community/${name}.svg`} width="642" height="257" />
+              </Styled.CertContainer>
+            </Col>
           ))}
         </Row>
       </Styled.CertSection>
@@ -36,15 +35,16 @@ const Career = () => {
       <Styled.JobSection>
         <Styled.Title>{jobData.title}</Styled.Title>
         <Row gutter={[32, 24]}>
-          {jobData.items.map(({ icon, position, location }, idx) => (
-            <Col key={idx} xs={24} sm={12} md={6}>
-              <Styled.JobCard>
+          {jobData.items.map(({ icon, position, location, link }, idx) => (
+            <Col key={idx} xs={24} sm={12} md={8} lg={6}>
+              <Styled.JobCard onClick={e => onCertClick(link)}>
                 <Styled.JobImg>
                   <Image alt={position} src={icon} width="134" height="57" />
                 </Styled.JobImg>
                 <Styled.JobContent>
-                  <Styled.JobPosition title={position}>{position}</Styled.JobPosition>
-                  <Styled.JobLocation title={location}>{location}</Styled.JobLocation>
+                  {[position, location].map(txt => (
+                    <Styled.JobText title={txt}>{txt}</Styled.JobText>
+                  ))}
                 </Styled.JobContent>
               </Styled.JobCard>
             </Col>

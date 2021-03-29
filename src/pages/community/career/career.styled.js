@@ -1,4 +1,3 @@
-import * as polished from 'polished';
 import styled from 'styled-components';
 import { Col } from 'antd';
 import { colors, mixins } from '@pingcap/pingcap-ui';
@@ -24,10 +23,7 @@ export const CertSection = styled.div`
   margin-bottom: 4rem;
 `;
 
-export const CertCol = styled(Col).attrs({
-  xs: 24,
-  md: 12
-})`
+export const CertContainer = styled.div`
   cursor: pointer;
 `;
 
@@ -38,6 +34,7 @@ export const JobCard = styled.div`
   ${mixins.flexVerticalCenter()};
   border: 1px solid ${colors.T2};
   padding: 1rem;
+  cursor: pointer;
 `;
 
 export const JobImg = styled.div`
@@ -50,8 +47,6 @@ export const JobContent = styled.div`
   flex: 1;
 `;
 
-export const JobPosition = styled.div`
+export const JobText = styled.div`
   ${mixins.lineClamp(1)}
 `;
-
-export const JobLocation = styled(JobPosition)``;

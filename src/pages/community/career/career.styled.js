@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { Col } from 'antd';
 import { colors, mixins } from '@pingcap/pingcap-ui';
 
 import { Header as ActivitiesHeader } from 'pages/community/activities';
@@ -39,8 +38,9 @@ export const JobCard = styled.div`
 
 export const JobImg = styled.div`
   ${mixins.flexCenter()};
+  ${mixins.size('70px', '46px')};
+  position: relative;
   margin-right: 1rem;
-  width: 70px;
 `;
 
 export const JobContent = styled.div`

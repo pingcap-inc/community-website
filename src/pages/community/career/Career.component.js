@@ -39,7 +39,7 @@ const Career = () => {
             <Col key={idx} xs={24} sm={12} md={8} lg={6}>
               <Styled.JobCard onClick={e => onCertClick(link)}>
                 <Styled.JobImg>
-                  <Image alt={position} src={icon} width="134" height="57" />
+                  <Image alt={position} src={icon} layout="fill" objectFit="contain" />
                 </Styled.JobImg>
                 <Styled.JobContent>
                   {[position, location].map(txt => (

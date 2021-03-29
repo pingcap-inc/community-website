@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Col } from 'antd';
 import { mixins } from '@pingcap/pingcap-ui';
 
 import { Header as ActivitiesHeader } from 'pages/community/activities';
@@ -20,6 +21,13 @@ export const Title = styled.h3`
 
 export const CertSection = styled.div`
   margin-bottom: 4rem;
+`;
+
+export const CertCol = styled(Col).attrs({
+  xs: 24,
+  md: 12
+})`
+  cursor: pointer;
 `;
 
 export const JobSection = styled.div``;

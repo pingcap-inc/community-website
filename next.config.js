@@ -1,4 +1,6 @@
 module.exports = {
+  pageExtensions: ['page.js'],
+
   images: {
     domains: ['pingcap.com']
   },

@@ -23,7 +23,7 @@ const Footer = ({ logo, title, navItems, onNavClick }) => (
                 <Styled.NavTitle>{title}</Styled.NavTitle>
 
                 {items.map(({ title, link }) => (
-                  <Styled.NavItem key={title} onClick={e => onNavClick(link)}>
+                  <Styled.NavItem key={title} onClick={(e) => onNavClick(link)}>
                     {title}
                   </Styled.NavItem>
                 ))}
@@ -62,7 +62,7 @@ Footer.propTypes = {
   logo: PropTypes.element.isRequired,
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default Footer;

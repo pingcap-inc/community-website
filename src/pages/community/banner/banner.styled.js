@@ -82,7 +82,7 @@ export const Navs = styled.div`
   position: absolute;
   bottom: -50px;
 
-  ${props =>
+  ${(props) =>
     props.md &&
     css`
       ${NavCard} {
@@ -91,7 +91,7 @@ export const Navs = styled.div`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.sm &&
     css`
       box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.08);

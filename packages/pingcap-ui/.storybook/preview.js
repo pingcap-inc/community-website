@@ -4,14 +4,14 @@ import { createAppGlobalStyle } from '@pingcap/pingcap-ui';
 const GlobalStyle = createAppGlobalStyle();
 
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' }
+  actions: { argTypesRegex: '^on[A-Z].*' },
 };
 
 export const decorators = [
-  Story => (
+  (Story) => (
     <div id="__next">
       <GlobalStyle />
       <Story />
     </div>
-  )
+  ),
 ];

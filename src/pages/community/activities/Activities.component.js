@@ -24,7 +24,7 @@ const Activities = () => {
   const activityCardsProps = {
     activities: data.activities,
     onCardClick: R.curry(linkUtils.handleRedirect)(router),
-    renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />
+    renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />,
   };
 
   return (

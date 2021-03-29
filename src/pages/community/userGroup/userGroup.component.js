@@ -24,10 +24,10 @@ const Learning = () => {
             <Styled.Desc>{desc}</Styled.Desc>
 
             <Styled.Buttons>
-              <Styled.Button ghost onClick={e => onBtnClick(joinBtn.link)}>
+              <Styled.Button ghost onClick={(e) => onBtnClick(joinBtn.link)}>
                 {joinBtn.label}
               </Styled.Button>
-              <Styled.Button onClick={e => onBtnClick(askBtn.link)}>{askBtn.label}</Styled.Button>
+              <Styled.Button onClick={(e) => onBtnClick(askBtn.link)}>{askBtn.label}</Styled.Button>
             </Styled.Buttons>
           </Col>
 

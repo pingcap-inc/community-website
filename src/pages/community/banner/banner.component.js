@@ -21,12 +21,12 @@ const Banner = () => {
     sizeWidth > bgWidth
       ? {
           layout: 'fill',
-          objectFit: 'cover'
+          objectFit: 'cover',
         }
       : {
           width: bgWidth,
           height: bgHeight,
-          layout: 'fixed'
+          layout: 'fixed',
         };
 
   return (
@@ -41,7 +41,7 @@ const Banner = () => {
 
         <Styled.Navs sm={sizeWidth < 700} md={sizeWidth < 900}>
           {data.navs.map(({ title, label, link }, idx) => (
-            <Styled.NavCard key={idx} onClick={e => onCardClick(link)}>
+            <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>{title}</h3>
               <Styled.NavDesc>
                 <span>{label}</span> &gt;

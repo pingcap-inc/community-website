@@ -7,7 +7,7 @@ import * as Styled from './header.styled';
 const { SubMenu } = Menu;
 
 const genMenu = ({ items, onNavClick }) =>
-  items.map(item => {
+  items.map((item) => {
     const { title, items, link } = item;
 
     if (items) {
@@ -20,7 +20,7 @@ const genMenu = ({ items, onNavClick }) =>
     }
 
     return (
-      <Menu.Item key={title} onClick={e => onNavClick(link)}>
+      <Menu.Item key={title} onClick={(e) => onNavClick(link)}>
         {title}
       </Menu.Item>
     );
@@ -42,7 +42,7 @@ Header.propTypes = {
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 export default Header;

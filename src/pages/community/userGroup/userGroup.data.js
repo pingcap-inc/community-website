@@ -5,13 +5,13 @@ const data = {
   btns: {
     join: {
       label: 'Join TUG',
-      link: 'https://tug.tidb.io'
+      link: 'https://tug.tidb.io',
     },
     ask: {
       label: 'AskTUG',
-      link: 'https://asktug.com'
-    }
-  }
+      link: 'https://asktug.com',
+    },
+  },
 };
 
 export default data;

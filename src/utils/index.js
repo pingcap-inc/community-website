@@ -13,7 +13,7 @@ export function getUserUrlByUsername(username) {
 }
 
 export function getCategoryById(id) {
-  return site.categories.filter(category => category.id === id)[0];
+  return site.categories.filter((category) => category.id === id)[0];
 }
 
 export async function getExcerptByTopicId(id, wordCountLimit = 70) {

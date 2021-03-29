@@ -14,15 +14,15 @@ import * as headerUtils from './components/header/header.utils';
 
 export const data = {
   footer: footerData,
-  header: headerData
+  header: headerData,
 };
 
 export const utils = {
-  header: headerUtils
+  header: headerUtils,
 };
 
 export { colors, constants, mixins };
-export { ActivityCards, Footer, Header } from './components';
+export { ActivityCards, Footer, Header, ViewMoreButton } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   html, body {

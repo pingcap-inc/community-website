@@ -52,13 +52,13 @@ export const SocialsContainer = styled(Col)`
 export const SocialsList = styled(Row).attrs({
   justify: 'end',
   align: 'top',
-  gutter: [16, 12]
+  gutter: [16, 12],
 })`
   width: 180px;
 `;
 
 export const SocialsItem = styled(Col).attrs({
-  span: 8
+  span: 8,
 })`
   ${mixins.flexEnd()};
 `;

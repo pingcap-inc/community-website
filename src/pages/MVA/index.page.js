@@ -19,12 +19,12 @@ export const getStaticProps = () => {
   const MVAs = [
     {
       year: 2020,
-      data: mva2020
+      data: mva2020,
     },
     {
       year: 2019,
-      data: mva2019
-    }
+      data: mva2019,
+    },
   ];
 
   const welfare = [
@@ -33,17 +33,17 @@ export const getStaticProps = () => {
     { iconUrl: 'images/mva/welfare-icon-3.svg', name: 'TiDB 专家养成计划' },
     { iconUrl: 'images/mva/welfare-icon-4.svg', name: '职业发展' },
     { iconUrl: 'images/mva/welfare-icon-5.svg', name: '人脉拓展' },
-    { iconUrl: 'images/mva/welfare-icon-6.svg', name: '个人影响力塑造' }
+    { iconUrl: 'images/mva/welfare-icon-6.svg', name: '个人影响力塑造' },
   ];
 
   const become = [
     { iconUrl: 'images/mva/become-icon-1.svg', title: '文章', summary: '1500+ 字，结构完整，能清楚阐述技术点' },
     { iconUrl: 'images/mva/become-icon-2.svg', title: 'TALK', summary: '面向 20+ 受众分享讲解 TiDB 及 TUG 相关内容' },
-    { iconUrl: 'images/mva/become-icon-3.svg', title: '直播', summary: '作为直播嘉宾分享讲解 TiDB 及 TUG 相关内容' }
+    { iconUrl: 'images/mva/become-icon-3.svg', title: '直播', summary: '作为直播嘉宾分享讲解 TiDB 及 TUG 相关内容' },
   ];
 
   return {
-    props: { MVAs, welfare, become }
+    props: { MVAs, welfare, become },
   };
 };
 
@@ -84,12 +84,12 @@ const MostValuableAdvocate = ({ MVAs, welfare, become }) => {
             <div className={styles.MVAs_title}>{year} 年度 TUG MVA</div>
             <YearSwitch
               value={year}
-              items={MVAs.map(item => ({ name: item.year, value: item.year }))}
+              items={MVAs.map((item) => ({ name: item.year, value: item.year }))}
               onClick={setYear}
             />
             <div className={styles.MVAs_list}>
               <Row justify={'center'} gutter={[16, 64]}>
-                {MVAs.filter(subMva => subMva.year === year)[0].data.map((mva, index) => (
+                {MVAs.filter((subMva) => subMva.year === year)[0].data.map((mva, index) => (
                   <Col key={index} xs={12} sm={12} md={8} lg={6}>
                     <MVAItem {...mva} />
                   </Col>

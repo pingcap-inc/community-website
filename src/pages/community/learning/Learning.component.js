@@ -32,10 +32,10 @@ const Learning = () => {
             </Styled.Desc>
 
             <Styled.Buttons>
-              <Styled.Button ghost onClick={e => onBtnClick(puBtn.link)}>
+              <Styled.Button ghost onClick={(e) => onBtnClick(puBtn.link)}>
                 {puBtn.label}
               </Styled.Button>
-              <Styled.Button onClick={e => onBtnClick(docsBtn.link)}>{docsBtn.label}</Styled.Button>
+              <Styled.Button onClick={(e) => onBtnClick(docsBtn.link)}>{docsBtn.label}</Styled.Button>
             </Styled.Buttons>
           </Col>
         </Row>

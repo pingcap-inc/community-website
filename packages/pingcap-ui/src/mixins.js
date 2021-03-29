@@ -3,7 +3,7 @@ import { css } from 'styled-components';
 import * as colors from './colors';
 import { responsiveWidths, breakPoints } from './constants';
 
-export const typography = level => {
+export const typography = (level) => {
   const levels = {
     h0: css`
       font-size: 1.875rem;
@@ -63,7 +63,7 @@ export const typography = level => {
       &:lang(zh-CN) {
         font-weight: 300;
       }
-    `
+    `,
   };
 
   return levels[level];
@@ -74,7 +74,7 @@ export const reset = () => css`
   padding: 0;
 `;
 
-export const centerBlock = width => css`
+export const centerBlock = (width) => css`
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -130,14 +130,14 @@ export const responsive = () => css`
   }
 `;
 
-export const lineClamp = lineNum => css`
+export const lineClamp = (lineNum) => css`
   display: -webkit-box;
   -webkit-line-clamp: ${lineNum};
   -webkit-box-orient: vertical;
   overflow: hidden;
 `;
 
-export const logoTitle = level => css`
+export const logoTitle = (level) => css`
   ${reset()};
   ${typography(level)};
   ${flexVerticalCenter()};

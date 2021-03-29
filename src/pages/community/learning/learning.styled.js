@@ -40,5 +40,5 @@ export const Buttons = styled.div`
 
 export const Button = styled(AntButton).attrs({
   size: 'small',
-  type: 'primary'
+  type: 'primary',
 })``;

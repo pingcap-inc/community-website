@@ -11,8 +11,8 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   ${mixins.responsive()};
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 `;
 
 export const NavRow = styled(Row)`

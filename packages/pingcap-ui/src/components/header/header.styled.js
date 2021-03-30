@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Menu as AntMenu } from 'antd';
 
+import * as colors from '../../colors';
 import * as mixins from '../../mixins';
 
 export const Container = styled.div`
@@ -22,4 +23,28 @@ export const Logo = styled.h1`
 
 export const Menu = styled(AntMenu).attrs({
   mode: 'horizontal',
-})``;
+})`
+  && {
+    border-bottom: none;
+
+    .ant-menu-submenu-selected {
+      position: relative;
+      color: ${colors.B1} !important;
+      border-bottom-color: transparent !important;
+
+      .ant-menu-submenu-title {
+        color: ${colors.B1} !important;
+      }
+
+      &::after {
+        ${mixins.size('24px', '4px')};
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -12px;
+        content: '';
+        background: ${colors.B1};
+      }
+    }
+  }
+`;

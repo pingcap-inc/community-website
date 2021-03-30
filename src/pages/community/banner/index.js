@@ -1,3 +1,1 @@
-import Banner from './banner.component';
-
-export default Banner;
+export { default } from './banner.component';

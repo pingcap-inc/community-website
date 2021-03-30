@@ -40,7 +40,7 @@ export const CardImg = styled.div`
   ${mixins.flexVerticalCenter()};
   height: 300px;
 
-  ${props =>
+  ${(props) =>
     props.small &&
     css`
       height: 260px;

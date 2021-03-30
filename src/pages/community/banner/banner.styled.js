@@ -3,10 +3,6 @@ import { colors, mixins } from '@pingcap/pingcap-ui';
 
 import { bgHeight } from './banner.constants';
 
-export const Container = styled.div`
-  position: relative;
-`;
-
 export const Background = styled.div`
   ${mixins.size('100%', `${bgHeight}px`)};
   position: absolute;
@@ -81,8 +77,13 @@ export const Navs = styled.div`
   ${mixins.flexCenter()};
   position: absolute;
   bottom: -50px;
+`;
 
-  ${props =>
+export const Container = styled.div`
+  position: relative;
+  margin-bottom: 50px;
+
+  ${(props) =>
     props.md &&
     css`
       ${NavCard} {
@@ -91,12 +92,16 @@ export const Navs = styled.div`
       }
     `}
 
-  ${props =>
+  ${(props) =>
     props.sm &&
     css`
-      box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.08);
-      border-radius: 6px;
-      bottom: -40px;
+      margin-bottom: 40px;
+
+      ${Navs} {
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.08);
+        border-radius: 6px;
+        bottom: -40px;
+      }
 
       ${NavCard} {
         ${mixins.size('85px', '80px')};

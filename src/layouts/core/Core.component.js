@@ -22,14 +22,14 @@ const Core = ({ children }) => {
     onNavClick,
     navItems: headerNavItems,
     currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
-    onTitleClick: () => router.push('/community')
+    onTitleClick: () => router.push('/community'),
   };
 
   const footerProps = {
     logo,
     title,
     onNavClick,
-    navItems: footerNavItems
+    navItems: footerNavItems,
   };
 
   return (

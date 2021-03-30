@@ -5,13 +5,13 @@ import { getTitle } from '../utils';
 
 export default {
   title: getTitle('ActivityCards'),
-  component: ActivityCards
+  component: ActivityCards,
 };
 
-const Template = args => <ActivityCards {...args} />;
+const Template = (args) => <ActivityCards {...args} />;
 
 export const CardList = Template.bind({});
 
 CardList.args = {
-  activities: data.activities
+  activities: data.activities,
 };

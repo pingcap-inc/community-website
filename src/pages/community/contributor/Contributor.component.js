@@ -9,7 +9,7 @@ import { link as linkUtils } from 'utils';
 
 const Card = ({ title, desc, link, imgId }) => {
   const router = useRouter();
-  const onClick = e => linkUtils.handleRedirect(router, link);
+  const onClick = (e) => linkUtils.handleRedirect(router, link);
   const ref = useRef();
   const size = useSize(ref);
 
@@ -34,7 +34,7 @@ const Contributor = () => (
           desc,
           imgId: idx + 1,
           link,
-          title
+          title,
         };
 
         return (

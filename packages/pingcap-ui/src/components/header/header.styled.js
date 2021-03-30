@@ -21,5 +21,5 @@ export const Logo = styled.h1`
 `;
 
 export const Menu = styled(AntMenu).attrs({
-  mode: 'horizontal'
+  mode: 'horizontal',
 })``;

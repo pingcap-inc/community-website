@@ -6,12 +6,13 @@ import * as mixins from '../../mixins';
 
 export const Container = styled.div`
   background: ${colors.M2};
+  margin-top: 6rem;
 `;
 
 export const Content = styled.div`
   ${mixins.responsive()};
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
 `;
 
 export const NavRow = styled(Row)`
@@ -51,13 +52,13 @@ export const SocialsContainer = styled(Col)`
 export const SocialsList = styled(Row).attrs({
   justify: 'end',
   align: 'top',
-  gutter: [16, 12]
+  gutter: [16, 12],
 })`
   width: 180px;
 `;
 
 export const SocialsItem = styled(Col).attrs({
-  span: 8
+  span: 8,
 })`
   ${mixins.flexEnd()};
 `;

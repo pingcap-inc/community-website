@@ -1,3 +1,1 @@
-import UserGroup from './userGroup.component';
-
-export default UserGroup;
+export { default } from './userGroup.component';

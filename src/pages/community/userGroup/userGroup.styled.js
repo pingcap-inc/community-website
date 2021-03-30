@@ -6,7 +6,7 @@ import { Container as LearningContainer } from 'pages/community/learning/learnin
 export { Content, Title, Buttons, Button } from 'pages/community/learning/learning.styled';
 
 export const Container = styled(LearningContainer)`
-  margin-top: -5rem;
+  margin-top: -6rem;
 `;
 
 export const Desc = styled.p`

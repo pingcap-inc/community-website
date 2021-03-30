@@ -8,28 +8,28 @@ export default {
   component: Button,
   argTypes: {
     type: {
-      control: false
+      control: false,
     },
     ghost: {
-      control: false
+      control: false,
     },
     size: {
       control: {
         type: 'select',
-        options: ['small', 'default', 'large']
-      }
-    }
-  }
+        options: ['small', 'default', 'large'],
+      },
+    },
+  },
 };
 
-const Template = args => <Button {...args} />;
+const Template = (args) => <Button {...args} />;
 
 export const Primary = Template.bind({});
 Primary.args = {
   children: 'Button',
   disabled: false,
   size: 'small',
-  type: 'primary'
+  type: 'primary',
 };
 
 export const Outline = Template.bind({});
@@ -38,5 +38,5 @@ Outline.args = {
   disabled: false,
   ghost: true,
   size: 'small',
-  type: 'primary'
+  type: 'primary',
 };

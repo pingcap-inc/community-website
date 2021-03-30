@@ -5,12 +5,12 @@ import { Row, Col } from 'antd';
 
 import * as Styled from './activityCards.styled';
 
-const ActivityCards = props => {
+const ActivityCards = (props) => {
   const { activities, onCardClick, renderImage } = R.mergeRight(
     {
       activities: [],
       onCardClick: () => {},
-      renderImage: ({ img, title }) => <img alt={title} src={img} />
+      renderImage: ({ img, title }) => <img alt={title} src={img} />,
     },
     props
   );
@@ -19,11 +19,11 @@ const ActivityCards = props => {
     <Row gutter={[32, 24]} justify="center">
       {activities.map(({ desc, img, link, title }, idx) => (
         <Col key={idx} xs={24} sm={12} md={8}>
-          <Styled.Card onClick={e => onCardClick(link)}>
+          <Styled.Card onClick={(e) => onCardClick(link)}>
             <Styled.Image>
               {renderImage({
                 img,
-                title
+                title,
               })}
             </Styled.Image>
             <Styled.Content>
@@ -43,11 +43,11 @@ ActivityCards.propTypes = {
       desc: PropTypes.string.isRequired,
       img: PropTypes.string.isRequired,
       link: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired
+      title: PropTypes.string.isRequired,
     })
   ),
   onCardClick: PropTypes.func.isRequired,
-  renderImage: PropTypes.func
+  renderImage: PropTypes.func,
 };
 
 export default ActivityCards;

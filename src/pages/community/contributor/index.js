@@ -1,3 +1,1 @@
-import Contributor from './Contributor.component';
-
-export default Contributor;
+export { default } from './Contributor.component';

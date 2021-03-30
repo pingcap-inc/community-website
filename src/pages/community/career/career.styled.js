@@ -3,10 +3,10 @@ import { colors, mixins } from '@pingcap/pingcap-ui';
 
 import { Header as ActivitiesHeader } from 'pages/community/activities';
 
-import { Container as ActivitiesContainer } from 'pages/community/activities/activities.styled';
+export { ViewMoreWrapper } from 'pages/community/activities/activities.styled';
 
-export const Container = styled(ActivitiesContainer)`
-  padding-bottom: 0;
+export const Container = styled.div`
+  ${mixins.responsive()};
 `;
 
 export const Header = styled(ActivitiesHeader)`

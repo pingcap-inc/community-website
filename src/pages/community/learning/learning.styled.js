@@ -3,7 +3,7 @@ import { Button as AntButton } from 'antd';
 import { colors, mixins } from '@pingcap/pingcap-ui';
 
 export const Container = styled.div`
-  padding: 5rem 0;
+  padding: 6rem 0;
   background: ${colors.M2};
 `;
 

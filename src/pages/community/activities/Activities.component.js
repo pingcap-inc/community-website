@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import Image from 'next/image';
 import React from 'react';
-import { ActivityCards } from '@pingcap/pingcap-ui';
+import { ActivityCards, ViewMoreButton } from '@pingcap/pingcap-ui';
 import { Row } from 'antd';
 import { useRouter } from 'next/router';
 
@@ -21,9 +21,11 @@ export const Header = ({ className, title, desc, children }) => (
 const Activities = () => {
   const router = useRouter();
 
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router);
+
   const activityCardsProps = {
     activities: data.activities,
-    onCardClick: R.curry(linkUtils.handleRedirect)(router),
+    onCardClick: onLinkClick,
     renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />,
   };
 
@@ -31,6 +33,11 @@ const Activities = () => {
     <Styled.Container>
       <Header {...R.pick(['title', 'desc'], data)} />
       <ActivityCards {...activityCardsProps} />
+      <Styled.ViewMoreWrapper>
+        <ViewMoreButton onClick={(e) => onLinkClick('https://developer.tidb.io/events')}>
+          View All Events
+        </ViewMoreButton>
+      </Styled.ViewMoreWrapper>
     </Styled.Container>
   );
 };

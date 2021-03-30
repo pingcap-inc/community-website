@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 
 import * as Styled from './viewMoreButton.styled';
 
-const ViewMoreButton = ({ children }) => (
-  <Styled.Container>
+const ViewMoreButton = ({ children, onClick }) => (
+  <Styled.Container onClick={onClick}>
     <Styled.ArrowIcon />
     {children}
   </Styled.Container>
@@ -12,6 +12,7 @@ const ViewMoreButton = ({ children }) => (
 
 ViewMoreButton.propTypes = {
   children: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default ViewMoreButton;

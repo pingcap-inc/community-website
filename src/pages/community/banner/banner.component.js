@@ -30,7 +30,7 @@ const Banner = () => {
         };
 
   return (
-    <Styled.Container ref={ref}>
+    <Styled.Container ref={ref} sm={sizeWidth < 700} md={sizeWidth < 900}>
       <Styled.Background>
         <Image src="/images/community/banner.svg" {...imgSizeProps} />
       </Styled.Background>
@@ -39,7 +39,7 @@ const Banner = () => {
         <h2>{data.title}</h2>
         <p>{data.desc}</p>
 
-        <Styled.Navs sm={sizeWidth < 700} md={sizeWidth < 900}>
+        <Styled.Navs>
           {data.navs.map(({ title, label, link }, idx) => (
             <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>{title}</h3>

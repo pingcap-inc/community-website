@@ -5,7 +5,7 @@ import { mixins } from '@pingcap/pingcap-ui';
 
 export const Container = styled.div`
   ${mixins.responsive()};
-  padding: 5rem 0;
+  padding: 6rem 0;
 `;
 
 export const Header = styled(Col)`
@@ -22,4 +22,9 @@ export const Desc = styled.p`
   ${mixins.reset()};
   ${mixins.typography('p1')};
   margin-bottom: 3rem;
+`;
+
+export const ViewMoreWrapper = styled.div`
+  ${mixins.flexCenter()};
+  margin-top: 4rem;
 `;

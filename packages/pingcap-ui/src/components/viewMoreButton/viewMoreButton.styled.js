@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { ArrowRightOutlined } from '@ant-design/icons';
-import { colors } from '@pingcap/pingcap-ui';
+
+import * as colors from '../../colors';
 
 export const ArrowIcon = styled(ArrowRightOutlined)`
   width: 0;

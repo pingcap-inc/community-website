@@ -35,6 +35,10 @@ export const createAppGlobalStyle = () => createGlobalStyle`
     line-height: 1.75;
   }
 
+  &::selection {
+    background: ${colors.B1};
+  }
+
   #__next {
     .clearfix {
       ${clearFix()};

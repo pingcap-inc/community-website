@@ -74,65 +74,65 @@ export const navItems = [
         title: 'Special Interest Group (SIG)',
         link: 'https://developer.tidb.io/SIG/',
       },
+    ],
+  },
+  {
+    title: 'Learning',
+    items: [
       {
-        title: 'Learning',
-        items: [
-          {
-            title: 'TiDB DBA Courses',
-            link: 'https://university.pingcap.com/',
-          },
-          {
-            title: 'Talent Plan Courses',
-            link: 'https://university.pingcap.com/talent-plan/',
-          },
-          {
-            title: 'PingCAP Certified TiDB Associate (PCTA)',
-            link: 'https://university.pingcap.com/certificate/PCTA/',
-          },
-          {
-            title: 'PingCAP Certified TiDB Professional (PCTP)',
-            link: 'https://university.pingcap.com/certificate/PCTP/',
-          },
-        ],
+        title: 'TiDB DBA Courses',
+        link: 'https://university.pingcap.com/',
       },
       {
-        title: 'Events',
-        link: 'https://developer.tidb.io/events',
+        title: 'Talent Plan Courses',
+        link: 'https://university.pingcap.com/talent-plan/',
       },
       {
-        title: 'Resources',
-        items: [
-          {
-            title: 'Docs',
-            link: 'https://docs.pingcap.com/tidb/stable',
-          },
-          {
-            title: 'Blogs',
-            link: 'https://asktug.com/c/blog/l/latest',
-          },
-          {
-            title: 'Mailing Lists',
-            link: 'https://lists.tidb.io/g/main/subgroups',
-          },
-        ],
+        title: 'PingCAP Certified TiDB Associate (PCTA)',
+        link: 'https://university.pingcap.com/certificate/PCTA/',
       },
       {
-        title: 'Support',
-        items: [
-          {
-            title: 'AskTUG',
-            link: 'https://asktug.com',
-          },
-          {
-            title: 'Slack',
-            link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
-          },
-        ],
-      },
-      {
-        title: 'Job Board',
-        link: 'https://pingcap.com/community-cn/careers/join/',
+        title: 'PingCAP Certified TiDB Professional (PCTP)',
+        link: 'https://university.pingcap.com/certificate/PCTP/',
       },
     ],
+  },
+  {
+    title: 'Events',
+    link: 'https://developer.tidb.io/events',
+  },
+  {
+    title: 'Resources',
+    items: [
+      {
+        title: 'Docs',
+        link: 'https://docs.pingcap.com/tidb/stable',
+      },
+      {
+        title: 'Blogs',
+        link: 'https://asktug.com/c/blog/l/latest',
+      },
+      {
+        title: 'Mailing Lists',
+        link: 'https://lists.tidb.io/g/main/subgroups',
+      },
+    ],
+  },
+  {
+    title: 'Support',
+    items: [
+      {
+        title: 'AskTUG',
+        link: 'https://asktug.com',
+      },
+      {
+        title: 'Slack',
+        link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
+      },
+    ],
+  },
+  {
+    title: 'Job Board',
+    link: 'https://pingcap.com/community-cn/careers/join/',
   },
 ];

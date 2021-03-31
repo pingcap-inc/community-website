@@ -29,7 +29,7 @@ export const MenuWrapper = styled.div`
     .ant-menu {
       border-bottom: none;
 
-      &-submenu,
+      /* &-submenu,
       &-submenu-selected {
         border-bottom-color: transparent !important;
       }
@@ -64,6 +64,6 @@ export const MenuWrapper = styled.div`
           background: ${colors.B1};
         }
       }
-    }
+    } */
   }
-`;
+}`;

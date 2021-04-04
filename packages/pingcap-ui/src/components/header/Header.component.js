@@ -33,7 +33,7 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title })
       {title}
     </Styled.Logo>
     <Styled.MenuWrapper>
-      <Menu mode="horizontal" selectedKeys={currentNav && [currentNav]}>
+      <Menu mode="horizontal" selectedKeys={currentNav && [currentNav]} triggerSubMenuAction="click">
         {genMenu({ items: navItems, onNavClick })}
       </Menu>
     </Styled.MenuWrapper>

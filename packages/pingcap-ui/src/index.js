@@ -33,6 +33,7 @@ export const createAppGlobalStyle = () => createGlobalStyle`
     color: ${colors.F1};
     font-size: 16px;
     line-height: 1.75;
+    --antd-wave-shadow-color: ${colors.B1};
   }
 
   &::selection {

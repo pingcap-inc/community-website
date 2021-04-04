@@ -29,30 +29,16 @@ export const MenuWrapper = styled.div`
     .ant-menu {
       border-bottom: none;
 
-      /* &-submenu,
-      &-submenu-selected {
-        border-bottom-color: transparent !important;
-      }
-
       &-item:hover,
-      &-item-active,
-      &:not(&-inline) &-submenu-open,
-      &-submenu-active,
       &-submenu-title:hover {
         color: ${colors.B1} !important;
       }
 
-      &-submenu-selected {
-        &.ant-menu-submenu-title {
-          color: ${colors.B1} !important;
-        }
-      }
-
-      &-submenu:hover,
-      &-submenu-title:hover,
-      &-submenu-selected {
+      &-item-active,
+      &-submenu-active {
         position: relative;
         color: ${colors.B1} !important;
+        border-bottom-color: transparent !important;
 
         &::after {
           ${mixins.size('24px', '4px')};
@@ -64,6 +50,6 @@ export const MenuWrapper = styled.div`
           background: ${colors.B1};
         }
       }
-    } */
+    }
   }
-}`;
+`;

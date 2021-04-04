@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Menu } from 'antd';
 
 import * as Styled from './header.styled';
@@ -26,19 +26,41 @@ const genMenu = ({ items, onNavClick }) =>
     );
   });
 
-const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => (
-  <Styled.Container>
-    <Styled.Logo onClick={onTitleClick}>
-      {logo}
-      {title}
-    </Styled.Logo>
-    <Styled.MenuWrapper>
-      <Menu mode="horizontal" selectedKeys={currentNav && [currentNav]} triggerSubMenuAction="click">
-        {genMenu({ items: navItems, onNavClick })}
-      </Menu>
-    </Styled.MenuWrapper>
-  </Styled.Container>
-);
+const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
+  const menuContainerId = 'header-menu-root';
+
+  useEffect(() => {
+    const el = document.createElement('div');
+    el.id = menuContainerId;
+    document.body.append(el);
+
+    return () => {
+      el.remove();
+    };
+  }, []);
+
+  const menuProps = {
+    mode: 'horizontal',
+    selectedKeys: currentNav && [currentNav],
+    getPopupContainer: () => document.getElementById(menuContainerId),
+    triggerSubMenuAction: 'click',
+  };
+
+  return (
+    <Styled.Container>
+      <Styled.Logo onClick={onTitleClick}>
+        {logo}
+        {title}
+      </Styled.Logo>
+
+      <Styled.MenuWrapper>
+        <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
+      </Styled.MenuWrapper>
+
+      <Styled.GlobalStyle />
+    </Styled.Container>
+  );
+};
 
 Header.propTypes = {
   currentNav: PropTypes.string,

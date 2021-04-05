@@ -47,7 +47,7 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title })
 
   return (
     <>
-      <Styled.Container className="clearfix">
+      <Styled.Container>
         <Styled.Logo onClick={onTitleClick}>
           {logo}
           {title}

@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled, { createGlobalStyle, css } from 'styled-components';
 
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
@@ -25,6 +25,13 @@ export const MenuWrapper = styled.div`
   /* HACK: set width to 0 for a AntD's issue of calculating the menu witdh */
   width: 0;
 
+  ${(props) =>
+    props.sm &&
+    css`
+      display: flex;
+      justify-content: flex-end;
+    `}
+
   && {
     /*
      * Menu's original stylings could be referred to
@@ -34,6 +41,12 @@ export const MenuWrapper = styled.div`
       display: flex;
       justify-content: flex-end;
       border-bottom: none;
+
+      ${(props) =>
+        props.sm &&
+        css`
+          width: 60px;
+        `}
 
       &-item:hover,
       &-submenu-title:hover {

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Row, Col } from 'antd';
+import { Grid, Row, Col } from 'antd';
 
 import GithubIcon from './icons/github.svg';
 import TwitterIcon from './icons/twitter.svg';
@@ -10,53 +10,63 @@ import SlackIcon from './icons/slack.svg';
 import YoutubeIcon from './icons/youtube.svg';
 import * as Styled from './footer.styled';
 
+const { useBreakpoint } = Grid;
+
 const icons = [GithubIcon, TwitterIcon, FacebookIcon, LinkedInIcon, SlackIcon, YoutubeIcon];
 
-const Footer = ({ logo, title, navItems, onNavClick }) => (
-  <Styled.Container>
-    <Styled.Content>
-      <Row align="top">
-        <Col xs={24} md={18}>
-          <Styled.NavRow gutter={[16, 48]}>
-            {navItems.map(({ title, items }) => (
-              <Styled.NavCol key={title} xs={24} md={8}>
-                <Styled.NavTitle>{title}</Styled.NavTitle>
+const Footer = ({ logo, title, navItems, onNavClick }) => {
+  const bp = useBreakpoint();
 
-                {items.map(({ title, link }) => (
-                  <Styled.NavItem key={title} onClick={(e) => onNavClick(link)}>
-                    {title}
-                  </Styled.NavItem>
-                ))}
-              </Styled.NavCol>
-            ))}
-          </Styled.NavRow>
-        </Col>
+  const justify = bp.xs ? 'center' : undefined;
 
-        <Styled.SocialsContainer xs={24} md={6}>
-          <Styled.SocialsList>
-            {icons.map((Icon, idx) => (
-              <Styled.SocialsItem key={idx}>
-                <Styled.IconWrapper>
-                  <Icon />
-                </Styled.IconWrapper>
-              </Styled.SocialsItem>
-            ))}
-          </Styled.SocialsList>
-        </Styled.SocialsContainer>
-      </Row>
+  return (
+    <Styled.Container>
+      <Styled.Content>
+        <Row align="top" justify={justify}>
+          <Col xs={24} md={18}>
+            <Styled.NavRow gutter={[16, 48]} justify={justify}>
+              {navItems.map(({ title, items }) => (
+                <Styled.NavCol key={title} xs={24} md={8}>
+                  <Styled.NavTitle>{title}</Styled.NavTitle>
 
-      <Row>
-        <Styled.Copyright xs={24} md={18}>
-          <span>&copy;</span>2021 TiDB Community.
-        </Styled.Copyright>
-        <Styled.Logo xs={24} md={6}>
-          {logo}
-          {title}
-        </Styled.Logo>
-      </Row>
-    </Styled.Content>
-  </Styled.Container>
-);
+                  {items.map(({ title, link }) => (
+                    <Styled.NavItem key={title} onClick={(e) => onNavClick(link)}>
+                      {title}
+                    </Styled.NavItem>
+                  ))}
+                </Styled.NavCol>
+              ))}
+            </Styled.NavRow>
+          </Col>
+
+          <Styled.SocialsContainer xs={24} md={6}>
+            <Styled.SocialsList justify={justify}>
+              {icons.map((Icon, idx) => (
+                <Styled.SocialsItem key={idx}>
+                  <Styled.IconWrapper>
+                    <Icon />
+                  </Styled.IconWrapper>
+                </Styled.SocialsItem>
+              ))}
+            </Styled.SocialsList>
+          </Styled.SocialsContainer>
+        </Row>
+
+        <Row gutter={[16, 16]} justify={justify}>
+          <Styled.Copyright xs={24} md={18}>
+            <span>&copy;</span>2021 TiDB Community.
+          </Styled.Copyright>
+          <Col xs={24} md={6}>
+            <Styled.Logo>
+              {logo}
+              {title}
+            </Styled.Logo>
+          </Col>
+        </Row>
+      </Styled.Content>
+    </Styled.Container>
+  );
+};
 
 Footer.propTypes = {
   logo: PropTypes.element.isRequired,

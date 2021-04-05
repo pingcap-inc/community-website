@@ -9,12 +9,6 @@ export const Container = styled.div`
   margin-top: 6rem;
 `;
 
-export const Content = styled.div`
-  ${mixins.responsive()};
-  padding-top: 4rem;
-  padding-bottom: 2rem;
-`;
-
 export const NavRow = styled(Row)`
   margin-bottom: 3rem;
 `;
@@ -49,11 +43,11 @@ export const SocialsContainer = styled(Col)`
   margin-bottom: 3rem;
 `;
 
-export const SocialsList = styled(Row).attrs({
-  justify: 'end',
+export const SocialsList = styled(Row).attrs((props) => ({
+  justify: props.justify ?? 'end',
   align: 'top',
   gutter: [16, 12],
-})`
+}))`
   width: 180px;
 `;
 
@@ -85,12 +79,30 @@ export const Copyright = styled(Col)`
   }
 `;
 
-export const Logo = styled(Col)`
+export const Logo = styled.div`
   ${mixins.logoTitle('h2')};
   ${mixins.flexEnd()};
 
   img {
     ${mixins.size('24px', '28px')};
     margin-right: 0.25rem;
+  }
+`;
+
+export const Content = styled.div`
+  ${mixins.responsive()};
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+
+  .ant-row-center {
+    text-align: center;
+
+    ${Logo} {
+      display: inline-flex;
+    }
+
+    ${SocialsContainer} {
+      justify-content: center;
+    }
   }
 `;

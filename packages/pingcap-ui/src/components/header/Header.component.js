@@ -1,9 +1,11 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Menu } from 'antd';
+import React, { useEffect } from 'react';
+import { Grid, Menu } from 'antd';
 
 import * as Styled from './header.styled';
+import { menuPopupId } from './header.constants';
 
+const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
 
 const genMenu = ({ items, onNavClick }) =>
@@ -26,15 +28,42 @@ const genMenu = ({ items, onNavClick }) =>
     );
   });
 
-const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => (
-  <Styled.Container>
-    <Styled.Logo onClick={onTitleClick}>
-      {logo}
-      {title}
-    </Styled.Logo>
-    <Styled.Menu selectedKeys={currentNav && [currentNav]}>{genMenu({ items: navItems, onNavClick })}</Styled.Menu>
-  </Styled.Container>
-);
+const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
+  const bp = useBreakpoint();
+
+  useEffect(() => {
+    const el = document.createElement('div');
+    el.id = menuPopupId;
+    document.body.append(el);
+
+    return () => {
+      el.remove();
+    };
+  }, []);
+
+  const menuProps = {
+    mode: 'horizontal',
+    selectedKeys: currentNav && [currentNav],
+    getPopupContainer: () => document.getElementById(menuPopupId),
+  };
+
+  return (
+    <>
+      <Styled.Container>
+        <Styled.Logo onClick={onTitleClick}>
+          {logo}
+          {title}
+        </Styled.Logo>
+
+        <Styled.MenuWrapper xs={bp.xs}>
+          <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
+        </Styled.MenuWrapper>
+      </Styled.Container>
+
+      <Styled.GlobalStyle />
+    </>
+  );
+};
 
 Header.propTypes = {
   currentNav: PropTypes.string,

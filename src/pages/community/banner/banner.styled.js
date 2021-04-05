@@ -56,7 +56,7 @@ export const NavCard = styled.div`
   text-align: center;
 
   &:last-child {
-    margin-right: 0;
+    margin-right: 0 !important;
   }
 
   h3 {
@@ -68,7 +68,7 @@ export const NavCard = styled.div`
 
     h3,
     ${NavDesc} {
-      color: ${colors.M1};
+      color: ${colors.M1} !important;
     }
   }
 `;
@@ -109,10 +109,6 @@ export const Container = styled.div`
         border-radius: 0;
         margin-right: 0;
         border-right: 1px solid ${colors.T2};
-
-        &:last-child {
-          border-right: none;
-        }
 
         h3 {
           ${mixins.typography('p1')};

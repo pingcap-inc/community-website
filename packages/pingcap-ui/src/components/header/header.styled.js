@@ -2,6 +2,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
+import { menuPopupId } from './header.constants';
 
 export const Container = styled.div`
   ${mixins.responsive()};
@@ -34,8 +35,11 @@ export const MenuWrapper = styled.div`
         color: ${colors.B1} !important;
       }
 
+      &-submenu:hover,
       &-item-active,
-      &-submenu-active {
+      &-submenu-active,
+      &-submenu-selected {
+        cursor: pointer;
         position: relative;
         color: ${colors.B1} !important;
         border-bottom-color: transparent !important;
@@ -48,25 +52,6 @@ export const MenuWrapper = styled.div`
           margin-left: -12px;
           content: '';
           background: ${colors.B1};
-        }
-      }
-
-      &-submenu-open {
-        .ant-menu-submenu {
-          .ant-menu-submenu-arrow {
-            color: ${colors.F1};
-            display: block;
-          }
-
-          &.ant-menu-submenu-active {
-            .ant-menu-submenu-arrow {
-              color: ${colors.B1};
-            }
-          }
-
-          &::after {
-            display: none;
-          }
         }
       }
     }
@@ -74,52 +59,28 @@ export const MenuWrapper = styled.div`
 `;
 
 export const GlobalStyle = createGlobalStyle`
-  #header-menu-root {
-    /*
-     * Menu's original stylings could be referred to
-     * https://github.com/ant-design/ant-design/blob/master/components/menu/style/index.less
-     */
+  #${menuPopupId} {
     .ant-menu {
-      border-bottom: none;
+      color: ${colors.F1};
 
-      &-item:hover,
-      &-submenu-title:hover {
-        color: ${colors.B1} !important;
+      &-item:hover, &-item-active {
+        color: ${colors.B1};
       }
 
-      &-item-active,
-      &-submenu-active {
-        position: relative;
-        color: ${colors.B1} !important;
-        border-bottom-color: transparent !important;
+      &-submenu {
+        &-arrow {
+          color: ${colors.F1};
+        }
+
+        &.ant-menu-submenu-selected,
+        &.ant-menu-submenu-active {
+          .ant-menu-submenu-title, .ant-menu-submenu-arrow  {
+            color: ${colors.B1};
+          }
+        }
 
         &::after {
-          ${mixins.size('24px', '4px')};
-          position: absolute;
-          bottom: 0;
-          left: 50%;
-          margin-left: -12px;
-          content: '';
-          background: ${colors.B1};
-        }
-      }
-
-      &-submenu-open {
-        .ant-menu-submenu {
-          .ant-menu-submenu-arrow {
-            color: ${colors.F1};
-            display: block;
-          }
-
-          &.ant-menu-submenu-active {
-            .ant-menu-submenu-arrow {
-              color: ${colors.B1};
-            }
-          }
-
-          &::after {
-            display: none;
-          }
+          display: none;
         }
       }
     }

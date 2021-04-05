@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Menu } from 'antd';
 
 import * as Styled from './header.styled';
+import { menuPopupId } from './header.constants';
 
 const { SubMenu } = Menu;
 
@@ -27,11 +28,9 @@ const genMenu = ({ items, onNavClick }) =>
   });
 
 const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
-  const menuContainerId = 'header-menu-root';
-
   useEffect(() => {
     const el = document.createElement('div');
-    el.id = menuContainerId;
+    el.id = menuPopupId;
     document.body.append(el);
 
     return () => {
@@ -42,7 +41,7 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title })
   const menuProps = {
     mode: 'horizontal',
     selectedKeys: currentNav && [currentNav],
-    getPopupContainer: () => document.getElementById(menuContainerId),
+    getPopupContainer: () => document.getElementById(menuPopupId),
     triggerSubMenuAction: 'click',
   };
 

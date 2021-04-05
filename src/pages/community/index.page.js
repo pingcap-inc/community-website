@@ -6,10 +6,13 @@ import Career from './career';
 import Contributor from './contributor';
 import Learning from './learning';
 import UserGroup from './userGroup';
+import { CommunityHead } from 'components/head';
 import { CoreLayout } from 'layouts';
 
-const Community = () => {
-  return (
+const Community = () => (
+  <>
+    <CommunityHead />
+
     <CoreLayout>
       <Banner />
       <Activities />
@@ -18,7 +21,7 @@ const Community = () => {
       <Contributor />
       <Career />
     </CoreLayout>
-  );
-};
+  </>
+);
 
 export default Community;

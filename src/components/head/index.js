@@ -1,1 +1,1 @@
-export { default } from './Head.component';
+export { default as CommunityHead } from './CommunityHead.component';

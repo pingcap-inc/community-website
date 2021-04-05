@@ -37,6 +37,7 @@ export const MenuWrapper = styled.div`
 
       &-submenu:hover,
       &-item-active,
+      &-item-selected,
       &-submenu-active,
       &-submenu-selected {
         cursor: pointer;
@@ -63,8 +64,14 @@ export const GlobalStyle = createGlobalStyle`
     .ant-menu {
       color: ${colors.F1};
 
-      &-item:hover, &-item-active {
+      &-item:hover,
+      &-item-active,
+      &-item-selected {
         color: ${colors.B1};
+      }
+
+      &-item-selected {
+        background-color: ${colors.M2};
       }
 
       &-submenu {
@@ -74,13 +81,10 @@ export const GlobalStyle = createGlobalStyle`
 
         &.ant-menu-submenu-selected,
         &.ant-menu-submenu-active {
-          .ant-menu-submenu-title, .ant-menu-submenu-arrow  {
+          > .ant-menu-submenu-title,
+          > .ant-menu-submenu-arrow {
             color: ${colors.B1};
           }
-        }
-
-        &::after {
-          display: none;
         }
       }
     }

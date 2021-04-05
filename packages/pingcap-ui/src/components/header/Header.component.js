@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
-import { Menu } from 'antd';
-import { useSize } from 'ahooks';
+import React, { useEffect } from 'react';
+import { Grid, Menu } from 'antd';
 
 import * as Styled from './header.styled';
 import { menuPopupId } from './header.constants';
 
+const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
 
 const genMenu = ({ items, onNavClick }) =>
@@ -29,8 +29,7 @@ const genMenu = ({ items, onNavClick }) =>
   });
 
 const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
-  const ref = useRef();
-  const size = useSize(ref);
+  const bp = useBreakpoint();
 
   useEffect(() => {
     const el = document.createElement('div');
@@ -46,18 +45,17 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title })
     mode: 'horizontal',
     selectedKeys: currentNav && [currentNav],
     getPopupContainer: () => document.getElementById(menuPopupId),
-    triggerSubMenuAction: 'click',
   };
 
   return (
     <>
-      <Styled.Container ref={ref}>
+      <Styled.Container>
         <Styled.Logo onClick={onTitleClick}>
           {logo}
           {title}
         </Styled.Logo>
 
-        <Styled.MenuWrapper sm={size.width <= 448}>
+        <Styled.MenuWrapper xs={bp.xs}>
           <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
         </Styled.MenuWrapper>
       </Styled.Container>

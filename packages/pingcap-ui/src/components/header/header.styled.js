@@ -26,7 +26,7 @@ export const MenuWrapper = styled.div`
   width: 0;
 
   ${(props) =>
-    props.sm &&
+    props.xs &&
     css`
       display: flex;
       justify-content: flex-end;
@@ -43,7 +43,7 @@ export const MenuWrapper = styled.div`
       border-bottom: none;
 
       ${(props) =>
-        props.sm &&
+        props.xs &&
         css`
           width: 60px;
         `}

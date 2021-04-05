@@ -8,7 +8,6 @@ export const Container = styled.div`
   ${mixins.responsive()};
   ${mixins.flexVerticalCenter()};
   height: 84px;
-  justify-content: space-between;
 `;
 
 export const Logo = styled.h1`
@@ -22,12 +21,18 @@ export const Logo = styled.h1`
 `;
 
 export const MenuWrapper = styled.div`
+  flex: 1;
+  /* HACK: set width to 0 for a AntD's issue of calculating the menu witdh */
+  width: 0;
+
   && {
     /*
      * Menu's original stylings could be referred to
      * https://github.com/ant-design/ant-design/blob/master/components/menu/style/index.less
      */
     .ant-menu {
+      display: flex;
+      justify-content: flex-end;
       border-bottom: none;
 
       &-item:hover,

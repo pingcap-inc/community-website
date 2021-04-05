@@ -46,18 +46,20 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title })
   };
 
   return (
-    <Styled.Container>
-      <Styled.Logo onClick={onTitleClick}>
-        {logo}
-        {title}
-      </Styled.Logo>
+    <>
+      <Styled.Container className="clearfix">
+        <Styled.Logo onClick={onTitleClick}>
+          {logo}
+          {title}
+        </Styled.Logo>
 
-      <Styled.MenuWrapper>
-        <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
-      </Styled.MenuWrapper>
+        <Styled.MenuWrapper>
+          <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
+        </Styled.MenuWrapper>
+      </Styled.Container>
 
       <Styled.GlobalStyle />
-    </Styled.Container>
+    </>
   );
 };
 

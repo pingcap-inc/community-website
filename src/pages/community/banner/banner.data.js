@@ -1,9 +1,10 @@
 const data = {
-  title: 'Connect the Dots, Code the Future',
-  desc: 'TiDB is An open-source, cloud-native, distributed SQL database for elastic scale and real-time analytics',
+  title: 'Let’s build the database of the future together!',
+  desc:
+    'Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!',
   navs: [
     {
-      title: 'AskTUG',
+      title: 'Forum',
       label: 'View',
       link: 'https://asktug.com',
     },

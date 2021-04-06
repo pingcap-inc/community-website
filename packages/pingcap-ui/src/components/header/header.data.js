@@ -16,7 +16,7 @@ export const navItems = [
     title: 'User Group',
     items: [
       {
-        title: 'TUG Home',
+        title: 'User Group Home',
         link: 'https://tug.tidb.io',
       },
       {
@@ -122,7 +122,7 @@ export const navItems = [
     title: 'Support',
     items: [
       {
-        title: 'AskTUG',
+        title: 'Forum',
         link: 'https://asktug.com',
       },
       {

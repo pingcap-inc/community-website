@@ -15,7 +15,7 @@ export const navItems = [
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
       {
-        title: 'AskTUG',
+        title: 'Forum',
         link: 'https://asktug.com',
       },
       {

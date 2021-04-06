@@ -8,7 +8,7 @@ const data = {
       link: 'https://tug.tidb.io',
     },
     ask: {
-      label: 'AskTUG',
+      label: 'Forum',
       link: 'https://asktug.com',
     },
   },

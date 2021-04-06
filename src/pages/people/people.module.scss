@@ -1,0 +1,262 @@
+@import 'styles/common';
+
+.header {
+  background-color: #190f4c;
+
+  &_content {
+    @include responsive-lte-md {
+      flex-direction: column;
+    }
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5rem 0;
+    margin-bottom: 6rem;
+
+    &_left {
+      padding: 1rem;
+
+      &_title {
+        @include H1(ZH);
+        color: $M1;
+      }
+
+      &_summary {
+        @include P1(ZH);
+        color: $M1;
+        margin-top: 2rem;
+        line-height: 2;
+      }
+    }
+
+    &_right {
+      padding: 1rem;
+      min-width: 20rem;
+    }
+  }
+}
+
+.organization_chart {
+  &_content {
+    @include responsive-lte-md {
+      padding: 0;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    width: 100%;
+
+    &_title {
+      @include H1(ZH);
+      color: $F1;
+    }
+
+    &_image {
+      margin-top: 2rem;
+      img {
+        width: 100%;
+      }
+    }
+  }
+}
+
+.how_to_become_wrapper {
+  background-color: $M2;
+}
+
+.how_to_become {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6rem;
+  padding: {
+    top: 4rem;
+    bottom: 6rem;
+  }
+
+  &_title {
+    @include H1(ZH);
+    color: $F1;
+  }
+
+  &_list {
+    @include P1(ZH);
+
+    @include responsive-lte-md {
+      flex-direction: column;
+      &_arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+
+    &_arrow {
+      margin: 2rem;
+    }
+  }
+}
+
+@mixin progress-step-header {
+  padding: 0 2rem;
+  margin-top: 3rem;
+
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: -4rem;
+
+    &_index {
+      font: {
+        size: 5rem;
+        weight: 700;
+      }
+    }
+
+    &_widget {
+      position: relative;
+      top: 2rem;
+    }
+  }
+
+  &_text {
+    margin-top: -5rem;
+    padding-left: 4rem;
+    padding-bottom: 2rem;
+  }
+}
+
+.progress {
+  @include responsive-lte-md {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  margin-top: 6rem;
+  padding: {
+    top: 4rem;
+    bottom: 6rem;
+  }
+
+  &_left {
+    @include responsive-lte-md {
+      margin-right: 0;
+    }
+
+    margin-right: 4rem;
+
+    &_header {
+      display: flex;
+
+      &_text {
+        margin-left: 1rem;
+
+        &_title {
+          @include H1(ZH);
+          color: $F1;
+        }
+
+        &_summary {
+          @include P1(ZH);
+          line-height: 2;
+          margin-top: 1.5rem;
+          color: $F1;
+        }
+      }
+    }
+
+    &_step {
+      &_1 {
+        @include progress-step-header;
+        background-color: #f2f7fb;
+
+        &_header {
+          &_index {
+            color: $B1;
+          }
+        }
+
+        &_text {
+          @include P1(ZH);
+          line-height: 2;
+          color: $F1;
+        }
+      }
+
+      &_2 {
+        @include progress-step-header;
+        background-color: #3738c6;
+
+        &_header {
+          &_index {
+            color: $B2;
+          }
+        }
+
+        &_text {
+          @include P1(ZH);
+          line-height: 2;
+          color: $M1;
+        }
+      }
+    }
+  }
+
+  &_right {
+    @include responsive-lte-md {
+      text-align: left;
+      margin-top: 4rem;
+    }
+
+    text-align: right;
+
+    &_chart {
+      width: 360px;
+      margin-top: 2rem;
+    }
+  }
+}
+
+.people {
+  background-color: $M2;
+  padding: 4rem 0;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &_title {
+      @include H1(ZH);
+      color: $F1;
+    }
+
+    &_summary {
+      @include P1(ZH);
+      color: $F1;
+      margin-top: 1.5rem;
+    }
+
+    &_list {
+      margin-top: 4rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    &_split {
+      height: 6rem;
+    }
+  }
+}

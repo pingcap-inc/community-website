@@ -1,28 +1,17 @@
-const path = require('path');
-
-// next.config.js is not transformed by Babel. So you can only use javascript features supported by your version of Node.js.
-
 module.exports = {
-  webpack: (config, { buildId, dev, isServer, defaultLoaders }) => {
-    // Perform customizations to webpack config
-    // Important: return the modified config
-    config.resolve.alias['~'] = path.resolve(__dirname);
-    config.resolve.alias['components'] = path.resolve(__dirname, 'components');
-    config.resolve.alias['styles'] = path.resolve(__dirname, 'styles');
+  pageExtensions: ['page.js'],
 
-    /*config.module.rules.push({
-      test: /\.(png|jpe?g|gif|svg)$/i,
-      loader: 'file-loader',
-      options: {
-        outputPath: 'images',
-      },
-    })*/
+  images: {
+    domains: ['pingcap.com', 'developer.tidb.io'],
+  },
+
+  // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
+  webpack: (config, options) => {
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
 
     return config;
   },
-  // webpackDevMiddleware: config => {
-  //   // Perform customizations to webpack dev middleware config
-  //   // Important: return the modified config
-  //   return config
-  // }
 };

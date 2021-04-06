@@ -10,7 +10,7 @@ import styles from './people.module.scss';
 import tugData from 'data/tug_data.js';
 import { LegacyLayout } from 'layouts';
 import { TugHead } from 'components/head';
-import { joinTUGLink } from 'constants';
+import { joinTUGLink } from 'src/constants';
 
 export const getStaticProps = () => {
   const { tmc, leader } = tugData;

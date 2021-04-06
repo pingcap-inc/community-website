@@ -2,7 +2,10 @@
   "compilerOptions": {
     "baseUrl": "src",
     "paths": {
-      "*": ["*"]
+      // constants is a system reserved NodeJS module so that we have to do the below
+      // alias mappings to avoid import conflicts
+      "src/constants": ["./constants/index"],
+      "src/constants/*": ["./constants/*"]
     }
   },
   "exclude": ["node_modules", "**/*.spec.js"]

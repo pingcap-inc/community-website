@@ -9,9 +9,7 @@ import Container from 'components/Container/Container';
 import MyLink from 'components/MyLink';
 import i18n from 'data/navbar';
 import styles from './Navbar.module.scss';
-import tugConfig from 'tug.config';
-
-const { joinTUGLink } = tugConfig;
+import { joinTUGLink } from 'src/constants';
 
 export default function Navbar({ initTransparent, forceNonTransparent }) {
   // const intl = useIntl()

@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": "src"
+    "baseUrl": "src",
+    "paths": {
+      "*": ["*"]
+    }
   },
   "exclude": ["node_modules", "**/*.spec.js"]
 }

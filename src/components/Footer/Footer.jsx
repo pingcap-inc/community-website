@@ -5,7 +5,6 @@ import MyLink from 'components/MyLink';
 import Socials from 'components/socials/Socials';
 import i18n from 'data/footer';
 import styles from './Footer.module.scss';
-import tugConfig from 'tug.config';
 
 const logoImageUrl = 'images/logo.svg';
 
@@ -14,7 +13,7 @@ export default function Footer() {
 
   const data = i18n[locale];
 
-  const copyrightNode = `©${new Date().getFullYear()} ${tugConfig.author}.`;
+  const copyrightNode = `©${new Date().getFullYear()} TiDB Community.`;
 
   return (
     <div className={styles.wrapper}>

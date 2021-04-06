@@ -7,12 +7,10 @@ import HowToBecome from 'components/people/HowToBecome/HowToBecome';
 import MyLink from 'components/MyLink';
 import TMCItem from 'components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
-import tugConfig from 'tug.config';
 import tugData from 'data/tug_data.js';
 import { LegacyLayout } from 'layouts';
 import { TugHead } from 'components/head';
-
-const { joinTUGLink } = tugConfig;
+import { joinTUGLink } from 'constants';
 
 export const getStaticProps = () => {
   const { tmc, leader } = tugData;

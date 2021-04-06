@@ -185,10 +185,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 工具函数
 
-## tug.config.js
-
-存放网站相关配置信息
-
 ## next.config.js
 
 next.js 配置文件，可重写 webpack 以及相关工具链的配置

@@ -10,7 +10,7 @@ const data = {
       title: 'Join Developer Group',
       desc:
         'Learning knowledge and skills, sharing best practices, become a database expert, develop database standards.',
-      link: 'https://developer.tidb.io',
+      link: 'https://contributor.tidb.io',
     },
     {
       title: 'Code of Conduct',

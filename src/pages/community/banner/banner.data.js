@@ -6,6 +6,7 @@ const data = {
     {
       title: 'Forum',
       label: 'View',
+      isCN: true,
       link: 'https://asktug.com',
     },
     {

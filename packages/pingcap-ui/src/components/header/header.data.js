@@ -30,7 +30,7 @@ export const navItems = [
     items: [
       {
         title: 'DevGroup Home',
-        link: 'https://developer.tidb.io',
+        link: 'https://contributor.tidb.io',
       },
       {
         title: 'Contribution',
@@ -50,29 +50,29 @@ export const navItems = [
         items: [
           {
             title: 'Maintainers',
-            link: 'https://developer.tidb.io/people/maintainer',
+            link: 'https://contributor.tidb.io/people/maintainer',
           },
           {
             title: 'Committer',
-            link: 'https://developer.tidb.io/people/committer',
+            link: 'https://contributor.tidb.io/people/committer',
           },
           {
             title: 'Reviewer',
-            link: 'https://developer.tidb.io/people/reviewer',
+            link: 'https://contributor.tidb.io/people/reviewer',
           },
           {
             title: 'Active Contributor',
-            link: 'https://developer.tidb.io/people/active-contributor',
+            link: 'https://contributor.tidb.io/people/active-contributor',
           },
           {
             title: 'Contributor',
-            link: 'https://developer.tidb.io/people/contributor',
+            link: 'https://contributor.tidb.io/people/contributor',
           },
         ],
       },
       {
         title: 'Special Interest Group (SIG)',
-        link: 'https://developer.tidb.io/SIG/',
+        link: 'https://contributor.tidb.io/SIG/',
       },
     ],
   },
@@ -99,11 +99,19 @@ export const navItems = [
   },
   {
     title: 'Events',
-    link: 'https://developer.tidb.io/events',
+    link: 'https://contributor.tidb.io/events',
   },
   {
     title: 'Resources',
     items: [
+      {
+        title: 'Forum',
+        link: 'https://asktug.com',
+      },
+      {
+        title: 'Slack',
+        link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
+      },
       {
         title: 'Docs',
         link: 'https://docs.pingcap.com/tidb/stable',
@@ -115,19 +123,6 @@ export const navItems = [
       {
         title: 'Mailing Lists',
         link: 'https://lists.tidb.io/g/main/subgroups',
-      },
-    ],
-  },
-  {
-    title: 'Support',
-    items: [
-      {
-        title: 'Forum',
-        link: 'https://asktug.com',
-      },
-      {
-        title: 'Slack',
-        link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
     ],
   },

@@ -105,6 +105,14 @@ export const navItems = [
     title: 'Resources',
     items: [
       {
+        title: 'Forum',
+        link: 'https://asktug.com',
+      },
+      {
+        title: 'Slack',
+        link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
+      },
+      {
         title: 'Docs',
         link: 'https://docs.pingcap.com/tidb/stable',
       },
@@ -115,19 +123,6 @@ export const navItems = [
       {
         title: 'Mailing Lists',
         link: 'https://lists.tidb.io/g/main/subgroups',
-      },
-    ],
-  },
-  {
-    title: 'Support',
-    items: [
-      {
-        title: 'Forum',
-        link: 'https://asktug.com',
-      },
-      {
-        title: 'Slack',
-        link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
     ],
   },

@@ -40,9 +40,12 @@ const Banner = () => {
         <p>{data.desc}</p>
 
         <Styled.Navs>
-          {data.navs.map(({ title, label, link }, idx) => (
+          {data.navs.map(({ title, isCN, label, link }, idx) => (
             <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
-              <h3>{title}</h3>
+              <h3>
+                {title}
+                {isCN && <i>CN</i>}
+              </h3>
               <Styled.NavDesc>
                 <span>{label}</span> &gt;
               </Styled.NavDesc>

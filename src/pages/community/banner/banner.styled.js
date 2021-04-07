@@ -61,6 +61,20 @@ export const NavCard = styled.div`
 
   h3 {
     ${mixins.typography('h2')};
+    position: relative;
+
+    i {
+      ${mixins.size('16px')};
+      ${mixins.flexCenter()};
+      font-size: 8px;
+      font-style: normal;
+      font-size-adjust: none;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      right: -18px;
+      border: 1px solid ${colors.F1};
+    }
   }
 
   &:hover {
@@ -69,6 +83,10 @@ export const NavCard = styled.div`
     h3,
     ${NavDesc} {
       color: ${colors.M1} !important;
+
+      i {
+        border-color: ${colors.M1};
+      }
     }
   }
 `;

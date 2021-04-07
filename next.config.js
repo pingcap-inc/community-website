@@ -2,7 +2,7 @@ module.exports = {
   pageExtensions: ['page.js'],
 
   images: {
-    domains: ['pingcap.com', 'developer.tidb.io'],
+    domains: ['pingcap.com', 'contributor.tidb.io'],
   },
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config

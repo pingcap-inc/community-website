@@ -8,7 +8,7 @@ const data = {
       desc:
         'TiDB Incubator Program is designed to ensure that new projects in the TiDB ecosystem can obtain resources and help from the community towards their desired maturity level.',
       link: 'https://github.com/pingcap/community/tree/master/incubator',
-      img: 'https://developer.tidb.io/static/event-TiDB-Incubator-Program-1ade37389dac75fc23b1d408b2011973.svg',
+      img: 'https://contributor.tidb.io/static/event-TiDB-Incubator-Program-1ade37389dac75fc23b1d408b2011973.svg',
     },
     {
       title: 'TiDB Hackathon 2020',

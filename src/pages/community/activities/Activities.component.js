@@ -34,7 +34,7 @@ const Activities = () => {
       <Header {...R.pick(['title', 'desc'], data)} />
       <ActivityCards {...activityCardsProps} />
       <Styled.ViewMoreWrapper>
-        <ViewMoreButton onClick={(e) => onLinkClick('https://developer.tidb.io/events')}>
+        <ViewMoreButton onClick={(e) => onLinkClick('https://contributor.tidb.io/events')}>
           View All Events
         </ViewMoreButton>
       </Styled.ViewMoreWrapper>

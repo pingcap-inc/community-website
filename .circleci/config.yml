@@ -58,7 +58,6 @@ workflows:
               ignore:
                 - main
       - deploy:
-          type: approval
           filters:
             branches:
               only:

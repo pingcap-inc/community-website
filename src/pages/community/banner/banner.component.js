@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { useSize } from 'ahooks';
 
 import * as Styled from './banner.styled';
+import ChineseIcon from './chinese.svg';
 import data from './banner.data';
 import { bgWidth, bgHeight } from './banner.constants';
 import { link as linkUtils } from 'utils';
@@ -44,7 +45,7 @@ const Banner = () => {
             <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>
                 {title}
-                {isCN && <i>CN</i>}
+                {isCN && <ChineseIcon />}
               </h3>
               <Styled.NavDesc>
                 <span>{label}</span> &gt;

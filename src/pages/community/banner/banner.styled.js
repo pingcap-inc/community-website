@@ -63,17 +63,12 @@ export const NavCard = styled.div`
     ${mixins.typography('h2')};
     position: relative;
 
-    i {
+    svg {
       ${mixins.size('16px')};
-      ${mixins.flexCenter()};
-      font-size: 8px;
-      font-style: normal;
-      font-size-adjust: none;
-      border-radius: 50%;
       position: absolute;
       top: 0;
       right: -18px;
-      border: 1px solid ${colors.F1};
+      fill: ${colors.F1};
     }
   }
 
@@ -84,8 +79,8 @@ export const NavCard = styled.div`
     ${NavDesc} {
       color: ${colors.M1} !important;
 
-      i {
-        border-color: ${colors.M1};
+      svg {
+        fill: ${colors.M1};
       }
     }
   }
@@ -133,6 +128,12 @@ export const Container = styled.div`
           font-weight: 600;
           color: ${colors.F1};
           line-height: 1;
+
+          svg {
+            ${mixins.size('14px')};
+            top: -3px;
+            right: -15px;
+          }
         }
       }
 

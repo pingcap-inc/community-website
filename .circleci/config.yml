@@ -52,8 +52,13 @@ jobs:
 workflows:
   workflow:
     jobs:
-      - verify
+      - verify:
+          filters:
+            branches:
+              ignore:
+                - main
       - deploy:
+          type: approval
           filters:
             branches:
               only:

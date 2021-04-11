@@ -43,7 +43,7 @@ module.exports = {
         ...resolve,
         alias: {
           ...resolve.alias,
-          '@pingcap/pingcap-ui': resolveRoot('src'),
+          '@tidb-community/ui': resolveRoot('src'),
         },
       },
     };

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@pingcap/pingcap-ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import { Header as ActivitiesHeader } from 'pages/community/activities';
 

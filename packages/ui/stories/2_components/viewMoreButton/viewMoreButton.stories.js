@@ -1,4 +1,4 @@
-import { ViewMoreButton } from '@pingcap/pingcap-ui';
+import { ViewMoreButton } from '@tidb-community/ui';
 
 import * as Styled from './viewMoreButton.styled';
 import { getTitle } from '../utils';

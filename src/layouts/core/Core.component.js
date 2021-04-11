@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import React from 'react';
-import { Header, Footer, data, utils } from '@pingcap/pingcap-ui';
+import { Header, Footer, data, utils } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';

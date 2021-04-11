@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors, mixins } from '@pingcap/pingcap-ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import { bgHeight } from './banner.constants';
 

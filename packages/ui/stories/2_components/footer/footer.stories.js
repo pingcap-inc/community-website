@@ -1,4 +1,4 @@
-import { Footer, data } from '@pingcap/pingcap-ui';
+import { Footer, data } from '@tidb-community/ui';
 
 import { getTitle } from '../utils';
 

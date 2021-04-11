@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins } from '@pingcap/pingcap-ui';
+import { mixins } from '@tidb-community/ui';
 
 export const H0 = styled.div`
   ${mixins.typography('h0')};

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, data, utils } from '@pingcap/pingcap-ui';
+import { Header, data, utils } from '@tidb-community/ui';
 
 import { getTitle } from '../utils';
 

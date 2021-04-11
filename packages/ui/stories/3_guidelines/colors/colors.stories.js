@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import React from 'react';
 import { Row, Col } from 'antd';
 import { readableColor } from 'polished';
-import { colors } from '@pingcap/pingcap-ui';
+import { colors } from '@tidb-community/ui';
 
 import * as Styled from './colors.styled';
 import { getTitle } from '../utils';

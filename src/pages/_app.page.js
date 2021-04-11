@@ -1,6 +1,6 @@
 import 'antd/dist/antd.css';
 import React from 'react';
-import { createAppGlobalStyle } from '@pingcap/pingcap-ui';
+import { createAppGlobalStyle } from '@tidb-community/ui';
 
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';

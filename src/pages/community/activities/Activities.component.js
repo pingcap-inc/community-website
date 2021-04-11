@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import Image from 'next/image';
 import React from 'react';
-import { ActivityCards, ViewMoreButton } from '@pingcap/pingcap-ui';
+import { ActivityCards, ViewMoreButton } from '@tidb-community/ui';
 import { Row } from 'antd';
 import { useRouter } from 'next/router';
 

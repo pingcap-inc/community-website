@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React from 'react';
 import { Row, Col } from 'antd';
 import { useRouter } from 'next/router';
-import { ViewMoreButton } from '@pingcap/pingcap-ui';
+import { ViewMoreButton } from '@tidb-community/ui';
 
 import * as Styled from './career.styled';
 import data from './career.data';

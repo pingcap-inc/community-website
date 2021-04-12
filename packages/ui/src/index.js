@@ -11,11 +11,23 @@ import * as footerData from './components/footer/footer.data';
 import * as headerData from './components/header/header.data';
 // Utils
 import * as headerUtils from './components/header/header.utils';
+import { nav } from './utils';
 
-export const data = {
-  footer: footerData,
-  header: headerData,
-};
+export function getData(urlPrefixRegexp) {
+  const { navItems: footerNavItems, ...restFooterData } = footerData;
+  const { navItems: headerNavItems, ...restHeaderData } = headerData;
+
+  return {
+    footer: {
+      navItems: nav.replaceNavLinks(footerNavItems, urlPrefixRegexp),
+      ...restFooterData,
+    },
+    header: {
+      navItems: nav.replaceNavLinks(headerNavItems, urlPrefixRegexp),
+      ...restHeaderData,
+    },
+  };
+}
 
 export const utils = {
   header: headerUtils,

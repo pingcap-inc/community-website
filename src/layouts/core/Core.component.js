@@ -1,10 +1,11 @@
 import * as R from 'ramda';
 import React from 'react';
-import { Header, Footer, data, utils } from '@tidb-community/ui';
+import { Header, Footer, getData, utils } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';
 
+const data = getData(/^https?:\/\/(?:tug\.)?tidb\.io/);
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems } = data.footer;
 

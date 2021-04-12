@@ -2,6 +2,7 @@
   "name": "@tidb-community/ui",
   "version": "0.1.0",
   "scripts": {
+    "postinstall": "father build",
     "prepublishOnly": "father build && np --yolo --no-publish --any-branch",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"

@@ -21,7 +21,7 @@ const Core = ({ children }) => {
     title,
     onNavClick,
     navItems: headerNavItems,
-    currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
+    currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname, /https?:\/\/(?:tug\.)?tidb\.io/),
     onTitleClick: () => router.push('/community'),
   };
 

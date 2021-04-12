@@ -26,6 +26,10 @@ const mockNavItems = [
       },
     ],
   },
+  {
+    title: 't8',
+    link: 'https://foo.bar/l5',
+  },
 ];
 
 describe('components/header/header.utils', () => {
@@ -35,6 +39,8 @@ describe('components/header/header.utils', () => {
       expect(getCurrentNav(mockNavItems, 'l2')).toBe('t3');
       expect(getCurrentNav(mockNavItems, 'l3')).toBe('t4');
       expect(getCurrentNav(mockNavItems, 'l4')).toBe('t7');
+      expect(getCurrentNav(mockNavItems, 'l5')).toBe(undefined);
+      expect(getCurrentNav(mockNavItems, 'l5', /https:\/\/foo\.bar\//)).toBe('t8');
       expect(getCurrentNav(mockNavItems, 'notExisted')).toBeUndefined();
     });
   });

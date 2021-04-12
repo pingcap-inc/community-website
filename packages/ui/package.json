@@ -1,6 +1,6 @@
 {
   "name": "@tidb-community/ui",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "scripts": {
     "prepublishOnly": "father build && np --yolo --no-publish --any-branch",
     "storybook": "start-storybook -p 6006",

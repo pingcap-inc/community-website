@@ -3,14 +3,20 @@
   "version": "0.0.0",
   "main": "src/index.js",
   "scripts": {
+    "compile": "father build",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.13.10"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^6.1.21",
     "@storybook/addon-essentials": "^6.1.21",
     "@storybook/addon-links": "^6.1.21",
     "@storybook/react": "^6.1.21",
-    "babel-loader": "^8.2.2"
+    "babel-loader": "^8.2.2",
+    "father": "^2.30.3",
+    "father-build": "^1.19.3"
   }
 }

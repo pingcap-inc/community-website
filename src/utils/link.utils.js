@@ -1,10 +1,10 @@
-const hostRegexp = /https?:\/\/(?:tug\.)?tidb\.io\//;
+const hostRegexp = /https?:\/\/(?:tug\.)?tidb\.io/;
 
 export const handleRedirect = (router, link) => {
   if (!link) return;
 
   if (process.env.NODE_ENV !== 'production') {
-    link = link.replace(hostRegexp, window.location.origin + '/');
+    link = link.replace(hostRegexp, window.location.origin);
   }
 
   if (link.startsWith('http')) {

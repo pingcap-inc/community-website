@@ -6,6 +6,9 @@ import * as mixins from '../../mixins';
 
 export const Container = styled.div`
   background: ${colors.M2};
+`;
+
+export const ContainerWithMarginTop = styled(Container)`
   margin-top: 6rem;
 `;
 

@@ -19,10 +19,8 @@ const Footer = ({ logo, title, navItems, onNavClick, hasMargin = false }) => {
 
   const justify = bp.xs ? 'center' : undefined;
 
-  const Container = hasMargin ? Styled.ContainerWithMarginTop : Styled.Container;
-
   return (
-    <Container>
+    <Styled.Container hasMargin={hasMargin}>
       <Styled.Content>
         <Row align="top" justify={justify}>
           <Col xs={24} md={18}>
@@ -66,7 +64,7 @@ const Footer = ({ logo, title, navItems, onNavClick, hasMargin = false }) => {
           </Col>
         </Row>
       </Styled.Content>
-    </Container>
+    </Styled.Container>
   );
 };
 

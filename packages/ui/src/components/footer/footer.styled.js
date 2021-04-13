@@ -1,15 +1,16 @@
 import { Row, Col } from 'antd';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
 
 export const Container = styled.div`
   background: ${colors.M2};
-`;
-
-export const ContainerWithMarginTop = styled(Container)`
-  margin-top: 6rem;
+  ${(props) =>
+    props.hasMargin &&
+    css`
+      margin-top: 6em;
+    `}
 `;
 
 export const NavRow = styled(Row)`
@@ -76,9 +77,9 @@ export const IconWrapper = styled.span`
 
 export const Copyright = styled(Col)`
   span {
-    font-size: 1.2em;
     position: relative;
     top: 0.15em;
+    font-size: 1.2em;
   }
 `;
 

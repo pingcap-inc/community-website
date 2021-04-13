@@ -63,13 +63,11 @@ describe('utils/nav.utils', () => {
   });
 
   describe('buildUrlPrefixPattern', () => {
-    it('should build correct regexp', () => {
-      for (const { domain, path, cases } of regexpCases) {
-        const regexp = buildUrlPrefixPattern(domain, path);
-        for (const url in cases) {
-          if (cases.hasOwnProperty(url)) {
-            expect(regexp.test(url)).toBe(cases[url]);
-          }
+    it.each(regexpCases)('should build correct regexp', ({ domain, path, cases }) => {
+      const regexp = buildUrlPrefixPattern(domain, path);
+      for (const url in cases) {
+        if (cases.hasOwnProperty(url)) {
+          expect(regexp.test(url)).toBe(cases[url]);
         }
       }
     });

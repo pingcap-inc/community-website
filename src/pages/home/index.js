@@ -71,7 +71,7 @@ const Home = ({ topics }) => {
   return (
     <>
       <TugHead title="Home" />
-      <CoreLayout hasMargin={false}>
+      <CoreLayout>
         <main className={styles.wrapper}>
           <div className={styles.slideshow}>
             <Carousel autoplay>

@@ -46,7 +46,7 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, children }) => {
 
 Core.propTypes = {
   domain: PropTypes.string,
-  hasMargin: PropTypes.bool.isRequired,
+  hasMargin: PropTypes.bool,
 };
 
 export default Core;

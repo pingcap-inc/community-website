@@ -1,4 +1,4 @@
-export function replaceNavLinks(items, urlPrefixRegexp) {
+export const replaceNavLinks = (items, urlPrefixRegexp) => {
   if (!Array.isArray(items)) {
     return items;
   }
@@ -20,7 +20,7 @@ export function replaceNavLinks(items, urlPrefixRegexp) {
   }
 
   return newItems;
-}
+};
 
 export const buildUrlPrefixPattern = (domain, path) => {
   const schemeSpecPart = '^https?:';

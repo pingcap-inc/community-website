@@ -13,7 +13,7 @@ import * as headerData from './components/header/header.data';
 import * as headerUtils from './components/header/header.utils';
 import { nav } from './utils';
 
-export function getData(domain, path) {
+export const getData = (domain, path) => {
   const urlPrefixRegexp = nav.buildUrlPrefixPattern(domain, path);
 
   const { navItems: footerNavItems, ...restFooterData } = footerData;
@@ -29,7 +29,7 @@ export function getData(domain, path) {
       ...restHeaderData,
     },
   };
-}
+};
 
 export const utils = {
   header: headerUtils,

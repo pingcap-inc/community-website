@@ -24,7 +24,6 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, children }) => {
     onNavClick,
     navItems: headerNavItems,
     currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
-    hasMargin: hasMargin,
     onTitleClick: () => router.push('/community'),
   };
 
@@ -33,6 +32,7 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, children }) => {
     title,
     onNavClick,
     navItems: footerNavItems,
+    hasMargin,
   };
 
   return (

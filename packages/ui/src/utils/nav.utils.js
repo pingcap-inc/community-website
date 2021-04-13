@@ -1,4 +1,4 @@
-import { is } from 'ramda';
+import * as R from 'ramda';
 
 export const replaceNavLinks = (items, urlPrefixRegexp) => {
   if (!Array.isArray(items)) {
@@ -14,7 +14,7 @@ export const replaceNavLinks = (items, urlPrefixRegexp) => {
       newItem.items = replaceNavLinks(item.items, urlPrefixRegexp);
     }
 
-    if (is(String, item.link)) {
+    if (R.is(String, item.link)) {
       newItem.link = item.link.replace(urlPrefixRegexp, '') || '/'; // root path if totally matched
     }
 

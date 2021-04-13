@@ -1,4 +1,4 @@
-import { ActivityCards } from '@pingcap/pingcap-ui';
+import { ActivityCards } from '@tidb-community/ui';
 
 import * as data from './activityCards.data';
 import { getTitle } from '../utils';

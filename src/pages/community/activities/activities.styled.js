@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Col } from 'antd';
 
-import { mixins } from '@pingcap/pingcap-ui';
+import { mixins } from '@tidb-community/ui';
 
 export const Container = styled.div`
   ${mixins.responsive()};

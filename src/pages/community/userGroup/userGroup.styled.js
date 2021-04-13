@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins } from '@pingcap/pingcap-ui';
+import { mixins } from '@tidb-community/ui';
 
 import { Container as LearningContainer } from 'pages/community/learning/learning.styled';
 

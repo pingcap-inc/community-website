@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { mixins } from '@pingcap/pingcap-ui';
+import { mixins } from '@tidb-community/ui';
 
 import { Header } from 'pages/community/activities';
 

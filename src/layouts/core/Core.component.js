@@ -13,7 +13,7 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, locale = 'cn', children }) =>
   const { navItems: headerNavItems } = data.header;
   const { navItems: footerNavItems } = data.footer;
 
-  const title = 'Community';
+  const title = 'TiDB Community';
   const logo = <img alt={title} src="/images/community/logo.svg" />;
 
   const onNavClick = R.curry(linkUtils.handleRedirect)(router);

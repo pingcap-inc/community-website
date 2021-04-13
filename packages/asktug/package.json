@@ -1,0 +1,14 @@
+{
+  "name": "@tidb-community/asktug",
+  "private": true,
+  "scripts": {
+    "build": "father build"
+  },
+  "dependencies": {
+    "@tidb-community/ui": "*"
+  },
+  "devDependencies": {
+    "father": "^2.30.3",
+    "father-build": "^1.19.3"
+  }
+}

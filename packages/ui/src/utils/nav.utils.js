@@ -21,3 +21,17 @@ export function replaceNavLinks(items, urlPrefixRegexp) {
 
   return newItems;
 }
+
+export const buildUrlPrefixPattern = (domain, path) => {
+  const schemeSpecPart = '^https?:';
+  const domainPart = domain.replace(/\./g, '\\.'); // escape wildcard character
+  let pathPart;
+
+  if (!path || path === '/') {
+    pathPart = '';
+  } else {
+    pathPart = '/' + path.replace(/^\/|\/$/g, '');
+  }
+
+  return new RegExp(schemeSpecPart + '//' + domainPart + pathPart);
+};

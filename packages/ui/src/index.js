@@ -13,7 +13,9 @@ import * as headerData from './components/header/header.data';
 import * as headerUtils from './components/header/header.utils';
 import { nav } from './utils';
 
-export function getData(urlPrefixRegexp) {
+export function getData(domain, path) {
+  const urlPrefixRegexp = nav.buildUrlPrefixPattern(domain, path);
+
   const { navItems: footerNavItems, ...restFooterData } = footerData;
   const { navItems: headerNavItems, ...restHeaderData } = headerData;
 

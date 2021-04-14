@@ -1,18 +1,18 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
 
   entry: './src/headerFooter.js',
 
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, '../../public/asktug'),
     filename: 'header-footer.js',
   },
 
   module: {
     rules: [
-      { test: /\.(js|jsx)$/, exclude: /node_modules/, use: ['babel-loader'] },
+      { test: /\.js$/, exclude: /node_modules/, use: ['babel-loader'] },
 
       {
         test: /\.svg$/,

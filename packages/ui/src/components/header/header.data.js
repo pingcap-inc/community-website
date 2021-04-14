@@ -1,5 +1,5 @@
 import * as dataEn from './header.data-en';
-import * as dataCn from './header.data-Cn';
+import * as dataCn from './header.data-cn';
 
 export default {
   en: dataEn,

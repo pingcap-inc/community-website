@@ -11,6 +11,7 @@
     "server:restart": "pm2 restart tug-website-next-server",
     "start": "next start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
+    "build:asktug": "lerna run --scope @tidb-community/asktug build",
     "test": "jest"
   },
   "husky": {

@@ -2,7 +2,7 @@
   "name": "@tidb-community/asktug",
   "private": true,
   "scripts": {
-    "build": "father build"
+    "build": "webpack"
   },
   "dependencies": {
     "@tidb-community/ui": "*"

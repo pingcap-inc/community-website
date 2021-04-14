@@ -2,7 +2,8 @@
   "name": "@tidb-community/asktug",
   "private": true,
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "build:watch": "NODE_ENV=development webpack --watch"
   },
   "dependencies": {
     "@tidb-community/ui": "*"

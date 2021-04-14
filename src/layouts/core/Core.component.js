@@ -1,15 +1,15 @@
 import * as R from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Header, Footer, getData, utils } from '@tidb-community/ui'
+import { Header, Footer, getData, utils } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';
 
-const Core = ({ domain = 'tug.tidb.io', hasMargin, children }) => {
+const Core = ({ domain = 'tug.tidb.io', hasMargin, locale = 'cn', children }) => {
   const router = useRouter();
 
-  const data = getData(domain);
+  const data = getData(domain, router.basePath, locale);
   const { navItems: headerNavItems } = data.header;
   const { navItems: footerNavItems } = data.footer;
 
@@ -47,6 +47,7 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, children }) => {
 Core.propTypes = {
   domain: PropTypes.string,
   hasMargin: PropTypes.bool,
+  locale: PropTypes.string,
 };
 
 export default Core;

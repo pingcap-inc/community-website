@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Header, Footer, getData, utils } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
 

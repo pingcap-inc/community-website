@@ -29,4 +29,10 @@ module.exports = {
       },
     ],
   },
+
+  resolve: {
+    alias: {
+      '@tidb-community/ui': path.resolve(__dirname, '../ui/src'),
+    },
+  },
 };

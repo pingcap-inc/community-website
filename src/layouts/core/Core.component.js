@@ -47,7 +47,7 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, locale = 'cn', children }) =>
 Core.propTypes = {
   domain: PropTypes.string,
   hasMargin: PropTypes.bool,
-  locale: PropTypes.string,
+  locale: PropTypes.oneOf(['cn', 'en']),
 };
 
 export default Core;

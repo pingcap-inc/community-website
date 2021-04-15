@@ -10,7 +10,7 @@ import WelfareItem from 'components/mva/WelfareItem';
 import YearSwitch from 'components/mva/YearSwitch';
 import styles from './mva.module.scss';
 import tugData from 'data/tug_data.js';
-import { LegacyLayout } from 'layouts';
+import { CoreLayout } from 'layouts';
 import { TugHead } from 'components/head';
 
 export const getStaticProps = () => {
@@ -57,7 +57,7 @@ const MostValuableAdvocate = ({ MVAs, welfare, become }) => {
         description="TiDB MOA（Most Outstanding  Advocate）、TiDB MVA （Most Valuable Advocate）是为 TUG 贡献高质量技术内容的 TiDB 用户，他们帮助他人充分了解 TiDB，是 TUG 社区认定的 TiDB 技术先驱者与技术领袖，享受极高的社区荣誉和权益。"
       />
 
-      <LegacyLayout>
+      <CoreLayout>
         <div className={styles.wrapper}>
           <div className={styles.header}>
             <Container className={styles.header_content}>
@@ -168,7 +168,7 @@ const MostValuableAdvocate = ({ MVAs, welfare, become }) => {
             </Container>
           </div>
         </div>
-      </LegacyLayout>
+      </CoreLayout>
     </>
   );
 };

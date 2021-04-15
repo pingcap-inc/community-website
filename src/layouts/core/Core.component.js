@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';
 
-const Core = ({ domain = 'tug.tidb.io', children }) => {
+const Core = ({ domain = 'tug.tidb.io', hasMargin, locale = 'cn', children }) => {
   const router = useRouter();
 
-  const data = getData(domain);
+  const data = getData(domain, router.basePath, locale);
   const { navItems: headerNavItems } = data.header;
   const { navItems: footerNavItems } = data.footer;
 
@@ -32,6 +32,7 @@ const Core = ({ domain = 'tug.tidb.io', children }) => {
     title,
     onNavClick,
     navItems: footerNavItems,
+    hasMargin,
   };
 
   return (
@@ -45,6 +46,8 @@ const Core = ({ domain = 'tug.tidb.io', children }) => {
 
 Core.propTypes = {
   domain: PropTypes.string,
+  hasMargin: PropTypes.bool,
+  locale: PropTypes.oneOf(['cn', 'en']),
 };
 
 export default Core;

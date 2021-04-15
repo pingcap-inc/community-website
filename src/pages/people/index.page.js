@@ -8,7 +8,7 @@ import MyLink from 'components/MyLink';
 import TMCItem from 'components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
 import tugData from 'data/tug_data.js';
-import { LegacyLayout } from 'layouts';
+import { CoreLayout } from 'layouts';
 import { TugHead } from 'components/head';
 import { joinTUGLink } from 'src/constants';
 
@@ -47,7 +47,7 @@ const People = ({ howToBecome, tmc, leader }) => {
         description="TUG 为 TiDB 用户提供了一个开放的交流平台。成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。"
       />
 
-      <LegacyLayout>
+      <CoreLayout>
         <div className={styles.header}>
           <Container className={styles.header_content}>
             <div className={styles.header_content_left}>
@@ -161,7 +161,7 @@ const People = ({ howToBecome, tmc, leader }) => {
             </div>
           </Container>
         </div>
-      </LegacyLayout>
+      </CoreLayout>
     </>
   );
 };

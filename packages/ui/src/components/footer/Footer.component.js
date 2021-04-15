@@ -14,13 +14,13 @@ const { useBreakpoint } = Grid;
 
 const icons = [GithubIcon, TwitterIcon, FacebookIcon, LinkedInIcon, SlackIcon, YoutubeIcon];
 
-const Footer = ({ logo, title, navItems, onNavClick }) => {
+const Footer = ({ logo, title, navItems, onNavClick, hasMargin = false }) => {
   const bp = useBreakpoint();
 
   const justify = bp.xs ? 'center' : undefined;
 
   return (
-    <Styled.Container>
+    <Styled.Container hasMargin={hasMargin}>
       <Styled.Content>
         <Row align="top" justify={justify}>
           <Col xs={24} md={18}>
@@ -73,6 +73,7 @@ Footer.propTypes = {
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
+  hasMargin: PropTypes.bool,
 };
 
 export default Footer;

@@ -14,7 +14,7 @@ import TopItem from 'components/home/TopItem/TopItem';
 import banners from 'data/banners';
 import events from 'data/events';
 import styles from './home.module.scss';
-import { LegacyLayout } from 'layouts';
+import { CoreLayout } from 'layouts';
 import { TugHead } from 'components/head';
 import {
   getAvatarUrlByAvatarTemplateString,
@@ -71,7 +71,7 @@ const Home = ({ topics }) => {
   return (
     <>
       <TugHead title="Home" />
-      <LegacyLayout>
+      <CoreLayout>
         <main className={styles.wrapper}>
           <div className={styles.slideshow}>
             <Carousel autoplay>
@@ -212,7 +212,7 @@ const Home = ({ topics }) => {
 
           <HomeMVA />
         </main>
-      </LegacyLayout>
+      </CoreLayout>
     </>
   );
 };

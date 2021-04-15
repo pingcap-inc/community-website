@@ -13,7 +13,7 @@ const Community = () => (
   <>
     <CommunityHead />
 
-    <CoreLayout>
+    <CoreLayout locale="en">
       <Banner />
       <Activities />
       <Learning />

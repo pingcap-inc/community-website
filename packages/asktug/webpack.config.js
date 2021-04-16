@@ -1,5 +1,14 @@
 const path = require('path');
 
+const unifyNodeModules = (names) =>
+  names.reduce(
+    (acc, name) => ({
+      ...acc,
+      [name]: path.resolve(`../../node_modules/${name}`),
+    }),
+    {}
+  );
+
 module.exports = {
   mode: process.env.NODE_ENV ?? 'production',
 
@@ -24,6 +33,11 @@ module.exports = {
       },
 
       {
+        test: /\.scss$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+
+      {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
@@ -32,6 +46,7 @@ module.exports = {
 
   resolve: {
     alias: {
+      ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
       '@tidb-community/ui': path.resolve(__dirname, '../ui/src'),
     },
   },

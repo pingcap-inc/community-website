@@ -3,6 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Header, Footer, getData, utils } from '@tidb-community/ui';
 
+import './headerFooter.scss';
+
 const data = getData('asktug.com', '', 'cn');
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems } = data.footer;

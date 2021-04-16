@@ -5,6 +5,10 @@ import * as mixins from '../../mixins';
 import { menuPopupId } from './header.constants';
 
 export const Container = styled.div`
+  border-bottom: 1px solid ${colors.T2};
+`;
+
+export const Content = styled.div`
   ${mixins.responsive()};
   ${mixins.flexVerticalCenter()};
   height: 84px;
@@ -58,10 +62,10 @@ export const MenuWrapper = styled.div`
       &-item-selected,
       &-submenu-active,
       &-submenu-selected {
-        cursor: pointer;
         position: relative;
         color: ${colors.B1} !important;
         border-bottom-color: transparent !important;
+        cursor: pointer;
 
         &::after {
           ${mixins.size('24px', '4px')};
@@ -69,8 +73,8 @@ export const MenuWrapper = styled.div`
           bottom: 0;
           left: 50%;
           margin-left: -12px;
-          content: '';
           background: ${colors.B1};
+          content: '';
         }
       }
     }

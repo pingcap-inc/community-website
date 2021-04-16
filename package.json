@@ -4,7 +4,7 @@
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lerna:bootstrap": "lerna bootstrap --hoist",
+    "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx",
     "postinstall": "npm run lerna:bootstrap",
     "server:init": "next build && pm2 start --name tug-website-next-server npm -- run start",
@@ -53,7 +53,6 @@
     "@testing-library/react": "11.2.6",
     "@typescript-eslint/eslint-plugin": "4.20.0",
     "@typescript-eslint/parser": "4.20.0",
-    "babel-eslint": "10.1.0",
     "babel-jest": "26.6.3",
     "babel-plugin-styled-components": "1.12.0",
     "eslint": "7.23.0",

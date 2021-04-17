@@ -43,8 +43,22 @@ ReactDOM.render(
   headerElem
 );
 
-window.addEventListener('load', () => {
-  const footerElem = document.getElementById('asktug-footer');
-  footerElem.classList.add(appClassName);
-  ReactDOM.render(<Footer {...footerProps} />, footerElem);
+const footerId = 'asktug-footer';
+const MutationObserver = window.MutationObserver || window.WebkitMutationObserver;
+
+const observer = new MutationObserver((mutations) => {
+  mutations.forEach(function(mutation) {
+    mutation.addedNodes.forEach(function(node) {
+      if (node.id === footerId) {
+        const footerElem = document.getElementById(footerId);
+        footerElem.classList.add(appClassName);
+        ReactDOM.render(<Footer {...footerProps} />, footerElem);
+      }
+    });
+  });
+});
+
+observer.observe(document.body, {
+  childList: true,
+  subtree: true,
 });

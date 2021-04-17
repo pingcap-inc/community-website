@@ -6,10 +6,10 @@ import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';
 
-const Core = ({ domain = 'tug.tidb.io', hasMargin, locale = 'cn', children }) => {
+const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'cn' }) => {
   const router = useRouter();
 
-  const data = getData(domain, router.basePath, locale);
+  const data = getData({ domain, path: router.basePath, locale });
   const { navItems: headerNavItems } = data.header;
   const { navItems: footerNavItems } = data.footer;
 

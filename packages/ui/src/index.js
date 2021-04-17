@@ -13,19 +13,25 @@ import headerData, * as defaultHeaderData from './components/header/header.data'
 import * as headerUtils from './components/header/header.utils';
 import { nav } from './utils';
 
-export const getData = (domain, path, locale) => {
-  const urlPrefixRegexp = nav.buildUrlPrefixPattern(domain, path);
-
+export const getData = ({ domain, path, locale } = {}) => {
   const { navItems: footerNavItems, ...restFooterData } = footerData[locale] || defaultFooterData;
   const { navItems: headerNavItems, ...restHeaderData } = headerData[locale] || defaultHeaderData;
 
+  const urlPrefixRegexp = nav.buildUrlPrefixPattern({ domain, path });
+
   return {
     footer: {
-      navItems: nav.replaceNavLinks(footerNavItems, urlPrefixRegexp),
+      navItems: nav.replaceNavLinks({
+        items: footerNavItems,
+        urlPrefixRegexp,
+      }),
       ...restFooterData,
     },
     header: {
-      navItems: nav.replaceNavLinks(headerNavItems, urlPrefixRegexp),
+      navItems: nav.replaceNavLinks({
+        items: headerNavItems,
+        urlPrefixRegexp,
+      }),
       ...restHeaderData,
     },
   };

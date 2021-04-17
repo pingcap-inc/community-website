@@ -1,8 +1,14 @@
-import * as R from 'ramda';
+export const replaceNavLinks = ({ items, urlPrefixRegexp }) => {
+  // return '/' as root path if the link is totally matched
+  const replace = (link) => link?.replace(urlPrefixRegexp, '') || '/';
 
-export const replaceNavLinks = (items, urlPrefixRegexp) => {
+  if (!urlPrefixRegexp) return items;
+
   if (!Array.isArray(items)) {
-    return items;
+    return {
+      ...items,
+      link: replace(items.link),
+    };
   }
 
   const newItems = [];
@@ -11,12 +17,13 @@ export const replaceNavLinks = (items, urlPrefixRegexp) => {
     const newItem = { ...item };
 
     if (item.items) {
-      newItem.items = replaceNavLinks(item.items, urlPrefixRegexp);
+      newItem.items = replaceNavLinks({
+        items: item.items,
+        urlPrefixRegexp,
+      });
     }
 
-    if (R.is(String, item.link)) {
-      newItem.link = item.link.replace(urlPrefixRegexp, '') || '/'; // root path if totally matched
-    }
+    newItem.link = replace(newItem.link);
 
     newItems.push(newItem);
   }
@@ -24,11 +31,13 @@ export const replaceNavLinks = (items, urlPrefixRegexp) => {
   return newItems;
 };
 
-export const buildUrlPrefixPattern = (domain, path) => {
+export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
+  if (!domain) return null;
+
   const schemeSpecPart = '^https?:';
   const domainPart = domain.replace(/\./g, '\\.'); // escape wildcard character
-  let pathPart;
 
+  let pathPart;
   if (!path || path === '/') {
     pathPart = '';
   } else {

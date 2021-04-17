@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, data, utils } from '@tidb-community/ui';
+import { Header, getData, utils } from '@tidb-community/ui';
 
 import { getTitle } from '../utils';
 
@@ -12,8 +12,8 @@ const Template = (args) => <Header {...args} />;
 
 export const WithNav = Template.bind({});
 
-const title = 'Community';
-const { navItems } = data.header;
+const title = 'TiDB Community';
+const { navItems } = getData().header;
 
 WithNav.args = {
   navItems,

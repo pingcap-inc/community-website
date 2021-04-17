@@ -15,8 +15,10 @@ const genMenu = ({ items, onNavClick }) =>
     if (items) {
       return (
         <SubMenu key={title} title={title}>
-          {// eslint-disable-next-line no-unused-vars
-          genMenu({ items, onNavClick })}
+          {
+            // eslint-disable-next-line no-unused-vars
+            genMenu({ items, onNavClick })
+          }
         </SubMenu>
       );
     }
@@ -50,14 +52,16 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title })
   return (
     <>
       <Styled.Container>
-        <Styled.Logo onClick={onTitleClick}>
-          {logo}
-          {title}
-        </Styled.Logo>
+        <Styled.Content>
+          <Styled.Logo onClick={onTitleClick}>
+            {logo}
+            {title}
+          </Styled.Logo>
 
-        <Styled.MenuWrapper xs={bp.xs}>
-          <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
-        </Styled.MenuWrapper>
+          <Styled.MenuWrapper xs={bp.xs}>
+            <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
+          </Styled.MenuWrapper>
+        </Styled.Content>
       </Styled.Container>
 
       <Styled.GlobalStyle />

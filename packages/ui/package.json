@@ -15,21 +15,29 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.13.10"
+    "@babel/runtime": "7.13.10"
   },
   "devDependencies": {
-    "@storybook/addon-actions": "^6.1.21",
-    "@storybook/addon-essentials": "^6.1.21",
-    "@storybook/addon-links": "^6.1.21",
-    "@storybook/react": "^6.1.21",
-    "babel-loader": "^8.2.2",
-    "father": "^2.30.3",
-    "father-build": "^1.19.3",
-    "np": "^7.4.0"
+    "@ant-design/icons": "4.6.2",
+    "@storybook/addon-actions": "6.1.21",
+    "@storybook/addon-essentials": "6.1.21",
+    "@storybook/addon-links": "6.1.21",
+    "@storybook/react": "6.1.21",
+    "antd": "4.15.1",
+    "father": "2.30.3",
+    "father-build": "1.19.3",
+    "np": "7.4.0",
+    "ramda": "0.27.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-is": "17.0.2"
   },
   "peerDependencies": {
-    "react": ">=17.0.0",
-    "react-dom": ">=17.0.0",
-    "styled-components": ">=5.2.0"
+    "antd": "^4.15.1",
+    "ramda": "^0.27.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "styled-components": "^5.2.3"
   }
 }

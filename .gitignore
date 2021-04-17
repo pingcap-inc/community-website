@@ -39,6 +39,8 @@ yarn-error.log*
 .npm/
 .vscode/
 .yarn/
+packages/*/dist/
 packages/*/es/
 packages/*/lib/
+public/asktug/*.LICENSE.txt
 yarn.lock

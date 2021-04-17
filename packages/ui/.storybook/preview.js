@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-import { createAppGlobalStyle } from '@tidb-community/ui';
+import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 
 const GlobalStyle = createAppGlobalStyle();
 
@@ -9,7 +9,7 @@ export const parameters = {
 
 export const decorators = [
   (Story) => (
-    <div id="__next">
+    <div className={constants.appClassName}>
       <GlobalStyle />
       <Story />
     </div>

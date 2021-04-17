@@ -1,6 +1,6 @@
 import * as R from 'ramda';
-import React from 'react';
 import PropTypes from 'prop-types';
+import React from 'react';
 import { Header, Footer, getData, utils } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
 
@@ -13,7 +13,7 @@ const Core = ({ domain = 'tug.tidb.io', hasMargin, locale = 'cn', children }) =>
   const { navItems: headerNavItems } = data.header;
   const { navItems: footerNavItems } = data.footer;
 
-  const title = 'Community';
+  const title = 'TiDB Community';
   const logo = <img alt={title} src="/images/community/logo.svg" />;
 
   const onNavClick = R.curry(linkUtils.handleRedirect)(router);

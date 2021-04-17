@@ -1,5 +1,7 @@
 import * as polished from 'polished';
 
+export const appClassName = 'tidb-community-ui';
+
 export const responsiveWidths = {
   xl: '1344px',
   lg: '1152px',

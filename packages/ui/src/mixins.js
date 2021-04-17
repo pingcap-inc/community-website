@@ -10,9 +10,6 @@ export const typography = (level) => {
       line-height: ${38 / 30};
       color: ${colors.F1};
       font-weight: 700;
-      &:lang(zh-CN) {
-        font-weight: 600;
-      }
     `,
 
     h1: css`
@@ -20,9 +17,6 @@ export const typography = (level) => {
       line-height: ${32 / 24};
       color: ${colors.F1};
       font-weight: 600;
-      &:lang(zh-CN) {
-        font-weight: 400;
-      }
     `,
 
     h2: css`
@@ -30,9 +24,6 @@ export const typography = (level) => {
       line-height: ${28 / 20};
       color: ${colors.F1};
       font-weight: 600;
-      &:lang(zh-CN) {
-        font-weight: 400;
-      }
     `,
 
     h3: css`
@@ -40,29 +31,20 @@ export const typography = (level) => {
       line-height: ${26 / 18};
       color: ${colors.F1};
       font-weight: 600;
-      &:lang(zh-CN) {
-        font-weight: 400;
-      }
     `,
 
     p1: css`
       font-size: 1rem;
       line-height: ${24 / 16};
       color: ${colors.F2};
-      font-weight: 500;
-      &:lang(zh-CN) {
-        font-weight: 300;
-      }
+      font-weight: 400;
     `,
 
     p2: css`
       font-size: 0.875rem;
       line-height: ${22 / 14};
       color: ${colors.F2};
-      font-weight: 500;
-      &:lang(zh-CN) {
-        font-weight: 300;
-      }
+      font-weight: 400;
     `,
   };
 
@@ -79,9 +61,9 @@ export const centerBlock = (width) => css`
   margin-left: auto;
   margin-right: auto;
   ${width &&
-    css`
-      width: ${width};
-    `};
+  css`
+    width: ${width};
+  `};
 `;
 
 export const verticalLineMiddle = (height = 0) => css`
@@ -113,8 +95,8 @@ export const responsive = () => css`
   ${centerBlock()};
 
   @media screen and (max-width: ${breakPoints.md}) {
-    padding-left: 16px;
     padding-right: 16px;
+    padding-left: 16px;
   }
 
   @media screen and (min-width: ${breakPoints.md}) {

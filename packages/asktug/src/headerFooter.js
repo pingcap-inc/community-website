@@ -1,10 +1,11 @@
 import 'antd/dist/antd.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Header, Footer, getData, utils } from '@tidb-community/ui';
+import { Footer, Header, constants, createAppGlobalStyle, getData, utils } from '@tidb-community/ui';
 
 import './headerFooter.scss';
 
+const { appClassName } = constants;
 const data = getData('asktug.com', '', 'cn');
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems } = data.footer;
@@ -30,8 +31,20 @@ const footerProps = {
   navItems: footerNavItems,
 };
 
-ReactDOM.render(<Header {...headerProps} />, document.getElementById('asktug-header'));
+const GlobalStyle = createAppGlobalStyle();
+const headerElem = document.getElementById('asktug-header');
+
+headerElem.classList.add(appClassName);
+ReactDOM.render(
+  <>
+    <Header {...headerProps} />
+    <GlobalStyle />
+  </>,
+  headerElem
+);
 
 window.addEventListener('load', () => {
-  ReactDOM.render(<Footer {...footerProps} />, document.getElementById('asktug-footer'));
+  const footerElem = document.getElementById('asktug-footer');
+  footerElem.classList.add(appClassName);
+  ReactDOM.render(<Footer {...footerProps} />, footerElem);
 });

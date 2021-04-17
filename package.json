@@ -20,12 +20,6 @@
       "pre-push": "npm run lint && npm run test"
     }
   },
-  "lint-staged": {
-    "*.{js,jsx,json,css,scss,md}": [
-      "prettier-eslint --write",
-      "git add"
-    ]
-  },
   "engines": {
     "node": "14.13.0",
     "npm": "6.14.8"

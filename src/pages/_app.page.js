@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css';
 import React from 'react';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 

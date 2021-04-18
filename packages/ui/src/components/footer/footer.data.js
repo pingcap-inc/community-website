@@ -1,9 +1,7 @@
 import * as dataEn from './footer.data-en';
-import * as dataCn from './footer.data-cn';
+import * as dataZh from './footer.data-zh';
 
 export default {
   en: dataEn,
-  cn: dataCn,
+  zh: dataZh,
 };
-
-export * from './footer.data-en';

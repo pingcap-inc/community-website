@@ -13,7 +13,7 @@ const Template = (args) => <Header {...args} />;
 export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
-const { navItems } = getData().header;
+const { navItems } = getData({ locale: 'en' }).header;
 
 WithNav.args = {
   navItems,

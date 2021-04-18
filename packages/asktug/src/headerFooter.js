@@ -8,7 +8,7 @@ import './headerFooter.scss';
 const { appClassName } = constants;
 const data = getData({
   domain: 'asktug.com',
-  locale: 'cn',
+  locale: 'zh',
 });
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems } = data.footer;

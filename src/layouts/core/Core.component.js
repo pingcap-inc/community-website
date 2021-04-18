@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';
 
-const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'cn' }) => {
+const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
 
   const data = getData({ domain, path: router.basePath, locale });
@@ -24,7 +24,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'cn' }) =>
     onNavClick,
     navItems: headerNavItems,
     currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
-    onTitleClick: () => router.push('/community'),
+    onTitleClick: () => router.push('https://tidb.io'),
   };
 
   const footerProps = {
@@ -47,7 +47,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'cn' }) =>
 Core.propTypes = {
   domain: PropTypes.string,
   hasMargin: PropTypes.bool,
-  locale: PropTypes.oneOf(['cn', 'en']),
+  locale: PropTypes.oneOf(['zh', 'en']),
 };
 
 export default Core;

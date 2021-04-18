@@ -26,6 +26,7 @@
     "antd": "4.15.1",
     "father": "2.30.3",
     "father-build": "1.19.3",
+    "less-loader": "7.3.0",
     "np": "7.4.0",
     "ramda": "0.27.1",
     "react": "17.0.2",

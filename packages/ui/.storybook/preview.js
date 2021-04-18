@@ -1,4 +1,3 @@
-import 'antd/dist/antd.css';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 
 const GlobalStyle = createAppGlobalStyle();

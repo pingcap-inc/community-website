@@ -1,6 +1,6 @@
 {
   "name": "@tidb-community/ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "scripts": {
     "build": "rimraf es lib && father build",
     "prepublishOnly": "npm run build && np --yolo --no-publish --any-branch",

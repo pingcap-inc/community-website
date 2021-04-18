@@ -62,21 +62,6 @@ describe('utils/nav.utils', () => {
       expect(result[3].items[0].link).toBe('l4');
     });
 
-    it('should handle the flat object', () => {
-      expect(
-        replaceNavLinks({
-          items: {
-            title: 't1',
-            link: 'https://host.com1/l2',
-          },
-          urlPrefixRegexp: /^https?:\/\/host\.com1\//,
-        })
-      ).toEqual({
-        title: 't1',
-        link: 'l2',
-      });
-    });
-
     it('should return original URL if prefix is not given', () => {
       expect(replaceNavLinks({ items: mockNavItems })).toEqual(mockNavItems);
       expect(replaceNavLinks({ items: mockNavItems, urlPrefixRegexp: null })).toEqual(mockNavItems);

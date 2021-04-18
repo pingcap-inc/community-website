@@ -8,8 +8,17 @@ import { menuPopupId } from './header.constants';
 const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
 
-const genMenu = ({ items, onNavClick }) =>
-  items.map((item) => {
+const genMenu = ({ items, onNavClick }) => {
+  const onItemClick = (link) => (e) => {
+    const {
+      item: { props },
+    } = e;
+    if (!props.isSelected) {
+      onNavClick(link);
+    }
+  };
+
+  return items.map((item) => {
     const { title, items, link } = item;
 
     if (items) {
@@ -24,11 +33,12 @@ const genMenu = ({ items, onNavClick }) =>
     }
 
     return (
-      <Menu.Item key={title} onClick={(e) => onNavClick(link)}>
+      <Menu.Item key={title} onClick={onItemClick(link)}>
         {title}
       </Menu.Item>
     );
   });
+};
 
 const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
   const bp = useBreakpoint();

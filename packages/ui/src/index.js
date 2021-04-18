@@ -54,6 +54,7 @@ export const createAppGlobalStyle = () => createGlobalStyle`
 
     * {
       &::selection  {
+        color: ${colors.M1} !important;
         background: ${colors.B1};
       }
     }

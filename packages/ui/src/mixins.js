@@ -6,42 +6,42 @@ import { responsiveWidths, breakPoints } from './constants';
 export const typography = (level) => {
   const levels = {
     h0: css`
-      font-size: 1.875rem;
+      font-size: 30px;
       line-height: ${38 / 30};
       color: ${colors.F1};
       font-weight: 700;
     `,
 
     h1: css`
-      font-size: 1.5rem;
+      font-size: 24px;
       line-height: ${32 / 24};
       color: ${colors.F1};
       font-weight: 600;
     `,
 
     h2: css`
-      font-size: 1.25rem;
+      font-size: 20px;
       line-height: ${28 / 20};
       color: ${colors.F1};
       font-weight: 600;
     `,
 
     h3: css`
-      font-size: 1.125rem;
+      font-size: 18px;
       line-height: ${26 / 18};
       color: ${colors.F1};
       font-weight: 600;
     `,
 
     p1: css`
-      font-size: 1rem;
+      font-size: 16px;
       line-height: ${24 / 16};
       color: ${colors.F2};
       font-weight: 400;
     `,
 
     p2: css`
-      font-size: 0.875rem;
+      font-size: 14px;
       line-height: ${22 / 14};
       color: ${colors.F2};
       font-weight: 400;

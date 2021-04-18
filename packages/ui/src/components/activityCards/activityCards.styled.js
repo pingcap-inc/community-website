@@ -23,14 +23,14 @@ export const Image = styled.div`
 `;
 
 export const Content = styled.div`
-  padding: 1.5rem 2rem;
+  padding: 24px 32px;
 `;
 
 export const Title = styled.h3`
   ${mixins.reset()};
   ${mixins.typography('h2')};
   ${mixins.lineClamp(2)};
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 `;
 
 export const Desc = styled.p`

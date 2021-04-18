@@ -20,7 +20,7 @@ export const Logo = styled.h1`
 
   img {
     ${mixins.size('32px', '37px')};
-    margin-right: 0.3rem;
+    margin-right: 5px;
   }
 `;
 

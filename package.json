@@ -6,12 +6,13 @@
     "dev": "next dev",
     "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx",
-    "postinstall": "npm run lerna:bootstrap",
+    "postinstall": "npm run lerna:bootstrap && npm run build:ui",
     "server:init": "next build && pm2 start --name tug-website-next-server npm -- run start",
     "server:restart": "pm2 restart tug-website-next-server",
     "start": "next start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
     "build:asktug": "lerna run --scope @tidb-community/asktug build",
+    "build:ui": "lerna run --scope @tidb-community/ui build",
     "test": "jest"
   },
   "husky": {

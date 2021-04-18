@@ -1,15 +1,7 @@
+import * as R from 'ramda';
+
 export const replaceNavLinks = ({ items, urlPrefixRegexp }) => {
-  // return '/' as root path if the link is totally matched
-  const replace = (link) => link?.replace(urlPrefixRegexp, '') || '/';
-
-  if (!urlPrefixRegexp) return items;
-
-  if (!Array.isArray(items)) {
-    return {
-      ...items,
-      link: replace(items.link),
-    };
-  }
+  if (!urlPrefixRegexp || !Array.isArray(items)) return items;
 
   const newItems = [];
 
@@ -23,7 +15,10 @@ export const replaceNavLinks = ({ items, urlPrefixRegexp }) => {
       });
     }
 
-    newItem.link = replace(newItem.link);
+    if (R.is(String, item.link)) {
+      // return '/' as root path if the link is totally matched
+      newItem.link = item.link.replace(urlPrefixRegexp, '') || '/';
+    }
 
     newItems.push(newItem);
   }

@@ -7,9 +7,9 @@ export const ArrowIcon = styled(ArrowRightOutlined)`
   width: 0;
 
   svg {
-    opacity: 0;
     position: relative;
-    left: -1rem;
+    left: -16x;
+    opacity: 0;
   }
 
   &,
@@ -25,12 +25,12 @@ export const Container = styled.div`
 
   &:hover {
     ${ArrowIcon} {
-      width: 1rem;
-      margin-right: 0.5rem;
+      width: 16p;
+      margin-right: 8px;
 
       svg {
-        opacity: 1;
         left: 0;
+        opacity: 1;
       }
     }
   }

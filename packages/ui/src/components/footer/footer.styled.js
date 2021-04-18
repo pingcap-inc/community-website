@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const NavRow = styled(Row)`
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
 `;
 
 export const NavCol = styled(Col)`
@@ -24,14 +24,14 @@ export const NavCol = styled(Col)`
 export const NavTitle = styled.h3`
   ${mixins.reset()};
   ${mixins.typography('h3')};
-  margin-bottom: 2rem;
+  margin-bottom: 32px;
 `;
 
 export const NavItem = styled.div`
   ${mixins.typography('p1')};
   cursor: pointer;
   color: ${colors.B4};
-  margin-bottom: 1rem;
+  margin-bottom: 16px;
 
   &:hover {
     color: ${colors.B1};
@@ -44,7 +44,7 @@ export const NavItem = styled.div`
 
 export const SocialsContainer = styled(Col)`
   ${mixins.flexEnd()};
-  margin-bottom: 3rem;
+  margin-bottom: 48px;
 `;
 
 export const SocialsList = styled(Row).attrs((props) => ({
@@ -89,14 +89,14 @@ export const Logo = styled.div`
 
   img {
     ${mixins.size('24px', '28px')};
-    margin-right: 0.25rem;
+    margin-right: 5px;
   }
 `;
 
 export const Content = styled.div`
   ${mixins.responsive()};
-  padding-top: 4rem;
-  padding-bottom: 2rem;
+  padding-top: 64px;
+  padding-bottom: 32px;
 
   .ant-row-center {
     text-align: center;

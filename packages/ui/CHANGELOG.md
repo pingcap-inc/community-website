@@ -1,15 +1,35 @@
 # Changelog
 
-## [0.1.1] - 2021-04-15
+All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), but the versionning is not strictly adhered to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-### Break changes
+## [0.1.3] - 2021-04-18
 
-- Add `hasMargin` prop controlling footer margin style
-- Use `getData` to remove url prefix for current site in nav links
+### Fixed
+
+- Declare `polish` as a peer dependency
+
+## [0.1.2] - 2021-04-18
 
 ### Added
 
-- Add temporary solution for i18n in header
+- Customize AntD's global CSS
+
+### Changed
+
+- Replace `rem` with `px` for the size unit
+
+### Fixed
+
+- The selected navItem will not trigger onNavClick on Header
+- Fix the broken Header & Footer stories
+
+## [0.1.1] - 2021-04-15
+
+### Added
+
+- Add `hasMargin` prop to control the gap on the Footer top
+- Create a temporary i18n solution for Header & Footer
+- `getData` is provided to remove URL prefix for current site for nav items
 
 ---
 

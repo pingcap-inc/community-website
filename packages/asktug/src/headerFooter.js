@@ -1,12 +1,15 @@
-import 'antd/dist/antd.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Footer, Header, constants, createAppGlobalStyle, getData, utils } from '@tidb-community/ui';
 
+import 'antd-global.css';
 import './headerFooter.scss';
 
 const { appClassName } = constants;
-const data = getData('asktug.com', '', 'cn');
+const data = getData({
+  domain: 'asktug.com',
+  locale: 'zh',
+});
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems } = data.footer;
 

@@ -12,7 +12,7 @@ const Template = (args) => <Footer {...args} />;
 export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
-const { navItems } = getData().footer;
+const { navItems } = getData({ locale: 'en' }).footer;
 
 WithNav.args = {
   navItems,

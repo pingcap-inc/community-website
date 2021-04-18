@@ -2,13 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Grid, Row, Col } from 'antd';
 
-import GithubIcon from './icons/github.svg';
-import TwitterIcon from './icons/twitter.svg';
+import * as Styled from './footer.styled';
 import FacebookIcon from './icons/facebook.svg';
+import GithubIcon from './icons/github.svg';
 import LinkedInIcon from './icons/linkedin.svg';
 import SlackIcon from './icons/slack.svg';
+import TwitterIcon from './icons/twitter.svg';
 import YoutubeIcon from './icons/youtube.svg';
-import * as Styled from './footer.styled';
 
 const { useBreakpoint } = Grid;
 

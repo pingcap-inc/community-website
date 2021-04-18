@@ -1,9 +1,7 @@
 import * as dataEn from './header.data-en';
-import * as dataCn from './header.data-cn';
+import * as dataZh from './header.data-zh';
 
 export default {
   en: dataEn,
-  cn: dataCn,
+  zh: dataZh,
 };
-
-export * from './header.data-en';

@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { clearFix } from 'polished';
 import { createGlobalStyle } from 'styled-components';
 
@@ -7,16 +8,16 @@ import * as mixins from './mixins';
 import resetAntStyles from './antd';
 
 // Data
-import footerData, * as defaultFooterData from './components/footer/footer.data';
-import headerData, * as defaultHeaderData from './components/header/header.data';
+import footerData from './components/footer/footer.data';
+import headerData from './components/header/header.data';
 // Utils
 import * as headerUtils from './components/header/header.utils';
 import { nav } from './utils';
 
 export const getData = ({ domain, path, locale } = {}) => {
-  const { navItems: footerNavItems, ...restFooterData } = footerData[locale] || defaultFooterData;
-  const { navItems: headerNavItems, ...restHeaderData } = headerData[locale] || defaultHeaderData;
-
+  const defaultLocale = 'zh';
+  const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
+  const { navItems: headerNavItems, ...restHeaderData } = R.propOr(headerData[defaultLocale], locale)(headerData);
   const urlPrefixRegexp = nav.buildUrlPrefixPattern({ domain, path });
 
   return {
@@ -54,6 +55,7 @@ export const createAppGlobalStyle = () => createGlobalStyle`
 
     * {
       &::selection  {
+        color: ${colors.M1} !important;
         background: ${colors.B1};
       }
     }

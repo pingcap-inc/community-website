@@ -6,21 +6,21 @@ import * as mixins from '../mixins';
 export default css`
   .ant-btn {
     ${mixins.verticalLineMiddle('40px')};
-    padding: 0 1rem;
-    text-shadow: none;
-    box-shadow: none;
+    padding: 0 16px;
     text-transform: uppercase;
+    text-shadow: none;
     background-color: ${colors.B1};
+    box-shadow: none;
 
     &-sm {
       ${mixins.verticalLineMiddle('32px')};
-      font-size: 0.875rem;
-      padding: 0 0.875rem;
+      padding: 0 14px;
+      font-size: 14px;
     }
 
     &-lg {
       ${mixins.verticalLineMiddle('48px')};
-      font-size: 1.25rem;
+      font-size: 20px;
     }
 
     &-primary {
@@ -51,8 +51,8 @@ export default css`
 
         &[disabled] {
           color: ${colors.F2};
-          border-color: ${colors.T2};
           background-color: ${colors.M2} !important;
+          border-color: ${colors.T2};
         }
       }
     }

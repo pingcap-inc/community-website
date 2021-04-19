@@ -5,7 +5,7 @@ export const defaultEnvDomains = {
     'contributor.tidb.io': 'contributor.tidb.io',
     'asktug.com': 'asktug.com',
   },
-  development: {
+  preview: {
     'tidb.io': 'tidb-io-preview.vercel.app',
     'tug.tidb.io': 'tug-tidb-io-preview.vercel.app',
     'contributor.tidb.io': 'contributor-tidb-io-preview.vercel.app',

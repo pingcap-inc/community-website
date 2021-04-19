@@ -1,7 +1,7 @@
 import { getData as navGetData } from './nav';
 import { defaultEnvDomains } from './config.domains';
 
-const defaultEnv = process.env.RUNTIME_ENV || 'production';
+const defaultEnv = process.env.NEXT_PUBLIC_RUNTIME_ENV || 'production';
 
 export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => {
   return {
@@ -9,8 +9,7 @@ export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => 
       domain,
       path,
       locale,
-      env: env || defaultEnv,
-      domainConfig: envDomainConfig || defaultEnvDomains,
+      domainConfig: (envDomainConfig || defaultEnvDomains)[env || defaultEnv],
     }),
   };
 };

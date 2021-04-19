@@ -1,0 +1,25 @@
+{
+  "name": "@tidb-community/datasource",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "rimraf es lib && father build",
+    "prepublishOnly": "npm run build && np --yolo --no-publish --any-branch"
+  },
+  "description": "Navigation and i18n datasource for tidb community.",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "license": "MIT",
+  "types": "typing/index.d.ts",
+  "dependencies": {
+    "father": "^2.30.4",
+    "father-build": "^1.19.4",
+    "np": "^7.4.0"
+  },
+  "peerDependencies": {
+    "ramda": "^0.27.1"
+  }
+}

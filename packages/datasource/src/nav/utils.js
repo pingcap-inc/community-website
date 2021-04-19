@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
-export const replaceNavLinks = ({ items, urlPrefixRegexp }) => {
-  if (!urlPrefixRegexp || !Array.isArray(items)) return items;
+export const replaceNavLinks = ({ items, rules }) => {
+  if (!rules || !rules.length || !Array.isArray(items)) return items;
 
   const newItems = [];
 
@@ -11,13 +11,22 @@ export const replaceNavLinks = ({ items, urlPrefixRegexp }) => {
     if (item.items) {
       newItem.items = replaceNavLinks({
         items: item.items,
-        urlPrefixRegexp,
+        rules,
       });
     }
 
     if (R.is(String, item.link)) {
-      // return '/' as root path if the link is totally matched
-      newItem.link = item.link.replace(urlPrefixRegexp, '') || '/';
+      for (const { urlPrefixRegexp, replacement } of rules) {
+        if (!urlPrefixRegexp || !urlPrefixRegexp.test(item.link)) {
+          continue;
+        }
+
+        // return '/' as root path if the link is totally matched
+        newItem.link = item.link.replace(urlPrefixRegexp, replacement || '') || '/';
+
+        // only match first rule
+        break;
+      }
     }
 
     newItems.push(newItem);

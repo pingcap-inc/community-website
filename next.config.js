@@ -32,6 +32,7 @@ module.exports = {
       // Make sure we will build directly from the source code for internal comsumers,
       // which gives us an instant reaction if anything updates
       '@tidb-community/ui': path.resolve('./packages/ui/src'),
+      '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
 
       // HACK: NextJS has some issues if integrating with next-less, so the generated
       // css is used directly as customised Ant Design's global stylings

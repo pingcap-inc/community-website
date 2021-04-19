@@ -1,7 +1,8 @@
 import * as R from 'ramda';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Header, Footer, getData, utils } from '@tidb-community/ui';
+import { Header, Footer, utils } from '@tidb-community/ui';
+import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import { link as linkUtils } from 'utils';
@@ -9,7 +10,7 @@ import { link as linkUtils } from 'utils';
 const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
 
-  const data = getData({ domain, path: router.basePath, locale });
+  const data = getData({ domain, path: router.basePath, locale }).nav;
   const { navItems: headerNavItems } = data.header;
   const { navItems: footerNavItems } = data.footer;
 

@@ -59,6 +59,7 @@ module.exports = {
         alias: {
           ...resolve.alias,
           '@tidb-community/ui': resolveRoot('src'),
+          '@tidb-community/datasource': resolveRoot('../datasource/src'),
         },
       },
     };

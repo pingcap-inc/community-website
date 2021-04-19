@@ -2,6 +2,7 @@
   "name": "@tidb-community/next-community-src",
   "private": true,
   "dependencies": {
+    "@tidb-community/datasource": "*",
     "@tidb-community/ui": "*"
   }
 }

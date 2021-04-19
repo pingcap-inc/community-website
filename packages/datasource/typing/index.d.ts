@@ -1,7 +1,7 @@
 import { Nav } from './nav';
 
 type Locale = 'en' | 'zh'
-type Env = 'production' | 'preview' | 'development'
+type Env = 'production' | 'development'
 type Domain = 'tidb.io' | 'tug.tidb.io' | 'contributor.tidb.io'
 
 type EnvDomainConfig = Record<Env, Record<Domain, string>>

@@ -14,7 +14,7 @@ type GetDataParams = {
   domain: string
   path: string
   locale: Locale
-  env?: Env // default is process.env.NODE_ENV
+  env?: Env // default is process.env.RUNTIME_ENV
   envDomainConfig?: EnvDomainConfig // default is configured in this package
 }
 

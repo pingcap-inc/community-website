@@ -19,7 +19,7 @@ export const getData = ({ domain, path, locale, domainConfig }) => {
     // replaces all domains by domainConfig
     ...Object.keys(domainConfig).map((domain) => ({
       urlPrefixRegexp: buildUrlPrefixPattern({ domain }),
-      replacement: 'https://' + domainConfig[domain] + '/',
+      replacement: 'https://' + domainConfig[domain],
     })),
   ];
 

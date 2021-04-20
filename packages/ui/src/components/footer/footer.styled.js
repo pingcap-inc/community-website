@@ -43,8 +43,10 @@ export const NavItem = styled.div`
 `;
 
 export const SocialsContainer = styled(Col)`
-  ${mixins.flexEnd()};
-  margin-bottom: 48px;
+  && {
+    ${mixins.flexEnd()};
+    margin-bottom: 48px;
+  }
 `;
 
 export const SocialsList = styled(Row).attrs((props) => ({

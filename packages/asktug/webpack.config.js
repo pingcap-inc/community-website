@@ -47,6 +47,7 @@ module.exports = {
   resolve: {
     alias: {
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
+      '@tidb-community/datasource': path.resolve('../datasource/src'),
       '@tidb-community/ui': path.resolve('../ui/src'),
       'antd-global.css': path.resolve('../ui/es/antd/global.css'),
     },

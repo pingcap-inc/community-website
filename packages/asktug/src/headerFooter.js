@@ -7,6 +7,7 @@ import 'antd-global.css';
 import './headerFooter.scss';
 
 const { appClassName } = constants;
+
 const data = getData({
   domain: 'asktug.com',
   locale: 'zh',

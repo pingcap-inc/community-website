@@ -20,6 +20,10 @@ export const navItems = [
         link: 'https://tug.tidb.io',
       },
       {
+        title: 'Join TiDB User Group',
+        link: 'https://tug.tidb.io/people',
+      },
+      {
         title: 'MVA',
         link: 'https://tug.tidb.io/MVA',
       },

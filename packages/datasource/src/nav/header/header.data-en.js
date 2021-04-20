@@ -79,7 +79,7 @@ export const navItems = [
         ],
       },
       {
-        title: 'Rankings of Contributions!',
+        title: 'Rankings of Contributors!',
         link: 'https://contributor.tidb.io/ranking',
       },
       {

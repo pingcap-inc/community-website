@@ -50,6 +50,10 @@ export const navItems = [
         ],
       },
       {
+        title: '特殊兴趣小组(SIG)',
+        link: 'https://contributor.tidb.io/SIG/',
+      },
+      {
         title: '人员',
         items: [
           {
@@ -75,8 +79,12 @@ export const navItems = [
         ],
       },
       {
-        title: '特殊兴趣小组(SIG)',
-        link: 'https://contributor.tidb.io/SIG/',
+        title: '贡献者排行榜',
+        link: 'https://contributor.tidb.io/ranking',
+      },
+      {
+        title: '孵化器项目',
+        link: 'https://contributor.tidb.io/incubator',
       },
     ],
   },
@@ -131,7 +139,11 @@ export const navItems = [
     ],
   },
   {
-    title: '找工作',
+    title: '名企直推',
     link: 'https://pingcap.com/community-cn/careers/join/',
+  },
+  {
+    title: '兑换礼品',
+    link: 'https://accounts.pingcap.com/points#/shop',
   },
 ];

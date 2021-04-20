@@ -50,6 +50,10 @@ export const navItems = [
         ],
       },
       {
+        title: 'Special Interest Group (SIG)',
+        link: 'https://contributor.tidb.io/SIG/',
+      },
+      {
         title: 'People',
         items: [
           {
@@ -75,8 +79,12 @@ export const navItems = [
         ],
       },
       {
-        title: 'Special Interest Group (SIG)',
-        link: 'https://contributor.tidb.io/SIG/',
+        title: 'Rankings of Contributors!',
+        link: 'https://contributor.tidb.io/ranking',
+      },
+      {
+        title: 'Incubator Program',
+        link: 'https://contributor.tidb.io/incubator',
       },
     ],
   },
@@ -131,7 +139,11 @@ export const navItems = [
     ],
   },
   {
-    title: 'Job Board',
+    title: 'Jobs',
     link: 'https://pingcap.com/community-cn/careers/join/',
+  },
+  {
+    title: 'Redeem Gifts',
+    link: 'https://accounts.pingcap.com/points#/shop',
   },
 ];

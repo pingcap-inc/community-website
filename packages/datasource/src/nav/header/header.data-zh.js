@@ -13,6 +13,10 @@ export const navItems = [
     ],
   },
   {
+    title: '问答',
+    link: 'https://asktug.com',
+  },
+  {
     title: '用户组',
     items: [
       {
@@ -116,10 +120,6 @@ export const navItems = [
   {
     title: '资源',
     items: [
-      {
-        title: '论坛',
-        link: 'https://asktug.com',
-      },
       {
         title: 'Slack',
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',

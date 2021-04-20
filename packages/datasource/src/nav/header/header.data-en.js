@@ -13,6 +13,10 @@ export const navItems = [
     ],
   },
   {
+    title: 'Forum(ZH)',
+    link: 'https://asktug.com',
+  },
+  {
     title: 'User Group',
     items: [
       {
@@ -116,10 +120,6 @@ export const navItems = [
   {
     title: 'Resources',
     items: [
-      {
-        title: 'Forum',
-        link: 'https://asktug.com',
-      },
       {
         title: 'Slack',
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',

@@ -6,7 +6,7 @@ import * as Styled from './footer.styled';
 
 const { useBreakpoint } = Grid;
 
-const Footer = ({ logo, title, navItems, icons, onNavClick, hasMargin = false }) => {
+const Footer = ({ hasMargin = false, icons, logo, navItems, onNavClick, title }) => {
   const bp = useBreakpoint();
 
   const justify = bp.xs ? 'center' : undefined;
@@ -61,12 +61,12 @@ const Footer = ({ logo, title, navItems, icons, onNavClick, hasMargin = false })
 };
 
 Footer.propTypes = {
+  hasMargin: PropTypes.bool,
+  icons: PropTypes.array.isRequired,
   logo: PropTypes.element.isRequired,
   navItems: PropTypes.array.isRequired,
-  icons: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  hasMargin: PropTypes.bool,
 };
 
 export default Footer;

@@ -14,7 +14,7 @@ const Template = (args) => <Header {...args} />;
 export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
-const { navItems } = getData({ domain: 'foo.bar', path: '', locale: 'en' }).nav.header;
+const { navItems } = getData({ locale: 'en' }).nav.header;
 
 WithNav.args = {
   navItems,

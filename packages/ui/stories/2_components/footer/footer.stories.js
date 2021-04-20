@@ -1,4 +1,5 @@
-import { Footer, getData } from '@tidb-community/ui';
+import { Footer } from '@tidb-community/ui';
+import { getData } from '@tidb-community/datasource';
 
 import { getTitle } from '../utils';
 
@@ -12,7 +13,8 @@ const Template = (args) => <Footer {...args} />;
 export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
-const { navItems } = getData({ locale: 'en' }).footer;
+
+const { navItems } = getData({ domain: 'foo.bar', path: '', locale: 'en' }).nav.footer;
 
 WithNav.args = {
   navItems,

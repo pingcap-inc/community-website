@@ -1,23 +1,27 @@
 export const navItems = [
   {
-    title: '关于',
+    title: 'About',
     items: [
       {
-        title: '社区行为准则',
+        title: 'Code of Conduct',
         link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
       },
       {
-        title: 'TiDB 和 PingCAP',
+        title: 'TiDB and PingCAP',
         link: 'https://pingcap.com',
       },
     ],
   },
   {
-    title: '用户组',
+    title: 'User Group',
     items: [
       {
-        title: '用户组首页',
+        title: 'User Group Home',
         link: 'https://tug.tidb.io',
+      },
+      {
+        title: 'Join TiDB User Group',
+        link: 'https://tug.tidb.io/people',
       },
       {
         title: 'MVA',
@@ -26,17 +30,17 @@ export const navItems = [
     ],
   },
   {
-    title: '开发者社区',
+    title: 'Developer Group',
     items: [
       {
-        title: '开发者社区首页',
+        title: 'DevGroup Home',
         link: 'https://contributor.tidb.io',
       },
       {
-        title: '如何参与贡献',
+        title: 'Contribution',
         items: [
           {
-            title: '源码阅读系列文章',
+            title: 'Source Code Learning',
             link: 'https://pingcap.com/blog-cn/#TiDB-%e6%ba%90%e7%a0%81%e9%98%85%e8%af%bb',
           },
           {
@@ -46,7 +50,7 @@ export const navItems = [
         ],
       },
       {
-        title: '人员',
+        title: 'People',
         items: [
           {
             title: 'Maintainers',
@@ -71,20 +75,20 @@ export const navItems = [
         ],
       },
       {
-        title: '特殊兴趣小组(SIG)',
+        title: 'Special Interest Group (SIG)',
         link: 'https://contributor.tidb.io/SIG/',
       },
     ],
   },
   {
-    title: '学习',
+    title: 'Learning',
     items: [
       {
-        title: 'TiDB DBA 课程',
+        title: 'TiDB DBA Courses',
         link: 'https://university.pingcap.com/',
       },
       {
-        title: 'Talent Plan 课程',
+        title: 'Talent Plan Courses',
         link: 'https://university.pingcap.com/talent-plan/',
       },
       {
@@ -98,14 +102,14 @@ export const navItems = [
     ],
   },
   {
-    title: '活动',
+    title: 'Events',
     link: 'https://contributor.tidb.io/events',
   },
   {
-    title: '资源',
+    title: 'Resources',
     items: [
       {
-        title: '论坛',
+        title: 'Forum',
         link: 'https://asktug.com',
       },
       {
@@ -113,21 +117,21 @@ export const navItems = [
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
       {
-        title: '文档',
+        title: 'Docs',
         link: 'https://docs.pingcap.com/tidb/stable',
       },
       {
-        title: '博客',
+        title: 'Blogs',
         link: 'https://asktug.com/c/blog/l/latest',
       },
       {
-        title: '邮件列表',
+        title: 'Mailing Lists',
         link: 'https://lists.tidb.io/g/main/subgroups',
       },
     ],
   },
   {
-    title: '找工作',
+    title: 'Job Board',
     link: 'https://pingcap.com/community-cn/careers/join/',
   },
 ];

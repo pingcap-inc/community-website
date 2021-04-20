@@ -185,7 +185,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 工具函数
 
-## next.config.js
+## next.config.domains.js
 
 next.js 配置文件，可重写 webpack 以及相关工具链的配置
 

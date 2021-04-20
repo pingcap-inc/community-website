@@ -13,7 +13,7 @@ const Community = () => (
   <>
     <CommunityHead />
 
-    <CoreLayout hasMargin locale="en">
+    <CoreLayout domain="tidb.io" hasMargin locale="en">
       <Banner />
       <Activities />
       <Learning />

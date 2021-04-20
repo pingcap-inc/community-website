@@ -1,9 +1,5 @@
 export const navItems = [
   {
-    title: 'Forum(ZH)',
-    link: 'https://asktug.com',
-  },
-  {
     title: 'About',
     items: [
       {
@@ -15,6 +11,10 @@ export const navItems = [
         link: 'https://pingcap.com',
       },
     ],
+  },
+  {
+    title: 'Forum(ZH)',
+    link: 'https://asktug.com',
   },
   {
     title: 'User Group',

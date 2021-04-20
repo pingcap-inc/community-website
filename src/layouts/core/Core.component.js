@@ -12,7 +12,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
 
   const data = getData({ domain, path: router.basePath, locale }).nav;
   const { navItems: headerNavItems } = data.header;
-  const { navItems: footerNavItems } = data.footer;
+  const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
   const logo = <img alt={title} src="/images/community/logo.svg" />;
@@ -33,6 +33,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
     title,
     onNavClick,
     navItems: footerNavItems,
+    icons: footerIcons,
     hasMargin,
   };
 

@@ -3,18 +3,10 @@ import React from 'react';
 import { Grid, Row, Col } from 'antd';
 
 import * as Styled from './footer.styled';
-import FacebookIcon from './icons/facebook.svg';
-import GithubIcon from './icons/github.svg';
-import LinkedInIcon from './icons/linkedin.svg';
-import SlackIcon from './icons/slack.svg';
-import TwitterIcon from './icons/twitter.svg';
-import YoutubeIcon from './icons/youtube.svg';
 
 const { useBreakpoint } = Grid;
 
-const icons = [GithubIcon, TwitterIcon, FacebookIcon, LinkedInIcon, SlackIcon, YoutubeIcon];
-
-const Footer = ({ logo, title, navItems, onNavClick, hasMargin = false }) => {
+const Footer = ({ logo, title, navItems, icons, onNavClick, hasMargin = false }) => {
   const bp = useBreakpoint();
 
   const justify = bp.xs ? 'center' : undefined;
@@ -41,10 +33,10 @@ const Footer = ({ logo, title, navItems, onNavClick, hasMargin = false }) => {
 
           <Styled.SocialsContainer xs={24} md={6}>
             <Styled.SocialsList justify={justify}>
-              {icons.map((Icon, idx) => (
+              {icons.map(({ icon: Icon, link }, idx) => (
                 <Styled.SocialsItem key={idx}>
                   <Styled.IconWrapper>
-                    <Icon />
+                    <Icon onClick={() => onNavClick(link)} />
                   </Styled.IconWrapper>
                 </Styled.SocialsItem>
               ))}
@@ -71,6 +63,7 @@ const Footer = ({ logo, title, navItems, onNavClick, hasMargin = false }) => {
 Footer.propTypes = {
   logo: PropTypes.element.isRequired,
   navItems: PropTypes.array.isRequired,
+  icons: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   hasMargin: PropTypes.bool,

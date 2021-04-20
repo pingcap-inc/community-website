@@ -14,10 +14,11 @@ export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
 
-const { navItems } = getData({ domain: 'foo.bar', path: '', locale: 'en' }).nav.footer;
+const { navItems, icons } = getData({ domain: 'foo.bar', path: '', locale: 'en' }).nav.footer;
 
 WithNav.args = {
   navItems,
   title,
   logo: <img alt={title} src="/images/community/logo.svg" />,
+  icons: icons,
 };

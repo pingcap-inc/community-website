@@ -1,3 +1,10 @@
+import FacebookIcon from './icons/facebook.svg';
+import GithubIcon from './icons/github.svg';
+import LinkedInIcon from './icons/linkedin.svg';
+import SlackIcon from './icons/slack.svg';
+import TwitterIcon from './icons/twitter.svg';
+import YoutubeIcon from './icons/youtube.svg';
+
 export const navItems = [
   {
     title: 'Community',
@@ -73,5 +80,32 @@ export const navItems = [
         link: 'https://book.tidb.io',
       },
     ],
+  },
+];
+
+export const icons = [
+  {
+    icon: GithubIcon,
+    link: 'https://github.com/pingcap',
+  },
+  {
+    icon: TwitterIcon,
+    link: 'https://twitter.com/PingCAP',
+  },
+  {
+    icon: FacebookIcon,
+    link: 'https://facebook.com/pingcap2015',
+  },
+  {
+    icon: LinkedInIcon,
+    link: 'https://linkedin.com/company/pingcap',
+  },
+  {
+    icon: SlackIcon,
+    link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone&ref=pingcap',
+  },
+  {
+    icon: YoutubeIcon,
+    link: 'https://youtube.com/channel/UCuq4puT32DzHKT5rU1IZpIA',
   },
 ];

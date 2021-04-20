@@ -1,5 +1,3 @@
-import { Locale } from './index';
-
 type NavItem = NavContainerItem
 
 type NavContainerItem = {
@@ -12,9 +10,21 @@ type NavEndpointItem = {
   readonly link: string,
 }
 
-type NavData = Record<Locale, NavItem[]>
+type Icon = {
+  readonly icon: any
+  readonly link: string
+}
+
+type HeaderData = {
+  readonly navItems: NavItem[]
+}
+
+type FooterData = {
+  readonly navItems: NavItem[]
+  readonly icons: Icon[]
+}
 
 export type Nav = {
   readonly header: NavData;
-  readonly footer: NavData;
+  readonly footer: FooterData;
 }

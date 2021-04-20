@@ -1,6 +1,7 @@
 import * as R from 'ramda';
-import * as headerData from './header/header.data';
+
 import * as footerData from './footer/footer.data';
+import * as headerData from './header/header.data';
 import { buildUrlPrefixPattern, replaceNavLinks } from './utils';
 
 export const getData = ({ domain, path, locale, domainConfig }) => {

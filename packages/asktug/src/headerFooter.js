@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Footer, Header, constants, createAppGlobalStyle, getData, utils } from '@tidb-community/ui';
+import { getData } from '@tidb-community/datasource';
+import { Footer, Header, constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 
 import 'antd-global.css';
 import './headerFooter.scss';
@@ -9,9 +10,9 @@ const { appClassName } = constants;
 const data = getData({
   domain: 'asktug.com',
   locale: 'zh',
-});
+}).nav;
 const { navItems: headerNavItems } = data.header;
-const { navItems: footerNavItems } = data.footer;
+const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
 const baseUrl = 'https://tidb.io';
 const title = 'TiDB Community';
@@ -32,6 +33,7 @@ const footerProps = {
   title,
   onNavClick,
   navItems: footerNavItems,
+  icons: footerIcons,
 };
 
 const GlobalStyle = createAppGlobalStyle();

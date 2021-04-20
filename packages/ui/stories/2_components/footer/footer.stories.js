@@ -14,7 +14,7 @@ export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
 
-const { navItems, icons } = getData({ domain: 'foo.bar', path: '', locale: 'en' }).nav.footer;
+const { navItems, icons } = getData({ locale: 'en' }).nav.footer;
 
 WithNav.args = {
   navItems,

@@ -33,10 +33,6 @@ module.exports = {
       // which gives us an instant reaction if anything updates
       '@tidb-community/ui': path.resolve('./packages/ui/src'),
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
-
-      // HACK: NextJS has some issues if integrating with next-less, so the generated
-      // css is used directly as customised Ant Design's global stylings
-      'antd-global.css': path.resolve('./packages/ui/es/antd/global.css'),
     };
 
     config.module.rules.push({

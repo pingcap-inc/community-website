@@ -1,7 +1,7 @@
+import 'antd/dist/antd.css';
 import React from 'react';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 
-import 'antd-global.css';
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';

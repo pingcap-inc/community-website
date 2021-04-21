@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import styled from 'styled-components';
 import { getData } from '@tidb-community/datasource';
-import { Footer, Header, constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
+import { Footer, Header, constants, createAppGlobalStyle, utils, mixins } from '@tidb-community/ui';
 
 import 'antd-global.css';
 import './headerFooter.scss';
@@ -15,26 +16,34 @@ const data = getData({
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
-const baseUrl = 'https://tidb.io';
 const title = 'TiDB Community';
-const logo = <img alt={title} src={`${baseUrl}/images/community/logo.svg`} />;
 const onNavClick = (link) => window.open(link, '_blank').focus();
 
+const HeaderLogo = styled.img.attrs({
+  alt: 'AskTUG',
+  src: 'https://asktug.com/uploads/default/original/3X/4/2/42424ddde1f860052cf29097bbfa44312d111b1d.png',
+})`
+  && {
+    ${mixins.size('146px', '55px')};
+  }
+`;
+
 const headerProps = {
-  logo,
-  title,
+  logo: <HeaderLogo />,
   onNavClick,
   navItems: headerNavItems,
   currentNav: utils.header.getCurrentNav(headerNavItems, window.location.pathname),
-  onTitleClick: () => onNavClick(baseUrl),
+  onTitleClick: () => {
+    window.location.href = 'https://asktug.com';
+  },
 };
 
 const footerProps = {
-  logo,
+  logo: <img alt={title} src="https://tidb.io/images/community/logo.svg" />,
   title,
   onNavClick,
-  navItems: footerNavItems,
   icons: footerIcons,
+  navItems: footerNavItems,
 };
 
 const GlobalStyle = createAppGlobalStyle();

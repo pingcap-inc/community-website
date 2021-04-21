@@ -9,7 +9,6 @@ export default css`
     padding: 0 16px;
     text-transform: uppercase;
     text-shadow: none;
-    background-color: ${colors.B1};
     box-shadow: none;
 
     &-sm {
@@ -33,7 +32,6 @@ export default css`
 
       &[disabled] {
         color: ${colors.M1};
-        background-color: #3d3fea;
         opacity: 0.6;
       }
 

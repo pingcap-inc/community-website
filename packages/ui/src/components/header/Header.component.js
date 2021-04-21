@@ -40,7 +40,7 @@ const genMenu = ({ items, onNavClick }) => {
   });
 };
 
-const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title }) => {
+const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title = '' }) => {
   const bp = useBreakpoint();
 
   useEffect(() => {
@@ -85,7 +85,7 @@ Header.propTypes = {
   navItems: PropTypes.array.isRequired,
   onNavClick: PropTypes.func.isRequired,
   onTitleClick: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 export default Header;

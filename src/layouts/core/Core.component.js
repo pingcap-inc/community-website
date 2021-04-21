@@ -25,7 +25,9 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
     onNavClick,
     navItems: headerNavItems,
     currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
-    onTitleClick: () => router.push('https://tidb.io'),
+    onTitleClick: () => {
+      document.location.href = 'https://tidb.io';
+    },
   };
 
   const footerProps = {

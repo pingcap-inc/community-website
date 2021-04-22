@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { Form as AntForm, Checkbox, Col } from 'antd';
 import { Link } from '@tidb-community/ui';
 
@@ -47,7 +47,6 @@ const Form = ({ submit }) => {
           </Styled.ContactUsButton>
         </Col>
       </Styled.FormTitleContainer>
-
       <AntForm form={form} initialValues={initialValues} onValuesChange={onFormValuesChange} onFinish={onSubmit}>
         <BasicFields />
         <VerificationFields type={verificationTypeValue} />

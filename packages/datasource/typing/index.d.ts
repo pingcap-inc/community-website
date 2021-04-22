@@ -1,4 +1,5 @@
 import { Nav } from './nav';
+import { form } from './form';
 
 type Locale = 'en' | 'zh'
 type Env = 'production' | 'development'
@@ -19,3 +20,5 @@ type GetDataParams = {
 }
 
 export function getData (params: GetDataParams): Data;
+
+export function getFormData (): form;

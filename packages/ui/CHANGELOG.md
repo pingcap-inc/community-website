@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), but the versionning is not strictly adhered to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.2.0] - 2021-04-22
+
+### Added
+
+- Header's onNavClick accepts `isSelected` as the second argument
+- Split nav data and data helpers into an independent package
+
+### Fixed
+
+- Fix the broken Header & Footer stories on Storybook
+
 ## [0.1.3] - 2021-04-18
 
 ### Fixed

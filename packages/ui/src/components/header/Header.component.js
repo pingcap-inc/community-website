@@ -10,12 +10,7 @@ const { SubMenu } = Menu;
 
 const genMenu = ({ items, onNavClick }) => {
   const onItemClick = (link) => (e) => {
-    const {
-      item: { props },
-    } = e;
-    if (!props.isSelected) {
-      onNavClick(link);
-    }
+    onNavClick(link, e.item.props.isSelected);
   };
 
   return items.map((item) => {

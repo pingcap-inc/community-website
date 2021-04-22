@@ -11,6 +11,12 @@ export default css`
     text-shadow: none;
     box-shadow: none;
 
+    &:hover:not(&-link):not(&-primary),
+    &:focus:not(&-link):not(&-primary) {
+      color: ${colors.B1};
+      border-color: ${colors.B1};
+    }
+
     &-sm {
       ${mixins.verticalLineMiddle('32px')};
       padding: 0 14px;
@@ -52,6 +58,19 @@ export default css`
           background-color: ${colors.M2} !important;
           border-color: ${colors.T2};
         }
+      }
+    }
+    
+    &-link {
+      color: ${colors.B1};
+
+      &:hover {
+        color: #3739d2 !important;
+      }
+
+      &[disabled] {
+        color: ${colors.F2};
+        opacity: 0.6;
       }
     }
   }

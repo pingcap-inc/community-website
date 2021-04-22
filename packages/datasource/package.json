@@ -5,7 +5,7 @@
     "build": "rimraf es lib && father build",
     "prepublishOnly": "npm run build && np --yolo --no-publish --any-branch"
   },
-  "description": "Navigation and i18n datasource for tidb community.",
+  "description": "Navigation and i18n datasource for TiDB community.",
   "main": "lib/index.js",
   "module": "es/index.js",
   "files": [
@@ -16,9 +16,12 @@
   "license": "MIT",
   "types": "types/index.d.ts",
   "dependencies": {
-    "father": "^2.30.4",
-    "father-build": "^1.19.4",
-    "np": "^7.4.0"
+    "@babel/runtime": "7.13.10"
+  },
+  "devDependencies": {
+    "father": "2.30.4",
+    "father-build": "1.19.4",
+    "np": "7.4.0"
   },
   "peerDependencies": {
     "ramda": "^0.27.1"

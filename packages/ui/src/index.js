@@ -8,13 +8,15 @@ import resetAntStyles from './antd';
 
 // Utils
 import * as headerUtils from './components/header/header.utils';
+import * as _utils from './utils';
 
 export const utils = {
   header: headerUtils,
+  ..._utils,
 };
 
 export { colors, constants, mixins };
-export { ActivityCards, Footer, Header, ViewMoreButton } from './components';
+export { ActivityCards, Footer, Header, ViewMoreButton, Link } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   .${constants.appClassName} {
@@ -25,7 +27,7 @@ export const createAppGlobalStyle = () => createGlobalStyle`
     --antd-wave-shadow-color: ${colors.B1};
 
     * {
-      &::selection  {
+      &::selection {
         color: ${colors.M1} !important;
         background: ${colors.B1};
       }

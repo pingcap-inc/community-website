@@ -1,5 +1,6 @@
 import { defaultEnvDomains } from './config.domains';
 import { getData as navGetData } from './nav';
+import * as form from './form';
 
 const defaultEnv = (typeof process !== 'undefined' && process?.env?.NEXT_PUBLIC_RUNTIME_ENV) || 'production';
 
@@ -21,4 +22,8 @@ export const getData = ({ domain, env, envDomainConfig, locale, path } = {}) => 
       path,
     }),
   };
+};
+
+export const getFormData = () => {
+  return form;
 };

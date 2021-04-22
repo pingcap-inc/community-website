@@ -1,3 +1,14 @@
+import { getFormData } from '@tidb-community/datasource';
+
+const formData = getFormData();
+
+const {
+  organizationSizes,
+  organizationTypes,
+  personalPositions,
+  provinces,
+} = formData.org.enums;
+
 const data = {
   form: {
     nickname: {
@@ -11,18 +22,22 @@ const data = {
     organizationType: {
       name: 'organizationType',
       placeholder: '请选择行业类型',
+      enums: organizationTypes,
     },
     organizationSize: {
       name: 'organizationSize',
       placeholder: '请选择企业规模',
+      enums: organizationSizes,
     },
     organizationLocation: {
       name: 'organizationLocation',
       placeholder: '请选择企业所在地',
+      provinces: provinces,
     },
     personalPosition: {
       name: 'personalPosition',
       placeholder: '请选择您的职位',
+      enums: personalPositions,
     },
     personalContact: {
       name: 'personalContact',

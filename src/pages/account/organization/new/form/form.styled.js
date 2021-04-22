@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Button as AntButton, Upload as AntUpload, Row as AntRow } from 'antd';
 
 export const FormContainer = styled.div`
+  box-sizing: border-box;
   margin: auto;
   max-width: 540px;
 `;

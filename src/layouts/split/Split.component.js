@@ -8,16 +8,18 @@ const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
   const ref = useRef();
   const size = useSize(ref);
 
-  const isLargeSize = size.width > 1024;
+  const isLargeSize = size.width > 1200;
+  const isSmallSize = size.width <= 588;
 
   const newChildren = wrapElements({
     elements: children,
     wrapElement: (element, n, total) => {
       const props = {
-        span: 24 / total,
+        span: isLargeSize ? 24 / total : 24,
         key: `element-${n}`,
+        marginTop: !isLargeSize,
       };
-      if (dividerColor && n < total - 1) {
+      if (isLargeSize && dividerColor && n < total - 1) {
         return <Styled.ItemContainerWithDivider {...props}
                                                 dividerColor={dividerColor}>{element}</Styled.ItemContainerWithDivider>;
       } else {
@@ -29,6 +31,7 @@ const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
   const ContainerProps = {
     marginTop,
     marginBottom,
+    paddingHorizontal: isSmallSize,
   };
 
   return (

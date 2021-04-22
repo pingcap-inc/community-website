@@ -98,4 +98,20 @@ export default css`
       ${mixins.typography('p2')}
     }
   }
+
+  // select
+
+  .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: ${colors.B1};
+  }
+
+  .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    border-color: ${colors.B1};
+    box-shadow: 0 0 0 2px rgb(61 63 234 / 20%);
+  }
+
+  // fixme: it's not work!
+  .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: ${colors.B2};
+  }
 `;

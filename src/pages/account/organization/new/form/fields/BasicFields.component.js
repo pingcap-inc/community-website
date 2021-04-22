@@ -1,4 +1,4 @@
-import { Form as AntForm, Input } from 'antd';
+import { Form as AntForm, Input, Select, Cascader } from 'antd';
 import data from '../form.data';
 
 const {
@@ -21,16 +21,16 @@ const BasicFields = () => {
         <Input placeholder={organization.placeholder} />
       </AntForm.Item>
       <AntForm.Item name={organizationType.name}>
-        <Input placeholder={organizationType.placeholder} />
+        <Select placeholder={organizationType.placeholder} options={organizationType.enums} />
       </AntForm.Item>
       <AntForm.Item name={organizationSize.name}>
-        <Input placeholder={organizationSize.placeholder} />
+        <Select placeholder={organizationSize.placeholder} options={organizationSize.enums} />
       </AntForm.Item>
       <AntForm.Item name={organizationLocation.name}>
-        <Input placeholder={organizationLocation.placeholder} />
+        <Cascader placeholder={organizationLocation.placeholder} options={organizationLocation.provinces} />
       </AntForm.Item>
       <AntForm.Item name={personalPosition.name}>
-        <Input placeholder={personalPosition.placeholder} />
+        <Select placeholder={personalPosition.placeholder} options={personalPosition.enums} />
       </AntForm.Item>
       <AntForm.Item name={personalContact.name}>
         <Input placeholder={personalContact.placeholder} />

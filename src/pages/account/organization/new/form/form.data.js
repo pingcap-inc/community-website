@@ -29,7 +29,7 @@ const data = {
       placeholder: '请填写联系电话，资料如有问题，审核人员将会致电，请保持电话畅通',
     },
     verificationType: {
-      name: 'verification-type',
+      name: 'verificationType',
       choices: [
         {
           title: '企业邮箱认证',
@@ -55,7 +55,8 @@ const data = {
       employmentCertification: {
         name: 'employmentCertification',
         uploadFileText: '上传文件',
-        extraText: '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。'
+        extraText:
+          '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。',
       },
     },
     agreements: {
@@ -75,4 +76,4 @@ const data = {
   },
 };
 
-export default data
+export default data;

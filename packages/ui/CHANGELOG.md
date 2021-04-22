@@ -48,4 +48,4 @@ All notable changes to this project will be documented in this file. The format 
 
 ### Added
 
-- First release version, which includes Header, Footer components and basic UI elements
+- The first release version, which includes Header, Footer components and basic UI elements

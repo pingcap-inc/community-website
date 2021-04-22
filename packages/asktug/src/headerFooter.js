@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import { getData } from '@tidb-community/datasource';
-import { Footer, Header, constants, createAppGlobalStyle, utils, mixins } from '@tidb-community/ui';
+import { Footer, Header, constants, createAppGlobalStyle, mixins } from '@tidb-community/ui';
 
 import 'antd-global.css';
 import './headerFooter.scss';
 
+const { location } = window;
 const { appClassName } = constants;
 
 const data = getData({
@@ -16,8 +17,16 @@ const data = getData({
 const { navItems: headerNavItems } = data.header;
 const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
+const baseURL = 'https://asktug.com';
 const title = 'TiDB Community';
-const onNavClick = (link) => window.open(link, '_blank').focus();
+
+const onNavClick = (link) => {
+  if (link.startsWith('http')) {
+    window.open(link, '_blank').focus();
+  } else {
+    location.href = link;
+  }
+};
 
 const HeaderLogo = styled.img.attrs({
   alt: 'AskTUG',
@@ -32,9 +41,9 @@ const headerProps = {
   logo: <HeaderLogo />,
   onNavClick,
   navItems: headerNavItems,
-  currentNav: utils.header.getCurrentNav(headerNavItems, window.location.pathname),
+  currentNav: '问答',
   onTitleClick: () => {
-    window.location.href = 'https://asktug.com';
+    location.href = baseURL;
   },
 };
 

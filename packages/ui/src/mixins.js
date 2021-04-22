@@ -46,6 +46,13 @@ export const typography = (level) => {
       color: ${colors.F2};
       font-weight: 400;
     `,
+
+    p3: css`
+      font-size: 12px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, .65);
+      font-weight: normal;
+    `
   };
 
   return levels[level];

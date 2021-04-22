@@ -1,19 +1,10 @@
 export const navItems = [
   {
-    title: 'About',
-    items: [
-      {
-        title: 'Code of Conduct',
-        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
-      },
-      {
-        title: 'TiDB and PingCAP',
-        link: 'https://pingcap.com',
-      },
-    ],
+    title: 'Home',
+    link: 'https://tidb.io',
   },
   {
-    title: 'Forum(ZH)',
+    title: 'Forum',
     link: 'https://asktug.com',
   },
   {
@@ -145,5 +136,18 @@ export const navItems = [
   {
     title: 'Redeem Gifts',
     link: 'https://accounts.pingcap.com/points#/shop',
+  },
+  {
+    title: 'About',
+    items: [
+      {
+        title: 'Code of Conduct',
+        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
+      },
+      {
+        title: 'TiDB and PingCAP',
+        link: 'https://pingcap.com',
+      },
+    ],
   },
 ];

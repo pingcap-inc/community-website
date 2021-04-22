@@ -1,16 +1,7 @@
 export const navItems = [
   {
-    title: '关于',
-    items: [
-      {
-        title: '社区行为准则',
-        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
-      },
-      {
-        title: 'TiDB 和 PingCAP',
-        link: 'https://pingcap.com',
-      },
-    ],
+    title: '首页',
+    link: 'https://tidb.io',
   },
   {
     title: '问答',
@@ -145,5 +136,18 @@ export const navItems = [
   {
     title: '兑换礼品',
     link: 'https://accounts.pingcap.com/points#/shop',
+  },
+  {
+    title: '关于',
+    items: [
+      {
+        title: '社区行为准则',
+        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
+      },
+      {
+        title: 'TiDB 和 PingCAP',
+        link: 'https://pingcap.com',
+      },
+    ],
   },
 ];

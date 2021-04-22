@@ -7,6 +7,10 @@ export const BannerContent = styled.div`
   width: 470px;
 `;
 
-export const BannerImage = styled.img.attrs({ src: '/images/account/organization-new-banner.png', alt: 'banner image' })`
+export const BannerImage = styled.img.attrs({
+  src: '/images/account/organization-new-banner.png',
+  alt: 'banner image',
+})`
   width: 100%;
+  margin-bottom: 26px;
 `;

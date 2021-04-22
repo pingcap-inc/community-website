@@ -7,13 +7,15 @@ import * as Styled from './form.styled';
 import BasicFields from './fields/BasicFields.component';
 import VerificationFields from './fields/VerificationFields.component';
 import data from './form.data';
+import { useCustomFormItems } from './form.hooks';
 
 const { verificationType, agreements, submitBtnTitle } = data.form;
 
-const Form = ({ submit }) => {
+const Form = ({ submit, sendEmail, uploadIncumbencyCert }) => {
   const [form] = AntForm.useForm();
   const [verificationTypeValue, setVerificationTypeValue] = useState();
 
+  const { buildFormItemProps, resetValidationErrors, parseApiError } = useCustomFormItems();
   const [submitting, setSubmitting] = useState(false);
 
   const onFormValuesChange = (formData) => {
@@ -28,6 +30,41 @@ const Form = ({ submit }) => {
     submit(formData).finally(() => {
       setSubmitting(false);
     });
+  };
+
+  const sendEmailProxy = () =>
+    sendEmail(form.getFieldValue(verificationType.organizationEmail.email.name))
+      .then(() =>
+        resetValidationErrors([
+          verificationType.organizationEmail.email.name,
+          verificationType.organizationEmail.verificationCode.name,
+        ])
+      )
+      .catch((err) => {
+        if (err.errors) {
+          parseApiError(err);
+        } else {
+          return Promise.reject(err);
+        }
+      });
+
+  const uploadIncumbencyCertProxy = (params) => {
+    if (params === undefined) {
+      form.setFieldsValue({ [verificationType.employmentCertification.idName]: undefined });
+      return Promise.resolve();
+    } else {
+      return uploadIncumbencyCert(params)
+        .then((fileId) => {
+          resetValidationErrors([verificationType.employmentCertification.name]);
+          form.setFieldsValue({ [verificationType.employmentCertification.idName]: fileId });
+        })
+        .catch((err) => {
+          if (err.errors) {
+            parseApiError(err);
+          }
+          return Promise.reject(err);
+        });
+    }
   };
 
   const initialValues = {
@@ -48,9 +85,14 @@ const Form = ({ submit }) => {
         </Col>
       </Styled.FormTitleContainer>
       <AntForm form={form} initialValues={initialValues} onValuesChange={onFormValuesChange} onFinish={onSubmit}>
-        <BasicFields />
-        <VerificationFields type={verificationTypeValue} />
-        <AntForm.Item name={agreements.name} valuePropName="checked">
+        <BasicFields buildFormItemProps={buildFormItemProps} />
+        <VerificationFields
+          type={verificationTypeValue}
+          sendEmail={sendEmailProxy}
+          uploadIncumbencyCert={uploadIncumbencyCertProxy}
+          buildFormItemProps={buildFormItemProps}
+        />
+        <AntForm.Item {...buildFormItemProps(agreements.name)} valuePropName="checked">
           <Checkbox>
             {agreements.prefixText}
             <Link href={agreements.sla.link}>{agreements.sla.title}</Link>
@@ -67,6 +109,8 @@ const Form = ({ submit }) => {
 
 Form.propTypes = {
   submit: PropTypes.func.isRequired,
+  sendEmail: PropTypes.func.isRequired,
+  uploadIncumbencyCert: PropTypes.func.isRequired,
 };
 
 export default Form;

@@ -42,5 +42,5 @@ yarn-error.log*
 packages/*/dist/
 packages/*/es/
 packages/*/lib/
-public/asktug/*.LICENSE.txt
+public/asktug/
 yarn.lock

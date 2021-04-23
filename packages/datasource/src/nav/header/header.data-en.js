@@ -25,10 +25,10 @@ export const navItems = [
     ],
   },
   {
-    title: 'Developer Group',
+    title: 'Contributor Group',
     items: [
       {
-        title: 'DevGroup Home',
+        title: 'Contributor Group Home',
         link: 'https://contributor.tidb.io',
       },
       {

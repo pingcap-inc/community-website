@@ -39,17 +39,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 # copy-writing
 
-## navbar
-
-- data/navbar.js
-
-## footer
-
-- data/footer.js
-- data/socials.js
-
-## /
-
 ### banner
 
 - data/banner.js
@@ -74,9 +63,9 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 - https://asktug.com/top/weekly.json?order=default&page=0&per_page=10
 
-### /MVA
+### /mva
 
-- pages/MVA.jsx
+- pages/mva.jsx
 - data/tug_data.js -> mva2020
 - data/tug_data.js -> mva2019
 
@@ -137,14 +126,6 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### data/events.js
 
 首页 TUG 活动信息数据
-
-### data/navbar.js
-
-导航栏数据
-
-### data/footer.js
-
-底部页脚链接数据
 
 ### data/social.js
 

@@ -20,7 +20,7 @@ export const navItems = [
       },
       {
         title: 'MVA',
-        link: 'https://tug.tidb.io/MVA',
+        link: 'https://tug.tidb.io/mva',
       },
     ],
   },

@@ -116,6 +116,10 @@ export const navItems = [
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
       {
+        title: 'Mailing Lists',
+        link: 'https://lists.tidb.io/g/main/subgroups',
+      },
+      {
         title: 'Docs',
         link: 'https://docs.pingcap.com/tidb/stable',
       },
@@ -124,14 +128,10 @@ export const navItems = [
         link: 'https://asktug.com/c/blog/l/latest',
       },
       {
-        title: 'Mailing Lists',
-        link: 'https://lists.tidb.io/g/main/subgroups',
+        title: 'Jobs',
+        link: 'https://pingcap.com/community-cn/careers/join/',
       },
     ],
-  },
-  {
-    title: 'Jobs',
-    link: 'https://pingcap.com/community-cn/careers/join/',
   },
   {
     title: 'Redeem Gifts',

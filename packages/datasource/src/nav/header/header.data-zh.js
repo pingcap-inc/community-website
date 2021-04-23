@@ -116,6 +116,10 @@ export const navItems = [
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
       {
+        title: '邮件列表',
+        link: 'https://lists.tidb.io/g/main/subgroups',
+      },
+      {
         title: '文档',
         link: 'https://docs.pingcap.com/tidb/stable',
       },
@@ -124,14 +128,10 @@ export const navItems = [
         link: 'https://asktug.com/c/blog/l/latest',
       },
       {
-        title: '邮件列表',
-        link: 'https://lists.tidb.io/g/main/subgroups',
+        title: '名企直推',
+        link: 'https://pingcap.com/community-cn/careers/join/',
       },
     ],
-  },
-  {
-    title: '名企直推',
-    link: 'https://pingcap.com/community-cn/careers/join/',
   },
   {
     title: '兑换礼品',

@@ -20,7 +20,7 @@ export const navItems = [
       },
       {
         title: 'MVA',
-        link: 'https://tug.tidb.io/MVA',
+        link: 'https://tug.tidb.io/mva',
       },
     ],
   },
@@ -46,7 +46,7 @@ export const navItems = [
       },
       {
         title: '特殊兴趣小组(SIG)',
-        link: 'https://contributor.tidb.io/SIG/',
+        link: 'https://contributor.tidb.io/sig/',
       },
       {
         title: '人员',

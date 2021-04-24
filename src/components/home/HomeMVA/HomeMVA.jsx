@@ -15,7 +15,7 @@ export default function HomeMVA() {
           TiDB，是经过认证的技术先锋，享受极高的社区荣誉。
         </div>
         <div className={styles.buttons}>
-          <Button as={MyLink} href={'/MVA'}>
+          <Button as={MyLink} href={'/mva'}>
             查看更多
           </Button>
         </div>

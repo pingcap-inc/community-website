@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "build": "next build && npm run build:asktug",
+    "build:asktug": "lerna run --scope @tidb-community/asktug build",
+    "build:ui": "lerna run --scope @tidb-community/ui build",
     "dev": "next dev",
     "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx",
@@ -11,8 +13,6 @@
     "server:restart": "pm2 restart tug-website-next-server",
     "start": "next start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
-    "build:asktug": "lerna run --scope @tidb-community/asktug build",
-    "build:ui": "lerna run --scope @tidb-community/ui build",
     "test": "jest"
   },
   "husky": {

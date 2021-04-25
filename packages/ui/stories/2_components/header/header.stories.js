@@ -17,8 +17,8 @@ const title = 'TiDB Community';
 const { navItems } = getData({ locale: 'en' }).nav.header;
 
 WithNav.args = {
-  navItems,
-  title,
   currentNav: utils.header.getCurrentNav(navItems, 'https://contributor.tidb.io/people/committer'),
   logo: <img alt={title} src="/images/community/logo.svg" />,
+  navItems,
+  title,
 };

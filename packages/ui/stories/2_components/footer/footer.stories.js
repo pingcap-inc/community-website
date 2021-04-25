@@ -14,12 +14,11 @@ const Template = (args) => <Footer {...args} />;
 export const WithNav = Template.bind({});
 
 const title = 'TiDB Community';
-
 const { navItems, icons } = getData({ locale: 'en' }).nav.footer;
 
 WithNav.args = {
+  icons,
+  logo: <img alt={title} src="/images/community/logo.svg" />,
   navItems,
   title,
-  logo: <img alt={title} src="/images/community/logo.svg" />,
-  icons: icons,
 };

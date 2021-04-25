@@ -2,7 +2,7 @@
   "name": "@tidb-community/mock-api",
   "private": true,
   "scripts": {
-    "start": "node server.js"
+    "start": "nodemon server.js"
   },
   "description": "Mock APIs for local development",
   "dependencies": {

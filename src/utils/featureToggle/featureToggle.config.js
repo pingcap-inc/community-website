@@ -1,7 +1,6 @@
 const HOSTS = {
   TIDB_IO: 'tidb.io',
   TUG_TIDB_IO: 'tug.tidb.io',
-  LOCALHOST: 'localhost:3000',
 };
 
 export const FEATURES = {

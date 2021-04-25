@@ -5,13 +5,14 @@ import Form from './form';
 import { CoreLayout, SplitLayout } from 'layouts';
 import { featureToggle } from 'utils';
 
-export const getServerSideProps = async () => {
-  const isEabled = featureToggle.isFeatureEnabled({
-    name: 'create-organization',
-    host: 'localhost:3001',
-  });
+export const getServerSideProps = async ({ req }) => {
+  // https://vercel.com/docs/environment-variables#system-environment-variables
+  const host = process.env.VERCEL_URL || req.headers.host;
 
-  console.log('isEabled!!', isEabled);
+  const isEabled = featureToggle.isFeatureEnabled({
+    host,
+    name: featureToggle.FEATURES.CREATE_ORGANIZATION,
+  });
 
   if (!isEabled) {
     return {

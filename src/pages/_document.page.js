@@ -1,6 +1,7 @@
 // Copied from the offical example for the integration with styled-components:
 // https://github.com/vercel/next.js/blob/master/examples/with-styled-components/pages/_document.js
 import Document from 'next/document';
+import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {

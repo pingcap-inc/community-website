@@ -1,3 +1,4 @@
+import React from 'react';
 import { ViewMoreButton } from '@tidb-community/ui';
 
 import * as Styled from './viewMoreButton.styled';

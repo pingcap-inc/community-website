@@ -3,10 +3,24 @@ import React from 'react';
 import Banner from './banner';
 import Form from './form';
 import { CoreLayout, SplitLayout } from 'layouts';
+import { featureToggle } from 'utils';
 
 export const getServerSideProps = async () => {
+  const isEabled = featureToggle.isFeatureEnabled({
+    name: 'create-organization',
+    host: 'localhost:3001',
+  });
+
+  console.log('isEabled!!', isEabled);
+
+  if (!isEabled) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
-    notFound: true,
+    props: {},
   };
 };
 

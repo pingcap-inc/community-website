@@ -1,3 +1,4 @@
+import React from 'react';
 import { ActivityCards } from '@tidb-community/ui';
 
 import * as data from './activityCards.data';

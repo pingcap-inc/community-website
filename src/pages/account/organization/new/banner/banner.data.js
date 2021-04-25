@@ -1,4 +1,4 @@
-export default {
+const data = {
   leading: '创建新企业后，你将成为管理员，可添加成员，共同享受更丰富的企业权益',
   benefits: [
     '产品咨询：产品技术、业务架构、开发运维',
@@ -12,3 +12,5 @@ export default {
     link: '',
   },
 };
+
+export default data;

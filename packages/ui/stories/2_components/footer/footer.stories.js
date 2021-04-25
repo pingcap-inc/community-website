@@ -1,3 +1,4 @@
+import React from 'react';
 import { Footer } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 

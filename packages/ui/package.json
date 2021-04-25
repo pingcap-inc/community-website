@@ -16,7 +16,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "7.13.10"
+    "@babel/runtime": "7.13.17"
   },
   "devDependencies": {
     "@ant-design/icons": "4.6.2",
@@ -24,7 +24,7 @@
     "@storybook/addon-essentials": "6.1.21",
     "@storybook/addon-links": "6.1.21",
     "@storybook/react": "6.1.21",
-    "antd": "4.15.1",
+    "antd": "4.15.2",
     "father": "2.30.4",
     "father-build": "1.19.4",
     "less-loader": "7.3.0",

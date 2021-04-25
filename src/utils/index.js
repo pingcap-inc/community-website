@@ -24,4 +24,5 @@ export async function getExcerptByTopicId(id, wordCountLimit = 70) {
   return fullExcerpt.length > wordCountLimit ? fullExcerpt.slice(0, wordCountLimit) + ' ...' : fullExcerpt;
 }
 
+export * as featureToggle from './featureToggle';
 export * as link from './link.utils';

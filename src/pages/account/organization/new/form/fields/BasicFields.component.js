@@ -1,4 +1,6 @@
+import React from 'react';
 import { Form as AntForm, Input, Select, Cascader } from 'antd';
+
 import data from '../form.data';
 
 const {

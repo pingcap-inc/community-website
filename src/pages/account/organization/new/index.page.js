@@ -1,9 +1,16 @@
 import React from 'react';
-import { CoreLayout, SplitLayout } from 'layouts';
-import Form from './form';
-import Banner from './banner';
 
-const NewOrganization = () => {
+import Banner from './banner';
+import Form from './form';
+import { CoreLayout, SplitLayout } from 'layouts';
+
+export const getServerSideProps = async () => {
+  return {
+    notFound: true,
+  };
+};
+
+const CreateOrganization = () => {
   const onSubmit = (formData) => {
     console.log(formData);
     return new Promise((resolve, reject) => setTimeout(() => reject('todo implement'), 1000));
@@ -19,4 +26,4 @@ const NewOrganization = () => {
   );
 };
 
-export default NewOrganization;
+export default CreateOrganization;

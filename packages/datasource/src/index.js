@@ -4,6 +4,11 @@ import { defaultEnvDomains } from './config.domains';
 const defaultEnv = (typeof process !== 'undefined' && process?.env?.NEXT_PUBLIC_RUNTIME_ENV) || 'production';
 
 export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => {
+  env = env || defaultEnv;
+  if (env !== 'production') {
+    env = 'preview';
+  }
+
   return {
     nav: navGetData({
       domain,

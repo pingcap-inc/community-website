@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
+import { Menu } from 'antd'
 
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
@@ -77,9 +78,21 @@ export const MenuWrapper = styled.div`
           content: '';
         }
       }
+
+      &-submenu-title {
+        cursor: default !important;
+
+        > span {
+          cursor: pointer;
+        }
+      }
     }
   }
 `;
+
+export const HiddenMenuItem = styled(Menu.Item)`
+  display: none
+`
 
 export const GlobalStyle = createGlobalStyle`
   #${menuPopupId} {
@@ -106,6 +119,14 @@ export const GlobalStyle = createGlobalStyle`
           > .ant-menu-submenu-title,
           > .ant-menu-submenu-arrow {
             color: ${colors.B1};
+          }
+        }
+
+        &-title {
+          cursor: default !important;
+
+          > span {
+            cursor: pointer;
           }
         }
       }

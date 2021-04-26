@@ -18,7 +18,7 @@ const genMenu = ({ items, onNavClick }) => {
 
     if (items) {
       return (
-        <SubMenu key={title} title={title}>
+        <SubMenu key={title} title={title} onTitleClick={link ? onItemClick(link) : undefined}>
           {
             // eslint-disable-next-line no-unused-vars
             genMenu({ items, onNavClick })

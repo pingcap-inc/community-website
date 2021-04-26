@@ -3,7 +3,7 @@ const router = require('express').Router();
 const { MESSAGES } = require('../../../constants');
 const { errorResp, successResp } = require('../../../utils');
 
-router.use('/send-code', (req, res) => {
+router.post('/send-code', (req, res) => {
   const { email } = req.body;
   if (email === '429') {
     return errorResp({ code: 429, detail: MESSAGES.TOO_MANY_REQUESTS })(req, res);
@@ -20,6 +20,27 @@ router.use('/send-code', (req, res) => {
       email,
     },
   })(req, res);
+});
+
+router.post('/upload-incumbency-cert', (req, res) => {
+  successResp({
+    cert_id: 1,
+  })(req, res);
+});
+
+// Form submission
+router.post('', (req, res) => {
+  const { name } = req.body;
+
+  if (name === '400') {
+    return errorResp({
+      errors: {
+        email: ['invalid email address'],
+      },
+    })(req, res);
+  }
+
+  successResp()(req, res);
 });
 
 module.exports = router;

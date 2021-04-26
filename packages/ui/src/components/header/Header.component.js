@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Menu } from 'antd';
 
 import * as Styled from './header.styled';
@@ -9,7 +9,7 @@ import { HiddenMenuItem } from './header.styled';
 const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
 
-const genMenu = ({ items, menuPopEl, onNavClick }) => {
+const genMenu = ({ items, currentNav, onNavClick }) => {
   const onItemClick = (link) => (e) => {
     onNavClick(link, e.item.props.isSelected);
   };
@@ -19,7 +19,7 @@ const genMenu = ({ items, menuPopEl, onNavClick }) => {
 
     if (items) {
       const onSubMenuClick = () => {
-        menuPopEl.getElementsByTagName('li')[0]?.click();
+        onNavClick(link, currentNav === title);
       };
 
       const subMenuProps = {
@@ -49,13 +49,10 @@ const genMenu = ({ items, menuPopEl, onNavClick }) => {
 const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title = '' }) => {
   const bp = useBreakpoint();
 
-  const [menuPopEl, setMenuPopEl] = useState(undefined);
-
   useEffect(() => {
     const el = document.createElement('div');
     el.id = menuPopupId;
     document.body.append(el);
-    setMenuPopEl(el);
 
     return () => {
       el.remove();
@@ -78,7 +75,7 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title = 
           </Styled.Logo>
 
           <Styled.MenuWrapper xs={bp.xs}>
-            <Menu {...menuProps}>{genMenu({ items: navItems, menuPopEl, onNavClick })}</Menu>
+            <Menu {...menuProps}>{genMenu({ items: navItems, currentNav, onNavClick })}</Menu>
           </Styled.MenuWrapper>
         </Styled.Content>
       </Styled.Container>

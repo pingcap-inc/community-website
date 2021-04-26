@@ -9,6 +9,8 @@ let initApiContext = {
 export const GLOBAL_ERROR_HANDLED = Symbol.for('global-error-handled');
 
 export const initApi = (globalErrorHandler) => {
+  Axios.defaults.baseURL = process?.env?.NEXT_PUBLIC_API_BASE_URL ?? '';
+
   if (!globalErrorHandler) {
     throw new Error('failed to init api: globalErrorHandler not provided');
   }

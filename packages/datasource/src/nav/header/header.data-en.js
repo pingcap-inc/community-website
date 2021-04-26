@@ -6,6 +6,12 @@ export const navItems = [
   {
     title: 'Forum',
     link: 'https://asktug.com',
+    items: [
+      {
+        title: 'AskTUG Rankings',
+        link: 'https://asktug.com/x/ranking',
+      },
+    ],
   },
   {
     title: 'User Group',

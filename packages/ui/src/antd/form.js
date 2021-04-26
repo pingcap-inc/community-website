@@ -1,9 +1,11 @@
 import { css } from 'styled-components';
-import { mixins } from '../index';
 
 export default css`
   .ant-form-item-extra {
-    ${mixins.typography('p3')};
+    font-size: 12px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, .65);
+    font-weight: normal;
     margin-top: 12px;
   }
 `;

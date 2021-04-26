@@ -2,12 +2,7 @@ import { getFormData } from '@tidb-community/datasource';
 
 const formData = getFormData();
 
-const {
-  organizationSizes,
-  organizationTypes,
-  personalPositions,
-  provinces,
-} = formData.org.enums;
+const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
 
 const data = {
   form: {
@@ -56,7 +51,6 @@ const data = {
         },
       ],
       organizationEmail: {
-        name: 'organizationEmail',
         email: {
           name: 'email',
           placeholder: '请填写企业邮箱，用于企业认证',
@@ -68,7 +62,8 @@ const data = {
         },
       },
       employmentCertification: {
-        name: 'employmentCertification',
+        name: 'file',
+        idName: 'cert_id',
         uploadFileText: '上传文件',
         extraText:
           '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。',

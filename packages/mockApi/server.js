@@ -11,11 +11,7 @@ const app = express();
 
 app.disable('x-powered-by');
 
-app.use(
-  cors({
-    origin: false,
-  })
-);
+app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(

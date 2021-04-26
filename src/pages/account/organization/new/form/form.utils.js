@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 
-export const getErrorMessage = err => {
+export const getErrorMessage = (err) => {
   if (R.is(String, err)) {
     return err;
   }
@@ -10,5 +10,5 @@ export const getErrorMessage = err => {
   if (err) {
     err.toString();
   }
-  return err
+  return err;
 };

@@ -8,13 +8,13 @@ const successResp = ({ code = 200, data, detail = MESSAGES.SUCCESS, payload, ...
   const respPayload =
     payload ??
     (data === undefined
-      ? { detail }
+      ? {}
       : {
-          detail,
           data,
         });
 
   res.status(code).json({
+    detail,
     ...respPayload,
     ...rest,
   });

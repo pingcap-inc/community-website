@@ -17,11 +17,14 @@ const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
       const props = {
         span: isLargeSize ? 24 / total : 24,
         key: `element-${n}`,
-        marginTop: !isLargeSize,
+        $marginTop: !isLargeSize,
       };
       if (isLargeSize && dividerColor && n < total - 1) {
-        return <Styled.ItemContainerWithDivider {...props}
-                                                dividerColor={dividerColor}>{element}</Styled.ItemContainerWithDivider>;
+        return (
+          <Styled.ItemContainerWithDivider {...props} dividerColor={dividerColor}>
+            {element}
+          </Styled.ItemContainerWithDivider>
+        );
       } else {
         return <Styled.ItemContainer {...props}>{element}</Styled.ItemContainer>;
       }
@@ -29,9 +32,9 @@ const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
   });
 
   const ContainerProps = {
-    marginTop,
-    marginBottom,
-    paddingHorizontal: isSmallSize,
+    $marginTop: marginTop,
+    $marginBottom: marginBottom,
+    $paddingHorizontal: isSmallSize,
   };
 
   return (

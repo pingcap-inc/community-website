@@ -22,3 +22,5 @@ type GetDataParams = {
 export function getData (params: GetDataParams): Data;
 
 export function getFormData (): form;
+
+export * as api from '../src/api'

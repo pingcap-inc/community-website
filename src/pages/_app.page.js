@@ -1,10 +1,23 @@
 import 'antd/dist/antd.css';
 import React from 'react';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
+import { message } from 'antd';
 
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
+
+import { api } from '@tidb-community/datasource';
+
+api.initApi(({ status, statusText }) => {
+  if (status === 401) {
+    // TODO: jump to login page
+  } else if (status === 403) {
+    // TODO: forbidden
+  } else {
+    message.warn(`${status}: ${statusText}`, 1.5).then();
+  }
+});
 
 const GlobalStyle = createAppGlobalStyle();
 

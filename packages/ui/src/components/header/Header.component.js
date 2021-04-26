@@ -10,15 +10,20 @@ const { SubMenu } = Menu;
 
 const genMenu = ({ items, onNavClick }) => {
   const onItemClick = (link) => (e) => {
-    onNavClick(link, e.item.props.isSelected);
+    onNavClick(link, e.item?.props?.isSelected);
   };
 
   return items.map((item) => {
     const { title, items, link } = item;
 
     if (items) {
+      const subMenuProps = {
+        key: title,
+        title: link ? <span onClick={onItemClick(link)}>{title}</span> : title,
+      };
+
       return (
-        <SubMenu key={title} title={title} onClick={link ? onItemClick(link) : undefined}>
+        <SubMenu {...subMenuProps}>
           {
             // eslint-disable-next-line no-unused-vars
             genMenu({ items, onNavClick })

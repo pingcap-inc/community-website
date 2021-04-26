@@ -4,11 +4,12 @@ import { Grid, Menu } from 'antd';
 
 import * as Styled from './header.styled';
 import { menuPopupId } from './header.constants';
+import { HiddenMenuItem } from './header.styled';
 
 const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
 
-const genMenu = ({ items, onNavClick }) => {
+const genMenu = ({ items, currentNav, onNavClick }) => {
   const onItemClick = (link) => (e) => {
     onNavClick(link, e.item.props.isSelected);
   };
@@ -17,8 +18,18 @@ const genMenu = ({ items, onNavClick }) => {
     const { title, items, link } = item;
 
     if (items) {
+      const onSubMenuClick = () => {
+        onNavClick(link, currentNav === title);
+      };
+
+      const subMenuProps = {
+        key: title,
+        title: link ? <span onClick={onSubMenuClick}>{title}</span> : title,
+      };
+
       return (
-        <SubMenu key={title} title={title}>
+        <SubMenu {...subMenuProps}>
+          <HiddenMenuItem key={title} onClick={onItemClick(link)} />
           {
             // eslint-disable-next-line no-unused-vars
             genMenu({ items, onNavClick })
@@ -64,7 +75,7 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title = 
           </Styled.Logo>
 
           <Styled.MenuWrapper xs={bp.xs}>
-            <Menu {...menuProps}>{genMenu({ items: navItems, onNavClick })}</Menu>
+            <Menu {...menuProps}>{genMenu({ items: navItems, currentNav, onNavClick })}</Menu>
           </Styled.MenuWrapper>
         </Styled.Content>
       </Styled.Container>

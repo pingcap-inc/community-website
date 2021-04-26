@@ -6,14 +6,17 @@ export const navItems = [
   {
     title: '问答',
     link: 'https://asktug.com',
+    items: [
+      {
+        title: '问答之星',
+        link: 'https://asktug.com/x/ranking',
+      },
+    ],
   },
   {
     title: '用户组',
+    link: 'https://tug.tidb.io',
     items: [
-      {
-        title: '用户组首页',
-        link: 'https://tug.tidb.io',
-      },
       {
         title: '加入用户组',
         link: 'https://tug.tidb.io/people',
@@ -26,11 +29,8 @@ export const navItems = [
   },
   {
     title: '开发者社区',
+    link: 'https://contributor.tidb.io',
     items: [
-      {
-        title: '开发者社区首页',
-        link: 'https://contributor.tidb.io',
-      },
       {
         title: '如何参与贡献',
         items: [

@@ -5,7 +5,16 @@ export const navItems = [
   },
   {
     title: 'Forum',
-    link: 'https://asktug.com',
+    items: [
+      {
+        title: 'Forum Home',
+        link: 'https://asktug.com',
+      },
+      {
+        title: 'Q&A Rankings',
+        link: 'https://asktug.com/x/ranking',
+      },
+    ],
   },
   {
     title: 'User Group',

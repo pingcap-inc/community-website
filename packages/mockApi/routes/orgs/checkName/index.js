@@ -1,5 +1,4 @@
 const { errorResp, successResp } = require('../../../utils');
-const { MESSAGES } = require('../../../constants');
 
 const registeredNames = ['regitstered1', 'regitstered2'];
 

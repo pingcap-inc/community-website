@@ -1,21 +1,25 @@
-const mock = require('./searchCompany.mock');
+const router = require('express').Router();
+
 const { MESSAGES } = require('../../../constants');
 const { errorResp, successResp } = require('../../../utils');
 
-module.exports = (req, res) => {
-  const { word } = req.body;
-
-  if (word === '429') {
+router.use('/send-code', (req, res) => {
+  const { email } = req.body;
+  if (email === '429') {
     return errorResp({ code: 429, detail: MESSAGES.TOO_MANY_REQUESTS })(req, res);
-  } else if (word === '400') {
+  } else if (email === '400') {
     return errorResp({
       errors: {
-        word: ['word is required'],
+        email: ['invalid email address'],
       },
     })(req, res);
   }
 
   successResp({
-    data: mock.companyList.filter((item) => item.name.indexOf(word) >= 0),
+    payload: {
+      email,
+    },
   })(req, res);
-};
+});
+
+module.exports = router;

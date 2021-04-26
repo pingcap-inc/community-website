@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle, css } from 'styled-components';
+import { Menu } from 'antd'
 
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
@@ -88,6 +89,10 @@ export const MenuWrapper = styled.div`
     }
   }
 `;
+
+export const HiddenMenuItem = styled(Menu.Item)`
+  display: none
+`
 
 export const GlobalStyle = createGlobalStyle`
   #${menuPopupId} {

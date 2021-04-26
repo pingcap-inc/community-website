@@ -15,11 +15,8 @@ export const navItems = [
   },
   {
     title: 'User Group',
+    link: 'https://tug.tidb.io',
     items: [
-      {
-        title: 'User Group Home',
-        link: 'https://tug.tidb.io',
-      },
       {
         title: 'Join TiDB User Group',
         link: 'https://tug.tidb.io/people',
@@ -32,11 +29,8 @@ export const navItems = [
   },
   {
     title: 'Contributor Group',
+    link: 'https://contributor.tidb.io',
     items: [
-      {
-        title: 'Contributor Group Home',
-        link: 'https://contributor.tidb.io',
-      },
       {
         title: 'Contribution',
         items: [

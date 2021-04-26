@@ -91,7 +91,7 @@ export const MenuWrapper = styled.div`
 `;
 
 export const HiddenMenuItem = styled(Menu.Item)`
-  display: none
+  display: none !important;
 `
 
 export const GlobalStyle = createGlobalStyle`

@@ -1,6 +1,6 @@
 const { MESSAGES } = require('./constants');
 
-const errorResp = ({ code, detail, errors }) => (req, res) => {
+const errorResp = ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors }) => (req, res) => {
   res.status(code).json({ detail, errors });
 };
 

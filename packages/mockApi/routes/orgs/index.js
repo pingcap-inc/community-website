@@ -7,5 +7,6 @@
 const router = require('express').Router();
 
 router.post('/check-name', require('./checkName'));
+router.post('/search-company', require('./searchCompany'));
 
 module.exports = router;

@@ -16,7 +16,7 @@ export const utils = {
 };
 
 export { colors, constants, mixins };
-export { ActivityCards, Footer, Header, ViewMoreButton, Link } from './components';
+export { ActivityCards, Footer, Header, ViewMoreButton, Link, RemoteSelect } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`
   .${constants.appClassName} {

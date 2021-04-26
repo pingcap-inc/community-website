@@ -7,19 +7,20 @@ import data from '../form.data';
 
 const { verificationType } = data.form;
 
-const renderVerificationOptions = (type) => {
+const VerificationOptions = ({ type, sendEmail, uploadIncumbencyCert, buildFormItemProps }) => {
   if (type === 1) {
-    return <EmploymentCertificationOption />;
-  } else {
     return (
-      <EmailVerificationOption
-        sendEmail={() => new Promise((resolve, reject) => setTimeout(() => reject('no'), 1000))}
+      <EmploymentCertificationOption
+        buildFormItemProps={buildFormItemProps}
+        uploadIncumbencyCert={uploadIncumbencyCert}
       />
     );
+  } else {
+    return <EmailVerificationOption sendEmail={sendEmail} buildFormItemProps={buildFormItemProps} />;
   }
 };
 
-const VerificationFields = ({ type }) => {
+const VerificationFields = ({ type, sendEmail, uploadIncumbencyCert, buildFormItemProps }) => {
   return (
     <>
       <AntForm.Item name={verificationType.name}>
@@ -31,7 +32,12 @@ const VerificationFields = ({ type }) => {
           ))}
         </Radio.Group>
       </AntForm.Item>
-      {renderVerificationOptions(type)}
+      <VerificationOptions
+        type={type}
+        sendEmail={sendEmail}
+        uploadIncumbencyCert={uploadIncumbencyCert}
+        buildFormItemProps={buildFormItemProps}
+      />
     </>
   );
 };

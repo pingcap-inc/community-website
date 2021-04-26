@@ -6,17 +6,14 @@ export const navItems = [
   {
     title: 'Forum',
     link: 'https://asktug.com',
-    items: [
-      {
-        title: 'AskTUG Rankings',
-        link: 'https://asktug.com/x/ranking',
-      },
-    ],
   },
   {
     title: 'User Group',
-    link: 'https://tug.tidb.io',
     items: [
+      {
+        title: 'User Group Home',
+        link: 'https://tug.tidb.io',
+      },
       {
         title: 'Join TiDB User Group',
         link: 'https://tug.tidb.io/people',
@@ -29,8 +26,11 @@ export const navItems = [
   },
   {
     title: 'Contributor Group',
-    link: 'https://contributor.tidb.io',
     items: [
+      {
+        title: 'Contributor Group Home',
+        link: 'https://contributor.tidb.io',
+      },
       {
         title: 'Contribution',
         items: [

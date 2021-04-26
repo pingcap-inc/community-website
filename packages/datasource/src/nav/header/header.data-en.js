@@ -6,6 +6,12 @@ export const navItems = [
   {
     title: 'Forum',
     link: 'https://asktug.com',
+    items: [
+      {
+        title: 'Another Home',
+        link: 'https://tug.tidb.io',
+      },
+    ],
   },
   {
     title: 'User Group',

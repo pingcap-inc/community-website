@@ -5,7 +5,16 @@ export const navItems = [
   },
   {
     title: '问答',
-    link: 'https://asktug.com',
+    items: [
+      {
+        title: '问答首页',
+        link: 'https://asktug.com',
+      },
+      {
+        title: '问答之星排行榜',
+        link: 'https://asktug.com/x/ranking',
+      },
+    ],
   },
   {
     title: '用户组',

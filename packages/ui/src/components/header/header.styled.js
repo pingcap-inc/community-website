@@ -77,6 +77,14 @@ export const MenuWrapper = styled.div`
           content: '';
         }
       }
+
+      &-submenu-title {
+        cursor: default !important;
+
+        > span {
+          cursor: pointer;
+        }
+      }
     }
   }
 `;
@@ -106,6 +114,14 @@ export const GlobalStyle = createGlobalStyle`
           > .ant-menu-submenu-title,
           > .ant-menu-submenu-arrow {
             color: ${colors.B1};
+          }
+        }
+
+        &-title {
+          cursor: default !important;
+
+          > span {
+            cursor: pointer;
           }
         }
       }

@@ -2,7 +2,7 @@
   "extends": "react-app",
   "rules": {
     "import/no-anonymous-default-export": 2,
-    "no-console": 1,
+    "no-console": [1, { "allow": ["warn", "error"] }],
     "no-unused-vars": 2,
     "react/jsx-no-target-blank": [2, { "allowReferrer": true }]
   }

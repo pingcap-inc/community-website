@@ -2,6 +2,7 @@ export const navItems = [
   {
     title: 'Home',
     link: 'https://tidb.io',
+    browserLink: '/',
   },
   {
     title: 'Forum',

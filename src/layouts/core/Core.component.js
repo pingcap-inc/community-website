@@ -16,9 +16,9 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
   const title = 'TiDB Community';
   const logo = <img alt={title} src="/images/community/logo.svg" />;
 
-  const onNavClick = (link, isSelected) => {
+  const onNavClick = (link, isSelected, browserLink) => {
     if (!isSelected) {
-      linkUtils.handleRedirect(router, link);
+      linkUtils.handleRedirect(router, link, browserLink);
     }
   };
 

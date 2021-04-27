@@ -5,16 +5,19 @@ const defaultEnv = (typeof process !== 'undefined' && process?.env?.NEXT_PUBLIC_
 
 export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => {
   env = env || defaultEnv;
-  if (env !== 'production') {
+  if (env !== 'production' && env !== 'local') {
     env = 'preview';
   }
+
+  const domainConfig = (envDomainConfig || defaultEnvDomains)[env];
 
   return {
     nav: navGetData({
       domain,
       path,
       locale,
-      domainConfig: (envDomainConfig || defaultEnvDomains)[env || defaultEnv],
+      env,
+      domainConfig,
     }),
   };
 };

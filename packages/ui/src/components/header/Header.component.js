@@ -10,16 +10,16 @@ const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
 
 const genMenu = ({ items, currentNav, onNavClick }) => {
-  const onItemClick = (link) => (e) => {
-    onNavClick(link, e.item.props.isSelected);
+  const onItemClick = (link, browserLink) => (e) => {
+    onNavClick(link, e.item.props.isSelected, browserLink);
   };
 
   return items.map((item) => {
-    const { title, items, link } = item;
+    const { title, items, link, browserLink } = item;
 
     if (items) {
       const onSubMenuClick = () => {
-        onNavClick(link, currentNav === title);
+        onNavClick(link, currentNav === title, browserLink);
       };
 
       const subMenuProps = {
@@ -29,7 +29,7 @@ const genMenu = ({ items, currentNav, onNavClick }) => {
 
       return (
         <SubMenu {...subMenuProps}>
-          {link ? <HiddenMenuItem key={title} onClick={onItemClick(link)} /> : undefined}
+          {link ? <HiddenMenuItem key={title} onClick={onItemClick(link, browserLink)} /> : undefined}
           {
             // eslint-disable-next-line no-unused-vars
             genMenu({ items, onNavClick })
@@ -39,7 +39,7 @@ const genMenu = ({ items, currentNav, onNavClick }) => {
     }
 
     return (
-      <Menu.Item key={title} onClick={onItemClick(link)}>
+      <Menu.Item key={title} onClick={onItemClick(link, browserLink)}>
         {title}
       </Menu.Item>
     );

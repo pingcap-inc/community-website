@@ -4,6 +4,8 @@ import * as colors from '../colors';
 
 export default css`
   .ant-tabs {
+    color: ${colors.F1};
+
     &-nav {
       &::before {
         border-bottom-color: ${colors.T2};

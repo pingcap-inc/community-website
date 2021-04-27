@@ -21,6 +21,11 @@ export const replaceNavLinks = ({ items, rules }) => {
           continue;
         }
 
+        // stop replacing if replacement is exactly false
+        if (replacement === false) {
+          break;
+        }
+
         // return '/' as root path if the link is totally matched
         newItem.link = item.link.replace(urlPrefixRegexp, replacement || '') || '/';
 
@@ -49,4 +54,27 @@ export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
   }
 
   return new RegExp(schemeSpecPart + '//' + domainPart + pathPart);
+};
+
+export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
+  //  site 'tidb.io' has a special nginx rule: tidb.io/ => tug.tidb.io/community, which was different with next router
+  // rule.
+  if (domainConfig['tidb.io'] === domain) {
+    let specRule;
+    if (path === '' || path === '/') {
+      specRule = {
+        urlPrefixRegexp: buildUrlPrefixPattern({ domain, path }),
+        replacement: '/community',
+      };
+    } else {
+      specRule = {
+        urlPrefixRegexp: buildUrlPrefixPattern({ domain }),
+        replacement: false,
+      };
+    }
+
+    return [specRule, ...rules];
+  } else {
+    return rules;
+  }
 };

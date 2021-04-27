@@ -2,7 +2,7 @@ import * as R from 'ramda';
 
 import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
-import { buildUrlPrefixPattern, replaceNavLinks } from './utils';
+import { buildUrlPrefixPattern, replaceNavLinks, _applyTidbIoSpecRule } from './utils';
 
 export const getData = ({ domain, path, locale, domainConfig }) => {
   const defaultLocale = 'zh';
@@ -10,7 +10,7 @@ export const getData = ({ domain, path, locale, domainConfig }) => {
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
   const { navItems: headerNavItems, ...restHeaderData } = R.propOr(headerData[defaultLocale], locale)(headerData);
 
-  const rules = [
+  let rules = [
     // replaces all current URLs' prefix at current domain
     {
       urlPrefixRegexp: buildUrlPrefixPattern({ domain, path }),
@@ -23,6 +23,8 @@ export const getData = ({ domain, path, locale, domainConfig }) => {
       replacement: 'https://' + domainConfig[domain],
     })),
   ];
+
+  rules = _applyTidbIoSpecRule(rules, { domain, path, domainConfig });
 
   return {
     footer: {

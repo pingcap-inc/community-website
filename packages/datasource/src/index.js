@@ -9,12 +9,14 @@ export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => 
     env = 'preview';
   }
 
+  const domainConfig = (envDomainConfig || defaultEnvDomains)[env];
+
   return {
     nav: navGetData({
       domain,
       path,
       locale,
-      domainConfig: (envDomainConfig || defaultEnvDomains)[env || defaultEnv],
+      domainConfig,
     }),
   };
 };

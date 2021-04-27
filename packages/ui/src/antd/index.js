@@ -1,13 +1,17 @@
 import { css } from 'styled-components';
 
 import btnStyles from './btn';
-import inputStyles from './input'
+import formStyles from './form';
+import inputStyles from './input';
 import menuStyles from './menu';
-import formStyles from './form'
+import tableStyles from './table';
+import tabsStyles from './tabs';
 
 export default css`
   ${btnStyles};
+  ${formStyles};
   ${inputStyles};
   ${menuStyles};
-  ${formStyles};
+  ${tableStyles};
+  ${tabsStyles};
 `;

@@ -1,25 +1,14 @@
-import * as R from 'ramda';
 import React from 'react';
 
-import Banner from './banner';
-import List from './list';
-import data from './members.data';
+import Layout from 'pages/organization/layout';
 import { CommunityHead } from 'components/head';
-import { CoreLayout } from 'layouts';
 
-const Members = () => {
-  const bannerProps = R.pick(['description', 'logo', 'name'], data);
+const Members = () => (
+  <>
+    <CommunityHead title="企业成员" />
 
-  return (
-    <>
-      <CommunityHead title="企业成员" />
-
-      <CoreLayout domain="tidb.io" hasMargin>
-        <Banner {...bannerProps} />
-        <List />
-      </CoreLayout>
-    </>
-  );
-};
+    <Layout>Test</Layout>
+  </>
+);
 
 export default Members;

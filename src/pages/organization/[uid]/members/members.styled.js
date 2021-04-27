@@ -21,4 +21,5 @@ export const Title = styled.h3`
 
 export const Header = styled.div`
   ${mixins.flexVerticalCenter()};
+  margin-bottom: 2rem;
 `;

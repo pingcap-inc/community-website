@@ -21,11 +21,11 @@ const Banner = ({ description, logo, name }) => (
           <Styled.Description>{description}</Styled.Description>
         </Styled.TextWrapper>
 
-        <Tabs defaultActiveKey="1">
-          <TabPane tab="Tab 1" key="1"></TabPane>
-          <TabPane tab="Tab 2" key="2"></TabPane>
-          <TabPane tab="Tab 3" key="3"></TabPane>
-        </Tabs>
+        <Styled.Tabs defaultActiveKey="2">
+          <TabPane tab="首页" key="1"></TabPane>
+          <TabPane tab="成员" key="2"></TabPane>
+          <TabPane tab="设置" key="3"></TabPane>
+        </Styled.Tabs>
       </Styled.Information>
     </Styled.Content>
   </Styled.Container>

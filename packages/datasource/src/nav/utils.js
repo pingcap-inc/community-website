@@ -59,7 +59,7 @@ export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
 export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
   //  site 'tidb.io' has a special nginx rule: tidb.io/ => tug.tidb.io/community, which was different with next router
   // rule.
-  if (domainConfig['tidb.io'] === domain) {
+  if ('tidb.io' === domain) {
     let specRule;
     if (path === '' || path === '/') {
       specRule = {

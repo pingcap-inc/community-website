@@ -6,9 +6,15 @@ export const defaultEnvDomains = {
     'asktug.com': 'asktug.com',
   },
   preview: {
-    'tidb.io': 'tidb-io-preview.vercel.app',
-    'tug.tidb.io': 'tug-tidb-io-preview.vercel.app',
-    'contributor.tidb.io': 'contributor-tidb-io-preview.vercel.app',
+    'tidb.io': 'community-preview.tidb.io',
+    'tug.tidb.io': 'community-preview-tug.tidb.io',
+    'contributor.tidb.io': 'community-preview-contributor.tidb.io',
+    'asktug.com': 'idc.asktug.com',
+  },
+  local: {
+    'tidb.io': 'tidb-local.io',
+    'tug.tidb.io': 'tug.tidb-local.io',
+    'contributor.tidb.io': 'contributor.tidb-local.io',
     'asktug.com': 'idc.asktug.com',
   },
 };

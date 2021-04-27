@@ -60,7 +60,7 @@ export default css`
         }
       }
     }
-    
+
     &-link {
       color: ${colors.B1};
 

@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import React from 'react';
 import { Button, Table } from 'antd';
 
@@ -8,7 +7,12 @@ import Layout from 'pages/organization/layout';
 import { CommunityHead } from 'components/head';
 
 const Members = () => {
-  const tableProps = R.pick(['dataSource', 'columns'], data);
+  const { dataSource, columns } = data;
+
+  const tableProps = {
+    dataSource,
+    columns,
+  };
 
   return (
     <>
@@ -17,7 +21,7 @@ const Members = () => {
       <Layout>
         <Styled.Header>
           <Styled.Title>
-            企业成员<span>12</span>
+            企业成员<span>{dataSource.length}</span>
           </Styled.Title>
 
           <Button type="primary" size="small">
@@ -25,7 +29,7 @@ const Members = () => {
           </Button>
         </Styled.Header>
 
-        <Table {...tableProps} />
+        <Table {...tableProps} pagination={false} />
       </Layout>
     </>
   );

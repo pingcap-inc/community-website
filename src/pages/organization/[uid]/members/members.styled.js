@@ -24,3 +24,8 @@ export const Header = styled.div`
   justify-content: space-between;
   margin-bottom: 2rem;
 `;
+
+export const Delete = styled.span`
+  color: ${colors.B1};
+  cursor: pointer;
+`;

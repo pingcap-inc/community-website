@@ -1,13 +1,12 @@
 import 'antd/dist/antd.css';
 import React from 'react';
+import { api } from '@tidb-community/datasource';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 import { message } from 'antd';
 
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
-
-import { api } from '@tidb-community/datasource';
 
 api.initApi(({ status, statusText }) => {
   if (status === 401) {

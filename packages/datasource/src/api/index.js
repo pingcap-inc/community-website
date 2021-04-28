@@ -1,12 +1,15 @@
 import Axios from 'axios';
 import Cookie from 'js-cookie';
 
+export * as constants from './api.constants';
+export * as org from './org';
+
+export const GLOBAL_ERROR_HANDLED = Symbol.for('global-error-handled');
+
 let initApiCalled = false;
 let initApiContext = {
   globalErrorHandler: undefined,
 };
-
-export const GLOBAL_ERROR_HANDLED = Symbol.for('global-error-handled');
 
 export const initApi = (globalErrorHandler) => {
   Axios.defaults.baseURL = process?.env?.NEXT_PUBLIC_API_BASE_URL ?? '';
@@ -66,6 +69,3 @@ export const initApi = (globalErrorHandler) => {
     }
   );
 };
-
-export * as Constants from './api.constants';
-export * as org from './org';

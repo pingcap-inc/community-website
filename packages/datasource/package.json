@@ -16,19 +16,17 @@
   "license": "MIT",
   "types": "types/index.d.ts",
   "dependencies": {
-    "@babel/runtime": "7.13.17"
+    "@babel/runtime": "7.13.17",
+    "js-cookie": "2.2.1"
   },
   "devDependencies": {
+    "@types/js-cookie": "2.2.6",
     "father": "2.30.4",
     "father-build": "1.19.4",
     "np": "7.4.0"
   },
   "peerDependencies": {
-    "axios": "0.21.1",
+    "axios": "^0.21.1",
     "ramda": "^0.27.1"
-  },
-  "devDependencies": {
-    "@types/js-cookie": "^2.2.6",
-    "js-cookie": "^2.2.1"
   }
 }

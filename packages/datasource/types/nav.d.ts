@@ -1,30 +1,30 @@
-type NavItem = NavContainerItem
+type NavItem = NavContainerItem;
 
 type NavContainerItem = {
-  readonly title: string,
-  readonly items: NavItem[],
-}
+  readonly title: string;
+  readonly items: NavItem[];
+};
 
 type NavEndpointItem = {
-  readonly title: string,
-  readonly link: string,
-}
+  readonly title: string;
+  readonly link: string;
+};
 
 type Icon = {
-  readonly icon: any
-  readonly link: string
-}
+  readonly icon: any;
+  readonly link: string;
+};
 
 type HeaderData = {
-  readonly navItems: NavItem[]
-}
+  readonly navItems: NavItem[];
+};
 
 type FooterData = {
-  readonly navItems: NavItem[]
-  readonly icons: Icon[]
-}
+  readonly navItems: NavItem[];
+  readonly icons: Icon[];
+};
 
 export type Nav = {
   readonly header: NavData;
   readonly footer: FooterData;
-}
+};

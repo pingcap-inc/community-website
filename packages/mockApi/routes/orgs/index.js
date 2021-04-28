@@ -9,5 +9,6 @@ const router = require('express').Router();
 router.post('/check-name', require('./checkName'));
 router.post('/search-company', require('./searchCompany'));
 router.use('/enroll', require('./enroll'));
+router.use('/members', require('./members'));
 
 module.exports = router;

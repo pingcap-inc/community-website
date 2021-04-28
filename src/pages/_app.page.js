@@ -1,5 +1,7 @@
 import 'antd/dist/antd.css';
 import React from 'react';
+import axios from 'axios';
+import { SWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 import { message } from 'antd';
@@ -21,10 +23,16 @@ api.initApi(({ status, statusText }) => {
 const GlobalStyle = createAppGlobalStyle();
 
 const App = ({ Component, pageProps }) => (
-  <div className={constants.appClassName}>
-    <GlobalStyle />
-    <Component {...pageProps} />
-  </div>
+  <SWRConfig
+    value={{
+      fetcher: axios.get,
+    }}
+  >
+    <div className={constants.appClassName}>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </div>
+  </SWRConfig>
 );
 
 export default App;

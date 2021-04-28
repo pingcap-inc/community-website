@@ -15,11 +15,7 @@ router.post('/send-code', (req, res) => {
     })(req, res);
   }
 
-  successResp({
-    payload: {
-      email,
-    },
-  })(req, res);
+  successResp()(req, res);
 });
 
 router.post('/upload-incumbency-cert', (req, res) => {

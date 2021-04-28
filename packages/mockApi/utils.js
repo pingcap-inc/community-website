@@ -4,18 +4,10 @@ const errorResp = ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors } = {}
   res.status(code).json({ detail, errors });
 };
 
-const successResp = ({ code = 200, data, detail = MESSAGES.SUCCESS, payload, ...rest } = {}) => (req, res) => {
-  const respPayload =
-    payload ??
-    (data === undefined
-      ? {}
-      : {
-          data,
-        });
-
+const successResp = ({ code = 200, data, detail = MESSAGES.SUCCESS, ...rest } = {}) => (req, res) => {
   res.status(code).json({
+    data,
     detail,
-    ...respPayload,
     ...rest,
   });
 };

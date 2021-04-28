@@ -11,7 +11,8 @@
     "cors": "2.8.5",
     "express": "4.17.1",
     "faker": "5.5.3",
-    "morgan": "1.10.0"
+    "morgan": "1.10.0",
+    "ramda": "0.27.1"
   },
   "devDependencies": {
     "nodemon": "2.0.7"

@@ -1,10 +1,18 @@
 const router = require('express').Router();
 
-const { successResp } = require('../../../utils');
+const { successResp, generator } = require('../../../utils');
 
 router.get('', (req, res) => {
+  const data = generator({
+    id: '{{datatype.uuid}}',
+    name: '{{name.firstName}}',
+    username: '{{internet.userName}}',
+    email: '{{internet.email}}',
+    isAdmin: '{{datatype.boolean}}',
+  });
+
   successResp({
-    data: [{ name: 'Maggie', username: 'liman124', email: 'liman@pingcap.com', role: '管理员' }],
+    data,
   })(req, res);
 });
 

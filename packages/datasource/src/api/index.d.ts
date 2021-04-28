@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
 
-export module Constants {
+export * as org from './org';
+export module constants {
   export const SUCCESS: string;
   export const SUCCESS_NOT_USED: string;
   export const ERR_PARAMS_WRONG: string;
@@ -22,5 +23,3 @@ interface GlobalApiErrorHandler {
 export function initApi (globalErrorHandler: GlobalApiErrorHandler);
 
 export const GLOBAL_ERROR_HANDLED: symbol;
-
-export * as org from './org';

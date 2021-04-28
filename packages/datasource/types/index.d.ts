@@ -1,26 +1,26 @@
 import { Nav } from './nav';
 import { form } from './form';
 
-type Locale = 'en' | 'zh'
-type Env = 'production' | 'development'
-type Domain = 'tidb.io' | 'tug.tidb.io' | 'contributor.tidb.io'
+type Locale = 'en' | 'zh';
+type Env = 'production' | 'development';
+type Domain = 'tidb.io' | 'tug.tidb.io' | 'contributor.tidb.io';
 
-type EnvDomainConfig = Record<Env, Record<Domain, string>>
+type EnvDomainConfig = Record<Env, Record<Domain, string>>;
 
 type Data = {
-  nav: Nav
-}
+  nav: Nav;
+};
 
 type GetDataParams = {
-  domain: string
-  path: string
-  locale: Locale
-  env?: Env // default is process.env.NEXT_PUBLIC_RUNTIME_ENV
-  envDomainConfig?: EnvDomainConfig // default is configured in this package
-}
+  domain: string;
+  path: string;
+  locale: Locale;
+  env?: Env; // default is process.env.NEXT_PUBLIC_RUNTIME_ENV
+  envDomainConfig?: EnvDomainConfig; // default is configured in this package
+};
 
-export function getData (params: GetDataParams): Data;
+export function getData(params: GetDataParams): Data;
 
-export function getFormData (): form;
+export function getFormData(): form;
 
-export * as api from '../src/api'
+export * as api from '../src/api';

@@ -3,7 +3,7 @@ const faker = require('faker');
 
 const { MESSAGES } = require('./constants');
 
-const { fake, random } = faker;
+const { fake, datatype } = faker;
 
 const errorResp = ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors } = {}) => (req, res) => {
   res.status(code).json({ detail, errors });
@@ -46,11 +46,14 @@ const generator = (schema, options) => {
       }, {});
 
     return callback(genItem(schema));
-  }, random.number({ min, max }));
+  }, datatype.number({ min, max }));
 };
+
+const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 module.exports = {
   errorResp,
   successResp,
   generator,
+  sample,
 };

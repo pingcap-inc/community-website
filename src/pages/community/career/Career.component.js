@@ -14,7 +14,7 @@ const { cert: certData, job: jobData } = data;
 const Career = () => {
   const router = useRouter();
 
-  const onLinkClick = R.curry(linkUtils.handleRedirect)(router);
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
 
   return (
     <Styled.Container>

@@ -4,8 +4,8 @@ import * as R from 'ramda';
 
 import * as Styled from './countDown.styled';
 
-const defaultFormatter = (time) => {
-  return Math.round(time / 1000);
+const defaultFormatter = (ms) => {
+  return Math.round(ms / 1000);
 };
 
 const CountDown = ({ total, counterRef, onFinished, formatter = defaultFormatter, interval = 1000, children }) => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Col } from 'antd';
 import { Form as AntForm } from 'formik-antd';
 import { Formik } from 'formik';

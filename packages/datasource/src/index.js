@@ -28,3 +28,5 @@ export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => 
 export const getFormData = () => {
   return form;
 };
+
+export * as api from './api';

@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import * as R from 'ramda';
 
@@ -20,8 +20,6 @@ const CountDown = ({ total, counterRef, onFinished, formatter = defaultFormatter
     };
   }
 
-  const finishedCallback = useCallback(() => R.is(Function, onFinished) && onFinished(), [onFinished]);
-
   useEffect(() => {
     setTime(total);
     const handle = setInterval(() => {
@@ -30,7 +28,7 @@ const CountDown = ({ total, counterRef, onFinished, formatter = defaultFormatter
           return time - interval;
         } else {
           clearInterval(handle);
-          finishedCallback();
+          R.is(Function, onFinished) && onFinished();
           return 0;
         }
       });
@@ -38,7 +36,7 @@ const CountDown = ({ total, counterRef, onFinished, formatter = defaultFormatter
     return () => {
       clearInterval(handle);
     };
-  }, [total, interval, resetVersion, finishedCallback]);
+  }, [total, interval, resetVersion, onFinished]);
 
   return R.is(Function, children) ? (
     children(formatter(time))

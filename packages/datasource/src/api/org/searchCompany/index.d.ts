@@ -10,4 +10,4 @@ type SearchCompanyParams = {
   word: string,
 }
 
-export const searchCompany: ApiRequestFunction<SearchCompanyParams, CompanyInfo[]>;
+export const searchCompany: ApiRequestFunction<SearchCompanyParams, { data: CompanyInfo[] }>;

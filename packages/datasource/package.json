@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "2.2.6",
+    "js-cookie": "^2.2.1",
     "father": "2.30.4",
     "father-build": "1.19.4",
     "np": "7.4.0"

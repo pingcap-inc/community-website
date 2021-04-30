@@ -1,26 +1,20 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import * as constants from './verifyCodeInput.constant';
 import * as Styled from './verifyCodeInput.styled';
 import CountDown from '../countDown';
 
-const VerifyCodeSuffix = (
-  {
-    state,
-    sendVerifyCodeBtnText,
-    onClickSendButton,
-    countDownTotal,
-    countDownFormatter,
-    onCountDownFinished,
-  },
-) => {
+const VerifyCodeSuffix = ({
+  state,
+  sendVerifyCodeBtnText,
+  onClickSendButton,
+  countDownTotal,
+  countDownFormatter,
+  onCountDownFinished,
+}) => {
   switch (state) {
     case constants.STATE_LIMIT:
       return (
-        <Styled.SendEmailButton
-          type='link'
-          disabled
-          size='small'
-        >
+        <Styled.SendEmailButton type="link" disabled size="small">
           <CountDown total={countDownTotal} onFinished={onCountDownFinished} formatter={countDownFormatter} />
         </Styled.SendEmailButton>
       );
@@ -28,9 +22,9 @@ const VerifyCodeSuffix = (
       return (
         <Styled.SendEmailButton
           loading={state === constants.STATE_SENDING}
-          type='link'
+          type="link"
           onClick={onClickSendButton}
-          size='small'
+          size="small"
         >
           {sendVerifyCodeBtnText}
         </Styled.SendEmailButton>
@@ -41,6 +35,7 @@ const VerifyCodeSuffix = (
 const withVerifyCode = (Input) => {
   return ({ sendVerifyCode, sendVerifyCodeBtnText, limitSeconds, countDownFormatter, ...props }) => {
     const [state, setState] = useState(constants.STATE_NORMAL);
+    const onCountDownFinished = useCallback(() => setState(constants.STATE_NORMAL), []);
 
     const onClickSendButton = () => {
       if (state) {
@@ -62,12 +57,10 @@ const withVerifyCode = (Input) => {
       sendVerifyCodeBtnText,
       onClickSendButton,
       countDownTotal: limitSeconds,
-      onCountDownFinished: () => setState(constants.STATE_NORMAL),
+      onCountDownFinished,
       countDownFormatter,
     };
-    return (
-      <Input {...props} suffix={<VerifyCodeSuffix {...suffixProps} />} />
-    );
+    return <Input {...props} suffix={<VerifyCodeSuffix {...suffixProps} />} />;
   };
 };
 

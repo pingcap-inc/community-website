@@ -1,45 +1,28 @@
-import React from 'react';
-import { Form as AntForm, Radio } from 'antd';
+import React, { useState } from 'react';
+
+import { Radio, Form as AntForm } from 'formik-antd';
 
 import EmailVerificationOption from './EmailVerificationOption.component';
-import EmploymentCertificationOption from './EmploymentCertificationOption.component';
+import IncumbencyCertOption from './IncumbencyCertOption.component';
 import data from '../form.data';
 
 const { verificationType } = data.form;
 
-const VerificationOptions = ({ type, sendEmail, uploadIncumbencyCert, buildFormItemProps }) => {
-  if (type === 1) {
-    return (
-      <EmploymentCertificationOption
-        buildFormItemProps={buildFormItemProps}
-        uploadIncumbencyCert={uploadIncumbencyCert}
-      />
-    );
-  } else {
-    return <EmailVerificationOption sendEmail={sendEmail} buildFormItemProps={buildFormItemProps} />;
-  }
-};
-
-const VerificationFields = ({ type, sendEmail, uploadIncumbencyCert, buildFormItemProps }) => {
+const VerificationFields = () => {
+  const [type, setType] = useState(verificationType.options[0].value);
   return (
     <>
       <AntForm.Item name={verificationType.name}>
-        <Radio.Group>
-          {verificationType.choices.map(({ title, value }) => (
-            <Radio value={value} key={value}>
-              {title}
-            </Radio>
-          ))}
-        </Radio.Group>
+        <Radio.Group
+          name={verificationType.name}
+          options={verificationType.options}
+          onChange={(e) => setType(e.target.value)}
+          value={type}
+        />
       </AntForm.Item>
-      <VerificationOptions
-        type={type}
-        sendEmail={sendEmail}
-        uploadIncumbencyCert={uploadIncumbencyCert}
-        buildFormItemProps={buildFormItemProps}
-      />
+      <EmailVerificationOption hidden={type !== 0} />
+      <IncumbencyCertOption hidden={type !== 1} />
     </>
   );
 };
-
 export default VerificationFields;

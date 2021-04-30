@@ -8,7 +8,6 @@ import { api } from '@tidb-community/datasource';
 
 const { incumbencyCert } = data.form.verificationType;
 
-// uploadIncumbencyCert 不传参数代表删除文件
 const IncumbencyCertOption = ({ hidden }) => {
   const { setFieldValue } = useFormikContext();
   const setValue = (res) => setFieldValue(incumbencyCert.name, res);

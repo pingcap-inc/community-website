@@ -1,25 +1,24 @@
 import React from 'react';
 import { Upload } from '@tidb-community/ui';
-import { getTitle } from '../utils';
 import { UploadOutlined } from '@ant-design/icons';
+
+import { getTitle } from '../utils';
 
 export default {
   title: getTitle('Upload'),
   component: Upload,
 };
 
-const Template = (
-  {
-    placeholder,
-    uploadSuccess,
-    onFileUploadSucceed = () => {},
-    onFileUploadFailed = () => {},
-    onFileRemoved = () => {},
-    buttonSize = 'small',
-    icon = <UploadOutlined />,
-    ...args
-  },
-) => {
+const Template = ({
+  placeholder,
+  uploadSuccess,
+  onFileUploadSucceed = () => {},
+  onFileUploadFailed = () => {},
+  onFileRemoved = () => {},
+  buttonSize = 'small',
+  icon = <UploadOutlined />,
+  ...args
+}) => {
   const mockUpload = ({ onProgress }) => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -40,17 +39,17 @@ const Template = (
   };
   return (
     <div>
-    <Upload
-      placeholder={placeholder}
-      upload={mockUpload}
-      onFileUploadSucceed={onFileUploadSucceed()}
-      onFileUploadFailed={onFileUploadFailed()}
-      onFileRemoved={onFileRemoved()}
-      buttonSize={buttonSize}
-      icon={icon}
-      {...args}
-    />
-  </div>
+      <Upload
+        placeholder={placeholder}
+        upload={mockUpload}
+        onFileUploadSucceed={onFileUploadSucceed()}
+        onFileUploadFailed={onFileUploadFailed()}
+        onFileRemoved={onFileRemoved()}
+        buttonSize={buttonSize}
+        icon={icon}
+        {...args}
+      />
+    </div>
   );
 };
 

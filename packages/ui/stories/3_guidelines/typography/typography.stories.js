@@ -1,3 +1,4 @@
+import React from 'react';
 import { getTitle } from '../utils';
 
 import * as Styled from './typography.styled';

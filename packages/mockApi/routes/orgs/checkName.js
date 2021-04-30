@@ -1,4 +1,4 @@
-const { errorResp, successResp } = require('../../../utils');
+const { errorResp, successResp } = require('../../utils');
 
 const registeredNames = ['regitstered1', 'regitstered2'];
 

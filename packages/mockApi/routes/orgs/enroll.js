@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
-const { MESSAGES } = require('../../../constants');
-const { errorResp, successResp } = require('../../../utils');
+const { MESSAGES } = require('../../constants');
+const { errorResp, successResp } = require('../../utils');
 
 router.post('/send-code', (req, res) => {
   const { email } = req.body;

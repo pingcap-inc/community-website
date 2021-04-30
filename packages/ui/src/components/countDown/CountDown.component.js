@@ -28,7 +28,7 @@ const CountDown = ({ total, counterRef, onFinished, formatter = defaultFormatter
           return time - interval;
         } else {
           clearInterval(handle);
-          R.is(Function, onFinished) && onFinished();
+          onFinished && onFinished();
           return 0;
         }
       });

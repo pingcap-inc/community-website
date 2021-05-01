@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import { getData } from '@tidb-community/datasource';
 import { Footer, Header, constants, createAppGlobalStyle, mixins } from '@tidb-community/ui';
+import { getData } from '@tidb-community/datasource';
 
 import 'antd-global.css';
 import './headerFooter.scss';
@@ -20,7 +20,7 @@ const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 const baseURL = 'https://asktug.com';
 const title = 'TiDB Community';
 
-const onNavClick = (link) => {
+const onNavClick = ({ link }) => {
   if (link.startsWith('http')) {
     window.open(link, '_blank').focus();
   } else {
@@ -50,7 +50,7 @@ const headerProps = {
 const footerProps = {
   logo: <img alt={title} src="https://tidb.io/images/community/logo.svg" />,
   title,
-  onNavClick,
+  onNavClick: (link) => onNavClick({ link }),
   icons: footerIcons,
   navItems: footerNavItems,
 };

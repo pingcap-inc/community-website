@@ -17,12 +17,12 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
   const logo = <img alt={title} src="/images/community/logo.svg" />;
 
   const onNavClick = ({ link, browserLink, isSelected }) => {
-    if (!isSelected) {
-      linkUtils.handleRedirect(router, {
-        link,
-        browserLink,
-      });
-    }
+    if (isSelected) return;
+
+    linkUtils.handleRedirect(router, {
+      link,
+      browserLink,
+    });
   };
 
   const headerProps = {

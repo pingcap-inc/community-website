@@ -1,7 +1,6 @@
 import React from 'react';
-import { Form as AntForm, Input, Select, Cascader } from 'antd';
+import { Form as AntForm, Input, Select, Cascader } from 'formik-antd';
 import { RemoteSelect } from '@tidb-community/ui';
-import { api } from '@tidb-community/datasource';
 
 import data from '../form.data';
 
@@ -15,37 +14,29 @@ const {
   personalContact,
 } = data.form;
 
-const fetchOrganizationOptions = (word) =>
-  api.org.searchCompany({ word }).then((result) =>
-    result.data.map((company) => ({
-      label: company.name,
-      value: company.name,
-    }))
-  );
-
-const BasicFields = ({ buildFormItemProps }) => {
+const BasicFields = () => {
   return (
     <>
-      <AntForm.Item {...buildFormItemProps(nickname.name)}>
-        <Input placeholder={nickname.placeholder} />
+      <AntForm.Item name={nickname.name}>
+        <Input {...nickname} />
       </AntForm.Item>
-      <AntForm.Item {...buildFormItemProps(organization.name)}>
-        <RemoteSelect placeholder={organization.placeholder} fetchOptions={fetchOrganizationOptions} />
+      <AntForm.Item name={organization.name}>
+        <RemoteSelect {...organization} Select={Select} />
       </AntForm.Item>
-      <AntForm.Item {...buildFormItemProps(organizationType.name)}>
-        <Select placeholder={organizationType.placeholder} options={organizationType.enums} />
+      <AntForm.Item name={organizationType.name}>
+        <Select {...organizationType} />
       </AntForm.Item>
-      <AntForm.Item {...buildFormItemProps(organizationSize.name)}>
-        <Select placeholder={organizationSize.placeholder} options={organizationSize.enums} />
+      <AntForm.Item name={organizationSize.name}>
+        <Select {...organizationSize} />
       </AntForm.Item>
-      <AntForm.Item {...buildFormItemProps(organizationLocation.name)}>
-        <Cascader placeholder={organizationLocation.placeholder} options={organizationLocation.provinces} />
+      <AntForm.Item name={organizationLocation.name}>
+        <Cascader {...organizationLocation} />
       </AntForm.Item>
-      <AntForm.Item {...buildFormItemProps(personalPosition.name)}>
-        <Select placeholder={personalPosition.placeholder} options={personalPosition.enums} />
+      <AntForm.Item name={personalPosition.name}>
+        <Select {...personalPosition} />
       </AntForm.Item>
-      <AntForm.Item {...buildFormItemProps(personalContact.name)}>
-        <Input placeholder={personalContact.placeholder} />
+      <AntForm.Item name={personalContact.name}>
+        <Input {...personalContact} />
       </AntForm.Item>
     </>
   );

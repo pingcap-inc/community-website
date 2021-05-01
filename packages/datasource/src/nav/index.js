@@ -4,7 +4,7 @@ import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
 import { buildUrlPrefixPattern, replaceNavLinks, _applyTidbIoSpecRule } from './utils';
 
-export const getData = ({ domain, path, locale, env, domainConfig }) => {
+export const getData = ({ domain, domainConfig, env, locale, path }) => {
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);

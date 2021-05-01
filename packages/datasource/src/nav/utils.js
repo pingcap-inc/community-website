@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 
-export const replaceNavLinks = ({ items, rules }) => {
-  if (!rules || !rules.length || !Array.isArray(items)) return items;
+export const replaceNavLinks = ({ items, rules = [] }) => {
+  if (!rules.length || !Array.isArray(items)) return items;
 
   const newItems = [];
 
@@ -21,7 +21,7 @@ export const replaceNavLinks = ({ items, rules }) => {
           continue;
         }
 
-        // stop replacing if replacement is exactly false
+        // stop replacing if replacement is false
         if (replacement === false) {
           break;
         }
@@ -57,8 +57,8 @@ export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
 };
 
 export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
-  //  site 'tidb.io' has a special nginx rule: tidb.io/ => tug.tidb.io/community, which was different with next router
-  // rule.
+  // "tidb.io" is applied a special Nginx rule which maps "tidb.io/" to "tug.tidb.io/community", and the
+  // mapping makes NextJS router confused.So we will idetify this use case and do a patch accordingly.
   if ('tidb.io' === domain) {
     let specRule;
     if (path === '' || path === '/') {

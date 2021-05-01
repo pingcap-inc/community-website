@@ -3,15 +3,20 @@ import React, { useEffect } from 'react';
 import { Grid, Menu } from 'antd';
 
 import * as Styled from './header.styled';
-import { menuPopupId } from './header.constants';
 import { HiddenMenuItem } from './header.styled';
+import { menuPopupId } from './header.constants';
 
-const { useBreakpoint } = Grid;
 const { SubMenu } = Menu;
+const { useBreakpoint } = Grid;
 
 const genMenu = ({ items, currentNav, onNavClick }) => {
   const onItemClick = (link, browserLink) => (e) => {
-    onNavClick(link, e.item.props.isSelected, browserLink);
+    const { isSelected } = e.item.props;
+    onNavClick({
+      link,
+      browserLink,
+      isSelected,
+    });
   };
 
   return items.map((item) => {
@@ -19,7 +24,11 @@ const genMenu = ({ items, currentNav, onNavClick }) => {
 
     if (items) {
       const onSubMenuClick = () => {
-        onNavClick(link, currentNav === title, browserLink);
+        onNavClick({
+          link,
+          browserLink,
+          isSelected: currentNav === title,
+        });
       };
 
       const subMenuProps = {
@@ -29,7 +38,7 @@ const genMenu = ({ items, currentNav, onNavClick }) => {
 
       return (
         <SubMenu {...subMenuProps}>
-          {link ? <HiddenMenuItem key={title} onClick={onItemClick(link, browserLink)} /> : undefined}
+          {link && <HiddenMenuItem key={title} onClick={onItemClick(link, browserLink)} />}
           {
             // eslint-disable-next-line no-unused-vars
             genMenu({ items, onNavClick })

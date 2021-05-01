@@ -29,6 +29,8 @@ export const Desc = styled.ul`
 `;
 
 export const Buttons = styled.div`
+  ${mixins.flexVerticalCenter()};
+
   button {
     margin-right: 2rem;
 

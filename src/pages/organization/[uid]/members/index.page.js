@@ -1,10 +1,30 @@
 import React from 'react';
 import { Button, Table } from 'antd';
 
-import * as data from './members.data';
 import * as Styled from './members.styled';
+import * as data from './members.data';
 import Layout from 'pages/organization/layout';
 import { CommunityHead } from 'components/head';
+import { featureToggle } from 'utils';
+
+export const getServerSideProps = async ({ req }) => {
+  const host = process.env.VERCEL_URL || req.headers.host;
+
+  const isEabled = featureToggle.isFeatureEnabled({
+    host,
+    name: featureToggle.FEATURES.ORGANIZATOIN_MEMBERS,
+  });
+
+  if (!isEabled) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const Members = () => {
   const { dataSource, columns } = data;

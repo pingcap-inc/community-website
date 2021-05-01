@@ -4,11 +4,17 @@ const HOSTS = {
 };
 
 export const FEATURES = {
-  CREATE_ORGANIZATION: 'create-organization',
+  CREATE_ORGANIZATION: Symbol('CREATE_ORGANIZATION'),
+  ORGANIZATOIN_MEMBERS: Symbol('ORGANIZATOIN_MEMBERS'),
 };
 
 const getRules = () => ({
   [FEATURES.CREATE_ORGANIZATION]: {
+    disabledHosts: Object.values(HOSTS),
+    isEnabled: true,
+  },
+
+  [FEATURES.ORGANIZATOIN_MEMBERS]: {
     disabledHosts: Object.values(HOSTS),
     isEnabled: true,
   },

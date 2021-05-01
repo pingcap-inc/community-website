@@ -11,7 +11,7 @@ const { useBreakpoint } = Grid;
 
 const genMenu = ({ items, currentNav, onNavClick }) => {
   const onItemClick = (link, browserLink) => (e) => {
-    const { isSelected } = e.item.props.isSelected;
+    const { isSelected } = e.item.props;
     onNavClick({
       link,
       browserLink,

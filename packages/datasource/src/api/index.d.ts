@@ -9,8 +9,7 @@ export module constants {
 
 export type ApiResponse<T, Detail> = {
   detail: Detail,
-  data: T,
-}
+} & T
 
 export interface ApiRequestFunction<Params, ResponseData, ResponseDetails = Constants['SUCCESS']> {
   (params: Params): Promise<ApiResponse<ResponseData, ResponseDetails>>

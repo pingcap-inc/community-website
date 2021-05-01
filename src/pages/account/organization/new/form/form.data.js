@@ -1,52 +1,84 @@
-import { getFormData } from '@tidb-community/datasource';
+import { api, getFormData } from '@tidb-community/datasource';
+import * as Yup from 'yup';
+import { buildInitialValues, buildScheme } from './form.utils';
 
 const formData = getFormData();
 
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
+
+const fetchOrganizationOptions = (word) =>
+  api.org.searchCompany({ word }).then((result) =>
+    result.data.map((company) => ({
+      label: company.name,
+      value: company.name,
+    }))
+  );
 
 const data = {
   form: {
     nickname: {
       name: 'nickname',
       placeholder: '填写企业会员昵称',
+      validator: Yup.string()
+        .min(6, ({ min }) => `会员昵称最短为${min}个字符`)
+        .max(7, ({ max }) => `会员昵称最长为${max}个字符`)
+        .required('会员昵称不可为空'),
+      initialValue: '',
     },
     organization: {
       name: 'organization',
       placeholder: '请选择所属企业',
+      validator: Yup.mixed().required('所属企业不可为空'),
+      fetchOptions: fetchOrganizationOptions,
+      initialValue: undefined,
     },
     organizationType: {
       name: 'organizationType',
       placeholder: '请选择行业类型',
-      enums: organizationTypes,
+      options: organizationTypes,
+      validator: Yup.mixed().required('行业类型不可为空'),
+      initialValue: undefined,
     },
     organizationSize: {
       name: 'organizationSize',
       placeholder: '请选择企业规模',
-      enums: organizationSizes,
+      options: organizationSizes,
+      validator: Yup.mixed().required('企业规模不可为空'),
+      initialValue: undefined,
     },
     organizationLocation: {
       name: 'organizationLocation',
       placeholder: '请选择企业所在地',
-      provinces: provinces,
+      options: provinces,
+      validator: Yup.array()
+        .length(2, '企业所在地不可为空')
+        .required('企业所在地不可为空'),
+      initialValue: undefined,
     },
     personalPosition: {
       name: 'personalPosition',
       placeholder: '请选择您的职位',
-      enums: personalPositions,
+      options: personalPositions,
+      validator: Yup.mixed().required('职位不可为空'),
+      initialValue: undefined,
     },
     personalContact: {
       name: 'personalContact',
       placeholder: '请填写联系电话，资料如有问题，审核人员将会致电，请保持电话畅通',
+      validator: Yup.string()
+        .matches(/(?:\+\d{2,3}[- ]?)?(?:(?:\d{3,4}[- ]?)?\d{8}|\d{11})/, '请输入有效的联系电话')
+        .required('联系电话不可为空'),
+      initialValue: '',
     },
     verificationType: {
       name: 'verificationType',
-      choices: [
+      options: [
         {
-          title: '企业邮箱认证',
+          label: '企业邮箱认证',
           value: 0,
         },
         {
-          title: '在职证明认证',
+          label: '在职证明认证',
           value: 1,
         },
       ],
@@ -54,19 +86,37 @@ const data = {
         email: {
           name: 'email',
           placeholder: '请填写企业邮箱，用于企业认证',
+          validator: Yup.string().when(['verificationType'], {
+            is: 0,
+            then: Yup.string()
+              .email('请输入有效的邮箱')
+              .required('邮箱不可为空'),
+          }),
+          initialValue: '',
         },
         verificationCode: {
           name: 'verificationCode',
           placeholder: '企业邮箱验证码',
-          sendBtnTitle: '发送验证码',
+          sendVerifyCodeBtnText: '发送验证码',
+          limitSeconds: 120000,
+          countDownFormatter: (ms) => `${Math.round(ms / 1000)}s`,
+          validator: Yup.string().when(['verificationType'], {
+            is: 0,
+            then: Yup.string().required('邮箱验证码不可为空'),
+          }),
+          initialValue: '',
         },
       },
-      employmentCertification: {
+      incumbencyCert: {
         name: 'file',
-        idName: 'cert_id',
         uploadFileText: '上传文件',
         extraText:
           '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。',
+        validator: Yup.mixed().when(['verificationType'], {
+          is: 1,
+          then: Yup.mixed().required('文件不可为空'),
+        }),
+        initialValue: undefined,
       },
     },
     agreements: {
@@ -81,9 +131,16 @@ const data = {
         title: '《隐私协议》',
         link: '',
       },
+      validator: Yup.bool()
+        .oneOf([true], '需阅读并同意相关协议')
+        .required('需阅读并同意相关协议'),
+      initialValue: false,
     },
-    submitBtnTitle: '立即认证',
   },
+  submitBtnTitle: '立即认证',
 };
+
+data.formScheme = buildScheme(data.form);
+data.formInitialValues = buildInitialValues(data.form);
 
 export default data;

@@ -16,9 +16,12 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
   const title = 'TiDB Community';
   const logo = <img alt={title} src="/images/community/logo.svg" />;
 
-  const onNavClick = (link, isSelected, browserLink) => {
+  const onNavClick = ({ link, browserLink, isSelected }) => {
     if (!isSelected) {
-      linkUtils.handleRedirect(router, link, browserLink);
+      linkUtils.handleRedirect(router, {
+        link,
+        browserLink,
+      });
     }
   };
 
@@ -36,7 +39,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
   const footerProps = {
     logo,
     title,
-    onNavClick,
+    onNavClick: (link) => onNavClick({ link }),
     navItems: footerNavItems,
     icons: footerIcons,
     hasMargin,

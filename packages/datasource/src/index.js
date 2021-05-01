@@ -1,11 +1,12 @@
-import { getData as navGetData } from './nav';
 import { defaultEnvDomains } from './config.domains';
+import { getData as navGetData } from './nav';
 
 const defaultEnv = (typeof process !== 'undefined' && process?.env?.NEXT_PUBLIC_RUNTIME_ENV) || 'production';
 
-export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => {
+export const getData = ({ domain, env, envDomainConfig, locale, path } = {}) => {
   env = env || defaultEnv;
-  if (env !== 'production' && env !== 'local') {
+
+  if (!['production', 'local'].includes(env)) {
     env = 'preview';
   }
 
@@ -14,10 +15,10 @@ export const getData = ({ domain, path, locale, env, envDomainConfig } = {}) => 
   return {
     nav: navGetData({
       domain,
-      path,
-      locale,
-      env,
       domainConfig,
+      env,
+      locale,
+      path,
     }),
   };
 };

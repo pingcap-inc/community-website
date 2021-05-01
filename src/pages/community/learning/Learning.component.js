@@ -10,8 +10,8 @@ import { link as linkUtils } from 'utils';
 
 const Learning = () => {
   const router = useRouter();
+  const onBtnClick = R.curry(linkUtils.handleRedirect)(router);
   const { title, desc, btns } = data;
-  const onBtnClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
   const { pu: puBtn, docs: docsBtn } = btns;
 
   return (
@@ -32,10 +32,10 @@ const Learning = () => {
             </Styled.Desc>
 
             <Styled.Buttons>
-              <Styled.Button ghost onClick={(e) => onBtnClick(puBtn.link)}>
+              <Styled.Button ghost onClick={(e) => onBtnClick({ link: puBtn.link })}>
                 {puBtn.label}
               </Styled.Button>
-              <Styled.Button onClick={(e) => onBtnClick(docsBtn.link)}>{docsBtn.label}</Styled.Button>
+              <Styled.Button onClick={(e) => onBtnClick({ link: docsBtn.link })}>{docsBtn.label}</Styled.Button>
             </Styled.Buttons>
           </Col>
         </Row>

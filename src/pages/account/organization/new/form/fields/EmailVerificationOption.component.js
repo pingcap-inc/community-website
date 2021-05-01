@@ -1,50 +1,38 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
+import { withVerifyCode } from '@tidb-community/ui';
+import { api } from '@tidb-community/datasource';
 import data from '../form.data';
-import { Col, Form as AntForm, Input, Row } from 'antd';
-import * as Styled from '../form.styled';
+import { Col, Row } from 'antd';
+import { Form as AntForm, Input } from 'formik-antd';
 import { useSize } from 'ahooks';
+import { useFormikContext } from 'formik';
+
+const { organizationEmail } = data.form.verificationType;
+
+const VerifyCodeInput = withVerifyCode(Input);
 
 // sendEmail must returns a promise.
-const EmailVerificationOption = ({ sendEmail, buildFormItemProps }) => {
-  const { organizationEmail } = data.form.verificationType;
-
-  const [sending, setSending] = useState(false);
-  const [sendErr, setSendErr] = useState(null);
-
+const EmailVerificationOption = ({ hidden }) => {
   const ref = useRef();
   const size = useSize(ref);
 
   const isSmall = size.width <= 538;
 
-  const onSendEmailClicked = () => {
-    if (sending) {
-      return;
-    }
-    setSending(true);
-    sendEmail()
-      .then(() => setSendErr(null))
-      .catch((err) => setSendErr(err))
-      .finally(() => setSending(false));
-  };
+  const { values } = useFormikContext();
+
+  const sendEmail = () => api.org.enroll.sendCode({ email: values[organizationEmail.email.name] });
 
   return (
     <Row gutter={16} ref={ref}>
       <Col span={isSmall ? 24 : 14}>
-        <AntForm.Item {...buildFormItemProps(organizationEmail.email.name)}>
-          <Input placeholder={organizationEmail.email.placeholder} />
+        <AntForm.Item name={organizationEmail.email.name} hidden={hidden}>
+          <Input {...organizationEmail.email} />
         </AntForm.Item>
       </Col>
       <Col span={isSmall ? 24 : 10}>
-        <AntForm.Item {...buildFormItemProps(organizationEmail.verificationCode.name, sendErr)}>
-          <Input
-            placeholder={organizationEmail.verificationCode.placeholder}
-            suffix={
-              <Styled.SendEmailButton loading={sending} type="link" onClick={onSendEmailClicked} size="small">
-                {organizationEmail.verificationCode.sendBtnTitle}
-              </Styled.SendEmailButton>
-            }
-          />
+        <AntForm.Item name={organizationEmail.verificationCode.name} hidden={hidden}>
+          <VerifyCodeInput {...organizationEmail.verificationCode} sendVerifyCode={sendEmail} />
         </AntForm.Item>
       </Col>
     </Row>

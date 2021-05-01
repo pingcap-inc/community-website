@@ -1,5 +1,4 @@
 import React from 'react';
-import { api } from '@tidb-community/datasource';
 
 import { CoreLayout, SplitLayout } from 'layouts';
 import { featureToggle } from 'utils';
@@ -27,26 +26,11 @@ export const getServerSideProps = async ({ req }) => {
 };
 
 const CreateOrganization = () => {
-  const onSubmit = (formData) => {
-    console.log(formData);
-    return new Promise((resolve, reject) => setTimeout(() => reject('todo implement'), 1000));
-  };
-
-  const sendEmail = (email) => {
-    return api.org.enroll.sendCode({ email });
-  };
-
-  const uploadIncumbencyCert = ({ file, filename, onProgress }) => {
-    return api.org.enroll
-      .uploadIncumbencyCert({ file, filename, onUploadProgress: onProgress })
-      .then((res) => res.data.cert_id);
-  };
-
   return (
     <CoreLayout domain="tug.tidb.io">
       <SplitLayout dividerColor={'rgba(108, 116, 150, 0.4)'} marginTop="30px" marginBottom="41px">
         <Banner />
-        <Form submit={onSubmit} sendEmail={sendEmail} uploadIncumbencyCert={uploadIncumbencyCert} />
+        <Form />
       </SplitLayout>
     </CoreLayout>
   );

@@ -21,7 +21,7 @@ const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
       };
       if (isLargeSize && dividerColor && n < total - 1) {
         return (
-          <Styled.ItemContainerWithDivider {...props} dividerColor={dividerColor}>
+          <Styled.ItemContainerWithDivider {...props} $dividerColor={dividerColor}>
             {element}
           </Styled.ItemContainerWithDivider>
         );

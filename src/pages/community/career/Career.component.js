@@ -2,8 +2,8 @@ import * as R from 'ramda';
 import Image from 'next/image';
 import React from 'react';
 import { Row, Col } from 'antd';
-import { useRouter } from 'next/router';
 import { ViewMoreButton } from '@tidb-community/ui';
+import { useRouter } from 'next/router';
 
 import * as Styled from './career.styled';
 import data from './career.data';
@@ -42,13 +42,15 @@ const Career = () => {
         <Row gutter={[32, 24]}>
           {jobData.items.map(({ icon, position, location, link }, idx) => (
             <Col key={idx} xs={24} sm={12} md={8} lg={6}>
-              <Styled.JobCard onClick={(e) => onLinkClick(link)}>
+              <Styled.JobCard onClick={(e) => onLinkClick({ link })}>
                 <Styled.JobImg>
                   <Image alt={position} src={icon} layout="fill" objectFit="contain" />
                 </Styled.JobImg>
                 <Styled.JobContent>
-                  {[position, location].map((txt) => (
-                    <Styled.JobText title={txt}>{txt}</Styled.JobText>
+                  {[position, location].map((txt, idx) => (
+                    <Styled.JobText key={idx} title={txt}>
+                      {txt}
+                    </Styled.JobText>
                   ))}
                 </Styled.JobContent>
               </Styled.JobCard>
@@ -57,7 +59,7 @@ const Career = () => {
         </Row>
 
         <Styled.ViewMoreWrapper>
-          <ViewMoreButton onClick={(e) => onLinkClick('https://pingcap.com/community-cn/careers/join/')}>
+          <ViewMoreButton onClick={(e) => onLinkClick({ link: 'https://pingcap.com/community-cn/careers/join/' })}>
             View More Opportunities
           </ViewMoreButton>
         </Styled.ViewMoreWrapper>

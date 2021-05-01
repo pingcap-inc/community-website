@@ -21,11 +21,11 @@ export const Header = ({ className, title, desc, children }) => (
 const Activities = () => {
   const router = useRouter();
 
-  const onLinkClick = R.curry(linkUtils.handleRedirect)(router);
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
 
   const activityCardsProps = {
     activities: data.activities,
-    onCardClick: (link) => onLinkClick({ link }),
+    onCardClick: onLinkClick,
     renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />,
   };
 

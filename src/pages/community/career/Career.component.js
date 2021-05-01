@@ -13,8 +13,7 @@ const { cert: certData, job: jobData } = data;
 
 const Career = () => {
   const router = useRouter();
-
-  const onLinkClick = R.curry(linkUtils.handleRedirect)(router);
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
 
   return (
     <Styled.Container>
@@ -26,9 +25,7 @@ const Career = () => {
         <Row gutter={[32, 24]}>
           {['PCTA', 'PCTP'].map((name) => (
             <Col key={name} xs={24} md={12}>
-              <Styled.CertContainer
-                onClick={(e) => onLinkClick({ link: `https://university.pingcap.com/certificate/${name}/` })}
-              >
+              <Styled.CertContainer onClick={(e) => onLinkClick(`https://university.pingcap.com/certificate/${name}/`)}>
                 <Image alt={name} src={`/images/community/${name}.svg`} width="642" height="257" />
               </Styled.CertContainer>
             </Col>
@@ -42,7 +39,7 @@ const Career = () => {
         <Row gutter={[32, 24]}>
           {jobData.items.map(({ icon, position, location, link }, idx) => (
             <Col key={idx} xs={24} sm={12} md={8} lg={6}>
-              <Styled.JobCard onClick={(e) => onLinkClick({ link })}>
+              <Styled.JobCard onClick={(e) => onLinkClick(link)}>
                 <Styled.JobImg>
                   <Image alt={position} src={icon} layout="fill" objectFit="contain" />
                 </Styled.JobImg>
@@ -59,7 +56,7 @@ const Career = () => {
         </Row>
 
         <Styled.ViewMoreWrapper>
-          <ViewMoreButton onClick={(e) => onLinkClick({ link: 'https://pingcap.com/community-cn/careers/join/' })}>
+          <ViewMoreButton onClick={(e) => onLinkClick('https://pingcap.com/community-cn/careers/join/')}>
             View More Opportunities
           </ViewMoreButton>
         </Styled.ViewMoreWrapper>

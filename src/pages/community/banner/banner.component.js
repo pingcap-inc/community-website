@@ -16,7 +16,7 @@ const Banner = () => {
   const router = useRouter();
 
   const { width: sizeWidth } = size;
-  const onCardClick = R.curry(linkUtils.handleRedirect)(router);
+  const onCardClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
 
   const imgSizeProps =
     sizeWidth > bgWidth
@@ -42,7 +42,7 @@ const Banner = () => {
 
         <Styled.Navs>
           {data.navs.map(({ title, isCN, label, link }, idx) => (
-            <Styled.NavCard key={idx} onClick={(e) => onCardClick({ link })}>
+            <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>
                 {title}
                 {isCN && <ChineseIcon />}

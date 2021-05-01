@@ -18,11 +18,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
 
   const onNavClick = ({ link, browserLink, isSelected }) => {
     if (isSelected) return;
-
-    linkUtils.handleRedirect(router, {
-      link,
-      browserLink,
-    });
+    linkUtils.handleRedirect(router, link, browserLink);
   };
 
   const headerProps = {

@@ -1,4 +1,4 @@
-export const handleRedirect = (router, { link, browserLink }) => {
+export const handleRedirect = (router, link, browserLink) => {
   if (!link) return;
 
   // if `link` has a scheme, `browserLink` will be ignored

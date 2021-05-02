@@ -1,5 +1,5 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 export const checkName = ({ name }) => {
-  return Axios.post('/api/orgs/check-name', { name });
+  return axios.post('/api/orgs/check-name', { name });
 };

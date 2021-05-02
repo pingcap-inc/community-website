@@ -1,5 +1,5 @@
-import Axios from 'axios';
+import axios from 'axios';
 
 export const sendCode = ({ email }) => {
-  return Axios.post('/api/orgs/enroll/send-code', { email });
+  return axios.post('/api/orgs/enroll/send-code', { email });
 };

@@ -7,7 +7,7 @@ const formData = getFormData();
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
 
 const fetchOrganizationOptions = (word) =>
-  api.org.searchCompany({ word }).then((result) =>
+  api.orgs.searchCompany({ word }).then((result) =>
     result.data.map((company) => ({
       label: company.name,
       value: company.name,

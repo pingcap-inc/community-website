@@ -1,8 +1,7 @@
 import Axios from 'axios';
 import Cookie from 'js-cookie';
 
-export * as constants from './api.constants';
-export * as org from './org';
+export * as orgs from './orgs';
 
 export const GLOBAL_ERROR_HANDLED = Symbol('GLOBAL_ERROR_HANDLED');
 
@@ -12,7 +11,7 @@ let initApiContext = {
 };
 
 export const initApi = (globalErrorHandler) => {
-  Axios.defaults.baseURL = process?.env?.NEXT_PUBLIC_API_BASE_URL ?? '';
+  Axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL ?? '';
 
   if (!globalErrorHandler) {
     throw new Error('failed to init api: globalErrorHandler not provided');

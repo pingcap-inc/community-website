@@ -1,5 +1,7 @@
 import React from 'react';
+import useSWR from 'swr';
 import { Button, Table } from 'antd';
+import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
 import * as data from './members.data';
@@ -27,6 +29,11 @@ export const getServerSideProps = async ({ req }) => {
 };
 
 const Members = () => {
+  const router = useRouter();
+  const { data: apiData } = useSWR(['orgs.org.members', router.query]);
+
+  console.log('apiData!!', apiData);
+
   const { dataSource, columns } = data;
 
   const tableProps = {

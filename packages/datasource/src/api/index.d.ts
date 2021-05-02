@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios';
 
-export * as org from './org';
+export * as orgs from './orgs';
 export module constants {
   export const SUCCESS: string;
   export const SUCCESS_NOT_USED: string;

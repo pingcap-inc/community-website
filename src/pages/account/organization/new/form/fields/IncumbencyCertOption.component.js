@@ -15,7 +15,7 @@ const IncumbencyCertOption = ({ hidden }) => {
   const uploadProps = {
     placeholder: incumbencyCert.uploadFileText,
     upload: ({ file, filename, onProgress }) =>
-      api.org.enroll
+      api.orgs.enroll
         .uploadIncumbencyCert({
           file,
           filename,

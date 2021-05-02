@@ -13,14 +13,14 @@ module.exports = (req, res) => {
 
   const data = generator(
     {
-      id: '{{datatype.uuid}}',
       name: '{{name.firstName}}',
       username: '{{internet.userName}}',
       email: '{{internet.email}}',
     },
     {
-      callback: (item) => ({
+      callback: (item, idx) => ({
         ...item,
+        id: idx + 1,
         role: sample(Object.values(ROLES)),
       }),
     }

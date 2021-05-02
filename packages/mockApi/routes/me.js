@@ -9,7 +9,7 @@ const { datatype, internet, image } = faker;
 router.get('', (req, res) => {
   successResp({
     data: {
-      id: datatype.number({ min: 1, max: 10 }),
+      id: datatype.number({ min: 1, max: 5 }),
       username: internet.userName(),
       avatar_url: image.avatar(),
       org: {

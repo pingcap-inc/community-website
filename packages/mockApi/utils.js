@@ -21,12 +21,12 @@ const generator = (schema, options) => {
   const { min, max = min, callback } = R.mergeRight(
     {
       min: 20,
-      callback: (item) => item,
+      callback: (item, idx) => item,
     },
     options
   );
 
-  return R.times(() => {
+  return R.times((idx) => {
     const genItem = (schema) =>
       R.toPairs(schema).reduce((acc, [key, value]) => {
         acc[key] = (() => {
@@ -45,7 +45,7 @@ const generator = (schema, options) => {
         return acc;
       }, {});
 
-    return callback(genItem(schema));
+    return callback(genItem(schema), idx);
   }, datatype.number({ min, max }));
 };
 

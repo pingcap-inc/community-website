@@ -6,9 +6,12 @@
 
 const router = require('express').Router();
 
+router.get('/:uid/find-user', require('./[uid]/findUser'));
+router.get('/:uid/members', require('./[uid]/members'));
+router.post('/:uid/add-members', require('./[uid]/addMembers'));
+router.post('/:uid/remove-member', require('./[uid]/removeMember'));
 router.post('/check-name', require('./checkName'));
 router.post('/search-company', require('./searchCompany'));
 router.use('/enroll', require('./enroll'));
-router.use('/members', require('./members'));
 
 module.exports = router;

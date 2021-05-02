@@ -1,9 +1,14 @@
-const router = require('express').Router();
+const { errorResp, successResp, generator, sample } = require('../../../utils');
+const { ROLES } = require('../../../constants');
 
-const { successResp, generator, sample } = require('../../utils');
-const { ROLES } = require('../../constants');
+module.exports = (req, res) => {
+  if (req.params.uid === '404') {
+    return errorResp({
+      code: 404,
+      detail: 'organization does not exists',
+    })(req, res);
+  }
 
-router.get('', (req, res) => {
   const data = generator(
     {
       id: '{{datatype.uuid}}',
@@ -22,6 +27,4 @@ router.get('', (req, res) => {
   successResp({
     data,
   })(req, res);
-});
-
-module.exports = router;
+};

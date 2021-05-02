@@ -1,22 +1,21 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
-import * as Styled from './upload.styled';
+import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 
-const Upload = ({
-                  placeholder,
-                  upload,
-                  onFileUploadSucceed = () => {},
-                  onFileUploadFailed = () => {},
-                  onFileRemoved = () => {},
-                  buttonSize = 'small',
-                  icon = <UploadOutlined />,
-                }) => {
+import * as Styled from './upload.styled';
 
+const Upload = ({
+  placeholder,
+  upload,
+  onFileUploadSucceed = () => {},
+  onFileUploadFailed = () => {},
+  onFileRemoved = () => {},
+  buttonSize = 'small',
+  icon = <UploadOutlined />,
+}) => {
   const uploadProps = {
     maxCount: 1,
-    customRequest ({ file, filename, onProgress, onSuccess, onError }) {
+    customRequest({ file, filename, onProgress, onSuccess, onError }) {
       upload({
         file,
         filename,
@@ -38,7 +37,7 @@ const Upload = ({
 
   return (
     <Styled.Upload {...uploadProps}>
-      <Styled.FullWidthButton size='small' icon={<UploadOutlined />}>
+      <Styled.FullWidthButton size="small" icon={<UploadOutlined />}>
         {placeholder}
       </Styled.FullWidthButton>
     </Styled.Upload>

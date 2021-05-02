@@ -4,10 +4,11 @@ import { Button, Table } from 'antd';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
-import * as data from './members.data';
 import Layout from 'pages/organization/layout';
 import { CommunityHead } from 'components/head';
+import { columns } from './members.data';
 import { featureToggle } from 'utils';
+import { getDataSource } from './members.utils';
 
 export const getServerSideProps = async ({ req }) => {
   const host = process.env.VERCEL_URL || req.headers.host;
@@ -30,11 +31,9 @@ export const getServerSideProps = async ({ req }) => {
 
 const Members = () => {
   const router = useRouter();
-  const { data: apiData } = useSWR(['orgs.org.members', router.query]);
+  const { data } = useSWR(['orgs.org.members', router.query]);
 
-  console.log('apiData!!', apiData);
-
-  const { dataSource, columns } = data;
+  const dataSource = getDataSource(data);
 
   const tableProps = {
     dataSource,

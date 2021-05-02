@@ -1,7 +1,7 @@
 import { ApiRequestFunction } from '../../../index';
 
 type SendCodeParams = {
-  email: string
-}
+  email: string;
+};
 
 export const sendCode: ApiRequestFunction<SendCodeParams, void>;

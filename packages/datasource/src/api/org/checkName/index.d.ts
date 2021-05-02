@@ -1,7 +1,7 @@
 import { ApiRequestFunction } from '../../index';
 
 type CheckNameParams = {
-  name: string
-}
+  name: string;
+};
 
 export const checkName: ApiRequestFunction<CheckNameParams, void>;

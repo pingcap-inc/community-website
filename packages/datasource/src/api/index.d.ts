@@ -8,17 +8,17 @@ export module constants {
 }
 
 export type ApiResponse<T, Detail> = {
-  detail: Detail,
-} & T
+  detail: Detail;
+} & T;
 
 export interface ApiRequestFunction<Params, ResponseData, ResponseDetails = Constants['SUCCESS']> {
-  (params: Params): Promise<ApiResponse<ResponseData, ResponseDetails>>
+  (params: Params): Promise<ApiResponse<ResponseData, ResponseDetails>>;
 }
 
 interface GlobalApiErrorHandler {
-  (response: AxiosResponse): any
+  (response: AxiosResponse): any;
 }
 
-export function initApi (globalErrorHandler: GlobalApiErrorHandler);
+export function initApi(globalErrorHandler: GlobalApiErrorHandler);
 
 export const GLOBAL_ERROR_HANDLED: symbol;

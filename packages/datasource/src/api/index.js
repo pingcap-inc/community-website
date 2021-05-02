@@ -4,7 +4,7 @@ import Cookie from 'js-cookie';
 export * as constants from './api.constants';
 export * as org from './org';
 
-export const GLOBAL_ERROR_HANDLED = Symbol.for('global-error-handled');
+export const GLOBAL_ERROR_HANDLED = Symbol('GLOBAL_ERROR_HANDLED');
 
 let initApiCalled = false;
 let initApiContext = {

@@ -4,7 +4,7 @@ import axios from 'axios';
 export * as orgs from './orgs';
 export { me } from './me';
 
-export const GLOBAL_ERROR_HANDLED = Symbol('GLOBAL_ERROR_HANDLED');
+export const GLOBAL_ERROR_HANDLED = Symbol.for('GLOBAL_ERROR_HANDLED');
 
 let initApiCalled = false;
 let initApiContext = {

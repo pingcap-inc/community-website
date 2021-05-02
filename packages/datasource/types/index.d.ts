@@ -1,6 +1,8 @@
 import { Nav } from './nav';
 import { form } from './form';
 
+export * as api from '../src/api';
+
 type Locale = 'en' | 'zh';
 type Env = 'production' | 'development';
 type Domain = 'tidb.io' | 'tug.tidb.io' | 'contributor.tidb.io';
@@ -22,5 +24,3 @@ type GetDataParams = {
 export function getData(params: GetDataParams): Data;
 
 export function getFormData(): form;
-
-export * as api from '../src/api';

@@ -1,7 +1,7 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { Select as AntSelect, Spin } from 'antd';
+import React from 'react';
 import debounce from 'lodash/debounce';
+import { Select as AntSelect, Spin } from 'antd';
 
 const RemoteSelect = ({ fetchOptions, debounceTimeout = 800, Select = AntSelect, ...props }) => {
   const [fetching, setFetching] = React.useState(false);
@@ -35,7 +35,7 @@ const RemoteSelect = ({ fetchOptions, debounceTimeout = 800, Select = AntSelect,
       filterOption={false}
       onSearch={debounceFetcher}
       showSearch={true}
-      notFoundContent={fetching ? <Spin size='small' /> : null}
+      notFoundContent={fetching ? <Spin size="small" /> : null}
       {...props}
       options={options}
     />

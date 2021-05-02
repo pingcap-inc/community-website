@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react';
-import * as constants from './verifyCodeInput.constant';
+
 import * as Styled from './verifyCodeInput.styled';
+import * as constants from './verifyCodeInput.constant';
 import CountDown from '../countDown';
 
 const VerifyCodeSuffix = ({
@@ -60,6 +61,7 @@ const withVerifyCode = (Input) => {
       onCountDownFinished,
       countDownFormatter,
     };
+
     return <Input {...props} suffix={<VerifyCodeSuffix {...suffixProps} />} />;
   };
 };

@@ -1,5 +1,6 @@
 import React from 'react';
 import { RemoteSelect } from '@tidb-community/ui';
+
 import { getTitle } from '../utils';
 
 export default {
@@ -8,23 +9,18 @@ export default {
 };
 
 const fetchCompanies = ({ companyList, delay }) => (word) => {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve(
-        companyList
-          .filter(({ name }) => name.indexOf(word) !== -1)
-          .map(({ name }) => ({ label: name, value: name })));
+        companyList.filter(({ name }) => name.indexOf(word) !== -1).map(({ name }) => ({ label: name, value: name }))
+      );
     }, delay);
   });
 };
 
 const Template = ({ word, companyList, delay, ...args }) => (
   <div>
-    <RemoteSelect
-      style={{ width: '350px' }}
-      fetchOptions={fetchCompanies({ companyList, delay })}
-      {...args}
-    />
+    <RemoteSelect style={{ width: '350px' }} fetchOptions={fetchCompanies({ companyList, delay })} {...args} />
   </div>
 );
 

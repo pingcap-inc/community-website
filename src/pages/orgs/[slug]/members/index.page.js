@@ -1,6 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { Button, Table } from 'antd';
+import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
@@ -24,16 +25,29 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
+  // TODO: The API call may be moved to _app.page.js because the response data will
+  // be also consumed in global Header
+  let me;
+  try {
+    me = await api.me();
+  } catch (err) {
+    return {
+      notFound: true,
+    };
+  }
+
   return {
-    props: {},
+    props: {
+      me,
+    },
   };
 };
 
-const Members = () => {
+const Members = ({ me }) => {
   const router = useRouter();
-  const { data } = useSWR(['orgs.org.members', router.query]);
+  const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
 
-  const dataSource = getDataSource(data);
+  const dataSource = getDataSource({ membersResp, me });
 
   const tableProps = {
     dataSource,

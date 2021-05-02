@@ -1,20 +1,20 @@
 const faker = require('faker');
 const router = require('express').Router();
 
+const utils = require('../utils');
 const { ROLES } = require('../constants');
-const { successResp, sample } = require('../utils');
 
 const { datatype, internet, image } = faker;
 
 router.get('', (req, res) => {
-  successResp({
+  utils.successResp({
     data: {
       id: datatype.number({ min: 1, max: 5 }),
       username: internet.userName(),
       avatar_url: image.avatar(),
       org: {
         slug: internet.userName(),
-        role: sample(Object.values(ROLES)),
+        role: utils.sample(Object.values(ROLES)),
       },
       // You may manually uncomment "org_enroll" if testing the register status
       // org_enroll: {
@@ -24,6 +24,11 @@ router.get('', (req, res) => {
       // },
     },
   })(req, res);
+
+  // utils.errorResp({
+  //   code: 401,
+  //   detail: 'Authentication credentials were not provided',
+  // });
 });
 
 module.exports = router;

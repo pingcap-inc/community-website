@@ -4,4 +4,12 @@ type MembersParams = {
   slug: string;
 };
 
-export const members: ApiRequestFunction<MembersParams, void>;
+type MemberData = {
+  name: string;
+  username: string;
+  email: string;
+  id: number;
+  role: string;
+};
+
+export const members: ApiRequestFunction<MembersParams, { data: MemberData[] }>;

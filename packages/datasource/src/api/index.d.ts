@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 
 export * as orgs from './orgs';
 export { me } from './me';
-export module constants {
+export module Constants {
   export const SUCCESS: string;
   export const SUCCESS_NOT_USED: string;
   export const ERR_PARAMS_WRONG: string;

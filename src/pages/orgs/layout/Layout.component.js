@@ -3,7 +3,7 @@ import React from 'react';
 
 import * as Styled from './layout.styled';
 import Banner from './banner';
-import data from 'pages/organization/organization.data';
+import data from 'pages/orgs/organization.data';
 import { CoreLayout } from 'layouts';
 
 const Layout = ({ children }) => {

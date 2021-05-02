@@ -2,7 +2,7 @@ import React from 'react';
 import { Tabs } from 'antd';
 
 import * as Styled from './banner.styled';
-import VerifiedSVG from 'pages/organization/verified.svg';
+import VerifiedSVG from 'pages/orgs/verified.svg';
 
 const { TabPane } = Tabs;
 

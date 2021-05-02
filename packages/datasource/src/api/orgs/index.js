@@ -1,4 +1,4 @@
-import { members } from './[uid]';
+import { members } from './[slug]';
 import { sendCode } from './enroll/sendCode';
 import { uploadIncumbencyCert } from './enroll/uploadIncumbencyCert';
 

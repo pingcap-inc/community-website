@@ -1,10 +1,10 @@
 const { errorResp, successResp, generator } = require('../../../utils');
 
 module.exports = (req, res) => {
-  const { uid } = req.params;
+  const { slug } = req.params;
   const { word } = req.query;
 
-  if (uid === '404') {
+  if (slug === '404') {
     return errorResp({
       code: 404,
       detail: 'organization does not exists',

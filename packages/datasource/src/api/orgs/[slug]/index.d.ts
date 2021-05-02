@@ -1,7 +1,7 @@
 import { ApiRequestFunction } from '../../index';
 
 type MembersParams = {
-  uid: string;
+  slug: string;
 };
 
 export const members: ApiRequestFunction<MembersParams, void>;

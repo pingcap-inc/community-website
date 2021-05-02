@@ -4,7 +4,7 @@ import { Button, Table } from 'antd';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
-import Layout from 'pages/organization/layout';
+import Layout from 'pages/orgs/layout';
 import { CommunityHead } from 'components/head';
 import { columns } from './members.data';
 import { featureToggle } from 'utils';

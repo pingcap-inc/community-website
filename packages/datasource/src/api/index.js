@@ -1,10 +1,10 @@
-import Axios from 'axios';
 import Cookie from 'js-cookie';
+import axios from 'axios';
 
-export * as constants from './api.constants';
-export * as org from './org';
+export * as orgs from './orgs';
+export { me } from './me';
 
-export const GLOBAL_ERROR_HANDLED = Symbol.for('global-error-handled');
+export const GLOBAL_ERROR_HANDLED = Symbol.for('GLOBAL_ERROR_HANDLED');
 
 let initApiCalled = false;
 let initApiContext = {
@@ -12,7 +12,7 @@ let initApiContext = {
 };
 
 export const initApi = (globalErrorHandler) => {
-  Axios.defaults.baseURL = process?.env?.NEXT_PUBLIC_API_BASE_URL ?? '';
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL ?? '';
 
   if (!globalErrorHandler) {
     throw new Error('failed to init api: globalErrorHandler not provided');
@@ -25,12 +25,12 @@ export const initApi = (globalErrorHandler) => {
     return;
   }
   initApiCalled = true;
-  Axios.defaults.headers = {
+  axios.defaults.headers = {
     'Accept-Language': 'zh-hans',
   };
 
   // set csrf token if required
-  initApiContext.csrfInterceptorId = Axios.interceptors.request.use((config) => {
+  initApiContext.csrfInterceptorId = axios.interceptors.request.use((config) => {
     if (!/p(?:ost|ut|atch)|delete/i.test(config.method)) {
       return config;
     }
@@ -48,7 +48,7 @@ export const initApi = (globalErrorHandler) => {
   });
 
   // translate resp data
-  initApiContext.respInterceptorId = Axios.interceptors.response.use(
+  initApiContext.respInterceptorId = axios.interceptors.response.use(
     (response) => {
       return response.data;
     },

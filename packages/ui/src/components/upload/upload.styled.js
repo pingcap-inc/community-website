@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Button as AntButton, Upload as AntUpload } from 'antd';
+import { Button, Upload as AntUpload } from 'antd';
 
 export const Upload = styled(AntUpload)`
   display: block;
@@ -13,6 +13,6 @@ export const Upload = styled(AntUpload)`
   }
 `;
 
-export const FullWidthButton = styled(AntButton)`
+export const FullWidthButton = styled(Button)`
   width: 100%;
 `;

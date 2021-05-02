@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { CoreLayout, SplitLayout } from 'layouts';
-import { featureToggle } from 'utils';
 import Banner from './banner';
 import Form from './form';
+import { CoreLayout, SplitLayout } from 'layouts';
+import { featureToggle } from 'utils';
 
 export const getServerSideProps = async ({ req }) => {
   // https://vercel.com/docs/environment-variables#system-environment-variables

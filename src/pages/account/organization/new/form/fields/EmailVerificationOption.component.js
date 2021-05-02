@@ -1,12 +1,12 @@
 import React, { useRef } from 'react';
-
-import { withVerifyCode } from '@tidb-community/ui';
-import { api } from '@tidb-community/datasource';
-import data from '../form.data';
 import { Col, Row } from 'antd';
 import { Form as AntForm, Input } from 'formik-antd';
-import { useSize } from 'ahooks';
+import { api } from '@tidb-community/datasource';
 import { useFormikContext } from 'formik';
+import { useSize } from 'ahooks';
+import { withVerifyCode } from '@tidb-community/ui';
+
+import data from '../form.data';
 
 const { organizationEmail } = data.form.verificationType;
 
@@ -21,7 +21,7 @@ const EmailVerificationOption = ({ hidden }) => {
 
   const { values } = useFormikContext();
 
-  const sendEmail = () => api.org.enroll.sendCode({ email: values[organizationEmail.email.name] });
+  const sendEmail = () => api.orgs.enroll.sendCode({ email: values[organizationEmail.email.name] });
 
   return (
     <Row gutter={16} ref={ref}>

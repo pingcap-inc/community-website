@@ -1,8 +1,5 @@
 import '@tidb-community/ui/antd/global.less';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
-import { api } from '@tidb-community/datasource';
-
-api.initApi(console.error);
 
 const GlobalStyle = createAppGlobalStyle();
 

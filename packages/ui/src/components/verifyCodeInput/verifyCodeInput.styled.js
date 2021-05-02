@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button as AntButton } from 'antd';
+
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
 
@@ -10,8 +11,9 @@ export const SendEmailButton = styled(AntButton)`
 
   span {
     ${mixins.typography('p2')}
+
     &:hover {
-      color: ${colors.B1}
+      color: ${colors.B1};
     }
   }
 

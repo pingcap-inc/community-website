@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Menu } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 export const Title = styled.h3`
@@ -36,6 +37,16 @@ export const Name = styled.div`
     margin-left: 0.5rem;
   }
 `;
+
+export const Role = styled.div`
+  ${mixins.flexVerticalCenter()};
+
+  .anticon {
+    margin-left: 0.5rem;
+  }
+`;
+
+export const RoleMenu = styled(Menu)``;
 
 export const Delete = styled.span`
   color: ${colors.B1};

@@ -47,7 +47,11 @@ const Members = ({ meResp }) => {
   const router = useRouter();
   const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
 
-  const dataSource = getDataSource({ membersResp, meResp });
+  const onRoleChange = (e) => console.log(e);
+
+  const onDelete = (id) => console.log(id);
+
+  const dataSource = getDataSource({ membersResp, meResp, onDelete, onRoleChange });
 
   const tableProps = {
     dataSource,

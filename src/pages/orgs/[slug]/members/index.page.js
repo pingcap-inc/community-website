@@ -45,9 +45,14 @@ export const getServerSideProps = async ({ req }) => {
 
 const Members = ({ meResp }) => {
   const router = useRouter();
+  const { slug } = router.query;
   const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
 
-  const onRoleChange = (e) => console.log(e);
+  const onRoleChange = ({ id, role }) => {
+    try {
+      api.orgs.org.updateMemberRole({ id, role, slug });
+    } catch (err) {}
+  };
 
   const onDelete = (id) => console.log(id);
 

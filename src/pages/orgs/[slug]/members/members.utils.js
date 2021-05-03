@@ -6,8 +6,8 @@ import { Menu, Dropdown } from 'antd';
 import * as Styled from './members.styled';
 import { ROLE_KEYS, ROLE_NAMES } from './members.constants';
 
-const genRoleMenu = ({ onRoleChange, role }) => (
-  <Styled.RoleMenu onClick={onRoleChange} selectedKeys={[role]}>
+const genRoleMenu = ({ onRoleMenuClick, role }) => (
+  <Styled.RoleMenu onClick={onRoleMenuClick} selectedKeys={[role]}>
     <Menu.Item key={ROLE_KEYS.ADMIN}>
       <h3>{ROLE_NAMES[ROLE_KEYS.ADMIN]}</h3>
       <p>可管理成语，申请企业认证</p>
@@ -29,6 +29,13 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
     const { id, name, role } = item;
     const isMyself = id === meId;
 
+    const onRoleMenuClick = (e) => {
+      onRoleChange({
+        id,
+        role: e.key,
+      });
+    };
+
     return {
       key: id,
       ...R.pick(['username', 'email'], item),
@@ -39,7 +46,7 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
         </Styled.Name>
       ),
       role: (
-        <Dropdown overlay={genRoleMenu({ onRoleChange, role })} trigger="click">
+        <Dropdown overlay={genRoleMenu({ onRoleMenuClick, role })} trigger="click">
           <Styled.Role>
             {ROLE_NAMES[role]} <DownOutlined />
           </Styled.Role>

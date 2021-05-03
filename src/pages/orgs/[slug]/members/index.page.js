@@ -27,9 +27,9 @@ export const getServerSideProps = async ({ req }) => {
 
   // TODO: The API call may be moved to _app.page.js because the response data will
   // be also consumed in global Header
-  let me;
+  let meResp;
   try {
-    me = await api.me();
+    meResp = await api.me();
   } catch (err) {
     return {
       notFound: true,
@@ -38,16 +38,16 @@ export const getServerSideProps = async ({ req }) => {
 
   return {
     props: {
-      me,
+      meResp,
     },
   };
 };
 
-const Members = ({ me }) => {
+const Members = ({ meResp }) => {
   const router = useRouter();
   const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
 
-  const dataSource = getDataSource({ membersResp, me });
+  const dataSource = getDataSource({ membersResp, meResp });
 
   const tableProps = {
     dataSource,

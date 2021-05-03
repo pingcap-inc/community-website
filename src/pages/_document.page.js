@@ -3,7 +3,6 @@
 import Document from 'next/document';
 import React from 'react';
 import { ServerStyleSheet } from 'styled-components';
-
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();

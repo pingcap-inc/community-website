@@ -1,6 +1,7 @@
 import Cookie from 'js-cookie';
 import axios from 'axios';
 
+export * as events from './events';
 export * as orgs from './orgs';
 export { me } from './me';
 

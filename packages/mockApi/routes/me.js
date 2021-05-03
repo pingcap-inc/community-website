@@ -28,7 +28,7 @@ router.get('', (req, res) => {
   // utils.errorResp({
   //   code: 401,
   //   detail: 'Authentication credentials were not provided',
-  // });
+  // })(req, res);
 });
 
 module.exports = router;

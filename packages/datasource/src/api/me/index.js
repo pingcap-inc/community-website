@@ -1,3 +1,3 @@
-import axios from 'axios';
+import client from '../client';
 
-export const me = () => axios.get(`/api/me`);
+export const me = () => client.get(`/api/me`);

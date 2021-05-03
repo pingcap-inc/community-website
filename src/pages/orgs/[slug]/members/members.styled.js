@@ -25,6 +25,18 @@ export const Header = styled.div`
   margin-bottom: 2rem;
 `;
 
+export const Name = styled.div`
+  ${mixins.flexVerticalCenter()};
+
+  span {
+    font-size: 10px;
+    color: ${colors.F2};
+    background: ${colors.T2};
+    padding: 0.1rem 0.25rem;
+    margin-left: 0.5rem;
+  }
+`;
+
 export const Delete = styled.span`
   color: ${colors.B1};
   cursor: pointer;

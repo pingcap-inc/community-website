@@ -1,5 +1,5 @@
-import axios from 'axios';
+import client from '../../client';
 
 export const searchCompany = ({ word }) => {
-  return axios.post('/api/orgs/search-company', { word });
+  return client.post('/api/orgs/search-company', { word });
 };

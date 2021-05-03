@@ -1,5 +1,5 @@
-import axios from 'axios';
+import client from '../../client';
 
 export const checkName = ({ name }) => {
-  return axios.post('/api/orgs/check-name', { name });
+  return client.post('/api/orgs/check-name', { name });
 };

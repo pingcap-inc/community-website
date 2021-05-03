@@ -1,9 +1,9 @@
-import axios from 'axios';
+import client from '../../../client';
 
 export const uploadIncumbencyCert = ({ file, filename, onUploadProgress }) => {
   const formData = new FormData();
   formData.append(filename, file);
-  return axios.post('/api/orgs/enroll/upload-incumbency-cert', formData, {
+  return client.post('/api/orgs/enroll/upload-incumbency-cert', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
     },

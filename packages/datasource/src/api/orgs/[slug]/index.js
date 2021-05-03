@@ -1,5 +1,5 @@
-import axios from 'axios';
+import client from '../../client';
 
 export const members = ({ slug }) => {
-  return axios.get(`/api/orgs/${slug}/members`);
+  return client.get(`/api/orgs/${slug}/members`);
 };

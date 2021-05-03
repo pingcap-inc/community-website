@@ -1,5 +1,5 @@
-import axios from 'axios';
+import client from '../../../client';
 
 export const sendCode = ({ email }) => {
-  return axios.post('/api/orgs/enroll/send-code', { email });
+  return client.post('/api/orgs/enroll/send-code', { email });
 };

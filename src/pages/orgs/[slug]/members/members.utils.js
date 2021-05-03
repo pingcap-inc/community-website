@@ -4,17 +4,17 @@ import { CheckOutlined, DownOutlined } from '@ant-design/icons';
 import { Menu, Dropdown } from 'antd';
 
 import * as Styled from './members.styled';
-import { ROLE_NAMES } from './members.constants';
+import { ROLE_KEYS, ROLE_NAMES } from './members.constants';
 
 const genRoleMenu = ({ onRoleChange, role }) => (
   <Styled.RoleMenu onClick={onRoleChange} selectedKeys={[role]}>
-    <Menu.Item key="admin">
-      <h3>管理员</h3>
+    <Menu.Item key={ROLE_KEYS.ADMIN}>
+      <h3>{ROLE_NAMES[ROLE_KEYS.ADMIN]}</h3>
       <p>可管理成语，申请企业认证</p>
       <CheckOutlined />
     </Menu.Item>
-    <Menu.Item key="member">
-      <h3>成员</h3>
+    <Menu.Item key={ROLE_KEYS.MEMBER}>
+      <h3>{ROLE_NAMES[ROLE_KEYS.MEMBER]}</h3>
       <p>享受所有企业权益</p>
       <CheckOutlined />
     </Menu.Item>
@@ -39,7 +39,7 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
         </Styled.Name>
       ),
       role: (
-        <Dropdown overlay={genRoleMenu({ onRoleChange, role })}>
+        <Dropdown overlay={genRoleMenu({ onRoleChange, role })} trigger="click">
           <Styled.Role>
             {ROLE_NAMES[role]} <DownOutlined />
           </Styled.Role>

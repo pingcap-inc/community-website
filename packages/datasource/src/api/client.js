@@ -11,10 +11,13 @@ client.interceptors.request.use((config) => {
   const { method, headers } = config;
 
   if (/get/i.test(method)) {
-    config.headers = {
-      ...headers,
-      csrftoken: Cookie.get('csrftoken'),
-    };
+    const csrftoken = Cookie.get('csrftoken');
+
+    if (csrftoken) {
+      config.headers = {
+        ...headers,
+      };
+    }
   }
 
   return config;

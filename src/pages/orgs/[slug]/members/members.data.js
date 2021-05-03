@@ -1,7 +1,3 @@
-import React from 'react';
-
-import * as Styled from './members.styled';
-
 export const columns = [
   {
     title: '昵称',
@@ -27,6 +23,5 @@ export const columns = [
     title: '操作',
     dataIndex: 'operation',
     key: 'operation',
-    render: (label) => <Styled.Delete>{label}</Styled.Delete>,
   },
 ];

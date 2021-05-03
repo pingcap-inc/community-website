@@ -1,4 +1,9 @@
+export const ROLE_KEYS = {
+  ADMIN: 'admin',
+  MEMBER: 'member',
+};
+
 export const ROLE_NAMES = {
-  admin: '管理员',
-  member: '会员',
+  [ROLE_KEYS.ADMIN]: '管理员',
+  [ROLE_KEYS.MEMBER]: '成员',
 };

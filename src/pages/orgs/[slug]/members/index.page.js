@@ -49,9 +49,9 @@ const Members = ({ meResp }) => {
   const { slug } = router.query;
   const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
 
-  const onRoleChange = ({ id, role }) => {
+  const onRoleChange = async ({ id, role }) => {
     try {
-      api.orgs.org.updateMemberRole({ id, role, slug });
+      await api.orgs.org.updateMemberRole({ role, slug, userId: id });
     } catch (err) {}
   };
 
@@ -62,9 +62,14 @@ const Members = ({ meResp }) => {
       content: '删除后，该成员将不在享有企业权益',
       okText: '确定',
       cancelText: '取消',
-      onOk() {},
-      onCancel() {},
+
+      async onOk() {
+        try {
+          await api.orgs.org.removeMember({ slug, userId: id });
+        } catch (err) {}
+      },
     };
+
     Modal.confirm({
       ...config,
       ...(isMyself && {

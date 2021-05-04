@@ -14,6 +14,8 @@ const GlobalStyle = createAppGlobalStyle();
 
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
+    document.body.classList.add(constants.appClassName);
+
     api.events.addApiErrorListener(({ status, statusText, data }) => {
       if (status === 401) {
         // TODO: jump to login page
@@ -21,6 +23,10 @@ const App = ({ Component, pageProps }) => {
         message.error(`${data?.detail || statusText}`, 5);
       }
     });
+
+    return () => {
+      api.events.removeApiErrorListener();
+    };
   }, []);
 
   return (
@@ -39,10 +45,8 @@ const App = ({ Component, pageProps }) => {
         },
       }}
     >
-      <div className={constants.appClassName}>
-        <GlobalStyle />
-        <Component {...pageProps} />
-      </div>
+      <GlobalStyle />
+      <Component {...pageProps} />
     </SWRConfig>
   );
 };

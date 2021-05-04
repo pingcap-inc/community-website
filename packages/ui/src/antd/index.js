@@ -4,6 +4,7 @@ import btnStyles from './btn';
 import formStyles from './form';
 import inputStyles from './input';
 import menuStyles from './menu';
+import modalStyles from './modal';
 import tableStyles from './table';
 import tabsStyles from './tabs';
 
@@ -12,6 +13,7 @@ export default css`
   ${formStyles};
   ${inputStyles};
   ${menuStyles};
+  ${modalStyles};
   ${tableStyles};
   ${tabsStyles};
 `;

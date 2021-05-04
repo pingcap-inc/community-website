@@ -52,7 +52,9 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
           </Styled.Role>
         </Dropdown>
       ),
-      operation: <Styled.Delete onClick={(e) => onDelete(id)}>{isMyself ? '退出' : '删除'}</Styled.Delete>,
+      operation: (
+        <Styled.Delete onClick={(e) => onDelete({ id, isMyself })}>{isMyself ? '退出' : '删除'}</Styled.Delete>
+      ),
     };
   });
 };

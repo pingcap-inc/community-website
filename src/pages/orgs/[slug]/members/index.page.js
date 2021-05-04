@@ -1,6 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
-import { Button, Table } from 'antd';
+import { Button, Modal, Table } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
@@ -54,7 +55,24 @@ const Members = ({ meResp }) => {
     } catch (err) {}
   };
 
-  const onDelete = (id) => console.log(id);
+  const onDelete = ({ id, isMyself }) => {
+    const config = {
+      title: '确定要删除该成员吗？',
+      icon: <ExclamationCircleOutlined />,
+      content: '删除后，该成员将不在享有企业权益',
+      okText: '确定',
+      cancelText: '取消',
+      onOk() {},
+      onCancel() {},
+    };
+    Modal.confirm({
+      ...config,
+      ...(isMyself && {
+        title: '确定要退出该企业吗？',
+        content: '退出企业后将不在享有企业权益',
+      }),
+    });
+  };
 
   const dataSource = getDataSource({ membersResp, meResp, onDelete, onRoleChange });
 

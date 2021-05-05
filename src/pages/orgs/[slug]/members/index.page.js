@@ -88,7 +88,12 @@ const Members = ({ meResp }) => {
             },
             false
           );
-        } catch (err) {}
+        } catch (err) {
+          Modal.warn({
+            title: '无法退出企业',
+            content: err.detail,
+          });
+        }
       },
     };
 

@@ -26,16 +26,9 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
-  // TODO: The API call may be moved to _app.page.js because the response data will
-  // be also consumed in global Header
-  let meResp;
-  try {
-    meResp = await api.me();
-  } catch (err) {
-    return {
-      notFound: true,
-    };
-  }
+  // TODO: The logged-in user's data may be retrived from the global context because
+  // it's also consumed in the Header component
+  const meResp = await api.me();
 
   return {
     props: {

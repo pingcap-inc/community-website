@@ -26,16 +26,9 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
-  // TODO: The API call may be moved to _app.page.js because the response data will
-  // be also consumed in global Header
-  let meResp;
-  try {
-    meResp = await api.me();
-  } catch (err) {
-    return {
-      notFound: true,
-    };
-  }
+  // TODO: The logged-in user's data may be retrived from the global context because
+  // it's also consumed in the Header component
+  const meResp = await api.me();
 
   return {
     props: {
@@ -47,11 +40,26 @@ export const getServerSideProps = async ({ req }) => {
 const Members = ({ meResp }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
+  const { data: membersResp, mutate } = useSWR(['orgs.org.members', router.query]);
 
   const onRoleChange = async ({ id, role }) => {
     try {
       await api.orgs.org.updateMemberRole({ role, slug, userId: id });
+      mutate(
+        {
+          ...membersResp,
+          data: membersResp.data.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item,
+                role,
+              };
+            }
+            return item;
+          }),
+        },
+        false
+      );
     } catch (err) {}
   };
 
@@ -66,7 +74,19 @@ const Members = ({ meResp }) => {
       async onOk() {
         try {
           await api.orgs.org.removeMember({ slug, userId: id });
-        } catch (err) {}
+          mutate(
+            {
+              ...membersResp,
+              data: membersResp.data.filter((item) => item.id !== id),
+            },
+            false
+          );
+        } catch (err) {
+          Modal.warn({
+            title: '无法退出企业',
+            content: err.detail,
+          });
+        }
       },
     };
 

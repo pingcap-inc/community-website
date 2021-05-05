@@ -19,6 +19,8 @@ const App = ({ Component, pageProps }) => {
     api.events.addApiErrorListener(({ status, statusText, data }) => {
       if (status === 401) {
         // TODO: jump to login page
+      } else if (status === 403) {
+        // TODO: show 403 page
       } else {
         message.error(`${data?.detail || statusText}`, 5);
       }

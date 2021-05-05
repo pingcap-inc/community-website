@@ -26,17 +26,13 @@ client.interceptors.request.use((config) => {
 client.interceptors.response.use(
   ({ data }) => data,
   (err) => {
-    const { response } = err;
-    const { status, data } = response;
+    const { config, response } = err;
+    const { data, status } = response;
 
-    if (typeof window !== 'undefined') {
+    if (!config.isDispatchApiErrorDisabled && status !== 400 && typeof window !== 'undefined') {
       dispatchApiError(response);
-    }
-
-    if (status === 400) {
-      return Promise.reject(data);
     } else {
-      return Promise.reject(response);
+      return Promise.reject(data);
     }
   }
 );

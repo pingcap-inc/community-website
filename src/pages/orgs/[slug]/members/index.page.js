@@ -47,11 +47,26 @@ export const getServerSideProps = async ({ req }) => {
 const Members = ({ meResp }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const { data: membersResp } = useSWR(['orgs.org.members', router.query]);
+  const { data: membersResp, mutate } = useSWR(['orgs.org.members', router.query]);
 
   const onRoleChange = async ({ id, role }) => {
     try {
       await api.orgs.org.updateMemberRole({ role, slug, userId: id });
+      mutate(
+        {
+          ...membersResp,
+          data: membersResp.data.map((item) => {
+            if (item.id === id) {
+              return {
+                ...item,
+                role,
+              };
+            }
+            return item;
+          }),
+        },
+        false
+      );
     } catch (err) {}
   };
 
@@ -66,6 +81,13 @@ const Members = ({ meResp }) => {
       async onOk() {
         try {
           await api.orgs.org.removeMember({ slug, userId: id });
+          mutate(
+            {
+              ...membersResp,
+              data: membersResp.data.filter((item) => item.id !== id),
+            },
+            false
+          );
         } catch (err) {}
       },
     };

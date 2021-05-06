@@ -1,6 +1,7 @@
 import 'antd/dist/antd.css';
 import * as R from 'ramda';
-import React, { useEffect } from 'react';
+import Error from 'next/error';
+import React, { useEffect, useState } from 'react';
 import { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
@@ -17,15 +18,19 @@ const App = ({ Component, pageProps }) => {
     document.body.classList.add(constants.appClassName);
   }, []);
 
+  const [has403, setHas403] = useState(false);
+
   useApiErrorListener(({ status, statusText, data }) => {
     if (status === 401) {
       // TODO: jump to login page
     } else if (status === 403) {
-      // TODO: show 403 page
+      setHas403(true);
     } else {
       message.error(`${data?.detail || statusText}`, 5);
     }
   });
+
+  if (has403) return <Error statusCode={403} />;
 
   return (
     <SWRConfig

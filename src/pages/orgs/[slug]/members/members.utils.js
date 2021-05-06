@@ -21,7 +21,7 @@ const genRoleMenu = ({ onRoleMenuClick, role }) => (
   </Styled.RoleMenu>
 );
 
-export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleChange }) => {
+export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleChange, isAdmin }) => {
   const { data = [] } = membersResp;
   const meId = meResp.data?.id;
 
@@ -36,6 +36,8 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
       });
     };
 
+    const roleName = ROLE_NAMES[role];
+
     return {
       key: id,
       ...R.pick(['username', 'email'], item),
@@ -45,16 +47,25 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
           {isMyself && <span>你自己</span>}
         </Styled.Name>
       ),
-      role: (
+      role: isAdmin ? (
         <Dropdown overlay={genRoleMenu({ onRoleMenuClick, role })} trigger="click">
           <Styled.Role>
-            {ROLE_NAMES[role]} <DownOutlined />
+            {roleName} <DownOutlined />
           </Styled.Role>
         </Dropdown>
+      ) : (
+        roleName
       ),
-      operation: (
-        <Styled.Delete onClick={(e) => onDelete({ id, isMyself })}>{isMyself ? '退出' : '删除'}</Styled.Delete>
-      ),
+      operation:
+        isAdmin || isMyself ? (
+          <Styled.Delete onClick={(e) => onDelete({ id, isMyself })}>{isMyself ? '退出' : '删除'}</Styled.Delete>
+        ) : (
+          <Styled.DisabledDelete>删除</Styled.DisabledDelete>
+        ),
     };
   });
+};
+
+export const isAdmin = (meResp) => {
+  return R.pathEq(['data', 'org', 'role'], ROLE_KEYS.ADMIN)(meResp);
 };

@@ -31,9 +31,9 @@ client.interceptors.response.use(
 
     if (!config.isDispatchApiErrorDisabled && status !== 400 && typeof window !== 'undefined') {
       dispatchApiError(response);
-    } else {
-      return Promise.reject(data);
     }
+
+    return Promise.reject(config.isReturnErrorResponse ? response : data);
   }
 );
 

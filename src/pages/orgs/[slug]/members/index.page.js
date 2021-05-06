@@ -6,11 +6,11 @@ import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
+import * as utils from './members.utils';
 import Layout from 'pages/orgs/layout';
 import { CommunityHead } from 'components/head';
 import { columns } from './members.data';
 import { featureToggle } from 'utils';
-import { getDataSource } from './members.utils';
 
 export const getServerSideProps = async ({ req }) => {
   const host = process.env.VERCEL_URL || req.headers.host;
@@ -28,7 +28,10 @@ export const getServerSideProps = async ({ req }) => {
 
   // TODO: The logged-in user's data may be retrived from the global context because
   // it's also consumed in the Header component
-  const meResp = await api.me();
+  let meResp = {};
+  try {
+    meResp = await api.me();
+  } catch (err) {}
 
   return {
     props: {
@@ -41,6 +44,7 @@ const Members = ({ meResp }) => {
   const router = useRouter();
   const { slug } = router.query;
   const { data: membersResp, mutate } = useSWR(['orgs.org.members', router.query]);
+  const isAdmin = utils.isAdmin(meResp);
 
   const onRoleChange = async ({ id, role }) => {
     try {
@@ -74,6 +78,11 @@ const Members = ({ meResp }) => {
       async onOk() {
         try {
           await api.orgs.org.removeMember({ slug, userId: id });
+
+          if (isMyself) {
+            router.push('/community', '/');
+          }
+
           mutate(
             {
               ...membersResp,
@@ -99,7 +108,7 @@ const Members = ({ meResp }) => {
     });
   };
 
-  const dataSource = getDataSource({ membersResp, meResp, onDelete, onRoleChange });
+  const dataSource = utils.getDataSource({ membersResp, meResp, onDelete, onRoleChange, isAdmin });
 
   const tableProps = {
     dataSource,
@@ -116,9 +125,11 @@ const Members = ({ meResp }) => {
             企业成员<span>{dataSource.length}</span>
           </Styled.Title>
 
-          <Button type="primary" size="small">
-            添加成员
-          </Button>
+          {isAdmin && (
+            <Button type="primary" size="small">
+              添加成员
+            </Button>
+          )}
         </Styled.Header>
 
         <Table {...tableProps} pagination={false} />

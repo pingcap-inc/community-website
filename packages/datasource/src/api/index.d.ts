@@ -1,4 +1,5 @@
 export * as orgs from './orgs';
+export * as events from './events';
 export { me } from './me';
 
 export type ApiResponse<T, Detail> = {

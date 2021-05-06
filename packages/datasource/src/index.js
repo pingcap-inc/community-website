@@ -3,6 +3,7 @@ import { defaultEnvDomains } from './config.domains';
 import { getData as getNavData } from './nav';
 
 export * as api from './api';
+export { useApiErrorListener } from './api/events';
 
 export const getFormData = () => form;
 

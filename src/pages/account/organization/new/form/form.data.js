@@ -17,37 +17,37 @@ const fetchOrganizationOptions = (word) =>
 const data = {
   form: {
     nickname: {
-      name: 'nickname',
+      name: 'name',
       placeholder: '填写企业会员昵称',
       validator: Yup.string()
-        .min(6, ({ min }) => `会员昵称最短为${min}个字符`)
+        .min(3, ({ min }) => `会员昵称最短为${min}个字符`)
         .max(7, ({ max }) => `会员昵称最长为${max}个字符`)
         .required('会员昵称不可为空'),
       initialValue: '',
     },
     organization: {
-      name: 'organization',
+      name: 'company',
       placeholder: '请选择所属企业',
       validator: Yup.mixed().required('所属企业不可为空'),
       fetchOptions: fetchOrganizationOptions,
       initialValue: undefined,
     },
     organizationType: {
-      name: 'organizationType',
+      name: 'industry_type',
       placeholder: '请选择行业类型',
       options: organizationTypes,
       validator: Yup.mixed().required('行业类型不可为空'),
       initialValue: undefined,
     },
     organizationSize: {
-      name: 'organizationSize',
+      name: 'member_range',
       placeholder: '请选择企业规模',
       options: organizationSizes,
       validator: Yup.mixed().required('企业规模不可为空'),
       initialValue: undefined,
     },
     organizationLocation: {
-      name: 'organizationLocation',
+      name: 'company_base',
       placeholder: '请选择企业所在地',
       options: provinces,
       validator: Yup.array()
@@ -56,14 +56,14 @@ const data = {
       initialValue: undefined,
     },
     personalPosition: {
-      name: 'personalPosition',
+      name: 'job_title',
       placeholder: '请选择您的职位',
       options: personalPositions,
       validator: Yup.mixed().required('职位不可为空'),
       initialValue: undefined,
     },
     personalContact: {
-      name: 'personalContact',
+      name: 'contact_phone',
       placeholder: '请填写联系电话，资料如有问题，审核人员将会致电，请保持电话畅通',
       validator: Yup.string()
         .matches(/(?:\+\d{2,3}[- ]?)?(?:(?:\d{3,4}[- ]?)?\d{8}|\d{11})/, '请输入有效的联系电话')
@@ -71,7 +71,7 @@ const data = {
       initialValue: '',
     },
     verificationType: {
-      name: 'verificationType',
+      name: 'audit_type',
       options: [
         {
           label: '企业邮箱认证',
@@ -95,7 +95,7 @@ const data = {
           initialValue: '',
         },
         verificationCode: {
-          name: 'verificationCode',
+          name: 'email_code',
           placeholder: '企业邮箱验证码',
           sendVerifyCodeBtnText: '发送验证码',
           limitSeconds: 120000,
@@ -108,7 +108,7 @@ const data = {
         },
       },
       incumbencyCert: {
-        name: 'file',
+        name: 'incumbency_cert',
         uploadFileText: '上传文件',
         extraText:
           '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。',

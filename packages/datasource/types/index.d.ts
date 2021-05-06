@@ -2,6 +2,7 @@ import { Nav } from './nav';
 import { form } from './form';
 
 export * as api from '../src/api';
+export { useApiErrorListener } from '../src/api';
 
 type Locale = 'en' | 'zh';
 type Env = 'production' | 'development';

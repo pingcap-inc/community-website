@@ -2,7 +2,7 @@ import 'antd/dist/antd.css';
 import * as R from 'ramda';
 import React, { useEffect } from 'react';
 import { SWRConfig } from 'swr';
-import { api } from '@tidb-community/datasource';
+import { api, useApiErrorListener } from '@tidb-community/datasource';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 import { message } from 'antd';
 
@@ -15,21 +15,17 @@ const GlobalStyle = createAppGlobalStyle();
 const App = ({ Component, pageProps }) => {
   useEffect(() => {
     document.body.classList.add(constants.appClassName);
-
-    api.events.addApiErrorListener(({ status, statusText, data }) => {
-      if (status === 401) {
-        // TODO: jump to login page
-      } else if (status === 403) {
-        // TODO: show 403 page
-      } else {
-        message.error(`${data?.detail || statusText}`, 5);
-      }
-    });
-
-    return () => {
-      api.events.removeApiErrorListener();
-    };
   }, []);
+
+  useApiErrorListener(({ status, statusText, data }) => {
+    if (status === 401) {
+      // TODO: jump to login page
+    } else if (status === 403) {
+      // TODO: show 403 page
+    } else {
+      message.error(`${data?.detail || statusText}`, 5);
+    }
+  });
 
   return (
     <SWRConfig

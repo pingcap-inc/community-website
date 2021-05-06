@@ -9,19 +9,12 @@ import BasicFields from './fields/BasicFields.component';
 import VerificationFields from './fields/VerificationFields.component';
 import data from './form.data';
 import Agreements from './fields/Agreements.component';
+import { form as formUtils } from 'utils';
 
 const { submitBtnTitle, formScheme, formInitialValues } = data;
 
 const Form = () => {
-  const onSubmit = (formData, { setErrors }) => {
-    return api.orgs.enroll(formData).catch((response) => {
-      if (response.errors) {
-        setErrors(response.errors);
-      } else {
-        api.events.dispatchApiError(response);
-      }
-    });
-  };
+  const onSubmit = formUtils.wrapFormikSubmitFunction(api.orgs.enroll);
 
   return (
     <Styled.FormContainer>

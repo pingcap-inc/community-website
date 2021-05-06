@@ -78,6 +78,11 @@ const Members = ({ meResp }) => {
       async onOk() {
         try {
           await api.orgs.org.removeMember({ slug, userId: id });
+
+          if (isMyself) {
+            router.push('/community', '/');
+          }
+
           mutate(
             {
               ...membersResp,

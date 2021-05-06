@@ -16,3 +16,8 @@ export const T3 = '#f9746c';
 export const T4 = '#7d3f98';
 export const T5 = '#f8c200';
 export const T6 = '#f15a24';
+
+/*
+ * Colors V2.0
+ */
+export const C4 = '#9fa8b9';

@@ -90,3 +90,8 @@ export const Delete = styled.span`
   color: ${colors.B1};
   cursor: pointer;
 `;
+
+export const DisabledDelete = styled.span`
+  color: ${colors.C4};
+  cursor: not-allowed;
+`;

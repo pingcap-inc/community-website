@@ -28,7 +28,10 @@ export const getServerSideProps = async ({ req }) => {
 
   // TODO: The logged-in user's data may be retrived from the global context because
   // it's also consumed in the Header component
-  const meResp = await api.me();
+  let meResp = {};
+  try {
+    meResp = await api.me();
+  } catch (err) {}
 
   return {
     props: {

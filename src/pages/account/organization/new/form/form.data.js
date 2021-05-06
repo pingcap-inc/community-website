@@ -17,16 +17,16 @@ const fetchOrganizationOptions = (word) =>
 const data = {
   form: {
     nickname: {
-      name: 'nickname',
+      name: 'name',
       placeholder: '填写企业会员昵称',
       validator: Yup.string()
-        .min(6, ({ min }) => `会员昵称最短为${min}个字符`)
+        .min(3, ({ min }) => `会员昵称最短为${min}个字符`)
         .max(7, ({ max }) => `会员昵称最长为${max}个字符`)
         .required('会员昵称不可为空'),
       initialValue: '',
     },
     organization: {
-      name: 'organization',
+      name: 'company',
       placeholder: '请选择所属企业',
       validator: Yup.mixed().required('所属企业不可为空'),
       fetchOptions: fetchOrganizationOptions,

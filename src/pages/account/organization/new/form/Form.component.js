@@ -3,6 +3,7 @@ import { Col } from 'antd';
 import { Form as AntForm } from 'formik-antd';
 import { Formik } from 'formik';
 
+import { api } from '@tidb-community/datasource';
 import * as Styled from './form.styled';
 import BasicFields from './fields/BasicFields.component';
 import VerificationFields from './fields/VerificationFields.component';
@@ -12,9 +13,14 @@ import Agreements from './fields/Agreements.component';
 const { submitBtnTitle, formScheme, formInitialValues } = data;
 
 const Form = () => {
-  const onSubmit = (formData) => {
-    console.log(formData);
-    return new Promise((resolve, reject) => setTimeout(() => reject('todo implement'), 1000));
+  const onSubmit = (formData, { setErrors }) => {
+    return api.orgs.enroll(formData).catch((response) => {
+      if (response.errors) {
+        setErrors(response.errors);
+      } else {
+        api.events.dispatchApiError(response);
+      }
+    });
   };
 
   return (

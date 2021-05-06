@@ -9,15 +9,6 @@ export const dispatchApiError = (detail) => {
   window.dispatchEvent(e);
 };
 
-export const addApiErrorListener = (listener, ...rest) => {
-  const listenerWrapper = ({ detail }) => listener(detail);
-  window.addEventListener.apply(null, [API_ERROR_EVENT, listenerWrapper, ...rest]);
-};
-
-export const removeApiErrorListener = (listener, ...rest) => {
-  window.removeEventListener.apply(null, [API_ERROR_EVENT, listener, ...rest]);
-};
-
 export const useApiErrorListener = (listener, ...rest) => {
   const _listener = useCallback(listener, [listener]);
 

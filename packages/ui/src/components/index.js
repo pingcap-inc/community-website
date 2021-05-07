@@ -7,3 +7,4 @@ export { default as RemoteSelect } from './remoteSelect';
 export { default as Upload } from './upload';
 export { default as CountDown } from './countDown'
 export { default as withVerifyCode } from './verifyCodeInput'
+export { default as UserProfile } from './userProfile'

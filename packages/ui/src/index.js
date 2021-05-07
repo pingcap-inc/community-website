@@ -26,6 +26,7 @@ export {
   Upload,
   CountDown,
   withVerifyCode,
+  UserProfile,
 } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`

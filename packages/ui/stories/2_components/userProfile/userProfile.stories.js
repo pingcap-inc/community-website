@@ -7,12 +7,13 @@ export default {
   component: UserProfile,
 };
 
-const Template = ({ login, inOrg, onClickLogin, locale, currentNav, onNavClick }) => {
-  const meData = login ? { org: inOrg ? { slug: 'my-org'} : undefined } : null;
+const Template = ({ login, avatarUrl, onClickLogin, locale, currentNav, onNavClick }) => {
+  const items = login ? [{ title: 'link', link: 'link' }] : undefined
 
   return (
     <UserProfile
-      meData={meData}
+      items={items}
+      avatarUrl={avatarUrl}
       onClickLogin={onClickLogin}
       locale={locale}
       currentNav={currentNav}
@@ -25,6 +26,6 @@ export const SearchCompany = Template.bind({});
 
 SearchCompany.args = {
   login: false,
-  inOrg: false,
   locale: 'zh',
+  avatarUrl: `https://cdn.fakercloud.com/avatars/bassamology_128.jpg`
 };

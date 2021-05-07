@@ -10,6 +10,8 @@ import { message } from 'antd';
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
+import { useMe } from '../hooks/me';
+import { MeContext } from '../context';
 
 const GlobalStyle = createAppGlobalStyle();
 
@@ -30,6 +32,8 @@ const App = ({ Component, pageProps }) => {
     }
   });
 
+  const { meData, reload } = useMe(pageProps.meResp)
+
   if (has403) return <Error statusCode={403} />;
 
   return (
@@ -49,7 +53,9 @@ const App = ({ Component, pageProps }) => {
       }}
     >
       <GlobalStyle />
-      <Component {...pageProps} />
+      <MeContext.Provider value={{meData, reload}}>
+        <Component {...pageProps} />
+      </MeContext.Provider>
     </SWRConfig>
   );
 };

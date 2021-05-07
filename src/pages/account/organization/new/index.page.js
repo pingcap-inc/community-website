@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { api } from '@tidb-community/datasource';
@@ -7,7 +7,7 @@ import Form from './form';
 import Audit from './audit';
 import { CoreLayout, SplitLayout } from 'layouts';
 import { featureToggle } from 'utils';
-import { useMe } from 'hooks/me';
+import { MeContext } from 'context';
 import { AUDIT_STATUS } from './audit/audit.constants';
 
 export const getServerSideProps = async ({ req }) => {
@@ -34,8 +34,8 @@ export const getServerSideProps = async ({ req }) => {
   };
 };
 
-const CreateOrganization = ({ meResp }) => {
-  const { meData, reload } = useMe(meResp);
+const CreateOrganization = () => {
+  const { meData, reload } = useContext(MeContext);
   const router = useRouter();
 
   const [showForm, setShowForm] = useState(!(meData.org || meData.org_enroll));

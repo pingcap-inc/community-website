@@ -4,11 +4,14 @@ import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
 import { buildUrlPrefixPattern, replaceNavLinks, _applyTidbIoSpecRule } from './utils';
 
-export const getData = ({ domain, domainConfig, env, locale, path }) => {
+export const getData = ({ domain, domainConfig, env, locale, path, meData }) => {
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
-  const { navItems: headerNavItems, ...restHeaderData } = R.propOr(headerData[defaultLocale], locale)(headerData);
+  const { navItems: headerNavItems, genUserProfileItems, ...restHeaderData } = R.propOr(
+    headerData[defaultLocale],
+    locale
+  )(headerData);
 
   let rules = [
     // replaces all current URLs' prefix at current domain
@@ -25,6 +28,10 @@ export const getData = ({ domain, domainConfig, env, locale, path }) => {
   ];
 
   rules = _applyTidbIoSpecRule(rules, { domain, path, domainConfig });
+  const userProfileNavItems = genUserProfileItems(meData);
+  // This is used for getting current nav.
+  const hiddenUserProfileNavItems =
+    userProfileNavItems && userProfileNavItems.map(({ ...props }) => ({ ...props, hidden: true }));
 
   return {
     footer: {
@@ -36,7 +43,11 @@ export const getData = ({ domain, domainConfig, env, locale, path }) => {
     },
     header: {
       navItems: replaceNavLinks({
-        items: headerNavItems,
+        items: headerNavItems.concat(hiddenUserProfileNavItems || []),
+        rules,
+      }),
+      userProfileNavItems: replaceNavLinks({
+        items: userProfileNavItems,
         rules,
       }),
       ...restHeaderData,

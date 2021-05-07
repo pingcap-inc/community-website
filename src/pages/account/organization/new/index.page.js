@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
+import { api } from '@tidb-community/datasource';
 import Banner from './banner';
 import Form from './form';
 import Audit from './audit';
 import { CoreLayout, SplitLayout } from 'layouts';
 import { featureToggle } from 'utils';
-import { useRouter } from 'next/router';
+import { useMe } from 'hooks/me';
+import { AUDIT_STATUS } from './audit/audit.constants';
 
 export const getServerSideProps = async ({ req }) => {
   // https://vercel.com/docs/environment-variables#system-environment-variables
@@ -22,28 +24,36 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
+  const meResp = await api.me();
+
   return {
-    props: {},
+    props: {
+      meResp,
+    },
   };
 };
 
-const CreateOrganization = () => {
-  // temp codes
-  const { query } = useRouter();
-  const [isSubmitted, setSubmitted] = useState(query.submitted === 'true');
-  const status = query.status || 'pending';
-  const rejectReason = query.reason || '未知原因';
+const CreateOrganization = ({ meResp }) => {
+  const { meData, reload } = useMe(meResp);
+
+  const showForm = !(meData.org || meData.org_enroll);
+  const status = meData.org ? AUDIT_STATUS.PASS : meData.org_enroll?.audit_status;
+  const rejectReason = meData.org_enroll?.audit_reason;
 
   return (
     <CoreLayout domain="tug.tidb.io">
-      {!isSubmitted ? (
-        <SplitLayout dividerColor={'rgba(108, 116, 150, 0.4)'} marginTop="30px" marginBottom="41px">
-          <Banner />
-          <Form onSubmit={() => setSubmitted(true)} />
-        </SplitLayout>
-      ) : (
-        <Audit status={status} rejectReason={rejectReason} />
-      )}
+      {(() => {
+        if (showForm) {
+          return (
+            <SplitLayout dividerColor={'rgba(108, 116, 150, 0.4)'} marginTop="30px" marginBottom="41px">
+              <Banner />
+              <Form onSubmit={reload} />
+            </SplitLayout>
+          );
+        } else {
+          return <Audit status={status} rejectReason={rejectReason} />;
+        }
+      })()}
     </CoreLayout>
   );
 };

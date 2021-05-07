@@ -44,7 +44,7 @@ const UserProfile = ({ meData, onClickLogin, locale, currentNav, onNavClick }) =
           }
         >
           <Styled.UserButton type='text' size='small'>
-            <Avatar size={30}>
+            <Avatar size={20}>
               <UserOutlined />
             </Avatar>
             <DownOutlined />

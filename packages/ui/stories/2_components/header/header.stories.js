@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header, utils } from '@tidb-community/ui';
+import { Header, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 
 import { getTitle } from '../utils';
@@ -9,16 +9,34 @@ export default {
   component: Header,
 };
 
-const Template = (args) => <Header {...args} />;
+const Template = ({ showUserProfile, locale, login, hasOrg, onNavClick }) => {
+  const { navItems } = getData({ locale }).nav.header;
+  const title = 'TiDB Community';
+  const logo = <img alt={title} src='/images/community/logo.svg' />;
+  const currentNav = utils.header.getCurrentNav(navItems, 'https://contributor.tidb.io/people/committer');
+
+  const meData = login ? { org: hasOrg ? { slug: 'my-org' } : undefined } : undefined;
+
+  return (
+    <Header
+      logo={logo}
+      navItems={navItems}
+      currentNav={currentNav}
+      title={title}
+      userProfileSlot={
+        showUserProfile
+          ? <UserProfile onNavClick={onNavClick} currentNav={currentNav} meData={meData} locale={locale} />
+          : undefined
+      }
+    />
+  );
+};
 
 export const WithNav = Template.bind({});
 
-const title = 'TiDB Community';
-const { navItems } = getData({ locale: 'en' }).nav.header;
-
 WithNav.args = {
-  currentNav: utils.header.getCurrentNav(navItems, 'https://contributor.tidb.io/people/committer'),
-  logo: <img alt={title} src="/images/community/logo.svg" />,
-  navItems,
-  title,
+  showUserProfile: false,
+  locale: 'zh',
+  login: false,
+  hasOrg: false,
 };

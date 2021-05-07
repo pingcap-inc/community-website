@@ -32,7 +32,7 @@ const App = ({ Component, pageProps }) => {
     }
   });
 
-  const { meData, reload } = useMe(pageProps.meResp)
+  const { meData, reload } = useMe();
 
   if (has403) return <Error statusCode={403} />;
 
@@ -53,7 +53,7 @@ const App = ({ Component, pageProps }) => {
       }}
     >
       <GlobalStyle />
-      <MeContext.Provider value={{meData, reload}}>
+      <MeContext.Provider value={{ meData, reload }}>
         <Component {...pageProps} />
       </MeContext.Provider>
     </SWRConfig>

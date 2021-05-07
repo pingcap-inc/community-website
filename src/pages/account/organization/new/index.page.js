@@ -25,12 +25,16 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
-  const meResp = await api.me();
+  try {
+    await api.me();
+  } catch {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
-    props: {
-      meResp,
-    },
+    props: {},
   };
 };
 

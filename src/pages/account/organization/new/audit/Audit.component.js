@@ -4,7 +4,7 @@ import { Steps } from 'antd';
 import { AUDIT_STATUS, IMAGES, TEXTS } from './audit.constants';
 import * as Styled from './audit.styled';
 
-const Audit = ({ status, rejectReason }) => {
+const Audit = ({ status, rejectReason, onClickResetForm, onClickOrgHome }) => {
   return (
     <Styled.Page>
       <Styled.Container>
@@ -16,8 +16,16 @@ const Audit = ({ status, rejectReason }) => {
         <Styled.Image {...IMAGES[status]} />
         <Styled.Hint>{TEXTS[status || -1](rejectReason)}</Styled.Hint>
         <Styled.ButtonContainer>
-          {status === AUDIT_STATUS.PASS && <Styled.Button type="primary">进入企业主页</Styled.Button>}
-          {status === AUDIT_STATUS.DENY && <Styled.Button type="primary">重新认证</Styled.Button>}
+          {status === AUDIT_STATUS.PASS && (
+            <Styled.Button type="primary" onClick={onClickOrgHome}>
+              进入企业主页
+            </Styled.Button>
+          )}
+          {status === AUDIT_STATUS.DENY && (
+            <Styled.Button type="primary" onClick={onClickResetForm}>
+              重新认证
+            </Styled.Button>
+          )}
         </Styled.ButtonContainer>
       </Styled.Container>
     </Styled.Page>

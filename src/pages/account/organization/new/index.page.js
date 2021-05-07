@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 import { api } from '@tidb-community/datasource';
 import Banner from './banner';
@@ -35,10 +36,14 @@ export const getServerSideProps = async ({ req }) => {
 
 const CreateOrganization = ({ meResp }) => {
   const { meData, reload } = useMe(meResp);
+  const router = useRouter();
 
-  const showForm = !(meData.org || meData.org_enroll);
+  const [showForm, setShowForm] = useState(!(meData.org || meData.org_enroll));
   const status = meData.org ? AUDIT_STATUS.PASS : meData.org_enroll?.audit_status;
   const rejectReason = meData.org_enroll?.audit_reason;
+
+  const resetForm = () => setShowForm(true);
+  const pushOrgHome = () => router.push(`/orgs/${meData.org?.slug}/home`);
 
   return (
     <CoreLayout domain="tug.tidb.io">
@@ -51,7 +56,14 @@ const CreateOrganization = ({ meResp }) => {
             </SplitLayout>
           );
         } else {
-          return <Audit status={status} rejectReason={rejectReason} />;
+          return (
+            <Audit
+              status={status}
+              rejectReason={rejectReason}
+              onClickResetForm={resetForm}
+              onClickOrgHome={pushOrgHome}
+            />
+          );
         }
       })()}
     </CoreLayout>

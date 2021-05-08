@@ -155,31 +155,36 @@ export const navItems = [
 export const genUserProfileItems = (meData) => {
   if (!meData) return;
 
+  const items = [];
+
   // has been logged in and joined an org
   if (meData.org) {
-    return [
-      {
-        title: '我的企业',
-        link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
-      },
-      {
-        title: '退出登陆',
-        link: `https://tug.tidb.io/logout`,
-      },
-    ];
-  }
-
-  // hasn't joined an org
-  return [
-    {
+    items.push({
+      title: '我的企业',
+      link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
+    });
+  } else {
+    items.push({
       title: '企业会员认证',
       link: `https://tug.tidb.io/account/organization/new`,
-    },
-    {
-      title: '退出登陆',
-      link: `https://tug.tidb.io/logout`,
-    },
-  ];
+    });
+  }
+
+  if (meData.org_invites && meData.org_invites.length) {
+    items.push({
+      title: '企业邀请',
+      link: `https://tug.tidb.io/account/organization/invitations`,
+      badge: meData.org_invites.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+    });
+    console.log(items);
+  }
+
+  items.push({
+    title: '退出登陆',
+    link: `https://tug.tidb.io/logout`,
+  });
+
+  return items;
 };
 
 export const loginUrl = 'https://accounts.pingcap.com/login';

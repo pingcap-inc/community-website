@@ -156,31 +156,35 @@ export const navItems = [
 export const genUserProfileItems = (meData) => {
   if (!meData) return;
 
+  const items = [];
+
   // has been logged in and joined an org
   if (meData.org) {
-    return [
-      {
-        title: 'My Org',
-        link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
-      },
-      {
-        title: 'Logout',
-        link: `https://tug.tidb.io/logout`,
-      },
-    ];
-  }
-
-  // hasn't joined an org
-  return [
-    {
+    items.push({
+      title: 'My Org',
+      link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
+    });
+  } else {
+    items.push({
       title: 'Create Org',
       link: `https://tug.tidb.io/account/organization/new`,
-    },
-    {
-      title: 'Logout',
-      link: `https://tug.tidb.io/logout`,
-    },
-  ];
+    });
+  }
+
+  if (meData.org_invites && meData.org_invites.length) {
+    items.push({
+      title: 'Invitations',
+      link: `https://tug.tidb.io/account/organization/invitations`,
+      badge: meData.org_invites.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+    });
+  }
+
+  items.push({
+    title: 'Logout',
+    link: `https://tug.tidb.io/logout`,
+  });
+
+  return items;
 };
 
 export const loginUrl = 'https://accounts.pingcap.com/login';

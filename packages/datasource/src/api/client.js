@@ -36,12 +36,20 @@ client.interceptors.response.use(
 
     const { data, status } = response;
 
-    if (!config.isDispatchApiErrorDisabled && status !== 400 && typeof window !== 'undefined') {
+    if (
+      !config.isDispatchApiErrorDisabled &&
+      shouldHttpStatusDispatchApiError(status) &&
+      typeof window !== 'undefined'
+    ) {
       dispatchApiError(response);
     }
 
     return Promise.reject(config.isReturnErrorResponse ? response : data);
   }
 );
+
+const shouldHttpStatusDispatchApiError = (status) => {
+  return status !== 400 && status !== 409;
+};
 
 export default client;

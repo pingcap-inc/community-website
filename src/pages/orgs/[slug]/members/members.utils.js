@@ -21,9 +21,9 @@ const genRoleMenu = ({ onRoleMenuClick, role }) => (
   </Styled.RoleMenu>
 );
 
-export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleChange, isAdmin }) => {
+export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleChange, isAdmin }) => {
   const { data = [] } = membersResp;
-  const meId = meResp.data?.id;
+  const meId = meData.id;
 
   return data.map((item) => {
     const { id, name, role } = item;
@@ -66,6 +66,6 @@ export const getDataSource = ({ membersResp = {}, meResp = {}, onDelete, onRoleC
   });
 };
 
-export const isAdmin = (meResp) => {
-  return R.pathEq(['data', 'org', 'role'], ROLE_KEYS.ADMIN)(meResp);
+export const isAdmin = (meData) => {
+  return R.pathEq(['org', 'role'], ROLE_KEYS.ADMIN)(meData);
 };

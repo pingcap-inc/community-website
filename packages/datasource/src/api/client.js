@@ -27,6 +27,12 @@ client.interceptors.response.use(
   ({ data }) => data,
   (err) => {
     const { config, response } = err;
+
+    // Some errors may not have response, like the timeout error
+    if (!response) {
+      return Promise.reject(err);
+    }
+
     const { data, status } = response;
 
     if (!config.isDispatchApiErrorDisabled && status !== 400 && typeof window !== 'undefined') {

@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 
-import { api } from '@tidb-community/datasource';
+import Audit from './audit';
 import Banner from './banner';
 import Form from './form';
-import Audit from './audit';
-import { CoreLayout, SplitLayout } from 'layouts';
-import { featureToggle } from 'utils';
-import { useMe } from 'hooks/me';
 import { AUDIT_STATUS } from './audit/audit.constants';
+import { CoreLayout, SplitLayout } from 'layouts';
+import { MeContext } from 'context';
+import { featureToggle } from 'utils';
 
 export const getServerSideProps = async ({ req }) => {
   // https://vercel.com/docs/environment-variables#system-environment-variables
@@ -25,20 +24,16 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
-  const meResp = await api.me();
-
   return {
-    props: {
-      meResp,
-    },
+    props: {},
   };
 };
 
-const CreateOrganization = ({ meResp }) => {
-  const { meData, reload } = useMe(meResp);
+const CreateOrganization = () => {
   const router = useRouter();
-
+  const { meData, reload } = useContext(MeContext);
   const [showForm, setShowForm] = useState(!(meData.org || meData.org_enroll));
+
   const status = meData.org ? AUDIT_STATUS.PASS : meData.org_enroll?.audit_status;
   const rejectReason = meData.org_enroll?.audit_reason;
 

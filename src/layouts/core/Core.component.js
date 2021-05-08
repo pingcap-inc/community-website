@@ -1,16 +1,18 @@
 import PropTypes from 'prop-types';
-import React from 'react';
-import { Header, Footer, utils } from '@tidb-community/ui';
+import React, { useContext } from 'react';
+import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
+import { MeContext } from 'context';
 import { link as linkUtils } from 'utils';
 
 const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
+  const { meData } = useContext(MeContext);
 
-  const data = getData({ domain, path: router.basePath, locale }).nav;
-  const { navItems: headerNavItems } = data.header;
+  const data = getData({ domain, path: router.basePath, locale, meData }).nav;
+  const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
@@ -20,6 +22,8 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
     if (isSelected) return;
     linkUtils.handleRedirect(router, link, browserLink);
   };
+
+  const currentNav = utils.header.getCurrentNav(headerNavItems, router.pathname);
 
   const headerProps = {
     logo,
@@ -43,7 +47,18 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
 
   return (
     <>
-      <Header {...headerProps} />
+      <Header
+        {...headerProps}
+        userProfileSlot={
+          <UserProfile
+            onNavClick={onNavClick}
+            currentNav={currentNav}
+            items={userProfileNavItems}
+            avatarUrl={meData?.avatar_url}
+            locale={locale}
+          />
+        }
+      />
       {children}
       <Footer {...footerProps} />
     </>

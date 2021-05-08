@@ -23,6 +23,20 @@ router.get('', (req, res) => {
       //   audit_status_display: 'pending',
       //   audit_reason: faker.lorem.paragraph(),
       // },
+      org_invite: [
+        {
+          org_name: 'PingCAP',
+          org_company: '北京平凯星辰科技发展有限公司',
+          inviter_username: 'wangdi',
+          valid: true,
+        },
+        {
+          org_name: 'PongCAP',
+          org_company: '北京乓凯星辰科技发展有限公司',
+          inviter_username: 'dangwi',
+          valid: false,
+        },
+      ],
     },
   })(req, res);
 

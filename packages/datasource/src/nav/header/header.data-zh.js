@@ -151,3 +151,33 @@ export const navItems = [
     ],
   },
 ];
+
+export const genUserProfileItems = (meData) => {
+  if (!meData) return;
+
+  // has been logged in and joined an org
+  if (meData.org) {
+    return [
+      {
+        title: '我的企业',
+        link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
+      },
+      {
+        title: '退出登陆',
+        link: `https://tug.tidb.io/logout`,
+      },
+    ];
+  }
+
+  // hasn't joined an org
+  return [
+    {
+      title: '企业会员认证',
+      link: `https://tug.tidb.io/account/organization/new`,
+    },
+    {
+      title: '退出登陆',
+      link: `https://tug.tidb.io/logout`,
+    },
+  ];
+};

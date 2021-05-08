@@ -1,30 +1,32 @@
 import { css } from 'styled-components';
 
 import * as colors from '../colors';
-import * as mixins from '../mixins';
 
 export default css`
   .ant-btn {
-    ${mixins.verticalLineMiddle('40px')};
+    height: 40px;
+    line-height: 38px;
     padding: 0 16px;
     text-transform: uppercase;
     text-shadow: none;
     box-shadow: none;
 
-    &:hover:not(&-link):not(&-primary),
-    &:focus:not(&-link):not(&-primary) {
+    &:hover:not(&-link):not(&-primary):not(&-text),
+    &:focus:not(&-link):not(&-primary):not(&-text) {
       color: ${colors.B1};
       border-color: ${colors.B1};
     }
 
     &-sm {
-      ${mixins.verticalLineMiddle('32px')};
+      height: 32px;
+      line-height: 30px;
       padding: 0 14px;
       font-size: 14px;
     }
 
     &-lg {
-      ${mixins.verticalLineMiddle('48px')};
+      height: 48px;
+      line-height: 46px;
       font-size: 20px;
     }
 

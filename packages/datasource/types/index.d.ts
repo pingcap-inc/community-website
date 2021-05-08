@@ -1,5 +1,6 @@
 import { Nav } from './nav';
 import { form } from './form';
+import { MeData } from '../src/api/me';
 
 export * as api from '../src/api';
 export { useApiErrorListener } from '../src/api/events';
@@ -20,6 +21,7 @@ type GetDataParams = {
   locale: Locale;
   env?: Env; // default is process.env.NEXT_PUBLIC_RUNTIME_ENV
   envDomainConfig?: EnvDomainConfig; // default is configured in this package
+  meData?: MeData;
 };
 
 export function getData(params: GetDataParams): Data;

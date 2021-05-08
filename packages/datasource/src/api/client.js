@@ -30,6 +30,7 @@ client.interceptors.response.use(
 
     // Some errors may not have response, like the timeout error
     if (!response) {
+      dispatchApiError(err);
       return Promise.reject(err);
     }
 

@@ -182,3 +182,5 @@ export const genUserProfileItems = (meData) => {
     },
   ];
 };
+
+export const loginUrl = 'https://accounts.pingcap.com/login';

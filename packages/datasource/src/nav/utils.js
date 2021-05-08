@@ -16,28 +16,34 @@ export const replaceNavLinks = ({ items, rules = [] }) => {
     }
 
     if (R.is(String, item.link)) {
-      for (const { urlPrefixRegexp, replacement } of rules) {
-        if (!urlPrefixRegexp || !urlPrefixRegexp.test(item.link)) {
-          continue;
-        }
-
-        // stop replacing if replacement is false
-        if (replacement === false) {
-          break;
-        }
-
-        // return '/' as root path if the link is totally matched
-        newItem.link = item.link.replace(urlPrefixRegexp, replacement || '') || '/';
-
-        // only match first rule
-        break;
-      }
+      newItem.link = replaceLink({ link: item.link, rules });
     }
 
     newItems.push(newItem);
   }
 
   return newItems;
+};
+
+export const replaceLink = ({ link, rules }) => {
+  for (const { urlPrefixRegexp, replacement } of rules) {
+    if (!urlPrefixRegexp || !urlPrefixRegexp.test(link)) {
+      continue;
+    }
+
+    // stop replacing if replacement is false
+    if (replacement === false) {
+      break;
+    }
+
+    // return '/' as root path if the link is totally matched
+    link = link.replace(urlPrefixRegexp, replacement || '') || '/';
+
+    // only match first rule
+    break;
+  }
+
+  return link;
 };
 
 export const buildUrlPrefixPattern = ({ domain, path } = {}) => {

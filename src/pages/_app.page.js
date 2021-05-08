@@ -4,7 +4,7 @@ import Error from 'next/error';
 import React, { useEffect, useState } from 'react';
 import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
-import { constants, createAppGlobalStyle } from '@tidb-community/ui';
+import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 import { message } from 'antd';
 
 import 'components/Button/Button.scss';
@@ -27,7 +27,13 @@ const fetcher = (path, params) => {
 };
 
 const App = ({ Component, pageProps }) => {
-  useApiErrorListener(({ status, statusText, data }) => {
+  useApiErrorListener((err) => {
+    if (!err.status) {
+      message.error(utils.errors.getErrorMessage(err));
+      return;
+    }
+
+    const { status, statusText, data } = err;
     if (status === 401) {
       // TODO: jump to login page
     } else if (status === 403) {
@@ -47,7 +53,7 @@ const App = ({ Component, pageProps }) => {
 
   if (has403) return <Error statusCode={403} />;
 
-  const meData = meResp?.data || [];
+  const meData = meResp?.data || undefined;
 
   return (
     <SWRConfig

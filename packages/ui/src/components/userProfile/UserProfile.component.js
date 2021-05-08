@@ -7,7 +7,7 @@ import * as Styled from './userProfile.styled';
 import { menu as menuUtils } from '../../utils';
 import { t } from './userProfile.locale';
 
-const UserProfile = ({ avatarUrl, items, onClickLogin, locale, currentNav, onNavClick }) => {
+const UserProfile = ({ avatarUrl, items, onLoginClick, locale, currentNav, onNavClick }) => {
   const _t = t(locale);
 
   if (items) {
@@ -28,7 +28,7 @@ const UserProfile = ({ avatarUrl, items, onClickLogin, locale, currentNav, onNav
   }
 
   return (
-    <Button type="primary" size="small" icon={<UserOutlined />} onClick={onClickLogin}>
+    <Button type="primary" size="small" icon={<UserOutlined />} onClick={onLoginClick}>
       {_t('login')}
     </Button>
   );
@@ -39,7 +39,7 @@ UserProfile.propTypes = {
   currentNav: PropTypes.string.isRequired,
   items: PropTypes.array,
   locale: PropTypes.oneOf(['zh', 'en']),
-  onClickLogin: PropTypes.func,
+  onLoginClick: PropTypes.func,
   onNavClick: PropTypes.func.isRequired,
 };
 

@@ -4,19 +4,19 @@ import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
+import { MeContext } from 'context';
 import { link as linkUtils } from 'utils';
-import { MeContext } from '../../context';
 
 const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
-  const { meData } = useContext(MeContext)
+  const { meData } = useContext(MeContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
-  const logo = <img alt={title} src='/images/community/logo.svg' />;
+  const logo = <img alt={title} src="/images/community/logo.svg" />;
 
   const onNavClick = ({ link, browserLink, isSelected }) => {
     if (isSelected) return;

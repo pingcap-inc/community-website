@@ -7,8 +7,8 @@ export default {
   component: UserProfile,
 };
 
-const Template = ({ login, avatarUrl, onClickLogin, locale, currentNav, onNavClick }) => {
-  const items = login ? [{ title: 'link', link: 'link' }] : undefined
+const Template = ({ avatarUrl, currentNav, hasLoggedIn, locale, onClickLogin, onNavClick }) => {
+  const items = hasLoggedIn ? [{ title: 'link', link: 'link' }] : undefined;
 
   return (
     <UserProfile
@@ -25,7 +25,7 @@ const Template = ({ login, avatarUrl, onClickLogin, locale, currentNav, onNavCli
 export const SearchCompany = Template.bind({});
 
 SearchCompany.args = {
-  login: false,
+  avatarUrl: 'https://cdn.fakercloud.com/avatars/bassamology_128.jpg',
+  hasLoggedIn: false,
   locale: 'zh',
-  avatarUrl: `https://cdn.fakercloud.com/avatars/bassamology_128.jpg`
 };

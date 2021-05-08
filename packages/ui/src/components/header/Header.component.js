@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { Grid, Menu } from 'antd';
 
 import * as Styled from './header.styled';
-import { menuPopupId } from './header.constants';
 import { menu as menuUtils } from '../../utils';
+import { menuPopupId } from './header.constants';
 
 const { useBreakpoint } = Grid;
 

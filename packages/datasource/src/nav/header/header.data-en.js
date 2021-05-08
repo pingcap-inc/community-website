@@ -154,34 +154,31 @@ export const navItems = [
 ];
 
 export const genUserProfileItems = (meData) => {
-  if (meData) {
-    // already login
-    if (meData.org) {
-      // already in a org
-      return [
-        {
-          title: 'My Org',
-          link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
-        },
-        {
-          title: 'Logout',
-          link: `https://tug.tidb.io/logout`,
-        },
-      ];
-    } else {
-      // not in a org
-      return [
-        {
-          title: 'Create Org',
-          link: `https://tug.tidb.io/account/organization/new`,
-        },
-        {
-          title: 'Logout',
-          link: `https://tug.tidb.io/logout`,
-        },
-      ];
-    }
-  } else {
-    return undefined;
+  if (!meData) return;
+
+  // has been logged in and joined an org
+  if (meData.org) {
+    return [
+      {
+        title: 'My Org',
+        link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
+      },
+      {
+        title: 'Logout',
+        link: `https://tug.tidb.io/logout`,
+      },
+    ];
   }
+
+  // hasn't joined an org
+  return [
+    {
+      title: 'Create Org',
+      link: `https://tug.tidb.io/account/organization/new`,
+    },
+    {
+      title: 'Logout',
+      link: `https://tug.tidb.io/logout`,
+    },
+  ];
 };

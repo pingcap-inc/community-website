@@ -6,12 +6,19 @@ import { getTitle } from '../utils';
 
 export default {
   title: getTitle('Header'),
-  component: Header,
+  argTypes: {
+    locale: {
+      control: {
+        type: 'radio',
+        options: ['zh', 'en'],
+      },
+    },
+  },
 };
 
-const Template = ({ showUserProfile, locale, login, hasOrg, onNavClick, avatarUrl }) => {
+const Template = ({ avatarUrl, hasOrg, isLoggedIn, isShowUserProfile, locale, onNavClick }) => {
   let meData;
-  if (login) {
+  if (isLoggedIn) {
     meData = {
       avatar_url: avatarUrl,
     };
@@ -24,7 +31,7 @@ const Template = ({ showUserProfile, locale, login, hasOrg, onNavClick, avatarUr
 
   const { navItems, userProfileNavItems } = getData({ locale, meData }).nav.header;
   const title = 'TiDB Community';
-  const logo = <img alt={title} src='/images/community/logo.svg' />;
+  const logo = <img alt={title} src="/images/community/logo.svg" />;
   const currentNav = utils.header.getCurrentNav(navItems, 'https://contributor.tidb.io/people/committer');
 
   return (
@@ -34,28 +41,28 @@ const Template = ({ showUserProfile, locale, login, hasOrg, onNavClick, avatarUr
       currentNav={currentNav}
       title={title}
       userProfileSlot={
-        showUserProfile
-          ? (
-            <UserProfile
-              onNavClick={onNavClick}
-              currentNav={currentNav}
-              items={userProfileNavItems}
-              locale={locale}
-              avatarUrl={avatarUrl}
-            />
-          )
-          : undefined
+        isShowUserProfile ? (
+          <UserProfile
+            onNavClick={onNavClick}
+            currentNav={currentNav}
+            items={userProfileNavItems}
+            locale={locale}
+            avatarUrl={avatarUrl}
+          />
+        ) : (
+          undefined
+        )
       }
     />
   );
 };
 
-export const WithNav = Template.bind({});
+export const WithUserProfile = Template.bind({});
 
-WithNav.args = {
-  showUserProfile: false,
-  locale: 'zh',
-  login: false,
+WithUserProfile.args = {
+  avatarUrl: 'https://cdn.fakercloud.com/avatars/bassamology_128.jpg',
   hasOrg: false,
-  avatarUrl: `https://cdn.fakercloud.com/avatars/bassamology_128.jpg`,
+  isLoggedIn: false,
+  isShowUserProfile: false,
+  locale: 'zh',
 };

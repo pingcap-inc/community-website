@@ -28,8 +28,8 @@ client.interceptors.response.use(
   (err) => {
     const { config, response } = err;
 
+    // Some errors may not have response, like the timeout error
     if (!response) {
-      // Some err may not has response. Like TIMEOUT.
       return Promise.reject(err);
     }
 

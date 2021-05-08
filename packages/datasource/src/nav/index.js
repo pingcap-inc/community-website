@@ -2,13 +2,13 @@ import * as R from 'ramda';
 
 import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
-import { buildUrlPrefixPattern, replaceNavLinks, _applyTidbIoSpecRule } from './utils';
+import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule } from './utils';
 
 export const getData = ({ domain, domainConfig, env, locale, path, meData }) => {
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
-  const { navItems: headerNavItems, genUserProfileItems, ...restHeaderData } = R.propOr(
+  const { navItems: headerNavItems, genUserProfileItems, loginUrl, ...restHeaderData } = R.propOr(
     headerData[defaultLocale],
     locale
   )(headerData);
@@ -48,6 +48,10 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
       }),
       userProfileNavItems: replaceNavLinks({
         items: userProfileNavItems,
+        rules,
+      }),
+      loginUrl: replaceLink({
+        link: loginUrl,
         rules,
       }),
       ...restHeaderData,

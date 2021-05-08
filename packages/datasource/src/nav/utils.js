@@ -16,7 +16,7 @@ export const replaceNavLinks = ({ items, rules = [] }) => {
     }
 
     if (R.is(String, item.link)) {
-      item.link = replaceLink({ link: item.link, rules });
+      newItem.link = replaceLink({ link: item.link, rules });
     }
 
     newItems.push(newItem);

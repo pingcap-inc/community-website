@@ -30,7 +30,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
     title,
     onNavClick,
     navItems: headerNavItems,
-    currentNav: utils.header.getCurrentNav(headerNavItems, router.pathname),
+    currentNav,
     onTitleClick: () => {
       document.location.href = 'https://tidb.io';
     },

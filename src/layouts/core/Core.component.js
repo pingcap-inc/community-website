@@ -12,7 +12,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
   const { meData } = useContext(MeContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
-  const { navItems: headerNavItems, userProfileNavItems } = data.header;
+  const { navItems: headerNavItems, userProfileNavItems, loginUrl } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
@@ -45,6 +45,10 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
     hasMargin,
   };
 
+  const doLogin = () => {
+    window.open(`${loginUrl}?redirect_to=${encodeURI(window.location.href)}`, '_top');
+  };
+
   return (
     <>
       <Header
@@ -52,6 +56,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
         userProfileSlot={
           <UserProfile
             onNavClick={onNavClick}
+            onLoginClick={doLogin}
             currentNav={currentNav}
             items={userProfileNavItems}
             avatarUrl={meData?.avatar_url}

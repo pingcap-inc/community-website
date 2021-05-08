@@ -31,7 +31,7 @@ export const getServerSideProps = async ({ req }) => {
 
 const CreateOrganization = () => {
   const router = useRouter();
-  const { meData, reload } = useContext(MeContext);
+  const { meData, meMutate } = useContext(MeContext);
   const [showForm, setShowForm] = useState(!(meData.org || meData.org_enroll));
 
   const status = meData.org ? AUDIT_STATUS.PASS : meData.org_enroll?.audit_status;
@@ -47,7 +47,7 @@ const CreateOrganization = () => {
           return (
             <SplitLayout dividerColor={'rgba(108, 116, 150, 0.4)'} marginTop="30px" marginBottom="41px">
               <Banner />
-              <Form onSubmit={reload} />
+              <Form onSubmit={meMutate} />
             </SplitLayout>
           );
         } else {

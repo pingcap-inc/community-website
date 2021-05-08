@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
 import { Button, Modal, Table } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -7,6 +7,7 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
 import * as utils from './members.utils';
+import AddModal from './addModal';
 import Layout from 'pages/orgs/layout';
 import { CommunityHead } from 'components/head';
 import { MeContext } from 'context';
@@ -37,6 +38,7 @@ const Members = () => {
   const { slug } = router.query;
   const { data: membersResp, mutate } = useSWR(['orgs.org.members', router.query]);
   const { meData } = useContext(MeContext);
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
 
   const onRoleChange = async ({ id, role }) => {
@@ -58,6 +60,10 @@ const Members = () => {
         false
       );
     } catch (err) {}
+  };
+
+  const onAddMembers = () => {
+    setIsAddModalVisible(true);
   };
 
   const onDelete = ({ id, isMyself }) => {
@@ -108,6 +114,12 @@ const Members = () => {
     columns,
   };
 
+  const addModalProps = {
+    footer: null,
+    onCancel: () => setIsAddModalVisible(false),
+    visible: isAddModalVisible,
+  };
+
   return (
     <>
       <CommunityHead title="企业成员" />
@@ -119,7 +131,7 @@ const Members = () => {
           </Styled.Title>
 
           {isAdmin && (
-            <Button type="primary" size="small">
+            <Button type="primary" size="small" onClick={onAddMembers}>
               添加成员
             </Button>
           )}
@@ -127,6 +139,8 @@ const Members = () => {
 
         <Table {...tableProps} pagination={false} />
       </Layout>
+
+      <AddModal {...addModalProps} />
     </>
   );
 };

@@ -23,7 +23,7 @@ router.get('', (req, res) => {
       //   audit_status_display: 'pending',
       //   audit_reason: faker.lorem.paragraph(),
       // },
-      org_invites: [
+      org_invitations: [
         {
           id: 1,
           org_name: 'PingCAP',

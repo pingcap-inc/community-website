@@ -13,7 +13,7 @@ type MeData = {
     audit_status_display: string;
     audit_reason: string;
   };
-  org_invites?: {
+  org_invitations?: {
     org_name: string;
     org_company: string;
     inviter_username: string;

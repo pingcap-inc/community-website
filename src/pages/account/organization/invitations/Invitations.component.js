@@ -14,13 +14,13 @@ const Invitations = () => {
     return <></>;
   }
 
-  if (!(meData.org_invites && meData.org_invites.length)) {
+  if (!(meData.org_invitations && meData.org_invitations.length)) {
     return <Empty>{emptyText}</Empty>;
   }
 
-  const responseInvite = (id, action) => async () => {
+  const responseInvitation = (id, action) => async () => {
     try {
-      await api.orgs.invites.responseInvite({ id, action });
+      await api.orgs.invitations.responseInvitation({ id, action });
       reload();
     } catch (e) {
       message.error(utils.errors.getErrorMessage(e), 5);
@@ -30,49 +30,47 @@ const Invitations = () => {
   return (
     <Styled.Container>
       <List
-        dataSource={meData.org_invites}
-        renderItem={invitation => (
+        dataSource={meData.org_invitations}
+        renderItem={(invitation) => (
           <List.Item
             key={invitation.id}
             actions={
-              invitation.valid ? [
-                <Popconfirm
-                  title={`确认加入"${invitation.org_company}"？`}
-                  onConfirm={responseInvite(invitation.id, 'accept')}
-                  okText={okText}
-                  cancelText={cancelText}
-                >
-                <Button
-                  type='link'
-                  size='small'
-                >
-                  同意
-                </Button>
-              </Popconfirm>,
-                <Popconfirm
-                  title={`确认拒绝加入"${invitation.org_company}"？`}
-                  onConfirm={responseInvite(invitation.id, 'refuse')}
-                  okText={okText}
-                  cancelText={cancelText}
-                >
-                <Button
-                  type='link'
-                  size='small'
-                >
-                  拒绝
-                </Button>
-              </Popconfirm>,
-              ] : [<Button size='small' type='text' disabled>已失效</Button>]
+              invitation.valid
+                ? [
+                    <Popconfirm
+                      title={`确认加入"${invitation.org_company}"？`}
+                      onConfirm={responseInvitation(invitation.id, 'accept')}
+                      okText={okText}
+                      cancelText={cancelText}
+                    >
+                      <Button type="link" size="small">
+                        同意
+                      </Button>
+                    </Popconfirm>,
+                    <Popconfirm
+                      title={`确认拒绝加入"${invitation.org_company}"？`}
+                      onConfirm={responseInvitation(invitation.id, 'refuse')}
+                      okText={okText}
+                      cancelText={cancelText}
+                    >
+                      <Button type="link" size="small">
+                        拒绝
+                      </Button>
+                    </Popconfirm>,
+                  ]
+                : [
+                    <Button size="small" type="text" disabled>
+                      已失效
+                    </Button>,
+                  ]
             }
           >
             {invitation.inviter_username}
             邀请您加入
-            {invitation.org_company}
-            。
+            {invitation.org_company}。
           </List.Item>
         )}
       />
-
     </Styled.Container>
   );
 };

@@ -171,11 +171,11 @@ export const genUserProfileItems = (meData) => {
     });
   }
 
-  if (meData.org_invites && meData.org_invites.length) {
+  if (meData.org_invitations && meData.org_invitations.length) {
     items.push({
       title: 'Invitations',
       link: `https://tug.tidb.io/account/organization/invitations`,
-      badge: meData.org_invites.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+      badge: meData.org_invitations.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
     });
   }
 

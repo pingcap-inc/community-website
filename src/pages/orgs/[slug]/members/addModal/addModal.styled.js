@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Input } from 'antd';
-import { colors } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import { Modal as AntModal } from 'antd';
 
@@ -15,11 +15,14 @@ export const Modal = styled(AntModal).attrs({ width: 690 })`
 
 export const Panel = styled.div`
   flex: 1;
-  padding: 16px;
 
   &:first-child {
     border-right: 1px solid ${colors.T2};
   }
+`;
+
+export const SearchWrapper = styled.div`
+  padding: 16px;
 `;
 
 export const Searchbox = styled(Input)`
@@ -35,6 +38,28 @@ export const Searchbox = styled(Input)`
       &:hover {
         color: ${colors.F2};
       }
+
+      svg {
+        ${mixins.size('12px')};
+      }
+    }
+  }
+`;
+
+export const MemberList = styled.div`
+  label {
+    ${mixins.flexVerticalCenter()};
+    margin-left: 0 !important;
+    padding: 8px 16px;
+
+    img {
+      ${mixins.size('32px')};
+      border-radius: 50%;
+      margin-right: 8px;
+    }
+
+    &:hover {
+      background: ${colors.M2};
     }
   }
 `;

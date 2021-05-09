@@ -7,10 +7,13 @@ import { useDebounce } from 'ahooks';
 import { useRouter } from 'next/router';
 
 import * as Styled from './addModal.styled';
+import RoleDropdown from '../roleDropdown';
+import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
 
 const AddModal = ({ onCancel, visible }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
+  const [role, setRole] = useState(ROLE_KEYS.MEMBER);
   const debounced = useDebounce({ value: searchQuery, options: { wait: 300 } });
 
   const word = debounced.value;
@@ -18,14 +21,6 @@ const AddModal = ({ onCancel, visible }) => {
   const { data: userResp } = useSWR(word && ['orgs.org.findUser', JSON.stringify({ slug: router.query.slug, word })]);
 
   const users = R.propOr([], 'data')(userResp);
-
-  const searchboxProps = {
-    onChange: (e) => setSearchQuery(e.target.value),
-    placeholder: '输入用户名搜索',
-    prefix: <SearchOutlined />,
-    suffix: searchQuery && <CloseCircleFilled onClick={(e) => setSearchQuery('')} />,
-    value: searchQuery,
-  };
 
   const modalProps = {
     centered: true,
@@ -35,6 +30,22 @@ const AddModal = ({ onCancel, visible }) => {
       onCancel();
     },
     visible,
+  };
+
+  const searchboxProps = {
+    onChange: (e) => setSearchQuery(e.target.value),
+    placeholder: '输入用户名搜索',
+    prefix: <SearchOutlined />,
+    suffix: searchQuery && <CloseCircleFilled onClick={(e) => setSearchQuery('')} />,
+    value: searchQuery,
+  };
+
+  const roleDropdownProps = {
+    onRoleMenuClick: (e) => {
+      setRole(e.key);
+    },
+    role,
+    roleName: ROLE_NAMES[role],
   };
 
   return (
@@ -59,7 +70,10 @@ const AddModal = ({ onCancel, visible }) => {
         <Styled.Header>已选：{users.length}人</Styled.Header>
         <Styled.Content>Content</Styled.Content>
         <Styled.Footer>
-          <Styled.AssignRole>添加为：</Styled.AssignRole>
+          <Styled.AssignRole>
+            <label>添加为：</label>
+            <RoleDropdown {...roleDropdownProps} />
+          </Styled.AssignRole>
           <Button type="primary" size="small">
             添加
           </Button>

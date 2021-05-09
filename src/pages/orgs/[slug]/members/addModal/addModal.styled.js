@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 import { Input } from 'antd';
-import { colors, mixins } from '@tidb-community/ui';
-
 import { Modal as AntModal } from 'antd';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const Modal = styled(AntModal).attrs({ width: 690 })`
   .ant-modal {
@@ -86,4 +85,11 @@ export const Footer = styled.div`
   padding: 16px;
 `;
 
-export const AssignRole = styled.div``;
+export const AssignRole = styled.div`
+  ${mixins.flexVerticalCenter()};
+
+  label {
+    cursor: text;
+    color: ${colors.C4};
+  }
+`;

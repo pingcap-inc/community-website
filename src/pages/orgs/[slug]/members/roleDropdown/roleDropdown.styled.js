@@ -5,6 +5,8 @@ import { colors, mixins } from '@tidb-community/ui';
 
 export const Role = styled.div`
   ${mixins.flexVerticalCenter()};
+  color: ${colors.F1};
+  cursor: pointer;
 
   .anticon {
     margin-left: 0.5rem;

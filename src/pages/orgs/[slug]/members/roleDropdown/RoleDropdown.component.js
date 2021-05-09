@@ -9,7 +9,7 @@ const genRoleMenu = ({ onRoleMenuClick, role }) => (
   <Styled.RoleMenu onClick={onRoleMenuClick} selectedKeys={[role]}>
     <Menu.Item key={ROLE_KEYS.ADMIN}>
       <h3>{ROLE_NAMES[ROLE_KEYS.ADMIN]}</h3>
-      <p>可管理成语，申请企业认证</p>
+      <p>可管理成员，申请企业认证</p>
       <CheckOutlined />
     </Menu.Item>
     <Menu.Item key={ROLE_KEYS.MEMBER}>

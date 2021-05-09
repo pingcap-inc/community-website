@@ -14,6 +14,8 @@ export const Modal = styled(AntModal).attrs({ width: 690 })`
 `;
 
 export const Panel = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
 
   &:first-child {
@@ -66,3 +68,22 @@ export const MemberList = styled.div`
     }
   }
 `;
+
+export const Header = styled.div`
+  ${mixins.verticalLineMiddle('56px')};
+  color: ${colors.F1};
+  padding-left: 16px;
+`;
+
+export const Content = styled.div`
+  flex: 1;
+  padding: 0 16px;
+`;
+
+export const Footer = styled.div`
+  ${mixins.flexVerticalCenter()};
+  justify-content: space-between;
+  padding: 16px;
+`;
+
+export const AssignRole = styled.div``;

@@ -50,7 +50,8 @@ export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleC
       role: isAdmin ? (
         <Dropdown overlay={genRoleMenu({ onRoleMenuClick, role })} trigger="click">
           <Styled.Role>
-            {roleName} <DownOutlined />
+            {roleName}
+            <DownOutlined />
           </Styled.Role>
         </Dropdown>
       ) : (

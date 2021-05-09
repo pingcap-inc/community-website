@@ -7,6 +7,7 @@ import { useDebounce } from 'ahooks';
 import { useRouter } from 'next/router';
 
 import * as Styled from './addModal.styled';
+import * as utils from './addModal.utils';
 import RoleDropdown from '../roleDropdown';
 import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
 
@@ -44,6 +45,10 @@ const ModalContent = () => {
     }
   };
 
+  const onUserUnselected = (userId) => (e) => {
+    setSelectedUsers(selectedUsers.filter((user) => user.id !== userId));
+  };
+
   return (
     <>
       <Styled.Panel>
@@ -56,7 +61,11 @@ const ModalContent = () => {
             users.map((user) => {
               const { id, username, avatar_url } = user;
               return (
-                <Checkbox key={id} onChange={onUserSelected(user)}>
+                <Checkbox
+                  key={id}
+                  onChange={onUserSelected(user)}
+                  checked={utils.isUserSelected({ user, selectedUsers })}
+                >
                   <img alt={username} src={avatar_url} />
                   {username}
                 </Checkbox>
@@ -73,7 +82,7 @@ const ModalContent = () => {
             <Styled.SelectedUser key={id}>
               <img alt={username} src={avatar_url} />
               {username}
-              <CloseOutlined />
+              <CloseOutlined onClick={onUserUnselected(id)} />
             </Styled.SelectedUser>
           ))}
         </Styled.Content>

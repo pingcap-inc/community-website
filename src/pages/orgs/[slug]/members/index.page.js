@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
 import { Button, Modal, Table } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -7,8 +7,10 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
 import * as utils from './members.utils';
+import AddModal from './addModal';
 import Layout from 'pages/orgs/layout';
 import { CommunityHead } from 'components/head';
+import { MeContext } from 'context';
 import { columns } from './members.data';
 import { featureToggle } from 'utils';
 
@@ -26,25 +28,18 @@ export const getServerSideProps = async ({ req }) => {
     };
   }
 
-  // TODO: The logged-in user's data may be retrived from the global context because
-  // it's also consumed in the Header component
-  let meResp = {};
-  try {
-    meResp = await api.me();
-  } catch (err) {}
-
   return {
-    props: {
-      meResp,
-    },
+    props: {},
   };
 };
 
-const Members = ({ meResp }) => {
+const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
   const { data: membersResp, mutate } = useSWR(['orgs.org.members', router.query]);
-  const isAdmin = utils.isAdmin(meResp);
+  const { meData } = useContext(MeContext);
+  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
+  const isAdmin = utils.isAdmin(meData);
 
   const onRoleChange = async ({ id, role }) => {
     try {
@@ -67,6 +62,10 @@ const Members = ({ meResp }) => {
     } catch (err) {}
   };
 
+  const onAddMembers = () => {
+    setIsAddModalVisible(true);
+  };
+
   const onDelete = ({ id, isMyself }) => {
     const config = {
       title: '确定要删除该成员吗？',
@@ -74,6 +73,7 @@ const Members = ({ meResp }) => {
       content: '删除后，该成员将不在享有企业权益',
       okText: '确定',
       cancelText: '取消',
+      centered: true,
 
       async onOk() {
         try {
@@ -94,6 +94,7 @@ const Members = ({ meResp }) => {
           Modal.warn({
             title: '无法退出企业',
             content: err.detail,
+            centered: true,
           });
         }
       },
@@ -108,11 +109,16 @@ const Members = ({ meResp }) => {
     });
   };
 
-  const dataSource = utils.getDataSource({ membersResp, meResp, onDelete, onRoleChange, isAdmin });
+  const dataSource = utils.getDataSource({ membersResp, meData, onDelete, onRoleChange, isAdmin });
 
   const tableProps = {
     dataSource,
     columns,
+  };
+
+  const addModalProps = {
+    onCancel: () => setIsAddModalVisible(false),
+    visible: isAddModalVisible,
   };
 
   return (
@@ -126,7 +132,7 @@ const Members = ({ meResp }) => {
           </Styled.Title>
 
           {isAdmin && (
-            <Button type="primary" size="small">
+            <Button type="primary" size="small" onClick={onAddMembers}>
               添加成员
             </Button>
           )}
@@ -134,6 +140,8 @@ const Members = ({ meResp }) => {
 
         <Table {...tableProps} pagination={false} />
       </Layout>
+
+      <AddModal {...addModalProps} />
     </>
   );
 };

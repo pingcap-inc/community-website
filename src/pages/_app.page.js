@@ -47,13 +47,13 @@ const App = ({ Component, pageProps }) => {
     document.body.classList.add(constants.appClassName);
   }, []);
 
-  const { data: meResp } = useSWR('me', fetcher);
+  const { data: meResp, mutate: meMutate } = useSWR('me', fetcher);
 
   const [has403, setHas403] = useState(false);
 
   if (has403) return <Error statusCode={403} />;
 
-  const meData = meResp?.data || undefined;
+  const meData = meResp?.data;
 
   return (
     <SWRConfig
@@ -62,7 +62,7 @@ const App = ({ Component, pageProps }) => {
       }}
     >
       <GlobalStyle />
-      <MeContext.Provider value={{ meData }}>
+      <MeContext.Provider value={{ meData, meMutate }}>
         <Component {...pageProps} />
       </MeContext.Provider>
     </SWRConfig>

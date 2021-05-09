@@ -23,8 +23,6 @@ const fetcher = (path, params) => {
     params = JSON.parse(params);
   } catch (err) {}
 
-  console.log('param!!', params);
-
   return R.path(path.split('.'), api)(params);
 };
 

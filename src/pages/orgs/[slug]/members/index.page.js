@@ -73,6 +73,7 @@ const Members = () => {
       content: '删除后，该成员将不在享有企业权益',
       okText: '确定',
       cancelText: '取消',
+      centered: true,
 
       async onOk() {
         try {
@@ -93,6 +94,7 @@ const Members = () => {
           Modal.warn({
             title: '无法退出企业',
             content: err.detail,
+            centered: true,
           });
         }
       },
@@ -115,7 +117,6 @@ const Members = () => {
   };
 
   const addModalProps = {
-    footer: null,
     onCancel: () => setIsAddModalVisible(false),
     visible: isAddModalVisible,
   };

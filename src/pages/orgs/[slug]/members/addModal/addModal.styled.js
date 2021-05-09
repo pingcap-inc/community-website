@@ -47,6 +47,9 @@ export const Searchbox = styled(Input)`
 `;
 
 export const MemberList = styled.div`
+  height: 338px;
+  overflow-y: auto;
+
   label {
     ${mixins.flexVerticalCenter()};
     margin-left: 0 !important;

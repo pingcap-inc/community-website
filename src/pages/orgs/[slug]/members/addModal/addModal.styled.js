@@ -1,13 +1,36 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Input } from 'antd';
 import { Modal as AntModal } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
+
+const avatarMixin = () => css`
+  img {
+    ${mixins.size('32px')};
+    border-radius: 50%;
+    margin-right: 8px;
+  }
+`;
+
+const closeButtonMixin = () => css`
+  .anticon-close {
+    cursor: pointer;
+    color: ${colors.C4};
+
+    &:hover {
+      color: ${colors.F2};
+    }
+  }
+`;
 
 export const Modal = styled(AntModal).attrs({ width: 690 })`
   .ant-modal {
     &-body {
       display: flex;
       padding: 0;
+    }
+
+    &-close-x {
+      ${closeButtonMixin()};
     }
   }
 `;
@@ -52,15 +75,10 @@ export const MemberList = styled.div`
   overflow-y: auto;
 
   label {
+    ${avatarMixin()};
     ${mixins.flexVerticalCenter()};
     margin-left: 0 !important;
     padding: 8px 16px;
-
-    img {
-      ${mixins.size('32px')};
-      border-radius: 50%;
-      margin-right: 8px;
-    }
 
     &:hover {
       background: ${colors.M2};
@@ -77,6 +95,21 @@ export const Header = styled.div`
 export const Content = styled.div`
   flex: 1;
   padding: 0 16px;
+`;
+
+export const SelectedUser = styled.div`
+  ${avatarMixin()};
+  ${closeButtonMixin()};
+  ${mixins.flexVerticalCenter()};
+  padding: 8px 0;
+  position: relative;
+
+  .anticon {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -7px;
+  }
 `;
 
 export const Footer = styled.div`

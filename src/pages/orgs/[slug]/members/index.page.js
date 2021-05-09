@@ -36,7 +36,7 @@ export const getServerSideProps = async ({ req }) => {
 const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const { data: membersResp, mutate } = useSWR(['orgs.org.members', router.query]);
+  const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
   const { meData } = useContext(MeContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
@@ -44,7 +44,7 @@ const Members = () => {
   const onRoleChange = async ({ id, role }) => {
     try {
       await api.orgs.org.updateMemberRole({ role, slug, userId: id });
-      mutate(
+      mutateMembers(
         {
           ...membersResp,
           data: membersResp.data.map((item) => {
@@ -83,7 +83,7 @@ const Members = () => {
             router.push('/community', '/');
           }
 
-          mutate(
+          mutateMembers(
             {
               ...membersResp,
               data: membersResp.data.filter((item) => item.id !== id),
@@ -117,6 +117,7 @@ const Members = () => {
   };
 
   const addModalProps = {
+    mutateMembers,
     onCancel: () => setIsAddModalVisible(false),
     visible: isAddModalVisible,
   };

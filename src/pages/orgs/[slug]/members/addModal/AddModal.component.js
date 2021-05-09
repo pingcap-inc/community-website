@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Checkbox } from 'antd';
 import { CloseCircleFilled, CloseOutlined, SearchOutlined } from '@ant-design/icons';
+import { api } from '@tidb-community/datasource';
 import { useDebounce } from 'ahooks';
 import { useRouter } from 'next/router';
 
@@ -11,14 +12,15 @@ import * as utils from './addModal.utils';
 import RoleDropdown from '../roleDropdown';
 import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
 
-const ModalContent = () => {
+const ModalContent = ({ mutateMembers, onCancel }) => {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [role, setRole] = useState(ROLE_KEYS.MEMBER);
   const debounced = useDebounce({ value: searchQuery, options: { wait: 300 } });
-  const word = debounced.value;
-  const { data: userResp } = useSWR(word && ['orgs.org.findUser', JSON.stringify({ slug: router.query.slug, word })]);
+  const { slug } = router.query;
+  const { value: word } = debounced;
+  const { data: userResp } = useSWR(word && ['orgs.org.findUser', JSON.stringify({ slug, word })]);
   const users = R.propOr([], 'data')(userResp);
 
   const searchboxProps = {
@@ -47,6 +49,15 @@ const ModalContent = () => {
 
   const onUserUnselected = (userId) => (e) => {
     setSelectedUsers(selectedUsers.filter((user) => user.id !== userId));
+  };
+
+  const onAdd = async (e) => {
+    const userIds = selectedUsers.map(({ id }) => id);
+    try {
+      await api.orgs.org.addMembers({ role, slug, userIds });
+      mutateMembers();
+      onCancel();
+    } catch (err) {}
   };
 
   return (
@@ -92,7 +103,7 @@ const ModalContent = () => {
             <label>添加为：</label>
             <RoleDropdown {...roleDropdownProps} />
           </Styled.AssignRole>
-          <Button type="primary" size="small">
+          <Button type="primary" size="small" onClick={onAdd}>
             添加
           </Button>
         </Styled.Footer>
@@ -101,7 +112,7 @@ const ModalContent = () => {
   );
 };
 
-const AddModal = ({ onCancel, visible }) => {
+const AddModal = ({ mutateMembers, onCancel, visible }) => {
   const modalProps = {
     centered: true,
     destroyOnClose: true,
@@ -110,9 +121,14 @@ const AddModal = ({ onCancel, visible }) => {
     visible,
   };
 
+  const contentProps = {
+    mutateMembers,
+    onCancel,
+  };
+
   return (
     <Styled.Modal {...modalProps}>
-      <ModalContent />
+      <ModalContent {...contentProps} />
     </Styled.Modal>
   );
 };

@@ -35,8 +35,9 @@ export const Name = styled.h2`
   }
 `;
 
-export const Description = styled.p`
+export const Introduction = styled.p`
   ${mixins.typography('p2')};
+  margin-bottom: 0;
 `;
 
 export const Tabs = styled(AntTabs)`

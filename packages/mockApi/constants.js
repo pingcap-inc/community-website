@@ -9,7 +9,13 @@ const ROLES = {
   MEMBER: 'member',
 };
 
+const ROLE_NAMES = {
+  [ROLES.ADMIN]: '管理员',
+  [ROLES.MEMBER]: '成员',
+};
+
 module.exports = {
   MESSAGES,
   ROLES,
+  ROLE_NAMES,
 };

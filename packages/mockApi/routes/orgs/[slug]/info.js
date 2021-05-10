@@ -1,12 +1,17 @@
+const faker = require('faker');
+
 const { errorResp, successResp, wait } = require('../../../utils');
+
+const { company, image, lorem } = faker;
 
 module.exports = async (req, res) => {
   await wait();
   const { slug } = req.params;
 
-  if (slug === '400') {
+  if (slug === '403') {
     return errorResp({
-      detail: 'you are the only admin of the organization, please appoint an admin before quit',
+      code: 403,
+      detail: 'you do not have permission to perform this action',
     })(req, res);
   } else if (slug === '404') {
     return errorResp({
@@ -15,5 +20,11 @@ module.exports = async (req, res) => {
     })(req, res);
   }
 
-  successResp()(req, res);
+  successResp({
+    data: {
+      name: company.companyName(),
+      introduction: lorem.paragraph(),
+      logo: image.avatar(),
+    },
+  })(req, res);
 };

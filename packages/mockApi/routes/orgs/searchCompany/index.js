@@ -3,7 +3,7 @@ const { MESSAGES } = require('../../../constants');
 const { errorResp, successResp } = require('../../../utils');
 
 module.exports = (req, res) => {
-  const { word } = req.body;
+  const { word } = req.query;
 
   if (word === '429') {
     return errorResp({ code: 429, detail: MESSAGES.TOO_MANY_REQUESTS })(req, res);

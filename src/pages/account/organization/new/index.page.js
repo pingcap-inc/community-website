@@ -42,7 +42,7 @@ const CreateOrganization = () => {
   const rejectReason = meData?.org_enroll?.audit_reason;
 
   const resetForm = () => setShowForm(true);
-  const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/home`);
+  const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/members`);
 
   return (
     <CoreLayout domain="tug.tidb.io">

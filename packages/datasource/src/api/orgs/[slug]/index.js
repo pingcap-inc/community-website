@@ -1,5 +1,9 @@
 import client from '../../client';
 
+export const info = ({ slug }) => {
+  return client.get(`/api/orgs/${slug}`);
+};
+
 export const members = ({ slug }) => {
   return client.get(`/api/orgs/${slug}/members`);
 };

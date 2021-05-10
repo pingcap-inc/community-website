@@ -6,7 +6,7 @@ import VerifiedSVG from 'pages/orgs/verified.svg';
 
 const { TabPane } = Tabs;
 
-const Banner = ({ description, logo, name }) => (
+const Banner = ({ introduction, logo, name }) => (
   <Styled.Container>
     <Styled.Content>
       <Styled.Information>
@@ -18,7 +18,7 @@ const Banner = ({ description, logo, name }) => (
             {name}
             <VerifiedSVG />
           </Styled.Name>
-          <Styled.Description>{description}</Styled.Description>
+          <Styled.Introduction>{introduction}</Styled.Introduction>
         </Styled.TextWrapper>
 
         <Styled.Tabs defaultActiveKey="1">

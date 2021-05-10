@@ -6,6 +6,7 @@
 
 const router = require('express').Router();
 
+router.get('/:slug', require('./[slug]/info'));
 router.get('/:slug/find-user', require('./[slug]/findUser'));
 router.get('/:slug/members', require('./[slug]/members'));
 router.post('/:slug/add-members', require('./[slug]/addMembers'));
@@ -14,6 +15,5 @@ router.put('/:slug/member-role', require('./[slug]/updateMemberRole'));
 router.post('/check-name', require('./checkName'));
 router.get('/search-company', require('./searchCompany'));
 router.post('/invitations/:id', require('./invitations/[id]'));
-router.use('/enroll', require('./enroll'));
 
 module.exports = router;

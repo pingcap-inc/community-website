@@ -94,21 +94,24 @@ export const Header = styled.div`
 
 export const Content = styled.div`
   flex: 1;
-  padding: 0 16px;
 `;
 
 export const SelectedUser = styled.div`
   ${avatarMixin()};
   ${closeButtonMixin()};
   ${mixins.flexVerticalCenter()};
-  padding: 8px 0;
+  padding: 8px 16px;
   position: relative;
 
   .anticon {
     position: absolute;
-    right: 0;
+    right: 16px;
     top: 50%;
     margin-top: -7px;
+  }
+
+  &:hover {
+    background: ${colors.M2};
   }
 `;
 

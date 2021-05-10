@@ -1,7 +1,12 @@
-const { errorResp, successResp, generator, sample } = require('../../../utils');
-const { ROLES } = require('../../../constants');
+const faker = require('faker');
 
-module.exports = (req, res) => {
+const { errorResp, successResp, generator, sample, wait } = require('../../../utils');
+const { ROLES, ROLE_NAMES } = require('../../../constants');
+
+const { datatype } = faker;
+
+module.exports = async (req, res) => {
+  await wait();
   const { slug } = req.params;
 
   if (slug === '404') {
@@ -13,16 +18,20 @@ module.exports = (req, res) => {
 
   const data = generator(
     {
-      name: '{{name.firstName}}',
       username: '{{internet.userName}}',
       email: '{{internet.email}}',
     },
     {
-      callback: (item, idx) => ({
-        ...item,
-        id: idx + 1,
-        role: sample(Object.values(ROLES)),
-      }),
+      callback: (item, idx) => {
+        const role = sample(Object.values(ROLES));
+        return {
+          ...item,
+          id: idx + 1,
+          role,
+          role_display: ROLE_NAMES[role],
+          type: datatype.number({ min: 0, max: 1 }),
+        };
+      },
     }
   );
 

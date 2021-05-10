@@ -1,10 +1,5 @@
 export const columns = [
   {
-    title: '昵称',
-    dataIndex: 'name',
-    key: 'name',
-  },
-  {
     title: '用户名',
     dataIndex: 'username',
     key: 'username',

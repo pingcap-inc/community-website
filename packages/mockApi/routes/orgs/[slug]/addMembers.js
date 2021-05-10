@@ -1,6 +1,7 @@
-const { errorResp, successResp } = require('../../../utils');
+const { errorResp, successResp, wait } = require('../../../utils');
 
-module.exports = (req, res) => {
+module.exports = async (req, res) => {
+  await wait();
   const { slug } = req.params;
 
   if (slug === '403') {

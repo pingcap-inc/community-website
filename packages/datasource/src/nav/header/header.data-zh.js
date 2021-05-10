@@ -180,7 +180,7 @@ export const genUserProfileItems = (meData) => {
 
   items.push({
     title: '退出登陆',
-    link: `https://tug.tidb.io/logout`,
+    link: `https://accounts.pingcap.com/logout?redirect_to=${window?.location?.href ?? ''}`,
   });
 
   return items;

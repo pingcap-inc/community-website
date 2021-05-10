@@ -181,7 +181,7 @@ export const genUserProfileItems = (meData) => {
 
   items.push({
     title: 'Logout',
-    link: `https://tug.tidb.io/logout`,
+    link: `https://accounts.pingcap.com/logout?redirect_to=${window?.location?.href ?? ''}`,
   });
 
   return items;

@@ -14,7 +14,7 @@ const Audit = ({ status, rejectReason, onClickResetForm, onClickOrgHome }) => {
           <Steps.Step title="完成审核" />
         </Steps>
         <Styled.Image {...IMAGES[status]} />
-        <Styled.Hint>{TEXTS[status || -1](rejectReason)}</Styled.Hint>
+        <Styled.Hint>{TEXTS[status ?? -1](rejectReason)}</Styled.Hint>
         <Styled.ButtonContainer>
           {status === AUDIT_STATUS.PASS && (
             <Styled.Button type="primary" onClick={onClickOrgHome}>

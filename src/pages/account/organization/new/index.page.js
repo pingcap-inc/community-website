@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import Audit from './audit';
@@ -32,7 +32,11 @@ export const getServerSideProps = async ({ req }) => {
 const CreateOrganization = () => {
   const router = useRouter();
   const { meData, mutateMe } = useContext(MeContext);
-  const [showForm, setShowForm] = useState(!(meData?.org || meData?.org_enroll));
+  const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    setShowForm(!(meData?.org || meData?.org_enroll));
+  }, [meData]);
 
   const status = meData?.org ? AUDIT_STATUS.PASS : meData?.org_enroll?.audit_status;
   const rejectReason = meData?.org_enroll?.audit_reason;

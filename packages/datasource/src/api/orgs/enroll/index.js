@@ -21,7 +21,7 @@ const enroll = ({
     industry_type,
     member_range,
     job_title,
-    company_base,
+    company_base: company_base[1],
     contact_phone,
     audit_type,
   };

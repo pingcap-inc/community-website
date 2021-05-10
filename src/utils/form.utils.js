@@ -3,7 +3,7 @@ import { api } from '@tidb-community/datasource';
 // make sure calling api has set `isDispatchApiErrorDisabled`
 export const wrapFormikSubmitFunction = (func) => {
   return (params, formikHelpers) => {
-    func(params).catch((response) => {
+    return func(params).catch((response) => {
       if (response.errors) {
         formikHelpers.setErrors(response.errors);
       } else {

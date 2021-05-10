@@ -72,6 +72,7 @@ const data = {
     },
     verificationType: {
       name: 'audit_type',
+      initialValue: 0,
       options: [
         {
           label: '企业邮箱认证',

@@ -17,5 +17,5 @@ export const addMembers = ({ role, slug, userIds }) => {
 };
 
 export const updateMemberRole = ({ role, slug, userId }) => {
-  return client.post(`/api/orgs/${slug}/update-member-role`, { role, userId });
+  return client.put(`/api/orgs/${slug}/member-role`, { role, user_id: userId });
 };

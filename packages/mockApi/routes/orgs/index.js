@@ -10,7 +10,7 @@ router.get('/:slug/find-user', require('./[slug]/findUser'));
 router.get('/:slug/members', require('./[slug]/members'));
 router.post('/:slug/add-members', require('./[slug]/addMembers'));
 router.post('/:slug/remove-member', require('./[slug]/removeMember'));
-router.post('/:slug/update-member-role', require('./[slug]/updateMemberRole'));
+router.put('/:slug/member-role', require('./[slug]/updateMemberRole'));
 router.post('/check-name', require('./checkName'));
 router.get('/search-company', require('./searchCompany'));
 router.post('/invitations/:id', require('./invitations/[id]'));

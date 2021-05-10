@@ -5,6 +5,7 @@ import { dispatchApiError } from './events';
 
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? '',
+  withCredentials: true,
 });
 
 client.interceptors.request.use((config) => {

@@ -32,13 +32,13 @@ export const getServerSideProps = async ({ req }) => {
 const CreateOrganization = () => {
   const router = useRouter();
   const { meData, mutateMe } = useContext(MeContext);
-  const [showForm, setShowForm] = useState(!(meData.org || meData.org_enroll));
+  const [showForm, setShowForm] = useState(!(meData?.org || meData?.org_enroll));
 
-  const status = meData.org ? AUDIT_STATUS.PASS : meData.org_enroll?.audit_status;
-  const rejectReason = meData.org_enroll?.audit_reason;
+  const status = meData?.org ? AUDIT_STATUS.PASS : meData?.org_enroll?.audit_status;
+  const rejectReason = meData?.org_enroll?.audit_reason;
 
   const resetForm = () => setShowForm(true);
-  const pushOrgHome = () => router.push(`/orgs/${meData.org?.slug}/home`);
+  const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/home`);
 
   return (
     <CoreLayout domain="tug.tidb.io">

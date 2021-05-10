@@ -1,5 +1,5 @@
 import client from '../../client';
 
 export const searchCompany = ({ word }) => {
-  return client.post('/api/orgs/search-company', { word });
+  return client.get('/api/orgs/search-company', { params: { word } });
 };

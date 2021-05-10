@@ -14,7 +14,15 @@ import { form as formUtils } from 'utils';
 const { submitBtnTitle, formScheme, formInitialValues } = data;
 
 const Form = ({ onSubmit: onSubmitCallback }) => {
-  const onSubmit = formUtils.wrapFormikSubmitFunction(params => api.orgs.enroll(params).then(onSubmitCallback));
+  const onSubmit = formUtils.wrapFormikSubmitFunction(({ company, company_base, ...params }) =>
+    api.orgs
+      .enroll({
+        company: company.value,
+        company_base: company_base[1],
+        ...params,
+      })
+      .then(onSubmitCallback)
+  );
 
   return (
     <Styled.FormContainer>

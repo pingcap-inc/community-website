@@ -17,6 +17,7 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedUsers, setSelectedUsers] = useState([]);
   const [role, setRole] = useState(ROLE_KEYS.MEMBER);
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const debounced = useDebounce({ value: searchQuery, options: { wait: 300 } });
   const { slug } = router.query;
   const { value: word } = debounced;
@@ -54,10 +55,14 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
   const onAdd = async (e) => {
     const userIds = selectedUsers.map(({ id }) => id);
     try {
+      setIsSubmitting(true);
       await api.orgs.org.addMembers({ role, slug, userIds });
       mutateMembers();
       onCancel();
-    } catch (err) {}
+    } catch (err) {
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -103,7 +108,7 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
             <label>添加为：</label>
             <RoleDropdown {...roleDropdownProps} />
           </Styled.AssignRole>
-          <Button type="primary" size="small" onClick={onAdd}>
+          <Button type="primary" size="small" onClick={onAdd} disabled={isSubmitting}>
             添加
           </Button>
         </Styled.Footer>

@@ -12,7 +12,7 @@ export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleC
   return data
     .filter((item) => item.type !== TYPES.INVITED)
     .map((item) => {
-      const { id, name, role } = item;
+      const { id, username, role } = item;
       const isMyself = id === meId;
 
       const onRoleMenuClick = (e) => {
@@ -32,10 +32,10 @@ export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleC
 
       return {
         key: id,
-        ...R.pick(['username', 'email'], item),
-        name: (
+        ...R.pick(['email'], item),
+        username: (
           <Styled.Name>
-            {name}
+            {username}
             {isMyself && <span>你自己</span>}
           </Styled.Name>
         ),

@@ -51,9 +51,12 @@ const generator = (schema, options) => {
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
+const wait = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
+
 module.exports = {
   errorResp,
   successResp,
   generator,
   sample,
+  wait,
 };

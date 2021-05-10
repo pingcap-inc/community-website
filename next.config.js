@@ -1,5 +1,7 @@
 const path = require('path');
 
+const { withSentryConfig } = require('@sentry/nextjs');
+
 const unifyNodeModules = (names) =>
   names.reduce(
     (acc, name) => ({
@@ -9,7 +11,7 @@ const unifyNodeModules = (names) =>
     {}
   );
 
-module.exports = {
+const config = {
   future: {
     webpack5: true,
   },
@@ -43,3 +45,21 @@ module.exports = {
     return config;
   },
 };
+
+// sentry will set dryRun automatically in development so nothing will be uploaded
+const SentryWebpackPluginOptions = {
+  // Additional config options fsor the Sentry Webpack plugin. Keep in mind that
+  // the following options are set automatically, and overriding them is not
+  // recommended:
+  //   release, url, org, project, authToken, configFile, stripPrefix,
+  //   urlPrefix, include, ignore
+  // For all available options, see:
+  // https://github.com/getsentry/sentry-webpack-plugin#options.
+  org: 'pingcap',
+  project: 'tug-website',
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+};
+
+const useSentry = Boolean(process.env.SENTRY_AUTH_TOKEN);
+
+module.exports = useSentry ? withSentryConfig(config, SentryWebpackPluginOptions) : config;

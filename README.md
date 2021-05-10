@@ -207,3 +207,13 @@ next.js 支持以两种方式发布
 已开启 gzip
 
 欲了解更多关于 nginx 的配置请直接参考线上服务器的 nginx 配置文件或者请教 SRE 同学。
+
+## Sentry
+
+如果设置了 `SENTRY_AUTH_TOKEN` 环境变量，运行 `yarn build` 时会自动将 source map 上传 Sentry，便于调试错误信息。
+
+如果设置了 `SENTRY_DSN` 环境变量，运行 `yarn build` 构建的前后端代码则会自动将错误信息汇报给 Sentry，项目名称是 `pingcap/tug-website`。
+
+使用 `yarn dev` 进行本地开发时，则只会生成 source map，但不会向 Sentry 服务发送任何请求。
+
+开发 API 时，需要根据 [官方文档](https://docs.sentry.io/platforms/javascript/guides/nextjs/#configure) 的指示使用 `withSentry` 包裹 handler 函数。

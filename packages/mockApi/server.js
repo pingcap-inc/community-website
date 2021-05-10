@@ -11,7 +11,12 @@ const app = express();
 
 app.disable('x-powered-by');
 
-app.use(cors());
+app.use(
+  cors({
+    credentials: true,
+    origin: 'http://localhost:3000',
+  })
+);
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(

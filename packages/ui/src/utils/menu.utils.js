@@ -1,6 +1,7 @@
-import { Menu } from 'antd';
+import { Badge, Menu } from 'antd';
 import React from 'react';
 import styled from 'styled-components';
+import * as R from 'ramda'
 
 const HiddenMenuItem = styled(Menu.Item)`
   display: none !important;
@@ -19,7 +20,7 @@ export const genMenu = ({ items, currentNav, onNavClick }) => {
   return items
     .filter(item => !item.hidden) // This is used for getting current nav but not really nav item.
     .map((item) => {
-      const { title, items, link, browserLink } = item;
+      const { badge, title, items, link, browserLink } = item;
 
       if (items) {
         const onSubMenuClick = () => {
@@ -37,19 +38,29 @@ export const genMenu = ({ items, currentNav, onNavClick }) => {
 
         return (
           <Menu.SubMenu {...subMenuProps}>
-          {link && <HiddenMenuItem key={title} onClick={onItemClick(link, browserLink)} />}
+            {link && <HiddenMenuItem key={title} onClick={onItemClick(link, browserLink)} />}
             {
               // eslint-disable-next-line no-unused-vars
               genMenu({ items, onNavClick })
             }
-        </Menu.SubMenu>
+          </Menu.SubMenu>
         );
       }
 
-      return (
-        <Menu.Item key={title} onClick={onItemClick(link, browserLink)}>
-        {title}
-      </Menu.Item>
-      );
+      if (R.is(Number, badge)) {
+        return (
+          <Menu.Item key={title} onClick={onItemClick(link, browserLink)}>
+            <Badge dot={badge > 0}>
+              {title}
+            </Badge>
+          </Menu.Item>
+        );
+      } else {
+        return (
+          <Menu.Item key={title} onClick={onItemClick(link, browserLink)}>
+            {title}
+          </Menu.Item>
+        );
+      }
     });
 };

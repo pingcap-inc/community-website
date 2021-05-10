@@ -8,7 +8,7 @@ import { emptyText, okText, cancelText } from './invitations.data';
 import * as Styled from './invitations.styled';
 
 const Invitations = () => {
-  const { meData, reload } = useContext(MeContext);
+  const { meData, mutateMe } = useContext(MeContext);
 
   if (!meData) {
     return <></>;
@@ -21,7 +21,7 @@ const Invitations = () => {
   const responseInvitation = (id, action) => async () => {
     try {
       await api.orgs.invitations.responseInvitation({ id, action });
-      reload();
+      mutateMe();
     } catch (e) {
       message.error(utils.errors.getErrorMessage(e), 5);
     }

@@ -12,8 +12,10 @@ const Upload = ({
   onFileRemoved = () => {},
   buttonSize = 'small',
   icon = <UploadOutlined />,
+  ...extraUploadProps
 }) => {
   const uploadProps = {
+    ...extraUploadProps,
     maxCount: 1,
     customRequest({ file, filename, onProgress, onSuccess, onError }) {
       upload({
@@ -27,6 +29,7 @@ const Upload = ({
         })
         .catch((err) => {
           onError(err);
+          onFileUploadFailed(err);
         });
     },
     onRemove: () => {

@@ -1,12 +1,14 @@
 import client from '../../../client';
 
-export const uploadIncumbencyCert = ({ file, filename, onUploadProgress }) => {
-  const formData = new FormData();
-  formData.append(filename, file);
-  return client.post('/api/orgs/enroll/upload-incumbency-cert', formData, {
+export const uploadIncumbencyCert = ({ file, onUploadProgress }) => {
+  if (file.size > 5 << 20) {
+    return Promise.reject({
+      detail: '上传图片大小需要限制在 5MB 以内',
+    });
+  }
+  return client.post('/api/orgs/enroll/upload-incumbency-cert', file, {
     headers: {
-      'Content-Type': 'multipart/form-data',
-      'Content-Disposition': `attachment; filename=${file.name}`,
+      'Content-Disposition': `attachment; filename=${encodeURI(file.name)}`,
     },
     onUploadProgress,
   });

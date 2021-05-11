@@ -5,6 +5,7 @@ commands:
     steps:
       - checkout
       - run: sudo apt update && sudo apt install rsync
+      - run: curl -sL https://sentry.io/get-cli/ | bash
       - restore_cache:
           keys:
             - v1-deps-{{ checksum "package-lock.json" }}
@@ -16,6 +17,13 @@ commands:
           paths:
             - node_modules
           key: v1-deps-{{ checksum "package-lock.json" }}
+
+  prepare-release:
+    steps:
+      - run: 
+          name: Prepare sentry release
+          command: |
+            echo "export SENTRY_RELEASE=${SENTRY_PROJECT}@${CIRCLE_SHA1}" >> $BASH_ENV
 
   verify-and-build:
     steps:
@@ -44,8 +52,14 @@ jobs:
   deploy:
     docker:
       - image: circleci/node:14.13.0
+    environment:
+      SENTRY_ORG: pingcap
+      SENTRY_PROJECT: tug-website
+      ENABLE_SENTRY: 'true'
+      SENTRY_NO_PROGRESS_BAR: '1'
     steps:
       - install-deps
+      - prepare-release
       - verify-and-build
       - deploy-website
 

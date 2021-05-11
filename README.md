@@ -207,3 +207,11 @@ next.js 支持以两种方式发布
 已开启 gzip
 
 欲了解更多关于 nginx 的配置请直接参考线上服务器的 nginx 配置文件或者请教 SRE 同学。
+
+## Sentry
+
+如果设置了环境变量 `ENABLE_SENTRY=true` ，则会启用 Sentry 支持。此时运行 `yarn dev` 或 `yarn build` 时要求本地的 `sentry-cli` 正确配置并添加能够向 `pingcap/tug-website` 提交 source map 的 auth token，否则会报错。
+
+启用后，运行 `yarn build` 时会自动将 source map 上传 Sentry，便于调试错误信息。使用 `yarn dev` 进行本地开发时，只会生成 source map，但不会向 Sentry 服务发送任何请求。尽管如此，仍然建议仅在 CI 环境启用 Sentry，如果需要测试 Sentry 配置本身，可使用环境变量覆盖 Sentry 相关设置，使用其他的 Sentry Project 进行测试。
+
+开发 API 时，需要根据 [官方文档](https://docs.sentry.io/platforms/javascript/guides/nextjs/#configure) 的指示使用 `withSentry` 包裹 handler 函数。

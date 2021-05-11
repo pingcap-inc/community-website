@@ -27,6 +27,7 @@ router.get('', (req, res) => {
         {
           id: 1,
           org_name: 'PingCAP',
+          org_slug: 'xxxxxx1',
           org_company: '北京平凯星辰科技发展有限公司',
           inviter_username: 'wangdi',
           valid: true,
@@ -34,6 +35,7 @@ router.get('', (req, res) => {
         {
           id: 2,
           org_name: 'PongCAP',
+          org_slug: 'xxxxxx2',
           org_company: '北京乓凯星辰科技发展有限公司',
           inviter_username: 'dangwi',
           valid: false,
@@ -41,6 +43,7 @@ router.get('', (req, res) => {
         {
           id: 3,
           org_name: 'PACPing',
+          org_slug: 'xxxxxx3',
           org_company: '一个你已经加入了的公司',
           inviter_username: 'gandiw',
           valid: true,

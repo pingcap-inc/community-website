@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Avatar, Button, Dropdown, Menu } from 'antd';
+import { Avatar, Badge, Button, Dropdown, Menu } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 import * as Styled from './userProfile.styled';
 import { menu as menuUtils } from '../../utils';
 import { t } from './userProfile.locale';
 
-const UserProfile = ({ avatarUrl, items, onLoginClick, locale, currentNav, onNavClick }) => {
+const UserProfile = ({ avatarUrl, items, onLoginClick, locale, currentNav, onNavClick, showBadge = false }) => {
   const _t = t(locale);
 
   if (items) {
@@ -18,9 +18,11 @@ const UserProfile = ({ avatarUrl, items, onLoginClick, locale, currentNav, onNav
         overlay={<Menu>{menuUtils.genMenu({ items, currentNav, onNavClick, _t })}</Menu>}
       >
         <Styled.UserButton type="text" size="small">
-          <Avatar size={20} src={avatarUrl}>
-            <UserOutlined />
-          </Avatar>
+          <Badge dot={showBadge}>
+            <Avatar size={20} src={avatarUrl}>
+              <UserOutlined />
+            </Avatar>
+          </Badge>
           <DownOutlined />
         </Styled.UserButton>
       </Dropdown>
@@ -41,6 +43,7 @@ UserProfile.propTypes = {
   locale: PropTypes.oneOf(['zh', 'en']),
   onLoginClick: PropTypes.func,
   onNavClick: PropTypes.func.isRequired,
+  showBadge: PropTypes.bool,
 };
 
 export default UserProfile;

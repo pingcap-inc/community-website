@@ -61,6 +61,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
             items={userProfileNavItems}
             avatarUrl={meData?.avatar_url}
             locale={locale}
+            showBadge={meData?.org_invitations.reduce((pre, cur) => pre + (cur.valid ? 1 : 0), 0) > 0}
           />
         }
       />

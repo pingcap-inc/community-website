@@ -27,3 +27,4 @@ export async function getExcerptByTopicId(id, wordCountLimit = 70) {
 export * as featureToggle from './featureToggle';
 export * as link from './link.utils';
 export * as form from './form.utils';
+export * as errors from './errors.utils';

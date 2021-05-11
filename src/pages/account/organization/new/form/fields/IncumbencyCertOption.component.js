@@ -1,10 +1,12 @@
 import React from 'react';
-
+import { message } from 'antd';
 import { useFormikContext } from 'formik';
-import { Upload } from '@tidb-community/ui';
 import { Form } from 'formik-antd';
-import data from '../form.data';
+
+import { Upload } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
+import data from '../form.data';
+import { errors } from 'utils';
 
 const { incumbencyCert } = data.form.verificationType;
 
@@ -13,17 +15,20 @@ const IncumbencyCertOption = ({ hidden }) => {
   const setValue = (res) => setFieldValue(incumbencyCert.name, res);
 
   const uploadProps = {
+    accept: 'image/png, image/jpeg, image/jpg',
     placeholder: incumbencyCert.uploadFileText,
-    upload: ({ file, filename, onProgress }) =>
+    upload: ({ file, onProgress }) =>
       api.orgs.enroll
         .uploadIncumbencyCert({
           file,
-          filename,
           onUploadProgress: onProgress,
         })
         .then((res) => res.cert_id),
     onFileUploadSucceed: setValue,
     onFileRemoved: setValue,
+    onFileUploadFailed: (err) => {
+      message.error(errors.getFirstApiErrorMsg(err), 5);
+    },
   };
 
   return (

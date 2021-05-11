@@ -47,7 +47,7 @@ const App = ({ Component, pageProps }) => {
     document.body.classList.add(constants.appClassName);
   }, []);
 
-  const { data: meResp, mutate: mutateMe } = useSWR('me', fetcher);
+  const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me', fetcher);
 
   const [has403, setHas403] = useState(false);
 
@@ -62,7 +62,7 @@ const App = ({ Component, pageProps }) => {
       }}
     >
       <GlobalStyle />
-      <MeContext.Provider value={{ meData, mutateMe }}>
+      <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
         <Component {...pageProps} />
       </MeContext.Provider>
     </SWRConfig>

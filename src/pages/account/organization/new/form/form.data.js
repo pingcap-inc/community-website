@@ -20,8 +20,10 @@ const data = {
       name: 'name',
       placeholder: '填写企业会员昵称',
       validator: Yup.string()
-        .min(3, ({ min }) => `会员昵称最短为${min}个字符`)
-        .max(7, ({ max }) => `会员昵称最长为${max}个字符`)
+        .min(4, ({ min }) => `会员昵称最短为${min}个字符`)
+        .max(20, ({ max }) => `会员昵称最长为${max}个字符`)
+        .matches(/^[a-zA-Z0-9_\-\u4e00-\u9fa5*]$/, '只能包含数字、字母、汉字、下划线和连字符')
+        .matches(/^[a-zA-Z_0-9].*$/, '首字母只能为字母、数字或下划线')
         .required('会员昵称不可为空'),
       initialValue: '',
     },

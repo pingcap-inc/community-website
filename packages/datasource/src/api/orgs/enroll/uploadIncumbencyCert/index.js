@@ -6,6 +6,7 @@ export const uploadIncumbencyCert = ({ file, filename, onUploadProgress }) => {
   return client.post('/api/orgs/enroll/upload-incumbency-cert', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
+      'Content-Disposition': `attachment; filename=${filename}`,
     },
     onUploadProgress,
   });

@@ -1,5 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { LoadingOutlined } from '@ant-design/icons';
+import { Spin } from 'antd';
+import styled from 'styled-components';
 
 import Audit from './audit';
 import Banner from './banner';
@@ -8,6 +11,7 @@ import { AUDIT_STATUS } from './audit/audit.constants';
 import { CoreLayout, SplitLayout } from 'layouts';
 import { MeContext } from 'context';
 import { featureToggle } from 'utils';
+import { colors } from '@tidb-community/ui';
 
 export const getServerSideProps = async ({ req }) => {
   // https://vercel.com/docs/environment-variables#system-environment-variables
@@ -29,9 +33,18 @@ export const getServerSideProps = async ({ req }) => {
   };
 };
 
+const Blank = styled.div`
+  height: 400px;
+  background-color: ${colors.M2};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 const CreateOrganization = () => {
   const router = useRouter();
-  const { meData, mutateMe } = useContext(MeContext);
+  const { meData, mutateMe, isMeValidating } = useContext(MeContext);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
@@ -43,6 +56,16 @@ const CreateOrganization = () => {
 
   const resetForm = () => setShowForm(true);
   const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/members`);
+
+  if (isMeValidating) {
+    return (
+      <CoreLayout domain="tug.tidb.io">
+        <Blank>
+          <Spin indicator={<LoadingOutlined style={{ fontSize: 24 }} spin />} />
+        </Blank>
+      </CoreLayout>
+    );
+  }
 
   return (
     <CoreLayout domain="tug.tidb.io">
@@ -68,5 +91,4 @@ const CreateOrganization = () => {
     </CoreLayout>
   );
 };
-
 export default CreateOrganization;

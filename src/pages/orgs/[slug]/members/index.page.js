@@ -12,7 +12,7 @@ import Layout from 'pages/orgs/layout';
 import { CommunityHead } from 'components/head';
 import { MeContext } from 'context';
 import { columns } from './members.data';
-import { featureToggle } from 'utils';
+import { featureToggle, errors } from 'utils';
 
 export const getServerSideProps = async ({ req }) => {
   const host = process.env.VERCEL_URL || req.headers.host;
@@ -59,7 +59,13 @@ const Members = () => {
         },
         false
       );
-    } catch (err) {}
+    } catch (err) {
+      Modal.warn({
+        title: '无法更新角色',
+        content: errors.getFirstApiErrorMsg(err),
+        centered: true,
+      });
+    }
   };
 
   const onAddMembers = () => {
@@ -93,7 +99,7 @@ const Members = () => {
         } catch (err) {
           Modal.warn({
             title: '无法退出企业',
-            content: err.detail,
+            content: errors.getFirstApiErrorMsg(err),
             centered: true,
           });
         }

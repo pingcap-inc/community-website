@@ -60,14 +60,24 @@ const Invitations = () => {
                   ]
                 : [
                     <Button size="small" type="text" disabled>
-                      已失效
+                      失效
                     </Button>,
                   ]
             }
           >
-            {invitation.inviter_username}
+            【团队邀请】
+            <span>{invitation.inviter_username}</span>
             邀请您加入
-            {invitation.org_company}。
+            <a href={`/orgs/${invitation.org_name}/members`} target="_blank" rel="noreferrer">
+              {invitation.org_name}
+            </a>
+            团队（所属企业：
+            {invitation.org_company}
+            ），共同享受丰富的
+            <a href="/" target="_blank" rel="noreferrer">
+              企业利益
+            </a>
+            。
           </List.Item>
         )}
       />

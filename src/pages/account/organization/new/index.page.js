@@ -57,7 +57,7 @@ const CreateOrganization = () => {
   const resetForm = () => setShowForm(true);
   const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/members`);
 
-  if (isMeValidating) {
+  if (!meData && isMeValidating) {
     return (
       <CoreLayout domain="tug.tidb.io">
         <Blank>

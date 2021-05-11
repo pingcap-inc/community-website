@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { Button, Checkbox } from 'antd';
+import { Button, Checkbox, Modal } from 'antd';
 import { CloseCircleFilled, CloseOutlined, SearchOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import { useDebounce } from 'ahooks';
@@ -11,6 +11,7 @@ import * as Styled from './addModal.styled';
 import * as utils from './addModal.utils';
 import RoleDropdown from '../roleDropdown';
 import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
+import { errors } from 'utils';
 
 const ModalContent = ({ mutateMembers, onCancel }) => {
   const router = useRouter();
@@ -60,6 +61,11 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
       mutateMembers();
       onCancel();
     } catch (err) {
+      Modal.warn({
+        title: '无法添加成员',
+        content: errors.getFirstApiErrorMsg(err),
+        centered: true,
+      });
     } finally {
       setIsSubmitting(false);
     }

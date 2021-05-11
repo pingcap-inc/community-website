@@ -15,6 +15,7 @@ type MeData = {
   };
   org_invitations?: {
     org_name: string;
+    org_slug: string;
     org_company: string;
     inviter_username: string;
     valid: boolean;

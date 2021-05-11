@@ -1,9 +1,24 @@
 import styled from 'styled-components';
 
-import { mixins } from '@tidb-community/ui'
+import { colors, mixins } from '@tidb-community/ui';
+
+export const Background = styled.div`
+  background-color: ${colors.M2};
+  padding-top: 40px;
+  padding-bottom: 240px;
+`;
 
 export const Container = styled.div`
   ${mixins.centerBlock('768px')};
-  margin-top: 40px;
-  margin-bottom: 240px;
-`
+  background-color: white;
+`;
+
+export const TextContent = styled.div`
+  ${mixins.typography('p2')};
+  .ant-btn.ant-btn-link {
+    height: inherit;
+    line-height: inherit;
+    padding-left: 0;
+    padding-right: 0;
+  }
+`;

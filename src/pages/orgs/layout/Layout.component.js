@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   const bannerProps = R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data);
 
   return (
-    <CoreLayout domain="tidb.io" hasMargin>
+    <CoreLayout domain="tug.tidb.io" hasMargin>
       <Banner {...bannerProps} />
       <Styled.Container>{children}</Styled.Container>
     </CoreLayout>

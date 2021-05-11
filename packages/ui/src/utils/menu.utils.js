@@ -48,7 +48,7 @@ export const genMenu = ({ items, currentNav, onNavClick }) => {
       }
 
       const disabled = !R.is(String, link);
-      const Divider = () => divider ? <Menu.Divider key={`${title}__divider`} /> : undefined;
+      const Divider = divider ? <Menu.Divider key={`${title}__divider`} /> : undefined;
 
       if (R.is(Number, badge)) {
         return [

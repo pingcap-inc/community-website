@@ -6,7 +6,11 @@ export const getCurrentNav = (navItems, link) => {
     }
     if (items) {
       const currentNav = getCurrentNav(items, link);
-      if (currentNav) return currentNav;
+      if (currentNav && currentNav !== UNKNOWN_NAV) return currentNav;
     }
   }
+
+  return UNKNOWN_NAV;
 };
+
+export const UNKNOWN_NAV = 'UNKNOWN_NAV';

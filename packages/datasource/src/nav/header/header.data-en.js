@@ -156,7 +156,12 @@ export const navItems = [
 export const genUserProfileItems = (meData) => {
   if (!meData) return;
 
-  const items = [];
+  const items = [
+    {
+      title: meData.username,
+      divider: true,
+    },
+  ];
 
   // has been logged in and joined an org
   if (meData.org) {

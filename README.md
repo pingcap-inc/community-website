@@ -210,10 +210,8 @@ next.js 支持以两种方式发布
 
 ## Sentry
 
-如果设置了 `SENTRY_AUTH_TOKEN` 环境变量，运行 `yarn build` 时会自动将 source map 上传 Sentry，便于调试错误信息。
+如果设置了环境变量 `ENABLE_SENTRY=true` ，则会启用 Sentry 支持。此时运行 `yarn dev` 或 `yarn build` 时要求本地的 `sentry-cli` 正确配置并添加能够向 `pingcap/tug-website` 提交 source map 的 auth token，否则会报错。
 
-如果设置了 `SENTRY_DSN` 环境变量，运行 `yarn build` 构建的前后端代码则会自动将错误信息汇报给 Sentry，项目名称是 `pingcap/tug-website`。
-
-使用 `yarn dev` 进行本地开发时，则只会生成 source map，但不会向 Sentry 服务发送任何请求。
+启用后，运行 `yarn build` 时会自动将 source map 上传 Sentry，便于调试错误信息。使用 `yarn dev` 进行本地开发时，只会生成 source map，但不会向 Sentry 服务发送任何请求。尽管如此，仍然建议仅在 CI 环境启用 Sentry，如果需要测试 Sentry 配置本身，可使用环境变量覆盖 Sentry 相关设置，使用其他的 Sentry Project 进行测试。
 
 开发 API 时，需要根据 [官方文档](https://docs.sentry.io/platforms/javascript/guides/nextjs/#configure) 的指示使用 `withSentry` 包裹 handler 函数。

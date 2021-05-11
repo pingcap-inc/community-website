@@ -46,20 +46,19 @@ const config = {
   },
 };
 
-// sentry will set dryRun automatically in development so nothing will be uploaded
-const SentryWebpackPluginOptions = {
-  // Additional config options fsor the Sentry Webpack plugin. Keep in mind that
-  // the following options are set automatically, and overriding them is not
-  // recommended:
-  //   release, url, org, project, authToken, configFile, stripPrefix,
-  //   urlPrefix, include, ignore
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options.
-  org: 'pingcap',
-  project: 'tug-website',
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-};
-
-const useSentry = Boolean(process.env.SENTRY_AUTH_TOKEN);
-
-module.exports = useSentry ? withSentryConfig(config, SentryWebpackPluginOptions) : config;
+if (process.env.ENABLE_SENTRY === 'true') {
+  // sentry will set dryRun automatically in development so nothing will be uploaded
+  const SentryWebpackPluginOptions = {
+    // Additional config options fsor the Sentry Webpack plugin. Keep in mind that
+    // the following options are set automatically, and overriding them is not
+    // recommended:
+    //   release, url, org, project, authToken, configFile, stripPrefix,
+    //   urlPrefix, include, ignore
+    // For all available options, see:
+    // https://github.com/getsentry/sentry-webpack-plugin#options.
+    silent: process.env.NODE_ENV === 'development',
+  };
+  module.exports = withSentryConfig(config, SentryWebpackPluginOptions);
+} else {
+  module.exports = config;
+}

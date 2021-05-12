@@ -40,7 +40,7 @@ const Invitations = () => {
                 invitation.valid
                   ? [
                       <Popconfirm
-                        title={`确认加入"${invitation.org_company}"？`}
+                        title={`确认加入"${invitation.org_name}"团队？`}
                         onConfirm={responseInvitation(invitation.id, 'accept')}
                         okText={okText}
                         cancelText={cancelText}

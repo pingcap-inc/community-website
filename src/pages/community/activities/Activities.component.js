@@ -21,7 +21,7 @@ export const Header = ({ className, title, desc, children }) => (
 const Activities = () => {
   const router = useRouter();
 
-  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
 
   const activityCardsProps = {
     activities: data.activities,

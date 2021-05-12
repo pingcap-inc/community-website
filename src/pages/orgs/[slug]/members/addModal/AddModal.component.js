@@ -114,7 +114,7 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
             <label>添加为：</label>
             <RoleDropdown {...roleDropdownProps} />
           </Styled.AssignRole>
-          <Button type="primary" size="small" onClick={onAdd} loading={isSubmitting}>
+          <Button type="primary" size="small" onClick={onAdd} loading={isSubmitting} disabled={!selectedUsers.length}>
             添加
           </Button>
         </Styled.Footer>

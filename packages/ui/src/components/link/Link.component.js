@@ -6,7 +6,7 @@ export const Link = styled.a.attrs({ target: '_blank', rel: 'noreferrer' })`
   color: ${colors.B1};
 
   &:hover {
-    color: #3739d2
+    color: #3739d2;
   }
 `;
 
@@ -14,4 +14,4 @@ Link.propTypes = {
   href: PropTypes.string.isRequired,
 };
 
-export default Link
+export default Link;

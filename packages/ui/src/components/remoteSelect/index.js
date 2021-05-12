@@ -1,1 +1,1 @@
-export { default } from './RemoteSelect.component'
+export { default } from './RemoteSelect.component';

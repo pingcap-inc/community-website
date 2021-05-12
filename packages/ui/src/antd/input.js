@@ -10,7 +10,8 @@ export default css`
       border-color: ${colors.B1};
     }
 
-    &:focus, &.ant-input-focused {
+    &:focus,
+    &.ant-input-focused {
       border-color: ${colors.B1};
       box-shadow: 0 0 0 2px rgb(61 63 234 / 20%);
     }
@@ -22,7 +23,8 @@ export default css`
       border-color: ${colors.B1};
     }
 
-    &:focus, &.ant-input-affix-wrapper-focused {
+    &:focus,
+    &.ant-input-affix-wrapper-focused {
       border-color: ${colors.B1};
       box-shadow: 0 0 0 2px rgb(61 63 234 / 20%);
     }
@@ -30,7 +32,8 @@ export default css`
 
   // Radio
   .ant-radio-wrapper {
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       .ant-radio {
         .ant-radio-inner {
           border-color: ${colors.B1};
@@ -52,8 +55,6 @@ export default css`
           border: 1px solid ${colors.B1};
         }
       }
-
-
     }
 
     span:nth-child(2) {

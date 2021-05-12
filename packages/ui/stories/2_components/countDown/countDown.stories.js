@@ -12,7 +12,7 @@ const Template = ({ total, interval, onFinished }) => {
   return (
     <>
       <CountDown counterRef={ref} total={total} interval={interval} onFinished={onFinished} />
-      <br/>
+      <br />
       <button onClick={() => ref.current.reset()}>reset</button>
     </>
   );
@@ -23,5 +23,5 @@ export const SearchCompany = Template.bind({});
 SearchCompany.args = {
   total: 10000,
   interval: 1000,
-  onFinished: () => alert('count down finished!')
+  onFinished: () => alert('count down finished!'),
 };

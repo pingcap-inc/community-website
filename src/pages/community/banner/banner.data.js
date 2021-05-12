@@ -1,7 +1,6 @@
 const data = {
   title: 'Let’s build the database of the future together!',
-  desc:
-    'Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!',
+  desc: 'Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!',
   navs: [
     {
       title: 'Forum',

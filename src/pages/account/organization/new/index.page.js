@@ -27,9 +27,9 @@ export const getServerSideProps = async ({ req }) => {
 const Page = () => {
   return (
     <CoreLayout domain="tug.tidb.io">
-      <CreateOrganization/>
+      <CreateOrganization />
     </CoreLayout>
-  )
-}
+  );
+};
 
-export default Page
+export default Page;

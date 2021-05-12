@@ -19,7 +19,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
-  const logo = <img alt={title} src='/images/community/logo.svg' />;
+  const logo = <img alt={title} src="/images/community/logo.svg" />;
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {
     if (isSelected) return;
@@ -58,7 +58,9 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     // do not redirect back to needs-login pages
     if (REG_AUTH_PATH.test(redirectUrl)) {
       if (!/^http/.test(homeUrl)) {
-        url = `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}${homeUrl}`
+        url = `${window.location.protocol}//${window.location.hostname}${
+          window.location.port ? `:${window.location.port}` : ''
+        }${homeUrl}`;
       } else {
         url = homeUrl;
       }

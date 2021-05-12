@@ -6,7 +6,7 @@ export const getErrorMessage = (err) => {
     return err;
   }
   if (R.is(Object, err) && 'details' in err) {
-    return err.details
+    return err.details;
   }
   if (R.is(Error, err)) {
     return err.message;

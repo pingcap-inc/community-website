@@ -8,24 +8,26 @@ const HiddenMenuItem = styled(Menu.Item)`
 `;
 
 export const genMenu = ({ items, currentNav, onNavClick, ...events }) => {
-  const onItemClick = ({ link, browserLink, target, event }) => (e) => {
-    if (event) {
-      if (R.is(Function, events[event])) {
-        events[event](e);
-        return;
+  const onItemClick =
+    ({ link, browserLink, target, event }) =>
+    (e) => {
+      if (event) {
+        if (R.is(Function, events[event])) {
+          events[event](e);
+          return;
+        }
       }
-    }
-    const { isSelected } = e.item.props;
-    onNavClick({
-      link,
-      browserLink,
-      isSelected,
-      target,
-    });
-  };
+      const { isSelected } = e.item.props;
+      onNavClick({
+        link,
+        browserLink,
+        isSelected,
+        target,
+      });
+    };
 
   return items
-    .filter(item => !item.hidden) // This is used for getting current nav but not really nav item.
+    .filter((item) => !item.hidden) // This is used for getting current nav but not really nav item.
     .flatMap((item) => {
       const { badge, divider, title, items, link, browserLink, target, event } = item;
 
@@ -60,9 +62,7 @@ export const genMenu = ({ items, currentNav, onNavClick, ...events }) => {
       if (R.is(Number, badge)) {
         return [
           <Menu.Item key={title} onClick={onItemClick({ link, browserLink, target, event })} disabled={disabled}>
-            <Badge dot={badge > 0}>
-              {title}
-            </Badge>
+            <Badge dot={badge > 0}>{title}</Badge>
           </Menu.Item>,
           Divider,
         ];

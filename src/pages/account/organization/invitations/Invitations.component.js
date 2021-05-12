@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import { Button, Empty, List, message, Popconfirm } from 'antd';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, Empty, List, message, Popconfirm, Skeleton } from 'antd';
+import { useRouter } from 'next/router';
 
 import { api } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/ui';
@@ -8,10 +9,23 @@ import { emptyText, okText, cancelText } from './invitations.data';
 import * as Styled from './invitations.styled';
 
 const Invitations = () => {
+  const router = useRouter();
   const { meData, mutateMe } = useContext(MeContext);
+
+  const [operating, setOperating] = useState(false);
+
+  useEffect(() => {
+    if (meData?.org && !operating) {
+      router.replace(`/orgs/${meData.org.slug}/members`);
+    }
+  });
 
   if (!meData) {
     return <></>;
+  }
+
+  if (meData.org) {
+    return <Skeleton active />;
   }
 
   if (!(meData.org_invitations && meData.org_invitations.length)) {
@@ -20,10 +34,13 @@ const Invitations = () => {
 
   const responseInvitation = (id, action) => async () => {
     try {
+      setOperating(true);
       await api.orgs.invitations.responseInvitation({ id, action });
-      mutateMe();
+      await mutateMe();
     } catch (e) {
       message.error(utils.errors.getErrorMessage(e), 5);
+    } finally {
+      setOperating(false);
     }
   };
 
@@ -44,6 +61,7 @@ const Invitations = () => {
                         onConfirm={responseInvitation(invitation.id, 'accept')}
                         okText={okText}
                         cancelText={cancelText}
+                        disabled={operating}
                       >
                         <Button type="link" size="small">
                           同意
@@ -54,6 +72,7 @@ const Invitations = () => {
                         onConfirm={responseInvitation(invitation.id, 'refuse')}
                         okText={okText}
                         cancelText={cancelText}
+                        disabled={operating}
                       >
                         <Button type="link" size="small">
                           拒绝

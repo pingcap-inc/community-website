@@ -8,7 +8,6 @@ const ActionMenu = withActionMenu(Menu);
 
 export default {
   title: getTitle('ActionMenu'),
-  component: ActionMenu,
 };
 
 const Template = ({ delay }) => {

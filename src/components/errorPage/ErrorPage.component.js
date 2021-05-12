@@ -22,18 +22,16 @@ const icons = {
 };
 
 const errorMsgs = {
-  400: '请求参数有误',
   403: '抱歉，您没有权限访问该页面',
-  404: '页面无法找到',
-  405: '该 HTTP 请求方法被拒绝',
-  500: '服务器异常',
+  404: '您访问的页面不存在',
+  500: '服务器异常，请稍后重试',
 };
 
 const ErrorPage = ({ statusCode, errorMsg }) => {
   const router = useRouter();
   const Icon = R.propOr(icons[500], statusCode)(icons);
 
-  errorMsg = errorMsg || R.propOr('未知错误', statusCode)(errorMsgs);
+  errorMsg = errorMsg || R.propOr('未知错误，请稍后重试', statusCode)(errorMsgs);
 
   const headProps = {
     description: '',

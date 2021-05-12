@@ -28,7 +28,7 @@ const Form = ({ onSubmit: onSubmitCallback }) => {
     <Styled.FormContainer>
       <Styled.FormTitleContainer>
         <Col>
-          <Styled.FormTitle>企业会员认证</Styled.FormTitle>
+          <Styled.FormTitle>团队认证</Styled.FormTitle>
         </Col>
         <Col>
           <Styled.ContactUsButton type="link" size="small">

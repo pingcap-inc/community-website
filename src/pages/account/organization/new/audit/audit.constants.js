@@ -24,7 +24,9 @@ export const IMAGES = {
 
 export const TEXTS = {
   [-1]: (reason) => `未知状态: ${reason}`,
-  [AUDIT_STATUS.PENDING]: () => '您已...',
-  [AUDIT_STATUS.PASS]: () => '恭喜您已通过...',
-  [AUDIT_STATUS.DENY]: (reason) => `很抱歉，由于 ${reason} 原因...`,
+  [AUDIT_STATUS.PENDING]: () =>
+    '你已成功提交 TiDB 社区认证，工作人员预计 3 个工作日内完成审核，在此期间请保持联系电话与邮箱畅通',
+  [AUDIT_STATUS.PASS]: () => '恭喜你已通过 TiDB 社区认证，可以邀请成员加入团队，共享权益',
+  [AUDIT_STATUS.DENY]: (reason) =>
+    `很抱歉，由于 ${reason} 原因，你提交的 TiDB 社区认证审核未通过，请重新提交资料进行认证`,
 };

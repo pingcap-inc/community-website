@@ -1,11 +1,12 @@
 const data = {
-  leading: '创建新企业后，你将成为管理员，可添加成员，共同享受更丰富的企业权益',
+  leading:
+    '完成认证，方便社区专家更好地处理您的问题。认证通过后，将会授予”认证会员“徽章并奖励：经验值200分，积分200分，同时你将享有以下权限：',
   benefits: [
-    '产品咨询：产品技术、业务架构、开发运维',
-    '业务咨询：PoC 指导、架构规划、上线指导、版本升级 & 扩容咨询、重点保障',
-    'Troubleshooting：日常 issue、紧急 oncall',
+    '学习：丰富的 TiDB 共享学习资源',
+    '交流：线上活动、线下聚会、主题大会（DevCon、Hackthon、TechDay、Infra Meetup）',
+    '培训&认证：Talnet Plan、PCTA 认证、PCTP 认证',
     '交流学习：社区 VIP 用户线下活动',
-    '优享资源：1 V 1 专家辅导、  考前 2 周冲刺群、Exclusive  KNOWLEDGEBASE',
+    '名企直推',
   ],
   more: {
     title: '查看更多权益',

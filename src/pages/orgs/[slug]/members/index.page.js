@@ -76,7 +76,7 @@ const Members = () => {
     const config = {
       title: '确定要删除该成员吗？',
       icon: <ExclamationCircleOutlined />,
-      content: '删除后，该成员将不在享有企业权益',
+      content: '删除后，该成员将失去认证身份',
       okText: '确定',
       cancelText: '取消',
       centered: true,
@@ -98,7 +98,7 @@ const Members = () => {
           );
         } catch (err) {
           Modal.warn({
-            title: '无法退出企业',
+            title: '无法退出团队',
             content: errors.getFirstApiErrorMsg(err),
             centered: true,
           });
@@ -109,8 +109,8 @@ const Members = () => {
     Modal.confirm({
       ...config,
       ...(isMyself && {
-        title: '确定要退出该企业吗？',
-        content: '退出企业后将不在享有企业权益',
+        title: '确定要退出该团队吗？',
+        content: '退出团队后将不在享有团队权益',
       }),
     });
   };
@@ -130,12 +130,12 @@ const Members = () => {
 
   return (
     <>
-      <CommunityHead title="企业成员" />
+      <CommunityHead title="团队成员" />
 
       <Layout>
         <Styled.Header>
           <Styled.Title>
-            企业成员<span>{dataSource.length}</span>
+            团队成员<span>{dataSource.length}</span>
           </Styled.Title>
 
           {isAdmin && (

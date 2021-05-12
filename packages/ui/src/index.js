@@ -27,6 +27,7 @@ export {
   CountDown,
   withVerifyCode,
   UserProfile,
+  withActionMenu,
 } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`

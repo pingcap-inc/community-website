@@ -2,20 +2,17 @@ import * as R from 'ramda';
 
 import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
+import * as resourcesData from './resources';
 import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule } from './utils';
 
 export const getData = ({ domain, domainConfig, env, locale, path, meData }) => {
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
-  const {
-    navItems: headerNavItems,
-    genUserProfileItems,
-    loginUrl,
-    logoutUrl,
-    homeUrl,
-    ...restHeaderData
-  } = R.propOr(headerData[defaultLocale], locale)(headerData);
+  const { navItems: headerNavItems, genUserProfileItems, loginUrl, logoutUrl, homeUrl, ...restHeaderData } = R.propOr(
+    headerData[defaultLocale],
+    locale
+  )(headerData);
 
   let rules = [
     // replaces all current URLs' prefix at current domain
@@ -67,6 +64,12 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
         rules,
       }),
       ...restHeaderData,
+    },
+    resources: {
+      orgVerificationAgreementsUrl: replaceLink({
+        link: resourcesData.orgVerificationAgreementsUrl,
+        rules,
+      }),
     },
   };
 };

@@ -8,7 +8,7 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
-  const { navItems: headerNavItems, genUserProfileItems, loginUrl, logoutUrl, ...restHeaderData } = R.propOr(
+  const { navItems: headerNavItems, genUserProfileItems, loginUrl, logoutUrl, homeUrl, ...restHeaderData } = R.propOr(
     headerData[defaultLocale],
     locale
   )(headerData);
@@ -56,6 +56,10 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
       }),
       logoutUrl: replaceLink({
         link: logoutUrl,
+        rules,
+      }),
+      homeUrl: replaceLink({
+        link: homeUrl,
         rules,
       }),
       ...restHeaderData,

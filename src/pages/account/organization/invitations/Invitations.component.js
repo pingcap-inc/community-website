@@ -4,13 +4,15 @@ import { useRouter } from 'next/router';
 
 import { api } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/ui';
-import { MeContext } from 'context';
+import { MeContext, NavContext } from 'context';
 import { emptyText, okText, cancelText } from './invitations.data';
 import * as Styled from './invitations.styled';
+import Blank from '../../../../components/Blank';
 
 const Invitations = () => {
   const router = useRouter();
-  const { meData, mutateMe } = useContext(MeContext);
+  const { meData, mutateMe, isMeValidating } = useContext(MeContext);
+  const { login } = useContext(NavContext);
 
   const [operating, setOperating] = useState(false);
 
@@ -21,15 +23,32 @@ const Invitations = () => {
   });
 
   if (!meData) {
-    return <></>;
+    if (isMeValidating) {
+      return (
+        <Blank>
+          <Skeleton active />
+        </Blank>
+      );
+    } else {
+      login();
+      return null;
+    }
   }
 
   if (meData.org) {
-    return <Skeleton active />;
+    return (
+      <Blank>
+        <Skeleton active />
+      </Blank>
+    );
   }
 
   if (!(meData.org_invitations && meData.org_invitations.length)) {
-    return <Empty>{emptyText}</Empty>;
+    return (
+      <Blank>
+        <Empty>{emptyText}</Empty>
+      </Blank>
+    );
   }
 
   const responseInvitation = (id, action) => async () => {

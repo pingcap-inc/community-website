@@ -7,7 +7,16 @@ import * as Styled from './userProfile.styled';
 import { menu as menuUtils } from '../../utils';
 import { t } from './userProfile.locale';
 
-const UserProfile = ({ avatarUrl, items, onLoginClick, locale, currentNav, onNavClick, showBadge = false }) => {
+const UserProfile = ({
+  avatarUrl,
+  items,
+  onLoginClick,
+  onLogoutClick,
+  locale,
+  currentNav,
+  onNavClick,
+  showBadge = false,
+}) => {
   const _t = t(locale);
 
   if (items) {
@@ -15,7 +24,7 @@ const UserProfile = ({ avatarUrl, items, onLoginClick, locale, currentNav, onNav
       <Dropdown
         arrow
         placement="bottomRight"
-        overlay={<Menu>{menuUtils.genMenu({ items, currentNav, onNavClick, _t })}</Menu>}
+        overlay={<Menu>{menuUtils.genMenu({ items, currentNav, onNavClick, onLogoutClick, _t })}</Menu>}
       >
         <Styled.UserButton type="text" size="small">
           <Badge dot={showBadge}>
@@ -42,6 +51,7 @@ UserProfile.propTypes = {
   items: PropTypes.array,
   locale: PropTypes.oneOf(['zh', 'en']),
   onLoginClick: PropTypes.func,
+  onLogoutClick: PropTypes.func,
   onNavClick: PropTypes.func.isRequired,
   showBadge: PropTypes.bool,
 };

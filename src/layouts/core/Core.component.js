@@ -5,19 +5,21 @@ import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
-import { MeContext } from 'context';
+import { MeContext, NavContext } from 'context';
 import { link as linkUtils } from 'utils';
+
+const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
 
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { meData } = useContext(MeContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
-  const { navItems: headerNavItems, userProfileNavItems, loginUrl } = data.header;
+  const { navItems: headerNavItems, userProfileNavItems, loginUrl, logoutUrl, homeUrl } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
-  const logo = <img alt={title} src="/images/community/logo.svg" />;
+  const logo = <img alt={title} src='/images/community/logo.svg' />;
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {
     if (isSelected) return;
@@ -46,29 +48,48 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     hasMargin,
   };
 
-  const doLogin = () => {
-    window.open(`${loginUrl}?redirect_to=${encodeURI(window.location.href)}`, '_top');
+  const doLogin = (redirectUrl) => {
+    window.open(`${loginUrl}?redirect_to=${encodeURIComponent(redirectUrl ?? window.location.href)}`, '_top');
+  };
+
+  const doLogout = (redirectUrl) => {
+    redirectUrl = redirectUrl ?? window.location.href;
+    let url;
+    // do not redirect back to needs-login pages
+    if (REG_AUTH_PATH.test(redirectUrl)) {
+      if (!/^http/.test(homeUrl)) {
+        url = `${window.location.protocol}//${window.location.hostname}${window.location.port ? `:${window.location.port}` : ''}${homeUrl}`
+      } else {
+        url = homeUrl;
+      }
+    } else {
+      url = redirectUrl;
+    }
+    window.open(`${logoutUrl}?redirect_to=${encodeURIComponent(url)}`, '_top');
   };
 
   return (
-    <Styled.Container>
-      <Header
-        {...headerProps}
-        userProfileSlot={
-          <UserProfile
-            onNavClick={onNavClick}
-            onLoginClick={doLogin}
-            currentNav={currentNav}
-            items={userProfileNavItems}
-            avatarUrl={meData?.avatar_url}
-            locale={locale}
-            showBadge={meData?.org_invitations.reduce((pre, cur) => pre + (cur.valid ? 1 : 0), 0) > 0}
-          />
-        }
-      />
-      <MainWrapper>{children}</MainWrapper>
-      <Footer {...footerProps} />
-    </Styled.Container>
+    <NavContext.Provider value={{ navData: data, login: doLogin, logout: doLogout }}>
+      <Styled.Container>
+        <Header
+          {...headerProps}
+          userProfileSlot={
+            <UserProfile
+              onNavClick={onNavClick}
+              onLoginClick={() => doLogin()}
+              onLogoutClick={() => doLogout()}
+              currentNav={currentNav}
+              items={userProfileNavItems}
+              avatarUrl={meData?.avatar_url}
+              locale={locale}
+              showBadge={meData?.org_invitations.reduce((pre, cur) => pre + (cur.valid ? 1 : 0), 0) > 0}
+            />
+          }
+        />
+        <MainWrapper>{children}</MainWrapper>
+        <Footer {...footerProps} />
+      </Styled.Container>
+    </NavContext.Provider>
   );
 };
 

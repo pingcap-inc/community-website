@@ -186,11 +186,12 @@ export const genUserProfileItems = (meData) => {
 
   items.push({
     title: 'Logout',
-    link: `https://accounts.pingcap.com/logout?redirect_to=${encodeURI(window?.location?.href ?? '')}`,
-    target: '_top',
+    event: 'onLogoutClick',
   });
 
   return items;
 };
 
 export const loginUrl = 'https://accounts.pingcap.com/login';
+export const logoutUrl = 'https://accounts.pingcap.com/logout';
+export const homeUrl = 'https://tug.tidb.io/';

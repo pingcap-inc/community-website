@@ -1,10 +1,18 @@
+// Custom error page could be referred to
+// https://nextjs.org/docs/advanced-features/custom-error-page
+// https://github.com/vercel/next.js/blob/canary/packages/next/pages/_error.tsx
+
 import * as R from 'ramda';
 import React from 'react';
+import { ArrowLeftOutlined } from '@ant-design/icons';
+import { Button } from 'antd';
+import { useRouter } from 'next/router';
 
 import * as Styled from './errorPage.styled';
 import Svg403 from './403.svg';
 import Svg404 from './404.svg';
 import Svg500 from './500.svg';
+import { CommunityHead } from 'components/head';
 import { CoreLayout } from 'layouts';
 
 const icons = {
@@ -13,16 +21,46 @@ const icons = {
   500: Svg500,
 };
 
-const ErrorPage = ({ statusCode }) => {
+const errorMsgs = {
+  400: '请求参数有误',
+  403: '抱歉，您没有权限访问该页面',
+  404: '页面无法找到',
+  405: '该 HTTP 请求方法被拒绝',
+  500: '服务器异常',
+};
+
+const ErrorPage = ({ statusCode, errorMsg }) => {
+  const router = useRouter();
   const Icon = R.propOr(icons[500], statusCode)(icons);
 
+  errorMsg = errorMsg || R.propOr('未知错误', statusCode)(errorMsgs);
+
+  const headProps = {
+    description: '',
+    keyword: '',
+    title: `${statusCode}: ${errorMsg}`,
+  };
+
+  const buttonProps = {
+    type: 'primary',
+    icon: <ArrowLeftOutlined />,
+    onClick: (e) => {
+      router.push('/community', '/');
+    },
+  };
+
   return (
-    <CoreLayout MainWrapper={Styled.Container}>
-      <Styled.IconWrapper>
-        <Icon />
-      </Styled.IconWrapper>
-      ErrorPage: {statusCode}
-    </CoreLayout>
+    <>
+      <CommunityHead {...headProps} />
+
+      <CoreLayout MainWrapper={Styled.Container}>
+        <Styled.IconWrapper>
+          <Icon />
+        </Styled.IconWrapper>
+        <Styled.Message>{errorMsg}</Styled.Message>
+        <Button {...buttonProps}>返回首页</Button>
+      </CoreLayout>
+    </>
   );
 };
 

@@ -1,6 +1,5 @@
 import 'antd/dist/antd.css';
 import * as R from 'ramda';
-import Error from 'next/error';
 import React, { useEffect, useState } from 'react';
 import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
@@ -10,6 +9,7 @@ import { message } from 'antd';
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
+import ErrorPage from 'components/errorPage';
 import { MeContext } from 'context';
 
 const GlobalStyle = createAppGlobalStyle();
@@ -27,6 +27,9 @@ const fetcher = (path, params) => {
 };
 
 const App = ({ Component, pageProps }) => {
+  const [has403, setHas403] = useState(false);
+  const [errorMsg, setErrorMsg] = useState();
+
   useApiErrorListener((err) => {
     if (!err.status) {
       message.error(utils.errors.getErrorMessage(err));
@@ -34,12 +37,15 @@ const App = ({ Component, pageProps }) => {
     }
 
     const { status, statusText, data } = err;
+    const errorMsg = data?.detail || statusText;
+
     if (status === 401) {
       // TODO: jump to login page
     } else if (status === 403) {
       setHas403(true);
+      setErrorMsg(errorMsg);
     } else {
-      message.error(`${data?.detail || statusText}`, 5);
+      message.error(`${errorMsg}`, 5);
     }
   });
 
@@ -48,12 +54,9 @@ const App = ({ Component, pageProps }) => {
   }, []);
 
   const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me', fetcher);
-
-  const [has403, setHas403] = useState(false);
-
-  if (has403) return <Error statusCode={403} />;
-
   const meData = meResp?.data;
+
+  if (has403) return <ErrorPage statusCode={403} errorMsg={errorMsg} />;
 
   return (
     <SWRConfig

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { Menu } from 'antd';
 
 import { colors, mixins } from '@tidb-community/ui';
+import { RoleActionMenu } from './RoleActionMenu.component';
 
 export const Role = styled.div`
   ${mixins.flexVerticalCenter()};
@@ -13,7 +13,7 @@ export const Role = styled.div`
   }
 `;
 
-export const RoleMenu = styled(Menu)`
+export const RoleMenu = styled(RoleActionMenu)`
   padding: 0;
 
   .ant-dropdown-menu-item {

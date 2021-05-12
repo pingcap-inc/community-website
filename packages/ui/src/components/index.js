@@ -5,6 +5,7 @@ export { default as ViewMoreButton } from './viewMoreButton';
 export { default as Link } from './link';
 export { default as RemoteSelect } from './remoteSelect';
 export { default as Upload } from './upload';
-export { default as CountDown } from './countDown'
-export { default as withVerifyCode } from './verifyCodeInput'
-export { default as UserProfile } from './userProfile'
+export { default as CountDown } from './countDown';
+export { default as withVerifyCode } from './verifyCodeInput';
+export { default as UserProfile } from './userProfile';
+export { default as withActionMenu } from './actionMenu';

@@ -15,12 +15,10 @@ export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleC
       const { id, username, role } = item;
       const isMyself = id === meId;
 
-      const onRoleMenuClick = (e) => {
-        onRoleChange({
-          id,
-          role: e.key,
-        });
-      };
+      const onRoleMenuClick = (e) => onRoleChange({
+        id,
+        role: e.key,
+      });
 
       const roleName = ROLE_NAMES[role];
 

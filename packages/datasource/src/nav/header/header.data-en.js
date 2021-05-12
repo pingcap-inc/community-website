@@ -187,6 +187,7 @@ export const genUserProfileItems = (meData) => {
   items.push({
     title: 'Logout',
     link: `https://accounts.pingcap.com/logout?redirect_to=${window?.location?.href ?? ''}`,
+    target: '_top',
   });
 
   return items;

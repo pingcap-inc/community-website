@@ -16,7 +16,7 @@ const Banner = () => {
   const router = useRouter();
 
   const { width: sizeWidth } = size;
-  const onCardClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
+  const onCardClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
 
   const imgSizeProps =
     sizeWidth > bgWidth

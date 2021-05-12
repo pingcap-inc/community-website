@@ -10,7 +10,7 @@ import { link as linkUtils } from 'utils';
 
 const Learning = () => {
   const router = useRouter();
-  const onBtnClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined);
+  const onBtnClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
   const { title, desc, btns } = data;
   const { pu: puBtn, docs: docsBtn } = btns;
 

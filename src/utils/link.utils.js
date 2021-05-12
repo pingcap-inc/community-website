@@ -1,9 +1,9 @@
-export const handleRedirect = (router, link, browserLink) => {
+export const handleRedirect = (router, link, browserLink, target) => {
   if (!link) return;
 
   // if `link` has a scheme, `browserLink` will be ignored
   if (link.startsWith('http')) {
-    return window.open(link, '_blank').focus();
+    return window.open(link, target || '_blank').focus();
   }
 
   // `browserLink` (`as`) is an optional decorator for the URL that will be shown in the browser.

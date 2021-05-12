@@ -49,9 +49,7 @@ const Template = ({ avatarUrl, hasOrg, isLoggedIn, isShowUserProfile, locale, on
             locale={locale}
             avatarUrl={avatarUrl}
           />
-        ) : (
-          undefined
-        )
+        ) : undefined
       }
     />
   );

@@ -12,7 +12,7 @@ const VerifyCodeInput = withVerifyCode(Input);
 
 const Template = ({ limitSeconds, sendVerifyCodeBtnText }) => {
   const sendVerifyCode = () => {
-    return new Promise(resolve => setTimeout(resolve, 1000));
+    return new Promise((resolve) => setTimeout(resolve, 1000));
   };
 
   return (
@@ -20,7 +20,7 @@ const Template = ({ limitSeconds, sendVerifyCodeBtnText }) => {
       sendVerifyCode={sendVerifyCode}
       limitSeconds={limitSeconds}
       sendVerifyCodeBtnText={sendVerifyCodeBtnText}
-      countDownFormatter={ms => `${Math.round(ms / 1000)}s`}
+      countDownFormatter={(ms) => `${Math.round(ms / 1000)}s`}
     />
   );
 };

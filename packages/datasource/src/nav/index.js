@@ -8,10 +8,14 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
-  const { navItems: headerNavItems, genUserProfileItems, loginUrl, logoutUrl, homeUrl, ...restHeaderData } = R.propOr(
-    headerData[defaultLocale],
-    locale
-  )(headerData);
+  const {
+    navItems: headerNavItems,
+    genUserProfileItems,
+    loginUrl,
+    logoutUrl,
+    homeUrl,
+    ...restHeaderData
+  } = R.propOr(headerData[defaultLocale], locale)(headerData);
 
   let rules = [
     // replaces all current URLs' prefix at current domain

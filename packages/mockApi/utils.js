@@ -5,20 +5,28 @@ const { MESSAGES } = require('./constants');
 
 const { fake, datatype } = faker;
 
-const errorResp = ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors } = {}) => (req, res) => {
-  res.status(code).json({ detail, errors });
-};
+const errorResp =
+  ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors } = {}) =>
+  (req, res) => {
+    res.status(code).json({ detail, errors });
+  };
 
-const successResp = ({ code = 200, data, detail = MESSAGES.SUCCESS, ...rest } = {}) => (req, res) => {
-  res.status(code).json({
-    data,
-    detail,
-    ...rest,
-  });
-};
+const successResp =
+  ({ code = 200, data, detail = MESSAGES.SUCCESS, ...rest } = {}) =>
+  (req, res) => {
+    res.status(code).json({
+      data,
+      detail,
+      ...rest,
+    });
+  };
 
 const generator = (schema, options) => {
-  const { min, max = min, callback } = R.mergeRight(
+  const {
+    min,
+    max = min,
+    callback,
+  } = R.mergeRight(
     {
       min: 20,
       callback: (item, idx) => item,

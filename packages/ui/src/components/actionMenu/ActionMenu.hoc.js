@@ -7,7 +7,7 @@ const withActionMenu = (Menu = AntMenu, MenuItem = Menu.Item) => {
     loading: false,
   });
 
-  const ActionMenu = ({ Menu = AntMenu, action, children, ...props }) => {
+  const ActionMenu = ({ action, children, ...props }) => {
     const [loading, setLoading] = useState(false);
 
     const onClick = useCallback(

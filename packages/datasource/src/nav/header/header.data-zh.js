@@ -185,7 +185,7 @@ export const genUserProfileItems = (meData) => {
 
   items.push({
     title: '退出登陆',
-    link: `https://accounts.pingcap.com/logout?redirect_to=${window?.location?.href ?? ''}`,
+    link: `https://accounts.pingcap.com/logout?redirect_to=${encodeURI(window?.location?.href ?? '')}`,
     target: '_top',
   });
 

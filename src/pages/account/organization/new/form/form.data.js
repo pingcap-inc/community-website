@@ -128,11 +128,9 @@ const data = {
       prefixText: '我已阅读并同意',
       sla: {
         title: '《服务协议》',
-        link: '',
       },
       privacy: {
         title: '《隐私协议》',
-        link: '',
       },
       validator: Yup.bool()
         .oneOf([true], '需阅读并同意相关协议')

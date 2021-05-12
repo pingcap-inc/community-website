@@ -4,10 +4,11 @@ import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
+import * as Styled from './core.styled';
 import { MeContext } from 'context';
 import { link as linkUtils } from 'utils';
 
-const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
+const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { meData } = useContext(MeContext);
 
@@ -50,7 +51,7 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
   };
 
   return (
-    <>
+    <Styled.Container>
       <Header
         {...headerProps}
         userProfileSlot={
@@ -65,13 +66,14 @@ const Core = ({ children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) =>
           />
         }
       />
-      {children}
+      <MainWrapper>{children}</MainWrapper>
       <Footer {...footerProps} />
-    </>
+    </Styled.Container>
   );
 };
 
 Core.propTypes = {
+  MainWrapper: PropTypes.element,
   domain: PropTypes.string,
   hasMargin: PropTypes.bool,
   locale: PropTypes.oneOf(['zh', 'en']),

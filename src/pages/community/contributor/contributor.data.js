@@ -8,8 +8,7 @@ const data = {
     },
     {
       title: 'Join Developer Group',
-      desc:
-        'Learning knowledge and skills, sharing best practices, become a database expert, develop database standards.',
+      desc: 'Learning knowledge and skills, sharing best practices, become a database expert, develop database standards.',
       link: 'https://contributor.tidb.io',
     },
     {

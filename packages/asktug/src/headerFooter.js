@@ -71,8 +71,8 @@ const footerId = 'asktug-footer';
 const MutationObserver = window.MutationObserver || window.WebkitMutationObserver;
 
 const observer = new MutationObserver((mutations) => {
-  mutations.forEach(function(mutation) {
-    mutation.addedNodes.forEach(function(node) {
+  mutations.forEach(function (mutation) {
+    mutation.addedNodes.forEach(function (node) {
       if (node.id === footerId) {
         const footerElem = document.getElementById(footerId);
         footerElem.classList.add(appClassName);

@@ -91,7 +91,7 @@ export const MenuWrapper = styled.div`
 
 export const UserProfileContainer = styled.div`
   margin-left: 20px;
-`
+`;
 
 export const GlobalStyle = createGlobalStyle`
   #${menuPopupId} {

@@ -5,18 +5,18 @@ module.exports = (req, res) => {
       successResp({
         detail: 'success',
       })(req, res);
-      break
+      break;
     case 3:
       errorResp({
         code: 409,
         detail: 'you are already in an organization, please leave the organization first',
       })(req, res);
-      break
+      break;
     default:
       errorResp({
         code: 404,
         detail: 'does not found',
       })(req, res);
-      break
+      break;
   }
 };

@@ -8,15 +8,17 @@ export default {
   component: RemoteSelect,
 };
 
-const fetchCompanies = ({ companyList, delay }) => (word) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(
-        companyList.filter(({ name }) => name.indexOf(word) !== -1).map(({ name }) => ({ label: name, value: name }))
-      );
-    }, delay);
-  });
-};
+const fetchCompanies =
+  ({ companyList, delay }) =>
+  (word) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(
+          companyList.filter(({ name }) => name.indexOf(word) !== -1).map(({ name }) => ({ label: name, value: name }))
+        );
+      }, delay);
+    });
+  };
 
 const Template = ({ word, companyList, delay, ...args }) => (
   <div>

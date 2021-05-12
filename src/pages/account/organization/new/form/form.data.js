@@ -52,9 +52,7 @@ const data = {
       name: 'company_base',
       placeholder: '请选择企业所在地',
       options: provinces,
-      validator: Yup.array()
-        .length(2, '企业所在地不可为空')
-        .required('企业所在地不可为空'),
+      validator: Yup.array().length(2, '企业所在地不可为空').required('企业所在地不可为空'),
       initialValue: undefined,
     },
     personalPosition: {
@@ -91,9 +89,7 @@ const data = {
           placeholder: '请填写企业邮箱，用于企业认证',
           validator: Yup.string().when(['verificationType'], {
             is: 0,
-            then: Yup.string()
-              .email('请输入有效的邮箱')
-              .required('邮箱不可为空'),
+            then: Yup.string().email('请输入有效的邮箱').required('邮箱不可为空'),
           }),
           initialValue: '',
         },
@@ -134,9 +130,7 @@ const data = {
         title: '《隐私协议》',
         link: '',
       },
-      validator: Yup.bool()
-        .oneOf([true], '需阅读并同意相关协议')
-        .required('需阅读并同意相关协议'),
+      validator: Yup.bool().oneOf([true], '需阅读并同意相关协议').required('需阅读并同意相关协议'),
       initialValue: false,
     },
   },

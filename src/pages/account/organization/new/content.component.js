@@ -35,25 +35,20 @@ const CreateOrganization = () => {
       );
     } else {
       login();
-      return <></>;
+      return null;
     }
   }
 
   if (showForm) {
     return (
-      <SplitLayout dividerColor={'rgba(108, 116, 150, 0.4)'} marginTop='30px' marginBottom='41px'>
+      <SplitLayout dividerColor={'rgba(108, 116, 150, 0.4)'} marginTop="30px" marginBottom="41px">
         <Banner />
         <Form onSubmit={mutateMe} />
       </SplitLayout>
     );
   } else {
     return (
-      <Audit
-        status={status}
-        rejectReason={rejectReason}
-        onClickResetForm={resetForm}
-        onClickOrgHome={pushOrgHome}
-      />
+      <Audit status={status} rejectReason={rejectReason} onClickResetForm={resetForm} onClickOrgHome={pushOrgHome} />
     );
   }
 };

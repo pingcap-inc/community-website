@@ -31,7 +31,7 @@ const Invitations = () => {
       );
     } else {
       login();
-      return <></>;
+      return null;
     }
   }
 
@@ -75,47 +75,47 @@ const Invitations = () => {
               actions={
                 invitation.valid
                   ? [
-                    <Popconfirm
-                      title={`确认加入"${invitation.org_name}"团队？`}
-                      onConfirm={responseInvitation(invitation.id, 'accept')}
-                      okText={okText}
-                      cancelText={cancelText}
-                      disabled={operating}
-                    >
-                        <Button type='link' size='small'>
+                      <Popconfirm
+                        title={`确认加入"${invitation.org_name}"团队？`}
+                        onConfirm={responseInvitation(invitation.id, 'accept')}
+                        okText={okText}
+                        cancelText={cancelText}
+                        disabled={operating}
+                      >
+                        <Button type="link" size="small">
                           同意
                         </Button>
                       </Popconfirm>,
-                    <Popconfirm
-                      title={`确认拒绝加入"${invitation.org_company}"？`}
-                      onConfirm={responseInvitation(invitation.id, 'refuse')}
-                      okText={okText}
-                      cancelText={cancelText}
-                      disabled={operating}
-                    >
-                        <Button type='link' size='small'>
+                      <Popconfirm
+                        title={`确认拒绝加入"${invitation.org_company}"？`}
+                        onConfirm={responseInvitation(invitation.id, 'refuse')}
+                        okText={okText}
+                        cancelText={cancelText}
+                        disabled={operating}
+                      >
+                        <Button type="link" size="small">
                           拒绝
                         </Button>
                       </Popconfirm>,
-                  ]
+                    ]
                   : [
-                    <Button size='small' type='text' disabled>
+                      <Button size="small" type="text" disabled>
                         失效
                       </Button>,
-                  ]
+                    ]
               }
             >
               <Styled.TextContent>
                 【团队邀请】
                 <span>{invitation.inviter_username}</span>
                 &nbsp; 邀请您加入 &nbsp;
-                <Button type='link' href={`/orgs/${invitation.org_slug}/members`} target='_blank'>
+                <Button type="link" href={`/orgs/${invitation.org_slug}/members`} target="_blank">
                   {invitation.org_name}
                 </Button>
                 &nbsp; 团队（所属企业：
                 {invitation.org_company}
                 ），共同享受丰富的 &nbsp;
-                <Button type='link' href='/' target='_blank'>
+                <Button type="link" href="/" target="_blank">
                   企业利益
                 </Button>
                 &nbsp; 。

@@ -3,8 +3,7 @@ import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
 export const Background = styled.div`
-  padding-top: 40px;
-  padding-bottom: 40px;
+  padding: 40px 0;
 `;
 
 export const Container = styled.div`
@@ -26,4 +25,4 @@ export const TextContent = styled.div`
 export const MainWrapper = styled.div`
   flex: 1;
   background-color: ${colors.M2};
-`
+`;

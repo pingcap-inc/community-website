@@ -1,25 +1,31 @@
 import React from 'react';
-import { Tabs } from 'antd';
+import { Tabs, Skeleton } from 'antd';
 
 import * as Styled from './banner.styled';
 import VerifiedSVG from 'pages/orgs/verified.svg';
 
 const { TabPane } = Tabs;
 
-const Banner = ({ introduction, logo, name }) => (
+const Banner = ({ introduction, logo, name, isLoading }) => (
   <Styled.Container>
     <Styled.Content>
       <Styled.Information>
-        <Styled.ImageWrapper>
-          <img alt={name} src={logo} />
-        </Styled.ImageWrapper>
-        <Styled.TextWrapper>
-          <Styled.Name>
-            {name}
-            <VerifiedSVG />
-          </Styled.Name>
-          <Styled.Introduction>{introduction}</Styled.Introduction>
-        </Styled.TextWrapper>
+        {isLoading ? (
+          <Skeleton avatar paragraph={{ rows: 2 }} />
+        ) : (
+          <>
+            <Styled.ImageWrapper>
+              <img alt={name} src={logo} />
+            </Styled.ImageWrapper>
+            <Styled.TextWrapper>
+              <Styled.Name>
+                {name}
+                <VerifiedSVG />
+              </Styled.Name>
+              <Styled.Introduction>{introduction}</Styled.Introduction>
+            </Styled.TextWrapper>
+          </>
+        )}
 
         <Styled.Tabs defaultActiveKey="1">
           <TabPane tab="成员" key="1"></TabPane>

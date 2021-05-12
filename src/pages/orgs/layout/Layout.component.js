@@ -9,8 +9,11 @@ import { CoreLayout } from 'layouts';
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const { data } = useSWR(['orgs.org.info', router.query]);
-  const bannerProps = R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data);
+  const { data, error } = useSWR(['orgs.org.info', router.query]);
+  const bannerProps = {
+    ...R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data),
+    isLoading: !data && !error,
+  };
 
   return (
     <CoreLayout domain="tug.tidb.io" hasMargin>

@@ -18,13 +18,13 @@ const data = {
   form: {
     nickname: {
       name: 'name',
-      placeholder: '填写企业会员昵称',
+      placeholder: '填写团队昵称',
       validator: Yup.string()
-        .min(4, ({ min }) => `会员昵称最短为${min}个字符`)
-        .max(20, ({ max }) => `会员昵称最长为${max}个字符`)
+        .min(4, ({ min }) => `团队昵称最短为${min}个字符`)
+        .max(20, ({ max }) => `团队昵称最长为${max}个字符`)
         .matches(/^[a-zA-Z0-9_\-\u4e00-\u9fa5*]+$/, '只能包含数字、字母、汉字、下划线和连字符')
         .matches(/^[a-zA-Z_0-9].*$/, '首字母只能为字母、数字或下划线')
-        .required('会员昵称不可为空'),
+        .required('团队昵称不可为空'),
       initialValue: '',
     },
     organization: {
@@ -52,7 +52,9 @@ const data = {
       name: 'company_base',
       placeholder: '请选择企业所在地',
       options: provinces,
-      validator: Yup.array().length(2, '企业所在地不可为空').required('企业所在地不可为空'),
+      validator: Yup.array()
+        .length(2, '企业所在地不可为空')
+        .required('企业所在地不可为空'),
       initialValue: undefined,
     },
     personalPosition: {
@@ -86,10 +88,12 @@ const data = {
       organizationEmail: {
         email: {
           name: 'email',
-          placeholder: '请填写企业邮箱，用于企业认证',
+          placeholder: '请填写企业邮箱，用于认证',
           validator: Yup.string().when(['verificationType'], {
             is: 0,
-            then: Yup.string().email('请输入有效的邮箱').required('邮箱不可为空'),
+            then: Yup.string()
+              .email('请输入有效的邮箱')
+              .required('邮箱不可为空'),
           }),
           initialValue: '',
         },
@@ -130,7 +134,9 @@ const data = {
         title: '《隐私协议》',
         link: '',
       },
-      validator: Yup.bool().oneOf([true], '需阅读并同意相关协议').required('需阅读并同意相关协议'),
+      validator: Yup.bool()
+        .oneOf([true], '需阅读并同意相关协议')
+        .required('需阅读并同意相关协议'),
       initialValue: false,
     },
   },

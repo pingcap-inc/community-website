@@ -116,7 +116,7 @@ const Invitations = () => {
                 {invitation.org_company}
                 ），共同享受丰富的 &nbsp;
                 <Button type="link" href="/" target="_blank">
-                  企业利益
+                  社区权益
                 </Button>
                 &nbsp; 。
               </Styled.TextContent>

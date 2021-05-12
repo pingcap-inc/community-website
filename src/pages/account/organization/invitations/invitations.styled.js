@@ -20,5 +20,6 @@ export const TextContent = styled.div`
     line-height: inherit;
     padding-left: 0;
     padding-right: 0;
+    text-transform: none;
   }
 `;

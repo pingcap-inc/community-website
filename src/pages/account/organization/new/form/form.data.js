@@ -18,11 +18,11 @@ const data = {
   form: {
     nickname: {
       name: 'name',
-      placeholder: '填写团队昵称',
+      placeholder: '填写团队名称',
       validator: Yup.string()
-        .min(4, ({ min }) => `团队昵称最短为${min}个字符`)
-        .max(20, ({ max }) => `团队昵称最长为${max}个字符`)
-        .required('团队昵称不可为空'),
+        .min(4, ({ min }) => `团队名称最短为${min}个字符`)
+        .max(20, ({ max }) => `团队名称最长为${max}个字符`)
+        .required('团队名称不可为空'),
       initialValue: '',
     },
     organization: {

@@ -8,7 +8,7 @@ export const BannerContent = styled.div`
 `;
 
 export const BannerImage = styled.img.attrs({
-  src: '/images/account/organization-new-banner.png',
+  src: '/images/account/organization-new-banner.svg',
   alt: 'banner image',
 })`
   width: 100%;

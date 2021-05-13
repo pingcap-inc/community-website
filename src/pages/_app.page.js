@@ -27,7 +27,7 @@ const fetcher = (path, params) => {
 };
 
 const App = ({ Component, pageProps, router }) => {
-  const [errorStatus, setErrorStatus] = useState(undefined);
+  const [errorStatus, setErrorStatus] = useState();
   const [errorMsg, setErrorMsg] = useState();
 
   useApiErrorListener((err) => {
@@ -43,7 +43,10 @@ const App = ({ Component, pageProps, router }) => {
       // TODO: jump to login page
     } else if (status === 403) {
       setErrorStatus(403);
-      setErrorMsg(errorMsg);
+      setErrorMsg('很抱歉，您无权访问这个页面');
+    } else if (status === 404) {
+      setErrorStatus(404);
+      setErrorMsg('很抱歉，这个页面找不到了');
     } else {
       message.error(`${errorMsg}`, 5);
     }
@@ -54,7 +57,8 @@ const App = ({ Component, pageProps, router }) => {
   }, []);
 
   useEffect(() => {
-    setErrorStatus(undefined);
+    setErrorStatus();
+    setErrorMsg();
   }, [router.pathname]);
 
   const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me', fetcher);

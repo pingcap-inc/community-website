@@ -194,4 +194,4 @@ export const genUserProfileItems = (meData) => {
 
 export const loginUrl = 'https://accounts.pingcap.com/login';
 export const logoutUrl = 'https://accounts.pingcap.com/logout';
-export const homeUrl = 'https://tug.tidb.io/';
+export const homeUrl = 'https://tidb.io/';

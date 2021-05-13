@@ -1,19 +1,18 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Empty, List, message, Popconfirm, Skeleton } from 'antd';
-import { useRouter } from 'next/router';
-
 import { api } from '@tidb-community/datasource';
+import { useRouter } from 'next/router';
 import { utils } from '@tidb-community/ui';
+
+import * as Styled from './invitations.styled';
+import Blank from 'components/Blank';
 import { MeContext, NavContext } from 'context';
 import { emptyText, okText, cancelText } from './invitations.data';
-import * as Styled from './invitations.styled';
-import Blank from '../../../../components/Blank';
 
 const Invitations = () => {
   const router = useRouter();
   const { meData, mutateMe, isMeValidating } = useContext(MeContext);
   const { login } = useContext(NavContext);
-
   const [operating, setOperating] = useState(false);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
-import { Button, Modal, Table } from 'antd';
+import { Button, Modal, Table, Skeleton } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
@@ -8,9 +8,10 @@ import { useRouter } from 'next/router';
 import * as Styled from './members.styled';
 import * as utils from './members.utils';
 import AddModal from './addModal';
+import Blank from 'components/Blank';
 import Layout from 'pages/orgs/layout';
 import { CommunityHead } from 'components/head';
-import { MeContext } from 'context';
+import { MeContext, NavContext } from 'context';
 import { columns } from './members.data';
 import { featureToggle, errors } from 'utils';
 
@@ -37,9 +38,23 @@ const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
   const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
-  const { meData } = useContext(MeContext);
+  const { meData, isMeValidating } = useContext(MeContext);
+  const { login } = useContext(NavContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
+
+  if (!meData) {
+    if (isMeValidating) {
+      return (
+        <Blank>
+          <Skeleton active />
+        </Blank>
+      );
+    } else {
+      login();
+      return null;
+    }
+  }
 
   const onRoleChange = async ({ id, role }) => {
     try {

@@ -3,6 +3,7 @@ import React from 'react';
 import { featureToggle } from 'utils';
 import { CoreLayout } from 'layouts';
 import CreateOrganization from './content.component';
+import { CommunityHead } from 'components/head';
 
 export const getServerSideProps = async ({ req }) => {
   // https://vercel.com/docs/environment-variables#system-environment-variables
@@ -27,6 +28,7 @@ export const getServerSideProps = async ({ req }) => {
 const Page = () => {
   return (
     <CoreLayout domain="tug.tidb.io">
+      <CommunityHead title="团队认证" />
       <CreateOrganization />
     </CoreLayout>
   );

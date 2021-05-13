@@ -7,7 +7,7 @@ const { ROLES } = require('../constants');
 const { datatype, internet, image } = faker;
 
 router.get('', async (req, res) => {
-  await utils.wait(2000);
+  await utils.wait();
 
   utils.successResp({
     data: {

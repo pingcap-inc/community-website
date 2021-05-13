@@ -1,11 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Skeleton } from 'antd';
 import { useRouter } from 'next/router';
 
 import Audit from './audit';
 import Banner from './banner';
-import Blank from 'components/Blank';
 import Form from './form';
+import PageLoader from 'components/pageLoader';
 import { AUDIT_STATUS } from './audit/audit.constants';
 import { MeContext, NavContext } from 'context';
 import { SplitLayout } from 'layouts';
@@ -28,11 +27,7 @@ const CreateOrganization = () => {
 
   if (!meData) {
     if (isMeValidating) {
-      return (
-        <Blank>
-          <Skeleton active />
-        </Blank>
-      );
+      return <PageLoader />;
     } else {
       login();
       return null;

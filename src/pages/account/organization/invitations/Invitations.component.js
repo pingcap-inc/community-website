@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Empty, List, message, Popconfirm, Skeleton } from 'antd';
+import { Button, Empty, List, message, Popconfirm } from 'antd';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 import { utils } from '@tidb-community/ui';
 
 import * as Styled from './invitations.styled';
-import Blank from 'components/Blank';
+import PageLoader from 'components/pageLoader';
 import { MeContext, NavContext } from 'context';
 import { emptyText, okText, cancelText } from './invitations.data';
 
@@ -23,11 +23,7 @@ const Invitations = () => {
 
   if (!meData) {
     if (isMeValidating) {
-      return (
-        <Blank>
-          <Skeleton active />
-        </Blank>
-      );
+      return <PageLoader />;
     } else {
       login();
       return null;
@@ -35,18 +31,14 @@ const Invitations = () => {
   }
 
   if (meData.org) {
-    return (
-      <Blank>
-        <Skeleton active />
-      </Blank>
-    );
+    return <PageLoader />;
   }
 
   if (!(meData.org_invitations && meData.org_invitations.length)) {
     return (
-      <Blank>
+      <PageLoader>
         <Empty>{emptyText}</Empty>
-      </Blank>
+      </PageLoader>
     );
   }
 

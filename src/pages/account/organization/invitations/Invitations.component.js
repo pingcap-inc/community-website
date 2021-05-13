@@ -100,16 +100,10 @@ const Invitations = () => {
                 【团队邀请】
                 <span>{invitation.inviter_username}</span>
                 &nbsp; 邀请您加入 &nbsp;
-                <Button type="link" href={`/orgs/${invitation.org_slug}/members`} target="_blank">
-                  {invitation.org_name}
-                </Button>
+                {invitation.org_name}
                 &nbsp; 团队（所属企业：
                 {invitation.org_company}
-                ），共同享受丰富的 &nbsp;
-                <Button type="link" href="/" target="_blank">
-                  社区权益
-                </Button>
-                &nbsp; 。
+                ），共同享受丰富的社区权益。
               </Styled.TextContent>
             </List.Item>
           )}

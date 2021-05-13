@@ -9,7 +9,7 @@ import { message } from 'antd';
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
-import ErrorPage from 'components/errorPage';
+import ErrorPage from './_error.page';
 import { MeContext } from 'context';
 
 const GlobalStyle = createAppGlobalStyle();

@@ -22,4 +22,4 @@ type MeData = {
   }[];
 };
 
-export const me: ApiRequestFunction<void, MeData>;
+export const me: ApiRequestFunction<void, { data: MeData }>;

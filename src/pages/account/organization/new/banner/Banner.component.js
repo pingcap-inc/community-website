@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from '@tidb-community/ui';
 
 import data from './banner.data';
 import { BannerContent, BannerImage } from './banner.styled';
@@ -14,9 +13,6 @@ const Banner = () => {
           <li key={i}>{benefit}</li>
         ))}
       </ul>
-      <p>
-        <Link href={data.more.link}>{data.more.title}</Link>
-      </p>
     </BannerContent>
   );
 };

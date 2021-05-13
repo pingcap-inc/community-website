@@ -8,10 +8,6 @@ const data = {
     '交流学习：社区 VIP 用户线下活动',
     '名企直推',
   ],
-  more: {
-    title: '查看更多权益',
-    link: '',
-  },
 };
 
 export default data;

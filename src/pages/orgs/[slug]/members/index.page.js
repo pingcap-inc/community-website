@@ -9,8 +9,9 @@ import * as Styled from './members.styled';
 import * as utils from './members.utils';
 import AddModal from './addModal';
 import Layout from 'pages/orgs/layout';
+import PageLoader from 'components/pageLoader';
 import { CommunityHead } from 'components/head';
-import { MeContext } from 'context';
+import { MeContext, NavContext } from 'context';
 import { columns } from './members.data';
 import { featureToggle, errors } from 'utils';
 
@@ -37,9 +38,19 @@ const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
   const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
-  const { meData } = useContext(MeContext);
+  const { meData, isMeValidating } = useContext(MeContext);
+  const { login } = useContext(NavContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
+
+  if (!meData) {
+    if (isMeValidating) {
+      return <PageLoader />;
+    } else {
+      login();
+      return null;
+    }
+  }
 
   const onRoleChange = async ({ id, role }) => {
     try {

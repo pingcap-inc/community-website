@@ -70,6 +70,10 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
         link: resourcesData.orgVerificationAgreementsUrl,
         rules,
       }),
+      orgPrivacyAgreementsUrl: replaceLink({
+        link: resourcesData.orgPrivacyAgreementsUrl,
+        rules,
+      }),
     },
   };
 };

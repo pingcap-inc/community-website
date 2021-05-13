@@ -13,7 +13,8 @@ const Agreements = () => {
     <AntForm.Item name={agreementsProps.name} valuePropName="checked">
       <Checkbox {...agreementsProps}>
         {prefixText}
-        <Link href={navData.resources.orgVerificationAgreementsUrl}>{sla.title}</Link>
+        <Link href={navData.resources.orgVerificationAgreementsUrl}>{sla.title}</Link>、
+        <Link href={navData.resources.orgPrivacyAgreementsUrl}>{privacy.title}</Link>
       </Checkbox>
     </AntForm.Item>
   );

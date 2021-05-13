@@ -26,8 +26,8 @@ const fetcher = (path, params) => {
   return R.path(path.split('.'), api)(params);
 };
 
-const App = ({ Component, pageProps }) => {
-  const [has403, setHas403] = useState(false);
+const App = ({ Component, pageProps, router }) => {
+  const [errorStatus, setErrorStatus] = useState(undefined);
   const [errorMsg, setErrorMsg] = useState();
 
   useApiErrorListener((err) => {
@@ -42,7 +42,7 @@ const App = ({ Component, pageProps }) => {
     if (status === 401) {
       // TODO: jump to login page
     } else if (status === 403) {
-      setHas403(true);
+      setErrorStatus(403);
       setErrorMsg(errorMsg);
     } else {
       message.error(`${errorMsg}`, 5);
@@ -53,10 +53,14 @@ const App = ({ Component, pageProps }) => {
     document.body.classList.add(constants.appClassName);
   }, []);
 
+  useEffect(() => {
+    setErrorStatus(undefined);
+  }, [router.pathname]);
+
   const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me', fetcher);
   const meData = meResp?.data;
 
-  if (has403) return <ErrorPage statusCode={403} errorMsg={errorMsg} />;
+  if (errorStatus) return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
 
   return (
     <SWRConfig

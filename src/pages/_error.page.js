@@ -15,7 +15,7 @@ const Error = (props) => {
       .me()
       .then(({ data }) => setMeData(data))
       .catch(() => {});
-  });
+  }, []);
 
   return (
     <>

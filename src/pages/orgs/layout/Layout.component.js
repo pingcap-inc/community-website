@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <CoreLayout domain="tug.tidb.io" hasMargin>
+    <CoreLayout domain="tidb.io" hasMargin>
       <Banner {...bannerProps} />
       <Styled.Container>{children}</Styled.Container>
     </CoreLayout>

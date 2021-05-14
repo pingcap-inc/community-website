@@ -9,3 +9,14 @@ export type ApiResponse<T, Detail> = {
 export interface ApiRequestFunction<Params, ResponseData, ResponseDetails = string> {
   (params: Params): Promise<ApiResponse<ResponseData, ResponseDetails>>;
 }
+
+export type PageData<T, Key> = {
+  data: {
+    meta: {
+      [`${Key}_count`]: number;
+      page: number;
+      page_size: number;
+    };
+    [Key]: T[];
+  };
+};

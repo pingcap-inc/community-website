@@ -23,3 +23,15 @@ export const addMembers = ({ role, slug, userIds }) => {
 export const updateMemberRole = ({ role, slug, userId }) => {
   return client.put(`/api/orgs/${slug}/member-role`, { role, user_id: userId });
 };
+
+export const topics = ({ slug, page, pageSize }) => {
+  return client.get(`/api/orgs/${slug}/topics`, { params: { page, page_size: pageSize } });
+};
+
+export const topicUrgencies = ({ slug, topicId }) => {
+  return client.get(`/api/orgs/${slug}/topic-urgencies`, { params: { topic_id: topicId } });
+};
+
+export const urgentTopic = ({ slug, topicId }) => {
+  return client.post(`/api/orgs/${slug}/topic-urgencies`, { topic_id: topicId });
+};

@@ -66,18 +66,10 @@ export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
   // "tidb.io" is applied a special Nginx rule which maps "tidb.io/" to "tug.tidb.io/community", and the
   // mapping makes NextJS router confused.So we will idetify this use case and do a patch accordingly.
   if ('tidb.io' === domain) {
-    let specRule;
-    if (path === '' || path === '/') {
-      specRule = {
-        urlPrefixRegexp: buildUrlPrefixPattern({ domain, path }),
-        replacement: '/community',
-      };
-    } else {
-      specRule = {
-        urlPrefixRegexp: buildUrlPrefixPattern({ domain }),
-        replacement: false,
-      };
-    }
+    const specRule = {
+      urlPrefixRegexp: /^https:\/\/tidb\.io\/?$/,
+      replacement: '/community',
+    };
 
     return [specRule, ...rules];
   } else {

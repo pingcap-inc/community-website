@@ -119,6 +119,12 @@ const tidbIoItems = [
   },
 ];
 
+const tidbIoOrgItems = [
+  {
+    link: 'https://tidb.io/orgs',
+  },
+];
+
 const tidbIoDomainConfig = {
   'tidb.io': 'tidb.io',
 };
@@ -174,10 +180,24 @@ describe('nav/utils', () => {
     });
 
     it('should handle tidb.io if in domain tidb.io', () => {
+      const rootPathRules = _applyTidbIoSpecRule([], { domain: 'tidb.io', path: '', domainConfig: tidbIoDomainConfig });
+      const rootPathResult = replaceNavLinks({ items: tidbIoItems, rules: rootPathRules });
+      expect(rootPathResult[0].link).toBe('/community');
+      expect(rootPathResult[0].browserLink).toBe('/');
+
+      const noneRootPathRules = _applyTidbIoSpecRule([], {
+        domain: 'tidb.io',
+        path: '/foo',
+        domainConfig: tidbIoDomainConfig,
+      });
+      const noneRootPathResults = replaceNavLinks({ items: tidbIoItems, rules: noneRootPathRules });
+      expect(noneRootPathResults[0].link).toBe('/community');
+    });
+
+    it('should handle tidb.io if in domain tidb.io but not with target empty path', () => {
       const rules = _applyTidbIoSpecRule([], { domain: 'tidb.io', path: '', domainConfig: tidbIoDomainConfig });
-      const result = replaceNavLinks({ items: tidbIoItems, rules });
-      expect(result[0].link).toBe('/community');
-      expect(result[0].browserLink).toBe('/');
+      const result = replaceNavLinks({ items: tidbIoOrgItems, rules });
+      expect(result[0].link).toBe('https://tidb.io/orgs');
     });
 
     it('should not handle tidb.io if not in domain tidb.io', () => {

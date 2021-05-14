@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
+import { Table as AntTable } from 'antd';
 
 export const Title = styled.h3`
   ${mixins.typography('p1')}
@@ -45,4 +46,12 @@ export const Delete = styled.span`
 export const DisabledDelete = styled.span`
   color: ${colors.C4};
   cursor: not-allowed;
+`;
+
+export const Table = styled(AntTable)`
+  .ant-table-thead {
+    tr th {
+      background-color: ${colors.T2};
+    }
+  }
 `;

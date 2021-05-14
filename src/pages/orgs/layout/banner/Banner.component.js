@@ -1,12 +1,10 @@
 import React from 'react';
-import { Tabs, Skeleton } from 'antd';
+import { Skeleton } from 'antd';
 
 import * as Styled from './banner.styled';
 import VerifiedSVG from 'pages/orgs/verified.svg';
 
-const { TabPane } = Tabs;
-
-const Banner = ({ introduction, logo, name, isLoading }) => (
+const Banner = ({ introduction, logo, name, isLoading, children }) => (
   <Styled.Container>
     <Styled.Content>
       <Styled.Information>
@@ -26,10 +24,7 @@ const Banner = ({ introduction, logo, name, isLoading }) => (
             </Styled.TextWrapper>
           </>
         )}
-
-        <Styled.Tabs defaultActiveKey="1">
-          <TabPane tab="成员" key="1"></TabPane>
-        </Styled.Tabs>
+        {children}
       </Styled.Information>
     </Styled.Content>
   </Styled.Container>

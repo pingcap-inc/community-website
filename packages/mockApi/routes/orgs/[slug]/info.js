@@ -22,6 +22,7 @@ module.exports = async (req, res) => {
 
   successResp({
     data: {
+      slug: slug,
       name: company.companyName(),
       introduction: lorem.paragraph(),
       logo: image.avatar(),

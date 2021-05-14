@@ -15,5 +15,6 @@ router.put('/:slug/member-role', require('./[slug]/updateMemberRole'));
 router.post('/check-name', require('./checkName'));
 router.get('/search-company', require('./searchCompany'));
 router.post('/invitations/:id', require('./invitations/[id]'));
+router.get('/:slug/topics', require('./[slug]/topics'));
 
 module.exports = router;

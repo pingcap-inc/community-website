@@ -166,19 +166,19 @@ export const genUserProfileItems = (meData) => {
   if (meData.org) {
     items.push({
       title: '我的团队',
-      link: `https://tug.tidb.io/orgs/${meData.org.slug}/members`,
+      link: `https://tidb.io/orgs/${meData.org.slug}/members`,
     });
   } else {
     items.push({
       title: '团队认证',
-      link: `https://tug.tidb.io/account/organization/new`,
+      link: `https://tidb.io/account/organization/new`,
     });
   }
 
   if (meData.org_invitations && meData.org_invitations.length) {
     items.push({
       title: '团队邀请',
-      link: `https://tug.tidb.io/account/organization/invitations`,
+      link: `https://tidb.io/account/organization/invitations`,
       badge: meData.org_invitations.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
     });
   }

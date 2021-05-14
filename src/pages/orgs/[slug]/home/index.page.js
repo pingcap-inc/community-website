@@ -7,7 +7,6 @@ import Layout from 'pages/orgs/layout';
 import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
-import { colors } from '@tidb-community/ui';
 
 const Home = () => {
   const router = useRouter();

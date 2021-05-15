@@ -13,7 +13,7 @@ export const Container = styled.div`
     `}
 `;
 
-export const NavRow = styled(Row)`
+export const NavRow = styled.div`
   margin-bottom: 48px;
 `;
 

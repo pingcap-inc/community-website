@@ -16,18 +16,20 @@ const Footer = ({ hasMargin = false, icons, logo, navItems, onNavClick, title })
       <Styled.Content>
         <Row align="top" justify={justify}>
           <Col xs={24} md={18}>
-            <Styled.NavRow gutter={[16, 48]} justify={justify}>
-              {navItems.map(({ title, items }) => (
-                <Styled.NavCol key={title} xs={24} md={8}>
-                  <Styled.NavTitle>{title}</Styled.NavTitle>
+            <Styled.NavRow>
+              <Row gutter={[16, 48]} justify={justify}>
+                {navItems.map(({ title, items }) => (
+                  <Styled.NavCol key={title} xs={24} md={8}>
+                    <Styled.NavTitle>{title}</Styled.NavTitle>
 
-                  {items.map(({ title, link }) => (
-                    <Styled.NavItem key={title} onClick={(e) => onNavClick(link)}>
-                      {title}
-                    </Styled.NavItem>
-                  ))}
-                </Styled.NavCol>
-              ))}
+                    {items.map(({ title, link }) => (
+                      <Styled.NavItem key={title} onClick={(e) => onNavClick(link)}>
+                        {title}
+                      </Styled.NavItem>
+                    ))}
+                  </Styled.NavCol>
+                ))}
+              </Row>
             </Styled.NavRow>
           </Col>
 

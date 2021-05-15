@@ -38,15 +38,23 @@ async function getTopTopicFromAskTUG() {
   return await response.json();
 }
 
+async function getAskTUGSite() {
+  const api = `https://asktug.com/site.json`;
+  const response = await fetch(api);
+  return await response.json();
+}
+
 export const getStaticProps = async () => {
-  const [howTo, practice, theory, top] = await Promise.all([
+  const [howTo, practice, theory, top, site] = await Promise.all([
     getTopicFromAskTUG('how-to'),
     getTopicFromAskTUG('practice'),
     getTopicFromAskTUG('theory'),
     getTopTopicFromAskTUG(),
+    getAskTUGSite(),
   ]);
 
   const topics = {
+    site,
     howTo,
     practice,
     theory,
@@ -62,7 +70,7 @@ export const getStaticProps = async () => {
 };
 
 const Home = ({ topics }) => {
-  const { howTo, practice, theory, top } = topics;
+  const { site, howTo, practice, theory, top } = topics;
 
   const articleImageUrl = '/images/home/article.svg';
   const qaImageUrl = '/images/home/qa.svg';
@@ -178,7 +186,7 @@ const Home = ({ topics }) => {
             <Row gutter={[32, 0]}>
               {top.topic_list.topics.slice(0, 10).map((topic, index) => {
                 const author = top.users.filter((user) => user.id === topic.posters[0].user_id)[0];
-                const category = getCategoryById(topic.category_id);
+                const category = getCategoryById(site, topic.category_id);
                 const itemProps = {
                   title: topic.title,
                   categoryName: category.name,

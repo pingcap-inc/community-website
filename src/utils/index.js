@@ -1,5 +1,3 @@
-import site from 'data/asktug_site.json';
-
 export function getAvatarUrlByAvatarTemplateString(tplStr, size = 64) {
   return 'https://asktug.com/' + tplStr.replace('{size}', size);
 }
@@ -12,7 +10,7 @@ export function getUserUrlByUsername(username) {
   return `https://asktug.com/u/${username}`;
 }
 
-export function getCategoryById(id) {
+export function getCategoryById(site, id) {
   return site.categories.filter((category) => category.id === id)[0];
 }
 

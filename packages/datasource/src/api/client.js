@@ -9,17 +9,16 @@ const client = axios.create({
 });
 
 client.interceptors.request.use((config) => {
-  const { method, headers } = config;
+  const { headers } = config;
+  const csrftoken = Cookie.get('csrftoken') ?? undefined;
 
-  if (/get/i.test(method)) {
-    const csrftoken = Cookie.get('csrftoken');
-
-    if (csrftoken) {
-      config.headers = {
-        ...headers,
-      };
-    }
-  }
+  config.headers = {
+    ...headers,
+    // TODO: Once we support i18n, the `Accept-Language` should be retrieved from
+    // a locale code provided by the i18n libarry (Maybe from a cookie or localStorage).
+    'Accept-Language': 'zh-cn',
+    'X-CSRFTOKEN': csrftoken,
+  };
 
   return config;
 });

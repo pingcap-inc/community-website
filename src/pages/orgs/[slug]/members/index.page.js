@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
-import { Button, Modal, Table } from 'antd';
+import { Button, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
@@ -156,7 +156,7 @@ const Members = () => {
           )}
         </Styled.Header>
 
-        <Table {...tableProps} pagination={false} />
+        <Styled.Table {...tableProps} pagination={false} />
       </Layout>
 
       <AddModal {...addModalProps} />

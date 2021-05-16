@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { Tabs as AntTabs } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 export const Container = styled.div`
+  background-color: white;
   border-bottom: 1px solid ${colors.T2};
 `;
 
@@ -38,18 +38,4 @@ export const Name = styled.h2`
 export const Introduction = styled.p`
   ${mixins.typography('p2')};
   margin-bottom: 0;
-`;
-
-export const Tabs = styled(AntTabs)`
-  position: absolute;
-  left: 0;
-  bottom: -1px;
-
-  .ant-tabs-nav {
-    margin-bottom: 0;
-
-    &::before {
-      border-bottom: 0;
-    }
-  }
 `;

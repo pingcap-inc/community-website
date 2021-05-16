@@ -7,6 +7,7 @@ import menuStyles from './menu';
 import modalStyles from './modal';
 import tableStyles from './table';
 import tabsStyles from './tabs';
+import paginationStyles from './pagination';
 
 export default css`
   ${btnStyles};
@@ -16,4 +17,5 @@ export default css`
   ${modalStyles};
   ${tableStyles};
   ${tabsStyles};
+  ${paginationStyles};
 `;

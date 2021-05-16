@@ -129,8 +129,9 @@ const Members = () => {
   const dataSource = utils.getDataSource({ membersResp, meData, onDelete, onRoleChange, isAdmin });
 
   const tableProps = {
-    dataSource,
     columns,
+    dataSource,
+    loading: !membersResp,
   };
 
   const addModalProps = {
@@ -146,7 +147,8 @@ const Members = () => {
       <Layout>
         <Styled.Header>
           <Styled.Title>
-            团队成员<span>{dataSource.length}</span>
+            团队成员
+            <Styled.Badge count={dataSource.length} />
           </Styled.Title>
 
           {isAdmin && (

@@ -1,21 +1,21 @@
 import React, { useMemo, useState } from 'react';
-import { Avatar, Badge, Button, Divider, List, Tag } from 'antd';
+import dayjs from 'dayjs';
+import useSWR from 'swr';
+import { Avatar, Button, Divider, List, Tag } from 'antd';
+import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/router';
 
 import * as Styled from './home.styled';
 import { CommunityHead } from 'components/head';
 import Layout from 'pages/orgs/layout';
-import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
-import useSWR from 'swr';
-import { useRouter } from 'next/router';
 
 const Home = () => {
   const router = useRouter();
-
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
 
-  const params = useMemo(() => ({ slug: router.query.slug, page, pageSize }), [router.query.slug, page, pageSize]);
-
+  const { slug } = router.query;
+  const params = useMemo(() => ({ slug, page, pageSize }), [slug, page, pageSize]);
   const { data, isValidating } = useSWR(['orgs.org.topics', params]);
 
   const { meta, topics } = data?.data ?? {};
@@ -42,7 +42,7 @@ const Home = () => {
           header={
             <Styled.ListHeading>
               全部主题
-              <Badge count={meta?.topics ?? 0} />
+              <Styled.Badge count={meta?.topics ?? 0} />
             </Styled.ListHeading>
           }
           renderItem={(topic) => (
@@ -61,7 +61,7 @@ const Home = () => {
                     <span className="name">{topic.creator.username}</span>
                     发布了主题
                   </div>
-                  <span className="time">{topic.created_at}</span>
+                  <span className="time">{dayjs(topic.created_at).format('YYYY-MM-DD HH:mm')}</span>
                 </div>
                 <div className="stats">
                   <span className="stat">

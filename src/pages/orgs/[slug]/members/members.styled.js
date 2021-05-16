@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
-import { Table as AntTable } from 'antd';
+import { Badge as AntBadge, Table as AntTable } from 'antd';
 
 export const Title = styled.h3`
   ${mixins.typography('p1')}
@@ -8,22 +8,24 @@ export const Title = styled.h3`
   font-weight: bold;
   color: ${colors.F1};
   margin-bottom: 0;
+`;
 
-  span {
-    ${mixins.verticalLineMiddle('16px')}
-    font-size: 12px;
-    background: ${colors.T2};
-    margin-left: 0.5rem;
-    padding: 0 0.5rem;
-    border-radius: 16px;
-    font-weight: normal;
+export const Badge = styled(AntBadge).attrs({
+  style: {
+    backgroundColor: colors.T2,
+  },
+})`
+  margin-left: 0.5rem;
+
+  .ant-badge-count {
+    color: ${colors.F1};
   }
 `;
 
 export const Header = styled.div`
   ${mixins.flexVerticalCenter()};
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 `;
 
 export const Name = styled.div`

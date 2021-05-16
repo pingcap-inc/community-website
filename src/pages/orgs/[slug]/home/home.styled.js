@@ -2,27 +2,19 @@ import styled from 'styled-components';
 import { List as AntList } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
+export { Badge } from '../members/members.styled';
+
 export const ListHeading = styled.div`
   ${mixins.typography('h2')};
   ${mixins.flexVerticalCenter()};
-
-  margin-left: 16px;
-
-  .ant-badge {
-    margin-left: 8px;
-    .ant-badge-count {
-      background-color: ${colors.B3};
-    }
-  }
+  padding: 0 1rem;
 `;
 
 export const List = styled(AntList)`
-  background-color: white;
-  max-width: 768px;
-  margin: auto;
+  background-color: ${colors.M1};
 
   .ant-list-item {
-    padding: 16px;
+    padding: 1rem;
 
     h3 {
       ${mixins.typography('h2')};

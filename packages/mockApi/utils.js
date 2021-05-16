@@ -61,10 +61,13 @@ const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const wait = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
+const repeat = (num, callback) => R.repeat(0, num).map((_, i) => callback(i + 1));
+
 module.exports = {
   errorResp,
   successResp,
   generator,
   sample,
   wait,
+  repeat,
 };

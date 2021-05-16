@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  background-color: ${colors.M2};
   flex: 1;
+  background-color: ${colors.M2};
   padding-bottom: 6em;
 `;

@@ -39,7 +39,9 @@ const App = ({ Component, pageProps, router }) => {
     const { status, statusText, data } = err;
     const errorMsg = data?.detail || statusText;
 
-    if ([403, 404].includes(status)) {
+    if (status === 401) {
+      // TODO: jump to login page
+    } else if ([403, 404].includes(status)) {
       setErrorStatus(status);
       setErrorMsg(errorMsg);
     } else {

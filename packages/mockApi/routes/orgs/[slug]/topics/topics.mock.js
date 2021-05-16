@@ -1,13 +1,6 @@
-const R = require('ramda');
-const { datatype, lorem, internet } = require('faker');
+const { datatype, date, lorem, internet } = require('faker');
 
-const repeat = (n, cb) => {
-  return R.repeat(0, n).map((_, i) => cb(i + 1));
-};
-
-const digit = () => datatype.number({ min: 0, max: 9 });
-
-const genTime = () => `${repeat(4, digit).join('')}-${repeat(2, digit).join('')}-${repeat(2, digit).join('')} 12:00`;
+const { repeat } = require('../../../../utils');
 
 const genUser = () => ({
   id: datatype.number(),
@@ -28,10 +21,10 @@ const genTopic = (id) => ({
   like_count: datatype.number(),
   reply_count: datatype.number(),
   views: datatype.number(),
-  created_at: genTime(),
+  created_at: date.past(),
   creator: genUser(),
   urgencies: repeat(datatype.number(2), (item) => ({
-    created_at: genTime(),
+    created_at: date.recent(),
     creator: genUser(),
   })),
 });

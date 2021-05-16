@@ -5,20 +5,21 @@ import { dispatchApiError } from './events';
 
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? '',
-  withCredentials: true,
 });
 
 client.interceptors.request.use((config) => {
-  const { headers } = config;
-  const csrftoken = Cookie.get('csrftoken') ?? undefined;
+  const csrftoken = Cookie.get('csrftoken');
 
   config.headers = {
-    ...headers,
+    ...config.headers,
     // TODO: Once we support i18n, the `Accept-Language` should be retrieved from
     // a locale code provided by the i18n libarry (Maybe from a cookie or localStorage).
-    'Accept-Language': 'zh-cn',
-    'X-CSRFTOKEN': csrftoken,
+    'Accept-Language': 'zh-hans',
   };
+
+  if (csrftoken) {
+    config.headers['X-CSRFTOKEN'] = csrftoken;
+  }
 
   return config;
 });

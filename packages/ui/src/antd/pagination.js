@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 import * as colors from '../colors';
-import * as mixins from '../mixins';
 
 const itemMixin = (borderColor, linkColor = borderColor) => css`
   border-color: ${borderColor};

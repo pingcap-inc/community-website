@@ -5,9 +5,9 @@ import formStyles from './form';
 import inputStyles from './input';
 import menuStyles from './menu';
 import modalStyles from './modal';
+import paginationStyles from './pagination';
 import tableStyles from './table';
 import tabsStyles from './tabs';
-import paginationStyles from './pagination';
 
 export default css`
   ${btnStyles};
@@ -15,7 +15,7 @@ export default css`
   ${inputStyles};
   ${menuStyles};
   ${modalStyles};
+  ${paginationStyles};
   ${tableStyles};
   ${tabsStyles};
-  ${paginationStyles};
 `;

@@ -6,14 +6,14 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
 import { MeContext, NavContext } from 'context';
-import { link as linkUtils } from 'utils';
+import { auth, link as linkUtils } from 'utils';
 
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { meData } = useContext(MeContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
-  const { navItems: headerNavItems, userProfileNavItems, loginUrl, logoutUrl, homeUrl } = data.header;
+  const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
@@ -54,8 +54,8 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
           userProfileSlot={
             <UserProfile
               onNavClick={onNavClick}
-              onLoginClick={() => doLogin()}
-              onLogoutClick={() => doLogout()}
+              onLoginClick={() => auth.login()}
+              onLogoutClick={() => auth.logout()}
               currentNav={currentNav}
               items={userProfileNavItems}
               avatarUrl={meData?.avatar_url}

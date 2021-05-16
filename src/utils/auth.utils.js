@@ -1,5 +1,4 @@
-import { getData } from '@tidb-community/datasource';
-
+const homeUrl = 'https://tidb.io/';
 const loginUrl = 'https://accounts.pingcap.com/login';
 const logoutUrl = 'https://accounts.pingcap.com/logout';
 const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;

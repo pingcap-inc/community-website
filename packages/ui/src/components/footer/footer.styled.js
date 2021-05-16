@@ -1,5 +1,5 @@
-import { Row, Col } from 'antd';
 import styled, { css } from 'styled-components';
+import { Row, Col } from 'antd';
 
 import * as colors from '../../colors';
 import * as mixins from '../../mixins';
@@ -13,7 +13,7 @@ export const Container = styled.div`
     `}
 `;
 
-export const NavRow = styled(Row)`
+export const NavContainer = styled(Col)`
   margin-bottom: 48px;
 `;
 

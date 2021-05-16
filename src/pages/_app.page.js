@@ -39,14 +39,9 @@ const App = ({ Component, pageProps, router }) => {
     const { status, statusText, data } = err;
     const errorMsg = data?.detail || statusText;
 
-    if (status === 401) {
-      // TODO: jump to login page
-    } else if (status === 403) {
-      setErrorStatus(403);
-      setErrorMsg('很抱歉，您无权访问这个页面');
-    } else if (status === 404) {
-      setErrorStatus(404);
-      setErrorMsg('很抱歉，这个页面找不到了');
+    if ([403, 404].includes(status)) {
+      setErrorStatus(status);
+      setErrorMsg(errorMsg);
     } else {
       message.error(`${errorMsg}`, 5);
     }

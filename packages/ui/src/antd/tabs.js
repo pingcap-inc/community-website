@@ -27,5 +27,13 @@ export default css`
         color: ${colors.B1};
       }
     }
+
+    &-tab-btn,
+    &-tab-remove {
+      &:focus,
+      &:active {
+        color: ${colors.B1};
+      }
+    }
   }
 `;

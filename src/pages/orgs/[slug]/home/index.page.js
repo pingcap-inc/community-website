@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 import useSWR from 'swr';
-import { Avatar, Badge, Button, Divider, List, Tag } from 'antd';
+import { Avatar, Button, Divider, List, Tag } from 'antd';
 import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 
@@ -42,7 +42,7 @@ const Home = () => {
           header={
             <Styled.ListHeading>
               全部主题
-              <Badge count={meta?.topics ?? 0} />
+              <Styled.Badge count={meta?.topics ?? 0} />
             </Styled.ListHeading>
           }
           renderItem={(topic) => (

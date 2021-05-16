@@ -11,9 +11,9 @@ import AddModal from './addModal';
 import Layout from 'pages/orgs/layout';
 import PageLoader from 'components/pageLoader';
 import { CommunityHead } from 'components/head';
-import { MeContext, NavContext } from 'context';
+import { MeContext } from 'context';
+import { auth, featureToggle, errors } from 'utils';
 import { columns } from './members.data';
-import { featureToggle, errors } from 'utils';
 
 export const getServerSideProps = async ({ req }) => {
   const host = process.env.VERCEL_URL || req.headers.host;
@@ -38,18 +38,17 @@ const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
   const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
-  const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(NavContext);
+  const { meData, isAnonymous } = useContext(MeContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
 
+  if (isAnonymous) {
+    auth.login();
+    return null;
+  }
+
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   const onRoleChange = async ({ id, role }) => {

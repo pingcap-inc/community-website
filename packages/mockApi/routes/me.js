@@ -9,6 +9,11 @@ const { datatype, internet, image } = faker;
 router.get('', async (req, res) => {
   await utils.wait();
 
+  // return utils.errorResp({
+  //   code: 401,
+  //   detail: 'Authentication credentials were not provided',
+  // })(req, res);
+
   utils.successResp({
     data: {
       id: datatype.number({ min: 1, max: 5 }),
@@ -53,11 +58,6 @@ router.get('', async (req, res) => {
       ],
     },
   })(req, res);
-
-  // utils.errorResp({
-  //   code: 401,
-  //   detail: 'Authentication credentials were not provided',
-  // })(req, res);
 });
 
 module.exports = router;

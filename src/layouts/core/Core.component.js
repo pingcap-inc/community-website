@@ -8,8 +8,6 @@ import * as Styled from './core.styled';
 import { MeContext, NavContext } from 'context';
 import { link as linkUtils } from 'utils';
 
-const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
-
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { meData } = useContext(MeContext);
@@ -48,30 +46,8 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     hasMargin,
   };
 
-  const doLogin = (redirectUrl) => {
-    window.open(`${loginUrl}?redirect_to=${encodeURIComponent(redirectUrl ?? window.location.href)}`, '_top');
-  };
-
-  const doLogout = (redirectUrl) => {
-    redirectUrl = redirectUrl ?? window.location.href;
-    let url;
-    // do not redirect back to needs-login pages
-    if (REG_AUTH_PATH.test(redirectUrl)) {
-      if (!/^http/.test(homeUrl)) {
-        url = `${window.location.protocol}//${window.location.hostname}${
-          window.location.port ? `:${window.location.port}` : ''
-        }${homeUrl}`;
-      } else {
-        url = homeUrl;
-      }
-    } else {
-      url = redirectUrl;
-    }
-    window.open(`${logoutUrl}?redirect_to=${encodeURIComponent(url)}`, '_top');
-  };
-
   return (
-    <NavContext.Provider value={{ navData: data, login: doLogin, logout: doLogout }}>
+    <NavContext.Provider value={{ navData: data }}>
       <Styled.Container>
         <Header
           {...headerProps}

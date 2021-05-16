@@ -3,6 +3,10 @@ import axios from 'axios';
 
 import { dispatchApiError } from './events';
 
+const shouldHttpStatusDispatchApiError = (status) => {
+  return status !== 400 && status !== 409;
+};
+
 const client = axios.create({
   baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? '',
 });
@@ -37,20 +41,25 @@ client.interceptors.response.use(
 
     const { data, status } = response;
 
-    if (
-      !config.isDispatchApiErrorDisabled &&
-      shouldHttpStatusDispatchApiError(status) &&
-      typeof window !== 'undefined'
-    ) {
-      dispatchApiError(response);
+    if (typeof window !== 'undefined') {
+      let shouldDispatch = false;
+      const { shouldDispatchApiError } = config;
+
+      if (shouldDispatchApiError && shouldDispatchApiError({ data, status })) {
+        shouldDispatch = true;
+      }
+
+      if (!shouldDispatchApiError && shouldHttpStatusDispatchApiError(status)) {
+        shouldDispatch = true;
+      }
+
+      if (shouldDispatch) {
+        dispatchApiError(response);
+      }
     }
 
     return Promise.reject(config.isReturnErrorResponse ? response : data);
   }
 );
-
-const shouldHttpStatusDispatchApiError = (status) => {
-  return status !== 400 && status !== 409;
-};
 
 export default client;

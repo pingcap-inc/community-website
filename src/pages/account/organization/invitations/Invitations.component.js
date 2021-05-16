@@ -6,13 +6,13 @@ import { utils } from '@tidb-community/ui';
 
 import * as Styled from './invitations.styled';
 import PageLoader from 'components/pageLoader';
-import { MeContext, NavContext } from 'context';
+import { MeContext } from 'context';
+import { auth } from 'utils';
 import { emptyText, okText, cancelText } from './invitations.data';
 
 const Invitations = () => {
   const router = useRouter();
-  const { meData, mutateMe, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(NavContext);
+  const { meData, mutateMe, isAnonymous } = useContext(MeContext);
   const [operating, setOperating] = useState(false);
 
   useEffect(() => {
@@ -21,16 +21,12 @@ const Invitations = () => {
     }
   });
 
-  if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+  if (isAnonymous) {
+    auth.login();
+    return null;
   }
 
-  if (meData.org) {
+  if (!meData) {
     return <PageLoader />;
   }
 

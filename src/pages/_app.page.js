@@ -39,9 +39,7 @@ const App = ({ Component, pageProps, router }) => {
     const { status, statusText, data } = err;
     const errorMsg = data?.detail || statusText;
 
-    if (status === 401) {
-      // TODO: jump to login page
-    } else if ([403, 404].includes(status)) {
+    if ([403, 404].includes(status)) {
       setErrorStatus(status);
       setErrorMsg(errorMsg);
     } else {
@@ -58,7 +56,7 @@ const App = ({ Component, pageProps, router }) => {
     setErrorMsg();
   }, [router.pathname]);
 
-  const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me', fetcher);
+  const { data: meResp, mutate: mutateMe, error } = useSWR('me', fetcher);
   const meData = meResp?.data;
 
   if (errorStatus) return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
@@ -70,7 +68,7 @@ const App = ({ Component, pageProps, router }) => {
       }}
     >
       <GlobalStyle />
-      <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
+      <MeContext.Provider value={{ meData, mutateMe, isAnonymous: !!error }}>
         <Component {...pageProps} />
       </MeContext.Provider>
     </SWRConfig>

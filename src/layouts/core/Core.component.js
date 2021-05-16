@@ -96,7 +96,8 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
 };
 
 Core.propTypes = {
-  MainWrapper: PropTypes.element,
+  // It belongs to an object type if MainWrapper is an styled component
+  MainWrapper: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   domain: PropTypes.string,
   hasMargin: PropTypes.bool,
   locale: PropTypes.oneOf(['zh', 'en']),

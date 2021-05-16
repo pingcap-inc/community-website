@@ -10,10 +10,10 @@ import { CoreLayout } from 'layouts';
 
 const Layout = ({ children }) => {
   const router = useRouter();
+  const { slug } = router.query;
+  const infoQuery = useMemo(() => ({ slug }), [slug]);
+  const { data, isValidating } = useSWR(['orgs.org.info', infoQuery]);
 
-  const routerQuery = useMemo(() => ({ slug: router.query.slug }), [router.query.slug]);
-
-  const { data, isValidating } = useSWR(['orgs.org.info', routerQuery]);
   const bannerProps = {
     ...R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data),
     isLoading: !data && isValidating,

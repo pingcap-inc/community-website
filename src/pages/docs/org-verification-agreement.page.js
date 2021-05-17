@@ -153,7 +153,7 @@ const Agreement = () => (
 
       <br />
       <div>北京平凯星辰科技发展有限公司</div>
-      <div>2021年5月XX日</div>
+      <div>2021年5月1日</div>
     </Layout>
   </>
 );

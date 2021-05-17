@@ -6,6 +6,7 @@ const HOSTS = {
 export const FEATURES = {
   CREATE_ORGANIZATION: Symbol('CREATE_ORGANIZATION'),
   ORGANIZATOIN_MEMBERS: Symbol('ORGANIZATOIN_MEMBERS'),
+  ORGANIZATOIN_HOME: Symbol('ORGANIZATOIN_HOME'),
 };
 
 const getRules = () => ({
@@ -15,6 +16,11 @@ const getRules = () => ({
   },
 
   [FEATURES.ORGANIZATOIN_MEMBERS]: {
+    disabledHosts: Object.values(HOSTS),
+    isEnabled: true,
+  },
+
+  [FEATURES.ORGANIZATOIN_HOME]: {
     disabledHosts: Object.values(HOSTS),
     isEnabled: true,
   },

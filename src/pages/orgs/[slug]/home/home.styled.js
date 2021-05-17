@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { List as AntList } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
+import { InfoCircleFilled as AntInfoCircleFilled } from '@ant-design/icons';
 
 export { Badge } from '../members/members.styled';
 
@@ -73,10 +74,19 @@ export const List = styled(AntList)`
   }
 
   .ant-list-pagination {
+    margin-top: 0;
     padding-bottom: 8px;
   }
 
   .ant-pagination {
     margin: 8px 8px 0;
   }
+`;
+
+export const PopContent = styled.div`
+  ${mixins.typography('p2')};
+`;
+
+export const InfoCircleFilled = styled(AntInfoCircleFilled)`
+  color: ${colors.B2} !important;
 `;

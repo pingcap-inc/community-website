@@ -51,7 +51,7 @@ client.interceptors.response.use(
 );
 
 const shouldHttpStatusDispatchApiError = (status) => {
-  return status !== 400 && status !== 409;
+  return status !== 400 && status !== 409 && status !== 428;
 };
 
 export default client;

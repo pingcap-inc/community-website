@@ -20,11 +20,11 @@ module.exports = async (req, res) => {
   successResp({
     data: {
       meta: {
-        topics: topicsList.length,
+        topics_count: topicsList.length,
         page: page,
         page_size: pageSize,
       },
-      topics: topicsList.slice(offset, offset + pageSize),
+      topics_count: topicsList.slice(offset, offset + pageSize),
     },
   })(req, res);
 };

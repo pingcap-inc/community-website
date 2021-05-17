@@ -1,13 +1,36 @@
-import React, { useMemo, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import dayjs from 'dayjs';
 import useSWR from 'swr';
-import { Avatar, Button, Divider, List, Tag } from 'antd';
+import { Avatar, Button, Divider, List, Modal, Popconfirm, Tag } from 'antd';
 import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
+import { api } from '@tidb-community/datasource';
 
 import * as Styled from './home.styled';
 import { CommunityHead } from 'components/head';
 import Layout from 'pages/orgs/layout';
+import { MeContext, NavContext } from 'context';
+import PageLoader from 'components/pageLoader';
+import { errors, featureToggle } from 'utils';
+
+export const getServerSideProps = async ({ req }) => {
+  const host = process.env.VERCEL_URL || req.headers.host;
+
+  const isEabled = featureToggle.isFeatureEnabled({
+    host,
+    name: featureToggle.FEATURES.ORGANIZATOIN_MEMBERS,
+  });
+
+  if (!isEabled) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {},
+  };
+};
 
 const Home = () => {
   const router = useRouter();
@@ -15,10 +38,44 @@ const Home = () => {
   const [pageSize, setPageSize] = useState(10);
 
   const { slug } = router.query;
-  const params = useMemo(() => ({ slug, page, pageSize }), [slug, page, pageSize]);
-  const { data, isValidating } = useSWR(['orgs.org.topics', params]);
+  const topicsParams = useMemo(() => ({ slug, page, pageSize }), [slug, page, pageSize]);
+  const orgParams = useMemo(() => ({ slug }), [slug]);
+  const { data: topicsData, isTopicsValidating } = useSWR(['orgs.org.topics', topicsParams]);
+  const { data: orgData } = useSWR(['orgs.org.info', orgParams]);
 
-  const { meta, topics } = data?.data ?? {};
+  const { meta, topics } = topicsData?.data ?? {};
+  const { topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
+
+  const { meData, isMeValidating, mutateMe } = useContext(MeContext);
+  const { login } = useContext(NavContext);
+
+  const [urging, setUrging] = useState(false);
+
+  if (!meData) {
+    if (isMeValidating) {
+      return <PageLoader />;
+    } else {
+      login();
+      return null;
+    }
+  }
+
+  const urge = (topicId) => {
+    setUrging(true);
+    return api.orgs.org
+      .urgeTopic({ slug, topicId })
+      .catch((err) => {
+        Modal.warn({
+          title: '无法加急主题',
+          content: errors.getFirstApiErrorMsg(err),
+          centered: true,
+        });
+      })
+      .finally(async () => {
+        await mutateMe();
+        setUrging(false);
+      });
+  };
 
   return (
     <>
@@ -26,13 +83,12 @@ const Home = () => {
 
       <Layout>
         <Styled.List
-          loading={isValidating}
+          loading={isTopicsValidating}
           dataSource={topics}
           pagination={{
             current: page,
             pageSize: pageSize,
-            total: meta?.topics ?? 0,
-            hideOnSinglePage: true,
+            total: meta?.topics_count ?? 0,
             size: 'small',
             onChange: (page, pageSize) => {
               setPage(page);
@@ -42,7 +98,7 @@ const Home = () => {
           header={
             <Styled.ListHeading>
               全部主题
-              <Styled.Badge count={meta?.topics ?? 0} />
+              <Styled.Badge count={meta?.topics_count ?? 0} />
             </Styled.ListHeading>
           }
           renderItem={(topic) => (
@@ -80,9 +136,29 @@ const Home = () => {
                     {topic.reply_count}
                   </span>
                   <Divider type="vertical" />
-                  <Button icon={<ThunderboltFilled />} size="small">
-                    {topic.urgencies.length ? '已加急' : '加急'}
-                  </Button>
+                  <Popconfirm
+                    placement="rightTop"
+                    icon={<Styled.InfoCircleFilled />}
+                    okText="确定"
+                    cancelText="取消"
+                    onConfirm={() => urge(topic.id)}
+                    disabled={urging || topic.urgencies.length}
+                    title={
+                      <Styled.PopContent>
+                        发送主题至社区用户组，加快相应
+                        <br />
+                        速度（今日剩余 {topicUrgencyRemainTimes} 次机会）
+                      </Styled.PopContent>
+                    }
+                    okButtonProps={{
+                      disabled: topicUrgencyRemainTimes === 0 || topic.urgencies.length,
+                      loading: urging,
+                    }}
+                  >
+                    <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
+                      {topic.urgencies.length ? '已加急' : '加急'}
+                    </Button>
+                  </Popconfirm>
                 </div>
               </div>
             </List.Item>

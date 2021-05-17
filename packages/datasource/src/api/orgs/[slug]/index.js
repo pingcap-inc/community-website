@@ -32,6 +32,6 @@ export const topicUrgencies = ({ slug, topicId }) => {
   return client.get(`/api/orgs/${slug}/topic-urgencies`, { params: { topic_id: topicId } });
 };
 
-export const urgentTopic = ({ slug, topicId }) => {
+export const urgeTopic = ({ slug, topicId }) => {
   return client.post(`/api/orgs/${slug}/topic-urgencies`, { topic_id: topicId });
 };

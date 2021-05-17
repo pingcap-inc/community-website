@@ -1,4 +1,4 @@
-import React, { useContext, useMemo, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import dayjs from 'dayjs';
 import useSWR from 'swr';
 import { Avatar, Button, Divider, List, Modal, Popconfirm, Tag } from 'antd';
@@ -33,23 +33,24 @@ export const getServerSideProps = async ({ req }) => {
 };
 
 const Home = () => {
-  const router = useRouter();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const { meData, isMeValidating, mutateMe } = useContext(MeContext);
+  const { login } = useContext(NavContext);
+  const [urging, setUrging] = useState(false);
 
+  const router = useRouter();
   const { slug } = router.query;
-  const topicsParams = useMemo(() => ({ slug, page, pageSize }), [slug, page, pageSize]);
-  const orgParams = useMemo(() => ({ slug }), [slug]);
-  const { data: topicsData, isTopicsValidating, revalidate } = useSWR(['orgs.org.topics', topicsParams]);
-  const { data: orgData } = useSWR(['orgs.org.info', orgParams]);
+
+  const {
+    data: topicsData,
+    isValidating: isTopicsValidating,
+    revalidate,
+  } = useSWR(['orgs.org.topics', JSON.stringify({ slug, page, pageSize })]);
+  const { data: orgData } = useSWR(['orgs.org.info', JSON.stringify({ slug })]);
 
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
-
-  const { meData, isMeValidating, mutateMe } = useContext(MeContext);
-  const { login } = useContext(NavContext);
-
-  const [urging, setUrging] = useState(false);
 
   if (!meData) {
     if (isMeValidating) {

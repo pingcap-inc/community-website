@@ -58,15 +58,24 @@ const App = ({ Component, pageProps, router }) => {
     setErrorMsg();
   }, [router.pathname]);
 
-  const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me', fetcher);
+  const {
+    data: meResp,
+    mutate: mutateMe,
+    isValidating: isMeValidating,
+  } = useSWR('me', fetcher, {
+    revalidateOnFocus: false,
+  });
   const meData = meResp?.data;
 
-  if (errorStatus) return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
+  if (errorStatus) {
+    return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
+  }
 
   return (
     <SWRConfig
       value={{
         fetcher,
+        revalidateOnFocus: false,
       }}
     >
       <GlobalStyle />

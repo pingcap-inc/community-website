@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 
 const Tabs = ({ slug }) => {
   const router = useRouter();
-
   const page = useMemo(() => router.pathname.split('/')[3], [router.pathname]);
   const [activeKey, setActiveKey] = useState(page);
 
@@ -20,8 +19,8 @@ const Tabs = ({ slug }) => {
 
   return (
     <Styled.Tabs activeKey={activeKey} onTabClick={onTabClick} animated={false}>
-      <AntTabs.TabPane tab="首页" key={`home`} />
-      <AntTabs.TabPane tab="成员" key={`members`} />
+      <AntTabs.TabPane tab="首页" key="home" />
+      <AntTabs.TabPane tab="成员" key="members" />
     </Styled.Tabs>
   );
 };

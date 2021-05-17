@@ -77,6 +77,10 @@ const Home = () => {
       });
   };
 
+  const jump = (topicSlug, topicId) => {
+    window.open(`https://asktug.com/t/${topicSlug}/${topicId}`);
+  };
+
   return (
     <>
       <CommunityHead title="团队主页" />
@@ -104,7 +108,7 @@ const Home = () => {
           renderItem={(topic) => (
             <List.Item>
               <div>
-                <h3>{topic.title}</h3>
+                <Styled.TopicTitle onClick={() => jump(topic.slug, topic.id)}>{topic.title}</Styled.TopicTitle>
                 <div>
                   {[topic.category.name].map((tag) => (
                     <Tag key={tag}>{tag}</Tag>

@@ -17,10 +17,6 @@ export const List = styled(AntList)`
   .ant-list-item {
     padding: 1rem;
 
-    h3 {
-      ${mixins.typography('h2')};
-    }
-
     p {
       margin-top: 12px;
       ${mixins.typography('p1')}
@@ -80,6 +76,16 @@ export const List = styled(AntList)`
 
   .ant-pagination {
     margin: 8px 8px 0;
+  }
+`;
+
+export const TopicTitle = styled.a.attrs({ target: '_blank' })`
+  ${mixins.typography('h3')};
+  display: block;
+  margin-bottom: 8px;
+
+  &:hover {
+    color: ${colors.B1};
   }
 `;
 

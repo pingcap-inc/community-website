@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
         page: page,
         page_size: pageSize,
       },
-      topics_count: topicsList.slice(offset, offset + pageSize),
+      topics: topicsList.slice(offset, offset + pageSize),
     },
   })(req, res);
 };

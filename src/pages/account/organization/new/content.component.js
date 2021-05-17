@@ -23,7 +23,7 @@ const CreateOrganization = () => {
   const rejectReason = meData?.org_enroll?.audit_reason;
 
   const resetForm = () => setShowForm(true);
-  const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/members`);
+  const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/home`);
 
   if (!meData) {
     if (isMeValidating) {

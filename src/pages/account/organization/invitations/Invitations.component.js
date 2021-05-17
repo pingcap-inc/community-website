@@ -17,7 +17,7 @@ const Invitations = () => {
 
   useEffect(() => {
     if (meData?.org && !operating) {
-      router.replace(`/orgs/${meData.org.slug}/members`);
+      router.replace(`/orgs/${meData.org.slug}/home`);
     }
   });
 

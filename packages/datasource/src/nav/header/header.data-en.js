@@ -167,7 +167,7 @@ export const genUserProfileItems = (meData) => {
   if (meData.org) {
     items.push({
       title: 'My Org',
-      link: `https://tidb.io/orgs/${meData.org.slug}/members`,
+      link: `https://tidb.io/orgs/${meData.org.slug}/home`,
     });
   } else {
     items.push({

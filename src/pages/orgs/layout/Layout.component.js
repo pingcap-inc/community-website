@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useMemo } from 'react';
+import React from 'react';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
@@ -11,12 +11,11 @@ import { CoreLayout } from 'layouts';
 const Layout = ({ children }) => {
   const router = useRouter();
   const { slug } = router.query;
-  const infoQuery = useMemo(() => ({ slug }), [slug]);
-  const { data, isValidating } = useSWR(['orgs.org.info', infoQuery]);
+  const { data } = useSWR(['orgs.org.info', JSON.stringify({ slug })]);
 
   const bannerProps = {
     ...R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data),
-    isLoading: !data && isValidating,
+    isLoading: !data,
   };
 
   return (

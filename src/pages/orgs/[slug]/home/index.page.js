@@ -40,7 +40,7 @@ const Home = () => {
   const { slug } = router.query;
   const topicsParams = useMemo(() => ({ slug, page, pageSize }), [slug, page, pageSize]);
   const orgParams = useMemo(() => ({ slug }), [slug]);
-  const { data: topicsData, isTopicsValidating } = useSWR(['orgs.org.topics', topicsParams]);
+  const { data: topicsData, isTopicsValidating, revalidate } = useSWR(['orgs.org.topics', topicsParams]);
   const { data: orgData } = useSWR(['orgs.org.info', orgParams]);
 
   const { meta, topics } = topicsData?.data ?? {};
@@ -73,6 +73,7 @@ const Home = () => {
       })
       .finally(async () => {
         await mutateMe();
+        await revalidate();
         setUrging(false);
       });
   };

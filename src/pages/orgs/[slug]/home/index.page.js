@@ -44,7 +44,7 @@ const Home = () => {
   const { data: orgData } = useSWR(['orgs.org.info', orgParams]);
 
   const { meta, topics } = topicsData?.data ?? {};
-  const { topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
+  const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
 
   const { meData, isMeValidating, mutateMe } = useContext(MeContext);
   const { login } = useContext(NavContext);

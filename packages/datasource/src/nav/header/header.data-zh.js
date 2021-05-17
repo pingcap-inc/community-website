@@ -184,7 +184,7 @@ export const genUserProfileItems = (meData) => {
   }
 
   items.push({
-    title: '退出登陆',
+    title: '退出登录',
     event: 'onLogoutClick',
   });
 

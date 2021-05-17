@@ -3,7 +3,7 @@ const localeData = {
     login: 'Sign in / Login',
   },
   zh: {
-    login: '注册 / 登陆',
+    login: '注册 / 登录',
   },
 };
 

@@ -156,6 +156,10 @@ export const genUserProfileItems = (meData) => {
       title: meData.username,
       divider: true,
     },
+    {
+      title: '账号设置',
+      link: `https://tidb.io/user/${meData.id}`,
+    },
   ];
 
   // has been logged in and joined an org

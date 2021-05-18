@@ -3,4 +3,5 @@ node_modules/
 package-lock.json
 packages/*/es/
 packages/*/lib/
+packages/*/dist/
 public/

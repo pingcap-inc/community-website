@@ -1,6 +1,6 @@
 import { api, getFormData } from '@tidb-community/datasource';
 import * as Yup from 'yup';
-import { buildInitialValues, buildScheme } from './form.utils';
+import { buildInitialValues, buildScheme } from 'commons/utils/form';
 
 const formData = getFormData();
 

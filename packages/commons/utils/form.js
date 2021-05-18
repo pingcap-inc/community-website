@@ -1,22 +1,6 @@
 import * as R from 'ramda';
 import * as Yup from 'yup';
 
-export const getErrorMessage = (err) => {
-  if (R.is(String, err)) {
-    return err;
-  }
-  if (R.is(Object, err) && 'details' in err) {
-    return err.details;
-  }
-  if (R.is(Error, err)) {
-    return err.message;
-  }
-  if (err) {
-    err.toString();
-  }
-  return err;
-};
-
 export const buildScheme = (formData) => {
   const iterateObject = (obj, scheme) => {
     const { name, validator, ...rest } = obj;
@@ -65,4 +49,16 @@ export const buildInitialValues = (formData) => {
   iterateObject(formData, initialValues);
 
   return initialValues;
+};
+
+export const wrapFormikSubmitFunction = (func, onError) => {
+  return (params, formikHelpers) => {
+    return func(params).catch((response) => {
+      if (response.errors) {
+        formikHelpers.setErrors(response.errors);
+      } else {
+        onError(response);
+      }
+    });
+  };
 };

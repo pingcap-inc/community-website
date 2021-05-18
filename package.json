@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "build": "next build && npm run build:asktug",
+    "build:accounts": "lerna run --scope accounts.pingcap.com build",
     "build:asktug": "lerna run --scope @tidb-community/asktug build",
     "build:ui": "lerna run --scope @tidb-community/ui build",
     "deploy": "shipit production deploy",
@@ -14,6 +15,7 @@
     "server:reload": "pm2 reload pm2.config.js",
     "server:start": "pm2 start pm2.config.js",
     "start": "next start",
+    "start:accounts": "lerna run --scope accounts.pingcap.com dev",
     "start:mockApi": "lerna run --scope @tidb-community/mock-api start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
     "test": "jest"

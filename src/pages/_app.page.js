@@ -10,7 +10,8 @@ import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
 import ErrorPage from './_error.page';
-import { MeContext, AuthContext } from 'context';
+import { AuthContext, MeContext } from 'context';
+import { withLayouts } from 'packages/commons/hoc/layouts';
 
 // FIXME: It is a temporary fix and the auth issue will be thoroughly handled in CPT-183
 const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
@@ -99,6 +100,8 @@ const App = ({ Component, pageProps, router }) => {
     return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
   }
 
+  const WrappedComponent = withLayouts(Component);
+
   return (
     <SWRConfig
       value={{
@@ -109,7 +112,7 @@ const App = ({ Component, pageProps, router }) => {
       <GlobalStyle />
       <AuthContext.Provider value={{ login: doLogin, logout: doLogout }}>
         <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
-          <Component {...pageProps} />
+          <WrappedComponent {...pageProps} />
         </MeContext.Provider>
       </AuthContext.Provider>
     </SWRConfig>

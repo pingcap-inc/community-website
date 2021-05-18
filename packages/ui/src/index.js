@@ -28,6 +28,7 @@ export {
   withVerifyCode,
   UserProfile,
   withActionMenu,
+  PlainMenu,
 } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`

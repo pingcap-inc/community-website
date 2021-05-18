@@ -76,3 +76,14 @@ export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
     return rules;
   }
 };
+
+export const _makeHiddenItems = (items) => {
+  if (!items) {
+    return items;
+  }
+  return items.map(({ items, ...props }) => ({
+    items: _makeHiddenItems(items),
+    ...props,
+    hidden: true,
+  }));
+};

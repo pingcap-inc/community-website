@@ -161,6 +161,10 @@ export const genUserProfileItems = (meData) => {
       title: meData.username,
       divider: true,
     },
+    {
+      title: 'Account Settings',
+      link: `https://tidb.io/user/${meData.id}`,
+    },
   ];
 
   // has been logged in and joined an org

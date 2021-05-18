@@ -3,7 +3,9 @@ import * as R from 'ramda';
 import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
 import * as resourcesData from './resources';
-import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule } from './utils';
+import genUserMenu from './user';
+
+import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule, _makeHiddenItems } from './utils';
 
 export const getData = ({ domain, domainConfig, env, locale, path, meData }) => {
   const defaultLocale = 'zh';
@@ -33,10 +35,12 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
   ];
 
   rules = _applyTidbIoSpecRule(rules, { domain, path, domainConfig });
+
   const userProfileNavItems = genUserProfileItems(meData);
-  // This is used for getting current nav.
-  const hiddenUserProfileNavItems =
-    userProfileNavItems && userProfileNavItems.map(({ ...props }) => ({ ...props, hidden: true }));
+  const userItems = genUserMenu(meData);
+  // These are used for getting current nav.
+  const hiddenUserProfileNavItems = _makeHiddenItems(userProfileNavItems);
+  const hiddenUserItems = _makeHiddenItems(userItems);
 
   return {
     footer: {
@@ -48,7 +52,7 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
     },
     header: {
       navItems: replaceNavLinks({
-        items: headerNavItems.concat(hiddenUserProfileNavItems || []),
+        items: headerNavItems.concat(hiddenUserProfileNavItems || []).concat(hiddenUserItems || []),
         rules,
       }),
       userProfileNavItems: replaceNavLinks({
@@ -79,5 +83,9 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
         rules,
       }),
     },
+    user: replaceNavLinks({
+      items: userItems,
+      rules,
+    }),
   };
 };

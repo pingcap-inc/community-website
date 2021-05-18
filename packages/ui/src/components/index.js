@@ -9,3 +9,4 @@ export { default as CountDown } from './countDown';
 export { default as withVerifyCode } from './verifyCodeInput';
 export { default as UserProfile } from './userProfile';
 export { default as withActionMenu } from './actionMenu';
+export { default as PlainMenu } from './plainMenu';

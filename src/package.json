@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@tidb-community/datasource": "*",
-    "@tidb-community/ui": "*"
+    "@tidb-community/ui": "*",
+    "commons": "^0.0.1"
   }
 }

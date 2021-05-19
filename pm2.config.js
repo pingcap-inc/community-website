@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'tug-website-next-server',
-      script: 'node_modules/next/dist/bin/next',
+      script: 'node_modules/.bin/next',
       args: 'start',
       instances: 2,
       exec_mode: 'cluster',

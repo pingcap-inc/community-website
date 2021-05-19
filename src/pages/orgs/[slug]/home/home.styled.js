@@ -17,6 +17,10 @@ export const List = styled(AntList)`
   .ant-list-item {
     padding: 1rem;
 
+    > div {
+      width: 100%;
+    }
+
     p {
       margin-top: 12px;
       ${mixins.typography('p1')}

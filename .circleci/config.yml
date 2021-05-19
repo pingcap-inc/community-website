@@ -70,9 +70,9 @@ workflows:
           filters:
             branches:
               ignore:
-                - CPT-155-pm2-cluster-mode
+                - main
       - deploy:
           filters:
             branches:
               only:
-                - CPT-155-pm2-cluster-mode
+                - main

@@ -11,7 +11,7 @@ import 'components/Container/Container.scss';
 import 'styles/globals.css';
 import ErrorPage from './_error.page';
 import { MeContext, NavContext } from 'context';
-import { withLayouts } from 'packages/commons/hoc/layouts';
+import { withLayouts } from 'commons/hoc/layouts';
 
 // FIXME: It is a temporary fix and the auth issue will be thoroughly handled in CPT-183
 const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;

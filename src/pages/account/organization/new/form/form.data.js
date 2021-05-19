@@ -50,9 +50,7 @@ const data = {
       name: 'company_base',
       placeholder: '请选择企业所在地',
       options: provinces,
-      validator: Yup.array()
-        .length(2, '企业所在地不可为空')
-        .required('企业所在地不可为空'),
+      validator: Yup.array().length(2, '企业所在地不可为空').required('企业所在地不可为空'),
       initialValue: undefined,
     },
     personalPosition: {
@@ -87,12 +85,12 @@ const data = {
         email: {
           name: 'email',
           placeholder: '请填写企业邮箱，用于认证',
-          validator: Yup.string().when(['verificationType'], {
-            is: 0,
-            then: Yup.string()
-              .email('请输入有效的邮箱')
-              .required('邮箱不可为空'),
-          }),
+          validator: Yup.string()
+            .email('请输入有效的邮箱')
+            .when(['audit_type'], {
+              is: 0,
+              then: Yup.string().required('邮箱不可为空'),
+            }),
           initialValue: '',
         },
         verificationCode: {
@@ -101,7 +99,7 @@ const data = {
           sendVerifyCodeBtnText: '发送验证码',
           limitSeconds: 120000,
           countDownFormatter: (ms) => `${Math.round(ms / 1000)}s`,
-          validator: Yup.string().when(['verificationType'], {
+          validator: Yup.string().when(['audit_type'], {
             is: 0,
             then: Yup.string().required('邮箱验证码不可为空'),
           }),
@@ -113,7 +111,7 @@ const data = {
         uploadFileText: '上传文件',
         extraText:
           '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。',
-        validator: Yup.mixed().when(['verificationType'], {
+        validator: Yup.mixed().when(['audit_type'], {
           is: 1,
           then: Yup.mixed().required('文件不可为空'),
         }),
@@ -130,9 +128,7 @@ const data = {
       privacy: {
         title: '《隐私协议》',
       },
-      validator: Yup.bool()
-        .oneOf([true], '需阅读并同意相关协议')
-        .required('需阅读并同意相关协议'),
+      validator: Yup.bool().oneOf([true], '需阅读并同意相关协议').required('需阅读并同意相关协议'),
       initialValue: false,
     },
   },

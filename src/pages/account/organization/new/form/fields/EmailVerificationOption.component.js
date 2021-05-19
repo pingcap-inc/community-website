@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
-import { Col, Row } from 'antd';
+import { Col, Row, message } from 'antd';
 import { Form as AntForm, Input } from 'formik-antd';
 import { api } from '@tidb-community/datasource';
 import { useFormikContext } from 'formik';
 import { useSize } from 'ahooks';
-import { withVerifyCode } from '@tidb-community/ui';
+import { withVerifyCode, utils } from '@tidb-community/ui';
 
 import data from '../form.data';
 
@@ -19,9 +19,22 @@ const EmailVerificationOption = ({ hidden }) => {
 
   const isSmall = size.width <= 538;
 
-  const { values } = useFormikContext();
+  const { values, errors, touched, setFieldError, setFieldTouched } = useFormikContext();
 
-  const sendEmail = () => api.orgs.enroll.sendCode({ email: values[organizationEmail.email.name] });
+  const sendEmail = () =>
+    api.orgs.enroll.sendCode({ email: values[organizationEmail.email.name] }).catch((err) => {
+      if ('errors' in err) {
+        const { errors } = err;
+        for (const key in errors) {
+          if (errors.hasOwnProperty(key)) {
+            setFieldTouched(key, true, false);
+            setFieldError(key, errors[key][0]);
+          }
+        }
+      } else {
+        message.warn(utils.errors.getErrorMessage(err));
+      }
+    });
 
   return (
     <Row gutter={16} ref={ref}>
@@ -32,7 +45,11 @@ const EmailVerificationOption = ({ hidden }) => {
       </Col>
       <Col span={isSmall ? 24 : 10}>
         <AntForm.Item name={organizationEmail.verificationCode.name} hidden={hidden}>
-          <VerifyCodeInput {...organizationEmail.verificationCode} sendVerifyCode={sendEmail} />
+          <VerifyCodeInput
+            {...organizationEmail.verificationCode}
+            buttonDisabled={!touched[organizationEmail.email.name] || errors[organizationEmail.email.name]}
+            sendVerifyCode={sendEmail}
+          />
         </AntForm.Item>
       </Col>
     </Row>

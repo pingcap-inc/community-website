@@ -6,6 +6,7 @@ import CountDown from '../countDown';
 
 const VerifyCodeSuffix = ({
   state,
+  disabled,
   sendVerifyCodeBtnText,
   onClickSendButton,
   countDownTotal,
@@ -22,6 +23,7 @@ const VerifyCodeSuffix = ({
     default:
       return (
         <Styled.SendEmailButton
+          disabled={disabled}
           loading={state === constants.STATE_SENDING}
           type="link"
           onClick={onClickSendButton}
@@ -34,7 +36,14 @@ const VerifyCodeSuffix = ({
 };
 
 const withVerifyCode = (Input) => {
-  return ({ sendVerifyCode, sendVerifyCodeBtnText, limitSeconds, countDownFormatter, ...props }) => {
+  return ({
+    sendVerifyCode,
+    sendVerifyCodeBtnText,
+    limitSeconds,
+    countDownFormatter,
+    buttonDisabled = false,
+    ...props
+  }) => {
     const [state, setState] = useState(constants.STATE_NORMAL);
     const onCountDownFinished = useCallback(() => setState(constants.STATE_NORMAL), []);
 
@@ -55,6 +64,7 @@ const withVerifyCode = (Input) => {
 
     const suffixProps = {
       state,
+      disabled: buttonDisabled || props.disabled,
       sendVerifyCodeBtnText,
       onClickSendButton,
       countDownTotal: limitSeconds,

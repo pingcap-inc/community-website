@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-
 import { Radio, Form as AntForm } from 'formik-antd';
+import { useFormikContext } from 'formik';
 
 import EmailVerificationOption from './EmailVerificationOption.component';
 import IncumbencyCertOption from './IncumbencyCertOption.component';
@@ -10,13 +10,21 @@ const { verificationType } = data.form;
 
 const VerificationFields = () => {
   const [type, setType] = useState(verificationType.options[0].value);
+
+  const { resetForm, values } = useFormikContext();
+
+  const onTypeChange = (e) => {
+    setType(e.target.value);
+    resetForm({ values });
+  };
+
   return (
     <>
       <AntForm.Item name={verificationType.name}>
         <Radio.Group
           name={verificationType.name}
           options={verificationType.options}
-          onChange={(e) => setType(e.target.value)}
+          onChange={onTypeChange}
           value={type}
         />
       </AntForm.Item>

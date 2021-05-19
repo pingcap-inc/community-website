@@ -1,6 +1,6 @@
 {
   "name": "@tidb-community/datasource",
-  "version": "0.1.4",
+  "version": "0.2.0",
   "scripts": {
     "build": "rimraf es lib && father build",
     "prepublishOnly": "npm run build && np --yolo --no-publish --any-branch"

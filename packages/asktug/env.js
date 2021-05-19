@@ -8,7 +8,7 @@ const envObject = {};
 const defineObject = {};
 
 for (const suffix of loadOrder) {
-  const filePath = path.resolve(__dirname, '../..', suffix);
+  const filePath = path.resolve(__dirname, suffix);
   if (!fs.existsSync(filePath)) {
     continue;
   }

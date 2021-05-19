@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 
 const unifyNodeModules = (names) =>
   names.reduce(
@@ -52,4 +53,6 @@ module.exports = {
       'antd-global.css': path.resolve('../ui/es/antd/global.css'),
     },
   },
+
+  plugins: [new webpack.EnvironmentPlugin(require('./env'))],
 };

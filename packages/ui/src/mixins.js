@@ -86,6 +86,11 @@ export const flexEnd = (type = 'block') => css`
   justify-content: flex-end;
 `;
 
+export const flexStart = (type = 'block') => css`
+  ${flexVerticalCenter(type)};
+  justify-content: flex-start;
+`;
+
 export const size = (width, height = width) => css`
   width: ${width};
   height: ${height};

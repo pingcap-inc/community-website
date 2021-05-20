@@ -1,6 +1,9 @@
 {
   "extends": "react-app",
   "rules": {
-    "react/jsx-no-target-blank": [1, { "allowReferrer": true }]
+    "import/no-anonymous-default-export": 2,
+    "no-console": [1, { "allow": ["warn", "error"] }],
+    "no-unused-vars": 2,
+    "react/jsx-no-target-blank": [2, { "allowReferrer": true }]
   }
 }

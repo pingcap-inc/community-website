@@ -1,4 +1,4 @@
-import { getCurrentNav } from './header.utils';
+import { getCurrentNav, UNKNOWN_NAV } from './header.utils';
 
 const mockNavItems = [
   {
@@ -35,7 +35,7 @@ describe('components/header/header.utils', () => {
       expect(getCurrentNav(mockNavItems, 'l2')).toBe('t3');
       expect(getCurrentNav(mockNavItems, 'l3')).toBe('t4');
       expect(getCurrentNav(mockNavItems, 'l4')).toBe('t7');
-      expect(getCurrentNav(mockNavItems, 'notExisted')).toBeUndefined();
+      expect(getCurrentNav(mockNavItems, 'notExisted')).toBe(UNKNOWN_NAV);
     });
   });
 });

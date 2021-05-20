@@ -824,8 +824,7 @@ const data = {
       links: [
         {
           name: '单集群两数据中心 TiDB 灾备方案',
-          href:
-            'https://zhuanlan.zhihu.com/p/138044746?utm_source=wechat_session&utm_medium=social&s_s_i=I9a9xbgJ7ZjNA5NAM6a6yWIUW7%2Fr6AL21w2IKcyv45I%3D&s_r=1&from=timeline&isappinstalled=0&wechatShare=1',
+          href: 'https://zhuanlan.zhihu.com/p/138044746?utm_source=wechat_session&utm_medium=social&s_s_i=I9a9xbgJ7ZjNA5NAM6a6yWIUW7%2Fr6AL21w2IKcyv45I%3D&s_r=1&from=timeline&isappinstalled=0&wechatShare=1',
         },
       ],
     },
@@ -841,8 +840,7 @@ const data = {
         },
         {
           name: 'TiDB in Action-用 TiUP 部署本地测试环境',
-          href:
-            'https://book.tidb.io/session2/chapter1/tiup-playground.html#112-%E7%94%A8-tiup-%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83',
+          href: 'https://book.tidb.io/session2/chapter1/tiup-playground.html#112-%E7%94%A8-tiup-%E9%83%A8%E7%BD%B2%E6%9C%AC%E5%9C%B0%E6%B5%8B%E8%AF%95%E7%8E%AF%E5%A2%83',
         },
       ],
     },
@@ -882,8 +880,7 @@ const data = {
         },
         {
           name: 'TiDB in Action-TiKV 线程池优化',
-          href:
-            'https://book.tidb.io/session4/chapter8/threadpool-optimize.html#821-tikv-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%BC%98%E5%8C%96',
+          href: 'https://book.tidb.io/session4/chapter8/threadpool-optimize.html#821-tikv-%E7%BA%BF%E7%A8%8B%E6%B1%A0%E4%BC%98%E5%8C%96',
         },
         {
           name: 'TiDB 在微众银行核心场景演进路径及方向探索',
@@ -899,8 +896,7 @@ const data = {
       links: [
         {
           name: 'TiDB in Action-MongoDB 到 TiDB',
-          href:
-            'https://book.tidb.io/session4/chapter5/from-mongodb-to-tidb.html#57-mongodb-%E8%BF%81%E7%A7%BB%E5%88%B0-tidb',
+          href: 'https://book.tidb.io/session4/chapter5/from-mongodb-to-tidb.html#57-mongodb-%E8%BF%81%E7%A7%BB%E5%88%B0-tidb',
         },
         {
           name: '【Talk】数据库选型之 MongoDB 的最佳场景和实践',
@@ -920,8 +916,7 @@ const data = {
         },
         {
           name: 'DM 同步单机 MySQL 到 TiDB',
-          href:
-            'https://book.tidb.io/session4/chapter5/from-single-mysql-to-tidb.html#511-dm-%E5%90%8C%E6%AD%A5%E5%8D%95%E6%9C%BA-mysql-%E5%88%B0-tidb-%E7%9A%84%E5%AE%9E%E8%B7%B5',
+          href: 'https://book.tidb.io/session4/chapter5/from-single-mysql-to-tidb.html#511-dm-%E5%90%8C%E6%AD%A5%E5%8D%95%E6%9C%BA-mysql-%E5%88%B0-tidb-%E7%9A%84%E5%AE%9E%E8%B7%B5',
         },
         {
           name: '【Talk】TiDB 在 bilibili 的实践 2.0',
@@ -937,8 +932,7 @@ const data = {
       links: [
         {
           name: ' TiDB in Action-TiFlash 架构与原理',
-          href:
-            'https://book.tidb.io/session1/chapter9/tiflash-architecture.html#92-tiflash-%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86',
+          href: 'https://book.tidb.io/session1/chapter9/tiflash-architecture.html#92-tiflash-%E6%9E%B6%E6%9E%84%E4%B8%8E%E5%8E%9F%E7%90%86',
         },
         {
           name: '海外直播行业的 TiDB 4.0 线上体验',
@@ -1194,8 +1188,7 @@ const data = {
       links: [
         {
           name: 'TiDB-In-Action - TiKV is Busy 处理思路',
-          href:
-            'https://book.tidb.io/session4/chapter7/tikv-is-busy.html#73-tikv-is-busy-%E5%A4%84%E7%90%86%E6%80%9D%E8%B7%AF',
+          href: 'https://book.tidb.io/session4/chapter7/tikv-is-busy.html#73-tikv-is-busy-%E5%A4%84%E7%90%86%E6%80%9D%E8%B7%AF',
         },
         {
           name: '【Talk】TiDB 4.0 新特性在电商行业的探索',

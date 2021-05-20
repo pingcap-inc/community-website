@@ -151,3 +151,46 @@ export const navItems = [
     ],
   },
 ];
+
+export const genUserProfileItems = (meData) => {
+  if (!meData) return;
+
+  const items = [
+    {
+      title: meData.username,
+      divider: true,
+    },
+  ];
+
+  // has been logged in and joined an org
+  if (meData.org) {
+    items.push({
+      title: '我的团队',
+      link: `https://tidb.io/orgs/${meData.org.slug}/home`,
+    });
+  } else {
+    items.push({
+      title: '团队认证',
+      link: `https://tidb.io/account/organization/new`,
+    });
+  }
+
+  if (meData.org_invitations && meData.org_invitations.length) {
+    items.push({
+      title: '团队邀请',
+      link: `https://tidb.io/account/organization/invitations`,
+      badge: meData.org_invitations.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+    });
+  }
+
+  items.push({
+    title: '退出登录',
+    event: 'onLogoutClick',
+  });
+
+  return items;
+};
+
+export const loginUrl = 'https://accounts.pingcap.com/login';
+export const logoutUrl = 'https://accounts.pingcap.com/logout';
+export const homeUrl = 'https://tidb.io/';

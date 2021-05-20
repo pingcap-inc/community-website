@@ -16,28 +16,34 @@ export const replaceNavLinks = ({ items, rules = [] }) => {
     }
 
     if (R.is(String, item.link)) {
-      for (const { urlPrefixRegexp, replacement } of rules) {
-        if (!urlPrefixRegexp || !urlPrefixRegexp.test(item.link)) {
-          continue;
-        }
-
-        // stop replacing if replacement is false
-        if (replacement === false) {
-          break;
-        }
-
-        // return '/' as root path if the link is totally matched
-        newItem.link = item.link.replace(urlPrefixRegexp, replacement || '') || '/';
-
-        // only match first rule
-        break;
-      }
+      newItem.link = replaceLink({ link: item.link, rules });
     }
 
     newItems.push(newItem);
   }
 
   return newItems;
+};
+
+export const replaceLink = ({ link, rules }) => {
+  for (const { urlPrefixRegexp, replacement } of rules) {
+    if (!urlPrefixRegexp || !urlPrefixRegexp.test(link)) {
+      continue;
+    }
+
+    // stop replacing if replacement is false
+    if (replacement === false) {
+      break;
+    }
+
+    // return '/' as root path if the link is totally matched
+    link = link.replace(urlPrefixRegexp, replacement || '') || '/';
+
+    // only match first rule
+    break;
+  }
+
+  return link;
 };
 
 export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
@@ -60,18 +66,10 @@ export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
   // "tidb.io" is applied a special Nginx rule which maps "tidb.io/" to "tug.tidb.io/community", and the
   // mapping makes NextJS router confused.So we will idetify this use case and do a patch accordingly.
   if ('tidb.io' === domain) {
-    let specRule;
-    if (path === '' || path === '/') {
-      specRule = {
-        urlPrefixRegexp: buildUrlPrefixPattern({ domain, path }),
-        replacement: '/community',
-      };
-    } else {
-      specRule = {
-        urlPrefixRegexp: buildUrlPrefixPattern({ domain }),
-        replacement: false,
-      };
-    }
+    const specRule = {
+      urlPrefixRegexp: /^https:\/\/tidb\.io\/?$/,
+      replacement: '/community',
+    };
 
     return [specRule, ...rules];
   } else {

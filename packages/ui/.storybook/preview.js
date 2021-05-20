@@ -1,4 +1,5 @@
 import '@tidb-community/ui/antd/global.less';
+import React, { useEffect } from 'react';
 import { constants, createAppGlobalStyle } from '@tidb-community/ui';
 
 const GlobalStyle = createAppGlobalStyle();
@@ -8,10 +9,16 @@ export const parameters = {
 };
 
 export const decorators = [
-  (Story) => (
-    <div className={constants.appClassName}>
-      <GlobalStyle />
-      <Story />
-    </div>
-  ),
+  (Story) => {
+    useEffect(() => {
+      document.body.classList.add(constants.appClassName);
+    }, []);
+
+    return (
+      <>
+        <GlobalStyle />
+        <Story />
+      </>
+    );
+  },
 ];

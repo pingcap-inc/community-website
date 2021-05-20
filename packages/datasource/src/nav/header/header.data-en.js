@@ -152,3 +152,46 @@ export const navItems = [
     ],
   },
 ];
+
+export const genUserProfileItems = (meData) => {
+  if (!meData) return;
+
+  const items = [
+    {
+      title: meData.username,
+      divider: true,
+    },
+  ];
+
+  // has been logged in and joined an org
+  if (meData.org) {
+    items.push({
+      title: 'My Org',
+      link: `https://tidb.io/orgs/${meData.org.slug}/home`,
+    });
+  } else {
+    items.push({
+      title: 'Create Org',
+      link: `https://tidb.io/account/organization/new`,
+    });
+  }
+
+  if (meData.org_invitations && meData.org_invitations.length) {
+    items.push({
+      title: 'Invitations',
+      link: `https://tidb.io/account/organization/invitations`,
+      badge: meData.org_invitations.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+    });
+  }
+
+  items.push({
+    title: 'Logout',
+    event: 'onLogoutClick',
+  });
+
+  return items;
+};
+
+export const loginUrl = 'https://accounts.pingcap.com/login';
+export const logoutUrl = 'https://accounts.pingcap.com/logout';
+export const homeUrl = 'https://tidb.io/';

@@ -14,7 +14,7 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title = 
   useEffect(() => {
     const el = document.createElement('div');
     el.id = menuPopupId;
-    document.body.append(el);
+    document.body.appendChild(el);
 
     return () => {
       el.remove();

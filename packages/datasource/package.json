@@ -16,14 +16,14 @@
   "license": "MIT",
   "types": "types/index.d.ts",
   "dependencies": {
-    "@babel/runtime": "7.13.17",
+    "@babel/runtime": "7.14.0",
     "js-cookie": "2.2.1"
   },
   "devDependencies": {
     "@types/js-cookie": "2.2.6",
-    "father": "2.30.4",
-    "father-build": "1.19.4",
-    "np": "7.4.0"
+    "father": "2.30.5",
+    "father-build": "1.19.5",
+    "np": "7.5.0"
   },
   "peerDependencies": {
     "axios": "^0.21.1",

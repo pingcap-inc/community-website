@@ -18,7 +18,7 @@ const Audit = ({ status, rejectReason, onClickResetForm, onClickOrgHome }) => {
         <Styled.ButtonContainer>
           {status === AUDIT_STATUS.PASS && (
             <Styled.Button type="primary" onClick={onClickOrgHome}>
-              进入企业主页
+              进入团队主页
             </Styled.Button>
           )}
           {status === AUDIT_STATUS.DENY && (

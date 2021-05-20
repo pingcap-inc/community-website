@@ -85,12 +85,10 @@ const data = {
         email: {
           name: 'email',
           placeholder: '请填写企业邮箱，用于认证',
-          validator: Yup.string()
-            .email('请输入有效的邮箱')
-            .when(['audit_type'], {
-              is: 0,
-              then: Yup.string().required('邮箱不可为空'),
-            }),
+          validator: Yup.string().when(['audit_type'], {
+            is: 0,
+            then: Yup.string().email('请输入有效的邮箱').required('邮箱不可为空'),
+          }),
           initialValue: '',
         },
         verificationCode: {
@@ -113,9 +111,9 @@ const data = {
           '需手写仅用于 TiDB Community 认证字样，并加盖企业公章；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png 格式，大小不超过 5M。',
         validator: Yup.mixed().when(['audit_type'], {
           is: 1,
-          then: Yup.mixed().required('文件不可为空'),
+          then: Yup.number().min(0, '文件不可为空'),
         }),
-        initialValue: undefined,
+        initialValue: -1,
       },
     },
     agreements: {

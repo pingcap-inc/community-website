@@ -11,8 +11,9 @@ import { errors } from 'utils';
 const { incumbencyCert } = data.form.verificationType;
 
 const IncumbencyCertOption = ({ hidden }) => {
-  const { setFieldValue } = useFormikContext();
-  const setValue = (res) => setFieldValue(incumbencyCert.name, res);
+  const { setFieldValue, setFieldTouched } = useFormikContext();
+  const setValue = (res, shouldValidate) => setFieldValue(incumbencyCert.name, res, shouldValidate);
+  const setTouched = (res) => setFieldTouched(incumbencyCert.name, res);
 
   const uploadProps = {
     accept: 'image/png, image/jpeg, image/jpg',
@@ -25,7 +26,10 @@ const IncumbencyCertOption = ({ hidden }) => {
         })
         .then((res) => res.cert_id),
     onFileUploadSucceed: setValue,
-    onFileRemoved: setValue,
+    onFileRemoved: () => {
+      setValue(-1, true);
+      setTouched(true);
+    },
     onFileUploadFailed: (err) => {
       message.error(errors.getFirstApiErrorMsg(err), 5);
     },

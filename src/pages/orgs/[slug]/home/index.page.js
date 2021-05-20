@@ -151,7 +151,7 @@ const Home = () => {
                     disabled={urging || topic.urgencies.length}
                     title={
                       <Styled.PopContent>
-                        发送主题至社区用户组，加快相应
+                        发送主题至社区用户组，加快响应
                         <br />
                         速度（本周剩余 {topicUrgencyRemainTimes} 次机会）
                       </Styled.PopContent>

@@ -35,7 +35,7 @@ export const getServerSideProps = async ({ req }) => {
 const Home = () => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const { meData, isMeValidating, mutateMe } = useContext(MeContext);
+  const { meData, isMeValidating } = useContext(MeContext);
   const { login } = useContext(NavContext);
   const [urging, setUrging] = useState(false);
 
@@ -47,7 +47,7 @@ const Home = () => {
     isValidating: isTopicsValidating,
     revalidate,
   } = useSWR(['orgs.org.topics', JSON.stringify({ slug, page, pageSize })]);
-  const { data: orgData } = useSWR(['orgs.org.info', JSON.stringify({ slug })]);
+  const { data: orgData, mutate: mutateOrg } = useSWR(['orgs.org.info', JSON.stringify({ slug })]);
 
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
@@ -73,7 +73,7 @@ const Home = () => {
         });
       })
       .finally(async () => {
-        await mutateMe();
+        await mutateOrg();
         await revalidate();
         setUrging(false);
       });

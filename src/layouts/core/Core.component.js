@@ -8,14 +8,13 @@ import * as Styled from './core.styled';
 import { MeContext, NavContext } from 'context';
 import { link as linkUtils } from 'utils';
 
-const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
-
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { meData } = useContext(MeContext);
+  const { login, logout } = useContext(NavContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
-  const { navItems: headerNavItems, userProfileNavItems, loginUrl, logoutUrl, homeUrl } = data.header;
+  const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
@@ -48,38 +47,16 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     hasMargin,
   };
 
-  const doLogin = (redirectUrl) => {
-    window.open(`${loginUrl}?redirect_to=${encodeURIComponent(redirectUrl ?? window.location.href)}`, '_top');
-  };
-
-  const doLogout = (redirectUrl) => {
-    redirectUrl = redirectUrl ?? window.location.href;
-    let url;
-    // do not redirect back to needs-login pages
-    if (REG_AUTH_PATH.test(redirectUrl)) {
-      if (!/^http/.test(homeUrl)) {
-        url = `${window.location.protocol}//${window.location.hostname}${
-          window.location.port ? `:${window.location.port}` : ''
-        }${homeUrl}`;
-      } else {
-        url = homeUrl;
-      }
-    } else {
-      url = redirectUrl;
-    }
-    window.open(`${logoutUrl}?redirect_to=${encodeURIComponent(url)}`, '_top');
-  };
-
   return (
-    <NavContext.Provider value={{ navData: data, login: doLogin, logout: doLogout }}>
+    <NavContext.Provider value={{ navData: data }}>
       <Styled.Container>
         <Header
           {...headerProps}
           userProfileSlot={
             <UserProfile
               onNavClick={onNavClick}
-              onLoginClick={() => doLogin()}
-              onLogoutClick={() => doLogout()}
+              onLoginClick={() => login()}
+              onLogoutClick={() => logout()}
               currentNav={currentNav}
               items={userProfileNavItems}
               avatarUrl={meData?.avatar_url}

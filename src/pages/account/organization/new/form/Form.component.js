@@ -31,7 +31,7 @@ const Form = ({ onSubmit: onSubmitCallback }) => {
           <Styled.FormTitle>团队认证</Styled.FormTitle>
         </Col>
         <Col>
-          <Styled.ContactUsButton type="link" href="mailto:user@tidb.io" size="small">
+          <Styled.ContactUsButton type="link" href="mailto:community@tidb.io" size="small">
             联系我们
           </Styled.ContactUsButton>
         </Col>

@@ -14,7 +14,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
   const { login, logout } = useContext(NavContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
-  const { navItems: headerNavItems, userProfileNavItems, loginUrl, logoutUrl, homeUrl } = data.header;
+  const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';

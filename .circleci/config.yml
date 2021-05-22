@@ -4,7 +4,6 @@ commands:
   install-deps:
     steps:
       - checkout
-      - run: sudo apt update && sudo apt install rsync
       - run: curl -sL https://sentry.io/get-cli/ | bash
       - restore_cache:
           keys:

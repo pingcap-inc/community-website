@@ -1,11 +1,17 @@
+// The configuration is referred to
+// https://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments
 module.exports = {
   apps: [
     {
       name: 'tug-website-next-server',
-      // call next CLI directly otherwise PM2 cluster won't work
+
+      // Provide the relative address otherwise PM2 cannot identify the next command
       script: 'node_modules/.bin/next',
       args: 'start',
-      // should be the current folder, otherwise PM2 will readlink first and break reload
+
+      // `cwd` is used for resolving a symlink related issue mentioned below:
+      // https://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments#the-main-issue
+      // Otherwise, PM2 will readlink first and break the server reload.
       cwd: process.env.PWD,
       instances: 2,
       exec_mode: 'cluster',

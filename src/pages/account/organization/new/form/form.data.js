@@ -1,9 +1,9 @@
-import { api, getFormData } from '@tidb-community/datasource';
 import * as Yup from 'yup';
-import { buildInitialValues, buildScheme } from 'commons/utils/form';
+import { api, getFormData } from '@tidb-community/datasource';
+import { utils } from '@tidb-community/common';
 
+const { buildInitialValues, buildScheme } = utils.form;
 const formData = getFormData();
-
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
 
 const fetchOrganizationOptions = (word) =>

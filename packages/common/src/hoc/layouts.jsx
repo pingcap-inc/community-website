@@ -9,11 +9,10 @@ export const withLayouts = (Component) => {
 
     return ({ children, ...props }) => (
       <WrappedLayout {...layoutProps}>
-        <Component {...props}>
-          {children}
-        </Component>
+        <Component {...props}>{children}</Component>
       </WrappedLayout>
     );
   }
+
   return Component;
 };

@@ -1,7 +1,6 @@
 {
-  "name": "accounts.pingcap.com",
+  "name": "accounts-site",
   "private": true,
-  "version": "0.0.1",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -9,12 +8,12 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@tidb-community/ui": "^0.2.4",
+    "@tidb-community/common": "*",
+    "@tidb-community/ui": "*",
     "@types/prop-types": "^15.7.3",
     "@types/react-router-dom": "^5.1.7",
     "@vitejs/plugin-legacy": "^1.4.0",
     "antd": "^4.15.6",
-    "commons": "^0.0.1",
     "formik": "^2.2.6",
     "formik-antd": "^2.0.1",
     "prop-types": "^15.7.2",

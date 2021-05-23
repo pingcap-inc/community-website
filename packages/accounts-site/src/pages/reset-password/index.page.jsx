@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withLayouts } from 'commons/hoc/layouts';
+import { withLayouts } from '@tidb-community/common';
 
 import _SendVerifyCode from './send-verify-code';
 import _Check from './check';
@@ -15,7 +15,7 @@ const Success = withLayouts(_Success);
 const Page = ({ children, ...props }) => {
   const [state, setState] = useState(RESET_PASSWORD_STATE.SEND_VERIFY_CODE);
 
-  const wait = () => new Promise(resolve => setTimeout(resolve, 1000));
+  const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
   const onSendVerifyCode = ({ mobile_or_email }) => {
     return wait().then(() => setState(RESET_PASSWORD_STATE.CHECK));
@@ -39,7 +39,7 @@ const Page = ({ children, ...props }) => {
     case RESET_PASSWORD_STATE.SUCCESS:
       return <Success />;
     default:
-      return <div/>
+      return <div />;
   }
 };
 

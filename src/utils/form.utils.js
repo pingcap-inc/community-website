@@ -1,4 +1,4 @@
 import { api } from '@tidb-community/datasource';
-import { wrapFormikSubmitFunction as commonWrapFormikSubmitFunction } from 'commons/utils/form';
+import { utils } from '@tidb-community/common';
 
-export const wrapFormikSubmitFunction = (func) => commonWrapFormikSubmitFunction(func, api.events.dispatchApiError);
+export const wrapFormikSubmitFunction = (func) => utils.wrapFormikSubmitFunction(func, api.events.dispatchApiError);

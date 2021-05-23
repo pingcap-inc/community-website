@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { withLayouts } from 'commons/hoc/layouts';
+import { withLayouts } from '@tidb-community/common';
 
 // https://reactjs.org/docs/code-splitting.html
 const pages = import.meta.glob('./pages/**/*/index.page.jsx');
@@ -16,19 +16,18 @@ const PATH_REG = /^\.\/pages(.*)\/index\.page\.jsx$/;
 const parsePages = (pages) => {
   // TODO: the result should be ordered by some rules to avoid router masking issues.
   // TODO: handle params pattern. ( by simple replaces /\[([^\]]+)]/ to `:$1`?)
-  return Object.entries(pages)
-    .map(([path, dynamicComponent]) => {
-      const url = PATH_REG.exec(path)[1];
-      return {
-        url,
-        Component: lazy(lazyLayouts(dynamicComponent)),
-      };
-    });
+  return Object.entries(pages).map(([path, dynamicComponent]) => {
+    const url = PATH_REG.exec(path)[1];
+    return {
+      url,
+      Component: lazy(lazyLayouts(dynamicComponent)),
+    };
+  });
 };
 
 const lazyLayouts = (factory) => {
-  return () => factory()
-    .then(module => {
+  return () =>
+    factory().then((module) => {
       const { default: DefaultComponent, ...rest } = module;
       return {
         default: withLayouts(DefaultComponent),
@@ -45,15 +44,13 @@ const PageRouter = () => {
     <App>
       <Router>
         <Switch>
-          {
-            pageRoutes.map(({ url, Component }) => (
-              <Route key={url} path={url} exact>
-                <Suspense fallback={<div />}>
-                  <Component />
-                </Suspense>
-              </Route>
-            ))
-          }
+          {pageRoutes.map(({ url, Component }) => (
+            <Route key={url} path={url} exact>
+              <Suspense fallback={<div />}>
+                <Component />
+              </Suspense>
+            </Route>
+          ))}
         </Switch>
       </Router>
     </App>

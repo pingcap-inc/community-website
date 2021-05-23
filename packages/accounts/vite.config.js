@@ -1,6 +1,6 @@
 import legacy from '@vitejs/plugin-legacy';
 import reactRefresh from '@vitejs/plugin-react-refresh';
-import svgr from 'vite-plugin-svgr';
+import reactSvg from 'vite-plugin-react-svg';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
@@ -16,8 +16,11 @@ const unifyNodeModules = (names) =>
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    svgr(),
     reactRefresh(),
+    reactSvg({
+      defaultExport: 'component',
+      svgo: true,
+    }),
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),

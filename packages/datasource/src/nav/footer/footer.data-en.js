@@ -1,9 +1,9 @@
-import { ReactComponent as FacebookIcon } from './icons/facebook.svg';
-import { ReactComponent as GithubIcon } from './icons/github.svg';
-import { ReactComponent as LinkedInIcon } from './icons/linkedin.svg';
-import { ReactComponent as SlackIcon } from './icons/slack.svg';
-import { ReactComponent as TwitterIcon } from './icons/twitter.svg';
-import { ReactComponent as YoutubeIcon } from './icons/youtube.svg';
+import FacebookIcon from './icons/facebook.svg';
+import GithubIcon from './icons/github.svg';
+import LinkedInIcon from './icons/linkedin.svg';
+import SlackIcon from './icons/slack.svg';
+import TwitterIcon from './icons/twitter.svg';
+import YoutubeIcon from './icons/youtube.svg';
 
 export const navItems = [
   {

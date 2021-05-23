@@ -4,7 +4,7 @@ import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 
 import * as Styled from './core.styled';
-import logoSvg from '@/public/images/community/logo.svg';
+import logoSvg from '@/public/images/community/logo.svg?url';
 import { AuthContext, MeContext, NavContext } from '@/context';
 
 const CoreLayout = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMargin = true, locale = 'zh' }) => {

@@ -1,12 +1,12 @@
 import React from 'react';
-import { Formik } from 'formik';
 import { Form, FormItem, Input } from 'formik-antd';
+import { Formik } from 'formik';
 import { withVerifyCode } from '@tidb-community/ui';
 
-import { SimpleLayout } from '../../../layout';
+import { RouteLink } from '~/components/links';
+import { SimpleLayout } from '~/layout';
+import { SubmitButton } from '~/components/form';
 import { form, formScheme, initialValues } from './check.form';
-import { SubmitButton } from '../../../components/form';
-import { RouteLink } from '../../../components/links';
 
 const { verifyCode } = form;
 

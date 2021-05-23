@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { utils } from '@tidb-community/common';
 
-import { company, email, mobile, verifyCode } from '../../form/fields';
+import { company, email, mobile, verifyCode } from '~/form/fields';
 
 const { buildInitialValues, buildScheme } = utils.form;
 

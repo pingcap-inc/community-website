@@ -1,13 +1,13 @@
-import { defineConfig } from 'vite';
-import reactRefresh from '@vitejs/plugin-react-refresh';
 import legacy from '@vitejs/plugin-legacy';
-import * as path from 'path';
+import reactRefresh from '@vitejs/plugin-react-refresh';
+import { defineConfig } from 'vite';
+import { resolve } from 'path';
 
 const unifyNodeModules = (names) =>
   names.reduce(
     (acc, name) => ({
       ...acc,
-      [name]: path.resolve(`./node_modules/${name}`),
+      [name]: resolve(`./node_modules/${name}`),
     }),
     {}
   );
@@ -25,8 +25,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@tidb-community/ui': path.resolve(__dirname, '../ui'),
-      '@tidb-community/datasource': path.resolve(__dirname, '../datasource'),
+      '@public': resolve(__dirname, '../../public'),
+      '~': resolve(__dirname, 'src'),
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
     },
   },

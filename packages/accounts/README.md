@@ -15,9 +15,9 @@
 
 ## 代码复用
 
-- @tidb-community/ui
+- @tidb-community/common
 - @tidb-community/datasource
-- commons
+- @tidb-community/ui
 
 ## 路由实现
 
@@ -42,6 +42,6 @@
 
 scheme 中通过 [conditionalField](src/form/utils.js) 方法定义条件字段（用于处理校验逻辑），并在对应 UI 中的`RouterItem`组件传入 prop `hidden`来控制组件是否显示。
 
-## [withLayout](../commons/hoc/layouts.jsx)
+## [withLayout](../packages/common/hoc/layouts.jsx)
 
 该 hoc 用于把组件的 `Layout` 与 `layoutProps` 属性封装到组件外层。 该方法也会递归处理 layout 组件本身的 layout 属性。

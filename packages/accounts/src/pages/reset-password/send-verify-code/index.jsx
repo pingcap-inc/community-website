@@ -1,11 +1,11 @@
 import React from 'react';
-import { Formik } from 'formik';
 import { Form, FormItem, Input } from 'formik-antd';
+import { Formik } from 'formik';
 
-import { SimpleLayout } from '../../../layout';
+import { RouteLink } from '~/components/links';
+import { SimpleLayout } from '~/layout';
+import { SubmitButton, MobileInputPrefix } from '~/components/form';
 import { form, formScheme, initialValues } from './send-verify-code.form';
-import { SubmitButton, MobileInputPrefix } from '../../../components/form';
-import { RouteLink } from '../../../components/links';
 
 const { mobileOrEmail } = form;
 

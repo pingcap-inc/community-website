@@ -1,6 +1,6 @@
 import { utils } from '@tidb-community/common';
 
-import { password, confirmPassword } from '../../../form/fields';
+import { password, confirmPassword } from '~/form/fields';
 
 const { buildInitialValues, buildScheme } = utils.form;
 

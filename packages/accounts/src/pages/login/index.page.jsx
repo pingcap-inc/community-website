@@ -1,16 +1,16 @@
 import React from 'react';
-import { Formik } from 'formik';
-import { Form, FormItem, Input } from 'formik-antd';
-import { withVerifyCode } from '@tidb-community/ui';
 import { Divider } from 'antd';
-
-import { SimpleLayout } from '../../layout';
-import { form, formScheme, initialValues } from './login.form';
-import { SubmitButton, MobileInputPrefix } from '../../components/form';
-import { RouteLink, ActionLink } from '../../components/links';
-import { Flex } from '../../components/layout';
+import { Form, FormItem, Input } from 'formik-antd';
+import { Formik } from 'formik';
 import { GithubOutlined } from '@ant-design/icons';
+import { withVerifyCode } from '@tidb-community/ui';
+
+import { Flex } from '~/components/layout';
 import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
+import { RouteLink, ActionLink } from '~/components/links';
+import { SimpleLayout } from '~/layout';
+import { SubmitButton, MobileInputPrefix } from '~/components/form';
+import { form, formScheme, initialValues } from './login.form';
 
 const { mobile, verifyCode, password, loginType } = form;
 

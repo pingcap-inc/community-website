@@ -1,8 +1,8 @@
 import { utils } from '@tidb-community/common';
 
 import { LOGIN_TYPE, LOGIN_TYPE_VALUE_NAME } from './login.constants';
-import { conditionalField } from '../../form/utils';
-import { mobile, verifyCode, password } from '../../form/fields';
+import { conditionalField } from '~/form/utils';
+import { mobile, verifyCode, password } from '~/form/fields';
 
 const { buildInitialValues, buildScheme } = utils.form;
 

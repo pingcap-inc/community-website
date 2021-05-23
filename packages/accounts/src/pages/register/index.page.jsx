@@ -1,13 +1,13 @@
 import React from 'react';
-import { Formik } from 'formik';
 import { Checkbox, Form, FormItem, Input } from 'formik-antd';
+import { Formik } from 'formik';
 import { Link, withVerifyCode } from '@tidb-community/ui';
 
-import { SimpleLayout } from '../../layout';
+import { Flex } from '~/components/layout';
+import { RouteLink } from '~/components/links';
+import { SimpleLayout } from '~/layout';
+import { SubmitButton, MobileInputPrefix } from '~/components/form';
 import { form, formScheme, initialValues } from './register.form';
-import { SubmitButton, MobileInputPrefix } from '../../components/form';
-import { RouteLink } from '../../components/links';
-import { Flex } from '../../components/layout';
 
 const { mobile, verifyCode, email, company, agreements } = form;
 

@@ -1,7 +1,7 @@
-import { Badge, Menu } from 'antd';
+import * as R from 'ramda';
 import React from 'react';
 import styled from 'styled-components';
-import * as R from 'ramda';
+import { Badge, Menu } from 'antd';
 
 const HiddenMenuItem = styled(Menu.Item)`
   display: none !important;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
-import LogoSvg from '../../../../public/images/community/logo.svg';
+
+import LogoSvg from '@public/images/community/logo.svg';
 
 export const PageContainer = styled.div`
   ${mixins.flexCenter()};

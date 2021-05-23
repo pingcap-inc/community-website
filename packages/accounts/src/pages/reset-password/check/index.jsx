@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { withVerifyCode } from '@tidb-community/ui';
 
 import { RouteLink } from '~/components/links';
-import { SimpleLayout } from '~/layout';
+import { SimpleLayout } from '~/layouts';
 import { SubmitButton } from '~/components/form';
 import { form, formScheme, initialValues } from './check.form';
 

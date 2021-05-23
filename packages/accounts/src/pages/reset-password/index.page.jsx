@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { withLayouts } from '@tidb-community/common';
+import { withLayout } from '@tidb-community/common';
 
 import _SendVerifyCode from './send-verify-code';
 import _Check from './check';
@@ -7,10 +7,10 @@ import _SetNewPassword from './set-new-password';
 import _Success from './success';
 import { RESET_PASSWORD_STATE } from './reset-password.constants';
 
-const SendVerifyCode = withLayouts(_SendVerifyCode);
-const Check = withLayouts(_Check);
-const SetNewPassword = withLayouts(_SetNewPassword);
-const Success = withLayouts(_Success);
+const SendVerifyCode = withLayout(_SendVerifyCode);
+const Check = withLayout(_Check);
+const SetNewPassword = withLayout(_SetNewPassword);
+const Success = withLayout(_Success);
 
 const Page = ({ children, ...props }) => {
   const [state, setState] = useState(RESET_PASSWORD_STATE.SEND_VERIFY_CODE);

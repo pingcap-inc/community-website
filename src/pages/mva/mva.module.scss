@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'styles/common';
 
 .wrapper {
@@ -211,7 +213,7 @@
     img {
       position: relative;
       width: $width-widget-line;
-      right: -$width-widget-line / 3 * 1;
+      right: math.div(-$width-widget-line, 3) * 1;
     }
   }
 

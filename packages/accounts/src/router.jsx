@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { withLayouts } from '@tidb-community/common';
+import { withLayout } from '@tidb-community/common';
 
 // https://reactjs.org/docs/code-splitting.html
 const pages = import.meta.glob('./pages/**/*/index.page.jsx');
@@ -30,7 +30,7 @@ const lazyLayouts = (factory) => {
     factory().then((module) => {
       const { default: DefaultComponent, ...rest } = module;
       return {
-        default: withLayouts(DefaultComponent),
+        default: withLayout(DefaultComponent),
         ...rest,
       };
     });

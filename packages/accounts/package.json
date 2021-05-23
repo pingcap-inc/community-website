@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@tidb-community/common": "*",
+    "@tidb-community/datasource": "*",
     "@tidb-community/ui": "*",
     "antd": "4.15.6",
     "formik": "2.2.8",

@@ -20,12 +20,15 @@ export default defineConfig({
       targets: ['defaults', 'not IE 11'],
     }),
   ],
+
   build: {
     target: 'esnext',
   },
+
   resolve: {
     alias: {
-      '@public': resolve(__dirname, '../../public'),
+      '@/public': resolve(__dirname, '../../public'),
+      '@': resolve(__dirname, '../../src'),
       '~': resolve(__dirname, 'src'),
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
     },

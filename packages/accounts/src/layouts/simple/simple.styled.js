@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-import LogoSvg from '@public/images/community/logo.svg';
+import LogoSvg from '@/public/images/community/logo.svg';
 
-export const PageContainer = styled.div`
+export const Container = styled.div`
   ${mixins.flexCenter()};
   background-color: ${colors.M2};
   min-height: 100vh;

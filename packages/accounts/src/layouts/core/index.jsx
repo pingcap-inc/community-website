@@ -2,18 +2,16 @@ import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
-import { useRouter } from 'next/router';
 
+import { AuthContext, MeContext, NavContext } from '@/context';
 import * as Styled from './core.styled';
-import { AuthContext, MeContext, NavContext } from 'context';
-import { link as linkUtils } from 'utils';
 
-const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
-  const router = useRouter();
+const CoreLayout = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMargin = true, locale = 'zh' }) => {
   const { meData } = useContext(MeContext);
   const { login, logout } = useContext(AuthContext);
 
-  const data = getData({ domain, path: router.basePath, locale, meData }).nav;
+  const { location } = window;
+  const data = getData({ domain, path: location.origin, locale, meData }).nav;
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
@@ -22,10 +20,10 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {
     if (isSelected) return;
-    linkUtils.handleRedirect(router, link, browserLink, target);
+    // linkUtils.handleRedirect(router, link, browserLink, target);
   };
 
-  const currentNav = utils.header.getCurrentNav(headerNavItems, router.asPath);
+  const currentNav = utils.header.getCurrentNav(headerNavItems, location.origin);
 
   const headerProps = {
     logo,
@@ -72,7 +70,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
   );
 };
 
-Core.propTypes = {
+CoreLayout.propTypes = {
   // It belongs to an object type if MainWrapper is a styled component
   MainWrapper: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
   children: PropTypes.node,
@@ -81,4 +79,4 @@ Core.propTypes = {
   locale: PropTypes.oneOf(['zh', 'en']),
 };
 
-export default Core;
+export default CoreLayout;

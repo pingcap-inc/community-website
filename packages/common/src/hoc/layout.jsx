@@ -1,11 +1,11 @@
 import React from 'react';
 
-export const withLayouts = (Component) => {
+export const withLayout = (Component) => {
   if (Component.Layout) {
     const Layout = Component.Layout;
     const layoutProps = Component.layoutProps || {};
 
-    const WrappedLayout = withLayouts(Layout);
+    const WrappedLayout = withLayout(Layout);
 
     return ({ children, ...props }) => (
       <WrappedLayout {...layoutProps}>

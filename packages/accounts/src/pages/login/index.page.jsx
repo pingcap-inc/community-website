@@ -8,7 +8,7 @@ import { withVerifyCode } from '@tidb-community/ui';
 import { Flex } from '~/components/layout';
 import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
 import { RouteLink, ActionLink } from '~/components/links';
-import { SimpleLayout } from '~/layout';
+import { SimpleLayout } from '~/layouts';
 import { SubmitButton, MobileInputPrefix } from '~/components/form';
 import { form, formScheme, initialValues } from './login.form';
 

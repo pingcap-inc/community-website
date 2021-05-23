@@ -1,5 +1,6 @@
 import legacy from '@vitejs/plugin-legacy';
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import reactSvg from 'vite-plugin-react-svg';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
@@ -16,16 +17,30 @@ const unifyNodeModules = (names) =>
 export default defineConfig({
   plugins: [
     reactRefresh(),
+    reactSvg({
+      defaultExport: 'component',
+      svgo: true,
+    }),
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
   ],
+
   build: {
     target: 'esnext',
   },
+
+  define: {
+    'process.env': {
+      NEXT_PUBLIC_RUNTIME_ENV: 'production',
+      NEXT_PUBLIC_API_BASE_URL: 'http://localhost:4000',
+    },
+  },
+
   resolve: {
     alias: {
-      '@public': resolve(__dirname, '../../public'),
+      '@/public': resolve(__dirname, '../../public'),
+      '@': resolve(__dirname, '../../src'),
       '~': resolve(__dirname, 'src'),
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
     },

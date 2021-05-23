@@ -5,7 +5,7 @@ import { Link, withVerifyCode } from '@tidb-community/ui';
 
 import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
-import { SimpleLayout } from '~/layout';
+import { SimpleLayout } from '~/layouts';
 import { SubmitButton, MobileInputPrefix } from '~/components/form';
 import { form, formScheme, initialValues } from './register.form';
 

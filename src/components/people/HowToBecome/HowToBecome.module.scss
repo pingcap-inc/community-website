@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'styles/common';
 
 $size-avatar: 8rem;
@@ -18,8 +20,8 @@ $size-index: 4rem;
   @include H3;
   @include radius($size-index);
   position: absolute;
-  left: -$size-index / 2;
-  top: -$size-index / 2;
+  left: math.div(-$size-index, 2);
+  top: math.div(-$size-index, 2);
   background-color: $B1;
   color: $M2;
   text-align: center;

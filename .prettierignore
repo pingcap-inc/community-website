@@ -1,7 +1,7 @@
 .next/
 node_modules/
 package-lock.json
+packages/*/dist/
 packages/*/es/
 packages/*/lib/
-packages/*/dist/
 public/

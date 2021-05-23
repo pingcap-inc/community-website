@@ -1,5 +1,8 @@
+import { utils } from '@tidb-community/common';
+
 import { verifyCode } from '../../../form/fields';
-import { buildInitialValues, buildScheme } from 'commons/utils/form';
+
+const { buildInitialValues, buildScheme } = utils.form;
 
 export const form = {
   verifyCode,

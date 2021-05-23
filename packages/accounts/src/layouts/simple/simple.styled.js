@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-import LogoSvg from '@/public/images/community/logo.svg';
+import logoSvg from '@/public/images/community/logo.svg';
 
 export const Container = styled.div`
   ${mixins.flexCenter()};
@@ -18,7 +18,7 @@ export const Main = styled.main`
   width: 360px;
 `;
 
-export const Logo = styled.img.attrs({ alt: 'logo', src: LogoSvg })`
+export const Logo = styled.img.attrs({ alt: 'logo', src: logoSvg })`
   display: block;
   margin: 0 auto;
 `;

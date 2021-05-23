@@ -1,5 +1,6 @@
 import legacy from '@vitejs/plugin-legacy';
 import reactRefresh from '@vitejs/plugin-react-refresh';
+import svgr from 'vite-plugin-svgr';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
@@ -15,6 +16,7 @@ const unifyNodeModules = (names) =>
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
+    svgr(),
     reactRefresh(),
     legacy({
       targets: ['defaults', 'not IE 11'],
@@ -23,6 +25,13 @@ export default defineConfig({
 
   build: {
     target: 'esnext',
+  },
+
+  define: {
+    'process.env': {
+      NEXT_PUBLIC_RUNTIME_ENV: 'production',
+      NEXT_PUBLIC_API_BASE_URL: 'http://localhost:4000',
+    },
   },
 
   resolve: {

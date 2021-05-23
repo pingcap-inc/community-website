@@ -3,8 +3,9 @@ import React, { useContext } from 'react';
 import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 
-import { AuthContext, MeContext, NavContext } from '@/context';
 import * as Styled from './core.styled';
+import logoSvg from '@/public/images/community/logo.svg';
+import { AuthContext, MeContext, NavContext } from '@/context';
 
 const CoreLayout = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMargin = true, locale = 'zh' }) => {
   const { meData } = useContext(MeContext);
@@ -16,7 +17,7 @@ const CoreLayout = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', h
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
-  const logo = <img alt={title} src="/images/community/logo.svg" />;
+  const logo = <img alt={title} src={logoSvg} />;
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {
     if (isSelected) return;

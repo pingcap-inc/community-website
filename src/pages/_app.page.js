@@ -5,7 +5,7 @@ import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
 import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 import { message } from 'antd';
-import { withLayouts } from '@tidb-community/common';
+import { withLayout } from '@tidb-community/common';
 
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
@@ -100,7 +100,7 @@ const App = ({ Component, pageProps, router }) => {
     return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
   }
 
-  const WrappedComponent = withLayouts(Component);
+  const WrappedComponent = withLayout(Component);
 
   return (
     <SWRConfig

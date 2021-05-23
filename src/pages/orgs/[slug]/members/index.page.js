@@ -11,7 +11,7 @@ import AddModal from './addModal';
 import Layout from 'pages/orgs/layout';
 import PageLoader from 'components/pageLoader';
 import { CommunityHead } from 'components/head';
-import { MeContext, NavContext } from 'context';
+import { AuthContext, MeContext } from 'context';
 import { columns } from './members.data';
 import { featureToggle, errors } from 'utils';
 
@@ -39,7 +39,7 @@ const Members = () => {
   const { slug } = router.query;
   const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
   const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(NavContext);
+  const { login } = useContext(AuthContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
 

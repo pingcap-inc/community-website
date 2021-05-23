@@ -6,13 +6,13 @@ import Banner from './banner';
 import Form from './form';
 import PageLoader from 'components/pageLoader';
 import { AUDIT_STATUS } from './audit/audit.constants';
-import { MeContext, NavContext } from 'context';
+import { AuthContext, MeContext } from 'context';
 import { SplitLayout } from 'layouts';
 
 const CreateOrganization = () => {
   const router = useRouter();
   const { meData, mutateMe, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(NavContext);
+  const { login } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {

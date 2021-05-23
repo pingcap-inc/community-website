@@ -6,13 +6,13 @@ import { utils } from '@tidb-community/ui';
 
 import * as Styled from './invitations.styled';
 import PageLoader from 'components/pageLoader';
-import { MeContext, NavContext } from 'context';
+import { AuthContext, MeContext } from 'context';
 import { emptyText, okText, cancelText } from './invitations.data';
 
 const Invitations = () => {
   const router = useRouter();
   const { meData, mutateMe, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(NavContext);
+  const { login } = useContext(AuthContext);
   const [operating, setOperating] = useState(false);
 
   useEffect(() => {

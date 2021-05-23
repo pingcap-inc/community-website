@@ -10,7 +10,7 @@ import * as Styled from './home.styled';
 import Layout from 'pages/orgs/layout';
 import PageLoader from 'components/pageLoader';
 import { CommunityHead } from 'components/head';
-import { MeContext, NavContext } from 'context';
+import { AuthContext, MeContext } from 'context';
 import { errors, featureToggle } from 'utils';
 
 export const getServerSideProps = async ({ req }) => {
@@ -36,7 +36,7 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(NavContext);
+  const { login } = useContext(AuthContext);
   const [urging, setUrging] = useState(false);
 
   const router = useRouter();

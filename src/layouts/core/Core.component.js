@@ -5,13 +5,13 @@ import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
-import { MeContext, NavContext } from 'context';
+import { AuthContext, MeContext, NavContext } from 'context';
 import { link as linkUtils } from 'utils';
 
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { meData } = useContext(MeContext);
-  const { login, logout } = useContext(NavContext);
+  const { login, logout } = useContext(AuthContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
   const { navItems: headerNavItems, userProfileNavItems } = data.header;

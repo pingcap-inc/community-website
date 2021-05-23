@@ -10,7 +10,7 @@ import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
 import ErrorPage from './_error.page';
-import { MeContext, NavContext } from 'context';
+import { MeContext, AuthContext } from 'context';
 
 // FIXME: It is a temporary fix and the auth issue will be thoroughly handled in CPT-183
 const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
@@ -107,11 +107,11 @@ const App = ({ Component, pageProps, router }) => {
       }}
     >
       <GlobalStyle />
-      <NavContext.Provider value={{ login: doLogin, logout: doLogout }}>
+      <AuthContext.Provider value={{ login: doLogin, logout: doLogout }}>
         <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
           <Component {...pageProps} />
         </MeContext.Provider>
-      </NavContext.Provider>
+      </AuthContext.Provider>
     </SWRConfig>
   );
 };

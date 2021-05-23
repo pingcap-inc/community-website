@@ -10,20 +10,17 @@ import { RouteLink } from '../../../components/links';
 const { mobileOrEmail } = form;
 
 const Page = ({ onSubmit }) => {
-
   return (
     <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
-      {
-        () => (
-          <Form>
-            <FormItem name={mobileOrEmail.name}>
-              <Input prefix={<MobileInputPrefix>+86</MobileInputPrefix>} {...mobileOrEmail} size='large' />
-            </FormItem>
-            <RouteLink to='/login'>返回登录</RouteLink>
-            <SubmitButton>发送验证码</SubmitButton>
-          </Form>
-        )
-      }
+      {() => (
+        <Form>
+          <FormItem name={mobileOrEmail.name}>
+            <Input prefix={<MobileInputPrefix>+86</MobileInputPrefix>} {...mobileOrEmail} size="large" />
+          </FormItem>
+          <RouteLink to="/login">返回登录</RouteLink>
+          <SubmitButton>发送验证码</SubmitButton>
+        </Form>
+      )}
     </Formik>
   );
 };

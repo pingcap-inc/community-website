@@ -7,7 +7,11 @@ import { FullWidthButton } from '../../../components/form';
 const Page = () => {
   const history = useHistory();
 
-  return <FullWidthButton type='primary' onClick={() => history.push('/login')}>返回登录</FullWidthButton>;
+  return (
+    <FullWidthButton type="primary" onClick={() => history.push('/login')}>
+      返回登录
+    </FullWidthButton>
+  );
 };
 
 Page.Layout = SimpleLayout;
@@ -17,4 +21,3 @@ Page.layoutProps = {
 };
 
 export default Page;
-

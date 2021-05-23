@@ -7,7 +7,7 @@ const SimpleLayout = ({ title = 'TiDB', subtitle = 'SQL at Scale', children }) =
   return (
     <PageContainer>
       <Main>
-        <Logo/>
+        <Logo />
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>
         {children}

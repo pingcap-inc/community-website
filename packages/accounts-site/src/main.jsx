@@ -13,5 +13,5 @@ ReactDOM.render(
     <GlobalStyles />
     <PageRouter />
   </>,
-  document.getElementById('app'),
+  document.getElementById('app')
 );

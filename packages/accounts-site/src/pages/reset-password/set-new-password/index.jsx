@@ -12,20 +12,18 @@ const { password, confirmPassword } = form;
 const Page = ({ onSubmit }) => {
   return (
     <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
-      {
-        () => (
-          <Form>
-            <FormItem name={password.name}>
-              <Input.Password {...password} size='large' />
-            </FormItem>
-            <FormItem name={confirmPassword.name}>
-              <Input.Password {...confirmPassword} size='large' />
-            </FormItem>
-            <RouteLink to='/login'>返回登录</RouteLink>
-            <SubmitButton>发送验证码</SubmitButton>
-          </Form>
-        )
-      }
+      {() => (
+        <Form>
+          <FormItem name={password.name}>
+            <Input.Password {...password} size="large" />
+          </FormItem>
+          <FormItem name={confirmPassword.name}>
+            <Input.Password {...confirmPassword} size="large" />
+          </FormItem>
+          <RouteLink to="/login">返回登录</RouteLink>
+          <SubmitButton>发送验证码</SubmitButton>
+        </Form>
+      )}
     </Formik>
   );
 };

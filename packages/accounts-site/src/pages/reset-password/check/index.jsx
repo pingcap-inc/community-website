@@ -15,17 +15,15 @@ const VerifyInput = withVerifyCode(Input);
 const Page = ({ onSubmit }) => {
   return (
     <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
-      {
-        () => (
-          <Form>
-            <FormItem name={verifyCode.name}>
-              <VerifyInput {...verifyCode} initialLimited size='large' />
-            </FormItem>
-            <RouteLink to='/login'>返回登录</RouteLink>
-            <SubmitButton>下一步</SubmitButton>
-          </Form>
-        )
-      }
+      {() => (
+        <Form>
+          <FormItem name={verifyCode.name}>
+            <VerifyInput {...verifyCode} initialLimited size="large" />
+          </FormItem>
+          <RouteLink to="/login">返回登录</RouteLink>
+          <SubmitButton>下一步</SubmitButton>
+        </Form>
+      )}
     </Formik>
   );
 };

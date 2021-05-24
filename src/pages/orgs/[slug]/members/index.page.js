@@ -10,29 +10,10 @@ import * as utils from './members.utils';
 import AddModal from './addModal';
 import Layout from 'pages/orgs/layout';
 import PageLoader from 'components/pageLoader';
-import { CommunityHead } from 'components/head';
 import { AuthContext, MeContext } from 'context';
+import { CommunityHead } from 'components/head';
 import { columns } from './members.data';
-import { featureToggle, errors } from 'utils';
-
-export const getServerSideProps = async ({ req }) => {
-  const host = process.env.VERCEL_URL || req.headers.host;
-
-  const isEabled = featureToggle.isFeatureEnabled({
-    host,
-    name: featureToggle.FEATURES.ORGANIZATOIN_MEMBERS,
-  });
-
-  if (!isEabled) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
+import { errors } from 'utils';
 
 const Members = () => {
   const router = useRouter();

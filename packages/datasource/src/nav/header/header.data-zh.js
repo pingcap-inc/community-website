@@ -74,10 +74,6 @@ export const navItems = [
         ],
       },
       {
-        title: '贡献者排行榜',
-        link: 'https://contributor.tidb.io/ranking',
-      },
-      {
         title: '孵化器项目',
         link: 'https://contributor.tidb.io/incubator',
       },

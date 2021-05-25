@@ -1,8 +1,9 @@
-import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-import { wrapElements } from './Split.utils';
-import * as Styled from './Split.styled';
+import React, { useRef } from 'react';
 import { useSize } from 'ahooks';
+
+import * as Styled from './split.styled';
+import { wrapElements } from './split.utils';
 
 const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
   const ref = useRef();

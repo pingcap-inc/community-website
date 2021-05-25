@@ -28,6 +28,7 @@ export {
   withVerifyCode,
   UserProfile,
   withActionMenu,
+  ActivityBanner,
 } from './components';
 
 export const createAppGlobalStyle = () => createGlobalStyle`

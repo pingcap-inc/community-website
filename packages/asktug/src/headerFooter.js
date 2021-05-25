@@ -1,17 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
-import { Footer, Header, constants, createAppGlobalStyle, mixins } from '@tidb-community/ui';
+import { Footer, Header, constants, createAppGlobalStyle, mixins, ActivityBanner } from '@tidb-community/ui';
 import { getData, api } from '@tidb-community/datasource';
+import useSWR from 'swr';
 
 import 'antd-global.css';
 import './headerFooter.scss';
+import { MeContext } from '../../../src/context';
+import { HackUserProfileSlot } from './hackHeader';
+import * as R from 'ramda';
 
 const { location } = window;
 const { appClassName } = constants;
 
 const baseURL = 'https://asktug.com';
 const title = 'TiDB Community';
+
+const { nav } = getData({
+  domain: 'asktug.com',
+  locale: 'zh',
+  env: process.env.NEXT_PUBLIC_RUNTIME_ENV,
+});
 
 const onNavClick = ({ link }) => {
   if (link.startsWith('http')) {
@@ -24,8 +34,48 @@ const onNavClick = ({ link }) => {
 const GlobalStyle = createAppGlobalStyle();
 const headerElem = document.getElementById('asktug-header');
 
+const AskTugHeaderWrapper = ({ children }) => {
+  const fetcher = (path, params) => {
+    // SWR shallowly compares the arguments on every render, and triggers revalidation
+    // if any of them has changed. Thus, if you'd like to pass an object as params to
+    // the API call, you may use JSON.stringify to the object params to a string value.
+    // Read more: https://swr.vercel.app/docs/arguments#passing-objects
+    try {
+      params = JSON.parse(params);
+    } catch (err) {}
+
+    return R.path(path.split('.'), api)(params);
+  };
+
+  const {
+    data: meResp,
+    mutate: mutateMe,
+    isValidating: isMeValidating,
+  } = useSWR('me', fetcher, {
+    revalidateOnFocus: false,
+  });
+
+  useEffect(() => {
+    window.addEventListener('popstate', () => mutateMe());
+  }, [mutateMe]);
+
+  return <MeContext.Provider value={{ meData: meResp?.data, mutateMe, isMeValidating }}>{children}</MeContext.Provider>;
+};
+
+const ActivityBannerComponent = () => {
+  const { meData } = useContext(MeContext);
+  // do not render if:
+  // - already in org
+  if (meData?.org) {
+    return null;
+  }
+
+  const { link, ...data } = nav.activity;
+  return <ActivityBanner {...data} onClick={() => onNavClick({ link })} />;
+};
+
 const HeaderComponent = () => {
-  const [meData, setMeData] = useState();
+  const { meData } = useContext(MeContext);
 
   const data = getData({
     domain: 'asktug.com',
@@ -43,17 +93,6 @@ const HeaderComponent = () => {
       ${mixins.size('146px', '55px')};
     }
   `;
-
-  useEffect(() => {
-    const reload = () =>
-      api
-        .me()
-        .then(({ data }) => setMeData(data))
-        .catch(() => {});
-    reload();
-
-    window.addEventListener('popstate', reload);
-  }, []);
 
   let navItems = [];
 
@@ -81,6 +120,7 @@ const HeaderComponent = () => {
     onTitleClick: () => {
       location.href = baseURL;
     },
+    userProfileSlot: <HackUserProfileSlot />,
   };
 
   return <Header {...headerProps} />;
@@ -88,17 +128,15 @@ const HeaderComponent = () => {
 
 headerElem.classList.add(appClassName);
 ReactDOM.render(
-  <>
+  <AskTugHeaderWrapper>
+    <ActivityBannerComponent />
     <HeaderComponent />
     <GlobalStyle />
-  </>,
+  </AskTugHeaderWrapper>,
   headerElem
 );
 
-const { navItems: footerNavItems, icons: footerIcons } = getData({
-  domain: 'asktug.com',
-  locale: 'zh',
-}).nav.footer;
+const { navItems: footerNavItems, icons: footerIcons } = nav.footer;
 
 const footerProps = {
   logo: <img alt={title} src="https://tidb.io/images/community/logo.svg" />,

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
-import { Header, Footer, UserProfile, utils } from '@tidb-community/ui';
+import { Header, Footer, UserProfile, ActivityBanner, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
@@ -8,9 +8,21 @@ import * as Styled from './core.styled';
 import { AuthContext, MeContext, NavContext } from 'context';
 import { link as linkUtils } from 'utils';
 
+const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
+  // do not render if:
+  // - already in org
+  // - meData is validating
+  // - already at the page
+  if (meData?.org || isMeValidating || currentPathname === link) {
+    return undefined;
+  }
+
+  return <ActivityBanner {...data} onClick={() => onNavClick({ link, target: '_blank' })} />;
+};
+
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
-  const { meData } = useContext(MeContext);
+  const { meData, isMeValidating } = useContext(MeContext);
   const { login, logout } = useContext(AuthContext);
 
   const data = getData({ domain, path: router.basePath, locale, meData }).nav;
@@ -50,6 +62,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
   return (
     <NavContext.Provider value={{ navData: data }}>
       <Styled.Container>
+        {renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}
         <Header
           {...headerProps}
           userProfileSlot={

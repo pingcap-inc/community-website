@@ -2,6 +2,7 @@ import * as R from 'ramda';
 
 import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
+import * as activityData from './activity/activity.data';
 import * as resourcesData from './resources';
 import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule } from './utils';
 
@@ -18,6 +19,13 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
     ...restHeaderData
   } = R.propOr(headerData[defaultLocale], locale)(headerData);
 
+  const {
+    link: activityLink,
+    backgroundImage: activityBackgroundImage,
+    buttonImage: activityButtonImage,
+    ...restActivityData
+  } = R.propOr(activityData[defaultLocale], locale)(activityData);
+
   let rules = [
     // replaces all current URLs' prefix at current domain
     {
@@ -26,10 +34,13 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
     },
 
     // replaces all domains by domainConfig
-    ...Object.keys(domainConfig).map((domain) => ({
-      urlPrefixRegexp: buildUrlPrefixPattern({ domain }),
-      replacement: (env === 'local' ? 'https://' : 'https://') + domainConfig[domain],
-    })),
+    ...Object.keys(domainConfig).map((domain) => {
+      const destDomain = domainConfig[domain];
+      return {
+        urlPrefixRegexp: buildUrlPrefixPattern({ domain }),
+        replacement: (destDomain.startsWith('localhost') ? 'http://' : 'https://') + destDomain,
+      };
+    }),
   ];
 
   rules = _applyTidbIoSpecRule(rules, { domain, path, domainConfig });
@@ -68,6 +79,21 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
         rules,
       }),
       ...restHeaderData,
+    },
+    activity: {
+      link: replaceLink({
+        link: activityLink,
+        rules,
+      }),
+      backgroundImage: replaceLink({
+        link: activityBackgroundImage,
+        rules,
+      }),
+      buttonImage: replaceLink({
+        link: activityButtonImage,
+        rules,
+      }),
+      ...restActivityData,
     },
     resources: {
       orgVerificationAgreementsUrl: replaceLink({

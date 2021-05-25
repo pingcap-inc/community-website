@@ -54,5 +54,5 @@ module.exports = {
     },
   },
 
-  plugins: [new webpack.EnvironmentPlugin(require('./env').env), new webpack.DefinePlugin(require('./env').define)],
+  plugins: [new webpack.EnvironmentPlugin(require('./env').env)],
 };

@@ -21,5 +21,9 @@ export const Title = styled.h1`
 
 export const Content = styled.div`
   padding: 1rem;
-  ${mixins.typography('p2')};
+
+  &,
+  .ant-form {
+    ${mixins.typography('p2')};
+  }
 `;

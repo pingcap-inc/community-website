@@ -4,8 +4,11 @@ import * as colors from '../colors';
 import * as mixins from '../mixins';
 
 export default css`
-  // Input
+  ${'' /* Input */}
   .ant-input {
+    color: ${colors.F2};
+    border-color: ${colors.C2};
+
     &:hover {
       border-color: ${colors.B1};
     }
@@ -17,7 +20,7 @@ export default css`
     }
   }
 
-  // Input wrapper
+  ${'' /* Input wrapper */}
   .ant-input-affix-wrapper {
     &:hover {
       border-color: ${colors.B1};
@@ -30,7 +33,7 @@ export default css`
     }
   }
 
-  // Radio
+  ${'' /* Radiobox */}
   .ant-radio-wrapper {
     &:hover,
     &:focus {
@@ -62,7 +65,7 @@ export default css`
     }
   }
 
-  // checkbox
+  ${'' /* Checkbox */}
   .ant-checkbox-wrapper {
     &:hover {
       .ant-checkbox {
@@ -100,8 +103,7 @@ export default css`
     }
   }
 
-  // select
-
+  ${'' /* Select */}
   .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
     border-color: ${colors.B1};
   }
@@ -111,7 +113,7 @@ export default css`
     box-shadow: 0 0 0 2px rgb(61 63 234 / 20%);
   }
 
-  // fixme: it's not work!
+  ${'' /* FIXME: Not working! */}
   .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
     background-color: ${colors.B2};
   }

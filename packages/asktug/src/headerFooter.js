@@ -9,6 +9,7 @@ import 'antd-global.css';
 import './headerFooter.scss';
 import { MeContext } from '../../../src/context';
 import { HackUserProfileSlot } from './hackHeader';
+import * as R from 'ramda';
 
 const { location } = window;
 const { appClassName } = constants;
@@ -34,11 +35,23 @@ const GlobalStyle = createAppGlobalStyle();
 const headerElem = document.getElementById('asktug-header');
 
 const AskTugHeaderWrapper = ({ children }) => {
+  const fetcher = (path, params) => {
+    // SWR shallowly compares the arguments on every render, and triggers revalidation
+    // if any of them has changed. Thus, if you'd like to pass an object as params to
+    // the API call, you may use JSON.stringify to the object params to a string value.
+    // Read more: https://swr.vercel.app/docs/arguments#passing-objects
+    try {
+      params = JSON.parse(params);
+    } catch (err) {}
+
+    return R.path(path.split('.'), api)(params);
+  };
+
   const {
     data: meResp,
     mutate: mutateMe,
     isValidating: isMeValidating,
-  } = useSWR(api.me, {
+  } = useSWR('me', fetcher, {
     revalidateOnFocus: false,
   });
 

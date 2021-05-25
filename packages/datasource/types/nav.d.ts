@@ -17,6 +17,7 @@ type Icon = {
 
 type HeaderData = {
   readonly navItems: NavItem[];
+  readonly homeUrl: string;
 };
 
 type FooterData = {
@@ -24,7 +25,15 @@ type FooterData = {
   readonly icons: Icon[];
 };
 
+type ActivityData = {
+  readonly bannerImage: string;
+  readonly buttonImage: string;
+  readonly text: string;
+  readonly link: string;
+};
+
 export type Nav = {
-  readonly header: NavData;
+  readonly header: HeaderData;
   readonly footer: FooterData;
+  readonly activity: ActivityData;
 };

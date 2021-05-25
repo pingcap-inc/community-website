@@ -5,3 +5,38 @@
 #site-logo {
   display: none;
 }
+
+// these css rules was used to hack ask-tug header
+#ember6 {
+  position: absolute;
+  width: 100%;
+  top: -71px;
+
+  .d-header {
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .panel {
+    pointer-events: auto;
+  }
+
+  .extra-info-wrapper {
+    background: white;
+
+    & + .panel {
+      background: white;
+    }
+  }
+}
+
+#main-outlet {
+  padding-top: 1em;
+}
+
+.custom-search-banner {
+  padding-top: 0;
+  .custom-search-banner-wrap {
+    margin-top: 0;
+  }
+}

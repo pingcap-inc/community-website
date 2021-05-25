@@ -75,10 +75,6 @@ export const navItems = [
         ],
       },
       {
-        title: 'Contributor Ranking',
-        link: 'https://contributor.tidb.io/ranking',
-      },
-      {
         title: 'Incubator Program',
         link: 'https://contributor.tidb.io/incubator',
       },

@@ -6,7 +6,8 @@ import inputStyles from './input';
 import menuStyles from './menu';
 import modalStyles from './modal';
 import paginationStyles from './pagination';
-import steps from './steps';
+import pickerStyles from './picker';
+import stepsStyles from './steps';
 import tableStyles from './table';
 import tabsStyles from './tabs';
 
@@ -17,7 +18,8 @@ export default css`
   ${menuStyles};
   ${modalStyles};
   ${paginationStyles};
-  ${steps};
+  ${pickerStyles};
+  ${stepsStyles};
   ${tableStyles};
   ${tabsStyles};
 `;

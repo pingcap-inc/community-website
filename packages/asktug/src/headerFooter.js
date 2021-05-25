@@ -102,7 +102,7 @@ const HeaderComponent = () => {
   const headerProps = {
     logo: <HeaderLogo />,
     onNavClick,
-    navItems: headerNavItems.concat(userProfileNavItems),
+    navItems: headerNavItems.concat(navItems),
     currentNav: '问答',
     onTitleClick: () => {
       location.href = baseURL;

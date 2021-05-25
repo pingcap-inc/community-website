@@ -15,9 +15,5 @@ export const Banner = styled.div`
 
 export const ImgBtn = styled.img`
   cursor: pointer;
-  transition: opacity 0.2s;
   margin-left: 1em;
-  &:hover {
-    opacity: 0.8;
-  }
 `;

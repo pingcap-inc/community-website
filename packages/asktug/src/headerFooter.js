@@ -70,7 +70,7 @@ const HeaderComponent = () => {
     env: process.env.NEXT_PUBLIC_RUNTIME_ENV,
     meData,
   }).nav;
-  const { navItems: headerNavItems } = data.header;
+  const { navItems: headerNavItems, userProfileNavItems } = data.header;
 
   const HeaderLogo = styled.img.attrs({
     alt: 'AskTUG',
@@ -81,28 +81,28 @@ const HeaderComponent = () => {
     }
   `;
 
-  // let navItems = [];
-  //
-  // if (meData) {
-  //   navItems = (userProfileNavItems || []).filter(({ title }) => title.indexOf('团队') >= 0);
-  // }
-  //
-  // if (navItems) {
-  //   if (navItems.length > 1) {
-  //     navItems = [
-  //       {
-  //         title: '我的团队',
-  //         items: navItems,
-  //         badge: navItems.filter(({ badge }) => badge).length > 0,
-  //       },
-  //     ];
-  //   }
-  // }
+  let navItems = [];
+
+  if (meData) {
+    navItems = (userProfileNavItems || []).filter(({ title }) => title.indexOf('团队') >= 0);
+  }
+
+  if (navItems) {
+    if (navItems.length > 1) {
+      navItems = [
+        {
+          title: '我的团队',
+          items: navItems,
+          badge: navItems.filter(({ badge }) => badge).length > 0,
+        },
+      ];
+    }
+  }
 
   const headerProps = {
     logo: <HeaderLogo />,
     onNavClick,
-    navItems: headerNavItems,
+    navItems: headerNavItems.concat(userProfileNavItems),
     currentNav: '问答',
     onTitleClick: () => {
       location.href = baseURL;

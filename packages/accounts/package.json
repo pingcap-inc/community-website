@@ -1,7 +1,15 @@
 {
   "name": "@tidb-community/accounts",
   "private": true,
+  "scripts": {
+    "build": "vite build",
+    "build:staging": "vite build --mode staging",
+    "serve": "vite preview",
+    "start": "vite"
+  },
   "dependencies": {
+    "@tidb-community/common": "*",
+    "@tidb-community/ui": "*",
     "antd": "4.15.6",
     "formik": "2.2.8",
     "formik-antd": "2.0.1",

@@ -4,6 +4,7 @@
 const router = require('express').Router();
 
 router.get('/settings', require('./settings'));
+router.use('/set-email', require('./setEmail'));
 router.use('/set-phone', require('./setPhone'));
 
 module.exports = router;

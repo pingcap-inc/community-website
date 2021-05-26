@@ -1,3 +1,4 @@
+const _ = require('lodash');
 const faker = require('faker');
 const router = require('express').Router();
 
@@ -21,8 +22,8 @@ router.get('', async (req, res) => {
       avatar_url: image.avatar(),
       org: {
         slug: internet.userName(),
-        // role: utils.sample(Object.values(ROLES)),
-        role: ROLES.ADMIN,
+        // role: ROLES.ADMIN,
+        role: _.sample(Object.values(ROLES)),
       },
       // You may manually uncomment "org_enroll" if testing the register status
       // org_enroll: {

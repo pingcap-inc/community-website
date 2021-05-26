@@ -1,6 +1,7 @@
+const _ = require('lodash');
 const faker = require('faker');
 
-const { errorResp, successResp, generator, sample, wait } = require('../../../utils');
+const { errorResp, successResp, generator, wait } = require('../../../utils');
 const { ROLES, ROLE_NAMES } = require('../../../constants');
 
 const { datatype } = faker;
@@ -23,7 +24,7 @@ module.exports = async (req, res) => {
     },
     {
       callback: (item, idx) => {
-        const role = sample(Object.values(ROLES));
+        const role = _.sample(Object.values(ROLES));
         return {
           ...item,
           id: idx + 1,

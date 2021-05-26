@@ -1,11 +1,17 @@
 const faker = require('faker');
 
-const { successResp, wait, getValueOrNull } = require('../../utils');
+const utils = require('../../utils');
 
 const { random } = faker;
+const { successResp, wait, getValueOrNull } = utils;
 
 module.exports = async (req, res) => {
   await wait();
+
+  // return utils.errorResp({
+  //   code: 401,
+  //   detail: 'Authentication credentials were not provided',
+  // })(req, res);
 
   successResp({
     phone: getValueOrNull('130*****1234'),

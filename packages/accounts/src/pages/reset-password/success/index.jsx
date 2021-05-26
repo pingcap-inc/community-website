@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router-dom';
 
 import { FullWidthButton } from '~/components/form';
-import { SimpleLayout } from '~/layouts';
+import { SimpleLayout } from '~/layout';
 
 const Page = () => {
   const history = useHistory();

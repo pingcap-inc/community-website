@@ -1,47 +1,79 @@
 import React from 'react';
-import { Divider } from 'antd';
-import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
-import { GithubOutlined } from '@ant-design/icons';
-import { withVerifyCode } from '@tidb-community/ui';
+import { Form, FormItem, Input } from 'formik-antd';
+import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
+import { Divider, message } from 'antd';
+import FormikOption from '@tidb-community/common/components/FormikOption';
+import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { getErrorMessage } from '@tidb-community/common/utils/errors';
 
-import { Flex } from '~/components/layout';
-import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
-import { RouteLink, ActionLink } from '~/components/links';
-import { SimpleLayout } from '~/layouts';
-import { SubmitButton, MobileInputPrefix } from '~/components/form';
+import { SimpleLayout } from '~/layout';
+import { phoneLogin, passwordLogin, socialLogin } from '~/api';
 import { form, formScheme, initialValues } from './login.form';
+import { SubmitButton, PhoneInputPrefix } from '~/components/form';
+import { RouteLink, ActionLink } from '~/components/links';
+import { Flex } from '~/components/layout';
+import { GithubOutlined } from '@ant-design/icons';
+import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
+import { useLocation } from 'react-router-dom';
+import { parse } from 'querystring';
 
-const { mobile, verifyCode, password, loginType } = form;
+const { phone, verifyCode, identifier, password, loginType } = form;
 
 const VerifyInput = withVerifyCode(Input);
 
 const Page = () => {
+  const location = useLocation();
+
   const onThirdPartyLogin = (provider) => () => {
-    console.log(`login with ${provider}`);
+    socialLogin({ provider, ...parse(location.search.slice(1)) });
   };
 
-  const onSubmit = (data) => {
-    console.log(data);
-    return new Promise((resolve) => setTimeout(resolve, 1000));
-  };
+  const login = wrapFormikSubmitFunction(
+    (data) => {
+      const loginFunc = data.loginType === LOGIN_TYPE.PASSWORD ? passwordLogin : phoneLogin;
+      return loginFunc(data).then(({ redirectTo }) => {
+        window.open(redirectTo, '_top');
+      });
+    },
+    (error) => {
+      message.error(getErrorMessage(error), 5000);
+    }
+  );
+  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, (error) => {
+    message.error(getErrorMessage(error), 5000);
+  });
 
   return (
-    <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
-      {({ setFieldValue, values }) => (
+    <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={login}>
+      {({ errors, touched, setFieldValue, setErrors }) => (
         <Form>
-          <FormItem name={mobile.name}>
-            <Input prefix={<MobileInputPrefix>+86</MobileInputPrefix>} {...mobile} size="large" />
-          </FormItem>
-          <FormItem name={verifyCode.name} hidden={values[loginType.name] !== LOGIN_TYPE.VERIFY_CODE}>
-            <VerifyInput {...verifyCode} size="large" />
-          </FormItem>
-          <FormItem name={password.name} hidden={values[loginType.name] !== LOGIN_TYPE.PASSWORD}>
-            <Input.Password {...password} size="large" />
-          </FormItem>
-          <ActionLink onClick={() => setFieldValue(loginType.name, 1 - values[loginType.name])}>
-            {LOGIN_TYPE_NAME[1 - values[loginType.name]]}
-          </ActionLink>
+          <FormikOption fieldName={loginType.name}>
+            {({ option }) => (
+              <>
+                <FormItem name={phone.name} hidden={option !== LOGIN_TYPE.VERIFY_CODE}>
+                  <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...phone} size="large" />
+                </FormItem>
+                <FormItem name={verifyCode.name} hidden={option !== LOGIN_TYPE.VERIFY_CODE}>
+                  <VerifyInput
+                    {...verifyCode}
+                    sendVerifyCode={(phone) => sendVerifyCode(phone, { setErrors })}
+                    buttonDisabled={errors[phone.name]}
+                    size="large"
+                  />
+                </FormItem>
+                <FormItem name={identifier.name} hidden={option !== LOGIN_TYPE.PASSWORD}>
+                  <Input {...identifier} size="large" />
+                </FormItem>
+                <FormItem name={password.name} hidden={option !== LOGIN_TYPE.PASSWORD}>
+                  <Input.Password {...password} size="large" />
+                </FormItem>
+                <ActionLink onClick={() => setFieldValue(loginType.name, 1 - option)}>
+                  {LOGIN_TYPE_NAME[1 - option]}
+                </ActionLink>
+              </>
+            )}
+          </FormikOption>
           <SubmitButton>登录</SubmitButton>
           <Flex>
             <ActionLink onClick={onThirdPartyLogin('github')}>

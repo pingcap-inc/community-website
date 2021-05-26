@@ -1,15 +1,9 @@
-import * as Yup from 'yup';
-import { utils } from '@tidb-community/common';
+import { buildInitialValues, buildScheme } from '@tidb-community/common/utils/form';
 
-const { buildInitialValues, buildScheme } = utils.form;
+import { identifier } from '~/form/fields';
 
 export const form = {
-  mobileOrEmail: {
-    name: 'mobile_or_email',
-    placeholder: '请输入手机号或邮箱',
-    validator: Yup.string().required('手机号或邮箱不可为空'),
-    initialValue: '',
-  },
+  identifier,
 };
 
 export const formScheme = buildScheme(form);

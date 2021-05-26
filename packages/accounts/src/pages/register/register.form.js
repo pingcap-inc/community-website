@@ -1,14 +1,12 @@
 import * as Yup from 'yup';
-import { utils } from '@tidb-community/common';
+import { buildInitialValues, buildScheme } from '@tidb-community/common/utils/form';
 
-import { company, email, mobile, verifyCode } from '~/form/fields';
-
-const { buildInitialValues, buildScheme } = utils.form;
+import { company, email, phone, verifyCode } from '~/form/fields';
 
 export const form = {
   company,
   email,
-  mobile,
+  phone,
   verifyCode,
   agreements: {
     name: 'agreements',

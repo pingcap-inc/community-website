@@ -37,7 +37,15 @@ const VerifyCodeSuffix = ({
 
 const withVerifyCode =
   (Input) =>
-  ({ sendVerifyCode, sendVerifyCodeBtnText, limitSeconds, countDownFormatter, initialLimited = false, ...props }) => {
+  ({
+    sendVerifyCode,
+    sendVerifyCodeBtnText,
+    limitSeconds,
+    countDownFormatter,
+    initialLimited = false,
+    buttonDisabled,
+    ...props
+  }) => {
     const [state, setState] = useState(initialLimited ? constants.STATE_LIMIT : constants.STATE_NORMAL);
     const onCountDownFinished = useCallback(() => setState(constants.STATE_NORMAL), []);
 
@@ -60,6 +68,7 @@ const withVerifyCode =
     const suffixProps = {
       countDownFormatter,
       countDownTotal: limitSeconds,
+      disabled: buttonDisabled || props.disabled,
       onClickSendButton,
       onCountDownFinished,
       sendVerifyCodeBtnText,

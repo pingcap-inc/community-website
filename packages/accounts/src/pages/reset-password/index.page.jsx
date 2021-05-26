@@ -17,7 +17,7 @@ const Page = ({ children, ...props }) => {
 
   const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
 
-  const onSendVerifyCode = ({ mobile_or_email }) => {
+  const onSendVerifyCode = ({ identifier }) => {
     return wait().then(() => setState(RESET_PASSWORD_STATE.CHECK));
   };
 

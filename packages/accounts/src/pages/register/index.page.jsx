@@ -1,15 +1,16 @@
 import React from 'react';
 import { Checkbox, Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
-import { Link, withVerifyCode } from '@tidb-community/ui';
+import Link from '@tidb-community/ui/components/link';
+import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
 
 import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
-import { SimpleLayout } from '~/layouts';
-import { SubmitButton, MobileInputPrefix } from '~/components/form';
+import { SimpleLayout } from '~/layout';
+import { SubmitButton, PhoneInputPrefix } from '~/components/form';
 import { form, formScheme, initialValues } from './register.form';
 
-const { mobile, verifyCode, email, company, agreements } = form;
+const { phone, verifyCode, email, company, agreements } = form;
 
 const VerifyInput = withVerifyCode(Input);
 
@@ -31,8 +32,8 @@ const Page = () => {
           <FormItem name={email.name}>
             <Input {...email} size="large" />
           </FormItem>
-          <FormItem name={mobile.name}>
-            <Input prefix={<MobileInputPrefix>+86</MobileInputPrefix>} {...mobile} size="large" />
+          <FormItem name={phone.name}>
+            <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...phone} size="large" />
           </FormItem>
           <FormItem name={verifyCode.name}>
             <VerifyInput {...verifyCode} size="large" />

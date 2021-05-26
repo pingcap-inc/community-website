@@ -62,12 +62,12 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - node_modules
             - .next
   deploy_prod:
     docker:
       - image: circleci/node:14.13.0
     steps:
+      - install-deps
       - attach_workspace:
           at: .
       - deploy-website

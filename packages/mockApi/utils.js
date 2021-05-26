@@ -1,4 +1,4 @@
-const R = require('ramda');
+const _ = require('lodash');
 const faker = require('faker');
 
 const { MESSAGES } = require('./constants');
@@ -26,7 +26,7 @@ const generator = (schema, options) => {
     min,
     max = min,
     callback,
-  } = R.mergeRight(
+  } = _.assign(
     {
       min: 20,
       callback: (item, idx) => item,
@@ -34,13 +34,13 @@ const generator = (schema, options) => {
     options
   );
 
-  return R.times((idx) => {
+  return _.times(datatype.number({ min, max }), (idx) => {
     const genItem = (schema) =>
-      R.toPairs(schema).reduce((acc, [key, value]) => {
+      _.toPairs(schema).reduce((acc, [key, value]) => {
         acc[key] = (() => {
-          if (R.is(String, value)) {
+          if (_.isString(value)) {
             return fake(value);
-          } else if (R.is(Object, value)) {
+          } else if (_.isObject(value)) {
             return genItem(value);
           }
           return value;
@@ -54,14 +54,14 @@ const generator = (schema, options) => {
       }, {});
 
     return callback(genItem(schema), idx);
-  }, datatype.number({ min, max }));
+  });
 };
 
 const sample = (array) => array[Math.floor(Math.random() * array.length)];
 
 const wait = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const repeat = (num, callback) => R.repeat(0, num).map((_, i) => callback(i + 1));
+const repeat = (num, callback) => _.times(num).map((i) => callback(i + 1));
 
 module.exports = {
   errorResp,

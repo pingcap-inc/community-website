@@ -63,6 +63,7 @@ jobs:
           root: .
           paths:
             - .next
+            - public/asktug
   deploy_prod:
     docker:
       - image: circleci/node:14.13.0

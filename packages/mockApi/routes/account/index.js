@@ -4,6 +4,8 @@
 const router = require('express').Router();
 
 router.get('/settings', require('./settings'));
+router.post('/reset-password', require('./resetPassword'));
+router.post('/set-password', require('./setPassword'));
 router.use('/set-email', require('./setEmail'));
 router.use('/set-phone', require('./setPhone'));
 

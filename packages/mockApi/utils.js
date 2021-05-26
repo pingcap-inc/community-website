@@ -3,7 +3,7 @@ const faker = require('faker');
 
 const { MESSAGES } = require('./constants');
 
-const { fake, datatype } = faker;
+const { fake, datatype, random } = faker;
 
 const errorResp =
   ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors } = {}) =>
@@ -12,10 +12,9 @@ const errorResp =
   };
 
 const successResp =
-  ({ code = 200, data, detail = MESSAGES.SUCCESS, ...rest } = {}) =>
+  ({ code = 200, detail = MESSAGES.SUCCESS, ...rest } = {}) =>
   (req, res) => {
     res.status(code).json({
-      data,
       detail,
       ...rest,
     });
@@ -63,6 +62,10 @@ const wait = (ms = 1000) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const repeat = (num, callback) => _.times(num).map((i) => callback(i + 1));
 
+const getValueOrNull = (value) => {
+  return random.boolean() ? value : null;
+};
+
 module.exports = {
   errorResp,
   successResp,
@@ -70,4 +73,5 @@ module.exports = {
   sample,
   wait,
   repeat,
+  getValueOrNull,
 };

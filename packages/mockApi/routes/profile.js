@@ -10,6 +10,8 @@ const { datatype } = faker;
 const positionKeys = Object.keys(require('@tidb-community/datasource/lib/form/org/personal-positions.json'));
 
 router.get('', async (req, res) => {
+  await utils.wait();
+
   // return utils.errorResp({
   //   code: 401,
   //   detail: 'Authentication credentials were not provided',
@@ -61,6 +63,11 @@ router.get('', async (req, res) => {
   utils.successResp({
     data,
   })(req, res);
+});
+
+router.patch('', async (req, res) => {
+  await utils.wait();
+  utils.successResp()(req, res);
 });
 
 module.exports = router;

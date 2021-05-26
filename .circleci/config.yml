@@ -47,7 +47,7 @@ jobs:
     steps:
       - install-deps
       - verify-and-build
-  deploy:
+  build_prod:
     docker:
       - image: circleci/node:14.13.0
     environment:
@@ -59,18 +59,44 @@ jobs:
       - install-deps
       - prepare-release
       - verify-and-build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .next
+  deploy_prod:
+    docker:
+      - image: circleci/node:14.13.0
+    steps:
+      - install-deps
+      - attach_workspace:
+          at: .
       - deploy-website
 
 workflows:
-  workflow:
+  commit:
     jobs:
       - verify:
           filters:
             branches:
               ignore:
                 - main
-      - deploy:
+      - build_prod:
           filters:
             branches:
               only:
                 - main
+      - deploy_approval:
+          filters:
+            branches:
+              only:
+                - main
+          type: approval
+          requires:
+            - build_prod
+      - deploy_prod:
+          filters:
+            branches:
+              only:
+                - main
+          requires:
+            - deploy_approval

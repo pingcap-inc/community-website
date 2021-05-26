@@ -106,7 +106,7 @@ const HeaderComponent = () => {
         {
           title: '我的团队',
           items: navItems,
-          badge: navItems.filter(({ badge }) => badge).length > 0,
+          badge: navItems.filter(({ badge }) => badge).length > 0 ? 1 : 0,
         },
       ];
     }

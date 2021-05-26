@@ -6,6 +6,15 @@
   display: none;
 }
 
+// fix ant badge style
+.ant-badge {
+  color: inherit;
+  .ant-badge-dot {
+    top: 0;
+    position: absolute;
+  }
+}
+
 // these css rules was used to hack ask-tug header
 #ember6 {
   position: absolute;

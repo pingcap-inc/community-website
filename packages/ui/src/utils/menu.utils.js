@@ -45,6 +45,10 @@ export const genMenu = ({ items, currentNav, onNavClick, ...events }) => {
           title: link ? <span onClick={onSubMenuClick}>{title}</span> : title,
         };
 
+        if (badge) {
+          subMenuProps.title = <Badge dot>{subMenuProps.title}</Badge>;
+        }
+
         return [
           <Menu.SubMenu {...subMenuProps}>
             {link && <HiddenMenuItem key={title} onClick={onItemClick({ link, browserLink, target, event })} />}

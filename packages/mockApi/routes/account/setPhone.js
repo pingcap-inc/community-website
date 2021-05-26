@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
-const utils = require('../../utils');
+const { errorResp, successResp, wait } = require('../../utils');
 
 const validate = (req, res) => {
   const { phone } = req.body;
 
   if (phone === '400') {
-    return utils.errorResp({
+    return errorResp({
       errors: {
         phone: ['phone number has been registered'],
         re_token_v3: ['man-machine check failed, please refresh page and try again later'],
@@ -15,7 +15,7 @@ const validate = (req, res) => {
   }
 
   if (phone === '401') {
-    return utils.errorResp({
+    return errorResp({
       code: 401,
       detail: 'Authentication credentials were not provided',
     })(req, res);
@@ -23,15 +23,15 @@ const validate = (req, res) => {
 };
 
 router.post('', async (req, res) => {
-  await utils.wait();
+  await wait();
   validate(req, res);
-  utils.successResp({})(req, res);
+  successResp({})(req, res);
 });
 
 router.post('/send-code', async (req, res) => {
-  await utils.wait();
+  await wait();
   validate(req, res);
-  utils.successResp({})(req, res);
+  successResp({})(req, res);
 });
 
 module.exports = router;

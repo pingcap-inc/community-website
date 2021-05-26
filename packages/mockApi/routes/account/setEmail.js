@@ -1,12 +1,12 @@
 const router = require('express').Router();
 
-const utils = require('../../utils');
+const { errorResp, successResp, wait } = require('../../utils');
 
 const validate = (req, res) => {
   const { email } = req.body;
 
   if (email === '400') {
-    return utils.errorResp({
+    return errorResp({
       detail: 'params wrong',
       errors: {
         email: ['email has been registered'],
@@ -16,7 +16,7 @@ const validate = (req, res) => {
   }
 
   if (email === '401') {
-    return utils.errorResp({
+    return errorResp({
       code: 401,
       detail: 'Authentication credentials were not provided',
     })(req, res);
@@ -24,15 +24,15 @@ const validate = (req, res) => {
 };
 
 router.post('', async (req, res) => {
-  await utils.wait();
+  await wait();
   validate(req, res);
-  utils.successResp({})(req, res);
+  successResp({})(req, res);
 });
 
 router.post('/send-code', async (req, res) => {
-  await utils.wait();
+  await wait();
   validate(req, res);
-  utils.successResp({})(req, res);
+  successResp({})(req, res);
 });
 
 module.exports = router;

@@ -3,19 +3,19 @@ import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 
 import { RouteLink } from '~/components/links';
-import { SimpleLayout } from '~/layouts';
-import { SubmitButton, MobileInputPrefix } from '~/components/form';
+import { SimpleLayout } from '~/layout';
+import { SubmitButton, PhoneInputPrefix } from '~/components/form';
 import { form, formScheme, initialValues } from './send-verify-code.form';
 
-const { mobileOrEmail } = form;
+const { identifier } = form;
 
 const Page = ({ onSubmit }) => {
   return (
     <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
       {() => (
         <Form>
-          <FormItem name={mobileOrEmail.name}>
-            <Input prefix={<MobileInputPrefix>+86</MobileInputPrefix>} {...mobileOrEmail} size="large" />
+          <FormItem name={identifier.name}>
+            <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...identifier} size="large" />
           </FormItem>
           <RouteLink to="/login">返回登录</RouteLink>
           <SubmitButton>发送验证码</SubmitButton>

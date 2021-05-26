@@ -1,11 +1,28 @@
 import * as Yup from 'yup';
+import { phoneLoginCheck } from '~/api';
+import { createYupRemoteValidator } from '@tidb-community/common/utils/form';
 
-export const mobile = {
-  name: 'mobile',
+createYupRemoteValidator(Yup.string, 'checkPhone', (phone) => phoneLoginCheck({ phone }));
+
+export const phone = {
+  name: 'phone',
   placeholder: '请输入手机号',
   validator: Yup.string()
     .length(11, ({ length }) => `手机号长度必须为${length}位`)
-    .required('手机号不可为空'),
+    .required('手机号不可为空')
+    .when(['phone'], {
+      is: function (phone) {
+        return phone && phone.length === 11;
+      },
+      then: (current) => current.checkPhone(),
+    }),
+  initialValue: '',
+};
+
+export const identifier = {
+  name: 'identifier',
+  placeholder: '请输入邮箱或手机号',
+  validator: Yup.string().required('邮箱或手机号不能为空'),
   initialValue: '',
 };
 
@@ -14,12 +31,11 @@ export const verifyCode = {
   placeholder: '6位验证码',
   validator: Yup.string()
     .length(6, ({ length }) => `请输入${length}位验证码`)
-    .required('文件不可为空'),
+    .required('验证码不可为空'),
   initialValue: '',
   sendVerifyCodeBtnText: '发送验证码',
-  limitSeconds: 120000,
+  limitSeconds: 60000,
   countDownFormatter: (ms) => `${Math.round(ms / 1000)}s`,
-  sendVerifyCode: () => new Promise((resolve) => setTimeout(resolve, 1000)),
 };
 
 export const password = {

@@ -40,7 +40,8 @@
 
 #### 条件参数
 
-scheme 中通过 [conditionalField](src/form/utils.js) 方法定义条件字段（用于处理校验逻辑），并在对应 UI 中的`RouterItem`组件传入 prop `hidden`来控制组件是否显示。
+scheme 中通过 [conditionalField](../commons/utils/form.js) 方法定义条件字段（用于处理校验逻辑），并在对应 UI 中的`RouterItem`组件传入 prop
+`hidden`来控制组件是否显示。
 
 ## [withLayout](../packages/common/hoc/layout.jsx)
 

@@ -66,6 +66,20 @@ const getValueOrNull = (value) => {
   return random.boolean() ? value : null;
 };
 
+const oneOf = (...arr) => arr[ONE_OF_ONLY_FIRST ? 0 : Math.floor(Math.random() * arr.length)];
+
+const waitMiddleware = (ms) => (req, res, next) => setTimeout(next, ms ?? Math.random() * 1000 + 1000);
+
+const oneOfMiddleware =
+  (...arr) =>
+  (req, res) =>
+    oneOf(...arr)(req, res);
+
+const middlewares = {
+  wait: waitMiddleware,
+  oneOf: oneOfMiddleware,
+};
+
 module.exports = {
   errorResp,
   successResp,
@@ -74,4 +88,9 @@ module.exports = {
   wait,
   repeat,
   getValueOrNull,
+  oneOf,
+  middlewares,
 };
+
+// toggle this to control oneOf to always return first item.
+const ONE_OF_ONLY_FIRST = true;

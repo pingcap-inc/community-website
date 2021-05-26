@@ -3,7 +3,7 @@ import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 
 import { RouteLink } from '~/components/links';
-import { SimpleLayout } from '~/layouts';
+import { SimpleLayout } from '~/layout';
 import { SubmitButton } from '~/components/form';
 import { form, formScheme, initialValues } from './send-verify-code.form';
 

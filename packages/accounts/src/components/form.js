@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { SubmitButton as _SubmitButton } from 'formik-antd';
 import { Button as _Button } from 'antd';
 
-export const MobileInputPrefix = styled.span`
+export const PhoneInputPrefix = styled.span`
   color: #aaa;
 `;
 

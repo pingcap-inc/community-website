@@ -32,13 +32,14 @@ export default defineConfig({
 
   define: {
     'process.env': {
-      NEXT_PUBLIC_RUNTIME_ENV: 'production',
-      NEXT_PUBLIC_API_BASE_URL: 'http://localhost:4000',
+      API_BASE_URL: 'http://localhost:4000',
     },
   },
 
   resolve: {
     alias: {
+      '@tidb-community/common': resolve(__dirname, '../common/src'),
+      '@tidb-community/ui': resolve(__dirname, '../ui/src'),
       '@/public': resolve(__dirname, '../../public'),
       '@': resolve(__dirname, '../../src'),
       '~': resolve(__dirname, 'src'),

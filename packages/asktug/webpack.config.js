@@ -23,7 +23,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
       },
@@ -52,6 +52,7 @@ module.exports = {
       '@tidb-community/ui': path.resolve('../ui/src'),
       'antd-global.css': path.resolve('../ui/es/antd/global.css'),
     },
+    extensions: ['.js', '.jsx', '.json'],
   },
 
   plugins: [new webpack.EnvironmentPlugin(require('./env').env)],

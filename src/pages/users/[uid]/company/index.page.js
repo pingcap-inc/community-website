@@ -1,12 +1,16 @@
 import Link from 'next/link';
 import React from 'react';
-import { Button, Col, Row, Form, Input } from 'antd';
+import { Button, Col, Row, Form, Input, Select } from 'antd';
+import { getFormData } from '@tidb-community/datasource';
 
 import * as Styled from './company.styled';
 import Layout from '~/pages/users/layout';
 import { CommunityHead } from '~/components/head';
 
 const pageTitle = '公司信息';
+const formData = getFormData();
+const { personalPositions } = formData.org.enums;
+const { Option } = Select;
 
 const Company = () => (
   <>
@@ -32,7 +36,13 @@ const Company = () => (
             </Form.Item>
 
             <Form.Item label="职位">
-              <Input placeholder="介绍一下你自己吧" />
+              <Select placeholder="请选择">
+                {personalPositions.map(({ value, label }) => (
+                  <Option key={value} value={value}>
+                    {label}
+                  </Option>
+                ))}
+              </Select>
             </Form.Item>
 
             <Button type="primary">更新信息</Button>

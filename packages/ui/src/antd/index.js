@@ -1,5 +1,6 @@
 import { css } from 'styled-components';
 
+import alertStyles from './alert';
 import btnStyles from './btn';
 import formStyles from './form';
 import inputStyles from './input';
@@ -12,6 +13,7 @@ import tableStyles from './table';
 import tabsStyles from './tabs';
 
 export default css`
+  ${alertStyles};
   ${btnStyles};
   ${formStyles};
   ${inputStyles};

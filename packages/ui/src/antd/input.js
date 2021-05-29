@@ -55,44 +55,6 @@ export default css`
     }
   }
 
-  ${'' /* Checkbox */}
-  .ant-checkbox-wrapper {
-    &:hover {
-      .ant-checkbox {
-        .ant-checkbox-inner {
-          border-color: ${colors.B1};
-        }
-      }
-    }
-
-    .ant-checkbox-input:focus {
-      & + .ant-checkbox-inner {
-        border-color: ${colors.B1};
-      }
-    }
-
-    .ant-checkbox {
-      &.ant-checkbox-checked {
-        .ant-checkbox-inner {
-          border-color: ${colors.B1};
-          background-color: ${colors.B1};
-
-          &:after {
-            background-color: ${colors.B1};
-          }
-        }
-
-        &:after {
-          border: 1px solid ${colors.B1};
-        }
-      }
-    }
-
-    span:nth-child(2) {
-      ${mixins.typography('p2')}
-    }
-  }
-
   ${'' /* Select */}
   .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
     border-color: ${colors.B1};

@@ -17,10 +17,10 @@ commands:
             - node_modules
           key: v1-deps-{{ checksum "package-lock.json" }}
 
-  prepare-release:
+  prepare-sentry:
     steps:
       - run:
-          name: Prepare sentry release
+          name: Prepare Sentry env variables
           command: |
             echo "export SENTRY_RELEASE=${SENTRY_PROJECT}@${CIRCLE_SHA1}" >> $BASH_ENV
 
@@ -47,7 +47,8 @@ jobs:
     steps:
       - install-deps
       - verify-and-build
-  build_prod:
+
+  build:
     docker:
       - image: circleci/node:14.13.0
     environment:
@@ -57,14 +58,15 @@ jobs:
       SENTRY_NO_PROGRESS_BAR: '1'
     steps:
       - install-deps
-      - prepare-release
+      - prepare-sentry
       - verify-and-build
       - persist_to_workspace:
           root: .
           paths:
             - .next
             - public/asktug
-  deploy_prod:
+
+  deploy:
     docker:
       - image: circleci/node:14.13.0
     steps:
@@ -81,23 +83,18 @@ workflows:
             branches:
               ignore:
                 - main
-      - build_prod:
+
+      - build:
           filters:
             branches:
               only:
                 - main
-      - deploy_approval:
-          filters:
-            branches:
-              only:
-                - main
+
+      - hold-for-deploy:
           type: approval
           requires:
-            - build_prod
-      - deploy_prod:
-          filters:
-            branches:
-              only:
-                - main
+            - build
+
+      - deploy:
           requires:
-            - deploy_approval
+            - hold-for-deploy

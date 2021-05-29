@@ -1,31 +1,31 @@
 import React from 'react';
 import { UserProfile } from '@tidb-community/ui';
-import { getTitle } from '../utils';
+
+import { getTitle, disableControl } from '../utils';
 
 export default {
   title: getTitle('UserProfile'),
   component: UserProfile,
+  argTypes: {
+    ...disableControl(['avatarUrl', 'currentNav', 'items']),
+  },
 };
 
-const Template = ({ avatarUrl, currentNav, hasLoggedIn, locale, onClickLogin, onNavClick }) => {
-  const items = hasLoggedIn ? [{ title: 'link', link: 'link' }] : undefined;
+const Template = ({ avatarUrl, items, locale, ...restProps }) => (
+  <UserProfile avatarUrl={avatarUrl} items={items} locale={locale} {...restProps} />
+);
 
-  return (
-    <UserProfile
-      items={items}
-      avatarUrl={avatarUrl}
-      onClickLogin={onClickLogin}
-      locale={locale}
-      currentNav={currentNav}
-      onNavClick={onNavClick}
-    />
-  );
+export const Anonymous = Template.bind({});
+Anonymous.args = {
+  locale: 'zh',
 };
 
-export const SearchCompany = Template.bind({});
-
-SearchCompany.args = {
+export const LoggedIn = Template.bind({});
+LoggedIn.args = {
   avatarUrl: 'https://cdn.fakercloud.com/avatars/bassamology_128.jpg',
-  hasLoggedIn: false,
+  items: [
+    { title: 'Mock Title', link: 'mockLink' },
+    { title: 'Mock Title2', link: 'mockLink' },
+  ],
   locale: 'zh',
 };

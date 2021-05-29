@@ -1,15 +1,15 @@
+import * as R from 'ramda';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import styled from 'styled-components';
+import useSWR from 'swr';
 import { Footer, Header, constants, createAppGlobalStyle, mixins, ActivityBanner } from '@tidb-community/ui';
 import { getData, api } from '@tidb-community/datasource';
-import useSWR from 'swr';
 
 import 'antd-global.css';
 import './headerFooter.scss';
-import { MeContext } from '../../../src/context';
 import { HackUserProfileSlot } from './hackHeader';
-import * as R from 'ramda';
+import { MeContext } from '@/context';
 
 const { location } = window;
 const { appClassName } = constants;
@@ -56,7 +56,11 @@ const AskTugHeaderWrapper = ({ children }) => {
   });
 
   useEffect(() => {
-    window.addEventListener('popstate', () => mutateMe());
+    const handler = () => mutateMe();
+    window.addEventListener('popstate', handler);
+    return () => {
+      window.removeEventListener('popstate', handler);
+    };
   }, [mutateMe]);
 
   return <MeContext.Provider value={{ meData: meResp?.data, mutateMe, isMeValidating }}>{children}</MeContext.Provider>;
@@ -64,11 +68,8 @@ const AskTugHeaderWrapper = ({ children }) => {
 
 const ActivityBannerComponent = () => {
   const { meData } = useContext(MeContext);
-  // do not render if:
-  // - already in org
-  if (meData?.org) {
-    return null;
-  }
+  // Don't render the banner if the user is alreay in an org
+  if (meData?.org) return null;
 
   const { link, ...data } = nav.activity;
   return <ActivityBanner {...data} onClick={() => onNavClick({ link })} />;
@@ -100,16 +101,14 @@ const HeaderComponent = () => {
     navItems = (userProfileNavItems || []).filter(({ title }) => title.indexOf('团队') >= 0);
   }
 
-  if (navItems) {
-    if (navItems.length > 1) {
-      navItems = [
-        {
-          title: '我的团队',
-          items: navItems,
-          badge: navItems.filter(({ badge }) => badge).length > 0 ? 1 : 0,
-        },
-      ];
-    }
+  if (!R.isEmpty(navItems)) {
+    navItems = [
+      {
+        title: '我的团队',
+        items: navItems,
+        badge: navItems.filter(({ badge }) => badge).length > 0 ? 1 : 0,
+      },
+    ];
   }
 
   const headerProps = {

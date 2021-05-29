@@ -5,7 +5,7 @@ import * as mixins from '../mixins';
 
 export default css`
   ${'' /* Input */}
-  .ant-input {
+  .ant-input, .ant-input-affix-wrapper {
     color: ${colors.F2};
     border-color: ${colors.C2};
 
@@ -16,20 +16,10 @@ export default css`
     &:focus,
     &.ant-input-focused {
       border-color: ${colors.B1};
-      box-shadow: 0 0 0 2px rgb(61 63 234 / 20%);
-    }
-  }
-
-  ${'' /* Input wrapper */}
-  .ant-input-affix-wrapper {
-    &:hover {
-      border-color: ${colors.B1};
     }
 
-    &:focus,
-    &.ant-input-affix-wrapper-focused {
-      border-color: ${colors.B1};
-      box-shadow: 0 0 0 2px rgb(61 63 234 / 20%);
+    .anticon {
+      color: ${colors.F2};
     }
   }
 

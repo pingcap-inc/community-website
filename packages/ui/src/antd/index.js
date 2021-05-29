@@ -9,6 +9,7 @@ import menuStyles from './menu';
 import modalStyles from './modal';
 import paginationStyles from './pagination';
 import pickerStyles from './picker';
+import radioStyles from './radio';
 import stepsStyles from './steps';
 import tableStyles from './table';
 import tabsStyles from './tabs';
@@ -23,6 +24,7 @@ export default css`
   ${modalStyles};
   ${paginationStyles};
   ${pickerStyles};
+  ${radioStyles};
   ${stepsStyles};
   ${tableStyles};
   ${tabsStyles};

@@ -14,4 +14,5 @@ export const BasicCheckbox = Template.bind({});
 BasicCheckbox.args = {
   children: 'Checkbox',
   disabled: false,
+  checked: false,
 };

@@ -1,7 +1,6 @@
 import { css } from 'styled-components';
 
 import * as colors from '../colors';
-import * as mixins from '../mixins';
 
 export default css`
   ${'' /* Input */}
@@ -20,38 +19,6 @@ export default css`
 
     .anticon {
       color: ${colors.F2};
-    }
-  }
-
-  ${'' /* Radiobox */}
-  .ant-radio-wrapper {
-    &:hover,
-    &:focus {
-      .ant-radio {
-        .ant-radio-inner {
-          border-color: ${colors.B1};
-        }
-      }
-    }
-
-    .ant-radio {
-      &.ant-radio-checked {
-        .ant-radio-inner {
-          border-color: ${colors.B1};
-
-          &:after {
-            background-color: ${colors.B1};
-          }
-        }
-
-        &:after {
-          border: 1px solid ${colors.B1};
-        }
-      }
-    }
-
-    span:nth-child(2) {
-      ${mixins.typography('p2')}
     }
   }
 

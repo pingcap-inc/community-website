@@ -1,5 +1,7 @@
 import React, { useRef } from 'react';
+import { Button } from 'antd';
 import { CountDown } from '@tidb-community/ui';
+
 import { getTitle } from '../utils';
 
 export default {
@@ -13,14 +15,16 @@ const Template = ({ total, interval, onFinished }) => {
     <>
       <CountDown counterRef={ref} total={total} interval={interval} onFinished={onFinished} />
       <br />
-      <button onClick={() => ref.current.reset()}>reset</button>
+      <Button type="primary" size="small" onClick={() => ref.current.reset()}>
+        Reset
+      </Button>
     </>
   );
 };
 
-export const SearchCompany = Template.bind({});
+export const WithReset = Template.bind({});
 
-SearchCompany.args = {
+WithReset.args = {
   total: 10000,
   interval: 1000,
   onFinished: () => alert('count down finished!'),

@@ -1,7 +1,8 @@
 import React from 'react';
 import { withVerifyCode } from '@tidb-community/ui';
-import { getTitle } from '../utils';
+
 import { Input } from 'antd';
+import { getTitle } from '../utils';
 
 export default {
   title: getTitle('withVerifyCode'),
@@ -25,9 +26,9 @@ const Template = ({ limitSeconds, sendVerifyCodeBtnText }) => {
   );
 };
 
-export const SearchCompany = Template.bind({});
+export const WrapInput = Template.bind({});
 
-SearchCompany.args = {
+WrapInput.args = {
   limitSeconds: 120000,
   sendVerifyCodeBtnText: 'SEND',
 };

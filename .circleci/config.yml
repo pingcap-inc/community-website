@@ -88,7 +88,7 @@ workflows:
           filters:
             branches:
               only:
-                - CPT-157-rename-CI-command-names
+                - main
 
       - hold-for-deploy:
           type: approval

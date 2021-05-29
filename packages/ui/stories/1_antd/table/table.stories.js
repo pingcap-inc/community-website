@@ -17,8 +17,8 @@ export default {
 
 const Template = (args) => <Table {...args} />;
 
-export const SimpleTable = Template.bind({});
-SimpleTable.args = {
+export const BasicTable = Template.bind({});
+BasicTable.args = {
   ...R.pick(['dataSource', 'columns'], data),
   pagination: false,
 };

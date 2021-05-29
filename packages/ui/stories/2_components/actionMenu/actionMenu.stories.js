@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { withActionMenu } from '@tidb-community/ui';
 import { Menu, Dropdown, Button } from 'antd';
+import { withActionMenu } from '@tidb-community/ui';
 
 import { getTitle } from '../utils';
 
@@ -16,6 +16,7 @@ const Template = ({ delay }) => {
     setText(key);
     return new Promise((resolve) => setTimeout(resolve, delay));
   };
+
   return (
     <div>
       <p>Current: {text}</p>
@@ -33,8 +34,7 @@ const Template = ({ delay }) => {
   );
 };
 
-export const ActionMenuWithDelay = Template.bind({});
-
-ActionMenuWithDelay.args = {
+export const WithDelay = Template.bind({});
+WithDelay.args = {
   delay: 3000,
 };

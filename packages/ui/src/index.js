@@ -1,17 +1,8 @@
-import * as colors from './colors';
-import * as constants from './constants';
-import * as mixins from './mixins';
-
-// Utils
-import * as headerUtils from './components/header/header.utils';
-import * as _utils from './utils';
-
-export const utils = {
-  header: headerUtils,
-  ..._utils,
-};
-
-export { colors, constants, mixins };
+export * as colors from './colors';
+export * as constants from './constants';
+export * as mixins from './mixins';
+export * as utils from './utils';
+export { default as createAppGlobalStyle } from './createGlobalStyles';
 
 export {
   ActivityBanner,
@@ -28,5 +19,3 @@ export {
   withActionMenu,
   withVerifyCode,
 } from './components';
-
-export { createAppGlobalStyle } from './create-global-styles';

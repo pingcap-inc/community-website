@@ -1,4 +1,5 @@
 import { utils } from '@tidb-community/common';
+
 import { LOGIN_TYPE, LOGIN_TYPE_VALUE_NAME } from './login.constants';
 import { phone, verifyCode, password, identifier } from '~/form/fields';
 import { phoneLoginSendCode } from '~/api';

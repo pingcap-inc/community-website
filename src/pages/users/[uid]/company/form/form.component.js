@@ -5,6 +5,7 @@ import { getFormData } from '@tidb-community/datasource';
 
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
+const { Item } = Form;
 const { Option } = Select;
 
 const FormComponent = () => {
@@ -19,11 +20,11 @@ const FormComponent = () => {
     <Form layout="vertical">
       <Row gutter={32}>
         <Col sm={24} md={12}>
-          <Form.Item label="公司名称">
+          <Item label="公司名称">
             <Input placeholder="请输入" defaultValue={data.company_name} />
-          </Form.Item>
+          </Item>
 
-          <Form.Item label="职位">
+          <Item label="职位">
             <Select placeholder="请选择" defaultValue={data.job_title}>
               {personalPositions.map(({ value, label }) => (
                 <Option key={value} value={value}>
@@ -31,7 +32,7 @@ const FormComponent = () => {
                 </Option>
               ))}
             </Select>
-          </Form.Item>
+          </Item>
 
           <Button type="primary">更新信息</Button>
         </Col>

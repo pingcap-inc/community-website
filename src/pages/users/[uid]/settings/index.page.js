@@ -1,36 +1,35 @@
-import React from 'react';
-import { Button } from 'antd';
+import React, { useContext } from 'react';
 
-import * as Styled from './settings.styled';
-import Box from './box';
+import Content from './content';
 import Layout from '~/pages/users/layout';
+import PageLoader from '~/components/pageLoader';
+import { AuthContext, MeContext } from 'context';
 import { CommunityHead } from '~/components/head';
 
 const pageTitle = '账号设置';
 
-const Settings = () => (
-  <>
-    <CommunityHead title={pageTitle} />
+const Settings = () => {
+  const { meData, isMeValidating } = useContext(MeContext);
+  const { login } = useContext(AuthContext);
 
-    <Layout title="账号设置">
-      <Box title="手机号码" text="130****1234" />
-      <Box title="邮箱" text="li**@gmail.com" />
-      <Box title="密码" text="未设置" />
+  if (!meData) {
+    if (isMeValidating) {
+      return <PageLoader />;
+    } else {
+      login();
+      return null;
+    }
+  }
 
-      <Box>
-        <h2>绑定第三方账号</h2>
-        <Styled.Desc>绑定后可通过第三方应用快速登录，并获得 xxx 积分奖励</Styled.Desc>
-        <Styled.SocialAccounts>
-          <Button type="text" icon={<Styled.GithubIcon />}>
-            绑定 GitHub
-          </Button>
-          <Button type="text" icon={<Styled.WeChatIcon />}>
-            绑定微信
-          </Button>
-        </Styled.SocialAccounts>
-      </Box>
-    </Layout>
-  </>
-);
+  return (
+    <>
+      <CommunityHead title={pageTitle} />
+
+      <Layout title="账号设置">
+        <Content />
+      </Layout>
+    </>
+  );
+};
 
 export default Settings;

@@ -78,7 +78,7 @@ const Page = () => {
           <Flex>
             <ActionLink onClick={onThirdPartyLogin('github')}>
               <GithubOutlined />
-              &nbsp; GitHub 登陆
+              &nbsp; GitHub 登录
             </ActionLink>
             <span>
               <RouteLink to="/register">注册</RouteLink>

@@ -1,15 +1,21 @@
 import React from 'react';
-import { Button } from 'antd';
+import useSWR from 'swr';
+import { Button, Skeleton } from 'antd';
 
 import * as Styled from './content.styled';
 import Box from './box';
 
 const Content = () => {
+  const { data, error } = useSWR('account.settings');
+  const isLoading = !error && !data;
+
+  if (isLoading) return <Skeleton />;
+
   return (
     <>
-      <Box title="手机号码" text="130****1234" />
-      <Box title="邮箱" text="li**@gmail.com" />
-      <Box title="密码" text="未设置" />
+      <Box title="手机号码" text={data.phone ?? '未设置'} />
+      <Box title="邮箱" text={data.email ?? '未设置'} />
+      <Box title="密码" text={data.has_password ? '已设置，可通过账户密码登录' : '未设置'} />
 
       <Box>
         <h2>绑定第三方账号</h2>

@@ -5,29 +5,29 @@ import { useFormikContext } from 'formik';
 
 import { getErrorMessage, getFirstApiError } from './errors';
 
-export const buildScheme = (formData) => {
-  const iterateObject = (obj, scheme) => {
+export const buildSchema = (formData) => {
+  const iterateObject = (obj, schema) => {
     const { name, validator, ...rest } = obj;
     if (name && validator) {
-      scheme[name] = validator;
+      schema[name] = validator;
       delete obj.validator;
     }
     for (const key in rest) {
       if (rest.hasOwnProperty(key)) {
         if (R.is(Array, rest[key])) {
           for (const item of rest[key]) {
-            iterateObject(item, scheme);
+            iterateObject(item, schema);
           }
         } else if (R.is(Object, rest[key])) {
-          iterateObject(rest[key], scheme);
+          iterateObject(rest[key], schema);
         }
       }
     }
   };
-  const scheme = {};
-  iterateObject(formData, scheme);
+  const schema = {};
+  iterateObject(formData, schema);
 
-  return Yup.object().shape(scheme);
+  return Yup.object().shape(schema);
 };
 
 export const buildInitialValues = (formData) => {

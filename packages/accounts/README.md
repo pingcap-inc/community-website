@@ -33,14 +33,14 @@
 [register.form.js](src/pages/login/login.form.js) 定义了表单的数据，导出了以下变量：
 
 - `form` 包含所有字段信息
-- `formScheme` 包含所有所有校验信息
+- `formSchema` 包含所有所有校验信息
 - `initialValues` 初始值对象
 
 [page](src/pages/login/index.page.jsx) 实现了表单的 UI 结构。
 
 #### 条件参数
 
-scheme 中通过 [conditionalField](../commons/utils/form.js) 方法定义条件字段（用于处理校验逻辑），并在对应 UI 中的`RouterItem`组件传入 prop
+schema 中通过 [conditionalField](../commons/utils/form.js) 方法定义条件字段（用于处理校验逻辑），并在对应 UI 中的`RouterItem`组件传入 prop
 `hidden`来控制组件是否显示。
 
 ## [withLayout](../packages/common/hoc/layout.jsx)

@@ -8,7 +8,7 @@ import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton, PhoneInputPrefix } from '~/components/form';
-import { form, formScheme, initialValues } from './register.form';
+import { form, formSchema, initialValues } from './register.form';
 
 const { phone, verifyCode, email, company, agreements } = form;
 
@@ -23,7 +23,7 @@ const Page = () => {
   };
 
   return (
-    <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
       {() => (
         <Form>
           <FormItem name={company.name}>

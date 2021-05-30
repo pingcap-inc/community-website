@@ -1,7 +1,7 @@
 import * as Yup from 'yup';
 import { utils } from '@tidb-community/common';
 
-const { buildScheme } = utils.form;
+const { buildSchema } = utils.form;
 
 export const form = {
   username: {
@@ -31,4 +31,4 @@ export const form = {
   },
 };
 
-export const scheme = buildScheme(form);
+export const schema = buildSchema(form);

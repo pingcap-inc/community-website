@@ -62,17 +62,22 @@ const FormComponent = () => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     const { username } = values;
     setIsSubmitting(true);
-    return api.profile
-      .update(values)
-      .then(() => {
-        message.success('个人信息更新成功');
-        if (username !== uid) {
-          router.push(`/users/${username}/profile`);
-        }
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    return formUtils.getRecaptchaToken().then((re_token_v3) => {
+      return api.profile
+        .update({
+          ...values,
+          re_token_v3,
+        })
+        .then(() => {
+          message.success('个人信息更新成功');
+          if (username !== uid) {
+            router.push(`/users/${username}/profile`);
+          }
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    });
   });
 
   const formikProps = {

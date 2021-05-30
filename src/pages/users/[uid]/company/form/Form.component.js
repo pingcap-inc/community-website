@@ -31,14 +31,19 @@ const FormComponent = () => {
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
-    return api.profile
-      .update(values)
-      .then(() => {
-        message.success('公司信息更新成功');
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    return formUtils.getRecaptchaToken().then((re_token_v3) => {
+      return api.profile
+        .update({
+          ...values,
+          re_token_v3,
+        })
+        .then(() => {
+          message.success('公司信息更新成功');
+        })
+        .finally(() => {
+          setIsSubmitting(false);
+        });
+    });
   });
 
   const formikProps = {

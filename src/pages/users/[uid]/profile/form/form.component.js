@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import { Button, Col, Row, Form, Input, Select, Tooltip } from 'antd';
+import useSWR from 'swr';
+import { Button, Col, Row, Form, Input, Skeleton, Select, Tooltip } from 'antd';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 
 import * as Styled from './form.styled';
@@ -30,7 +31,14 @@ const DatePicker = ({ dateOfBirth }) => (
   />
 );
 
-const FormComponent = ({ data = {} }) => {
+const FormComponent = () => {
+  const { data: profileResp, error } = useSWR('profile');
+  const isLoading = !error && !profileResp;
+
+  if (isLoading) return <Skeleton />;
+
+  const { data } = profileResp;
+
   return (
     <Form layout="vertical">
       <Row gutter={32}>

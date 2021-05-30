@@ -1,6 +1,7 @@
 import React from 'react';
 import moment from 'moment';
-import { Button, Col, Row, Form, Input, Select } from 'antd';
+import { Button, Col, Row, Form, Input, Select, Tooltip } from 'antd';
+import { QuestionCircleOutlined } from '@ant-design/icons';
 
 import * as Styled from './form.styled';
 
@@ -9,14 +10,32 @@ const { Option } = Select;
 
 const dateFormat = 'YYYY/MM/DD';
 
-const FormComponent = ({ data = {} }) => {
-  const { date_of_birth: dateOfBirth } = data;
+const UserName = () => (
+  <Styled.UserName>
+    用户名
+    <Tooltip placement="right" title="每 30 天可修改一次">
+      <QuestionCircleOutlined />
+    </Tooltip>
+  </Styled.UserName>
+);
 
+const DatePicker = ({ dateOfBirth }) => (
+  <Styled.DatePicker
+    placeholder="年/月/日"
+    format={dateFormat}
+    defaultValue={dateOfBirth && moment(dateOfBirth, dateFormat)}
+    disabledDate={(currentDate) => {
+      return currentDate.isAfter(moment());
+    }}
+  />
+);
+
+const FormComponent = ({ data = {} }) => {
   return (
     <Form layout="vertical">
       <Row gutter={32}>
         <Col sm={24} md={12}>
-          <Item label="用户名">
+          <Item label={<UserName />}>
             <Input placeholder="请输入" defaultValue={data.username} />
           </Item>
 
@@ -39,11 +58,7 @@ const FormComponent = ({ data = {} }) => {
             </Col>
             <Col sm={24} md={14}>
               <Item label="出生日期">
-                <Styled.DatePicker
-                  placeholder="年/月/日"
-                  format={dateFormat}
-                  defaultValue={dateOfBirth && moment(dateOfBirth, dateFormat)}
-                />
+                <DatePicker dateOfBirth={data.date_of_birth} />
               </Item>
             </Col>
           </Row>

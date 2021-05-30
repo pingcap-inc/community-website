@@ -12,7 +12,6 @@ import { form, schema } from './form.data';
 
 const { Item } = Form;
 const { Option } = Select;
-
 const dateFormat = 'YYYY/MM/DD';
 
 const UserName = () => (
@@ -54,8 +53,8 @@ const FormComponent = () => {
     [address.name]: data.address,
   };
 
-  const onSubmit = (e) => {
-    console.log(e);
+  const onSubmit = (form) => {
+    console.log(form);
   };
 
   const formikProps = {

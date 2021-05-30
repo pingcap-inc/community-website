@@ -11,7 +11,7 @@ import VerificationFields from './fields/VerificationFields.component';
 import data from './form.data';
 import { form as formUtils } from 'utils';
 
-const { submitBtnTitle, formScheme, formInitialValues } = data;
+const { submitBtnTitle, formSchema, formInitialValues } = data;
 
 const Form = ({ onSubmit: onSubmitCallback }) => {
   const onSubmit = formUtils.wrapFormikSubmitFunction(({ company, company_base, ...params }) =>
@@ -36,7 +36,7 @@ const Form = ({ onSubmit: onSubmitCallback }) => {
           </Styled.ContactUsButton>
         </Col>
       </Styled.FormTitleContainer>
-      <Formik initialValues={formInitialValues} validationSchema={formScheme} validateOnChange onSubmit={onSubmit}>
+      <Formik initialValues={formInitialValues} validationSchema={formSchema} onSubmit={onSubmit}>
         <AntForm>
           <BasicFields />
           <VerificationFields />

@@ -5,13 +5,13 @@ import { Formik } from 'formik';
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton } from '~/components/form';
-import { form, formScheme, initialValues } from './send-verify-code.form';
+import { form, formSchema, initialValues } from './send-verify-code.form';
 
 const { password, confirmPassword } = form;
 
 const Page = ({ onSubmit }) => {
   return (
-    <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
       {() => (
         <Form>
           <FormItem name={password.name}>

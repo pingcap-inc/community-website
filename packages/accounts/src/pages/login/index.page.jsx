@@ -12,7 +12,7 @@ import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
 
 import { SimpleLayout } from '~/layout';
 import { phoneLogin, passwordLogin, socialLogin } from '~/api';
-import { form, formScheme, initialValues } from './login.form';
+import { form, formSchema, initialValues } from './login.form';
 import { SubmitButton, PhoneInputPrefix } from '~/components/form';
 import { RouteLink, ActionLink } from '~/components/links';
 import { Flex } from '~/components/layout';
@@ -45,7 +45,7 @@ const Page = () => {
   });
 
   return (
-    <Formik validationSchema={formScheme} initialValues={initialValues} onSubmit={login}>
+    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={login}>
       {({ errors, touched, setFieldValue, setErrors }) => (
         <Form>
           <FormikOption fieldName={loginType.name}>

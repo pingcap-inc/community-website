@@ -23,11 +23,10 @@ const UserName = () => (
   </Styled.UserName>
 );
 
-const DatePicker = ({ dateOfBirth, ...props }) => (
+const DatePicker = (props) => (
   <Styled.DatePicker
     {...props}
     format={dateFormat}
-    defaultValue={dateOfBirth && moment(dateOfBirth, dateFormat)}
     disabledDate={(currentDate) => {
       return currentDate.isAfter(moment());
     }}
@@ -48,27 +47,38 @@ const FormComponent = () => {
 
   const { username, bio, name, gender, dateOfBirth, address } = form;
 
+  const bioMaxLength = 140;
+
+  const initialValues = {
+    [username.name]: data.username,
+    [bio.name]: data.bio?.substr(0, bioMaxLength),
+    [name.name]: data.name,
+    [gender.name]: data.gender,
+    [dateOfBirth.name]: data.date_of_birth && moment(data.date_of_birth, dateFormat),
+    [address.name]: data.address,
+  };
+
   return (
-    <Formik validationSchema={schema} validateOnChange onSubmit={onSubmit}>
+    <Formik initialValues={initialValues} validationSchema={schema} onSubmit={onSubmit}>
       <Form layout="vertical">
         <Row gutter={32}>
           <Col sm={24} md={12}>
             <Item label={<UserName />} name={username.name}>
-              <Input {...username} defaultValue={data.username} />
+              <Input {...username} />
             </Item>
 
             <Item label="简介" name={bio.name}>
-              <Input.TextArea {...bio} showCount maxLength={140} defaultValue={data.bio} />
+              <Input.TextArea {...bio} showCount maxLength={bioMaxLength} />
             </Item>
 
             <Item label="姓名" name={name.name}>
-              <Input {...name} defaultValue={data.name} />
+              <Input {...name} />
             </Item>
 
             <Row gutter={32}>
               <Col sm={24} md={10}>
                 <Item label="性别" name={gender.name}>
-                  <Select {...gender} defaultValue={data.gender}>
+                  <Select {...gender}>
                     <Option value={0}>男</Option>
                     <Option value={1}>女</Option>
                   </Select>
@@ -76,13 +86,13 @@ const FormComponent = () => {
               </Col>
               <Col sm={24} md={14}>
                 <Item label="出生日期" name={dateOfBirth.name}>
-                  <DatePicker {...dateOfBirth} dateOfBirth={data.date_of_birth} />
+                  <DatePicker {...dateOfBirth} />
                 </Item>
               </Col>
             </Row>
 
             <Item label="地址" name={address.name}>
-              <Input {...address} defaultValue={data.address} />
+              <Input {...address} />
             </Item>
 
             <Button type="primary">更新信息</Button>

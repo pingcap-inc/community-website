@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Avatar as AntAvatar, DatePicker as AntDatePicker } from 'antd';
+import { Avatar as AntAvatar } from 'antd';
+import { DatePicker as _DataPicker } from 'formik-antd';
 import { UserOutlined } from '@ant-design/icons';
 import { colors, mixins } from '@tidb-community/ui';
 
@@ -12,7 +13,7 @@ export const UserName = styled.div`
   }
 `;
 
-export const DatePicker = styled(AntDatePicker)`
+export const DatePicker = styled(_DataPicker)`
   width: 100%;
 `;
 

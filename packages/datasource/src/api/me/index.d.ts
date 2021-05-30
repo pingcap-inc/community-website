@@ -1,6 +1,6 @@
 import { ApiRequestFunction } from '../index';
 
-type MeData = {
+type Data = {
   id: number;
   username: string;
   avatar_url: string;
@@ -22,4 +22,4 @@ type MeData = {
   }[];
 };
 
-export const me: ApiRequestFunction<void, { data: MeData }>;
+export const me: ApiRequestFunction<void, { data: Data }>;

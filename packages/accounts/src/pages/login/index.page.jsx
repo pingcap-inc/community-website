@@ -1,11 +1,14 @@
+import FormikOption from '@tidb-community/common/components/FormikOption';
 import React from 'react';
-import { Formik } from 'formik';
-import { Form, FormItem, Input } from 'formik-antd';
 import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
 import { Divider, message } from 'antd';
-import FormikOption from '@tidb-community/common/components/FormikOption';
-import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { Form, FormItem, Input } from 'formik-antd';
+import { Formik } from 'formik';
+import { GithubOutlined } from '@ant-design/icons';
 import { getErrorMessage } from '@tidb-community/common/utils/errors';
+import { parse } from 'querystring';
+import { useLocation } from 'react-router-dom';
+import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
 
 import { SimpleLayout } from '~/layout';
 import { phoneLogin, passwordLogin, socialLogin } from '~/api';
@@ -13,10 +16,7 @@ import { form, formScheme, initialValues } from './login.form';
 import { SubmitButton, PhoneInputPrefix } from '~/components/form';
 import { RouteLink, ActionLink } from '~/components/links';
 import { Flex } from '~/components/layout';
-import { GithubOutlined } from '@ant-design/icons';
 import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
-import { useLocation } from 'react-router-dom';
-import { parse } from 'querystring';
 
 const { phone, verifyCode, identifier, password, loginType } = form;
 

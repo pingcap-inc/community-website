@@ -1,3 +1,5 @@
 import client from '../client';
 
-export const profile = () => client.get(`/api/profile`);
+export const fetch = () => client.get('/api/profile');
+
+export const update = (data) => client.patch('/api/profile', data);

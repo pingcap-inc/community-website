@@ -67,6 +67,12 @@ router.get('', async (req, res) => {
 
 router.patch('', async (req, res) => {
   await utils.wait();
+  // return utils.errorResp({
+  //   detail: 'params wrong',
+  //   errors: {
+  //     company_name: ['invalid company_name'],
+  //   },
+  // })(req, res);
   utils.successResp()(req, res);
 });
 

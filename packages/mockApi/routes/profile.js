@@ -10,7 +10,7 @@ const { datatype } = faker;
 const positionKeys = Object.keys(require('@tidb-community/datasource/lib/form/org/personal-positions.json'));
 
 router.get('', async (req, res) => {
-  await utils.wait();
+  await utils.wait(2000);
 
   // return utils.errorResp({
   //   code: 401,
@@ -58,7 +58,7 @@ router.get('', async (req, res) => {
         return data;
       },
     }
-  );
+  )[0];
 
   utils.successResp({
     data,

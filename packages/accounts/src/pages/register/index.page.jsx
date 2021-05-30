@@ -46,7 +46,7 @@ const Page = () => {
               </Checkbox>
             </FormItem>
             <RouteLink to="/login" style={{ lineHeight: '32px' }}>
-              已有账号？去登陆
+              已有账号？去登录
             </RouteLink>
           </Flex>
           <SubmitButton>注册</SubmitButton>

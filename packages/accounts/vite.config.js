@@ -46,4 +46,8 @@ export default defineConfig({
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
     },
   },
+
+  server: {
+    port: 3001,
+  },
 });

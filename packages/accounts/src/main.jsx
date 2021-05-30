@@ -3,14 +3,14 @@ import ReactDOM from 'react-dom';
 
 import './app.css';
 import 'antd/dist/antd.css';
-import { createAppGlobalStyle } from '@tidb-community/ui/create-global-styles';
 import PageRouter from './router';
+import createAppGlobalStyle from '@tidb-community/ui/globalStyle';
 
-const GlobalStyles = createAppGlobalStyle();
+const GlobalStyle = createAppGlobalStyle();
 
 ReactDOM.render(
   <>
-    <GlobalStyles />
+    <GlobalStyle />
     <PageRouter />
   </>,
   document.getElementById('app')

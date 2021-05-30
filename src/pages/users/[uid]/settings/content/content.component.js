@@ -11,6 +11,20 @@ const Content = () => {
 
   if (isLoading) return <Skeleton />;
 
+  const {
+    associated_accounts: { github },
+  } = data;
+
+  const bind = (site) => (e) => {
+    console.log('bind', site);
+  };
+
+  const unbind =
+    ({ site, id }) =>
+    (e) => {
+      console.log('unbind', { site, id });
+    };
+
   return (
     <>
       <Box title="手机号码" text={data.phone ?? '未设置'} />
@@ -21,9 +35,16 @@ const Content = () => {
         <h2>绑定第三方账号</h2>
         <Styled.Desc>绑定后可通过第三方应用快速登录，并获得 xxx 积分奖励</Styled.Desc>
         <Styled.SocialAccounts>
-          <Button type="text" icon={<Styled.GithubIcon />}>
-            绑定 GitHub
-          </Button>
+          {github ? (
+            <Styled.Account>
+              <Styled.GithubIcon />
+              {github.login}（<span onClick={unbind({ site: 'github', id: github.id })}>解绑</span>）
+            </Styled.Account>
+          ) : (
+            <Button type="text" icon={<Styled.GithubIcon />} onClick={bind('github')}>
+              绑定 GitHub
+            </Button>
+          )}
         </Styled.SocialAccounts>
       </Box>
     </>

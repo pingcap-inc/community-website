@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import Github from './github.svg';
 import WeChat from './wechat.svg';
@@ -8,29 +8,39 @@ export const Desc = styled.p`
   font-size: 12px !important;
 `;
 
+export const Account = styled.div`
+  span {
+    cursor: pointer;
+
+    &:hover {
+      color: ${colors.B1};
+    }
+  }
+`;
+
 export const SocialAccounts = styled.div`
   margin-top: 1rem;
 
-  .ant-btn {
+  .ant-btn,
+  ${Account} {
     ${mixins.flexVerticalCenter('inline')};
-    padding: 0;
     margin-right: 2rem;
-    text-transform: none;
-    height: initial;
-    line-height: 1;
+
+    &:last-child {
+      margin-right: 0;
+    }
 
     svg {
       ${mixins.size('18px')};
       margin-right: 6px;
     }
+  }
 
-    &:hover {
-      background: transparent;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
+  .ant-btn {
+    padding: 0;
+    text-transform: none;
+    height: initial;
+    line-height: 1;
   }
 `;
 

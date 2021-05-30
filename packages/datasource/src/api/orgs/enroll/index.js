@@ -42,7 +42,9 @@ const enroll = ({
     isDispatchApiErrorDisabled: true,
   });
 };
+
 enroll.sendCode = sendCode;
+
 enroll.uploadIncumbencyCert = uploadIncumbencyCert;
 
 export default enroll;

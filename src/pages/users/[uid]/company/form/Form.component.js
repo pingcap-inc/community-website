@@ -1,12 +1,13 @@
 import * as R from 'ramda';
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
-import { Button, Col, Row, Skeleton } from 'antd';
+import { message, Button, Col, Row, Skeleton } from 'antd';
 import { Form, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
-import { getFormData } from '@tidb-community/datasource';
+import { api, getFormData } from '@tidb-community/datasource';
 
 import { form, schema } from './form.data';
+import { form as formUtils } from '~/utils';
 
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
@@ -14,7 +15,8 @@ const { Item } = Form;
 const { Option } = Select;
 
 const FormComponent = () => {
-  const { data: profileResp, error } = useSWR('profile');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { data: profileResp, error } = useSWR('profile.fetch');
   const isLoading = !error && !profileResp;
 
   if (isLoading) return <Skeleton />;
@@ -27,9 +29,17 @@ const FormComponent = () => {
     [position.name]: data.job_title,
   };
 
-  const onSubmit = (form) => {
-    console.log(form);
-  };
+  const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
+    setIsSubmitting(true);
+    return api.profile
+      .update(values)
+      .then(() => {
+        message.success('公司信息更新成功');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  });
 
   const formikProps = {
     initialValues,
@@ -57,7 +67,7 @@ const FormComponent = () => {
                 </Select>
               </Item>
 
-              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)}>
+              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
                 更新信息
               </Button>
             </Col>

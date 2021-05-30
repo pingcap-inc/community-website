@@ -1,13 +1,16 @@
 import * as R from 'ramda';
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
 import useSWR from 'swr';
-import { Button, Col, Row, Skeleton, Tooltip, Form as AntForm } from 'antd';
+import { Button, Col, Row, Skeleton, Tooltip, Form as AntForm, message } from 'antd';
 import { Form, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { QuestionCircleOutlined } from '@ant-design/icons';
+import { api } from '@tidb-community/datasource';
+import { useRouter } from 'next/router';
 
 import * as Styled from './form.styled';
+import { form as formUtils } from '~/utils';
 import { form, schema } from './form.data';
 
 const { Item } = Form;
@@ -34,11 +37,14 @@ const DatePicker = (props) => (
 );
 
 const FormComponent = () => {
-  const { data: profileResp, error } = useSWR('profile');
-  const isLoading = !error && !profileResp;
+  const router = useRouter();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { data: profileResp, error } = useSWR('profile.fetch');
 
+  const isLoading = !error && !profileResp;
   if (isLoading) return <Skeleton />;
 
+  const { uid } = router.query;
   const { data } = profileResp;
   const { username, bio, name, gender, dateOfBirth, address } = form;
 
@@ -53,9 +59,21 @@ const FormComponent = () => {
     [address.name]: data.address,
   };
 
-  const onSubmit = (form) => {
-    console.log(form);
-  };
+  const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
+    const { username } = values;
+    setIsSubmitting(true);
+    return api.profile
+      .update(values)
+      .then(() => {
+        message.success('个人信息更新成功');
+        if (username !== uid) {
+          router.push(`/users/${username}/profile`);
+        }
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
+  });
 
   const formikProps = {
     initialValues,
@@ -101,7 +119,7 @@ const FormComponent = () => {
                 <Input {...address} />
               </Item>
 
-              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)}>
+              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
                 更新信息
               </Button>
             </Col>

@@ -1,7 +1,7 @@
 import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { message, Button, Col, Row, Skeleton } from 'antd';
+import { Button, Col, Row, Skeleton, message } from 'antd';
 import { Form, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { api, getFormData } from '@tidb-community/datasource';

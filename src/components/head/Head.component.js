@@ -1,7 +1,7 @@
 import React from 'react';
 import NextHead from 'next/head';
 
-const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keyword, title, titleSuffix }) => {
+const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keyword, title, titleSuffix, children }) => {
   const fullTitle = [title, titleSuffix].filter(Boolean).join(' | ');
   const keywordStr = Array.isArray(keyword) ? keyword.join(',') : keyword;
 
@@ -41,7 +41,7 @@ const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keywor
       />
 
       {/* GA setup: https://stackoverflow.com/a/62552263/14257627 */}
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`}></script>
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
       <script
         dangerouslySetInnerHTML={{
           __html: `
@@ -52,6 +52,7 @@ const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keywor
         `,
         }}
       />
+      {children}
     </NextHead>
   );
 };

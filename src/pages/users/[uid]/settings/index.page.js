@@ -4,9 +4,6 @@ import Content from './content';
 import Layout from '~/pages/users/layout';
 import PageLoader from '~/components/pageLoader';
 import { AuthContext, MeContext } from 'context';
-import { CommunityHead } from '~/components/head';
-
-const pageTitle = '账号设置';
 
 const Settings = () => {
   const { meData, isMeValidating } = useContext(MeContext);
@@ -22,13 +19,9 @@ const Settings = () => {
   }
 
   return (
-    <>
-      <CommunityHead title={pageTitle} />
-
-      <Layout title="账号设置">
-        <Content />
-      </Layout>
-    </>
+    <Layout title="账号设置">
+      <Content />
+    </Layout>
   );
 };
 

@@ -5,7 +5,7 @@ import { createGlobalStyle } from 'styled-components';
 import * as constants from './constants';
 import * as colors from './colors';
 
-export default () => createGlobalStyle`
+const createAppGlobalStyle = () => createGlobalStyle`
   .${constants.appClassName} {
     font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
     color: ${colors.F1};
@@ -27,3 +27,5 @@ export default () => createGlobalStyle`
     ${resetAntStyles};
   }
 `;
+
+export default createAppGlobalStyle;

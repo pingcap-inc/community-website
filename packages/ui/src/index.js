@@ -2,7 +2,7 @@ export * as colors from './colors';
 export * as constants from './constants';
 export * as mixins from './mixins';
 export * as utils from './utils';
-export { default as createAppGlobalStyle } from './createGlobalStyles';
+export { default as createAppGlobalStyle } from './globalStyle';
 
 export {
   ActivityBanner,

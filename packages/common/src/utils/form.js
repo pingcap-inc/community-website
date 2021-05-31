@@ -142,3 +142,10 @@ export const createYupRemoteValidator = (baseSchema, name, validator, cache = tr
     });
   });
 };
+
+export const getRecaptchaToken = (recaptchaKey) =>
+  new Promise((resolve, reject) => {
+    window.grecaptcha?.ready(() => {
+      window.grecaptcha?.execute(recaptchaKey, { action: 'submit' }).then(resolve).catch(reject);
+    });
+  });

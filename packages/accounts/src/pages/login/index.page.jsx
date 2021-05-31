@@ -95,5 +95,8 @@ const Page = () => {
 };
 
 Page.Layout = SimpleLayout;
+Page.layoutProps = {
+  headTitle: '登陆 | PingCAP Account',
+};
 
 export default Page;

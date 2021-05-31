@@ -1,6 +1,6 @@
 export const getCaptcha = () => {
   /* global grecaptcha */
-  const recaptchaKey = process.env.RE_CAPTCHA_SITE_KEY;
+  const recaptchaKey = import.meta.env.VITE_RE_CAPTCHA_SITE_KEY;
 
   return new Promise((resolve, reject) => {
     grecaptcha.ready(() => {

@@ -19,5 +19,6 @@ Page.layoutProps = {
   title: '密码重置成功',
   subtitle: '',
 };
+Page.headTitle = '重置密码 | PingCAP Account';
 
 export default Page;

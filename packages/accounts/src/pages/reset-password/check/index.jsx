@@ -37,6 +37,7 @@ Page.Layout = SimpleLayout;
 Page.layoutProps = {
   title: '找回密码',
   subtitle: '验证码将会发送到您的手机号或邮箱',
+  headTitle: '重置密码 | PingCAP Account',
 };
 
 export default Page;

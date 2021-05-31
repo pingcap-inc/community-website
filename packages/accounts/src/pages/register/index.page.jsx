@@ -75,6 +75,7 @@ const Page = () => {
 Page.Layout = SimpleLayout;
 Page.layoutProps = {
   title: '找回密码',
+  headTitle: '注册 | PingCAP Account',
 };
 
 export default Page;

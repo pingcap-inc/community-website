@@ -36,6 +36,7 @@ Page.Layout = SimpleLayout;
 Page.layoutProps = {
   title: '设置新密码',
   subtitle: '请使用至少8个字符，字母、数字的组合',
+  headTitle: '重置密码 | PingCAP Account',
 };
 
 export default Page;

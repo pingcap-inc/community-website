@@ -33,6 +33,7 @@ Page.Layout = SimpleLayout;
 Page.layoutProps = {
   title: '请输入验证码',
   subtitle: '请登录邮箱或检查手机的验证码',
+  headTitle: '重置密码 | PingCAP Account',
 };
 
 export default Page;

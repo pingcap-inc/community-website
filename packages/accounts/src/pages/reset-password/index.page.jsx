@@ -12,6 +12,9 @@ import { SimpleLayout } from '~/layout';
 
 const _Loading = () => <Skeleton active />;
 _Loading.Layout = SimpleLayout;
+_Loading.layoutProps = {
+  headTitle: '重置密码 | PingCAP Account',
+};
 
 const Loading = withLayout(_Loading);
 const SendVerifyCode = withLayout(_SendVerifyCode);

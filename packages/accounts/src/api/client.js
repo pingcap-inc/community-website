@@ -2,7 +2,7 @@ import Axios from 'axios';
 import { getCaptcha } from '~/form/utils';
 
 const client = Axios.create({
-  baseURL: process.env.API_BASE_URL,
+  baseURL: import.meta.env.API_BASE_URL,
   withCredentials: true,
 });
 export const callbackClient = Axios.create({

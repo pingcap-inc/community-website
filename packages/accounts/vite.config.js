@@ -2,7 +2,7 @@ import legacy from '@vitejs/plugin-legacy';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import reactSvg from 'vite-plugin-react-svg';
 import { injectHtml } from 'vite-plugin-html';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import { resolve } from 'path';
 
 const unifyNodeModules = (names) =>
@@ -14,47 +14,54 @@ const unifyNodeModules = (names) =>
     {}
   );
 
-const RE_CAPTCHA_SITE_KEY = '6LfVrwAbAAAAAOXFlwun-5WYqgHbEGWQdZry-Rog';
-
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [
-    reactRefresh(),
-    reactSvg({
-      defaultExport: 'component',
-      svgo: true,
-    }),
-    legacy({
-      targets: ['defaults', 'not IE 11'],
-    }),
-    injectHtml({
-      injectData: { RE_CAPTCHA_SITE_KEY },
-    }),
-  ],
+export default ({ mode }) => {
+  const env = loadEnv(mode, __dirname, '');
 
-  build: {
-    target: 'esnext',
-  },
+  return defineConfig({
+    plugins: [
+      reactRefresh(),
+      reactSvg({
+        defaultExport: 'component',
+        svgo: true,
+      }),
+      legacy({
+        targets: ['defaults', 'not IE 11'],
+      }),
+      injectHtml({
+        injectData: { RE_CAPTCHA_SITE_KEY: env.VITE_RE_CAPTCHA_SITE_KEY },
+      }),
+    ],
 
-  define: {
-    'process.env': {
-      API_BASE_URL: 'http://localhost:4000',
-      RE_CAPTCHA_SITE_KEY,
+    base: '/',
+
+    build: {
+      target: 'esnext',
+      assetsDir: 'static/sso/assets',
     },
-  },
 
-  resolve: {
-    alias: {
-      '@tidb-community/common': resolve(__dirname, '../common/src'),
-      '@tidb-community/ui': resolve(__dirname, '../ui/src'),
-      '@/public': resolve(__dirname, '../../public'),
-      '@': resolve(__dirname, '../../src'),
-      '~': resolve(__dirname, 'src'),
-      ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
+    resolve: {
+      alias: {
+        '@tidb-community/common': resolve(__dirname, '../common/src'),
+        '@tidb-community/ui': resolve(__dirname, '../ui/src'),
+        '@/public': resolve(__dirname, '../../public'),
+        '@': resolve(__dirname, '../../src'),
+        '~': resolve(__dirname, 'src'),
+        ...unifyNodeModules([
+          'antd',
+          'react',
+          'react-dom',
+          'react-is',
+          'ramda',
+          'styled-component',
+          'formik',
+          'formik-antd',
+        ]),
+      },
     },
-  },
 
-  server: {
-    port: 3001,
-  },
-});
+    server: {
+      port: 3001,
+    },
+  });
+};

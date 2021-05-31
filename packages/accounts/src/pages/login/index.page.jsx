@@ -48,7 +48,7 @@ const Page = () => {
 
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={login}>
-      {({ errors, touched, setFieldValue, setErrors }) => (
+      {({ values, errors, touched, setFieldValue, setErrors }) => (
         <Form>
           <FormikOption fieldName={loginType.name}>
             {({ option }) => (
@@ -59,7 +59,7 @@ const Page = () => {
                 <FormItem name={verifyCode.name} hidden={option !== LOGIN_TYPE.VERIFY_CODE}>
                   <VerifyInput
                     {...verifyCode}
-                    sendVerifyCode={(phone) => sendVerifyCode(phone, { setErrors })}
+                    sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors })}
                     buttonDisabled={errors[phone.name]}
                     size="large"
                   />

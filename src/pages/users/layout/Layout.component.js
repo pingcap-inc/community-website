@@ -12,7 +12,7 @@ const Layout = ({ children, title }) => {
   return (
     <>
       <CommunityHead title={title}>
-        <script src={`https://www.google.com/recaptcha/api.js?render=${recaptchaKey}`} />
+        <script src={`https://www.recaptcha.net/recaptcha/api.js?render=${recaptchaKey}`} />
       </CommunityHead>
 
       <CoreLayout domain="tidb.io" hasMargin>

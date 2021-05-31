@@ -1,12 +1,14 @@
 import React from 'react';
 import useSWR from 'swr';
-import { Button, Skeleton } from 'antd';
+import { Button, Modal, Skeleton, message } from 'antd';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
+import { api } from '@tidb-community/datasource';
 
 import * as Styled from './content.styled';
 import Box from './box';
 
 const Content = () => {
-  const { data, error } = useSWR('account.settings');
+  const { data, error, mutate } = useSWR('account.settings');
   const isLoading = !error && !data;
 
   if (isLoading) return <Skeleton />;
@@ -15,15 +17,37 @@ const Content = () => {
     associated_accounts: { github },
   } = data;
 
-  const bind = (site) => (e) => {
-    console.log('bind', site);
+  const bind = (provider) => (e) => {
+    api.social.login({
+      provider,
+      redirect_to: window.location.href,
+    });
   };
 
-  const unbind =
-    ({ site, id }) =>
-    (e) => {
-      console.log('unbind', { site, id });
-    };
+  const unbind = (provider) => (e) => {
+    Modal.confirm({
+      title: '确定解绑 GitHub 账号吗？',
+      icon: <ExclamationCircleOutlined />,
+      content: '解除绑定后，您无法再通过 GitHub 账号快速登录',
+      okText: '确认',
+      cancelText: '取消',
+
+      onOk: () => {
+        api.social.disconnect(provider).then(() => {
+          message.success('解绑成功');
+          mutate(
+            {
+              ...data,
+              associated_accounts: {
+                [provider]: null,
+              },
+            },
+            false
+          );
+        });
+      },
+    });
+  };
 
   return (
     <>
@@ -38,7 +62,7 @@ const Content = () => {
           {github ? (
             <Styled.Account>
               <Styled.GithubIcon />
-              {github.login}（<span onClick={unbind({ site: 'github', id: github.id })}>解绑</span>）
+              {github.login}（<span onClick={unbind('github')}>解绑</span>）
             </Styled.Account>
           ) : (
             <Button type="text" icon={<Styled.GithubIcon />} onClick={bind('github')}>

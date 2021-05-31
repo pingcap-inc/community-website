@@ -9,7 +9,7 @@ export default css`
       color: ${colors.F1};
     }
 
-    &-body {
+    &-content {
       color: ${colors.F2};
     }
 

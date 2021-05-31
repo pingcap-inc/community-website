@@ -15,4 +15,4 @@ type Data = {
   job_title?: string;
 };
 
-export const profile: ApiRequestFunction<void, { data: Data }>;
+export const update: ApiRequestFunction<void, { data: Data }>;

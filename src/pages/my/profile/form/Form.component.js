@@ -7,7 +7,6 @@ import { Form, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
-import { useRouter } from 'next/router';
 
 import * as Styled from './form.styled';
 import { form as formUtils } from '~/utils';
@@ -37,14 +36,12 @@ const DatePicker = (props) => (
 );
 
 const FormComponent = () => {
-  const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: profileResp, error } = useSWR('profile.fetch');
 
   const isLoading = !error && !profileResp;
   if (isLoading) return <Skeleton />;
 
-  const { uid } = router.query;
   const { data } = profileResp;
   const { username, bio, name, gender, dateOfBirth, address } = form;
 
@@ -60,7 +57,6 @@ const FormComponent = () => {
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
-    const { username } = values;
     setIsSubmitting(true);
     return formUtils.getRecaptchaToken().then((re_token_v3) => {
       return api.profile
@@ -70,9 +66,6 @@ const FormComponent = () => {
         })
         .then(() => {
           message.success('个人信息更新成功');
-          if (username !== uid) {
-            router.push(`/users/${username}/profile`);
-          }
         })
         .finally(() => {
           setIsSubmitting(false);

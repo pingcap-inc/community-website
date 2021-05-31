@@ -18,6 +18,7 @@ const Content = () => {
   } = data;
 
   const bind = (provider) => (e) => {
+    // FIXME: need to call another API, wait for WangDi's confirmation
     api.social.login({
       provider,
       redirect_to: window.location.href,

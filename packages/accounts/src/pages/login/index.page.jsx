@@ -24,15 +24,17 @@ const VerifyInput = withVerifyCode(Input);
 
 const Page = () => {
   const location = useLocation();
+  const query = parse(location.search.slice(1));
 
   const onThirdPartyLogin = (provider) => () => {
-    socialLogin({ provider, ...parse(location.search.slice(1)) });
+    socialLogin({ provider, ...query });
   };
 
   const login = wrapFormikSubmitFunction(
     (data) => {
       const loginFunc = data.loginType === LOGIN_TYPE.PASSWORD ? passwordLogin : phoneLogin;
-      return loginFunc(data).then(({ redirectTo }) => {
+      const redirectTo = query.redirect_to || '';
+      return loginFunc({ ...data, redirect_to: redirectTo }).then(({ redirectTo }) => {
         window.open(redirectTo, '_top');
       });
     },

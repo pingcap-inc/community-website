@@ -6,8 +6,8 @@ export const phoneLoginCheck = async ({ phone }) => {
   await client.post('/api/login/phone/check', { phone });
 };
 
-export const phoneLoginSendCode = async ({ phone, re_token_v3 }) => {
-  await client.post('/api/login/phone/send-code', { phone, re_token_v3 });
+export const sendCode = async (path, { phone, re_token_v3 }) => {
+  await client.post(`/api/${path}/send-code`, { phone, re_token_v3 });
 };
 
 const postLogin = async ({ redirect_to, sso_callbacks }) => {
@@ -35,4 +35,34 @@ export const socialLogin = ({ provider, redirect_to }) => {
     `${client.defaults.baseURL}/social/login/${provider}?redirect_to=${encodeURIComponent(redirect_to || '')}`,
     '_top'
   );
+};
+
+export const signup = async ({ company, email, phone, code, re_token_v3, redirect_to }) => {
+  const { data: resp } = await client.post('/api/signup', { company, email, phone, code, re_token_v3, redirect_to });
+  return postLogin(resp);
+};
+
+export const forgotSendCode = async ({ identifier, re_token_v3 }) => {
+  await client.post(`/api/forgot/send-code`, { identifier, re_token_v3 });
+};
+
+export const forgotVerifyCode = async ({ identifier, code, re_token_v3 }) => {
+  return client.post('/api/forgot/verify', { identifier, code, re_token_v3 });
+};
+
+export const forgotResetPassword = async ({ new_password }) => {
+  return client.post('/api/forgot/reset-password', { new_password });
+};
+
+export const canForgotResetPassword = async () => {
+  return client
+    .head('/api/forgot/reset-password')
+    .then(() => Promise.resolve(true))
+    .catch((err) => {
+      if (err.response && err.response.status === 428) {
+        return Promise.resolve(false);
+      } else {
+        return Promise.reject(err);
+      }
+    });
 };

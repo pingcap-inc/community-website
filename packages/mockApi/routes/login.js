@@ -37,7 +37,7 @@ router.post(
         code: 200,
         detail: 'success',
         data: {
-          redirect_to: req.query.redirect_to || 'http://localhost:3000/login?loginSuccess=true',
+          redirect_to: req.query.redirect_to || 'http://localhost:3001/login?loginSuccess=true',
           sso_callbacks: [
             'http://localhost:4000/api/login/_sso_callback?code=200&ms=100',
             'http://localhost:4000/api/login/_sso_callback?code=400&ms=100',
@@ -64,7 +64,7 @@ router.post(
         code: 200,
         detail: 'success',
         data: {
-          redirect_to: req.query.redirect_to,
+          redirect_to: req.body.redirect_to || 'http://localhost:3001/login?loginSuccess=true',
           sso_callbacks: [
             'http://localhost:4000/api/login/_sso_callback?code=200&ms=100',
             'http://localhost:4000/api/login/_sso_callback?code=400&ms=100',

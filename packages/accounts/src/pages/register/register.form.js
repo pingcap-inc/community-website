@@ -2,12 +2,16 @@ import * as Yup from 'yup';
 import { buildInitialValues, buildSchema } from '@tidb-community/common/utils/form';
 
 import { company, email, phone, verifyCode } from '~/form/fields';
+import { sendCode } from '~/api';
 
 export const form = {
   company,
   email,
   phone,
-  verifyCode,
+  verifyCode: {
+    ...verifyCode,
+    sendVerifyCode: (phone) => sendCode('signup', { phone }),
+  },
   agreements: {
     name: 'agreements',
     value: true,

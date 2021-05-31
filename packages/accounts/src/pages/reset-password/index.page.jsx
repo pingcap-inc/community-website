@@ -1,35 +1,55 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withLayout } from '@tidb-community/common';
+import { Skeleton } from 'antd';
 
+import { forgotSendCode, forgotVerifyCode, forgotResetPassword, canForgotResetPassword } from '~/api';
 import _SendVerifyCode from './send-verify-code';
 import _Check from './check';
 import _SetNewPassword from './set-new-password';
 import _Success from './success';
 import { RESET_PASSWORD_STATE } from './reset-password.constants';
+import { SimpleLayout } from '~/layout';
 
+const _Loading = () => <Skeleton active />;
+_Loading.Layout = SimpleLayout;
+
+const Loading = withLayout(_Loading);
 const SendVerifyCode = withLayout(_SendVerifyCode);
 const Check = withLayout(_Check);
 const SetNewPassword = withLayout(_SetNewPassword);
 const Success = withLayout(_Success);
 
 const Page = ({ children, ...props }) => {
-  const [state, setState] = useState(RESET_PASSWORD_STATE.SEND_VERIFY_CODE);
+  const [state, setState] = useState(RESET_PASSWORD_STATE.LOADING);
 
-  const wait = () => new Promise((resolve) => setTimeout(resolve, 1000));
+  useEffect(() => {
+    canForgotResetPassword().then((canResetPassword) => {
+      if (canResetPassword) {
+        setState(RESET_PASSWORD_STATE.SET_NEW_PASSWORD);
+      } else {
+        setState(RESET_PASSWORD_STATE.SEND_VERIFY_CODE);
+      }
+    });
+  }, []);
 
-  const onSendVerifyCode = ({ identifier }) => {
-    return wait().then(() => setState(RESET_PASSWORD_STATE.CHECK));
+  const onSendVerifyCode = async (data) => {
+    await forgotSendCode(data);
+    setState(RESET_PASSWORD_STATE.CHECK);
   };
 
-  const onCheck = ({ verify_code }) => {
-    return wait().then(() => setState(RESET_PASSWORD_STATE.SET_NEW_PASSWORD));
+  const onCheck = async (data) => {
+    await forgotVerifyCode(data);
+    setState(RESET_PASSWORD_STATE.SET_NEW_PASSWORD);
   };
 
-  const onSetNewPassword = ({ password, confirmPassword }) => {
-    return wait().then(() => setState(RESET_PASSWORD_STATE.SUCCESS));
+  const onSetNewPassword = async (data) => {
+    await forgotResetPassword(data);
+    setState(RESET_PASSWORD_STATE.SUCCESS);
   };
 
   switch (state) {
+    case RESET_PASSWORD_STATE.LOADING:
+      return <Loading />;
     case RESET_PASSWORD_STATE.SEND_VERIFY_CODE:
       return <SendVerifyCode onSubmit={onSendVerifyCode} />;
     case RESET_PASSWORD_STATE.CHECK:

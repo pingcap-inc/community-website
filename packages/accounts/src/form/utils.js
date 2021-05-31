@@ -1,17 +1,10 @@
-import * as Yup from 'yup';
+export const getCaptcha = () => {
+  /* global grecaptcha */
+  const recaptchaKey = process.env.RE_CAPTCHA_SITE_KEY;
 
-export const conditionalField = (field, { value, is }) => {
-  if (!field.validator) {
-    return field;
-  }
-
-  const { validator, ...rest } = field;
-
-  return {
-    ...rest,
-    validator: Yup.mixed().when([value], {
-      is,
-      then: validator,
-    }),
-  };
+  return new Promise((resolve, reject) => {
+    grecaptcha.ready(() => {
+      grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(resolve).catch(reject);
+    });
+  });
 };

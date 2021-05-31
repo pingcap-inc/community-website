@@ -1,21 +1,25 @@
 import React from 'react';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
+import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { getErrorMessage } from '@tidb-community/common/utils/errors';
 
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton } from '~/components/form';
 import { form, formSchema, initialValues } from './send-verify-code.form';
+import { message } from 'antd';
 
-const { password, confirmPassword } = form;
+const { newPassword, confirmPassword } = form;
 
 const Page = ({ onSubmit }) => {
+  onSubmit = wrapFormikSubmitFunction(onSubmit, (error) => message.error(getErrorMessage(error), 5000));
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
       {() => (
         <Form>
-          <FormItem name={password.name}>
-            <Input.Password {...password} size="large" />
+          <FormItem name={newPassword.name}>
+            <Input.Password {...newPassword} size="large" />
           </FormItem>
           <FormItem name={confirmPassword.name}>
             <Input.Password {...confirmPassword} size="large" />

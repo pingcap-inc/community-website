@@ -1,13 +1,19 @@
 import React from 'react';
 import { Checkbox, Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
+import { message } from 'antd';
 import Link from '@tidb-community/ui/components/link';
 import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
+import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { getErrorMessage } from '@tidb-community/common/utils/errors';
+import { parse } from 'querystring';
+import { useLocation } from 'react-router-dom';
 
 import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton, PhoneInputPrefix } from '~/components/form';
+import { signup as callSignup } from '~/api';
 import { form, formSchema, initialValues } from './register.form';
 
 const { phone, verifyCode, email, company, agreements } = form;
@@ -17,13 +23,23 @@ const VerifyInput = withVerifyCode(Input);
 const { privacy, prefixText: agreementsPrefixText, ...agreementsProps } = agreements;
 
 const Page = () => {
-  const onSubmit = (data) => {
-    console.log(data);
-    return new Promise((resolve) => setTimeout(resolve, 1000));
-  };
+  const location = useLocation();
+  const query = parse(location.search.slice(1));
+
+  const signup = wrapFormikSubmitFunction(
+    (data) => {
+      const redirectTo = query.redirect_to || '';
+      return callSignup({ ...data, redirect_to: redirectTo }).then(({ redirectTo }) => {
+        window.open(redirectTo, '_top');
+      });
+    },
+    (error) => {
+      message.error(getErrorMessage(error), 5000);
+    }
+  );
 
   return (
-    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
+    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={signup}>
       {() => (
         <Form>
           <FormItem name={company.name}>

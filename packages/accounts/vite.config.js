@@ -1,6 +1,7 @@
 import legacy from '@vitejs/plugin-legacy';
 import reactRefresh from '@vitejs/plugin-react-refresh';
 import reactSvg from 'vite-plugin-react-svg';
+import { injectHtml } from 'vite-plugin-html';
 import { defineConfig } from 'vite';
 import { resolve } from 'path';
 
@@ -13,6 +14,8 @@ const unifyNodeModules = (names) =>
     {}
   );
 
+const RE_CAPTCHA_SITE_KEY = '6LfVrwAbAAAAAOXFlwun-5WYqgHbEGWQdZry-Rog';
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -24,6 +27,9 @@ export default defineConfig({
     legacy({
       targets: ['defaults', 'not IE 11'],
     }),
+    injectHtml({
+      injectData: { RE_CAPTCHA_SITE_KEY },
+    }),
   ],
 
   build: {
@@ -33,6 +39,7 @@ export default defineConfig({
   define: {
     'process.env': {
       API_BASE_URL: 'http://localhost:4000',
+      RE_CAPTCHA_SITE_KEY,
     },
   },
 

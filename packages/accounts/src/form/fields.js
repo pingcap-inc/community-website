@@ -9,13 +9,7 @@ export const phone = {
   placeholder: '请输入手机号',
   validator: Yup.string()
     .length(11, ({ length }) => `手机号长度必须为${length}位`)
-    .required('手机号不可为空')
-    .when(['phone'], {
-      is: function (phone) {
-        return phone && phone.length === 11;
-      },
-      then: (current) => current.checkPhone(),
-    }),
+    .required('手机号不可为空'),
   initialValue: '',
 };
 
@@ -27,7 +21,7 @@ export const identifier = {
 };
 
 export const verifyCode = {
-  name: 'verify_code',
+  name: 'code',
   placeholder: '6位验证码',
   validator: Yup.string()
     .length(6, ({ length }) => `请输入${length}位验证码`)
@@ -45,10 +39,15 @@ export const password = {
   initialValue: '',
 };
 
+export const newPassword = {
+  ...password,
+  name: 'new_password',
+};
+
 export const confirmPassword = {
   name: 'confirm_password',
   placeholder: '请再次输入密码',
-  validator: Yup.string().oneOf([Yup.ref('password')], '两次密码输入不相同'),
+  validator: Yup.string().oneOf([Yup.ref('new_password')], '两次密码输入不相同'),
   initialValue: '',
 };
 
@@ -65,4 +64,5 @@ export const company = {
   validator: Yup.string()
     .min(4, ({ min }) => `最少输入${min}个字符`)
     .required('公司不能为空'),
+  initialValue: '',
 };

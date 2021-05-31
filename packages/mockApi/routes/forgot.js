@@ -39,8 +39,8 @@ router.head(
   '/reset-password',
   wait(),
   oneOf(
-    (req, res) => res.status(200),
-    (req, res) => res.status(428)
+    (req, res) => res.sendStatus(200),
+    (req, res) => res.sendStatus(428)
   )
 );
 

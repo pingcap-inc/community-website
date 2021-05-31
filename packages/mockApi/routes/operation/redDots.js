@@ -1,6 +1,9 @@
+const faker = require('faker');
 const router = require('express').Router();
 
 const utils = require('../../utils');
+
+const { random } = faker;
 
 router.get('', (req, res) => {
   // return utils.errorResp({
@@ -16,11 +19,11 @@ router.get('', (req, res) => {
       },
       {
         name: 'company-info',
-        visible: true,
+        visible: random.boolean(),
       },
       {
         name: 'join-org', // 标识用户是否加入过团队，由后端来标记
-        visible: true,
+        visible: random.boolean(),
       },
     ],
   })(req, res);

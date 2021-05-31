@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 
 import * as Styled from './company.styled';
 import Form from './form';
-import Layout from '~/pages/users/layout';
+import Layout from '~/pages/my/layout';
 import PageLoader from '~/components/pageLoader';
 import { AuthContext, MeContext } from 'context';
 

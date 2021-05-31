@@ -5,12 +5,9 @@ import * as Styled from './menu.styled';
 
 const Menu = () => {
   const router = useRouter();
-  const {
-    asPath,
-    query: { uid },
-  } = router;
+  const { asPath } = router;
 
-  const genPath = (path) => `/users/${uid}/${path}`;
+  const genPath = (path) => `/my/${path}`;
   const profilePath = genPath('profile');
   const companyPath = genPath('company');
   const settingsPath = genPath('settings');

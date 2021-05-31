@@ -19,10 +19,10 @@ module.exports = async (req, res) => {
     email_verified: random.boolean(),
     has_password: random.boolean(),
     associated_accounts: {
-      github: {
+      github: getValueOrNull({
         id: 'github-id',
         login: 'github-usernname',
-      },
+      }),
     },
   })(req, res);
 };

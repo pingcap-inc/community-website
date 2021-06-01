@@ -2,7 +2,7 @@ import { utils } from '@tidb-community/common';
 
 const { buildSchema } = utils.form;
 
-export const form = {
+export const fields = {
   companyName: {
     name: 'company_name',
     placeholder: '请输入',
@@ -13,4 +13,4 @@ export const form = {
   },
 };
 
-export const schema = buildSchema(form);
+export const schema = buildSchema(fields);

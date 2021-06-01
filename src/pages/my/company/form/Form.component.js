@@ -6,7 +6,7 @@ import { Form, FormItem, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { api, getFormData } from '@tidb-community/datasource';
 
-import { form, schema } from './form.data';
+import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 
 const formData = getFormData();
@@ -21,7 +21,7 @@ const FormComponent = () => {
   if (isLoading) return <Skeleton />;
 
   const { data } = profileResp;
-  const { companyName, position } = form;
+  const { companyName, position } = fields;
 
   const initialValues = {
     [companyName.name]: data.company_name,

@@ -9,8 +9,8 @@ import { QuestionCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
+import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
-import { form, schema } from './form.data';
 
 const { Option } = Select;
 const dateFormat = 'YYYY/MM/DD';
@@ -42,7 +42,7 @@ const FormComponent = () => {
   if (isLoading) return <Skeleton />;
 
   const { data } = profileResp;
-  const { username, bio, name, gender, dateOfBirth, address } = form;
+  const { username, bio, name, gender, dateOfBirth, address } = fields;
 
   const bioMaxLength = 140;
 

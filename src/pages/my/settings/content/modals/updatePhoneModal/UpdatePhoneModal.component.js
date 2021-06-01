@@ -7,7 +7,7 @@ import { withVerifyCode } from '@tidb-community/ui';
 import * as Styled from './updatePhoneModal.styled';
 import BasicModal from '../Modal.component';
 import { form as formUtils } from '~/utils';
-import { form, initialValues, schema } from './updatePhoneModal.data';
+import { fields, initialValues, schema } from './updatePhoneModal.fields';
 
 const VerifyCodeInput = withVerifyCode(Input);
 
@@ -21,7 +21,7 @@ const Modal = (props) => {
     return Promise.resolve();
   });
 
-  const { phone, code } = form;
+  const { phone, code } = fields;
 
   const formikProps = {
     initialValues,

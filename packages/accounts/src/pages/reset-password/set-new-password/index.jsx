@@ -11,7 +11,7 @@ import { handleError } from '~/utils/errors';
 
 const { newPassword, confirmPassword } = form;
 
-const Page = ({ onSubmit }) => {
+const Page = ({ onSubmit, location }) => {
   onSubmit = wrapFormikSubmitFunction(onSubmit, handleError);
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
@@ -23,7 +23,7 @@ const Page = ({ onSubmit }) => {
           <FormItem name={confirmPassword.name}>
             <Input.Password {...confirmPassword} size="large" />
           </FormItem>
-          <RouteLink to="/login">返回登录</RouteLink>
+          <RouteLink to={`/login${location.search}`}>返回登录</RouteLink>
           <SubmitButton>重置密码</SubmitButton>
         </Form>
       )}

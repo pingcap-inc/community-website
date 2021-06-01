@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { withLayout } from '@tidb-community/common';
 import { Skeleton } from 'antd';
+import { useLocation } from 'react-router-dom';
 
 import { forgetSendCode, forgetVerifyCode, forgetResetPassword, canForgetResetPassword } from '~/api';
 import _SendVerifyCode from './send-verify-code';
@@ -26,6 +27,7 @@ const Success = withLayout(_Success);
 const Page = ({ children, ...props }) => {
   const [state, setState] = useState(RESET_PASSWORD_STATE.LOADING);
   const [identifier, setIdentifier] = useState('');
+  const location = useLocation();
 
   useEffect(() => {
     canForgetResetPassword().then((canResetPassword) => {
@@ -57,13 +59,13 @@ const Page = ({ children, ...props }) => {
     case RESET_PASSWORD_STATE.LOADING:
       return <Loading />;
     case RESET_PASSWORD_STATE.SEND_VERIFY_CODE:
-      return <SendVerifyCode onSubmit={onSendVerifyCode} />;
+      return <SendVerifyCode onSubmit={onSendVerifyCode} location={location} />;
     case RESET_PASSWORD_STATE.CHECK:
-      return <Check onSubmit={onCheck} />;
+      return <Check onSubmit={onCheck} location={location} />;
     case RESET_PASSWORD_STATE.SET_NEW_PASSWORD:
-      return <SetNewPassword onSubmit={onSetNewPassword} />;
+      return <SetNewPassword onSubmit={onSetNewPassword} location={location} />;
     case RESET_PASSWORD_STATE.SUCCESS:
-      return <Success />;
+      return <Success location={location} />;
     default:
       return <div />;
   }

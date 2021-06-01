@@ -14,7 +14,7 @@ const { verifyCode } = form;
 
 const VerifyInput = withVerifyCode(Input);
 
-const Page = ({ onSubmit }) => {
+const Page = ({ onSubmit, location }) => {
   onSubmit = wrapFormikSubmitFunction(onSubmit, handleError);
 
   return (
@@ -24,7 +24,7 @@ const Page = ({ onSubmit }) => {
           <FormItem name={verifyCode.name}>
             <VerifyInput {...verifyCode} initialLimited size="large" />
           </FormItem>
-          <RouteLink to="/login">返回登录</RouteLink>
+          <RouteLink to={`/login${location.search}`}>返回登录</RouteLink>
           <SubmitButton>下一步</SubmitButton>
         </Form>
       )}

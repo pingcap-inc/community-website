@@ -11,7 +11,7 @@ import { handleError } from '~/utils/errors';
 
 const { identifier } = form;
 
-const Page = ({ onSubmit }) => {
+const Page = ({ onSubmit, location }) => {
   onSubmit = wrapFormikSubmitFunction(onSubmit, handleError);
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
@@ -20,7 +20,7 @@ const Page = ({ onSubmit }) => {
           <FormItem name={identifier.name}>
             <Input {...identifier} size="large" />
           </FormItem>
-          <RouteLink to="/login">返回登录</RouteLink>
+          <RouteLink to={`/login${location.search}`}>返回登录</RouteLink>
           <SubmitButton>发送验证码</SubmitButton>
         </Form>
       )}

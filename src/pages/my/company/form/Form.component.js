@@ -2,16 +2,15 @@ import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
-import { Form, Input, Select } from 'formik-antd';
+import { Form, FormItem, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { api, getFormData } from '@tidb-community/datasource';
 
-import { form, schema } from './form.data';
+import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
-const { Item } = Form;
 const { Option } = Select;
 
 const FormComponent = () => {
@@ -22,7 +21,7 @@ const FormComponent = () => {
   if (isLoading) return <Skeleton />;
 
   const { data } = profileResp;
-  const { companyName, position } = form;
+  const { companyName, position } = fields;
 
   const initialValues = {
     [companyName.name]: data.company_name,
@@ -58,11 +57,11 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col sm={24} md={12}>
-              <Item label="公司名称" name={companyName.name}>
+              <FormItem label="公司名称" name={companyName.name}>
                 <Input {...companyName} />
-              </Item>
+              </FormItem>
 
-              <Item label="职位" name={position.name}>
+              <FormItem label="职位" name={position.name}>
                 <Select {...position}>
                   {personalPositions.map(({ value, label }) => (
                     <Option key={value} value={value}>
@@ -70,7 +69,7 @@ const FormComponent = () => {
                     </Option>
                   ))}
                 </Select>
-              </Item>
+              </FormItem>
 
               <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
                 更新信息

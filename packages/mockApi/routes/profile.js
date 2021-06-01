@@ -35,7 +35,7 @@ router.get('', async (req, res) => {
           ...item,
           username_last_modified_at: dayjs(item.username_last_modified_at).format('YYYY-MM-DD HH:mm:ss'),
           gender: datatype.number({ min: 0, max: 1 }),
-          date_of_birth: dayjs(item.date_of_birth, 'YYYY-MM-DD'),
+          date_of_birth: dayjs(item.date_of_birth).format('YYYY-MM-DD'),
           job_title: _.sample(positionKeys),
         };
 

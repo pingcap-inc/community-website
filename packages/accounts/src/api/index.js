@@ -2,12 +2,22 @@ import client, { callbackClient } from './client';
 
 const timeoutPromise = (ms) => new Promise((resolve, reject) => setTimeout(() => reject(new Error('timeout')), ms));
 
+// server will return 429 if call send code too frequency
+const handleSendCodeLimitError = (error) => {
+  if (error.response) {
+    if (error.response.status === 429) {
+      return Promise.reject('验证码发送失败，请稍后再试');
+    }
+  }
+  return Promise.reject(error);
+};
+
 export const phoneLoginCheck = async ({ phone }) => {
   await client.post('/api/login/phone/check', { phone });
 };
 
 export const sendCode = async (path, { phone, re_token_v3 }) => {
-  await client.post(`/api/${path}/send-code`, { phone, re_token_v3 });
+  await client.post(`/api/${path}/send-code`, { phone, re_token_v3 }).catch(handleSendCodeLimitError);
 };
 
 const postLogin = async ({ redirect_to, sso_callbacks }) => {
@@ -43,7 +53,7 @@ export const signup = async ({ company, email, phone, code, re_token_v3, redirec
 };
 
 export const forgetSendCode = async ({ identifier, re_token_v3 }) => {
-  await client.post(`/api/forget/send-code`, { identifier, re_token_v3 });
+  await client.post(`/api/forget/send-code`, { identifier, re_token_v3 }).catch(handleSendCodeLimitError);
 };
 
 export const forgetVerifyCode = async ({ identifier, code, re_token_v3 }) => {

@@ -53,7 +53,7 @@ const Page = () => {
                   <VerifyInput
                     {...verifyCode}
                     sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
-                    buttonDisabled={errors[phone.name]}
+                    buttonDisabled={errors[phone.name] || !values[phone.name]}
                     size="large"
                   />
                 </FormItem>

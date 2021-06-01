@@ -1,9 +1,9 @@
-import React, { lazy, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { withLayout } from '@tidb-community/common';
 
 // https://reactjs.org/docs/code-splitting.html
-const pages = import.meta.glob('./pages/**/*/index.page.jsx');
+const pages = import.meta.globEager('./pages/**/*/index.page.jsx');
 const app = import.meta.globEager('./pages/_app.page.jsx')['./pages/_app.page.jsx'];
 
 let App = ({ children }) => children;
@@ -20,11 +20,12 @@ const parsePages = (pages) => {
     const url = PATH_REG.exec(path)[1];
     return {
       url,
-      Component: lazy(lazyLayouts(dynamicComponent)),
+      Component: withLayout(dynamicComponent.default),
     };
   });
 };
 
+// eslint-disable-next-line no-unused-vars
 const lazyLayouts = (factory) => {
   return () =>
     factory().then((module) => {

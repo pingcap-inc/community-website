@@ -9,15 +9,17 @@ import Box from './box';
 import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
 
 const Content = () => {
-  const [visibleModal, setVisibleModal] = useState(MODALS.UPDATE_PHONE);
+  const [visibleModal, setVisibleModal] = useState();
   const { data, error, mutate } = useSWR('account.settings');
   const isLoading = !error && !data;
 
   if (isLoading) return <Skeleton />;
 
   const {
-    associated_accounts: { github },
-    has_password: hasPassword,
+    data: {
+      associated_accounts: { github },
+      has_password: hasPassword,
+    },
   } = data;
 
   const openModal = (type) => (e) => setVisibleModal(type);

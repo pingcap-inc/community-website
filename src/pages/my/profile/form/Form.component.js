@@ -13,7 +13,8 @@ import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 
 const { Option } = Select;
-const dateFormat = 'YYYY/MM/DD';
+const dateUiFormat = 'YYYY/MM/DD';
+const dateApiFormat = 'YYYY-MM-DD';
 
 const UserName = () => (
   <Styled.UserName>
@@ -27,7 +28,7 @@ const UserName = () => (
 const DatePicker = (props) => (
   <Styled.DatePicker
     {...props}
-    format={dateFormat}
+    format={dateUiFormat}
     disabledDate={(currentDate) => {
       return currentDate.isAfter(moment());
     }}
@@ -51,7 +52,7 @@ const FormComponent = () => {
     [bio.name]: data.bio?.substr(0, bioMaxLength),
     [name.name]: data.name,
     [gender.name]: data.gender,
-    [dateOfBirth.name]: data.date_of_birth && moment(data.date_of_birth, dateFormat),
+    [dateOfBirth.name]: data.date_of_birth && moment(data.date_of_birth, dateApiFormat),
     [address.name]: data.address,
   };
 
@@ -61,7 +62,7 @@ const FormComponent = () => {
       return api.profile
         .update({
           ...values,
-          date_of_birth: values.date_of_birth.format('YYYY-MM-DD'),
+          date_of_birth: values.date_of_birth.format(dateApiFormat),
           re_token_v3,
         })
         .then(() => {

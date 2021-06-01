@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Modal, Skeleton, message } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -6,8 +6,10 @@ import { api } from '@tidb-community/datasource';
 
 import * as Styled from './content.styled';
 import Box from './box';
+import { MODALS, UpdateEmailModal, UpdatePhoneModal, setPasswordModal, updatePasswordModal } from './modals';
 
 const Content = () => {
+  const [visibleModal, setVisibleModal] = useState();
   const { data, error, mutate } = useSWR('account.settings');
   const isLoading = !error && !data;
 
@@ -16,6 +18,17 @@ const Content = () => {
   const {
     associated_accounts: { github },
   } = data;
+
+  const openModal = (type) => (e) => setVisibleModal(type);
+
+  const onModalClose = () => {
+    setVisibleModal();
+  };
+
+  const genModalProps = (modal) => ({
+    visible: visibleModal === modal,
+    onClose: onModalClose,
+  });
 
   const bind = (provider) => (e) => {
     // FIXME: need to call another API, wait for WangDi's confirmation
@@ -52,8 +65,8 @@ const Content = () => {
 
   return (
     <>
-      <Box title="手机号码" text={data.phone ?? '未设置'} />
-      <Box title="邮箱" text={data.email ?? '未设置'} />
+      <Box title="手机号码" text={data.phone ?? '未设置'} onSettingsClick={openModal(MODALS.UPDATE_PHONE)} />
+      <Box title="邮箱" text={data.email ?? '未设置'} onSettingsClick={openModal(MODALS.UPDATE_EMAIL)} />
       <Box title="密码" text={data.has_password ? '已设置，可通过账户密码登录' : '未设置'} />
 
       <Box>
@@ -72,6 +85,11 @@ const Content = () => {
           )}
         </Styled.SocialAccounts>
       </Box>
+
+      <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} />
+      <UpdatePhoneModal {...genModalProps(MODALS.UPDATE_PHONE)} />
+      <setPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} />
+      <updatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} />
     </>
   );
 };

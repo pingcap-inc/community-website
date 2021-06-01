@@ -42,6 +42,7 @@ export const password = {
 export const newPassword = {
   ...password,
   name: 'new_password',
+  validator: password.validator.min(8, '密码最少为8个字符'),
 };
 
 export const confirmPassword = {
@@ -62,7 +63,8 @@ export const company = {
   name: 'company',
   placeholder: '请输入所在的公司',
   validator: Yup.string()
-    .min(4, ({ min }) => `最少输入${min}个字符`)
+    .min(1, ({ min }) => `最少输入${min}个字符`)
+    .max(100, ({ max }) => `最多输入${max}个字符`)
     .required('公司不能为空'),
   initialValue: '',
 };

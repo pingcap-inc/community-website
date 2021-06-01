@@ -3,20 +3,19 @@ import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
 import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
-import { getErrorMessage } from '@tidb-community/common/utils/errors';
 
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton } from '~/components/form';
 import { form, formSchema, initialValues } from './check.form';
-import { message } from 'antd';
+import { handleError } from '~/utils/errors';
 
 const { verifyCode } = form;
 
 const VerifyInput = withVerifyCode(Input);
 
 const Page = ({ onSubmit }) => {
-  onSubmit = wrapFormikSubmitFunction(onSubmit, (error) => message.error(getErrorMessage(error), 5000));
+  onSubmit = wrapFormikSubmitFunction(onSubmit, handleError);
 
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>

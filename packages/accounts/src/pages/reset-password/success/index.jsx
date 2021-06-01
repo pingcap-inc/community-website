@@ -1,14 +1,15 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import { FullWidthButton } from '~/components/form';
 import { SimpleLayout } from '~/layout';
 
 const Page = () => {
   const history = useHistory();
+  const location = useLocation();
 
   return (
-    <FullWidthButton type="primary" onClick={() => history.push('/login')}>
+    <FullWidthButton type="primary" onClick={() => history.push(`/login${location.search}`)}>
       返回登录
     </FullWidthButton>
   );

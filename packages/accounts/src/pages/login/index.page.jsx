@@ -1,11 +1,10 @@
 import FormikOption from '@tidb-community/common/components/FormikOption';
 import React from 'react';
 import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
-import { Divider, message } from 'antd';
+import { Divider } from 'antd';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 import { GithubOutlined } from '@ant-design/icons';
-import { getErrorMessage } from '@tidb-community/common/utils/errors';
 import { parse } from 'querystring';
 import { useLocation } from 'react-router-dom';
 import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
@@ -17,6 +16,7 @@ import { SubmitButton, PhoneInputPrefix } from '~/components/form';
 import { RouteLink, ActionLink } from '~/components/links';
 import { Flex } from '~/components/layout';
 import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
+import { handleError } from '~/utils/errors';
 
 const { phone, verifyCode, identifier, password, loginType } = form;
 
@@ -30,25 +30,18 @@ const Page = () => {
     socialLogin({ provider, ...query });
   };
 
-  const login = wrapFormikSubmitFunction(
-    (data) => {
-      const loginFunc = data.loginType === LOGIN_TYPE.PASSWORD ? passwordLogin : phoneLogin;
-      const redirectTo = query.redirect_to || '';
-      return loginFunc({ ...data, redirect_to: redirectTo }).then(({ redirectTo }) => {
-        window.open(redirectTo, '_top');
-      });
-    },
-    (error) => {
-      message.error(getErrorMessage(error), 5000);
-    }
-  );
-  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, (error) => {
-    message.error(getErrorMessage(error), 5000);
-  });
+  const login = wrapFormikSubmitFunction((data) => {
+    const loginFunc = data.loginType === LOGIN_TYPE.PASSWORD ? passwordLogin : phoneLogin;
+    const redirectTo = query.redirect_to || '';
+    return loginFunc({ ...data, redirect_to: redirectTo }).then(({ redirectTo }) => {
+      window.open(redirectTo, '_top');
+    });
+  }, handleError);
+  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError);
 
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={login}>
-      {({ values, errors, touched, setFieldValue, setErrors }) => (
+      {({ values, errors, touched, setFieldValue, setErrors, setTouched }) => (
         <Form>
           <FormikOption fieldName={loginType.name}>
             {({ option }) => (
@@ -59,7 +52,7 @@ const Page = () => {
                 <FormItem name={verifyCode.name} hidden={option !== LOGIN_TYPE.VERIFY_CODE}>
                   <VerifyInput
                     {...verifyCode}
-                    sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors })}
+                    sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
                     buttonDisabled={errors[phone.name]}
                     size="large"
                   />
@@ -83,9 +76,9 @@ const Page = () => {
               &nbsp; GitHub 登录
             </ActionLink>
             <span>
-              <RouteLink to="/register">注册</RouteLink>
+              <RouteLink to={`/register${location.search}`}>注册</RouteLink>
               <Divider type="vertical" />
-              <RouteLink to="/reset-password">忘记密码</RouteLink>
+              <RouteLink to={`/reset-password${location.search}`}>忘记密码</RouteLink>
             </span>
           </Flex>
         </Form>

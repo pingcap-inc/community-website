@@ -2,18 +2,17 @@ import React from 'react';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
-import { getErrorMessage } from '@tidb-community/common/utils/errors';
 
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton } from '~/components/form';
 import { form, formSchema, initialValues } from './send-verify-code.form';
-import { message } from 'antd';
+import { handleError } from '~/utils/errors';
 
 const { newPassword, confirmPassword } = form;
 
 const Page = ({ onSubmit }) => {
-  onSubmit = wrapFormikSubmitFunction(onSubmit, (error) => message.error(getErrorMessage(error), 5000));
+  onSubmit = wrapFormikSubmitFunction(onSubmit, handleError);
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
       {() => (
@@ -25,7 +24,7 @@ const Page = ({ onSubmit }) => {
             <Input.Password {...confirmPassword} size="large" />
           </FormItem>
           <RouteLink to="/login">返回登录</RouteLink>
-          <SubmitButton>发送验证码</SubmitButton>
+          <SubmitButton>重置密码</SubmitButton>
         </Form>
       )}
     </Formik>

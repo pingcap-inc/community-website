@@ -62,6 +62,13 @@ export const wrapFormikSubmitFunction = (func, onError) => {
         if ('__all__' in response.errors) {
           onError(response.errors.__all__);
         } else {
+          formikHelpers.setTouched(
+            Object.keys(response.errors).reduce((prev, key) => {
+              prev[key] = true;
+              return prev;
+            }, {}),
+            false
+          );
           formikHelpers.setErrors(response.errors);
         }
       } else {

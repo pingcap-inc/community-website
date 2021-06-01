@@ -61,7 +61,11 @@ export default ({ mode }) => {
     },
 
     server: {
-      port: 3001,
+      port: env.SERVER_PORT || 3001,
+      proxy: {
+        '^/api': `${env.PROXY_URL}`,
+        '^/social': `${env.PROXY_URL}`,
+      },
     },
   });
 };

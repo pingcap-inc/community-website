@@ -32,7 +32,7 @@ export const passwordLogin = async ({ identifier, password, re_token_v3, redirec
 
 export const socialLogin = ({ provider, redirect_to }) => {
   window.open(
-    `${client.defaults.baseURL}/social/login/${provider}?redirect_to=${encodeURIComponent(redirect_to || '')}`,
+    `${client.defaults.baseURL || ''}/social/login/${provider}?redirect_to=${encodeURIComponent(redirect_to || '')}`,
     '_top'
   );
 };
@@ -42,21 +42,21 @@ export const signup = async ({ company, email, phone, code, re_token_v3, redirec
   return postLogin(resp);
 };
 
-export const forgotSendCode = async ({ identifier, re_token_v3 }) => {
-  await client.post(`/api/forgot/send-code`, { identifier, re_token_v3 });
+export const forgetSendCode = async ({ identifier, re_token_v3 }) => {
+  await client.post(`/api/forget/send-code`, { identifier, re_token_v3 });
 };
 
-export const forgotVerifyCode = async ({ identifier, code, re_token_v3 }) => {
-  return client.post('/api/forgot/verify', { identifier, code, re_token_v3 });
+export const forgetVerifyCode = async ({ identifier, code, re_token_v3 }) => {
+  return client.post('/api/forget/verify', { identifier, code, re_token_v3 });
 };
 
-export const forgotResetPassword = async ({ new_password }) => {
-  return client.post('/api/forgot/reset-password', { new_password });
+export const forgetResetPassword = async ({ new_password }) => {
+  return client.post('/api/forget/reset-password', { new_password });
 };
 
-export const canForgotResetPassword = async () => {
+export const canForgetResetPassword = async () => {
   return client
-    .head('/api/forgot/reset-password')
+    .head('/api/forget/reset-password')
     .then(() => Promise.resolve(true))
     .catch((err) => {
       if (err.response && err.response.status === 428) {

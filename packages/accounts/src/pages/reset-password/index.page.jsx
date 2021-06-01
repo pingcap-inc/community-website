@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { withLayout } from '@tidb-community/common';
 import { Skeleton } from 'antd';
 
-import { forgotSendCode, forgotVerifyCode, forgotResetPassword, canForgotResetPassword } from '~/api';
+import { forgetSendCode, forgetVerifyCode, forgetResetPassword, canForgetResetPassword } from '~/api';
 import _SendVerifyCode from './send-verify-code';
 import _Check from './check';
 import _SetNewPassword from './set-new-password';
 import _Success from './success';
 import { RESET_PASSWORD_STATE } from './reset-password.constants';
 import { SimpleLayout } from '~/layout';
+import { identifier as identifierField } from '~/form/fields';
 
 const _Loading = () => <Skeleton active />;
 _Loading.Layout = SimpleLayout;
@@ -24,9 +25,10 @@ const Success = withLayout(_Success);
 
 const Page = ({ children, ...props }) => {
   const [state, setState] = useState(RESET_PASSWORD_STATE.LOADING);
+  const [identifier, setIdentifier] = useState('');
 
   useEffect(() => {
-    canForgotResetPassword().then((canResetPassword) => {
+    canForgetResetPassword().then((canResetPassword) => {
       if (canResetPassword) {
         setState(RESET_PASSWORD_STATE.SET_NEW_PASSWORD);
       } else {
@@ -36,17 +38,18 @@ const Page = ({ children, ...props }) => {
   }, []);
 
   const onSendVerifyCode = async (data) => {
-    await forgotSendCode(data);
+    await forgetSendCode(data);
     setState(RESET_PASSWORD_STATE.CHECK);
+    setIdentifier(data[identifierField.name]);
   };
 
   const onCheck = async (data) => {
-    await forgotVerifyCode(data);
+    await forgetVerifyCode({ ...data, [identifierField.name]: identifier });
     setState(RESET_PASSWORD_STATE.SET_NEW_PASSWORD);
   };
 
   const onSetNewPassword = async (data) => {
-    await forgotResetPassword(data);
+    await forgetResetPassword(data);
     setState(RESET_PASSWORD_STATE.SUCCESS);
   };
 

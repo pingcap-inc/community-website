@@ -1,4 +1,5 @@
 import client, { callbackClient } from './client';
+import { expectedError } from '~/utils/errors';
 
 const timeoutPromise = (ms) => new Promise((resolve, reject) => setTimeout(() => reject(new Error('timeout')), ms));
 
@@ -6,7 +7,7 @@ const timeoutPromise = (ms) => new Promise((resolve, reject) => setTimeout(() =>
 const handleSendCodeLimitError = (error) => {
   if (error.response) {
     if (error.response.status === 429) {
-      return Promise.reject('验证码发送失败，请稍后再试');
+      return Promise.reject(expectedError('验证码发送失败，请稍后再试'));
     }
   }
   return Promise.reject(error);

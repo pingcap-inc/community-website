@@ -55,7 +55,16 @@ export const buildInitialValues = (formData) => {
   return initialValues;
 };
 
-export const wrapFormikSubmitFunction = (func, onError) => {
+/**
+ * wrap a action method with formik field errors displaying.
+ *
+ * if throwErrors is ture, errors returned by onError() will be raised
+ * @param {function(*): Promise} func action method, should returns a promise
+ * @param onError handle non-recognizable errors.
+ * @param throwErrors should throw errors if any error caught.
+ * @return {function(*=, *): *} wrapped method, the second method should be a object contains setErrors and setTouched.
+ */
+export const wrapFormikSubmitFunction = (func, onError, throwErrors = false) => {
   return (params, formikHelpers) => {
     return func(params).catch((response) => {
       if (response.errors) {
@@ -71,8 +80,14 @@ export const wrapFormikSubmitFunction = (func, onError) => {
           );
           formikHelpers.setErrors(response.errors);
         }
+        if (throwErrors) {
+          return Promise.reject(response);
+        }
       } else {
-        onError(response);
+        const err = onError(response);
+        if (throwErrors && err) {
+          return Promise.reject(err);
+        }
       }
     });
   };

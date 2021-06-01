@@ -32,11 +32,11 @@ const Page = () => {
     });
   }, handleError);
 
-  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError);
+  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError, true);
 
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={signup}>
-      {({ values, setErrors, setTouched }) => (
+      {({ values, errors, setErrors, setTouched }) => (
         <Form>
           <FormItem name={company.name}>
             <Input {...company} size="large" />
@@ -51,6 +51,7 @@ const Page = () => {
             <VerifyInput
               {...verifyCode}
               sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
+              buttonDisabled={errors[phone.name] || !values[phone.name]}
               size="large"
             />
           </FormItem>

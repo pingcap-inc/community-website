@@ -37,7 +37,7 @@ const Page = () => {
       window.open(redirectTo, '_top');
     });
   }, handleError);
-  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError);
+  const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError, true);
 
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={login}>

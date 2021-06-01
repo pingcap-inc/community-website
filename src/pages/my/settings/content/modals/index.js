@@ -1,7 +1,7 @@
+export { default as SetPasswordModal } from './setPasswordModal.component';
 export { default as UpdateEmailModal } from './updateEmailModal.component';
+export { default as UpdatePasswordModal } from './updatePasswordModal.component';
 export { default as UpdatePhoneModal } from './updatePhoneModal.component';
-export { default as setPasswordModal } from './setPasswordModal.component';
-export { default as updatePasswordModal } from './updatePasswordModal.component';
 
 export const MODALS = {
   SET_PASSWORD: Symbol('SET_PASSWORD'),

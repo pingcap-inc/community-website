@@ -1,10 +1,11 @@
 import React from 'react';
-import { Modal as AntModal } from 'antd';
+
+import BasicModal from './modal.component';
 
 const Modal = (props) => (
-  <AntModal {...props} title="更改邮箱" cancelText="取消" okText="确定" onCancel={props.onClose}>
+  <BasicModal {...props} title="更改邮箱">
     <span>Modal Content</span>
-  </AntModal>
+  </BasicModal>
 );
 
 export default Modal;

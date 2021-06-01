@@ -6,7 +6,7 @@ import { api } from '@tidb-community/datasource';
 
 import * as Styled from './content.styled';
 import Box from './box';
-import { MODALS, UpdateEmailModal, UpdatePhoneModal, setPasswordModal, updatePasswordModal } from './modals';
+import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
 
 const Content = () => {
   const [visibleModal, setVisibleModal] = useState();
@@ -17,6 +17,7 @@ const Content = () => {
 
   const {
     associated_accounts: { github },
+    has_password: hasPassword,
   } = data;
 
   const openModal = (type) => (e) => setVisibleModal(type);
@@ -67,7 +68,11 @@ const Content = () => {
     <>
       <Box title="手机号码" text={data.phone ?? '未设置'} onSettingsClick={openModal(MODALS.UPDATE_PHONE)} />
       <Box title="邮箱" text={data.email ?? '未设置'} onSettingsClick={openModal(MODALS.UPDATE_EMAIL)} />
-      <Box title="密码" text={data.has_password ? '已设置，可通过账户密码登录' : '未设置'} />
+      <Box
+        title="密码"
+        text={hasPassword ? '已设置，可通过账户密码登录' : '未设置'}
+        onSettingsClick={openModal(hasPassword ? MODALS.UPDATE_PASSWORD : MODALS.SET_PASSWORD)}
+      />
 
       <Box>
         <h2>绑定第三方账号</h2>
@@ -88,8 +93,8 @@ const Content = () => {
 
       <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} />
       <UpdatePhoneModal {...genModalProps(MODALS.UPDATE_PHONE)} />
-      <setPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} />
-      <updatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} />
+      <SetPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} />
+      <UpdatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} />
     </>
   );
 };

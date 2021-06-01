@@ -61,6 +61,7 @@ const FormComponent = () => {
       return api.profile
         .update({
           ...values,
+          date_of_birth: values.date_of_birth.format('YYYY-MM-DD'),
           re_token_v3,
         })
         .then(() => {

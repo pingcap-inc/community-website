@@ -5,4 +5,4 @@ const formUtils = utils.form;
 
 export const wrapFormikSubmitFunction = (func) => formUtils.wrapFormikSubmitFunction(func, api.events.dispatchApiError);
 
-export const getRecaptchaToken = () => formUtils.getRecaptchaToken(process.env.NEXT_PUBLIC_RECAPTCHA_KEY);
+export const getCaptchaToken = () => formUtils.getCaptchaToken(process.env.NEXT_PUBLIC_RECAPTCHA_KEY);

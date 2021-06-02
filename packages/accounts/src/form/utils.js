@@ -1,10 +1,6 @@
-export const getCaptcha = () => {
-  /* global grecaptcha */
-  const recaptchaKey = import.meta.env.VITE_RE_CAPTCHA_SITE_KEY;
+import { utils } from '@tidb-community/common';
 
-  return new Promise((resolve, reject) => {
-    grecaptcha.ready(() => {
-      grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(resolve).catch(reject);
-    });
-  });
+export const getCaptcha = () => {
+  const recaptchaKey = import.meta.env.VITE_RE_CAPTCHA_SITE_KEY;
+  return utils.form.getCaptchaToken(recaptchaKey);
 };

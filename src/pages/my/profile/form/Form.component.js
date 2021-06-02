@@ -58,7 +58,7 @@ const FormComponent = () => {
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
-    return formUtils.getRecaptchaToken().then((re_token_v3) => {
+    return formUtils.getCaptchaToken().then((re_token_v3) => {
       return api.profile
         .update({
           ...values,

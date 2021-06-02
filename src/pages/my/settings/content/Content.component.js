@@ -9,17 +9,16 @@ import Box from './box';
 import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
 
 const Content = () => {
-  const [visibleModal, setVisibleModal] = useState(MODALS.UPDATE_PHONE);
-  const { data, error, mutate } = useSWR('account.settings');
-  const isLoading = !error && !data;
+  const [visibleModal, setVisibleModal] = useState();
+  const { data: settingsResp, error, mutate, revalidate } = useSWR('account.settings');
 
+  const isLoading = !error && !settingsResp;
   if (isLoading) return <Skeleton />;
 
+  const { data } = settingsResp;
   const {
-    data: {
-      associated_accounts: { github },
-      has_password: hasPassword,
-    },
+    associated_accounts: { github },
+    has_password: hasPassword,
   } = data;
 
   const openModal = (type) => (e) => setVisibleModal(type);
@@ -29,8 +28,9 @@ const Content = () => {
   };
 
   const genModalProps = (modal) => ({
-    visible: visibleModal === modal,
+    revalidate,
     onClose: onModalClose,
+    visible: visibleModal === modal,
   });
 
   const bind = (provider) => (e) => {
@@ -54,9 +54,12 @@ const Content = () => {
           message.success('解绑成功');
           mutate(
             {
-              ...data,
-              associated_accounts: {
-                [provider]: null,
+              ...settingsResp,
+              data: {
+                ...data,
+                associated_accounts: {
+                  [provider]: null,
+                },
               },
             },
             false

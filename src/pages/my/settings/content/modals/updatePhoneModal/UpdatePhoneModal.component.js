@@ -12,7 +12,7 @@ import { form as formUtils } from '~/utils';
 
 const VerifyCodeInput = withVerifyCode(Input);
 
-const Modal = (props) => {
+const Modal = ({ revalidate, ...props }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { onClose } = props;
@@ -33,6 +33,7 @@ const Modal = (props) => {
         })
         .finally(() => {
           setIsSubmitting(false);
+          revalidate();
           onClose();
         })
     );

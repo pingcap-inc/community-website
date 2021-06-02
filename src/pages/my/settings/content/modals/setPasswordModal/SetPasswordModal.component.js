@@ -25,11 +25,11 @@ const Modal = ({ revalidate, ...props }) => {
         })
         .then(() => {
           message.success('密码更新成功');
+          revalidate();
+          onClose();
         })
         .finally(() => {
           setIsSubmitting(false);
-          revalidate();
-          onClose();
         })
     );
   });

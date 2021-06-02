@@ -31,3 +31,10 @@ export const setEmail = ({ email, code, re_token_v3 }) => {
     re_token_v3,
   });
 };
+
+export const setPassword = ({ new_password, re_token_v3 }) => {
+  return client.post('/api/account/set-password', {
+    new_password,
+    re_token_v3,
+  });
+};

@@ -22,8 +22,8 @@ const Modal = ({ revalidate, ...props }) => {
     setIsSubmitting(true);
 
     return formUtils.getCaptchaToken().then((re_token_v3) =>
-      api.profile
-        .update({
+      api.account
+        .setEmail({
           ...values,
           re_token_v3,
         })
@@ -58,8 +58,8 @@ const Modal = ({ revalidate, ...props }) => {
         {({ values, errors, touched }) => {
           const sendVerifyCode = () =>
             formUtils.getCaptchaToken().then((re_token_v3) =>
-              api.account.sendPhoneCode({
-                phone: values.phone,
+              api.account.sendEmailCode({
+                phone: values.email,
                 re_token_v3,
               })
             );

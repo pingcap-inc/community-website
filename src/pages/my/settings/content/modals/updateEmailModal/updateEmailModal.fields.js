@@ -10,6 +10,7 @@ export const fields = {
     name: 'email',
     placeholder: '请输入邮箱',
     validator: Yup.string().email('请输入有效的邮箱').required('邮箱不可为空'),
+    initialValues: '',
   },
   code: commonFields.code(),
 };

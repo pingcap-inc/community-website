@@ -23,8 +23,8 @@ const Modal = ({ revalidate, ...props }) => {
     setIsSubmitting(true);
 
     return formUtils.getCaptchaToken().then((re_token_v3) =>
-      api.profile
-        .update({
+      api.account
+        .setPhone({
           ...values,
           re_token_v3,
         })

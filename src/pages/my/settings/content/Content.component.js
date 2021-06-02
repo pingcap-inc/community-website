@@ -81,7 +81,7 @@ const Content = () => {
 
       <Box>
         <h2>绑定第三方账号</h2>
-        <Styled.Desc>绑定后可通过第三方应用快速登录，并获得 xxx 积分奖励</Styled.Desc>
+        <Styled.Desc>绑定后可通过第三方应用快速登录，并获得 20 积分奖励</Styled.Desc>
         <Styled.SocialAccounts>
           {github ? (
             <Styled.Account>

@@ -47,16 +47,7 @@ export default ({ mode }) => {
         '@/public': resolve(__dirname, '../../public'),
         '@': resolve(__dirname, '../../src'),
         '~': resolve(__dirname, 'src'),
-        ...unifyNodeModules([
-          'antd',
-          'react',
-          'react-dom',
-          'react-is',
-          'ramda',
-          'styled-component',
-          'formik',
-          'formik-antd',
-        ]),
+        ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-component']),
       },
     },
 

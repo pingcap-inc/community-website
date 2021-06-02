@@ -13,7 +13,7 @@ export const code = ({ name = 'code' } = {}) => ({
   countDownFormatter: (ms) => `${Math.round(ms / 1000)}s`,
 });
 
-export const newPassword = ({ name = 'new_password', placeholder = '请输入密码' } = {}) => ({
+export const newPassword = ({ name = 'new_password', placeholder = '请输入新密码' } = {}) => ({
   name,
   placeholder,
   validator: Yup.string().required('密码不可为空').min(8, '密码最少为8个字符'),
@@ -21,7 +21,7 @@ export const newPassword = ({ name = 'new_password', placeholder = '请输入密
   type: 'password',
 });
 
-export const confirmPassword = ({ name = 'confirm_password', placeholder = '请再次输入密码' } = {}) => ({
+export const confirmPassword = ({ name = 'confirm_password', placeholder = '请再次输入新密码' } = {}) => ({
   name,
   placeholder,
   validator: Yup.string()

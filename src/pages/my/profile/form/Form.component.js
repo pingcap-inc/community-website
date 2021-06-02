@@ -59,11 +59,13 @@ const FormComponent = () => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
 
-    return formUtils.getCaptchaToken().then((re_token_v3) =>
-      api.profile
+    return formUtils.getCaptchaToken().then((re_token_v3) => {
+      const { date_of_birth: dob } = values;
+
+      return api.profile
         .update({
           ...values,
-          date_of_birth: values.date_of_birth.format(dateApiFormat),
+          date_of_birth: dob ? moment(dob).format(dateApiFormat) : null,
           re_token_v3,
         })
         .then(() => {
@@ -71,8 +73,8 @@ const FormComponent = () => {
         })
         .finally(() => {
           setIsSubmitting(false);
-        })
-    );
+        });
+    });
   });
 
   const formikProps = {

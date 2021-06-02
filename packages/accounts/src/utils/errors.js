@@ -11,7 +11,7 @@ export const expectedError = (error) => {
 
 // TODO: add sentry?
 export const handleError = (error) => {
-  if (error && error.__isExpectedError) {
+  if (error?.__isExpectedError) {
     message.error(getErrorMessage(error.error), 5);
   } else {
     // unexpected error will be returned. and it should be handled by caller

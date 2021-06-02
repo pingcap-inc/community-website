@@ -5,10 +5,8 @@ const timeoutPromise = (ms) => new Promise((resolve, reject) => setTimeout(() =>
 
 // server will return 429 if call send code too frequency
 const handleSendCodeLimitError = (error) => {
-  if (error.response) {
-    if (error.response.status === 429) {
-      return Promise.reject(expectedError('验证码发送失败，请稍后再试'));
-    }
+  if (error.response?.status === 429) {
+    return Promise.reject(expectedError('验证码发送失败，请稍后再试'));
   }
   return Promise.reject(error);
 };

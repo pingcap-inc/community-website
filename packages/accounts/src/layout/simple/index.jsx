@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { Title } from 'react-head';
+import { useSize } from 'ahooks';
 
 import * as Styled from './simple.styled';
+import { getSize } from '~/theme';
 
 const SimpleLayout = ({ headTitle = 'PingCAP Account', title = 'TiDB', subtitle = 'SQL at Scale', children }) => {
   useEffect(() => {
@@ -13,11 +15,16 @@ const SimpleLayout = ({ headTitle = 'PingCAP Account', title = 'TiDB', subtitle 
     if (defaultTitle) defaultTitle.parentNode.removeChild(defaultTitle);
   }, []);
 
+  const containerRef = useRef();
+  const { width } = useSize(containerRef);
+
+  const size = useMemo(() => getSize(width), [width]);
+
   return (
     <>
       <Title>{headTitle}</Title>
-      <Styled.Container>
-        <Styled.Main>
+      <Styled.Container ref={containerRef} $size={size}>
+        <Styled.Main $size={size}>
           <Styled.Logo />
           <Styled.Title>{title}</Styled.Title>
           <Styled.SubTitle>{subtitle}</Styled.SubTitle>

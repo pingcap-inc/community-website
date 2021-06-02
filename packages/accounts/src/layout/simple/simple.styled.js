@@ -3,10 +3,11 @@ import * as colors from '@tidb-community/ui/colors';
 import * as mixins from '@tidb-community/ui/mixins';
 
 import logoSvg from '@/public/images/community/logo.svg?url';
+import { SIZES } from '~/theme';
 
 export const Container = styled.div`
   ${mixins.flexCenter()};
-  background-color: ${colors.M2};
+  background-color: ${({ $size }) => ($size === SIZES.small ? 'white' : colors.M2)};
   min-height: 100vh;
 `;
 
@@ -17,6 +18,12 @@ export const Main = styled.main`
   border-radius: 4px;
   background-color: ${colors.M1};
   width: 360px;
+  ${({ $size }) =>
+    $size === SIZES.small &&
+    `
+    border: none;
+    padding: 12px 12px 64px;
+  `}
 `;
 
 export const Logo = styled.img.attrs({ alt: 'logo', src: logoSvg })`

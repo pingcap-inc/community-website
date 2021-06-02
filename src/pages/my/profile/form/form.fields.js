@@ -2,12 +2,14 @@ import * as Yup from 'yup';
 import { utils } from '@tidb-community/common';
 
 const { buildSchema } = utils.form;
+const maxLength = 128;
 
 export const fields = {
   username: {
     name: 'username',
     placeholder: '请输入',
     validator: Yup.string().required('用户名不可为空'),
+    maxLength,
   },
   bio: {
     name: 'bio',
@@ -16,6 +18,7 @@ export const fields = {
   name: {
     name: 'name',
     placeholder: '请填写真实姓名',
+    maxLength,
   },
   gender: {
     name: 'gender',
@@ -28,6 +31,7 @@ export const fields = {
   address: {
     name: 'address',
     placeholder: '请填写详细地址',
+    maxLength,
   },
 };
 

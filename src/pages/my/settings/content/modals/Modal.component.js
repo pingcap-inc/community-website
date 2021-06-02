@@ -8,11 +8,11 @@ import * as Styled from './modal.styled';
 // formik-antd. It's more like an issue of formik-antd but I haven't dived into it.
 export const formId = 'my-settings-form';
 
-const Modal = ({ children, ...props }) => (
+const Modal = ({ children, extendedOkButtonProps, ...props }) => (
   <AntModal
     cancelText="取消"
     destroyOnClose
-    okButtonProps={{ form: formId, htmlType: 'submit' }}
+    okButtonProps={{ form: formId, htmlType: 'submit', ...extendedOkButtonProps }}
     okText="确定"
     onCancel={props.onClose}
     width={480}

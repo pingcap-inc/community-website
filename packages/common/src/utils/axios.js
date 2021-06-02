@@ -1,3 +1,5 @@
+import Cookie from 'js-cookie';
+
 /**
  * Creates an axios request inject the captcha token automatically.
  *
@@ -27,5 +29,23 @@ export const createCaptchaInterceptor = (key, getCaptcha) => {
       config.data.re_token_v3 = await getCaptcha();
     }
     return Promise.resolve(config);
+  };
+};
+
+/**
+ * Copy value from cookie to http header
+ *
+ * @param {string} cookieKey
+ * @param {string} httpHeaderKey
+ * @return {function(AxiosRequestConfig): AxiosRequestConfig}
+ */
+export const createCookieCopyInterceptor = (cookieKey, httpHeaderKey) => {
+  return (config) => {
+    const cookieValue = Cookie.get(cookieKey);
+    if (typeof cookieValue === 'string') {
+      config.headers = config.headers || {};
+      config.headers[httpHeaderKey] = cookieValue;
+    }
+    return config;
   };
 };

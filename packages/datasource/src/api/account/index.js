@@ -14,6 +14,7 @@ export const sendPhoneCode = ({ phone, re_token_v3 }) => {
 export const setPhone = ({ phone, code, re_token_v3 }) => {
   return client.post('/api/account/set-phone', {
     phone,
+    code,
     re_token_v3,
   });
 };

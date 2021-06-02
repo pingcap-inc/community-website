@@ -9,7 +9,7 @@ import Box from './box';
 import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
 
 const Content = () => {
-  const [visibleModal, setVisibleModal] = useState();
+  const [visibleModal, setVisibleModal] = useState(MODALS.UPDATE_PHONE);
   const { data, error, mutate } = useSWR('account.settings');
   const isLoading = !error && !data;
 

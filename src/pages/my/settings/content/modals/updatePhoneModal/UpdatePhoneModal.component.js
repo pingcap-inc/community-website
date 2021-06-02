@@ -1,6 +1,7 @@
 import React from 'react';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
+import { api } from '@tidb-community/datasource';
 import { withVerifyCode } from '@tidb-community/ui';
 
 import * as Styled from './updatePhoneModal.styled';
@@ -11,16 +12,13 @@ import { fields, initialValues, schema } from './updatePhoneModal.fields';
 const VerifyCodeInput = withVerifyCode(Input);
 
 const Modal = (props) => {
-  const onOk = () => {
-    console.log('onOk');
-  };
+  const { phone, code } = fields;
+  const phoneName = phone.name;
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     console.log('onSubmit!!', values);
     return Promise.resolve();
   });
-
-  const { phone, code } = fields;
 
   const formikProps = {
     initialValues,
@@ -29,18 +27,36 @@ const Modal = (props) => {
   };
 
   return (
-    <BasicModal {...props} title="更改手机号码" onOk={onOk}>
+    <BasicModal {...props} title="更改手机号码">
       <Formik {...formikProps}>
-        {({ errors }) => (
-          <Form id={formId}>
-            <FormItem name={phone.name}>
-              <Styled.PhoneInput prefix="+86" {...phone} />
-            </FormItem>
-            <FormItem name={code.name}>
-              <VerifyCodeInput {...code} />
-            </FormItem>
-          </Form>
-        )}
+        {({ values, errors, touched }) => {
+          const sendVerifyCode = () => {
+            return formUtils.getCaptchaToken().then((re_token_v3) => {
+              console.log('re_token_v3', re_token_v3);
+              return api.account.setPhoneCode({
+                phone: values.phone,
+                re_token_v3,
+              });
+            });
+          };
+
+          const codeInputProps = {
+            ...code,
+            sendVerifyCode,
+            buttonDisabled: errors[phoneName] || !touched[phoneName],
+          };
+
+          return (
+            <Form id={formId}>
+              <FormItem name={phoneName}>
+                <Styled.PhoneInput prefix="+86" {...phone} />
+              </FormItem>
+              <FormItem name={code.name}>
+                <VerifyCodeInput {...codeInputProps} />
+              </FormItem>
+            </Form>
+          );
+        }}
       </Formik>
     </BasicModal>
   );

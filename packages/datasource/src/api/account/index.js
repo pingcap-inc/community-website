@@ -38,3 +38,11 @@ export const setPassword = ({ new_password, re_token_v3 }) => {
     re_token_v3,
   });
 };
+
+export const resetPassword = ({ old_password, new_password, re_token_v3 }) => {
+  return client.post('/api/account/reset-password', {
+    old_password,
+    new_password,
+    re_token_v3,
+  });
+};

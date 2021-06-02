@@ -9,7 +9,7 @@ export const fields = {
   oldPassword: {
     ...commonFields.newPassword(),
     name: 'old_password',
-    placehoder: '请输入当前密码',
+    placeholder: '请输入当前密码',
     validator: Yup.string().required('密码不可为空'),
   },
   newPassword: commonFields.newPassword(),

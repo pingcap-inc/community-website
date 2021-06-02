@@ -1,5 +1,6 @@
 import Axios from 'axios';
-import { getCaptcha } from '~/form/utils';
+import { getCaptchaToken } from '@tidb-community/common/utils/form';
+import { createCaptchaInterceptor } from '@tidb-community/common/utils/axios';
 
 const client = Axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
@@ -13,12 +14,8 @@ export const callbackClient = Axios.create({
 // any api demands captcha just needs to declare a param 're_token_v3' and it will automatically injected into
 // request body.
 // this should only working for requests with body.
-client.interceptors.request.use(async (config) => {
-  if (config.data && typeof config.data === 'object' && 're_token_v3' in config.data) {
-    config.data.re_token_v3 = await getCaptcha();
-  }
-  return Promise.resolve(config);
-});
+const getCaptcha = () => getCaptchaToken(import.meta.env.VITE_RE_CAPTCHA_SITE_KEY);
+client.interceptors.request.use(createCaptchaInterceptor('re_token_v3', getCaptcha));
 
 client.interceptors.response.use(
   ({ data }) => {
@@ -37,6 +34,7 @@ client.interceptors.response.use(
   }
 );
 
+// we don't care about login callback errors.
 callbackClient.interceptors.response.use(undefined, () => {});
 
 export default client;

@@ -55,11 +55,11 @@ const Modal = ({ revalidate, ...props }) => {
   return (
     <BasicModal {...modalProps}>
       <Formik {...formikProps}>
-        {({ values, errors, touched }) => {
+        {({ values, errors }) => {
           const sendVerifyCode = () =>
             formUtils.getCaptchaToken().then((re_token_v3) =>
               api.account.sendEmailCode({
-                phone: values.email,
+                email: values[emailName],
                 re_token_v3,
               })
             );
@@ -67,7 +67,7 @@ const Modal = ({ revalidate, ...props }) => {
           const codeInputProps = {
             ...code,
             sendVerifyCode,
-            buttonDisabled: errors[emailName] || !touched[emailName],
+            buttonDisabled: errors[emailName] || !values[emailName],
           };
 
           return (

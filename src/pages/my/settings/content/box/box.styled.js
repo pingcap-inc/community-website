@@ -25,6 +25,11 @@ export const Container = styled.div`
     margin-top: 0.5rem;
     ${mixins.typography('p2')};
   }
+
+  .extra {
+    ${mixins.typography('p2')};
+    color: ${colors.C4};
+  }
 `;
 
 export const Content = styled.div`

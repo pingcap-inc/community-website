@@ -76,7 +76,12 @@ const Content = () => {
   return (
     <>
       <Box title="手机号码" text={data.phone ?? '未设置'} onSettingsClick={openModal(MODALS.UPDATE_PHONE)} />
-      <Box title="邮箱" text={data.email ?? '未设置'} onSettingsClick={openModal(MODALS.UPDATE_EMAIL)} />
+      <Box
+        title="邮箱"
+        text={data.email ?? '未设置'}
+        extra={data.email_verified ?? '（未验证，验证后可通过邮箱登陆或找回密码）'}
+        onSettingsClick={openModal(MODALS.UPDATE_EMAIL)}
+      />
       <Box
         title="密码"
         text={hasPassword ? '已设置，可通过账户密码登录' : '未设置'}
@@ -100,7 +105,7 @@ const Content = () => {
         </Styled.SocialAccounts>
       </Box>
 
-      <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} />
+      <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} initialEmail={data.email ?? ''} />
       <UpdatePhoneModal {...genModalProps(MODALS.UPDATE_PHONE)} />
       <SetPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} />
       <UpdatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} />

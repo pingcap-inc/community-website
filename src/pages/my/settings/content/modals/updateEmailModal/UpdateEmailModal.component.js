@@ -11,7 +11,7 @@ import { form as formUtils } from '~/utils';
 
 const VerifyCodeInput = withVerifyCode(Input);
 
-const Modal = ({ revalidate, ...props }) => {
+const Modal = ({ initialEmail, revalidate, ...props }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { onClose } = props;
@@ -40,14 +40,14 @@ const Modal = ({ revalidate, ...props }) => {
 
   const modalProps = {
     ...props,
-    title: '更改邮箱',
+    title: '验证邮箱',
     extendedOkButtonProps: {
       loading: isSubmitting,
     },
   };
 
   const formikProps = {
-    initialValues,
+    initialValues: Object.assign({}, initialValues, { [emailName]: initialEmail }),
     onSubmit,
     validationSchema: schema,
   };

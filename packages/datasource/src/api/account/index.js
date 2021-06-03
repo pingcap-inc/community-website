@@ -29,6 +29,7 @@ export const sendEmailCode = ({ email, re_token_v3 }) => {
 export const setEmail = ({ email, code, re_token_v3 }) => {
   return client.post('/api/account/set-email', {
     email,
+    code,
     re_token_v3,
   });
 };

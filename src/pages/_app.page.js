@@ -5,17 +5,19 @@ import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
 import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 import { message } from 'antd';
+import { withLayout } from '@tidb-community/common';
 
 import 'components/Button/Button.scss';
 import 'components/Container/Container.scss';
 import 'styles/globals.css';
 import ErrorPage from './_error.page';
-import { MeContext, AuthContext } from 'context';
+import { AuthContext, MeContext } from 'context';
 
 // FIXME: It is a temporary fix and the auth issue will be thoroughly handled in CPT-183
-const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
-const loginUrl = 'https://accounts.pingcap.com/login';
-const logoutUrl = 'https://accounts.pingcap.com/logout';
+const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs|my)\//;
+const accountsBaseUrl = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL;
+const loginUrl = `${accountsBaseUrl}/login`;
+const logoutUrl = `${accountsBaseUrl}/logout`;
 const homeUrl = 'https://tidb.io/';
 
 const doLogin = (redirectUrl) => {
@@ -99,6 +101,8 @@ const App = ({ Component, pageProps, router }) => {
     return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
   }
 
+  const WrappedComponent = withLayout(Component);
+
   return (
     <SWRConfig
       value={{
@@ -109,7 +113,7 @@ const App = ({ Component, pageProps, router }) => {
       <GlobalStyle />
       <AuthContext.Provider value={{ login: doLogin, logout: doLogout }}>
         <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
-          <Component {...pageProps} />
+          <WrappedComponent {...pageProps} />
         </MeContext.Provider>
       </AuthContext.Provider>
     </SWRConfig>

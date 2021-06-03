@@ -9,11 +9,11 @@ import { t } from './userProfile.locale';
 
 const UserProfile = ({
   avatarUrl,
+  currentNav,
   items,
+  locale,
   onLoginClick,
   onLogoutClick,
-  locale,
-  currentNav,
   onNavClick,
   showBadge = false,
 }) => {
@@ -47,12 +47,12 @@ const UserProfile = ({
 
 UserProfile.propTypes = {
   avatarUrl: PropTypes.string,
-  currentNav: PropTypes.string.isRequired,
+  currentNav: PropTypes.string,
   items: PropTypes.array,
   locale: PropTypes.oneOf(['zh', 'en']),
   onLoginClick: PropTypes.func,
   onLogoutClick: PropTypes.func,
-  onNavClick: PropTypes.func.isRequired,
+  onNavClick: PropTypes.func,
   showBadge: PropTypes.bool,
 };
 

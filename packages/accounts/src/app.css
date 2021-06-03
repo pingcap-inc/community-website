@@ -1,0 +1,13 @@
+html {
+  min-height: 100vh;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: block;
+}
+
+#app {
+  min-height: 100vh;
+}

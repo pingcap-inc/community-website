@@ -1,15 +1,8 @@
 import { api } from '@tidb-community/datasource';
+import { utils } from '@tidb-community/common';
 
-// make sure calling api has set `isDispatchApiErrorDisabled`
-export const wrapFormikSubmitFunction = (func) => {
-  return (params, formikHelpers) => {
-    return func(params).catch((response) => {
-      if (response.errors) {
-        formikHelpers.setErrors(response.errors);
-      } else {
-        // dispatch unhandled events to global.
-        api.events.dispatchApiError(response);
-      }
-    });
-  };
-};
+const formUtils = utils.form;
+
+export const wrapFormikSubmitFunction = (func) => formUtils.wrapFormikSubmitFunction(func, api.events.dispatchApiError);
+
+export const getCaptchaToken = () => formUtils.getCaptchaToken(process.env.NEXT_PUBLIC_RECAPTCHA_KEY);

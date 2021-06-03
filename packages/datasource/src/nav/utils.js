@@ -49,7 +49,7 @@ export const replaceLink = ({ link, rules }) => {
 export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
   if (!domain) return null;
 
-  const schemeSpecPart = '^https?:';
+  const schemaSpecPart = '^https?:';
   const domainPart = domain.replace(/\./g, '\\.'); // escape wildcard character
 
   let pathPart;
@@ -59,7 +59,7 @@ export const buildUrlPrefixPattern = ({ domain, path } = {}) => {
     pathPart = '/' + path.replace(/^\/|\/$/g, '');
   }
 
-  return new RegExp(schemeSpecPart + '//' + domainPart + pathPart);
+  return new RegExp(schemaSpecPart + '//' + domainPart + pathPart);
 };
 
 export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
@@ -75,4 +75,15 @@ export const _applyTidbIoSpecRule = (rules, { domain, path, domainConfig }) => {
   } else {
     return rules;
   }
+};
+
+export const _makeHiddenItems = (items) => {
+  if (!items) {
+    return items;
+  }
+  return items.map(({ items, ...props }) => ({
+    items: _makeHiddenItems(items),
+    ...props,
+    hidden: true,
+  }));
 };

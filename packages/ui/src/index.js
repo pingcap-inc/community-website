@@ -1,55 +1,21 @@
-import { clearFix } from 'polished';
-import { createGlobalStyle } from 'styled-components';
+export * as colors from './colors';
+export * as constants from './constants';
+export * as mixins from './mixins';
+export * as utils from './utils';
+export { default as createAppGlobalStyle } from './globalStyle';
 
-import * as colors from './colors';
-import * as constants from './constants';
-import * as mixins from './mixins';
-import resetAntStyles from './antd';
-
-// Utils
-import * as headerUtils from './components/header/header.utils';
-import * as _utils from './utils';
-
-export const utils = {
-  header: headerUtils,
-  ..._utils,
-};
-
-export { colors, constants, mixins };
 export {
+  ActivityBanner,
   ActivityCards,
+  CountDown,
   Footer,
   Header,
-  ViewMoreButton,
   Link,
+  PlainMenu,
   RemoteSelect,
   Upload,
-  CountDown,
-  withVerifyCode,
   UserProfile,
+  ViewMoreButton,
   withActionMenu,
-  ActivityBanner,
+  withVerifyCode,
 } from './components';
-
-export const createAppGlobalStyle = () => createGlobalStyle`
-  .${constants.appClassName} {
-    font-family: 'Titillium Web', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-    color: ${colors.F1};
-    font-size: 16px;
-    line-height: 1.75;
-    --antd-wave-shadow-color: ${colors.B1};
-
-    * {
-      &::selection {
-        color: ${colors.M1} !important;
-        background: ${colors.B1};
-      }
-    }
-
-    .clearfix {
-      ${clearFix()};
-    }
-
-    ${resetAntStyles};
-  }
-`;

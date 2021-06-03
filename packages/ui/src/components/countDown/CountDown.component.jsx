@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import PropTypes from 'prop-types';
 import * as R from 'ramda';
+import PropTypes from 'prop-types';
+import React, { useEffect, useState } from 'react';
 
 import * as Styled from './countDown.styled';
 
@@ -38,11 +38,7 @@ const CountDown = ({ total, counterRef, onFinished, formatter = defaultFormatter
     };
   }, [total, interval, resetVersion, onFinished]);
 
-  return R.is(Function, children) ? (
-    children(formatter(time))
-  ) : (
-    <Styled.CountDownText>{formatter(time)}</Styled.CountDownText>
-  );
+  return R.is(Function, children) ? children(formatter(time)) : <Styled.Text>{formatter(time)}</Styled.Text>;
 };
 
 CountDown.propTypes = {

@@ -37,7 +37,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     linkUtils.handleRedirect(router, link, browserLink, target);
   };
 
-  const currentNav = utils.header.getCurrentNav(headerNavItems, router.pathname);
+  const currentNav = utils.header.getCurrentNav(headerNavItems, router.asPath);
 
   const headerProps = {
     logo,
@@ -60,7 +60,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
   };
 
   return (
-    <NavContext.Provider value={{ navData: data }}>
+    <NavContext.Provider value={{ navData: data, onNavClick, currentNav }}>
       <Styled.Container>
         {renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}
         <Header
@@ -86,8 +86,9 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
 };
 
 Core.propTypes = {
-  // It belongs to an object type if MainWrapper is an styled component
+  // It belongs to an object type if MainWrapper is a styled component
   MainWrapper: PropTypes.oneOfType([PropTypes.element, PropTypes.object]),
+  children: PropTypes.node,
   domain: PropTypes.string,
   hasMargin: PropTypes.bool,
   locale: PropTypes.oneOf(['zh', 'en']),

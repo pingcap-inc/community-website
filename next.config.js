@@ -1,5 +1,4 @@
 const path = require('path');
-
 const { withSentryConfig } = require('@sentry/nextjs');
 
 const unifyNodeModules = (names) =>
@@ -29,12 +28,14 @@ const config = {
     config.resolve.alias = {
       ...alias,
 
-      ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
+      ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-component']),
 
       // Make sure we will build directly from the source code for internal comsumers,
       // which gives us an instant reaction if anything updates
-      '@tidb-community/ui': path.resolve('./packages/ui/src'),
+      '@tidb-community/common': path.resolve('./packages/common/src'),
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
+      '@tidb-community/ui': path.resolve('./packages/ui/src'),
+      '~': path.resolve('./src'),
     };
 
     config.module.rules.push({

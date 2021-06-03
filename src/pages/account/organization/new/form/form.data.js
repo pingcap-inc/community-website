@@ -1,9 +1,9 @@
-import { api, getFormData } from '@tidb-community/datasource';
 import * as Yup from 'yup';
-import { buildInitialValues, buildScheme } from './form.utils';
+import { api, getFormData } from '@tidb-community/datasource';
+import { utils } from '@tidb-community/common';
 
+const { buildInitialValues, buildSchema } = utils.form;
 const formData = getFormData();
-
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
 
 const fetchOrganizationOptions = (word) =>
@@ -133,7 +133,7 @@ const data = {
   submitBtnTitle: '立即认证',
 };
 
-data.formScheme = buildScheme(data.form);
+data.formSchema = buildSchema(data.form);
 data.formInitialValues = buildInitialValues(data.form);
 
 export default data;

@@ -1,7 +1,7 @@
 export const handleRedirect = (router, link, browserLink, target) => {
   if (!link) return;
 
-  // if `link` has a scheme, `browserLink` will be ignored
+  // if `link` has a schema, `browserLink` will be ignored
   if (link.startsWith('http')) {
     return window.open(link, target || '_blank').focus();
   }

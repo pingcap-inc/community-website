@@ -1,4 +1,5 @@
 const { successResp, errorResp } = require('../../../../utils');
+
 module.exports = (req, res) => {
   switch (parseInt(req.params.id)) {
     case 1:

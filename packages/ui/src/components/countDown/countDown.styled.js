@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const CountDownText = styled.span`
+export const Text = styled.span`
   text-transform: none;
 `;

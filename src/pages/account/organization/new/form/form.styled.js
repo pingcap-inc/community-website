@@ -1,7 +1,7 @@
-import { mixins } from '@tidb-community/ui';
 import styled from 'styled-components';
-import { SubmitButton } from 'formik-antd';
 import { Button as AntButton, Row as AntRow } from 'antd';
+import { SubmitButton } from 'formik-antd';
+import { mixins } from '@tidb-community/ui';
 
 export const FormContainer = styled.div`
   box-sizing: border-box;

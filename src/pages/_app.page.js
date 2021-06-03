@@ -15,8 +15,9 @@ import { AuthContext, MeContext } from 'context';
 
 // FIXME: It is a temporary fix and the auth issue will be thoroughly handled in CPT-183
 const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
-const loginUrl = 'https://accounts.pingcap.com/login';
-const logoutUrl = 'https://accounts.pingcap.com/logout';
+const accountsBaseUrl = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL;
+const loginUrl = `${accountsBaseUrl}/login`;
+const logoutUrl = `${accountsBaseUrl}/logout`;
 const homeUrl = 'https://tidb.io/';
 
 const doLogin = (redirectUrl) => {

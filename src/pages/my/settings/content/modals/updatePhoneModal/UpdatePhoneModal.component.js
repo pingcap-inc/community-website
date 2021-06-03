@@ -56,11 +56,11 @@ const Modal = ({ revalidate, ...props }) => {
   return (
     <BasicModal {...modalProps}>
       <Formik {...formikProps}>
-        {({ values, errors, touched }) => {
+        {({ values, errors }) => {
           const sendVerifyCode = () =>
             formUtils.getCaptchaToken().then((re_token_v3) =>
               api.account.sendPhoneCode({
-                phone: values.phone,
+                phone: values[phoneName],
                 re_token_v3,
               })
             );
@@ -68,7 +68,7 @@ const Modal = ({ revalidate, ...props }) => {
           const codeInputProps = {
             ...code,
             sendVerifyCode,
-            buttonDisabled: errors[phoneName] || !touched[phoneName],
+            buttonDisabled: errors[phoneName] || !values[phoneName],
           };
 
           return (

@@ -60,7 +60,7 @@ const Modal = ({ revalidate, ...props }) => {
           const sendVerifyCode = formUtils.wrapFormikSubmitFunction(() =>
             formUtils.getCaptchaToken().then((re_token_v3) =>
               api.account.sendPhoneCode({
-                phone: values.phone,
+                phone: values[phoneName],
                 re_token_v3,
               })
             )

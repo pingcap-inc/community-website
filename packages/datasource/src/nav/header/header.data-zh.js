@@ -157,8 +157,12 @@ export const genUserProfileItems = (meData) => {
       divider: true,
     },
     {
-      title: '账号设置',
-      link: `https://tidb.io/user/${meData.id}`,
+      title: '个人信息',
+      link: `https://tidb.io/my/profile`,
+    },
+    {
+      title: '公司信息',
+      link: `https://tidb.io/my/company`,
     },
   ];
 

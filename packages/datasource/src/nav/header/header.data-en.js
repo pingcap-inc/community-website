@@ -158,8 +158,12 @@ export const genUserProfileItems = (meData) => {
       divider: true,
     },
     {
-      title: 'Account Settings',
-      link: `https://tidb.io/user/${meData.id}`,
+      title: 'Profile',
+      link: `https://tidb.io/my/profile`,
+    },
+    {
+      title: 'My Company',
+      link: `https://tidb.io/my/company`,
     },
   ];
 

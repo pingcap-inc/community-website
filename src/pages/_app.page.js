@@ -14,7 +14,7 @@ import ErrorPage from './_error.page';
 import { AuthContext, MeContext } from 'context';
 
 // FIXME: It is a temporary fix and the auth issue will be thoroughly handled in CPT-183
-const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs)\//;
+const REG_AUTH_PATH = /https?:\/\/([^/]+)\/(?:account|orgs|my)\//;
 const accountsBaseUrl = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL;
 const loginUrl = `${accountsBaseUrl}/login`;
 const logoutUrl = `${accountsBaseUrl}/logout`;

@@ -90,6 +90,7 @@ const Content = () => {
         text={data.email ?? '未设置'}
         extra={data.email && !data.email_verified ? '（未验证，验证后可通过邮箱登陆或找回密码）' : ''}
         onSettingsClick={openModal(MODALS.UPDATE_EMAIL)}
+        settingsLabel={data.email_verified ? '设置' : '验证'}
       />
       <Box
         title="密码"

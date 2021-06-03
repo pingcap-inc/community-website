@@ -34,11 +34,15 @@ const Content = () => {
   });
 
   const bind = (provider) => (e) => {
-    // FIXME: need to call another API, wait for WangDi's confirmation
     api.social.login({
       provider,
       redirect_to: window.location.href,
     });
+
+    const { location } = window;
+    location.href = `${
+      process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL
+    }/social/login/${provider}?redirect_to=${encodeURIComponent(location.href)}`;
   };
 
   const unbind = (provider) => (e) => {

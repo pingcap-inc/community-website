@@ -56,7 +56,7 @@ const FormComponent = () => {
       {({ errors }) => (
         <Form layout="vertical">
           <Row gutter={32}>
-            <Col sm={24} md={12}>
+            <Col xs={24} md={12}>
               <FormItem label="公司名称" name={companyName.name}>
                 <Input {...companyName} />
               </FormItem>
@@ -76,7 +76,7 @@ const FormComponent = () => {
               </Button>
             </Col>
 
-            <Col sm={24} md={12} />
+            <Col xs={24} md={12} />
           </Row>
         </Form>
       )}

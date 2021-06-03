@@ -15,10 +15,10 @@ const Layout = ({ children, title }) => (
     <CoreLayout domain="tidb.io" hasMargin>
       <Styled.Container>
         <Row gutter={32}>
-          <Col xs={12} sm={8} md={6}>
+          <Col xs={24} sm={8} md={6}>
             <Menu />
           </Col>
-          <Col xs={12} sm={16} md={18}>
+          <Col xs={24} sm={16} md={18}>
             <Styled.Main>
               <Styled.Title>{title}</Styled.Title>
               <Styled.Content>{children}</Styled.Content>

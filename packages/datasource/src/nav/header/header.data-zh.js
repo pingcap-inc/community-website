@@ -164,6 +164,10 @@ export const genUserProfileItems = (meData) => {
       title: '公司信息',
       link: `https://tidb.io/my/company`,
     },
+    {
+      title: '账号设置',
+      link: `https://tidb.io/my/settings`,
+    },
   ];
 
   // has been logged in and joined an org
@@ -173,7 +177,7 @@ export const genUserProfileItems = (meData) => {
       link: `https://tidb.io/orgs/${meData.org.slug}/home`,
     });
   } else {
-    items.push({
+    items.splice(1, 0, {
       title: '团队认证',
       link: `https://tidb.io/account/organization/new`,
     });

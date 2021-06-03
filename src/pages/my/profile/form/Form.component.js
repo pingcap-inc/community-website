@@ -88,7 +88,7 @@ const FormComponent = () => {
       {({ errors }) => (
         <Form layout="vertical">
           <Row gutter={32}>
-            <Col sm={24} md={12}>
+            <Col xs={24} md={12}>
               <FormItem label={<UserName />} name={username.name}>
                 <Input {...username} />
               </FormItem>
@@ -102,7 +102,7 @@ const FormComponent = () => {
               </FormItem>
 
               <Row gutter={32}>
-                <Col sm={24} md={10}>
+                <Col xs={24} md={10}>
                   <FormItem label="性别" name={gender.name}>
                     <Select {...gender}>
                       <Option value={0}>男</Option>
@@ -110,7 +110,7 @@ const FormComponent = () => {
                     </Select>
                   </FormItem>
                 </Col>
-                <Col sm={24} md={14}>
+                <Col xs={24} md={14}>
                   <FormItem label="出生日期" name={dateOfBirth.name}>
                     <DatePicker {...dateOfBirth} />
                   </FormItem>
@@ -126,7 +126,7 @@ const FormComponent = () => {
               </Button>
             </Col>
 
-            <Col sm={24} md={12}>
+            <Col xs={24} md={12}>
               <AntForm.Item label="头像">
                 <Styled.Avatar src={data.avatar_url} />
               </AntForm.Item>

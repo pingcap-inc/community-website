@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
 import { Button, Modal, Skeleton, message } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -7,10 +7,12 @@ import { api } from '@tidb-community/datasource';
 import * as Styled from './content.styled';
 import Box from './box';
 import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
+import { AuthContext } from 'context';
 
 const Content = () => {
   const [visibleModal, setVisibleModal] = useState();
   const { data: settingsResp, error, mutate, revalidate } = useSWR('account.settings');
+  const { login } = useContext(AuthContext);
 
   const isLoading = !error && !settingsResp;
   if (isLoading) return <Skeleton />;
@@ -43,6 +45,11 @@ const Content = () => {
     location.href = `${
       process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL
     }/social/login/${provider}?redirect_to=${encodeURIComponent(location.href)}`;
+  };
+
+  const reLogin = () => {
+    window.confirm('您已更新密码，请重新登录。');
+    login();
   };
 
   // We will enable unbind github in later version
@@ -111,8 +118,8 @@ const Content = () => {
 
       <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} verified={data.email_verified} />
       <UpdatePhoneModal {...genModalProps(MODALS.UPDATE_PHONE)} />
-      <SetPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} />
-      <UpdatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} />
+      <SetPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} onSuccess={reLogin} />
+      <UpdatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} onSuccess={reLogin} />
     </>
   );
 };

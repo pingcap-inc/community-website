@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 import { api } from '@tidb-community/datasource';
-import { message } from 'antd';
 
 import BasicModal, { formId } from '../Modal.component';
 import { fields, initialValues, schema } from './setPasswordModal.fields';
 import { form as formUtils } from '~/utils';
 
-const Modal = ({ revalidate, ...props }) => {
+const Modal = ({ onSuccess, ...props }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { onClose } = props;
@@ -24,9 +23,8 @@ const Modal = ({ revalidate, ...props }) => {
           re_token_v3,
         })
         .then(() => {
-          message.success('密码更新成功');
-          revalidate();
           onClose();
+          onSuccess();
         })
         .finally(() => {
           setIsSubmitting(false);

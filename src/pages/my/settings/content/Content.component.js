@@ -105,7 +105,7 @@ const Content = () => {
         </Styled.SocialAccounts>
       </Box>
 
-      <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} initialEmail={data.email ?? ''} />
+      <UpdateEmailModal {...genModalProps(MODALS.UPDATE_EMAIL)} verified={data.email_verified} />
       <UpdatePhoneModal {...genModalProps(MODALS.UPDATE_PHONE)} />
       <SetPasswordModal {...genModalProps(MODALS.SET_PASSWORD)} />
       <UpdatePasswordModal {...genModalProps(MODALS.UPDATE_PASSWORD)} />

@@ -88,7 +88,7 @@ const Content = () => {
       <Box
         title="邮箱"
         text={data.email ?? '未设置'}
-        extra={data.email_verified ?? '（未验证，验证后可通过邮箱登陆或找回密码）'}
+        extra={data.email && !data.email_verified ? '（未验证，验证后可通过邮箱登陆或找回密码）' : ''}
         onSettingsClick={openModal(MODALS.UPDATE_EMAIL)}
       />
       <Box

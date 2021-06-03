@@ -88,7 +88,7 @@ const FormComponent = () => {
       {({ errors }) => (
         <Form layout="vertical">
           <Row gutter={32}>
-            <Col xs={24} md={12}>
+            <Col xs={{ span: 24, order: 2 }} md={{ span: 12, order: 1 }}>
               <FormItem label={<UserName />} name={username.name}>
                 <Input {...username} />
               </FormItem>
@@ -126,7 +126,7 @@ const FormComponent = () => {
               </Button>
             </Col>
 
-            <Col xs={24} md={12}>
+            <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }}>
               <AntForm.Item label="头像">
                 <Styled.Avatar src={data.avatar_url} />
               </AntForm.Item>

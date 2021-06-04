@@ -133,7 +133,7 @@ export const navItems = [
         title: '邮件列表',
         link: 'https://lists.tidb.io/g/main/subgroups',
       },
-    },
+    ],
   },
   {
     title: '工作机会',

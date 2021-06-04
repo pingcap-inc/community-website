@@ -126,6 +126,10 @@ export const navItems = [
         ],
       },
       {
+        title: '工作机会',
+        link: 'https://pingcap.com/community-cn/careers/join/',
+      },
+      {
         title: 'Slack',
         link: 'https://slack.tidb.io/invite?team=tidb-community&channel=everyone',
       },
@@ -134,10 +138,6 @@ export const navItems = [
         link: 'https://lists.tidb.io/g/main/subgroups',
       },
     ],
-  },
-  {
-    title: '工作机会',
-    link: 'https://pingcap.com/community-cn/careers/join/',
   },
   {
     title: '兑换礼品',
@@ -153,6 +153,10 @@ export const navItems = [
       {
         title: 'TiDB 和 PingCAP',
         link: 'https://pingcap.com',
+      },
+      {
+        title: '商业支持',
+        link: 'https://pingcap.com/about-cn/#contact-us',
       },
     ],
   },

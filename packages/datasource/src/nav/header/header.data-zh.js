@@ -60,6 +60,10 @@ export const navItems = [
     title: '社区',
     items: [
       {
+        title: '社区行为准则',
+        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
+      },
+      {
         title: '用户组',
         link: 'https://tug.tidb.io',
         items: [
@@ -74,7 +78,7 @@ export const navItems = [
         ],
       },
       {
-        title: '开发者社区',
+        title: 'Contributor',
         link: 'https://contributor.tidb.io',
         items: [
           {
@@ -146,10 +150,6 @@ export const navItems = [
   {
     title: '关于',
     items: [
-      {
-        title: '社区行为准则',
-        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
-      },
       {
         title: 'TiDB 和 PingCAP',
         link: 'https://pingcap.com',

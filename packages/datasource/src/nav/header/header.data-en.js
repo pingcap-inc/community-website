@@ -56,6 +56,10 @@ export const navItems = [
     title: 'Community',
     items: [
       {
+        title: 'Code of Conduct',
+        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
+      },
+      {
         title: 'User Group',
         link: 'https://tug.tidb.io',
         items: [
@@ -142,10 +146,6 @@ export const navItems = [
   {
     title: 'About',
     items: [
-      {
-        title: 'Code of Conduct',
-        link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
-      },
       {
         title: 'TiDB and PingCAP',
         link: 'https://pingcap.com',

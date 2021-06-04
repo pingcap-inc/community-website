@@ -1,5 +1,9 @@
 export const navItems = [
   {
+    title: 'Home',
+    link: 'https://tidb.io',
+  },
+  {
     title: 'Learning',
     items: [
       {

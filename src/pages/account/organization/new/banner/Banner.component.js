@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from '@tidb-community/ui';
 
 import { BannerContent, BannerImage } from './banner.styled';
 
@@ -19,13 +20,8 @@ const Banner = () => {
       </ul>
       <p>
         更多详细信息，点击
-        <a href="https://asktug.com/t/topic/93140" target="_blank" rel="noreferrer">
-          认证前 vs 认证后权益对比
-        </a>
-        ，
-        <a href="https://asktug.com/t/topic/93405" target="_blank" rel="noreferrer">
-          团队认证操作指南
-        </a>
+        <Link href="https://asktug.com/t/topic/93140">认证前 vs 认证后权益对比</Link>，
+        <Link href="https://asktug.com/t/topic/93405">团队认证操作指南</Link>
         查看
       </p>
     </BannerContent>

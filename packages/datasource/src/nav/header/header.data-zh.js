@@ -40,7 +40,7 @@ export const navItems = [
           },
         ],
       },
-    },
+    ],
   },
   {
     title: '问答',

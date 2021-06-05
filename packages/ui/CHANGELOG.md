@@ -2,11 +2,23 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), but the versionning is not strictly adhered to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2021-06-06
+
+### Added
+
+- Overwrite Ant Design's stylings for the components used on profile pages
+
+### Changed
+
+- Update Header's nav items
+
+### Changed
+
 ## [0.2.4] - 2021-05-16
 
 ### Fixed
 
-- Fix a footer styling issue on iOS Safar
+- Fix a Footer styling issue on iOS Safar
 
 ## [0.2.3] - 2021-05-02
 

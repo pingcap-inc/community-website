@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useEffect } from 'react';
+import React from 'react';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
 
@@ -10,24 +10,19 @@ import { CoreLayout } from 'layouts';
 
 const Layout = ({ children }) => {
   const router = useRouter();
-  const { slug } = router.query;
-  const { data, revalidate } = useSWR(['orgs.org.info', JSON.stringify({ slug })], { revalidateOnMount: false });
-
-  useEffect(() => {
-    if (slug) {
-      revalidate();
-    }
-  }, [slug, revalidate]);
+  const { isReady, query } = router;
+  const { slug } = query;
+  const { data, error } = useSWR(isReady ? ['orgs.org.info', query] : null);
 
   const bannerProps = {
     ...R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data),
-    isLoading: !data,
+    isLoading: !data && !error,
   };
 
   return (
     <CoreLayout domain="tidb.io" MainWrapper={Styled.Main}>
       <Banner {...bannerProps}>
-        <Tabs slug={data?.data?.slug} />
+        <Tabs slug={slug} />
       </Banner>
       <Styled.Container>{children}</Styled.Container>
     </CoreLayout>

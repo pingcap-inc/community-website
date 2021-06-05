@@ -11,10 +11,10 @@ const Tabs = ({ slug }) => {
 
   const onTabClick = useCallback(
     (key) => {
-      setActiveKey(page);
+      setActiveKey(key);
       router.push(`/orgs/${slug}/${key}`);
     },
-    [page, slug, router]
+    [slug, router]
   );
 
   return (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import dayjs from 'dayjs';
 import useSWR from 'swr';
 import { Avatar, Button, Divider, List, Modal, Popconfirm, Tag } from 'antd';
@@ -27,22 +27,8 @@ const Home = () => {
     data: topicsData,
     isValidating: isTopicsValidating,
     revalidate,
-  } = useSWR(['orgs.org.topics', JSON.stringify({ slug, page, pageSize })], { revalidateOnMount: false });
-  const { data: orgData, mutate: mutateOrg } = useSWR(['orgs.org.info', JSON.stringify({ slug })], {
-    revalidateOnMount: false,
-  });
-
-  useEffect(() => {
-    if (slug) {
-      revalidate();
-    }
-  }, [slug, page, pageSize, revalidate]);
-
-  useEffect(() => {
-    if (slug) {
-      mutateOrg();
-    }
-  }, [slug, mutateOrg]);
+  } = useSWR(slug ? ['orgs.org.topics', JSON.stringify({ slug, page, pageSize })] : null);
+  const { data: orgData, mutate: mutateOrg } = useSWR(slug ? ['orgs.org.info', router.query] : null);
 
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};

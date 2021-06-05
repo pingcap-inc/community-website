@@ -3,7 +3,7 @@
   "version": "0.2.7",
   "scripts": {
     "build": "rimraf es lib && father build",
-    "prepublishOnly": "npm run build && np --yolo --no-publish --any-branch",
+    "prepublishOnly": "npm run build && np --yolo --no-publish --branch $(git branch --show-current)",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },

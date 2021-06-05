@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
 import { Button, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -18,19 +18,11 @@ import { errors } from 'utils';
 const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query], {
-    revalidateOnMount: false,
-  });
+  const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
   const { meData, isMeValidating } = useContext(MeContext);
   const { login } = useContext(AuthContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
-
-  useEffect(() => {
-    if (slug) {
-      mutateMembers();
-    }
-  }, [slug, mutateMembers]);
 
   if (!meData) {
     if (isMeValidating) {

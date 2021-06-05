@@ -18,7 +18,7 @@ import { errors } from 'utils';
 const Members = () => {
   const router = useRouter();
   const { slug } = router.query;
-  const { data: membersResp, mutate: mutateMembers } = useSWR(['orgs.org.members', router.query]);
+  const { data: membersResp, mutate: mutateMembers } = useSWR(slug ? ['orgs.org.members', router.query] : null);
   const { meData, isMeValidating } = useContext(MeContext);
   const { login } = useContext(AuthContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);

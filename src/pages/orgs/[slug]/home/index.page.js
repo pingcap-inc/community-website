@@ -27,8 +27,8 @@ const Home = () => {
     data: topicsData,
     isValidating: isTopicsValidating,
     revalidate,
-  } = useSWR(['orgs.org.topics', JSON.stringify({ slug, page, pageSize })]);
-  const { data: orgData, mutate: mutateOrg } = useSWR(['orgs.org.info', JSON.stringify({ slug })]);
+  } = useSWR(slug ? ['orgs.org.topics', JSON.stringify({ slug, page, pageSize })] : null);
+  const { data: orgData, mutate: mutateOrg } = useSWR(slug ? ['orgs.org.info', router.query] : null);
 
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import * as colors from '@tidb-community/ui/colors';
+import { colors } from '@tidb-community/ui';
 
 export const RouteLink = styled(Link)`
   color: #aaa;

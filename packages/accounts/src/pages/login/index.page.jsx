@@ -1,13 +1,12 @@
-import FormikOption from '@tidb-community/common/components/FormikOption';
 import React from 'react';
-import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
 import { Divider } from 'antd';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
 import { GithubOutlined } from '@ant-design/icons';
 import { parse } from 'querystring';
 import { useLocation } from 'react-router-dom';
-import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { utils, FormikOption } from '@tidb-community/common';
+import { withVerifyCode } from '@tidb-community/ui';
 
 import { SimpleLayout } from '~/layout';
 import { phoneLogin, passwordLogin, socialLogin } from '~/api';
@@ -19,6 +18,7 @@ import { LOGIN_TYPE, LOGIN_TYPE_NAME } from './login.constants';
 import { handleError } from '~/utils/errors';
 
 const { phone, verifyCode, identifier, password, loginType } = form;
+const { wrapFormikSubmitFunction } = utils.form;
 
 const VerifyInput = withVerifyCode(Input);
 

@@ -1,11 +1,10 @@
 import React from 'react';
 import { Checkbox, Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
-import Link from '@tidb-community/ui/components/link';
-import withVerifyCode from '@tidb-community/ui/components/verifyCodeInput';
-import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { Link, withVerifyCode } from '@tidb-community/ui';
 import { parse } from 'querystring';
 import { useLocation } from 'react-router-dom';
+import { utils } from '@tidb-community/common';
 
 import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
@@ -16,6 +15,7 @@ import { form, formSchema, initialValues } from './register.form';
 import { handleError } from '~/utils/errors';
 
 const { phone, verifyCode, email, company, agreements } = form;
+const { wrapFormikSubmitFunction } = utils.form;
 
 const VerifyInput = withVerifyCode(Input);
 

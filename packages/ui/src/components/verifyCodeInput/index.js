@@ -1,1 +1,1 @@
-export { default } from './VerifyCodeInput.hoc.jsx';
+export { default } from './VerifyCodeInput.hoc';

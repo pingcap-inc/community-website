@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import * as R from 'ramda';
+import PropTypes from 'prop-types';
 
 import { useFormikFieldAsOption } from '../utils/form';
 

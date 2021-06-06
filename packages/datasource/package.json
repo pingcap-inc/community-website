@@ -3,7 +3,8 @@
   "version": "0.3.0",
   "scripts": {
     "build": "rimraf es lib && father build",
-    "prepublishOnly": "npm run build && np --yolo --no-publish --any-branch"
+    "build:watch": "father build --watch",
+    "prepublishOnly": "npm run build && np --yolo --no-publish --branch $(git branch --show-current)"
   },
   "description": "Navigation and i18n datasource for TiDB community.",
   "main": "lib/index.js",
@@ -16,17 +17,18 @@
   "license": "MIT",
   "types": "types/index.d.ts",
   "dependencies": {
-    "@babel/runtime": "7.14.0",
-    "js-cookie": "2.2.1"
+    "@babel/runtime": "7.14.0"
   },
   "devDependencies": {
     "@types/js-cookie": "2.2.6",
     "father": "2.30.5",
     "father-build": "1.19.5",
+    "js-cookie": "2.2.1",
     "np": "7.5.0"
   },
   "peerDependencies": {
     "axios": "^0.21.1",
+    "js-cookie": "^2.2.1",
     "ramda": "^0.27.1"
   }
 }

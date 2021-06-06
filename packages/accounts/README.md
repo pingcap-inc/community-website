@@ -5,6 +5,15 @@
 
 生成文件名录为 `dist`
 
+## 本地开发
+
+注意，因为 vite 通过 es module 打包编译。在我们的实现里，我们依赖了 `@tidb-community/common` 等 monorepos 的编译生成的 es module 文件。所以为了保证我们对这些 monorepos 的修改能实时反应到 accounts 的页面更新上，开发时需要在 tug-website 签出的顶级目录执行如下两个命令：
+
+- `npm run build:watch`
+- `npm run start:accounts`
+
+前者会监听 monorepos 文件的修改并实时编译生成其对应的 esm 和 cjs 文件。后者会在 3001 端口启动一个 vitejs server 。然后访问 [http://localhost:3001/login](http://localhost:3001/login) 页面，便可开始您的开发调试。
+
 ## 技术栈
 
 - [vite](https://vitejs.dev/) 基于 `rollup` 与 `esbuild` 打包

@@ -1,5 +1,7 @@
 import { message } from 'antd';
-import { getErrorMessage } from '@tidb-community/common/utils/errors';
+import { utils } from '@tidb-community/common';
+
+const { getErrorMessage } = utils.errors;
 
 // an expected error will not be treated as an error in handleError (thus, not returned)
 export const expectedError = (error) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
-import { wrapFormikSubmitFunction } from '@tidb-community/common/utils/form';
+import { utils } from '@tidb-community/common';
 
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
@@ -10,9 +10,11 @@ import { form, formSchema, initialValues } from './send-verify-code.form';
 import { handleError } from '~/utils/errors';
 
 const { identifier } = form;
+const { wrapFormikSubmitFunction } = utils.form;
 
 const Page = ({ onSubmit, location }) => {
   onSubmit = wrapFormikSubmitFunction(onSubmit, handleError);
+
   return (
     <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={onSubmit}>
       {() => (

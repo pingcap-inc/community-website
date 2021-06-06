@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import * as colors from '@tidb-community/ui/colors';
-import * as mixins from '@tidb-community/ui/mixins';
+import { colors, mixins } from '@tidb-community/ui';
 
 import logoSvg from '@/public/images/community/logo.svg?url';
 import { SIZES } from '~/theme';

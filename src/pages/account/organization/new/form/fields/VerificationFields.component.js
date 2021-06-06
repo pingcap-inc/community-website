@@ -1,12 +1,13 @@
 import React from 'react';
 import { Radio, Form as AntForm } from 'formik-antd';
+import { utils } from '@tidb-community/common';
 
 import EmailVerificationOption from './EmailVerificationOption.component';
 import IncumbencyCertOption from './IncumbencyCertOption.component';
 import data from '../form.data';
-import { useFormikFieldAsOption } from '@tidb-community/common/utils/form';
 
 const { verificationType } = data.form;
+const { useFormikFieldAsOption } = utils.form;
 
 const VerificationFields = () => {
   const type = useFormikFieldAsOption(verificationType.name);

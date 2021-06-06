@@ -5,6 +5,7 @@
     "build": "next build && npm run build:asktug",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:asktug": "lerna run --scope @tidb-community/asktug build",
+    "build:shared": "lerna run --ignore @tidb-community/accounts --ignore @tidb-community/asktug build",
     "build:ui": "lerna run --scope @tidb-community/ui build",
     "build:watch": "lerna run --no-bail build:watch",
     "deploy": "shipit production deploy",

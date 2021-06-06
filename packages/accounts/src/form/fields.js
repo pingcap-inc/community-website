@@ -1,8 +1,9 @@
 import * as Yup from 'yup';
-import { phoneLoginCheck } from '~/api';
-import { createYupRemoteValidator } from '@tidb-community/common/utils/form';
+import { utils } from '@tidb-community/common';
 
-createYupRemoteValidator(Yup.string, 'checkPhone', (phone) => phoneLoginCheck({ phone }));
+import { phoneLoginCheck } from '~/api';
+
+utils.form.createYupRemoteValidator(Yup.string, 'checkPhone', (phone) => phoneLoginCheck({ phone }));
 
 export const phone = {
   name: 'phone',

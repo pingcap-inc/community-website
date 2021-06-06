@@ -1,6 +1,8 @@
-import { buildInitialValues, buildSchema } from '@tidb-community/common/utils/form';
+import { utils } from '@tidb-community/common';
 
 import { identifier } from '~/form/fields';
+
+const { buildSchema, buildInitialValues } = utils.form;
 
 export const form = {
   identifier,

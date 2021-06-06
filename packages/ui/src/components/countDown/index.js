@@ -1,1 +1,1 @@
-export { default } from './CountDown.component.jsx';
+export { default } from './CountDown.component.js';

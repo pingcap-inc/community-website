@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "scripts": {
     "build": "rimraf es lib && father build",
+    "build:watch": "father build --watch",
     "prepublishOnly": "npm run build && np --yolo --no-publish --branch $(git branch --show-current)"
   },
   "description": "Navigation and i18n datasource for TiDB community.",

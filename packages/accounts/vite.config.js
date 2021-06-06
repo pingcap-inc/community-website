@@ -31,18 +31,6 @@ export default ({ mode }) => {
       assetsDir: 'static/sso/assets',
     },
 
-    esbuild: {
-      loader: 'jsx',
-    },
-
-    optimizeDeps: {
-      esbuildOptions: {
-        loader: {
-          '.js': 'jsx',
-        },
-      },
-    },
-
     resolve: {
       alias: {
         '@/public': resolve(__dirname, '../../public'),

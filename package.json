@@ -6,6 +6,7 @@
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:asktug": "lerna run --scope @tidb-community/asktug build",
     "build:ui": "lerna run --scope @tidb-community/ui build",
+    "build:watch": "lerna run --no-bail build:watch",
     "deploy": "shipit production deploy",
     "dev": "next dev",
     "lerna:bootstrap": "lerna bootstrap",

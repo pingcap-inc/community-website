@@ -11,7 +11,7 @@ import * as Styled from './addModal.styled';
 import * as utils from './addModal.utils';
 import RoleDropdown from '../roleDropdown';
 import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
-import { errors } from 'utils';
+import { errors } from '~/utils';
 
 const ModalContent = ({ mutateMembers, onCancel }) => {
   const router = useRouter();

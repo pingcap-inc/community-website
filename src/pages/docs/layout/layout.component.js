@@ -1,7 +1,7 @@
 import React from 'react';
 
 import * as Styled from './layout.styled';
-import { CoreLayout } from 'layouts';
+import { CoreLayout } from '~/layouts';
 
 const Layout = ({ children }) => {
   return (

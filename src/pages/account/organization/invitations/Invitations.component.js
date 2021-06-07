@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import { utils } from '@tidb-community/ui';
 
 import * as Styled from './invitations.styled';
-import PageLoader from 'components/pageLoader';
-import { AuthContext, MeContext } from 'context';
+import { AuthContext, MeContext } from '~/context';
+import { PageLoader } from '~/components';
 import { emptyText, okText, cancelText } from './invitations.data';
 
 const Invitations = () => {

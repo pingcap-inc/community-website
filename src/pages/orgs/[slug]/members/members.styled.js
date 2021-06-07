@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
 import { Badge as AntBadge, Table as AntTable } from 'antd';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const Title = styled.h3`
   ${mixins.typography('p1')}

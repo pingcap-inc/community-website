@@ -6,8 +6,8 @@ import Career from './career';
 import Contributor from './contributor';
 import Learning from './learning';
 import UserGroup from './userGroup';
-import { CommunityHead } from 'components/head';
-import { CoreLayout } from 'layouts';
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
 
 const Community = () => (
   <>

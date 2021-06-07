@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 import data from './activities.data';
 import * as Styled from './activities.styled';
-import { link as linkUtils } from 'utils';
+import { link as linkUtils } from '~/utils';
 
 export const Header = ({ className, title, desc, children }) => (
   <Row className={className} justify="center">

@@ -2,7 +2,7 @@ import React from 'react';
 import { Skeleton } from 'antd';
 
 import * as Styled from './banner.styled';
-import VerifiedSVG from 'pages/orgs/verified.svg';
+import VerifiedSVG from '~/pages/orgs/verified.svg';
 
 const Banner = ({ introduction, logo, name, isLoading, children }) => (
   <Styled.Container>

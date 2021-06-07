@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 
 import * as Styled from './layout.styled';
 import Menu from './menu';
-import { CommunityHead } from '~/components/head';
+import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 
 const Layout = ({ children, title }) => (

@@ -8,7 +8,7 @@ import * as Styled from './banner.styled';
 import ChineseIcon from './chinese.svg';
 import data from './banner.data';
 import { bgWidth, bgHeight } from './banner.constants';
-import { link as linkUtils } from 'utils';
+import { link as linkUtils } from '~/utils';
 
 const Banner = () => {
   const ref = useRef();

@@ -8,12 +8,11 @@ import { useRouter } from 'next/router';
 import * as Styled from './members.styled';
 import * as utils from './members.utils';
 import AddModal from './addModal';
-import Layout from 'pages/orgs/layout';
-import PageLoader from 'components/pageLoader';
-import { AuthContext, MeContext } from 'context';
-import { CommunityHead } from 'components/head';
+import Layout from '~/pages/orgs/layout';
+import { AuthContext, MeContext } from '~/context';
+import { CommunityHead, PageLoader } from '~/components';
 import { columns } from './members.data';
-import { errors } from 'utils';
+import { errors } from '~/utils';
 
 const Members = () => {
   const router = useRouter();

@@ -12,8 +12,8 @@ import * as Styled from './errorPage.styled';
 import Svg403 from './403.svg';
 import Svg404 from './404.svg';
 import Svg500 from './500.svg';
-import { CommunityHead } from 'components/head';
-import { CoreLayout } from 'layouts';
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
 
 const icons = {
   403: Svg403,

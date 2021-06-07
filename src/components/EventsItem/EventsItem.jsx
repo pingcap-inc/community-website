@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './EventsItem.module.scss';
-import MyLink from 'components/MyLink';
+import MyLink from '~/components/MyLink';
 import Image from 'next/image';
 
 export default function EventsItem({ imageUrl, title, summary, link }) {

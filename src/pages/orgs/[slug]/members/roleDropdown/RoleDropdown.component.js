@@ -1,10 +1,10 @@
 import React from 'react';
-import { Dropdown } from 'antd';
 import { CheckOutlined, DownOutlined } from '@ant-design/icons';
+import { Dropdown } from 'antd';
 
 import * as Styled from './roleDropdown.styled';
-import { RoleActionMenu } from './RoleActionMenu.component';
 import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
+import { RoleActionMenu } from './RoleActionMenu.component';
 
 const genRoleMenu = ({ onRoleMenuClick, role }) => (
   <Styled.RoleMenu action={onRoleMenuClick} selectedKeys={[role]}>

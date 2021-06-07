@@ -2,8 +2,8 @@ import React, { useContext } from 'react';
 
 import Form from './form';
 import Layout from '~/pages/my/layout';
-import PageLoader from '~/components/pageLoader';
-import { AuthContext, MeContext } from 'context';
+import { AuthContext, MeContext } from '~/context';
+import { PageLoader } from '~/components';
 
 const Profile = () => {
   const { meData, isMeValidating } = useContext(MeContext);

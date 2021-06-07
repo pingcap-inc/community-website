@@ -5,8 +5,8 @@ import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
-import { AuthContext, MeContext, NavContext } from 'context';
-import { link as linkUtils } from 'utils';
+import { AuthContext, MeContext, NavContext } from '~/context';
+import { link as linkUtils } from '~/utils';
 
 const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
   // do not render if:

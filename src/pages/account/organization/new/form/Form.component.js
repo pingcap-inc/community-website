@@ -9,7 +9,7 @@ import Agreements from './fields/Agreements.component';
 import BasicFields from './fields/BasicFields.component';
 import VerificationFields from './fields/VerificationFields.component';
 import data from './form.data';
-import { form as formUtils } from 'utils';
+import { form as formUtils } from '~/utils';
 
 const { submitBtnTitle, formSchema, formInitialValues } = data;
 

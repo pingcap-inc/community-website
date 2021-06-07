@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './ArticleCategory.module.scss';
 import classnames from 'classnames';
-import MyLink from 'components/MyLink';
+import MyLink from '~/components/MyLink';
 
 export default function ArticleCategory({ title, children, color, link, ...rest }) {
   return (

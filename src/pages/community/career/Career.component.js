@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './career.styled';
 import data from './career.data';
-import { link as linkUtils } from 'utils';
+import { link as linkUtils } from '~/utils';
 
 const { cert: certData, job: jobData } = data;
 

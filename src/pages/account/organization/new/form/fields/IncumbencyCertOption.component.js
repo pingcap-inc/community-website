@@ -6,7 +6,7 @@ import { Form } from 'formik-antd';
 import { Upload } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
 import data from '../form.data';
-import { errors } from 'utils';
+import { errors } from '~/utils';
 
 const { incumbencyCert } = data.form.verificationType;
 

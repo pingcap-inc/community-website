@@ -5,8 +5,8 @@ import useSWR from 'swr';
 import * as Styled from './company.styled';
 import Form from './form';
 import Layout from '~/pages/my/layout';
-import PageLoader from '~/components/pageLoader';
-import { AuthContext, MeContext } from 'context';
+import { AuthContext, MeContext } from '~/context';
+import { PageLoader } from '~/components';
 import { redDots as redDotsUtils } from '~/utils';
 
 const Company = () => {

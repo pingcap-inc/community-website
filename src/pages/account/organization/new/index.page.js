@@ -1,8 +1,8 @@
 import React from 'react';
 
 import CreateOrganization from './content.component';
-import { CommunityHead } from 'components/head';
-import { CoreLayout } from 'layouts';
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
 
 const Page = () => (
   <CoreLayout domain="tidb.io">

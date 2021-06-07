@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './learning.styled';
 import data from './learning.data';
-import { link as linkUtils } from 'utils';
+import { link as linkUtils } from '~/utils';
 
 const Learning = () => {
   const router = useRouter();

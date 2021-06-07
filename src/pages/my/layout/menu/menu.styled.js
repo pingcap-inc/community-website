@@ -10,7 +10,9 @@ export const Container = styled.ul`
 `;
 
 export const Item = styled.li`
+  ${mixins.flexVerticalCenter()};
   ${mixins.verticalLineMiddle('2.5rem')};
+  justify-content: space-between;
   padding: 0 1rem;
   cursor: pointer;
 

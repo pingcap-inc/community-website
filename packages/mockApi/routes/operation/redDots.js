@@ -3,7 +3,7 @@ const router = require('express').Router();
 
 const utils = require('../../utils');
 
-const { random } = faker;
+const { datatype } = faker;
 
 router.get('', (req, res) => {
   // return utils.errorResp({
@@ -19,11 +19,11 @@ router.get('', (req, res) => {
       },
       {
         name: 'company-info',
-        visible: random.boolean(),
+        visible: datatype.boolean(),
       },
       {
         name: 'join-org', // 标识用户是否加入过团队，由后端来标记
-        visible: random.boolean(),
+        visible: datatype.boolean(),
       },
     ],
   })(req, res);

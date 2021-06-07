@@ -20,13 +20,13 @@ const Home = () => {
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
   const [urging, setUrging] = useState(false);
-  const { isReady, query } = router;
+  const { slug } = router.query;
   const {
     data: topicsData,
     isValidating: isTopicsValidating,
     revalidate,
-  } = useSWR(isReady ? ['orgs.org.topics', JSON.stringify({ ...query, page, pageSize })] : null);
-  const { data: orgData, mutate: mutateOrg } = useSWR(isReady ? ['orgs.org.info', router.query] : null);
+  } = useSWR(slug ? ['orgs.org.topics', JSON.stringify({ slug, page, pageSize })] : null);
+  const { data: orgData, mutate: mutateOrg } = useSWR(slug ? ['orgs.org.info', router.query] : null);
 
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};

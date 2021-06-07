@@ -3,6 +3,8 @@
 
 const router = require('express').Router();
 
+router.use('/accounts', require('./accountsSite'));
+
 router.use('/api/account', require('./account'));
 router.use('/api/forgot', require('./forgot'));
 router.use('/api/login', require('./login'));

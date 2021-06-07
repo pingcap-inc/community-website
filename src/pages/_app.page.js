@@ -7,9 +7,9 @@ import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 import { message } from 'antd';
 import { withLayout } from '@tidb-community/common';
 
-import 'components/Button/Button.scss';
-import 'components/Container/Container.scss';
-import 'styles/globals.css';
+import '~/components/Button/Button.scss';
+import '~/components/Container/Container.scss';
+import '~/styles/globals.css';
 import ErrorPage from './_error.page';
 import { authContext, AuthContext, MeContext } from '~/context';
 

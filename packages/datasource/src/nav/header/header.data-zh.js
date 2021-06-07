@@ -131,7 +131,7 @@ export const navItems = [
       },
       {
         title: '工作机会',
-        link: 'https://pingcap.com/community-cn/careers/join/',
+        link: 'https://tidb-jobs.pingcap.com/',
       },
       {
         title: 'Slack',

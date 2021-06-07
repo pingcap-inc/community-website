@@ -46,7 +46,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     navItems: headerNavItems,
     currentNav,
     onTitleClick: () => {
-      document.location.href = 'https://tidb.io';
+      document.location.href = process.env.NEXT_PUBLIC_HOME_URL;
     },
   };
 

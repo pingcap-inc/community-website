@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { CoreLayout } from 'layouts';
+import { CoreLayout } from '~/layouts';
 import Invitations from './Invitations.component';
 import * as Styled from './invitations.styled';
-import { CommunityHead } from 'components/head';
+import { CommunityHead } from '~/components';
 
 const OrganizationInvitations = () => {
   return (

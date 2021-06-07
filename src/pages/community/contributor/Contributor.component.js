@@ -5,7 +5,7 @@ import { useSize } from 'ahooks';
 
 import * as Styled from './contributor.styled';
 import data from './contributor.data';
-import { link as linkUtils } from 'utils';
+import { link as linkUtils } from '~/utils';
 
 const Card = ({ title, desc, link, imgId }) => {
   const router = useRouter();

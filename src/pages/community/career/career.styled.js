@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-import { Header as ActivitiesHeader } from 'pages/community/activities';
+import { Header as ActivitiesHeader } from '~/pages/community/activities';
 
-export { ViewMoreWrapper } from 'pages/community/activities/activities.styled';
+export { ViewMoreWrapper } from '~/pages/community/activities/activities.styled';
 
 export const Container = styled.div`
   ${mixins.responsive()};

@@ -5,3 +5,5 @@ export const NavContext = createContext({
   navData: undefined,
   onNavClick: undefined,
 });
+
+NavContext.displayName = 'NavContext';

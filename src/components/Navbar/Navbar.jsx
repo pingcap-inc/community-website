@@ -4,12 +4,12 @@ import { DownOutlined, MenuOutlined } from '@ant-design/icons';
 import { Dropdown, Menu } from 'antd';
 import { useDebounce } from 'ahooks';
 
-import Button from 'components/Button/Button';
-import Container from 'components/Container/Container';
-import MyLink from 'components/MyLink';
-import i18n from 'data/navbar';
+import Button from '~/components/Button/Button';
+import Container from '~/components/Container/Container';
+import MyLink from '~/components/MyLink';
+import i18n from '~/data/navbar';
 import styles from './Navbar.module.scss';
-import { joinTUGLink } from 'src/constants';
+import { joinTUGLink } from '~/constants';
 
 export default function Navbar({ initTransparent, forceNonTransparent }) {
   // const intl = useIntl()

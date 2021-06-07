@@ -1,3 +1,1 @@
-import PageLoader from './pageLoader.component';
-
-export default PageLoader;
+export { default } from './pageLoader.component';

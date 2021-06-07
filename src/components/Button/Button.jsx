@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import MyLink from 'components/MyLink';
+import MyLink from '~/components/MyLink';
 
 const Button = ({ as, icon, className, children, size, type, rounded, disabled, lowerCase, block, ...rest }) => {
   const classNameButton = `Button`;

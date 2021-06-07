@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ArticleItem.module.scss';
-import MyLink from 'components/MyLink';
+import MyLink from '~/components/MyLink';
 import classnames from 'classnames';
 
 export default function ArticleItem({ title, link, color }) {

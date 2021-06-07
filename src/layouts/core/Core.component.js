@@ -5,8 +5,8 @@ import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
-import { AuthContext, MeContext, NavContext } from 'context';
-import { link as linkUtils } from 'utils';
+import { AuthContext, MeContext, NavContext } from '~/context';
+import { link as linkUtils } from '~/utils';
 
 const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
   // do not render if:
@@ -46,7 +46,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
     navItems: headerNavItems,
     currentNav,
     onTitleClick: () => {
-      document.location.href = 'https://tidb.io';
+      document.location.href = process.env.NEXT_PUBLIC_HOME_URL;
     },
   };
 

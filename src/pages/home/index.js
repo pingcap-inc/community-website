@@ -2,27 +2,27 @@ import Image from 'next/image';
 import React from 'react';
 import { Col, Carousel, Row } from 'antd';
 
-import ArticleCategory from 'components/home/ArticleCategory/ArticleCategory';
-import ArticleItem from 'components/home/ArticleItem/ArticleItem';
-import ArticleItemWithExcerpt from 'components/home/ArticleItemWithExcerpt/ArticleItemWithExcerpt';
-import EventsItem from 'components/EventsItem/EventsItem';
-import HomeMVA from 'components/home/HomeMVA/HomeMVA';
-import HomeSection from 'components/home/HomeSection/HomeSection';
-import LinkWithArrow from 'components/LinkWithArrow/LinkWithArrow';
-import MyLink from 'components/MyLink';
-import TopItem from 'components/home/TopItem/TopItem';
-import banners from 'data/banners';
-import events from 'data/events';
+import ArticleCategory from '~/components/home/ArticleCategory/ArticleCategory';
+import ArticleItem from '~/components/home/ArticleItem/ArticleItem';
+import ArticleItemWithExcerpt from '~/components/home/ArticleItemWithExcerpt/ArticleItemWithExcerpt';
+import EventsItem from '~/components/EventsItem/EventsItem';
+import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
+import HomeSection from '~/components/home/HomeSection/HomeSection';
+import LinkWithArrow from '~/components/LinkWithArrow/LinkWithArrow';
+import MyLink from '~/components/MyLink';
+import TopItem from '~/components/home/TopItem/TopItem';
+import banners from '~/data/banners';
+import events from '~/data/events';
 import styles from './home.module.scss';
-import { CoreLayout } from 'layouts';
-import { TugHead } from 'components/head';
+import { CoreLayout } from '~/layouts';
+import { TugHead } from '~/components';
 import {
   getAvatarUrlByAvatarTemplateString,
   getCategoryById,
   getExcerptByTopicId,
   getTopicUrlById,
   getUserUrlByUsername,
-} from 'utils';
+} from '~/utils';
 
 async function getTopicFromAskTUG(key) {
   const api = `https://asktug.com/c/blog/${key}/l/latest.json?order=default&page=0&per_page=10`;

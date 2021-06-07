@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
 import { mixins } from '@tidb-community/ui';
 
-import { Header } from 'pages/community/activities';
+import { Header } from '~/pages/community/activities';
 
-export { Container } from 'pages/community/activities/activities.styled';
+export { Container } from '~/pages/community/activities/activities.styled';
 
 export const Title = styled(Header)`
   margin-bottom: 3rem;

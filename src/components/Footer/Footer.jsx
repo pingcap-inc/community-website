@@ -1,9 +1,9 @@
 import React from 'react';
 
-import Container from 'components/Container/Container';
-import MyLink from 'components/MyLink';
-import Socials from 'components/socials/Socials';
-import i18n from 'data/footer';
+import Container from '~/components/Container/Container';
+import MyLink from '~/components/MyLink';
+import Socials from '~/components/socials/Socials';
+import i18n from '~/data/footer';
 import styles from './Footer.module.scss';
 
 const logoImageUrl = 'images/logo.svg';

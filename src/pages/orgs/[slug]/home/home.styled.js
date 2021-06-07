@@ -1,7 +1,7 @@
 import styled from 'styled-components';
+import { InfoCircleFilled as AntInfoCircleFilled } from '@ant-design/icons';
 import { List as AntList } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
-import { InfoCircleFilled as AntInfoCircleFilled } from '@ant-design/icons';
 
 export { Badge } from '../members/members.styled';
 

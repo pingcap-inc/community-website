@@ -14,12 +14,12 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "^7.14.0"
+    "@babel/runtime": "7.14.0"
   },
   "devDependencies": {
-    "father": "^2.30.6",
-    "father-build": "^1.19.6",
-    "rimraf": "^3.0.2"
+    "father": "2.30.6",
+    "father-build": "1.19.6",
+    "rimraf": "3.0.2"
   },
   "peerDependencies": {
     "axios": "^0.21.1",

@@ -1,6 +1,6 @@
-const path = require('path');
-const fs = require('fs');
 const dotenv = require('dotenv');
+const fs = require('fs');
+const path = require('path');
 
 const loadOrder = ['.env', '.env.production', '.env.local'];
 

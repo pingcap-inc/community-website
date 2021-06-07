@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { createAppGlobalStyle } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
 
-import ErrorPage from 'components/errorPage';
-import { MeContext } from 'context';
+import { ErrorPage } from '~/components';
+import { MeContext } from '~/context';
 
 const GlobalStyle = createAppGlobalStyle();
 

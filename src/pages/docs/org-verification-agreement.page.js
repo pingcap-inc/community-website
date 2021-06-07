@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Layout from './layout';
-import { CommunityHead } from 'components/head';
+import { CommunityHead } from '~/components';
 
 const Agreement = () => (
   <>

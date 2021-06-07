@@ -5,3 +5,5 @@ export const MeContext = createContext({
   mutateMe: undefined,
   isMeValidating: undefined,
 });
+
+MeContext.displayName = 'MeContext';

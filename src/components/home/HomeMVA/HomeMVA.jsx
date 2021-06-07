@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './HomeMVA.module.scss';
-import Button from 'components/Button/Button';
-import MyLink from 'components/MyLink';
-import Container from 'components/Container/Container';
+import Button from '~/components/Button/Button';
+import MyLink from '~/components/MyLink';
+import Container from '~/components/Container/Container';
 import Image from 'next/image';
 
 export default function HomeMVA() {

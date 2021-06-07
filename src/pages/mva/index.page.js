@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
 
-import BecomeMVA from 'components/mva/BecomeMVA';
-import Container from 'components/Container/Container';
-import MVAItem from 'components/mva/MVAItem';
-import MyLink from 'components/MyLink';
-import WelfareItem from 'components/mva/WelfareItem';
-import YearSwitch from 'components/mva/YearSwitch';
+import BecomeMVA from '~/components/mva/BecomeMVA';
+import Container from '~/components/Container/Container';
+import MVAItem from '~/components/mva/MVAItem';
+import MyLink from '~/components/MyLink';
+import WelfareItem from '~/components/mva/WelfareItem';
+import YearSwitch from '~/components/mva/YearSwitch';
 import styles from './mva.module.scss';
-import tugData from 'data/tug_data.js';
-import { CoreLayout } from 'layouts';
-import { TugHead } from 'components/head';
+import tugData from '~/data/tug_data.js';
+import { CoreLayout } from '~/layouts';
+import { TugHead } from '~/components';
 
 export const getStaticProps = () => {
   const { mva2020, mva2019 } = tugData;

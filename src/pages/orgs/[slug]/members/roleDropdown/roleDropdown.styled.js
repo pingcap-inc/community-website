@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-
 import { colors, mixins } from '@tidb-community/ui';
+
 import { RoleActionMenu } from './RoleActionMenu.component';
 
 export const Role = styled.div`

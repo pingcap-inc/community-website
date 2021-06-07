@@ -7,9 +7,11 @@ const renderChildren = ({ children, value, key }) => {
   if (R.is(Function, children)) {
     return children({ option: value, key });
   }
+
   if (R.is(Array, children)) {
     return children.map((child, index) => renderChildren({ children, value, index }));
   }
+
   return children;
 };
 

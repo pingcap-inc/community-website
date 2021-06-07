@@ -1,7 +1,7 @@
 import React from 'react';
 
 import styles from './ArticleItemWithExcerpt.module.scss';
-import MyLink from 'components/MyLink';
+import MyLink from '~/components/MyLink';
 
 export default function ArticleItemWithExcerpt({
   title,

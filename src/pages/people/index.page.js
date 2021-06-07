@@ -2,15 +2,15 @@ import Image from 'next/image';
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
-import Container from 'components/Container/Container';
-import HowToBecome from 'components/people/HowToBecome/HowToBecome';
-import MyLink from 'components/MyLink';
-import TMCItem from 'components/people/TMCItem/TMCItem';
+import Container from '~/components/Container/Container';
+import HowToBecome from '~/components/people/HowToBecome/HowToBecome';
+import MyLink from '~/components/MyLink';
+import TMCItem from '~/components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
-import tugData from 'data/tug_data.js';
-import { CoreLayout } from 'layouts';
-import { TugHead } from 'components/head';
-import { joinTUGLink } from 'src/constants';
+import tugData from '~/data/tug_data.js';
+import { CoreLayout } from '~/layouts';
+import { TugHead } from '~/components';
+import { joinTUGLink } from '~/constants';
 
 export const getStaticProps = () => {
   const { tmc, leader } = tugData;

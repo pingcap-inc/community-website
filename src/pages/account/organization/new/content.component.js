@@ -4,10 +4,10 @@ import { useRouter } from 'next/router';
 import Audit from './audit';
 import Banner from './banner';
 import Form from './form';
-import PageLoader from 'components/pageLoader';
 import { AUDIT_STATUS } from './audit/audit.constants';
-import { AuthContext, MeContext } from 'context';
-import { SplitLayout } from 'layouts';
+import { AuthContext, MeContext } from '~/context';
+import { PageLoader } from '~/components';
+import { SplitLayout } from '~/layouts';
 
 const CreateOrganization = () => {
   const router = useRouter();

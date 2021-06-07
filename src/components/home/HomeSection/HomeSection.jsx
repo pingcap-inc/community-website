@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './HomeSection.module.scss';
 import classNames from 'classnames';
-import Container from 'components/Container/Container';
+import Container from '~/components/Container/Container';
 
 export default function HomeSection({
   className: classNameInput,

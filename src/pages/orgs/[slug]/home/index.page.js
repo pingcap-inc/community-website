@@ -7,11 +7,11 @@ import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './home.styled';
-import Layout from 'pages/orgs/layout';
-import PageLoader from 'components/pageLoader';
-import { AuthContext, MeContext } from 'context';
-import { CommunityHead } from 'components/head';
-import { errors } from 'utils';
+import Layout from '~/pages/orgs/layout';
+import { AuthContext, MeContext } from '~/context';
+import { CommunityHead } from '~/components';
+import { PageLoader } from '~/components';
+import { errors } from '~/utils';
 
 const Home = () => {
   const [page, setPage] = useState(1);

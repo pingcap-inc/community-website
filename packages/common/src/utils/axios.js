@@ -20,13 +20,13 @@ import Cookie from 'js-cookie';
  *    postFooBar({})
  *
  * @param {string} key The key of captcha token of the request body
- * @param {function(): Promise<string> | string} getCaptcha an sync or async function for getting captcha token
+ * @param {function(AxiosRequestConfig): Promise<string> | string} getCaptcha an sync or async function for getting captcha token
  * @return {function(AxiosRequestConfig): Promise<AxiosRequestConfig>}
  */
 export const createCaptchaInterceptor = (key, getCaptcha) => {
   return async (config) => {
     if (typeof config?.data === 'object' && key in config.data && !config.data.key) {
-      config.data.re_token_v3 = await getCaptcha();
+      config.data.re_token_v3 = await getCaptcha(config);
     }
     return Promise.resolve(config);
   };

@@ -1,5 +1,6 @@
 import Cookie from 'js-cookie';
 import axios from 'axios';
+import { utils } from '@/packages/common';
 
 import { dispatchApiError } from './events';
 
@@ -60,5 +61,10 @@ client.interceptors.response.use(
     return Promise.reject(config.isReturnErrorResponse ? response : data);
   }
 );
+
+if (process.env.NEXT_PUBLIC_RECAPTCHA_KEY) {
+  const getCaptcha = (config) => utils.form.getCaptchaToken(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, config.path);
+  client.interceptors.request.use(utils.axios.createCaptchaInterceptor('re_token_v3', getCaptcha));
+}
 
 export default client;

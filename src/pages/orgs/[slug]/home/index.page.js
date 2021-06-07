@@ -14,15 +14,13 @@ import { PageLoader } from '~/components';
 import { errors } from '~/utils';
 
 const Home = () => {
+  const router = useRouter();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(AuthContext);
+  const { login, isAnonymous } = useContext(AuthContext);
+  const { meData } = useContext(MeContext);
   const [urging, setUrging] = useState(false);
-
-  const router = useRouter();
   const { slug } = router.query;
-
   const {
     data: topicsData,
     isValidating: isTopicsValidating,
@@ -33,13 +31,13 @@ const Home = () => {
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
 
+  if (isAnonymous) {
+    login();
+    return null;
+  }
+
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   const urge = (topicId) => {

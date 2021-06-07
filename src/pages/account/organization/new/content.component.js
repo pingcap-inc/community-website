@@ -11,8 +11,8 @@ import { SplitLayout } from '~/layouts';
 
 const CreateOrganization = () => {
   const router = useRouter();
-  const { meData, mutateMe, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(AuthContext);
+  const { login, isAnonymous } = useContext(AuthContext);
+  const { meData, mutateMe } = useContext(MeContext);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
@@ -25,13 +25,13 @@ const CreateOrganization = () => {
   const resetForm = () => setShowForm(true);
   const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/home`);
 
+  if (isAnonymous) {
+    login();
+    return null;
+  }
+
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   if (showForm) {
@@ -41,10 +41,10 @@ const CreateOrganization = () => {
         <Form onSubmit={mutateMe} />
       </SplitLayout>
     );
-  } else {
-    return (
-      <Audit status={status} rejectReason={rejectReason} onClickResetForm={resetForm} onClickOrgHome={pushOrgHome} />
-    );
   }
+
+  return (
+    <Audit status={status} rejectReason={rejectReason} onClickResetForm={resetForm} onClickOrgHome={pushOrgHome} />
+  );
 };
 export default CreateOrganization;

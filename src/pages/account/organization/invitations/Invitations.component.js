@@ -11,8 +11,8 @@ import { emptyText, okText, cancelText } from './invitations.data';
 
 const Invitations = () => {
   const router = useRouter();
-  const { meData, mutateMe, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(AuthContext);
+  const { login, isAnonymous } = useContext(AuthContext);
+  const { meData, mutateMe } = useContext(MeContext);
   const [operating, setOperating] = useState(false);
 
   useEffect(() => {
@@ -21,16 +21,12 @@ const Invitations = () => {
     }
   });
 
-  if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+  if (isAnonymous) {
+    login();
+    return null;
   }
 
-  if (meData.org) {
+  if (!meData || meData.org) {
     return <PageLoader />;
   }
 

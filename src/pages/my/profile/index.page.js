@@ -6,16 +6,16 @@ import { AuthContext, MeContext } from '~/context';
 import { PageLoader } from '~/components';
 
 const Profile = () => {
-  const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(AuthContext);
+  const { login, isAnonymous } = useContext(AuthContext);
+  const { meData } = useContext(MeContext);
+
+  if (isAnonymous) {
+    login();
+    return null;
+  }
 
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   return (

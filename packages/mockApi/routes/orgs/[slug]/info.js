@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const { errorResp, successResp, wait } = require('../../../utils');
 
-const { company, image, lorem } = faker;
+const { company, datatype, image, lorem } = faker;
 
 module.exports = async (req, res) => {
   await wait();
@@ -26,6 +26,7 @@ module.exports = async (req, res) => {
       name: company.companyName(),
       introduction: lorem.paragraph(),
       logo: image.avatar(),
+      topic_urgency_remain_times: datatype.number({ max: 2 }),
     },
   })(req, res);
 };

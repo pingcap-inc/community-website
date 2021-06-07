@@ -17,6 +17,7 @@ const logout = function (redirectUrl) {
 };
 
 export const context = {
+  isAnonymous: false,
   isAuthRequired: false,
 };
 

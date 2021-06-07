@@ -39,7 +39,7 @@ const enroll = ({
   }
 
   return client.post('/api/orgs/enroll', formContent, {
-    isDispatchApiErrorDisabled: true,
+    shouldDispatchApiError: () => false,
   });
 };
 

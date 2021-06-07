@@ -56,7 +56,7 @@ const Career = () => {
         </Row>
 
         <Styled.ViewMoreWrapper>
-          <ViewMoreButton onClick={(e) => onLinkClick('https://pingcap.com/community-cn/careers/join/')}>
+          <ViewMoreButton onClick={(e) => onLinkClick('https://tidb-jobs.pingcap.com/')}>
             View More Opportunities
           </ViewMoreButton>
         </Styled.ViewMoreWrapper>

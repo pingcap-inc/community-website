@@ -19,18 +19,18 @@ const Members = () => {
   const { isReady, query } = router;
   const { slug } = query;
   const { data: membersResp, mutate: mutateMembers } = useSWR(isReady ? ['orgs.org.members', query] : null);
-  const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(AuthContext);
+  const { meData } = useContext(MeContext);
+  const { login, isAnonymous } = useContext(AuthContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = utils.isAdmin(meData);
 
+  if (isAnonymous) {
+    login();
+    return null;
+  }
+
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   const onRoleChange = async ({ id, role }) => {

@@ -40,9 +40,7 @@ const App = ({ Component, pageProps, router }) => {
     const { status, statusText, data } = err;
     const errorMsg = data?.detail || statusText;
 
-    if (status === 401) {
-      // TODO: jump to login page
-    } else if ([403, 404].includes(status)) {
+    if ([403, 404].includes(status)) {
       setErrorStatus(status);
       setErrorMsg(errorMsg);
     } else {
@@ -61,12 +59,16 @@ const App = ({ Component, pageProps, router }) => {
 
   const {
     data: meResp,
-    mutate: mutateMe,
+    error: meError,
     isValidating: isMeValidating,
+    mutate: mutateMe,
   } = useSWR('me', fetcher, {
     revalidateOnFocus: false,
   });
+
   const meData = meResp?.data;
+
+  authContext.isAnonymous = !!meError;
 
   if (errorStatus) {
     return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;

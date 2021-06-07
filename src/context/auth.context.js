@@ -26,3 +26,5 @@ context.logout = logout.bind(context);
 context.setIsAuthRequired = (isRequired) => (context.isAuthRequired = isRequired);
 
 export const AuthContext = createContext(context);
+
+AuthContext.displayName = 'AuthContext';

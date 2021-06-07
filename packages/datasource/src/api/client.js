@@ -63,7 +63,7 @@ client.interceptors.response.use(
   }
 );
 
-if (process.env.NEXT_PUBLIC_RECAPTCHA_KEY) {
+if (process?.env.NEXT_PUBLIC_RECAPTCHA_KEY) {
   const getCaptcha = (config) => getCaptchaToken(process.env.NEXT_PUBLIC_RECAPTCHA_KEY, config.path);
   client.interceptors.request.use(createCaptchaInterceptor('re_token_v3', getCaptcha));
 }

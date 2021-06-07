@@ -10,17 +10,17 @@ import { PageLoader } from '~/components';
 import { redDots as redDotsUtils } from '~/utils';
 
 const Company = () => {
-  const { meData, isMeValidating } = useContext(MeContext);
+  const { login, isAnonymous } = useContext(AuthContext);
+  const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR('operation.fetchRedDots');
-  const { login } = useContext(AuthContext);
+
+  if (isAnonymous) {
+    login();
+    return null;
+  }
 
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);

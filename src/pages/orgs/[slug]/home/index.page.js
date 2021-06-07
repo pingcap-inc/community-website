@@ -14,32 +14,30 @@ import { PageLoader } from '~/components';
 import { errors } from '~/utils';
 
 const Home = () => {
+  const router = useRouter();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
-  const { meData, isMeValidating } = useContext(MeContext);
-  const { login } = useContext(AuthContext);
+  const { login, isAnonymous } = useContext(AuthContext);
+  const { meData } = useContext(MeContext);
   const [urging, setUrging] = useState(false);
-
-  const router = useRouter();
-  const { slug } = router.query;
-
+  const { isReady, query } = router;
   const {
     data: topicsData,
     isValidating: isTopicsValidating,
     revalidate,
-  } = useSWR(slug ? ['orgs.org.topics', JSON.stringify({ slug, page, pageSize })] : null);
-  const { data: orgData, mutate: mutateOrg } = useSWR(slug ? ['orgs.org.info', router.query] : null);
+  } = useSWR(isReady ? ['orgs.org.topics', JSON.stringify({ ...query, page, pageSize })] : null);
+  const { data: orgData, mutate: mutateOrg } = useSWR(isReady ? ['orgs.org.info', router.query] : null);
 
   const { meta, topics } = topicsData?.data ?? {};
   const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
 
+  if (isAnonymous) {
+    login();
+    return null;
+  }
+
   if (!meData) {
-    if (isMeValidating) {
-      return <PageLoader />;
-    } else {
-      login();
-      return null;
-    }
+    return <PageLoader />;
   }
 
   const urge = (topicId) => {

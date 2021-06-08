@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import useSWR from 'swr';
 
 import * as Styled from './company.styled';
@@ -7,12 +7,20 @@ import Form from './form';
 import Layout from '~/pages/my/layout';
 import { AuthContext, MeContext } from '~/context';
 import { PageLoader } from '~/components';
+import { api } from '@tidb-community/datasource';
 import { redDots as redDotsUtils } from '~/utils';
 
 const Company = () => {
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR('operation.fetchRedDots');
+  const redDots = redDotsUtils.transformRespToMap(redDotsResp);
+
+  useEffect(() => {
+    if (redDots.companyInfo) {
+      api.operation.setRedDotRead('company-info');
+    }
+  }, [redDots.companyInfo]);
 
   if (isAnonymous) {
     login();
@@ -22,8 +30,6 @@ const Company = () => {
   if (!meData) {
     return <PageLoader />;
   }
-
-  const redDots = redDotsUtils.transformRespToMap(redDotsResp);
 
   return (
     <Layout title="公司信息">

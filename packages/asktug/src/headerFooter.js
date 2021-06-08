@@ -9,7 +9,7 @@ import { getData, api } from '@tidb-community/datasource';
 import 'antd-global.css';
 import './headerFooter.scss';
 import { HackUserProfileSlot } from './hackHeader';
-import { MeContext } from '@/context';
+import { MeContext } from '@/context/me.context';
 
 const { location } = window;
 const { appClassName } = constants;

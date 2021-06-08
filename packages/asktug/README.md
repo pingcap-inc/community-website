@@ -2,5 +2,5 @@ The package compiles a `header-footer.js` file under the `publick/asktug` folder
 
 Please log in with an admin account and visit the following environments for details:
 
-- **Testing**: https://idc.asktug.com/admin/customize/themes/60044
-- **Production**: https://asktug.com/admin/customize/themes/60021
+- **Testing**: https://new.asktug.com/admin/customize/themes
+- **Production**: https://asktug.com/admin/customize/themes

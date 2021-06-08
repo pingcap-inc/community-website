@@ -189,14 +189,15 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   } else {
     items.splice(1, 0, {
       title: 'Create Org',
-      link: `https://tidb.io/account/organization/new`,
+      link: 'https://tidb.io/account/organization/new',
+      badge: redDots.orgEnroll,
     });
   }
 
   if (meData.org_invitations?.length) {
     items.push({
       title: 'Invitations',
-      link: `https://tidb.io/account/organization/invitations`,
+      link: 'https://tidb.io/account/organization/invitations',
       badge: meData.org_invitations.some((item) => item.valid),
     });
   }

@@ -15,7 +15,7 @@ router.get('', (req, res) => {
     data: [
       {
         name: 'org-enroll', // 红点的代号
-        visible: true, // 是否显示
+        visible: datatype.boolean(), // 是否显示
       },
       {
         name: 'company-info',

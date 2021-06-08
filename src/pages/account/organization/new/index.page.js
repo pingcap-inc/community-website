@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { api } from '@tidb-community/datasource';
+import { mutate } from 'swr';
 
 import CreateOrganization from './content.component';
 import { CommunityHead } from '~/components';
@@ -7,7 +8,10 @@ import { CoreLayout } from '~/layouts';
 
 const Page = () => {
   useEffect(() => {
-    api.operation.setRedDotRead('org-enroll');
+    (async () => {
+      await api.operation.setRedDotRead('org-enroll');
+      mutate('operation.fetchRedDots');
+    })();
   }, []);
 
   return (

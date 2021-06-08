@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
-import useSWR from 'swr';
+import useSWR, { mutate } from 'swr';
 
 import * as Styled from './company.styled';
 import Form from './form';
@@ -17,9 +17,13 @@ const Company = () => {
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
 
   useEffect(() => {
-    if (redDots.companyInfo) {
-      api.operation.setRedDotRead('company-info');
-    }
+    (async () => {
+      if (redDots.companyInfo) {
+        await api.operation.setRedDotRead('company-info');
+        mutate('operation.fetchRedDots');
+      }
+    })();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [redDots.companyInfo]);
 
   if (isAnonymous) {

@@ -1,12 +1,14 @@
 const faker = require('faker');
 const router = require('express').Router();
 
-const utils = require('../../utils');
+const { successResp, errorResp, wait } = require('../../utils');
 
 const { datatype } = faker;
 
-router.get('', (req, res) => {
-  utils.successResp({
+router.get('', async (req, res) => {
+  await wait();
+
+  successResp({
     data: [
       {
         name: 'org-enroll', // 红点的代号
@@ -24,17 +26,19 @@ router.get('', (req, res) => {
   })(req, res);
 });
 
-router.post('/:dotName', (req, res) => {
+router.post('/:dotName', async (req, res) => {
+  await wait(2000);
+
   const { dotName } = req.params;
 
   if (dotName === '401') {
-    return utils.errorResp({
+    return errorResp({
       code: 401,
       detail: 'Authentication credentials were not provided',
     })(req, res);
   }
 
-  utils.successResp()(req, res);
+  successResp()(req, res);
 });
 
 module.exports = router;

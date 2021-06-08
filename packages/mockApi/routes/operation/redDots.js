@@ -6,11 +6,6 @@ const utils = require('../../utils');
 const { datatype } = faker;
 
 router.get('', (req, res) => {
-  // return utils.errorResp({
-  //   code: 401,
-  //   detail: 'Authentication credentials were not provided',
-  // })(req, res);
-
   utils.successResp({
     data: [
       {

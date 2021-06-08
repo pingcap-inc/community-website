@@ -210,7 +210,3 @@ export const genUserProfileItems = ({ meData, redDots }) => {
 
   return items;
 };
-
-export const loginUrl = 'https://accounts.pingcap.com/login';
-export const logoutUrl = 'https://accounts.pingcap.com/logout';
-export const homeUrl = 'https://tidb.io/';

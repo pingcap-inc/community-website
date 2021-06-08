@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
+import useSWR from 'swr';
 import { Header, Footer, UserProfile, ActivityBanner, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
 import { AuthContext, MeContext, NavContext } from '~/context';
-import { link as linkUtils } from '~/utils';
+import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
 
 const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
   // do not render if:
@@ -22,10 +23,12 @@ const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onN
 
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
+  const { data: redDotsResp } = useSWR('operation.fetchRedDots');
   const { meData, isMeValidating } = useContext(MeContext);
   const { login, logout } = useContext(AuthContext);
 
-  const data = getData({ domain, path: router.basePath, locale, meData }).nav;
+  const redDots = redDotsUtils.transformRespToMap(redDotsResp);
+  const data = getData({ domain, path: router.basePath, locale, meData, redDots }).nav;
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 

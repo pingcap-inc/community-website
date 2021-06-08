@@ -162,7 +162,7 @@ export const navItems = [
   },
 ];
 
-export const genUserProfileItems = (meData) => {
+export const genUserProfileItems = ({ meData, redDots }) => {
   if (!meData) return;
 
   const items = [

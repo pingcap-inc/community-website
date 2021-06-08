@@ -162,7 +162,7 @@ export const navItems = [
   },
 ];
 
-export const genUserProfileItems = (meData) => {
+export const genUserProfileItems = ({ meData, redDots }) => {
   if (!meData) return;
 
   const items = [
@@ -173,6 +173,7 @@ export const genUserProfileItems = (meData) => {
     {
       title: '个人信息',
       link: `https://tidb.io/my/profile`,
+      badge: redDots.companyInfo,
     },
     {
       title: '账号设置',

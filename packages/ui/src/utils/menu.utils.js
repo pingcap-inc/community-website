@@ -62,21 +62,13 @@ export const genMenu = ({ items, currentNav, onNavClick, ...events }) => {
 
       const disabled = !R.is(String, link) && !R.is(String, event);
       const Divider = divider ? <Menu.Divider key={`${title}__divider`} /> : undefined;
+      const wrappedTitle = badge ? <Badge dot>{title}</Badge> : title;
 
-      if (R.is(Number, badge)) {
-        return [
-          <Menu.Item key={title} onClick={onItemClick({ link, browserLink, target, event })} disabled={disabled}>
-            <Badge dot={badge > 0}>{title}</Badge>
-          </Menu.Item>,
-          Divider,
-        ];
-      } else {
-        return [
-          <Menu.Item key={title} onClick={onItemClick({ link, browserLink, target, event })} disabled={disabled}>
-            {title}
-          </Menu.Item>,
-          Divider,
-        ];
-      }
+      return [
+        <Menu.Item key={title} onClick={onItemClick({ link, browserLink, target, event })} disabled={disabled}>
+          {wrappedTitle}
+        </Menu.Item>,
+        Divider,
+      ];
     });
 };

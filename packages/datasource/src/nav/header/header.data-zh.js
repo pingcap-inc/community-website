@@ -193,11 +193,11 @@ export const genUserProfileItems = (meData) => {
     });
   }
 
-  if (meData.org_invitations && meData.org_invitations.length) {
+  if (meData.org_invitations?.length) {
     items.push({
       title: '团队邀请',
       link: `https://tidb.io/account/organization/invitations`,
-      badge: meData.org_invitations.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+      badge: meData.org_invitations.some((item) => item.valid),
     });
   }
 

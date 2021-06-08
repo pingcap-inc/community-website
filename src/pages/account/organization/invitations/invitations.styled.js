@@ -7,8 +7,8 @@ export const Background = styled.div`
 `;
 
 export const Container = styled.div`
-  ${mixins.centerBlock('768px')};
-  background-color: white;
+  ${mixins.responsive()};
+  background: ${colors.M1};
 `;
 
 export const TextContent = styled.div`

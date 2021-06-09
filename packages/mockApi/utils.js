@@ -45,8 +45,12 @@ const generator = (schema, options) => {
           return value;
         })();
 
-        if (['{{rdatatype.number}}', '{{finance.amount}}'].includes(value)) {
+        if (['{{datatype.number}}', '{{finance.amount}}'].includes(value)) {
           acc[key] = Number(acc[key]);
+        }
+
+        if (value === '{{datatype.boolean}}') {
+          acc[key] = acc[key] === 'true';
         }
 
         return acc;

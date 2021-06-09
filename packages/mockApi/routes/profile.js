@@ -27,6 +27,7 @@ router.get('', async (req, res) => {
       date_of_birth: '{{date.past}}',
       address: '{{address.streetAddress}}, {{address.city}}, {{address.country}}',
       company_name: '{{company.companyName}}',
+      company_name_editable: '{{datatype.boolean}}',
     },
     {
       min: 1,
@@ -37,6 +38,7 @@ router.get('', async (req, res) => {
           gender: datatype.number({ min: 0, max: 1 }),
           date_of_birth: dayjs(item.date_of_birth).format('YYYY-MM-DD'),
           job_title: _.sample(positionKeys),
+          company_name_editable: false,
         };
 
         _.sampleSize(

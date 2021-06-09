@@ -22,21 +22,18 @@ const Modal = ({ revalidate, ...props }) => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
 
-    return formUtils.getCaptchaToken().then((re_token_v3) =>
-      api.account
-        .setPhone({
-          ...values,
-          re_token_v3,
-        })
-        .then(() => {
-          message.success('手机号码更新成功');
-          revalidate();
-          onClose();
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        })
-    );
+    return api.account
+      .setPhone({
+        ...values,
+      })
+      .then(() => {
+        message.success('手机号码更新成功');
+        revalidate();
+        onClose();
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   });
 
   const modalProps = {
@@ -58,12 +55,9 @@ const Modal = ({ revalidate, ...props }) => {
       <Formik {...formikProps}>
         {({ values, errors, setErrors, setTouched }) => {
           const sendVerifyCode = formUtils.wrapFormikSubmitFunction(() =>
-            formUtils.getCaptchaToken().then((re_token_v3) =>
-              api.account.sendPhoneCode({
-                phone: values[phoneName],
-                re_token_v3,
-              })
-            )
+            api.account.sendPhoneCode({
+              phone: values[phoneName],
+            })
           );
 
           const codeInputProps = {

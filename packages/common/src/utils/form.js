@@ -165,9 +165,12 @@ export const createYupRemoteValidator = (baseSchema, name, validator, cache = tr
   });
 };
 
-export const getCaptchaToken = (recaptchaKey) =>
+export const getCaptchaToken = ({ key, action = 'submit' }) =>
   new Promise((resolve, reject) => {
+    if (!window.grecaptcha) {
+      reject(new Error('无法加载 reCAPTCHA'));
+    }
     window.grecaptcha?.ready(() => {
-      window.grecaptcha.execute(recaptchaKey, { action: 'submit' }).then(resolve).catch(reject);
+      window.grecaptcha.execute(key, { action }).then(resolve).catch(reject);
     });
   });

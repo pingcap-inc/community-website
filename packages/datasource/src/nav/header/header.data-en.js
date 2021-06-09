@@ -173,6 +173,7 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     {
       title: 'Profile',
       link: `https://tidb.io/my/profile`,
+      badge: redDots.companyInfo,
     },
     {
       title: 'Account Settings',

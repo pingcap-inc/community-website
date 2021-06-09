@@ -19,9 +19,11 @@ function build-staging-sources() {
 }
 
 function distribute-staging-assets() {
-    npx sentry-cli releases new "$1-staging"
-    npx sentry-cli releases files "$1-staging" upload-sourcemaps dist
-    npx sentry-cli releases finalize "$1-staging"
+    local version=$1
+
+    npx sentry-cli releases new "$version-staging"
+    npx sentry-cli releases files "$version-staging" upload-sourcemaps dist
+    npx sentry-cli releases finalize "$version-staging"
 
     zip -r dist.zip dist
 }
@@ -31,15 +33,18 @@ function build-release-sources() {
 }
 
 function distribute-release-sources() {
-    npx sentry-cli releases new "$1"
-    npx sentry-cli releases files "$1" upload-sourcemaps dist
-    npx sentry-cli releases finalize "$1"
+    local version=$1
+    local tag=$2
+
+    npx sentry-cli releases new "$version"
+    npx sentry-cli releases files "$version" upload-sourcemaps dist
+    npx sentry-cli releases finalize "$version"
 
     rm dist.zip
     rm dist/**/*.map
     zip -r dist.zip dist
 
-    if ! gh release create -p "$2" dist.zip --title "accounts-site-v$1" --notes ""; then
+    if ! gh release create -p "$tag" dist.zip --title "accounts-site-v$version" --notes ""; then
       return 1
     fi
 }

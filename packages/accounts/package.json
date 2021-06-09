@@ -9,8 +9,8 @@
     "start": "vite"
   },
   "dependencies": {
-    "@sentry/react": "^6.5.1",
-    "@sentry/tracing": "^6.5.1",
+    "@sentry/react": "6.5.1",
+    "@sentry/tracing": "6.5.1",
     "@tidb-community/common": "*",
     "@tidb-community/ui": "*",
     "antd": "4.15.6",

@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { HeadProvider } from 'react-head';
 import { createAppGlobalStyle } from '@tidb-community/ui';
 
+import './sentry';
 import './app.css';
 import PageRouter from './router';
 

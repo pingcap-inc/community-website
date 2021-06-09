@@ -9,7 +9,9 @@ export default css`
     border-color: ${colors.C2};
 
     &:hover {
-      border-color: ${colors.B1};
+      &:not(.ant-input-disabled) {
+        border-color: ${colors.B1};
+      }
     }
 
     &:focus,

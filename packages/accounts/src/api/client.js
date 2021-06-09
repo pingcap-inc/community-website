@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import * as Sentry from '@sentry/react';
 import { utils } from '@tidb-community/common';
 
 const client = Axios.create({
@@ -38,6 +39,7 @@ client.interceptors.response.use(
       }
       return Promise.reject(err);
     } else {
+      Sentry.captureException(err);
       return Promise.reject(err);
     }
   }

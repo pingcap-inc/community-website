@@ -14,7 +14,7 @@
     "dev": "next dev",
     "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
-    "postinstall": "npm run lerna:bootstrap && npm run build:ui && npm run build:common",
+    "postinstall": "npm run lerna:bootstrap && npm run build:shared",
     "server:init": "next build && npm run server:start",
     "server:reload": "pm2 reload pm2.config.js",
     "server:start": "pm2 start pm2.config.js",

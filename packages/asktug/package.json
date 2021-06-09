@@ -6,6 +6,7 @@
     "build:watch": "NODE_ENV=development webpack --watch"
   },
   "dependencies": {
+    "@tidb-community/common": "*",
     "@tidb-community/datasource": "*",
     "@tidb-community/ui": "*"
   },

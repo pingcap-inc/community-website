@@ -38,6 +38,11 @@ export default ({ mode }) => {
     build: {
       target: 'esnext',
       assetsDir: 'static/sso/assets',
+      sourcemap: true,
+    },
+
+    define: {
+      'process.env.VERSION': `"${require('./package.json').version}"`,
     },
 
     resolve: {

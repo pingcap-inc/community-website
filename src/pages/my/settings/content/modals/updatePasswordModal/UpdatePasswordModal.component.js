@@ -16,20 +16,17 @@ const Modal = ({ onSuccess, ...props }) => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
 
-    return formUtils.getCaptchaToken().then((re_token_v3) =>
-      api.account
-        .resetPassword({
-          ...values,
-          re_token_v3,
-        })
-        .then(() => {
-          onClose();
-          onSuccess();
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        })
-    );
+    return api.account
+      .resetPassword({
+        ...values,
+      })
+      .then(() => {
+        onClose();
+        onSuccess();
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   });
 
   const modalProps = {

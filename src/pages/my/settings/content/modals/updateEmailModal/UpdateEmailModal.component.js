@@ -21,21 +21,18 @@ const Modal = ({ verified, revalidate, ...props }) => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
 
-    return formUtils.getCaptchaToken().then((re_token_v3) =>
-      api.account
-        .setEmail({
-          ...values,
-          re_token_v3,
-        })
-        .then(() => {
-          message.success('邮箱更新成功');
-          revalidate();
-          onClose();
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        })
-    );
+    return api.account
+      .setEmail({
+        ...values,
+      })
+      .then(() => {
+        message.success('邮箱更新成功');
+        revalidate();
+        onClose();
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   });
 
   const modalProps = {
@@ -57,12 +54,9 @@ const Modal = ({ verified, revalidate, ...props }) => {
       <Formik {...formikProps}>
         {({ values, errors, setErrors, setTouched }) => {
           const sendVerifyCode = formUtils.wrapFormikSubmitFunction(() =>
-            formUtils.getCaptchaToken().then((re_token_v3) =>
-              api.account.sendEmailCode({
-                email: values[emailName],
-                re_token_v3,
-              })
-            )
+            api.account.sendEmailCode({
+              email: values[emailName],
+            })
           );
 
           const codeInputProps = {

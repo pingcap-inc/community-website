@@ -1,5 +1,6 @@
 {
   "name": "@tidb-community/accounts",
+  "version": "1.0.0-staging",
   "private": true,
   "scripts": {
     "build": "vite build",
@@ -8,6 +9,8 @@
     "start": "vite"
   },
   "dependencies": {
+    "@sentry/react": "6.5.1",
+    "@sentry/tracing": "6.5.1",
     "@tidb-community/common": "*",
     "@tidb-community/ui": "*",
     "antd": "4.15.6",

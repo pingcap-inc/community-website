@@ -50,6 +50,7 @@ module.exports = {
       '@': path.resolve('../../src'),
       '@tidb-community/datasource': path.resolve('../datasource/src'),
       '@tidb-community/ui': path.resolve('../ui/src'),
+      '@tidb-community/common': path.resolve('../common/src'),
       'antd-global.css': path.resolve('../ui/es/antd/global.css'),
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-component']),
     },

@@ -59,22 +59,19 @@ const FormComponent = () => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
 
-    return formUtils.getCaptchaToken().then((re_token_v3) => {
-      const { date_of_birth: dob } = values;
+    const { date_of_birth: dob } = values;
 
-      return api.profile
-        .update({
-          ...values,
-          date_of_birth: dob ? moment(dob).format(dateApiFormat) : null,
-          re_token_v3,
-        })
-        .then(() => {
-          message.success('个人信息更新成功');
-        })
-        .finally(() => {
-          setIsSubmitting(false);
-        });
-    });
+    return api.profile
+      .update({
+        ...values,
+        date_of_birth: dob ? moment(dob).format(dateApiFormat) : null,
+      })
+      .then(() => {
+        message.success('个人信息更新成功');
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   });
 
   const formikProps = {

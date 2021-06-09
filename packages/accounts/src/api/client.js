@@ -20,7 +20,8 @@ const { form: formUtils, axios: axiosUtils } = utils;
 // any api demands captcha just needs to declare a param 're_token_v3' and it will automatically injected into
 // request body.
 // this should only working for requests with body.
-const getCaptcha = (config) => formUtils.getCaptchaToken(import.meta.env.VITE_RE_CAPTCHA_SITE_KEY, config.path);
+const getCaptcha = (config) =>
+  formUtils.getCaptchaToken({ key: import.meta.env.VITE_RE_CAPTCHA_SITE_KEY, action: config.path });
 
 client.interceptors.request.use(axiosUtils.createCaptchaInterceptor('re_token_v3', getCaptcha));
 client.interceptors.request.use(axiosUtils.createCookieCopyInterceptor('csrftoken', 'X-CSRFTOKEN'));

@@ -2,7 +2,7 @@ const faker = require('faker');
 
 const utils = require('../../utils');
 
-const { random } = faker;
+const { datatype } = faker;
 const { successResp, wait, getValueOrNull } = utils;
 
 module.exports = async (req, res) => {
@@ -17,8 +17,8 @@ module.exports = async (req, res) => {
     data: {
       phone: getValueOrNull('130*****1234'),
       email: getValueOrNull('example@mail.com'),
-      email_verified: random.boolean(),
-      has_password: random.boolean(),
+      email_verified: datatype.boolean(),
+      has_password: datatype.boolean(),
       associated_accounts: {
         github: getValueOrNull({
           id: 'github-id',

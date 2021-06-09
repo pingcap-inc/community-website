@@ -7,7 +7,7 @@ export { useApiErrorListener } from './api/events';
 
 export const getFormData = () => form;
 
-export const getData = ({ domain, path, locale, env, envDomainConfig, meData } = {}) => {
+export const getData = ({ domain, path, locale, env, envDomainConfig, meData, redDots } = {}) => {
   const defaultEnv = (typeof process !== 'undefined' && process?.env?.NEXT_PUBLIC_RUNTIME_ENV) || 'production';
 
   env = env || defaultEnv;
@@ -25,6 +25,7 @@ export const getData = ({ domain, path, locale, env, envDomainConfig, meData } =
       locale,
       path,
       meData,
+      redDots,
     }),
   };
 };

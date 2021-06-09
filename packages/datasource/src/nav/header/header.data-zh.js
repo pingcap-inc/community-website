@@ -162,7 +162,7 @@ export const navItems = [
   },
 ];
 
-export const genUserProfileItems = (meData) => {
+export const genUserProfileItems = ({ meData, redDots }) => {
   if (!meData) return;
 
   const items = [
@@ -173,6 +173,7 @@ export const genUserProfileItems = (meData) => {
     {
       title: '个人信息',
       link: `https://tidb.io/my/profile`,
+      badge: redDots.companyInfo,
     },
     {
       title: '账号设置',
@@ -189,15 +190,16 @@ export const genUserProfileItems = (meData) => {
   } else {
     items.splice(1, 0, {
       title: '团队认证',
-      link: `https://tidb.io/account/organization/new`,
+      link: 'https://tidb.io/account/organization/new',
+      badge: redDots.orgEnroll,
     });
   }
 
-  if (meData.org_invitations && meData.org_invitations.length) {
+  if (meData.org_invitations?.length) {
     items.push({
       title: '团队邀请',
-      link: `https://tidb.io/account/organization/invitations`,
-      badge: meData.org_invitations.reduce((n, invite) => (n + invite.valid ? 1 : 0), 0),
+      link: 'https://tidb.io/account/organization/invitations',
+      badge: meData.org_invitations.some((item) => item.valid),
     });
   }
 
@@ -208,7 +210,3 @@ export const genUserProfileItems = (meData) => {
 
   return items;
 };
-
-export const loginUrl = 'https://accounts.pingcap.com/login';
-export const logoutUrl = 'https://accounts.pingcap.com/logout';
-export const homeUrl = 'https://tidb.io/';

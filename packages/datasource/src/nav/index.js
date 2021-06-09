@@ -8,7 +8,7 @@ import genUserMenu from './user';
 
 import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule, _makeHiddenItems } from './utils';
 
-export const getData = ({ domain, domainConfig, env, locale, path, meData }) => {
+export const getData = ({ domain, domainConfig, env, locale, path, meData, redDots }) => {
   const defaultLocale = 'zh';
 
   const { navItems: footerNavItems, ...restFooterData } = R.propOr(footerData[defaultLocale], locale)(footerData);
@@ -47,7 +47,7 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData }) => 
 
   rules = _applyTidbIoSpecRule(rules, { domain, path, domainConfig });
 
-  const userProfileNavItems = genUserProfileItems(meData);
+  const userProfileNavItems = genUserProfileItems({ meData, redDots });
   const userItems = genUserMenu(meData);
   // These are used for getting current nav.
   const hiddenUserProfileNavItems = _makeHiddenItems(userProfileNavItems);

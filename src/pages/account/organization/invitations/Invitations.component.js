@@ -30,7 +30,7 @@ const Invitations = () => {
     return <PageLoader />;
   }
 
-  if (!(meData.org_invitations && meData.org_invitations.length)) {
+  if (!meData.org_invitations?.length) {
     return (
       <PageLoader>
         <Empty>{emptyText}</Empty>

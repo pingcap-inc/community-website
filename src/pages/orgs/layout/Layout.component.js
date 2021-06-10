@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
   }, [setIsAuthRequired]);
 
   const { isReady, query } = router;
-  const { data, error } = useSWR(isReady ? ['orgs.org.info', query] : null);
+  const { data, error } = useSWR(isReady && ['orgs.org.info', query]);
 
   const bannerProps = {
     ...R.pipe(R.propOr({}, 'data'), R.pick(['introduction', 'logo', 'name']))(data),

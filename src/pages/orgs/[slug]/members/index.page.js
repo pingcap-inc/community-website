@@ -18,7 +18,7 @@ const Members = () => {
   const router = useRouter();
   const { isReady, query } = router;
   const { slug } = query;
-  const { data: membersResp, mutate: mutateMembers } = useSWR(isReady ? ['orgs.org.members', query] : null);
+  const { data: membersResp, mutate: mutateMembers } = useSWR(isReady && ['orgs.org.members', query]);
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);

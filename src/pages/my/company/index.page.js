@@ -11,9 +11,9 @@ import { api } from '@tidb-community/datasource';
 import { redDots as redDotsUtils } from '~/utils';
 
 const Company = () => {
-  const { login, isAnonymous } = useContext(AuthContext);
+  const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
-  const { data: redDotsResp } = useSWR('operation.fetchRedDots');
+  const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
 
   useEffect(() => {

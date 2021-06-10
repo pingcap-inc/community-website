@@ -18,6 +18,7 @@ const logout = function (redirectUrl) {
 
 export const context = {
   isAnonymous: false,
+  isLoggedIn: false,
   isAuthRequired: false,
 };
 

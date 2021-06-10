@@ -2,7 +2,7 @@ import client from '../client';
 
 export const fetchRedDots = () =>
   client.get('/api/operation/red-dots', {
-    shouldDispatchApiError: ({ status }) => {
+    isDispatchApiError: ({ status }) => {
       return status !== 401;
     },
   });

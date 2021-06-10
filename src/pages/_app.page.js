@@ -64,6 +64,8 @@ const App = ({ Component, pageProps, router }) => {
     isValidating: isMeValidating,
     mutate: mutateMe,
   } = useSWR('me', fetcher, {
+    // Default configs could be found from
+    // https://github.com/vercel/swr/blob/master/src/config.ts
     revalidateOnFocus: false,
   });
 

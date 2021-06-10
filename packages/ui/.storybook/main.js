@@ -58,8 +58,9 @@ module.exports = {
         ...resolve,
         alias: {
           ...resolve.alias,
-          '@tidb-community/ui': resolveRoot('src'),
+          '@tidb-community/common': resolveRoot('../common/src'),
           '@tidb-community/datasource': resolveRoot('../datasource/src'),
+          '@tidb-community/ui': resolveRoot('src'),
         },
       },
     };

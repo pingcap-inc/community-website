@@ -12,6 +12,7 @@ export default {
 
 const Template = ({ delay }) => {
   const [text, setText] = useState(undefined);
+
   const action = ({ key }) => {
     setText(key);
     return new Promise((resolve) => setTimeout(resolve, delay));
@@ -23,8 +24,8 @@ const Template = ({ delay }) => {
       <Dropdown
         overlay={
           <ActionMenu action={action} Menu={Menu}>
-            <ActionMenu.Item key="setting:1">Option 1</ActionMenu.Item>
-            <ActionMenu.Item key="setting:2">Option 2</ActionMenu.Item>
+            <ActionMenu.Item key="option-1">Option 1</ActionMenu.Item>
+            <ActionMenu.Item key="option-2">Option 2</ActionMenu.Item>
           </ActionMenu>
         }
       >

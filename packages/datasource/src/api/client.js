@@ -5,7 +5,7 @@ import { createCaptchaInterceptor } from '@tidb-community/common/utils/axios';
 
 import { dispatchApiError } from './events';
 
-const shouldDispatchGlobalApiError = (status) => {
+const isDispatchGlobalApiError = (status) => {
   return ![400, 409, 428].includes(status);
 };
 
@@ -43,23 +43,25 @@ client.interceptors.response.use(
     }
 
     const { data, status } = response;
+    const { isDispatchApiError, isNotRejectError, isReturnErrorResponse } = config;
 
     if (typeof window !== 'undefined') {
-      let shouldDispatch = false;
-      const { shouldDispatchApiError } = config;
+      let isDispatch = false;
 
-      if (shouldDispatchApiError?.({ data, status })) {
-        shouldDispatch = true;
-      } else if (!shouldDispatchApiError && shouldDispatchGlobalApiError(status)) {
-        shouldDispatch = true;
+      if (isDispatchApiError?.({ data, status })) {
+        isDispatch = true;
+      } else if (!isDispatchApiError && isDispatchGlobalApiError(status)) {
+        isDispatch = true;
       }
 
-      if (shouldDispatch) {
+      if (isDispatch) {
         dispatchApiError(response);
       }
     }
 
-    return Promise.reject(config.isReturnErrorResponse ? response : data);
+    if (isNotRejectError?.({ data, status })) return;
+
+    return Promise.reject(isReturnErrorResponse ? response : data);
   }
 );
 

@@ -1,4 +1,4 @@
-import { camelize } from './string.utils';
+import { camelize } from './common.utils';
 
 export const transformRespToMap = (resp = {}) => {
   const { data = [] } = resp;

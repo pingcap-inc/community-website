@@ -44,7 +44,19 @@ function distribute-release-sources() {
     rm dist/**/*.map
     zip -r dist.zip dist
 
-    if ! gh release create -p "$tag" dist.zip --title "accounts-site-v$version" --notes ""; then
+    if ! gh release create -p "$tag" dist.zip --title "accounts-site-$version" --notes ""; then
       return 1
     fi
+}
+
+function set-releasing-version() {
+    local new_version=$1
+    npm version "$new_version"
+    return $?
+}
+
+function set-staging-version() {
+    local new_version=$1
+    npm version "$new_version-staging"
+    return $?
 }

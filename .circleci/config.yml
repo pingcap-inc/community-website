@@ -40,6 +40,30 @@ commands:
             ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
             npm run deploy
 
+  prepare-release-tools:
+    steps:
+      - run:
+          name: Install zip & unzip
+          command: apt-get install -y zip unzip
+      - run:
+          name: Download releash.sh
+          command: |
+            mkdir -p /opt/release.sh/
+            /bin/bash -c "$(curl https://raw.githubusercontent.com/634750802/release.sh/HEAD/download.sh)" - /opt/release.sh/
+      - run:
+          name: Install GitHub CLI
+          command: |
+            curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
+            echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+            sudo apt update
+            sudo apt install -y gh
+
+  release-accounts-site:
+    steps:
+      - run:
+          name: Release accouts site
+          command: /opt/release.sh/release.sh release packages/acocunts
+
 jobs:
   verify:
     docker:
@@ -75,6 +99,14 @@ jobs:
           at: .
       - deploy-website
 
+  release-account-site:
+    docker:
+      - image: circleci/node:14.13.0
+    steps:
+      - install-deps
+      - prepare-release-tools
+      - release-accounts-site
+
 workflows:
   commit:
     jobs:
@@ -98,3 +130,14 @@ workflows:
       - deploy:
           requires:
             - hold-for-deploy
+
+      - hold-for-releasing-accounts-site:
+          type: approval
+          filters:
+            branches:
+              only:
+                - main
+
+      - release-accounts-site:
+          requires:
+            - hold-for-releasing-accounts-site

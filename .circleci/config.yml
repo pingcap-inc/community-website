@@ -48,8 +48,8 @@ commands:
       - run:
           name: Download releash.sh
           command: |
-            mkdir -p /usr/local/release.sh/
-            /bin/bash -c "$(curl https://raw.githubusercontent.com/634750802/release.sh/HEAD/download.sh)" - /usr/local/release.sh/
+            sudo mkdir -p /usr/local/release.sh/
+            sudo /bin/bash -c "$(curl https://raw.githubusercontent.com/634750802/release.sh/HEAD/download.sh)" - /usr/local/release.sh/
       - run:
           name: Install GitHub CLI
           command: |

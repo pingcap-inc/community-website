@@ -102,6 +102,11 @@ jobs:
   accounts-site-releasing:
     docker:
       - image: circleci/node:14.13.0
+    environment:
+      SENTRY_ORG: pingcap
+        SENTRY_PROJECT: pingcap-sso
+        ENABLE_SENTRY: 'true'
+        SENTRY_NO_PROGRESS_BAR: '1'
     steps:
       - prepare-release-tools
       - install-deps

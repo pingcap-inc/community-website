@@ -43,8 +43,8 @@ commands:
   prepare-release-tools:
     steps:
       - run:
-          name: Install zip & unzip
-          command: sudo apt-get install -y zip unzip
+          name: Install required libs
+          command: sudo apt-get install -y zip unzip apt-transport-https
       - run:
           name: Install GitHub CLI
           command: |

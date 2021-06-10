@@ -99,12 +99,14 @@ jobs:
           at: .
       - deploy-website
 
-  release-account-site:
+  accounts-site-releasing:
     docker:
       - image: circleci/node:14.13.0
     steps:
-      - install-deps
       - prepare-release-tools
+      - install-deps
+      - attach_workspace:
+          at: .
       - release-accounts-site
 
 workflows:
@@ -131,13 +133,11 @@ workflows:
           requires:
             - hold-for-deploy
 
-      - hold-for-releasing-accounts-site:
+  account-site:
+    jobs:
+      - hold-for-accounts-site-releasing:
           type: approval
-          filters:
-            branches:
-              only:
-                - main
 
-      - release-accounts-site:
+      - accounts-site-releasing:
           requires:
-            - hold-for-releasing-accounts-site
+            - hold-for-accounts-site-releasing

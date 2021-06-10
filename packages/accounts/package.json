@@ -1,6 +1,6 @@
 {
   "name": "@tidb-community/accounts",
-  "version": "1.0.0-staging",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "build": "vite build",

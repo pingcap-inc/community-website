@@ -67,7 +67,7 @@ export const navItems = [
         link: 'https://pingcap.com/case-studies',
       },
       {
-        title: 'PingCAP 大学',
+        title: 'PingCAP Education',
         link: 'https://university.pingcap.com',
       },
       {

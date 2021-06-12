@@ -23,7 +23,6 @@ const Company = () => {
         mutate('operation.fetchRedDots');
       }
     })();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [redDots.companyInfo]);
 
   if (isAnonymous) {

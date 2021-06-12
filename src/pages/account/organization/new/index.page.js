@@ -9,15 +9,17 @@ import { CoreLayout } from '~/layouts';
 import { PageLoader } from '~/components';
 
 const Page = () => {
+  const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
+  const { meData } = useContext(MeContext);
+
   useEffect(() => {
     (async () => {
-      await api.operation.setRedDotRead('org-enroll');
-      mutate('operation.fetchRedDots');
+      if (isLoggedIn) {
+        await api.operation.setRedDotRead('org-enroll');
+        mutate('operation.fetchRedDots');
+      }
     })();
-  }, []);
-
-  const { login, isAnonymous } = useContext(AuthContext);
-  const { meData } = useContext(MeContext);
+  }, [isLoggedIn]);
 
   if (isAnonymous) {
     login();

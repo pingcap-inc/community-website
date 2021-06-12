@@ -67,6 +67,7 @@ const App = ({ Component, pageProps, router }) => {
     // Default configs could be found from
     // https://github.com/vercel/swr/blob/master/src/config.ts
     revalidateOnFocus: false,
+    shouldRetryOnError: false,
   });
 
   const meData = meResp?.data;

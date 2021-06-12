@@ -5,13 +5,11 @@ import Audit from './audit';
 import Banner from './banner';
 import Form from './form';
 import { AUDIT_STATUS } from './audit/audit.constants';
-import { AuthContext, MeContext } from '~/context';
-import { PageLoader } from '~/components';
+import { MeContext } from '~/context';
 import { SplitLayout } from '~/layouts';
 
 const CreateOrganization = () => {
   const router = useRouter();
-  const { login, isAnonymous } = useContext(AuthContext);
   const { meData, mutateMe } = useContext(MeContext);
   const [showForm, setShowForm] = useState(false);
 
@@ -24,15 +22,6 @@ const CreateOrganization = () => {
 
   const resetForm = () => setShowForm(true);
   const pushOrgHome = () => router.push(`/orgs/${meData?.org?.slug}/home`);
-
-  if (isAnonymous) {
-    login();
-    return null;
-  }
-
-  if (!meData) {
-    return <PageLoader />;
-  }
 
   if (showForm) {
     return (

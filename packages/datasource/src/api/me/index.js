@@ -5,8 +5,4 @@ export const me = () =>
     isDispatchApiError: ({ status }) => {
       return status !== 401;
     },
-
-    isNotRejectError: ({ status }) => {
-      return status === 401;
-    },
   });

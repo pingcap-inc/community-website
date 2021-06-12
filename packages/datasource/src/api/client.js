@@ -43,7 +43,7 @@ client.interceptors.response.use(
     }
 
     const { data, status } = response;
-    const { isDispatchApiError, isNotRejectError, isReturnErrorResponse } = config;
+    const { isDispatchApiError, isReturnErrorResponse } = config;
 
     if (typeof window !== 'undefined') {
       let isDispatch = false;
@@ -58,8 +58,6 @@ client.interceptors.response.use(
         dispatchApiError(response);
       }
     }
-
-    if (isNotRejectError?.({ data, status })) return;
 
     return Promise.reject(isReturnErrorResponse ? response : data);
   }

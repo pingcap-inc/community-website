@@ -28,7 +28,7 @@ const config = {
     config.resolve.alias = {
       ...alias,
 
-      ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-component']),
+      ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-components']),
 
       // Make sure we will build directly from the source code for internal comsumers,
       // which gives us an instant reaction if anything updates

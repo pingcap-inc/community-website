@@ -1,6 +1,6 @@
 {
   "name": "@tidb-community/datasource",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "scripts": {
     "build": "rimraf es lib && father build",
     "build:watch": "father build --watch",

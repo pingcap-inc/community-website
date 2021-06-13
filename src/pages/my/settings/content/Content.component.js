@@ -52,9 +52,6 @@ const Content = () => {
     login();
   };
 
-  // FIXME: It's PO's decision of removing unbinding GitHub account temporarily.
-  // We will enable the this operation in the later version
-  // eslint-disable-next-line no-unused-vars
   const unbind = (provider) => (e) => {
     Modal.confirm({
       title: '确定解绑 GitHub 账号吗？',
@@ -106,9 +103,7 @@ const Content = () => {
           {github ? (
             <Styled.Account>
               <Styled.GithubIcon />
-              {github.login}
-              {/* FIXME: We will enable this in the later version */}
-              {/*（<span onClick={unbind('github')}>解绑</span>）*/}
+              {github.login}（<span onClick={unbind('github')}>解绑</span>）
             </Styled.Account>
           ) : (
             <Button type="text" icon={<Styled.GithubIcon />} onClick={bind('github')}>

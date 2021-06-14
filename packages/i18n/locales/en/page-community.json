@@ -1,5 +1,30 @@
 {
-  "title": "Let’s build the database of the future together!",
-  "subtitle": "Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!",
+  "banner": {
+    "title": "Let’s build the database of the future together!",
+    "desc": "Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!",
+    "navs": [
+      {
+        "title": "Forum",
+        "label": "View",
+        "isCN": true,
+        "link": "https://asktug.com"
+      },
+      {
+        "title": "Slack",
+        "label": "Join",
+        "link": "https://slack.tidb.io/invite?team=tidb-community&channel=everyone"
+      },
+      {
+        "title": "Mailing List",
+        "label": "Subscribe",
+        "link": "https://lists.tidb.io/g/main/subgroups"
+      },
+      {
+        "title": "Docs",
+        "label": "Read",
+        "link": "https://docs.pingcap.com/tidb/stable"
+      }
+    ]
+  },
   "viewAllEvents": "View All Events"
 }

@@ -7,7 +7,6 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './activities.styled';
-import data from './activities.data';
 import { link as linkUtils } from '~/utils';
 
 export const Header = ({ className, title, desc, children }) => (
@@ -25,19 +24,24 @@ const Activities = () => {
 
   const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
 
+  const headerProps = {
+    title: t('activities.title'),
+    desc: t('activities.desc'),
+  };
+
   const activityCardsProps = {
-    activities: data.activities,
+    activities: t('activities.activities', { returnObjects: true }),
     onCardClick: onLinkClick,
     renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />,
   };
 
   return (
     <Styled.Container>
-      <Header {...R.pick(['title', 'desc'], data)} />
+      <Header {...headerProps} />
       <ActivityCards {...activityCardsProps} />
       <Styled.ViewMoreWrapper>
         <ViewMoreButton onClick={(e) => onLinkClick('https://contributor.tidb.io/events')}>
-          {t('viewAllEvents')}
+          {t('activities.viewAll')}
         </ViewMoreButton>
       </Styled.ViewMoreWrapper>
     </Styled.Container>

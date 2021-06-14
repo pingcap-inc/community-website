@@ -4,23 +4,31 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { ViewMoreButton } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './career.styled';
 import data from './career.data';
 import { link as linkUtils } from '~/utils';
 
-const { cert: certData, job: jobData } = data;
+const { job: jobData } = data;
 
 const Career = () => {
   const router = useRouter();
+  const { t } = useTranslation('page-community');
+
   const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
+
+  const headerProps = {
+    title: t('career.title'),
+    desc: t('career.desc'),
+  };
 
   return (
     <Styled.Container>
-      <Styled.Header {...R.pick(['title', 'desc'], data)} />
+      <Styled.Header {...headerProps} />
 
       <Styled.CertSection>
-        <Styled.Title>{certData.title}</Styled.Title>
+        <Styled.Title>{t('career.certTitle')}</Styled.Title>
 
         <Row gutter={[32, 24]}>
           {['PCTA', 'PCTP'].map((name) => (
@@ -57,7 +65,7 @@ const Career = () => {
 
         <Styled.ViewMoreWrapper>
           <ViewMoreButton onClick={(e) => onLinkClick('https://tidb-jobs.pingcap.com/')}>
-            View More Opportunities
+            {t('career.viewAll')}
           </ViewMoreButton>
         </Styled.ViewMoreWrapper>
       </Styled.JobSection>

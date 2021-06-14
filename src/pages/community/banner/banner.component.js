@@ -7,7 +7,6 @@ import { useTranslation } from 'next-i18next';
 
 import * as Styled from './banner.styled';
 import ChineseIcon from './chinese.svg';
-import data from './banner.data';
 import { bgWidth, bgHeight } from './banner.constants';
 import { link as linkUtils } from '~/utils';
 
@@ -43,7 +42,7 @@ const Banner = () => {
         <p>{t('banner.desc')}</p>
 
         <Styled.Navs>
-          {data.navs.map(({ title, isCN, label, link }, idx) => (
+          {t('banner.navs', { returnObjects: true }).map(({ title, isCN, label, link }, idx) => (
             <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>
                 {title}

@@ -7,6 +7,7 @@ module.exports = {
     locales: ['zh', 'en'],
   },
   use: [require('i18next-http-backend/cjs')],
+  ns: ['common', 'page-community'],
   backend: {
     // FIXME: please update domain for the production env
     loadPath: `${isProd ? 'http://localhost:5000' : 'http://localhost:5000'}/{{lng}}/{{ns}}.json`,

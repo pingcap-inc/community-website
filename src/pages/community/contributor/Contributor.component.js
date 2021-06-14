@@ -27,13 +27,14 @@ const Card = ({ title, desc, link, imgId }) => {
 
 const Contributor = () => {
   const { t } = useTranslation('page-community');
+  const lang = t('contributor', { returnObjects: true });
 
   return (
     <Styled.Container>
-      <Styled.Title>{t('contributor.title')}</Styled.Title>
+      <Styled.Title>{lang.title}</Styled.Title>
 
       <Row gutter={[32, 32]} justify="center">
-        {t('contributor.items', { returnObjects: true }).map(({ title, desc, link }, idx) => {
+        {lang.items.map(({ title, desc, link }, idx) => {
           const cardProps = {
             desc,
             imgId: idx + 1,

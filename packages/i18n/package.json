@@ -1,0 +1,11 @@
+{
+  "name": "@tidb-community/i18n",
+  "private": true,
+  "scripts": {
+    "start": "serve ./locales"
+  },
+  "description": "Locale JSON and PO files for i18n",
+  "devDependencies": {
+    "serve": "12.0.0"
+  }
+}

@@ -3,10 +3,10 @@ import Image from 'next/image';
 import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 import { useSize } from 'ahooks';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './banner.styled';
 import ChineseIcon from './chinese.svg';
-import data from './banner.data';
 import { bgWidth, bgHeight } from './banner.constants';
 import { link as linkUtils } from '~/utils';
 
@@ -14,9 +14,11 @@ const Banner = () => {
   const ref = useRef();
   const size = useSize(ref);
   const router = useRouter();
+  const { t } = useTranslation('page-community');
 
   const { width: sizeWidth } = size;
   const onCardClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
+  const lang = t('banner', { returnObjects: true });
 
   const imgSizeProps =
     sizeWidth > bgWidth
@@ -37,11 +39,11 @@ const Banner = () => {
       </Styled.Background>
 
       <Styled.Content>
-        <h2>{data.title}</h2>
-        <p>{data.desc}</p>
+        <h2>{lang.title}</h2>
+        <p>{lang.desc}</p>
 
         <Styled.Navs>
-          {data.navs.map(({ title, isCN, label, link }, idx) => (
+          {lang.navs.map(({ title, isCN, label, link }, idx) => (
             <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>
                 {title}

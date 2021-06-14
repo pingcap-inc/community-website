@@ -1,13 +1,16 @@
+const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
+
 module.exports = {
   i18n: {
-    defaultLocale: 'zh',
+    // defaultLocale: 'zh',
+    defaultLocale: 'en',
     locales: ['zh', 'en'],
   },
   ns: ['common', 'page-community'],
   use: [require('i18next-http-backend/cjs')],
   backend: {
-    loadPath: 'http://localhost:5000/{{lng}}/{{ns}}.json',
+    loadPath: `${isProd ? 'http://localhost:5000' : 'http://localhost:5000'}/{{lng}}/{{ns}}.json`,
   },
-  debug: true,
+  debug: !isProd,
   serializeConfig: false,
 };

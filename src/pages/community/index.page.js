@@ -9,8 +9,11 @@ import Learning from './learning';
 import UserGroup from './userGroup';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
+import { cookieKeys } from '~/constants';
 
-export async function getServerSideProps({ locale }) {
+export async function getServerSideProps({ locale, req }) {
+  locale = req.cookies[cookieKeys.locale] || locale;
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common', 'page-community'])),

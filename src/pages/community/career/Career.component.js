@@ -4,23 +4,33 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import { ViewMoreButton } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './career.styled';
-import data from './career.data';
+import { genIcon, genLink } from './career.utils';
 import { link as linkUtils } from '~/utils';
-
-const { cert: certData, job: jobData } = data;
 
 const Career = () => {
   const router = useRouter();
+  const { t } = useTranslation('page-community');
+
   const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
+
+  const lang = t('career', {
+    returnObjects: true,
+  });
+
+  const {
+    job,
+    job: { viewAll },
+  } = lang;
 
   return (
     <Styled.Container>
-      <Styled.Header {...R.pick(['title', 'desc'], data)} />
+      <Styled.Header {...R.pick(['title', 'desc'], lang)} />
 
       <Styled.CertSection>
-        <Styled.Title>{certData.title}</Styled.Title>
+        <Styled.Title>{t('career.certTitle')}</Styled.Title>
 
         <Row gutter={[32, 24]}>
           {['PCTA', 'PCTP'].map((name) => (
@@ -34,14 +44,14 @@ const Career = () => {
       </Styled.CertSection>
 
       <Styled.JobSection>
-        <Styled.Title>{jobData.title}</Styled.Title>
+        <Styled.Title>{job.title}</Styled.Title>
 
         <Row gutter={[32, 24]}>
-          {jobData.items.map(({ icon, position, location, link }, idx) => (
+          {job.items.map(({ iconId, position, location, linkId }, idx) => (
             <Col key={idx} xs={24} sm={12} md={8} lg={6}>
-              <Styled.JobCard onClick={(e) => onLinkClick(link)}>
+              <Styled.JobCard onClick={(e) => onLinkClick(genLink(linkId))}>
                 <Styled.JobImg>
-                  <Image alt={position} src={icon} layout="fill" objectFit="contain" />
+                  <Image alt={position} src={genIcon(iconId)} layout="fill" objectFit="contain" />
                 </Styled.JobImg>
                 <Styled.JobContent>
                   {[position, location].map((txt, idx) => (
@@ -56,9 +66,7 @@ const Career = () => {
         </Row>
 
         <Styled.ViewMoreWrapper>
-          <ViewMoreButton onClick={(e) => onLinkClick('https://tidb-jobs.pingcap.com/')}>
-            View More Opportunities
-          </ViewMoreButton>
+          <ViewMoreButton onClick={(e) => onLinkClick(viewAll.link)}>{viewAll.lable}</ViewMoreButton>
         </Styled.ViewMoreWrapper>
       </Styled.JobSection>
     </Styled.Container>

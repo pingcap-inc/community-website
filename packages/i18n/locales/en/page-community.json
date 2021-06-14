@@ -1,0 +1,170 @@
+{
+  "banner": {
+    "title": "Let’s build the database of the future together!",
+    "desc": "Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!",
+    "navs": [
+      {
+        "title": "Forum",
+        "label": "View",
+        "isCN": true,
+        "link": "https://asktug.com"
+      },
+      {
+        "title": "Slack",
+        "label": "Join",
+        "link": "https://slack.tidb.io/invite?team=tidb-community&channel=everyone"
+      },
+      {
+        "title": "Mailing List",
+        "label": "Subscribe",
+        "link": "https://lists.tidb.io/g/main/subgroups"
+      },
+      {
+        "title": "Docs",
+        "label": "Read",
+        "link": "https://docs.pingcap.com/tidb/stable"
+      }
+    ]
+  },
+  "activities": {
+    "title": "Meet the TiDB Community",
+    "desc": "Meet other TiDB Community members IRL and online. Meet like-minded friends, share practical cases and technical experience.",
+    "activities": [
+      {
+        "title": "TiDB Incubator Program",
+        "desc": "TiDB Incubator Program is designed to ensure that new projects in the TiDB ecosystem can obtain resources and help from the community towards their desired maturity level.",
+        "link": "https://github.com/pingcap/community/tree/master/incubator",
+        "img": "https://contributor.tidb.io/static/event-TiDB-Incubator-Program-1ade37389dac75fc23b1d408b2011973.svg"
+      },
+      {
+        "title": "TiDB Hackathon 2020",
+        "desc": "The theme of Hackathon this year is [∞], by which we expect participants to innovate, to challenge, and to unlock the infinite power of TiDB.",
+        "link": "https://pingcap.com/community/events/hackathon2020/",
+        "img": "https://pingcap.com/static/tidb-hackathon2020-62c1c40e7dd9eb4a0eed8d00ea6507e5.jpg"
+      },
+      {
+        "title": "High Performance TiDB Challenge",
+        "desc": "High Performance TiDB Challenge is a mentoring program which focuses on workload optimization to bring TiDB performance to a higher level!",
+        "link": "https://pingcap.com/community/events/high-performance-tidb-challenge/",
+        "img": "https://pingcap.com/static/high-performance-tidb-challenge-ff7cb0ab67af3592ef7f1fe66151630c.png"
+      }
+    ],
+    "viewAll": {
+      "label": "View All Events",
+      "link": "'https://contributor.tidb.io/events'"
+    }
+  },
+  "learning": {
+    "title": "Learn How to Use TiDB",
+    "desc": [
+      "PingCAP University is committed to cultivating first-class talents in developing, managing and applying distributed relational database systems. All training and certification courses are designed and taught by the official TiDB technical experts of PingCAP.",
+      "You can also read the official document to learn the usage of TiDB."
+    ],
+    "btns": {
+      "pu": {
+        "label": "PingCAP University",
+        "link": "https://university.pingcap.com"
+      },
+      "docs": {
+        "label": "Docs",
+        "link": "https://docs.pingcap.com/tidb/stable"
+      }
+    }
+  },
+  "userGroup": {
+    "title": "Join User Group",
+    "desc": "TUG (TiDB User Group) is an independent, self-organized, and non-profit organization that gathers the database and big data technology practitioners around the world. In TUG, you can increase your personal influence, open up your horizons and make like-minded friends.",
+    "btns": {
+      "join": {
+        "label": "Join TUG",
+        "link": "https://tug.tidb.io"
+      },
+      "ask": {
+        "label": "Forum",
+        "link": "https://asktug.com"
+      }
+    }
+  },
+  "contributor": {
+    "title": "Become a Contributor",
+    "items": [
+      {
+        "title": "Contributing Guide",
+        "desc": "Development workflow, commit message formatting, contact points and other resources.",
+        "link": "https://github.com/pingcap/community/blob/master/contributors/README.md"
+      },
+      {
+        "title": "Join Developer Group",
+        "desc": "Learning knowledge and skills, sharing best practices, become a database expert, develop database standards.",
+        "link": "https://contributor.tidb.io"
+      },
+      {
+        "title": "Code of Conduct",
+        "desc": "Agreement on rules of behaviour for the members of TiDB Community.",
+        "link": "https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md"
+      }
+    ]
+  },
+  "career": {
+    "title": "Career",
+    "desc": "Here you can find attractive job opportunities posted by TiDB users. It’s free to post and apply for a job. Wish you the best of luck in your search!",
+    "certTitle": "Certification",
+    "job": {
+      "title": "Job Board",
+      "viewAll": {
+        "label": "View More Opportunities",
+        "link": "https://tidb-jobs.pingcap.com"
+      },
+      "items": [
+        {
+          "iconId": "paypay",
+          "position": "资深 DBA 工程师",
+          "location": "上海",
+          "linkId": "paypay/dba"
+        },
+        {
+          "iconId": "yichewang",
+          "position": "DBA",
+          "location": "北京",
+          "linkId": "yichewang/dba"
+        },
+        {
+          "iconId": "zhangmen",
+          "position": "DBA - TiDB 专岗",
+          "location": "上海",
+          "linkId": "zhangmen/dba-tidb"
+        },
+        {
+          "iconId": "huya",
+          "position": "DBA 工程师",
+          "location": "广州",
+          "linkId": "huya/dba"
+        },
+        {
+          "iconId": "xiaomi",
+          "position": "DBA 工程师",
+          "location": "北京",
+          "linkId": "xiaomi/dba"
+        },
+        {
+          "iconId": "kingSoft",
+          "position": "DBA 运维开发",
+          "location": "广州/珠海",
+          "linkId": "kingsoft/dba"
+        },
+        {
+          "iconId": "ucloud",
+          "position": "Go 研发工程师",
+          "location": "上海",
+          "linkId": "go-engineer-paas"
+        },
+        {
+          "iconId": "ucloud",
+          "position": "Go 研发工程师",
+          "location": "上海",
+          "linkId": "go-engineer-tidb"
+        }
+      ]
+    }
+  }
+}

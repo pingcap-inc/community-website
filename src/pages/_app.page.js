@@ -3,6 +3,7 @@ import * as R from 'ramda';
 import React, { useEffect, useState } from 'react';
 import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
+import { appWithTranslation } from 'next-i18next';
 import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 import { message } from 'antd';
 import { withLayout } from '@tidb-community/common';
@@ -11,6 +12,7 @@ import '~/components/Button/Button.scss';
 import '~/components/Container/Container.scss';
 import '~/styles/globals.css';
 import ErrorPage from './_error.page';
+import nextI18NextConfig from '../../next-i18next.config';
 import { authContext, AuthContext, MeContext } from '~/context';
 import { isEmptyOrNil } from '~/utils/common.utils';
 
@@ -98,4 +100,4 @@ const App = ({ Component, pageProps, router }) => {
   );
 };
 
-export default App;
+export default appWithTranslation(App, nextI18NextConfig);

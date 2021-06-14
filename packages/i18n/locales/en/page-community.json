@@ -49,7 +49,10 @@
         "img": "https://pingcap.com/static/high-performance-tidb-challenge-ff7cb0ab67af3592ef7f1fe66151630c.png"
       }
     ],
-    "viewAll": "View All Events"
+    "viewAll": {
+      "label": "View All Events",
+      "link": "'https://contributor.tidb.io/events'"
+    }
   },
   "learning": {
     "title": "Learn How to Use TiDB",
@@ -106,6 +109,62 @@
     "title": "Career",
     "desc": "Here you can find attractive job opportunities posted by TiDB users. It’s free to post and apply for a job. Wish you the best of luck in your search!",
     "certTitle": "Certification",
-    "viewAll": "View More Opportunities"
+    "job": {
+      "title": "Job Board",
+      "viewAll": {
+        "label": "View More Opportunities",
+        "link": "https://tidb-jobs.pingcap.com"
+      },
+      "items": [
+        {
+          "iconId": "paypay",
+          "position": "资深 DBA 工程师",
+          "location": "上海",
+          "linkId": "paypay/dba"
+        },
+        {
+          "iconId": "yichewang",
+          "position": "DBA",
+          "location": "北京",
+          "linkId": "yichewang/dba"
+        },
+        {
+          "iconId": "zhangmen",
+          "position": "DBA - TiDB 专岗",
+          "location": "上海",
+          "linkId": "zhangmen/dba-tidb"
+        },
+        {
+          "iconId": "huya",
+          "position": "DBA 工程师",
+          "location": "广州",
+          "linkId": "huya/dba"
+        },
+        {
+          "iconId": "xiaomi",
+          "position": "DBA 工程师",
+          "location": "北京",
+          "linkId": "xiaomi/dba"
+        },
+        {
+          "iconId": "kingSoft",
+          "position": "DBA 运维开发",
+          "location": "广州/珠海",
+          "linkId": "kingsoft/dba"
+        },
+        {
+          "iconId": "ucloud",
+          "position": "Go 研发工程师",
+          "location": "上海",
+          "linkId": "go-engineer-paas"
+        },
+        {
+          "iconId": "ucloud",
+          "position": "Go 研发工程师",
+          "location": "上海",
+          "linkId": "go-engineer-tidb"
+        }
+      ]
+    }
   }
 }

@@ -24,25 +24,24 @@ const Activities = () => {
 
   const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
 
-  const headerProps = {
-    title: t('activities.title'),
-    desc: t('activities.desc'),
-  };
+  const lang = t('activities', {
+    returnObjects: true,
+  });
+
+  const { activities, viewAll } = lang;
 
   const activityCardsProps = {
-    activities: t('activities.activities', { returnObjects: true }),
+    activities,
     onCardClick: onLinkClick,
     renderImage: ({ img, title }) => <Image alt={title} src={img} layout="fill" objectFit="cover" />,
   };
 
   return (
     <Styled.Container>
-      <Header {...headerProps} />
+      <Header {...R.pick(['title', 'desc'], lang)} />
       <ActivityCards {...activityCardsProps} />
       <Styled.ViewMoreWrapper>
-        <ViewMoreButton onClick={(e) => onLinkClick('https://contributor.tidb.io/events')}>
-          {t('activities.viewAll')}
-        </ViewMoreButton>
+        <ViewMoreButton onClick={(e) => onLinkClick(viewAll.link)}>{viewAll.label}</ViewMoreButton>
       </Styled.ViewMoreWrapper>
     </Styled.Container>
   );

@@ -18,6 +18,7 @@ const Banner = () => {
 
   const { width: sizeWidth } = size;
   const onCardClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
+  const lang = t('banner', { returnObjects: true });
 
   const imgSizeProps =
     sizeWidth > bgWidth
@@ -38,11 +39,11 @@ const Banner = () => {
       </Styled.Background>
 
       <Styled.Content>
-        <h2>{t('banner.title')}</h2>
-        <p>{t('banner.desc')}</p>
+        <h2>{lang.title}</h2>
+        <p>{lang.desc}</p>
 
         <Styled.Navs>
-          {t('banner.navs', { returnObjects: true }).map(({ title, isCN, label, link }, idx) => (
+          {lang.navs.map(({ title, isCN, label, link }, idx) => (
             <Styled.NavCard key={idx} onClick={(e) => onCardClick(link)}>
               <h3>
                 {title}

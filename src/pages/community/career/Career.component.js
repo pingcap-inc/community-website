@@ -7,10 +7,8 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './career.styled';
-import data from './career.data';
+import { genIcon, genLink } from './career.utils';
 import { link as linkUtils } from '~/utils';
-
-const { job: jobData } = data;
 
 const Career = () => {
   const router = useRouter();
@@ -18,14 +16,18 @@ const Career = () => {
 
   const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
 
-  const headerProps = {
-    title: t('career.title'),
-    desc: t('career.desc'),
-  };
+  const lang = t('career', {
+    returnObjects: true,
+  });
+
+  const {
+    job,
+    job: { viewAll },
+  } = lang;
 
   return (
     <Styled.Container>
-      <Styled.Header {...headerProps} />
+      <Styled.Header {...R.pick(['title', 'desc'], lang)} />
 
       <Styled.CertSection>
         <Styled.Title>{t('career.certTitle')}</Styled.Title>
@@ -42,14 +44,14 @@ const Career = () => {
       </Styled.CertSection>
 
       <Styled.JobSection>
-        <Styled.Title>{jobData.title}</Styled.Title>
+        <Styled.Title>{job.title}</Styled.Title>
 
         <Row gutter={[32, 24]}>
-          {jobData.items.map(({ icon, position, location, link }, idx) => (
+          {job.items.map(({ iconId, position, location, linkId }, idx) => (
             <Col key={idx} xs={24} sm={12} md={8} lg={6}>
-              <Styled.JobCard onClick={(e) => onLinkClick(link)}>
+              <Styled.JobCard onClick={(e) => onLinkClick(genLink(linkId))}>
                 <Styled.JobImg>
-                  <Image alt={position} src={icon} layout="fill" objectFit="contain" />
+                  <Image alt={position} src={genIcon(iconId)} layout="fill" objectFit="contain" />
                 </Styled.JobImg>
                 <Styled.JobContent>
                   {[position, location].map((txt, idx) => (
@@ -64,9 +66,7 @@ const Career = () => {
         </Row>
 
         <Styled.ViewMoreWrapper>
-          <ViewMoreButton onClick={(e) => onLinkClick('https://tidb-jobs.pingcap.com/')}>
-            {t('career.viewAll')}
-          </ViewMoreButton>
+          <ViewMoreButton onClick={(e) => onLinkClick(viewAll.link)}>{viewAll.lable}</ViewMoreButton>
         </Styled.ViewMoreWrapper>
       </Styled.JobSection>
     </Styled.Container>

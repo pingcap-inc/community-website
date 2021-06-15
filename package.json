@@ -36,7 +36,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "4.6.2",
-    "@sentry/nextjs": "6.4.1",
+    "@sentry/nextjs": "6.7.0",
     "ahooks": "2.10.4",
     "antd": "4.15.6",
     "axios": "0.21.1",

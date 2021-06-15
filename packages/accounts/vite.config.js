@@ -58,7 +58,7 @@ export default ({ mode }) => {
           'react',
           'react-dom',
           'react-is',
-          'styled-component',
+          'styled-components',
           'yup',
         ]),
       },

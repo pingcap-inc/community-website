@@ -2,7 +2,7 @@ import client from '../client';
 
 export const me = () =>
   client.get('/api/me', {
-    shouldDispatchApiError: ({ status }) => {
+    isDispatchApiError: ({ status }) => {
       return status !== 401;
     },
   });

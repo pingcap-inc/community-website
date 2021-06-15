@@ -12,6 +12,7 @@ import '~/components/Container/Container.scss';
 import '~/styles/globals.css';
 import ErrorPage from './_error.page';
 import { authContext, AuthContext, MeContext } from '~/context';
+import { isEmptyOrNil } from '~/utils/common.utils';
 
 const GlobalStyle = createAppGlobalStyle();
 
@@ -63,12 +64,16 @@ const App = ({ Component, pageProps, router }) => {
     isValidating: isMeValidating,
     mutate: mutateMe,
   } = useSWR('me', fetcher, {
+    // Default configs could be found from
+    // https://github.com/vercel/swr/blob/master/src/config.ts
     revalidateOnFocus: false,
+    shouldRetryOnError: false,
   });
 
   const meData = meResp?.data;
 
   authContext.isAnonymous = !!meError;
+  authContext.isLoggedIn = !isEmptyOrNil(meData);
 
   if (errorStatus) {
     return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;

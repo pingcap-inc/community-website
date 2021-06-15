@@ -23,9 +23,9 @@ const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onN
 
 const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
-  const { data: redDotsResp } = useSWR('operation.fetchRedDots');
+  const { login, logout, isLoggedIn } = useContext(AuthContext);
   const { meData, isMeValidating } = useContext(MeContext);
-  const { login, logout } = useContext(AuthContext);
+  const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
 
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
   const data = getData({ domain, path: router.basePath, locale, meData, redDots }).nav;

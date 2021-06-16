@@ -15,6 +15,11 @@ module.exports = {
         react: 'React',
         'react-dom': 'ReactDOM',
       };
+      config.optimization.splitChunks = {
+        cacheGroups: {
+          default: false,
+        },
+      };
       config.optimization.runtimeChunk = false;
       config.output.filename = 'static/js/community-ui.js';
       config.plugins.forEach((plugin) => {

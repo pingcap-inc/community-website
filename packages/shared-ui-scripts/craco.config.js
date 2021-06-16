@@ -27,6 +27,21 @@ module.exports = {
           plugin.options.filename = 'static/css/community-ui.css';
         }
       });
+      const oneOf = config.module.rules.find((obj) => 'oneOf' in obj).oneOf;
+      const jsRule = oneOf.find(({ test }) => String(test) === String(/\.(js|mjs|jsx|ts|tsx)$/));
+      jsRule.include = [
+        jsRule.include,
+        path.resolve('../datasource/es'),
+        path.resolve('../ui/es'),
+        path.resolve('../common/es'),
+      ];
+      jsRule.options.plugins.splice(0, 1, [
+        'inline-react-svg',
+        {
+          svgo: false,
+        },
+      ]);
+      config.optimization.minimize = false;
       config.resolve.plugins = config.resolve.plugins.filter(
         (plugin) => plugin?.constructor?.name !== 'ModuleScopePlugin'
       );

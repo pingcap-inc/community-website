@@ -2,7 +2,7 @@
   "name": "@tidb-community/shared-ui-scripts",
   "private": true,
   "scripts": {
-    "start": "craco start",
+    "start": "SKIP_PREFLIGHT_CHECK=true craco start",
     "build": "SKIP_PREFLIGHT_CHECK=true craco build"
   },
   "browserslist": {
@@ -27,7 +27,8 @@
     "craco-antd": "1.19.0",
     "craco-less": "1.17.1",
     "@babel/core": "7.13.0",
-    "@craco/craco": "5.5.0"
+    "@craco/craco": "5.5.0",
+    "babel-plugin-inline-react-svg": "2.0.1"
   },
   "peerDependencies": {
     "ramda": "^0.27.1",

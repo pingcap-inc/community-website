@@ -24,6 +24,10 @@ const createAppGlobalStyle = () => createGlobalStyle`
       ${clearFix()};
     }
 
+    .grecaptcha-badge {
+      display: none !important;
+    }
+
     ${resetAntStyles};
   }
 `;

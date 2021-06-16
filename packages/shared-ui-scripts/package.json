@@ -1,5 +1,5 @@
 {
-  "name": "@tidb-community/events-migration",
+  "name": "@tidb-community/shared-ui-scripts",
   "private": true,
   "scripts": {
     "start": "craco start",

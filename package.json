@@ -10,7 +10,7 @@
     "build:ui": "lerna run --scope @tidb-community/ui build",
     "build:common": "lerna run --scope @tidb-community/common build",
     "build:datasource": "lerna run --scope @tidb-community/datasource build",
-    "build:events-migration": "lerna run --scope @tidb-community/events-migration build",
+    "build:shared-ui-scripts": "lerna run --scope @tidb-community/shared-ui-scripts build",
     "build:watch": "lerna run --no-bail build:watch",
     "deploy": "shipit production deploy",
     "dev": "next dev",

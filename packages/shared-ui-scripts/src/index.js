@@ -82,7 +82,7 @@ const Page = () => {
     navItems: headerNavItems,
     currentNav,
     onTitleClick: () => {
-      document.window.location.href = '/';
+      window.location.href = '/';
     },
   };
   const footerProps = {

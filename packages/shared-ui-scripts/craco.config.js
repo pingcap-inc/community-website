@@ -31,10 +31,11 @@ module.exports = {
         (plugin) => plugin?.constructor?.name !== 'ModuleScopePlugin'
       );
       config.resolve.alias = {
-        '@tidb-community/datasource': path.resolve('../datasource/lib'),
-        '@tidb-community/ui': path.resolve('../ui/lib'),
-        '@tidb-community/common': path.resolve('../common/lib'),
+        '@tidb-community/datasource': path.resolve('../datasource/es'),
+        '@tidb-community/ui': path.resolve('../ui/es'),
+        '@tidb-community/common': path.resolve('../common/es'),
       };
+      config.resolve.symlinks = false;
       return config;
     },
   },

@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
 
@@ -68,12 +67,7 @@ const People = ({ howToBecome, tmc, leader }) => {
             <div className={styles.organization_chart_content_title}>TUG 组织架构</div>
             <div className={styles.organization_chart_content_image}>
               <MyLink href={'/images/people/tug-organization-chart.svg'}>
-                <Image
-                  src="/images/people/tug-organization-chart.svg"
-                  alt="tug-company-chart"
-                  width={1200}
-                  height={520}
-                />
+                <img src="/images/people/tug-organization-chart.svg" alt="tug-company-chart" />
               </MyLink>
             </div>
           </div>

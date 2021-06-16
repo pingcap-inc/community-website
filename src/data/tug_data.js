@@ -19,7 +19,7 @@ const data = {
       avatar: '',
       name: '刘春雷',
       company: '58 同城',
-      title: '数据库技术部 DBA',
+      title: 'DBA',
       role: '内容组 Leader',
     },
     {
@@ -125,7 +125,7 @@ const data = {
       name: 'Neil Han',
       company: 'PingCAP',
       title: 'Head of APAC',
-      role: 'APAC 区域组Leader',
+      role: 'APAC 区域组 Leader',
     },
   ],
 

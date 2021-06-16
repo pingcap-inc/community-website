@@ -20,11 +20,14 @@
   "dependencies": {
     "@tidb-community/datasource": "*",
     "@tidb-community/ui": "*",
+    "ramda": "0.27.1"
+  },
+  "devDependencies": {
     "react-scripts": "3.4.3",
     "craco-antd": "1.19.0",
     "craco-less": "1.17.1",
-    "ramda": "0.27.1",
-    "@babel/core": "7.13.0"
+    "@babel/core": "7.13.0",
+    "@craco/craco": "5.5.0"
   },
   "peerDependencies": {
     "ramda": "^0.27.1",

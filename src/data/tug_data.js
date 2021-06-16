@@ -8,55 +8,25 @@ const data = {
     },
     {
       avatar: '',
-      name: '于振华',
-      company: '北银金科',
-      title: '云计算应用部副总经理',
-    },
-    {
-      avatar: '',
-      name: '孙晓光',
-      company: '知乎',
-      title: '技术平台负责人',
-    },
-    {
-      avatar: '',
-      name: '侯圣文',
-      company: '贝壳找房',
-      title: '技术总监',
-    },
-    {
-      avatar: '',
-      name: '刘春辉',
-      company: 'Shopee',
-      title: 'DBA Manager',
-    },
-    {
-      avatar: '',
-      name: '赵应钢',
-      company: '美团点评',
-      title: '数据库专家',
-    },
-    {
-      avatar: '',
-      name: '彭琴',
-      company: 'PingCAP',
-      title: 'New-Economy User Success Team Leader',
+      name: '黄潇',
+      company: '美团',
+      title: 'DBA',
     },
   ],
 
   leader: [
     {
       avatar: '',
-      name: '黄潇',
-      company: '美团点评',
+      name: '刘春雷',
+      company: '58 同城',
       title: 'DBA',
-      role: '内容组 & 北京区 Leader',
+      role: '内容组 Leader',
     },
     {
       avatar: '',
-      name: '崔春华',
-      company: '小米',
-      title: 'DBA 主管',
+      name: '徐嘉埥',
+      company: '建信金科',
+      title: '数据库研发',
       role: '内容组 Co-Leader',
     },
     {
@@ -69,8 +39,8 @@ const data = {
     {
       avatar: '',
       name: '王志广',
-      company: '平安科技',
-      title: '数据库架构师',
+      company: 'bilibili',
+      title: '数据库资深 DBA',
       role: '内容组 Co-Leader',
     },
     {

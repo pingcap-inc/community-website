@@ -5,11 +5,12 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <link rel="stylesheet" href="https://tug.tidb.io/scripts/community-ui.css">
 </head>
 <body>
     <div id="header" class="tidb-community-ui"></div>
     <div id="footer" class="tidb-community-ui"></div>
-    <!-- insert community-ui.js here, otherwise the next script will be unable to run -->
+    <script src="https://tug.tidb.io/scripts/community-ui.js"></script>
     <script>
         _tidb.sharedUI.initHeaderFooter({
             locale: 'zh',

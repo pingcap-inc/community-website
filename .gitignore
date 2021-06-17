@@ -43,5 +43,6 @@ packages/*/dist/
 packages/*/es/
 packages/*/lib/
 public/asktug/
+public/scripts/
 webstorm.config.js
 yarn.lock

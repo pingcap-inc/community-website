@@ -9,5 +9,15 @@
 <body>
     <div id="header" class="tidb-community-ui"></div>
     <div id="footer" class="tidb-community-ui"></div>
+    <!-- insert community-ui.js here, otherwise the next script will be unable to run -->
+    <script>
+        _tidb.sharedUI.initHeaderFooter({
+            locale: 'zh',
+            title: 'TiDB Community',
+            logoSrc: 'https://tidb.io/images/community/logo.svg',
+            headerEl: document.querySelector('#header'),
+            footerEl: document.querySelector('#footer'),
+        });
+    </script>
 </body>
 </html>

@@ -42,7 +42,7 @@ yarn-error.log*
 packages/*/dist/
 packages/*/es/
 packages/*/lib/
-packages/*/build/
 public/asktug/
+public/scripts/
 webstorm.config.js
 yarn.lock

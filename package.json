@@ -2,11 +2,11 @@
   "name": "@pingcap/tug-website",
   "private": true,
   "scripts": {
-    "build": "next build && npm run build:asktug",
+    "build": "next build && npm run build:asktug && npm run build:shared-ui-scripts",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:accounts:staging": "lerna run --scope @tidb-community/accounts build:staging",
     "build:asktug": "lerna run --scope @tidb-community/asktug build",
-    "build:shared": "lerna run --ignore @tidb-community/accounts --ignore @tidb-community/asktug build",
+    "build:shared": "lerna run --ignore @tidb-community/shared-ui-scripts --ignore @tidb-community/accounts --ignore @tidb-community/asktug build",
     "build:ui": "lerna run --scope @tidb-community/ui build",
     "build:common": "lerna run --scope @tidb-community/common build",
     "build:shared-ui-scripts": "lerna run --scope @tidb-community/shared-ui-scripts build",

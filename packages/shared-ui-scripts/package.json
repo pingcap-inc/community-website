@@ -2,8 +2,8 @@
   "name": "@tidb-community/shared-ui-scripts",
   "private": true,
   "scripts": {
-    "start": "SKIP_PREFLIGHT_CHECK=true craco start",
-    "build": "SKIP_PREFLIGHT_CHECK=true craco build"
+    "start": "craco start",
+    "build": "craco build"
   },
   "browserslist": {
     "production": [
@@ -19,8 +19,7 @@
   },
   "dependencies": {
     "@tidb-community/datasource": "*",
-    "@tidb-community/ui": "*",
-    "ramda": "0.27.1"
+    "@tidb-community/ui": "*"
   },
   "devDependencies": {
     "react-scripts": "3.4.3",
@@ -28,7 +27,9 @@
     "craco-less": "1.17.1",
     "@babel/core": "7.13.0",
     "@craco/craco": "5.5.0",
-    "babel-plugin-inline-react-svg": "2.0.1"
+    "babel-plugin-inline-react-svg": "2.0.1",
+    "ramda": "0.27.1",
+    "swr": "0.5.6"
   },
   "peerDependencies": {
     "ramda": "^0.27.1",

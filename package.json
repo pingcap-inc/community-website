@@ -9,7 +9,6 @@
     "build:shared": "lerna run --ignore @tidb-community/accounts --ignore @tidb-community/asktug build",
     "build:ui": "lerna run --scope @tidb-community/ui build",
     "build:common": "lerna run --scope @tidb-community/common build",
-    "build:datasource": "lerna run --scope @tidb-community/datasource build",
     "build:shared-ui-scripts": "lerna run --scope @tidb-community/shared-ui-scripts build",
     "build:watch": "lerna run --no-bail build:watch",
     "deploy": "shipit production deploy",

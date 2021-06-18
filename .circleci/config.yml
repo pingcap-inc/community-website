@@ -65,6 +65,7 @@ jobs:
           paths:
             - .next
             - public/asktug
+            - public/scripts
 
   deploy:
     docker:

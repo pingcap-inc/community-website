@@ -12,11 +12,11 @@ const Learning = () => {
   const router = useRouter();
   const { t } = useTranslation('page-community');
 
-  const onBtnClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
   const { title, desc, btns } = t('userGroup', {
     returnObjects: true,
   });
   const { join: joinBtn, ask: askBtn } = btns;
+  const onBtnClick = R.curry(linkUtils.handleRedirect)(router);
 
   return (
     <Styled.Container>

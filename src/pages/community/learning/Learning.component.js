@@ -12,9 +12,9 @@ const Learning = () => {
   const router = useRouter();
   const { t } = useTranslation('page-community');
 
-  const onBtnClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
   const { title, desc, btns } = t('learning', { returnObjects: true });
   const { pu: puBtn, docs: docsBtn } = btns;
+  const onBtnClick = R.curry(linkUtils.handleRedirect)(router);
 
   return (
     <Styled.Container>

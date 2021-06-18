@@ -16,9 +16,9 @@ const Banner = () => {
   const router = useRouter();
   const { t } = useTranslation('page-community');
 
-  const { width: sizeWidth } = size;
-  const onCardClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
   const lang = t('banner', { returnObjects: true });
+  const onCardClick = R.curry(linkUtils.handleRedirect)(router);
+  const { width: sizeWidth } = size;
 
   const imgSizeProps =
     sizeWidth > bgWidth

@@ -1,6 +1,7 @@
 const fs = require('fs');
-const path = require('path');
 const glob = require('glob');
+const path = require('path');
+const jsonPointer = require('json-pointer');
 
 const rootPath = fs.realpathSync(process.cwd());
 const resolveRoot = (relativePath) => path.resolve(rootPath, relativePath);
@@ -19,7 +20,24 @@ const getNamespaces = (filePattern = 'locales/*/*.json') => {
   );
 };
 
+const fillExcelData = ({ json, locale, data }) => {
+  const dict = jsonPointer.dict(json);
+  for (const k in dict) {
+    const v = dict[k];
+    if (data[k]) {
+      data[k][locale] = v;
+    } else {
+      data[k] = {
+        [locale]: v,
+      };
+    }
+  }
+};
+
 const genExcel = (namespace, locales) => {
+  // Format: { localeKey: { en, cn } }
+  const data = {};
+
   locales.forEach((locale) => {
     console.log({
       namespace,
@@ -28,9 +46,12 @@ const genExcel = (namespace, locales) => {
 
     let json = {};
     try {
-      json = fs.readFileSync(resolveRoot(`locales/${locale}/${namespace}.json`), 'utf8');
+      json = JSON.parse(fs.readFileSync(resolveRoot(`locales/${locale}/${namespace}.json`), 'utf8'));
     } catch (err) {}
-    console.log(json);
+
+    fillExcelData({ json, data, locale });
+
+    console.log('data!!', data);
   });
 };
 

@@ -2,7 +2,8 @@
   "name": "@tidb-community/i18n",
   "private": true,
   "scripts": {
-    "start": "serve ./locales"
+    "start": "serve ./locales",
+    "genExcels": "node ./src/genExcels"
   },
   "description": "Locale JSON and PO files for i18n",
   "dependencies": {

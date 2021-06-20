@@ -1,3 +1,4 @@
+const R = require('ramda');
 const glob = require('glob');
 const jsonPointer = require('json-pointer');
 
@@ -23,7 +24,7 @@ const getNamespaces = (filePattern = 'locales/*/*.json') => {
   );
 };
 
-const fillExcelData = ({ json, locale, data }) => {
+const prepareExcelData = ({ json, locale, data }) => {
   const dict = jsonPointer.dict(json);
   for (const k in dict) {
     const v = dict[k];
@@ -35,6 +36,24 @@ const fillExcelData = ({ json, locale, data }) => {
       };
     }
   }
+};
+
+const generateHeaderRow = (sheet) => {
+  const columns = allHeaders.map((header, idx) => {
+    const isFirstCol = idx === 0;
+
+    return {
+      header,
+      width: isFirstCol ? 50 : 100,
+      key: header,
+      style: {
+        font: fontStyles,
+        alignment: { vertical: 'middle', horizontal: 'left' },
+      },
+    };
+  });
+
+  sheet.columns = columns;
 };
 
 const formatHeaderRow = (sheet) => {
@@ -60,28 +79,31 @@ const formatHeaderRow = (sheet) => {
   });
 };
 
-const generateColumns = (sheet) => {
-  const columns = allHeaders.map((header, idx) => {
-    const isFirstCol = idx === 0;
+const generateDataRows = ({ sheet, data }) => {
+  R.toPairs(data).forEach(([langKey, translations], idx) => {
+    const row = sheet.getRow(2 + idx);
 
-    return {
-      header,
-      width: isFirstCol ? 50 : 150,
-      key: header,
-      style: {
-        font: fontStyles,
-        alignment: { vertical: 'middle', horizontal: 'left' },
-      },
-    };
+    allHeaders.forEach((cellKey) => {
+      const value = cellKey === allHeaders[0] ? langKey : translations[cellKey];
+      row.getCell(cellKey).value = value;
+
+      // The row will be highlighted if missing a translation for any locale
+      if (!value) {
+        row.fill = {
+          type: 'pattern',
+          pattern: 'solid',
+          fgColor: { argb: colors.yellow },
+        };
+      }
+    });
   });
-
-  sheet.columns = columns;
 };
 
 module.exports = {
   fontStyles,
   getNamespaces,
-  fillExcelData,
+  prepareExcelData,
+  generateHeaderRow,
   formatHeaderRow,
-  generateColumns,
+  generateDataRows,
 };

@@ -51,7 +51,7 @@
     ],
     "viewAll": {
       "label": "View All Events",
-      "link": "'https://contributor.tidb.io/events'"
+      "link": "https://contributor.tidb.io/events"
     }
   },
   "learning": {

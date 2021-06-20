@@ -2,6 +2,7 @@ const ExcelJS = require('exceljs');
 const chalk = require('chalk');
 const fs = require('fs');
 const path = require('path');
+const rimraf = require('rimraf');
 
 const utils = require('./utils');
 const { locales } = require('../constants');
@@ -18,28 +19,31 @@ const genExcel = (namespace) => {
     views: [{ state: 'frozen', xSplit: 1, ySplit: 1 }],
   });
 
-  utils.generateColumns(sheet);
+  utils.generateHeaderRow(sheet);
   utils.formatHeaderRow(sheet);
 
   locales.forEach((locale) => {
     let json = {};
     try {
-      json = JSON.parse(fs.readFileSync(resolveRoot(`locales/${locale}/${namespace}.json`), 'utf8'));
+      json = JSON.parse(fs.readFileSync(resolveRoot(`./locales/${locale}/${namespace}.json`), 'utf8'));
     } catch (err) {}
 
-    utils.fillExcelData({ json, data, locale });
+    utils.prepareExcelData({ json, data, locale });
   });
 
-  log('data!!', data);
+  utils.generateDataRows({ sheet, data });
 
-  workbook.xlsx.writeFile(resolveRoot(`excels/${namespace}.xlsx`)).then(() => {
+  workbook.xlsx.writeFile(resolveRoot(`./excels/${namespace}.xlsx`)).then(() => {
     log(`${chalk.blueBright(`${namespace}.xlsx`)} ${chalk.green('generated successfully!')}`);
   });
 };
 
 (async () => {
-  const namespaces = utils.getNamespaces();
+  const excelsDir = resolveRoot('./excels');
+  rimraf.sync(excelsDir);
+  fs.mkdirSync(excelsDir);
 
+  const namespaces = utils.getNamespaces();
   namespaces.forEach((namespace) => {
     genExcel(namespace);
   });

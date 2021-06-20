@@ -3,8 +3,9 @@ const locales = ['zh', 'en'];
 const allHeaders = ['Lang Key', ...locales];
 
 const colors = {
-  black: '000000',
-  blue: '3d3fea',
+  black: 'ff000000',
+  blue: 'ff3d3fea',
+  yellow: 'ffffff00',
 };
 
 module.exports = {

@@ -22,13 +22,11 @@ const Activities = () => {
   const router = useRouter();
   const { t } = useTranslation('page-community');
 
-  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
-
   const lang = t('activities', {
     returnObjects: true,
   });
-
   const { activities, viewAll } = lang;
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router);
 
   const activityCardsProps = {
     activities,

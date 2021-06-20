@@ -1,11 +1,12 @@
-const R = require('ramda');
 const glob = require('glob');
 const jsonPointer = require('json-pointer');
+
+const { locales, allHeaders, colors } = require('../constants');
 
 const fontStyles = {
   name: 'Calibri',
   size: 12,
-  color: { argb: 'FFFF0000' },
+  color: { argb: colors.black },
 };
 
 const getNamespaces = (filePattern = 'locales/*/*.json') => {
@@ -37,41 +38,50 @@ const fillExcelData = ({ json, locale, data }) => {
 };
 
 const formatHeaderRow = (sheet) => {
-  R.map((val) => `${val}1`, [...'GHIJKLMNO']).forEach((id) => {
-    sheet.getCell(id).font = {
+  const headerRow = sheet.getRow(1);
+  headerRow.height = 40;
+
+  const alignment = {
+    vertical: 'middle',
+    horizontal: 'center',
+  };
+
+  headerRow.getCell(1).alignment = alignment;
+
+  locales.forEach((_, idx) => {
+    // Begin from the second column
+    const cell = headerRow.getCell(2 + idx);
+    cell.font = {
       ...fontStyles,
+      color: { argb: colors.blue },
       bold: true,
     };
-    sheet.getCell(id).alignment = { vertical: 'middle', horizontal: 'center' };
+    cell.alignment = alignment;
   });
-  sheet.getRow(1).height = 42.5;
 };
 
-const generateLocalColumns = (cellWidth, allHeaders) =>
-  R.reduce(
-    (acc, value) =>
-      R.concat(acc, [
-        {
-          header: value,
-          key: value === 'Entry/Code Reference' ? 'code' : R.toLower(value),
-          width: cellWidth,
-          style: {
-            font: {
-              ...fontStyles,
-              color: { argb: 'FF000000' },
-            },
-            alignment: { vertical: 'middle', horizontal: 'left' },
-          },
-        },
-      ]),
-    [],
-    allHeaders
-  );
+const generateColumns = (sheet) => {
+  const columns = allHeaders.map((header, idx) => {
+    const isFirstCol = idx === 0;
+
+    return {
+      header,
+      width: isFirstCol ? 50 : 150,
+      key: header,
+      style: {
+        font: fontStyles,
+        alignment: { vertical: 'middle', horizontal: 'left' },
+      },
+    };
+  });
+
+  sheet.columns = columns;
+};
 
 module.exports = {
   fontStyles,
   getNamespaces,
   fillExcelData,
   formatHeaderRow,
-  generateLocalColumns,
+  generateColumns,
 };

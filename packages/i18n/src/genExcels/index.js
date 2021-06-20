@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const utils = require('./utils');
-const { locales, allHeaders } = require('../constants');
+const { locales } = require('../constants');
 
 const { log } = console;
 const rootPath = fs.realpathSync(process.cwd());
@@ -15,10 +15,11 @@ const genExcel = (namespace) => {
   const data = {};
   const workbook = new ExcelJS.Workbook();
   const sheet = workbook.addWorksheet(namespace, {
-    views: [{ state: 'frozen', ySplit: 1 }],
+    views: [{ state: 'frozen', xSplit: 1, ySplit: 1 }],
   });
 
-  sheet.columns = utils.generateLocalColumns(50, allHeaders);
+  utils.generateColumns(sheet);
+  utils.formatHeaderRow(sheet);
 
   locales.forEach((locale) => {
     let json = {};

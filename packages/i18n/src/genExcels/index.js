@@ -31,14 +31,17 @@ const genExcel = (namespace) => {
     utils.prepareExcelData({ json, data, locale });
   });
 
-  utils.generateDataRows({ sheet, data });
+  utils.generateDataRows({
+    sheet,
+    data: utils.sortObjByKey(data),
+  });
 
   workbook.xlsx.writeFile(resolveRoot(`./excels/${namespace}.xlsx`)).then(() => {
     log(`${chalk.blueBright(`${namespace}.xlsx`)} ${chalk.green('generated successfully!')}`);
   });
 };
 
-(async () => {
+(() => {
   const excelsDir = resolveRoot('./excels');
   rimraf.sync(excelsDir);
   fs.mkdirSync(excelsDir);

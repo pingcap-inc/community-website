@@ -99,6 +99,16 @@ const generateDataRows = ({ sheet, data }) => {
   });
 };
 
+// Sort data by its keys alphabetically
+// https://stackoverflow.com/a/31102605/14257627
+const sortObjByKey = (unordered) =>
+  Object.keys(unordered)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = unordered[key];
+      return obj;
+    }, {});
+
 module.exports = {
   fontStyles,
   getNamespaces,
@@ -106,4 +116,5 @@ module.exports = {
   generateHeaderRow,
   formatHeaderRow,
   generateDataRows,
+  sortObjByKey,
 };

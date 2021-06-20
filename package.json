@@ -12,6 +12,7 @@
     "deploy": "shipit production deploy",
     "dev": "next dev",
     "i18n:genExcels": "lerna run --scope @tidb-community/i18n genExcels",
+    "i18n:genLocales": "lerna run --scope @tidb-community/i18n genLocales",
     "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "postinstall": "npm run lerna:bootstrap && npm run build:shared",

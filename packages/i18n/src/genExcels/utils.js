@@ -10,8 +10,8 @@ const fontStyles = {
   color: { argb: colors.black },
 };
 
-const getNamespaces = (filePattern = 'locales/*/*.json') => {
-  const files = glob.sync(filePattern);
+const getNamespaces = () => {
+  const files = glob.sync('locales/*/*.json');
   const re = /\/(((?!\/).)*)\.json$/;
 
   return new Set(

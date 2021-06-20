@@ -1,15 +1,13 @@
 const ExcelJS = require('exceljs');
 const chalk = require('chalk');
 const fs = require('fs');
-const path = require('path');
 const rimraf = require('rimraf');
 
 const utils = require('./utils');
 const { locales } = require('../constants');
+const { resolveRoot } = require('../utils');
 
 const { log } = console;
-const rootPath = fs.realpathSync(process.cwd());
-const resolveRoot = (relativePath) => path.resolve(rootPath, relativePath);
 
 const genExcel = (namespace) => {
   // Format: { localeKey: { en, cn } }

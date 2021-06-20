@@ -14,8 +14,6 @@ const Career = () => {
   const router = useRouter();
   const { t } = useTranslation('page-community');
 
-  const onLinkClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
-
   const lang = t('career', {
     returnObjects: true,
   });
@@ -24,6 +22,8 @@ const Career = () => {
     job,
     job: { viewAll },
   } = lang;
+
+  const onLinkClick = R.curry(linkUtils.handleRedirect)(router);
 
   return (
     <Styled.Container>
@@ -66,7 +66,7 @@ const Career = () => {
         </Row>
 
         <Styled.ViewMoreWrapper>
-          <ViewMoreButton onClick={(e) => onLinkClick(viewAll.link)}>{viewAll.lable}</ViewMoreButton>
+          <ViewMoreButton onClick={(e) => onLinkClick(viewAll.link)}>{viewAll.label}</ViewMoreButton>
         </Styled.ViewMoreWrapper>
       </Styled.JobSection>
     </Styled.Container>

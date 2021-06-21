@@ -1,13 +1,14 @@
 import * as R from 'ramda';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import styled from 'styled-components';
 import useSWR from 'swr';
-import { Footer, Header, constants, createAppGlobalStyle, mixins, ActivityBanner } from '@tidb-community/ui';
+import { Footer, Header, constants, createAppGlobalStyle, ActivityBanner } from '@tidb-community/ui';
 import { getData, api } from '@tidb-community/datasource';
 
 import 'antd-global.css';
 import './headerFooter.scss';
+import * as Styled from './headerFooter.styled';
+import gonganIcon from './gongan.png';
 import { HackUserProfileSlot } from './hackHeader';
 import { MeContext } from '@/context/me.context';
 
@@ -86,15 +87,6 @@ const HeaderComponent = () => {
   }).nav;
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
 
-  const HeaderLogo = styled.img.attrs({
-    alt: 'AskTUG',
-    src: 'https://asktug.com/uploads/default/original/3X/4/2/42424ddde1f860052cf29097bbfa44312d111b1d.png',
-  })`
-    && {
-      ${mixins.size('146px', '55px')};
-    }
-  `;
-
   let navItems = [];
 
   if (meData) {
@@ -112,7 +104,7 @@ const HeaderComponent = () => {
   }
 
   const headerProps = {
-    logo: <HeaderLogo />,
+    logo: <Styled.HeaderLogo />,
     onNavClick,
     navItems: headerNavItems.concat(navItems),
     currentNav: '问答',
@@ -143,6 +135,15 @@ const footerProps = {
   onNavClick: (link) => onNavClick({ link }),
   icons: footerIcons,
   navItems: footerNavItems,
+  bottomBar: (
+    <Styled.BottomBarContainer
+      target="_blank"
+      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802035239"
+    >
+      <img alt="" src={gonganIcon} />
+      公安部备案号：11010802035239
+    </Styled.BottomBarContainer>
+  ),
 };
 
 const footerId = 'asktug-footer';

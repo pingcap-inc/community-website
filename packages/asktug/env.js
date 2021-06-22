@@ -2,7 +2,9 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 
-const loadOrder = ['.env', '.env.production', '.env.local'];
+const isDev = process.env.NODE_ENV === 'development';
+
+const loadOrder = ['.env', isDev ? '.env.development' : '.env.production', '.env.local'];
 
 const envObject = {};
 const defineObject = {};

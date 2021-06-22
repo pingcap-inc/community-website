@@ -93,12 +93,12 @@ const HeaderComponent = () => {
     navItems = (userProfileNavItems || []).filter(({ title }) => title.indexOf('团队') >= 0);
   }
 
-  if (!R.isEmpty(navItems)) {
+  if (navItems.length > 1) {
     navItems = [
       {
         title: '我的团队',
         items: navItems,
-        badge: navItems.filter(({ badge }) => badge).length > 0 ? 1 : 0,
+        badge: navItems.filter(({ badge }) => badge).length > 0,
       },
     ];
   }

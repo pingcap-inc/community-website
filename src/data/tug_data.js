@@ -1202,6 +1202,93 @@ const data = {
       ],
     },
   ],
+
+  mva2021: [
+    {
+      name: '沈旸',
+      avatar: '',
+      company: '神州数码',
+      title: 'CIO',
+      links: [
+        {
+          name: 'TiDB for PostgreSQL—牛刀小试',
+          href: 'https://asktug.com/t/topic/93433',
+        },
+        {
+          name: 'TiDB 5.0 异步事务特性体验——基于X86和ARM混合部署架构',
+          href: 'https://asktug.com/t/topic/93002',
+        },
+        {
+          name: 'TiDB Parser 模块的简单解读与改造方法',
+          href: 'https://asktug.com/t/topic/93317',
+        },
+        {
+          name: '以TiDB热点问题来谈Region的调度流程',
+          href: 'https://asktug.com/t/topic/69850',
+        },
+      ],
+    },
+    {
+      name: '刘春雷',
+      avatar: '',
+      company: '58 同城',
+      title: 'DBA',
+      links: [
+        {
+          name: 'TiDB 5.0 升级性能初体验',
+          href: 'https://asktug.com/t/topic/69855',
+        },
+        {
+          name: 'TiFlash 5.x 与 4.x 对比测试',
+          href: 'https://asktug.com/t/topic/69933',
+        },
+        {
+          name: '某报表业务升级 5.0 解决慢SQL问题',
+          href: 'https://asktug.com/t/topic/92876',
+        },
+      ],
+    },
+    {
+      name: '代晓磊',
+      avatar: '',
+      company: '360',
+      title: '数据库运维专家',
+      links: [
+        {
+          name: '写冲突场景下的悲观/乐观事务模型选择',
+          href: 'https://asktug.com/t/topic/93470',
+        },
+        {
+          name: '记一场 DM 同步引发的 Auto_Increment 主键冲突漫谈',
+          href: 'https://asktug.com/t/topic/68427',
+        },
+        {
+          name: '记一次 Lightning 导入失败导致的 TiDB 集群重启失败事故处理',
+          href: 'https://asktug.com/t/topic/69826',
+        },
+      ],
+    },
+    {
+      name: '张政俊',
+      avatar: '',
+      company: '中欧基金',
+      title: '资深 DBA',
+      links: [
+        {
+          name: '数据库架构升级选型 - TiDB',
+          href: 'https://asktug.com/t/topic/69516',
+        },
+        {
+          name: 'MySQL 与 TiDB 不同的 DDL 发展历程',
+          href: 'https://asktug.com/t/topic/69597',
+        },
+        {
+          name: 'Raft 算法浅析',
+          href: 'https://asktug.com/t/topic/69645',
+        },
+      ],
+    },
+  ],
 };
 
 export default data;

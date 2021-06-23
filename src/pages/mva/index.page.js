@@ -14,9 +14,13 @@ import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
 
 export const getStaticProps = () => {
-  const { mva2020, mva2019 } = tugData;
+  const { mva2021, mva2020, mva2019 } = tugData;
 
   const MVAs = [
+    {
+      year: 2021,
+      data: mva2021,
+    },
     {
       year: 2020,
       data: mva2020,

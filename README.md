@@ -66,6 +66,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### /mva
 
 - pages/mva.jsx
+- data/tug_data.js -> mva2021
 - data/tug_data.js -> mva2020
 - data/tug_data.js -> mva2019
 

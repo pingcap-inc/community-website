@@ -1,0 +1,170 @@
+{
+  "activities": {
+    "activities": [
+      {
+        "desc": "TiDB Incubator Program is designed to ensure that new projects in the TiDB ecosystem can obtain resources and help from the community towards their desired maturity level.",
+        "img": "https://contributor.tidb.io/static/event-TiDB-Incubator-Program-1ade37389dac75fc23b1d408b2011973.svg",
+        "link": "https://github.com/pingcap/community/tree/master/incubator",
+        "title": "TiDB Incubator Program"
+      },
+      {
+        "desc": "The theme of Hackathon this year is [∞], by which we expect participants to innovate, to challenge, and to unlock the infinite power of TiDB.",
+        "img": "https://pingcap.com/static/tidb-hackathon2020-62c1c40e7dd9eb4a0eed8d00ea6507e5.jpg",
+        "link": "https://pingcap.com/community/events/hackathon2020/",
+        "title": "TiDB Hackathon 2020"
+      },
+      {
+        "desc": "High Performance TiDB Challenge is a mentoring program which focuses on workload optimization to bring TiDB performance to a higher level!",
+        "img": "https://pingcap.com/static/high-performance-tidb-challenge-ff7cb0ab67af3592ef7f1fe66151630c.png",
+        "link": "https://pingcap.com/community/events/high-performance-tidb-challenge/",
+        "title": "High Performance TiDB Challenge"
+      }
+    ],
+    "desc": "Meet other TiDB Community members IRL and online. Meet like-minded friends, share practical cases and technical experience.",
+    "title": "Meet the TiDB Community",
+    "viewAll": {
+      "label": "View All Events",
+      "link": "https://contributor.tidb.io/events"
+    }
+  },
+  "banner": {
+    "desc": "Join our community to learn, contribute, grow, and connect with TiDB contributors and users all around the world!",
+    "navs": [
+      {
+        "isCN": true,
+        "label": "View",
+        "link": "https://asktug.com",
+        "title": "Forum"
+      },
+      {
+        "label": "Join",
+        "link": "https://slack.tidb.io/invite?team=tidb-community&channel=everyone",
+        "title": "Slack"
+      },
+      {
+        "label": "Subscribe",
+        "link": "https://lists.tidb.io/g/main/subgroups",
+        "title": "Mailing List"
+      },
+      {
+        "label": "Read",
+        "link": "https://docs.pingcap.com/tidb/stable",
+        "title": "Docs"
+      }
+    ],
+    "title": "Let’s build the database of the future together!"
+  },
+  "career": {
+    "certTitle": "Certification",
+    "desc": "Here you can find attractive job opportunities posted by TiDB users. It’s free to post and apply for a job. Wish you the best of luck in your search!",
+    "job": {
+      "items": [
+        {
+          "iconId": "paypay",
+          "linkId": "paypay/dba",
+          "location": "上海",
+          "position": "资深 DBA 工程师"
+        },
+        {
+          "iconId": "yichewang",
+          "linkId": "yichewang/dba",
+          "location": "北京",
+          "position": "DBA"
+        },
+        {
+          "iconId": "zhangmen",
+          "linkId": "zhangmen/dba-tidb",
+          "location": "上海",
+          "position": "DBA - TiDB 专岗"
+        },
+        {
+          "iconId": "huya",
+          "linkId": "huya/dba",
+          "location": "广州",
+          "position": "DBA 工程师"
+        },
+        {
+          "iconId": "xiaomi",
+          "linkId": "xiaomi/dba",
+          "location": "北京",
+          "position": "DBA 工程师"
+        },
+        {
+          "iconId": "kingSoft",
+          "linkId": "kingsoft/dba",
+          "location": "广州/珠海",
+          "position": "DBA 运维开发"
+        },
+        {
+          "iconId": "ucloud",
+          "linkId": "go-engineer-paas",
+          "location": "上海",
+          "position": "Go 研发工程师"
+        },
+        {
+          "iconId": "ucloud",
+          "linkId": "go-engineer-tidb",
+          "location": "上海",
+          "position": "Go 研发工程师"
+        }
+      ],
+      "title": "Job Board",
+      "viewAll": {
+        "label": "View More Opportunities",
+        "link": "https://tidb-jobs.pingcap.com"
+      }
+    },
+    "title": "Career"
+  },
+  "contributor": {
+    "items": [
+      {
+        "desc": "Development workflow, commit message formatting, contact points and other resources.",
+        "link": "https://github.com/pingcap/community/blob/master/contributors/README.md",
+        "title": "Contributing Guide"
+      },
+      {
+        "desc": "Learning knowledge and skills, sharing best practices, become a database expert, develop database standards.",
+        "link": "https://contributor.tidb.io",
+        "title": "Join Developer Group"
+      },
+      {
+        "desc": "Agreement on rules of behaviour for the members of TiDB Community.",
+        "link": "https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md",
+        "title": "Code of Conduct"
+      }
+    ],
+    "title": "Become a Contributor"
+  },
+  "learning": {
+    "btns": {
+      "docs": {
+        "label": "Docs",
+        "link": "https://docs.pingcap.com/tidb/stable"
+      },
+      "pu": {
+        "label": "PingCAP University",
+        "link": "https://university.pingcap.com"
+      }
+    },
+    "desc": [
+      "PingCAP University is committed to cultivating first-class talents in developing, managing and applying distributed relational database systems. All training and certification courses are designed and taught by the official TiDB technical experts of PingCAP.",
+      "You can also read the official document to learn the usage of TiDB."
+    ],
+    "title": "Learn How to Use TiDB"
+  },
+  "userGroup": {
+    "btns": {
+      "ask": {
+        "label": "Forum",
+        "link": "https://asktug.com"
+      },
+      "join": {
+        "label": "Join TUG",
+        "link": "https://tug.tidb.io"
+      }
+    },
+    "desc": "TUG (TiDB User Group) is an independent, self-organized, and non-profit organization that gathers the database and big data technology practitioners around the world. In TUG, you can increase your personal influence, open up your horizons and make like-minded friends.",
+    "title": "Join User Group"
+  }
+}

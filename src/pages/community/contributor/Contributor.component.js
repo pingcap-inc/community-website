@@ -2,16 +2,17 @@ import React, { useRef } from 'react';
 import { Row, Col } from 'antd';
 import { useRouter } from 'next/router';
 import { useSize } from 'ahooks';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contributor.styled';
-import data from './contributor.data';
 import { link as linkUtils } from '~/utils';
 
 const Card = ({ title, desc, link, imgId }) => {
-  const router = useRouter();
-  const onClick = (e) => linkUtils.handleRedirect(router, link);
   const ref = useRef();
   const size = useSize(ref);
+  const router = useRouter();
+
+  const onClick = (e) => linkUtils.handleRedirect(router, link);
 
   return (
     <Styled.Card ref={ref} onClick={onClick}>
@@ -24,27 +25,32 @@ const Card = ({ title, desc, link, imgId }) => {
   );
 };
 
-const Contributor = () => (
-  <Styled.Container>
-    <Styled.Title>{data.title}</Styled.Title>
+const Contributor = () => {
+  const { t } = useTranslation('page-community');
+  const lang = t('contributor', { returnObjects: true });
 
-    <Row gutter={[32, 32]} justify="center">
-      {data.items.map(({ title, desc, link }, idx) => {
-        const cardProps = {
-          desc,
-          imgId: idx + 1,
-          link,
-          title,
-        };
+  return (
+    <Styled.Container>
+      <Styled.Title>{lang.title}</Styled.Title>
 
-        return (
-          <Col key={idx} xs={24} sm={12} md={8}>
-            <Card {...cardProps} />
-          </Col>
-        );
-      })}
-    </Row>
-  </Styled.Container>
-);
+      <Row gutter={[32, 32]} justify="center">
+        {lang.items.map(({ title, desc, link }, idx) => {
+          const cardProps = {
+            desc,
+            imgId: idx + 1,
+            link,
+            title,
+          };
+
+          return (
+            <Col key={idx} xs={24} sm={12} md={8}>
+              <Card {...cardProps} />
+            </Col>
+          );
+        })}
+      </Row>
+    </Styled.Container>
+  );
+};
 
 export default Contributor;

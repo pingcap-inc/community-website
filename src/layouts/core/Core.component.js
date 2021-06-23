@@ -37,7 +37,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {
     if (isSelected) return;
-    linkUtils.handleRedirect(router, link, browserLink, target);
+    linkUtils.handleRedirect(router, link, { as: browserLink, target });
   };
 
   const currentNav = utils.header.getCurrentNav(headerNavItems, router.asPath);

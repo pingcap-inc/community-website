@@ -1,6 +1,8 @@
 const path = require('path');
 const { withSentryConfig } = require('@sentry/nextjs');
 
+const { i18n } = require('./next-i18next.config');
+
 const unifyNodeModules = (names) =>
   names.reduce(
     (acc, name) => ({
@@ -11,6 +13,8 @@ const unifyNodeModules = (names) =>
   );
 
 const config = {
+  i18n,
+
   future: {
     webpack5: true,
   },

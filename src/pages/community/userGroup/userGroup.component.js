@@ -3,16 +3,20 @@ import Image from 'next/image';
 import React from 'react';
 import { Row, Col } from 'antd';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './userGroup.styled';
-import data from './userGroup.data';
 import { link as linkUtils } from '~/utils';
 
 const Learning = () => {
   const router = useRouter();
-  const onBtnClick = R.curry(linkUtils.handleRedirect)(router, R.__, undefined, undefined);
-  const { title, desc, btns } = data;
+  const { t } = useTranslation('page-community');
+
+  const { title, desc, btns } = t('userGroup', {
+    returnObjects: true,
+  });
   const { join: joinBtn, ask: askBtn } = btns;
+  const onBtnClick = R.curry(linkUtils.handleRedirect)(router);
 
   return (
     <Styled.Container>

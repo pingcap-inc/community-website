@@ -32,6 +32,10 @@ commands:
           command: npm run build
           no_output_timeout: 5m
 
+  copy-locales:
+    steps:
+      - run: npm run copy:locales
+
   deploy-website:
     steps:
       - run:
@@ -60,11 +64,13 @@ jobs:
       - install-deps
       - prepare-sentry
       - verify-and-build
+      - copy-locales
       - persist_to_workspace:
           root: .
           paths:
             - .next
             - public/asktug
+            - public/locales
             - public/scripts
 
   deploy:

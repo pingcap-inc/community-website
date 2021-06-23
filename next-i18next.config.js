@@ -11,8 +11,7 @@ module.exports = {
   use: [require('i18next-http-backend/cjs')],
   ns: ['common', 'page-community'],
   backend: {
-    // FIXME: please update domain for the production env
-    loadPath: `${isProd ? 'https://tidb.com/locales' : 'http://localhost:5000'}/{{lng}}/{{ns}}.json`,
+    loadPath: `${process.env.LOCALES_BASE_URL}/{{lng}}/{{ns}}.json`,
     reloadInterval: ONE_MIN,
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options

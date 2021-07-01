@@ -22,3 +22,24 @@ export const T6 = '#f15a24';
  */
 export const C2 = '#d9d9d9';
 export const C4 = '#9fa8b9';
+
+/*
+ * Colors V4.0
+ */
+export const V4 = {
+  M1,
+  M2,
+  F1: '#2c2c2c',
+  F2: '#565656',
+  B1,
+  B2: '#00aeef',
+  B3: '#172d72',
+  B4: '#242b48',
+  T1: '#69c384',
+  T2,
+  T3: '#ee6d85',
+  T4,
+  T5,
+  T6,
+  T7: '#e30c34',
+};

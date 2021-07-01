@@ -46,6 +46,13 @@ export const typography = (level) => {
       color: ${colors.F2};
       font-weight: 400;
     `,
+
+    p3: css`
+      font-size: 12px;
+      line-height: ${22 / 14};
+      color: ${colors.F2};
+      font-weight: 400;
+    `,
   };
 
   return levels[level];
@@ -131,4 +138,9 @@ export const logoTitle = (level) => css`
   color: #172d72;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
     'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+`;
+
+export const resetList = () => css`
+  ${reset()};
+  list-style: none;
 `;

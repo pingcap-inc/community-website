@@ -58,7 +58,7 @@ export const CardHead = styled.div`
     background-color: ${COLOR_PURPLE};
     font-size: 12px;
     color: ${colors.M1};
-    line-height: 12px;
+    line-height: 18px;
     text-align: center;
   }
 

@@ -1,11 +1,7 @@
 import styled from 'styled-components';
 
 import * as mixins from '../../mixins';
-import { V4 as colors } from '../../colors';
-
-const COLOR_YELLOW = '#ce9f37';
-const COLOR_DARKBLUE = '#190f4b';
-const COLOR_PURPLE = '#4f38c3';
+import { VI as colors } from '../../colors';
 
 const CARD_WIDTH = 383;
 const CARD_BORDER_RADIUS = 10;
@@ -18,10 +14,13 @@ export const Card = styled.div`
   max-width: ${CARD_WIDTH}px;
   border-radius: ${CARD_BORDER_RADIUS}px;
 
-  margin-bottom: ${($size) => ($size === 'lg' ? 3 : 2)}em;
-
   grid-row: auto;
   grid-column: auto;
+
+  @media screen and (max-width: 810px) {
+    width: unset;
+    min-width: unset;
+  }
 `;
 
 export const CardHead = styled.div`
@@ -37,7 +36,7 @@ export const CardHead = styled.div`
   border-top-left-radius: ${CARD_BORDER_RADIUS}px;
   border-top-right-radius: ${CARD_BORDER_RADIUS}px;
 
-  background-color: ${COLOR_YELLOW};
+  background-color: ${colors.B5};
 
   color: ${colors.M1};
   font-size: 20px;
@@ -55,7 +54,7 @@ export const CardHead = styled.div`
     transform: rotate(-45deg);
     transform-origin: left bottom;
 
-    background-color: ${COLOR_PURPLE};
+    background-color: ${colors.B7};
     font-size: 12px;
     color: ${colors.M1};
     line-height: 18px;
@@ -81,7 +80,11 @@ export const CardBody = styled.div`
 
   background-color: ${colors.M1};
 
-  ${mixins.typography('p1')}
+  ${mixins.typography('p1')};
+
+  @media screen and (max-width: 810px) {
+    height: unset;
+  }
 `;
 
 export const Details = styled.ul`
@@ -101,11 +104,12 @@ export const Detail = styled.li`
     display: inline-block;
     content: '';
     width: 9px;
+    min-width: 9px;
     height: 9px;
     border-radius: 50%;
     margin-right: 20px;
 
-    background-color: ${COLOR_YELLOW};
+    background-color: ${colors.B5};
   }
 
   // tooltips
@@ -124,7 +128,7 @@ export const Detail = styled.li`
     pointer-events: none;
 
     ${mixins.typography('p3')};
-    background-color: ${COLOR_DARKBLUE};
+    background-color: ${colors.B6};
     color: ${colors.M1};
 
     transition: opacity 0.2s ease, transform 0.2s ease;
@@ -134,7 +138,7 @@ export const Detail = styled.li`
   ${({ $tooltips }) =>
     $tooltips &&
     `
-    color: ${COLOR_YELLOW};
+    color: ${colors.B5};
     cursor: pointer;
     text-decoration: underline;
     
@@ -161,7 +165,7 @@ export const DetailTag = styled.span`
 
   font-size: 12px;
   color: ${colors.M1};
-  background-color: ${COLOR_YELLOW};
+  background-color: ${colors.B5};
   text-align: center;
   line-height: 21px;
 `;
@@ -170,8 +174,27 @@ export const Cards = styled.div`
   display: grid;
   max-width: 1210px;
   width: max-content;
-  grid-template-rows: repeat(${({ $size }) => ($size === 'lg' ? 2 : $size === 'md' ? 3 : 6)}, auto);
-  grid-template-columns: repeat(${({ $size }) => ($size === 'lg' ? 3 : $size === 'md' ? 2 : 1)}, auto);
-  grid-column-gap: ${({ $size }) => ($size === 'lg' ? 30 : $size === 'md' ? 15 : 0)}px;
   margin: auto;
+  @media screen and (min-width: 1270px) {
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+    grid-column-gap: 30px;
+    grid-row-gap: 3em;
+  }
+  @media screen and (min-width: 811px) and (max-width: 1269px) {
+    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(2, auto);
+    grid-column-gap: 15px;
+    grid-row-gap: 2em;
+  }
+  @media screen and (max-width: 810px) {
+    grid-template-rows: repeat(6, auto);
+    grid-template-columns: repeat(1, auto);
+    grid-column-gap: 0;
+    grid-row-gap: 2em;
+  }
+  @media screen and (max-width: 413px) {
+    width: unset;
+    padding: 0 15px;
+  }
 `;

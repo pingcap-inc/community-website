@@ -1,12 +1,11 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import PropType from 'prop-types';
 
 import * as Styled from './benifitCards.styled';
-import { useSize } from 'ahooks';
 
-const BenefitCard = ({ size, title, details, icon, tag }) => {
+const BenefitCard = ({ title, details, icon, tag }) => {
   return (
-    <Styled.Card $size={size}>
+    <Styled.Card>
       <Styled.CardHead $tag={tag}>
         <span>{title}</span>
         <img alt={title} src={icon} />
@@ -26,7 +25,6 @@ const BenefitCard = ({ size, title, details, icon, tag }) => {
 };
 
 BenefitCard.propTypes = {
-  size: PropType.oneOf(['lg', 'md', 'sm']).isRequired,
   title: PropType.string.isRequired,
   details: PropType.array.isRequired,
   icon: PropType.string.isRequired,
@@ -34,18 +32,12 @@ BenefitCard.propTypes = {
 };
 
 const BenefitCards = ({ benefits }) => {
-  const container = useRef();
-  const { width } = useSize(container);
-  const size = width >= 1210 ? 'lg' : width < 736 ? 'sm' : 'md';
-
   return (
-    <div ref={container}>
-      <Styled.Cards $size={size}>
-        {benefits.map((benefit, index) => (
-          <BenefitCard key={index} {...benefit} size={size} />
-        ))}
-      </Styled.Cards>
-    </div>
+    <Styled.Cards>
+      {benefits.map((benefit, index) => (
+        <BenefitCard key={index} {...benefit} />
+      ))}
+    </Styled.Cards>
   );
 };
 

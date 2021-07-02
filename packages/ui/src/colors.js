@@ -43,3 +43,10 @@ export const V4 = {
   T6,
   T7: '#e30c34',
 };
+
+export const VI = {
+  ...V4,
+  B5: '#ce9f37',
+  B6: '#190f4b',
+  B7: '#4f38c3',
+};

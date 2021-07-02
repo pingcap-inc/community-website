@@ -1,13 +1,18 @@
 import styled from 'styled-components';
+import { colors as _colors } from '@tidb-community/ui';
+
 import DecoratorLinesSvg from './decorator-lines.svg';
 import DecoratorOvalSvg from './decorator-oval.svg';
 import DecoratorPointsSvg from './decorator-points.svg';
 
+const colors = _colors.VI;
+
 export const MainWrapper = styled.div`
   flex: 1;
-  background-color: #190f4b;
+  background-color: ${colors.B6};
   position: relative;
   z-index: 1;
+  overflow: hidden;
 `;
 
 export const Container = styled.div`
@@ -15,7 +20,10 @@ export const Container = styled.div`
   margin: auto auto 240px;
   max-width: 1270px;
   position: relative;
-  padding: 0 30px;
+
+  @media screen and (max-width: 810px) {
+    margin-bottom: 4em;
+  }
 `;
 
 export const DecoratorLines = styled(DecoratorLinesSvg)`

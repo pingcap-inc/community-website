@@ -1,15 +1,23 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
+import { colors as _colors, mixins } from '@tidb-community/ui';
 
 import { Button as AntButton } from 'antd';
+
+const colors = _colors.VI;
 
 export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap-reverse;
   max-width: 1210px;
   margin: auto;
+
+  @media screen and (max-width: 1269px) {
+    padding: 4rem 15px 0;
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+  }
 `;
 
 export const Content = styled.div`
@@ -33,6 +41,10 @@ export const Content = styled.div`
       margin-bottom: 2.5rem;
     }
   }
+
+  @media screen and (max-width: 1269px) {
+    padding: 4rem 0;
+  }
 `;
 
 export const Button = styled(AntButton)`
@@ -43,7 +55,7 @@ export const Button = styled(AntButton)`
   border-radius: 8px;
 
   &.ant-btn-primary {
-    background-color: #ce9f37;
+    background-color: ${colors.B5};
     padding: 0 32px;
     height: 48px;
 
@@ -52,8 +64,8 @@ export const Button = styled(AntButton)`
     }
 
     &.ant-btn-background-ghost {
-      color: #ce9f37;
-      border: 2px solid #ce9f37;
+      color: ${colors.B5};
+      border: 2px solid ${colors.B5};
     }
   }
 `;

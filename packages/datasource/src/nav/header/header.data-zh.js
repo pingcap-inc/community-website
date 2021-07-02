@@ -203,10 +203,16 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     });
   }
 
-  items.push({
-    title: '退出登录',
-    event: 'onLogoutClick',
-  });
+  items.push(
+    {
+      title: '团队权益',
+      link: 'https://tidb.io/account/organization/benefits',
+    },
+    {
+      title: '退出登录',
+      event: 'onLogoutClick',
+    }
+  );
 
   return items;
 };

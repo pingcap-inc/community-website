@@ -17,7 +17,7 @@ export const Card = styled.div`
   grid-row: auto;
   grid-column: auto;
 
-  @media screen and (max-width: 810px) {
+  @media screen and (max-width: 413px) {
     width: unset;
     min-width: unset;
   }
@@ -96,6 +96,7 @@ export const Detail = styled.li`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  max-width: max-content;
 
   margin-bottom: 1rem;
 

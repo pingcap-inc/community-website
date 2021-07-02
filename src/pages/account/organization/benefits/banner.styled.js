@@ -55,17 +55,17 @@ export const Button = styled(AntButton)`
   border-radius: 8px;
 
   &.ant-btn-primary {
-    background-color: ${colors.B5};
-    padding: 0 32px;
-    height: 48px;
+    background-color: ${colors.B5} !important;
+    padding: 0 32px !important;
+    height: 48px !important;
 
     &:hover {
       background-color: #bf8f27 !important;
     }
 
     &.ant-btn-background-ghost {
-      color: ${colors.B5};
-      border: 2px solid ${colors.B5};
+      color: ${colors.B5} !important;
+      border: 2px solid ${colors.B5} !important;
     }
   }
 `;

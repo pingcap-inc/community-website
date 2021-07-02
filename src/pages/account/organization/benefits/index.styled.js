@@ -31,6 +31,7 @@ export const DecoratorLines = styled(DecoratorLinesSvg)`
   z-index: -1;
   right: -56px;
   top: 37px;
+  opacity: 0.6;
 `;
 
 export const DecoratorOval = styled(DecoratorOvalSvg)`
@@ -38,6 +39,7 @@ export const DecoratorOval = styled(DecoratorOvalSvg)`
   z-index: -1;
   right: -170px;
   bottom: 60px;
+  opacity: 0.6;
 `;
 
 export const DecoratorPoints = styled(DecoratorPointsSvg)`
@@ -47,4 +49,5 @@ export const DecoratorPoints = styled(DecoratorPointsSvg)`
   z-index: -1;
   left: 40px;
   top: 630px;
+  opacity: 0.6;
 `;

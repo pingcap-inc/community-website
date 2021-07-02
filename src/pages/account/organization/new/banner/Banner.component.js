@@ -20,7 +20,7 @@ const Banner = () => {
       </ul>
       <p>
         更多详细信息，点击
-        <Link href="https://tidb.io/account/organization/benefits">认证前 vs 认证后权益对比</Link>，
+        <Link href="https://tidb.io/account/organization/benefits">团队认证权益</Link>，
         <Link href="https://asktug.com/t/topic/93405">团队认证操作指南</Link>
         查看
       </p>

@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './settings.styled';
 import Layout from '~/pages/orgs/layout';
@@ -19,6 +20,9 @@ export const getServerSideProps = async (ctx) => {
 const Page = () => {
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
+  const { t } = useTranslation('page-orgs');
+
+  const lang = t('settings', { returnObjects: true });
 
   if (isAnonymous) {
     login();
@@ -31,10 +35,12 @@ const Page = () => {
 
   return (
     <>
-      <CommunityHead title="企业信息" />
+      <CommunityHead title={lang.title} />
 
       <Layout>
-        <Styled.Container>Settings</Styled.Container>
+        <Styled.Container>
+          <Styled.Title>{lang.title}</Styled.Title>
+        </Styled.Container>
       </Layout>
     </>
   );

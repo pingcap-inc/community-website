@@ -7,6 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h2`
-  ${mixins.typography('h3')};
+  ${mixins.typography('p1')};
+  font-weight: bold;
   margin-bottom: 1rem;
 `;

@@ -4,6 +4,7 @@
 const router = require('express').Router();
 
 router.get('/:slug', require('./[slug]/info'));
+router.put('/:slug', require('./[slug]/updateInfo'));
 router.get('/:slug/find-user', require('./[slug]/findUser'));
 router.get('/:slug/members', require('./[slug]/members'));
 router.post('/:slug/add-members', require('./[slug]/addMembers'));

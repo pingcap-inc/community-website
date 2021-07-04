@@ -21,6 +21,7 @@ const Tabs = ({ slug }) => {
     <Styled.Tabs activeKey={activeKey} onTabClick={onTabClick} animated={false}>
       <AntTabs.TabPane tab="首页" key="home" />
       <AntTabs.TabPane tab="成员" key="members" />
+      <AntTabs.TabPane tab="设置" key="settings" />
     </Styled.Tabs>
   );
 };

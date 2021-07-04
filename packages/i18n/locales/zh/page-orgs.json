@@ -1,0 +1,10 @@
+{
+  "tabs": {
+    "home": "首页",
+    "members": "成员",
+    "settings": "设置"
+  },
+  "settings": {
+    "title": "企业信息"
+  }
+}

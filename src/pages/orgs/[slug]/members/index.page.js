@@ -16,7 +16,7 @@ import { getDataSource } from './members.utils';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
+  const i18nProps = await getI18nProps(['common', 'page-orgs'])(ctx);
 
   return {
     props: {

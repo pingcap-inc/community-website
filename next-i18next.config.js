@@ -9,7 +9,7 @@ module.exports = {
     locales: ['zh', 'en'],
   },
   use: [require('i18next-http-backend/cjs')],
-  ns: ['common', 'page-community', 'page-organization-benefits'],
+  ns: ['common', 'page-community', 'page-organization-benefits', 'page-orgs'],
   backend: {
     loadPath: `${process.env.LOCALES_BASE_URL}/{{lng}}/{{ns}}.json`,
     reloadInterval: ONE_MIN,

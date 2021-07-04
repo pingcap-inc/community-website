@@ -26,14 +26,14 @@ const Invitations = () => {
     return null;
   }
 
-  if (!meData || meData.org) {
+  if (!meData) {
     return <PageLoader />;
   }
 
   if (!meData.org_invitations?.length) {
     return (
       <PageLoader>
-        <Empty>{emptyText}</Empty>
+        <Empty description={emptyText} />
       </PageLoader>
     );
   }

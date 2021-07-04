@@ -4,7 +4,6 @@ import useSWR from 'swr';
 import { Avatar, Button, Divider, List, Modal, Popconfirm, Tag } from 'antd';
 import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 
 import * as Styled from './home.styled';
@@ -12,20 +11,20 @@ import Layout from '~/pages/orgs/layout';
 import { AuthContext, MeContext } from '~/context';
 import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
-import { cookieKeys } from '~/constants';
 import { errors } from '~/utils';
+import { getI18nProps } from '~/utils/i18n.utils';
 
-export const getServerSideProps = async ({ locale, req }) => {
-  locale = req.cookies[cookieKeys.locale] || locale;
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common'])),
+      ...i18nProps,
     },
   };
 };
 
-const Home = () => {
+const Page = () => {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -166,4 +165,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

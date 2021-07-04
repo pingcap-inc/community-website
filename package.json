@@ -11,9 +11,7 @@
     "build:watch": "lerna run --no-bail build:watch",
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
     "deploy": "shipit production deploy",
-    "dev": "next dev",
-    "i18n:genExcels": "lerna run --scope @tidb-community/i18n genExcels",
-    "i18n:genLocales": "lerna run --scope @tidb-community/i18n genLocales",
+    "dev": "npm run start:i18n & npm run start:mockApi & next dev",
     "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "postinstall": "npm run lerna:bootstrap && npm run build:shared",
@@ -23,6 +21,7 @@
     "server:start": "pm2 start pm2.config.js",
     "start": "next start",
     "start:accounts": "lerna run --scope @tidb-community/accounts start",
+    "start:i18n": "lerna run --scope @tidb-community/i18n start",
     "start:mockApi": "lerna run --scope @tidb-community/mock-api start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
     "test": "jest"

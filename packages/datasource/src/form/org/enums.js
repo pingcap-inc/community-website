@@ -1,7 +1,7 @@
-import _rawOrganizationTypes from './organization-types.json';
-import _rawPersonalPositions from './personal-positions.json';
-import _rawOrganizationSizes from './organization-sizes.json';
 import _provinces from './provinces.json';
+import _rawOrganizationSizes from './organizationSizes.json';
+import _rawOrganizationTypes from './organizationTypes.json';
+import _rawPersonalPositions from './personalPositions.json';
 
 const createArray = (map) => {
   return Object.keys(map).map((key) => ({
@@ -21,7 +21,7 @@ const createArrayFromProvinces = (provinces) => {
   }));
 };
 
+export const organizationSizes = createArray(_rawOrganizationSizes);
 export const organizationTypes = createArray(_rawOrganizationTypes);
 export const personalPositions = createArray(_rawPersonalPositions);
-export const organizationSizes = createArray(_rawOrganizationSizes);
 export const provinces = createArrayFromProvinces(_provinces);

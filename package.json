@@ -11,7 +11,7 @@
     "build:watch": "lerna run --no-bail build:watch",
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
     "deploy": "shipit production deploy",
-    "dev": "npm run start:i18n & npm run start:mockApi & next dev",
+    "dev": "npm run build:shared && (npm run start:i18n & npm run start:mockApi & next dev)",
     "lerna:bootstrap": "lerna bootstrap",
     "lint": "eslint . --ext .js,.jsx --ignore-path .gitignore",
     "postinstall": "npm run lerna:bootstrap && npm run build:shared",

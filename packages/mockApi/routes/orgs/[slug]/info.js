@@ -1,3 +1,4 @@
+const enums = require('@tidb-community/datasource/lib/form/org/enums');
 const faker = require('faker');
 
 const { errorResp, successResp, wait } = require('../../../utils');
@@ -5,6 +6,7 @@ const { errorResp, successResp, wait } = require('../../../utils');
 const { company, datatype, image, lorem } = faker;
 
 module.exports = async (req, res) => {
+  console.log('enum!!', enums);
   await wait();
   const { slug } = req.params;
 
@@ -27,6 +29,7 @@ module.exports = async (req, res) => {
       introduction: lorem.paragraph(),
       logo: image.avatar(),
       topic_urgency_remain_times: datatype.number({ max: 2 }),
+      company_name: company.companyName(),
     },
   })(req, res);
 };

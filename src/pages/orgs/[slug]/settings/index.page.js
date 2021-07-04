@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import useSWR from 'swr';
 import { Button, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -6,13 +6,12 @@ import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
-import AddModal from './addModal';
+import * as utils from './members.utils';
 import Layout from '~/pages/orgs/layout';
 import { AuthContext, MeContext } from '~/context';
 import { CommunityHead, PageLoader } from '~/components';
 import { columns } from './members.data';
 import { common, errors } from '~/utils';
-import { getDataSource } from './members.utils';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getServerSideProps = async (ctx) => {
@@ -32,7 +31,6 @@ const Page = () => {
   const { data: membersResp, mutate: mutateMembers } = useSWR(isReady && ['orgs.org.members', query]);
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
-  const [isAddModalVisible, setIsAddModalVisible] = useState(false);
   const isAdmin = common.isAdmin(meData);
 
   if (isAnonymous) {
@@ -118,7 +116,7 @@ const Page = () => {
     });
   };
 
-  const dataSource = getDataSource({ membersResp, meData, onDelete, onRoleChange, isAdmin });
+  const dataSource = utils.getDataSource({ membersResp, meData, onDelete, onRoleChange, isAdmin });
 
   const tableProps = {
     columns,

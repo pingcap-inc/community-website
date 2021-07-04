@@ -11,7 +11,7 @@ import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import { cookieKeys } from '~/constants';
 
-export async function getServerSideProps({ locale, req }) {
+export const getServerSideProps = async ({ locale, req }) => {
   locale = req.cookies[cookieKeys.locale] || locale;
 
   return {
@@ -19,7 +19,7 @@ export async function getServerSideProps({ locale, req }) {
       ...(await serverSideTranslations(locale, ['common', 'page-community'])),
     },
   };
-}
+};
 
 const Community = () => (
   <>

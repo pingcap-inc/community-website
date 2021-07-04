@@ -3,6 +3,7 @@ import useSWR from 'swr';
 import { Button, Modal } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
@@ -12,7 +13,18 @@ import Layout from '~/pages/orgs/layout';
 import { AuthContext, MeContext } from '~/context';
 import { CommunityHead, PageLoader } from '~/components';
 import { columns } from './members.data';
+import { cookieKeys } from '~/constants';
 import { errors } from '~/utils';
+
+export const getServerSideProps = async ({ locale, req }) => {
+  locale = req.cookies[cookieKeys.locale] || locale;
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+};
 
 const Members = () => {
   const router = useRouter();

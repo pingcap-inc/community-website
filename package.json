@@ -24,7 +24,10 @@
     "start:i18n": "lerna run --scope @tidb-community/i18n start",
     "start:mockApi": "lerna run --scope @tidb-community/mock-api start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
-    "test": "jest"
+    "test": "jest",
+    "test:changed": "npm test -- --changedSince=main",
+    "test:cov": "npm test -- --coverage",
+    "test:watch": "npm test -- --watch"
   },
   "engines": {
     "node": "14.13.0",

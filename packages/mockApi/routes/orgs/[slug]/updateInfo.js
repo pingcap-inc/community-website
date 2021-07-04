@@ -13,6 +13,7 @@ module.exports = async (req, res) => {
     })(req, res);
   } else if (slug === '403') {
     return errorResp({
+      code: 403,
       detail: 'you do not have permission to perform this action',
     })(req, res);
   } else if (slug === '404') {

@@ -1,12 +1,11 @@
 const enums = require('@tidb-community/datasource/lib/form/org/enums');
 const faker = require('faker');
 
-const { errorResp, successResp, wait } = require('../../../utils');
+const { errorResp, successResp, wait, sample } = require('../../../utils');
 
 const { company, datatype, image, lorem } = faker;
 
 module.exports = async (req, res) => {
-  console.log('enum!!', enums);
   await wait();
   const { slug } = req.params;
 
@@ -22,6 +21,11 @@ module.exports = async (req, res) => {
     })(req, res);
   }
 
+  const industryType = sample(enums.organizationTypes);
+  const orgSize = sample(enums.organizationSizes);
+  const province = sample(enums.provinces);
+  const city = sample(province.children);
+
   successResp({
     data: {
       slug: slug,
@@ -30,6 +34,12 @@ module.exports = async (req, res) => {
       logo: image.avatar(),
       topic_urgency_remain_times: datatype.number({ max: 2 }),
       company_name: company.companyName(),
+      industry_type_code: industryType.value,
+      industry_type_text: industryType.label,
+      member_range_code: orgSize.value,
+      member_range_text: orgSize.label,
+      company_base_code: city.value,
+      company_base_text: `${province.label}-${city.label}`,
     },
   })(req, res);
 };

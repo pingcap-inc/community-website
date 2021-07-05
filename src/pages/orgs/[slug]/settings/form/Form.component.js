@@ -28,13 +28,13 @@ const FormComponent = () => {
   if (isLoading) return <Skeleton />;
 
   const { data } = infoResp;
-  const fields = getFields(lang.validations);
+  const fields = getFields({ lang: lang.validations, t });
   const schema = getSchema(fields);
-  const { teamName } = fields;
+  const { teamName, companyName } = fields;
 
-  console.log('data!!', data);
   const initialValues = {
     [teamName.name]: data.name ?? '',
+    [companyName.name]: data.company_name ?? '',
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
@@ -72,7 +72,11 @@ const FormComponent = () => {
               </FormItem>
             </Col>
 
-            <Col xs={24} md={12}></Col>
+            <Col xs={24} md={12}>
+              <FormItem label={lang.companyName} name={companyName.name}>
+                <Input {...companyName} />
+              </FormItem>
+            </Col>
           </Row>
 
           <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>

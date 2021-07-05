@@ -6,7 +6,7 @@ const { buildInitialValues, buildSchema } = utils.form;
 const formData = getFormData();
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
 
-const fetchOrganizationOptions = (word) =>
+export const fetchOrganizationOptions = (word) =>
   api.orgs.searchCompany({ word }).then((result) =>
     result.data.map((company) => ({
       label: company.name,

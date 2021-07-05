@@ -7,7 +7,7 @@
   "settings": {
     "title": "企业信息",
     "teamName": "团队名称",
-    "orgName": "所属企业",
+    "companyName": "所属企业",
     "desc": "简介",
     "industryType": "行业类型",
     "orgSize": "企业规模",
@@ -15,7 +15,10 @@
     "submitBtn": "更新信息",
     "validations": {
       "placeholder": "请输入",
-      "teamNameNotEmpty": "团队名称不可为空"
+      "teamNameMinLength": "团队名称最短为{{min}}个字符",
+      "teamNameMaxLength": "团队名称最长为{{max}}个字符",
+      "teamNameNotEmpty": "团队名称不可为空",
+      "companyNameNotEmpty": "所属企业不可为空"
     }
   }
 }

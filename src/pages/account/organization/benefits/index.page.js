@@ -4,7 +4,7 @@ import { useTranslation } from 'next-i18next';
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import { CoreLayout } from '~/layouts';
-import Banner from './Banner.component';
+import Banner from './banner';
 import * as Styled from './index.styled';
 
 export async function getServerSideProps({ locale, req }) {

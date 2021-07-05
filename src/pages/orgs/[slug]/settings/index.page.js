@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './settings.styled';
+import Form from './form';
 import Layout from '~/pages/orgs/layout';
 import { AuthContext, MeContext } from '~/context';
 import { CommunityHead, PageLoader } from '~/components';
@@ -40,6 +41,7 @@ const Page = () => {
       <Layout>
         <Styled.Container>
           <Styled.Title>{lang.title}</Styled.Title>
+          <Form />
         </Styled.Container>
       </Layout>
     </>

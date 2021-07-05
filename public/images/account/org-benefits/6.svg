@@ -1,7 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="33.559" height="32.037" viewBox="0 0 33.559 32.037">
-  <g id="star" transform="translate(-3.172 -2.328)">
-    <g id="star_1_" transform="translate(4.194 3.328)">
-      <path id="路径_15073" data-name="路径 15073" d="M20.709,3.878l3.177,9.778a.8.8,0,0,0,.757.55H34.912a.8.8,0,0,1,.466,1.441l-8.3,6a.8.8,0,0,0-.291.891l3.173,9.749a.8.8,0,0,1-1.225.89l-8.314-6.05a.8.8,0,0,0-.936,0L11.17,33.159a.8.8,0,0,1-1.224-.89l3.173-9.732a.8.8,0,0,0-.29-.891l-8.3-6a.8.8,0,0,1,.466-1.44h10.27a.8.8,0,0,0,.757-.55L19.2,3.878A.8.8,0,0,1,20.709,3.878Z" transform="translate(-4.194 -3.328)" fill="none" stroke="#fff" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/>
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="33.559" height="32.037" xmlns:v="https://vecta.io/nano"><path d="M17.537 1.55l3.177 9.778a.8.8 0 0 0 .757.55H31.74a.8.8 0 0 1 .466 1.441l-8.3 6a.8.8 0 0 0-.291.891l3.173 9.749a.8.8 0 0 1-1.225.89l-8.314-6.05a.8.8 0 0 0-.936 0l-8.315 6.032a.8.8 0 0 1-1.224-.89l3.173-9.732a.8.8 0 0 0-.29-.891l-8.3-6a.8.8 0 0 1 .466-1.44h10.27a.8.8 0 0 0 .757-.55l3.178-9.778a.8.8 0 0 1 1.509 0z" fill="none" stroke="#fff" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2"/></svg>

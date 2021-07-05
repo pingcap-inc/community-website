@@ -12,6 +12,10 @@
     "industryType": "行业类型",
     "orgSize": "企业规模",
     "location": "企业所在地",
-    "submitBtn": "更新信息"
+    "submitBtn": "更新信息",
+    "validations": {
+      "placeholder": "请输入",
+      "teamNameNotEmpty": "团队名称不可为空"
+    }
   }
 }

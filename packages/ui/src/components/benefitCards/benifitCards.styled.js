@@ -95,7 +95,7 @@ export const Detail = styled.li`
   position: relative;
   display: flex;
   justify-content: flex-start;
-  align-items: center;
+  align-items: flex-start;
   max-width: max-content;
 
   margin-bottom: 1rem;
@@ -108,7 +108,7 @@ export const Detail = styled.li`
     min-width: 9px;
     height: 9px;
     border-radius: 50%;
-    margin-right: 20px;
+    margin: 7.5px 20px 0 0; // 7.5 === (24 - 9) / 2
 
     background-color: ${colors.B5};
   }

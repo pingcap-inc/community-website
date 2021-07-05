@@ -70,10 +70,10 @@
       "icon": "/images/account/org-benefits/3.svg",
       "details": [
         {
-          "text": "线上活动"
+          "text": "线上活动（e.g. TiDB 社区能量钛）"
         },
         {
-          "text": "线下 Meetup"
+          "text": "线下活动 (e.g. TUG 企业行，Infra Meetup)"
         },
         {
           "text": "TUG 企业行"

@@ -7,6 +7,7 @@ export { default as createAppGlobalStyle } from './globalStyle';
 export {
   ActivityBanner,
   ActivityCards,
+  BenefitCards,
   CountDown,
   Footer,
   Header,

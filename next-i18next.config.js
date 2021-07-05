@@ -9,7 +9,7 @@ module.exports = {
     locales: ['zh', 'en'],
   },
   use: [require('i18next-http-backend/cjs')],
-  ns: ['common', 'page-community'],
+  ns: ['common', 'page-community', 'page-organization-benefits'],
   backend: {
     loadPath: `${process.env.LOCALES_BASE_URL}/{{lng}}/{{ns}}.json`,
     reloadInterval: ONE_MIN,
@@ -17,7 +17,7 @@ module.exports = {
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options
     requestOptions: {
       mode: 'cors',
-      credentials: 'cross-site',
+      credentials: 'include',
       cache: 'default',
     },
   },

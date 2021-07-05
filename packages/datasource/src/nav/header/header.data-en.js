@@ -203,10 +203,16 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     });
   }
 
-  items.push({
-    title: 'Logout',
-    event: 'onLogoutClick',
-  });
+  items.push(
+    {
+      title: 'Org Benefits',
+      link: 'https://tidb.io/account/organization/benefits',
+    },
+    {
+      title: 'Logout',
+      event: 'onLogoutClick',
+    }
+  );
 
   return items;
 };

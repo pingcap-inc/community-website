@@ -205,7 +205,7 @@ export const genUserProfileItems = ({ meData, redDots }) => {
 
   items.push(
     {
-      title: 'Org benefits',
+      title: 'Org Benefits',
       link: 'https://tidb.io/account/organization/benefits',
     },
     {

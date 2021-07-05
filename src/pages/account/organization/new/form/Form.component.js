@@ -12,6 +12,7 @@ import data from './form.data';
 import { form as formUtils } from '~/utils';
 
 const { submitBtnTitle, formSchema, formInitialValues } = data;
+console.log('formInitialValues!!', formInitialValues);
 
 const Form = ({ onSubmit: onSubmitCallback }) => {
   const onSubmit = formUtils.wrapFormikSubmitFunction(({ company, company_base, ...params }) =>

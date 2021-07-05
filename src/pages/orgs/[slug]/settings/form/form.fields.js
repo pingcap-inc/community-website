@@ -1,6 +1,8 @@
 import * as Yup from 'yup';
 import { utils } from '@tidb-community/common';
 
+import { fetchOrganizationOptions } from '~/pages/account/organization/new/form/form.data';
+
 const { buildSchema } = utils.form;
 const maxLength = 128;
 
@@ -18,7 +20,8 @@ export const getFields = ({ lang, t }) => ({
     name: 'company_name',
     maxLength,
     placeholder: lang.placeholder,
-    validator: Yup.string().required(lang.companyNameNotEmpty),
+    validator: Yup.mixed().required(lang.companyNameNotEmpty),
+    fetchOptions: fetchOrganizationOptions,
   },
 });
 

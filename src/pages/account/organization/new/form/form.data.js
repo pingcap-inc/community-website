@@ -8,9 +8,9 @@ const { organizationSizes, organizationTypes, personalPositions, provinces } = f
 
 export const fetchOrganizationOptions = (word) =>
   api.orgs.searchCompany({ word }).then((result) =>
-    result.data.map((company) => ({
-      label: company.name,
-      value: company.name,
+    result.data.map(({ name }) => ({
+      label: name,
+      value: name,
     }))
   );
 

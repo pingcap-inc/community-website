@@ -3,13 +3,14 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
-import { Form, FormItem, Input } from 'formik-antd';
+import { Form, FormItem, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
+import { RemoteSelect } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
-import * as Styled from './form.styled';
+// import * as Styled from './form.styled';
 import { getFields, getSchema } from './form.fields';
 import { form as formUtils } from '~/utils';
 
@@ -34,7 +35,7 @@ const FormComponent = () => {
 
   const initialValues = {
     [teamName.name]: data.name ?? '',
-    [companyName.name]: data.company_name ?? '',
+    [companyName.name]: data.company_name,
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
@@ -61,9 +62,11 @@ const FormComponent = () => {
     validationSchema: schema,
   };
 
+  console.log('fields!!', fields, initialValues);
+
   return (
     <Formik {...formikProps}>
-      {({ errors }) => (
+      {({ values, errors }) => (
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24} md={12}>
@@ -74,7 +77,8 @@ const FormComponent = () => {
 
             <Col xs={24} md={12}>
               <FormItem label={lang.companyName} name={companyName.name}>
-                <Input {...companyName} />
+                {values[companyName.name]}
+                <RemoteSelect {...companyName} Select={Select} />
               </FormItem>
             </Col>
           </Row>

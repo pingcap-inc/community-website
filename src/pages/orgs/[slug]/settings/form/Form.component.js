@@ -33,7 +33,7 @@ const FormComponent = () => {
   const schema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, location } = fields;
 
-  console.log('data!!', data);
+  console.log('fields!!', fields);
 
   const initialValues = {
     [teamName.name]: data.name ?? '',
@@ -70,53 +70,43 @@ const FormComponent = () => {
 
   return (
     <Formik {...formikProps}>
-      {({ values, errors }) => {
-        const selectedCompanyNameValue = values[companyName.name];
+      {({ errors }) => (
+        <Form layout="vertical">
+          <Row gutter={32}>
+            <Col xs={24} md={12}>
+              <FormItem label={lang.teamName} name={teamName.name}>
+                <Input {...teamName} />
+              </FormItem>
 
-        const selectedCompanyNameOption = {
-          label: selectedCompanyNameValue,
-          value: selectedCompanyNameValue,
-        };
+              <FormItem label={lang.introduction} name={introduction.name}>
+                <Input {...introduction} />
+              </FormItem>
 
-        return (
-          <Form layout="vertical">
-            <Row gutter={32}>
-              <Col xs={24} md={12}>
-                <FormItem label={lang.teamName} name={teamName.name}>
-                  <Input {...teamName} />
-                </FormItem>
+              <FormItem label={lang.orgSize} name={orgSize.name}>
+                <Select {...orgSize} />
+              </FormItem>
+            </Col>
 
-                <FormItem label={lang.introduction} name={introduction.name}>
-                  <Input {...introduction} />
-                </FormItem>
+            <Col xs={24} md={12}>
+              <FormItem label={lang.companyName} name={companyName.name}>
+                <RemoteSelect {...companyName} labelInValue={false} Select={Select} />
+              </FormItem>
 
-                <FormItem label={lang.orgSize} name={orgSize.name}>
-                  <Select {...orgSize} />
-                </FormItem>
-              </Col>
+              <FormItem label={lang.industryType} name={industryType.name}>
+                <Select {...industryType} />
+              </FormItem>
 
-              <Col xs={24} md={12}>
-                <FormItem label={lang.companyName} name={companyName.name}>
-                  <RemoteSelect
-                    {...companyName}
-                    selectedOption={selectedCompanyNameOption}
-                    value={selectedCompanyNameValue}
-                    Select={Select}
-                  />
-                </FormItem>
+              {/* <FormItem>
+                  <Cascader {...location} />
+                </FormItem> */}
+            </Col>
+          </Row>
 
-                <FormItem label={lang.industryType} name={lang.industryType}>
-                  <Select {...industryType} />
-                </FormItem>
-              </Col>
-            </Row>
-
-            <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
-              {lang.submitBtn}
-            </Button>
-          </Form>
-        );
-      }}
+          <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
+            {lang.submitBtn}
+          </Button>
+        </Form>
+      )}
     </Formik>
   );
 };

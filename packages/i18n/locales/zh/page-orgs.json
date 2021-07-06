@@ -12,7 +12,7 @@
     "industryType": "行业类型",
     "orgSize": "企业规模",
     "location": "企业所在地",
-    "submitBtn": "更新信息",
+    "submitBtn": "更新",
     "validations": {
       "pleaseEnter": "请输入",
       "pleaseSelect": "请选择",
@@ -22,7 +22,7 @@
       "companyNameNotEmpty": "所属企业不可为空",
       "industryTypeNotEmpty": "行业类型不可为空",
       "orgSizeNotEmpty": "企业规模不可为空",
-      "locationNotEmpty": "所在地不可为空"
+      "locationNotEmpty": "企业所在地不可为空"
     }
   }
 }

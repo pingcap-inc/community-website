@@ -6,7 +6,7 @@ import { fetchOrganizationOptions } from '~/pages/account/organization/new/form/
 
 const { buildSchema } = utils.form;
 const formData = getFormData();
-const { organizationTypes, organizationSizes } = formData.org.enums;
+const { organizationTypes, organizationSizes, provinces } = formData.org.enums;
 
 export const getFields = ({ lang, t }) => ({
   teamName: {
@@ -48,7 +48,8 @@ export const getFields = ({ lang, t }) => ({
   location: {
     name: 'company_base_code',
     placeholder: lang.pleaseSelect,
-    validator: Yup.mixed().required(lang.locationNotEmpty),
+    options: provinces,
+    validator: Yup.array().length(2, lang.locationNotEmpty).required(lang.locationNotEmpty),
   },
 });
 

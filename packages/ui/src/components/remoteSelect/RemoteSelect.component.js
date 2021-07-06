@@ -3,7 +3,7 @@ import React, { useState, useMemo, useRef } from 'react';
 import debounce from 'lodash/debounce';
 import { Select as AntSelect, Spin } from 'antd';
 
-const RemoteSelect = ({ fetchOptions, selectedOption, debounceTimeout = 800, Select = AntSelect, ...props }) => {
+const RemoteSelect = ({ fetchOptions, debounceTimeout = 800, Select = AntSelect, ...props }) => {
   const [isFetching, setIsFetching] = useState(false);
   const [options, setOptions] = useState([]);
   const fetchRef = useRef(0);
@@ -23,13 +23,13 @@ const RemoteSelect = ({ fetchOptions, selectedOption, debounceTimeout = 800, Sel
           return;
         }
 
-        setOptions([selectedOption, ...options].filter(Boolean));
+        setOptions(options);
         setIsFetching(false);
       });
     };
 
     return debounce(loadOptions, debounceTimeout);
-  }, [fetchOptions, selectedOption, debounceTimeout]);
+  }, [fetchOptions, debounceTimeout]);
 
   return (
     <Select
@@ -46,7 +46,6 @@ const RemoteSelect = ({ fetchOptions, selectedOption, debounceTimeout = 800, Sel
 
 RemoteSelect.propTypes = {
   ...AntSelect.propTypes,
-  selectedOption: PropTypes.object,
   debounceTimeout: PropTypes.number,
   fetchOptions: PropTypes.func.isRequired,
 };

@@ -3,7 +3,7 @@ import * as Yup from 'yup';
 import { useEffect, useRef } from 'react';
 import { useFormikContext } from 'formik';
 
-import { getErrorMessage, getFirstApiError } from './errors';
+import { getErrorMessage, getFirstApiError } from '../errors';
 
 export const buildSchema = (formData) => {
   const iterateObject = (obj, schema) => {
@@ -174,3 +174,29 @@ export const getCaptchaToken = ({ key, action = 'submit' }) =>
       window.grecaptcha.execute(key, { action }).then(resolve).catch(reject);
     });
   });
+
+export const getCascaderDefaultValue = (targetValue, options = []) => {
+  let isFound = false;
+  const r = [];
+
+  const getValue = (items) => {
+    for (let i = 0, l = items.length; i < l; i++) {
+      const item = items[i];
+      const { value, children } = item;
+
+      r.push(value);
+      if (children) {
+        getValue(children);
+        if (isFound) break;
+      } else if (value === targetValue) {
+        isFound = true;
+        break;
+      }
+      r.pop();
+    }
+  };
+
+  getValue(options);
+
+  return r;
+};

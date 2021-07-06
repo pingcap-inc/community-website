@@ -7,6 +7,7 @@ import { Form, FormItem, Input, Select, Cascader } from 'formik-antd';
 import { Formik } from 'formik';
 import { RemoteSelect } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
+import { utils } from '@tidb-community/common';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
@@ -39,7 +40,7 @@ const FormComponent = () => {
     [introduction.name]: data.introduction ?? '',
     [industryType.name]: data.industry_type_code,
     [orgSize.name]: data.member_range_code,
-    [orgLocation.name]: undefined,
+    [orgLocation.name]: utils.form.getCascaderDefaultValue(data.company_base_code, orgLocation.options),
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {

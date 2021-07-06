@@ -25,5 +25,9 @@ export default css`
       font-weight: normal;
       color: ${colors.B1};
     }
+
+    &.ant-select-disabled:not(.ant-select-customize-input) .ant-select-selector {
+      color: ${colors.F2};
+    }
   }
 `;

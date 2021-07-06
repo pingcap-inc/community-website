@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
 import { Form, FormItem, Input, Select, Cascader } from 'formik-antd';
@@ -12,16 +12,20 @@ import { useTranslation } from 'next-i18next';
 
 // import * as Styled from './form.styled';
 import { getFields, getSchema } from './form.fields';
-import { form as formUtils } from '~/utils';
+import { common as commonUtils, form as formUtils } from '~/utils';
+import { MeContext } from '~/context';
 
 const FormComponent = () => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { meData } = useContext(MeContext);
   const { isReady, query } = router;
   const { data: infoResp, error } = useSWR(isReady && ['orgs.org.info', query]);
   const { t } = useTranslation('page-orgs');
 
   const lang = t('settings', { returnObjects: true });
+  const isAdmin = commonUtils.isAdmin(meData);
+  const disabled = !isAdmin;
 
   const isLoading = !error && !infoResp;
   if (isLoading) return <Skeleton />;
@@ -66,36 +70,38 @@ const FormComponent = () => {
           <Row gutter={32}>
             <Col xs={24} md={12}>
               <FormItem label={lang.teamName} name={teamName.name}>
-                <Input {...teamName} />
+                <Input {...teamName} disabled={disabled} />
               </FormItem>
 
               <FormItem label={lang.introduction} name={introduction.name}>
-                <Input {...introduction} />
+                <Input {...introduction} disabled={disabled} />
               </FormItem>
 
               <FormItem label={lang.orgSize} name={orgSize.name}>
-                <Select {...orgSize} />
+                <Select {...orgSize} disabled={disabled} />
               </FormItem>
             </Col>
 
             <Col xs={24} md={12}>
               <FormItem label={lang.companyName} name={companyName.name}>
-                <RemoteSelect {...companyName} />
+                <RemoteSelect {...companyName} disabled={disabled} />
               </FormItem>
 
               <FormItem label={lang.industryType} name={industryType.name}>
-                <Select {...industryType} />
+                <Select {...industryType} disabled={disabled} />
               </FormItem>
 
               <FormItem label={lang.orgLocation} name={orgLocation.name}>
-                <Cascader {...orgLocation} />
+                <Cascader {...orgLocation} disabled={disabled} />
               </FormItem>
             </Col>
           </Row>
 
-          <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
-            {lang.submitBtn}
-          </Button>
+          {isAdmin && (
+            <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
+              {lang.submitBtn}
+            </Button>
+          )}
         </Form>
       )}
     </Formik>

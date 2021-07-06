@@ -4,6 +4,10 @@ export const info = ({ slug }) => {
   return client.get(`/api/orgs/${slug}`);
 };
 
+export const updateInfo = ({ slug, data }) => {
+  return client.put(`/api/orgs/${slug}`, data);
+};
+
 export const members = ({ slug }) => {
   return client.get(`/api/orgs/${slug}/members`);
 };

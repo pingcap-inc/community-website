@@ -1,6 +1,5 @@
 import * as R from 'ramda';
 import React, { useState } from 'react';
-import moment from 'moment';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
 import { Form, FormItem, Input, Select, Cascader } from 'formik-antd';
@@ -14,8 +13,6 @@ import { useTranslation } from 'next-i18next';
 // import * as Styled from './form.styled';
 import { getFields, getSchema } from './form.fields';
 import { form as formUtils } from '~/utils';
-
-const dateApiFormat = 'YYYY-MM-DD';
 
 const FormComponent = () => {
   const router = useRouter();
@@ -46,15 +43,10 @@ const FormComponent = () => {
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
 
-    const { date_of_birth: dob } = values;
-
-    return api.profile
-      .update({
-        ...values,
-        date_of_birth: dob ? moment(dob).format(dateApiFormat) : null,
-      })
+    return api.orgs.org
+      .updateInfo({ slug: query.slug, data: values })
       .then(() => {
-        message.success('个人信息更新成功');
+        message.success(lang.submitSuccessful);
       })
       .finally(() => {
         setIsSubmitting(false);

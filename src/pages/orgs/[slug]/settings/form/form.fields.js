@@ -9,6 +9,8 @@ const { buildSchema } = utils.form;
 const formData = getFormData();
 const { organizationTypes, organizationSizes, provinces } = formData.org.enums;
 
+const introMaxLength = 50;
+
 export const getFields = ({ lang, t }) => ({
   teamName: {
     name: 'name',
@@ -30,7 +32,8 @@ export const getFields = ({ lang, t }) => ({
 
   introduction: {
     name: 'introduction',
-    maxLength: 50,
+    maxLength: introMaxLength,
+    validator: Yup.string().max(introMaxLength, ({ max }) => t('settings.validations.introductionMaxLength', { max })),
     placeholder: lang.placeholder,
   },
 

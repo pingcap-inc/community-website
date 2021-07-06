@@ -10,7 +10,7 @@ import { utils } from '@tidb-community/common';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
-// import * as Styled from './form.styled';
+import * as Styled from './form.styled';
 import Upload from './Upload.component';
 import { MeContext } from '~/context';
 import { common as commonUtils, form as formUtils } from '~/utils';
@@ -36,6 +36,7 @@ const FormComponent = () => {
   const schema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 
+  console.log('data!!', data);
   const initialValues = {
     [teamName.name]: data.name ?? '',
     [companyName.name]: data.company_name,
@@ -70,16 +71,12 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24} md={12}>
-              <Row gutter={16}>
-                <Col span={8}>
-                  <Upload />
-                </Col>
-                <Col span={16}>
-                  <FormItem label={lang.teamName} name={teamName.name}>
-                    <Input {...teamName} disabled={disabled} />
-                  </FormItem>
-                </Col>
-              </Row>
+              <Styled.Row>
+                <Upload {...R.pick(['name', 'logo'], data)} />
+                <FormItem label={lang.teamName} name={teamName.name}>
+                  <Input {...teamName} disabled={disabled} />
+                </FormItem>
+              </Styled.Row>
 
               <FormItem label={lang.introduction} name={introduction.name}>
                 <Input {...introduction} disabled={disabled} />

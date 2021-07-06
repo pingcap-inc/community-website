@@ -1,9 +1,12 @@
 import * as Yup from 'yup';
 import { utils } from '@tidb-community/common';
 
+import { getFormData } from '@tidb-community/datasource';
 import { fetchOrganizationOptions } from '~/pages/account/organization/new/form/form.data';
 
 const { buildSchema } = utils.form;
+const formData = getFormData();
+const { organizationTypes, organizationSizes } = formData.org.enums;
 
 export const getFields = ({ lang, t }) => ({
   teamName: {
@@ -31,11 +34,21 @@ export const getFields = ({ lang, t }) => ({
   industryType: {
     name: 'industry_type_code',
     placeholder: lang.pleaseSelect,
+    options: organizationTypes,
+    validator: Yup.mixed().required(lang.industryTypeNotEmpty),
   },
 
   orgSize: {
     name: 'member_range_code',
     placeholder: lang.pleaseSelect,
+    options: organizationSizes,
+    validator: Yup.mixed().required(lang.orgSizeNotEmpty),
+  },
+
+  location: {
+    name: 'company_base_code',
+    placeholder: lang.pleaseSelect,
+    validator: Yup.mixed().required(lang.locationNotEmpty),
   },
 });
 

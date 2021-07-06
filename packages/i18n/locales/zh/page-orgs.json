@@ -19,7 +19,10 @@
       "teamNameMinLength": "团队名称最短为{{min}}个字符",
       "teamNameMaxLength": "团队名称最长为{{max}}个字符",
       "teamNameNotEmpty": "团队名称不可为空",
-      "companyNameNotEmpty": "所属企业不可为空"
+      "companyNameNotEmpty": "所属企业不可为空",
+      "industryTypeNotEmpty": "行业类型不可为空",
+      "orgSizeNotEmpty": "企业规模不可为空",
+      "locationNotEmpty": "所在地不可为空"
     }
   }
 }

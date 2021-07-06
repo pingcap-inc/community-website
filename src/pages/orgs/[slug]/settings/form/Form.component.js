@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
-import { Form, FormItem, Input, Select } from 'formik-antd';
+import { Form, FormItem, Input, Select, Cascader } from 'formik-antd';
 import { Formik } from 'formik';
 import { RemoteSelect } from '@tidb-community/ui';
-import { api, getFormData } from '@tidb-community/datasource';
+import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
@@ -14,9 +14,6 @@ import { useTranslation } from 'next-i18next';
 import { getFields, getSchema } from './form.fields';
 import { form as formUtils } from '~/utils';
 
-const formData = getFormData();
-const { organizationTypes, organizationSizes } = formData.org.enums;
-const { Option } = Select;
 const dateApiFormat = 'YYYY-MM-DD';
 
 const FormComponent = () => {
@@ -34,7 +31,7 @@ const FormComponent = () => {
   const { data } = infoResp;
   const fields = getFields({ lang: lang.validations, t });
   const schema = getSchema(fields);
-  const { teamName, companyName, introduction, industryType, orgSize } = fields;
+  const { teamName, companyName, introduction, industryType, orgSize, location } = fields;
 
   console.log('data!!', data);
 
@@ -44,6 +41,7 @@ const FormComponent = () => {
     [introduction.name]: data.introduction ?? '',
     [industryType.name]: data.industry_type_code,
     [orgSize.name]: data.member_range_code,
+    [location.name]: data.company_base_code,
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
@@ -93,13 +91,7 @@ const FormComponent = () => {
                 </FormItem>
 
                 <FormItem label={lang.orgSize} name={orgSize.name}>
-                  <Select {...orgSize}>
-                    {organizationSizes.map(({ value, label }) => (
-                      <Option key={value} value={value}>
-                        {label}
-                      </Option>
-                    ))}
-                  </Select>
+                  <Select {...orgSize} />
                 </FormItem>
               </Col>
 
@@ -114,13 +106,7 @@ const FormComponent = () => {
                 </FormItem>
 
                 <FormItem label={lang.industryType} name={lang.industryType}>
-                  <Select {...industryType}>
-                    {organizationTypes.map(({ value, label }) => (
-                      <Option key={value} value={value}>
-                        {label}
-                      </Option>
-                    ))}
-                  </Select>
+                  <Select {...industryType} />
                 </FormItem>
               </Col>
             </Row>

@@ -31,9 +31,9 @@ const FormComponent = () => {
   const { data } = infoResp;
   const fields = getFields({ lang: lang.validations, t });
   const schema = getSchema(fields);
-  const { teamName, companyName, introduction, industryType, orgSize, location } = fields;
+  const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 
-  console.log('fields!!', fields);
+  console.log('orgLocation!!', orgLocation);
 
   const initialValues = {
     [teamName.name]: data.name ?? '',
@@ -41,7 +41,7 @@ const FormComponent = () => {
     [introduction.name]: data.introduction ?? '',
     [industryType.name]: data.industry_type_code,
     [orgSize.name]: data.member_range_code,
-    [location.name]: data.company_base_code,
+    [orgLocation.name]: undefined,
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
@@ -96,9 +96,9 @@ const FormComponent = () => {
                 <Select {...industryType} />
               </FormItem>
 
-              {/* <FormItem>
-                  <Cascader {...location} />
-                </FormItem> */}
+              <FormItem label={lang.orgLocation} name={orgLocation.name}>
+                <Cascader {...orgLocation} />
+              </FormItem>
             </Col>
           </Row>
 

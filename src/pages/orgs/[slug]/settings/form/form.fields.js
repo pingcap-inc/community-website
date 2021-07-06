@@ -45,7 +45,7 @@ export const getFields = ({ lang, t }) => ({
     validator: Yup.mixed().required(lang.orgSizeNotEmpty),
   },
 
-  location: {
+  orgLocation: {
     name: 'company_base_code',
     placeholder: lang.pleaseSelect,
     options: provinces,

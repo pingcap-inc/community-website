@@ -11,7 +11,7 @@
     "introduction": "简介",
     "industryType": "行业类型",
     "orgSize": "企业规模",
-    "location": "企业所在地",
+    "orgLocation": "企业所在地",
     "submitBtn": "更新",
     "validations": {
       "pleaseEnter": "请输入",

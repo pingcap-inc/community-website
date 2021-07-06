@@ -11,9 +11,10 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 // import * as Styled from './form.styled';
-import { getFields, getSchema } from './form.fields';
-import { common as commonUtils, form as formUtils } from '~/utils';
+import Upload from './Upload.component';
 import { MeContext } from '~/context';
+import { common as commonUtils, form as formUtils } from '~/utils';
+import { getFields, getSchema } from './form.fields';
 
 const FormComponent = () => {
   const router = useRouter();
@@ -69,9 +70,16 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24} md={12}>
-              <FormItem label={lang.teamName} name={teamName.name}>
-                <Input {...teamName} disabled={disabled} />
-              </FormItem>
+              <Row gutter={16}>
+                <Col span={8}>
+                  <Upload />
+                </Col>
+                <Col span={16}>
+                  <FormItem label={lang.teamName} name={teamName.name}>
+                    <Input {...teamName} disabled={disabled} />
+                  </FormItem>
+                </Col>
+              </Row>
 
               <FormItem label={lang.introduction} name={introduction.name}>
                 <Input {...introduction} disabled={disabled} />

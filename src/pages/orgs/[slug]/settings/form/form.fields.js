@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import { utils } from '@tidb-community/common';
+import { Select } from 'formik-antd';
 
 import { getFormData } from '@tidb-community/datasource';
 import { fetchOrganizationOptions } from '~/pages/account/organization/new/form/form.data';
@@ -23,6 +24,8 @@ export const getFields = ({ lang, t }) => ({
     placeholder: lang.pleaseEnter,
     validator: Yup.mixed().required(lang.companyNameNotEmpty),
     fetchOptions: fetchOrganizationOptions,
+    labelInValue: false,
+    Select,
   },
 
   introduction: {

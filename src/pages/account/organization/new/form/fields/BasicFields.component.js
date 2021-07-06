@@ -21,7 +21,7 @@ const BasicFields = () => {
         <Input {...nickname} />
       </AntForm.Item>
       <AntForm.Item name={organization.name}>
-        <RemoteSelect {...organization} Select={Select} />
+        <RemoteSelect {...organization} />
       </AntForm.Item>
       <AntForm.Item name={organizationType.name}>
         <Select {...organizationType} />

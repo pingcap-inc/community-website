@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { Select } from 'formik-antd';
 import { api, getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
 
@@ -30,6 +31,7 @@ const data = {
       placeholder: '请选择所属企业',
       validator: Yup.mixed().required('所属企业不可为空'),
       fetchOptions: fetchOrganizationOptions,
+      Select,
       initialValue: undefined,
     },
     organizationType: {

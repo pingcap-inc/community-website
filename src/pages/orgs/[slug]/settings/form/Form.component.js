@@ -33,8 +33,6 @@ const FormComponent = () => {
   const schema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 
-  console.log('orgLocation!!', orgLocation);
-
   const initialValues = {
     [teamName.name]: data.name ?? '',
     [companyName.name]: data.company_name,
@@ -89,7 +87,7 @@ const FormComponent = () => {
 
             <Col xs={24} md={12}>
               <FormItem label={lang.companyName} name={companyName.name}>
-                <RemoteSelect {...companyName} labelInValue={false} Select={Select} />
+                <RemoteSelect {...companyName} />
               </FormItem>
 
               <FormItem label={lang.industryType} name={industryType.name}>

@@ -1,3 +1,4 @@
+import ImgCrop from 'antd-img-crop';
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
@@ -10,7 +11,13 @@ const Upload = ({ infoResp, isAdmin, lang, mutateInfo, slug }) => {
   const { data } = infoResp;
   const disabled = !isAdmin;
 
-  const props = {
+  const imgCropProps = {
+    modalCancel: lang.modalCancel,
+    modalOk: lang.modalOk,
+    quality: 0.7,
+  };
+
+  const uploadProps = {
     disabled,
     listType: 'picture-card',
     showUploadList: false,
@@ -54,10 +61,12 @@ const Upload = ({ infoResp, isAdmin, lang, mutateInfo, slug }) => {
   };
 
   return (
-    <Styled.Upload {...props}>
-      {data.logo && <Styled.Logo alt={data.name} src={data.logo} />}
-      {!disabled && <UploadOutlined />}
-    </Styled.Upload>
+    <ImgCrop {...imgCropProps}>
+      <Styled.Upload {...uploadProps}>
+        {data.logo && <Styled.Logo alt={data.name} src={data.logo} />}
+        {!disabled && <UploadOutlined />}
+      </Styled.Upload>
+    </ImgCrop>
   );
 };
 

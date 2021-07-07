@@ -15,6 +15,8 @@
     "logoSizeError": "Logo 大小须在 2M 以内",
     "logoTypeError": "仅支持 jpg 和 png 格式的图片",
     "logoUploadSuccessful": "Logo 更新成功",
+    "modalCancel": "取消",
+    "modalOk": "确定",
     "orgLocation": "企业所在地",
     "orgSize": "企业规模",
     "orgSizeNotEmpty": "企业规模不可为空",
@@ -26,6 +28,6 @@
     "teamNameMaxLength": "团队名称最长为{{max}}个字符",
     "teamNameMinLength": "团队名称最短为{{min}}个字符",
     "teamNameNotEmpty": "团队名称不可为空",
-    "title": "企业信息"
+    "title": "团队信息"
   }
 }

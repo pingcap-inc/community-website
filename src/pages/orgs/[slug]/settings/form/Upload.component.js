@@ -6,7 +6,9 @@ import { message } from 'antd';
 import * as Styled from './form.styled';
 import { errors as errorUtils } from '~/utils';
 
-const Upload = ({ lang, logo, name, slug }) => {
+const Upload = ({ infoResp, lang, mutateInfo, slug }) => {
+  const { data } = infoResp;
+
   const props = {
     listType: 'picture-card',
     showUploadList: false,
@@ -30,7 +32,16 @@ const Upload = ({ lang, logo, name, slug }) => {
         .uploadLogo({ slug, file, onUploadProgress: onProgress })
         .then((resp) => {
           onSuccess();
-          console.log('resp!!', resp);
+          mutateInfo(
+            {
+              ...infoResp,
+              data: {
+                ...data,
+                logo: resp.data.logo,
+              },
+            },
+            false
+          );
           message.success('更新成功');
         })
         .catch((err) => {
@@ -42,7 +53,7 @@ const Upload = ({ lang, logo, name, slug }) => {
 
   return (
     <Styled.Upload {...props}>
-      {logo && <Styled.Logo alt={name} src={logo} />}
+      {data.logo && <Styled.Logo alt={data.name} src={data.logo} />}
       <UploadOutlined />
     </Styled.Upload>
   );

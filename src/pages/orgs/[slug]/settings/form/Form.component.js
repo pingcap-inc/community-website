@@ -21,7 +21,7 @@ const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { meData } = useContext(MeContext);
   const { isReady, query } = router;
-  const { data: infoResp, error } = useSWR(isReady && ['orgs.org.info', query]);
+  const { data: infoResp, error, mutate: mutateInfo } = useSWR(isReady && ['orgs.org.info', query]);
   const { t } = useTranslation('page-orgs');
 
   const { slug } = query;
@@ -65,8 +65,9 @@ const FormComponent = () => {
   };
 
   const uploadProps = {
-    ...R.pick(['name', 'logo'], data),
+    infoResp,
     lang,
+    mutateInfo,
     slug,
   };
 

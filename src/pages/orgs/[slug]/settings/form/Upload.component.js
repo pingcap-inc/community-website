@@ -1,10 +1,12 @@
 import React from 'react';
 import { UploadOutlined } from '@ant-design/icons';
+import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 
 import * as Styled from './form.styled';
+import { errors as errorUtils } from '~/utils';
 
-const Upload = ({ logo, name, lang }) => {
+const Upload = ({ lang, logo, name, slug }) => {
   const props = {
     listType: 'picture-card',
     showUploadList: false,
@@ -23,7 +25,19 @@ const Upload = ({ logo, name, lang }) => {
       return isJpgOrPng && isLt2M;
     },
 
-    action: (file) => console.log(file),
+    customRequest: ({ file, filename, onProgress, onSuccess, onError }) => {
+      api.orgs.org
+        .uploadLogo({ slug, file, onUploadProgress: onProgress })
+        .then((resp) => {
+          onSuccess();
+          console.log('resp!!', resp);
+          message.success('更新成功');
+        })
+        .catch((err) => {
+          onError(err);
+          message.error(errorUtils.getFirstApiErrorMsg(err));
+        });
+    },
   };
 
   return (

@@ -24,6 +24,7 @@ const FormComponent = () => {
   const { data: infoResp, error } = useSWR(isReady && ['orgs.org.info', query]);
   const { t } = useTranslation('page-orgs');
 
+  const { slug } = query;
   const lang = t('settings', { returnObjects: true });
 
   const isLoading = !error && !infoResp;
@@ -48,7 +49,7 @@ const FormComponent = () => {
     setIsSubmitting(true);
 
     return api.orgs.org
-      .updateInfo({ slug: query.slug, data: values })
+      .updateInfo({ slug, data: values })
       .then(() => {
         message.success(lang.submitSuccessful);
       })
@@ -66,6 +67,7 @@ const FormComponent = () => {
   const uploadProps = {
     ...R.pick(['name', 'logo'], data),
     lang,
+    slug,
   };
 
   return (

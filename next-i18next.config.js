@@ -13,7 +13,7 @@ module.exports = {
   ns: ['common', 'page-community', 'page-organization-benefits', 'page-orgs'],
   backend: {
     loadPath: `${process.env.NEXT_PUBLIC_LOCALES_BASE_URL}/{{lng}}/{{ns}}.json`,
-    reloadInterval: isProd ? ONE_MIN : 20 * ONE_SECOND,
+    reloadInterval: isProd ? 5 * ONE_MIN : 30 * ONE_SECOND,
     crossDomain: true,
 
     // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch#supplying_request_options

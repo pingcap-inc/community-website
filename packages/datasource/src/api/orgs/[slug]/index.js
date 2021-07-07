@@ -8,6 +8,15 @@ export const updateInfo = ({ slug, data }) => {
   return client.put(`/api/orgs/${slug}`, data);
 };
 
+export const uploadLogo = ({ slug, file, onUploadProgress }) => {
+  return client.post(`/api/orgs/${slug}/upload-logo`, file, {
+    headers: {
+      'Content-Disposition': `attachment; filename=${encodeURI(file.name)}`,
+    },
+    onUploadProgress,
+  });
+};
+
 export const members = ({ slug }) => {
   return client.get(`/api/orgs/${slug}/members`);
 };

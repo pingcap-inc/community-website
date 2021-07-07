@@ -25,18 +25,16 @@ const FormComponent = () => {
   const { t } = useTranslation('page-orgs');
 
   const lang = t('settings', { returnObjects: true });
-  const isAdmin = commonUtils.isAdmin(meData);
-  const disabled = !isAdmin;
 
   const isLoading = !error && !infoResp;
   if (isLoading) return <Skeleton />;
 
   const { data } = infoResp;
-  const fields = getFields({ lang: lang.validations, t });
+  const isAdmin = commonUtils.isAdmin(meData);
+  const fields = getFields({ lang: lang.validations, t, isAdmin });
   const schema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 
-  console.log('data!!', data);
   const initialValues = {
     [teamName.name]: data.name ?? '',
     [companyName.name]: data.company_name,
@@ -65,6 +63,11 @@ const FormComponent = () => {
     validationSchema: schema,
   };
 
+  const uploadProps = {
+    ...R.pick(['name', 'logo'], data),
+    lang,
+  };
+
   return (
     <Formik {...formikProps}>
       {({ errors }) => (
@@ -72,32 +75,32 @@ const FormComponent = () => {
           <Row gutter={32}>
             <Col xs={24} md={12}>
               <Styled.Row>
-                <Upload {...R.pick(['name', 'logo'], data)} />
+                <Upload {...uploadProps} />
                 <FormItem label={lang.teamName} name={teamName.name}>
-                  <Input {...teamName} disabled={disabled} />
+                  <Input {...teamName} />
                 </FormItem>
               </Styled.Row>
 
               <FormItem label={lang.introduction} name={introduction.name}>
-                <Input {...introduction} disabled={disabled} />
+                <Input {...introduction} />
               </FormItem>
 
               <FormItem label={lang.orgSize} name={orgSize.name}>
-                <Select {...orgSize} disabled={disabled} />
+                <Select {...orgSize} />
               </FormItem>
             </Col>
 
             <Col xs={24} md={12}>
               <FormItem label={lang.companyName} name={companyName.name}>
-                <RemoteSelect {...companyName} disabled={disabled} />
+                <RemoteSelect {...companyName} />
               </FormItem>
 
               <FormItem label={lang.industryType} name={industryType.name}>
-                <Select {...industryType} disabled={disabled} />
+                <Select {...industryType} />
               </FormItem>
 
               <FormItem label={lang.orgLocation} name={orgLocation.name}>
-                <Cascader {...orgLocation} disabled={disabled} />
+                <Cascader {...orgLocation} />
               </FormItem>
             </Col>
           </Row>

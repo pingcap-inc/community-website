@@ -11,52 +11,64 @@ const { organizationTypes, organizationSizes, provinces } = formData.org.enums;
 
 const introMaxLength = 50;
 
-export const getFields = ({ lang, t }) => ({
-  teamName: {
-    name: 'name',
-    placeholder: lang.pleaseEnter,
-    validator: Yup.string()
-      .min(4, ({ min }) => t('settings.validations.teamNameMinLength', { min }))
-      .max(20, ({ max }) => t('settings.validations.teamNameMaxLength', { max }))
-      .required(lang.teamNameNotEmpty),
-  },
+export const getFields = ({ isAdmin, lang, t }) => {
+  const disabled = !isAdmin;
 
-  companyName: {
-    name: 'company_name',
-    placeholder: lang.pleaseEnter,
-    validator: Yup.mixed().required(lang.companyNameNotEmpty),
-    fetchOptions: fetchOrganizationOptions,
-    labelInValue: false,
-    Select,
-  },
+  return {
+    teamName: {
+      name: 'name',
+      disabled,
+      placeholder: lang.pleaseEnter,
+      validator: Yup.string()
+        .min(4, ({ min }) => t('settings.validations.teamNameMinLength', { min }))
+        .max(20, ({ max }) => t('settings.validations.teamNameMaxLength', { max }))
+        .required(lang.teamNameNotEmpty),
+    },
 
-  introduction: {
-    name: 'introduction',
-    maxLength: introMaxLength,
-    validator: Yup.string().max(introMaxLength, ({ max }) => t('settings.validations.introductionMaxLength', { max })),
-    placeholder: lang.placeholder,
-  },
+    companyName: {
+      name: 'company_name',
+      disabled,
+      placeholder: lang.pleaseEnter,
+      validator: Yup.mixed().required(lang.companyNameNotEmpty),
+      fetchOptions: fetchOrganizationOptions,
+      labelInValue: false,
+      Select,
+    },
 
-  industryType: {
-    name: 'industry_type_code',
-    placeholder: lang.pleaseSelect,
-    options: organizationTypes,
-    validator: Yup.mixed().required(lang.industryTypeNotEmpty),
-  },
+    introduction: {
+      name: 'introduction',
+      disabled,
+      placeholder: lang.placeholder,
+      maxLength: introMaxLength,
+      validator: Yup.string().max(introMaxLength, ({ max }) =>
+        t('settings.validations.introductionMaxLength', { max })
+      ),
+    },
 
-  orgSize: {
-    name: 'member_range_code',
-    placeholder: lang.pleaseSelect,
-    options: organizationSizes,
-    validator: Yup.mixed().required(lang.orgSizeNotEmpty),
-  },
+    industryType: {
+      name: 'industry_type_code',
+      disabled,
+      placeholder: lang.pleaseSelect,
+      options: organizationTypes,
+      validator: Yup.mixed().required(lang.industryTypeNotEmpty),
+    },
 
-  orgLocation: {
-    name: 'company_base_code',
-    placeholder: lang.pleaseSelect,
-    options: provinces,
-    validator: Yup.array().length(2, lang.locationNotEmpty).required(lang.locationNotEmpty),
-  },
-});
+    orgSize: {
+      name: 'member_range_code',
+      disabled,
+      placeholder: lang.pleaseSelect,
+      options: organizationSizes,
+      validator: Yup.mixed().required(lang.orgSizeNotEmpty),
+    },
+
+    orgLocation: {
+      name: 'company_base_code',
+      disabled,
+      placeholder: lang.pleaseSelect,
+      options: provinces,
+      validator: Yup.array().length(2, lang.locationNotEmpty).required(lang.locationNotEmpty),
+    },
+  };
+};
 
 export const getSchema = (fields) => buildSchema(fields);

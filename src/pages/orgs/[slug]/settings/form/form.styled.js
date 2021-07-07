@@ -41,5 +41,5 @@ export const Upload = styled(AntUpload)`
 `;
 
 export const Logo = styled.img`
-  width: 100%;
+  ${mixins.size('100%')};
 `;

@@ -49,7 +49,7 @@ const FormComponent = () => {
     setIsSubmitting(true);
 
     return api.orgs.org
-      .updateInfo({ slug, data: values })
+      .updateInfo({ slug, data: { ...values, company_base_code: R.last(values.company_base_code) } })
       .then(() => {
         message.success(lang.submitSuccessful);
       })
@@ -74,48 +74,52 @@ const FormComponent = () => {
 
   return (
     <Formik {...formikProps}>
-      {({ errors }) => (
-        <Form layout="vertical">
-          <Row gutter={32}>
-            <Col xs={24} md={12}>
-              <Styled.Row>
-                <Upload {...uploadProps} />
-                <FormItem label={lang.teamName} name={teamName.name}>
-                  <Input {...teamName} />
+      {({ values, errors }) => {
+        const introValue = values[introduction.name]?.substr(0, introduction.maxLength);
+
+        return (
+          <Form layout="vertical">
+            <Row gutter={32}>
+              <Col xs={24} md={12}>
+                <Styled.Row>
+                  <Upload {...uploadProps} />
+                  <FormItem label={lang.teamName} name={teamName.name}>
+                    <Input {...teamName} />
+                  </FormItem>
+                </Styled.Row>
+
+                <FormItem label={lang.introduction} name={introduction.name}>
+                  <Input {...introduction} value={introValue} />
                 </FormItem>
-              </Styled.Row>
 
-              <FormItem label={lang.introduction} name={introduction.name}>
-                <Input {...introduction} />
-              </FormItem>
+                <FormItem label={lang.orgSize} name={orgSize.name}>
+                  <Select {...orgSize} />
+                </FormItem>
+              </Col>
 
-              <FormItem label={lang.orgSize} name={orgSize.name}>
-                <Select {...orgSize} />
-              </FormItem>
-            </Col>
+              <Col xs={24} md={12}>
+                <FormItem label={lang.companyName} name={companyName.name}>
+                  <RemoteSelect {...companyName} />
+                </FormItem>
 
-            <Col xs={24} md={12}>
-              <FormItem label={lang.companyName} name={companyName.name}>
-                <RemoteSelect {...companyName} />
-              </FormItem>
+                <FormItem label={lang.industryType} name={industryType.name}>
+                  <Select {...industryType} />
+                </FormItem>
 
-              <FormItem label={lang.industryType} name={industryType.name}>
-                <Select {...industryType} />
-              </FormItem>
+                <FormItem label={lang.orgLocation} name={orgLocation.name}>
+                  <Cascader {...orgLocation} />
+                </FormItem>
+              </Col>
+            </Row>
 
-              <FormItem label={lang.orgLocation} name={orgLocation.name}>
-                <Cascader {...orgLocation} />
-              </FormItem>
-            </Col>
-          </Row>
-
-          {isAdmin && (
-            <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
-              {lang.submitBtn}
-            </Button>
-          )}
-        </Form>
-      )}
+            {isAdmin && (
+              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
+                {lang.submitBtn}
+              </Button>
+            )}
+          </Form>
+        );
+      }}
     </Formik>
   );
 };

@@ -20,8 +20,8 @@ export const getFields = ({ isAdmin, lang, t }) => {
       disabled,
       placeholder: lang.pleaseEnter,
       validator: Yup.string()
-        .min(4, ({ min }) => t('settings.validations.teamNameMinLength', { min }))
-        .max(20, ({ max }) => t('settings.validations.teamNameMaxLength', { max }))
+        .min(4, ({ min }) => t('settings.teamNameMinLength', { min }))
+        .max(20, ({ max }) => t('settings.teamNameMaxLength', { max }))
         .required(lang.teamNameNotEmpty),
     },
 
@@ -40,9 +40,7 @@ export const getFields = ({ isAdmin, lang, t }) => {
       disabled,
       placeholder: lang.placeholder,
       maxLength: introMaxLength,
-      validator: Yup.string().max(introMaxLength, ({ max }) =>
-        t('settings.validations.introductionMaxLength', { max })
-      ),
+      validator: Yup.string().max(introMaxLength, ({ max }) => t('settings.introductionMaxLength', { max })),
     },
 
     industryType: {

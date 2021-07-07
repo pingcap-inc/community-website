@@ -8,6 +8,7 @@ module.exports = {
     // defaultLocale: 'zh',
     defaultLocale: 'en',
     locales: ['zh', 'en'],
+    fallbackLng: ['zh', 'en'],
   },
   use: [require('i18next-http-backend/cjs')],
   ns: ['common', 'page-community', 'page-organization-benefits', 'page-orgs'],

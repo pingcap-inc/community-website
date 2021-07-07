@@ -1,17 +1,20 @@
 import { utils } from '@tidb-community/common';
+import { getFormData } from '@tidb-community/datasource';
 
+const formData = getFormData();
+const { personalPositions } = formData.org.enums;
 const { buildSchema } = utils.form;
-const maxLength = 128;
 
 export const fields = {
   companyName: {
     name: 'company_name',
     placeholder: '请输入',
-    maxLength,
+    maxLength: 128,
   },
   position: {
     name: 'job_title',
     placeholder: '请选择',
+    options: personalPositions,
   },
 };
 

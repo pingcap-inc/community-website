@@ -1,28 +1,30 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import debounce from 'lodash/debounce';
 import { Select as AntSelect, Spin } from 'antd';
 
 const RemoteSelect = ({ fetchOptions, debounceTimeout = 800, Select = AntSelect, ...props }) => {
-  const [fetching, setFetching] = React.useState(false);
-  const [options, setOptions] = React.useState([]);
-  const fetchRef = React.useRef(0);
+  const [isFetching, setIsFetching] = useState(false);
+  const [options, setOptions] = useState([]);
+  const fetchRef = useRef(0);
 
-  const debounceFetcher = React.useMemo(() => {
+  const debounceFetcher = useMemo(() => {
     const loadOptions = (value) => {
       fetchRef.current += 1;
       const fetchId = fetchRef.current;
-      setOptions([]);
-      setFetching(true);
 
-      fetchOptions(value).then((newOptions) => {
+      setOptions([]);
+      setIsFetching(true);
+
+      fetchOptions(value).then((options) => {
+        // fetch is asynchronous, so the condition will make sure the
+        // callback only updates for its own fetcher
         if (fetchId !== fetchRef.current) {
-          // for fetch callback order
           return;
         }
 
-        setOptions(newOptions);
-        setFetching(false);
+        setOptions(options);
+        setIsFetching(false);
       });
     };
 
@@ -31,13 +33,13 @@ const RemoteSelect = ({ fetchOptions, debounceTimeout = 800, Select = AntSelect,
 
   return (
     <Select
-      labelInValue
       filterOption={false}
+      labelInValue
+      notFoundContent={isFetching ? <Spin size="small" /> : null}
       onSearch={debounceFetcher}
-      showSearch={true}
-      notFoundContent={fetching ? <Spin size="small" /> : null}
-      {...props}
       options={options}
+      showSearch
+      {...props}
     />
   );
 };

@@ -117,10 +117,6 @@ const FormComponent = () => {
               <FormItem label="地址" name={address.name}>
                 <Input {...address} />
               </FormItem>
-
-              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
-                更新信息
-              </Button>
             </Col>
 
             <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }}>
@@ -129,6 +125,10 @@ const FormComponent = () => {
               </AntForm.Item>
             </Col>
           </Row>
+
+          <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
+            更新信息
+          </Button>
         </Form>
       )}
     </Formik>

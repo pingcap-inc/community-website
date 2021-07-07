@@ -12,8 +12,19 @@ import { AuthContext, MeContext } from '~/context';
 import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
 import { errors } from '~/utils';
+import { getI18nProps } from '~/utils/i18n.utils';
 
-const Home = () => {
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common', 'page-orgs'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
+
+const Page = () => {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -154,4 +165,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Page;

@@ -5,9 +5,8 @@ const router = require('express').Router();
 
 const utils = require('../utils');
 
+const positionKeys = Object.keys(require('@tidb-community/datasource/lib/form/org/personalPositions.json'));
 const { datatype } = faker;
-
-const positionKeys = Object.keys(require('@tidb-community/datasource/lib/form/org/personal-positions.json'));
 
 router.get('', async (req, res) => {
   await utils.wait(2000);

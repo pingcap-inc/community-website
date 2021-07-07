@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+import { Select } from 'formik-antd';
 import { api, getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
 
@@ -6,11 +7,11 @@ const { buildInitialValues, buildSchema } = utils.form;
 const formData = getFormData();
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
 
-const fetchOrganizationOptions = (word) =>
+export const fetchOrganizationOptions = (word) =>
   api.orgs.searchCompany({ word }).then((result) =>
-    result.data.map((company) => ({
-      label: company.name,
-      value: company.name,
+    result.data.map(({ name }) => ({
+      label: name,
+      value: name,
     }))
   );
 
@@ -30,6 +31,7 @@ const data = {
       placeholder: '请选择所属企业',
       validator: Yup.mixed().required('所属企业不可为空'),
       fetchOptions: fetchOrganizationOptions,
+      Select,
       initialValue: undefined,
     },
     organizationType: {

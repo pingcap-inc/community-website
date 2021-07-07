@@ -4,6 +4,17 @@ import Content from './content';
 import Layout from '~/pages/my/layout';
 import { AuthContext, MeContext } from '~/context';
 import { PageLoader } from '~/components';
+import { getI18nProps } from '~/utils/i18n.utils';
+
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
 
 const Settings = () => {
   const { login, isAnonymous } = useContext(AuthContext);

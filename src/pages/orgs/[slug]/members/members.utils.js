@@ -3,7 +3,8 @@ import React from 'react';
 
 import * as Styled from './members.styled';
 import RoleDropdown from './roleDropdown';
-import { ROLE_KEYS, ROLE_NAMES, TYPES } from './members.constants';
+import { ROLE_NAMES } from '~/constants';
+import { TYPES } from './members.constants';
 
 export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleChange, isAdmin }) => {
   const { data = [] } = membersResp;
@@ -47,8 +48,4 @@ export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleC
           ),
       };
     });
-};
-
-export const isAdmin = (meData) => {
-  return R.pathEq(['org', 'role'], ROLE_KEYS.ADMIN)(meData);
 };

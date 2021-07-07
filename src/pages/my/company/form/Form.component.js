@@ -5,16 +5,12 @@ import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
 import { Form, FormItem, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
-import { api, getFormData } from '@tidb-community/datasource';
+import { api } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
 import { MeContext } from '~/context';
 import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
-
-const formData = getFormData();
-const { personalPositions } = formData.org.enums;
-const { Option } = Select;
 
 const FormComponent = () => {
   const { meData } = useContext(MeContext);
@@ -72,13 +68,7 @@ const FormComponent = () => {
               </FormItem>
 
               <FormItem label="职位" name={position.name}>
-                <Select {...position}>
-                  {personalPositions.map(({ value, label }) => (
-                    <Option key={value} value={value}>
-                      {label}
-                    </Option>
-                  ))}
-                </Select>
+                <Select {...position} />
               </FormItem>
 
               <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>

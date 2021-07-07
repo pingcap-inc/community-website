@@ -9,13 +9,13 @@ import styles from './people.module.scss';
 import tugData from '~/data/tug_data.js';
 import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
-import { joinTUGLink } from '~/constants';
+import { JOIN_TUG_LINK } from '~/constants';
 
 export const getStaticProps = () => {
   const { tmc, leader } = tugData;
 
   const howToBecome = [
-    { index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: joinTUGLink },
+    { index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: JOIN_TUG_LINK },
     { index: 2, iconUrl: 'images/people/how-to-become-2.svg', title: '信息审核' },
     { index: 3, iconUrl: 'images/people/how-to-become-3.svg', title: '邀请加入' },
   ];

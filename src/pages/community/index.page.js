@@ -1,5 +1,4 @@
 import React from 'react';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 import Activities from './activities';
 import Banner from './banner';
@@ -9,19 +8,19 @@ import Learning from './learning';
 import UserGroup from './userGroup';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
-import { cookieKeys } from '~/constants';
+import { getI18nProps } from '~/utils/i18n.utils';
 
-export async function getServerSideProps({ locale, req }) {
-  locale = req.cookies[cookieKeys.locale] || locale;
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common', 'page-community'])(ctx);
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'page-community'])),
+      ...i18nProps,
     },
   };
-}
+};
 
-const Community = () => (
+const Page = () => (
   <>
     <CommunityHead />
 
@@ -36,4 +35,4 @@ const Community = () => (
   </>
 );
 
-export default Community;
+export default Page;

@@ -6,15 +6,26 @@ import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
 import * as Styled from './members.styled';
-import * as utils from './members.utils';
 import AddModal from './addModal';
 import Layout from '~/pages/orgs/layout';
 import { AuthContext, MeContext } from '~/context';
 import { CommunityHead, PageLoader } from '~/components';
 import { columns } from './members.data';
-import { errors } from '~/utils';
+import { common, errors } from '~/utils';
+import { getDataSource } from './members.utils';
+import { getI18nProps } from '~/utils/i18n.utils';
 
-const Members = () => {
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common', 'page-orgs'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
+
+const Page = () => {
   const router = useRouter();
   const { isReady, query } = router;
   const { slug } = query;
@@ -22,7 +33,7 @@ const Members = () => {
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
   const [isAddModalVisible, setIsAddModalVisible] = useState(false);
-  const isAdmin = utils.isAdmin(meData);
+  const isAdmin = common.isAdmin(meData);
 
   if (isAnonymous) {
     login();
@@ -107,7 +118,7 @@ const Members = () => {
     });
   };
 
-  const dataSource = utils.getDataSource({ membersResp, meData, onDelete, onRoleChange, isAdmin });
+  const dataSource = getDataSource({ membersResp, meData, onDelete, onRoleChange, isAdmin });
 
   const tableProps = {
     columns,
@@ -147,4 +158,4 @@ const Members = () => {
   );
 };
 
-export default Members;
+export default Page;

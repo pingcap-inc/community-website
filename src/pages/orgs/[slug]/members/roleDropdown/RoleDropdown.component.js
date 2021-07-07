@@ -3,7 +3,7 @@ import { CheckOutlined, DownOutlined } from '@ant-design/icons';
 import { Dropdown } from 'antd';
 
 import * as Styled from './roleDropdown.styled';
-import { ROLE_KEYS, ROLE_NAMES } from '../members.constants';
+import { ROLE_KEYS, ROLE_NAMES } from '~/constants';
 import { RoleActionMenu } from './RoleActionMenu.component';
 
 const genRoleMenu = ({ onRoleMenuClick, role }) => (

@@ -1,10 +1,10 @@
 import React from 'react';
-import { message } from 'antd';
-import { useFormikContext } from 'formik';
 import { Form } from 'formik-antd';
-
 import { Upload } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
+import { message } from 'antd';
+import { useFormikContext } from 'formik';
+
 import data from '../form.data';
 import { errors } from '~/utils';
 

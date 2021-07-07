@@ -2,6 +2,7 @@ import { css } from 'styled-components';
 
 import alertStyles from './alert';
 import btnStyles from './btn';
+import cascaderStyles from './cascader';
 import checkboxStyles from './checkbox';
 import formStyles from './form';
 import inputStyles from './input';
@@ -18,6 +19,7 @@ import tabsStyles from './tabs';
 export default css`
   ${alertStyles};
   ${btnStyles};
+  ${cascaderStyles};
   ${checkboxStyles};
   ${formStyles};
   ${inputStyles};

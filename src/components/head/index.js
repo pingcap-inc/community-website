@@ -5,7 +5,7 @@ import * as data from './head.data';
 import Head from './Head.component';
 
 export const CommunityHead = (props) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation('common');
 
   const headProps = {
     ...data.community,

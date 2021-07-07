@@ -1,16 +1,27 @@
 import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
 import useSWR, { mutate } from 'swr';
+import { api } from '@tidb-community/datasource';
 
 import * as Styled from './company.styled';
 import Form from './form';
 import Layout from '~/pages/my/layout';
 import { AuthContext, MeContext } from '~/context';
 import { PageLoader } from '~/components';
-import { api } from '@tidb-community/datasource';
+import { getI18nProps } from '~/utils/i18n.utils';
 import { redDots as redDotsUtils } from '~/utils';
 
-const Company = () => {
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
+
+const Page = () => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
@@ -53,4 +64,4 @@ const Company = () => {
   );
 };
 
-export default Company;
+export default Page;

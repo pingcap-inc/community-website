@@ -9,7 +9,7 @@ import Container from '~/components/Container/Container';
 import MyLink from '~/components/MyLink';
 import i18n from '~/data/navbar';
 import styles from './Navbar.module.scss';
-import { joinTUGLink } from '~/constants';
+import { JOIN_TUG_LINK } from '~/constants';
 
 export default function Navbar({ initTransparent, forceNonTransparent }) {
   // const intl = useIntl()
@@ -91,7 +91,7 @@ export default function Navbar({ initTransparent, forceNonTransparent }) {
               )
             )}
             <div className={styles.buttons}>
-              <Button href={joinTUGLink}>加入 TUG</Button>
+              <Button href={JOIN_TUG_LINK}>加入 TUG</Button>
             </div>
           </div>
 
@@ -130,7 +130,7 @@ export default function Navbar({ initTransparent, forceNonTransparent }) {
             )
           )}
           <div className={styles.buttons}>
-            <Button href={joinTUGLink}>加入 TUG</Button>
+            <Button href={JOIN_TUG_LINK}>加入 TUG</Button>
           </div>
         </div>
       )}

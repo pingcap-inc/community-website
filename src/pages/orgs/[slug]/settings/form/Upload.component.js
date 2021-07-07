@@ -6,10 +6,12 @@ import { message } from 'antd';
 import * as Styled from './form.styled';
 import { errors as errorUtils } from '~/utils';
 
-const Upload = ({ infoResp, lang, mutateInfo, slug }) => {
+const Upload = ({ infoResp, isAdmin, lang, mutateInfo, slug }) => {
   const { data } = infoResp;
+  const disabled = !isAdmin;
 
   const props = {
+    disabled,
     listType: 'picture-card',
     showUploadList: false,
 
@@ -54,7 +56,7 @@ const Upload = ({ infoResp, lang, mutateInfo, slug }) => {
   return (
     <Styled.Upload {...props}>
       {data.logo && <Styled.Logo alt={data.name} src={data.logo} />}
-      <UploadOutlined />
+      {!disabled && <UploadOutlined />}
     </Styled.Upload>
   );
 };

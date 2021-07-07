@@ -66,6 +66,7 @@ const FormComponent = () => {
 
   const uploadProps = {
     infoResp,
+    isAdmin,
     lang,
     mutateInfo,
     slug,

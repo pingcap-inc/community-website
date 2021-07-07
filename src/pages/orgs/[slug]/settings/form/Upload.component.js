@@ -44,7 +44,7 @@ const Upload = ({ infoResp, isAdmin, lang, mutateInfo, slug }) => {
             },
             false
           );
-          message.success('更新成功');
+          message.success(lang.logoUploadSuccessful);
         })
         .catch((err) => {
           onError(err);

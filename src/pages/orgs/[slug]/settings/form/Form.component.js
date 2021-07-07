@@ -32,7 +32,7 @@ const FormComponent = () => {
 
   const { data } = infoResp;
   const isAdmin = commonUtils.isAdmin(meData);
-  const fields = getFields({ lang: lang.form, t, isAdmin });
+  const fields = getFields({ lang, t, isAdmin });
   const schema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 

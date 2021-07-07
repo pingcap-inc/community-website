@@ -31,7 +31,7 @@ const FormComponent = () => {
 
   const { data } = infoResp;
   const isAdmin = commonUtils.isAdmin(meData);
-  const fields = getFields({ lang: lang.validations, t, isAdmin });
+  const fields = getFields({ lang: lang.form, t, isAdmin });
   const schema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 

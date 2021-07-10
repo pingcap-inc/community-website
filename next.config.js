@@ -15,10 +15,6 @@ const unifyNodeModules = (names) =>
 const config = {
   i18n,
 
-  future: {
-    webpack5: true,
-  },
-
   pageExtensions: ['page.js'],
 
   images: {

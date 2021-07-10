@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import React, { useContext } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
@@ -6,12 +7,18 @@ import { getData, api } from '@tidb-community/datasource';
 
 import { AuthContext } from '../../../src/context';
 
-import * as R from 'ramda';
 import './global.less';
 
 const GlobalStyle = createAppGlobalStyle();
 
-const HeaderFooter = ({ locale, title, logoSrc, homeUrl = '/', hasMargin = true, footerEl }) => {
+const HeaderFooter = ({
+  footerEl,
+  hasMargin = false,
+  homeUrl = 'https://tidb.io',
+  locale = 'zh',
+  logoUrl = 'https://tidb.io/images/community/logo.svg',
+  title = 'TiDB Community',
+}) => {
   const { login, logout } = useContext(AuthContext);
 
   const fetcher = (path, params) => {
@@ -39,7 +46,7 @@ const HeaderFooter = ({ locale, title, logoSrc, homeUrl = '/', hasMargin = true,
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
-  const logo = <img alt={title} src={logoSrc} />;
+  const logo = <img alt={title} src={logoUrl} />;
 
   const onNavClick = ({ link, isSelected }) => {
     if (isSelected) return;

@@ -5,19 +5,16 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
-    <link rel="stylesheet" href="https://tug.tidb.io/scripts/community-ui.css">
+    <link rel="stylesheet" href="http://localhost:3000/scripts/community-ui.css">
 </head>
 <body>
     <div id="header" class="tidb-community-ui"></div>
     <div id="footer" class="tidb-community-ui"></div>
-    <script src="https://tug.tidb.io/scripts/community-ui.js"></script>
+    <script src="http://localhost:3000/scripts/community-ui.js" data-query=></script>
     <script>
         _tidb.sharedUI.initHeaderFooter({
-            locale: 'zh',
-            title: 'TiDB Community',
-            logoSrc: 'https://tidb.io/images/community/logo.svg',
-            headerEl: document.querySelector('#header'),
-            footerEl: document.querySelector('#footer'),
+            headerEl: document.getElementById('header'),
+            footerEl: document.getElementById('footer'),
         });
     </script>
 </body>

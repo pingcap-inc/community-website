@@ -1,5 +1,5 @@
 {
-  "name": "@tidb-community/shared-ui-scripts",
+  "name": "@tidb-community/sharedUiScripts",
   "private": true,
   "scripts": {
     "build": "webpack"

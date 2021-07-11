@@ -1,5 +1,8 @@
+const SizePlugin = require('size-plugin');
 const path = require('path');
 const webpack = require('webpack');
+
+const isProd = (process.env.NODE_ENV ?? 'production') === 'production';
 
 const unifyNodeModules = (names) =>
   names.reduce(
@@ -44,7 +47,7 @@ module.exports = {
       },
 
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpe?g|gif)$/,
         use: ['url-loader'],
       },
     ],
@@ -62,5 +65,5 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
   },
 
-  plugins: [new webpack.EnvironmentPlugin(require('./env').env)],
+  plugins: [isProd && new SizePlugin(), new webpack.EnvironmentPlugin(require('./env').env)].filter(Boolean),
 };

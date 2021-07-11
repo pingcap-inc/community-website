@@ -11,18 +11,18 @@
     "@tidb-community/ui": "*"
   },
   "devDependencies": {
-    "@babel/preset-env": "7.14.2",
-    "@babel/preset-react": "7.13.13",
+    "@babel/preset-env": "7.14.7",
+    "@babel/preset-react": "7.14.5",
     "@svgr/webpack": "5.5.0",
     "babel-loader": "8.2.2",
-    "babel-plugin-styled-components": "1.12.0",
-    "css-loader": "5.2.5",
-    "dotenv": "9.0.2",
-    "sass-loader": "11.1.1",
+    "babel-plugin-styled-components": "1.13.2",
+    "css-loader": "5.2.6",
+    "dotenv": "10.0.0",
+    "sass-loader": "12.1.0",
     "size-plugin": "2.x",
-    "style-loader": "2.0.0",
+    "style-loader": "3.0.0",
     "url-loader": "4.1.1",
-    "webpack": "5.37.1",
-    "webpack-cli": "4.7.0"
+    "webpack": "5.44.0",
+    "webpack-cli": "4.7.2"
   }
 }

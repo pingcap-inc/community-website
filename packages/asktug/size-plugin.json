@@ -1,5 +1,9 @@
 [
   {
+    "timestamp": 1625999343843,
+    "files": [{ "filename": "header-footer.js", "previous": 280691, "size": 277120, "diff": -3571 }]
+  },
+  {
     "timestamp": 1625997313051,
     "files": [{ "filename": "header-footer.js", "previous": 280977, "size": 280691, "diff": -286 }]
   },

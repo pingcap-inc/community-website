@@ -1,3 +1,5 @@
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SizePlugin = require('size-plugin');
 const path = require('path');
 const webpack = require('webpack');
@@ -16,11 +18,13 @@ const unifyNodeModules = (names) =>
 module.exports = {
   mode: process.env.NODE_ENV ?? 'production',
 
-  entry: './src/headerFooter.js',
+  entry: {
+    'header-footer': './src/headerFooter.js',
+  },
 
   output: {
     path: path.resolve(__dirname, '../../public/asktug'),
-    filename: 'header-footer.js',
+    filename: '[name].js',
   },
 
   module: {
@@ -33,7 +37,7 @@ module.exports = {
 
       {
         test: /\.s?css$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
       },
 
       {
@@ -61,5 +65,17 @@ module.exports = {
     extensions: ['.js', '.jsx', '.json'],
   },
 
-  plugins: [isProd && new SizePlugin(), new webpack.EnvironmentPlugin(require('./env').env)].filter(Boolean),
+  optimization: {
+    minimizer: [
+      // For webpack@5 you can use the `...` syntax to extend existing minimizers (i.e. `terser-webpack-plugin`)
+      `...`,
+      new CssMinimizerPlugin(),
+    ],
+  },
+
+  plugins: [
+    isProd && new SizePlugin(),
+    new MiniCssExtractPlugin(),
+    new webpack.EnvironmentPlugin(require('./env').env),
+  ].filter(Boolean),
 };

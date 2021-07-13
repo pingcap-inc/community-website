@@ -96,6 +96,7 @@ export const UserProfileContainer = styled.div`
 export const GlobalStyle = createGlobalStyle`
   #${menuPopupId} {
     .ant-menu {
+      ${mixins.resetFontFamily()};
       color: ${colors.F1};
 
       &-item:hover,

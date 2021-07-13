@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-export const HackUserProfileSlot = () => {
+const HackUserProfileSlot = () => {
   const [width, setWidth] = useState(0);
 
   const resetWidth = () => {
@@ -51,3 +51,5 @@ export const HackUserProfileSlot = () => {
 
   return <div style={{ width: `${width}px`, height: '1px' }} />;
 };
+
+export default HackUserProfileSlot;

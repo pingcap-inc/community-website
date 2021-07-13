@@ -1,1 +1,1 @@
-export const menuPopupId = 'pingcap-ui-header-menu-popup';
+export const menuPopupId = 'tidb-community-header-menu-popup';

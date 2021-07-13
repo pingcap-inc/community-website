@@ -42,7 +42,6 @@ yarn-error.log*
 packages/*/dist/
 packages/*/es/
 packages/*/lib/
-public/asktug/
 public/locales/
 public/scripts/
 webstorm.config.js

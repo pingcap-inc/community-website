@@ -5,11 +5,17 @@ import ReactDOM from 'react-dom';
 import HeaderFooter from './HeaderFooter.component';
 
 if (!window._tidb) {
-  window._tidb = {};
+  window._tidb = {
+    uiScripts: {},
+  };
 }
 
-window._tidb.sharedUI = {
-  initHeaderFooter({ headerEl, ...props }) {
-    ReactDOM.render(<HeaderFooter {...props} />, headerEl);
+window._tidb.uiScripts = {
+  ...window._tidb.uiScripts,
+
+  headerFooter: {
+    init: ({ headerEl, ...props }) => {
+      ReactDOM.render(<HeaderFooter {...props} />, headerEl);
+    },
   },
 };

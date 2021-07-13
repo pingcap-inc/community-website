@@ -1,5 +1,50 @@
 [
   {
+    "timestamp": 1626166572878,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 211418, "size": 211402, "diff": -16 },
+      { "filename": "header-footer.css", "previous": 63161, "size": 63161, "diff": 0 },
+      { "filename": "header-footer.js", "previous": 209383, "size": 209367, "diff": -16 }
+    ]
+  },
+  {
+    "timestamp": 1626166486778,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 211424, "size": 211418, "diff": -6 },
+      { "filename": "header-footer.css", "previous": 63161, "size": 63161, "diff": 0 },
+      { "filename": "header-footer.js", "previous": 209388, "size": 209383, "diff": -5 }
+    ]
+  },
+  {
+    "timestamp": 1626166433914,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 211418, "size": 211424, "diff": 6 },
+      { "filename": "header-footer.css", "previous": 63161, "size": 63161, "diff": 0 },
+      { "filename": "header-footer.js", "previous": 209381, "size": 209388, "diff": 7 }
+    ]
+  },
+  {
+    "timestamp": 1626166339124,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 211458, "size": 211418, "diff": -40 },
+      { "filename": "header-footer.css", "previous": 63161, "size": 63161, "diff": 0 },
+      { "filename": "header-footer.js", "previous": 209444, "size": 209381, "diff": -63 }
+    ]
+  },
+  {
+    "timestamp": 1626165505781,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 211443, "size": 211458, "diff": 15 },
+      { "filename": "header-footer.css", "previous": 63161, "size": 63161, "diff": 0 },
+      { "filename": "header-footer.js", "previous": 209430, "size": 209444, "diff": 14 }
+    ]
+  },
+  {
     "timestamp": 1626163925175,
     "files": [
       { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },

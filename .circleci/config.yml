@@ -69,7 +69,6 @@ jobs:
           root: .
           paths:
             - .next
-            - public/asktug
             - public/locales
             - public/scripts
 

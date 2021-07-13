@@ -1,16 +1,16 @@
 import '@tidb-community/ui/antd/global.less';
-import * as R from 'ramda';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
 import { Footer, Header, constants, createAppGlobalStyle, ActivityBanner } from '@tidb-community/ui';
-import { getData, api } from '@tidb-community/datasource';
+import { getData } from '@tidb-community/datasource';
 
 import './index.scss';
 import * as Styled from './index.styled';
 import HackUserProfileSlot from './hackUserProfileSlot.component';
 import gonganIcon from './gongan.png';
 import { MeContext } from '@/context/me.context';
+import { fetcher } from '~/utils';
 
 const { location } = window;
 const { appClassName } = constants;
@@ -36,18 +36,6 @@ const GlobalStyle = createAppGlobalStyle();
 const headerElem = document.getElementById('asktug-header');
 
 const AskTugHeaderWrapper = ({ children }) => {
-  const fetcher = (path, params) => {
-    // SWR shallowly compares the arguments on every render, and triggers revalidation
-    // if any of them has changed. Thus, if you'd like to pass an object as params to
-    // the API call, you may use JSON.stringify to the object params to a string value.
-    // Read more: https://swr.vercel.app/docs/arguments#passing-objects
-    try {
-      params = JSON.parse(params);
-    } catch (err) {}
-
-    return R.path(path.split('.'), api)(params);
-  };
-
   const {
     data: meResp,
     mutate: mutateMe,

@@ -21,7 +21,8 @@ module.exports = {
   mode: process.env.NODE_ENV ?? 'production',
 
   entry: {
-    'asktug-header-footer': './src/asktugHeaderFooter/index.js',
+    'asktug-header-footer': './src/scripts/askTugHeaderFooter/index.js',
+    'header-footer': './src/scripts/headerFooter/index.js',
   },
 
   output: {

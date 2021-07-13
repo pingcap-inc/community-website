@@ -2,7 +2,7 @@
   "name": "@pingcap/tug-website",
   "private": true,
   "scripts": {
-    "build": "next build && npm run build:asktug && npm run build:uiScripts",
+    "build": "next build && npm run build:uiScripts",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:accounts:staging": "lerna run --scope @tidb-community/accounts build:staging",
     "build:shared": "lerna run --ignore @tidb-community/accounts --ignore @tidb-community/uiScripts build",

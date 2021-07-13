@@ -6,11 +6,13 @@ const webpack = require('webpack');
 
 const isProd = (process.env.NODE_ENV ?? 'production') === 'production';
 
+const pathResolve = (relativePath) => path.resolve(__dirname, relativePath);
+
 const unifyNodeModules = (names) =>
   names.reduce(
     (acc, name) => ({
       ...acc,
-      [name]: path.resolve(`../../node_modules/${name}`),
+      [name]: pathResolve(`../../node_modules/${name}`),
     }),
     {}
   );
@@ -19,11 +21,11 @@ module.exports = {
   mode: process.env.NODE_ENV ?? 'production',
 
   entry: {
-    'header-footer': './src/headerFooter.js',
+    'asktug-header-footer': './src/askTugHeaderFooter/index.js',
   },
 
   output: {
-    path: path.resolve(__dirname, '../../public/asktug'),
+    path: pathResolve('../../public/scripts'),
     filename: '[name].js',
   },
 
@@ -54,12 +56,12 @@ module.exports = {
 
   resolve: {
     alias: {
-      '~': path.resolve('./src'),
-      '@': path.resolve('../../src'),
-      '@tidb-community/common': path.resolve('../common/src'),
-      '@tidb-community/datasource': path.resolve('../datasource/src'),
-      '@tidb-community/ui': path.resolve('../ui/src'),
-      'antd-global.css': path.resolve('../ui/es/antd/global.css'),
+      '~': pathResolve('./src'),
+      '@': pathResolve('../../src'),
+      '@tidb-community/common': pathResolve('../common/src'),
+      '@tidb-community/datasource': pathResolve('../datasource/src'),
+      '@tidb-community/ui': pathResolve('../ui/src'),
+      'antd-global.css': pathResolve('../ui/es/antd/global.css'),
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-components']),
     },
     extensions: ['.js', '.jsx', '.json'],

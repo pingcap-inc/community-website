@@ -3,8 +3,14 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script crossorigin src="https://unpkg.com/react@17/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@17.0.2/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.production.min.js"></script>
+    <!--
+      Need to include react-is before styled-components:
+      https://stackoverflow.com/a/61730014/14257627
+    -->
+    <script crossorigin src="https://unpkg.com/react-is@17.0.2/umd/react-is.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/styled-components@5.3.0/dist/styled-components.min.js"></script>
     <link rel="stylesheet" href="http://localhost:3000/scripts/community-ui.css" />
   </head>
   <body>

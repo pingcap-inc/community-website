@@ -30,6 +30,12 @@ module.exports = {
     filename: '[name].js',
   },
 
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    'styled-components': 'styled',
+  },
+
   module: {
     rules: [
       {

@@ -1,5 +1,5 @@
 {
-  "name": "@tidb-community/asktug",
+  "name": "@tidb-community/uiScripts",
   "private": true,
   "scripts": {
     "build": "webpack",

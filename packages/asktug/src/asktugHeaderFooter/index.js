@@ -1,3 +1,4 @@
+import '@tidb-community/ui/antd/global.less';
 import * as R from 'ramda';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
@@ -5,9 +6,7 @@ import useSWR from 'swr';
 import { Footer, Header, constants, createAppGlobalStyle, ActivityBanner } from '@tidb-community/ui';
 import { getData, api } from '@tidb-community/datasource';
 
-import 'antd-global.css';
 import './index.scss';
-
 import * as Styled from './index.styled';
 import HackUserProfileSlot from './hackUserProfileSlot.component';
 import gonganIcon from './gongan.png';

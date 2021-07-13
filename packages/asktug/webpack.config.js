@@ -21,7 +21,7 @@ module.exports = {
   mode: process.env.NODE_ENV ?? 'production',
 
   entry: {
-    'asktug-header-footer': './src/askTugHeaderFooter/index.js',
+    'asktug-header-footer': './src/asktugHeaderFooter/index.js',
   },
 
   output: {
@@ -43,6 +43,22 @@ module.exports = {
       },
 
       {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              lessOptions: {
+                javascriptEnabled: true,
+              },
+            },
+          },
+        ],
+      },
+
+      {
         test: /\.svg$/,
         use: ['@svgr/webpack'],
       },
@@ -61,7 +77,6 @@ module.exports = {
       '@tidb-community/common': pathResolve('../common/src'),
       '@tidb-community/datasource': pathResolve('../datasource/src'),
       '@tidb-community/ui': pathResolve('../ui/src'),
-      'antd-global.css': pathResolve('../ui/es/antd/global.css'),
       ...unifyNodeModules(['antd', 'react', 'react-dom', 'react-is', 'ramda', 'styled-components']),
     },
     extensions: ['.js', '.jsx', '.json'],

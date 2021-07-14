@@ -3,7 +3,7 @@ import React from 'react';
 import Layout from './layout';
 import { CommunityHead } from '~/components';
 
-const Agreement = () => (
+const Page = () => (
   <>
     <CommunityHead title="团队认证服务协议" />
     <Layout>
@@ -158,4 +158,4 @@ const Agreement = () => (
   </>
 );
 
-export default Agreement;
+export default Page;

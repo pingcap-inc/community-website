@@ -24,7 +24,6 @@ export async function getExcerptByTopicId(id, wordCountLimit = 70) {
 
 export * as common from './common.utils';
 export * as errors from './errors.utils';
-export * as featureToggle from './featureToggle';
 export * as form from './form.utils';
 export * as link from './link.utils';
 export * as redDots from './redDots.utils';

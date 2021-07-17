@@ -1,7 +1,7 @@
 import '@tidb-community/ui/antd/global.less';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import useSWR from 'swr';
+import useSWR, { SWRConfig } from 'swr';
 import { Footer, Header, constants, createAppGlobalStyle, ActivityBanner } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 
@@ -36,13 +36,7 @@ const GlobalStyle = createAppGlobalStyle();
 const headerElem = document.getElementById('asktug-header');
 
 const AskTugHeaderWrapper = ({ children }) => {
-  const {
-    data: meResp,
-    mutate: mutateMe,
-    isValidating: isMeValidating,
-  } = useSWR('me', fetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data: meResp, mutate: mutateMe, isValidating: isMeValidating } = useSWR('me');
 
   useEffect(() => {
     const handler = () => mutateMe();
@@ -107,11 +101,18 @@ const HeaderComponent = () => {
 
 headerElem.classList.add(appClassName);
 ReactDOM.render(
-  <AskTugHeaderWrapper>
-    <ActivityBannerComponent />
-    <HeaderComponent />
-    <GlobalStyle />
-  </AskTugHeaderWrapper>,
+  <SWRConfig
+    value={{
+      fetcher,
+      revalidateOnFocus: false,
+    }}
+  >
+    <AskTugHeaderWrapper>
+      <ActivityBannerComponent />
+      <HeaderComponent />
+      <GlobalStyle />
+    </AskTugHeaderWrapper>
+  </SWRConfig>,
   headerElem
 );
 

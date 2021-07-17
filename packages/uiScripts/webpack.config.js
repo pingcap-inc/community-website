@@ -107,6 +107,6 @@ module.exports = {
       }),
     isProd && new SizePlugin(),
     new MiniCssExtractPlugin(),
-    new webpack.EnvironmentPlugin(require('./env').env),
+    new webpack.EnvironmentPlugin(require('./env')),
   ].filter(Boolean),
 };

@@ -37,6 +37,11 @@ export const PopoverContainer = styled.div`
         p {
           color: ${colors.C4};
         }
+
+        a {
+          display: block;
+          cursor: not-allowed;
+        }
       `}
   }
 
@@ -61,4 +66,11 @@ export const PopoverDesc = styled.div`
   padding-bottom: 0.5rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid ${colors.T2};
+
+  a {
+    &,
+    &:hover {
+      color: ${colors.B1};
+    }
+  }
 `;

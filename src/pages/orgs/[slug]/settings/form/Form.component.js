@@ -36,7 +36,7 @@ const FormComponent = () => {
   const { data } = infoResp;
   const isAdmin = commonUtils.isAdmin(meData);
   const fields = getFields({ lang, t, isAdmin });
-  const schema = getSchema(fields);
+  const validationSchema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 
   const initialValues = {
@@ -64,7 +64,7 @@ const FormComponent = () => {
   const formikProps = {
     initialValues,
     onSubmit,
-    validationSchema: schema,
+    validationSchema,
   };
 
   const uploadProps = {

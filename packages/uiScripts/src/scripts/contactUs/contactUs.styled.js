@@ -10,3 +10,32 @@ export const Container = styled.div`
   right: 32px;
   bottom: 32px;
 `;
+
+export const PopoverContainer = styled.div`
+  ul {
+    ${mixins.resetList()};
+
+    li {
+      margin-bottom: 0.5rem;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  h3,
+  p {
+    ${mixins.reset()};
+  }
+
+  h3 {
+    ${mixins.typography('p2')};
+    color: ${colors.F1};
+  }
+
+  p {
+    ${mixins.typography('p3')};
+    color: ${colors.C4};
+  }
+`;

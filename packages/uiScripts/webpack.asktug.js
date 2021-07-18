@@ -25,5 +25,5 @@ module.exports = {
         filename: 'asktug.size-plugin.json',
       }),
     new webpack.EnvironmentPlugin(require('./env')('./src/scripts/asktugHeaderFooter')),
-  ],
+  ].filter(Boolean),
 };

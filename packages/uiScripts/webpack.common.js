@@ -3,7 +3,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const SizePlugin = require('size-plugin');
 const path = require('path');
 const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const isProd = (process.env.NODE_ENV ?? 'production') === 'production';
 
@@ -22,7 +21,6 @@ module.exports = {
   mode: process.env.NODE_ENV ?? 'production',
 
   entry: {
-    'asktug-header-footer': './src/scripts/asktugHeaderFooter/index.js',
     'contact-us': './src/scripts/contactUs/index.js',
     'header-footer': './src/scripts/headerFooter/index.js',
   },
@@ -101,12 +99,10 @@ module.exports = {
 
   plugins: [
     isProd &&
-      new CleanWebpackPlugin({
-        dry: false,
-        dangerouslyAllowCleanPatternsOutsideProject: true,
+      new SizePlugin({
+        filename: 'common.size-plugin.json',
       }),
-    isProd && new SizePlugin(),
     new MiniCssExtractPlugin(),
-    new webpack.EnvironmentPlugin(require('./env')),
+    new webpack.EnvironmentPlugin(require('./env')()),
   ].filter(Boolean),
 };

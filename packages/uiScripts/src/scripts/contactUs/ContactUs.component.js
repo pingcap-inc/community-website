@@ -9,7 +9,7 @@ const GlobalStyle = createAppGlobalStyle();
 
 const ContactUs = () => {
   const { data } = useSWR('contactUs.qualifications');
-  console.log('data!!', data);
+  console.log('contact us data!!', data);
 
   return (
     <>

@@ -1,0 +1,9 @@
+[
+  {
+    "timestamp": 1626576560572,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 158299, "size": 158276, "diff": -23 }
+    ]
+  }
+]

@@ -10,8 +10,8 @@ router.get(
   oneOf(
     successResp({
       data: {
-        company_info_is_completed: true,
-        phone_email_is_completed: true,
+        company_info_is_completed: false,
+        phone_email_is_completed: false,
       },
     }),
     errorResp({ code: 401, detail: 'Authentication credentials were not provided' })

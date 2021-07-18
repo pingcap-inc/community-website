@@ -54,3 +54,8 @@ export const VI = {
   B6: '#190f4b',
   B7: '#4f38c3',
 };
+
+export const AntD = {
+  warning: '#faad14',
+  error: '#ff4d4f',
+};

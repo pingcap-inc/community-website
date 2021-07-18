@@ -1,4 +1,4 @@
-# @tidb-community/uiScripts
+# @tidb-community/ui-scripts
 
 本项目包装 `@tidb-community/ui`，打包 `react` 与 `react-dom` 以外的其他依赖，允许其他页面无需打包即可使用 header 和 footer 组件。
 

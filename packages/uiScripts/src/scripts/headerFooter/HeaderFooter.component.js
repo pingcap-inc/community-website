@@ -5,7 +5,6 @@ import { Header, Footer, UserProfile, createAppGlobalStyle, utils } from '@tidb-
 import { getData } from '@tidb-community/datasource';
 
 import { AuthContext } from '@/context/auth.context';
-import { fetcher } from '~/utils';
 
 const GlobalStyle = createAppGlobalStyle();
 
@@ -17,10 +16,9 @@ const HeaderFooter = ({
   logoUrl = 'https://tidb.io/images/community/logo.svg',
   title = 'TiDB Community',
 }) => {
+  const { data: meResp } = useSWR('me');
   const { login, logout } = useContext(AuthContext);
-  const { data: meResp } = useSWR('me', fetcher, {
-    revalidateOnFocus: false,
-  });
+
   const meData = meResp?.data;
 
   const data = getData({
@@ -29,6 +27,7 @@ const HeaderFooter = ({
     locale,
     meData,
   }).nav;
+
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 

@@ -1,7 +1,7 @@
 import Cookie from 'js-cookie';
 import axios from 'axios';
-import { getCaptchaToken } from '@tidb-community/common/utils/form';
 import { createCaptchaInterceptor } from '@tidb-community/common/utils/axios';
+import { getCaptchaToken } from '@tidb-community/common/utils/form';
 
 import { dispatchApiError } from './events';
 

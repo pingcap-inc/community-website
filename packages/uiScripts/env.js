@@ -4,24 +4,21 @@ const path = require('path');
 
 const isDev = process.env.NODE_ENV === 'development';
 
+// Latter settings will overwrite former settings.
 const loadOrder = ['.env', isDev ? '.env.development' : '.env.production', '.env.local'];
 
-const envObject = {};
-const defineObject = {};
+module.exports = (basePath = __dirname) => {
+  const env = {};
 
-for (const suffix of loadOrder) {
-  const filePath = path.resolve(__dirname, suffix);
-  if (!fs.existsSync(filePath)) {
-    continue;
-  }
-  const raw = dotenv.parse(fs.readFileSync(filePath));
-  Object.assign(envObject, raw);
-  for (const key of Object.keys(raw)) {
-    defineObject[`process.env.${key}`] = raw[key];
-  }
-}
+  for (const suffix of loadOrder) {
+    const filePath = path.resolve(basePath, suffix);
+    if (!fs.existsSync(filePath)) {
+      continue;
+    }
 
-module.exports = {
-  env: envObject,
-  define: defineObject,
+    const raw = dotenv.parse(fs.readFileSync(filePath));
+    Object.assign(env, raw);
+  }
+
+  return env;
 };

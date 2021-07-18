@@ -9,6 +9,10 @@ export const Container = styled.div`
   position: fixed;
   right: 32px;
   bottom: 32px;
+
+  svg {
+    ${mixins.size('26px')};
+  }
 `;
 
 export const PopoverContainer = styled.div`

@@ -22,10 +22,13 @@ const FormComponent = () => {
   const { meData } = useContext(MeContext);
   const { isReady, query } = router;
   const { data: infoResp, error, mutate: mutateInfo } = useSWR(isReady && ['orgs.org.info', query]);
-  const { t } = useTranslation('page-orgs');
+  const { t } = useTranslation('page-orgs', 'common');
 
   const { slug } = query;
-  const lang = t('settings', { returnObjects: true });
+  const lang = {
+    ...t('settings', { returnObjects: true }),
+    ...R.pick(['pleaseEnter', 'pleaseSelect'], t('common:form', { returnObjects: true })),
+  };
 
   const isLoading = !error && !infoResp;
   if (isLoading) return <Skeleton />;

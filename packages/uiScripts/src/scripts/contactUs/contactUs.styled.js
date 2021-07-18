@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
 export const Container = styled.div`
@@ -22,6 +22,15 @@ export const PopoverContainer = styled.div`
         margin-bottom: 0;
       }
     }
+
+    ${(props) =>
+      props.isDisabled &&
+      css`
+        h3,
+        p {
+          color: ${colors.C4};
+        }
+      `}
   }
 
   h3,

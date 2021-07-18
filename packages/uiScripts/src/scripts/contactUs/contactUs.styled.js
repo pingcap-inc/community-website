@@ -12,6 +12,13 @@ export const Container = styled.div`
 `;
 
 export const PopoverContainer = styled.div`
+  max-width: 160px;
+
+  .anticon {
+    color: ${colors.AntD.warning};
+    margin-right: 0.2rem;
+  }
+
   ul {
     ${mixins.resetList()};
 
@@ -47,4 +54,11 @@ export const PopoverContainer = styled.div`
     ${mixins.typography('p3')};
     color: ${colors.C4};
   }
+`;
+
+export const PopoverDesc = styled.div`
+  ${mixins.typography('p3')};
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid ${colors.T2};
 `;

@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import React from 'react';
 import useSWR from 'swr';
 import { Popover } from 'antd';
+import { InfoCircleFilled } from '@ant-design/icons';
 import { createAppGlobalStyle, constants } from '@tidb-community/ui';
 
 import * as Styled from './contactUs.styled';
@@ -12,20 +13,29 @@ const GlobalStyle = createAppGlobalStyle();
 
 const getUrl = (path) => `${process.env.NEXT_PUBLIC_HOME_URL}/contact-us/${path}`;
 
-const Link = ({ path, children }) => (
-  <a target="_blank" rel="noreferrer" href={getUrl(path)}>
-    {children}
-  </a>
-);
-
 const ContactUs = () => {
   const { data: resp } = useSWR('contactUs.qualifications');
   const data = resp?.data || {};
 
   const isEnabled = !R.isEmpty(data) && R.pipe(R.values, R.all(R.equals(true)))(data);
+  const isDisabled = !isEnabled;
+
+  const Link = ({ path, children }) => (
+    // eslint-disable-next-line no-script-url
+    <a target="_blank" rel="noreferrer" href={isEnabled ? getUrl(path) : 'javascript:;'}>
+      {children}
+    </a>
+  );
 
   const content = (
-    <Styled.PopoverContainer isDisabled={!isEnabled}>
+    <Styled.PopoverContainer isDisabled={isDisabled}>
+      {isDisabled && (
+        <Styled.PopoverDesc>
+          <InfoCircleFilled />
+          联系社区专家之前，请先完善公司信息，一般更好地处理您的问题
+        </Styled.PopoverDesc>
+      )}
+
       <ul>
         <li>
           <Link path="incident">
@@ -55,7 +65,7 @@ const ContactUs = () => {
 
   const popoverProps = {
     content,
-    trigger: 'hover',
+    trigger: 'click',
     placement: 'leftBottom',
     overlayClassName: appClassName,
   };

@@ -67,9 +67,11 @@ export const PopoverDesc = styled.div`
   margin-bottom: 0.5rem;
   border-bottom: 1px solid ${colors.T2};
 
-  a {
+  a,
+  span {
     &,
     &:hover {
+      cursor: pointer;
       color: ${colors.B1};
     }
   }

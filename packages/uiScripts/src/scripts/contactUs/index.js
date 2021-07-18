@@ -9,7 +9,6 @@ ReactDOM.render(
   <SWRConfig
     value={{
       fetcher,
-      revalidateOnFocus: false,
     }}
   >
     <ContactUs />

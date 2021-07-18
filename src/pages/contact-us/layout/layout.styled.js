@@ -16,6 +16,25 @@ export const Main = styled.div`
   padding: 2.5rem 2rem;
 `;
 
+export const Header = styled.div`
+  margin-bottom: 2rem;
+
+  h1,
+  p {
+    ${mixins.reset()};
+  }
+
+  h1 {
+    ${mixins.typography('p2')};
+    color: ${colors.F1};
+  }
+
+  p {
+    ${mixins.typography('p3')};
+    color: ${colors.C4};
+  }
+`;
+
 export const Footer = styled.div`
   color: ${colors.F2};
   text-align: center;

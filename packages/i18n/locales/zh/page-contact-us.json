@@ -1,11 +1,14 @@
 {
-  "incidentReport": {
-    "title": "紧急事故处理"
+  "incident": {
+    "title": "紧急事故处理",
+    "subtitle": "资源有限，若非紧急事故，请发帖"
   },
   "cooperation": {
-    "title": "社区生态合作"
+    "title": "社区生态合作",
+    "subtitle": "技术合作、社区活动"
   },
   "consultancy": {
-    "title": "联系技术专家"
+    "title": "技术专家交流",
+    "subtitle": "业务咨询、技术交流"
   }
 }

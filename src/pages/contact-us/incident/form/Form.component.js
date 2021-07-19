@@ -50,17 +50,17 @@ const FormComponent = () => {
       {({ errors }) => (
         <Form layout="vertical">
           <Row gutter={32}>
-            <Col xs={24} md={8}>
+            <Col xs={24} sm={8}>
               <FormItem label={lang.type.label} name={type.name}>
                 <Select {...type} />
               </FormItem>
             </Col>
-            <Col xs={24} md={8}>
+            <Col xs={24} sm={8}>
               <FormItem label={lang.priority.label} name={priority.name}>
                 <Select {...priority} />
               </FormItem>
             </Col>
-            <Col xs={24} md={8}>
+            <Col xs={24} sm={8}>
               <FormItem label={lang.tidbVersion} name={tidbVersion.name}>
                 <Select {...tidbVersion} />
               </FormItem>

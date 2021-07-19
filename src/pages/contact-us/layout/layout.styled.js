@@ -9,7 +9,9 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  ${mixins.centerBlock('600px')};
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   flex: 1;
   background: ${colors.M1};
   margin-top: 3rem;

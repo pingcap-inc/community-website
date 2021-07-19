@@ -10,7 +10,7 @@
     "industryType": "行业类型",
     "industryTypeNotEmpty": "行业类型不可为空",
     "introduction": "简介",
-    "introductionMaxLength": "简介最长为{{max}}个字符",
+    "introductionMaxLength": "简介最长为 {{max}} 个字符",
     "locationNotEmpty": "企业所在地不可为空",
     "logoSizeError": "Logo 大小须在 2M 以内",
     "logoTypeError": "仅支持 jpg 和 png 格式的图片",
@@ -23,8 +23,8 @@
     "submitBtn": "更新",
     "submitSuccessful": "团队信息更新成功",
     "teamName": "团队名称",
-    "teamNameMaxLength": "团队名称最长为{{max}}个字符",
-    "teamNameMinLength": "团队名称最短为{{min}}个字符",
+    "teamNameMaxLength": "团队名称最长为 {{max}} 个字符",
+    "teamNameMinLength": "团队名称最短为 {{min}} 个字符",
     "teamNameNotEmpty": "团队名称不可为空",
     "title": "团队信息"
   }

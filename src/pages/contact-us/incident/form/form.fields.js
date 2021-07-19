@@ -8,6 +8,10 @@ const { buildSchema, buildInitialValues } = utils.form;
 export const getFields = ({ lang, t, tidbReleases }) => {
   const { type: typeLang, priority: priorityLang } = lang;
 
+  const textareaValidator = Yup.string()
+    .max(500, ({ max }) => t('errors.limit', { max }))
+    .required(lang.required);
+
   return {
     type: {
       name: 'emergency_type',
@@ -24,6 +28,7 @@ export const getFields = ({ lang, t, tidbReleases }) => {
       ],
       validator: Yup.mixed().required(lang.required),
     },
+
     priority: {
       name: 'priority',
       placeholder: lang.pleaseSelect,
@@ -42,10 +47,17 @@ export const getFields = ({ lang, t, tidbReleases }) => {
         },
       ],
     },
+
     tidbVersion: {
       name: 'tidb_version',
       placeholder: lang.pleaseSelect,
       options: getTidbReleaseOptions(tidbReleases),
+    },
+
+    summary: {
+      name: 'summary',
+      placeholder: lang.summary.placeholder,
+      validator: textareaValidator,
     },
   };
 };

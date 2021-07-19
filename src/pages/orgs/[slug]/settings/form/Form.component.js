@@ -113,19 +113,21 @@ const FormComponent = () => {
                   <Cascader {...orgLocation} />
                 </FormItem>
               </Col>
-            </Row>
 
-            {isAdmin && (
-              <Button
-                type="primary"
-                htmlType="submit"
-                size="small"
-                disabled={!R.isEmpty(errors)}
-                loading={isSubmitting}
-              >
-                {lang.submitBtn}
-              </Button>
-            )}
+              {isAdmin && (
+                <Col span={24}>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    size="small"
+                    disabled={!R.isEmpty(errors)}
+                    loading={isSubmitting}
+                  >
+                    {lang.submitBtn}
+                  </Button>
+                </Col>
+              )}
+            </Row>
           </Form>
         );
       }}

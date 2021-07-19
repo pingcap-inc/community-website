@@ -1,7 +1,7 @@
 {
   "head": {
     "description": "欢迎来到 TiDB 社区！Here you can get involved & contribute to the best open source, open-source, cloud-native, distributed SQL database for elastic scale and real-time analytics.",
-    "titleSuffix": "TiDB Community"
+    "titleSuffix": "TiDB 社区"
   },
   "form": {
     "pleaseEnter": "请输入",

@@ -1,15 +1,17 @@
 import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { Form, FormItem, Select } from 'formik-antd';
-import { Formik } from 'formik';
-
-import { api } from '@tidb-community/datasource';
 import { Button, Col, Row, message } from 'antd';
+import { Form, Input, Select } from 'formik-antd';
+import { Formik } from 'formik';
+import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
+import { RequiredFormItem } from '~/components';
 import { form as formUtils } from '~/utils';
 import { getFields, getSchema, getInitialValues } from './form.fields';
+
+const { TextArea } = Input;
 
 const FormComponent = () => {
   const { t } = useTranslation('page-contact-us', 'common');
@@ -24,7 +26,7 @@ const FormComponent = () => {
   const fields = getFields({ lang, t, tidbReleases: data?.data });
   const validationSchema = getSchema(fields);
   const initialValues = getInitialValues(fields);
-  const { type, priority, tidbVersion } = fields;
+  const { type, priority, tidbVersion, summary } = fields;
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
@@ -51,24 +53,41 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24} sm={8}>
-              <FormItem label={lang.type.label} name={type.name}>
+              <RequiredFormItem label={lang.type.label} name={type.name}>
                 <Select {...type} />
-              </FormItem>
+              </RequiredFormItem>
             </Col>
+
             <Col xs={24} sm={8}>
-              <FormItem label={lang.priority.label} name={priority.name}>
+              <RequiredFormItem label={lang.priority.label} name={priority.name}>
                 <Select {...priority} />
-              </FormItem>
+              </RequiredFormItem>
             </Col>
+
             <Col xs={24} sm={8}>
-              <FormItem label={lang.tidbVersion} name={tidbVersion.name}>
+              <RequiredFormItem label={lang.tidbVersion} name={tidbVersion.name}>
                 <Select {...tidbVersion} />
-              </FormItem>
+              </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <RequiredFormItem label={lang.summary.label} name={summary.name}>
+                <TextArea {...summary} />
+              </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                size="small"
+                disabled={!R.isEmpty(errors)}
+                loading={isSubmitting}
+              >
+                {lang.submit}
+              </Button>
             </Col>
           </Row>
-          <Button type="primary" htmlType="submit" size="small" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
-            {lang.submit}
-          </Button>
         </Form>
       )}
     </Formik>

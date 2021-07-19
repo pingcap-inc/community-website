@@ -1,4 +1,7 @@
 {
+  "errors": {
+    "limit": "{{max}} 字限制"
+  },
   "incident": {
     "title": "紧急事故处理",
     "subtitle": "资源有限，若非紧急事故，请发帖",
@@ -14,7 +17,11 @@
         "p1": "P1",
         "p2": "P2及P2以下"
       },
-      "tidbVersion": "TiDB 版本："
+      "tidbVersion": "TiDB 版本：",
+      "summary": {
+        "label": "概述：",
+        "placeholder": "场景 + 问题概述"
+      }
     }
   },
   "cooperation": {

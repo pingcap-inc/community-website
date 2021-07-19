@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import useSWR from 'swr';
 import { InfoCircleFilled } from '@ant-design/icons';
 import { Popover } from 'antd';
-import { createAppGlobalStyle, constants } from '@tidb-community/ui';
+import { createAppGlobalStyle, constants, Link } from '@tidb-community/ui';
 
 import * as Styled from './contactUs.styled';
 import Icon from './icon.svg';
@@ -28,25 +28,17 @@ const ContactUs = () => {
   const isEnabled = !R.isEmpty(data) && R.pipe(R.values, R.all(R.equals(true)))(data);
   const isDisabled = !isEnabled;
 
-  const Link = ({ path, children }) => (
-    <a target="_blank" rel="noreferrer" href={getUrl(path)} onClick={(e) => isDisabled && e.preventDefault()}>
+  const NavLink = ({ path, children }) => (
+    <Link href={getUrl(path)} onClick={(e) => isDisabled && e.preventDefault()}>
       {children}
-    </a>
+    </Link>
   );
 
   const links = R.intersperse(
     '、',
     [
-      data.company_info_is_completed === false && (
-        <a target="_blank" rel="noreferrer" href={getUrl('/my/company')}>
-          完善公司信息
-        </a>
-      ),
-      data.phone_email_is_completed === false && (
-        <a target="_blank" rel="noreferrer" href={getUrl('/my/settings')}>
-          绑定手机号和邮箱
-        </a>
-      ),
+      data.company_info_is_completed === false && <Link href={getUrl('/my/company')}>完善公司信息</Link>,
+      data.phone_email_is_completed === false && <Link href={getUrl('/my/settings')}>绑定手机号和邮箱</Link>,
     ].filter(Boolean)
   );
 
@@ -73,22 +65,22 @@ const ContactUs = () => {
 
       <ul>
         <li>
-          <Link path="/contact-us/incident">
+          <NavLink path="/contact-us/incident">
             <h3>紧急事故处理</h3>
             <p>紧急事故处理</p>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link path="/contact-us/consultancy">
+          <NavLink path="/contact-us/consultancy">
             <h3>技术专家交流</h3>
             <p>业务咨询、技术交流</p>
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link path="/contact-us/cooperation">
+          <NavLink path="/contact-us/cooperation">
             <h3>社区生态合作</h3>
             <p>技术合作、社区活动</p>
-          </Link>
+          </NavLink>
         </li>
         <li>
           <h3>商业咨询</h3>

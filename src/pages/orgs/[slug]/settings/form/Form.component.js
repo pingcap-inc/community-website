@@ -82,7 +82,7 @@ const FormComponent = () => {
 
         return (
           <Form layout="vertical">
-            <Row gutter={32}>
+            <Row gutter={[32, 32]}>
               <Col xs={24} md={12}>
                 <Styled.Row>
                   <Upload {...uploadProps} />
@@ -90,28 +90,40 @@ const FormComponent = () => {
                     <Input {...teamName} />
                   </FormItem>
                 </Styled.Row>
-
-                <FormItem label={lang.introduction} name={introduction.name}>
-                  <Input {...introduction} value={introValue} />
-                </FormItem>
-
-                <FormItem label={lang.orgSize} name={orgSize.name}>
-                  <Select {...orgSize} />
-                </FormItem>
               </Col>
 
               <Col xs={24} md={12}>
                 <FormItem label={lang.companyName} name={companyName.name}>
                   <RemoteSelect {...companyName} />
                 </FormItem>
+              </Col>
 
+              <Col xs={24} md={12}>
+                <FormItem label={lang.introduction} name={introduction.name}>
+                  <Input {...introduction} value={introValue} />
+                </FormItem>
+              </Col>
+
+              <Col xs={24} md={12}>
                 <FormItem label={lang.industryType} name={industryType.name}>
                   <Select {...industryType} />
                 </FormItem>
+              </Col>
 
-                <FormItem label={lang.orgLocation} name={orgLocation.name}>
-                  <Cascader {...orgLocation} />
+              <Col xs={24} md={12}>
+                <FormItem label={lang.orgSize} name={orgSize.name}>
+                  <Select {...orgSize} />
                 </FormItem>
+              </Col>
+
+              <Col xs={24} md={12}>
+                <Row gutter={[32, 32]}>
+                  <Col span={24}>
+                    <FormItem label={lang.orgLocation} name={orgLocation.name}>
+                      <Cascader {...orgLocation} />
+                    </FormItem>
+                  </Col>
+                </Row>
               </Col>
 
               {isAdmin && (

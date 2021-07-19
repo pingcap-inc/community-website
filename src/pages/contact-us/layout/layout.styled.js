@@ -16,6 +16,10 @@ export const Main = styled.div`
   background: ${colors.M1};
   margin-top: 3rem;
   padding: 2.5rem 2rem;
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
 `;
 
 export const Header = styled.div`

@@ -2,8 +2,9 @@ import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, message } from 'antd';
-import { Form, Input, Select } from 'formik-antd';
+import { Checkbox, Form, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
+import { Link } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
@@ -22,6 +23,7 @@ const FormComponent = () => {
     ...t('incident.form', { returnObjects: true }),
     ...t('common:form', { returnObjects: true }),
   };
+  const { agreement: agreementLang } = lang;
 
   const fields = getFields({ lang, t, tidbReleases: data?.data });
   const validationSchema = getSchema(fields);
@@ -51,7 +53,7 @@ const FormComponent = () => {
     <Formik {...formikProps}>
       {({ errors }) => (
         <Form layout="vertical">
-          <Row gutter={32}>
+          <Row gutter={[32, 32]}>
             <Col xs={24} sm={8}>
               <RequiredFormItem label={lang.type.label} name={type.name}>
                 <Select {...type} />
@@ -98,6 +100,13 @@ const FormComponent = () => {
               <RequiredFormItem label={lang.affect.label} name={affect.name}>
                 <TextArea {...affect} />
               </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <Checkbox>
+                {agreementLang.text}
+                <Link href={agreementLang.privacy.link}>{agreementLang.privacy.title}</Link>
+              </Checkbox>
             </Col>
 
             <Col span={24}>

@@ -4,6 +4,10 @@ import { colors, mixins } from '@tidb-community/ui';
 export const Container = styled.div`
   padding: 2rem;
   background: ${colors.M1};
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
 `;
 
 export const Title = styled.h2`

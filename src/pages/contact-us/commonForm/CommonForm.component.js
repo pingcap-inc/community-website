@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import React, { useState } from 'react';
-import { Button, Col, Row, message } from 'antd';
+import { Button, Col, Row, Result } from 'antd';
 import { Checkbox, Form } from 'formik-antd';
 import { Formik } from 'formik';
 import { Link } from '@tidb-community/ui';
@@ -12,6 +12,7 @@ import { getCommonFields, getSchema, getInitialValues } from './commonForm.field
 const FormComponent = ({ children, submitApi, formFields, formLocalePath }) => {
   const { t } = useTranslation('page-contact-us', 'common');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const lang = {
     ...t(formLocalePath, { returnObjects: true }),
@@ -32,7 +33,7 @@ const FormComponent = ({ children, submitApi, formFields, formLocalePath }) => {
 
     return submitApi(values)
       .then(() => {
-        message.success(lang.submitSuccessful);
+        setIsSubmitted(true);
       })
       .finally(() => {
         setIsSubmitting(false);
@@ -44,6 +45,25 @@ const FormComponent = ({ children, submitApi, formFields, formLocalePath }) => {
     onSubmit,
     validationSchema,
   };
+
+  if (isSubmitted) {
+    const resultProps = {
+      status: 'success',
+      subTitle: lang.submitSuccessful,
+      extra: [
+        <Button
+          type="primary"
+          key="close"
+          onClick={(e) => {
+            window.open(window.location, '_self').close();
+          }}
+        >
+          {lang.closePage}
+        </Button>,
+      ],
+    };
+    return <Result {...resultProps} />;
+  }
 
   return (
     <Formik {...formikProps}>

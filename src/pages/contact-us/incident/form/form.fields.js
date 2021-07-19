@@ -59,6 +59,30 @@ export const getFields = ({ lang, t, tidbReleases }) => {
       placeholder: lang.summary.placeholder,
       validator: textareaValidator,
     },
+
+    background: {
+      name: 'background',
+      placeholder: lang.background.placeholder,
+      validator: textareaValidator,
+    },
+
+    appearance: {
+      name: 'appearance',
+      placeholder: lang.appearance.placeholder,
+      validator: textareaValidator,
+    },
+
+    problem: {
+      name: 'problem',
+      placeholder: lang.problem.placeholder,
+      validator: textareaValidator,
+    },
+
+    affect: {
+      name: 'affect',
+      placeholder: lang.affect.placeholder,
+      validator: textareaValidator,
+    },
   };
 };
 

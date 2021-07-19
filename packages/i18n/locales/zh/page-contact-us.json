@@ -21,6 +21,22 @@
       "summary": {
         "label": "概述：",
         "placeholder": "场景 + 问题概述"
+      },
+      "background": {
+        "label": "背景：",
+        "placeholder": "做过哪些操作"
+      },
+      "appearance": {
+        "label": "现象：",
+        "placeholder": "业务和数据库现象"
+      },
+      "problem": {
+        "label": "问题：",
+        "placeholder": "当前遇到的问题"
+      },
+      "affect": {
+        "label": "业务影响：",
+        "placeholder": "对业务的影响"
       }
     }
   },

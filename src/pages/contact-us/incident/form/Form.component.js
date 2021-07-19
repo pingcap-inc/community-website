@@ -26,7 +26,7 @@ const FormComponent = () => {
   const fields = getFields({ lang, t, tidbReleases: data?.data });
   const validationSchema = getSchema(fields);
   const initialValues = getInitialValues(fields);
-  const { type, priority, tidbVersion, summary } = fields;
+  const { type, priority, tidbVersion, summary, background, appearance, problem, affect } = fields;
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
@@ -73,6 +73,30 @@ const FormComponent = () => {
             <Col span={24}>
               <RequiredFormItem label={lang.summary.label} name={summary.name}>
                 <TextArea {...summary} />
+              </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <RequiredFormItem label={lang.background.label} name={background.name}>
+                <TextArea {...background} />
+              </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <RequiredFormItem label={lang.appearance.label} name={appearance.name}>
+                <TextArea {...appearance} />
+              </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <RequiredFormItem label={lang.problem.label} name={problem.name}>
+                <TextArea {...problem} />
+              </RequiredFormItem>
+            </Col>
+
+            <Col span={24}>
+              <RequiredFormItem label={lang.affect.label} name={affect.name}>
+                <TextArea {...affect} />
               </RequiredFormItem>
             </Col>
 

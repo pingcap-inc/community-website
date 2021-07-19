@@ -43,7 +43,20 @@
   },
   "cooperation": {
     "title": "社区生态合作",
-    "subtitle": "技术合作、社区活动"
+    "subtitle": "技术合作、社区活动",
+    "form": {
+      "type": {
+        "label": "合作类型：",
+        "technology": "技术合作",
+        "community": "社区活动",
+        "other": "其他"
+      },
+      "detail": {
+        "label": "合作内容：",
+        "placeholder": "请详细描述您寻求合作的内容"
+      },
+      "submitSuccessful": "合作申请已提交，我们会尽快联系你"
+    }
   },
   "consultancy": {
     "title": "技术专家交流",

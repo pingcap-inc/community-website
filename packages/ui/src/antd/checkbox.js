@@ -40,4 +40,8 @@ export default css`
       }
     }
   }
+
+  .ant-form-item-has-error .ant-checkbox-inner {
+    border-color: ${colors.AntD.error} !important;
+  }
 `;

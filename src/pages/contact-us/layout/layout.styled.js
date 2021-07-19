@@ -20,6 +20,10 @@ export const Main = styled.div`
   .ant-form-item {
     margin-bottom: 0;
   }
+
+  .ant-result-subtitle {
+    ${mixins.typography('p1')};
+  }
 `;
 
 export const Header = styled.div`

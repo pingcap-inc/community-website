@@ -84,10 +84,5 @@ export const getFields = ({ lang, t, tidbReleases }) => {
       placeholder: lang.affect.placeholder,
       validator: textareaValidator,
     },
-
-    agreement: {
-      name: 'agreement',
-      validator: Yup.boolean().required(lang.required).oneOf([true], lang.agreement.privacy.error),
-    },
   };
 };

@@ -28,6 +28,6 @@ export default css`
   .ant-form-item-has-error .ant-input-affix-wrapper,
   .ant-form-item-has-error .ant-input:hover,
   .ant-form-item-has-error .ant-input-affix-wrapper:hover {
-    border-color: colors.AntD.error;
+    border-color: ${colors.AntD.error};
   }
 `;

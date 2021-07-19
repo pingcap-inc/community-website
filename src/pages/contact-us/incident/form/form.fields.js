@@ -1,9 +1,6 @@
 import * as Yup from 'yup';
-import { utils } from '@tidb-community/common';
 
 import { getTidbReleaseOptions } from '~/pages/contact-us/utils';
-
-const { buildSchema, buildInitialValues } = utils.form;
 
 export const getFields = ({ lang, t, tidbReleases }) => {
   const { type: typeLang, priority: priorityLang } = lang;
@@ -94,7 +91,3 @@ export const getFields = ({ lang, t, tidbReleases }) => {
     },
   };
 };
-
-export const getSchema = (fields) => buildSchema(fields);
-
-export const getInitialValues = (fields) => buildInitialValues(fields);

@@ -6,9 +6,9 @@ import { Form, FormItem, Input, Select, Cascader } from 'formik-antd';
 import { Formik } from 'formik';
 import { RemoteSelect } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
-import { utils } from '@tidb-community/common';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { utils } from '@tidb-community/common';
 
 import * as Styled from './form.styled';
 import Upload from './Upload.component';
@@ -116,7 +116,13 @@ const FormComponent = () => {
             </Row>
 
             {isAdmin && (
-              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
+              <Button
+                type="primary"
+                htmlType="submit"
+                size="small"
+                disabled={!R.isEmpty(errors)}
+                loading={isSubmitting}
+              >
                 {lang.submitBtn}
               </Button>
             )}

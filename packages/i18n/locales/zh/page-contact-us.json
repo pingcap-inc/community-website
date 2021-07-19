@@ -8,7 +8,12 @@
         "online": "在线业务事故",
         "offline": "离线业务事故"
       },
-      "priority": "事故等级：",
+      "priority": {
+        "label": "事故等级：",
+        "p0": "P0",
+        "p1": "P1",
+        "p2": "P2及P2以下"
+      },
       "tidbVersion": "TiDB 版本："
     }
   },

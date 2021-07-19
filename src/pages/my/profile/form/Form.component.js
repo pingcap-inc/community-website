@@ -126,7 +126,7 @@ const FormComponent = () => {
             </Col>
           </Row>
 
-          <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
+          <Button type="primary" htmlType="submit" size="small" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
             更新信息
           </Button>
         </Form>

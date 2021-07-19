@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-
 import { Checkbox, Form as AntForm } from 'formik-antd';
 import { Link } from '@tidb-community/ui';
+
 import data from '../form.data';
 import { NavContext } from '~/context';
 

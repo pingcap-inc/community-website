@@ -16,3 +16,12 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 };
+
+export const getTidbReleaseOptions = (releases = []) =>
+  releases.map(({ prefix: label, children }) => ({
+    label,
+    options: children.map((value) => ({
+      value,
+      label: value,
+    })),
+  }));

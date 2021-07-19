@@ -1,11 +1,52 @@
 {
-  "incidentReport": {
-    "title": "紧急事故处理"
+  "errors": {
+    "limit": "{{max}} 字限制"
+  },
+  "incident": {
+    "title": "紧急事故处理",
+    "subtitle": "资源有限，若非紧急事故，请发帖",
+    "form": {
+      "type": {
+        "label": "事故类型：",
+        "online": "在线业务事故",
+        "offline": "离线业务事故"
+      },
+      "priority": {
+        "label": "事故等级：",
+        "p0": "P0",
+        "p1": "P1",
+        "p2": "P2及P2以下"
+      },
+      "tidbVersion": "TiDB 版本：",
+      "summary": {
+        "label": "概述：",
+        "placeholder": "场景 + 问题概述"
+      },
+      "background": {
+        "label": "背景：",
+        "placeholder": "做过哪些操作"
+      },
+      "appearance": {
+        "label": "现象：",
+        "placeholder": "业务和数据库现象"
+      },
+      "problem": {
+        "label": "问题：",
+        "placeholder": "当前遇到的问题"
+      },
+      "affect": {
+        "label": "业务影响：",
+        "placeholder": "对业务的影响"
+      },
+      "submitSuccessful": "事故报告已提交，我们会尽快处理"
+    }
   },
   "cooperation": {
-    "title": "社区生态合作"
+    "title": "社区生态合作",
+    "subtitle": "技术合作、社区活动"
   },
   "consultancy": {
-    "title": "联系技术专家"
+    "title": "技术专家交流",
+    "subtitle": "业务咨询、技术交流"
   }
 }

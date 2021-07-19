@@ -26,7 +26,7 @@ export const T6 = '#f15a24';
  * Colors V2.0
  */
 export const C2 = '#d9d9d9';
-export const C4 = '#9fa8b9';
+export const C4 = '#999999';
 
 const all = {
   M1,

@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 
@@ -15,7 +16,7 @@ const Page = () => {
   return (
     <>
       <CommunityHead title={lang.title} />
-      <Layout>{lang.title}</Layout>
+      <Layout {...R.pick(['title', 'subtitle'], lang)}></Layout>
     </>
   );
 };

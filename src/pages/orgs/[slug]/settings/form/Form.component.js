@@ -6,9 +6,9 @@ import { Form, FormItem, Input, Select, Cascader } from 'formik-antd';
 import { Formik } from 'formik';
 import { RemoteSelect } from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
-import { utils } from '@tidb-community/common';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
+import { utils } from '@tidb-community/common';
 
 import * as Styled from './form.styled';
 import Upload from './Upload.component';
@@ -22,10 +22,13 @@ const FormComponent = () => {
   const { meData } = useContext(MeContext);
   const { isReady, query } = router;
   const { data: infoResp, error, mutate: mutateInfo } = useSWR(isReady && ['orgs.org.info', query]);
-  const { t } = useTranslation('page-orgs');
+  const { t } = useTranslation('page-orgs', 'common');
 
   const { slug } = query;
-  const lang = t('settings', { returnObjects: true });
+  const lang = {
+    ...t('settings', { returnObjects: true }),
+    ...R.pick(['pleaseEnter', 'pleaseSelect'], t('common:form', { returnObjects: true })),
+  };
 
   const isLoading = !error && !infoResp;
   if (isLoading) return <Skeleton />;
@@ -33,7 +36,7 @@ const FormComponent = () => {
   const { data } = infoResp;
   const isAdmin = commonUtils.isAdmin(meData);
   const fields = getFields({ lang, t, isAdmin });
-  const schema = getSchema(fields);
+  const validationSchema = getSchema(fields);
   const { teamName, companyName, introduction, industryType, orgSize, orgLocation } = fields;
 
   const initialValues = {
@@ -61,7 +64,7 @@ const FormComponent = () => {
   const formikProps = {
     initialValues,
     onSubmit,
-    validationSchema: schema,
+    validationSchema,
   };
 
   const uploadProps = {
@@ -79,7 +82,7 @@ const FormComponent = () => {
 
         return (
           <Form layout="vertical">
-            <Row gutter={32}>
+            <Row gutter={[32, 16]}>
               <Col xs={24} md={12}>
                 <Styled.Row>
                   <Upload {...uploadProps} />
@@ -87,36 +90,52 @@ const FormComponent = () => {
                     <Input {...teamName} />
                   </FormItem>
                 </Styled.Row>
-
-                <FormItem label={lang.introduction} name={introduction.name}>
-                  <Input {...introduction} value={introValue} />
-                </FormItem>
-
-                <FormItem label={lang.orgSize} name={orgSize.name}>
-                  <Select {...orgSize} />
-                </FormItem>
               </Col>
 
               <Col xs={24} md={12}>
                 <FormItem label={lang.companyName} name={companyName.name}>
                   <RemoteSelect {...companyName} />
                 </FormItem>
+              </Col>
 
+              <Col xs={24} md={12}>
+                <FormItem label={lang.introduction} name={introduction.name}>
+                  <Input {...introduction} value={introValue} />
+                </FormItem>
+              </Col>
+
+              <Col xs={24} md={12}>
                 <FormItem label={lang.industryType} name={industryType.name}>
                   <Select {...industryType} />
                 </FormItem>
+              </Col>
 
+              <Col xs={24} md={12}>
+                <FormItem label={lang.orgSize} name={orgSize.name}>
+                  <Select {...orgSize} />
+                </FormItem>
+              </Col>
+
+              <Col xs={24} md={12}>
                 <FormItem label={lang.orgLocation} name={orgLocation.name}>
                   <Cascader {...orgLocation} />
                 </FormItem>
               </Col>
-            </Row>
 
-            {isAdmin && (
-              <Button type="primary" htmlType="submit" disabled={!R.isEmpty(errors)} loading={isSubmitting}>
-                {lang.submitBtn}
-              </Button>
-            )}
+              {isAdmin && (
+                <Col span={24}>
+                  <Button
+                    type="primary"
+                    htmlType="submit"
+                    size="small"
+                    disabled={!R.isEmpty(errors)}
+                    loading={isSubmitting}
+                  >
+                    {lang.submitBtn}
+                  </Button>
+                </Col>
+              )}
+            </Row>
           </Form>
         );
       }}

@@ -9,11 +9,36 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  ${mixins.centerBlock('600px')};
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   flex: 1;
   background: ${colors.M1};
   margin-top: 3rem;
   padding: 2.5rem 2rem;
+
+  .ant-form-item {
+    margin-bottom: 0;
+  }
+`;
+
+export const Header = styled.div`
+  margin-bottom: 2rem;
+
+  h1,
+  p {
+    ${mixins.reset()};
+  }
+
+  h1 {
+    ${mixins.typography('p2')};
+    color: ${colors.F1};
+  }
+
+  p {
+    ${mixins.typography('p3')};
+    color: ${colors.C4};
+  }
 `;
 
 export const Footer = styled.div`

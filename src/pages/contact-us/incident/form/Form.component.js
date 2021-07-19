@@ -28,9 +28,9 @@ const FormComponent = () => {
   const fields = getFields({ lang, t, tidbReleases: data?.data });
   const validationSchema = getSchema(fields);
   const initialValues = getInitialValues(fields);
-  const { type, priority, tidbVersion, summary, background, appearance, problem, affect } = fields;
+  const { type, priority, tidbVersion, summary, background, appearance, problem, affect, agreement } = fields;
 
-  const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
+  const onSubmit = formUtils.wrapFormikSubmitFunction(({ agreement, ...values }) => {
     setIsSubmitting(true);
 
     return api.contactUs
@@ -53,7 +53,7 @@ const FormComponent = () => {
     <Formik {...formikProps}>
       {({ errors }) => (
         <Form layout="vertical">
-          <Row gutter={[32, 32]}>
+          <Row gutter={[32, 16]}>
             <Col xs={24} sm={8}>
               <RequiredFormItem label={lang.type.label} name={type.name}>
                 <Select {...type} />
@@ -103,10 +103,12 @@ const FormComponent = () => {
             </Col>
 
             <Col span={24}>
-              <Checkbox>
-                {agreementLang.text}
-                <Link href={agreementLang.privacy.link}>{agreementLang.privacy.title}</Link>
-              </Checkbox>
+              <Form.Item name={agreement.name}>
+                <Checkbox {...agreement}>
+                  {agreementLang.text}
+                  <Link href={agreementLang.privacy.link}>{agreementLang.privacy.title}</Link>
+                </Checkbox>
+              </Form.Item>
             </Col>
 
             <Col span={24}>

@@ -8,6 +8,8 @@ const { buildSchema, buildInitialValues } = utils.form;
 export const getFields = ({ lang, t, tidbReleases }) => {
   const { type: typeLang, priority: priorityLang } = lang;
 
+  const dropdownValidator = Yup.mixed().required(lang.required);
+
   const textareaValidator = Yup.string()
     .max(500, ({ max }) => t('errors.limit', { max }))
     .required(lang.required);
@@ -26,7 +28,7 @@ export const getFields = ({ lang, t, tidbReleases }) => {
           label: typeLang.offline,
         },
       ],
-      validator: Yup.mixed().required(lang.required),
+      validator: dropdownValidator,
     },
 
     priority: {
@@ -46,12 +48,14 @@ export const getFields = ({ lang, t, tidbReleases }) => {
           label: priorityLang.p2,
         },
       ],
+      validator: dropdownValidator,
     },
 
     tidbVersion: {
       name: 'tidb_version',
       placeholder: lang.pleaseSelect,
       options: getTidbReleaseOptions(tidbReleases),
+      validator: dropdownValidator,
     },
 
     summary: {
@@ -82,6 +86,11 @@ export const getFields = ({ lang, t, tidbReleases }) => {
       name: 'affect',
       placeholder: lang.affect.placeholder,
       validator: textareaValidator,
+    },
+
+    agreement: {
+      name: 'agreement',
+      validator: Yup.boolean().required(lang.required).oneOf([true], lang.agreement.privacy.error),
     },
   };
 };

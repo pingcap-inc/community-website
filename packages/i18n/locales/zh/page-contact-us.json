@@ -37,7 +37,8 @@
       "affect": {
         "label": "业务影响：",
         "placeholder": "对业务的影响"
-      }
+      },
+      "submitSuccessful": "事故报告已提交，我们会尽快处理"
     }
   },
   "cooperation": {

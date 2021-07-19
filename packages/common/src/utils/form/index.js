@@ -8,10 +8,12 @@ import { getErrorMessage, getFirstApiError } from '../errors';
 export const buildSchema = (formData) => {
   const iterateObject = (obj, schema) => {
     const { name, validator, ...rest } = obj;
+
     if (name && validator) {
       schema[name] = validator;
       delete obj.validator;
     }
+
     for (const key in rest) {
       if (rest.hasOwnProperty(key)) {
         if (R.is(Array, rest[key])) {
@@ -24,6 +26,7 @@ export const buildSchema = (formData) => {
       }
     }
   };
+
   const schema = {};
   iterateObject(formData, schema);
 
@@ -33,8 +36,8 @@ export const buildSchema = (formData) => {
 export const buildInitialValues = (formData) => {
   const iterateObject = (obj, initialValues) => {
     const { name, initialValue, ...rest } = obj;
-    if (name && 'initialValue' in obj) {
-      initialValues[name] = initialValue;
+    if (name) {
+      initialValues[name] = initialValue || undefined;
       delete obj.initialValue;
     }
     for (const key in rest) {

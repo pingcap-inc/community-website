@@ -6,13 +6,14 @@
   "form": {
     "pleaseEnter": "请输入",
     "pleaseSelect": "请选择",
-    "required": "必填",
+    "required": "必填项",
     "submit": "提交",
     "agreement": {
       "text": "我已阅读并同意",
       "privacy": {
         "title": "《隐私协议》",
-        "link": "https://pingcap.com/zh/privacy-policy/"
+        "link": "https://pingcap.com/zh/privacy-policy/",
+        "error": "须同意《隐私协议》"
       }
     }
   }

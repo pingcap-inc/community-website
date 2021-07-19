@@ -82,7 +82,7 @@ const FormComponent = () => {
 
         return (
           <Form layout="vertical">
-            <Row gutter={[32, 32]}>
+            <Row gutter={[32, 16]}>
               <Col xs={24} md={12}>
                 <Styled.Row>
                   <Upload {...uploadProps} />
@@ -117,13 +117,9 @@ const FormComponent = () => {
               </Col>
 
               <Col xs={24} md={12}>
-                <Row gutter={[32, 32]}>
-                  <Col span={24}>
-                    <FormItem label={lang.orgLocation} name={orgLocation.name}>
-                      <Cascader {...orgLocation} />
-                    </FormItem>
-                  </Col>
-                </Row>
+                <FormItem label={lang.orgLocation} name={orgLocation.name}>
+                  <Cascader {...orgLocation} />
+                </FormItem>
               </Col>
 
               {isAdmin && (

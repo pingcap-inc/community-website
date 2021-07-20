@@ -1,15 +1,10 @@
-import * as Yup from 'yup';
-
+import { getDropdownValidator, getTextareaValidator } from '~/pages/contact-us/commonForm/commonForm.fields';
 import { getTidbReleaseOptions } from '~/pages/contact-us/utils';
 
 export const getFields = ({ lang, t, tidbReleases }) => {
   const { type: typeLang, priority: priorityLang } = lang;
-
-  const dropdownValidator = Yup.mixed().required(lang.required);
-
-  const textareaValidator = Yup.string()
-    .max(500, ({ max }) => t('errors.limit', { max }))
-    .required(lang.required);
+  const dropdownValidator = getDropdownValidator({ lang });
+  const textareaValidator = getTextareaValidator({ lang, t, limit: 500 });
 
   return {
     type: {

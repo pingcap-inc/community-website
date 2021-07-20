@@ -3,6 +3,13 @@ import { utils } from '@tidb-community/common';
 
 const { buildSchema, buildInitialValues } = utils.form;
 
+export const getDropdownValidator = ({ lang }) => Yup.mixed().required(lang.required);
+
+export const getTextareaValidator = ({ lang, t, limit }) =>
+  Yup.string()
+    .max(limit, ({ max }) => t('errors.limit', { max }))
+    .required(lang.required);
+
 export const getCommonFields = ({ lang }) => ({
   agreement: {
     name: 'agreement',

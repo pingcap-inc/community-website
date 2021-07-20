@@ -1,7 +1,7 @@
 import React from 'react';
 import useSWR from 'swr';
 import { Col } from 'antd';
-import { Input, InputNumber, Select, FormItem } from 'formik-antd';
+import { Checkbox, DatePicker, FormItem, Input, InputNumber, Select } from 'formik-antd';
 import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
@@ -33,6 +33,9 @@ const FormComponent = () => {
     painPoints,
     challenge,
     expectedBenefits,
+    pocDate,
+    estimate,
+    tidbUsage,
   } = formFields;
 
   const commonFormProps = {
@@ -100,6 +103,24 @@ const FormComponent = () => {
       <Col span={24}>
         <RequiredFormItem label={lang.expectedBenefits.label} name={expectedBenefits.name}>
           <TextArea {...expectedBenefits} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col xs={24} sm={12}>
+        <RequiredFormItem label={lang.expectedBenefits.label} name={pocDate.name}>
+          <DatePicker {...pocDate} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col xs={24} sm={12}>
+        <RequiredFormItem label={lang.estimate.label} name={estimate.name}>
+          <InputNumber {...estimate} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col span={24}>
+        <RequiredFormItem label={lang.tidbUsage.label} name={tidbUsage.name}>
+          <Checkbox.Group {...tidbUsage} />
         </RequiredFormItem>
       </Col>
     </CommonForm>

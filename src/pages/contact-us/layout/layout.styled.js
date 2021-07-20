@@ -25,7 +25,8 @@ export const Main = styled.div`
     ${mixins.typography('p1')};
   }
 
-  .ant-input-number {
+  .ant-input-number,
+  .ant-picker {
     width: 100%;
   }
 `;

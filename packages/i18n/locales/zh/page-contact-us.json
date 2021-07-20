@@ -91,6 +91,15 @@
       },
       "expectedBenefits": {
         "label": "希望 TiDB 可以带来哪些收益："
+      },
+      "pocDate": {
+        "label": "业务计划上线或 PoC 时间："
+      },
+      "estimate": {
+        "label": "该业务人力安排（人/天）："
+      },
+      "tidbUsage": {
+        "label": "当前或希望 TiDB 支撑的数据模型："
       }
     }
   }

@@ -1,6 +1,7 @@
 import React from 'react';
+import useSWR from 'swr';
 import { Col } from 'antd';
-import { Input, Select } from 'formik-antd';
+import { Input, InputNumber, Select, FormItem } from 'formik-antd';
 import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
@@ -12,15 +13,27 @@ const { TextArea } = Input;
 
 const FormComponent = () => {
   const { t } = useTranslation('page-contact-us', 'common');
+  const { data } = useSWR(['tidbReleases']);
 
-  const formLocalePath = 'cooperation.form';
+  const formLocalePath = 'consultancy.form';
   const lang = {
     ...t(formLocalePath, { returnObjects: true }),
     ...t('common:form', { returnObjects: true }),
   };
 
-  const formFields = getFields({ lang, t });
-  const { type, detail } = formFields;
+  const formFields = getFields({ lang, t, tidbReleases: data?.data });
+  const {
+    tidbNodeNum,
+    tikvNodeNum,
+    tiflashNodeNum,
+    occupationRateOfTidb,
+    tidbVersion,
+    keyScene,
+    currentArchitecture,
+    painPoints,
+    challenge,
+    expectedBenefits,
+  } = formFields;
 
   const commonFormProps = {
     formFields,
@@ -30,15 +43,63 @@ const FormComponent = () => {
 
   return (
     <CommonForm {...commonFormProps}>
-      <Col span={24}>
-        <RequiredFormItem label={lang.type.label} name={type.name}>
-          <Select {...type} />
+      <Col xs={24} sm={8}>
+        <RequiredFormItem label={lang.tidbNodeNum.label} name={tidbNodeNum.name}>
+          <InputNumber {...tidbNodeNum} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col xs={24} sm={8}>
+        <RequiredFormItem label={lang.tikvNodeNum.label} name={tikvNodeNum.name}>
+          <InputNumber {...tikvNodeNum} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col xs={24} sm={8}>
+        <RequiredFormItem label={lang.tiflashNodeNum.label} name={tiflashNodeNum.name}>
+          <InputNumber {...tiflashNodeNum} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col xs={24} sm={12}>
+        <RequiredFormItem label={lang.occupationRateOfTidb.label} name={occupationRateOfTidb.name}>
+          <InputNumber {...occupationRateOfTidb} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col xs={24} sm={12}>
+        <RequiredFormItem label={lang.tidbVersion.label} name={tidbVersion.name}>
+          <Select {...tidbVersion} />
         </RequiredFormItem>
       </Col>
 
       <Col span={24}>
-        <RequiredFormItem label={lang.detail.label} name={detail.name}>
-          <TextArea {...detail} />
+        <FormItem label={lang.keyScene.label} name={keyScene.name}>
+          <TextArea {...keyScene} />
+        </FormItem>
+      </Col>
+
+      <Col span={24}>
+        <RequiredFormItem label={lang.currentArchitecture.label} name={currentArchitecture.name}>
+          <TextArea {...currentArchitecture} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col span={24}>
+        <RequiredFormItem label={lang.painPoints.label} name={painPoints.name}>
+          <TextArea {...painPoints} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col span={24}>
+        <RequiredFormItem label={lang.challenge.label} name={challenge.name}>
+          <TextArea {...challenge} />
+        </RequiredFormItem>
+      </Col>
+
+      <Col span={24}>
+        <RequiredFormItem label={lang.expectedBenefits.label} name={expectedBenefits.name}>
+          <TextArea {...expectedBenefits} />
         </RequiredFormItem>
       </Col>
     </CommonForm>

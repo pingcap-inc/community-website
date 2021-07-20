@@ -60,6 +60,38 @@
   },
   "consultancy": {
     "title": "技术专家交流",
-    "subtitle": "业务咨询、技术交流"
+    "subtitle": "业务咨询、技术交流",
+    "form": {
+      "tidbNodeNum": {
+        "label": "TiDB 节点数："
+      },
+      "tikvNodeNum": {
+        "label": "TiKV 节点数："
+      },
+      "tiflashNodeNum": {
+        "label": "TiFlash 节点数："
+      },
+      "occupationRateOfTidb": {
+        "label": "RDBMS 中 TiDB 占有率："
+      },
+      "tidbVersion": {
+        "label": "TiDB 版本："
+      },
+      "keyScene": {
+        "label": "重点高优先级场景："
+      },
+      "currentArchitecture": {
+        "label": "当前业务场景和技术架构："
+      },
+      "painPoints": {
+        "label": "业务遇到哪些痛点："
+      },
+      "challenge": {
+        "label": "技术场景面临哪些挑战："
+      },
+      "expectedBenefits": {
+        "label": "希望 TiDB 可以带来哪些收益："
+      }
+    }
   }
 }

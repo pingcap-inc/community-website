@@ -1,35 +1,70 @@
-import { getDropdownValidator, getTextareaValidator } from '~/pages/contact-us/commonForm/commonForm.fields';
+import * as Yup from 'yup';
 
-export const getFields = ({ lang, t }) => {
-  const { type: typeLang } = lang;
+import { getDropdownValidator, getTextareaValidator } from '~/pages/contact-us/commonForm/commonForm.fields';
+import { getTidbReleaseOptions } from '~/pages/contact-us/utils';
+
+export const getFields = ({ lang, t, tidbReleases }) => {
   const dropdownValidator = getDropdownValidator({ lang });
-  const textareaValidator = getTextareaValidator({ lang, t, limit: 300 });
+  const textareaValidator = getTextareaValidator({ lang, t, limit: 100 });
 
   return {
-    type: {
-      name: 'cooperation_type',
+    tidbNodeNum: {
+      name: 'tidb_node_num',
+      min: 0,
+      placeholder: lang.pleaseEnter,
+      validator: Yup.string().required(lang.required),
+    },
+    tikvNodeNum: {
+      name: 'tikv_node_num',
+      min: 0,
+      placeholder: lang.pleaseEnter,
+      validator: Yup.string().required(lang.required),
+    },
+    tiflashNodeNum: {
+      name: 'tiflash_node_num',
+      min: 0,
+      placeholder: lang.pleaseEnter,
+      validator: Yup.string().required(lang.required),
+    },
+    occupationRateOfTidb: {
+      name: 'occupation_rate_of_tidb',
+      min: 0,
+      max: 100,
+      formatter: (value) => value && `${value}%`,
+      parser: (value) => value.replace('%', ''),
+      placeholder: lang.pleaseEnter,
+      validator: Yup.string().required(lang.required),
+    },
+    tidbVersion: {
+      name: 'tidb_version',
       placeholder: lang.pleaseSelect,
-      options: [
-        {
-          value: 'technology',
-          label: typeLang.technology,
-        },
-        {
-          value: 'community',
-          label: typeLang.community,
-        },
-        {
-          value: 'other',
-          label: typeLang.other,
-        },
-      ],
+      mode: 'multiple',
+      options: getTidbReleaseOptions(tidbReleases),
       validator: dropdownValidator,
     },
-
-    detail: {
-      name: 'detail',
-      placeholder: lang.detail.placeholder,
-      rows: 8,
+    keyScene: {
+      name: 'key_scene',
+      placeholder: lang.pleaseEnter,
+      validator: textareaValidator,
+    },
+    currentArchitecture: {
+      name: 'current_scenarios_and_architecture',
+      placeholder: lang.pleaseEnter,
+      validator: textareaValidator,
+    },
+    painPoints: {
+      name: 'pain_points',
+      placeholder: lang.pleaseEnter,
+      validator: textareaValidator,
+    },
+    challenge: {
+      name: 'technical_debt',
+      placeholder: lang.pleaseEnter,
+      validator: textareaValidator,
+    },
+    expectedBenefits: {
+      name: 'expect_benefits_from_tidb',
+      placeholder: lang.pleaseEnter,
       validator: textareaValidator,
     },
   };

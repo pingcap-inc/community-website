@@ -107,15 +107,15 @@ const FormComponent = () => {
       </Col>
 
       <Col xs={24} sm={12}>
-        <RequiredFormItem label={lang.expectedBenefits.label} name={pocDate.name}>
+        <FormItem label={lang.expectedBenefits.label} name={pocDate.name}>
           <DatePicker {...pocDate} />
-        </RequiredFormItem>
+        </FormItem>
       </Col>
 
       <Col xs={24} sm={12}>
-        <RequiredFormItem label={lang.estimate.label} name={estimate.name}>
+        <FormItem label={lang.estimate.label} name={estimate.name}>
           <InputNumber {...estimate} />
-        </RequiredFormItem>
+        </FormItem>
       </Col>
 
       <Col span={24}>

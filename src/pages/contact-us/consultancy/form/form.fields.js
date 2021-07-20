@@ -46,7 +46,6 @@ export const getFields = ({ lang, t, tidbReleases }) => {
     keyScene: {
       name: 'key_scene',
       placeholder: lang.pleaseEnter,
-      validator: textareaValidator,
     },
     currentArchitecture: {
       name: 'current_scenarios_and_architecture',
@@ -71,13 +70,11 @@ export const getFields = ({ lang, t, tidbReleases }) => {
     pocDate: {
       name: 'launch_or_poc_date',
       placeholder: lang.pleaseEnter,
-      validator: textareaValidator,
     },
     estimate: {
       name: 'person_resource',
       min: 0,
       placeholder: lang.pleaseEnter,
-      validator: inputValidator,
     },
     tidbUsage: {
       name: 'tidb_usage',

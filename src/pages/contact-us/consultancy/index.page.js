@@ -2,6 +2,7 @@ import * as R from 'ramda';
 import React from 'react';
 import { useTranslation } from 'next-i18next';
 
+import Form from './form';
 import Layout from '../layout';
 import { CommunityHead } from '~/components';
 
@@ -16,7 +17,9 @@ const Page = () => {
   return (
     <>
       <CommunityHead title={lang.title} />
-      <Layout {...R.pick(['title', 'subtitle'], lang)}></Layout>
+      <Layout {...R.pick(['title', 'subtitle'], lang)}>
+        <Form />
+      </Layout>
     </>
   );
 };

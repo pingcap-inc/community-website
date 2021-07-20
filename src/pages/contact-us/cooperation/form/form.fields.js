@@ -1,13 +1,9 @@
-import * as Yup from 'yup';
+import { getDropdownValidator, getTextareaValidator } from '~/pages/contact-us/commonForm/commonForm.fields';
 
-export const getFields = ({ lang, t, tidbReleases }) => {
+export const getFields = ({ lang, t }) => {
   const { type: typeLang } = lang;
-
-  const dropdownValidator = Yup.mixed().required(lang.required);
-
-  const textareaValidator = Yup.string()
-    .max(500, ({ max }) => t('errors.limit', { max }))
-    .required(lang.required);
+  const dropdownValidator = getDropdownValidator({ lang });
+  const textareaValidator = getTextareaValidator({ lang, t, limit: 300 });
 
   return {
     type: {

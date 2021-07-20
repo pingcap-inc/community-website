@@ -24,6 +24,11 @@ export const Main = styled.div`
   .ant-result-subtitle {
     ${mixins.typography('p1')};
   }
+
+  .ant-input-number,
+  .ant-picker {
+    width: 100%;
+  }
 `;
 
 export const Header = styled.div`

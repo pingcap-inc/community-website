@@ -1,7 +1,8 @@
 import React from 'react';
+import moment from 'moment';
 import useSWR from 'swr';
-import { Col } from 'antd';
 import { Checkbox, DatePicker, FormItem, Input, InputNumber, Select } from 'formik-antd';
+import { Col } from 'antd';
 import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
@@ -41,7 +42,15 @@ const FormComponent = () => {
   const commonFormProps = {
     formFields,
     formLocalePath,
-    submitApi: api.contactUs.requestCooperation,
+    submitApi: api.contactUs.askForConsultancy,
+
+    submitApiFormatter: (values) => ({
+      ...values,
+      occupation_rate_of_tidb: parseInt(values.occupation_rate_of_tidb, 10) / 100,
+      launch_or_poc_date: values.launch_or_poc_date
+        ? moment(values.launch_or_poc_date).format('YYYY-MM-DD')
+        : undefined,
+    }),
   };
 
   return (
@@ -107,7 +116,7 @@ const FormComponent = () => {
       </Col>
 
       <Col xs={24} sm={12}>
-        <FormItem label={lang.expectedBenefits.label} name={pocDate.name}>
+        <FormItem label={lang.pocDate.label} name={pocDate.name}>
           <DatePicker {...pocDate} />
         </FormItem>
       </Col>

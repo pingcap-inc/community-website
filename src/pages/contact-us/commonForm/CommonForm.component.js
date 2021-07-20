@@ -9,7 +9,7 @@ import { useTranslation } from 'next-i18next';
 import { form as formUtils } from '~/utils';
 import { getCommonFields, getSchema, getInitialValues } from './commonForm.fields';
 
-const FormComponent = ({ children, submitApi, formFields, formLocalePath }) => {
+const FormComponent = ({ children, submitApi, submitApiFormatter, formFields, formLocalePath }) => {
   const { t } = useTranslation('page-contact-us', 'common');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -31,7 +31,7 @@ const FormComponent = ({ children, submitApi, formFields, formLocalePath }) => {
   const onSubmit = formUtils.wrapFormikSubmitFunction(({ agreement, ...values }) => {
     setIsSubmitting(true);
 
-    return submitApi(values)
+    return submitApi(submitApiFormatter ? submitApiFormatter(values) : values)
       .then(() => {
         setIsSubmitted(true);
       })

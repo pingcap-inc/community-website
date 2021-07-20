@@ -1,4 +1,7 @@
+import 'moment/locale/zh-cn';
 import * as Yup from 'yup';
+import locale from 'antd/lib/locale/zh_CN';
+import moment from 'moment';
 
 import { getDropdownValidator, getTextareaValidator } from '~/pages/contact-us/commonForm/commonForm.fields';
 import { getTidbReleaseOptions } from '~/pages/contact-us/utils';
@@ -69,6 +72,8 @@ export const getFields = ({ lang, t, tidbReleases }) => {
     },
     pocDate: {
       name: 'launch_or_poc_date',
+      locale,
+      disabledDate: (current) => current && current < moment().endOf('day'),
       placeholder: lang.pleaseEnter,
     },
     estimate: {

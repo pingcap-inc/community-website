@@ -40,3 +40,5 @@ export const handleBaseUrlMapping = (baseURL) => {
 
   api.client.defaults.baseURL = baseURL;
 };
+
+export const genStorageKey = (name) => `__tidb-${name}`;

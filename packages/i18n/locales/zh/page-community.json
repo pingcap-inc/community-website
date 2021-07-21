@@ -1,0 +1,170 @@
+{
+  "activities": {
+    "activities": [
+      {
+        "desc": "TiDB 孵化器项目是为了在 TiDB 生态中诞生的新项目能够获取更多社区资源所设计并打造的。",
+        "img": "https://contributor.tidb.io/static/event-TiDB-Incubator-Program-1ade37389dac75fc23b1d408b2011973.svg",
+        "link": "https://github.com/pingcap/community/tree/master/incubator",
+        "title": "TiDB 孵化器项目"
+      },
+      {
+        "desc": "2020 年 Hackathon 的主题是[♾️]，我们鼓励参与者进行创新与挑战，释放 TiDB 的无限力量。",
+        "img": "https://pingcap.com/static/tidb-hackathon2020-62c1c40e7dd9eb4a0eed8d00ea6507e5.jpg",
+        "link": "https://pingcap.com/community/events/hackathon2020/",
+        "title": "TiDB Hackathon 2020"
+      },
+      {
+        "desc": "TiDB 性能挑战赛是专属于全球开发者与技术爱好者的挑战赛事，本届赛事聚焦性能提升。",
+        "img": "https://pingcap.com/static/high-performance-tidb-challenge-ff7cb0ab67af3592ef7f1fe66151630c.png",
+        "link": "https://pingcap.com/community/events/high-performance-tidb-challenge/",
+        "title": "TiDB 性能挑战赛"
+      }
+    ],
+    "desc": "和社区成员在线上和其他交流平台沟通，遇见志同道合的小伙伴，分享实践案例和技术解决方案。",
+    "title": "认识 TiDB 社区",
+    "viewAll": {
+      "label": "查看所有活动",
+      "link": "https://contributor.tidb.io/events"
+    }
+  },
+  "banner": {
+    "desc": "加入社区，与来自世界各地的 TiDB 贡献者和用户共同学习、贡献、成长！\n",
+    "navs": [
+      {
+        "isCN": true,
+        "label": "访问",
+        "link": "https://asktug.com",
+        "title": "问答论坛"
+      },
+      {
+        "label": "加入",
+        "link": "https://slack.tidb.io/invite?team=tidb-community&channel=everyone",
+        "title": "Slack"
+      },
+      {
+        "label": "订阅",
+        "link": "https://lists.tidb.io/g/main/subgroups",
+        "title": "邮件组"
+      },
+      {
+        "label": "阅读",
+        "link": "https://docs.pingcap.com/tidb/stable",
+        "title": "文档"
+      }
+    ],
+    "title": "和我们一起创造面向未来的数据库！"
+  },
+  "career": {
+    "certTitle": "TiDB 认证",
+    "desc": "在这里，您可以找到 TiDB 用户发布的有吸引力的工作机会。免费发布和申请工作。祝您搜索顺利！",
+    "job": {
+      "items": [
+        {
+          "iconId": "paypay",
+          "linkId": "paypay/dba",
+          "location": "上海",
+          "position": "资深 DBA 工程师"
+        },
+        {
+          "iconId": "yichewang",
+          "linkId": "yichewang/dba",
+          "location": "北京",
+          "position": "DBA"
+        },
+        {
+          "iconId": "zhangmen",
+          "linkId": "zhangmen/dba-tidb",
+          "location": "上海",
+          "position": "DBA - TiDB 专岗"
+        },
+        {
+          "iconId": "huya",
+          "linkId": "huya/dba",
+          "location": "广州",
+          "position": "DBA 工程师"
+        },
+        {
+          "iconId": "xiaomi",
+          "linkId": "xiaomi/dba",
+          "location": "北京",
+          "position": "DBA 工程师"
+        },
+        {
+          "iconId": "kingSoft",
+          "linkId": "kingsoft/dba",
+          "location": "广州/珠海",
+          "position": "DBA 运维开发"
+        },
+        {
+          "iconId": "ucloud",
+          "linkId": "go-engineer-paas",
+          "location": "上海",
+          "position": "Go 研发工程师"
+        },
+        {
+          "iconId": "ucloud",
+          "linkId": "go-engineer-tidb",
+          "location": "上海",
+          "position": "Go 研发工程师"
+        }
+      ],
+      "title": "职位列表",
+      "viewAll": {
+        "label": "查看更多机会",
+        "link": "https://tidb-jobs.pingcap.com"
+      }
+    },
+    "title": "工作机会"
+  },
+  "contributor": {
+    "items": [
+      {
+        "desc": "开发工作流程、提交消息格式、联系人和其他资源。",
+        "link": "https://github.com/pingcap/community/blob/master/contributors/README.md",
+        "title": "贡献指南"
+      },
+      {
+        "desc": "学习知识与技能，分享最佳实践，成为数据库专家，制定数据库标准。",
+        "link": "https://contributor.tidb.io",
+        "title": "加入开发者小组"
+      },
+      {
+        "desc": "TiDB 社区成员行为规则协议。",
+        "link": "https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md",
+        "title": "行为准则"
+      }
+    ],
+    "title": "成为贡献者"
+  },
+  "learning": {
+    "btns": {
+      "docs": {
+        "label": "官方文档",
+        "link": "https://docs.pingcap.com/tidb/stable"
+      },
+      "pu": {
+        "label": "PingCAP Education",
+        "link": "https://university.pingcap.com"
+      }
+    },
+    "desc": [
+      "PingCAP Education 致力于培养开发、管理和应用分布式关系数据库系统的一流人才。所有培训和认证课程均由 PingCAP 的官方 TiDB 技术专家设计和讲授。",
+      "您还可以阅读官方文档来了解 TiDB 的用法。"
+    ],
+    "title": "学习如何使用 TiDB"
+  },
+  "userGroup": {
+    "btns": {
+      "ask": {
+        "label": "问答论坛",
+        "link": "https://asktug.com"
+      },
+      "join": {
+        "label": "加入 TUG",
+        "link": "https://tug.tidb.io"
+      }
+    },
+    "desc": "TiDB User Group（TUG）是一个独立、自组织、非营利的组织，聚集了世界各地的数据库和大数据技术从业者。在 TUG 中，你可以增加你的个人影响力，开阔你的视野，交到志同道合的朋友。",
+    "title": "加入 TiDB User Group"
+  }
+}

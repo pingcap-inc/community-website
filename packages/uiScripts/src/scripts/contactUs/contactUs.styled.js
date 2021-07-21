@@ -16,85 +16,91 @@ export const Container = styled.div`
 `;
 
 export const PopoverContainer = styled.div`
-  position: relative;
-  max-width: 160px;
+  && {
+    position: relative;
+    max-width: 160px;
 
-  .anticon {
-    color: ${colors.AntD.warning};
-    margin-right: 0.2rem;
-  }
-
-  ul {
-    ${mixins.resetList()};
-
-    li {
-      margin-bottom: 0.5rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
+    .anticon {
+      color: ${colors.AntD.warning};
+      margin-right: 0.2rem;
     }
 
-    ${(props) =>
-      props.isDisabled &&
-      css`
-        h3,
-        p {
-          color: ${colors.C4};
+    ul {
+      ${mixins.resetList()};
+
+      li {
+        margin-bottom: 0.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
         }
+      }
 
-        a {
-          display: block;
-          cursor: not-allowed;
-        }
-      `}
-  }
+      ${(props) =>
+        props.isDisabled &&
+        css`
+          h3,
+          p {
+            color: ${colors.C4};
+          }
 
-  h3,
-  p {
-    ${mixins.reset()};
-  }
+          a {
+            display: block;
+            cursor: not-allowed;
+          }
+        `}
+    }
 
-  h3 {
-    ${mixins.typography('p2')};
-    color: ${colors.F1};
-  }
+    h3,
+    p {
+      ${mixins.reset()};
+    }
 
-  p {
-    ${mixins.typography('p3')};
-    color: ${colors.C4};
+    h3 {
+      ${mixins.typography('p2')};
+      color: ${colors.F1};
+    }
+
+    p {
+      ${mixins.typography('p3')};
+      color: ${colors.C4};
+    }
   }
 `;
 
 export const PopoverDesc = styled.div`
-  ${mixins.typography('p3')};
-  padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid ${colors.T2};
+  && {
+    ${mixins.typography('p3')};
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid ${colors.T2};
 
-  a,
-  span {
-    &,
-    &:hover {
-      cursor: pointer;
-      color: ${colors.B1};
+    a,
+    span {
+      &,
+      &:hover {
+        cursor: pointer;
+        color: ${colors.B1};
+      }
     }
   }
 `;
 
 export const GuideContent = styled.div`
-  position: absolute;
-  top: 0;
-  left: -232px;
-  width: 200px;
+  && {
+    position: absolute;
+    top: 0;
+    left: -232px;
+    width: 200px;
 
-  p {
-    ${mixins.typography('p2')}
-    margin-bottom: 1rem;
-  }
+    p {
+      ${mixins.typography('p2')}
+      margin-bottom: 1rem;
+    }
 
-  p,
-  .ant-btn {
-    color: ${colors.M1};
+    p,
+    .ant-btn {
+      color: ${colors.M1};
+    }
   }
 `;

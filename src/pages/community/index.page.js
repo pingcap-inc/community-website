@@ -24,7 +24,7 @@ const Page = () => (
   <>
     <CommunityHead />
 
-    <CoreLayout domain="tidb.io" hasMargin locale="en">
+    <CoreLayout domain="tidb.io" hasMargin>
       <Banner />
       <Activities />
       <Learning />

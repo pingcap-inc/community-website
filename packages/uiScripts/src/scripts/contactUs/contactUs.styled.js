@@ -16,6 +16,7 @@ export const Container = styled.div`
 `;
 
 export const PopoverContainer = styled.div`
+  position: relative;
   max-width: 160px;
 
   .anticon {
@@ -78,5 +79,22 @@ export const PopoverDesc = styled.div`
       cursor: pointer;
       color: ${colors.B1};
     }
+  }
+`;
+
+export const GuideContent = styled.div`
+  position: absolute;
+  top: 0;
+  left: -232px;
+  width: 200px;
+
+  p {
+    ${mixins.typography('p2')}
+    margin-bottom: 1rem;
+  }
+
+  p,
+  .ant-btn {
+    color: ${colors.M1};
   }
 `;

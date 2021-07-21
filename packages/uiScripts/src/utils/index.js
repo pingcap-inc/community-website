@@ -12,3 +12,31 @@ export const fetcher = (path, params) => {
 
   return R.path(path.split('.'), api)(params);
 };
+
+// baseURL mapping please refer to
+// https://internal.pingcap.net/jira/browse/CP-82
+export const handleBaseUrlMapping = (baseURL) => {
+  if (baseURL) {
+    api.client.defaults.baseURL = baseURL;
+    return;
+  }
+
+  baseURL = api.client.defaults.baseURL;
+
+  // Mock APIs will be skipped.
+  if (baseURL !== 'http://localhost:4000') {
+    const { host, origin } = window.location;
+
+    if (host === 'asktug.com') {
+      baseURL = 'https://asktug.com/_/sso/api';
+    } else if (host === 'new.asktug.com') {
+      baseURL = 'https://dev-asktug.wangdi.ink';
+    } else if (
+      ['community-preview.tidb.io', 'dev-accounts.pingcap.com', 'accounts.pingcap.com', 'tidb.io'].includes(host)
+    ) {
+      baseURL = `${origin}/api`;
+    }
+  }
+
+  api.client.defaults.baseURL = baseURL;
+};

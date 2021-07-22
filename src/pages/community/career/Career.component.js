@@ -38,7 +38,7 @@ const Career = () => {
               <Styled.CertContainer
                 onClick={(e) => onLinkClick(`https://learn.pingcap.com/learner/exam-market/list?category=${name}`)}
               >
-                <Image alt={name} src={`/images/community/${name}.png`} width="642" height="257" />
+                <Image alt={name} src={`/images/community/${name}.png`} width="642" height="300" />
               </Styled.CertContainer>
             </Col>
           ))}

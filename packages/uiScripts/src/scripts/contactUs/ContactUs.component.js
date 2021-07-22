@@ -48,7 +48,7 @@ const ContactUs = () => {
       <li>
         <NavLink path="/contact-us/incident">
           <h3>紧急事故处理</h3>
-          <p>紧急事故处理</p>
+          <p>若非紧急事故，请发帖</p>
         </NavLink>
       </li>
       <li>

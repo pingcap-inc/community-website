@@ -28,7 +28,7 @@
     }
   },
   "banner": {
-    "desc": "加入社区，与来自世界各地的 TiDB 贡献者和用户共同学习、贡献、成长！\n",
+    "desc": "加入社区，与来自世界各地的 TiDB 贡献者和用户共同学习、贡献、成长！",
     "navs": [
       {
         "isCN": true,
@@ -144,7 +144,7 @@
       },
       "pu": {
         "label": "PingCAP Education",
-        "link": "https://university.pingcap.com"
+        "link": "https://pingcap.com/education/"
       }
     },
     "desc": [

@@ -35,8 +35,10 @@ const Career = () => {
         <Row gutter={[32, 24]}>
           {['PCTA', 'PCTP'].map((name) => (
             <Col key={name} xs={24} md={12}>
-              <Styled.CertContainer onClick={(e) => onLinkClick(`https://university.pingcap.com/certificate/${name}/`)}>
-                <Image alt={name} src={`/images/community/${name}.svg`} width="642" height="257" />
+              <Styled.CertContainer
+                onClick={(e) => onLinkClick(`https://learn.pingcap.com/learner/exam-market/list?category=${name}`)}
+              >
+                <Image alt={name} src={`/images/community/${name}.png`} width="642" height="257" />
               </Styled.CertContainer>
             </Col>
           ))}

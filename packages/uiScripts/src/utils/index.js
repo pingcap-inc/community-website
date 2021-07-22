@@ -29,8 +29,8 @@ export const handleBaseUrlMapping = (baseURL) => {
 
     if (host === 'asktug.com') {
       baseURL = 'https://asktug.com/_/sso/api';
-    } else if (host === 'new.asktug.com') {
-      baseURL = 'https://dev-asktug.wangdi.ink';
+    } else if (host === 'dev-asktug.wangdi.ink') {
+      baseURL = 'https://dev-asktug.wangdi.ink/_/sso/api';
     } else if (
       ['community-preview.tidb.io', 'dev-accounts.pingcap.com', 'accounts.pingcap.com', 'tidb.io'].includes(host)
     ) {

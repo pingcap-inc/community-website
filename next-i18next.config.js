@@ -5,8 +5,8 @@ const ONE_MIN = 60 * ONE_SECOND;
 
 module.exports = {
   i18n: {
-    // defaultLocale: 'zh',
-    defaultLocale: 'en',
+    defaultLocale: 'zh',
+    // defaultLocale: 'en',
     locales: ['zh', 'en'],
     fallbackLng: ['zh', 'en'],
   },

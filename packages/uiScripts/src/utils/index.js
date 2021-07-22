@@ -28,13 +28,13 @@ export const handleBaseUrlMapping = (baseURL) => {
     const { host, origin } = window.location;
 
     if (host === 'asktug.com') {
-      baseURL = 'https://asktug.com/_/sso/api';
+      baseURL = 'https://asktug.com/_/sso';
     } else if (host === 'dev-asktug.wangdi.ink') {
-      baseURL = 'https://dev-asktug.wangdi.ink/_/sso/api';
+      baseURL = 'https://dev-asktug.wangdi.ink/_/sso';
     } else if (
       ['community-preview.tidb.io', 'dev-accounts.pingcap.com', 'accounts.pingcap.com', 'tidb.io'].includes(host)
     ) {
-      baseURL = `${origin}/api`;
+      baseURL = `${origin}`;
     }
   }
 

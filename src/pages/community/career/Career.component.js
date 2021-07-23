@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './career.styled';
-import { genIcon, genLink } from './career.utils';
+import { genIcon } from './career.utils';
 import { link as linkUtils } from '~/utils';
 
 const Career = () => {
@@ -51,7 +51,7 @@ const Career = () => {
         <Row gutter={[32, 24]}>
           {job.items.map(({ iconId, position, location, linkId }, idx) => (
             <Col key={idx} xs={24} sm={12} md={8} lg={6}>
-              <Styled.JobCard onClick={(e) => onLinkClick(genLink(linkId))}>
+              <Styled.JobCard>
                 <Styled.JobImg>
                   <Image alt={position} src={genIcon(iconId)} layout="fill" objectFit="contain" />
                 </Styled.JobImg>

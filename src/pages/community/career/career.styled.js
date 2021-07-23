@@ -33,7 +33,6 @@ export const JobCard = styled.div`
   ${mixins.flexVerticalCenter()};
   border: 1px solid ${colors.T2};
   padding: 1rem;
-  cursor: pointer;
 `;
 
 export const JobImg = styled.div`

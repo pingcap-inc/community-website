@@ -24,7 +24,7 @@
     "title": "认识 TiDB 社区",
     "viewAll": {
       "label": "查看所有活动",
-      "link": "https://contributor.tidb.io/events"
+      "link": "https://tidb.io/archived/events/#activities"
     }
   },
   "banner": {
@@ -61,49 +61,41 @@
       "items": [
         {
           "iconId": "paypay",
-          "linkId": "paypay/dba",
           "location": "上海",
           "position": "资深 DBA 工程师"
         },
         {
           "iconId": "yichewang",
-          "linkId": "yichewang/dba",
           "location": "北京",
           "position": "DBA"
         },
         {
           "iconId": "zhangmen",
-          "linkId": "zhangmen/dba-tidb",
           "location": "上海",
           "position": "DBA - TiDB 专岗"
         },
         {
           "iconId": "huya",
-          "linkId": "huya/dba",
           "location": "广州",
           "position": "DBA 工程师"
         },
         {
           "iconId": "xiaomi",
-          "linkId": "xiaomi/dba",
           "location": "北京",
           "position": "DBA 工程师"
         },
         {
           "iconId": "kingSoft",
-          "linkId": "kingsoft/dba",
           "location": "广州/珠海",
           "position": "DBA 运维开发"
         },
         {
           "iconId": "ucloud",
-          "linkId": "go-engineer-paas",
           "location": "上海",
           "position": "Go 研发工程师"
         },
         {
           "iconId": "ucloud",
-          "linkId": "go-engineer-tidb",
           "location": "上海",
           "position": "Go 研发工程师"
         }

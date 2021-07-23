@@ -61,3 +61,7 @@ export const Footer = styled.div`
     font-size: 1.2em;
   }
 `;
+
+export const ErrorContainer = styled.div`
+  ${mixins.flexCenter()};
+`;

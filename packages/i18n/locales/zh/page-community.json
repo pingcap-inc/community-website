@@ -10,13 +10,13 @@
       {
         "desc": "2020 年 Hackathon 的主题是[♾️]，我们鼓励参与者进行创新与挑战，释放 TiDB 的无限力量。",
         "img": "https://pingcap.com/static/tidb-hackathon2020-62c1c40e7dd9eb4a0eed8d00ea6507e5.jpg",
-        "link": "https://pingcap.com/community/events/hackathon2020/",
+        "link": "https://tidb.io/archived/events/hackathon2020/",
         "title": "TiDB Hackathon 2020"
       },
       {
         "desc": "TiDB 性能挑战赛是专属于全球开发者与技术爱好者的挑战赛事，本届赛事聚焦性能提升。",
         "img": "https://pingcap.com/static/high-performance-tidb-challenge-ff7cb0ab67af3592ef7f1fe66151630c.png",
-        "link": "https://pingcap.com/community/events/high-performance-tidb-challenge/",
+        "link": "https://tidb.io/archived/events/high-performance-tidb-challenge/",
         "title": "TiDB 性能挑战赛"
       }
     ],
@@ -24,7 +24,7 @@
     "title": "认识 TiDB 社区",
     "viewAll": {
       "label": "查看所有活动",
-      "link": "https://contributor.tidb.io/events"
+      "link": "https://tidb.io/archived/events/#activities"
     }
   },
   "banner": {
@@ -61,49 +61,41 @@
       "items": [
         {
           "iconId": "paypay",
-          "linkId": "paypay/dba",
           "location": "上海",
           "position": "资深 DBA 工程师"
         },
         {
           "iconId": "yichewang",
-          "linkId": "yichewang/dba",
           "location": "北京",
           "position": "DBA"
         },
         {
           "iconId": "zhangmen",
-          "linkId": "zhangmen/dba-tidb",
           "location": "上海",
           "position": "DBA - TiDB 专岗"
         },
         {
           "iconId": "huya",
-          "linkId": "huya/dba",
           "location": "广州",
           "position": "DBA 工程师"
         },
         {
           "iconId": "xiaomi",
-          "linkId": "xiaomi/dba",
           "location": "北京",
           "position": "DBA 工程师"
         },
         {
           "iconId": "kingSoft",
-          "linkId": "kingsoft/dba",
           "location": "广州/珠海",
           "position": "DBA 运维开发"
         },
         {
           "iconId": "ucloud",
-          "linkId": "go-engineer-paas",
           "location": "上海",
           "position": "Go 研发工程师"
         },
         {
           "iconId": "ucloud",
-          "linkId": "go-engineer-tidb",
           "location": "上海",
           "position": "Go 研发工程师"
         }

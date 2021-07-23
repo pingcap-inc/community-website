@@ -35,7 +35,7 @@ const Banner = () => {
   return (
     <Styled.Container ref={ref} sm={sizeWidth <= 680} md={sizeWidth <= 880}>
       <Styled.Background>
-        <Image src="/images/community/banner.svg" {...imgSizeProps} />
+        <Image src="/images/community/banner.png" {...imgSizeProps} />
       </Styled.Background>
 
       <Styled.Content>

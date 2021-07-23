@@ -1,3 +1,3 @@
-export const bgWidth = 1712;
+export const bgWidth = 1440;
 
 export const bgHeight = 416;

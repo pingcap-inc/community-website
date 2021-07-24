@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
 import { InfoCircleFilled } from '@ant-design/icons';
@@ -7,7 +7,6 @@ import { Button, Popover } from 'antd';
 import { createAppGlobalStyle, constants, Link } from '@tidb-community/ui';
 
 import * as Styled from './contactUs.styled';
-import Icon from './icon.svg';
 import { AuthContext } from '@/context/auth.context';
 import { genStorageKey } from '~/utils';
 
@@ -18,6 +17,7 @@ const { appClassName } = constants;
 const getUrl = (path) => `${process.env.NEXT_PUBLIC_HOME_URL}${path}`;
 
 const ContactUs = () => {
+  const containerRef = useRef(null);
   const [isShowGuide, setIsShowGuide] = useState(!localStorage.getItem(guideStorageKey));
   const { error: meError } = useSWR('me', {
     revalidateOnFocus: false,
@@ -115,18 +115,20 @@ const ContactUs = () => {
 
   const popoverProps = {
     content,
-    trigger: 'hover',
+    trigger: 'click',
     placement: 'leftBottom',
     overlayClassName: appClassName,
     visible: isShowGuide ? isShowGuide : undefined,
+    getPopupContainer: () => containerRef.current,
+    onVisibleChange: (visible) => console.log('onVisibleChange!!', visible),
   };
 
   return (
     <>
       <GlobalStyle />
       <Popover {...popoverProps}>
-        <Styled.Container className={appClassName}>
-          <Icon />
+        <Styled.Container ref={containerRef} className={appClassName}>
+          <Styled.Icon />
         </Styled.Container>
       </Popover>
     </>

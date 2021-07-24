@@ -53,6 +53,7 @@ export const Header = styled.div`
 export const Footer = styled.div`
   color: ${colors.F2};
   text-align: center;
+  padding: 0 2rem;
   margin: 1rem 0 3rem;
 
   span {
@@ -64,4 +65,19 @@ export const Footer = styled.div`
 
 export const ErrorContainer = styled.div`
   ${mixins.flexCenter()};
+  padding: 2rem;
+  flex-direction: column;
+  flex: 1;
+
+  svg {
+    width: 40%;
+    max-width: 280px;
+    min-width: 160px;
+  }
+
+  p {
+    ${mixins.reset()};
+    ${mixins.typography('p1')};
+    margin-top: 2rem;
+  }
 `;

@@ -17,5 +17,8 @@
         "error": "须同意《隐私协议》"
       }
     }
+  },
+  "footer": {
+    "copyright": "2021 TiDB Community."
   }
 }

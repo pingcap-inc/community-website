@@ -10,7 +10,7 @@ import Icon from './icon.svg';
 import { AuthContext } from '~/context';
 
 const Layout = ({ title, subtitle, children }) => {
-  const { t } = useTranslation('page-contact-us', 'common');
+  const { t, i18n } = useTranslation('page-contact-us', 'common');
   const { login, isAnonymous } = useContext(AuthContext);
   const { data: resp } = useSWR('contactUs.qualifications');
 
@@ -46,10 +46,21 @@ const Layout = ({ title, subtitle, children }) => {
 
   const Prerequisite = () => (
     <>
-      {[
-        data.company_info_is_completed === false && <Link href={'/my/company'}>{lang.completeCompanyInfo}</Link>,
-        data.phone_email_is_completed === false && <Link href={'/my/settings'}>{lang.completeContactInfo}</Link>,
-      ].filter(Boolean)}
+      {R.intersperse(
+        i18n.language === 'zh' ? '、' : ', ',
+        [
+          data.company_info_is_completed === false && (
+            <Link key="company-info" href={'/my/company'}>
+              {lang.completeCompanyInfo}
+            </Link>
+          ),
+          data.phone_email_is_completed === false && (
+            <Link key="contact-info" href={'/my/settings'}>
+              {lang.completeContactInfo}
+            </Link>
+          ),
+        ].filter(Boolean)
+      )}
     </>
   );
 

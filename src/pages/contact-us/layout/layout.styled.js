@@ -80,4 +80,8 @@ export const ErrorContainer = styled.div`
     ${mixins.typography('p1')};
     margin-top: 2rem;
   }
+
+  a {
+    ${mixins.resetLink()};
+  }
 `;

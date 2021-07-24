@@ -87,7 +87,7 @@ const ContactUs = () => {
       </>
     );
   } else if (!R.isEmpty(links)) {
-    desc = <>联系社区专家之前，请先完{links}，一般更好地处理您的问题</>;
+    desc = <>联系社区专家之前，请先{links}，以便我们更好地处理您的问题</>;
   }
 
   const content = isShowGuide ? (

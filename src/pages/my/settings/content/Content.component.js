@@ -15,7 +15,7 @@ const Content = () => {
   const { login } = useContext(AuthContext);
 
   const isLoading = !error && !settingsResp;
-  if (isLoading) return <Skeleton />;
+  if (isLoading) return <Skeleton active />;
 
   const { data } = settingsResp;
   const {

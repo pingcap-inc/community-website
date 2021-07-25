@@ -31,7 +31,7 @@ const FormComponent = () => {
   };
 
   const isLoading = !error && !infoResp;
-  if (isLoading) return <Skeleton />;
+  if (isLoading) return <Skeleton active />;
 
   const { data } = infoResp;
   const isAdmin = commonUtils.isAdmin(meData);

@@ -36,7 +36,7 @@ const Layout = ({ title, subtitle, children }) => {
   if (!resp) {
     main = (
       <Styled.ErrorContainer>
-        <Skeleton />
+        <Skeleton active />
       </Styled.ErrorContainer>
     );
   }

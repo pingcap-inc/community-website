@@ -20,7 +20,7 @@ export const Icon = styled(IconSvg)`
 export const PopoverContainer = styled.div`
   && {
     position: relative;
-    max-width: 160px;
+    width: 160px;
 
     .anticon {
       color: ${colors.AntD.warning};

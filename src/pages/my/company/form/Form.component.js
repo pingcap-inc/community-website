@@ -18,7 +18,7 @@ const FormComponent = () => {
   const { data: profileResp, error } = useSWR('profile.fetch');
   const isLoading = !error && !profileResp;
 
-  if (isLoading) return <Skeleton />;
+  if (isLoading) return <Skeleton active />;
 
   const { data } = profileResp;
   const { companyName, position } = fields;

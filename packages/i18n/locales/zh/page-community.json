@@ -31,7 +31,6 @@
     "desc": "加入社区，与来自世界各地的 TiDB 贡献者和用户共同学习、贡献、成长！",
     "navs": [
       {
-        "isCN": true,
         "label": "访问",
         "link": "https://asktug.com",
         "title": "问答论坛"

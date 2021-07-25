@@ -10,7 +10,9 @@ import * as Styled from './index.styled';
 import HackUserProfileSlot from './hackUserProfileSlot.component';
 import gonganIcon from './gongan.png';
 import { MeContext } from '@/context/me.context';
-import { fetcher } from '~/utils';
+import { fetcher, handleBaseUrlMapping } from '~/utils';
+
+handleBaseUrlMapping();
 
 const { location } = window;
 const { appClassName } = constants;

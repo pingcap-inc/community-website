@@ -9,7 +9,7 @@ const Banner = ({ introduction, logo, name, isLoading, children }) => (
     <Styled.Content>
       <Styled.Information>
         {isLoading ? (
-          <Skeleton avatar paragraph={{ rows: 2 }} />
+          <Skeleton active avatar paragraph={{ rows: 2 }} />
         ) : (
           <>
             <Styled.ImageWrapper>

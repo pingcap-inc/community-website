@@ -1,6 +1,8 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
+import IconSvg from './icon.svg';
+
 export const Container = styled.div`
   ${mixins.size('42px')};
   ${mixins.flexCenter()};
@@ -9,16 +11,16 @@ export const Container = styled.div`
   position: fixed;
   right: 32px;
   bottom: 32px;
+`;
 
-  svg {
-    ${mixins.size('26px')};
-  }
+export const Icon = styled(IconSvg)`
+  ${mixins.size('26px')};
 `;
 
 export const PopoverContainer = styled.div`
   && {
     position: relative;
-    max-width: 160px;
+    width: 160px;
 
     .anticon {
       color: ${colors.AntD.warning};

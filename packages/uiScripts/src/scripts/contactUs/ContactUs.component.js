@@ -1,13 +1,12 @@
 import * as R from 'ramda';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
 import { InfoCircleFilled } from '@ant-design/icons';
-import { Button, Popover } from 'antd';
+import { Button, Popover, Skeleton } from 'antd';
 import { createAppGlobalStyle, constants, Link } from '@tidb-community/ui';
 
 import * as Styled from './contactUs.styled';
-import Icon from './icon.svg';
 import { AuthContext } from '@/context/auth.context';
 import { genStorageKey } from '~/utils';
 
@@ -18,14 +17,16 @@ const { appClassName } = constants;
 const getUrl = (path) => `${process.env.NEXT_PUBLIC_HOME_URL}${path}`;
 
 const ContactUs = () => {
+  const containerRef = useRef(null);
   const [isShowGuide, setIsShowGuide] = useState(!localStorage.getItem(guideStorageKey));
-  const { error: meError } = useSWR('me', {
+  const { data: meResp, error: meError } = useSWR('me', {
     revalidateOnFocus: false,
     shouldRetryOnError: false,
   });
   const { data: resp } = useSWR('contactUs.qualifications');
 
   const data = resp?.data || {};
+  const isLoading = !meResp || !resp;
   const isAnonymous = !!meError;
   const { login } = useContext(AuthContext);
 
@@ -90,43 +91,55 @@ const ContactUs = () => {
     desc = <>联系社区专家之前，请先{links}，以便我们更好地处理您的问题</>;
   }
 
-  const content = isShowGuide ? (
-    <Styled.PopoverContainer>
-      <NavLinks />
-      <Styled.GuideContent>
-        <p>遇到紧急事故、或是需要技术交流、社区合作可以在这里联系社区专家哦~</p>
-        <Button type="primary" size="small" onClick={onGuideClose}>
-          知道了
-        </Button>
-      </Styled.GuideContent>
-      {ReactDOM.createPortal(<div className="ant-modal-mask" />, document.body)}
-    </Styled.PopoverContainer>
-  ) : (
-    <Styled.PopoverContainer isDisabled={isDisabled}>
-      {desc && (
-        <Styled.PopoverDesc>
-          <InfoCircleFilled />
-          {desc}
-        </Styled.PopoverDesc>
-      )}
-      <NavLinks />
-    </Styled.PopoverContainer>
-  );
+  let content;
+  if (isShowGuide) {
+    content = (
+      <Styled.PopoverContainer>
+        <NavLinks />
+        <Styled.GuideContent>
+          <p>遇到紧急事故、或是需要技术交流、社区合作可以在这里联系社区专家哦~</p>
+          <Button type="primary" size="small" onClick={onGuideClose}>
+            知道了
+          </Button>
+        </Styled.GuideContent>
+        {ReactDOM.createPortal(<div className="ant-modal-mask" />, document.body)}
+      </Styled.PopoverContainer>
+    );
+  } else if (isLoading) {
+    content = (
+      <Styled.PopoverContainer>
+        <Skeleton active />
+      </Styled.PopoverContainer>
+    );
+  } else {
+    content = (
+      <Styled.PopoverContainer isDisabled={isDisabled}>
+        {desc && (
+          <Styled.PopoverDesc>
+            <InfoCircleFilled />
+            {desc}
+          </Styled.PopoverDesc>
+        )}
+        <NavLinks />
+      </Styled.PopoverContainer>
+    );
+  }
 
   const popoverProps = {
     content,
-    trigger: 'hover',
+    trigger: 'click',
     placement: 'leftBottom',
     overlayClassName: appClassName,
     visible: isShowGuide ? isShowGuide : undefined,
+    getPopupContainer: () => containerRef.current,
   };
 
   return (
     <>
       <GlobalStyle />
       <Popover {...popoverProps}>
-        <Styled.Container className={appClassName}>
-          <Icon />
+        <Styled.Container ref={containerRef} className={appClassName}>
+          <Styled.Icon />
         </Styled.Container>
       </Popover>
     </>

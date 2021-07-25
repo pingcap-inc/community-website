@@ -127,7 +127,7 @@ const ContactUs = () => {
 
   const popoverProps = {
     content,
-    trigger: 'click',
+    trigger: 'hover',
     placement: 'leftBottom',
     overlayClassName: appClassName,
     visible: isShowGuide ? isShowGuide : undefined,

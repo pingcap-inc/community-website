@@ -6,11 +6,12 @@ import IconSvg from './icon.svg';
 export const Container = styled.div`
   ${mixins.size('42px')};
   ${mixins.flexCenter()};
+  z-index: 1001;
   border-radius: 50%;
   background: ${colors.B1};
   position: fixed;
-  right: 32px;
-  bottom: 32px;
+  right: 2rem;
+  bottom: 2rem;
 `;
 
 export const Icon = styled(IconSvg)`

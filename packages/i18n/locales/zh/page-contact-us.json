@@ -5,7 +5,7 @@
   "script": {
     "completeCompanyInfo": "完善公司信息",
     "completeContactInfo": "绑定手机号和邮箱",
-    "noPermission": "联系社区专家之前，请先<prerequisite></prerequisite>，以便我们更好地处理您地问题"
+    "noPermission": "联系社区专家之前，请先<prerequisite></prerequisite>，以便我们更好地处理您的问题"
   },
   "incident": {
     "title": "紧急事故处理",

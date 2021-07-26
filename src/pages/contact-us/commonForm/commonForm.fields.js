@@ -5,10 +5,10 @@ const { buildSchema, buildInitialValues } = utils.form;
 
 export const getDropdownValidator = ({ lang }) => Yup.mixed().required(lang.required);
 
-export const getTextareaValidator = ({ lang, t, limit }) =>
-  Yup.string()
-    .max(limit, ({ max }) => t('errors.limit', { max }))
-    .required(lang.required);
+export const getTextareaValidator = ({ lang, t, limit, isRequired = true }) => {
+  const validator = Yup.string().max(limit, ({ max }) => t('errors.limit', { max }));
+  return isRequired ? validator.required(lang.required) : validator;
+};
 
 export const getCommonFields = ({ lang }) => ({
   agreement: {

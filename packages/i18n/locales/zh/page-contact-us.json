@@ -1,6 +1,6 @@
 {
   "errors": {
-    "limit": "{{max}} 字限制"
+    "limit": "最多可输入 {{max}} 字"
   },
   "script": {
     "completeCompanyInfo": "完善公司信息",
@@ -77,7 +77,7 @@
         "label": "TiFlash 节点数："
       },
       "occupationRateOfTidb": {
-        "label": "RDBMS 中 TiDB 占有率："
+        "label": "RDBMS 中 TiDB 占有率（%）："
       },
       "tidbVersion": {
         "label": "TiDB 版本："
@@ -105,7 +105,8 @@
       },
       "tidbUsage": {
         "label": "当前或希望 TiDB 支撑的数据模型："
-      }
+      },
+      "submitSuccessful": "交流意向已提交，我们会尽快联系你"
     }
   }
 }

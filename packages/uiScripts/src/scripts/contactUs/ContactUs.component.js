@@ -19,15 +19,16 @@ const getUrl = (path) => `${process.env.NEXT_PUBLIC_HOME_URL}${path}`;
 const ContactUs = () => {
   const containerRef = useRef(null);
   const [isShowGuide, setIsShowGuide] = useState(!localStorage.getItem(guideStorageKey));
+
   const { data: meResp, error: meError } = useSWR('me', {
     revalidateOnFocus: false,
     shouldRetryOnError: false,
   });
-  const { data: resp } = useSWR('contactUs.qualifications');
+  const isLoggedIn = !!meResp?.data;
+  const { data: resp, error } = useSWR(isLoggedIn && 'contactUs.qualifications');
 
   const data = resp?.data || {};
-  const isLoading = !meResp || !resp;
-  const isAnonymous = !!meError;
+  const isLoading = (!meResp && !meError) || (isLoggedIn && !resp && !error);
   const { login } = useContext(AuthContext);
 
   const isEnabled = !R.isEmpty(data) && R.pipe(R.values, R.all(R.equals(true)))(data);
@@ -80,7 +81,7 @@ const ContactUs = () => {
   );
 
   let desc;
-  if (isAnonymous) {
+  if (!isLoggedIn) {
     desc = (
       <>
         联系社区专家之前，请先

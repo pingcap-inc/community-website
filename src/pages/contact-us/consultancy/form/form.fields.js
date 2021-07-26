@@ -9,7 +9,7 @@ import { getTidbReleaseOptions } from '~/pages/contact-us/utils';
 export const getFields = ({ lang, t, tidbReleases }) => {
   const dropdownValidator = getDropdownValidator({ lang });
   const textareaValidator = getTextareaValidator({ lang, t, limit: 100 });
-  const inputValidator = Yup.string().required(lang.required);
+  const inputValidator = Yup.mixed().required(lang.required);
 
   return {
     tidbNodeNum: {
@@ -34,8 +34,6 @@ export const getFields = ({ lang, t, tidbReleases }) => {
       name: 'occupation_rate_of_tidb',
       min: 0,
       max: 100,
-      formatter: (value) => value && `${value}%`,
-      parser: (value) => value.replace('%', ''),
       placeholder: lang.pleaseEnter,
       validator: inputValidator,
     },
@@ -49,6 +47,7 @@ export const getFields = ({ lang, t, tidbReleases }) => {
     keyScene: {
       name: 'key_scene',
       placeholder: lang.pleaseEnter,
+      validator: getTextareaValidator({ lang, t, limit: 100, isRequired: false }),
     },
     currentArchitecture: {
       name: 'current_scenarios_and_architecture',

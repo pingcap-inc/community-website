@@ -105,5 +105,12 @@ export const GuideContent = styled.div`
     .ant-btn {
       color: ${colors.M1};
     }
+
+    ${(props) =>
+      props.isSmallScreen &&
+      css`
+        left: -16px;
+        top: -160px;
+      `}
   }
 `;

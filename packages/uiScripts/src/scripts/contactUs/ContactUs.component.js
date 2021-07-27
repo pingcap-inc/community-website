@@ -8,9 +8,10 @@ import { createAppGlobalStyle, constants, Link } from '@tidb-community/ui';
 
 import * as Styled from './contactUs.styled';
 import { AuthContext } from '@/context/auth.context';
-import { genStorageKey } from '~/utils';
+import { genStorageKey, isSupportLocalStorage } from '~/utils';
 
 const GlobalStyle = createAppGlobalStyle();
+const hasLocalStorage = isSupportLocalStorage();
 const guideStorageKey = genStorageKey('contact-us-guide-shown');
 const { appClassName } = constants;
 
@@ -18,7 +19,7 @@ const getUrl = (path) => `${process.env.NEXT_PUBLIC_HOME_URL}${path}`;
 
 const ContactUs = () => {
   const containerRef = useRef(null);
-  const [isShowGuide, setIsShowGuide] = useState(!localStorage.getItem(guideStorageKey));
+  const [isShowGuide, setIsShowGuide] = useState(hasLocalStorage ? !localStorage.getItem(guideStorageKey) : false);
 
   const { data: meResp, error: meError } = useSWR('me', {
     revalidateOnFocus: false,

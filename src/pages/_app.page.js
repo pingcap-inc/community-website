@@ -1,3 +1,4 @@
+import '@fontsource/titillium-web';
 import 'antd/dist/antd.css';
 import * as R from 'ramda';
 import React, { useEffect, useState } from 'react';

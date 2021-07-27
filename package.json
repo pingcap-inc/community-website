@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "4.6.2",
+    "@fontsource/titillium-web": "4.5.0",
     "@sentry/nextjs": "6.8.0",
     "ahooks": "2.10.7",
     "antd": "4.15.6",

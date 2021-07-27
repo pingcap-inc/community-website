@@ -11,6 +11,7 @@
     "serve": "serve -l 7000 ./src/scripts"
   },
   "dependencies": {
+    "@fontsource/titillium-web": "4.5.0",
     "@tidb-community/common": "*",
     "@tidb-community/datasource": "*",
     "@tidb-community/ui": "*"

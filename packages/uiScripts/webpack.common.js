@@ -23,6 +23,7 @@ module.exports = {
   entry: {
     'contact-us': './src/scripts/contactUs/index.js',
     'header-footer': './src/scripts/headerFooter/index.js',
+    fonts: './src/scripts/fonts.js',
   },
 
   output: {
@@ -42,6 +43,11 @@ module.exports = {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         use: ['babel-loader'],
+      },
+
+      {
+        test: /\.(woff2?|ttf|eot)?$/,
+        type: 'asset/resource',
       },
 
       {

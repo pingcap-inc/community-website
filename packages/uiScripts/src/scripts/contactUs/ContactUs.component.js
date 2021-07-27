@@ -3,22 +3,25 @@ import React, { useContext, useState, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
 import { InfoCircleFilled } from '@ant-design/icons';
-import { Button, Popover, Skeleton } from 'antd';
+import { Button, Grid, Popover, Skeleton } from 'antd';
 import { createAppGlobalStyle, constants, Link } from '@tidb-community/ui';
 
 import * as Styled from './contactUs.styled';
 import { AuthContext } from '@/context/auth.context';
-import { genStorageKey } from '~/utils';
+import { genStorageKey, isSupportLocalStorage } from '~/utils';
 
+const { useBreakpoint } = Grid;
 const GlobalStyle = createAppGlobalStyle();
+const hasLocalStorage = isSupportLocalStorage();
 const guideStorageKey = genStorageKey('contact-us-guide-shown');
 const { appClassName } = constants;
 
 const getUrl = (path) => `${process.env.NEXT_PUBLIC_HOME_URL}${path}`;
 
 const ContactUs = () => {
+  const bp = useBreakpoint();
   const containerRef = useRef(null);
-  const [isShowGuide, setIsShowGuide] = useState(!localStorage.getItem(guideStorageKey));
+  const [isShowGuide, setIsShowGuide] = useState(hasLocalStorage ? !localStorage.getItem(guideStorageKey) : false);
 
   const { data: meResp, error: meError } = useSWR('me', {
     revalidateOnFocus: false,
@@ -40,7 +43,7 @@ const ContactUs = () => {
   };
 
   const NavLink = ({ path, children }) => (
-    <Link href={getUrl(path)} onClick={(e) => isDisabled && e.preventDefault()}>
+    <Link href={getUrl(path)} onClick={(e) => (isDisabled || isShowGuide) && e.preventDefault()}>
       {children}
     </Link>
   );
@@ -97,13 +100,13 @@ const ContactUs = () => {
     content = (
       <Styled.PopoverContainer>
         <NavLinks />
-        <Styled.GuideContent>
+        <Styled.GuideContent isSmallScreen={bp.xs}>
           <p>遇到紧急事故、或是需要技术交流、社区合作可以在这里联系社区专家哦~</p>
           <Button type="primary" size="small" onClick={onGuideClose}>
             知道了
           </Button>
         </Styled.GuideContent>
-        {ReactDOM.createPortal(<div className="ant-modal-mask" />, document.body)}
+        {ReactDOM.createPortal(<div className="ant-modal-mask" onClick={onGuideClose} />, document.body)}
       </Styled.PopoverContainer>
     );
   } else if (isLoading) {

@@ -42,3 +42,15 @@ export const handleBaseUrlMapping = (baseURL) => {
 };
 
 export const genStorageKey = (name) => `__tidb-${name}`;
+
+// https://stackoverflow.com/a/11214467/14257627
+export const isSupportLocalStorage = () => {
+  const key = genStorageKey('isSupportLocalStorage');
+  try {
+    localStorage.setItem(key, key);
+    localStorage.removeItem(key);
+    return true;
+  } catch (e) {
+    return false;
+  }
+};

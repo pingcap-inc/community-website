@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 export const HeaderLogo = styled.img.attrs({
@@ -10,13 +11,19 @@ export const HeaderLogo = styled.img.attrs({
   }
 `;
 
-export const BottomBarContainer = styled.a`
-  ${mixins.flexCenter()};
-  ${mixins.typography('p2')};
-  color: ${colors.F2} !important;
-  margin-top: 1rem;
+export const BottomBarContainer = styled(Row).attrs({
+  gutter: { xs: 16, sm: 32 },
+  justify: 'center',
+})`
+  margin-top: 1em;
 
-  img {
-    margin-right: 0.2em;
+  a {
+    ${mixins.flexCenter()};
+    ${mixins.typography('p2')};
+    color: ${colors.F2} !important;
+
+    img {
+      margin-right: 0.2em;
+    }
   }
 `;

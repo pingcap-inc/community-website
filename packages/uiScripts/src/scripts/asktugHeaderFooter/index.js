@@ -2,6 +2,7 @@ import '@tidb-community/ui/antd/global.less';
 import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
+import { Col } from 'antd';
 import { Footer, Header, constants, createAppGlobalStyle, ActivityBanner } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 
@@ -119,6 +120,14 @@ ReactDOM.render(
 
 const { navItems: footerNavItems, icons: footerIcons } = nav.footer;
 
+const getLinkProps = (href) => ({
+  href,
+  target: '_blank',
+  rel: 'noreferrer',
+});
+
+const policeRegisterNum = '11010802035239';
+
 const footerProps = {
   logo: <img alt={title} src="https://tidb.io/images/community/logo.svg" />,
   title,
@@ -126,12 +135,16 @@ const footerProps = {
   icons: footerIcons,
   navItems: footerNavItems,
   bottomBar: (
-    <Styled.BottomBarContainer
-      target="_blank"
-      href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802035239"
-    >
-      <img alt="" src={gonganIcon} />
-      公安部备案号：11010802035239
+    <Styled.BottomBarContainer>
+      <Col>
+        <a {...getLinkProps('https://beian.miit.gov.cn/#/Integrated/index')}>京ICP备16046278号-4</a>
+      </Col>
+      <Col>
+        <a {...getLinkProps(`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${policeRegisterNum}`)}>
+          <img alt="" src={gonganIcon} />
+          公安部备案号：{policeRegisterNum}
+        </a>
+      </Col>
     </Styled.BottomBarContainer>
   ),
 };

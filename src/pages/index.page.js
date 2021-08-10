@@ -1,5 +1,5 @@
-import Home, { getStaticProps } from './home';
+import TugHome, { getStaticProps } from './tugHome';
 
 export { getStaticProps };
 
-export default Home;
+export default TugHome;

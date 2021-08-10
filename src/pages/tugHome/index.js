@@ -69,12 +69,12 @@ export const getStaticProps = async () => {
   };
 };
 
-const Home = ({ topics }) => {
+const TugHome = ({ topics }) => {
   const { site, howTo, practice, theory, top } = topics;
 
-  const articleImageUrl = '/images/home/article.svg';
-  const qaImageUrl = '/images/home/qa.svg';
-  const activityImageUrl = '/images/home/activity.svg';
+  const articleImageUrl = '/images/tugHome/article.svg';
+  const qaImageUrl = '/images/tugHome/qa.svg';
+  const activityImageUrl = '/images/tugHome/activity.svg';
 
   return (
     <>
@@ -225,4 +225,4 @@ const Home = ({ topics }) => {
   );
 };
 
-export default Home;
+export default TugHome;

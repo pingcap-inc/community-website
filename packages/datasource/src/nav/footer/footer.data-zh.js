@@ -47,7 +47,7 @@ export const navItems = [
       },
       {
         title: '博客',
-        link: 'https://pingcap.com/blog',
+        link: 'https://asktug.com/c/blog/l/latest',
       },
       {
         title: 'Github',
@@ -60,15 +60,15 @@ export const navItems = [
     items: [
       {
         title: '文档',
-        link: 'https://docs.pingcap.com/tidb/stable',
+        link: 'https://docs.pingcap.com/zh/tidb/stable',
       },
       {
         title: '案例学习',
-        link: 'https://pingcap.com/case-studies',
+        link: 'https://pingcap.com/zh/case/',
       },
       {
         title: 'PingCAP Education',
-        link: 'https://university.pingcap.com',
+        link: 'https://pingcap.com/zh/education/',
       },
       {
         title: 'TiDB in Action',

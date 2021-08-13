@@ -34,6 +34,7 @@ const config = {
       // which gives us an instant reaction if anything updates
       '@tidb-community/common': path.resolve('./packages/common/src'),
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
+      '@tidb-community/tracking-script': path.resolve('./packages/trackingScript/src'),
       '@tidb-community/ui': path.resolve('./packages/ui/src'),
       '~': path.resolve('./src'),
     };

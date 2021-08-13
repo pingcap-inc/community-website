@@ -8,7 +8,7 @@ export const navItems = [
     items: [
       {
         title: '文档',
-        link: 'https://docs.pingcap.com/tidb/stable',
+        link: 'https://docs.pingcap.com/zh/tidb/stable',
       },
       {
         title: '博客',

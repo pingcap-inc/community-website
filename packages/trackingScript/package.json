@@ -1,0 +1,25 @@
+{
+  "name": "@tidb-community/tracking-script",
+  "version": "0.1.0",
+  "scripts": {
+    "build": "rimraf es lib && father build",
+    "build:watch": "father build --watch",
+    "prepublishOnly": "npm run build && np --yolo --no-publish --branch $(git branch --show-current)"
+  },
+  "description": "The common tracking script",
+  "main": "./lib/index",
+  "module": "./es/index",
+  "files": [
+    "es",
+    "lib"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@babel/runtime": "7.14.0"
+  },
+  "devDependencies": {
+    "father": "2.30.5",
+    "father-build": "1.19.5",
+    "np": "7.5.0"
+  }
+}

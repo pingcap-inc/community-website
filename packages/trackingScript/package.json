@@ -15,11 +15,11 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@babel/runtime": "7.14.0"
+    "@babel/runtime": "7.15.3"
   },
   "devDependencies": {
-    "father": "2.30.5",
-    "father-build": "1.19.5",
+    "father": "2.30.8",
+    "father-build": "1.19.8",
     "np": "7.5.0"
   }
 }

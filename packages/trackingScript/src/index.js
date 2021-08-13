@@ -1,8 +1,8 @@
 import * as utils from './utils';
 
-const { location, screen } = window;
-
 export const logPageView = () => {
+  const { location, screen } = window;
+
   utils.sendLog('pageview', {
     dl: location.href,
     dr: document.referrer,

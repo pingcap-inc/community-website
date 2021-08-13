@@ -4,6 +4,7 @@ import * as R from 'ramda';
 import React, { useEffect, useState } from 'react';
 import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
+import { logPageView } from '@tidb-community/tracking-script';
 import { appWithTranslation } from 'next-i18next';
 import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
 import { message } from 'antd';
@@ -59,6 +60,10 @@ const App = ({ Component, pageProps, router }) => {
   useEffect(() => {
     setErrorStatus();
     setErrorMsg();
+
+    if (process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production') {
+      logPageView();
+    }
   }, [router.pathname]);
 
   const {

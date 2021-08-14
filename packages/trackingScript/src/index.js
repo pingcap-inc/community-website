@@ -1,14 +1,21 @@
 import * as utils from './utils';
 
-export const logPageView = () => {
+export const logPageView = (options = {}) => {
   const { location, screen } = window;
 
-  utils.sendLog('pageview', {
-    dl: location.href,
-    dr: document.referrer,
-    dt: document.title,
-    sr: screen.width + 'x' + screen.height,
-    ts: utils.getCurrentTS(),
-    ul: navigator.language || navigator.userLanguage,
-  });
+  const params = Object.assign(
+    {
+      dl: location.href,
+      dr: document.referrer,
+      dt: document.title,
+      sr: screen.width + 'x' + screen.height,
+      ts: utils.getCurrentTS(),
+      ul: navigator.language || navigator.userLanguage,
+    },
+    options
+  );
+
+  console.log('params!!', params);
+
+  utils.sendLog('pageview', params);
 };

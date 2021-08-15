@@ -55,11 +55,13 @@ const App = ({ Component, pageProps, router }) => {
 
   useEffect(() => {
     const handleRouteChange = () => {
-      logPageView();
+      if (process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production') {
+        logPageView();
+      }
     };
 
     document.body.classList.add(constants.appClassName);
-    logPageView();
+    handleRouteChange();
 
     router.events.on('routeChangeComplete', handleRouteChange);
 

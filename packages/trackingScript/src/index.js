@@ -15,7 +15,5 @@ export const logPageView = (options = {}) => {
     options
   );
 
-  console.log('params!!', params);
-
   utils.sendLog('pageview', params);
 };

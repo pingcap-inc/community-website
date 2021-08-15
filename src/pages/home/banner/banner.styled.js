@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
-import { Button, Col } from 'antd';
+import { Button, Col, Tooltip } from 'antd';
 
 import LogoSvg from './logo.svg';
 import { Section } from '~/pages/home/index.styled';
@@ -56,18 +56,36 @@ const githubBlack = '#24292e';
 const githubLightGrey = '#f0f0f0';
 
 export const StarButton = styled.span`
-  ${mixins.verticalLineMiddle('26px')};
-  font-size: 14px;
+  position: relative;
   display: inline-block;
   border-radius: 4px;
-  padding: 0 8px;
   background: ${githubLightGrey};
-  color: ${githubBlack};
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+  cursor: pointer;
 
   .anticon {
     font-size: 16px;
     margin-right: 5px;
   }
+
+  &,
+  .ant-tooltip-inner {
+    ${mixins.verticalLineMiddle('26px')};
+    font-size: 14px;
+    color: ${githubBlack};
+    min-height: auto;
+    padding: 0 8px;
+  }
 `;
+
+export const TooltipContainer = styled.div`
+  position: absolute;
+  top: 50%;
+  right: 6px;
+`;
+
+export const StarButtonTooltip = styled(Tooltip).attrs({
+  color: githubLightGrey,
+  visible: true,
+})``;

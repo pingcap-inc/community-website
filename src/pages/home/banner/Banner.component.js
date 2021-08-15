@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { useTranslation } from 'next-i18next';
@@ -6,9 +6,17 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './banner.styled';
 
 const Banner = () => {
+  const tooltipContainerRef = useRef(null);
   const { t } = useTranslation('page-home');
 
   const lang = t('banner', { returnObjects: true });
+
+  const tooltipProps = {
+    title: '37,916',
+    placement: 'right',
+    autoAdjustOverflow: false,
+    getPopupContainer: () => tooltipContainerRef?.current,
+  };
 
   return (
     <Styled.Container>
@@ -25,6 +33,9 @@ const Banner = () => {
                 <Styled.StarButton>
                   <GithubOutlined />
                   Star
+                  <Styled.StarButtonTooltip {...tooltipProps}>
+                    <Styled.TooltipContainer ref={tooltipContainerRef} />
+                  </Styled.StarButtonTooltip>
                 </Styled.StarButton>
               </Col>
             </Row>

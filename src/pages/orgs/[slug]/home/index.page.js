@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Page = () => {
+const PageContent = () => {
   const router = useRouter();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
@@ -74,95 +74,98 @@ const Page = () => {
   };
 
   return (
-    <>
-      <CommunityHead title="团队主页" />
-
-      <Layout>
-        <Styled.List
-          loading={isTopicsValidating}
-          dataSource={topics}
-          pagination={{
-            current: page,
-            pageSize: pageSize,
-            total: meta?.topics_count ?? 0,
-            size: 'small',
-            onChange: (page, pageSize) => {
-              setPage(page);
-              setPageSize(pageSize);
-            },
-          }}
-          header={
-            <Styled.ListHeading>
-              全部主题
-              <Styled.Badge count={meta?.topics_count ?? 0} />
-            </Styled.ListHeading>
-          }
-          renderItem={(topic) => (
-            <List.Item>
+    <Layout>
+      <Styled.List
+        loading={isTopicsValidating}
+        dataSource={topics}
+        pagination={{
+          current: page,
+          pageSize: pageSize,
+          total: meta?.topics_count ?? 0,
+          size: 'small',
+          onChange: (page, pageSize) => {
+            setPage(page);
+            setPageSize(pageSize);
+          },
+        }}
+        header={
+          <Styled.ListHeading>
+            全部主题
+            <Styled.Badge count={meta?.topics_count ?? 0} />
+          </Styled.ListHeading>
+        }
+        renderItem={(topic) => (
+          <List.Item>
+            <div>
+              <Styled.TopicTitle onClick={() => jump(topic.slug, topic.id)}>{topic.title}</Styled.TopicTitle>
               <div>
-                <Styled.TopicTitle onClick={() => jump(topic.slug, topic.id)}>{topic.title}</Styled.TopicTitle>
-                <div>
-                  {[topic.category.name].map((tag) => (
-                    <Tag key={tag}>{tag}</Tag>
-                  ))}
-                </div>
-                <p>{topic.excerpt}</p>
-                <div className="meta">
-                  <div className="author">
-                    <Avatar src={topic.creator.avatar_url} size={20} />
-                    <span className="name">{topic.creator.username}</span>
-                    发布了主题
-                  </div>
-                  <span className="time">{dayjs(topic.created_at).format('YYYY-MM-DD HH:mm')}</span>
-                </div>
-                <div className="stats">
-                  <span className="stat">
-                    <EyeOutlined />
-                    &nbsp;
-                    {topic.views}
-                  </span>
-                  <span className="stat">
-                    <LikeOutlined />
-                    &nbsp;
-                    {topic.like_count}
-                  </span>
-                  <span className="stat">
-                    <MessageOutlined />
-                    &nbsp;
-                    {topic.reply_count}
-                  </span>
-                  <Divider type="vertical" />
-                  <Popconfirm
-                    placement="rightTop"
-                    icon={<Styled.InfoCircleFilled />}
-                    okText="确定"
-                    cancelText="取消"
-                    onConfirm={() => urge(topic.id)}
-                    disabled={urging || topic.urgencies.length}
-                    title={
-                      <Styled.PopContent>
-                        发送主题至社区用户组，加快响应
-                        <br />
-                        速度（本周剩余 {topicUrgencyRemainTimes} 次机会）
-                      </Styled.PopContent>
-                    }
-                    okButtonProps={{
-                      disabled: topicUrgencyRemainTimes === 0 || topic.urgencies.length,
-                      loading: urging,
-                    }}
-                  >
-                    <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
-                      {topic.urgencies.length ? '已加急' : '加急'}
-                    </Button>
-                  </Popconfirm>
-                </div>
+                {[topic.category.name].map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
               </div>
-            </List.Item>
-          )}
-        />
-      </Layout>
-    </>
+              <p>{topic.excerpt}</p>
+              <div className="meta">
+                <div className="author">
+                  <Avatar src={topic.creator.avatar_url} size={20} />
+                  <span className="name">{topic.creator.username}</span>
+                  发布了主题
+                </div>
+                <span className="time">{dayjs(topic.created_at).format('YYYY-MM-DD HH:mm')}</span>
+              </div>
+              <div className="stats">
+                <span className="stat">
+                  <EyeOutlined />
+                  &nbsp;
+                  {topic.views}
+                </span>
+                <span className="stat">
+                  <LikeOutlined />
+                  &nbsp;
+                  {topic.like_count}
+                </span>
+                <span className="stat">
+                  <MessageOutlined />
+                  &nbsp;
+                  {topic.reply_count}
+                </span>
+                <Divider type="vertical" />
+                <Popconfirm
+                  placement="rightTop"
+                  icon={<Styled.InfoCircleFilled />}
+                  okText="确定"
+                  cancelText="取消"
+                  onConfirm={() => urge(topic.id)}
+                  disabled={urging || topic.urgencies.length}
+                  title={
+                    <Styled.PopContent>
+                      发送主题至社区用户组，加快响应
+                      <br />
+                      速度（本周剩余 {topicUrgencyRemainTimes} 次机会）
+                    </Styled.PopContent>
+                  }
+                  okButtonProps={{
+                    disabled: topicUrgencyRemainTimes === 0 || topic.urgencies.length,
+                    loading: urging,
+                  }}
+                >
+                  <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
+                    {topic.urgencies.length ? '已加急' : '加急'}
+                  </Button>
+                </Popconfirm>
+              </div>
+            </div>
+          </List.Item>
+        )}
+      />
+    </Layout>
   );
 };
+
+const Page = () => (
+  <>
+    <CommunityHead title="团队主页" />
+    <PageContent />
+  </>
+);
 
 export default Page;

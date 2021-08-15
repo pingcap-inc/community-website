@@ -19,7 +19,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Page = () => {
+const PageContent = () => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
 
@@ -43,10 +43,16 @@ const Page = () => {
 
   return (
     <CoreLayout domain="tidb.io">
-      <CommunityHead title="团队认证" />
       <CreateOrganization />
     </CoreLayout>
   );
 };
+
+const Page = () => (
+  <>
+    <CommunityHead title="团队认证" />
+    <PageContent />
+  </>
+);
 
 export default Page;

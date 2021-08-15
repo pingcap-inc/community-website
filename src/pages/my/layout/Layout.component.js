@@ -1,10 +1,10 @@
+import NextHead from 'next/head';
 import React, { useEffect, useContext } from 'react';
 import { Col, Row } from 'antd';
 
 import * as Styled from './layout.styled';
 import Menu from './menu';
 import { AuthContext } from '~/context';
-import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 
 const Layout = ({ children, title }) => {
@@ -17,9 +17,9 @@ const Layout = ({ children, title }) => {
 
   return (
     <>
-      <CommunityHead title={title}>
+      <NextHead>
         <script src={`https://www.recaptcha.net/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`} />
-      </CommunityHead>
+      </NextHead>
 
       <CoreLayout domain="tidb.io" hasMargin>
         <Styled.Container>

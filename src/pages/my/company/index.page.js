@@ -7,6 +7,7 @@ import * as Styled from './company.styled';
 import Form from './form';
 import Layout from '~/pages/my/layout';
 import { AuthContext, MeContext } from '~/context';
+import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { redDots as redDotsUtils } from '~/utils';
@@ -21,7 +22,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Page = () => {
+const PageContent = ({ title }) => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
@@ -46,7 +47,7 @@ const Page = () => {
   }
 
   return (
-    <Layout title="公司信息">
+    <Layout title={title}>
       {redDots.joinOrg && (
         <Styled.Alert
           type="info"
@@ -61,6 +62,17 @@ const Page = () => {
       )}
       <Form />
     </Layout>
+  );
+};
+
+const Page = () => {
+  const title = '公司信息';
+
+  return (
+    <>
+      <CommunityHead title={title} />
+      <PageContent title={title} />
+    </>
   );
 };
 

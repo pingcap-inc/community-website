@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import Content from './content';
 import Layout from '~/pages/my/layout';
 import { AuthContext, MeContext } from '~/context';
+import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 
@@ -16,7 +17,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Settings = () => {
+const PageContent = ({ title }) => {
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
 
@@ -30,10 +31,21 @@ const Settings = () => {
   }
 
   return (
-    <Layout title="账号设置">
+    <Layout title={title}>
       <Content />
     </Layout>
   );
 };
 
-export default Settings;
+const Page = () => {
+  const title = '账号设置';
+
+  return (
+    <>
+      <CommunityHead title={title} />
+      <PageContent title={title} />
+    </>
+  );
+};
+
+export default Page;

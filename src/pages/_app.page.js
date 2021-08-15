@@ -54,16 +54,26 @@ const App = ({ Component, pageProps, router }) => {
   });
 
   useEffect(() => {
+    const handleRouteChange = () => {
+      if (process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production') {
+        logPageView();
+      }
+    };
+
     document.body.classList.add(constants.appClassName);
+    handleRouteChange();
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     setErrorStatus();
     setErrorMsg();
-
-    if (process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production') {
-      logPageView();
-    }
   }, [router.pathname]);
 
   const {

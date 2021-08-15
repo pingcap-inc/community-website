@@ -25,7 +25,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Page = () => {
+const PageContent = () => {
   const router = useRouter();
   const { isReady, query } = router;
   const { slug } = query;
@@ -134,8 +134,6 @@ const Page = () => {
 
   return (
     <>
-      <CommunityHead title="团队成员" />
-
       <Layout>
         <Styled.Header>
           <Styled.Title>
@@ -157,5 +155,12 @@ const Page = () => {
     </>
   );
 };
+
+const Page = () => (
+  <>
+    <CommunityHead title="团队成员" />
+    <PageContent />
+  </>
+);
 
 export default Page;

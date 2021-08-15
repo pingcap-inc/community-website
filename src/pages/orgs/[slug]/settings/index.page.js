@@ -18,12 +18,9 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Page = () => {
+const PageContent = ({ title }) => {
   const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
-  const { t } = useTranslation('page-orgs');
-
-  const lang = t('settings', { returnObjects: true });
 
   if (isAnonymous) {
     login();
@@ -36,14 +33,24 @@ const Page = () => {
 
   return (
     <>
-      <CommunityHead title={lang.title} />
-
       <Layout>
         <Styled.Container>
-          <Styled.Title>{lang.title}</Styled.Title>
+          <Styled.Title>{title}</Styled.Title>
           <Form />
         </Styled.Container>
       </Layout>
+    </>
+  );
+};
+
+const Page = () => {
+  const { t } = useTranslation('page-orgs');
+  const { title } = t('settings', { returnObjects: true });
+
+  return (
+    <>
+      <CommunityHead title={title} />
+      <PageContent title={title} />
     </>
   );
 };

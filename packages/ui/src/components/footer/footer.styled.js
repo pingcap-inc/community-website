@@ -30,7 +30,6 @@ export const NavTitle = styled.h3`
 export const NavItem = styled.div`
   ${mixins.typography('p1')};
   cursor: pointer;
-  color: ${colors.B4};
   margin-bottom: 16px;
 
   &:hover {

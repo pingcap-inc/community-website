@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row } from 'antd';
+import { Col, Row } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './banner.styled';
@@ -16,7 +17,19 @@ const Banner = () => {
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>
+            <Row gutter={32} justify="space-between" align="middle">
+              <Col flex="none">
+                <Styled.TryButton>{lang.tryButton}</Styled.TryButton>
+              </Col>
+              <Col flex="auto">
+                <Styled.StarButton>
+                  <GithubOutlined />
+                  Star
+                </Styled.StarButton>
+              </Col>
+            </Row>
           </Styled.LeftPanel>
+
           <Styled.RightPanel>Image</Styled.RightPanel>
         </Row>
       </Styled.Content>

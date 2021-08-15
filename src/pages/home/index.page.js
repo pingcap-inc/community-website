@@ -1,6 +1,13 @@
 import React from 'react';
 
+import Activities from './activities';
 import Banner from './banner';
+import Blogs from './blogs';
+import Contribution from './contribution';
+import Forum from './forum';
+import Learning from './learning';
+import Others from './others';
+import Subscription from './subscription';
 import Welcome from './welcome';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
@@ -20,9 +27,16 @@ const Page = () => (
   <>
     <CommunityHead />
 
-    <CoreLayout domain="tidb.io" hasMargin>
+    <CoreLayout domain="tidb.io">
       <Banner />
       <Welcome />
+      <Forum />
+      <Blogs />
+      <Activities />
+      <Learning />
+      <Contribution />
+      <Others />
+      <Subscription />
     </CoreLayout>
   </>
 );

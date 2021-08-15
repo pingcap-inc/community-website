@@ -3,6 +3,27 @@
     "title": "Banner"
   },
   "welcome": {
-    "title": "Welcome"
+    "title": "Hi，欢迎来到 TiDB 社区！"
+  },
+  "forum": {
+    "title": "问答论坛"
+  },
+  "blogs": {
+    "title": "博客"
+  },
+  "activities": {
+    "title": "活动"
+  },
+  "learning": {
+    "title": "如何使用 TiDB"
+  },
+  "contribution": {
+    "title": "如何贡献代码"
+  },
+  "others": {
+    "title": "其他链接"
+  },
+  "subscription": {
+    "title": "订阅 TiDB 社区的最新资讯"
   }
 }

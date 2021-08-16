@@ -20,6 +20,12 @@ $size-dot: 1rem;
     height: $size-dot !important;
   }
 
+  :global(.slick-active) {
+    button {
+      background-color: #3d3fea !important;
+    }
+  }
+
   &_item {
     width: 100%;
     height: 100%;

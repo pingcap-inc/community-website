@@ -1,5 +1,6 @@
+import Image from 'next/image';
 import React, { useRef } from 'react';
-import { Col, Row } from 'antd';
+import { Carousel, Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { useTranslation } from 'next-i18next';
 
@@ -41,7 +42,15 @@ const Banner = () => {
             </Row>
           </Styled.LeftPanel>
 
-          <Styled.RightPanel>Image</Styled.RightPanel>
+          <Styled.RightPanel>
+            <Carousel dotPosition="right">
+              {[...new Array(4).keys()].map((key) => (
+                <div key={key}>
+                  <Image src="/images/home/banner-carousel.png" height="234" width="652" />
+                </div>
+              ))}
+            </Carousel>
+          </Styled.RightPanel>
         </Row>
       </Styled.Content>
     </Styled.Container>

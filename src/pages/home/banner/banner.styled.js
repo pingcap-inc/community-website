@@ -1,6 +1,8 @@
+import * as polished from 'polished';
+import Image from 'next/image';
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
 import { Button, Col, Tooltip } from 'antd';
+import { colors, mixins } from '@tidb-community/ui';
 
 import LogoSvg from './logo.svg';
 import { Section } from '~/pages/home/index.styled';
@@ -26,7 +28,32 @@ export const LeftPanel = styled(Col).attrs({
 export const RightPanel = styled(Col).attrs({
   md: 14,
   lg: 12,
-})``;
+})`
+  .slick-slide {
+    padding-right: 2.5rem;
+  }
+
+  .slick-dots {
+    li {
+      margin: 8px 3px;
+
+      &,
+      button {
+        ${mixins.size('6px', '40px')}
+        background: ${polished.rgba(colors.M1, 0.2)};
+        border-radius: 3px;
+      }
+
+      &.slick-active {
+        &,
+        button {
+          ${mixins.size('6px', '50px')}
+          background: ${polished.rgba(colors.M1, 0.6)};
+        }
+      }
+    }
+  }
+`;
 
 export const Logo = styled(LogoSvg)`
   max-width: 350px;
@@ -88,4 +115,9 @@ export const TooltipContainer = styled.div`
 export const StarButtonTooltip = styled(Tooltip).attrs({
   color: githubLightGrey,
   visible: true,
+})``;
+
+export const CarouselImage = styled(Image).attrs({
+  src: '/cover.png',
+  height: 235,
 })``;

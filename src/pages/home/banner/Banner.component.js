@@ -64,16 +64,16 @@ const Banner = () => {
             {navsLang.doc}
           </Styled.NavItem>
           <Styled.NavItem>
-            <DocIcon />
-            {navsLang.doc}
+            <AsktugIcon />
+            {navsLang.asktug}
           </Styled.NavItem>
           <Styled.NavItem>
-            <DocIcon />
-            {navsLang.doc}
+            <ArticleIcon />
+            {navsLang.article}
           </Styled.NavItem>
           <Styled.NavItem>
-            <DocIcon />
-            {navsLang.doc}
+            <ActivityIcon />
+            {navsLang.activity}
           </Styled.NavItem>
         </Styled.Navs>
       </Styled.Content>

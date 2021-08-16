@@ -129,14 +129,25 @@ export const Navs = styled(Row).attrs({
   bottom: -45px;
   left: 0;
   right: 0;
-  height: 90px;
+  padding: 25px 0;
+  border-radius: 10px;
+  border: 1px solid ${colors.T2};
+  box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
 `;
 
 export const NavItem = styled(Col).attrs({
   span: 6,
 })`
   ${mixins.flexCenter()};
+  height: 40px;
+  border-right: 1px solid ${colors.T2};
+
   svg {
     height: 40px;
+    margin-right: 40px;
+  }
+
+  &:last-child {
+    border-right: none;
   }
 `;

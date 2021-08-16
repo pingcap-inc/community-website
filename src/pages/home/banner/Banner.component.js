@@ -5,12 +5,17 @@ import { GithubOutlined } from '@ant-design/icons';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './banner.styled';
+import ActivityIcon from './activity.svg';
+import ArticleIcon from './article.svg';
+import AsktugIcon from './asktug.svg';
+import DocIcon from './doc.svg';
 
 const Banner = () => {
   const tooltipContainerRef = useRef(null);
   const { t } = useTranslation('page-home');
 
   const lang = t('banner', { returnObjects: true });
+  const { navs: navsLang } = lang;
 
   const tooltipProps = {
     title: '37,916',
@@ -52,6 +57,25 @@ const Banner = () => {
             </Carousel>
           </Styled.RightPanel>
         </Row>
+
+        <Styled.Navs>
+          <Styled.NavItem>
+            <DocIcon />
+            {navsLang.doc}
+          </Styled.NavItem>
+          <Styled.NavItem>
+            <DocIcon />
+            {navsLang.doc}
+          </Styled.NavItem>
+          <Styled.NavItem>
+            <DocIcon />
+            {navsLang.doc}
+          </Styled.NavItem>
+          <Styled.NavItem>
+            <DocIcon />
+            {navsLang.doc}
+          </Styled.NavItem>
+        </Styled.Navs>
       </Styled.Content>
     </Styled.Container>
   );

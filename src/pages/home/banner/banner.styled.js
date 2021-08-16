@@ -1,7 +1,6 @@
 import * as polished from 'polished';
-import Image from 'next/image';
 import styled from 'styled-components';
-import { Button, Col, Tooltip } from 'antd';
+import { Button, Col, Row, Tooltip } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import LogoSvg from './logo.svg';
@@ -11,13 +10,15 @@ export const Container = styled(Section)`
   && {
     color: ${colors.M1};
     background: ${colors.B4};
-    padding: 5rem 0 7.5rem;
+    padding: 0;
   }
 `;
 
 export const Content = styled.div`
   ${mixins.responsive()};
   width: 100%;
+  position: relative;
+  padding: 5rem 0 7.5rem;
 `;
 
 export const LeftPanel = styled(Col).attrs({
@@ -117,7 +118,25 @@ export const StarButtonTooltip = styled(Tooltip).attrs({
   visible: true,
 })``;
 
-export const CarouselImage = styled(Image).attrs({
-  src: '/cover.png',
-  height: 235,
-})``;
+export const Navs = styled(Row).attrs({
+  justify: 'center',
+  align: 'middle',
+})`
+  font-size: 18px;
+  color: ${colors.F1};
+  background: ${colors.M1};
+  position: absolute;
+  bottom: -45px;
+  left: 0;
+  right: 0;
+  height: 90px;
+`;
+
+export const NavItem = styled(Col).attrs({
+  span: 6,
+})`
+  ${mixins.flexCenter()};
+  svg {
+    height: 40px;
+  }
+`;

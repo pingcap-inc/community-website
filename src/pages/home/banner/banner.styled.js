@@ -6,6 +6,9 @@ import { colors, mixins } from '@tidb-community/ui';
 import LogoSvg from './logo.svg';
 import { Section } from '~/pages/home/index.styled';
 
+const githubBlack = '#24292e';
+const githubLightGrey = '#f0f0f0';
+
 export const Container = styled(Section)`
   && {
     color: ${colors.M1};
@@ -19,6 +22,12 @@ export const Content = styled.div`
   width: 100%;
   position: relative;
   padding: 5rem 0 7.5rem;
+
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      padding: 3rem 0 5.5rem;
+    `}
 `;
 
 export const LeftPanel = styled(Col).attrs({
@@ -71,16 +80,15 @@ export const TryButton = styled(Button).attrs({
   type: 'primary',
   size: 'large',
 })`
-  width: 142px;
-  border-radius: 6px;
+  && {
+    border-radius: 6px;
+    padding: 0 2rem;
 
-  span {
-    font-size: 18px;
+    span {
+      font-size: 18px;
+    }
   }
 `;
-
-const githubBlack = '#24292e';
-const githubLightGrey = '#f0f0f0';
 
 export const StarButton = styled.span`
   position: relative;
@@ -117,23 +125,6 @@ export const StarButtonTooltip = styled(Tooltip).attrs({
   visible: true,
 })``;
 
-export const Navs = styled(Row).attrs({
-  justify: 'center',
-  align: 'middle',
-})`
-  font-size: 18px;
-  color: ${colors.F1};
-  background: ${colors.M1};
-  position: absolute;
-  bottom: -45px;
-  left: 0;
-  right: 0;
-  padding: 25px 0;
-  border-radius: 10px;
-  border: 1px solid ${colors.T2};
-  box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
-`;
-
 export const NavItem = styled(Col).attrs({
   span: 6,
 })`
@@ -141,14 +132,56 @@ export const NavItem = styled(Col).attrs({
   height: 40px;
   border-right: 1px solid ${colors.T2};
 
+  &:last-child {
+    border-right: none;
+  }
+
   svg {
     height: 40px;
     margin-right: 40px;
   }
 
-  &:last-child {
-    border-right: none;
+  span {
+    font-size: 18px;
+    color: ${colors.F1};
   }
+`;
+
+export const Navs = styled(Row).attrs({
+  justify: 'center',
+  align: 'middle',
+})`
+  background: ${colors.M1};
+  position: absolute;
+  bottom: -45px;
+  left: 0;
+  right: 0;
+  padding: 25px 0;
+  margin: 0 16px;
+  border-radius: 10px;
+  border: 1px solid ${colors.T2};
+  box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
+
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      padding: 12px 0;
+
+      ${NavItem} {
+        height: 66px;
+        flex-direction: column;
+        border-right: none;
+
+        svg {
+          margin-right: 0;
+          margin-bottom: 8px;
+        }
+
+        span {
+          font-size: 14px;
+        }
+      }
+    `};
 `;
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({

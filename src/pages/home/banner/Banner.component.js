@@ -13,6 +13,25 @@ import DocIcon from './doc.svg';
 
 const { useBreakpoint } = Grid;
 
+const navItems = [
+  {
+    icon: DocIcon,
+    langKey: 'doc',
+  },
+  {
+    icon: AsktugIcon,
+    langKey: 'asktug',
+  },
+  {
+    icon: ArticleIcon,
+    langKey: 'article',
+  },
+  {
+    icon: ActivityIcon,
+    langKey: 'activity',
+  },
+];
+
 const Banner = () => {
   const bp = useBreakpoint();
   const [mounted, setMounted] = useState(false);
@@ -63,7 +82,7 @@ const Banner = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <Styled.Carousel isSmallScreen={isSmallScreen}>
+            <Styled.Carousel>
               {[...new Array(4).keys()].map((key) => (
                 <div key={key}>
                   <Image src="/images/home/banner-carousel.png" height="234" width="652" />
@@ -73,23 +92,13 @@ const Banner = () => {
           </Styled.RightPanel>
         </Row>
 
-        <Styled.Navs>
-          <Styled.NavItem>
-            <DocIcon />
-            {navsLang.doc}
-          </Styled.NavItem>
-          <Styled.NavItem>
-            <AsktugIcon />
-            {navsLang.asktug}
-          </Styled.NavItem>
-          <Styled.NavItem>
-            <ArticleIcon />
-            {navsLang.article}
-          </Styled.NavItem>
-          <Styled.NavItem>
-            <ActivityIcon />
-            {navsLang.activity}
-          </Styled.NavItem>
+        <Styled.Navs isSmallScreen={isSmallScreen}>
+          {navItems.map(({ icon: Icon, langKey }, idx) => (
+            <Styled.NavItem key={idx}>
+              <Icon />
+              <span>{navsLang[langKey]}</span>
+            </Styled.NavItem>
+          ))}
         </Styled.Navs>
       </Styled.Content>
     </Styled.Container>

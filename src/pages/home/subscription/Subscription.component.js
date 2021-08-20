@@ -21,7 +21,7 @@ const Subscription = () => {
             <Row justify={!bp.lg && 'center'}>
               <SloganBox>
                 <Styled.Slogan>
-                  {lang.slogan}, {lang.see}
+                  {lang.slogan}, {lang.links.see}
                   <Styled.Underline href={lang.links.orgArch.url}> {lang.links.orgArch.label} </Styled.Underline>{' '}
                   {lang.links.connective}
                   <Styled.Underline href={lang.links.contributorList.url}>

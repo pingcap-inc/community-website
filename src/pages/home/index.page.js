@@ -14,6 +14,14 @@ import { CoreLayout } from '~/layouts';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getServerSideProps = async (ctx) => {
+  const isEnabled = process.env.NEXT_PUBLIC_FT_HOME;
+
+  if (!isEnabled) {
+    return {
+      notFound: true,
+    };
+  }
+
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
 
   return {

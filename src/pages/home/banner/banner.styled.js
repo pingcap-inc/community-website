@@ -1,6 +1,6 @@
 import * as polished from 'polished';
-import styled from 'styled-components';
-import { Button, Col, Row, Tooltip } from 'antd';
+import styled, { css } from 'styled-components';
+import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import LogoSvg from './logo.svg';
@@ -22,39 +22,38 @@ export const Content = styled.div`
 `;
 
 export const LeftPanel = styled(Col).attrs({
-  md: 10,
-  lg: 8,
+  xs: {
+    order: 2,
+  },
+  sm: {
+    order: 2,
+  },
+  md: {
+    order: 1,
+    span: 10,
+  },
+  lg: {
+    order: 1,
+    span: 8,
+  },
 })``;
 
 export const RightPanel = styled(Col).attrs({
-  md: 14,
-  lg: 12,
-})`
-  .slick-slide {
-    padding-right: 2.5rem;
-  }
-
-  .slick-dots {
-    li {
-      margin: 8px 3px;
-
-      &,
-      button {
-        ${mixins.size('6px', '40px')}
-        background: ${polished.rgba(colors.M1, 0.2)};
-        border-radius: 3px;
-      }
-
-      &.slick-active {
-        &,
-        button {
-          ${mixins.size('6px', '50px')}
-          background: ${polished.rgba(colors.M1, 0.6)};
-        }
-      }
-    }
-  }
-`;
+  xs: {
+    order: 1,
+  },
+  sm: {
+    order: 1,
+  },
+  md: {
+    order: 2,
+    span: 14,
+  },
+  lg: {
+    order: 2,
+    span: 12,
+  },
+})``;
 
 export const Logo = styled(LogoSvg)`
   max-width: 350px;
@@ -150,4 +149,62 @@ export const NavItem = styled(Col).attrs({
   &:last-child {
     border-right: none;
   }
+`;
+
+export const Carousel = styled(AntCarousel).attrs((props) => ({
+  dotPosition: props.isSmallScreen ? 'bottom' : 'right',
+}))`
+  .slick-slide {
+    padding-right: 2.5rem;
+  }
+
+  .slick-dots {
+    li {
+      margin: 8px 3px;
+
+      &,
+      button {
+        ${mixins.size('6px', '40px')}
+        background: ${polished.rgba(colors.M1, 0.2)};
+        border-radius: 3px;
+      }
+
+      &.slick-active {
+        &,
+        button {
+          ${mixins.size('6px', '50px')}
+          background: ${polished.rgba(colors.M1, 0.6)};
+        }
+      }
+    }
+  }
+
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      .slick-slide {
+        padding-right: 0;
+      }
+
+      .slick-dots {
+        margin: 0 auto;
+        bottom: -32px;
+
+        li {
+          margin: 3px 8px;
+
+          &,
+          button {
+            ${mixins.size('40px', '6px')}
+          }
+
+          &.slick-active {
+            &,
+            button {
+              ${mixins.size('50px', '6px')}
+            }
+          }
+        }
+      }
+    `};
 `;

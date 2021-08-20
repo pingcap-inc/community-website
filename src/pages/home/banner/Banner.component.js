@@ -1,8 +1,9 @@
 import Image from 'next/image';
-import React, { useRef } from 'react';
-import { Carousel, Col, Row } from 'antd';
+import React, { useState, useRef } from 'react';
+import { Col, Grid, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { useTranslation } from 'next-i18next';
+import { useMount } from 'ahooks';
 
 import * as Styled from './banner.styled';
 import ActivityIcon from './activity.svg';
@@ -10,12 +11,24 @@ import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
 
+const { useBreakpoint } = Grid;
+
 const Banner = () => {
+  const bp = useBreakpoint();
+  const [mounted, setMounted] = useState(false);
   const tooltipContainerRef = useRef(null);
   const { t } = useTranslation('page-home');
 
+  // Solving the warning of "Expected server HTML to contain a matching <tag>"
+  // because of AntD Tooltip.
+  // More details: https://github.com/vercel/next.js/discussions/17443
+  useMount(() => {
+    setMounted(true);
+  });
+
   const lang = t('banner', { returnObjects: true });
   const { navs: navsLang } = lang;
+  const isSmallScreen = !bp.md;
 
   const tooltipProps = {
     title: '37,916',
@@ -26,8 +39,8 @@ const Banner = () => {
 
   return (
     <Styled.Container>
-      <Styled.Content>
-        <Row gutter={32} justify="space-between" align="middle">
+      <Styled.Content isSmallScreen={isSmallScreen}>
+        <Row gutter={[32, 64]} justify="space-between" align="middle">
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>
@@ -39,22 +52,24 @@ const Banner = () => {
                 <Styled.StarButton>
                   <GithubOutlined />
                   Star
-                  <Styled.StarButtonTooltip {...tooltipProps}>
-                    <Styled.TooltipContainer ref={tooltipContainerRef} />
-                  </Styled.StarButtonTooltip>
+                  {mounted && (
+                    <Styled.StarButtonTooltip {...tooltipProps}>
+                      <Styled.TooltipContainer ref={tooltipContainerRef} />
+                    </Styled.StarButtonTooltip>
+                  )}
                 </Styled.StarButton>
               </Col>
             </Row>
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <Carousel dotPosition="right">
+            <Styled.Carousel isSmallScreen={isSmallScreen}>
               {[...new Array(4).keys()].map((key) => (
                 <div key={key}>
                   <Image src="/images/home/banner-carousel.png" height="234" width="652" />
                 </div>
               ))}
-            </Carousel>
+            </Styled.Carousel>
           </Styled.RightPanel>
         </Row>
 

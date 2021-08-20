@@ -50,6 +50,28 @@
     "title": "其他链接"
   },
   "subscription": {
-    "title": "订阅 TiDB 社区的最新资讯"
+    "title": "订阅 TiDB 社区的最新资讯",
+    "slogan": "TiDB 及其生态项目由来自全球各地的 1400+ 位贡献者共同建设与维护",
+    "joinButton": {
+      "label": "加入社区"
+    },
+    "links": {
+      "orgArch": {
+        "url": "",
+        "label": "社区组织架构"
+      },
+      "contributorList": {
+        "url": "",
+        "label": "贡献者列表"
+      },
+      "see": "由此查看",
+      "connective": "和"
+    },
+    "subscribe": "订阅 TiDB 社区的最新资讯",
+    "emailInput": {
+      "placeHolder": "电子邮箱地址",
+      "submit": "提交"
+    },
+    "termsDesc": "提交即表明您同意 TiDB Community 的使用条款。"
   }
 }

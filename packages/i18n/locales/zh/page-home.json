@@ -3,14 +3,32 @@
     "intro": "是一款同时支持在线事务处理与在线分析处理 (HTAP) 的融合型分布式数据库产品。",
     "tryButton": "立即体验",
     "navs": {
-      "doc": "文档 / 手册",
-      "asktug": "AskTUG 问答",
-      "article": "技术文章",
+      "doc": "文档手册",
+      "asktug": "问答",
+      "article": "文章",
       "activity": "活动"
     }
   },
   "welcome": {
-    "title": "Hi，欢迎来到 TiDB 社区！"
+    "title": "Hi, 欢迎来到 TiDB 社区!",
+    "intro": "TiDB 社区是由 TiDB 生态中的开发者、用户、Contributor、合作伙伴一起建立的分享、学习平台。在这里，我们可以自由发声，互相协助解决问题。",
+    "navs": {
+      "codeOfConduct": "社区准则",
+      "join": "加入社区",
+      "contactUs": "联系我们"
+    },
+    "numbers": {
+      "pr": "Pull Requests",
+      "topic": "主题",
+      "post": "帖子",
+      "contributor": "贡献者"
+    },
+    "howTo": {
+      "title": "TiDB 新手？点击切换探索路径",
+      "what": "什么是 TiDB ？",
+      "use": "如何使用 TiDB ？",
+      "contribute": "如何贡献代码 ？"
+    }
   },
   "forum": {
     "title": "问答论坛"

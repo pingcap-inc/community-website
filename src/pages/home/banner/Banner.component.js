@@ -1,17 +1,18 @@
 import Image from 'next/image';
 import React, { useState, useRef } from 'react';
-import { Col, Grid, Row } from 'antd';
+import { Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
-import { useTranslation } from 'next-i18next';
 import { useMount } from 'ahooks';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './banner.styled';
 import ActivityIcon from './activity.svg';
 import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
-
-const { useBreakpoint } = Grid;
+import { link as linkUtils } from '~/utils';
+import { useIsSmallScreen } from '~/pages/home/index.hooks';
 
 const navItems = [
   {
@@ -33,9 +34,10 @@ const navItems = [
 ];
 
 const Banner = () => {
-  const bp = useBreakpoint();
-  const [mounted, setMounted] = useState(false);
+  const router = useRouter();
   const tooltipContainerRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   // Solving the warning of "Expected server HTML to contain a matching <tag>"
@@ -47,13 +49,17 @@ const Banner = () => {
 
   const lang = t('banner', { returnObjects: true });
   const { navs: navsLang } = lang;
-  const isSmallScreen = !bp.md;
 
   const tooltipProps = {
     title: '37,916',
     placement: 'right',
     autoAdjustOverflow: false,
     getPopupContainer: () => tooltipContainerRef?.current,
+  };
+
+  const onClick = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
   };
 
   return (
@@ -65,10 +71,12 @@ const Banner = () => {
             <Styled.Intro>{lang.intro}</Styled.Intro>
             <Row gutter={32} justify="space-between" align="middle">
               <Col flex="none">
-                <Styled.TryButton>{lang.tryButton}</Styled.TryButton>
+                <Styled.TryButton onClick={onClick('https://pingcap.com/zh/product-community/')}>
+                  {lang.tryButton}
+                </Styled.TryButton>
               </Col>
               <Col flex="auto">
-                <Styled.StarButton>
+                <Styled.StarButton onClick={onClick('https://github.com/pingcap/tidb')}>
                   <GithubOutlined />
                   Star
                   {mounted && (
@@ -92,7 +100,7 @@ const Banner = () => {
           </Styled.RightPanel>
         </Row>
 
-        <Styled.Navs isSmallScreen={isSmallScreen}>
+        <Styled.Navs $isSmallScreen={isSmallScreen}>
           {navItems.map(({ icon: Icon, langKey }, idx) => (
             <Styled.NavItem key={idx}>
               <Icon />

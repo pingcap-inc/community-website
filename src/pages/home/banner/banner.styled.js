@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
+import * as HomeStyled from '~/pages/home/index.styled';
 import LogoSvg from './logo.svg';
-import { Section } from '~/pages/home/index.styled';
 
 const githubBlack = '#24292e';
 const githubLightGrey = '#f0f0f0';
 
-export const Container = styled(Section)`
+export const Container = styled(HomeStyled.Section)`
   && {
     color: ${colors.M1};
     background: ${colors.B4};
@@ -17,9 +17,7 @@ export const Container = styled(Section)`
   }
 `;
 
-export const Content = styled.div`
-  ${mixins.responsive()};
-  width: 100%;
+export const Content = styled(HomeStyled.Content)`
   position: relative;
   padding: 5rem 0 7.5rem;
 
@@ -102,13 +100,11 @@ export const TryButton = styled(Button).attrs({
   type: 'primary',
   size: 'large',
 })`
-  && {
-    border-radius: 6px;
-    padding: 0 2rem;
+  border-radius: 6px;
+  padding: 0 2rem !important;
 
-    span {
-      font-size: 18px;
-    }
+  span {
+    font-size: 18px;
   }
 `;
 
@@ -185,7 +181,7 @@ export const Navs = styled(Row).attrs({
   box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
 
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       padding: 12px 0;
 
@@ -195,12 +191,14 @@ export const Navs = styled(Row).attrs({
         border-right: none;
 
         svg {
+          height: 30px;
           margin-right: 0;
-          margin-bottom: 8px;
+          margin-bottom: 12px;
         }
 
         span {
           font-size: 14px;
+          line-height: 1;
         }
       }
     `};

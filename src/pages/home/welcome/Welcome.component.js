@@ -8,7 +8,11 @@ const Welcome = () => {
 
   const lang = t('welcome', { returnObjects: true });
 
-  return <Styled.Container>{lang.title}</Styled.Container>;
+  return (
+    <Styled.Container>
+      <Styled.Title>{lang.title}</Styled.Title>
+    </Styled.Container>
+  );
 };
 
 export default Welcome;

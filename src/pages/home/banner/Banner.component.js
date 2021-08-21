@@ -82,7 +82,7 @@ const Banner = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <Styled.Carousel>
+            <Styled.Carousel isSmallScreen={isSmallScreen}>
               {[...new Array(4).keys()].map((key) => (
                 <div key={key}>
                   <Image src="/images/home/banner-carousel.png" height="234" width="652" />

@@ -27,6 +27,28 @@ export const Content = styled.div`
     props.isSmallScreen &&
     css`
       padding: 3rem 0 5.5rem;
+
+      ${LeftPanel} {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        > * {
+          display: block;
+        }
+
+        p {
+          text-align: center;
+        }
+
+        .ant-btn-primary {
+          margin-bottom: 2rem;
+        }
+      }
+
+      ${Intro} {
+        width: 80%;
+      }
     `}
 `;
 

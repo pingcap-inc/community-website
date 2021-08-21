@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
+import { colors } from '@tidb-community/ui';
 
-export const Container = styled.div`
-  ${mixins.flexCenter()};
-  color: ${colors.F1};
-  background: ${colors.M2};
-  padding: 1rem 0;
+import { Section } from '~/pages/home/index.styled';
+
+export const Container = styled(Section)`
+  && {
+    background: ${colors.M2};
+  }
 `;

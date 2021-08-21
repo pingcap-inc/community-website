@@ -54,6 +54,10 @@ const Welcome = () => {
           </Col>
         </Row>
       </Styled.Content>
+
+      <Styled.HowTo>
+        <Styled.Content>How To</Styled.Content>
+      </Styled.HowTo>
     </Styled.Container>
   );
 };

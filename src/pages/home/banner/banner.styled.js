@@ -234,7 +234,7 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
   }
 
   ${(props) =>
-    props.$isSmallScreen &&
+    props.isSmallScreen &&
     css`
       .slick-slide {
         padding-right: 0;

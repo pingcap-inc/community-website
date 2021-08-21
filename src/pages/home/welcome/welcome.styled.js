@@ -26,6 +26,11 @@ export const Container = styled(Section)`
             padding: 0 1rem;
           }
         }
+
+        ${HowTo} {
+          height: 218px;
+          background-image: url('/images/home/banner-howto-mobile.svg');
+        }
       `};
   }
 `;
@@ -109,4 +114,12 @@ export const Numbers = styled(Row)`
     display: block;
     font-size: 18px;
   }
+`;
+
+export const HowTo = styled.div`
+  ${mixins.flexCenter()};
+  color: ${colors.M1};
+  background: url('/images/home/banner-howto-desktop.svg') no-repeat center center;
+  background-size: cover;
+  height: 123px;
 `;

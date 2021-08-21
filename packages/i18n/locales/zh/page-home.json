@@ -22,6 +22,12 @@
       "topic": "主题",
       "post": "帖子",
       "contributor": "贡献者"
+    },
+    "howTo": {
+      "title": "TiDB 新手？点击切换探索路径",
+      "what": "什么是 TiDB ？",
+      "use": "如何使用 TiDB ？",
+      "contribute": "如何贡献代码 ？"
     }
   },
   "forum": {

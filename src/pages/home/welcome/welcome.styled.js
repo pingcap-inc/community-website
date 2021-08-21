@@ -37,8 +37,6 @@ export const Container = styled(Section)`
 
 export const Navs = styled(Radio.Group)`
   && {
-    margin-bottom: 3rem;
-
     .ant-radio-button-wrapper {
       ${mixins.verticalLineMiddle('45px')};
       border-color: ${colors.T2};
@@ -103,6 +101,8 @@ export const Intro = styled.p`
 `;
 
 export const Numbers = styled(Row)`
+  margin: 3rem 0;
+
   em {
     font-size: 32px;
     font-style: normal;
@@ -117,9 +117,31 @@ export const Numbers = styled(Row)`
 `;
 
 export const HowTo = styled.div`
-  ${mixins.flexCenter()};
+  ${mixins.flexVerticalCenter()};
+  text-align: left;
   color: ${colors.M1};
   background: url('/images/home/banner-howto-desktop.svg') no-repeat center center;
   background-size: cover;
   height: 123px;
+
+  h2,
+  ul,
+  li {
+    ${mixins.reset()};
+    display: inline-block;
+    color: ${colors.M1};
+    font-size: 18px;
+    font-weight: normal;
+  }
+
+  ul {
+    display: inline;
+    list-style: none;
+
+    li {
+      margin-left: 2rem;
+      border-left: 6px solid ${colors.T1};
+      padding-left: 1rem;
+    }
+  }
 `;

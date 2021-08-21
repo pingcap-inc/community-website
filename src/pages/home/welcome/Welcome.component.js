@@ -10,7 +10,7 @@ const Welcome = () => {
   const { t } = useTranslation('page-home');
 
   const lang = t('welcome', { returnObjects: true });
-  const { navs: navsLang, numbers: numbersLang } = lang;
+  const { navs: navsLang, numbers: numbersLang, howTo: howToLang } = lang;
 
   const numbers = [
     {
@@ -56,7 +56,14 @@ const Welcome = () => {
       </Styled.Content>
 
       <Styled.HowTo>
-        <Styled.Content>How To</Styled.Content>
+        <Styled.Content>
+          <h2>{howToLang.title}</h2>
+          <ul>
+            <li>{howToLang.what}</li>
+            <li>{howToLang.use}</li>
+            <li>{howToLang.contribute}</li>
+          </ul>
+        </Styled.Content>
       </Styled.HowTo>
     </Styled.Container>
   );

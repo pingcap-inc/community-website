@@ -9,4 +9,5 @@ export const Section = styled.div`
 
 export const Content = styled.div`
   ${mixins.responsive()};
+  width: 100%;
 `;

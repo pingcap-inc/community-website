@@ -18,7 +18,6 @@ export const Container = styled(HomeStyled.Section)`
 `;
 
 export const Content = styled(HomeStyled.Content)`
-  width: 100%;
   position: relative;
   padding: 5rem 0 7.5rem;
 

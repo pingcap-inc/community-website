@@ -137,6 +137,7 @@ export const HowTo = styled.div`
     list-style: none;
 
     li {
+      cursor: pointer;
       margin-left: 3rem;
       display: inline-block;
       border-left: 6px solid ${colors.T1};

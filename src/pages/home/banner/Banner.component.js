@@ -57,7 +57,7 @@ const Banner = () => {
     getPopupContainer: () => tooltipContainerRef?.current,
   };
 
-  const onButtonClick = (link) => (e) => {
+  const onClick = (link) => (e) => {
     e.preventDefault();
     linkUtils.handleRedirect(router, link);
   };
@@ -71,12 +71,12 @@ const Banner = () => {
             <Styled.Intro>{lang.intro}</Styled.Intro>
             <Row gutter={32} justify="space-between" align="middle">
               <Col flex="none">
-                <Styled.TryButton onClick={onButtonClick('https://pingcap.com/zh/product-community/')}>
+                <Styled.TryButton onClick={onClick('https://pingcap.com/zh/product-community/')}>
                   {lang.tryButton}
                 </Styled.TryButton>
               </Col>
               <Col flex="auto">
-                <Styled.StarButton onClick={onButtonClick('https://github.com/pingcap/tidb')}>
+                <Styled.StarButton onClick={onClick('https://github.com/pingcap/tidb')}>
                   <GithubOutlined />
                   Star
                   {mounted && (

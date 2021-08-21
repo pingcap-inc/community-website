@@ -1,11 +1,14 @@
 import React from 'react';
-import { useTranslation } from 'next-i18next';
 import { Col, Radio, Row } from 'antd';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './welcome.styled';
+import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/pages/home/index.hooks';
 
 const Welcome = () => {
+  const router = useRouter();
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
@@ -30,6 +33,11 @@ const Welcome = () => {
       text: numbersLang.contributor,
     },
   ];
+
+  const onClick = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
@@ -59,7 +67,7 @@ const Welcome = () => {
         <Styled.Content>
           <h2>{howToLang.title}</h2>
           <ul>
-            <li>{howToLang.what}</li>
+            <li onClick={onClick('https://docs.pingcap.com/zh/tidb/stable/overview')}>{howToLang.what}</li>
             <li>{howToLang.use}</li>
             <li>{howToLang.contribute}</li>
           </ul>

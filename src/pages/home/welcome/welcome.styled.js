@@ -1,9 +1,13 @@
 import styled from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
-import { Section } from '~/pages/home/index.styled';
+import { Section, Content } from '~/pages/home/index.styled';
+
+export { Content };
 
 export const Container = styled(Section)`
+  text-align: center;
+
   && {
     padding-top: 5rem;
     background: ${colors.M2};
@@ -11,6 +15,7 @@ export const Container = styled(Section)`
 `;
 
 export const Title = styled.h2`
+  display: inline-block;
   font-size: 36px;
   line-height: 1;
   position: relative;
@@ -27,4 +32,10 @@ export const Title = styled.h2`
     background: ${colors.T1};
     z-index: -1;
   }
+`;
+
+export const Intro = styled.p`
+  ${mixins.reset()};
+  font-size: 18px;
+  margin-bottom: 1rem;
 `;

@@ -7,3 +7,7 @@ export const Section = styled.div`
   background: ${colors.M1};
   padding: 1rem 0;
 `;
+
+export const Content = styled.div`
+  ${mixins.responsive()};
+`;

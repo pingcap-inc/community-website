@@ -35,9 +35,9 @@ const navItems = [
 
 const Banner = () => {
   const router = useRouter();
-  const isSmallScreen = useIsSmallScreen();
-  const [mounted, setMounted] = useState(false);
   const tooltipContainerRef = useRef(null);
+  const [mounted, setMounted] = useState(false);
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   // Solving the warning of "Expected server HTML to contain a matching <tag>"

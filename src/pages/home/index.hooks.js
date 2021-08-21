@@ -1,6 +1,10 @@
 import { Grid } from 'antd';
 
 export const useIsSmallScreen = () => {
-  const bp = Grid.useBreakpoint();
-  return !bp.md;
+  const breakpoint = Grid.useBreakpoint();
+
+  return {
+    isSmallScreen: !breakpoint.md,
+    breakpoint,
+  };
 };

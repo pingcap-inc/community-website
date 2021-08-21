@@ -26,11 +26,6 @@ export const Container = styled(Section)`
             padding: 0 1rem;
           }
         }
-
-        ${HowTo} {
-          height: 218px;
-          background-image: url('/images/home/banner-howto-mobile.svg');
-        }
       `};
   }
 `;
@@ -125,13 +120,16 @@ export const HowTo = styled.div`
   height: 123px;
 
   h2,
-  ul,
-  li {
+  ul {
     ${mixins.reset()};
-    display: inline-block;
     color: ${colors.M1};
     font-size: 18px;
     font-weight: normal;
+  }
+
+  h2 {
+    display: inline-block;
+    margin-right: 4rem;
   }
 
   ul {
@@ -139,9 +137,41 @@ export const HowTo = styled.div`
     list-style: none;
 
     li {
-      margin-left: 2rem;
+      margin-left: 3rem;
+      display: inline-block;
       border-left: 6px solid ${colors.T1};
       padding-left: 1rem;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
   }
+
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      height: 218px;
+      background-image: url('/images/home/banner-howto-mobile.svg');
+
+      ${Content} {
+        flex-direction: column;
+
+        h2,
+        ul,
+        li {
+          display: block;
+        }
+
+        h2,
+        ul {
+          padding: 0 1rem;
+        }
+
+        li {
+          margin: 0;
+          margin-top: 1rem;
+        }
+      }
+    `};
 `;

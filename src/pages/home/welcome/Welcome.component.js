@@ -6,7 +6,7 @@ import * as Styled from './welcome.styled';
 import { useIsSmallScreen } from '~/pages/home/index.hooks';
 
 const Welcome = () => {
-  const isSmallScreen = useIsSmallScreen();
+  const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('welcome', { returnObjects: true });
@@ -55,7 +55,7 @@ const Welcome = () => {
         </Row>
       </Styled.Content>
 
-      <Styled.HowTo>
+      <Styled.HowTo isSmallScreen={!breakpoint.lg}>
         <Styled.Content>
           <h2>{howToLang.title}</h2>
           <ul>

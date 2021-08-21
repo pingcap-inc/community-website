@@ -2,14 +2,16 @@ import Image from 'next/image';
 import React, { useState, useRef } from 'react';
 import { Col, Grid, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
-import { useTranslation } from 'next-i18next';
 import { useMount } from 'ahooks';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './banner.styled';
 import ActivityIcon from './activity.svg';
 import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
+import { link as linkUtils } from '~/utils';
 
 const { useBreakpoint } = Grid;
 
@@ -34,6 +36,7 @@ const navItems = [
 
 const Banner = () => {
   const bp = useBreakpoint();
+  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const tooltipContainerRef = useRef(null);
   const { t } = useTranslation('page-home');
@@ -56,19 +59,26 @@ const Banner = () => {
     getPopupContainer: () => tooltipContainerRef?.current,
   };
 
+  const onButtonClick = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
+
   return (
     <Styled.Container>
-      <Styled.Content isSmallScreen={isSmallScreen}>
+      <Styled.Content $isSmallScreen={isSmallScreen}>
         <Row gutter={[32, 64]} justify="space-between" align="middle">
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>
             <Row gutter={32} justify="space-between" align="middle">
               <Col flex="none">
-                <Styled.TryButton>{lang.tryButton}</Styled.TryButton>
+                <Styled.TryButton onClick={onButtonClick('https://pingcap.com/zh/product-community/')}>
+                  {lang.tryButton}
+                </Styled.TryButton>
               </Col>
               <Col flex="auto">
-                <Styled.StarButton>
+                <Styled.StarButton onClick={onButtonClick('https://github.com/pingcap/tidb')}>
                   <GithubOutlined />
                   Star
                   {mounted && (
@@ -82,7 +92,7 @@ const Banner = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <Styled.Carousel isSmallScreen={isSmallScreen}>
+            <Styled.Carousel $isSmallScreen={isSmallScreen}>
               {[...new Array(4).keys()].map((key) => (
                 <div key={key}>
                   <Image src="/images/home/banner-carousel.png" height="234" width="652" />
@@ -92,7 +102,7 @@ const Banner = () => {
           </Styled.RightPanel>
         </Row>
 
-        <Styled.Navs isSmallScreen={isSmallScreen}>
+        <Styled.Navs $isSmallScreen={isSmallScreen}>
           {navItems.map(({ icon: Icon, langKey }, idx) => (
             <Styled.NavItem key={idx}>
               <Icon />

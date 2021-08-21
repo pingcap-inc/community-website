@@ -24,7 +24,7 @@ export const Content = styled.div`
   padding: 5rem 0 7.5rem;
 
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       padding: 3rem 0 5.5rem;
 
@@ -185,7 +185,7 @@ export const Navs = styled(Row).attrs({
   box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
 
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       padding: 12px 0;
 
@@ -207,7 +207,7 @@ export const Navs = styled(Row).attrs({
 `;
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({
-  dotPosition: props.isSmallScreen ? 'bottom' : 'right',
+  dotPosition: props.$isSmallScreen ? 'bottom' : 'right',
 }))`
   .slick-slide {
     padding-right: 2.5rem;
@@ -235,7 +235,7 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
   }
 
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       .slick-slide {
         padding-right: 0;

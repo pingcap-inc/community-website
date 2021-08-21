@@ -3,8 +3,10 @@ import { useTranslation } from 'next-i18next';
 import { Col, Radio, Row } from 'antd';
 
 import * as Styled from './welcome.styled';
+import { useIsSmallScreen } from '~/pages/home/index.hooks';
 
 const Welcome = () => {
+  const isSmallScreen = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('welcome', { returnObjects: true });
@@ -30,25 +32,25 @@ const Welcome = () => {
   ];
 
   return (
-    <Styled.Container>
+    <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
-        <Row justify="center">
-          <Col span={18}>
+        <Row gutter={[32, 32]} justify="center">
+          <Col span={isSmallScreen ? 24 : 18}>
             <Styled.Title>{lang.title}</Styled.Title>
             <Styled.Intro>{lang.intro}</Styled.Intro>
-            <Radio.Group>
+            <Styled.Navs>
               <Radio.Button>{navsLang.codeOfConduct}</Radio.Button>
               <Radio.Button>{navsLang.join}</Radio.Button>
               <Radio.Button>{navsLang.contactUs}</Radio.Button>
-            </Radio.Group>
-            <Row>
+            </Styled.Navs>
+            <Styled.Numbers gutter={32} justify="center">
               {numbers.map(({ num, text }, idx) => (
-                <Col key={idx} md={6}>
+                <Col key={idx} span={isSmallScreen ? 12 : 6}>
                   <em>{num}</em>
                   <span>{text}</span>
                 </Col>
               ))}
-            </Row>
+            </Styled.Numbers>
           </Col>
         </Row>
       </Styled.Content>

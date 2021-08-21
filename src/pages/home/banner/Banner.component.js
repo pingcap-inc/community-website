@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React, { useState, useRef } from 'react';
-import { Col, Grid, Row } from 'antd';
+import { Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { useMount } from 'ahooks';
 import { useRouter } from 'next/router';
@@ -12,8 +12,7 @@ import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
 import { link as linkUtils } from '~/utils';
-
-const { useBreakpoint } = Grid;
+import { useIsSmallScreen } from '~/pages/home/index.hooks';
 
 const navItems = [
   {
@@ -35,8 +34,8 @@ const navItems = [
 ];
 
 const Banner = () => {
-  const bp = useBreakpoint();
   const router = useRouter();
+  const isSmallScreen = useIsSmallScreen();
   const [mounted, setMounted] = useState(false);
   const tooltipContainerRef = useRef(null);
   const { t } = useTranslation('page-home');
@@ -50,7 +49,6 @@ const Banner = () => {
 
   const lang = t('banner', { returnObjects: true });
   const { navs: navsLang } = lang;
-  const isSmallScreen = !bp.md;
 
   const tooltipProps = {
     title: '37,916',
@@ -66,7 +64,7 @@ const Banner = () => {
 
   return (
     <Styled.Container>
-      <Styled.Content $isSmallScreen={isSmallScreen}>
+      <Styled.Content isSmallScreen={isSmallScreen}>
         <Row gutter={[32, 64]} justify="space-between" align="middle">
           <Styled.LeftPanel>
             <Styled.Logo />
@@ -92,7 +90,7 @@ const Banner = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <Styled.Carousel $isSmallScreen={isSmallScreen}>
+            <Styled.Carousel isSmallScreen={isSmallScreen}>
               {[...new Array(4).keys()].map((key) => (
                 <div key={key}>
                   <Image src="/images/home/banner-carousel.png" height="234" width="652" />

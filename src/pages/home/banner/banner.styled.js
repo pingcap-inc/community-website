@@ -18,11 +18,12 @@ export const Container = styled(HomeStyled.Section)`
 `;
 
 export const Content = styled(HomeStyled.Content)`
+  width: 100%;
   position: relative;
   padding: 5rem 0 7.5rem;
 
   ${(props) =>
-    props.$isSmallScreen &&
+    props.isSmallScreen &&
     css`
       padding: 3rem 0 5.5rem;
 
@@ -191,19 +192,21 @@ export const Navs = styled(Row).attrs({
         border-right: none;
 
         svg {
+          height: 30px;
           margin-right: 0;
-          margin-bottom: 8px;
+          margin-bottom: 12px;
         }
 
         span {
           font-size: 14px;
+          line-height: 1;
         }
       }
     `};
 `;
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({
-  dotPosition: props.$isSmallScreen ? 'bottom' : 'right',
+  dotPosition: props.isSmallScreen ? 'bottom' : 'right',
 }))`
   .slick-slide {
     padding-right: 2.5rem;

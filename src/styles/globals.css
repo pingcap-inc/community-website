@@ -12,8 +12,3 @@ a {
 * {
   box-sizing: border-box;
 }
-
-/* antd-carousel slick active */
-.slick-active button {
-  background-color: #3d3fea !important;
-}

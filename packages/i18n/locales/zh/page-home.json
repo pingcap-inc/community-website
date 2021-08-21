@@ -1,6 +1,13 @@
 {
   "banner": {
-    "title": "Banner"
+    "intro": "是一款同时支持在线事务处理与在线分析处理 (HTAP) 的融合型分布式数据库产品。",
+    "tryButton": "立即体验",
+    "navs": {
+      "doc": "文档 / 手册",
+      "asktug": "AskTUG 问答",
+      "article": "技术文章",
+      "activity": "活动"
+    }
   },
   "welcome": {
     "title": "Hi，欢迎来到 TiDB 社区！"

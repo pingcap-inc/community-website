@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
-import { Section } from '~/pages/home/index.styled';
+import { Section, Content, Title } from '~/pages/home/index.styled';
+
+export { Content, Title };
 
 export const Container = styled(Section)`
   && {

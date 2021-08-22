@@ -9,8 +9,8 @@ import { useIsSmallScreen } from '~/pages/home/index.hooks';
 
 const Welcome = () => {
   const router = useRouter();
-  const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
+  const { isSmallScreen, breakpoint } = useIsSmallScreen();
 
   const lang = t('welcome', { returnObjects: true });
   const { navs: navsLang, numbers: numbersLang, howTo: howToLang } = lang;

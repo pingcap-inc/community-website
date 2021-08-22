@@ -37,8 +37,8 @@ const Banner = () => {
   const router = useRouter();
   const tooltipContainerRef = useRef(null);
   const [mounted, setMounted] = useState(false);
-  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
+  const { isSmallScreen } = useIsSmallScreen();
 
   // Solving the warning of "Expected server HTML to contain a matching <tag>"
   // because of AntD Tooltip.

@@ -1,11 +1,8 @@
 import React from 'react';
-import styles from './TopItem.module.scss';
 import dayjs from 'dayjs';
-import relativeTime from 'dayjs/plugin/relativeTime';
-import 'dayjs/locale/zh';
-import MyLink from '~/components/MyLink';
 
-dayjs.extend(relativeTime);
+import MyLink from '~/components/MyLink';
+import styles from './TopItem.module.scss';
 
 export default function TopItem({
   title,
@@ -35,7 +32,7 @@ export default function TopItem({
         </div>
         <div className={styles.metadata_statistics}>
           <div className={styles.metadata_statistics_reply_count}>回复 {replyCount}</div>
-          <div className={styles.metadata_statistics_last_posted_at}>{dayjs(lastPostedAt).locale('zh').fromNow()}</div>
+          <div className={styles.metadata_statistics_last_posted_at}>{dayjs(lastPostedAt).fromNow()}</div>
         </div>
       </div>
     </div>

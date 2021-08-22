@@ -31,7 +31,8 @@
     }
   },
   "forum": {
-    "title": "问答论坛"
+    "title": "问答论坛",
+    "reply": "回复"
   },
   "blogs": {
     "title": "博客"

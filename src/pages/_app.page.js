@@ -1,12 +1,15 @@
 import '@fontsource/titillium-web';
 import 'antd/dist/antd.css';
+import 'dayjs/locale/zh';
 import * as R from 'ramda';
 import React, { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import useSWR, { SWRConfig } from 'swr';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
-import { logPageView } from '@tidb-community/tracking-script';
 import { appWithTranslation } from 'next-i18next';
 import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
+import { logPageView } from '@tidb-community/tracking-script';
 import { message } from 'antd';
 import { withLayout } from '@tidb-community/common';
 
@@ -17,6 +20,10 @@ import ErrorPage from './_error.page';
 import nextI18NextConfig from '../../next-i18next.config';
 import { authContext, AuthContext, MeContext } from '~/context';
 import { isEmptyOrNil } from '~/utils/common.utils';
+
+dayjs.extend(relativeTime);
+// TODO: Need to sync with NextJS locale value
+dayjs.locale('zh');
 
 const GlobalStyle = createAppGlobalStyle();
 

@@ -9,7 +9,7 @@ export { Content };
 export const Container = styled(Section)`
   && {
     text-align: center;
-    padding-top: 5rem;
+    padding: 5rem 0 0;
     background: ${colors.M2};
 
     ${(props) =>
@@ -39,6 +39,11 @@ export const Navs = styled(Radio.Group)`
 
       &:first-child {
         border-left-color: ${colors.T2};
+        border-radius: 6px 0 0 6px;
+      }
+
+      &:last-child {
+        border-radius: 0 6px 6px 0;
       }
 
       &:hover {
@@ -140,7 +145,7 @@ export const HowTo = styled.div`
       cursor: pointer;
       margin-left: 3rem;
       display: inline-block;
-      border-left: 6px solid ${colors.T1};
+      border-left: 7px solid ${colors.T1};
       padding-left: 1rem;
 
       &:first-child {

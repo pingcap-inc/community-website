@@ -24,16 +24,18 @@ const Forum = () => {
     <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
         <Styled.Title>{lang.title}</Styled.Title>
-        {mock.posts.map((post, idx) => {
-          const props = {
-            key: idx,
-            lang,
-            onClick,
-            ...post,
-          };
+        <Styled.Posts>
+          {mock.posts.map((post, idx) => {
+            const props = {
+              key: idx,
+              lang,
+              onClick,
+              ...post,
+            };
 
-          return <Post {...props} />;
-        })}
+            return <Post {...props} />;
+          })}
+        </Styled.Posts>
       </Styled.Content>
     </Styled.Container>
   );

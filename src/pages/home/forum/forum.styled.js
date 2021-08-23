@@ -10,3 +10,5 @@ export const Container = styled(Section)`
     background: ${colors.M2};
   }
 `;
+
+export const Posts = styled.div``;

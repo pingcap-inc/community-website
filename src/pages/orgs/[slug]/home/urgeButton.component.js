@@ -12,7 +12,7 @@ const TooltipContent = () => (
     工作时间：周一至周五 10:00 - 18:00 一小时内响应
     <br />
     非工作时间（含法定节假日）：顺延至下一个工作日 11:00 前响应（如遇线上紧急事故，请
-    <Link href="https://tidb.io/contact-us/incident" target="_blank" rel="noreferrer">
+    <Link href="/contact-us/incident" target="_blank" rel="noreferrer">
       联系社区专家
     </Link>
     ）
@@ -87,6 +87,8 @@ const UrgeButton = ({ topic, urging, urge, preUrge }) => {
   const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
+  const disabled = urging || topic.urgencies.length;
+
   const onVisibleChange = async (visible) => {
     if (visible) {
       setData((await preUrge(topic.id)).data);
@@ -105,14 +107,14 @@ const UrgeButton = ({ topic, urging, urge, preUrge }) => {
       cancelText="取消"
       onConfirm={() => urge(topic.id)}
       onVisibleChange={onVisibleChange}
-      disabled={urging || topic.urgencies.length}
+      disabled={disabled}
       title={<Styled.PopContent>{renderContent(data, loading)}</Styled.PopContent>}
       okButtonProps={{
         disabled: !canUrge(data, loading) || topic.urgencies.length,
         loading: urging || loading,
       }}
     >
-      <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
+      <Button icon={<ThunderboltFilled />} size="small" disabled={disabled}>
         {topic.urgencies.length ? '已加急' : '加急'}
       </Button>
     </Popconfirm>

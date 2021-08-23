@@ -1,7 +1,10 @@
 import React from 'react';
 import dayjs from 'dayjs';
+import { colors } from '@tidb-community/ui';
 
 import * as Styled from './post.styled.js';
+
+const tagColors = [colors.T1, colors.T3, colors.T5];
 
 const Post = ({ title, link, user, tags, replyNum, updateTime, onClick, lang }) => (
   <Styled.Container onClick={onClick(link)}>
@@ -18,8 +21,8 @@ const Post = ({ title, link, user, tags, replyNum, updateTime, onClick, lang }) 
           <img alt={user.name} src={user.avatar} />
           {user.name}
         </Styled.User>
-        {tags.map((tag) => (
-          <Styled.Tag key={tag}>{tag}</Styled.Tag>
+        {tags.map((tag, idx) => (
+          <Styled.Tag key={idx} color={tagColors[idx] || tagColors[0]} text={tag} />
         ))}
       </div>
       <span>{dayjs(updateTime).fromNow()}</span>

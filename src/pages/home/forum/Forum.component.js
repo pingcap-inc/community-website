@@ -47,6 +47,14 @@ const Forum = () => {
           <Styled.RightPanel>
             <Styled.Module>
               <Styled.ModuleTitle>{lang.postQuestion}</Styled.ModuleTitle>
+              <p>
+                <Styled.AsktugLogo />
+                {lang.whatIsAskTug}
+              </p>
+              <p>
+                {lang.comply}
+                <Link href={lang.doc.link}>{lang.doc.text}</Link>
+              </p>
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>{lang.hotCategories}</Styled.ModuleTitle>

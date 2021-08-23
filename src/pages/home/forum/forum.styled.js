@@ -1,6 +1,7 @@
+import AsktugSvg from './asktug.svg';
 import styled from 'styled-components';
-import { colors } from '@tidb-community/ui';
 import { Col } from 'antd';
+import { colors } from '@tidb-community/ui';
 
 import { Section, Content, Title, ModuleTitle } from '~/pages/home/index.styled';
 
@@ -37,4 +38,11 @@ export const Module = styled.div`
   &:last-child {
     border-bottom: 0;
   }
+`;
+
+export const AsktugLogo = styled(AsktugSvg)`
+  height: 29.5px;
+  margin-right: 1rem;
+  position: relative;
+  top: 8px;
 `;

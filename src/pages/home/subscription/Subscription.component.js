@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
-
-import * as Styled from './subscription.styled';
-import { SloganBox } from './subscription.styled';
-
 import { Col, Grid, Row, message } from 'antd';
 import * as yup from 'yup';
-import { api } from '@tidb-community/datasource';
 
+import { api } from '@tidb-community/datasource';
+import * as Styled from './subscription.styled';
 const { useBreakpoint } = Grid;
+
+// email validation schema
+const schema = yup.object().shape({
+  email: yup.string().email(),
+});
 
 const Subscription = () => {
   const { t } = useTranslation('page-home');
@@ -18,10 +20,9 @@ const Subscription = () => {
 
   const [email, setEmail] = useState('');
 
-  // email validation schema
-  const schema = yup.object().shape({
-    email: yup.string().email(),
-  });
+  // any viewport smaller than large is consider small; specific UI layout
+  // consideration
+  const isSmallScreen = !bp.lg;
 
   // validate and subscribe
   const subscribeEmail = () => {
@@ -43,21 +44,21 @@ const Subscription = () => {
 
   return (
     <Styled.SubscriptionSection>
-      <Styled.Container isMobile={!bp.lg}>
+      <Styled.Container isMobile={isSmallScreen}>
         <Row>
           <Col xs={24} lg={16}>
-            <Row justify={!bp.lg && 'center'}>
-              <SloganBox>
+            <Row justify={isSmallScreen && 'center'}>
+              <Styled.SloganBox>
                 <Styled.Slogan>
                   {lang.slogan}, {lang.links.see}
                   <Styled.Link href={lang.links.orgArch.url}>{lang.links.orgArch.label}</Styled.Link>
                   {lang.links.connective}
                   <Styled.Link href={lang.links.contributorList.url}>{lang.links.contributorList.label}</Styled.Link>
                 </Styled.Slogan>
-              </SloganBox>
+              </Styled.SloganBox>
             </Row>
-            <Row justify={!bp.lg && 'center'}>
-              <Styled.JoinButton type="primary" isMobile={!bp.lg}>
+            <Row justify={isSmallScreen && 'center'}>
+              <Styled.JoinButton type="primary" isMobile={isSmallScreen}>
                 {lang.joinButton.label}
               </Styled.JoinButton>
             </Row>

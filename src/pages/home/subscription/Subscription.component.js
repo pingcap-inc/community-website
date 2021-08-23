@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './subscription.styled';
-import { Row, Col, Grid } from 'antd';
 import { SloganBox } from './subscription.styled';
+
+import { Col, Grid, Row, message } from 'antd';
+import * as yup from 'yup';
+import { api } from '@tidb-community/datasource';
 
 const { useBreakpoint } = Grid;
 
@@ -12,6 +15,31 @@ const Subscription = () => {
 
   const lang = t('subscription', { returnObjects: true });
   const bp = useBreakpoint();
+
+  const [email, setEmail] = useState('');
+
+  // email validation schema
+  const schema = yup.object().shape({
+    email: yup.string().email(),
+  });
+
+  // validate and subscribe
+  const subscribeEmail = () => {
+    schema.isValid({ email }).then(async (valid) => {
+      if (valid) {
+        try {
+          await api.subscribe.addEmail(email);
+          message.success(lang.emailInput.successMsg);
+        } catch (e) {
+          // when API call returns an error
+          message.error(lang.emailInput.errorMsg);
+        }
+      } else {
+        // when yup validation fails
+        message.error(lang.emailInput.invalidMsg);
+      }
+    });
+  };
 
   return (
     <Styled.SubscriptionSection>
@@ -22,7 +50,7 @@ const Subscription = () => {
               <SloganBox>
                 <Styled.Slogan>
                   {lang.slogan}, {lang.links.see}
-                  <Styled.Underline href={lang.links.orgArch.url}> {lang.links.orgArch.label} </Styled.Underline>{' '}
+                  <Styled.Underline href={lang.links.orgArch.url}> {lang.links.orgArch.label} </Styled.Underline>
                   {lang.links.connective}
                   <Styled.Underline href={lang.links.contributorList.url}>
                     {lang.links.contributorList.label}
@@ -32,7 +60,6 @@ const Subscription = () => {
             </Row>
             <Row justify={!bp.lg && 'center'}>
               <Styled.JoinButton type="primary" isMobile={!bp.lg}>
-                {' '}
                 {lang.joinButton.label}
               </Styled.JoinButton>
             </Row>
@@ -43,8 +70,9 @@ const Subscription = () => {
               placeholder={lang.emailInput.placeHolder}
               allowClear
               enterButton={lang.emailInput.submit}
+              onChange={(evt) => setEmail(evt.target.value)}
               size="large"
-              onSearch={() => {}}
+              onSearch={subscribeEmail}
             />
             <Styled.TermCaption>{lang.termsDesc}</Styled.TermCaption>
           </Col>

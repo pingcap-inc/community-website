@@ -96,6 +96,9 @@ export const TopicTitle = styled.a.attrs({ target: '_blank' })`
 export const PopContent = styled.div`
   ${mixins.typography('p2')};
   width: 360px;
+  @media screen and (max-width: 768px) {
+    width: 240px;
+  }
 `;
 
 export const InfoCircleFilled = styled(AntInfoCircleFilled)`

@@ -32,7 +32,17 @@
   },
   "forum": {
     "title": "问答论坛",
-    "reply": "回复"
+    "reply": "回复",
+    "postQuestion": "快速发帖提问",
+    "writePost": "写帖子",
+    "hotCategories": "热门分类",
+    "whatIsAskTug": "是社区的问答网站，用户可以在这里提出、解答问题，分享文章，共同建设 TiDB 项目。",
+    "comply": "在论坛中发言请自觉遵守",
+    "doc": {
+      "text": "在论坛中发言请自觉遵守《问题搜索指引&提问准则》",
+      "link": ""
+    },
+    "categories": []
   },
   "blogs": {
     "title": "博客"

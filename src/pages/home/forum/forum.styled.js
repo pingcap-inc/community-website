@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
+import { Col } from 'antd';
 
-import { Section, Content, Title } from '~/pages/home/index.styled';
+import { Section, Content, Title, ModuleTitle } from '~/pages/home/index.styled';
 
-export { Content, Title };
+export { Content, Title, ModuleTitle };
 
 export const Container = styled(Section)`
   && {
@@ -11,6 +12,29 @@ export const Container = styled(Section)`
   }
 `;
 
+export const LeftPanel = styled(Col).attrs({
+  sm: 24,
+  md: 14,
+})``;
+
+export const RightPanel = styled(Col).attrs({
+  sm: 24,
+  md: 8,
+})``;
+
 export const Posts = styled.div`
   margin-bottom: 1rem;
+`;
+
+export const Module = styled.div`
+  padding: 2rem 0 1.5rem;
+  border-bottom: 1px solid ${colors.T2};
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    border-bottom: 0;
+  }
 `;

@@ -46,7 +46,8 @@ export const Title = styled.h2`
   }
 `;
 
-export const Link = styled.span`
-  color: ${colors.B1};
-  cursor: pointer;
+export const ModuleTitle = styled.h3`
+  font-size: 20px;
+  font-weight: normal !important;
+  margin-bottom: 1.5rem;
 `;

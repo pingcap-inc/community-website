@@ -1,4 +1,5 @@
 import React from 'react';
+import { Row } from 'antd';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
@@ -25,19 +26,33 @@ const Forum = () => {
     <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
         <Styled.Title>{lang.title}</Styled.Title>
-        <Styled.Posts>
-          {mock.posts.map((post, idx) => {
-            const props = {
-              key: idx,
-              lang,
-              onClick,
-              ...post,
-            };
 
-            return <Post {...props} />;
-          })}
-        </Styled.Posts>
-        <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+        <Row justify="space-between">
+          <Styled.LeftPanel>
+            <Styled.Posts>
+              {mock.posts.map((post, idx) => {
+                const props = {
+                  key: idx,
+                  lang,
+                  onClick,
+                  ...post,
+                };
+
+                return <Post {...props} />;
+              })}
+            </Styled.Posts>
+            <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+          </Styled.LeftPanel>
+
+          <Styled.RightPanel>
+            <Styled.Module>
+              <Styled.ModuleTitle>{lang.postQuestion}</Styled.ModuleTitle>
+            </Styled.Module>
+            <Styled.Module>
+              <Styled.ModuleTitle>{lang.hotCategories}</Styled.ModuleTitle>
+            </Styled.Module>
+          </Styled.RightPanel>
+        </Row>
       </Styled.Content>
     </Styled.Container>
   );

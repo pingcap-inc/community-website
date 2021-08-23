@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Button, Popconfirm, Skeleton, Tooltip } from 'antd';
+import { Button, Popconfirm, Skeleton } from 'antd';
 import { ThunderboltFilled } from '@ant-design/icons';
 import { Link } from '@tidb-community/ui';
 
 import * as Styled from './home.styled';
 
 const TooltipContent = () => (
-  <>
+  <Styled.Tooltips>
     <b>加急贴响应时效</b>
     <br />
     工作时间：周一至周五 10:00 - 18:00 一小时内响应
@@ -16,10 +16,10 @@ const TooltipContent = () => (
       联系社区专家
     </Link>
     ）
-  </>
+  </Styled.Tooltips>
 );
 
-const LoadingContent = () => <Skeleton active paragraph={false} />;
+const LoadingContent = () => <Skeleton active />;
 const NormalContent = ({ urgeStatus }) => (
   <>
     {urgeStatus.consumed_points} 积分兑换 1 次加急权益，当前积分余额 {urgeStatus.user_current_points}
@@ -60,15 +60,23 @@ const renderContent = (data, loading) => {
   if (loading) {
     return <LoadingContent />;
   }
+  let top;
   if (data.is_qa_topic) {
     if (data.consumed_points <= data.user_current_points) {
-      return <NormalContent urgeStatus={data} />;
+      top = <NormalContent urgeStatus={data} />;
     } else {
-      return <PoorContent urgeStatus={data} />;
+      top = <PoorContent urgeStatus={data} />;
     }
   } else {
-    return <ForbiddenContent />;
+    top = <ForbiddenContent />;
   }
+
+  return (
+    <>
+      {top}
+      <TooltipContent />
+    </>
+  );
 };
 
 const canUrge = (data, loading) => {
@@ -104,11 +112,9 @@ const UrgeButton = ({ topic, urging, urge, preUrge }) => {
         loading: urging || loading,
       }}
     >
-      <Tooltip overlay={<TooltipContent />} placement="right">
-        <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
-          {topic.urgencies.length ? '已加急' : '加急'}
-        </Button>
-      </Tooltip>
+      <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
+        {topic.urgencies.length ? '已加急' : '加急'}
+      </Button>
     </Popconfirm>
   );
 };

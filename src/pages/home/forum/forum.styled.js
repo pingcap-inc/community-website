@@ -11,4 +11,6 @@ export const Container = styled(Section)`
   }
 `;
 
-export const Posts = styled.div``;
+export const Posts = styled.div`
+  margin-bottom: 1rem;
+`;

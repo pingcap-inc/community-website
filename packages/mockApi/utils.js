@@ -97,4 +97,4 @@ module.exports = {
 };
 
 // toggle this to control oneOf to always return first item.
-const ONE_OF_ONLY_FIRST = true;
+const ONE_OF_ONLY_FIRST = false;

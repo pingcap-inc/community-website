@@ -84,7 +84,7 @@ const canUrge = (data, loading) => {
 };
 
 const UrgeButton = ({ topic, urging, urge, preUrge }) => {
-  const [data, setData] = useState(undefined);
+  const [data, setData] = useState();
   const [loading, setLoading] = useState(true);
 
   const onVisibleChange = async (visible) => {

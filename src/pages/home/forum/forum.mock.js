@@ -4,7 +4,7 @@ export const posts = [
     link: 'https://asktug.com/t/topic/123306',
     user: {
       avatar: 'https://asktug.com/user_avatar/asktug.com/luzizhuo/90/99462_2.png',
-      link: 'https://asktug.com/u/luzizhuo',
+      name: 'fergus',
     },
     tags: ['部署 & 监控', '性能调优', '技术文章'],
     replyNum: 89,
@@ -15,7 +15,7 @@ export const posts = [
     link: 'https://asktug.com/t/topic/123306',
     user: {
       avatar: 'https://asktug.com/user_avatar/asktug.com/luzizhuo/90/99462_2.png',
-      link: 'https://asktug.com/u/luzizhuo',
+      name: 'fergus',
     },
     tags: ['部署 & 监控', '性能调优', '技术文章'],
     replyNum: 89,

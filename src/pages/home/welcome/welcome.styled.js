@@ -127,9 +127,9 @@ export const HowTo = styled.div`
   h2,
   ul {
     ${mixins.reset()};
-    color: ${colors.M1};
+    color: ${colors.M1} !important;
     font-size: 18px;
-    font-weight: normal;
+    font-weight: normal !important;
   }
 
   h2 {

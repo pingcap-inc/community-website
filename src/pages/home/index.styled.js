@@ -45,3 +45,8 @@ export const Title = styled.h2`
     left: 0;
   }
 `;
+
+export const Link = styled.span`
+  color: ${colors.B1};
+  cursor: pointer;
+`;

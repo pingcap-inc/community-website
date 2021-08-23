@@ -81,7 +81,7 @@ const UrgeButton = ({ topic, urging, urge, preUrge }) => {
 
   const onVisibleChange = async (visible) => {
     if (visible) {
-      setData((await preUrge()).data);
+      setData((await preUrge(topic.id)).data);
       setLoading(false);
     } else {
       setData(undefined);

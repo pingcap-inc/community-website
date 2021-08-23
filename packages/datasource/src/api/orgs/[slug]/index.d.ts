@@ -50,6 +50,13 @@ type TopicData = {
   created_at: string; // 创建时间
   creator: UserData;
   urgencies: TopicUrgencyData[];
+  is_qa_topic: boolean;
+};
+
+type TopicUrgeCheckData = {
+  user_current_points: number;
+  consumed_points: number;
+  is_qa_topic: boolean;
 };
 
 type TopicsResult = PageData<TopicData, 'topics'>;
@@ -58,3 +65,4 @@ export const members: ApiRequestFunction<MembersParams, { data: MemberData[] }>;
 export const topics: ApiRequestFunction<TopicsParams, TopicsResult>;
 export const topicUrgencies: ApiRequestFunction<TopicUrgenciesParams, { data: TopicUrgencyData[] }>;
 export const urgeTopic: ApiRequestFunction<TopicUrgenciesParams, void>;
+export const urgeTopicCheck: ApiRequestFunction<TopicUrgenciesParams, void>;

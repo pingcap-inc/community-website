@@ -27,6 +27,7 @@ const genTopic = (id) => ({
     created_at: date.recent(),
     creator: genUser(),
   })),
+  is_qa_topic: datatype.boolean(),
 });
 
 const topicsList = repeat(datatype.number({ min: 15, max: 50 }), genTopic);

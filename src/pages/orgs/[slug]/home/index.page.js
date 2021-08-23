@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react';
 import dayjs from 'dayjs';
 import useSWR from 'swr';
-import { Avatar, Button, Divider, List, Modal, Popconfirm, Tag } from 'antd';
-import { MessageOutlined, ThunderboltFilled, LikeOutlined, EyeOutlined } from '@ant-design/icons';
+import { Avatar, Divider, List, Modal, Tag } from 'antd';
+import { MessageOutlined, LikeOutlined, EyeOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
@@ -13,6 +13,7 @@ import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
 import { errors } from '~/utils';
 import { getI18nProps } from '~/utils/i18n.utils';
+import UrgeButton from './urgeButton.component';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-orgs'])(ctx);
@@ -37,10 +38,8 @@ const PageContent = () => {
     isValidating: isTopicsValidating,
     revalidate,
   } = useSWR(slug && ['orgs.org.topics', JSON.stringify({ slug, page, pageSize })]);
-  const { data: orgData, mutate: mutateOrg } = useSWR(slug && ['orgs.org.info', router.query]);
 
   const { meta, topics } = topicsData?.data ?? {};
-  const { topic_urgency_remain_times: topicUrgencyRemainTimes = 0 } = orgData?.data ?? {};
 
   if (isAnonymous) {
     login();
@@ -63,10 +62,19 @@ const PageContent = () => {
         });
       })
       .finally(async () => {
-        await mutateOrg();
         await revalidate();
         setUrging(false);
       });
+  };
+
+  const preUrge = (topicId) => {
+    return api.orgs.org.urgeTopicCheck({ slug, topicId }).catch((err) => {
+      Modal.warn({
+        title: '无法加急主题',
+        content: errors.getFirstApiErrorMsg(err),
+        centered: true,
+      });
+    });
   };
 
   const jump = (topicSlug, topicId) => {
@@ -129,29 +137,7 @@ const PageContent = () => {
                   {topic.reply_count}
                 </span>
                 <Divider type="vertical" />
-                <Popconfirm
-                  placement="rightTop"
-                  icon={<Styled.InfoCircleFilled />}
-                  okText="确定"
-                  cancelText="取消"
-                  onConfirm={() => urge(topic.id)}
-                  disabled={urging || topic.urgencies.length}
-                  title={
-                    <Styled.PopContent>
-                      发送主题至社区用户组，加快响应
-                      <br />
-                      速度（本周剩余 {topicUrgencyRemainTimes} 次机会）
-                    </Styled.PopContent>
-                  }
-                  okButtonProps={{
-                    disabled: topicUrgencyRemainTimes === 0 || topic.urgencies.length,
-                    loading: urging,
-                  }}
-                >
-                  <Button icon={<ThunderboltFilled />} size="small" disabled={urging || topic.urgencies.length}>
-                    {topic.urgencies.length ? '已加急' : '加急'}
-                  </Button>
-                </Popconfirm>
+                {topic.is_qa_topic && <UrgeButton topic={topic} urging={urging} urge={urge} preUrge={preUrge} />}
               </div>
             </div>
           </List.Item>

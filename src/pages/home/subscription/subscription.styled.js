@@ -41,11 +41,14 @@ export const TermCaption = styled.div`
   font-size: 14px;
 `;
 
-export const Underline = styled(Slogan)`
-  display: inline;
+export const Link = styled.a`
+  color: ${colors.M1};
+  font-size: 20px;
   text-decoration: underline;
 
   &:hover {
+    text-decoration: underline;
+    color: inherit;
     cursor: pointer;
   }
 `;

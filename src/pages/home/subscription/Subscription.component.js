@@ -50,11 +50,9 @@ const Subscription = () => {
               <SloganBox>
                 <Styled.Slogan>
                   {lang.slogan}, {lang.links.see}
-                  <Styled.Underline href={lang.links.orgArch.url}> {lang.links.orgArch.label} </Styled.Underline>
+                  <Styled.Link href={lang.links.orgArch.url}>{lang.links.orgArch.label}</Styled.Link>
                   {lang.links.connective}
-                  <Styled.Underline href={lang.links.contributorList.url}>
-                    {lang.links.contributorList.label}
-                  </Styled.Underline>
+                  <Styled.Link href={lang.links.contributorList.url}>{lang.links.contributorList.label}</Styled.Link>
                 </Styled.Slogan>
               </SloganBox>
             </Row>

@@ -57,11 +57,11 @@
     },
     "links": {
       "orgArch": {
-        "url": "",
+        "url": "https://tidb.io/archived/events/developer-group/",
         "label": "社区组织架构"
       },
       "contributorList": {
-        "url": "",
+        "url": "https://developer.tidb.io/people/contributor",
         "label": "贡献者列表"
       },
       "see": "由此查看",

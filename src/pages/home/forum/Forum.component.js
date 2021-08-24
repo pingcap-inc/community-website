@@ -9,7 +9,7 @@ import * as mock from './forum.mock';
 import Post from './post';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '~/pages/home/index.hooks';
+import { useIsSmallScreen } from '~/hooks';
 
 const Forum = () => {
   const router = useRouter();

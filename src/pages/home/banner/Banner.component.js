@@ -12,7 +12,7 @@ import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
 import { link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '~/pages/home/index.hooks';
+import { useIsSmallScreen } from '~/hooks';
 
 const navItems = [
   {

@@ -9,7 +9,7 @@ export default css`
     line-height: 38px;
     text-transform: uppercase;
     text-shadow: none;
-    border-radius: 6px;
+    border-radius: 4px;
     box-shadow: none;
 
     &:hover:not(&-link):not(&-primary):not(&-text),
@@ -29,6 +29,7 @@ export default css`
       height: 48px;
       font-size: 20px;
       line-height: 46px;
+      border-radius: 6px;
     }
 
     &-primary {

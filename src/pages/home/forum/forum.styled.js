@@ -15,7 +15,7 @@ export const Container = styled(Section)`
 
 export const LeftPanel = styled(Col).attrs({
   sm: 24,
-  md: 14,
+  md: 13,
 })``;
 
 export const RightPanel = styled(Col).attrs({

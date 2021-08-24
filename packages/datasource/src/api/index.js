@@ -5,6 +5,7 @@ export * as operation from './operation';
 export * as orgs from './orgs';
 export * as profile from './profile';
 export * as social from './social';
+export * as subscribe from './subscribe';
 
 export { default as client } from './client';
 export { me } from './me';

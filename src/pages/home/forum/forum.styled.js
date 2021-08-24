@@ -1,27 +1,16 @@
 import AsktugSvg from './asktug.svg';
 import styled from 'styled-components';
-import { Col } from 'antd';
 import { colors } from '@tidb-community/ui';
 
-import { Section, Content, Title, ModuleTitle } from '~/pages/home/index.styled';
+import { Section, ModuleTitle } from '~/pages/home/index.styled';
 
-export { Content, Title, ModuleTitle };
+export { ModuleTitle };
 
 export const Container = styled(Section)`
   && {
     background: ${colors.M2};
   }
 `;
-
-export const LeftPanel = styled(Col).attrs({
-  sm: 24,
-  md: 13,
-})``;
-
-export const RightPanel = styled(Col).attrs({
-  sm: 24,
-  md: 8,
-})``;
 
 export const Posts = styled.div`
   margin-bottom: 1rem;

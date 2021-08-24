@@ -1,19 +1,19 @@
 import styled, { css } from 'styled-components';
+import { Button, Input, Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import { Section } from '~/pages/home/index.styled';
-import { Button, Input, Row } from 'antd';
 
 export const Container = styled.div`
-  ${mixins.reset()}
-  ${mixins.centerBlock()}
-  ${mixins.responsive()}
+  ${mixins.reset()};
+  ${mixins.centerBlock()};
+  ${mixins.responsive()};
 
   ${(props) =>
     props.isMobile &&
     css`
+      ${mixins.flexCenter()};
       text-align: center;
-      ${mixins.flexCenter()}
     `}
 `;
 
@@ -24,8 +24,8 @@ export const SloganBox = styled(Row)`
 `;
 
 export const SubscriptionSection = styled(Section)`
-  ${mixins.flexCenter()}
-  background-image: url("images/tugHome/subscription-background.svg");
+  ${mixins.flexCenter()};
+  background-image: url('/images/home/subscription-background.svg');
   background-size: cover;
   padding-top: 4rem;
   padding-bottom: 4rem;
@@ -54,7 +54,7 @@ export const Link = styled.a`
 `;
 
 export const JoinButton = styled(Button)`
-  ${mixins.flexCenter()}
+  ${mixins.flexCenter()};
   ${(props) =>
     props.isMobile
       ? css`
@@ -67,20 +67,14 @@ export const JoinButton = styled(Button)`
 `;
 
 export const EmailInput = styled(Input.Search)`
-  height: 45px;
   margin-top: 2rem;
   border-radius: 6px;
   max-width: 350px;
 
-  span {
-    font-size: 16px;
-  }
-
+  &,
+  .ant-btn,
   .ant-input-affix-wrapper {
-    height: 45px;
-  }
-
-  button.ant-btn {
+    font-size: 16px;
     height: 45px;
   }
 `;

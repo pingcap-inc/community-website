@@ -1,22 +1,23 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'next-i18next';
-import { Col, Grid, Row, message } from 'antd';
 import * as yup from 'yup';
+import React, { useState } from 'react';
+import { Col, Grid, Row, message } from 'antd';
+import { useTranslation } from 'next-i18next';
 
-import { api } from '@tidb-community/datasource';
 import * as Styled from './subscription.styled';
+import { api } from '@tidb-community/datasource';
+
 const { useBreakpoint } = Grid;
 
-// email validation schema
 const schema = yup.object().shape({
   email: yup.string().email(),
 });
 
 const Subscription = () => {
   const { t } = useTranslation('page-home');
+  const bp = useBreakpoint();
 
   const lang = t('subscription', { returnObjects: true });
-  const bp = useBreakpoint();
+  const { links: linksLang, emailInput: emailInputLang } = lang;
 
   const [email, setEmail] = useState('');
 
@@ -30,14 +31,14 @@ const Subscription = () => {
       if (valid) {
         try {
           await api.subscribe.addEmail(email);
-          message.success(lang.emailInput.successMsg);
+          message.success(emailInputLang.successMsg);
         } catch (e) {
           // when API call returns an error
-          message.error(lang.emailInput.errorMsg);
+          message.error(emailInputLang.errorMsg);
         }
       } else {
         // when yup validation fails
-        message.error(lang.emailInput.invalidMsg);
+        message.error(emailInputLang.invalidMsg);
       }
     });
   };
@@ -50,10 +51,10 @@ const Subscription = () => {
             <Row justify={isSmallScreen && 'center'}>
               <Styled.SloganBox>
                 <Styled.Slogan>
-                  {lang.slogan}, {lang.links.see}
-                  <Styled.Link href={lang.links.orgArch.url}>{lang.links.orgArch.label}</Styled.Link>
-                  {lang.links.connective}
-                  <Styled.Link href={lang.links.contributorList.url}>{lang.links.contributorList.label}</Styled.Link>
+                  {lang.slogan}, {linksLang.see}
+                  <Styled.Link href={linksLang.orgArch.url}>{linksLang.orgArch.label}</Styled.Link>
+                  {linksLang.connective}
+                  <Styled.Link href={linksLang.contributorList.url}>{linksLang.contributorList.label}</Styled.Link>
                 </Styled.Slogan>
               </Styled.SloganBox>
             </Row>
@@ -66,9 +67,9 @@ const Subscription = () => {
           <Col xs={24} lg={8} justify>
             <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
             <Styled.EmailInput
-              placeholder={lang.emailInput.placeHolder}
+              placeholder={emailInputLang.placeHolder}
               allowClear
-              enterButton={lang.emailInput.submit}
+              enterButton={emailInputLang.submit}
               onChange={(evt) => setEmail(evt.target.value)}
               size="large"
               onSearch={subscribeEmail}

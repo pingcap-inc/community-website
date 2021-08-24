@@ -45,7 +45,7 @@ const Subscription = () => {
 
   return (
     <Styled.SubscriptionSection>
-      <Styled.Container isMobile={isSmallScreen}>
+      <Styled.Container isSmallScreen={isSmallScreen}>
         <Row>
           <Col xs={24} lg={16}>
             <Row justify={isSmallScreen && 'center'}>
@@ -59,7 +59,7 @@ const Subscription = () => {
               </Styled.SloganBox>
             </Row>
             <Row justify={isSmallScreen && 'center'}>
-              <Styled.JoinButton type="primary" isMobile={isSmallScreen}>
+              <Styled.JoinButton type="primary" $isSmallScreen={isSmallScreen}>
                 {lang.joinButton.label}
               </Styled.JoinButton>
             </Row>

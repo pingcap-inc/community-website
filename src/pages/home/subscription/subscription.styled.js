@@ -10,7 +10,7 @@ export const Container = styled.div`
   ${mixins.responsive()};
 
   ${(props) =>
-    props.isMobile &&
+    props.isSmallScreen &&
     css`
       ${mixins.flexCenter()};
       text-align: center;
@@ -56,7 +56,7 @@ export const Link = styled.a`
 export const JoinButton = styled(Button)`
   ${mixins.flexCenter()};
   ${(props) =>
-    props.isMobile
+    props.$isSmallScreen
       ? css`
           margin-bottom: 50px;
           margin-top: 28px;

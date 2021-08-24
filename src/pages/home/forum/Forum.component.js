@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Row } from 'antd';
+import { Button } from 'antd';
 import { EditFilled } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
@@ -8,6 +8,7 @@ import * as Styled from './forum.styled';
 import * as mock from './forum.mock';
 import Categories from './categories';
 import Post from './post';
+import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
@@ -34,11 +35,10 @@ const Forum = () => {
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
-      <Styled.Content>
-        <Styled.Title>{lang.title}</Styled.Title>
-
-        <Row justify="space-between">
-          <Styled.LeftPanel>
+      <TwoColumnsLayout
+        title={lang.title}
+        leftPanel={
+          <>
             <Styled.Posts>
               {mock.posts.map((post, idx) => {
                 const props = {
@@ -52,9 +52,10 @@ const Forum = () => {
               })}
             </Styled.Posts>
             <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
-          </Styled.LeftPanel>
-
-          <Styled.RightPanel>
+          </>
+        }
+        rightPanel={
+          <>
             <Styled.Module>
               <Styled.ModuleTitle>{lang.postQuestion}</Styled.ModuleTitle>
               <p>
@@ -74,9 +75,9 @@ const Forum = () => {
               </Styled.ModuleTitle>
               <Categories categories={lang.categories} />
             </Styled.Module>
-          </Styled.RightPanel>
-        </Row>
-      </Styled.Content>
+          </>
+        }
+      />
     </Styled.Container>
   );
 };

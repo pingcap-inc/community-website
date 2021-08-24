@@ -5,7 +5,7 @@ const { successResp, errorResp, middlewares } = require('../utils');
 const { wait, oneOf } = middlewares;
 
 router.post(
-  '/',
+  '',
   wait(),
   oneOf(
     successResp(),

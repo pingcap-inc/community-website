@@ -32,7 +32,70 @@
   },
   "forum": {
     "title": "问答论坛",
-    "reply": "回复"
+    "reply": "回复",
+    "postQuestion": "快速发帖提问",
+    "writePost": "写帖子",
+    "hotCategories": "热门分类",
+    "whatIsAskTug": "是社区的问答网站，用户可以在这里提出、解答问题，分享文章，共同建设 TiDB 项目。",
+    "comply": "在论坛中发言请自觉遵守",
+    "doc": {
+      "text": "《问题搜索指引&提问准则》",
+      "link": "https://asktug.com/t/topic/93912"
+    },
+    "categories": [
+      {
+        "name": "新手区",
+        "link": "https://asktug.com/c/newcomer"
+      },
+      {
+        "name": "部署 & 监控",
+        "link": "https://asktug.com/c/administration"
+      },
+      {
+        "name": "备份 & 数据迁移",
+        "link": "https://asktug.com/c/tools"
+      },
+      {
+        "name": "开发者 & 应用适配",
+        "link": "https://asktug.com/c/developer"
+      },
+      {
+        "name": "性能调优",
+        "link": "https://asktug.com/c/performance"
+      },
+      {
+        "name": "Real-Time HTAP",
+        "link": "https://asktug.com/c/tispark-tiflash"
+      },
+      {
+        "name": "安全加固",
+        "link": "https://asktug.com/c/90030-category"
+      },
+      {
+        "name": "互助交流区",
+        "link": "https://asktug.com/c/Mutual-communication"
+      },
+      {
+        "name": "技术⽂章",
+        "link": "https://asktug.com/c/blog"
+      },
+      {
+        "name": "TUG 社区活动",
+        "link": "https://asktug.com/c/community-activities"
+      },
+      {
+        "name": "关于 TUG",
+        "link": "https://asktug.com/c/tug"
+      },
+      {
+        "name": "学习与认证",
+        "link": "https://asktug.com/c/pu"
+      },
+      {
+        "name": "建议 & 反馈",
+        "link": "https://asktug.com/c/advice-feedback"
+      }
+    ]
   },
   "blogs": {
     "title": "博客"

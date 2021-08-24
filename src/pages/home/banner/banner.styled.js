@@ -100,7 +100,6 @@ export const TryButton = styled(Button).attrs({
   type: 'primary',
   size: 'large',
 })`
-  border-radius: 6px;
   padding: 0 2rem !important;
 
   span {

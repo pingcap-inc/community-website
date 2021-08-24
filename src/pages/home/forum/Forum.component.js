@@ -1,13 +1,16 @@
 import React from 'react';
+import { Button, Row } from 'antd';
+import { EditFilled } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './forum.styled';
 import * as mock from './forum.mock';
+import Categories from './categories';
 import Post from './post';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '~/pages/home/index.hooks';
+import { useIsSmallScreen } from '~/hooks';
 
 const Forum = () => {
   const router = useRouter();
@@ -21,23 +24,58 @@ const Forum = () => {
     linkUtils.handleRedirect(router, link);
   };
 
+  const writePostButtonProps = {
+    type: 'primary',
+    size: 'large',
+    icon: <EditFilled />,
+    children: lang.writePost,
+    onClick: onClick('https://asktug.com'),
+  };
+
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
         <Styled.Title>{lang.title}</Styled.Title>
-        <Styled.Posts>
-          {mock.posts.map((post, idx) => {
-            const props = {
-              key: idx,
-              lang,
-              onClick,
-              ...post,
-            };
 
-            return <Post {...props} />;
-          })}
-        </Styled.Posts>
-        <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+        <Row justify="space-between">
+          <Styled.LeftPanel>
+            <Styled.Posts>
+              {mock.posts.map((post, idx) => {
+                const props = {
+                  key: idx,
+                  lang,
+                  onClick,
+                  ...post,
+                };
+
+                return <Post {...props} />;
+              })}
+            </Styled.Posts>
+            <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+          </Styled.LeftPanel>
+
+          <Styled.RightPanel>
+            <Styled.Module>
+              <Styled.ModuleTitle>{lang.postQuestion}</Styled.ModuleTitle>
+              <p>
+                <Styled.AsktugLogo />
+                {lang.whatIsAskTug}
+              </p>
+              <p>
+                {lang.comply}
+                <Link href={lang.doc.link}>{lang.doc.text}</Link>
+              </p>
+              <Button {...writePostButtonProps} />
+            </Styled.Module>
+            <Styled.Module>
+              <Styled.ModuleTitle>
+                {lang.hotCategories}
+                <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+              </Styled.ModuleTitle>
+              <Categories categories={lang.categories} />
+            </Styled.Module>
+          </Styled.RightPanel>
+        </Row>
       </Styled.Content>
     </Styled.Container>
   );

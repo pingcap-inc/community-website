@@ -6,6 +6,7 @@ import { useTranslation } from 'next-i18next';
 
 import * as Styled from './forum.styled';
 import * as mock from './forum.mock';
+import Categories from './categories';
 import Post from './post';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
@@ -71,6 +72,7 @@ const Forum = () => {
                 {lang.hotCategories}
                 <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
               </Styled.ModuleTitle>
+              <Categories categories={lang.categories} />
             </Styled.Module>
           </Styled.RightPanel>
         </Row>

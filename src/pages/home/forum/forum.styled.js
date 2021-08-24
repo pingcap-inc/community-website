@@ -38,6 +38,10 @@ export const Module = styled.div`
   &:last-child {
     border-bottom: 0;
   }
+
+  p {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const AsktugLogo = styled(AsktugSvg)`

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Row } from 'antd';
+import { Button, Row } from 'antd';
+import { EditFilled } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
@@ -20,6 +21,14 @@ const Forum = () => {
   const onClick = (link) => (e) => {
     e.preventDefault();
     linkUtils.handleRedirect(router, link);
+  };
+
+  const writePostButtonProps = {
+    type: 'primary',
+    size: 'large',
+    icon: <EditFilled />,
+    children: lang.writePost,
+    onClick: onClick('https://asktug.com'),
   };
 
   return (
@@ -55,6 +64,7 @@ const Forum = () => {
                 {lang.comply}
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
+              <Button {...writePostButtonProps} />
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>{lang.hotCategories}</Styled.ModuleTitle>

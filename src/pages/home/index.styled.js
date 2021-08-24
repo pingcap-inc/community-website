@@ -47,7 +47,10 @@ export const Title = styled.h2`
 `;
 
 export const ModuleTitle = styled.h3`
+  ${mixins.flexVerticalCenter()};
+  justify-content: space-between;
+  line-height: 1;
   font-size: 20px;
   font-weight: normal !important;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 `;

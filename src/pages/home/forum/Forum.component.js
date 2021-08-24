@@ -67,7 +67,10 @@ const Forum = () => {
               <Button {...writePostButtonProps} />
             </Styled.Module>
             <Styled.Module>
-              <Styled.ModuleTitle>{lang.hotCategories}</Styled.ModuleTitle>
+              <Styled.ModuleTitle>
+                {lang.hotCategories}
+                <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+              </Styled.ModuleTitle>
             </Styled.Module>
           </Styled.RightPanel>
         </Row>

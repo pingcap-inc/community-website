@@ -48,7 +48,7 @@ const Subscription = () => {
       <Styled.Container isSmallScreen={isSmallScreen}>
         <Row>
           <Col xs={24} lg={16}>
-            <Row justify={isSmallScreen && 'center'}>
+            <Row justify={isSmallScreen ? 'center' : undefined}>
               <Styled.SloganBox>
                 <Styled.Slogan>
                   {lang.slogan}, {linksLang.see}
@@ -58,13 +58,13 @@ const Subscription = () => {
                 </Styled.Slogan>
               </Styled.SloganBox>
             </Row>
-            <Row justify={isSmallScreen && 'center'}>
+            <Row justify={isSmallScreen ? 'center' : undefined}>
               <Styled.JoinButton type="primary" $isSmallScreen={isSmallScreen}>
                 {lang.joinButton.label}
               </Styled.JoinButton>
             </Row>
           </Col>
-          <Col xs={24} lg={8} justify>
+          <Col xs={24} lg={8}>
             <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
             <Styled.EmailInput
               placeholder={emailInputLang.placeHolder}

@@ -5,10 +5,11 @@ import * as colors from '../colors';
 export default css`
   .ant-btn {
     height: 40px;
-    line-height: 38px;
     padding: 0 16px;
+    line-height: 38px;
     text-transform: uppercase;
     text-shadow: none;
+    border-radius: 4px;
     box-shadow: none;
 
     &:hover:not(&-link):not(&-primary):not(&-text),
@@ -19,15 +20,16 @@ export default css`
 
     &-sm {
       height: 32px;
-      line-height: 30px;
       padding: 0 14px;
       font-size: 14px;
+      line-height: 30px;
     }
 
     &-lg {
       height: 48px;
-      line-height: 46px;
       font-size: 20px;
+      line-height: 46px;
+      border-radius: 6px;
     }
 
     &-primary {

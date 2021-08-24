@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 
 import * as Styled from './welcome.styled';
 import { link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '~/pages/home/index.hooks';
+import { useIsSmallScreen } from '~/hooks';
 
 const Welcome = () => {
   const router = useRouter();

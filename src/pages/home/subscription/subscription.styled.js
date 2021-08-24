@@ -5,8 +5,6 @@ import { colors, mixins } from '@tidb-community/ui';
 import { Section } from '~/pages/home/index.styled';
 
 export const Container = styled.div`
-  ${mixins.reset()};
-  ${mixins.centerBlock()};
   ${mixins.responsive()};
 
   ${(props) =>
@@ -24,7 +22,6 @@ export const SloganBox = styled(Row)`
 `;
 
 export const SubscriptionSection = styled(Section)`
-  ${mixins.flexCenter()};
   background-image: url('/images/home/subscription-background.svg');
   background-size: cover;
   padding-top: 4rem;

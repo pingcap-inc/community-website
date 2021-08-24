@@ -137,7 +137,15 @@
     "title": "如何贡献代码"
   },
   "others": {
-    "title": "其他链接"
+    "title": "其他链接",
+    "more": "查看更多",
+    "videos": "视频专区",
+    "jobs": {
+      "subtitle": "工作机会",
+      "desc": "如果你喜欢新技术，希望在分布式数据库领域实现自己的价值，TiDB 社区联合了相关生态企业为你提供了就业的机会，帮助你在工作中实践 TiDB 知识，获得职业上的成长。"
+    },
+    "businessSupport": "寻找商业支持",
+    "communityCollaboration": "社区合作"
   },
   "subscription": {
     "title": "订阅 TiDB 社区的最新资讯",

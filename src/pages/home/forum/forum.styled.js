@@ -2,9 +2,9 @@ import AsktugSvg from './asktug.svg';
 import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
-import { Section, ModuleTitle } from '~/pages/home/index.styled';
+import { Section } from '~/pages/home/index.styled';
 
-export { ModuleTitle };
+export { ModuleTitle } from '~/pages/home/index.styled';
 
 export const Container = styled(Section)`
   && {

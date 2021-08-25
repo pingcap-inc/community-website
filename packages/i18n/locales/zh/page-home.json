@@ -36,7 +36,7 @@
     "postQuestion": "快速发帖提问",
     "writePost": "写帖子",
     "hotCategories": "热门分类",
-    "whatIsAskTug": "是社区的问答网站，用户可以在这里提出、解答问题，分享文章，共同建设 TiDB 项目。",
+    "intro": "是社区的问答网站，用户可以在这里提出、解答问题，分享文章，共同建设 TiDB 项目。",
     "comply": "在论坛中发言请自觉遵守",
     "doc": {
       "text": "《问题搜索指引&提问准则》",
@@ -98,7 +98,34 @@
     ]
   },
   "blogs": {
-    "title": "博客"
+    "title": "博客",
+    "shareExperience": "想分享经验？",
+    "writeBlog": "写博客",
+    "articleCategories": "文章分类",
+    "intro": "「博客」是社区的技术文章集合地，用户可以在这里查看、分享高质量的博客文章，学习干货。",
+    "comply": "发表、分享技术文章请自觉遵守",
+    "doc": {
+      "text": "社区准则",
+      "link": "https://asktug.com/t/topic/93912"
+    },
+    "categories": [
+      {
+        "name": "⽤户实践与应⽤",
+        "link": "https://asktug.com/c/blog/practice"
+      },
+      {
+        "name": "原理解读",
+        "link": "https://asktug.com/c/blog/theory"
+      },
+      {
+        "name": "经验教程",
+        "link": "https://asktug.com/c/blog/how-to"
+      },
+      {
+        "name": "测评",
+        "link": "https://asktug.com/c/blog/review"
+      }
+    ]
   },
   "activities": {
     "title": "活动"

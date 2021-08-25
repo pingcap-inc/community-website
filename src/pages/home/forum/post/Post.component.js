@@ -6,7 +6,7 @@ import * as Styled from './post.styled.js';
 
 const tagColors = [colors.T1, colors.T3, colors.T5];
 
-const Post = ({ title, link, user, tags, replyNum, updateTime, onClick, lang }) => (
+const Post = ({ title, link, user, tags, replyNum, createdTime, onClick, lang }) => (
   <Styled.Container onClick={onClick(link)}>
     <Styled.TitleRow>
       <h3>{title}</h3>
@@ -25,7 +25,7 @@ const Post = ({ title, link, user, tags, replyNum, updateTime, onClick, lang }) 
           <Styled.Tag key={idx} color={tagColors[idx] || tagColors[0]} text={tag} />
         ))}
       </div>
-      <span>{dayjs(updateTime).fromNow()}</span>
+      <span>{dayjs(createdTime).fromNow()}</span>
     </Styled.InformationRow>
   </Styled.Container>
 );

@@ -8,7 +8,7 @@ import VideoThumbnail from './videoThumbnail';
 import { mockVideos } from './Others.mock';
 
 const jobsLogoList = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map(
-  (el) => `/images/home/${el}-logo.png`
+  (el) => `/images/home/others-${el}-logo.png`
 );
 
 const Others = () => {
@@ -59,22 +59,21 @@ const Others = () => {
           {/* business support */}
           <Styled.Subtitle> {lang.businessSupport.subtitle} </Styled.Subtitle>
           <Styled.LogoWrapper>
-            <Styled.Logo src={'/images/home/pingcap-logo.svg'} />
+            <Styled.Logo src={'/images/home/others-pingcap-logo.svg'} />
           </Styled.LogoWrapper>
           <Styled.Text> {lang.businessSupport.desc} </Styled.Text>
           <Styled.Divider />
           <Styled.Subtitle> {lang.communityCollaboration.subtitle} </Styled.Subtitle>
           <Styled.LogoWrapper>
-            <Styled.Logo src={'/images/home/tikv-logo.svg'} />
+            <Styled.Logo src={'/images/home/others-tikv-logo.svg'} />
           </Styled.LogoWrapper>
           <Styled.Text> {lang.communityCollaboration.tikvDesc} </Styled.Text>
           <Styled.LogoWrapper>
-            <Styled.Logo src={'/images/home/chaos-mesh-logo.svg'} />
+            <Styled.Logo src={'/images/home/others-chaos-mesh-logo.svg'} />
           </Styled.LogoWrapper>
           <Styled.Text> {lang.communityCollaboration.chaosMeshDesc} </Styled.Text>
           <Styled.Divider />
           <Styled.Text>
-            {' '}
             {lang.contact.label}
             <Styled.LinkText> {lang.contact.linkText} </Styled.LinkText> !
           </Styled.Text>

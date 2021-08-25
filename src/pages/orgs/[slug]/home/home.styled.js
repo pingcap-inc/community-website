@@ -95,8 +95,18 @@ export const TopicTitle = styled.a.attrs({ target: '_blank' })`
 
 export const PopContent = styled.div`
   ${mixins.typography('p2')};
+  width: 360px;
+  @media screen and (max-width: 768px) {
+    width: 240px;
+  }
 `;
 
 export const InfoCircleFilled = styled(AntInfoCircleFilled)`
   color: ${colors.B2} !important;
+`;
+
+export const Tooltips = styled.div`
+  margin-top: 14px;
+  font-size: 12px;
+  opacity: 0.5;
 `;

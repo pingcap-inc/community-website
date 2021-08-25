@@ -18,5 +18,6 @@ router.post('/:slug/remove-member', require('./[slug]/removeMember'));
 router.post('/:slug/upload-logo', require('./[slug]/uploadLogo'));
 router.put('/:slug', require('./[slug]/updateInfo'));
 router.put('/:slug/member-role', require('./[slug]/updateMemberRole'));
+router.post('/:slug/topic-urgencies/precheck', require('./[slug]/urgePrecheck'));
 
 module.exports = router;

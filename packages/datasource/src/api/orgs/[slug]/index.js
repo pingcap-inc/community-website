@@ -48,3 +48,7 @@ export const topicUrgencies = ({ slug, topicId }) => {
 export const urgeTopic = ({ slug, topicId }) => {
   return client.post(`/api/orgs/${slug}/topic-urgencies`, { topic_id: topicId });
 };
+
+export const urgeTopicCheck = ({ slug, topicId }) => {
+  return client.post(`/api/orgs/${slug}/topic-urgencies/precheck`, { topic_id: topicId });
+};

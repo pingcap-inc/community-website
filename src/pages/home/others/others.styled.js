@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-import { Content, Section, Title } from '~/pages/home/index.styled';
+import { Section } from '~/pages/home/index.styled';
 import { Row } from 'antd';
-
-export { Content, Title };
 
 export const Container = styled(Section)`
   && {
@@ -15,18 +13,6 @@ export const Container = styled(Section)`
 export const Subtitle = styled.span`
   font-size: 20px;
   font-weight: normal;
-`;
-
-export const More = styled.span`
-  font-size: 16px;
-  color: ${colors.B1};
-`;
-
-export const SubsectionHeaderBox = styled.div`
-  display: flex;
-  justify-content: space-between;
-  //margin-top: 2rem;
-  margin-bottom: 2rem;
 `;
 
 export const Text = styled.div`

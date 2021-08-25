@@ -30,7 +30,6 @@ const Blogs = () => {
             {mock.blogs.map((blog, idx) => {
               const props = {
                 key: idx,
-                lang,
                 onClick,
                 ...blog,
               };

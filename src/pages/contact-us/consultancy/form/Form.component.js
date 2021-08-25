@@ -1,5 +1,5 @@
 import React from 'react';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import useSWR from 'swr';
 import { Checkbox, DatePicker, FormItem, Input, InputNumber, Select } from 'formik-antd';
 import { Col } from 'antd';
@@ -47,9 +47,7 @@ const FormComponent = () => {
     submitApiFormatter: (values) => ({
       ...values,
       occupation_rate_of_tidb: parseInt(values.occupation_rate_of_tidb, 10) / 100,
-      launch_or_poc_date: values.launch_or_poc_date
-        ? moment(values.launch_or_poc_date).format('YYYY-MM-DD')
-        : undefined,
+      launch_or_poc_date: values.launch_or_poc_date ? dayjs(values.launch_or_poc_date).format('YYYY-MM-DD') : undefined,
     }),
   };
 

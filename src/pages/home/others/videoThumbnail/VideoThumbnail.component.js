@@ -1,12 +1,19 @@
 import * as Styled from './videoThumbnail.style';
+import { ClockCircleOutlined, PlaySquareOutlined } from '@ant-design/icons';
 
 const VideoThumbnail = (props) => {
   return (
     <Styled.VideoBox isSmallScreen={props.isSmallScreen}>
       <Styled.PreviewWrapper>
-        <Styled.Preview></Styled.Preview>
+        <Styled.Preview src={props.coverSrc} />
       </Styled.PreviewWrapper>
-      <Styled.Title> 在大数据负载下指导查询优化器 | Paper Reading 线上直播 </Styled.Title>
+      <Styled.Title> {props.title} </Styled.Title>
+      <Styled.IconWrapper>
+        <PlaySquareOutlined /> {props.views}
+      </Styled.IconWrapper>
+      <Styled.IconWrapper>
+        <ClockCircleOutlined /> {props.date}
+      </Styled.IconWrapper>
     </Styled.VideoBox>
   );
 };

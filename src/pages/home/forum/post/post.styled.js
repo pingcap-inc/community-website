@@ -16,6 +16,7 @@ export const Container = styled.div`
   h3 {
     font-size: 18px;
     font-weight: normal !important;
+    margin-bottom: 1rem;
   }
 
   &:hover {

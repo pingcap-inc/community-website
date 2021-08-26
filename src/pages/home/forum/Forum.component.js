@@ -60,7 +60,7 @@ const Forum = () => {
               <Styled.ModuleTitle>{lang.postQuestion}</Styled.ModuleTitle>
               <p>
                 <Styled.AsktugLogo />
-                {lang.whatIsAskTug}
+                {lang.intro}
               </p>
               <p>
                 {lang.comply}

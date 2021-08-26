@@ -16,6 +16,6 @@ router.use('/api/profile', require('./profile'));
 router.use('/api/signup', require('./signup'));
 router.use('/api/social', require('./social'));
 router.use('/api/tidb-releases', require('./tidbReleases'));
-router.use('/api/subscribe', require('./subscribe'));
+router.use('/next-api/subscribe', require('./subscribe'));
 
 module.exports = router;

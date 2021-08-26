@@ -47,6 +47,10 @@ const config = {
 
     return config;
   },
+
+  async rewrites() {
+    return [{ source: '/next-api/:path*', destination: '/api/:path*' }];
+  },
 };
 
 if (process.env.ENABLE_SENTRY === 'true') {

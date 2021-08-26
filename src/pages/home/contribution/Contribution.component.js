@@ -24,11 +24,13 @@ const Contribution = () => {
             <Styled.Text> {lang.guide.desc} </Styled.Text>
             {lang.guide.steps.map((step, idx) => (
               <Styled.StepBox>
-                <Row gutter={32} wrap={false}>
-                  <Col>
-                    <Styled.StepIcon src={`/images/home/contribution-step-${idx + 1}.svg`} />
+                <Row gutter={32} wrap={false} justify={isSmallScreen && 'space-between'}>
+                  <Col xs={{ order: 2 }} md={{ order: 1 }}>
+                    <Styled.StepIconWrapper>
+                      <Styled.StepIcon src={`/images/home/contribution-step-${idx + 1}.svg`} />
+                    </Styled.StepIconWrapper>
                   </Col>
-                  <Col>
+                  <Col xs={{ order: 1 }} md={{ order: 2 }}>
                     <Styled.StepHeader>
                       {' '}
                       {lang.guide.stepPrefix} {idx + 1} {'.'} {step.title}
@@ -38,7 +40,7 @@ const Contribution = () => {
                 </Row>
               </Styled.StepBox>
             ))}
-            <Styled.EngageCallBox>
+            <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
               <ModuleTitle> {lang.guide.engageCall} </ModuleTitle>
               <Button type={'primary'}> {lang.guide.learnMoreLabel} </Button>
             </Styled.EngageCallBox>

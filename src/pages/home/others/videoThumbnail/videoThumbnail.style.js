@@ -3,6 +3,7 @@ import { colors, mixins } from '@tidb-community/ui';
 
 export const PreviewWrapper = styled.div`
   max-width: 100%;
+  position: relative;
 `;
 
 export const VideoBox = styled.div`
@@ -28,6 +29,20 @@ export const Preview = styled.div`
   height: 100px;
   border-radius: 4px;
 `;
+
+export const Length = styled.div`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-bottom-right-radius: 4px;
+  border-top-left-radius: 4px;
+  font-size: 12px;
+  color: white;
+  padding-right: 4px;
+  padding-left: 4px;
+  background-color: rgb(0, 0, 0, 40%);
+`;
+
 export const Title = styled.div`
   font-size: 16px;
   font-weight: 400;

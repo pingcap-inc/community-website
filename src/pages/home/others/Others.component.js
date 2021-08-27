@@ -35,10 +35,11 @@ const Others = () => {
                 <Col xs={24} md={8}>
                   <VideoThumbnail
                     isSmallScreen={isSmallScreen}
-                    coverSrc={meta.coverSrc}
+                    coverSrc={meta.cover_image}
                     title={meta.title}
-                    views={meta.views}
-                    date={meta.date}
+                    views={meta.play_count}
+                    date={meta.created.split('-').slice(1).join('-')}
+                    length={meta.length}
                   />
                 </Col>
               ))}

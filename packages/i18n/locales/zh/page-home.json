@@ -137,6 +137,7 @@
     "certificateLink": "",
     "videosTitle": "Get Started with TiDB",
     "freeLabel": "(FREE)",
+    "more": "更多课程",
     "majorVideo": {
       "desc": "在 Get Started with TiDB 课程中，您将学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
       "link": "",

@@ -37,7 +37,7 @@ const Learning = () => {
                 <Styled.VideoBoxWrapper isSmallScreen={isSmallScreen}>
                   <Styled.VideoBox isSmallScreen={isSmallScreen} src={lang.majorVideo.coverUrl}>
                     <Styled.VideoPlayButton>
-                      <Styled.VideoPlayIcon color={'white'} height={'48px'} />
+                      <Styled.VideoPlayIcon color="white" height="48px" />
                     </Styled.VideoPlayButton>
                     {!isSmallScreen && (
                       <Styled.VideoCaption isSmallScreen={isSmallScreen}>{lang.majorVideo.desc}</Styled.VideoCaption>
@@ -59,7 +59,7 @@ const Learning = () => {
             </Styled.VideosRow>
             {isSmallScreen && <Styled.Text>{lang.majorVideoDesc}</Styled.Text>}
 
-            <Styled.More isSmallScreen={isSmallScreen}>更多课程</Styled.More>
+            <Styled.More isSmallScreen={isSmallScreen}> {lang.more} </Styled.More>
           </>
         }
         rightPanel={

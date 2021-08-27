@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import { ModuleTitle, Section } from '~/pages/home/index.styled';
 
@@ -20,18 +20,17 @@ export const StepBox = styled.div`
 
 export const StepHeader = styled.div`
   font-size: 18px;
-  font-weight: 400;
   margin-bottom: 1rem;
 `;
 
+const iconSize = '38px';
+
 export const StepIconWrapper = styled.div`
-  height: 38px;
-  width: 38px;
+  ${mixins.size(iconSize)}
 `;
 
 export const StepIcon = styled.img`
-  height: 38px;
-  //width: 38px;
+  height: ${iconSize};
 `;
 
 export const EngageCallBox = styled.div`

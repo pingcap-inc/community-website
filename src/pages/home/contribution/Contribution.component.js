@@ -1,12 +1,14 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { GithubOutlined } from '@ant-design/icons';
+import { Button, Col, Row } from 'antd';
 
 import * as Styled from './contribution.styled';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { useIsSmallScreen } from '~/hooks';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { Button, Col, Row } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
+
+const getImage = (name) => `/images/home/contribution-${name}`;
 
 const Contribution = () => {
   const { t } = useTranslation('page-home');
@@ -27,12 +29,11 @@ const Contribution = () => {
                 <Row gutter={32} wrap={false} justify={isSmallScreen && 'space-between'}>
                   <Col xs={{ order: 2 }} md={{ order: 1 }}>
                     <Styled.StepIconWrapper>
-                      <Styled.StepIcon src={`/images/home/contribution-step-${idx + 1}.svg`} />
+                      <Styled.StepIcon src={getImage(`step-${idx + 1}.svg`)} />
                     </Styled.StepIconWrapper>
                   </Col>
                   <Col xs={{ order: 1 }} md={{ order: 2 }}>
                     <Styled.StepHeader>
-                      {' '}
                       {lang.guide.stepPrefix} {idx + 1} {'.'} {step.title}
                     </Styled.StepHeader>
                     <Styled.Text> {step.desc} </Styled.Text>
@@ -49,10 +50,9 @@ const Contribution = () => {
         rightPanel={
           <>
             <Styled.ForkTitle> {lang.fork.title} </Styled.ForkTitle>
-            <Styled.IssueList src={'/images/home/contribution-github-issues.jpg'} />
+            <Styled.IssueList src={getImage('github-issues.jpg')} />
             <Button type={'primary'} icon={<GithubOutlined />}>
-              {' '}
-              {lang.fork.buttonLabel}{' '}
+              {lang.fork.buttonLabel}
             </Button>
           </>
         }

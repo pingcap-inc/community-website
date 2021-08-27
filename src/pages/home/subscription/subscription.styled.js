@@ -33,6 +33,7 @@ export const Slogan = styled.div`
   color: ${colors.M1};
   font-size: 20px;
 `;
+
 export const TermCaption = styled.div`
   margin-top: 2rem;
   color: ${colors.M1};
@@ -53,6 +54,7 @@ export const Link = styled.a`
 
 export const JoinButton = styled(Button)`
   ${mixins.flexCenter()};
+
   ${(props) =>
     props.$isSmallScreen
       ? css`

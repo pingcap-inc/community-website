@@ -13,7 +13,6 @@ export const Card = styled.div`
   min-width: ${CARD_WIDTH}px;
   max-width: ${CARD_WIDTH}px;
   border-radius: ${CARD_BORDER_RADIUS}px;
-
   grid-row: auto;
   grid-column: auto;
 
@@ -30,18 +29,15 @@ export const CardHead = styled.div`
   align-items: center;
   height: ${CARD_HEAD_HEIGHT}px;
   padding: 0 35px;
-
   overflow: hidden;
   border-top-left-radius: ${CARD_BORDER_RADIUS}px;
   border-top-right-radius: ${CARD_BORDER_RADIUS}px;
-
   background-color: ${colors.B5};
-
   color: ${colors.M1};
   font-size: 20px;
   line-height: ${CARD_HEAD_HEIGHT}px;
 
-  // new tag
+  /* new tag */
   &::before {
     position: absolute;
     display: block;
@@ -98,7 +94,7 @@ export const Detail = styled.li`
 
   margin-bottom: 1rem;
 
-  // round dot
+  /* round dot */
   &::before {
     display: inline-block;
     content: '';
@@ -106,12 +102,12 @@ export const Detail = styled.li`
     min-width: 9px;
     height: 9px;
     border-radius: 50%;
-    margin: 7.5px 20px 0 0; // 7.5 === (24 - 9) / 2
-
-    background-color: ${colors.B5};7.52background-color
+    background-color: ${colors.B5};
+    /* 7.5 === (24 - 9) / 2 */
+    margin: 7.5px 20px 0 0;
   }
 
-  // tooltips
+  /* tooltips */
   &::after {
     position: absolute;
     z-index: 1;
@@ -158,9 +154,7 @@ export const DetailTag = styled.span`
   width: 47px;
   height: 21px;
   margin-left: 12px;
-
   border-radius: 10px;
-
   font-size: 12px;
   color: ${colors.M1};
   background-color: ${colors.B5};
@@ -173,24 +167,28 @@ export const Cards = styled.div`
   max-width: 1210px;
   width: max-content;
   margin: auto;
+
   @media screen and (min-width: 1270px) {
     grid-template-rows: repeat(2, auto);
     grid-template-columns: repeat(3, auto);
     grid-column-gap: 30px;
     grid-row-gap: 3em;
   }
+
   @media screen and (min-width: 811px) and (max-width: 1269px) {
     grid-template-rows: repeat(3, auto);
     grid-template-columns: repeat(2, auto);
     grid-column-gap: 15px;
     grid-row-gap: 2em;
   }
+
   @media screen and (max-width: 810px) {
     grid-template-rows: repeat(6, auto);
     grid-template-columns: repeat(1, auto);
     grid-column-gap: 0;
     grid-row-gap: 2em;
   }
+
   @media screen and (max-width: 413px) {
     width: unset;
     padding: 0 15px;

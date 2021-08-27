@@ -1,20 +1,22 @@
 import React from 'react';
-import { useTranslation } from 'next-i18next';
-import { GithubOutlined } from '@ant-design/icons';
 import { Button, Col, Row } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contribution.styled';
+import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { useIsSmallScreen } from '~/hooks';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import { getImage as getHomeImage } from '~/pages/home/index.utils';
 
-const getImage = (name) => `/images/home/contribution-${name}`;
+const getImage = (name) => getHomeImage(`contribution-${name}`);
 
 const Contribution = () => {
   const { t } = useTranslation('page-home');
   const { isSmallScreen } = useIsSmallScreen();
 
   const lang = t('contribution', { returnObjects: true });
+  const { guide: guideLang, fork: forkLang } = lang;
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
@@ -22,10 +24,11 @@ const Contribution = () => {
         title={lang.title}
         leftPanel={
           <>
-            <ModuleTitle> {lang.guide.title} </ModuleTitle>
-            <Styled.Text> {lang.guide.desc} </Styled.Text>
-            {lang.guide.steps.map((step, idx) => (
-              <Styled.StepBox>
+            <ModuleTitle>{guideLang.title}</ModuleTitle>
+            <Styled.Text>{guideLang.desc}</Styled.Text>
+
+            {guideLang.steps.map((step, idx) => (
+              <Styled.StepBox key={idx}>
                 <Row gutter={32} wrap={false} justify={isSmallScreen && 'space-between'}>
                   <Col xs={{ order: 2 }} md={{ order: 1 }}>
                     <Styled.StepIconWrapper>
@@ -34,25 +37,26 @@ const Contribution = () => {
                   </Col>
                   <Col xs={{ order: 1 }} md={{ order: 2 }}>
                     <Styled.StepHeader>
-                      {lang.guide.stepPrefix} {idx + 1} {'.'} {step.title}
+                      {guideLang.stepPrefix} {idx + 1} {'.'} {step.title}
                     </Styled.StepHeader>
-                    <Styled.Text> {step.desc} </Styled.Text>
+                    <Styled.Text>{step.desc}</Styled.Text>
                   </Col>
                 </Row>
               </Styled.StepBox>
             ))}
+
             <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
-              <ModuleTitle> {lang.guide.engageCall} </ModuleTitle>
-              <Button type={'primary'}> {lang.guide.learnMoreLabel} </Button>
+              <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
+              <Button type={'primary'}>{guideLang.learnMoreLabel}</Button>
             </Styled.EngageCallBox>
           </>
         }
         rightPanel={
           <>
-            <Styled.ForkTitle> {lang.fork.title} </Styled.ForkTitle>
+            <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
             <Button type={'primary'} icon={<GithubOutlined />}>
-              {lang.fork.buttonLabel}
+              {forkLang.buttonLabel}
             </Button>
           </>
         }

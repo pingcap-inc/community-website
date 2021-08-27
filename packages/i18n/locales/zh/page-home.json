@@ -131,7 +131,86 @@
     "title": "活动"
   },
   "learning": {
-    "title": "如何使用 TiDB"
+    "title": "如何使用 TiDB",
+    "desc": "<0>PingCAP Education</0> 致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得<1>能力认证</1>TiDB 人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。",
+    "educationLink": "",
+    "certificateLink": "",
+    "videosTitle": "Get Started with TiDB",
+    "freeLabel": "(FREE)",
+    "more": "更多课程",
+    "majorVideo": {
+      "desc": "在 Get Started with TiDB 课程中，您将学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
+      "link": "",
+      "coverUrl": "/images/home/others-video-cover-mock.jpg"
+    },
+    "minorVideos": [
+      {
+        "link": "",
+        "coverUrl": "/images/home/others-video-cover-mock.jpg"
+      },
+      {
+        "link": "",
+        "coverUrl": "/images/home/others-video-cover-mock.jpg"
+      },
+      {
+        "link": "",
+        "coverUrl": "/images/home/others-video-cover-mock.jpg"
+      }
+    ],
+    "linkSections": [
+      {
+        "title": "遇到问题，需要帮助？",
+        "links": [
+          {
+            "link": "",
+            "label": "AskTUG 论坛"
+          }
+        ]
+      },
+      {
+        "title": "想获得更多补充学习资料？",
+        "links": [
+          {
+            "link": "",
+            "label": "快速上手指南"
+          },
+          {
+            "link": "",
+            "label": "常见问题解答"
+          },
+          {
+            "link": "",
+            "label": "版本发布历史"
+          },
+          {
+            "link": "",
+            "label": "更多文档资料"
+          }
+        ]
+      },
+      {
+        "title": "想了解更多实践案例？",
+        "links": [
+          {
+            "link": "",
+            "label": "博客"
+          }
+        ]
+      },
+      {
+        "title": "想和其他伙伴交流学习？",
+        "links": [
+          {
+            "link": "",
+            "label": "TiDB User Group"
+          },
+          {
+            "link": "",
+            "label": "参与活动"
+          }
+        ]
+      }
+    ]
   },
   "contribution": {
     "title": "如何贡献代码",

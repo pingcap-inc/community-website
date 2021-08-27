@@ -6,6 +6,7 @@ const VideoThumbnail = (props) => {
     <Styled.VideoBox isSmallScreen={props.isSmallScreen}>
       <Styled.PreviewWrapper>
         <Styled.Preview src={props.coverSrc} />
+        <Styled.Length> {props.length} </Styled.Length>
       </Styled.PreviewWrapper>
       <Styled.Title> {props.title} </Styled.Title>
       <Styled.IconWrapper>

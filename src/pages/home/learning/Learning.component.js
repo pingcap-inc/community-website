@@ -1,10 +1,10 @@
 import React from 'react';
 import { Trans, useTranslation } from 'next-i18next';
+import { Col } from 'antd';
 
 import * as Styled from './learning.styled';
 import TwoColumnsLayout from '../twoColumsLayout';
 import { ModuleTitle } from '../index.styled';
-import { Col } from 'antd';
 import { useIsSmallScreen } from '../../../hooks';
 
 const Learning = () => {
@@ -29,29 +29,28 @@ const Learning = () => {
               />
             </Styled.Text>
             <Styled.VideoHeader>
-              {' '}
               {lang.videosTitle}
               <Styled.FreeLabel>{lang.freeLabel}</Styled.FreeLabel>
             </Styled.VideoHeader>
             <Styled.VideosRow wrap={false}>
               <Col xs={24} md={18}>
                 <Styled.VideoBoxWrapper isSmallScreen={isSmallScreen}>
-                  <Styled.VideoBox isSmallScreen={isSmallScreen}>
+                  <Styled.VideoBox isSmallScreen={isSmallScreen} src={lang.majorVideo.coverUrl}>
                     <Styled.VideoPlayButton>
                       <Styled.VideoPlayIcon color={'white'} height={'48px'} />
                     </Styled.VideoPlayButton>
                     {!isSmallScreen && (
-                      <Styled.VideoCaption isSmallScreen={isSmallScreen}>{lang.majorVideoDesc}</Styled.VideoCaption>
+                      <Styled.VideoCaption isSmallScreen={isSmallScreen}>{lang.majorVideo.desc}</Styled.VideoCaption>
                     )}
                   </Styled.VideoBox>
                 </Styled.VideoBoxWrapper>
               </Col>
               <Col xs={0} md={6}>
-                {[1, 2, 3].map((video) => (
+                {lang.minorVideos.map((video) => (
                   <Styled.VideoBoxWrapperSmall>
-                    <Styled.VideoBox isSmallScreen={isSmallScreen}>
+                    <Styled.VideoBox isSmallScreen={isSmallScreen} src={video.coverUrl}>
                       <Styled.VideoPlayButton>
-                        <Styled.VideoPlayIconSmall color={'white'} height={'48px'} />
+                        <Styled.VideoPlayIcon small />
                       </Styled.VideoPlayButton>
                     </Styled.VideoBox>
                   </Styled.VideoBoxWrapperSmall>

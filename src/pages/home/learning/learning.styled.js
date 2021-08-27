@@ -51,7 +51,7 @@ export const VideoBox = styled.div`
   background-size: auto 100%;
   padding-bottom: 62.8%;
   width: 100%;
-  background-image: url('/images/home/subscription-background.svg');
+  background-image: url(${(props) => props.src});
   border-color: #fff;
   ${(props) =>
     !props.isSmallScreen &&
@@ -61,7 +61,7 @@ export const VideoBox = styled.div`
 `;
 
 export const VideoCaption = styled.div`
-  padding: 0.4rem 0.6rem 0.3rem 0.4rem;
+  padding: 0.4rem;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.46);
   z-index: 2;
@@ -93,12 +93,17 @@ export const VideoPlayButton = styled.div`
 
 export const VideoPlayIcon = styled(PlayCircleFilled)`
   font-size: 5rem;
+  ${(props) =>
+    props.small &&
+    css`
+      font-size: 2rem;
+    `}
   color: white;
-`;
-
-export const VideoPlayIconSmall = styled(PlayCircleFilled)`
-  font-size: 2rem;
-  color: white;
+  opacity: 95%;
+  &:hover {
+    color: ${colors.C2};
+    cursor: pointer;
+  }
 `;
 
 export const VideoBoxWrapper = styled.div`

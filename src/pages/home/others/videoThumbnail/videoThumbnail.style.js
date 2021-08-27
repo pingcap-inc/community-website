@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const PreviewWrapper = styled.div`
   max-width: 100%;
@@ -34,11 +34,7 @@ export const Title = styled.div`
   display: block;
   line-height: 20px;
   margin-top: 0.75rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  ${mixins.lineClamp(2)}
 `;
 
 export const MetaBox = styled.div`

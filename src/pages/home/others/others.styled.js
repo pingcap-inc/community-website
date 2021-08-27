@@ -20,18 +20,6 @@ export const Text = styled.div`
   font-size: 16px;
 `;
 
-export const LinkText = styled.a`
-  font-size: 16px;
-  text-decoration: underline;
-  color: ${colors.B1};
-
-  &:hover {
-    text-decoration: underline;
-    color: inherit;
-    cursor: pointer;
-  }
-`;
-
 export const LogoWrapper = styled.div`
   margin-top: 2rem;
   margin-bottom: 2rem;

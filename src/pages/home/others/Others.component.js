@@ -1,14 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { Col, Row } from 'antd';
 
 import * as Styled from './others.styled';
 import { useIsSmallScreen } from '~/hooks';
-import { Col, Row } from 'antd';
 import VideoThumbnail from './videoThumbnail';
-import { mockVideos } from './Others.mock';
+import { mockVideos } from './others.mock';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { ModuleTitle } from '../index.styled';
 import { Link } from '~/components';
+
 const jobsLogoList = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map(
   (el) => `/images/home/others-${el}-logo.png`
 );
@@ -29,7 +30,7 @@ const Others = () => {
               <Styled.Subtitle> {lang.videos} </Styled.Subtitle>
               <Link> {lang.more} </Link>
             </ModuleTitle>
-            <Row gutter={24}>
+            <Row gutter={16}>
               {mockVideos.slice(0, isSmallScreen ? 3 : 6).map((meta) => (
                 <Col xs={24} md={8}>
                   <VideoThumbnail
@@ -50,7 +51,7 @@ const Others = () => {
             <Row>
               <Styled.Text> {lang.jobs.desc} </Styled.Text>
             </Row>
-            <Styled.LogosBox gutter={28} justify={'center'}>
+            <Styled.LogosBox gutter={16} justify="center">
               {jobsLogoList.map((url) => (
                 <Col>
                   <Styled.Logo src={url} />

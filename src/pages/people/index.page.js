@@ -6,10 +6,10 @@ import HowToBecome from '~/components/people/HowToBecome/HowToBecome';
 import MyLink from '~/components/MyLink';
 import TMCItem from '~/components/people/TMCItem/TMCItem';
 import styles from './people.module.scss';
-import tugData from '~/data/tug_data.js';
+import tugData from '~/data/tug';
 import { CoreLayout } from '~/layouts';
-import { TugHead } from '~/components';
 import { JOIN_TUG_LINK } from '~/constants';
+import { TugHead } from '~/components';
 
 export const getStaticProps = () => {
   const { tmc, leader } = tugData;

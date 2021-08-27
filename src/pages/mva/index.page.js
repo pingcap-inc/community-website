@@ -9,7 +9,7 @@ import MyLink from '~/components/MyLink';
 import WelfareItem from '~/components/mva/WelfareItem';
 import YearSwitch from '~/components/mva/YearSwitch';
 import styles from './mva.module.scss';
-import tugData from '~/data/tug_data.js';
+import tugData from '~/data/tug';
 import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
 

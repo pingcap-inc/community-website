@@ -66,15 +66,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ### /mva
 
 - pages/mva.jsx
-- data/tug_data.js -> mva2021
-- data/tug_data.js -> mva2020
-- data/tug_data.js -> mva2019
+- data/tug.js -> mva2021
+- data/tug.js -> mva2020
+- data/tug.js -> mva2019
 
 ### /people
 
 - pages/people.jsx
-- data/tug_data.js -> tmc
-- data/tug_data.js -> leader
+- data/tug.js -> tmc
+- data/tug.js -> leader
 
 # Folder Structure
 
@@ -110,7 +110,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 请注意：所有 public 目录下的文件将都会对外发布。
 
-### data/tug_data.js
+### data/tug.js
 
 该数据文件默认导出一个 object 含有 /people 页面中的 TUG 会员信息。
 

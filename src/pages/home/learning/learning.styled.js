@@ -1,16 +1,11 @@
 import styled, { css } from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
 import { Col, Row } from 'antd';
 import { PlayCircleFilled } from '@ant-design/icons';
+import { colors, mixins } from '@tidb-community/ui';
 
-import { Section } from '~/pages/home/index.styled';
 import { Link as RawLink } from '~/components';
-export const Container = styled(Section)``;
 
-export const Text = styled.div`
-  font-size: 16px;
-  font-weight: lighter;
-`;
+export { Section as Container, Text } from '~/pages/home/index.styled';
 
 export const Link = styled.a`
   font-weight: lighter;
@@ -35,13 +30,14 @@ export const VideoHeader = styled.div`
 export const FreeLabel = styled.span`
   display: inline-block;
   margin-left: 1rem;
-  font-weight: 300;
+  font-weight: lighter;
   color: ${colors.T1};
 `;
 
 export const LinksRow = styled(Row)`
   margin-bottom: 1rem;
 `;
+
 export const LinkWrapper = styled(Col)`
   padding-bottom: 1rem;
 `;
@@ -52,15 +48,17 @@ export const VideoBox = styled.div`
   padding-bottom: 62.8%;
   width: 100%;
   background-image: url(${(props) => props.src});
-  border-color: white;
+  border-color: ${colors.M1};
+
   ${(props) =>
     !props.isSmallScreen &&
     css`
-      box-shadow: inset 0 0 0 8px white;
+      box-shadow: inset 0 0 0 8px ${colors.M1};
     `}
 `;
 
 export const VideoCaption = styled.div`
+  ${mixins.lineClamp(2)}
   padding: 0.4rem;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.46);
@@ -68,13 +66,11 @@ export const VideoCaption = styled.div`
   left: 0;
   right: 0;
   bottom: 0;
-  color: white;
+  color: ${colors.M1};
   font-size: 15px;
   font-weight: lighter;
-  ${mixins.lineClamp(2)}
   border: 8px solid white;
-  border-top-width: 0;
-  box-sizing: border-box;
+  border-top: none;
 `;
 
 export const VideoPlayButton = styled.div`
@@ -90,22 +86,22 @@ export const VideoPlayButton = styled.div`
 
 export const VideoPlayIcon = styled(PlayCircleFilled)`
   font-size: 5rem;
+  color: ${colors.M1};
+  opacity: 95%;
+
+  &:hover {
+    color: ${colors.C2};
+    cursor: pointer;
+  }
+
   ${(props) =>
     props.small &&
     css`
       font-size: 2rem;
     `}
-  color: white;
-  opacity: 95%;
-  &:hover {
-    color: ${colors.C2};
-    cursor: pointer;
-  }
 `;
 
 export const VideoBoxWrapper = styled.div`
-  box-sizing: border-box;
-  // adjust border for alignment
   ${(props) =>
     !props.isSmallScreen &&
     css`
@@ -126,6 +122,7 @@ export const VideosRow = styled(Row)`
 export const More = styled(RawLink)`
   display: block;
   margin-top: 1rem;
+
   ${(props) =>
     props.isSmallScreen &&
     css`

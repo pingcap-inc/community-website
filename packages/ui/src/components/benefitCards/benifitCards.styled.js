@@ -28,7 +28,6 @@ export const CardHead = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-sizing: border-box;
   height: ${CARD_HEAD_HEIGHT}px;
   padding: 0 35px;
 
@@ -71,7 +70,6 @@ export const CardHead = styled.div`
 `;
 
 export const CardBody = styled.div`
-  box-sizing: border-box;
   height: ${CARD_BODY_HEIGHT}px;
   padding: 2.5rem;
 
@@ -110,7 +108,7 @@ export const Detail = styled.li`
     border-radius: 50%;
     margin: 7.5px 20px 0 0; // 7.5 === (24 - 9) / 2
 
-    background-color: ${colors.B5};
+    background-color: ${colors.B5};7.52background-color
   }
 
   // tooltips
@@ -119,7 +117,6 @@ export const Detail = styled.li`
     z-index: 1;
     display: block;
     width: 265px;
-    box-sizing: border-box;
     padding: 1rem;
     top: 28px;
 
@@ -142,11 +139,11 @@ export const Detail = styled.li`
     color: ${colors.B5};
     cursor: pointer;
     text-decoration: underline;
-    
+
     &::after {
       content: ${JSON.stringify($tooltips)};
     }
-    
+
     &:hover {
       &::after {
         opacity: .85;

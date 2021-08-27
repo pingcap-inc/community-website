@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 import { Button, Input, Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
+import { getImage } from '~/pages/home/index.utils';
 import { Section } from '~/pages/home/index.styled';
 
 export const Container = styled.div`
@@ -22,7 +23,7 @@ export const SloganBox = styled(Row)`
 `;
 
 export const SubscriptionSection = styled(Section)`
-  background-image: url('/images/home/subscription-background.svg');
+  background-image: url(${getImage('subscription-background.svg')});
   background-size: cover;
   padding-top: 4rem;
   padding-bottom: 4rem;

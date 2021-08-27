@@ -134,10 +134,59 @@
     "title": "如何使用 TiDB"
   },
   "contribution": {
-    "title": "如何贡献代码"
+    "title": "如何贡献代码",
+    "guide": {
+      "title": "开发者指南",
+      "desc": "旨在帮助贡献者从新手成长为 TiDB 专家，熟悉 TiDB 的设计和实施，从而能够在现实世界中流畅地使用它，并进行深入开发工作。",
+      "stepPrefix": "Chapter ",
+      "steps": [
+        {
+          "title": "开始准备工作",
+          "desc": "TiDB Hacking Camp 是一个长期的孵化项目，每年举办 1-3 期。活动联合了生态伙伴、合作企业等，旨在帮助 TiDB 生态项目从社区中获取更多资源和帮助。"
+        },
+        {
+          "title": "为 TiDB 做贡献",
+          "desc": "帮助你快速参与社区，描述了贡献类型以及教你如何去快速实现贡献行为。"
+        },
+        {
+          "title": "深入了解 TiDB",
+          "desc": "帮助你熟悉分布式数据库的基本概念，在自己的脑海中建立知识库，包括但不限于分布式数据库中的 SQL 语言、关键组件、算法。已经熟悉这些内容的同学可以跳过本节。"
+        },
+        {
+          "title": "项目管理",
+          "desc": "帮助你参与团队工作，领导功能开发，管理 TiDB 社区中的项目。"
+        }
+      ],
+      "engageCall": "现在，来开发者论坛和内核研发工程师交流学习吧！",
+      "learnMoreLabel": "交流学习"
+    },
+    "fork": {
+      "title": "Go to Fork!",
+      "buttonLabel": "Github"
+    }
   },
   "others": {
-    "title": "其他链接"
+    "title": "其他链接",
+    "more": "查看更多",
+    "videos": "视频专区",
+    "jobs": {
+      "subtitle": "工作机会",
+      "desc": "如果你喜欢新技术，希望在分布式数据库领域实现自己的价值，TiDB 社区联合了相关生态企业为你提供了就业的机会，帮助你在工作中实践 TiDB 知识，获得职业上的成长。"
+    },
+    "businessSupport": {
+      "subtitle": "寻找商业支持",
+      "desc": "PingCAP 是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
+    },
+    "communityCollaboration": {
+      "subtitle": "社区合作",
+      "tikvDesc": "TiKV 是一种高度可扩展、低延迟和易于使用\n键值数据库。",
+      "chaosMeshDesc": "Chaos Mesh® 是一个开源的云原生混沌工程平台，提供丰富的故障模拟类型，具有强大的故障场景编排能力。"
+    },
+    "contact": {
+      "label": "想和我们成为合作伙伴？欢迎",
+      "linkText": "联系我们",
+      "url": ""
+    }
   },
   "subscription": {
     "title": "订阅 TiDB 社区的最新资讯",

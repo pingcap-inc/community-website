@@ -9,6 +9,7 @@ export const Section = styled.div`
   ${(props) =>
     props.isSmallScreen &&
     css`
+      padding: 4rem 0 3rem;
       ${Title} {
         font-size: 24px;
         text-align: center;

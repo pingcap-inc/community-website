@@ -1,9 +1,9 @@
 import styled, { css } from 'styled-components';
-
-import { Section } from '~/pages/home/index.styled';
 import { colors, mixins } from '@tidb-community/ui';
 import { Col, Row } from 'antd';
 import { PlayCircleFilled } from '@ant-design/icons';
+
+import { Section } from '~/pages/home/index.styled';
 import { Link as RawLink } from '~/components';
 export const Container = styled(Section)``;
 
@@ -52,11 +52,11 @@ export const VideoBox = styled.div`
   padding-bottom: 62.8%;
   width: 100%;
   background-image: url(${(props) => props.src});
-  border-color: #fff;
+  border-color: white;
   ${(props) =>
     !props.isSmallScreen &&
     css`
-      box-shadow: inset 0 0 0 8px #fff;
+      box-shadow: inset 0 0 0 8px white;
     `}
 `;
 
@@ -71,11 +71,8 @@ export const VideoCaption = styled.div`
   color: white;
   font-size: 15px;
   font-weight: lighter;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  border: 8px solid #fff;
+  ${mixins.lineClamp(2)}
+  border: 8px solid white;
   border-top-width: 0;
   box-sizing: border-box;
 `;

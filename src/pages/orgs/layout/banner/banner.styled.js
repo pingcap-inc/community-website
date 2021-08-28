@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
 export const Container = styled.div`
-  background-color: white;
+  background-color: ${colors.M1};
   border-bottom: 1px solid ${colors.T2};
 `;
 

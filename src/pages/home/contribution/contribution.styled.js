@@ -1,17 +1,14 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-import { ModuleTitle, Section } from '~/pages/home/index.styled';
+import { ModuleTitle, Section, Text } from '~/pages/home/index.styled';
+
+export { Text };
 
 export const Container = styled(Section)`
   && {
     background: ${colors.M2};
   }
-`;
-
-export const Text = styled.div`
-  font-size: 16px;
-  font-weight: lighter;
 `;
 
 export const StepBox = styled.div`
@@ -35,6 +32,7 @@ export const StepIcon = styled.img`
 
 export const EngageCallBox = styled.div`
   margin-top: 3rem;
+
   ${(props) =>
     props.isSmallScreen &&
     css`

@@ -1,24 +1,31 @@
 import React from 'react';
-import { useTranslation } from 'next-i18next';
 import { Col, Row } from 'antd';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './others.styled';
-import { useIsSmallScreen } from '~/hooks';
-import VideoThumbnail from './videoThumbnail';
-import { mockVideos } from './others.mock';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { ModuleTitle } from '../index.styled';
+import VideoThumbnail from './videoThumbnail';
 import { Link } from '~/components';
+import { ModuleTitle } from '~/pages/home/index.styled';
+import { getImage } from '~/pages/home/index.utils';
+import { mockVideos } from './others.mock';
+import { useIsSmallScreen } from '~/hooks';
 
-const jobsLogoList = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map(
-  (el) => `/images/home/others-${el}-logo.png`
+const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map((el) =>
+  getImage(`others-${el}-logo.png`)
 );
 
 const Others = () => {
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('others', { returnObjects: true });
-  const { isSmallScreen } = useIsSmallScreen();
+  const {
+    jobs: jobsLang,
+    businessSupport: supportLang,
+    communityCollaboration: collaborationLang,
+    contact: contactLang,
+  } = lang;
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
@@ -27,12 +34,12 @@ const Others = () => {
         leftPanel={
           <>
             <ModuleTitle>
-              <Styled.Subtitle> {lang.videos} </Styled.Subtitle>
-              <Link> {lang.more} </Link>
+              <Styled.Subtitle>{lang.videos}</Styled.Subtitle>
+              <Link>{lang.more}</Link>
             </ModuleTitle>
             <Row gutter={16}>
-              {mockVideos.slice(0, isSmallScreen ? 3 : 6).map((meta) => (
-                <Col xs={24} md={8}>
+              {mockVideos.slice(0, isSmallScreen ? 3 : 6).map((meta, idx) => (
+                <Col key={idx} xs={24} md={8}>
                   <VideoThumbnail
                     isSmallScreen={isSmallScreen}
                     coverSrc={meta.cover_image}
@@ -46,15 +53,15 @@ const Others = () => {
             </Row>
             <Styled.Divider />
             <ModuleTitle>
-              <Styled.Subtitle> {lang.jobs.subtitle} </Styled.Subtitle>
+              <Styled.Subtitle> {jobsLang.subtitle} </Styled.Subtitle>
               <Link> {lang.more} </Link>
             </ModuleTitle>
             <Row>
-              <Styled.Text> {lang.jobs.desc} </Styled.Text>
+              <Styled.Text> {jobsLang.desc} </Styled.Text>
             </Row>
             <Styled.LogosBox gutter={16} justify="center">
-              {jobsLogoList.map((url) => (
-                <Col>
+              {jobLogos.map((url, idx) => (
+                <Col key={idx}>
                   <Styled.Logo src={url} />
                 </Col>
               ))}
@@ -63,26 +70,25 @@ const Others = () => {
         }
         rightPanel={
           <>
-            {/* business support */}
-            <Styled.Subtitle> {lang.businessSupport.subtitle} </Styled.Subtitle>
+            <Styled.Subtitle>{supportLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo src={'/images/home/others-pingcap-logo.svg'} />
+              <Styled.Logo src={getImage('others-pingcap-logo.svg')} />
             </Styled.LogoWrapper>
-            <Styled.Text> {lang.businessSupport.desc} </Styled.Text>
+            <Styled.Text>{supportLang.desc}</Styled.Text>
             <Styled.Divider />
-            <Styled.Subtitle> {lang.communityCollaboration.subtitle} </Styled.Subtitle>
+            <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo src={'/images/home/others-tikv-logo.svg'} />
+              <Styled.Logo src={getImage('others-tikv-logo.svg')} />
             </Styled.LogoWrapper>
-            <Styled.Text> {lang.communityCollaboration.tikvDesc} </Styled.Text>
+            <Styled.Text>{collaborationLang.tikvDesc}</Styled.Text>
             <Styled.LogoWrapper>
-              <Styled.Logo src={'/images/home/others-chaos-mesh-logo.svg'} />
+              <Styled.Logo src={getImage('others-chaos-mesh-logo.svg')} />
             </Styled.LogoWrapper>
-            <Styled.Text> {lang.communityCollaboration.chaosMeshDesc} </Styled.Text>
+            <Styled.Text>{collaborationLang.chaosMeshDesc}</Styled.Text>
             <Styled.Divider />
             <Styled.Text>
-              {lang.contact.label}
-              <Link> {lang.contact.linkText} </Link> !
+              {contactLang.label}
+              <Link>{contactLang.linkText}</Link>！
             </Styled.Text>
           </>
         }

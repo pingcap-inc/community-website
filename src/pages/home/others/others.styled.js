@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import { Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import { Section } from '~/pages/home/index.styled';
-import { Row } from 'antd';
 
 export const Container = styled(Section)`
   && {
@@ -12,7 +12,6 @@ export const Container = styled(Section)`
 
 export const Subtitle = styled.span`
   font-size: 20px;
-  font-weight: normal;
 `;
 
 export const Text = styled.div`

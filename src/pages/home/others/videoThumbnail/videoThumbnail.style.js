@@ -8,12 +8,12 @@ export const PreviewWrapper = styled.div`
 
 export const VideoBox = styled.div`
   cursor: pointer;
+  padding-bottom: 1rem;
 
   &:hover {
     color: ${colors.B1};
   }
 
-  padding-bottom: 1rem;
   ${(props) =>
     props.isSmallScreen &&
     css`
@@ -22,11 +22,10 @@ export const VideoBox = styled.div`
 `;
 
 export const Preview = styled.div`
+  ${mixins.size('100%', '100px')};
   background-image: url(${(props) => props.src});
   background-size: auto 100%;
   padding-bottom: 62.8%;
-  width: 100%;
-  height: 100px;
   border-radius: 4px;
 `;
 
@@ -37,19 +36,18 @@ export const Length = styled.div`
   border-bottom-right-radius: 4px;
   border-top-left-radius: 4px;
   font-size: 12px;
-  color: white;
+  color: ${colors.M1};
   padding-right: 4px;
   padding-left: 4px;
   background-color: rgb(0, 0, 0, 40%);
 `;
 
 export const Title = styled.div`
+  ${mixins.lineClamp(2)}
   font-size: 16px;
-  font-weight: 400;
   display: block;
   line-height: 20px;
   margin-top: 0.75rem;
-  ${mixins.lineClamp(2)}
 `;
 
 export const MetaBox = styled.div`

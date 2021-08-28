@@ -55,3 +55,8 @@ export const ModuleTitle = styled.h3`
   font-weight: normal !important;
   margin-bottom: 2rem;
 `;
+
+export const Text = styled.div`
+  font-size: 16px;
+  font-weight: lighter;
+`;

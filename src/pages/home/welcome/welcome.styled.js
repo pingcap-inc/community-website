@@ -3,6 +3,7 @@ import { colors, mixins } from '@tidb-community/ui';
 import { Radio, Row } from 'antd';
 
 import { Section, Content } from '~/pages/home/index.styled';
+import { getImage } from '~/pages/home/index.utils';
 
 export { Content };
 
@@ -120,7 +121,7 @@ export const HowTo = styled.div`
   ${mixins.flexVerticalCenter()};
   text-align: left;
   color: ${colors.M1};
-  background: url('/images/home/banner-howto-desktop.svg') no-repeat center center;
+  background: url(${getImage('banner-howto-desktop.svg')}) no-repeat center center;
   background-size: cover;
   height: 123px;
 
@@ -158,7 +159,7 @@ export const HowTo = styled.div`
     props.isSmallScreen &&
     css`
       height: 218px;
-      background-image: url('/images/home/banner-howto-mobile.svg');
+      background-image: url(${getImage('banner-howto-mobile.svg')});
 
       ${Content} {
         flex-direction: column;

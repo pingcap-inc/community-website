@@ -1,23 +1,22 @@
 import React from 'react';
 import { BenefitCards } from '@tidb-community/ui';
 import { useTranslation } from 'next-i18next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-import { CoreLayout } from '~/layouts';
-import { CommunityHead } from '~/components';
-import Banner from './banner';
 import * as Styled from './index.styled';
+import Banner from './banner';
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { getI18nProps } from '~/utils/i18n.utils';
 
-export async function getServerSideProps({ locale, req }) {
-  // this page currently only support locale - zh
-  locale = 'zh';
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common', 'page-organization-benefits'])(ctx);
 
   return {
     props: {
-      ...(await serverSideTranslations(locale, ['common', 'page-organization-benefits'])),
+      ...i18nProps,
     },
   };
-}
+};
 
 const Page = () => {
   const { t } = useTranslation('page-organization-benefits');

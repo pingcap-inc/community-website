@@ -1,18 +1,18 @@
 import React from 'react';
-import { Trans, useTranslation } from 'next-i18next';
 import { Col } from 'antd';
+import { Trans, useTranslation } from 'next-i18next';
 
 import * as Styled from './learning.styled';
-import TwoColumnsLayout from '../twoColumsLayout';
-import { ModuleTitle } from '../index.styled';
-import { useIsSmallScreen } from '../../../hooks';
+import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import { ModuleTitle } from '~/pages/home/index.styled';
+import { getImage } from '~/pages/home/index.utils';
+import { useIsSmallScreen } from '~/hooks';
 
 const Learning = () => {
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('learning', { returnObjects: true });
-
-  const { isSmallScreen } = useIsSmallScreen();
 
   return (
     <Styled.Container>
@@ -20,7 +20,8 @@ const Learning = () => {
         title={lang.title}
         leftPanel={
           <>
-            <Styled.Logo src={'/images/home/learning-pingcap-education.svg'} />
+            <Styled.Logo src={getImage('learning-pingcap-education.svg')} />
+
             <Styled.Text>
               <Trans
                 t={t}
@@ -28,10 +29,12 @@ const Learning = () => {
                 components={[<Styled.Link href={lang.educationLink} />, <Styled.Link href={lang.certificateLink} />]}
               />
             </Styled.Text>
+
             <Styled.VideoHeader>
               {lang.videosTitle}
               <Styled.FreeLabel>{lang.freeLabel}</Styled.FreeLabel>
             </Styled.VideoHeader>
+
             <Styled.VideosRow wrap={false}>
               <Col xs={24} md={18}>
                 <Styled.VideoBoxWrapper isSmallScreen={isSmallScreen}>
@@ -57,6 +60,7 @@ const Learning = () => {
                 ))}
               </Col>
             </Styled.VideosRow>
+
             {isSmallScreen && <Styled.Text>{lang.majorVideoDesc}</Styled.Text>}
 
             <Styled.More isSmallScreen={isSmallScreen}> {lang.more} </Styled.More>
@@ -67,6 +71,7 @@ const Learning = () => {
             {lang.linkSections.map((section) => (
               <>
                 <ModuleTitle>{section.title}</ModuleTitle>
+
                 <Styled.LinksRow gutter={16}>
                   {section.links.map((link) => (
                     <Styled.LinkWrapper xs={24} md={12} lg={8}>

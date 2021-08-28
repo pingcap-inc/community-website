@@ -1,10 +1,10 @@
 import * as yup from 'yup';
 import React, { useState } from 'react';
 import { Col, Grid, Row, message } from 'antd';
+import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './subscription.styled';
-import { api } from '@tidb-community/datasource';
 
 const { useBreakpoint } = Grid;
 
@@ -13,13 +13,12 @@ const schema = yup.object().shape({
 });
 
 const Subscription = () => {
-  const { t } = useTranslation('page-home');
   const bp = useBreakpoint();
+  const [email, setEmail] = useState('');
+  const { t } = useTranslation('page-home');
 
   const lang = t('subscription', { returnObjects: true });
   const { links: linksLang, emailInput: emailInputLang } = lang;
-
-  const [email, setEmail] = useState('');
 
   // any viewport smaller than large is consider small; specific UI layout
   // consideration

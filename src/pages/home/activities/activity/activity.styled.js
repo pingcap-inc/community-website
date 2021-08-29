@@ -35,7 +35,8 @@ export const ImageWrapper = styled(Col).attrs({
   sm: 24,
   md: 9,
 })`
-  position: relative;
+  overflow: hidden;
+  height: 150px;
 `;
 
 export const Content = styled(Col).attrs({

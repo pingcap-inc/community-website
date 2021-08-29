@@ -7,7 +7,7 @@ import * as Styled from './activity.styled';
 const Activity = ({ title, img, link, location, type, date, intro, onClick }) => (
   <Styled.Container onClick={onClick(link)}>
     <Styled.ImageWrapper>
-      <Image alt={title} src={img} height={155} width={305} />
+      <Image alt={title} src={img} layout="fill" objectFit="cover" />
     </Styled.ImageWrapper>
     <Styled.Content>
       <h3>{title}</h3>

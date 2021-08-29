@@ -58,5 +58,5 @@ export const ModuleTitle = styled.h3`
 
 export const Text = styled.div`
   font-size: 16px;
-  font-weight: lighter;
+  color: ${colors.F2};
 `;

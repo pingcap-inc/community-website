@@ -13,3 +13,16 @@ export const activities = R.repeat(
   },
   3
 );
+
+export const meetups = R.repeat(
+  {
+    title: '2020 年黑客马拉松 2020 年黑客马拉松',
+    link: 'https://tidb.io/archived/events/hackathon2020/',
+    status: '报名中',
+    type: '线上/线下',
+    date: '2021-08-21T00:00:00Z',
+  },
+  3
+);
+
+export const devActivities = meetups;

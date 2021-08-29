@@ -7,8 +7,8 @@ import { Link as RawLink } from '~/components';
 
 export { Section as Container, Text } from '~/pages/home/index.styled';
 
-export const Link = styled.a`
-  font-weight: lighter;
+export const Link = styled(RawLink)`
+  color: ${colors.F2};
   text-decoration: underline;
 
   &:hover {
@@ -21,17 +21,17 @@ export const Logo = styled.img`
   margin-bottom: 2rem;
 `;
 
-export const VideoHeader = styled.div`
+export const VideoHeader = styled.h3`
   font-size: 20px;
-  font-weight: bold !important;
+  line-height: 1;
   margin-top: 2.5rem;
 `;
 
 export const FreeLabel = styled.span`
   display: inline-block;
-  margin-left: 1rem;
-  font-weight: lighter;
+  margin-left: 0.5rem;
   color: ${colors.T1};
+  font-weight: normal;
 `;
 
 export const LinksRow = styled(Row)`
@@ -68,7 +68,6 @@ export const VideoCaption = styled.div`
   bottom: 0;
   color: ${colors.M1};
   font-size: 15px;
-  font-weight: lighter;
   border: 8px solid white;
   border-top: none;
 `;
@@ -95,7 +94,7 @@ export const VideoPlayIcon = styled(PlayCircleFilled)`
   }
 
   ${(props) =>
-    props.small &&
+    props.$small &&
     css`
       font-size: 2rem;
     `}

@@ -1,7 +1,7 @@
-import AsktugSvg from './asktug.svg';
 import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
+import AsktugSvg from './asktug.svg';
 import { Section } from '~/pages/home/index.styled';
 
 export { ModuleTitle } from '~/pages/home/index.styled';

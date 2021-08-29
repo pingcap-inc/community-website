@@ -1,4 +1,4 @@
-import * as polished from 'polished';
+import { stripUnit } from 'polished';
 
 export const appClassName = 'tidb-community-ui';
 
@@ -9,6 +9,6 @@ export const responsiveWidths = {
 };
 
 export const breakPoints = Object.entries(responsiveWidths).reduce((acc, [k, v]) => {
-  acc[k] = `${polished.stripUnit(v) + 64}px`;
+  acc[k] = `${stripUnit(v) + 64}px`;
   return acc;
 }, {});

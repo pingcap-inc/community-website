@@ -128,7 +128,9 @@
     ]
   },
   "activities": {
-    "title": "活动"
+    "title": "活动",
+    "meetupTitle": "Meetup 相关活动专区",
+    "devActivitiesTitle": "开发者活动/竞赛专区"
   },
   "learning": {
     "title": "如何使用 TiDB",

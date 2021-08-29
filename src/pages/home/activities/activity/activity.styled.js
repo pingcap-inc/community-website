@@ -2,9 +2,9 @@ import styled from 'styled-components';
 import { Col, Row } from 'antd';
 import { colors } from '@tidb-community/ui';
 
-import { Text } from '~/pages/home/index.styled';
+import { ModuleTitle, Text } from '~/pages/home/index.styled';
 
-export { Text };
+export { ModuleTitle, Text };
 
 export const Container = styled(Row).attrs({
   gutter: 64,
@@ -12,6 +12,7 @@ export const Container = styled(Row).attrs({
   cursor: pointer;
   padding: 1rem 0;
   border-bottom: 1px solid ${colors.T2};
+  margin: 0 !important;
 
   h3 {
     font-weight: normal;

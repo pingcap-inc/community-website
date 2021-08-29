@@ -1,9 +1,15 @@
 export const handleRedirect = (router, link, { target, as } = {}) => {
   if (!link) return;
 
-  // if `link` has a schema, `as` will be ignored
+  const { location, open } = window;
+
+  if (link.startsWith(location.origin)) {
+    link.replace(location.origin, '');
+  }
+
   if (link.startsWith('http')) {
-    return window.open(link, target || '_blank').focus();
+    // if `link` has a schema, `as` will be ignored
+    return open(link, target || '_blank').focus();
   }
 
   // `as` is an optional decorator for the URL that will be shown in the browser.

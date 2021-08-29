@@ -6,6 +6,7 @@ import * as Styled from './activities.styled';
 import * as mock from './activities.mock';
 import Activity from './activity';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
 
 const Activities = () => {
@@ -13,6 +14,7 @@ const Activities = () => {
   const { t } = useTranslation('page-home');
 
   const lang = t('activities', { returnObjects: true });
+  const viewAllLang = t('common:viewAll');
 
   const onClick = (link) => (e) => {
     e.preventDefault();
@@ -35,7 +37,22 @@ const Activities = () => {
             })}
           </>
         }
-        rightPanel={<>Right Panel</>}
+        rightPanel={
+          <>
+            <Styled.Module>
+              <Styled.ModuleTitle>
+                {lang.meetupTitle}
+                <Link href="https://tidb.io/archived/events/#activities">{viewAllLang}</Link>
+              </Styled.ModuleTitle>
+            </Styled.Module>
+            <Styled.Module>
+              <Styled.ModuleTitle>
+                {lang.devActivitiesTitle}
+                <Link href="https://tidb.io/archived/events/#activities">{viewAllLang}</Link>
+              </Styled.ModuleTitle>
+            </Styled.Module>
+          </>
+        }
       />
     </Styled.Container>
   );

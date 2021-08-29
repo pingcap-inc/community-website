@@ -19,6 +19,7 @@ const Forum = () => {
   const { isSmallScreen } = useIsSmallScreen();
 
   const lang = t('forum', { returnObjects: true });
+  const viewAllLang = t('common:viewAll');
 
   const onClick = (link) => (e) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ const Forum = () => {
                 return <Post {...props} />;
               })}
             </Styled.Posts>
-            <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+            <Link href="https://asktug.com/">{viewAllLang}</Link>
           </>
         }
         rightPanel={
@@ -71,7 +72,7 @@ const Forum = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.hotCategories}
-                <Link href="https://asktug.com/">{t('common:viewAll')}</Link>
+                <Link href="https://asktug.com/">{viewAllLang}</Link>
               </Styled.ModuleTitle>
               <Categories categories={lang.categories} />
             </Styled.Module>

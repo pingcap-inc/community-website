@@ -95,7 +95,7 @@ export const VideoPlayIcon = styled(PlayCircleFilled)`
   }
 
   ${(props) =>
-    props.small &&
+    props.$small &&
     css`
       font-size: 2rem;
     `}

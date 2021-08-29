@@ -25,9 +25,8 @@ export const Logo = styled.img`
   max-height: 40px;
 `;
 
-export const LogosBox = styled(Row)`
+export const LogosBox = styled(Row).attrs({ justify: 'space-between' })`
   margin-top: 2rem;
-  margin-bottom: 2rem;
 `;
 
 export const Divider = styled.hr`

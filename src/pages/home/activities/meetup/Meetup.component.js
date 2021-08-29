@@ -14,7 +14,11 @@ const Meetup = ({ title, link, status, type, date }) => {
     <Styled.Container>
       <Styled.Calendar>
         <Styled.CalendarHead>{month}</Styled.CalendarHead>
-        <Styled.CalendarBody>{day}</Styled.CalendarBody>
+        <Styled.CalendarBody>
+          {day}
+          <Styled.Arrow />
+          <Styled.OppsiteArrow />
+        </Styled.CalendarBody>
       </Styled.Calendar>
       <Styled.Content>
         <h3>{title}</h3>

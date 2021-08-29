@@ -36,6 +36,7 @@ yarn-error.log*
 .npm/
 .vscode/
 .yarn/
+packages/*/build/
 packages/*/dist/
 packages/*/es/
 packages/*/lib/

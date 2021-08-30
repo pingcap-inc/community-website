@@ -4,12 +4,16 @@ import { Row } from 'antd';
 import * as Styled from './twoColumsLayout.styled';
 
 const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
+  const panelProps = {
+    reverseOnSmallScreen,
+  };
+
   return (
     <Styled.Content className={className}>
       <Styled.Title>{title}</Styled.Title>
       <Row justify="space-between">
-        <Styled.LeftPanel reverseOnSmallScreen={reverseOnSmallScreen}>{leftPanel}</Styled.LeftPanel>
-        <Styled.RightPanel reverseOnSmallScreen={reverseOnSmallScreen}>{rightPanel}</Styled.RightPanel>
+        <Styled.LeftPanel {...panelProps}>{leftPanel}</Styled.LeftPanel>
+        <Styled.RightPanel {...panelProps}>{rightPanel}</Styled.RightPanel>
       </Row>
     </Styled.Content>
   );

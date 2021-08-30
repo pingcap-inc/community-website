@@ -9,7 +9,7 @@ import Meetup from './meetup';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '../../../hooks';
+import { useIsSmallScreen } from '~/hooks';
 
 const Meetups = ({ onClick, meetups }) => (
   <>
@@ -26,12 +26,11 @@ const Meetups = ({ onClick, meetups }) => (
 
 const Activities = () => {
   const router = useRouter();
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('activities', { returnObjects: true });
   const viewAllLang = t('common:viewAll');
-
-  const { isSmallScreen } = useIsSmallScreen();
 
   const onClick = (link) => (e) => {
     e.preventDefault();

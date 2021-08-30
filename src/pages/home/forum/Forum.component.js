@@ -38,8 +38,8 @@ const Forum = () => {
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
+        reverseOnSmallScreen
         title={lang.title}
-        reverseOnSmallScreen={true}
         leftPanel={
           <>
             <Styled.Posts>

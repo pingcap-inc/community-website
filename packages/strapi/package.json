@@ -1,5 +1,5 @@
 {
-  "name": "strapi",
+  "name": "@tidb-community/strapi",
   "private": true,
   "description": "A Strapi application for local development",
   "scripts": {

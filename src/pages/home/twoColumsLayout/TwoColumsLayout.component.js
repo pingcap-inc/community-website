@@ -5,7 +5,7 @@ import * as Styled from './twoColumsLayout.styled';
 
 const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
   const panelProps = {
-    reverseOnSmallScreen,
+    $reverseOnSmallScreen: reverseOnSmallScreen,
   };
 
   return (

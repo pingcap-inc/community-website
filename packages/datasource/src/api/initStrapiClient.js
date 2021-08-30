@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async ({ baseUrl, email, password }) => {
+const initStrapiClient = async ({ baseUrl, email, password }) => {
   const client = axios.create({
     baseURL: baseUrl,
   });
@@ -23,3 +23,5 @@ export default async ({ baseUrl, email, password }) => {
 
   return client;
 };
+
+export default initStrapiClient;

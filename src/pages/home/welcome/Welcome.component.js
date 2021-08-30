@@ -1,35 +1,40 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Radio, Row } from 'antd';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './welcome.styled';
+import { PageDataContext } from '~/context';
+import { formatNumber } from './welcome.utils';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const Welcome = () => {
   const router = useRouter();
   const { t } = useTranslation('page-home');
+  const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
 
   const lang = t('welcome', { returnObjects: true });
   const { navs: navsLang, numbers: numbersLang, howTo: howToLang } = lang;
 
+  const { githubInfo } = data;
+
   const numbers = [
     {
-      num: '35,000+',
+      num: formatNumber(githubInfo.pr_num),
       text: numbersLang.pr,
     },
     {
-      num: '10,000+',
+      num: formatNumber(githubInfo.topic_num),
       text: numbersLang.topic,
     },
     {
-      num: '75,000+',
+      num: formatNumber(githubInfo.post_num),
       text: numbersLang.post,
     },
     {
-      num: '1,400+',
+      num: formatNumber(githubInfo.contributor_num),
       text: numbersLang.contributor,
     },
   ];

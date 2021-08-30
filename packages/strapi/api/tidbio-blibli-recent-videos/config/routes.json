@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tidbio-blibli-recent-videos",
+      "handler": "tidbio-blibli-recent-videos.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tidbio-blibli-recent-videos",
+      "handler": "tidbio-blibli-recent-videos.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tidbio-blibli-recent-videos",
+      "handler": "tidbio-blibli-recent-videos.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

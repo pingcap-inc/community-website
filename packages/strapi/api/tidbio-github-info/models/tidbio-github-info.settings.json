@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "tidbio_github_infos",
+  "info": {
+    "name": "tidbio-github-info"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

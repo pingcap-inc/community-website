@@ -1,0 +1,34 @@
+{
+  "name": "@tidb-community/strapi",
+  "private": true,
+  "description": "A Strapi application for local development",
+  "scripts": {
+    "build": "strapi build",
+    "dev": "strapi develop",
+    "start": "strapi start",
+    "strapi": "strapi",
+    "sync": "node scripts/sync.js"
+  },
+  "strapi": {
+    "uuid": "3b257ffe-0f24-478f-89e2-28daa0286a73"
+  },
+  "dependencies": {
+    "@tidb-community/datasource": "*",
+    "dotenv": "10.0.0",
+    "knex": "0.21.18",
+    "sqlite3": "5.0.0",
+    "strapi": "3.6.8",
+    "strapi-admin": "3.6.8",
+    "strapi-connector-bookshelf": "3.6.8",
+    "strapi-plugin-content-manager": "3.6.8",
+    "strapi-plugin-content-type-builder": "3.6.8",
+    "strapi-plugin-email": "3.6.8",
+    "strapi-plugin-i18n": "3.6.8",
+    "strapi-plugin-upload": "3.6.8",
+    "strapi-plugin-users-permissions": "3.6.8",
+    "strapi-utils": "3.6.8"
+  },
+  "devDependencies": {
+    "axios": "0.21.1"
+  }
+}

@@ -8,5 +8,6 @@ export * as social from './social';
 export * as subscribe from './subscribe';
 
 export { default as client } from './client';
+export { default as initStrapiClient } from './initStrapiClient';
 export { me } from './me';
 export { tidbReleases } from './tidbReleases';

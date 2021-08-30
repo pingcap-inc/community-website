@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "tidbio_asktug_blogs",
+  "info": {
+    "name": "tidbio-asktug-blogs"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tidbio-asktug-blogs",
+      "handler": "tidbio-asktug-blogs.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tidbio-asktug-blogs",
+      "handler": "tidbio-asktug-blogs.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tidbio-asktug-blogs",
+      "handler": "tidbio-asktug-blogs.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

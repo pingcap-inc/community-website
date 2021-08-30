@@ -60,3 +60,13 @@ export const Text = styled.div`
   font-size: 16px;
   color: ${colors.F2};
 `;
+
+export const CenterOnSmallScreen = styled.div`
+  width: 100%;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      text-align: center;
+      ${mixins.centerBlock()}
+    `}
+`;

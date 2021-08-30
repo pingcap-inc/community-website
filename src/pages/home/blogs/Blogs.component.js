@@ -12,6 +12,7 @@ import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
+import { CenterOnSmallScreen } from '../index.styled';
 
 const Blogs = () => {
   const router = useRouter();
@@ -37,6 +38,7 @@ const Blogs = () => {
     <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
         title={lang.title}
+        reverseOnSmallScreen
         leftPanel={
           <>
             <Styled.Blogs>
@@ -56,13 +58,17 @@ const Blogs = () => {
         rightPanel={
           <>
             <Styled.Module>
-              <Styled.ModuleTitle>{lang.shareExperience}</Styled.ModuleTitle>
+              <Styled.CenterableModuleTitle isSmallScreen={isSmallScreen}>
+                {lang.shareExperience}
+              </Styled.CenterableModuleTitle>
               <p>{lang.intro}</p>
               <p>
                 {lang.comply}
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
-              <Button {...writeBlogButtonProps} />
+              <CenterOnSmallScreen isSmallScreen={isSmallScreen}>
+                <Button {...writeBlogButtonProps} />
+              </CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>

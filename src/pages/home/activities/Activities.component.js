@@ -9,6 +9,7 @@ import Meetup from './meetup';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
+import { useIsSmallScreen } from '~/hooks';
 
 const Meetups = ({ onClick, meetups }) => (
   <>
@@ -25,6 +26,7 @@ const Meetups = ({ onClick, meetups }) => (
 
 const Activities = () => {
   const router = useRouter();
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('activities', { returnObjects: true });
@@ -40,16 +42,17 @@ const Activities = () => {
       <TwoColumnsLayout
         title={lang.title}
         leftPanel={
-          <>
+          <Styled.ActivitiesBox isSmallScreen={isSmallScreen}>
             {mock.activities.map((item, idx) => {
               const props = {
                 key: idx,
                 ...item,
                 onClick,
+                isSmallScreen,
               };
               return <Activity {...props} />;
             })}
-          </>
+          </Styled.ActivitiesBox>
         }
         rightPanel={
           <>

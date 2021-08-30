@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Col, Row } from 'antd';
 import { colors } from '@tidb-community/ui';
 
@@ -6,9 +6,9 @@ import { ModuleTitle, Text } from '~/pages/home/index.styled';
 
 export { ModuleTitle, Text };
 
-export const Container = styled(Row).attrs({
-  gutter: 64,
-})`
+export const Container = styled(Row).attrs((props) => ({
+  gutter: !props.isSmallScreen && 64,
+}))`
   cursor: pointer;
   padding: 1rem 0;
   border-bottom: 1px solid ${colors.T2};
@@ -33,7 +33,7 @@ export const Container = styled(Row).attrs({
 `;
 
 export const ImageWrapper = styled(Col).attrs({
-  sm: 24,
+  xs: 24,
   md: 9,
 })`
   overflow: hidden;
@@ -41,9 +41,15 @@ export const ImageWrapper = styled(Col).attrs({
 `;
 
 export const Content = styled(Col).attrs({
-  sm: 24,
+  xs: 24,
   md: 15,
-})``;
+})`
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      padding-top: 1rem;
+    `}
+`;
 
 export const Metadata = styled(Text)`
   margin-bottom: 2rem;

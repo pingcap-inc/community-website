@@ -1,6 +1,5 @@
 import React from 'react';
-import { Button, Col, Row } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
+import { Col, Row } from 'antd';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contribution.styled';
@@ -47,7 +46,7 @@ const Contribution = () => {
 
             <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
               <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
-              <Button type={'primary'}>{guideLang.learnMoreLabel}</Button>
+              <img height={36} src={getImage('join-logos.svg')} alt={'join logos'} />
             </Styled.EngageCallBox>
           </>
         }
@@ -55,9 +54,7 @@ const Contribution = () => {
           <>
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
-            <Button type={'primary'} icon={<GithubOutlined />}>
-              {forkLang.buttonLabel}
-            </Button>
+            <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
           </>
         }
       />

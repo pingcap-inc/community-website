@@ -12,7 +12,14 @@ export default async ({ baseUrl, email, password }) => {
     password,
   });
 
-  console.log('authResp', authResp);
+  client.interceptors.request.use((config) => {
+    config.headers = {
+      ...config.headers,
+      Authorization: `Bearer ${authResp.data.token}`,
+    };
+
+    return config;
+  });
 
   return client;
 };

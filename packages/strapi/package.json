@@ -4,7 +4,7 @@
   "description": "A Strapi application for local development",
   "scripts": {
     "build": "strapi build",
-    "develop": "strapi develop",
+    "dev": "strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
     "sync": "node scripts/sync.js"

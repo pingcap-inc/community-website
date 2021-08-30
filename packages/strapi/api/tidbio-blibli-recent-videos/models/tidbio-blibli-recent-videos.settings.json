@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "tidbio_blibli_recent_videos",
+  "info": {
+    "name": "tidbio-blibli-recent-videos"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "data": {
+      "type": "json"
+    }
+  }
+}

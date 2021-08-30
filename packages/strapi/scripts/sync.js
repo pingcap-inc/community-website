@@ -1,8 +1,10 @@
 require('dotenv').config();
 
+const chalk = require('chalk');
 const initStrapiClient = require('@tidb-community/datasource/lib/api/initStrapiClient').default;
 
 const { env } = process;
+const { log } = console;
 
 const SYNC_APIS = [
   'tidbio-asktug-blogs',
@@ -31,6 +33,6 @@ const SYNC_APIS = [
       data: r.data,
     });
 
-    console.log(`${api} has been synced successfully!`);
+    log(`${chalk.blueBright(`${api}`)} ${chalk.green('has been synced successfully!')}`);
   });
 })();

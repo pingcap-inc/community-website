@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
-import { Section, ModuleTitle } from '~/pages/home/index.styled';
+import { ModuleTitle, Section } from '~/pages/home/index.styled';
 
 export { ModuleTitle };
 
@@ -17,4 +17,12 @@ export const Module = styled.div`
   &:last-child {
     margin-bottom: 0;
   }
+`;
+
+export const ActivitiesBox = styled.div`
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      margin-bottom: 2rem;
+    `}
 `;

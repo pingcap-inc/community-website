@@ -37,6 +37,7 @@ const Blogs = () => {
     <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
         title={lang.title}
+        reverseOnSmallScreen
         leftPanel={
           <>
             <Styled.Blogs>
@@ -56,7 +57,9 @@ const Blogs = () => {
         rightPanel={
           <>
             <Styled.Module>
-              <Styled.ModuleTitle>{lang.shareExperience}</Styled.ModuleTitle>
+              <Styled.CenterableModuleTitle isSmallScreen={isSmallScreen}>
+                {lang.shareExperience}
+              </Styled.CenterableModuleTitle>
               <p>{lang.intro}</p>
               <p>
                 {lang.comply}

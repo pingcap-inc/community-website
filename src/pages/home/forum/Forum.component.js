@@ -38,6 +38,7 @@ const Forum = () => {
     <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
         title={lang.title}
+        reverseOnSmallScreen={true}
         leftPanel={
           <>
             <Styled.Posts>
@@ -47,6 +48,7 @@ const Forum = () => {
                   lang,
                   onClick,
                   ...post,
+                  isSmallScreen,
                 };
 
                 return <Post {...props} />;
@@ -58,7 +60,9 @@ const Forum = () => {
         rightPanel={
           <>
             <Styled.Module>
-              <Styled.ModuleTitle>{lang.postQuestion}</Styled.ModuleTitle>
+              <Styled.CenterableModuleTitle isSmallScreen={isSmallScreen}>
+                {lang.postQuestion}
+              </Styled.CenterableModuleTitle>
               <p>
                 <Styled.AsktugLogo />
                 {lang.intro}

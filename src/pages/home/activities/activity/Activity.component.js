@@ -4,8 +4,8 @@ import dayjs from 'dayjs';
 
 import * as Styled from './activity.styled';
 
-const Activity = ({ title, img, link, location, type, date, intro, onClick }) => (
-  <Styled.Container onClick={onClick(link)}>
+const Activity = ({ title, img, link, location, type, date, intro, onClick, isSmallScreen }) => (
+  <Styled.Container onClick={onClick(link)} isSmallScreen={isSmallScreen}>
     <Styled.ImageWrapper>
       <Image alt={title} src={img} layout="fill" objectFit="cover" />
     </Styled.ImageWrapper>

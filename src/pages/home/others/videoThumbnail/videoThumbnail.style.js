@@ -55,6 +55,9 @@ export const MetaBox = styled.div`
 `;
 
 export const IconWrapper = styled.span`
+  gap: 4px;
+  display: inline-flex;
+  align-items: center;
   font-size: 14px;
   color: ${colors.C4};
   padding-right: 1rem;

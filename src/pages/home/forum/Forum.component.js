@@ -12,6 +12,7 @@ import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
+import { CenterOnSmallScreen } from '../index.styled';
 
 const Forum = () => {
   const router = useRouter();
@@ -71,7 +72,9 @@ const Forum = () => {
                 {lang.comply}
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
-              <Button {...writePostButtonProps} />
+              <CenterOnSmallScreen isSmallScreen={isSmallScreen}>
+                <Button {...writePostButtonProps} />
+              </CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>

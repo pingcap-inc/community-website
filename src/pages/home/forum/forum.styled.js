@@ -17,7 +17,6 @@ export const Posts = styled.div`
 `;
 
 export const Module = styled.div`
-  text-align: center;
   padding: 2rem 0 1.5rem;
   border-bottom: 1px solid ${colors.T2};
 

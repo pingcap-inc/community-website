@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 import { useMount } from 'ahooks';
@@ -11,6 +11,7 @@ import ActivityIcon from './activity.svg';
 import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
+import { PageDataContext } from '~/context';
 import { getImage } from '~/pages/home/index.utils';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
@@ -39,6 +40,7 @@ const Banner = () => {
   const tooltipContainerRef = useRef(null);
   const [mounted, setMounted] = useState(false);
   const { t } = useTranslation('page-home');
+  const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
 
   // Solving the warning of "Expected server HTML to contain a matching <tag>"
@@ -52,7 +54,7 @@ const Banner = () => {
   const { navs: navsLang } = lang;
 
   const tooltipProps = {
-    title: '37,916',
+    title: new Intl.NumberFormat().format(data.githubInfo.star_num),
     placement: 'right',
     autoAdjustOverflow: false,
     getPopupContainer: () => tooltipContainerRef?.current,

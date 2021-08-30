@@ -12,6 +12,7 @@ import Subscription from './subscription';
 import Welcome from './welcome';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
+import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getStaticProps = async (ctx) => {
@@ -47,26 +48,22 @@ export const getStaticProps = async (ctx) => {
   };
 };
 
-const Page = ({ data }) => {
-  console.log('data!!', data);
+const Page = ({ data }) => (
+  <PageDataContext.Provider value={{ data }}>
+    <CommunityHead />
 
-  return (
-    <>
-      <CommunityHead />
-
-      <CoreLayout domain="tidb.io">
-        <Banner />
-        <Welcome />
-        <Forum />
-        <Blogs />
-        <Activities />
-        <Learning />
-        <Contribution />
-        <Others />
-        <Subscription />
-      </CoreLayout>
-    </>
-  );
-};
+    <CoreLayout domain="tidb.io">
+      <Banner />
+      <Welcome />
+      <Forum />
+      <Blogs />
+      <Activities />
+      <Learning />
+      <Contribution />
+      <Others />
+      <Subscription />
+    </CoreLayout>
+  </PageDataContext.Provider>
+);
 
 export default Page;

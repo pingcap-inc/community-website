@@ -163,6 +163,26 @@ const data = [
       },
     ],
   },
+  {
+    name: '何傲',
+    avatar: '',
+    company: '神州数码',
+    title: '数据库工程师',
+    links: [
+      {
+        name: '这么多TiDB负载均衡方案总有一款适合你',
+        href: 'https://asktug.com/t/topic/123082',
+      },
+      {
+        name: '在Windows下调试TiDB4PG的填坑实记',
+        href: 'https://asktug.com/t/topic/123326',
+      },
+      {
+        name: 'TiDB在X86和ARM混合平台下的离线部署和升级',
+        href: 'https://asktug.com/t/topic/152905',
+      },
+    ],
+  },
 ];
 
 export default data;

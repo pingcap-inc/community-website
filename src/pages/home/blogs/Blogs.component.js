@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { EditFilled } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './blogs.styled';
-import * as mock from './blogs.mock';
 import Blog from './blog';
 import Categories from '~/pages/home/forum/categories';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import { CenterOnSmallScreen } from '~/pages/home/index.styled';
 import { Link } from '~/components';
+import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
-import { CenterOnSmallScreen } from '../index.styled';
 
 const Blogs = () => {
   const router = useRouter();
-  const { t } = useTranslation('page-home', 'common');
+  const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
+  const { t } = useTranslation('page-home', 'common');
 
   const lang = t('blogs', { returnObjects: true });
 
@@ -42,7 +43,7 @@ const Blogs = () => {
         leftPanel={
           <>
             <Styled.Blogs>
-              {mock.blogs.map((blog, idx) => {
+              {data.blogs.map((blog, idx) => {
                 const props = {
                   key: idx,
                   onClick,

@@ -8,7 +8,7 @@ import * as Styled from './forum.styled';
 import Categories from './categories';
 import Post from './post';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { CenterOnSmallScreen } from '../index.styled';
+import { CenterOnSmallScreen } from '~/pages/home/index.styled';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
@@ -44,7 +44,6 @@ const Forum = () => {
         leftPanel={
           <>
             <Styled.Posts>
-              {/* {mock.posts.map((post, idx) => { */}
               {data.forumPosts.map((post, idx) => {
                 const props = {
                   key: idx,

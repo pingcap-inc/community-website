@@ -32,7 +32,11 @@ export const getStaticProps = async (ctx) => {
     password: env.NEXT_PUBLIC_STRAPI_PASSWORD,
   });
 
-  const data = await Promise.all([client.get('tidbio-github-info'), client.get('tidbio-asktug-qa-topics')]);
+  const data = await Promise.all([
+    client.get('tidbio-github-info'),
+    client.get('tidbio-asktug-qa-topics'),
+    client.get('tidbio-asktug-blogs'),
+  ]);
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
   const TEN_MINS = 10 * 60;
 
@@ -43,6 +47,7 @@ export const getStaticProps = async (ctx) => {
         {
           githubInfo: data[0].data,
           forumPosts: data[1].data,
+          blogs: data[2].data,
         },
         {
           recursive: true,

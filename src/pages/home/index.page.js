@@ -36,6 +36,7 @@ export const getStaticProps = async (ctx) => {
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
     client.get('tidbio-asktug-blogs'),
+    client.get('tidbio-blibli-recent-videos'),
   ]);
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
   const TEN_MINS = 10 * 60;
@@ -48,6 +49,7 @@ export const getStaticProps = async (ctx) => {
           githubInfo: data[0].data,
           forumPosts: data[1].data,
           blogs: data[2].data,
+          videos: data[3].data,
         },
         {
           recursive: true,

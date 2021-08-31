@@ -16,7 +16,7 @@ import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const { env } = process;
   const isProd = env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
   const isEnabled = env.NEXT_PUBLIC_FT_HOME;
@@ -49,7 +49,8 @@ export const getStaticProps = async (ctx) => {
     client.get('tidbio-homepage-dev-activities', strapiQuery),
   ]);
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
-  const TEN_MINS = 10 * 60;
+  // FIXME: temporily rollback Incremental Static Regeneration back to SSR due to a CI build error
+  // const TEN_MINS = 10 * 60;
 
   return {
     props: {
@@ -71,7 +72,7 @@ export const getStaticProps = async (ctx) => {
         }
       ),
     },
-    revalidate: TEN_MINS,
+    // revalidate: TEN_MINS,
   };
 };
 

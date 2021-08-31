@@ -1,4 +1,3 @@
-import * as R from 'ramda';
 import Image from 'next/image';
 import React, { useContext, useState, useRef } from 'react';
 import { Col, Row } from 'antd';
@@ -95,11 +94,7 @@ const Banner = () => {
           <Styled.RightPanel>
             <Styled.Carousel isSmallScreen={isSmallScreen}>
               {data.promotions.map(({ id, title, link, image }) => {
-                const imgOrg = R.path([0, 'formats', 'large'], image);
-                const imgProps = {
-                  src: commonUtils.getStrapiImage(imgOrg.url),
-                  ...R.pick(['width', 'height'], imgOrg),
-                };
+                const imgProps = commonUtils.getStrapiImgProps(image);
 
                 return (
                   <div key={id} onClick={onClick(link)}>

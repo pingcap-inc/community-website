@@ -11,4 +11,11 @@ export const isAdmin = (meData) => {
   return R.pathEq(['org', 'role'], ROLE_KEYS.ADMIN)(meData);
 };
 
-export const getStrapiImage = (path) => `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${path}`;
+export const getStrapiImgProps = (imgObj) => {
+  const img = R.path([0, 'formats', 'large'], imgObj);
+
+  return {
+    src: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${img.url}`,
+    ...R.pick(['width', 'height'], img),
+  };
+};

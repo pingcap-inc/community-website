@@ -1,4 +1,5 @@
 import React from 'react';
+import jsConvert from 'js-convert-case';
 import { api } from '@tidb-community/datasource';
 
 import Activities from './activities';
@@ -25,24 +26,29 @@ export const getStaticProps = async (ctx) => {
   }
 
   const { env } = process;
-
   const client = await api.initStrapiClient({
     baseUrl: env.NEXT_PUBLIC_STRAPI_BASE_URL,
     email: env.NEXT_PUBLIC_STRAPI_EMAIL,
     password: env.NEXT_PUBLIC_STRAPI_PASSWORD,
   });
 
-  const data = await Promise.all([client.get('tidbio-github-info')]);
+  const data = await Promise.all([client.get('tidbio-github-info'), client.get('tidbio-asktug-qa-topics')]);
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
-
   const TEN_MINS = 10 * 60;
 
   return {
     props: {
       ...i18nProps,
-      data: {
-        githubInfo: data[0].data,
-      },
+      data: jsConvert.camelKeys(
+        {
+          githubInfo: data[0].data,
+          forumPosts: data[1].data,
+        },
+        {
+          recursive: true,
+          recursiveInArray: true,
+        }
+      ),
     },
     revalidate: TEN_MINS,
   };

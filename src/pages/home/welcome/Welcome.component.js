@@ -11,9 +11,9 @@ import { useIsSmallScreen } from '~/hooks';
 
 const Welcome = () => {
   const router = useRouter();
-  const { t } = useTranslation('page-home');
   const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
+  const { t } = useTranslation('page-home');
 
   const lang = t('welcome', { returnObjects: true });
   const { navs: navsLang, numbers: numbersLang, howTo: howToLang } = lang;
@@ -22,19 +22,19 @@ const Welcome = () => {
 
   const numbers = [
     {
-      num: formatNumber(githubInfo.pr_num),
+      num: formatNumber(githubInfo.prNum),
       text: numbersLang.pr,
     },
     {
-      num: formatNumber(githubInfo.topic_num),
+      num: formatNumber(githubInfo.topicNum),
       text: numbersLang.topic,
     },
     {
-      num: formatNumber(githubInfo.post_num),
+      num: formatNumber(githubInfo.postNum),
       text: numbersLang.post,
     },
     {
-      num: formatNumber(githubInfo.contributor_num),
+      num: formatNumber(githubInfo.contributorNum),
       text: numbersLang.contributor,
     },
   ];

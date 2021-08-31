@@ -1,23 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { EditFilled } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './forum.styled';
-import * as mock from './forum.mock';
 import Categories from './categories';
 import Post from './post';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import { CenterOnSmallScreen } from '../index.styled';
 import { Link } from '~/components';
+import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
-import { CenterOnSmallScreen } from '../index.styled';
 
 const Forum = () => {
   const router = useRouter();
-  const { t } = useTranslation('page-home', 'common');
+  const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
+  const { t } = useTranslation('page-home', 'common');
 
   const lang = t('forum', { returnObjects: true });
   const viewAllLang = t('common:viewAll');
@@ -43,7 +44,8 @@ const Forum = () => {
         leftPanel={
           <>
             <Styled.Posts>
-              {mock.posts.map((post, idx) => {
+              {/* {mock.posts.map((post, idx) => { */}
+              {data.forumPosts.map((post, idx) => {
                 const props = {
                   key: idx,
                   lang,

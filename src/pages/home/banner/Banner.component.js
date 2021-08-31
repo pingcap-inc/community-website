@@ -54,7 +54,7 @@ const Banner = () => {
   const { navs: navsLang } = lang;
 
   const tooltipProps = {
-    title: new Intl.NumberFormat('en-US').format(data.githubInfo.star_num),
+    title: new Intl.NumberFormat('en-US').format(data.githubInfo.starNum),
     placement: 'right',
     autoAdjustOverflow: false,
     getPopupContainer: () => tooltipContainerRef?.current,

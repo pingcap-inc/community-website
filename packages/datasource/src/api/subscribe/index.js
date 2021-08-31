@@ -1,3 +1,3 @@
-import client from '../client';
+import client from '../nextClient';
 
-export const addEmail = ({ email }) => client.post('api/subscribe', { email });
+export const addEmail = (email) => client.post('/next-api/subscribe', { email });

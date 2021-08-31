@@ -7,6 +7,7 @@ import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { useIsSmallScreen } from '~/hooks';
 import { getImage as getHomeImage } from '~/pages/home/index.utils';
+import { Link } from '~/components';
 
 const getImage = (name) => getHomeImage(`contribution-${name}`);
 
@@ -36,7 +37,9 @@ const Contribution = () => {
                   </Col>
                   <Col xs={{ order: 1 }} md={{ order: 2 }}>
                     <Styled.StepHeader>
-                      {guideLang.stepPrefix} {idx + 1} {'.'} {step.title}
+                      <Styled.Link href={step.link}>
+                        {guideLang.stepPrefix} {idx + 1} {'.'} {step.title}
+                      </Styled.Link>
                     </Styled.StepHeader>
                     <Styled.Text>{step.desc}</Styled.Text>
                   </Col>
@@ -46,7 +49,18 @@ const Contribution = () => {
 
             <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
               <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
-              <img height={36} src={getImage('join-logos.svg')} alt={'join logos'} />
+              <Row gutter={16}>
+                <Col>
+                  <Link href="https://internals.tidb.io/">
+                    <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
+                  </Link>
+                </Col>
+                <Col>
+                  <Link href="https://slack.tidb.io/">
+                    <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
+                  </Link>
+                </Col>
+              </Row>
             </Styled.EngageCallBox>
           </>
         }
@@ -54,7 +68,9 @@ const Contribution = () => {
           <>
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
-            <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
+            <Link href={forkLang.link}>
+              <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
+            </Link>
           </>
         }
       />

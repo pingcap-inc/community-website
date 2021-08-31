@@ -7,6 +7,7 @@ import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { useIsSmallScreen } from '~/hooks';
 import { getImage as getHomeImage } from '~/pages/home/index.utils';
+import { Link } from '~/components';
 
 const getImage = (name) => getHomeImage(`contribution-${name}`);
 
@@ -50,14 +51,14 @@ const Contribution = () => {
               <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
               <Row gutter={16}>
                 <Col>
-                  <a href="https://internals.tidb.io/">
+                  <Link href="https://internals.tidb.io/">
                     <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
-                  </a>
+                  </Link>
                 </Col>
                 <Col>
-                  <a href="https://slack.tidb.io/">
+                  <Link href="https://slack.tidb.io/">
                     <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
-                  </a>
+                  </Link>
                 </Col>
               </Row>
             </Styled.EngageCallBox>
@@ -67,9 +68,9 @@ const Contribution = () => {
           <>
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
-            <a href={forkLang.link}>
+            <Link href={forkLang.link}>
               <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
-            </a>
+            </Link>
           </>
         }
       />

@@ -12,8 +12,7 @@ import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
 import { PageDataContext } from '~/context';
-import { getImage } from '~/pages/home/index.utils';
-import { link as linkUtils } from '~/utils';
+import { common as commonUtils, link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const navItems = [
@@ -94,11 +93,15 @@ const Banner = () => {
 
           <Styled.RightPanel>
             <Styled.Carousel isSmallScreen={isSmallScreen}>
-              {[...new Array(4).keys()].map((key) => (
-                <div key={key}>
-                  <Image src={getImage('banner-carousel.png')} height="234" width="652" />
-                </div>
-              ))}
+              {data.promotions.map(({ id, title, link, image }) => {
+                const imgProps = commonUtils.getStrapiImgProps(image);
+
+                return (
+                  <div key={id} onClick={onClick(link)}>
+                    <Image alt={title} {...imgProps} />
+                  </div>
+                );
+              })}
             </Styled.Carousel>
           </Styled.RightPanel>
         </Row>

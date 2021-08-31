@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tidbio-homepage-meetups",
+      "handler": "tidbio-homepage-meetups.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tidbio-homepage-meetups/count",
+      "handler": "tidbio-homepage-meetups.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tidbio-homepage-meetups/:id",
+      "handler": "tidbio-homepage-meetups.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tidbio-homepage-meetups",
+      "handler": "tidbio-homepage-meetups.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tidbio-homepage-meetups/:id",
+      "handler": "tidbio-homepage-meetups.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tidbio-homepage-meetups/:id",
+      "handler": "tidbio-homepage-meetups.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

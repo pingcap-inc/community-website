@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tidbio_homepage_main_activities",
+  "info": {
+    "name": "tidbio-homepage-main-activities"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "image": {
+      "collection": "file",
+      "via": "related",
+      "allowedTypes": ["images", "files", "videos"],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "location": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    },
+    "intro": {
+      "type": "string"
+    }
+  }
+}

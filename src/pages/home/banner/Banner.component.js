@@ -98,7 +98,7 @@ const Banner = () => {
 
                 return (
                   <div key={id} onClick={onClick(link)}>
-                    <Image {...imgProps} />
+                    <Image alt={title} {...imgProps} />
                   </div>
                 );
               })}

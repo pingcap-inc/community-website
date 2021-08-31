@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tidbio_homepage_meetups",
+  "info": {
+    "name": "tidbio-homepage-meetups"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date"
+    }
+  }
+}

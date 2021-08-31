@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './activities.styled';
-import * as mock from './activities.mock';
 import Activity from './activity';
 import Meetup from './meetup';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
@@ -63,7 +62,7 @@ const Activities = () => {
                 {lang.meetupTitle}
                 <Link href="https://tidb.io/archived/events/#activities">{viewAllLang}</Link>
               </Styled.ModuleTitle>
-              <Meetups onClick={onClick} meetups={mock.meetups} />
+              <Meetups onClick={onClick} meetups={data.meetups} />
             </Styled.Module>
 
             <Styled.Module>
@@ -71,7 +70,7 @@ const Activities = () => {
                 {lang.devActivitiesTitle}
                 <Link href="https://tidb.io/archived/events/#activities">{viewAllLang}</Link>
               </Styled.ModuleTitle>
-              <Meetups onClick={onClick} meetups={mock.devActivities} />
+              <Meetups onClick={onClick} meetups={data.devActivities} />
             </Styled.Module>
           </>
         }

@@ -45,6 +45,8 @@ export const getStaticProps = async (ctx) => {
     client.get('tidbio-blibli-recent-videos'),
     client.get('tidbio-homepage-banner-promotions', strapiQuery),
     client.get('tidbio-homepage-main-activities', strapiQuery),
+    client.get('tidbio-homepage-meetups', strapiQuery),
+    client.get('tidbio-homepage-dev-activities', strapiQuery),
   ]);
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
   const TEN_MINS = 10 * 60;
@@ -60,6 +62,8 @@ export const getStaticProps = async (ctx) => {
           videos: data[3].data,
           promotions: data[4],
           activities: data[5],
+          meetups: data[6],
+          devActivities: data[7],
         },
         {
           recursive: true,

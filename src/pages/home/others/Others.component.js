@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Col, Row } from 'antd';
 import { useTranslation } from 'next-i18next';
 
@@ -7,8 +7,8 @@ import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import VideoThumbnail from './videoThumbnail';
 import { Link } from '~/components';
 import { ModuleTitle } from '~/pages/home/index.styled';
+import { PageDataContext } from '~/context';
 import { getImage } from '~/pages/home/index.utils';
-import { mockVideos } from './others.mock';
 import { useIsSmallScreen } from '~/hooks';
 
 const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map((el) =>
@@ -16,6 +16,7 @@ const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].m
 );
 
 const Others = () => {
+  const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
@@ -38,16 +39,9 @@ const Others = () => {
               <Link>{lang.more}</Link>
             </ModuleTitle>
             <Row gutter={16}>
-              {mockVideos.slice(0, isSmallScreen ? 3 : 6).map((meta, idx) => (
+              {data.videos.slice(0, isSmallScreen ? 3 : 6).map((video, idx) => (
                 <Col key={idx} xs={24} md={8}>
-                  <VideoThumbnail
-                    isSmallScreen={isSmallScreen}
-                    coverSrc={meta.cover_image}
-                    title={meta.title}
-                    views={meta.play_count}
-                    date={meta.created.split('-').slice(1).join('-')}
-                    length={meta.length}
-                  />
+                  <VideoThumbnail {...video} isSmallScreen={isSmallScreen} />
                 </Col>
               ))}
             </Row>

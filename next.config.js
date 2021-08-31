@@ -36,6 +36,7 @@ const config = {
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
       '@tidb-community/tracking-script': path.resolve('./packages/trackingScript/src'),
       '@tidb-community/ui': path.resolve('./packages/ui/src'),
+      '@': path.resolve('./'),
       '~': path.resolve('./src'),
     };
 

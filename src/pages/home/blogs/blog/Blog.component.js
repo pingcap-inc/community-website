@@ -4,7 +4,7 @@ import dayjs from 'dayjs';
 import * as Styled from './blog.styled';
 import AsktugIcon from './asktug.svg';
 
-const Blog = ({ title, link, user, createdTime, onClick }) => (
+const Blog = ({ title, link, creator, createdAt, onClick }) => (
   <Styled.Container onClick={onClick(link)}>
     <Styled.TitleRow>
       <h3>{title}</h3>
@@ -13,10 +13,10 @@ const Blog = ({ title, link, user, createdTime, onClick }) => (
 
     <Styled.InformationRow>
       <Styled.User>
-        <img alt={user.name} src={user.avatar} />
-        {user.name}
+        <img alt={creator.username} src={creator.avatarUrl} />
+        {creator.username}
       </Styled.User>
-      <span>{dayjs(createdTime).format('YYYY.MM.DD')}</span>
+      <span>{dayjs(createdAt).format('YYYY.MM.DD')}</span>
     </Styled.InformationRow>
   </Styled.Container>
 );

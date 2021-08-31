@@ -1,4 +1,6 @@
 import '@fontsource/titillium-web';
+import '@formatjs/intl-numberformat/polyfill';
+import '@formatjs/intl-numberformat/locale-data/en';
 import 'antd/dist/antd.css';
 import 'dayjs/locale/zh';
 import * as R from 'ramda';
@@ -17,7 +19,7 @@ import '~/components/Button/Button.scss';
 import '~/components/Container/Container.scss';
 import '~/styles/globals.css';
 import ErrorPage from './_error.page';
-import nextI18NextConfig from '../../next-i18next.config';
+import nextI18NextConfig from '@/next-i18next.config';
 import { authContext, AuthContext, MeContext } from '~/context';
 import { isEmptyOrNil } from '~/utils/common.utils';
 

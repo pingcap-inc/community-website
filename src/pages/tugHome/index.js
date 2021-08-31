@@ -61,7 +61,7 @@ export const getStaticProps = async () => {
     top,
   };
 
-  const HALF_HOUR = 60 * 30;
+  const HALF_HOUR = 30 * 60;
 
   return {
     props: { topics },

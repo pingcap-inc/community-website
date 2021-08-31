@@ -7,7 +7,7 @@ import { ModuleTitle, Text } from '~/pages/home/index.styled';
 export { ModuleTitle, Text };
 
 export const Container = styled(Row).attrs((props) => ({
-  gutter: !props.isSmallScreen && 64,
+  gutter: !props.$isSmallScreen && 64,
 }))`
   cursor: pointer;
   padding: 1rem 0;

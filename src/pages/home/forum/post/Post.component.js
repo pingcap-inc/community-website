@@ -1,18 +1,15 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { colors } from '@tidb-community/ui';
 
 import * as Styled from './post.styled.js';
 
-const tagColors = [colors.T1, colors.T3, colors.T5];
-
-const Post = ({ title, link, user, tags, replyNum, createdTime, onClick, lang, isSmallScreen }) => (
+const Post = ({ title, link, creator, categories, postNum, createdAt, onClick, lang, isSmallScreen }) => (
   <Styled.Container onClick={onClick(link)}>
     <Styled.TitleRow>
       <h3>{title}</h3>
       {!isSmallScreen && (
         <span>
-          {replyNum} {lang.reply}
+          {postNum} {lang.reply}
         </span>
       )}
     </Styled.TitleRow>
@@ -20,19 +17,26 @@ const Post = ({ title, link, user, tags, replyNum, createdTime, onClick, lang, i
     <Styled.InformationRow>
       <div>
         <Styled.User>
-          <img alt={user.name} src={user.avatar} />
-          {user.name}
+          <img alt={creator.username} src={creator.avatarUrl} />
+          {creator.username}
         </Styled.User>
         {!isSmallScreen &&
-          tags.map((tag, idx) => <Styled.Tag key={idx} color={tagColors[idx] || tagColors[0]} text={tag} />)}
+          categories.map(({ id, color, name }) => {
+            const props = {
+              key: id,
+              color: `#${color}`,
+              text: name,
+            };
+            return <Styled.Tag {...props} />;
+          })}
       </div>
       <span>
         {isSmallScreen && (
           <span>
-            {replyNum} {lang.reply}
+            {postNum} {lang.reply}
           </span>
         )}
-        <span> {dayjs(createdTime).fromNow()}</span>
+        <span>{dayjs(createdAt).fromNow()}</span>
       </span>
     </Styled.InformationRow>
   </Styled.Container>

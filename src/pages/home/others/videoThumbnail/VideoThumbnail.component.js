@@ -2,20 +2,20 @@ import { ClockCircleOutlined, PlaySquareOutlined } from '@ant-design/icons';
 
 import * as Styled from './videoThumbnail.style';
 
-const VideoThumbnail = (props) => (
-  <Styled.VideoBox isSmallScreen={props.isSmallScreen}>
+const VideoThumbnail = ({ isSmallScreen, coverImage, length, title, playCount, created }) => (
+  <Styled.VideoBox isSmallScreen={isSmallScreen}>
     <Styled.PreviewWrapper>
-      <Styled.Preview src={props.coverSrc} />
-      <Styled.Length>{props.length}</Styled.Length>
+      <Styled.Preview src={coverImage} />
+      <Styled.Length>{length}</Styled.Length>
     </Styled.PreviewWrapper>
-    <Styled.Title>{props.title}</Styled.Title>
+    <Styled.Title>{title}</Styled.Title>
     <Styled.IconWrapper>
       <PlaySquareOutlined />
-      {props.views}
+      {playCount}
     </Styled.IconWrapper>
     <Styled.IconWrapper>
       <ClockCircleOutlined />
-      {props.date}
+      {created}
     </Styled.IconWrapper>
   </Styled.VideoBox>
 );

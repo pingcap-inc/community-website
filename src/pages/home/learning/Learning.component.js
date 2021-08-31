@@ -32,7 +32,7 @@ const Learning = () => {
             </Styled.Text>
 
             <Styled.VideoHeader>
-              <a href="https://learn.pingcap.com/learner/course/6">{lang.videosTitle}</a>
+              <Styled.TitleLink href="https://learn.pingcap.com/learner/course/6">{lang.videosTitle}</Styled.TitleLink>
               <Styled.FreeLabel>{lang.freeLabel}</Styled.FreeLabel>
             </Styled.VideoHeader>
 

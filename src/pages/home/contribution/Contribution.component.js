@@ -37,9 +37,9 @@ const Contribution = () => {
                   </Col>
                   <Col xs={{ order: 1 }} md={{ order: 2 }}>
                     <Styled.StepHeader>
-                      <a href={step.link}>
+                      <Styled.Link href={step.link}>
                         {guideLang.stepPrefix} {idx + 1} {'.'} {step.title}
-                      </a>
+                      </Styled.Link>
                     </Styled.StepHeader>
                     <Styled.Text>{step.desc}</Styled.Text>
                   </Col>

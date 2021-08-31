@@ -17,6 +17,15 @@ export const Link = styled(RawLink)`
   }
 `;
 
+export const TitleLink = styled(RawLink)`
+  color: inherit;
+  font-size: revert;
+  &:hover {
+    color: ${colors.B1};
+    text-decoration: underline;
+  }
+`;
+
 export const Logo = styled.img`
   margin-bottom: 2rem;
 `;

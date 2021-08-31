@@ -1,10 +1,12 @@
 import * as yup from 'yup';
 import React, { useState } from 'react';
-import { Col, Grid, Row, message } from 'antd';
+import { Col, Grid, message, Row } from 'antd';
 import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './subscription.styled';
+import { useRouter } from 'next/router';
+import { link as linkUtils } from '~/utils';
 
 const { useBreakpoint } = Grid;
 
@@ -13,6 +15,11 @@ const schema = yup.object().shape({
 });
 
 const Subscription = () => {
+  const router = useRouter();
+  const onClick = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
   const bp = useBreakpoint();
   const [email, setEmail] = useState('');
   const { t } = useTranslation('page-home');
@@ -61,7 +68,7 @@ const Subscription = () => {
               <Styled.JoinButton
                 type="primary"
                 isSmallScreen={isSmallScreen}
-                onClick={() => window.open('https://accounts.pingcap.com/')}
+                onClick={onClick('https://accounts.pingcap.com/')}
               >
                 {lang.joinButton.label}
               </Styled.JoinButton>

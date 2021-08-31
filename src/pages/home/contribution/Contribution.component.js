@@ -36,7 +36,9 @@ const Contribution = () => {
                   </Col>
                   <Col xs={{ order: 1 }} md={{ order: 2 }}>
                     <Styled.StepHeader>
-                      {guideLang.stepPrefix} {idx + 1} {'.'} {step.title}
+                      <a href={step.link}>
+                        {guideLang.stepPrefix} {idx + 1} {'.'} {step.title}
+                      </a>
                     </Styled.StepHeader>
                     <Styled.Text>{step.desc}</Styled.Text>
                   </Col>
@@ -46,7 +48,18 @@ const Contribution = () => {
 
             <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
               <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
-              <img height={36} src={getImage('join-logos.svg')} alt={'join logos'} />
+              <Row gutter={16}>
+                <Col>
+                  <a href="https://internals.tidb.io/">
+                    <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
+                  </a>
+                </Col>
+                <Col>
+                  <a href="https://slack.tidb.io/">
+                    <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
+                  </a>
+                </Col>
+              </Row>
             </Styled.EngageCallBox>
           </>
         }
@@ -54,7 +67,9 @@ const Contribution = () => {
           <>
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
-            <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
+            <a href={forkLang.link}>
+              <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
+            </a>
           </>
         }
       />

@@ -36,7 +36,7 @@ const Others = () => {
           <>
             <ModuleTitle>
               <Styled.Subtitle>{lang.videos}</Styled.Subtitle>
-              <Link>{lang.more}</Link>
+              <Link href="https://space.bilibili.com/86485707">{lang.more}</Link>
             </ModuleTitle>
             <Row gutter={16}>
               {data.videos.slice(0, isSmallScreen ? 3 : 6).map((video, idx) => (
@@ -48,7 +48,7 @@ const Others = () => {
             <Styled.Divider />
             <ModuleTitle>
               <Styled.Subtitle> {jobsLang.subtitle} </Styled.Subtitle>
-              <Link> {lang.more} </Link>
+              <Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Link>
             </ModuleTitle>
             <Row>
               <Styled.Text> {jobsLang.desc} </Styled.Text>
@@ -82,7 +82,7 @@ const Others = () => {
             <Styled.Divider />
             <Styled.Text>
               {contactLang.label}
-              <Link>{contactLang.linkText}</Link>！
+              <Link href="mailto:community@tidb.io">{contactLang.linkText}</Link>！
             </Styled.Text>
           </>
         }

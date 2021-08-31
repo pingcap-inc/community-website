@@ -32,7 +32,7 @@ const Learning = () => {
             </Styled.Text>
 
             <Styled.VideoHeader>
-              {lang.videosTitle}
+              <a href="https://learn.pingcap.com/learner/course/6">{lang.videosTitle}</a>
               <Styled.FreeLabel>{lang.freeLabel}</Styled.FreeLabel>
             </Styled.VideoHeader>
 
@@ -64,7 +64,9 @@ const Learning = () => {
 
             {isSmallScreen && <Styled.Text>{majorVideoLang.desc}</Styled.Text>}
 
-            <Styled.More isSmallScreen={isSmallScreen}>{lang.more}</Styled.More>
+            <Styled.More href={lang.moreLink} isSmallScreen={isSmallScreen}>
+              {lang.more}
+            </Styled.More>
           </>
         }
         rightPanel={

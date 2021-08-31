@@ -58,7 +58,11 @@ const Subscription = () => {
               </Styled.SloganBox>
             </Row>
             <Row justify={isSmallScreen ? 'center' : undefined}>
-              <Styled.JoinButton type="primary" $isSmallScreen={isSmallScreen}>
+              <Styled.JoinButton
+                type="primary"
+                isSmallScreen={isSmallScreen}
+                onClick={() => window.open('https://accounts.pingcap.com/')}
+              >
                 {lang.joinButton.label}
               </Styled.JoinButton>
             </Row>

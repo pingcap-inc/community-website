@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import Image from 'next/image';
 import React, { useContext, useState, useRef } from 'react';
 import { Col, Row } from 'antd';
@@ -12,8 +13,7 @@ import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
 import { PageDataContext } from '~/context';
-import { getImage } from '~/pages/home/index.utils';
-import { link as linkUtils } from '~/utils';
+import { common as commonUtils, link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const navItems = [
@@ -94,11 +94,19 @@ const Banner = () => {
 
           <Styled.RightPanel>
             <Styled.Carousel isSmallScreen={isSmallScreen}>
-              {[...new Array(4).keys()].map((key) => (
-                <div key={key}>
-                  <Image src={getImage('banner-carousel.png')} height="234" width="652" />
-                </div>
-              ))}
+              {data.promotions.map(({ id, title, link, image }) => {
+                const imgOrg = R.path([0, 'formats', 'large'], image);
+                const imgProps = {
+                  src: commonUtils.getStrapiImage(imgOrg.url),
+                  ...R.pick(['width', 'height'], imgOrg),
+                };
+
+                return (
+                  <div key={id} onClick={onClick(link)}>
+                    <Image {...imgProps} />
+                  </div>
+                );
+              })}
             </Styled.Carousel>
           </Styled.RightPanel>
         </Row>

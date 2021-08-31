@@ -17,7 +17,9 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getStaticProps = async (ctx) => {
-  const isEnabled = process.env.NEXT_PUBLIC_FT_HOME;
+  const { env } = process;
+  const isProd = env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
+  const isEnabled = env.NEXT_PUBLIC_FT_HOME;
 
   if (!isEnabled) {
     return {
@@ -25,18 +27,23 @@ export const getStaticProps = async (ctx) => {
     };
   }
 
-  const { env } = process;
   const client = await api.initStrapiClient({
     baseUrl: env.NEXT_PUBLIC_STRAPI_BASE_URL,
     email: env.NEXT_PUBLIC_STRAPI_EMAIL,
     password: env.NEXT_PUBLIC_STRAPI_PASSWORD,
   });
 
+  const strapiQuery = {
+    params: {
+      _publicationState: isProd ? undefined : 'preview',
+    },
+  };
   const data = await Promise.all([
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
     client.get('tidbio-asktug-blogs'),
     client.get('tidbio-blibli-recent-videos'),
+    client.get('tidbio-homepage-banner-promotions', strapiQuery),
   ]);
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
   const TEN_MINS = 10 * 60;
@@ -50,6 +57,7 @@ export const getStaticProps = async (ctx) => {
           forumPosts: data[1].data,
           blogs: data[2].data,
           videos: data[3].data,
+          promotions: data[4],
         },
         {
           recursive: true,

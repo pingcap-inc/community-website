@@ -6,6 +6,7 @@ const morgan = require('morgan');
 
 const routes = require('./routes');
 
+const { log } = console;
 const port = 4000;
 const app = express();
 
@@ -27,6 +28,5 @@ app.use(
 app.use(routes);
 
 app.listen(port, () => {
-  // eslint-disable-next-line no-console
-  console.log(`Mock server is running at ${chalk.blue(`http://localhost:${port}`)}`);
+  log(`Mock server is running at ${chalk.blue(`http://localhost:${port}`)}`);
 });

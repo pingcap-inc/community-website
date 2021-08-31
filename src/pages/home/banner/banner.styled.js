@@ -210,6 +210,10 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
     padding-right: 2.5rem;
   }
 
+  .slick-track {
+    height: auto !important;
+  }
+
   .slick-dots {
     li {
       margin: 8px 3px;

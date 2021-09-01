@@ -28,6 +28,7 @@ export const TitleLink = styled(RawLink)`
 
 export const Logo = styled.img`
   margin-bottom: 2rem;
+  width: 300px;
 `;
 
 export const VideoHeader = styled.h3`

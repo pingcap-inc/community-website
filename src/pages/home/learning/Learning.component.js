@@ -1,14 +1,22 @@
 import React from 'react';
 import { Col } from 'antd';
 import { Trans, useTranslation } from 'next-i18next';
+import { useRouter } from 'next/router';
 
 import * as Styled from './learning.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { getImage } from '~/pages/home/index.utils';
 import { useIsSmallScreen } from '~/hooks';
+import { link as linkUtils } from '~/utils';
 
 const Learning = () => {
+  const router = useRouter();
+  const redirect = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
+
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
@@ -41,7 +49,7 @@ const Learning = () => {
                 <Styled.VideoBoxWrapper isSmallScreen={isSmallScreen}>
                   <Styled.VideoBox isSmallScreen={isSmallScreen} src={majorVideoLang.coverUrl}>
                     <Styled.VideoPlayButton>
-                      <Styled.VideoPlayIcon color="white" height="48px" />
+                      <Styled.VideoPlayIcon onClick={redirect(majorVideoLang.link)} color="white" height="48px" />
                     </Styled.VideoPlayButton>
                     {!isSmallScreen && (
                       <Styled.VideoCaption isSmallScreen={isSmallScreen}>{majorVideoLang.desc}</Styled.VideoCaption>
@@ -54,7 +62,7 @@ const Learning = () => {
                   <Styled.VideoBoxWrapperSmall key={idx}>
                     <Styled.VideoBox isSmallScreen={isSmallScreen} src={video.coverUrl}>
                       <Styled.VideoPlayButton>
-                        <Styled.VideoPlayIcon $small />
+                        <Styled.VideoPlayIcon $small onClick={redirect(video.link)} />
                       </Styled.VideoPlayButton>
                     </Styled.VideoBox>
                   </Styled.VideoBoxWrapperSmall>

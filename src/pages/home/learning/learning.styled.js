@@ -95,11 +95,11 @@ export const VideoPlayButton = styled.div`
 
 export const VideoPlayIcon = styled(PlayCircleFilled)`
   font-size: 5rem;
-  color: ${colors.M1};
-  opacity: 95%;
+  color: ${colors.F1};
+  opacity: 46%;
 
   &:hover {
-    color: ${colors.C2};
+    color: ${colors.F2};
     cursor: pointer;
   }
 

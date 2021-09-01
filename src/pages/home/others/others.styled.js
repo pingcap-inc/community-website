@@ -17,6 +17,7 @@ export const Subtitle = styled.span`
 `;
 
 export const LogoWrapper = styled.div`
+  display: flex;
   margin-top: 2rem;
   margin-bottom: 2rem;
 `;

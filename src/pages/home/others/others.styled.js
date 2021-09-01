@@ -22,7 +22,7 @@ export const LogoWrapper = styled.div`
 `;
 
 export const Logo = styled.img`
-  max-height: 40px;
+  max-height: ${(props) => props.height}px;
 `;
 
 export const LogosBox = styled(Row)`

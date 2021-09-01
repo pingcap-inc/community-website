@@ -56,7 +56,7 @@ const Others = () => {
             <Styled.LogosBox gutter={16} justify="center">
               {jobLogos.map((url, idx) => (
                 <Col key={idx}>
-                  <Styled.Logo src={url} />
+                  <Styled.Logo height={36} src={url} />
                 </Col>
               ))}
             </Styled.LogosBox>
@@ -66,19 +66,19 @@ const Others = () => {
           <>
             <Styled.Subtitle>{supportLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo src={getImage('others-pingcap-logo.svg')} />
+              <Styled.Logo height={36} src={getImage('others-pingcap-logo.svg')} />
             </Styled.LogoWrapper>
             <Styled.Text>{supportLang.desc}</Styled.Text>
             <Styled.Divider />
             <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo src={getImage('others-tikv-logo.svg')} />
+              <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{collaborationLang.tikvDesc}</Styled.Text>
+            <Styled.Text>{collaborationLang.desc1}</Styled.Text>
             <Styled.LogoWrapper>
-              <Styled.Logo src={getImage('others-chaos-mesh-logo.svg')} />
+              <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{collaborationLang.chaosMeshDesc}</Styled.Text>
+            <Styled.Text>{collaborationLang.desc2}</Styled.Text>
             <Styled.Divider />
             <Styled.Text>
               {contactLang.label}

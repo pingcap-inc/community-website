@@ -42,7 +42,6 @@ export const TermCaption = styled.div`
 
 export const Link = styled.a`
   color: ${colors.M1};
-  font-size: 20px;
   text-decoration: underline;
 
   &:hover {

@@ -142,7 +142,7 @@
     "more": "更多课程",
     "moreLink": "https://learn.pingcap.com/learner/home",
     "majorVideo": {
-      "desc": "在 Get Started with TiDB 课程中，您将学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
+      "desc": "学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
       "link": "",
       "coverUrl": "/images/home/others-video-cover-mock.jpg"
     },
@@ -282,16 +282,11 @@
       "link": "https://accounts.pingcap.com/"
     },
     "links": {
-      "orgArch": {
-        "url": "https://tidb.io/archived/events/organization/",
-        "label": "社区组织架构"
-      },
       "contributorList": {
         "url": "https://contributor.tidb.io/people/contributor",
         "label": "贡献者列表"
       },
-      "see": "由此查看",
-      "connective": "和"
+      "see": "由此查看"
     },
     "subscribe": "订阅 TiDB 社区的最新资讯",
     "emailInput": {
@@ -301,6 +296,10 @@
       "errorMsg": "订阅失败",
       "invalidMsg": "请输入合法的邮件地址"
     },
-    "termsDesc": "提交即表明您同意 TiDB Community 的使用条款。"
+    "termsDesc": "提交即表明您同意 TiDB Community 的",
+    "terms": {
+      "label": "隐私政策",
+      "link": "https://pingcap.com/zh/privacy-policy/"
+    }
   }
 }

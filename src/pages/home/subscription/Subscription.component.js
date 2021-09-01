@@ -58,8 +58,6 @@ const Subscription = () => {
               <Styled.SloganBox>
                 <Styled.Slogan>
                   {lang.slogan}, {linksLang.see}
-                  <Styled.Link href={linksLang.orgArch.url}>{linksLang.orgArch.label}</Styled.Link>
-                  {linksLang.connective}
                   <Styled.Link href={linksLang.contributorList.url}>{linksLang.contributorList.label}</Styled.Link>
                 </Styled.Slogan>
               </Styled.SloganBox>
@@ -84,7 +82,9 @@ const Subscription = () => {
               size="large"
               onSearch={subscribeEmail}
             />
-            <Styled.TermCaption>{lang.termsDesc}</Styled.TermCaption>
+            <Styled.TermCaption>
+              {lang.termsDesc} <Styled.Link href={lang.terms.link}> {lang.terms.label} </Styled.Link>
+            </Styled.TermCaption>
           </Col>
         </Row>
       </Styled.Container>

@@ -13,11 +13,11 @@ export const Container = styled(Section)`
 `;
 
 export const Link = styled(RawLink)`
-  color: inherit;
+  color: ${colors.B1};
   font-size: revert;
   &:hover {
     color: ${colors.B1};
-    text-decoration: underline;
+    font-weight: 500;
   }
 `;
 

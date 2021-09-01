@@ -3,10 +3,22 @@
     "intro": "是一款同时支持在线事务处理与在线分析处理 (HTAP) 的融合型分布式数据库产品。",
     "tryButton": "立即体验",
     "navs": {
-      "doc": "文档手册",
-      "asktug": "问答",
-      "article": "文章",
-      "activity": "活动"
+      "doc": {
+        "label": "文档手册",
+        "link": "https://asktug.com/c/blog"
+      },
+      "asktug": {
+        "label": "问答",
+        "link": "https://asktug.com/"
+      },
+      "article": {
+        "label": "文章",
+        "link": "https://docs.pingcap.com/zh/tidb/stable"
+      },
+      "activity": {
+        "label": "活动",
+        "link": "https://asktug.com/c/community-activities"
+      }
     }
   },
   "welcome": {

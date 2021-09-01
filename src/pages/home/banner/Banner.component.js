@@ -108,9 +108,9 @@ const Banner = () => {
 
         <Styled.Navs $isSmallScreen={isSmallScreen}>
           {navItems.map(({ icon: Icon, langKey }, idx) => (
-            <Styled.NavItem key={idx}>
+            <Styled.NavItem key={idx} onClick={onClick(navsLang[langKey].link)}>
               <Icon />
-              <span>{navsLang[langKey]}</span>
+              <span>{navsLang[langKey].label}</span>
             </Styled.NavItem>
           ))}
         </Styled.Navs>

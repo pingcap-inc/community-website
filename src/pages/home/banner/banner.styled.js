@@ -148,6 +148,7 @@ export const NavItem = styled(Col).attrs({
   ${mixins.flexCenter()};
   height: 40px;
   border-right: 1px solid ${colors.T2};
+  cursor: pointer;
 
   &:last-child {
     border-right: none;

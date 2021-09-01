@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Tag = styled(Link)`
   ${mixins.verticalLineMiddle('36px')};
+  font-size: 14px;
   color: ${colors.F2};
   background: ${colors.M1};
   border-radius: 4px;

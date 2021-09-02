@@ -7,6 +7,7 @@ const calendarGrey = '#b6b9c3';
 
 export const Calendar = styled.div`
   width: 36px;
+  padding-top: 6px;
   margin-right: 1rem;
   text-align: center;
 
@@ -16,7 +17,7 @@ export const Calendar = styled.div`
 `;
 
 export const Container = styled.div`
-  ${mixins.flexVerticalCenter()};
+  display: flex;
   cursor: pointer;
   padding: 1rem 0;
   border-bottom: 1px solid ${colors.T2};

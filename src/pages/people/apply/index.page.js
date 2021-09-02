@@ -41,7 +41,7 @@ const People = ({ title, description, postImageUrl, question, answer, whyJoinTit
             <h1 className={styles.start_title}>{title}</h1>
 
             <div className={styles.start_post}>
-              <img src={postImageUrl} />
+              <img src={postImageUrl} alt={title} />
             </div>
 
             <div className={styles.divider_row} />
@@ -57,7 +57,7 @@ const People = ({ title, description, postImageUrl, question, answer, whyJoinTit
               {whyJoinItems.map((value) => (
                 <div className={styles.start_why_join_list_item}>
                   <div className={styles.start_why_join_list_item_icon}>
-                    <img src={value.iconUrl} />
+                    <img src={value.iconUrl} alt={value.text} />
                   </div>
                   <div className={styles.start_why_join_list_item_text}>{value.text}</div>
                 </div>

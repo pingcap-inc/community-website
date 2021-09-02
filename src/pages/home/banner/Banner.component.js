@@ -71,7 +71,7 @@ const Banner = () => {
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>
-            <Row gutter={32} justify="space-between" align="middle">
+            <Row gutter={32} justify="space-between" align="bottom">
               <Col flex="none">
                 <Styled.TryButton onClick={onClick('https://pingcap.com/zh/product-community/')}>
                   {lang.tryButton}

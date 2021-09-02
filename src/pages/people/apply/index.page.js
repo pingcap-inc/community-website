@@ -1,12 +1,10 @@
 import React from 'react';
-import { v4 as uuidV4 } from 'uuid';
-import Image from 'next/Image';
 
 import Container from '~/components/Container/Container';
 import styles from './index.module.scss';
 import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
-import { Checkbox, Radio, Form, Input, Space } from 'antd';
+import { Radio, Form, Input, Space } from 'antd';
 import Button from '../../../components/Button/Button';
 
 export const getStaticProps = () => {

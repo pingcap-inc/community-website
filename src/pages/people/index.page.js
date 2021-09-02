@@ -11,6 +11,7 @@ import { CoreLayout } from '~/layouts';
 import { JOIN_TUG_LINK } from '~/constants';
 import { TugHead } from '~/components';
 import Button from '../../components/Button/Button';
+import HomeMVA from '../../components/home/HomeMVA/HomeMVA';
 
 export const getStaticProps = () => {
   const title = 'TUG 会员';
@@ -208,6 +209,8 @@ const People = ({
             </div>
           </Container>
         </div>
+
+        <HomeMVA />
       </CoreLayout>
     </>
   );

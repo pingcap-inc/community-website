@@ -206,9 +206,12 @@ export const Navs = styled(Row).attrs({
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({
   dotPosition: props.isSmallScreen ? 'bottom' : 'right',
+  autoplay: true,
+  autoPlaySpeed: 4000,
 }))`
   .slick-slide {
     padding-right: 2.5rem;
+    cursor: pointer;
   }
 
   .slick-track {

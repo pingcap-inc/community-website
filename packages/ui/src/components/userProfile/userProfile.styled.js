@@ -10,3 +10,7 @@ export const UserButton = styled(Button)`
   padding: 0 !important;
   color: ${colors.F1};
 `;
+
+export const LoginButton = styled(Button)`
+  height: 36px;
+`;

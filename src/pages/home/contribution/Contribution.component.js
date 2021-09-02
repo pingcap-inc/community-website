@@ -49,18 +49,6 @@ const Contribution = () => {
 
             <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
               <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
-              <Row gutter={16}>
-                <Col>
-                  <Link href="https://internals.tidb.io/">
-                    <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
-                  </Link>
-                </Col>
-                <Col>
-                  <Link href="https://slack.tidb.io/">
-                    <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
-                  </Link>
-                </Col>
-              </Row>
             </Styled.EngageCallBox>
           </>
         }
@@ -68,9 +56,23 @@ const Contribution = () => {
           <>
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
-            <Link href={forkLang.link}>
-              <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
-            </Link>
+            <Row gutter={16}>
+              <Col>
+                <Link href={forkLang.link}>
+                  <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
+                </Link>
+              </Col>
+              <Col>
+                <Link href="https://internals.tidb.io/">
+                  <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
+                </Link>
+              </Col>
+              <Col>
+                <Link href="https://slack.tidb.io/">
+                  <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
+                </Link>
+              </Col>
+            </Row>
           </>
         }
       />

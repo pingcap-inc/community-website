@@ -50,7 +50,7 @@ const Others = () => {
               <Styled.Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Styled.Link>
             </ModuleTitle>
             <Row>
-              <Styled.Text> {jobsLang.desc} </Styled.Text>
+              <Styled.Text>{jobsLang.desc}</Styled.Text>
             </Row>
             <Styled.LogosBox gutter={36} justify="left" isSmallScreen={isSmallScreen}>
               {jobLogos.map((url, idx) => (
@@ -68,8 +68,7 @@ const Others = () => {
               <Styled.Logo height={36} src={getImage('others-pingcap-logo.svg')} />
             </Styled.LogoWrapper>
             <Styled.Text>
-              {' '}
-              <Styled.Link href={supportLang.link}> {supportLang.name} </Styled.Link> {supportLang.desc}
+              <Styled.Link href={supportLang.link}>{supportLang.name}</Styled.Link> {supportLang.desc}
             </Styled.Text>
             <Styled.Divider />
             <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
@@ -77,14 +76,14 @@ const Others = () => {
               <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
             </Styled.LogoWrapper>
             <Styled.Text>
-              <Styled.Link href={collaborationLang.link1}> {collaborationLang.name1} </Styled.Link>
+              <Styled.Link href={collaborationLang.link1}>{collaborationLang.name1}</Styled.Link>
               {collaborationLang.desc1}
             </Styled.Text>
             <Styled.LogoWrapper>
               <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
             </Styled.LogoWrapper>
             <Styled.Text>
-              <Styled.Link href={collaborationLang.link2}> {collaborationLang.name2} </Styled.Link>
+              <Styled.Link href={collaborationLang.link2}>{collaborationLang.name2}</Styled.Link>
               {collaborationLang.desc2}
             </Styled.Text>
             <Styled.Divider />

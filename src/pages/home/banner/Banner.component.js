@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useContext, useState, useRef } from 'react';
 import { Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
@@ -95,12 +94,14 @@ const Banner = () => {
             <Styled.Carousel isSmallScreen={isSmallScreen}>
               {data.promotions.map(({ id, title, link, image }) => {
                 const imgProps = commonUtils.getStrapiImgProps(image);
+                const props = {
+                  title,
+                  key: id,
+                  onClick: onClick(link),
+                  image: imgProps.src,
+                };
 
-                return (
-                  <div key={id} onClick={onClick(link)}>
-                    <Image alt={title} {...imgProps} />
-                  </div>
-                );
+                return <Styled.Promotion {...props} />;
               })}
             </Styled.Carousel>
           </Styled.RightPanel>

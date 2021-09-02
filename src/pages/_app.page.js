@@ -1,4 +1,3 @@
-import '@fontsource/titillium-web';
 import '@formatjs/intl-numberformat/polyfill';
 import '@formatjs/intl-numberformat/locale-data/en';
 import 'antd/dist/antd.css';

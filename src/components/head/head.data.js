@@ -8,5 +8,5 @@ export const tug = {
 
 export const community = {
   faviconPathname: 'community',
-  googleAnalyticsId: 'G-6W0S4GLFZ1',
+  googleAnalyticsId: 'G-BJZ86GFQMT',
 };

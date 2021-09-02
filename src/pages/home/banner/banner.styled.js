@@ -19,7 +19,7 @@ export const Container = styled(HomeStyled.Section)`
 
 export const Content = styled(HomeStyled.Content)`
   position: relative;
-  padding: 5rem 0 7.5rem;
+  padding: 5rem 1rem 7.5rem;
 
   ${(props) =>
     props.isSmallScreen &&
@@ -80,7 +80,7 @@ export const RightPanel = styled(Col).attrs({
   },
   lg: {
     order: 2,
-    span: 12,
+    span: 16,
   },
 })``;
 
@@ -205,6 +205,12 @@ export const Navs = styled(Row).attrs({
         }
       }
     `};
+`;
+
+export const Promotion = styled.div`
+  height: 250px;
+  background: ${(props) => `url(${props.image}) center center no-repeat`};
+  background-size: cover;
 `;
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({

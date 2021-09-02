@@ -74,11 +74,19 @@ const Others = () => {
             <Styled.LogoWrapper>
               <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{collaborationLang.desc1}</Styled.Text>
+            <Styled.Text>
+              {' '}
+              <Styled.Link href={collaborationLang.link1}> {collaborationLang.name1} </Styled.Link>{' '}
+              {collaborationLang.desc1}
+            </Styled.Text>
             <Styled.LogoWrapper>
               <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{collaborationLang.desc2}</Styled.Text>
+            <Styled.Text>
+              {' '}
+              <Styled.Link href={collaborationLang.link2}> {collaborationLang.name2} </Styled.Link>{' '}
+              {collaborationLang.desc2}
+            </Styled.Text>
             <Styled.Divider />
             <Styled.Text>
               {contactLang.label}

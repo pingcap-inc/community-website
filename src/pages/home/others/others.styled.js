@@ -3,8 +3,11 @@ import { Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import { Section, Text } from '~/pages/home/index.styled';
+import { Link as RawLink } from '~/components';
 
 export { Text };
+
+export const Link = styled(RawLink)``;
 
 export const Container = styled(Section)`
   && {

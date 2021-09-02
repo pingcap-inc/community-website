@@ -39,7 +39,7 @@ const Banner = () => {
   const [mounted, setMounted] = useState(false);
   const { t } = useTranslation('page-home');
   const { data } = useContext(PageDataContext);
-  const { isSmallScreen } = useIsSmallScreen();
+  const { isSmallScreen, breakpoint } = useIsSmallScreen();
 
   // Solving the warning of "Expected server HTML to contain a matching <tag>"
   // because of AntD Tooltip.
@@ -70,7 +70,7 @@ const Banner = () => {
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>
-            <Row gutter={32} justify="space-between" align="bottom">
+            <Row gutter={32} justify={isSmallScreen ? 'space-around' : 'space-between'} align="bottom">
               <Col flex="none">
                 <Styled.TryButton onClick={onClick('https://pingcap.com/zh/product-community/')}>
                   {lang.tryButton}
@@ -99,6 +99,20 @@ const Banner = () => {
                   key: id,
                   onClick: onClick(link),
                   image: imgProps.src,
+                  height: (() => {
+                    if (breakpoint.lg) {
+                      return 250;
+                    }
+                    if (breakpoint.md) {
+                      return 200;
+                    }
+                    if (breakpoint.sm) {
+                      return 250;
+                    }
+                    if (breakpoint.xs) {
+                      return 200;
+                    }
+                  })(),
                 };
 
                 return <Styled.Promotion {...props} />;

@@ -24,7 +24,7 @@ export const Content = styled(HomeStyled.Content)`
   ${(props) =>
     props.isSmallScreen &&
     css`
-      padding: 3rem 0 5.5rem;
+      padding: 0 0 5.5rem;
 
       ${LeftPanel} {
         display: flex;
@@ -46,6 +46,7 @@ export const Content = styled(HomeStyled.Content)`
 
       ${Intro} {
         width: 80%;
+        text-align: center;
       }
     `}
 `;
@@ -208,7 +209,7 @@ export const Navs = styled(Row).attrs({
 `;
 
 export const Promotion = styled.div`
-  height: 250px;
+  height: ${(props) => `${props.height}px`};
   background: ${(props) => `url(${props.image}) center center no-repeat`};
   background-size: cover;
 `;

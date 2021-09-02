@@ -65,13 +65,7 @@ export const LeftPanel = styled(Col).attrs({
     order: 1,
     span: 8,
   },
-})`
-  width: 100%;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-`;
+})``;
 
 export const RightPanel = styled(Col).attrs({
   xs: {
@@ -95,11 +89,14 @@ export const Logo = styled(LogoSvg)`
   margin-bottom: 0.5rem;
 `;
 
-export const Intro = styled.h4`
-  ${mixins.reset()};
-  color: ${colors.M1} !important;
-  font-weight: normal !important;
-  margin-bottom: 2rem;
+export const Intro = styled.h2`
+  && {
+    ${mixins.reset()};
+    font-size: 16px;
+    color: ${colors.M1};
+    font-weight: normal;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const TryButton = styled(Button).attrs({
@@ -212,18 +209,12 @@ export const Navs = styled(Row).attrs({
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({
   dotPosition: props.isSmallScreen ? 'bottom' : 'right',
-  autoplay: true,
+  autoplay: process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local',
   autoPlaySpeed: 4000,
 }))`
-  height: 250px;
-
   .slick-slide {
     padding-right: 2.5rem;
     cursor: pointer;
-  }
-
-  .slick-list {
-    height: 250px !important;
   }
 
   .slick-track {

@@ -284,9 +284,9 @@
       "desc2": "爱可生社区以开源高质量的运维工具、日常分享技术干货内容、持续的全国性的社区活动为社区己任；立志于每年10.24日开源一款高质量的数据库相关的开源产品；目前开源的产品有：分布式中间件DBLE、数据传输组件DTLE、全局事务框架TXLE。"
     },
     "contact": {
-      "label": "想和我们成为合作伙伴？欢迎",
+      "label": "技术合作、社区活动合作，欢迎",
       "linkText": "联系我们",
-      "url": ""
+      "link": "https://tidb.io/contact-us/cooperation"
     }
   },
   "subscription": {

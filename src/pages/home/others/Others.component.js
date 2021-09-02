@@ -82,7 +82,7 @@ const Others = () => {
             <Styled.Divider />
             <Styled.Text>
               {contactLang.label}
-              <Link href="mailto:community@tidb.io">{contactLang.linkText}</Link>！
+              <Link href={contactLang.link}>{contactLang.linkText}</Link>！
             </Styled.Text>
           </>
         }

@@ -83,7 +83,7 @@ const Subscription = () => {
               onSearch={subscribeEmail}
             />
             <Styled.TermCaption>
-              {lang.termsDesc} <Styled.Link href={lang.terms.link}> {lang.terms.label} </Styled.Link>
+              {lang.termsDesc} <Styled.Link href={lang.terms.link}>{lang.terms.label}</Styled.Link>
             </Styled.TermCaption>
           </Col>
         </Row>

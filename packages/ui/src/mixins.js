@@ -153,5 +153,6 @@ export const resetLink = () => css`
 `;
 
 export const resetFontFamily = () => css`
-  font-family: 'pingfang SC', 'helvetica neue', 'arial', 'microsoft yahei', sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 `;

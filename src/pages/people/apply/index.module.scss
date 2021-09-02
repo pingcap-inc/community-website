@@ -1,0 +1,102 @@
+@import '~/styles/common';
+
+.container {
+  display: flex;
+  justify-content: center;
+  @include responsive-lte-md {
+    flex-direction: column;
+  }
+
+  .divider {
+    &_row,
+    &_col {
+      background-color: $T2;
+    }
+    &_row {
+      width: 100%;
+      height: 1px;
+    }
+    &_col {
+      width: 1px;
+      height: 100%;
+    }
+  }
+
+  .start {
+    width: 600px;
+    padding: 80px 40px;
+    @include responsive-lte-md {
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    &_title {
+      text-align: center;
+    }
+
+    &_post {
+      margin-bottom: 80px;
+      img {
+        width: 100%;
+      }
+    }
+
+    &_question {
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+
+    &_answer {
+      margin-bottom: 60px;
+    }
+
+    &_why_join_title {
+      margin-top: 60px;
+      margin-bottom: 40px;
+    }
+
+    &_why_join_list {
+      padding: 40px 20px;
+      border: 1px solid $T2;
+      &_item {
+        display: flex;
+        align-items: center;
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+        @include responsive-lte-md {
+          justify-content: center;
+        }
+        &_icon {
+          $size: 40px;
+          margin-right: 10px;
+          width: $size;
+          height: $size;
+        }
+        &_text {
+        }
+      }
+    }
+  }
+
+  .end {
+    width: 800px;
+    margin: 40px 0;
+    padding: 0 40px;
+    border-left: 1px solid $T2;
+    @include responsive-lte-md {
+      width: 100%;
+      padding: 40px 20px;
+      border-left: none;
+    }
+    &_form {
+      width: 100%;
+      padding: 40px;
+      background-color: $T2;
+      &_title {
+        margin-bottom: 28px;
+      }
+    }
+  }
+}

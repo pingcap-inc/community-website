@@ -18,6 +18,8 @@ export const getStaticProps = () => {
     'TUG 为 TiDB 用户提供了一个开放的交流平台。' +
     '成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。';
 
+  const applyUrl = '/people/apply';
+
   const tugOrganizationChartTitle = 'TUG 组织架构';
   const tugOrganizationChartUrl = '/images/people/tug-organization-chart.svg';
 
@@ -49,6 +51,7 @@ export const getStaticProps = () => {
     props: {
       title,
       description,
+      applyUrl,
       tugOrganizationChartTitle,
       tugOrganizationChartUrl,
       howToBecomeTitle,
@@ -70,6 +73,7 @@ export const getStaticProps = () => {
 const People = ({
   title,
   description,
+  applyUrl,
   tugOrganizationChartTitle,
   tugOrganizationChartUrl,
   howToBecomeTitle,
@@ -112,7 +116,7 @@ const People = ({
                 </div>
                 <div className={styles.header_content_left_summary}>{description}</div>
                 <div className={styles.header_content_left_summary}>
-                  <Button as={MyLink} href={'/people/application'}>
+                  <Button as={MyLink} href={applyUrl}>
                     加入 TUG
                   </Button>
                 </div>

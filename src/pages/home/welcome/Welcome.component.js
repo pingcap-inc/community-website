@@ -52,9 +52,11 @@ const Welcome = () => {
             <Styled.Title>{lang.title}</Styled.Title>
             <Styled.Intro>{lang.intro}</Styled.Intro>
             <Styled.Navs>
-              <Radio.Button>{navsLang.codeOfConduct}</Radio.Button>
-              <Radio.Button>{navsLang.join}</Radio.Button>
-              <Radio.Button>{navsLang.contactUs}</Radio.Button>
+              <Radio.Button onClick={onClick('https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md')}>
+                {navsLang.codeOfConduct}
+              </Radio.Button>
+              <Radio.Button onClick={onClick('https://accounts.pingcap.com/')}>{navsLang.join}</Radio.Button>
+              <Radio.Button onClick={onClick('mailto:community@tidb.io')}>{navsLang.contactUs}</Radio.Button>
             </Styled.Navs>
             <Styled.Numbers gutter={32} justify="center">
               {numbers.map(({ num, text }, idx) => (
@@ -73,8 +75,8 @@ const Welcome = () => {
           <h2>{howToLang.title}</h2>
           <ul>
             <li onClick={onClick('https://docs.pingcap.com/zh/tidb/stable/overview')}>{howToLang.what}</li>
-            <li>{howToLang.use}</li>
-            <li>{howToLang.contribute}</li>
+            <li onClick={onClick('#learning')}>{howToLang.use}</li>
+            <li onClick={onClick('#contribution')}>{howToLang.contribute}</li>
           </ul>
         </Styled.Content>
       </Styled.HowTo>

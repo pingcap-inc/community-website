@@ -5,7 +5,7 @@
     "navs": {
       "doc": {
         "label": "文档手册",
-        "link": "https://asktug.com/c/blog"
+        "link": "https://docs.pingcap.com/zh/tidb/stable"
       },
       "asktug": {
         "label": "问答",
@@ -13,7 +13,7 @@
       },
       "article": {
         "label": "文章",
-        "link": "https://docs.pingcap.com/zh/tidb/stable"
+        "link": "https://asktug.com/c/blog"
       },
       "activity": {
         "label": "活动",

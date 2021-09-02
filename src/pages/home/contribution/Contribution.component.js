@@ -19,7 +19,7 @@ const Contribution = () => {
   const { guide: guideLang, fork: forkLang } = lang;
 
   return (
-    <Styled.Container isSmallScreen={isSmallScreen}>
+    <Styled.Container isSmallScreen={isSmallScreen} id="contribution">
       <TwoColumnsLayout
         title={lang.title}
         leftPanel={

@@ -24,7 +24,7 @@ const Learning = () => {
   const { majorVideo: majorVideoLang } = lang;
 
   return (
-    <Styled.Container>
+    <Styled.Container id="learning">
       <TwoColumnsLayout
         title={lang.title}
         leftPanel={

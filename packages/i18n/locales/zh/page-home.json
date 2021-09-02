@@ -276,7 +276,9 @@
     },
     "businessSupport": {
       "subtitle": "寻找商业支持",
-      "desc": "PingCAP 是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
+      "name": "PingCAP",
+      "link": "https://pingcap.com/zh/",
+      "desc": "是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
     },
     "communityCollaboration": {
       "subtitle": "社区合作",

@@ -7,7 +7,9 @@ import { Link as RawLink } from '~/components';
 
 export { Text };
 
-export const Link = styled(RawLink)``;
+export const Link = styled(RawLink)`
+  display: inline-block;
+`;
 
 export const Container = styled(Section)`
   && {

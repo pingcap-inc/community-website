@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './others.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import VideoThumbnail from './videoThumbnail';
-import { Link } from '~/components';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { PageDataContext } from '~/context';
 import { getImage } from '~/pages/home/index.utils';
@@ -36,7 +35,7 @@ const Others = () => {
           <>
             <ModuleTitle>
               <Styled.Subtitle>{lang.videos}</Styled.Subtitle>
-              <Link href="https://space.bilibili.com/86485707">{lang.more}</Link>
+              <Styled.Link href="https://space.bilibili.com/86485707">{lang.more}</Styled.Link>
             </ModuleTitle>
             <Row gutter={16}>
               {data.videos.slice(0, isSmallScreen ? 3 : 6).map((video, idx) => (
@@ -48,7 +47,7 @@ const Others = () => {
             <Styled.Divider />
             <ModuleTitle>
               <Styled.Subtitle> {jobsLang.subtitle} </Styled.Subtitle>
-              <Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Link>
+              <Styled.Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Styled.Link>
             </ModuleTitle>
             <Row>
               <Styled.Text> {jobsLang.desc} </Styled.Text>
@@ -68,29 +67,30 @@ const Others = () => {
             <Styled.LogoWrapper>
               <Styled.Logo height={36} src={getImage('others-pingcap-logo.svg')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{supportLang.desc}</Styled.Text>
+            <Styled.Text>
+              {' '}
+              <Styled.Link href={supportLang.link}> {supportLang.name} </Styled.Link> {supportLang.desc}
+            </Styled.Text>
             <Styled.Divider />
             <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
               <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
             </Styled.LogoWrapper>
             <Styled.Text>
-              {' '}
-              <Styled.Link href={collaborationLang.link1}> {collaborationLang.name1} </Styled.Link>{' '}
+              <Styled.Link href={collaborationLang.link1}> {collaborationLang.name1} </Styled.Link>
               {collaborationLang.desc1}
             </Styled.Text>
             <Styled.LogoWrapper>
               <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
             </Styled.LogoWrapper>
             <Styled.Text>
-              {' '}
-              <Styled.Link href={collaborationLang.link2}> {collaborationLang.name2} </Styled.Link>{' '}
+              <Styled.Link href={collaborationLang.link2}> {collaborationLang.name2} </Styled.Link>
               {collaborationLang.desc2}
             </Styled.Text>
             <Styled.Divider />
             <Styled.Text>
               {contactLang.label}
-              <Link href={contactLang.link}>{contactLang.linkText}</Link>！
+              <Styled.Link href={contactLang.link}>{contactLang.linkText}</Styled.Link>！
             </Styled.Text>
           </>
         }

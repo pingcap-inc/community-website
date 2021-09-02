@@ -28,7 +28,7 @@ const Contribution = () => {
             <Styled.Text>{guideLang.desc}</Styled.Text>
 
             {guideLang.steps.map((step, idx) => (
-              <Styled.StepBox key={idx}>
+              <Styled.StepBox key={idx} isSmallScreen={isSmallScreen}>
                 <Row gutter={32} wrap={false} justify={isSmallScreen && 'space-between'}>
                   <Col xs={{ order: 2 }} md={{ order: 1 }}>
                     <Styled.StepIconWrapper>
@@ -46,10 +46,6 @@ const Contribution = () => {
                 </Row>
               </Styled.StepBox>
             ))}
-
-            <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
-              <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
-            </Styled.EngageCallBox>
           </>
         }
         rightPanel={
@@ -73,6 +69,10 @@ const Contribution = () => {
                 </Link>
               </Col>
             </Row>
+
+            <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
+              <Styled.EngageTitle>{guideLang.engageCall}</Styled.EngageTitle>
+            </Styled.EngageCallBox>
           </>
         }
       />

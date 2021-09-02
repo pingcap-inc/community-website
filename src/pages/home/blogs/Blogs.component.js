@@ -53,7 +53,7 @@ const Blogs = () => {
                 return <Blog {...props} />;
               })}
             </Styled.Blogs>
-            <Link href="https://asktug.com/c/blog/">{t('common:viewAll')}</Link>
+            <Link href="https://asktug.com/latest">{t('common:viewAll')}</Link>
           </>
         }
         rightPanel={

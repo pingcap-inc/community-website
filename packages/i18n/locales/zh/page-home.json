@@ -219,11 +219,11 @@
         "title": "想和其他伙伴交流学习？",
         "links": [
           {
-            "link": "https://asktug.com/c/blog/",
+            "link": "https://tug.tidb.io/people",
             "label": "TiDB User Group"
           },
           {
-            "link": "https://tidb.io/archived/events/#activities",
+            "link": "https://asktug.com/c/community-activities",
             "label": "参与活动"
           }
         ]
@@ -280,7 +280,7 @@
     },
     "communityCollaboration": {
       "subtitle": "社区合作",
-      "desc1": "Apache Flink 是一个框架和分布式处理引擎，用于在无边界和有边界数据流上进行有状态的计算。Flink 能在所有常见集群环境中运行，并能以内存速度和任意规模进行计算。",
+      "desc1": "Apache Flink 是一个针对无界和有界数据流进行有状态计算的框架与分布式处理引擎，以数据并行和流水线方式执行任意流数据程序。Flink 能在所有常见集群环境中运行，并能以内存速度和任意规模进行计算。",
       "desc2": "爱可生社区以开源高质量的运维工具、日常分享技术干货内容、持续的全国性的社区活动为社区己任；立志于每年10.24日开源一款高质量的数据库相关的开源产品；目前开源的产品有：分布式中间件DBLE、数据传输组件DTLE、全局事务框架TXLE。"
     },
     "contact": {

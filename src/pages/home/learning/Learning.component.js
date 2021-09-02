@@ -61,9 +61,9 @@ const Learning = () => {
                 {lang.minorVideos.map((video, idx) => (
                   <Styled.VideoBoxWrapperSmall key={idx}>
                     <Styled.VideoBox isSmallScreen={isSmallScreen} src={video.coverUrl}>
-                      <Styled.VideoPlayButton>
-                        <Styled.VideoPlayIcon $small onClick={redirect(video.link)} />
-                      </Styled.VideoPlayButton>
+                      <Styled.VideoOverlay onClick={redirect(video.link)}>
+                        <Styled.VideoOverlayText>{video.title}</Styled.VideoOverlayText>
+                      </Styled.VideoOverlay>
                     </Styled.VideoBox>
                   </Styled.VideoBoxWrapperSmall>
                 ))}

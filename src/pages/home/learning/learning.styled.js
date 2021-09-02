@@ -93,6 +93,25 @@ export const VideoPlayButton = styled.div`
   bottom: 0;
 `;
 
+export const VideoOverlay = styled.div`
+  ${mixins.flexCenter};
+  ${mixins.flexVerticalCenter()};
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.46);
+  border: 8px solid white;
+  cursor: pointer;
+`;
+
+export const VideoOverlayText = styled.div`
+  color: ${colors.M1};
+  font-size: 14px;
+`;
+
 export const VideoPlayIcon = styled(PlayCircleFilled)`
   font-size: 5rem;
   color: ${colors.F1};

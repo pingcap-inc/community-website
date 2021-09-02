@@ -160,14 +160,17 @@
     },
     "minorVideos": [
       {
+        "title": "TiDB 系统管理基础",
         "link": "https://learn.pingcap.com/learner/course/30002",
         "coverUrl": "/images/home/learn-minor-video-1-cover.jpg"
       },
       {
+        "title": "TiDB 高级系统管理",
         "link": "https://learn.pingcap.com/learner/course/150002",
         "coverUrl": "/images/home/learn-minor-video-2-cover.jpg"
       },
       {
+        "title": "应用开发指南",
         "link": "https://learn.pingcap.com/learner/course/120005",
         "coverUrl": "/images/home/learn-minor-video-3-cover.jpg"
       }

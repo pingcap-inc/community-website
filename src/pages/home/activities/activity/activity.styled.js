@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Col, Row } from 'antd';
-import { colors } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import { ModuleTitle, Text } from '~/pages/home/index.styled';
 
@@ -53,4 +53,8 @@ export const Content = styled(Col).attrs({
 
 export const Metadata = styled(Text)`
   margin-bottom: 2rem;
+`;
+
+export const Intro = styled(Text)`
+  ${mixins.lineClamp(2)}
 `;

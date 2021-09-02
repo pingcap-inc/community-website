@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
@@ -28,6 +28,11 @@ export const Logo = styled.img`
 
 export const LogosBox = styled(Row)`
   margin-top: 2rem;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      margin-bottom: 1rem;
+    `}
 `;
 
 export const Divider = styled.hr`

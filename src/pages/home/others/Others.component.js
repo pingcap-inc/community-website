@@ -53,7 +53,7 @@ const Others = () => {
             <Row>
               <Styled.Text> {jobsLang.desc} </Styled.Text>
             </Row>
-            <Styled.LogosBox gutter={16} justify="center">
+            <Styled.LogosBox gutter={36} justify="left" isSmallScreen={isSmallScreen}>
               {jobLogos.map((url, idx) => (
                 <Col key={idx}>
                   <Styled.Logo height={36} src={url} />

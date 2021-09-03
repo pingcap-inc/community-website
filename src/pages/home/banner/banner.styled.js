@@ -239,7 +239,8 @@ export const PromotionOverlay = styled.div`
 export const Carousel = styled(AntCarousel).attrs((props) => ({
   dotPosition: props.isSmallScreen ? 'bottom' : 'right',
   autoplay: process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local',
-  autoPlaySpeed: 4000,
+  speed: 1000,
+  autoPlaySpeed: 6000,
 }))`
   .slick-slide {
     padding-right: 2.5rem;

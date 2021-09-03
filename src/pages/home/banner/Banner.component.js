@@ -117,8 +117,7 @@ const Banner = () => {
 
                 return (
                   <Styled.Promotion {...props}>
-                    {' '}
-                    <Styled.PromotionOverlay> {title} </Styled.PromotionOverlay>{' '}
+                    <Styled.PromotionOverlay>{title}</Styled.PromotionOverlay>
                   </Styled.Promotion>
                 );
               })}

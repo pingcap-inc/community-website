@@ -66,7 +66,15 @@ export const LeftPanel = styled(Col).attrs({
     order: 1,
     span: 8,
   },
-})``;
+})`
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  & > * {
+    flex: 1;
+  }
+`;
 
 export const RightPanel = styled(Col).attrs({
   xs: {
@@ -212,6 +220,20 @@ export const Promotion = styled.div`
   height: ${(props) => `${props.height}px`};
   background: ${(props) => `url(${props.image}) center center no-repeat`};
   background-size: cover;
+  position: relative;
+  width: 100%;
+`;
+
+export const PromotionOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgb(0, 0, 0, 0.48);
+  height: 50px;
+  padding: 1rem;
+  color: ${colors.M1};
 `;
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({

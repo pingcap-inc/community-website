@@ -115,7 +115,12 @@ const Banner = () => {
                   })(),
                 };
 
-                return <Styled.Promotion {...props} />;
+                return (
+                  <Styled.Promotion {...props}>
+                    {' '}
+                    <Styled.PromotionOverlay> {title} </Styled.PromotionOverlay>{' '}
+                  </Styled.Promotion>
+                );
               })}
             </Styled.Carousel>
           </Styled.RightPanel>

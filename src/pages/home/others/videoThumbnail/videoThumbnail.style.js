@@ -43,10 +43,9 @@ export const Length = styled.div`
 `;
 
 export const Title = styled.div`
-  ${mixins.lineClamp(2)}
-  font-size: 16px;
-  display: block;
-  line-height: 20px;
+  ${mixins.lineClamp(2)};
+  font-size: 14px;
+  line-height: 1.75;
   margin-top: 0.75rem;
 `;
 

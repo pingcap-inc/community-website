@@ -13,16 +13,21 @@ export const Container = styled(Section)`
 `;
 
 export const Link = styled(RawLink)`
-  color: inherit;
+  color: ${colors.B1};
   font-size: revert;
   &:hover {
     color: ${colors.B1};
-    text-decoration: underline;
+    font-weight: 500;
   }
 `;
 
 export const StepBox = styled.div`
   margin-top: 2.5rem;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      margin-bottom: 2rem;
+    `}
 `;
 
 export const StepHeader = styled.div`
@@ -41,13 +46,7 @@ export const StepIcon = styled.img`
 `;
 
 export const EngageCallBox = styled.div`
-  margin-top: 3rem;
-
-  ${(props) =>
-    props.isSmallScreen &&
-    css`
-      margin-bottom: 2rem;
-    `}
+  margin-top: 2rem;
 `;
 
 export const IssueList = styled.img`
@@ -61,4 +60,9 @@ export const IssueList = styled.img`
 
 export const ForkTitle = styled(ModuleTitle)`
   font-weight: bold !important;
+`;
+
+export const EngageTitle = styled(ModuleTitle)`
+  line-height: 1.7;
+  font-size: 16px;
 `;

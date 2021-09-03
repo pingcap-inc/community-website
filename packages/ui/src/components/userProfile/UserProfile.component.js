@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Avatar, Badge, Button, Dropdown, Menu } from 'antd';
+import { Avatar, Badge, Dropdown, Menu } from 'antd';
 import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 import * as Styled from './userProfile.styled';
@@ -32,9 +32,9 @@ const UserProfile = ({ avatarUrl, currentNav, items, locale, onLoginClick, onLog
   }
 
   return (
-    <Button type="primary" size="small" icon={<UserOutlined />} onClick={onLoginClick}>
+    <Styled.LoginButton type="primary" size="small" icon={<UserOutlined />} onClick={onLoginClick}>
       {_t('login')}
-    </Button>
+    </Styled.LoginButton>
   );
 };
 

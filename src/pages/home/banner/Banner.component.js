@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import React, { useContext, useState, useRef } from 'react';
 import { Col, Row } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
@@ -40,7 +39,7 @@ const Banner = () => {
   const [mounted, setMounted] = useState(false);
   const { t } = useTranslation('page-home');
   const { data } = useContext(PageDataContext);
-  const { isSmallScreen } = useIsSmallScreen();
+  const { isSmallScreen, breakpoint } = useIsSmallScreen();
 
   // Solving the warning of "Expected server HTML to contain a matching <tag>"
   // because of AntD Tooltip.
@@ -71,7 +70,7 @@ const Banner = () => {
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>
-            <Row gutter={32} justify="space-between" align="middle">
+            <Row gutter={32} justify={isSmallScreen ? 'space-around' : 'space-between'} align="bottom">
               <Col flex="none">
                 <Styled.TryButton onClick={onClick('https://pingcap.com/zh/product-community/')}>
                   {lang.tryButton}
@@ -95,11 +94,32 @@ const Banner = () => {
             <Styled.Carousel isSmallScreen={isSmallScreen}>
               {data.promotions.map(({ id, title, link, image }) => {
                 const imgProps = commonUtils.getStrapiImgProps(image);
+                const props = {
+                  title,
+                  key: id,
+                  onClick: onClick(link),
+                  image: imgProps.src,
+                  height: (() => {
+                    if (breakpoint.lg) {
+                      return 250;
+                    }
+                    if (breakpoint.md) {
+                      return 200;
+                    }
+                    if (breakpoint.sm) {
+                      return 250;
+                    }
+                    if (breakpoint.xs) {
+                      return 200;
+                    }
+                  })(),
+                };
 
                 return (
-                  <div key={id} onClick={onClick(link)}>
-                    <Image alt={title} {...imgProps} />
-                  </div>
+                  <Styled.Promotion {...props}>
+                    {' '}
+                    <Styled.PromotionOverlay> {title} </Styled.PromotionOverlay>{' '}
+                  </Styled.Promotion>
                 );
               })}
             </Styled.Carousel>
@@ -108,9 +128,9 @@ const Banner = () => {
 
         <Styled.Navs $isSmallScreen={isSmallScreen}>
           {navItems.map(({ icon: Icon, langKey }, idx) => (
-            <Styled.NavItem key={idx}>
+            <Styled.NavItem key={idx} onClick={onClick(navsLang[langKey].link)}>
               <Icon />
-              <span>{navsLang[langKey]}</span>
+              <span>{navsLang[langKey].label}</span>
             </Styled.NavItem>
           ))}
         </Styled.Navs>

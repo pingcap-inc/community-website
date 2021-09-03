@@ -1,10 +1,23 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Row } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import { Section, Text } from '~/pages/home/index.styled';
+import { Link as RawLink } from '~/components';
 
 export { Text };
+
+export const SmallerText = styled(Text)`
+  font-size: 14px;
+`;
+
+export const Link = styled(RawLink)`
+  display: inline-block;
+`;
+
+export const SmallerLink = styled(Link)`
+  font-size: 14px;
+`;
 
 export const Container = styled(Section)`
   && {
@@ -17,16 +30,22 @@ export const Subtitle = styled.span`
 `;
 
 export const LogoWrapper = styled.div`
+  display: flex;
   margin-top: 2rem;
   margin-bottom: 2rem;
 `;
 
 export const Logo = styled.img`
-  max-height: 40px;
+  max-height: ${(props) => props.height}px;
 `;
 
 export const LogosBox = styled(Row)`
   margin-top: 2rem;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      margin-bottom: 1rem;
+    `}
 `;
 
 export const Divider = styled.hr`

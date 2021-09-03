@@ -19,12 +19,12 @@ export const Container = styled(HomeStyled.Section)`
 
 export const Content = styled(HomeStyled.Content)`
   position: relative;
-  padding: 5rem 0 7.5rem;
+  padding: 5rem 1rem 7.5rem;
 
   ${(props) =>
     props.isSmallScreen &&
     css`
-      padding: 3rem 0 5.5rem;
+      padding: 0 0 5.5rem;
 
       ${LeftPanel} {
         display: flex;
@@ -46,6 +46,7 @@ export const Content = styled(HomeStyled.Content)`
 
       ${Intro} {
         width: 80%;
+        text-align: center;
       }
     `}
 `;
@@ -65,7 +66,15 @@ export const LeftPanel = styled(Col).attrs({
     order: 1,
     span: 8,
   },
-})``;
+})`
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  & > * {
+    flex: 1;
+  }
+`;
 
 export const RightPanel = styled(Col).attrs({
   xs: {
@@ -80,7 +89,7 @@ export const RightPanel = styled(Col).attrs({
   },
   lg: {
     order: 2,
-    span: 12,
+    span: 16,
   },
 })``;
 
@@ -89,11 +98,14 @@ export const Logo = styled(LogoSvg)`
   margin-bottom: 0.5rem;
 `;
 
-export const Intro = styled.p`
-  ${mixins.reset()};
-  color: ${colors.M1};
-  font-size: 20px;
-  margin-bottom: 2rem;
+export const Intro = styled.h2`
+  && {
+    ${mixins.reset()};
+    font-size: 16px;
+    color: ${colors.M1};
+    font-weight: normal;
+    margin-bottom: 2rem;
+  }
 `;
 
 export const TryButton = styled(Button).attrs({
@@ -148,6 +160,7 @@ export const NavItem = styled(Col).attrs({
   ${mixins.flexCenter()};
   height: 40px;
   border-right: 1px solid ${colors.T2};
+  cursor: pointer;
 
   &:last-child {
     border-right: none;
@@ -203,11 +216,34 @@ export const Navs = styled(Row).attrs({
     `};
 `;
 
+export const Promotion = styled.div`
+  height: ${(props) => `${props.height}px`};
+  background: ${(props) => `url(${props.image}) center center no-repeat`};
+  background-size: cover;
+  position: relative;
+  width: 100%;
+`;
+
+export const PromotionOverlay = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background-color: rgb(0, 0, 0, 0.48);
+  height: 50px;
+  padding: 1rem;
+  color: ${colors.M1};
+`;
+
 export const Carousel = styled(AntCarousel).attrs((props) => ({
   dotPosition: props.isSmallScreen ? 'bottom' : 'right',
+  autoplay: process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local',
+  autoPlaySpeed: 4000,
 }))`
   .slick-slide {
     padding-right: 2.5rem;
+    cursor: pointer;
   }
 
   .slick-track {

@@ -12,7 +12,7 @@ export const isAdmin = (meData) => {
 };
 
 export const getStrapiImgProps = (imgObj) => {
-  const img = R.path([0, 'formats', 'large'], imgObj);
+  const img = imgObj[0];
 
   return {
     src: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${img.url}`,

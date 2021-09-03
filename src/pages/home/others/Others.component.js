@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './others.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import VideoThumbnail from './videoThumbnail';
-import { Link } from '~/components';
 import { ModuleTitle } from '~/pages/home/index.styled';
 import { PageDataContext } from '~/context';
 import { getImage } from '~/pages/home/index.utils';
@@ -36,7 +35,7 @@ const Others = () => {
           <>
             <ModuleTitle>
               <Styled.Subtitle>{lang.videos}</Styled.Subtitle>
-              <Link href="https://space.bilibili.com/86485707">{lang.more}</Link>
+              <Styled.Link href="https://space.bilibili.com/86485707">{lang.more}</Styled.Link>
             </ModuleTitle>
             <Row gutter={16}>
               {data.videos.slice(0, isSmallScreen ? 3 : 6).map((video, idx) => (
@@ -48,15 +47,15 @@ const Others = () => {
             <Styled.Divider />
             <ModuleTitle>
               <Styled.Subtitle> {jobsLang.subtitle} </Styled.Subtitle>
-              <Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Link>
+              <Styled.Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Styled.Link>
             </ModuleTitle>
             <Row>
-              <Styled.Text> {jobsLang.desc} </Styled.Text>
+              <Styled.Text>{jobsLang.desc}</Styled.Text>
             </Row>
-            <Styled.LogosBox gutter={16} justify="center">
+            <Styled.LogosBox gutter={36} justify="left" isSmallScreen={isSmallScreen}>
               {jobLogos.map((url, idx) => (
                 <Col key={idx}>
-                  <Styled.Logo src={url} />
+                  <Styled.Logo height={36} src={url} />
                 </Col>
               ))}
             </Styled.LogosBox>
@@ -66,24 +65,32 @@ const Others = () => {
           <>
             <Styled.Subtitle>{supportLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo src={getImage('others-pingcap-logo.svg')} />
+              <Styled.Logo height={36} src={getImage('others-pingcap-logo.svg')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{supportLang.desc}</Styled.Text>
+            <Styled.SmallerText>
+              <Styled.SmallerLink href={supportLang.link}>{supportLang.name}</Styled.SmallerLink> {supportLang.desc}
+            </Styled.SmallerText>
             <Styled.Divider />
             <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo src={getImage('others-tikv-logo.svg')} />
+              <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{collaborationLang.tikvDesc}</Styled.Text>
+            <Styled.SmallerText>
+              <Styled.SmallerLink href={collaborationLang.link1}>{collaborationLang.name1}</Styled.SmallerLink>
+              {collaborationLang.desc1}
+            </Styled.SmallerText>
             <Styled.LogoWrapper>
-              <Styled.Logo src={getImage('others-chaos-mesh-logo.svg')} />
+              <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>{collaborationLang.chaosMeshDesc}</Styled.Text>
+            <Styled.SmallerText>
+              <Styled.SmallerLink href={collaborationLang.link2}>{collaborationLang.name2}</Styled.SmallerLink>
+              {collaborationLang.desc2}
+            </Styled.SmallerText>
             <Styled.Divider />
-            <Styled.Text>
+            <Styled.SmallerText>
               {contactLang.label}
-              <Link href="mailto:community@tidb.io">{contactLang.linkText}</Link>！
-            </Styled.Text>
+              <Styled.SmallerLink href={contactLang.link}>{contactLang.linkText}</Styled.SmallerLink>！
+            </Styled.SmallerText>
           </>
         }
       />

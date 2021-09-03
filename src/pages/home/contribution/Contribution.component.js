@@ -19,7 +19,7 @@ const Contribution = () => {
   const { guide: guideLang, fork: forkLang } = lang;
 
   return (
-    <Styled.Container isSmallScreen={isSmallScreen}>
+    <Styled.Container id="contribution" isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
         title={lang.title}
         leftPanel={
@@ -28,7 +28,7 @@ const Contribution = () => {
             <Styled.Text>{guideLang.desc}</Styled.Text>
 
             {guideLang.steps.map((step, idx) => (
-              <Styled.StepBox key={idx}>
+              <Styled.StepBox key={idx} isSmallScreen={isSmallScreen}>
                 <Row gutter={32} wrap={false} justify={isSmallScreen && 'space-between'}>
                   <Col xs={{ order: 2 }} md={{ order: 1 }}>
                     <Styled.StepIconWrapper>
@@ -46,31 +46,33 @@ const Contribution = () => {
                 </Row>
               </Styled.StepBox>
             ))}
-
-            <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
-              <ModuleTitle>{guideLang.engageCall}</ModuleTitle>
-              <Row gutter={16}>
-                <Col>
-                  <Link href="https://internals.tidb.io/">
-                    <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
-                  </Link>
-                </Col>
-                <Col>
-                  <Link href="https://slack.tidb.io/">
-                    <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
-                  </Link>
-                </Col>
-              </Row>
-            </Styled.EngageCallBox>
           </>
         }
         rightPanel={
           <>
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
-            <Link href={forkLang.link}>
-              <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
-            </Link>
+            <Row gutter={16}>
+              <Col>
+                <Link href={forkLang.link}>
+                  <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
+                </Link>
+              </Col>
+              <Col>
+                <Link href="https://internals.tidb.io/">
+                  <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
+                </Link>
+              </Col>
+              <Col>
+                <Link href="https://slack.tidb.io/">
+                  <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
+                </Link>
+              </Col>
+            </Row>
+
+            <Styled.EngageCallBox isSmallScreen={isSmallScreen}>
+              <Styled.EngageTitle>{guideLang.engageCall}</Styled.EngageTitle>
+            </Styled.EngageCallBox>
           </>
         }
       />

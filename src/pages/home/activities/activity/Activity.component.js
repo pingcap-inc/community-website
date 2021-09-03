@@ -4,6 +4,7 @@ import dayjs from 'dayjs';
 
 import * as Styled from './activity.styled';
 import { common as commonUtils } from '~/utils';
+import { Tooltip } from 'antd';
 
 const Activity = ({ title, image, link, location, type, date, intro, onClick, isSmallScreen }) => {
   const props = {
@@ -21,7 +22,9 @@ const Activity = ({ title, image, link, location, type, date, intro, onClick, is
       <Styled.Content>
         <h3>{title}</h3>
         <Styled.Metadata>{[location, type, dayjs(date).format('YYYY.MM.DD')].join(' | ')}</Styled.Metadata>
-        <Styled.Text>{intro}</Styled.Text>
+        <Tooltip title={intro} placement={'bottom'}>
+          <Styled.Intro>{intro}</Styled.Intro>
+        </Tooltip>
       </Styled.Content>
     </Styled.Container>
   );

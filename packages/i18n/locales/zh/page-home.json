@@ -3,10 +3,22 @@
     "intro": "是一款同时支持在线事务处理与在线分析处理 (HTAP) 的融合型分布式数据库产品。",
     "tryButton": "立即体验",
     "navs": {
-      "doc": "文档手册",
-      "asktug": "问答",
-      "article": "文章",
-      "activity": "活动"
+      "doc": {
+        "label": "文档手册",
+        "link": "https://docs.pingcap.com/zh/tidb/stable"
+      },
+      "asktug": {
+        "label": "问答",
+        "link": "https://asktug.com/"
+      },
+      "article": {
+        "label": "文章",
+        "link": "https://asktug.com/c/blog"
+      },
+      "activity": {
+        "label": "活动",
+        "link": "https://asktug.com/c/community-activities"
+      }
     }
   },
   "welcome": {
@@ -134,7 +146,7 @@
   },
   "learning": {
     "title": "如何使用 TiDB",
-    "desc": "<0>PingCAP Education</0> 致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得<1>能力认证</1>TiDB 人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。",
+    "desc": "<0>PingCAP Education</0> 致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得<1>能力认证</1>的 TiDB 人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。",
     "educationLink": "https://pingcap.com/zh/education/",
     "certificateLink": "https://learn.pingcap.com/learner/certification-center",
     "videosTitle": "Get Started with TiDB",
@@ -142,22 +154,25 @@
     "more": "更多课程",
     "moreLink": "https://learn.pingcap.com/learner/home",
     "majorVideo": {
-      "desc": "在 Get Started with TiDB 课程中，您将学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
-      "link": "",
-      "coverUrl": "/images/home/others-video-cover-mock.jpg"
+      "desc": "学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
+      "link": "https://learn.pingcap.com/learner/course/6",
+      "coverUrl": "/images/home/learn-main-video-cover.jpg"
     },
     "minorVideos": [
       {
-        "link": "",
-        "coverUrl": "/images/home/others-video-cover-mock.jpg"
+        "title": "TiDB 系统管理基础",
+        "link": "https://learn.pingcap.com/learner/course/30002",
+        "coverUrl": "/images/home/learn-minor-video-1-cover.jpg"
       },
       {
-        "link": "",
-        "coverUrl": "/images/home/others-video-cover-mock.jpg"
+        "title": "TiDB 高级系统管理",
+        "link": "https://learn.pingcap.com/learner/course/150002",
+        "coverUrl": "/images/home/learn-minor-video-2-cover.jpg"
       },
       {
-        "link": "",
-        "coverUrl": "/images/home/others-video-cover-mock.jpg"
+        "title": "应用开发指南",
+        "link": "https://learn.pingcap.com/learner/course/120005",
+        "coverUrl": "/images/home/learn-minor-video-3-cover.jpg"
       }
     ],
     "linkSections": [
@@ -204,11 +219,11 @@
         "title": "想和其他伙伴交流学习？",
         "links": [
           {
-            "link": "https://asktug.com/c/blog/",
+            "link": "https://tug.tidb.io/people",
             "label": "TiDB User Group"
           },
           {
-            "link": "https://tidb.io/archived/events/#activities",
+            "link": "https://asktug.com/c/community-activities",
             "label": "参与活动"
           }
         ]
@@ -224,22 +239,22 @@
       "steps": [
         {
           "title": "开始准备工作",
-          "desc": "TiDB Hacking Camp 是一个长期的孵化项目，每年举办 1-3 期。活动联合了生态伙伴、合作企业等，旨在帮助 TiDB 生态项目从社区中获取更多资源和帮助。",
+          "desc": "假设你是一个 TiDB 新手，本章节将教你安装开发环境，构建并连接到 tidb-server。",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/get-started/install-golang"
         },
         {
           "title": "为 TiDB 做贡献",
-          "desc": "帮助你快速参与社区，描述了贡献类型以及教你如何去快速实现贡献行为。",
+          "desc": "帮助你快速参与社区，描述了贡献类型以及如何快速实现你的 first contribution。",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/contribute-to-tidb/introduction"
         },
         {
           "title": "深入了解 TiDB",
-          "desc": "帮助你熟悉分布式数据库的基本概念，在自己的脑海中建立知识库，包括但不限于分布式数据库中的 SQL 语言、关键组件、算法。已经熟悉这些内容的同学可以跳过本节。",
+          "desc": "帮助你熟悉分布式数据库的基本概念，在脑海中建⽴知识库，包括但不限于分布式数据库中的 SQL 语⾔、关键组件、算法。已经熟悉这些内容的同学可以跳过本节。 ",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/understand-tidb/introduction-of-tidb-architecture"
         },
         {
           "title": "项目管理",
-          "desc": "帮助你参与团队工作，领导功能开发，管理 TiDB 社区中的项目。",
+          "desc": "帮助你参与团队⼯作，主导功能开发，管理 TiDB 社区中的项⽬。",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/project-management/introduction"
         }
       ],
@@ -252,7 +267,7 @@
     }
   },
   "others": {
-    "title": "其他链接",
+    "title": "其他资源",
     "more": "查看更多",
     "videos": "视频专区",
     "jobs": {
@@ -261,17 +276,23 @@
     },
     "businessSupport": {
       "subtitle": "寻找商业支持",
-      "desc": "PingCAP 是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
+      "name": "PingCAP",
+      "link": "https://pingcap.com/zh/",
+      "desc": "是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
     },
     "communityCollaboration": {
       "subtitle": "社区合作",
-      "tikvDesc": "TiKV 是一种高度可扩展、低延迟和易于使用\n键值数据库。",
-      "chaosMeshDesc": "Chaos Mesh® 是一个开源的云原生混沌工程平台，提供丰富的故障模拟类型，具有强大的故障场景编排能力。"
+      "name1": "Apache Flink",
+      "link1": "https://flink.apache.org",
+      "desc1": " 是一个针对无界和有界数据流进行有状态计算的框架与分布式处理引擎，以数据并行和流水线方式执行任意流数据程序。Flink 能在所有常见集群环境中运行，并能以内存速度和任意规模进行计算。",
+      "name2": "爱可生社区",
+      "desc2": "以开源高质量的运维工具、日常分享技术干货内容、持续的全国性的社区活动为社区己任；立志于每年 10.24 日开源一款高质量的数据库相关的开源产品；目前开源的产品有：分布式中间件 DBLE、数据传输组件 DTLE、全局事务框架 TXLE、SQL 审核组件 SQLE。",
+      "link2": "https://opensource.actionsky.com"
     },
     "contact": {
-      "label": "想和我们成为合作伙伴？欢迎",
+      "label": "技术合作、社区活动合作，欢迎",
       "linkText": "联系我们",
-      "url": ""
+      "link": "https://tidb.io/contact-us/cooperation"
     }
   },
   "subscription": {
@@ -282,16 +303,11 @@
       "link": "https://accounts.pingcap.com/"
     },
     "links": {
-      "orgArch": {
-        "url": "https://tidb.io/archived/events/organization/",
-        "label": "社区组织架构"
-      },
       "contributorList": {
         "url": "https://contributor.tidb.io/people/contributor",
         "label": "贡献者列表"
       },
-      "see": "由此查看",
-      "connective": "和"
+      "see": "由此查看"
     },
     "subscribe": "订阅 TiDB 社区的最新资讯",
     "emailInput": {
@@ -301,6 +317,10 @@
       "errorMsg": "订阅失败",
       "invalidMsg": "请输入合法的邮件地址"
     },
-    "termsDesc": "提交即表明您同意 TiDB Community 的使用条款。"
+    "termsDesc": "提交即表明您同意 TiDB Community 的",
+    "terms": {
+      "label": "隐私政策",
+      "link": "https://pingcap.com/zh/privacy-policy/"
+    }
   }
 }

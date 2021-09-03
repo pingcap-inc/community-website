@@ -239,22 +239,22 @@
       "steps": [
         {
           "title": "开始准备工作",
-          "desc": "TiDB Hacking Camp 是一个长期的孵化项目，每年举办 1-3 期。活动联合了生态伙伴、合作企业等，旨在帮助 TiDB 生态项目从社区中获取更多资源和帮助。",
+          "desc": "假设你是一个 TiDB 新手，本章节将教你安装开发环境，构建并连接到 tidb-server。",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/get-started/install-golang"
         },
         {
           "title": "为 TiDB 做贡献",
-          "desc": "帮助你快速参与社区，描述了贡献类型以及教你如何去快速实现贡献行为。",
+          "desc": "帮助你快速参与社区，描述了贡献类型以及如何快速实现你的 first contribution。",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/contribute-to-tidb/introduction"
         },
         {
           "title": "深入了解 TiDB",
-          "desc": "帮助你熟悉分布式数据库的基本概念，在自己的脑海中建立知识库，包括但不限于分布式数据库中的 SQL 语言、关键组件、算法。已经熟悉这些内容的同学可以跳过本节。",
+          "desc": "帮助你熟悉分布式数据库的基本概念，在脑海中建⽴知识库，包括但不限于分布式数据库中的 SQL 语⾔、关键组件、算法。已经熟悉这些内容的同学可以跳过本节。 ",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/understand-tidb/introduction-of-tidb-architecture"
         },
         {
           "title": "项目管理",
-          "desc": "帮助你参与团队工作，领导功能开发，管理 TiDB 社区中的项目。",
+          "desc": "帮助你参与团队⼯作，主导功能开发，管理 TiDB 社区中的项⽬。",
           "link": "https://zz-jason.gitbook.io/tidb-dev-guide/project-management/introduction"
         }
       ],

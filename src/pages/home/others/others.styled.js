@@ -7,8 +7,16 @@ import { Link as RawLink } from '~/components';
 
 export { Text };
 
+export const SmallerText = styled(Text)`
+  font-size: 14px;
+`;
+
 export const Link = styled(RawLink)`
   display: inline-block;
+`;
+
+export const SmallerLink = styled(Link)`
+  font-size: 14px;
 `;
 
 export const Container = styled(Section)`

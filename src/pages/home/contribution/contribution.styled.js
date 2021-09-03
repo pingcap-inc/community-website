@@ -64,4 +64,5 @@ export const ForkTitle = styled(ModuleTitle)`
 
 export const EngageTitle = styled(ModuleTitle)`
   line-height: 1.7;
+  font-size: 16px;
 `;

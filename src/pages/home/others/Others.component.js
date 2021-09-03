@@ -67,30 +67,30 @@ const Others = () => {
             <Styled.LogoWrapper>
               <Styled.Logo height={36} src={getImage('others-pingcap-logo.svg')} />
             </Styled.LogoWrapper>
-            <Styled.Text>
-              <Styled.Link href={supportLang.link}>{supportLang.name}</Styled.Link> {supportLang.desc}
-            </Styled.Text>
+            <Styled.SmallerText>
+              <Styled.SmallerLink href={supportLang.link}>{supportLang.name}</Styled.SmallerLink> {supportLang.desc}
+            </Styled.SmallerText>
             <Styled.Divider />
             <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
               <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>
-              <Styled.Link href={collaborationLang.link1}>{collaborationLang.name1}</Styled.Link>
+            <Styled.SmallerText>
+              <Styled.SmallerLink href={collaborationLang.link1}>{collaborationLang.name1}</Styled.SmallerLink>
               {collaborationLang.desc1}
-            </Styled.Text>
+            </Styled.SmallerText>
             <Styled.LogoWrapper>
               <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
             </Styled.LogoWrapper>
-            <Styled.Text>
-              <Styled.Link href={collaborationLang.link2}>{collaborationLang.name2}</Styled.Link>
+            <Styled.SmallerText>
+              <Styled.SmallerLink href={collaborationLang.link2}>{collaborationLang.name2}</Styled.SmallerLink>
               {collaborationLang.desc2}
-            </Styled.Text>
+            </Styled.SmallerText>
             <Styled.Divider />
-            <Styled.Text>
+            <Styled.SmallerText>
               {contactLang.label}
-              <Styled.Link href={contactLang.link}>{contactLang.linkText}</Styled.Link>！
-            </Styled.Text>
+              <Styled.SmallerLink href={contactLang.link}>{contactLang.linkText}</Styled.SmallerLink>！
+            </Styled.SmallerText>
           </>
         }
       />

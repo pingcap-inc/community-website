@@ -10,10 +10,10 @@ export const Container = styled(PostStyled.Container)`
 
   ${PostStyled.TitleRow} {
     svg {
-      height: 24px;
       position: absolute;
+      height: 24px;
       left: 0;
-      top: 1rem;
+      margin-top: 6px;
     }
   }
 `;

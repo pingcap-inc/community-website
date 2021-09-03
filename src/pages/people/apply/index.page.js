@@ -4,14 +4,14 @@ import Container from '~/components/Container/Container';
 import styles from './index.module.scss';
 import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
-import { Radio, Form, Input, Space } from 'antd';
+import { Radio, Form, Input, Space, Select } from 'antd';
 import Button from '../../../components/Button/Button';
 
 export const getStaticProps = () => {
-  const title = 'TUG 会员申请';
+  const title = 'TiDB User Group 会员申请';
   const description =
-    'TUG 为 TiDB 用户提供了一个开放的交流平台。' +
-    '成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。';
+    '加入 TUG，让数据库、大数据从业者找到自己的圈子；' +
+    '探索技术问题，随时随地交流成长，解决问题；发表技术见解，收获前沿知识，提升个人影响力。';
 
   const postImageUrl = '/images/people/apply/post.svg';
 
@@ -85,7 +85,14 @@ const People = ({ title, description, postImageUrl, question, answer, whyJoinTit
                   <Input />
                 </Form.Item>
                 <Form.Item label="你的公司对 TiDB 正处于">
-                  <Input />
+                  {/*<Select defaultValue="lucy" style={{ width: 120 }} onChange={handleChange}>*/}
+                  <Select defaultValue="lucy">
+                    <Select.Option value="jack">生产阶段</Select.Option>
+                    <Select.Option value="lucy">测试阶段</Select.Option>
+                    <Select.Option value="lucy">调研阶段</Select.Option>
+                    <Select.Option value="lucy">不考虑使用</Select.Option>
+                    <Select.Option value="lucy">其他</Select.Option>
+                  </Select>
                 </Form.Item>
                 <Form.Item label="你加入 TUG 的原因">
                   <Input />

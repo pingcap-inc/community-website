@@ -14,9 +14,9 @@ import Button from '../../components/Button/Button';
 import HomeMVA from '../../components/home/HomeMVA/HomeMVA';
 
 export const getStaticProps = () => {
-  const title = 'TUG 会员';
+  const title = 'TiDB User Group 会员';
   const description =
-    'TUG 为 TiDB 用户提供了一个开放的交流平台。' +
+    'TUG(TiDB User Group) 为 TiDB 用户提供了一个开放的交流平台。' +
     '成员们积极在社区中贡献了大量优质的内容，既扩大了 TUG 的影响力，也从中收获很多价值，形成了“来自社区，回馈社区” 的良性循环。';
 
   const applyUrl = '/people/apply';

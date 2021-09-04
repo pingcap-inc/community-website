@@ -248,9 +248,7 @@ const Apply = ({ title, description, postImageUrl, question, answer, whyJoinTitl
                   render={({ field }) => <Input {...field} />}
                 />
 
-                <Label required className={styles.end_form_label}>
-                  三四句话介绍⼀下⾃⼰（⽤于⼊群介绍）
-                </Label>
+                <Label className={styles.end_form_label}>三四句话介绍⼀下⾃⼰（⽤于⼊群介绍）</Label>
                 <Controller
                   name="bio"
                   defaultValue=""
@@ -258,9 +256,7 @@ const Apply = ({ title, description, postImageUrl, question, answer, whyJoinTitl
                   render={({ field }) => <Input.TextArea {...field} rows={3} />}
                 />
 
-                <Label required className={styles.end_form_label}>
-                  在哪得知 TUG
-                </Label>
+                <Label className={styles.end_form_label}>在哪得知 TUG</Label>
                 <Controller
                   name="channel"
                   defaultValue=""
@@ -268,9 +264,7 @@ const Apply = ({ title, description, postImageUrl, question, answer, whyJoinTitl
                   render={({ field }) => <Input {...field} />}
                 />
 
-                <Label required className={styles.end_form_label}>
-                  推荐⼈
-                </Label>
+                <Label className={styles.end_form_label}>推荐⼈</Label>
                 <Controller
                   name="referrer"
                   defaultValue=""

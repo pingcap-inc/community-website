@@ -96,6 +96,27 @@
       background-color: $T2;
       &_title {
         margin-bottom: 28px;
+        color: #2c2c2c;
+        font-size: 24px;
+      }
+      &_label {
+        display: block;
+        margin: {
+          top: 30px;
+          bottom: 20px;
+        }
+        color: #2c2c2c;
+        font-size: 20px;
+      }
+      &_submit_button {
+        margin: {
+          top: 30px;
+          bottom: 20px;
+        }
+      }
+      &_submit_extra {
+        color: #565656;
+        font-size: 16px;
       }
     }
   }

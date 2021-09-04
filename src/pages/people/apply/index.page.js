@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
-import { Radio, Form, Input, Space, Select } from 'antd';
+import { Radio, Input, Space, Select } from 'antd';
 
 import Container from '~/components/Container/Container';
 import styles from './index.module.scss';
@@ -44,11 +44,7 @@ const Apply = ({ title, description, postImageUrl, question, answer, whyJoinTitl
     '先围观看看⽂章',
   ];
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm();
+  const { handleSubmit, control } = useForm();
   const onSubmit = async (data) => {
     try {
       console.log('data', data);

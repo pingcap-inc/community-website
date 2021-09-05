@@ -26,7 +26,7 @@ export const getStaticProps = () => {
 
   const howToBecomeTitle = '如何成为 TUG 会员';
   const howToBecome = [
-    { index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: JOIN_TUG_LINK },
+    { index: 1, iconUrl: 'images/people/how-to-become-1.svg', title: '填写信息', link: applyUrl },
     { index: 2, iconUrl: 'images/people/how-to-become-2.svg', title: '信息审核' },
     { index: 3, iconUrl: 'images/people/how-to-become-3.svg', title: '邀请加入' },
   ];

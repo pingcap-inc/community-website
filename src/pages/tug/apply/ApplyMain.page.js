@@ -7,7 +7,6 @@ import styles from './ApplyMain.module.scss';
 import { jobTitle } from '../../../constants/crm_options';
 import Container from '~/components/Container/Container';
 import { CoreLayout } from '~/layouts';
-import { TugHead } from '~/components';
 import Button from '~/components/Button/Button';
 import Label from '~/components/Label';
 
@@ -38,9 +37,7 @@ const ApplyMainPage = () => {
   const { handleSubmit, control } = useForm();
   const onSubmit = async (data) => {
     try {
-      console.log('data', data);
       const response = await axios.post('/api/tug/applications', data);
-      console.log('response', response);
     } catch (err) {
       switch (err.response.status) {
         case '400': {
@@ -57,6 +54,7 @@ const ApplyMainPage = () => {
         }
         default: {
           //TODO: show message box with content: 未知错误，请稍后重试
+          // eslint-disable-next-line no-console
           console.log('err', err.response.status, err);
           break;
         }

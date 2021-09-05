@@ -8,7 +8,6 @@ import TMCItem from '~/components/people/TMCItem/TMCItem';
 import styles from './index.module.scss';
 import tugData from '~/data/tug';
 import { CoreLayout } from '~/layouts';
-import { JOIN_TUG_LINK } from '~/constants';
 import { TugHead } from '~/components';
 import Button from '../../components/Button/Button';
 import HomeMVA from '../../components/home/HomeMVA/HomeMVA';

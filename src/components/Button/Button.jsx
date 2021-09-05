@@ -2,7 +2,20 @@ import React from 'react';
 import classNames from 'classnames';
 import MyLink from '~/components/MyLink';
 
-const Button = ({ as, icon, className, children, size, type, rounded, disabled, lowerCase, block, ...rest }) => {
+const Button = ({
+  as,
+  icon,
+  className,
+  children,
+  size,
+  type,
+  rounded,
+  disabled,
+  lowerCase,
+  block,
+  htmlType,
+  ...rest
+}) => {
   const classNameButton = `Button`;
 
   size = size && size.length !== 0 ? size : 'medium';
@@ -29,6 +42,7 @@ const Button = ({ as, icon, className, children, size, type, rounded, disabled, 
       disabled,
       block,
     }),
+    type: htmlType || '',
     ...rest,
   };
 

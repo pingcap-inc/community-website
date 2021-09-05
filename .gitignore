@@ -42,3 +42,5 @@ public/locales/
 public/scripts/
 webstorm.config.js
 yarn.lock
+
+*.js~

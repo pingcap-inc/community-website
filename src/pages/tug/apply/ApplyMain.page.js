@@ -39,6 +39,8 @@ const ApplyMainPage = () => {
     try {
       const response = await axios.post('/api/tug/applications', data);
     } catch (err) {
+      // eslint-disable-next-line no-console
+      console.log('response', response);
       switch (err.response.status) {
         case '400': {
           //TODO: show invalid form field

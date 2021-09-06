@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Row } from 'antd';
+import { Col, Row, Tooltip } from 'antd';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contribution.styled';
@@ -53,21 +53,15 @@ const Contribution = () => {
             <Styled.ForkTitle>{forkLang.title}</Styled.ForkTitle>
             <Styled.IssueList src={getImage('github-issues.jpg')} />
             <Row gutter={16}>
-              <Col>
-                <Link href={forkLang.link}>
-                  <img height={36} src={getImage('github-logo.svg')} alt={'github logo'} />
-                </Link>
-              </Col>
-              <Col>
-                <Link href="https://internals.tidb.io/">
-                  <img height={36} src={getImage('asktug-logo.svg')} alt={'asktug logo'} />
-                </Link>
-              </Col>
-              <Col>
-                <Link href="https://slack.tidb.io/">
-                  <img height={36} src={getImage('slack-logo.svg')} alt={'slack logo'} />
-                </Link>
-              </Col>
+              {forkLang.map((el) => (
+                <Tooltip title={el.label} placement={'bottom'}>
+                  <Col>
+                    <Link href={el.link}>
+                      <img height={36} src={getImage(el.icon)} alt={`${el.name} logo`} />
+                    </Link>
+                  </Col>
+                </Tooltip>
+              ))}
             </Row>
 
             <Styled.EngageCallBox isSmallScreen={isSmallScreen}>

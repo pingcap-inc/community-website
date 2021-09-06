@@ -261,10 +261,26 @@
       "engageCall": "现在，来开发者论坛和内核研发工程师交流学习吧！",
       "learnMoreLabel": "交流学习"
     },
-    "fork": {
-      "title": "Go to Fork!",
-      "link": "https://github.com/pingcap/tidb"
-    }
+    "fork": [
+      {
+        "name": "github",
+        "label": "Github",
+        "icon": "github-logo.svg",
+        "link": "https://github.com/pingcap/tidb"
+      },
+      {
+        "name": "asktug",
+        "label": "开发者论坛",
+        "icon": "asktug-logo.svg",
+        "link": "https://internals.tidb.io/"
+      },
+      {
+        "name": "slack",
+        "label": "Slack",
+        "icon": "slack-logo.svg",
+        "link": "https://slack.tidb.io/"
+      }
+    ]
   },
   "others": {
     "title": "其他资源",

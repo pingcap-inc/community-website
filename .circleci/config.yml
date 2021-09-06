@@ -27,6 +27,10 @@ commands:
   dump-env-vars:
     steps:
       - run: ./env_dump.sh
+      - run:
+          name: Prepared private env variabeles
+          command: |
+            cat .env.local
 
   verify-and-build:
     steps:

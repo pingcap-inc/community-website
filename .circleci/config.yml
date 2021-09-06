@@ -28,7 +28,7 @@ commands:
     steps:
       - run: ./env_dump.sh
       - run:
-          name: Prepared private env variabeles
+          name: Prepare private env variables
           command: |
             cat .env.local
 

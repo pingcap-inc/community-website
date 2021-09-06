@@ -17,7 +17,7 @@ export const Link = styled(RawLink)`
   font-size: revert;
   &:hover {
     color: ${colors.B1};
-    font-weight: 500;
+    text-decoration: underline;
   }
 `;
 

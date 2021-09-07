@@ -165,13 +165,13 @@
         "coverUrl": "/images/home/learn-minor-video-1-cover.jpg"
       },
       {
-        "title": "TiDB 高级系统管理",
-        "link": "https://learn.pingcap.com/learner/course/120005",
+        "title": "TiDB 故障排除",
+        "link": "https://learn.pingcap.com/learner/course/150002",
         "coverUrl": "/images/home/learn-minor-video-2-cover.jpg"
       },
       {
-        "title": "TiDB 故障排除",
-        "link": "https://learn.pingcap.com/learner/course/150002",
+        "title": "TiDB 高级系统管理",
+        "link": "https://learn.pingcap.com/learner/course/120005",
         "coverUrl": "/images/home/learn-minor-video-3-cover.jpg"
       }
     ],

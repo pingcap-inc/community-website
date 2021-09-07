@@ -96,7 +96,9 @@ export const RightPanel = styled(Col).attrs({
 })``;
 
 export const Logo = styled(LogoSvg)`
+  min-height: 32px;
   max-width: 350px;
+  margin-top: 0.5rem;
   margin-bottom: 0.5rem;
 `;
 

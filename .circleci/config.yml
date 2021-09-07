@@ -24,6 +24,14 @@ commands:
           command: |
             echo "export SENTRY_RELEASE=${SENTRY_PROJECT}@${CIRCLE_SHA1}" >> $BASH_ENV
 
+  dump-env-vars:
+    steps:
+      - run: ./env_dump.sh
+      - run:
+          name: Prepare private env variables
+          command: |
+            cat .env.local
+
   verify-and-build:
     steps:
       - run: npm run lint
@@ -50,6 +58,7 @@ jobs:
       - image: circleci/node:14.13.0
     steps:
       - install-deps
+      - dump-env-vars
       - verify-and-build
 
   build:
@@ -63,6 +72,7 @@ jobs:
     steps:
       - install-deps
       - prepare-sentry
+      - dump-env-vars
       - verify-and-build
       - copy-locales
       - persist_to_workspace:

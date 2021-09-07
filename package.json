@@ -11,12 +11,13 @@
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
     "deploy": "shipit production deploy",
     "dev": "npm run build:shared && (npm run start:i18n & npm run start:mockApi & npm run strapi:dev & next dev)",
+    "env:update": "vercel env pull .env.local",
     "lint": "next lint && eslint . --ext .js,.jsx --ignore-path .gitignore",
     "postinstall": "lerna bootstrap && npm run build:shared",
     "prepare": "husky install",
     "server:init": "next build && npm run server:start",
-    "server:reload": "pm2 reload pm2.config.js",
-    "server:start": "pm2 start pm2.config.js",
+    "server:reload": "npm run env:update && pm2 reload pm2.config.js",
+    "server:start": "npm run env:update && pm2 start pm2.config.js",
     "start": "next start",
     "start:accounts": "lerna run --scope @tidb-community/accounts start",
     "start:i18n": "lerna run --scope @tidb-community/i18n start",
@@ -92,6 +93,7 @@
     "sass": "1.35.2",
     "shipit-cli": "5.3.0",
     "shipit-deploy": "5.3.0",
-    "svgo": "2.3.1"
+    "svgo": "2.3.1",
+    "vercel": "23.1.2"
   }
 }

@@ -30,8 +30,8 @@ const Header = ({ currentNav, logo, navItems, onNavClick, onTitleClick, title = 
   return (
     <>
       <Styled.Container>
-        <Styled.Content>
-          <Styled.Logo onClick={onTitleClick}>
+        <Styled.Content xs={bp.xs}>
+          <Styled.Logo onClick={onTitleClick} xs={bp.xs}>
             {logo}
             {title}
           </Styled.Logo>

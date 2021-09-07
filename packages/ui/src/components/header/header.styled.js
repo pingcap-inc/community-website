@@ -11,15 +11,17 @@ export const Container = styled.div`
 export const Content = styled.div`
   ${mixins.responsive()};
   ${mixins.flexVerticalCenter()};
-  height: 84px;
+  height: ${(props) => (props.xs ? 64 : 84)}px;
 `;
 
 export const Logo = styled.h1`
-  ${mixins.logoTitle('h1')};
+  ${(props) => (props.xs ? mixins.logoTitle('h2') : mixins.logoTitle('h1'))}
+
   cursor: pointer;
 
   img {
-    ${mixins.size('32px', '37px')};
+    ${(props) => (props.xs ? mixins.size('20px', '23.125px') : mixins.size('32px', '37px'))}
+
     margin-right: 5px;
   }
 `;

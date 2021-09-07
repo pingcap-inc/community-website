@@ -163,7 +163,7 @@ const regexpCases = [
 ];
 
 describe('nav/utils', () => {
-  describe('fixNavLinks', () => {
+  describe('replaceNavLinks', () => {
     replaceCases.forEach(({ name, items, rules, checks }) => {
       it(name, () => {
         const result = replaceNavLinks({ items, rules });
@@ -182,7 +182,7 @@ describe('nav/utils', () => {
     it('should handle tidb.io if in domain tidb.io', () => {
       const rootPathRules = _applyTidbIoSpecRule([], { domain: 'tidb.io', path: '', domainConfig: tidbIoDomainConfig });
       const rootPathResult = replaceNavLinks({ items: tidbIoItems, rules: rootPathRules });
-      expect(rootPathResult[0].link).toBe('/community');
+      expect(rootPathResult[0].link).toBe('/home');
       expect(rootPathResult[0].browserLink).toBe('/');
 
       const noneRootPathRules = _applyTidbIoSpecRule([], {
@@ -191,7 +191,7 @@ describe('nav/utils', () => {
         domainConfig: tidbIoDomainConfig,
       });
       const noneRootPathResults = replaceNavLinks({ items: tidbIoItems, rules: noneRootPathRules });
-      expect(noneRootPathResults[0].link).toBe('/community');
+      expect(noneRootPathResults[0].link).toBe('/home');
     });
 
     it('should handle tidb.io if in domain tidb.io but not with target empty path', () => {

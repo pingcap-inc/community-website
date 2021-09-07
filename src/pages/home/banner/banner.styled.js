@@ -79,9 +79,11 @@ export const LeftPanel = styled(Col).attrs({
 export const RightPanel = styled(Col).attrs({
   xs: {
     order: 1,
+    span: 24,
   },
   sm: {
     order: 1,
+    span: 24,
   },
   md: {
     order: 2,

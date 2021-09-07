@@ -83,9 +83,9 @@ const Learning = () => {
               <div key={idx}>
                 <ModuleTitle>{section.title}</ModuleTitle>
 
-                <Styled.LinksRow gutter={16}>
+                <Styled.LinksRow gutter={32}>
                   {section.links.map((link, linkIdx) => (
-                    <Styled.LinkWrapper key={linkIdx} xs={24} md={12} lg={8}>
+                    <Styled.LinkWrapper key={linkIdx} flex={'none'}>
                       <Styled.Link href={link.link}>{link.label}</Styled.Link>
                     </Styled.LinkWrapper>
                   ))}

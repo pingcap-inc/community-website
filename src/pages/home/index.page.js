@@ -31,6 +31,7 @@ export const getServerSideProps = async (ctx) => {
       _publicationState: isProd ? undefined : 'preview',
     },
   };
+
   const data = await Promise.all([
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
@@ -41,7 +42,9 @@ export const getServerSideProps = async (ctx) => {
     client.get('tidbio-homepage-meetups', strapiQuery),
     client.get('tidbio-homepage-dev-activities', strapiQuery),
   ]);
+
   const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
+
   // FIXME: temporily rollback Incremental Static Regeneration back to SSR due to a CI build error
   // const TEN_MINS = 10 * 60;
 

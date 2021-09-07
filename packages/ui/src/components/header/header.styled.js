@@ -6,21 +6,23 @@ import { menuPopupId } from './header.constants';
 
 export const Container = styled.div`
   border-bottom: 1px solid ${colors.T2};
+  z-index: 3;
 `;
 
 export const Content = styled.div`
   ${mixins.responsive()};
   ${mixins.flexVerticalCenter()};
-  height: ${(props) => (props.xs ? 64 : 84)}px;
+  height: 84px;
 `;
 
-export const Logo = styled.h1`
-  ${(props) => (props.xs ? mixins.logoTitle('h2') : mixins.logoTitle('h1'))}
+export const Logo = styled.div`
+  ${mixins.lineClamp(1)}
+  ${(props) => (props.xs ? mixins.logoTitle('h3') : mixins.logoTitle('h1'))}
 
   cursor: pointer;
 
   img {
-    ${(props) => (props.xs ? mixins.size('20px', '23.125px') : mixins.size('32px', '37px'))}
+    ${(props) => (props.xs ? mixins.size('16px', '18.5px') : mixins.size('32px', '37px'))}
 
     margin-right: 5px;
   }

@@ -1,9 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import styles from './Apply.module.scss';
 import Container from '~/components/Container/Container';
 import { CoreLayout } from '~/layouts';
 import Form from './form';
+import { api } from '@tidb-community/datasource';
+import { Modal } from 'antd';
+
+const SuccessModal = (props) => (
+  // visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
+  <Modal title="提交成功！" {...props}>
+    <p>
+      我们将于 3 个工作日内对您提交的材料进行审核，并以【AskTUG 私信】形式告知您结果。
+      若审核通过，【微信小助手】将添加您为好友并邀请您进入 TUG 专属交流群，敬请留意。
+    </p>
+    <p>【AskTUG 私信】位置：社区导航栏 - 问答论坛 - 右上角头像下拉 - 私信</p>
+  </Modal>
+);
+
+const FailModal = (props) => (
+  // visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
+  <Modal title="提交失败" {...props}>
+    <p>{props.content}</p>
+  </Modal>
+);
 
 const Apply = () => {
   const title = 'TiDB User Group 会员申请';
@@ -20,48 +40,44 @@ const Apply = () => {
     { index: 3, iconUrl: '/images/people/apply/why-join-3.svg', text: '发表技术⻅解，收获前沿知识，提升个⼈影响⼒' },
   ];
 
-  // const optionStageOfComanyUseOfTidb = ['生产阶段', '测试阶段', '调研阶段', '不考虑使用', '其他'];
-  // const optionPreferredWayOfSharing = ['生产阶段', '测试阶段', '调研阶段', '不考虑使用', '其他'];
-  // const optionRolesWantToPlay = [
-  //   '加⼊ TUG 管理委员会，参与 TUG ⽇常事务管理',
-  //   '加⼊ TUG 区域组，负责组织区域 TUG 的线下活动技术困惑',
-  //   '加⼊ TUG 内容组，负责 TUG 内容建设⼼得',
-  //   '先围观看看⽂章',
-  // ];
-  //
-  // const { handleSubmit, control } = useForm();
-  // const onSubmit = async (data) => {
-  //   try {
-  //     const response = await axios.post('/api/tug/applications', data);
-  //     // eslint-disable-next-line no-console
-  //     console.log('response', response);
-  //   } catch (err) {
-  //     switch (err.response.status) {
-  //       case '400': {
-  //         //TODO: show invalid form field
-  //         break;
-  //       }
-  //       case '401': {
-  //         //TODO: navigate to login page
-  //         break;
-  //       }
-  //       case '409': {
-  //         //TODO: show message box with content: 用户已经提交过申请，或者已经加入 TUG 了
-  //         break;
-  //       }
-  //       default: {
-  //         //TODO: show message box with content: 未知错误，请稍后重试
-  //         // eslint-disable-next-line no-console
-  //         console.log('err', err.response.status, err);
-  //         break;
-  //       }
-  //     }
-  //   }
-  // };
+  const [successModal, showSuccessModal] = useState(false);
+  const [failModal, showFailModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSubmit = (data) => {
     // eslint-disable-next-line no-console
     console.log(data);
+    api.tug
+      .apply(data)
+      .then((response) => {
+        // eslint-disable-next-line no-console
+        console.log('response', response);
+        showSuccessModal(true);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log('error', error.response.status, error);
+        setErrorMessage(error.response.content.detail);
+        showFailModal(true);
+        switch (error.response.status) {
+          case '400': {
+            //TODO: show invalid form field
+            break;
+          }
+          case '401': {
+            //TODO: navigate to login page
+            break;
+          }
+          case '409': {
+            //TODO: show message box with content: 用户已经提交过申请，或者已经加入 TUG 了
+            break;
+          }
+          default: {
+            //TODO: show message box with content: 未知错误，请稍后重试
+            break;
+          }
+        }
+      });
   };
 
   return (
@@ -97,6 +113,8 @@ const Apply = () => {
 
         <div className={styles.end}>
           <Form onSubmit={handleSubmit} />
+          <SuccessModal visible={successModal} onOk={() => showSuccessModal(false)} />
+          <FailModal visible={failModal} onOk={() => showFailModal(false)} errorMessage={errorMessage} />
         </div>
       </Container>
     </CoreLayout>

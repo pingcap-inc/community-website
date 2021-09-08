@@ -1,7 +1,6 @@
 import React from 'react';
 import { Form as AntForm, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
-// import { api } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
 import data from './form.data';
@@ -25,16 +24,6 @@ const {
 } = form;
 
 const Form = ({ onSubmit }) => {
-  // const onSubmit = formUtils.wrapFormikSubmitFunction(({ company, company_base, ...params }) =>
-  //   api.orgs
-  //     .enroll({
-  //       company: company.value,
-  //       company_base: company_base[1],
-  //       ...params,
-  //     })
-  //     .then(onSubmitCallback)
-  // );
-
   return (
     <Styled.FormContainer>
       <Styled.FormTitle>申请信息</Styled.FormTitle>

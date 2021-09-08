@@ -39,7 +39,7 @@ export const Length = styled.div`
   color: ${colors.M1};
   padding-right: 4px;
   padding-left: 4px;
-  background-color: rgb(0, 0, 0, 40%);
+  background-color: rgb(0, 0, 0, 0.4);
 `;
 
 export const Title = styled.div`

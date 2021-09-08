@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="312.12" height="312.12" viewBox="0 0 312.12 312.12">
-  <defs>
-    <radialGradient id="radial-gradient" cx="0.314" cy="0.201" r="1.147" gradientUnits="objectBoundingBox">
-      <stop offset="0" stop-color="#1b1464"/>
-      <stop offset="0.164" stop-color="#1e3478"/>
-      <stop offset="0.525" stop-color="#2788ac"/>
-      <stop offset="1" stop-color="#35fff7"/>
-    </radialGradient>
-  </defs>
-  <circle id="椭圆_1278" data-name="椭圆 1278" cx="156.06" cy="156.06" r="156.06" opacity="0.5" fill="url(#radial-gradient)"/>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="312.12" height="312.12"><defs><radialGradient id="a" cx=".314" cy=".201" r="1.147" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#1b1464"/><stop offset=".164" stop-color="#1e3478"/><stop offset=".525" stop-color="#2788ac"/><stop offset="1" stop-color="#35fff7"/></radialGradient></defs><circle data-name="椭圆 1278" cx="156.06" cy="156.06" r="156.06" opacity=".5" fill="url(#a)"/></svg>

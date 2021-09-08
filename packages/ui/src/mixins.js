@@ -124,7 +124,7 @@ export const responsive = () => css`
   }
 `;
 
-export const lineClamp = (lineNum) => css`
+export const lineClamp = (lineNum = 1) => css`
   display: -webkit-box;
   -webkit-line-clamp: ${lineNum};
   -webkit-box-orient: vertical;

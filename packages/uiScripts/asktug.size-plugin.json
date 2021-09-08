@@ -1,5 +1,19 @@
 [
   {
+    "timestamp": 1631087096368,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 161201, "size": 161466, "diff": 265 }
+    ]
+  },
+  {
+    "timestamp": 1631085760924,
+    "files": [
+      { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },
+      { "filename": "asktug-header-footer.js", "previous": 158989, "size": 161201, "diff": 2212 }
+    ]
+  },
+  {
     "timestamp": 1630295220044,
     "files": [
       { "filename": "asktug-header-footer.css", "previous": 63305, "size": 63305, "diff": 0 },

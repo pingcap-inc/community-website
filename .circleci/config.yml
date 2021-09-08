@@ -45,12 +45,18 @@ commands:
       - run: npm run copy:locales
 
   deploy-website:
+    parameters:
+      stage:
+        default: "production"
+        type: enum
+        enum: [ "production", "preview" ]
     steps:
       - run:
-          name: Deploy to HK_1_HOST
+          name: Deploy to << parameters.stage >> server
           command: |
             ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
-            npm run deploy
+            ssh-keyscan "${HOST_PREVIEW_IP}" >> ~/.ssh/known_hosts 2>/dev/null
+            npm run deploy:<< parameters.stage >>
 
 jobs:
   verify:
@@ -78,18 +84,25 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
+            - .env.local
             - .next
             - public/locales
             - public/scripts
 
   deploy:
+    parameters:
+      stage:
+        default: "production"
+        type: enum
+        enum: [ "production", "preview" ]
     docker:
       - image: circleci/node:14.13.0
     steps:
       - install-deps
       - attach_workspace:
           at: .
-      - deploy-website
+      - deploy-website:
+          stage: << parameters.stage >>
 
 workflows:
   commit:
@@ -106,11 +119,35 @@ workflows:
               only:
                 - main
 
-      - hold-for-deploy:
+      - deploy:
+          stage: preview
+          requires:
+            - build
+
+      - hold-for-production-deploy:
           type: approval
           requires:
             - build
 
       - deploy:
+          stage: production
           requires:
-            - hold-for-deploy
+            - hold-for-production-deploy
+
+  preview-commit:
+    jobs:
+      - hold-for-preview-deploy:
+          type: approval
+          filters:
+            branches:
+              ignore:
+                - main
+
+      - build:
+          requires:
+            - hold-for-preview-deploy
+
+      - deploy:
+          stage: preview
+          requires:
+            - build

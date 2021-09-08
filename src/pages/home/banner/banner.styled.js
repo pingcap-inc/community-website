@@ -227,7 +227,7 @@ export const Promotion = styled.div`
 `;
 
 export const PromotionOverlay = styled.div`
-  ${mixins.lineClamp(1)};
+  ${mixins.lineClamp()};
   ${mixins.verticalLineMiddle('50px')}
   position: absolute;
   bottom: 0;

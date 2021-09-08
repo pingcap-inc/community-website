@@ -95,10 +95,6 @@ export const navItems = [
             ],
           },
           {
-            title: '特殊兴趣小组(SIG)',
-            link: 'https://contributor.tidb.io/sig',
-          },
-          {
             title: '人员',
             items: [
               {

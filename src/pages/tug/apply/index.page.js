@@ -1,23 +1,23 @@
 import React, { useContext } from 'react';
 
-import ApplyMainPage from './ApplyMain.page';
+import Apply from './Apply.component';
 import Error from '../../_error.page';
 import { AuthContext } from '~/context';
 import { CommunityHead } from '~/components';
 
 const PageContent = () => {
-  const { login, isAnonymous } = useContext(AuthContext);
+  const { isAnonymous } = useContext(AuthContext);
 
   const isTugMember = false;
-  if (isAnonymous) {
-    login();
-    return null;
+  if (!isAnonymous) {
+    // login();
+    // return null;
   }
 
   if (isTugMember) {
     return <Error statusCode={409} errorMsg={'已经提交过申请并且正在审核中，或者已经加入 TUG 了'} />;
   } else {
-    return <ApplyMainPage />;
+    return <Apply />;
   }
 };
 

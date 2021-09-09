@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const { errorResp, successResp } = require('../../utils');
 
 module.exports = (req, res) => {

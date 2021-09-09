@@ -40,6 +40,7 @@ module.exports = (shipit) => {
   });
 
   shipit.on('published', () => {
+    shipit.remote(`export INSTANCES_NUM=${process.env.INSTANCES_NUM}`);
     shipit.start('server:reload');
   });
 

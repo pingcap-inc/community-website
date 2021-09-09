@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import Router from 'next/router';
+import { Modal, Button } from 'antd';
 
 import styles from './Apply.module.scss';
 import Container from '~/components/Container/Container';
 import { CoreLayout } from '~/layouts';
 import Form from './form';
 import { api } from '@tidb-community/datasource';
-import { Modal } from 'antd';
 
 const SuccessModal = (props) => (
   // visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
@@ -80,6 +81,10 @@ const Apply = () => {
       });
   };
 
+  const handleSuccess = () => {
+    Router.push('/tug');
+  };
+
   return (
     <CoreLayout domain="tidb.io">
       <Container className={styles.container}>
@@ -113,7 +118,18 @@ const Apply = () => {
 
         <div className={styles.end}>
           <Form onSubmit={handleSubmit} />
-          <SuccessModal visible={successModal} onOk={() => showSuccessModal(false)} />
+          <SuccessModal
+            visible={successModal}
+            onOk={() => showSuccessModal(false)}
+            afterClose={handleSuccess}
+            footer={
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Button key="back" type="primary" onClick={() => showSuccessModal(false)}>
+                  确认
+                </Button>
+              </div>
+            }
+          />
           <FailModal visible={failModal} onOk={() => showFailModal(false)} errorMessage={errorMessage} />
         </div>
       </Container>

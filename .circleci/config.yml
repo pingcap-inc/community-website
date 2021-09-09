@@ -51,6 +51,16 @@ commands:
         type: enum
         enum: [ "production", "preview" ]
     steps:
+      - when:
+          condition:
+            equal: [ << parameters.stage >>, "preview" ]
+          steps:
+            - run: INSTANCES_NUM=1
+      - when:
+          condition:
+            equal: [ << parameters.stage >>, "production" ]
+          steps:
+            - run: INSTANCES_NUM=2
       - run:
           name: Deploy to << parameters.stage >> server
           command: |

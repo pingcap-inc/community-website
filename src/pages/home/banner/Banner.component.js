@@ -66,7 +66,7 @@ const Banner = () => {
   return (
     <Styled.Container>
       <Styled.Content isSmallScreen={isSmallScreen}>
-        <Row gutter={[isSmallScreen ? 0 : 32, 64]} justify="space-between" align="middle">
+        <Row gutter={!isSmallScreen && [0, 32, 64]} justify="space-between" align="middle">
           <Styled.LeftPanel>
             <Styled.Logo />
             <Styled.Intro>{lang.intro}</Styled.Intro>

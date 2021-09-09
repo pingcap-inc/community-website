@@ -96,7 +96,7 @@ export const RightPanel = styled(Col).attrs({
 })``;
 
 export const Logo = styled(LogoSvg)`
-  min-height: 2rem;
+  min-height: 3rem;
   max-width: 350px;
 `;
 
@@ -278,6 +278,8 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
   ${(props) =>
     props.isSmallScreen &&
     css`
+      margin-bottom: 3rem;
+
       .slick-slide {
         padding-right: 0;
       }

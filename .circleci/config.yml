@@ -55,12 +55,12 @@ commands:
           condition:
             equal: [ << parameters.stage >>, "preview" ]
           steps:
-            - run: INSTANCES_NUM=1
+            - run: export INSTANCES_NUM=1
       - when:
           condition:
             equal: [ << parameters.stage >>, "production" ]
           steps:
-            - run: INSTANCES_NUM=2
+            - run: export INSTANCES_NUM=2
       - run:
           name: Deploy to << parameters.stage >> server
           command: |

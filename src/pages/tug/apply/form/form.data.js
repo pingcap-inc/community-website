@@ -17,8 +17,8 @@ export const fetchOrganizationOptions = (word) =>
 
 const data = {
   form: {
-    name: {
-      name: 'name',
+    realName: {
+      name: 'real_name',
       placeholder: '真实姓名',
       validator: Yup.string()
         .min(2, ({ min }) => `真实姓名最短为${min}个字符`)

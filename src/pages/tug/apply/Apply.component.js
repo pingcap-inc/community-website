@@ -130,7 +130,18 @@ const Apply = () => {
               </div>
             }
           />
-          <FailModal visible={failModal} onOk={() => showFailModal(false)} errorMessage={errorMessage} />
+          <FailModal
+            visible={failModal}
+            onOk={() => showFailModal(false)}
+            errorMessage={errorMessage}
+            footer={
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Button key="back" type="primary" onClick={() => showFailModal(false)}>
+                  确认
+                </Button>
+              </div>
+            }
+          />
         </div>
       </Container>
     </CoreLayout>

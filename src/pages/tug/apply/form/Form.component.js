@@ -8,7 +8,7 @@ import data from './form.data';
 
 const { form, submitBtnTitle, agreementContent, formSchema, formInitialValues } = data;
 const {
-  name,
+  realName,
   phone,
   email,
   company,
@@ -30,8 +30,8 @@ const Form = ({ onSubmit }) => {
       <Styled.Form>
         <Formik initialValues={formInitialValues} validationSchema={formSchema} onSubmit={onSubmit}>
           <AntForm layout="vertical">
-            <AntForm.Item name={name.name} label={name.placeholder} required>
-              <Input {...name} />
+            <AntForm.Item name={realName.name} label={realName.placeholder} required>
+              <Input {...realName} />
             </AntForm.Item>
             <AntForm.Item name={phone.name} label={phone.placeholder} required>
               <Input {...phone} />

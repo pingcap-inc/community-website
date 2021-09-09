@@ -28,7 +28,7 @@ const FailModal = (props) => (
 const Apply = () => {
   const title = 'TiDB User Group 会员申请';
 
-  const postImageUrl = '/images/people/apply/post.svg';
+  const postImageUrl = '/images/people/apply/post.png';
 
   const question = 'TUG 是什么';
   const answer = 'TUG 是汇聚全球数据库、⼤数据技术从业者的社区，是⼀个独⽴、⾃发、不以盈利为⽬的的组织。';

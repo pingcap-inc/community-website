@@ -55,18 +55,16 @@ commands:
           condition:
             equal: [ << parameters.stage >>, "preview" ]
           steps:
-            - run: export INSTANCES_NUM=1
+            - run: |
+                ssh-keyscan "${HOST_PREVIEW_IP}" >> ~/.ssh/known_hosts 2>/dev/null
+                INSTANCES_NUM=1 npm run deploy:<< parameters.stage >>
       - when:
           condition:
             equal: [ << parameters.stage >>, "production" ]
           steps:
-            - run: export INSTANCES_NUM=2
-      - run:
-          name: Deploy to << parameters.stage >> server
-          command: |
-            ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
-            ssh-keyscan "${HOST_PREVIEW_IP}" >> ~/.ssh/known_hosts 2>/dev/null
-            npm run deploy:<< parameters.stage >>
+            - run: |
+                ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
+                INSTANCES_NUM=2 npm run deploy:<< parameters.stage >>
 
 jobs:
   verify:

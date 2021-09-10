@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-import logoSvg from '@/public/images/community/logo.svg?url';
+import logoSvg from '@/public/images/tidb-logo.svg?url';
 import { SIZES } from '~/theme';
 
 export const Container = styled.div`

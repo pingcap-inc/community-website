@@ -7,17 +7,6 @@ import { AuthContext, MeContext } from '~/context';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import { PageLoader } from '~/components';
-import { getI18nProps } from '~/utils/i18n.utils';
-
-export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-community'])(ctx);
-
-  return {
-    props: {
-      ...i18nProps,
-    },
-  };
-};
 
 const PageContent = () => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);

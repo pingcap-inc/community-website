@@ -19,13 +19,6 @@ import { getI18nProps } from '~/utils/i18n.utils';
 export const getServerSideProps = async (ctx) => {
   const { env } = process;
   const isProd = env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
-  const isEnabled = env.NEXT_PUBLIC_FT_HOME;
-
-  if (!isEnabled) {
-    return {
-      notFound: true,
-    };
-  }
 
   const client = await api.initStrapiClient({
     baseUrl: env.NEXT_PUBLIC_STRAPI_BASE_URL,

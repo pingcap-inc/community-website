@@ -33,7 +33,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', has
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
   const title = 'TiDB Community';
-  const logo = <img alt={title} src="/images/community/logo.svg" />;
+  const logo = <img alt={title} src="/images/tidb-logo.svg" />;
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {
     if (isSelected) return;

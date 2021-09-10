@@ -31,7 +31,7 @@ const Template = ({ avatarUrl, hasOrg, isLoggedIn, isShowUserProfile, locale, on
 
   const { navItems, userProfileNavItems } = getData({ locale, meData }).nav.header;
   const title = 'TiDB Community';
-  const logo = <img alt={title} src="/images/community/logo.svg" />;
+  const logo = <img alt={title} src="/images/tidb-logo.svg" />;
   const currentNav = utils.header.getCurrentNav(navItems, 'https://contributor.tidb.io/people/committer');
 
   return (

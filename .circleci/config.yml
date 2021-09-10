@@ -69,14 +69,14 @@ commands:
           steps:
             - run: |
                 ssh-keyscan "${HOST_PREVIEW_IP}" >> ~/.ssh/known_hosts 2>/dev/null
-                INSTANCES_NUM=1 npm run deploy:<< parameters.stage >>
+                INSTANCES_NUM=1 npm run deploy
       - when:
           condition:
             equal: [ << parameters.stage >>, "production" ]
           steps:
             - run: |
                 ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
-                INSTANCES_NUM=2 npm run deploy:<< parameters.stage >>
+                INSTANCES_NUM=2 npm run deploy
 
 jobs:
   verify:

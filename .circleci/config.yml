@@ -23,7 +23,7 @@ commands:
       - run: curl -sL https://sentry.io/get-cli/ | bash
       - restore_cache:
           keys:
-            - v1-deps-{{ checksum "package-lock.json" }}
+            - v2-deps-{{ checksum "package-lock.json" }}
       - when:
           condition: << parameters.onlyInstall >>
           steps:
@@ -35,7 +35,8 @@ commands:
                 filename: combined-package-lock.txt
             - restore_cache:
                 keys:
-                  - v1-deps-{{ checksum "combined-package-lock.txt" }}
+                  - v2-sub-deps-{{ checksum "combined-package-lock.txt" }}
+                  - v2-sub-deps
             - run: |
                 npm -v
                 npm install
@@ -50,9 +51,9 @@ commands:
                   - packages/trackingScript/node_modules
                   - packages/ui/node_modules
                   - packages/uiScripts/node_modules
-                key: v1-deps-{{ checksum "combined-package-lock.txt" }}
+                key: v2-sub-deps-{{ checksum "combined-package-lock.txt" }}
       - save_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
+          key: v2-deps-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
 

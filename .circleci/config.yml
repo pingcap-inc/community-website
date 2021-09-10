@@ -2,6 +2,11 @@ version: 2.1
 
 commands:
   install-deps:
+    parameters:
+      onlyInstall:
+        type: boolean
+        default: false
+
     steps:
       - checkout
       - run: curl -sL https://sentry.io/get-cli/ | bash
@@ -9,9 +14,16 @@ commands:
           keys:
             - v1-deps-{{ checksum "package-lock.json" }}
             - v1-deps
-      - run: |
-          npm -v
-          npm install
+      - when:
+          condition: << parameters.onlyInstall >>
+          steps:
+            - run: npm install --ignore-scripts
+      - unless:
+          condition: << parameters.onlyInstall >>
+          steps:
+            - run: |
+                npm -v
+                npm install
       - save_cache:
           paths:
             - node_modules
@@ -106,7 +118,8 @@ jobs:
     docker:
       - image: circleci/node:14.13.0
     steps:
-      - install-deps
+      - install-deps:
+          onlyInstall: true
       - attach_workspace:
           at: .
       - deploy-website:

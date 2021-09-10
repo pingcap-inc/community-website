@@ -24,6 +24,7 @@ commands:
       - restore_cache:
           keys:
             - v2-deps-{{ checksum "package-lock.json" }}
+            - v2-deps
       - when:
           condition: << parameters.onlyInstall >>
           steps:

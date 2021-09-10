@@ -42,3 +42,4 @@ public/locales/
 public/scripts/
 webstorm.config.js
 yarn.lock
+combined-package-lock.txt

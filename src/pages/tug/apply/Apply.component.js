@@ -19,13 +19,6 @@ const SuccessModal = (props) => (
   </Modal>
 );
 
-const FailModal = (props) => (
-  // visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
-  <Modal title="提交失败" {...props}>
-    <p>{props.content}</p>
-  </Modal>
-);
-
 const Apply = () => {
   const title = 'TiDB User Group 会员申请';
 
@@ -45,6 +38,13 @@ const Apply = () => {
   const [failModal, showFailModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
+  const FailModal = (props) => (
+    // visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}
+    <Modal title="提交失败" {...props}>
+      <p>{errorMessage}</p>
+    </Modal>
+  );
+
   const handleSubmit = (data) => {
     // eslint-disable-next-line no-console
     console.log(data);
@@ -52,32 +52,32 @@ const Apply = () => {
       .apply(data)
       .then((response) => {
         // eslint-disable-next-line no-console
-        console.log('response', response);
+        console.log('handleSubmit response', response);
         showSuccessModal(true);
       })
       .catch((error) => {
         // eslint-disable-next-line no-console
-        console.log('error', error.response.status, error);
-        setErrorMessage(error.response.content.detail);
+        console.log('handleSubmit error', error);
+        setErrorMessage(error.detail);
         showFailModal(true);
-        switch (error.response.status) {
-          case '400': {
-            //TODO: show invalid form field
-            break;
-          }
-          case '401': {
-            //TODO: navigate to login page
-            break;
-          }
-          case '409': {
-            //TODO: show message box with content: 用户已经提交过申请，或者已经加入 TUG 了
-            break;
-          }
-          default: {
-            //TODO: show message box with content: 未知错误，请稍后重试
-            break;
-          }
-        }
+        // switch (error.response.status) {
+        //   case '400': {
+        //     //TODO: show invalid form field
+        //     break;
+        //   }
+        //   case '401': {
+        //     //TODO: navigate to login page
+        //     break;
+        //   }
+        //   case '409': {
+        //     //TODO: show message box with content: 用户已经提交过申请，或者已经加入 TUG 了
+        //     break;
+        //   }
+        //   default: {
+        //     //TODO: show message box with content: 未知错误，请稍后重试
+        //     break;
+        //   }
+        // }
       });
   };
 

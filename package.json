@@ -10,6 +10,8 @@
     "build:uiScripts": "lerna run --scope @tidb-community/ui-scripts build",
     "build:watch": "lerna run --no-bail build:watch",
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
+    "deploy:production": "shipit production deploy",
+    "deploy:preview": "shipit preview deploy",
     "dev": "npm run build:shared && npm run build:strapi && (npm run start:i18n & npm run start:mockApi & npm run strapi:dev & next dev)",
     "lint": "next lint && eslint . --ext .js,.jsx --ignore-path .gitignore",
     "postinstall": "lerna bootstrap && npm run build:shared",

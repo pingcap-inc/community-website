@@ -19,7 +19,7 @@ const { navItems, icons } = getData({ locale: 'en' }).nav.footer;
 
 WithNav.args = {
   icons,
-  logo: <img alt={title} src="/images/community/logo.svg" />,
+  logo: <img alt={title} src="/images/tidb-logo.svg" />,
   navItems,
   title,
 };

@@ -129,7 +129,7 @@ const getLinkProps = (href) => ({
 const policeRegisterNum = '11010802035239';
 
 const footerProps = {
-  logo: <img alt={title} src="https://tidb.io/images/community/logo.svg" />,
+  logo: <img alt={title} src="https://tidb.io/images/tidb-logo.svg" />,
   title,
   onNavClick: (link) => onNavClick({ link }),
   icons: footerIcons,

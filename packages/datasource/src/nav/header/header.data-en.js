@@ -95,10 +95,6 @@ export const navItems = [
             ],
           },
           {
-            title: 'Special Interest Group (SIG)',
-            link: 'https://contributor.tidb.io/sig',
-          },
-          {
             title: 'People',
             items: [
               {

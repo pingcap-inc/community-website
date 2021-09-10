@@ -24,7 +24,7 @@ const data = {
         .min(2, ({ min }) => `真实姓名最短为${min}个字符`)
         .max(20, ({ max }) => `真实姓名最长为${max}个字符`)
         .required('真实姓名不可为空'),
-      initialValue: '昌维',
+      initialValue: '[empty]',
     },
     phone: {
       name: 'phone',

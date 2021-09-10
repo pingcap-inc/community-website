@@ -1,6 +1,17 @@
 version: 2.1
 
 commands:
+  create_concatenated_package_lock:
+    description: "Concatenate all package-lock.json files recognized by lerna.js into single file. File is used as checksum source for part of caching key."
+    parameters:
+      filename:
+        type: string
+    steps:
+      - run:
+          name: Combine package-lock.json files to single file
+          command: |
+            npx lerna list -p -a | awk -F packages '$2!="" {printf "\"packages%s/package-lock.json\" ", $2}' | xargs cat > << parameters.filename >>
+
   install-deps:
     parameters:
       onlyInstall:
@@ -13,7 +24,6 @@ commands:
       - restore_cache:
           keys:
             - v1-deps-{{ checksum "package-lock.json" }}
-            - v1-deps
       - when:
           condition: << parameters.onlyInstall >>
           steps:
@@ -21,13 +31,31 @@ commands:
       - unless:
           condition: << parameters.onlyInstall >>
           steps:
+            - create_concatenated_package_lock:
+                filename: combined-package-lock.txt
+            - restore_cache:
+                keys:
+                  - v1-deps-{{ checksum "combined-package-lock.txt" }}
             - run: |
                 npm -v
                 npm install
+            - save_cache:
+                paths:
+                  - packages/accounts/node_modules
+                  - packages/common/node_modules
+                  - packages/datasource/node_modules
+                  - packages/i18n/node_modules
+                  - packages/mockApi/node_modules
+                  - packages/strapi/node_modules
+                  - packages/trackingScript/node_modules
+                  - packages/ui/node_modules
+                  - packages/uiScripts/node_modules
+                key: v1-deps-{{ checksum "combined-package-lock.txt" }}
       - save_cache:
+          key: v1-deps-{{ checksum "package-lock.json" }}
           paths:
             - node_modules
-          key: v1-deps-{{ checksum "package-lock.json" }}
+
 
   prepare-sentry:
     steps:

@@ -15,7 +15,7 @@ export const getStrapiImgProps = (imgObj) => {
   const img = imgObj[0];
 
   return {
-    src: `${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${img.url}`,
+    src: `${process.env.NEXT_PUBLIC_CDN_BASE_URL || process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${img.url}`,
     ...R.pick(['width', 'height'], img),
   };
 };

@@ -96,10 +96,8 @@ export const RightPanel = styled(Col).attrs({
 })``;
 
 export const Logo = styled(LogoSvg)`
-  min-height: 32px;
+  min-height: 3rem;
   max-width: 350px;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
 `;
 
 export const Intro = styled.h2`
@@ -229,14 +227,15 @@ export const Promotion = styled.div`
 `;
 
 export const PromotionOverlay = styled.div`
+  ${mixins.lineClamp()};
+  ${mixins.verticalLineMiddle('50px')}
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 100;
-  background-color: rgb(0, 0, 0, 0.48);
-  height: 50px;
-  padding: 1rem;
+  z-index: 1;
+  background-color: rgb(0, 0, 0, 0.4);
+  padding: 0 1rem;
   color: ${colors.M1};
 `;
 
@@ -279,6 +278,8 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
   ${(props) =>
     props.isSmallScreen &&
     css`
+      margin-bottom: 3rem;
+
       .slick-slide {
         padding-right: 0;
       }

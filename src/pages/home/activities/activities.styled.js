@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import { Styled, colors } from '@tidb-community/ui';
 
-import { ModuleTitle, Section } from '~/pages/home/index.styled';
+const { ModuleTitle, Section } = Styled;
 
 export { ModuleTitle };
 

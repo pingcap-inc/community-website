@@ -1,11 +1,12 @@
 import styled, { css } from 'styled-components';
 import { Row } from 'antd';
-import { colors, mixins } from '@tidb-community/ui';
+import { Styled, colors, mixins } from '@tidb-community/ui';
 
-import { Section, Text } from '~/pages/home/index.styled';
 import { Link as RawLink } from '~/components';
 
-export { Text };
+const { ModuleTitle, Section, Text } = Styled;
+
+export { ModuleTitle, Text };
 
 export const SmallerText = styled(Text)`
   font-size: 14px;

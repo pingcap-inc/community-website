@@ -16,7 +16,7 @@
     "@tidb-community/datasource": "*",
     "dotenv": "10.0.0",
     "knex": "0.21.18",
-    "sqlite3": "5.0.0",
+    "sqlite3": "5.0.2",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",
@@ -29,6 +29,6 @@
     "strapi-utils": "3.6.8"
   },
   "devDependencies": {
-    "axios": "0.21.1"
+    "axios": "0.21.4"
   }
 }

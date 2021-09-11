@@ -5,7 +5,6 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './others.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import VideoThumbnail from './videoThumbnail';
-import { ModuleTitle } from '~/pages/home/index.styled';
 import { PageDataContext } from '~/context';
 import { getImage } from '~/pages/home/index.utils';
 import { useIsSmallScreen } from '~/hooks';
@@ -33,10 +32,10 @@ const Others = () => {
         title={lang.title}
         leftPanel={
           <>
-            <ModuleTitle>
+            <Styled.ModuleTitle>
               <Styled.Subtitle>{lang.videos}</Styled.Subtitle>
               <Styled.Link href="https://space.bilibili.com/86485707">{lang.more}</Styled.Link>
-            </ModuleTitle>
+            </Styled.ModuleTitle>
             <Row gutter={16}>
               {data.videos.slice(0, isSmallScreen ? 3 : 6).map((video, idx) => (
                 <Col key={idx} xs={24} md={8}>
@@ -45,10 +44,10 @@ const Others = () => {
               ))}
             </Row>
             <Styled.Divider />
-            <ModuleTitle>
+            <Styled.ModuleTitle>
               <Styled.Subtitle> {jobsLang.subtitle} </Styled.Subtitle>
               <Styled.Link href="https://tidb-jobs.pingcap.com/"> {lang.more} </Styled.Link>
-            </ModuleTitle>
+            </Styled.ModuleTitle>
             <Row>
               <Styled.Text>{jobsLang.desc}</Styled.Text>
             </Row>

@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
 import { Button, Input, Row } from 'antd';
-import { colors, mixins } from '@tidb-community/ui';
+import { Styled, colors, mixins } from '@tidb-community/ui';
 
 import { getImage } from '~/pages/home/index.utils';
-import { Section } from '~/pages/home/index.styled';
+
+const { Section } = Styled;
 
 export const Container = styled.div`
   ${mixins.responsive()};
@@ -23,10 +24,12 @@ export const SloganBox = styled(Row)`
 `;
 
 export const SubscriptionSection = styled(Section)`
-  background-image: url(${getImage('subscription-background.svg')});
-  background-size: cover;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+  && {
+    background-image: url(${getImage('subscription-background.svg')});
+    background-size: cover;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
 `;
 
 export const Slogan = styled.div`

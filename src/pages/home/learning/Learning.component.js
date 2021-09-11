@@ -5,26 +5,25 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './learning.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { ModuleTitle } from '~/pages/home/index.styled';
 import { getImage } from '~/pages/home/index.utils';
-import { useIsSmallScreen } from '~/hooks';
 import { link as linkUtils } from '~/utils';
+import { useIsSmallScreen } from '~/hooks';
 
 const Learning = () => {
   const router = useRouter();
-  const redirect = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
-
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('learning', { returnObjects: true });
   const { majorVideo: majorVideoLang } = lang;
 
+  const redirect = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
+
   return (
-    <Styled.Container id="learning">
+    <Styled.Container id="learning" isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
         title={lang.title}
         leftPanel={
@@ -81,7 +80,7 @@ const Learning = () => {
           <>
             {lang.linkSections.map((section, idx) => (
               <div key={idx}>
-                <ModuleTitle>{section.title}</ModuleTitle>
+                <Styled.ModuleTitle>{section.title}</Styled.ModuleTitle>
 
                 <Styled.LinksRow gutter={32}>
                   {section.links.map((link, linkIdx) => (

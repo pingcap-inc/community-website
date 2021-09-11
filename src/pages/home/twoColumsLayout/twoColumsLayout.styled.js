@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Col } from 'antd';
+import { Styled } from '@tidb-community/ui';
 
-export { Content, Title } from '~/pages/home/index.styled';
+const { Content, Title } = Styled;
+
+export { Content, Title };
 
 export const LeftPanel = styled(Col).attrs((props) => ({
   xs: { span: 24, order: props.$reverseOnSmallScreen ? 2 : 1 },

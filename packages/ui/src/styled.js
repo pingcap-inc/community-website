@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
+
+import * as colors from './colors';
+import * as mixins from './mixins';
 
 export const Section = styled.div`
   color: ${colors.F1};
@@ -9,9 +11,11 @@ export const Section = styled.div`
   ${(props) =>
     props.isSmallScreen &&
     css`
-      padding: 4rem 0 3rem;
+      padding: 3rem 0;
+
       ${Title} {
         font-size: 24px;
+        margin-bottom: 3rem;
         text-align: center;
 
         &::after {
@@ -29,8 +33,8 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 32px;
   position: relative;
+  font-size: 32px;
   margin-bottom: 4rem;
 
   && {
@@ -54,6 +58,12 @@ export const ModuleTitle = styled.h3`
   font-size: 20px;
   font-weight: normal !important;
   margin-bottom: 2rem;
+
+  ${(props) =>
+    props.justify &&
+    css`
+      justify-content: ${props.justify};
+    `}
 `;
 
 export const Text = styled.div`
@@ -63,10 +73,11 @@ export const Text = styled.div`
 
 export const CenterOnSmallScreen = styled.div`
   width: 100%;
+
   ${(props) =>
     props.isSmallScreen &&
     css`
-      text-align: center;
       ${mixins.centerBlock()}
+      text-align: center;
     `}
 `;

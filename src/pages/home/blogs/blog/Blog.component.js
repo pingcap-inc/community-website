@@ -7,7 +7,7 @@ import AsktugIcon from './asktug.svg';
 const Blog = ({ title, link, creator, createdAt, onClick }) => (
   <Styled.Container onClick={onClick(link)}>
     <Styled.TitleRow>
-      <h3>{title}</h3>
+      <h3 title={title}>{title}</h3>
       <AsktugIcon />
     </Styled.TitleRow>
 

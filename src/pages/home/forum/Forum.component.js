@@ -8,7 +8,6 @@ import * as Styled from './forum.styled';
 import Categories from './categories';
 import Post from './post';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { CenterOnSmallScreen } from '~/pages/home/index.styled';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
@@ -62,9 +61,7 @@ const Forum = () => {
         rightPanel={
           <>
             <Styled.Module>
-              <Styled.CenterableModuleTitle isSmallScreen={isSmallScreen}>
-                {lang.postQuestion}
-              </Styled.CenterableModuleTitle>
+              <Styled.ModuleTitle justify={isSmallScreen && 'center'}>{lang.postQuestion}</Styled.ModuleTitle>
               <p>
                 <Styled.AsktugLogo />
                 {lang.intro}
@@ -73,9 +70,9 @@ const Forum = () => {
                 {lang.comply}
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
-              <CenterOnSmallScreen isSmallScreen={isSmallScreen}>
+              <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
                 <Button {...writePostButtonProps} />
-              </CenterOnSmallScreen>
+              </Styled.CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>

@@ -1,9 +1,10 @@
 import styled, { css } from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
 import { Radio, Row } from 'antd';
+import { Styled, colors, mixins } from '@tidb-community/ui';
 
-import { Section, Content } from '~/pages/home/index.styled';
 import { getImage } from '~/pages/home/index.utils';
+
+const { Content, Section } = Styled;
 
 export { Content };
 
@@ -78,7 +79,7 @@ export const Navs = styled(Radio.Group)`
 export const Title = styled.h2`
   display: inline-block;
   font-size: 36px;
-  line-height: 1;
+  line-height: 1.2;
   position: relative;
   z-index: 0;
 

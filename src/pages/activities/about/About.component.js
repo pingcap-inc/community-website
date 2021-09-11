@@ -19,15 +19,24 @@ const About = () => {
         <Row gutter={[32, 32]}>
           <Styled.LeftPanel>
             <Styled.Title>{lang.title}</Styled.Title>
-            <p>{lang.paragraph1}</p>
-            <p>
-              <Trans
-                t={t}
-                i18nKey={'about.paragraph2.text'}
-                components={[<Link href={paragraph2Lang.link1} />, <Link href={paragraph2Lang.link2} />]}
-              />
-            </p>
+
+            <Styled.Desc>
+              <p>{lang.paragraph1}</p>
+              <p>
+                <Trans
+                  t={t}
+                  i18nKey={'about.paragraph2.text'}
+                  components={[<Link href={paragraph2Lang.link1} />, <Link href={paragraph2Lang.link2} />]}
+                />
+              </p>
+            </Styled.Desc>
+
+            <Styled.Card>
+              <Styled.CardImg>Img</Styled.CardImg>
+              <Styled.CardInfo>Info</Styled.CardInfo>
+            </Styled.Card>
           </Styled.LeftPanel>
+
           <Styled.RightPanel>Calendar</Styled.RightPanel>
         </Row>
       </Styled.Content>

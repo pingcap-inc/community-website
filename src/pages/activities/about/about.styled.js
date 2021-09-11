@@ -1,10 +1,21 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
+import { Col } from 'antd';
+import { Styled, colors } from '@tidb-community/ui';
 
-export const Container = styled.div`
+const { Content, Section, Title } = Styled;
+
+export { Content, Title };
+
+export const Container = styled(Section)`
   background: ${colors.M2};
 `;
 
-export const Content = styled.div`
-  ${mixins.responsive()};
-`;
+export const LeftPanel = styled(Col).attrs({
+  xs: { span: 24, order: 2 },
+  md: { span: 12, order: 1 },
+})``;
+
+export const RightPanel = styled(Col).attrs({
+  xs: { span: 24, order: 1 },
+  md: { span: 12, order: 2 },
+})``;

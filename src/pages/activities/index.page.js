@@ -1,4 +1,5 @@
 import React from 'react';
+import { useTranslation } from 'next-i18next';
 
 import About from './about';
 import List from './list';
@@ -26,15 +27,19 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Page = ({ data }) => (
-  <PageDataContext.Provider value={{ data }}>
-    <CommunityHead />
+const Page = ({ data }) => {
+  const { t } = useTranslation('page-activities');
 
-    <CoreLayout domain="tidb.io">
-      <About />
-      <List />
-    </CoreLayout>
-  </PageDataContext.Provider>
-);
+  return (
+    <PageDataContext.Provider value={{ data }}>
+      <CommunityHead title={t('pageTitle')} />
+
+      <CoreLayout domain="tidb.io">
+        <About />
+        <List />
+      </CoreLayout>
+    </PageDataContext.Provider>
+  );
+};
 
 export default Page;

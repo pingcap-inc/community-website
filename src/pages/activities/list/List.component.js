@@ -11,7 +11,7 @@ const List = () => {
   const lang = t('list', { returnObjects: true });
 
   return (
-    <Styled.Container isSmallScreen={isSmallScreen}>
+    <Styled.Container id="all-activities" isSmallScreen={isSmallScreen}>
       <Styled.Title>{lang.title}</Styled.Title>
     </Styled.Container>
   );

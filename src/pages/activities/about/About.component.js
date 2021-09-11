@@ -1,8 +1,9 @@
 import React from 'react';
 import { Row } from 'antd';
-import { useTranslation } from 'next-i18next';
+import { Trans, useTranslation } from 'next-i18next';
 
 import * as Styled from './about.styled';
+import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 
 const About = () => {
@@ -10,6 +11,7 @@ const About = () => {
   const { t } = useTranslation('page-activities');
 
   const lang = t('about', { returnObjects: true });
+  const { paragraph2: paragraph2Lang } = lang;
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
@@ -17,6 +19,14 @@ const About = () => {
         <Row gutter={[32, 32]}>
           <Styled.LeftPanel>
             <Styled.Title>{lang.title}</Styled.Title>
+            <p>{lang.paragraph1}</p>
+            <p>
+              <Trans
+                t={t}
+                i18nKey={'about.paragraph2.text'}
+                components={[<Link href={paragraph2Lang.link1} />, <Link href={paragraph2Lang.link2} />]}
+              />
+            </p>
           </Styled.LeftPanel>
           <Styled.RightPanel>Calendar</Styled.RightPanel>
         </Row>

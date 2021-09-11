@@ -11,7 +11,7 @@ module.exports = {
     fallbackLng: ['zh', 'en'],
   },
   use: [require('i18next-http-backend/cjs')],
-  ns: ['common', 'page-home', 'page-contact-us', 'page-organization-benefits', 'page-orgs'],
+  ns: ['common', 'page-activities', 'page-contact-us', 'page-home', 'page-organization-benefits', 'page-orgs'],
   backend: {
     loadPath: `${process.env.NEXT_PUBLIC_LOCALES_BASE_URL}/{{lng}}/{{ns}}.json`,
     reloadInterval: isProd ? 10 * ONE_MIN : 30 * ONE_SECOND,

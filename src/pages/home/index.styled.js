@@ -10,6 +10,7 @@ export const Section = styled.div`
     props.isSmallScreen &&
     css`
       padding: 4rem 0 3rem;
+
       ${Title} {
         font-size: 24px;
         text-align: center;
@@ -29,8 +30,8 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 32px;
   position: relative;
+  font-size: 32px;
   margin-bottom: 4rem;
 
   && {
@@ -63,10 +64,11 @@ export const Text = styled.div`
 
 export const CenterOnSmallScreen = styled.div`
   width: 100%;
+
   ${(props) =>
     props.isSmallScreen &&
     css`
-      text-align: center;
       ${mixins.centerBlock()}
+      text-align: center;
     `}
 `;

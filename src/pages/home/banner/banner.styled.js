@@ -3,13 +3,13 @@ import styled, { css } from 'styled-components';
 import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
-import * as HomeStyled from '~/pages/home/index.styled';
+import * as PageStyled from '~/pages/home/index.styled';
 import LogoSvg from './logo.svg';
 
 const githubBlack = '#24292e';
 const githubLightGrey = '#f0f0f0';
 
-export const Container = styled(HomeStyled.Section)`
+export const Container = styled(PageStyled.Section)`
   && {
     color: ${colors.M1};
     background: ${colors.B4};
@@ -17,7 +17,7 @@ export const Container = styled(HomeStyled.Section)`
   }
 `;
 
-export const Content = styled(HomeStyled.Content)`
+export const Content = styled(PageStyled.Content)`
   position: relative;
   padding: 5rem 1rem 7.5rem;
 

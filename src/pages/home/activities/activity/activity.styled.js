@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import { Col, Row } from 'antd';
-import { colors, mixins } from '@tidb-community/ui';
+import { Styled, colors, mixins } from '@tidb-community/ui';
 
-import { ModuleTitle, Text } from '~/pages/home/index.styled';
+const { ModuleTitle, Text } = Styled;
 
 export { ModuleTitle, Text };
 

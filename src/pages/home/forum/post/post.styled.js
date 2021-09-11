@@ -14,6 +14,7 @@ export const Container = styled.div`
   cursor: pointer;
 
   h3 {
+    ${mixins.lineClamp(2)};
     font-size: 18px;
     font-weight: normal !important;
     margin-bottom: 1rem;

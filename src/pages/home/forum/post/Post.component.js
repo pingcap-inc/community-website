@@ -6,7 +6,7 @@ import * as Styled from './post.styled.js';
 const Post = ({ title, link, creator, categories, postNum, createdAt, onClick, lang, isSmallScreen }) => (
   <Styled.Container onClick={onClick(link)}>
     <Styled.TitleRow>
-      <h3>{title}</h3>
+      <h3 title={title}>{title}</h3>
       {!isSmallScreen && (
         <span>
           {postNum} {lang.reply}

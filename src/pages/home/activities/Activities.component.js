@@ -39,7 +39,7 @@ const Activities = () => {
   };
 
   return (
-    <Styled.Container>
+    <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsLayout
         title={lang.title}
         leftPanel={

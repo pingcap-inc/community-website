@@ -4,10 +4,9 @@ import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contribution.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { ModuleTitle } from '~/pages/home/index.styled';
-import { useIsSmallScreen } from '~/hooks';
-import { getImage as getHomeImage } from '~/pages/home/index.utils';
 import { Link } from '~/components';
+import { getImage as getHomeImage } from '~/pages/home/index.utils';
+import { useIsSmallScreen } from '~/hooks';
 
 const getImage = (name) => getHomeImage(`contribution-${name}`);
 
@@ -24,7 +23,7 @@ const Contribution = () => {
         title={lang.title}
         leftPanel={
           <>
-            <ModuleTitle>{guideLang.title}</ModuleTitle>
+            <Styled.ModuleTitle>{guideLang.title}</Styled.ModuleTitle>
             <Styled.Text>{guideLang.desc}</Styled.Text>
 
             {guideLang.steps.map((step, idx) => (

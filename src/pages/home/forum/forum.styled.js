@@ -1,10 +1,11 @@
-import styled, { css } from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import styled from 'styled-components';
+import { Styled, colors } from '@tidb-community/ui';
 
 import AsktugSvg from './asktug.svg';
-import { ModuleTitle, Section } from '~/pages/home/index.styled';
 
-export { ModuleTitle } from '~/pages/home/index.styled';
+const { ModuleTitle, Section, CenterOnSmallScreen } = Styled;
+
+export { ModuleTitle, CenterOnSmallScreen };
 
 export const Container = styled(Section)`
   && {
@@ -31,14 +32,6 @@ export const Module = styled.div`
   p {
     margin-bottom: 2rem;
   }
-`;
-
-export const CenterableModuleTitle = styled(ModuleTitle)`
-  ${(props) =>
-    props.isSmallScreen &&
-    css`
-      justify-content: center;
-    `}
 `;
 
 export const AsktugLogo = styled(AsktugSvg)`

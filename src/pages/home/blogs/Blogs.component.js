@@ -8,7 +8,6 @@ import * as Styled from './blogs.styled';
 import Blog from './blog';
 import Categories from '~/pages/home/forum/categories';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { CenterOnSmallScreen } from '~/pages/home/index.styled';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
@@ -59,17 +58,15 @@ const Blogs = () => {
         rightPanel={
           <>
             <Styled.Module>
-              <Styled.CenterableModuleTitle isSmallScreen={isSmallScreen}>
-                {lang.shareExperience}
-              </Styled.CenterableModuleTitle>
+              <Styled.ModuleTitle justify={isSmallScreen && 'center'}>{lang.shareExperience}</Styled.ModuleTitle>
               <p>{lang.intro}</p>
               <p>
                 {lang.comply}
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
-              <CenterOnSmallScreen isSmallScreen={isSmallScreen}>
+              <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
                 <Button {...writeBlogButtonProps} />
-              </CenterOnSmallScreen>
+              </Styled.CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>

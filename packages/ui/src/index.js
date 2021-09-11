@@ -1,3 +1,4 @@
+export * as Styled from './styled';
 export * as colors from './colors';
 export * as constants from './constants';
 export * as mixins from './mixins';

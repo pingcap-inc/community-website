@@ -37,15 +37,34 @@ export const Card = styled(Row)`
   border-radius: 6px;
   border: 1px solid ${colors.T2};
   background: ${colors.M1};
-  height: 220px;
+  overflow: hidden;
 `;
 
-export const CardImg = styled(Col).attrs({
-  xs: 24,
-  sm: 12,
-})``;
+export const CardImg = styled(Col).attrs((props) => ({
+  span: props.isVertical ? 24 : 12,
+}))`
+  min-height: 150px;
+`;
 
-export const CardInfo = styled(Col).attrs({
-  xs: 24,
-  sm: 12,
-})``;
+export const CardInfo = styled(Col).attrs((props) => ({
+  span: props.isVertical ? 24 : 12,
+}))`
+  padding: 1rem 2rem;
+
+  h3,
+  p {
+    margin-bottom: 1rem;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.2;
+    text-decoration: underline;
+  }
+
+  p {
+    font-size: 14px;
+    color: ${colors.F2};
+  }
+`;

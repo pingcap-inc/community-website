@@ -18,7 +18,7 @@ const config = {
   pageExtensions: ['page.js'],
 
   images: {
-    domains: ['localhost', 'contributor.tidb.io', 'dev-cms.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
+    domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
   },
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config

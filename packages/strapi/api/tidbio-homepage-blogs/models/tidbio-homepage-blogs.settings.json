@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tidbio_homepage_blogs",
+  "info": {
+    "name": "tidbio-homepage-blogs"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topic_url": {
+      "type": "string"
+    }
+  }
+}

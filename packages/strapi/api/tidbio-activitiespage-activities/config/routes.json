@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tidbio-activitiespage-activities",
+      "handler": "tidbio-activitiespage-activities.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tidbio-activitiespage-activities/count",
+      "handler": "tidbio-activitiespage-activities.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tidbio-activitiespage-activities/:id",
+      "handler": "tidbio-activitiespage-activities.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tidbio-activitiespage-activities",
+      "handler": "tidbio-activitiespage-activities.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tidbio-activitiespage-activities/:id",
+      "handler": "tidbio-activitiespage-activities.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tidbio-activitiespage-activities/:id",
+      "handler": "tidbio-activitiespage-activities.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

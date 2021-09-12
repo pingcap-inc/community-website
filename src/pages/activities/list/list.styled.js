@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Col, Form } from 'antd';
+import { Col, Form, Pagination as AntPagination } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
 const { Content, Section, Title } = Styled;
@@ -67,4 +67,11 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   height: 150px;
   margin-bottom: 0.5rem;
+`;
+
+export const Pagination = styled(AntPagination).attrs({
+  size: 'small',
+})`
+  margin-top: 2rem;
+  text-align: center;
 `;

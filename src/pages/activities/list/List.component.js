@@ -47,7 +47,7 @@ const List = () => {
   const lang = t('list', { returnObjects: true });
   const { filters: filtersLang } = lang;
 
-  const isMobile = breakpoint.xs || breakpoint.sm;
+  const isMobile = !breakpoint.md;
   const filtersColProps = isMobile
     ? {
         span: 24,
@@ -90,6 +90,8 @@ const List = () => {
           <Activity key={idx} {...activity} />
         ))}
       </Row>
+
+      <Styled.Pagination total={mockData.activities.length} />
     </Styled.Container>
   );
 };

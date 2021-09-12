@@ -42,8 +42,9 @@ export const Logo = styled.img`
 
 export const LogosBox = styled(Row)`
   margin-top: 2rem;
+
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       margin-bottom: 1rem;
     `}

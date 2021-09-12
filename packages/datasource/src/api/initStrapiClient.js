@@ -1,15 +1,16 @@
 import axios from 'axios';
 
-const initStrapiClient = async ({ baseUrl, email, password }) => {
+const initStrapiClient = async () => {
+  const { env } = process;
   const client = axios.create({
-    baseURL: baseUrl,
+    baseURL: env.NEXT_PUBLIC_STRAPI_BASE_URL,
   });
 
   client.interceptors.response.use(({ data }) => data);
 
   const authResp = await client.post('/admin/login', {
-    email,
-    password,
+    email: env.NEXT_PUBLIC_STRAPI_EMAIL,
+    password: env.NEXT_PUBLIC_STRAPI_PASSWORD,
   });
 
   client.interceptors.request.use((config) => {

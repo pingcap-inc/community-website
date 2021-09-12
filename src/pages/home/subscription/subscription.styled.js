@@ -58,7 +58,7 @@ export const JoinButton = styled(Button)`
   ${mixins.flexCenter()};
 
   ${(props) =>
-    props.isSmallScreen
+    props.$isSmallScreen
       ? css`
           margin-bottom: 50px;
           margin-top: 28px;

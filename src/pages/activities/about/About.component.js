@@ -38,10 +38,10 @@ const About = () => {
             </Styled.Desc>
 
             <Styled.Card ref={cardRef}>
-              <Styled.CardImg isVertical={isVerticalCard}>
+              <Styled.CardImg $isVertical={isVerticalCard}>
                 <Image alt={devconLang.title} src={devconLang.image} layout="fill" objectFit="cover" />
               </Styled.CardImg>
-              <Styled.CardInfo isVertical={isVerticalCard}>
+              <Styled.CardInfo $isVertical={isVerticalCard}>
                 <h3>{devconLang.title}</h3>
                 <p>{devconLang.desc}</p>
                 <Button type="primary" size="small">

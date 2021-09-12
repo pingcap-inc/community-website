@@ -11,10 +11,7 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 const fetcher = async (path, params) => {
-  console.log('fetcher path!!', path, params);
   const client = await api.initStrapiClient();
-  console.log('client!!', client);
-
   return client.get(path, {
     params,
   });
@@ -39,13 +36,16 @@ export const getServerSideProps = async (ctx) => {
 
 const Page = () => {
   const { t } = useTranslation('page-activities');
-  const { data } = useSWR(['tidbio-activitiespage-activities'], fetcher, {
+
+  const { data: activities } = useSWR(['tidbio-activitiespage-activities'], fetcher, {
     // Default configs could be found from
     // https://github.com/vercel/swr/blob/master/src/config.ts
     revalidateOnFocus: false,
   });
 
-  console.log('data!!', data);
+  const data = {
+    activities,
+  };
 
   return (
     <PageDataContext.Provider value={{ data }}>

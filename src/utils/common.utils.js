@@ -19,3 +19,9 @@ export const getStrapiImgProps = (imgObj) => {
     ...R.pick(['width', 'height'], img),
   };
 };
+
+export const genOptionValues = (values) =>
+  values.map((value) => ({
+    value,
+    children: value,
+  }));

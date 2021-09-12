@@ -2,13 +2,19 @@ import React from 'react';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './list.styled';
+import { useIsSmallScreen } from '~/hooks';
 
 const List = () => {
+  const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-activities');
 
   const lang = t('list', { returnObjects: true });
 
-  return <Styled.Container>{lang.title}</Styled.Container>;
+  return (
+    <Styled.Container id="all-activities" isSmallScreen={isSmallScreen}>
+      <Styled.Title>{lang.title}</Styled.Title>
+    </Styled.Container>
+  );
 };
 
 export default List;

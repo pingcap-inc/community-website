@@ -1,3 +1,4 @@
+import * as polished from 'polished';
 import { css } from 'styled-components';
 
 import * as colors from './colors';
@@ -155,4 +156,8 @@ export const resetLink = () => css`
 export const resetFontFamily = () => css`
   font-family: 'PingFang SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, 'Noto Sans',
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+`;
+
+export const boxShadow = () => `
+  box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
 `;

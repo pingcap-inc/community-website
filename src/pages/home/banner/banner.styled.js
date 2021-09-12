@@ -182,6 +182,7 @@ export const Navs = styled(Row).attrs({
   justify: 'center',
   align: 'middle',
 })`
+  ${mixins.boxShadow()};
   background: ${colors.M1};
   position: absolute;
   bottom: -45px;
@@ -191,7 +192,6 @@ export const Navs = styled(Row).attrs({
   margin: 0 16px;
   border-radius: 10px;
   border: 1px solid ${colors.T2};
-  box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
 
   ${(props) =>
     props.$isSmallScreen &&

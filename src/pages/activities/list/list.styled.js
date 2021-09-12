@@ -1,6 +1,10 @@
 import styled from 'styled-components';
-import { mixins } from '@tidb-community/ui';
+import { Styled, mixins } from '@tidb-community/ui';
 
-export const Container = styled.div`
+const { Content, Section, Title } = Styled;
+
+export { Content, Title };
+
+export const Container = styled(Section)`
   ${mixins.responsive()};
 `;

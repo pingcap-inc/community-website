@@ -1,6 +1,19 @@
 {
+  "pageTitle": "社区活动",
   "about": {
-    "title": "关于活动"
+    "title": "关于活动",
+    "paragraph1": "TiDB 社区自成立以来，每年都会举办上百场丰富多彩的活动，覆盖了全球几万名来自不同领域的开发者、TiDB 用户和爱好者。",
+    "paragraph2": {
+      "text": "你可以<0>在此</0>处筛选查看历年活动列表，也可以通过<1>表单</1>联系我们，提交你的活动创意，TiDB 社区期待你的参与。",
+      "link1": "#all-activities",
+      "link2": "/contact-us/cooperation"
+    },
+    "devcon": {
+      "title": "DevCon 2021 专区",
+      "desc": "TiDB 社区致力于新技术新思想的发展与传播，如果你正在组织一场 TiDB 相关的活动，欢迎联系我们提供合作与支持。",
+      "button": "前往查看",
+      "image": "https://tidb.io/archived/images/community/devcon2021/entry-banner-mobile.png"
+    }
   },
   "list": {
     "title": "所有活动"

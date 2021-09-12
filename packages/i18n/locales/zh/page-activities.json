@@ -16,6 +16,13 @@
     }
   },
   "list": {
-    "title": "所有活动"
+    "title": "所有活动",
+    "filters": {
+      "category": "活动类型",
+      "type": "活动形式",
+      "date": "活动时间",
+      "location": "活动地点",
+      "button": "筛选"
+    }
   }
 }

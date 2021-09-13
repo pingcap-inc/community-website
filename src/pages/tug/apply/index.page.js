@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 
 import Apply from './Apply.component';
 import { title, description } from './Apply.data';
-import Error from '../../_error.page';
+import Error from '~/pages/_error.page';
 import { AuthContext } from '~/context';
 import { CommunityHead } from '~/components';
 

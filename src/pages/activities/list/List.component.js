@@ -1,25 +1,30 @@
 import Image from 'next/image';
 import React, { useContext } from 'react';
 import dayjs from 'dayjs';
-import { Button, Col, Row, Select } from 'antd';
+import { Button, Col, Form, Row, Select } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './list.styled';
+import slice from '~/pages/activities/activities.slice';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
 import { PageDataContext } from '~/context';
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const { Option } = Select;
+const { actions } = slice;
 
-const Dropdown = ({ placeholder, options }) => (
+const Dropdown = ({ name, placeholder, options }) => (
   <Styled.DropdownWrapper>
-    <Select placeholder={placeholder}>
-      {commonUtils.genOptionValues(options).map((props) => (
-        <Option key={props.value} {...props} />
-      ))}
-    </Select>
+    <Form.Item name={name}>
+      <Select placeholder={placeholder}>
+        {commonUtils.genOptionValues(options).map((props) => (
+          <Option key={props.value} {...props} />
+        ))}
+      </Select>
+    </Form.Item>
   </Styled.DropdownWrapper>
 );
 
@@ -41,6 +46,8 @@ const Activity = ({ title, location, type, date, image }) => (
 );
 
 const List = () => {
+  const dispatch = useDispatch();
+  const { filters } = useSelector((state) => state.activities);
   const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-activities');
@@ -65,22 +72,32 @@ const List = () => {
         flex: 'none',
       };
 
+  const filtersProps = {
+    initialValues: {
+      ...filters,
+    },
+
+    onFinish: (filters) => {
+      dispatch(actions.setFilters(filters));
+    },
+  };
+
   return (
     <Styled.Container id="all-activities" isSmallScreen={isSmallScreen}>
       <Styled.Title>{lang.title}</Styled.Title>
 
-      <Styled.Filters>
+      <Styled.Filters {...filtersProps}>
         <Row gutter={[16, 16]}>
           <Col {...filtersColProps}>
             <Row gutter={[16, 16]}>
-              <Dropdown placeholder={filtersLang.category} options={CATEGORIES} />
-              <Dropdown placeholder={filtersLang.type} options={TYPES} />
-              <Dropdown placeholder={filtersLang.date} options={DATES} />
-              <Dropdown placeholder={filtersLang.location} options={LOCATIONS} />
+              <Dropdown name="category" placeholder={filtersLang.category} options={CATEGORIES} />
+              <Dropdown name="type" placeholder={filtersLang.type} options={TYPES} />
+              <Dropdown name="date" placeholder={filtersLang.date} options={DATES} />
+              <Dropdown name="location" placeholder={filtersLang.location} options={LOCATIONS} />
             </Row>
           </Col>
           <Col {...buttonColProps}>
-            <Button type="primary" size="small" block={isMobile}>
+            <Button htmlType="submit" type="primary" size="small" block={isMobile}>
               {filtersLang.button}
             </Button>
           </Col>

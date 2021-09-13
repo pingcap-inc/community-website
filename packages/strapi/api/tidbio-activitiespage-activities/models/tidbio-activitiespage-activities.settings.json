@@ -31,6 +31,9 @@
       "plugin": "upload",
       "required": false,
       "pluginOptions": {}
+    },
+    "category": {
+      "type": "string"
     }
   }
 }

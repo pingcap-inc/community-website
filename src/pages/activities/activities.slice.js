@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { redux } from '~/utils';
 
 const initialState = {
-  categoryFilter: null,
+  filters: {},
 };
 
 export default createSlice({
@@ -11,6 +11,6 @@ export default createSlice({
   initialState,
 
   reducers: {
-    ...redux.createSetters(['categoryFilter']),
+    ...redux.createSetters(['filters']),
   },
 });

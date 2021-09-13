@@ -1,6 +1,6 @@
-import optionStageOfCompanyUseOfTidb from './optionStageOfCompanyUseOfTidb';
-import optionPreferredWayOfSharing from './optionPreferredWayOfSharing';
-import optionRolesWantToPlay from './optionRolesWantToPlay';
+import optionStageOfCompanyUseOfTidb from './optionStageOfCompanyUseOfTidb.json';
+import optionPreferredWayOfSharing from './optionPreferredWayOfSharing.json';
+import optionRolesWantToPlay from './optionRolesWantToPlay.json';
 
 const convertArrayToSelectOptionItem = (arr) => arr.map((value) => ({ value, label: value }));
 

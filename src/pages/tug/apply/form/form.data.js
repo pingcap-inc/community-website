@@ -1,10 +1,11 @@
 import * as Yup from 'yup';
 import { api, getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
+import { enums } from './fields';
+const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay } = enums;
 
 const { buildInitialValues, buildSchema } = utils.form;
 const formData = getFormData();
-const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay } = formData.tug.enums;
 const { personalPositions } = formData.org.enums;
 
 export const fetchOrganizationOptions = (word) =>

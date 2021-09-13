@@ -6,7 +6,7 @@ import * as Styled from './others.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import VideoThumbnail from './videoThumbnail';
 import { PageDataContext } from '~/context';
-import { getImage } from '~/pages/home/index.utils';
+import { getImage } from '~/pages/home/home.utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map((el) =>

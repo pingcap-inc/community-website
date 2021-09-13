@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import { Button, Input, Row } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
-import { getImage } from '~/pages/home/index.utils';
+import { getImage } from '~/pages/home/home.utils';
 
 const { Section } = Styled;
 

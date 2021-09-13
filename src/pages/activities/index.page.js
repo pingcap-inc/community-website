@@ -19,8 +19,6 @@ const fetcher = async (path, params) => {
     params = JSON.parse(params);
   } catch (err) {}
 
-  console.log('params!!', params);
-
   return client.get(path, {
     params,
   });
@@ -48,24 +46,20 @@ const Page = () => {
 
   const { t } = useTranslation('page-activities');
   const { filters } = useSelector((state) => state.activities);
-  const { data: activities = [] } = useSWR(
-    [
-      'tidbio-activitiespage-activities',
-      JSON.stringify({
-        _publicationState: isProd ? undefined : 'preview',
-        category: filters.category === CATEGORIES[0] ? undefined : filters.category,
-        type: filters.type === TYPES[0] ? undefined : filters.type,
-        date: filters.date === DATES[0] ? undefined : filters.date,
-        location: filters.location === LOCATIONS[0] ? undefined : filters.location,
-      }),
-    ],
-    fetcher
-  );
 
-  console.log('activities!!', activities);
+  const params = {
+    _publicationState: isProd ? undefined : 'preview',
+    category: filters.category === CATEGORIES[0] ? undefined : filters.category,
+    type: filters.type === TYPES[0] ? undefined : filters.type,
+    date: filters.date === DATES[0] ? undefined : filters.date,
+    location: filters.location === LOCATIONS[0] ? undefined : filters.location,
+  };
+  const { data: activities = [] } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
+  const { data: total } = useSWR(['tidbio-activitiespage-activities/count', JSON.stringify(params)], fetcher);
 
   const data = {
     activities,
+    total,
   };
 
   return (

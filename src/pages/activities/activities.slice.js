@@ -2,8 +2,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { redux } from '~/utils';
 
-const initialState = {
+export const initialState = {
   filters: {},
+  current: 1,
+  pageSize: 8,
 };
 
 export default createSlice({
@@ -11,6 +13,6 @@ export default createSlice({
   initialState,
 
   reducers: {
-    ...redux.createSetters(['filters']),
+    ...redux.createSetters(['filters', 'current', 'pageSize']),
   },
 });

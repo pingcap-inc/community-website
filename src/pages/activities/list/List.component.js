@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { Button, Col, Form, Row, Select } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './list.styled';
-import slice from '~/pages/activities/activities.slice';
+import slice, { initialState } from '~/pages/activities/activities.slice';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
 import { PageDataContext } from '~/context';
 import { common as commonUtils } from '~/utils';
@@ -47,15 +47,23 @@ const Activity = ({ title, location, type, date, image }) => (
 
 const List = () => {
   const dispatch = useDispatch();
-  const { filters } = useSelector((state) => state.activities);
+  const { filters, ...paginationData } = useSelector((state) => state.activities);
   const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-activities');
 
+  useEffect(() => {
+    if (!breakpoint.lg) {
+      dispatch(actions.setPageSize(6));
+    } else {
+      dispatch(actions.setPageSize(initialState.pageSize));
+    }
+  }, [dispatch, breakpoint]);
+
   const lang = t('list', { returnObjects: true });
   const { filters: filtersLang } = lang;
+  const { activities, total } = data;
 
-  const { activities } = data;
   const isMobile = !breakpoint.md;
   const filtersColProps = isMobile
     ? {
@@ -80,6 +88,11 @@ const List = () => {
     onFinish: (filters) => {
       dispatch(actions.setFilters(filters));
     },
+  };
+
+  const paginationProps = {
+    ...paginationData,
+    total,
   };
 
   return (
@@ -116,7 +129,7 @@ const List = () => {
         })}
       </Row>
 
-      <Styled.Pagination total={activities.length} />
+      <Styled.Pagination {...paginationProps} />
     </Styled.Container>
   );
 };

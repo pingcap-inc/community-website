@@ -2,7 +2,7 @@ import optionStageOfCompanyUseOfTidb from './optionStageOfCompanyUseOfTidb';
 import optionPreferredWayOfSharing from './optionPreferredWayOfSharing';
 import optionRolesWantToPlay from './optionRolesWantToPlay';
 
-const convertArrayToSelectOptionItem = (arr) => arr.map((value) => ({ value: value, label: value }));
+const convertArrayToSelectOptionItem = (arr) => arr.map((value) => ({ value, label: value }));
 
 export const stageOfCompanyUseOfTidb = convertArrayToSelectOptionItem(optionStageOfCompanyUseOfTidb);
 

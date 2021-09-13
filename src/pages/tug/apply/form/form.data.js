@@ -119,7 +119,14 @@ const data = {
     },
   },
   submitBtnTitle: '提交申请',
-  agreementContent: '提交即表明你已阅读并同意《服务协议》《隐私协议》',
+  agreementContent: (
+    <>
+      提交即表明你已阅读并同意
+      <a href="https://pingcap.com/zh/privacy-policy/" target="_blank">
+        《隐私协议》
+      </a>
+    </>
+  ),
 };
 
 data.formSchema = buildSchema(data.form);

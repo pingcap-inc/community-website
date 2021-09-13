@@ -24,6 +24,13 @@ module.exports = (shipit) => {
       copy: false,
     },
 
+    preview: {
+      servers: {
+        user: process.env.HOST_PREVIEW_USER,
+        host: process.env.HOST_PREVIEW_IP,
+      },
+    },
+
     production: {
       servers: {
         user: process.env.HOST_HK_1_USER,
@@ -33,6 +40,7 @@ module.exports = (shipit) => {
   });
 
   shipit.on('published', () => {
+    shipit.remote(`export INSTANCES_NUM=${process.env.INSTANCES_NUM}`);
     shipit.start('server:reload');
   });
 

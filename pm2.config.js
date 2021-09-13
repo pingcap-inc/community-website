@@ -13,7 +13,7 @@ module.exports = {
       // https://pm2.keymetrics.io/docs/tutorials/capistrano-like-deployments#the-main-issue
       // Otherwise, PM2 will readlink first and break the server reload.
       cwd: process.env.PWD,
-      instances: 2,
+      instances: process.env.INSTANCES_NUM,
       exec_mode: 'cluster',
     },
   ],

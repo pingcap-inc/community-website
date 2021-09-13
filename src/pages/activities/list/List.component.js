@@ -1,13 +1,13 @@
 import Image from 'next/image';
-import React from 'react';
+import React, { useContext } from 'react';
 import dayjs from 'dayjs';
 import { Button, Col, Row, Select } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './list.styled';
-import * as mockData from './list.mock';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
+import { PageDataContext } from '~/context';
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
@@ -41,12 +41,14 @@ const Activity = ({ title, location, type, date, image }) => (
 );
 
 const List = () => {
+  const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-activities');
 
   const lang = t('list', { returnObjects: true });
   const { filters: filtersLang } = lang;
 
+  const { activities } = data;
   const isMobile = !breakpoint.md;
   const filtersColProps = isMobile
     ? {
@@ -86,12 +88,18 @@ const List = () => {
       </Styled.Filters>
 
       <Row gutter={[32, 32]}>
-        {mockData.activities.map((activity, idx) => (
-          <Activity key={idx} {...activity} />
-        ))}
+        {activities.map((activity, idx) => {
+          const props = {
+            key: idx,
+            ...activity,
+            image: commonUtils.getStrapiImgProps(activity.image),
+          };
+
+          return <Activity {...props} />;
+        })}
       </Row>
 
-      <Styled.Pagination total={mockData.activities.length} />
+      <Styled.Pagination total={activities.length} />
     </Styled.Container>
   );
 };

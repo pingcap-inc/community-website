@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { api } from '@tidb-community/datasource';
 import { useTranslation } from 'next-i18next';
 
@@ -35,13 +35,21 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Page = () => {
+  const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
+
   const { t } = useTranslation('page-activities');
 
-  const { data: activities } = useSWR(['tidbio-activitiespage-activities'], fetcher, {
+  const paramsRef = useRef({
+    _publicationState: isProd ? undefined : 'preview',
+  });
+
+  const { data: activities = [] } = useSWR(['tidbio-activitiespage-activities', paramsRef.current], fetcher, {
     // Default configs could be found from
     // https://github.com/vercel/swr/blob/master/src/config.ts
     revalidateOnFocus: false,
   });
+
+  console.log('activities!!', activities);
 
   const data = {
     activities,

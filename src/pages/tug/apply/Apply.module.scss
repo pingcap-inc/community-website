@@ -34,7 +34,7 @@
     &_title {
       text-align: center;
       color: #2c2c2c;
-      font-size: 42px;
+      font-size: 30px;
     }
 
     &_post {
@@ -104,6 +104,8 @@
       width: 100%;
       padding: 40px;
       background-color: rgb(247, 248, 249);
+      border-radius: 2px;
+      overflow: hidden;
       &_title {
         margin-bottom: 28px;
         color: #2c2c2c;

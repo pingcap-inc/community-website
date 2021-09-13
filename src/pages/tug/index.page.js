@@ -9,8 +9,8 @@ import styles from './index.module.scss';
 import tugData from '~/data/tug';
 import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
-import Button from '../../components/Button/Button';
-import HomeMVA from '../../components/home/HomeMVA/HomeMVA';
+import Button from '~/components/Button/Button';
+import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
 
 export const getStaticProps = () => {
   const title = 'TiDB User Group 会员';

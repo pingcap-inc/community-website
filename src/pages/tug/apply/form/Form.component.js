@@ -4,7 +4,6 @@ import { Formik } from 'formik';
 
 import * as Styled from './form.styled';
 import data from './form.data';
-// import { form as formUtils } from '~/utils';
 
 const { form, submitBtnTitle, agreementContent, formSchema, formInitialValues } = data;
 const {

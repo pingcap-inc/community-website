@@ -31,7 +31,5 @@ export const apply = ({
     referrer,
   };
 
-  return client.post('/api/tug/applications', formContent, {
-    isDispatchApiError: () => false,
-  });
+  return client.post('/api/tug/applications', formContent);
 };

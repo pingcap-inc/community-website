@@ -1,5 +1,6 @@
 import React from 'react';
-import { Form as AntForm, Input, Select } from 'formik-antd';
+import { Form as AntForm, Input, Select, Checkbox } from 'formik-antd';
+import { Row, Col } from 'antd';
 import { Formik } from 'formik';
 
 import * as Styled from './form.styled';
@@ -51,10 +52,28 @@ const Form = ({ onSubmit }) => {
               <Input {...reasonForApplication} />
             </AntForm.Item>
             <AntForm.Item name={preferredWayOfSharing.name} label={preferredWayOfSharing.placeholder} required>
-              <Select {...preferredWayOfSharing} />
+              {/*<Checkbox.Group {...preferredWayOfSharing} />*/}
+              <Checkbox.Group style={{ width: '100%' }} {...preferredWayOfSharing}>
+                <Row>
+                  {preferredWayOfSharing.items.map((value) => (
+                    <Col span={24}>
+                      <Checkbox value={value.value}>{value.label}</Checkbox>
+                    </Col>
+                  ))}
+                </Row>
+              </Checkbox.Group>
             </AntForm.Item>
             <AntForm.Item name={rolesWantToPlay.name} label={rolesWantToPlay.placeholder} required>
-              <Select {...rolesWantToPlay} />
+              {/*<Select {...rolesWantToPlay} />*/}
+              <Checkbox.Group style={{ width: '100%' }} {...rolesWantToPlay}>
+                <Row>
+                  {rolesWantToPlay.items.map((value) => (
+                    <Col span={24}>
+                      <Checkbox value={value.value}>{value.label}</Checkbox>
+                    </Col>
+                  ))}
+                </Row>
+              </Checkbox.Group>
             </AntForm.Item>
             <AntForm.Item name={wechatId.name} label={wechatId.placeholder} required>
               <Input {...wechatId} />

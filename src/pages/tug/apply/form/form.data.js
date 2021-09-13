@@ -75,14 +75,14 @@ const data = {
     preferredWayOfSharing: {
       name: 'preferred_way_of_sharing',
       placeholder: '请选择你乐于分享的⽅式',
-      options: preferredWayOfSharing,
+      items: preferredWayOfSharing,
       validator: Yup.mixed().required('本项目不可为空'),
       initialValue: undefined,
     },
     rolesWantToPlay: {
       name: 'roles_want_to_play',
       placeholder: '你希望担任 TUG 什么⻆⾊',
-      options: rolesWantToPlay,
+      items: rolesWantToPlay,
       validator: Yup.mixed().required('本项目不可为空'),
       initialValue: undefined,
     },

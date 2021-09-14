@@ -19,7 +19,9 @@ const handler = async (req, res) => {
     );
     res.status(200).json({ detail: 'success' });
   } catch (error) {
-    res.status(400).json({ detail: error.response.data.title });
+    res.status(400).json({
+      detail: error.response.data.title === 'Member Exists' ? '重复订阅' : '订阅失败',
+    });
   }
 };
 

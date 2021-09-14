@@ -40,7 +40,7 @@ const Subscription = () => {
           message.success(emailInputLang.successMsg);
         } catch (e) {
           // when API call returns an error
-          message.error(emailInputLang.errorMsg);
+          message.error(e.response.data.detail);
         }
       } else {
         // when yup validation fails

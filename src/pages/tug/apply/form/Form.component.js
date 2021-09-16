@@ -56,7 +56,7 @@ const Form = ({ onSubmit }) => {
               <Checkbox.Group style={{ width: '100%' }} {...preferredWayOfSharing}>
                 <Row>
                   {preferredWayOfSharing.items.map((value) => (
-                    <Col span={24}>
+                    <Col key={value.value} span={24}>
                       <Checkbox value={value.value}>{value.label}</Checkbox>
                     </Col>
                   ))}
@@ -68,7 +68,7 @@ const Form = ({ onSubmit }) => {
               <Checkbox.Group style={{ width: '100%' }} {...rolesWantToPlay}>
                 <Row>
                   {rolesWantToPlay.items.map((value) => (
-                    <Col span={24}>
+                    <Col key={value.value} span={24}>
                       <Checkbox value={value.value}>{value.label}</Checkbox>
                     </Col>
                   ))}

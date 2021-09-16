@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './learning.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
-import { getImage } from '~/pages/home/index.utils';
+import { getImage } from '~/pages/home/home.utils';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 

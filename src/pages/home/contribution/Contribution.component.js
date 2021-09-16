@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './contribution.styled';
 import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
 import { Link } from '~/components';
-import { getImage as getHomeImage } from '~/pages/home/index.utils';
+import { getImage as getHomeImage } from '~/pages/home/home.utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const getImage = (name) => getHomeImage(`contribution-${name}`);
@@ -53,7 +53,7 @@ const Contribution = () => {
             <Styled.IssueList src={getImage('github-issues.jpg')} />
             <Row gutter={16}>
               {forkLang.map((el) => (
-                <Tooltip title={el.label} placement={'bottom'}>
+                <Tooltip key={el.label} title={el.label} placement={'bottom'}>
                   <Col>
                     <Link href={el.link}>
                       <img height={36} src={getImage(el.icon)} alt={`${el.name} logo`} />

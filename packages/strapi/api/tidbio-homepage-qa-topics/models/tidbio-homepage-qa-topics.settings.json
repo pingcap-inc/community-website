@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tidbio_homepage_qa_topics",
+  "info": {
+    "name": "Tidbio-homepage-qa-topics"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "topic_url": {
+      "type": "string"
+    }
+  }
+}

@@ -25,10 +25,10 @@ const Subscription = () => {
   const { t } = useTranslation('page-home');
 
   const lang = t('subscription', { returnObjects: true });
-  const { links: linksLang, emailInput: emailInputLang } = lang;
+  const { links: linksLang, emailInput: emailInputLang, terms: termsLang } = lang;
 
-  // any viewport smaller than large is consider small; specific UI layout
-  // consideration
+  // any viewport smaller than large is consider small;
+  // specific UI layout consideration
   const isSmallScreen = !bp.lg;
 
   // validate and subscribe
@@ -65,7 +65,7 @@ const Subscription = () => {
             <Row justify={isSmallScreen ? 'center' : undefined}>
               <Styled.JoinButton
                 type="primary"
-                isSmallScreen={isSmallScreen}
+                $isSmallScreen={isSmallScreen}
                 onClick={onClick('https://accounts.pingcap.com/')}
               >
                 {lang.joinButton.label}
@@ -83,7 +83,8 @@ const Subscription = () => {
               onSearch={subscribeEmail}
             />
             <Styled.TermCaption>
-              {lang.termsDesc} <Styled.Link href={lang.terms.link}>{lang.terms.label}</Styled.Link>
+              {lang.termsDesc}
+              <Styled.Link href={termsLang.link}>{termsLang.label}</Styled.Link>
             </Styled.TermCaption>
           </Col>
         </Row>

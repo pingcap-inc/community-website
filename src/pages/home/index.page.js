@@ -17,14 +17,8 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getServerSideProps = async (ctx) => {
-  const { env } = process;
-  const isProd = env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
-
-  const client = await api.initStrapiClient({
-    baseUrl: env.NEXT_PUBLIC_STRAPI_BASE_URL,
-    email: env.NEXT_PUBLIC_STRAPI_EMAIL,
-    password: env.NEXT_PUBLIC_STRAPI_PASSWORD,
-  });
+  const client = await api.initStrapiClient();
+  const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
   const strapiQuery = {
     params: {

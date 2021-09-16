@@ -2,7 +2,7 @@ version: 2.1
 
 commands:
   create_concatenated_package_lock:
-    description: "Concatenate all package-lock.json files recognized by lerna.js into single file. File is used as checksum source for part of caching key."
+    description: 'Concatenate all package-lock.json files recognized by lerna.js into single file. File is used as checksum source for part of caching key.'
     parameters:
       filename:
         type: string
@@ -58,7 +58,6 @@ commands:
           paths:
             - node_modules
 
-
   prepare-sentry:
     steps:
       - run:
@@ -89,20 +88,20 @@ commands:
   deploy-website:
     parameters:
       stage:
-        default: "production"
+        default: 'production'
         type: enum
-        enum: [ "production", "preview" ]
+        enum: ['production', 'preview']
     steps:
       - when:
           condition:
-            equal: [ << parameters.stage >>, "preview" ]
+            equal: [<< parameters.stage >>, 'preview']
           steps:
             - run: |
                 ssh-keyscan "${HOST_PREVIEW_IP}" >> ~/.ssh/known_hosts 2>/dev/null
                 INSTANCES_NUM=1 npm run deploy:<< parameters.stage >>
       - when:
           condition:
-            equal: [ << parameters.stage >>, "production" ]
+            equal: [<< parameters.stage >>, 'production']
           steps:
             - run: |
                 ssh-keyscan "${HOST_HK_1_IP}" >> ~/.ssh/known_hosts 2>/dev/null
@@ -142,9 +141,9 @@ jobs:
   deploy:
     parameters:
       stage:
-        default: "production"
+        default: 'production'
         type: enum
-        enum: [ "production", "preview" ]
+        enum: ['production', 'preview']
     docker:
       - image: circleci/node:14.13.0
     steps:

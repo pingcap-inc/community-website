@@ -44,7 +44,7 @@ const Apply = () => {
       {!!fieldMessage && (
         <ul>
           {Object.keys(fieldMessage).map((key) => (
-            <li>
+            <li key={key}>
               {key}: {fieldMessage[key].join(', ')}
             </li>
           ))}

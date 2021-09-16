@@ -36,27 +36,32 @@ const Apply = () => {
   const [successModal, showSuccessModal] = useState(false);
   const [failModal, showFailModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [fieldMessage, setFieldMessage] = useState(undefined);
 
   const FailModal = (props) => (
     <Modal title="提交失败" {...props}>
       <p>{errorMessage}</p>
+      {!!fieldMessage && (
+        <ul>
+          {Object.keys(fieldMessage).map((key) => (
+            <li>
+              {key}: {fieldMessage[key].join(', ')}
+            </li>
+          ))}
+        </ul>
+      )}
     </Modal>
   );
 
   const handleSubmit = (data) => {
-    // eslint-disable-next-line no-console
-    console.log(data);
     api.tug
       .apply(data)
       .then((response) => {
-        // eslint-disable-next-line no-console
-        console.log('handleSubmit response', response);
         showSuccessModal(true);
       })
       .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log('handleSubmit error', error);
         setErrorMessage(error.detail);
+        setFieldMessage(error.errors);
         showFailModal(true);
       });
   };

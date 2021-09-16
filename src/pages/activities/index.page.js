@@ -45,10 +45,12 @@ const Page = () => {
   const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
   const { t } = useTranslation('page-activities');
-  const { filters } = useSelector((state) => state.activities);
+  const { filters, current, pageSize } = useSelector((state) => state.activities);
 
   const params = {
+    _limit: pageSize,
     _publicationState: isProd ? undefined : 'preview',
+    _start: (current - 1) * pageSize,
     category: filters.category === CATEGORIES[0] ? undefined : filters.category,
     type: filters.type === TYPES[0] ? undefined : filters.type,
     date: filters.date === DATES[0] ? undefined : filters.date,

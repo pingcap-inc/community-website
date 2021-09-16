@@ -9,7 +9,6 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './list.styled';
 import slice, { initialState } from '~/pages/activities/activities.slice';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
-import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';

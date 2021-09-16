@@ -6,6 +6,7 @@ export * as orgs from './orgs';
 export * as profile from './profile';
 export * as social from './social';
 export * as subscribe from './subscribe';
+export * as tug from './tug';
 
 export { default as client } from './client';
 export { default as initStrapiClient } from './initStrapiClient';

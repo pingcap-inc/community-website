@@ -34,47 +34,31 @@ const Apply = () => {
   ];
 
   const [successModal, showSuccessModal] = useState(false);
-  // const [failModal, showFailModal] = useState(false);
-  // const [errorMessage, setErrorMessage] = useState('');
+  const [failModal, showFailModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
-  // const FailModal = (props) => (
-  //   <Modal title="提交失败" {...props}>
-  //     <p>{errorMessage}</p>
-  //   </Modal>
-  // );
+  const FailModal = (props) => (
+    <Modal title="提交失败" {...props}>
+      <p>{errorMessage}</p>
+    </Modal>
+  );
 
   const handleSubmit = (data) => {
     // eslint-disable-next-line no-console
     console.log(data);
-    api.tug.apply(data).then((response) => {
-      // eslint-disable-next-line no-console
-      console.log('handleSubmit response', response);
-      showSuccessModal(true);
-    });
-    // .catch((error) => {
-    //   // eslint-disable-next-line no-console
-    //   console.log('handleSubmit error', error);
-    //   setErrorMessage(error.detail);
-    //   showFailModal(true);
-    //   // switch (error.response.status) {
-    //   //   case '400': {
-    //   //     //TODO: show invalid form field
-    //   //     break;
-    //   //   }
-    //   //   case '401': {
-    //   //     //TODO: navigate to login page
-    //   //     break;
-    //   //   }
-    //   //   case '409': {
-    //   //     //TODO: show message box with content: 用户已经提交过申请，或者已经加入 TUG 了
-    //   //     break;
-    //   //   }
-    //   //   default: {
-    //   //     //TODO: show message box with content: 未知错误，请稍后重试
-    //   //     break;
-    //   //   }
-    //   // }
-    // });
+    api.tug
+      .apply(data)
+      .then((response) => {
+        // eslint-disable-next-line no-console
+        console.log('handleSubmit response', response);
+        showSuccessModal(true);
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log('handleSubmit error', error);
+        setErrorMessage(error.detail);
+        showFailModal(true);
+      });
   };
 
   const handleSuccess = () => {
@@ -126,18 +110,18 @@ const Apply = () => {
               </div>
             }
           />
-          {/*<FailModal*/}
-          {/*  visible={failModal}*/}
-          {/*  onOk={() => showFailModal(false)}*/}
-          {/*  errorMessage={errorMessage}*/}
-          {/*  footer={*/}
-          {/*    <div style={{ display: 'flex', justifyContent: 'center' }}>*/}
-          {/*      <Button key="back" type="primary" onClick={() => showFailModal(false)}>*/}
-          {/*        确认*/}
-          {/*      </Button>*/}
-          {/*    </div>*/}
-          {/*  }*/}
-          {/*/>*/}
+          <FailModal
+            visible={failModal}
+            onOk={() => showFailModal(false)}
+            errorMessage={errorMessage}
+            footer={
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <Button key="back" type="primary" onClick={() => showFailModal(false)}>
+                  确认
+                </Button>
+              </div>
+            }
+          />
         </div>
       </Container>
     </CoreLayout>

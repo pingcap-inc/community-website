@@ -91,7 +91,7 @@ const Apply = () => {
           <h2 className={styles.start_why_join_title}>{whyJoinTitle}</h2>
           <div className={styles.start_why_join_list}>
             {whyJoinItems.map((value) => (
-              <div className={styles.start_why_join_list_item}>
+              <div key={value.text} className={styles.start_why_join_list_item}>
                 <div className={styles.start_why_join_list_item_icon}>
                   <img src={value.iconUrl} alt={value.text} />
                 </div>

@@ -1,5 +1,6 @@
 export * as events from './events';
 export * as orgs from './orgs';
+export * as tug from './tug';
 export * as subscribe from './subscribe';
 export { me } from './me';
 

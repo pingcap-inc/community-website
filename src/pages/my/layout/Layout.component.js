@@ -18,7 +18,9 @@ const Layout = ({ children, title }) => {
   return (
     <>
       <NextHead>
-        <script src={`https://www.recaptcha.net/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`} />
+        {process.env.NEXT_PUBLIC_RECAPTCHA_KEY && (
+          <script src={`https://www.recaptcha.net/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`} />
+        )}
       </NextHead>
 
       <CoreLayout domain="tidb.io" hasMargin>

@@ -78,13 +78,13 @@ const Form = ({ onSubmit }) => {
             <AntForm.Item name={wechatId.name} label={wechatId.placeholder} required>
               <Input {...wechatId} />
             </AntForm.Item>
-            <AntForm.Item name={bio.name} label={bio.placeholder} required>
+            <AntForm.Item name={bio.name} label={bio.placeholder}>
               <Input.TextArea rows={3} {...bio} />
             </AntForm.Item>
-            <AntForm.Item name={channel.name} label={channel.placeholder} required>
+            <AntForm.Item name={channel.name} label={channel.placeholder}>
               <Input {...channel} />
             </AntForm.Item>
-            <AntForm.Item name={referrer.name} label={referrer.placeholder} required>
+            <AntForm.Item name={referrer.name} label={referrer.placeholder}>
               <Input {...referrer} />
             </AntForm.Item>
 

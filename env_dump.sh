@@ -6,6 +6,8 @@
 template_env_file=".env.circle-ci.template"
 local_env_file=".env.local"
 
+echo "${CI_STAGE}"
+
 # read placeholder environment variables from .env.template
 while read -r line || [ -n "$line" ]; do
     # ignore the trailing '='

@@ -119,11 +119,17 @@ jobs:
   build:
     docker:
       - image: circleci/node:14.13.0
+    parameters:
+      stage:
+        default: 'production'
+        type: enum
+        enum: ['production', 'preview']
     environment:
       SENTRY_ORG: pingcap
       SENTRY_PROJECT: tug-website
       ENABLE_SENTRY: 'true'
       SENTRY_NO_PROGRESS_BAR: '1'
+      CI_STAGE: << parameters.stage >>
     steps:
       - install-deps
       - prepare-sentry
@@ -155,45 +161,52 @@ jobs:
           stage: << parameters.stage >>
 
 workflows:
-  commit:
+  commit-to-main:
     jobs:
       - build:
+          name: build-for-<< matrix.stage >>
           filters:
             branches:
-              only:
+              ignore:
                 - main
+          matrix:
+            parameters:
+              stage: ['production', 'preview']
 
       - deploy:
+          name: 'deploy-preview'
           stage: preview
           requires:
-            - build
+            - build-for-preview
 
       - hold-for-production-deploy:
           type: approval
           requires:
-            - build
+            - build-for-production
 
       - deploy:
+          name: 'deploy-production'
           stage: production
           requires:
             - hold-for-production-deploy
 
-  preview-commit:
+  commit-to-feature-branches:
     jobs:
       - verify:
           filters:
             branches:
-              ignore:
+              only:
                 - main
 
       - hold-for-preview-deploy:
           type: approval
           filters:
             branches:
-              ignore:
+              only:
                 - main
 
       - build:
+          stage: preview
           requires:
             - hold-for-preview-deploy
 

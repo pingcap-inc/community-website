@@ -167,7 +167,7 @@ workflows:
           name: build-for-<< matrix.stage >>
           filters:
             branches:
-              ignore:
+              only:
                 - main
           matrix:
             parameters:
@@ -195,14 +195,14 @@ workflows:
       - verify:
           filters:
             branches:
-              only:
+              ignore:
                 - main
 
       - hold-for-preview-deploy:
           type: approval
           filters:
             branches:
-              only:
+              ignore:
                 - main
 
       - build:

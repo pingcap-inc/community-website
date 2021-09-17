@@ -2,6 +2,7 @@ import * as Yup from 'yup';
 import { api, getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
 import { enums } from './fields';
+import * as Styled from './form.styled';
 const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay } = enums;
 
 const { buildInitialValues, buildSchema } = utils.form;
@@ -123,9 +124,9 @@ const data = {
   agreementContent: (
     <>
       提交即表明你已阅读并同意
-      <a href="https://pingcap.com/zh/privacy-policy/" target="_blank" rel="noreferrer">
+      <Styled.FormSubmitAgreement href="https://pingcap.com/zh/privacy-policy/" target="_blank" rel="noreferrer">
         《隐私协议》
-      </a>
+      </Styled.FormSubmitAgreement>
     </>
   ),
 };

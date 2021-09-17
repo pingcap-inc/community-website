@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { Button as AntButton, Row as AntRow } from 'antd';
-// import { SubmitButton } from 'formik-antd';
-import { mixins } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
+import * as Styled from './form.styled';
 
 export const FormContainer = styled.div`
   box-sizing: border-box;
@@ -28,3 +28,7 @@ export const FormTitle = styled.h2`
 export const Form = styled.div``;
 
 export const FormSubmitButton = styled(AntButton)``;
+
+export const FormSubmitAgreement = styled.a`
+  color: ${colors.B1};
+`;

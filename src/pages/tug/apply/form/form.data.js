@@ -41,8 +41,8 @@ const data = {
       validator: Yup.string().email('请输入有效的邮箱').required('邮箱不可为空'),
       initialValue: 'changwei@pingcap.com',
     },
-    company: {
-      name: 'company',
+    companyName: {
+      name: 'company_name',
       placeholder: '公司',
       validator: Yup.string()
         .min(2, ({ min }) => `公司最短为${min}个字符`)

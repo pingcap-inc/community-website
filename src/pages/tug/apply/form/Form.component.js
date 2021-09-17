@@ -11,7 +11,7 @@ const {
   realName,
   phone,
   email,
-  company,
+  companyName,
   jobTitle,
   stageOfCompanyUseOfTidb,
   reasonForApplication,
@@ -39,8 +39,8 @@ const Form = ({ onSubmit }) => {
             <AntForm.Item name={email.name} label={email.placeholder} required>
               <Input {...email} />
             </AntForm.Item>
-            <AntForm.Item name={company.name} label={company.placeholder} required>
-              <Input {...company} />
+            <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
+              <Input {...companyName} />
             </AntForm.Item>
             <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
               <Select {...jobTitle} />

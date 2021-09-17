@@ -53,13 +53,17 @@ const Apply = () => {
     </Modal>
   );
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const handleSubmit = (data) => {
+    setIsSubmitting(true);
     api.tug
       .apply(data)
       .then((response) => {
+        setIsSubmitting(false);
         showSuccessModal(true);
       })
       .catch((error) => {
+        setIsSubmitting(false);
         setErrorMessage(error.detail);
         setFieldMessage(error.errors);
         showFailModal(true);
@@ -102,7 +106,7 @@ const Apply = () => {
         </div>
 
         <div className={styles.end}>
-          <Form onSubmit={handleSubmit} />
+          <Form onSubmit={handleSubmit} isSubmitting={isSubmitting} />
           <SuccessModal
             visible={successModal}
             onOk={() => showSuccessModal(false)}

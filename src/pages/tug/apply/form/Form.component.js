@@ -1,12 +1,15 @@
 import React from 'react';
 import { Form as AntForm, Input, Select, Checkbox } from 'formik-antd';
-import { Row, Col } from 'antd';
+import { Row, Col, Skeleton } from 'antd';
 import { Formik } from 'formik';
 
 import * as Styled from './form.styled';
 import data from './form.data';
+// import { api } from '@tidb-community/datasource';
+import useSWR from 'swr';
+// import { settings } from '@tidb-community/datasource/src/api/account';
 
-const { form, submitBtnTitle, agreementContent, formSchema, formInitialValues } = data;
+const { form, submitBtnTitle, agreementContent, formSchema } = data;
 const {
   realName,
   phone,
@@ -23,27 +26,40 @@ const {
   referrer,
 } = form;
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit, isSubmitting }) => {
+  const { data: settingsResp, error: settingsError } = useSWR('account.settings');
+  const { data: profileResp, error: profileError } = useSWR('profile.fetch');
+
+  const isLoading = !profileResp || !settingsResp || settingsError || profileError;
+  if (isLoading) return <Skeleton active />;
+
+  const initialValues = {
+    [phone.name]: settingsResp.data.phone,
+    [email.name]: settingsResp.data.email,
+    [companyName.name]: profileResp.data.companyName,
+    [jobTitle.name]: profileResp.data.jobTitle,
+  };
+
   return (
     <Styled.FormContainer>
       <Styled.FormTitle>申请信息</Styled.FormTitle>
       <Styled.Form>
-        <Formik initialValues={formInitialValues} validationSchema={formSchema} onSubmit={onSubmit}>
+        <Formik initialValues={initialValues} validationSchema={formSchema} onSubmit={onSubmit}>
           <AntForm layout="vertical">
             <AntForm.Item name={realName.name} label={realName.placeholder} required>
               <Input {...realName} />
             </AntForm.Item>
             <AntForm.Item name={phone.name} label={phone.placeholder} required>
-              <Input {...phone} />
+              <Input {...phone} disabled={!!settingsResp.data.phone} />
             </AntForm.Item>
             <AntForm.Item name={email.name} label={email.placeholder} required>
-              <Input {...email} />
+              <Input {...email} disabled={!!settingsResp.data.email} />
             </AntForm.Item>
             <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
-              <Input {...companyName} />
+              <Input {...companyName} disabled={!!profileResp.data.companyName} />
             </AntForm.Item>
             <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
-              <Select {...jobTitle} />
+              <Select {...jobTitle} disabled={!!profileResp.data.jobTitle} />
             </AntForm.Item>
             <AntForm.Item name={stageOfCompanyUseOfTidb.name} label={stageOfCompanyUseOfTidb.placeholder} required>
               <Select {...stageOfCompanyUseOfTidb} />
@@ -52,7 +68,6 @@ const Form = ({ onSubmit }) => {
               <Input {...reasonForApplication} />
             </AntForm.Item>
             <AntForm.Item name={preferredWayOfSharing.name} label={preferredWayOfSharing.placeholder} required>
-              {/*<Checkbox.Group {...preferredWayOfSharing} />*/}
               <Checkbox.Group style={{ width: '100%' }} {...preferredWayOfSharing}>
                 <Row>
                   {preferredWayOfSharing.items.map((value) => (
@@ -64,7 +79,6 @@ const Form = ({ onSubmit }) => {
               </Checkbox.Group>
             </AntForm.Item>
             <AntForm.Item name={rolesWantToPlay.name} label={rolesWantToPlay.placeholder} required>
-              {/*<Select {...rolesWantToPlay} />*/}
               <Checkbox.Group style={{ width: '100%' }} {...rolesWantToPlay}>
                 <Row>
                   {rolesWantToPlay.items.map((value) => (
@@ -89,7 +103,7 @@ const Form = ({ onSubmit }) => {
             </AntForm.Item>
 
             <AntForm.Item name={referrer.name} extra={agreementContent}>
-              <Styled.FormSubmitButton block type="primary" htmlType="submit">
+              <Styled.FormSubmitButton block type="primary" htmlType="submit" loading={isSubmitting}>
                 {submitBtnTitle}
               </Styled.FormSubmitButton>
             </AntForm.Item>

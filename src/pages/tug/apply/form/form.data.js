@@ -5,7 +5,7 @@ import { enums } from './fields';
 import * as Styled from './form.styled';
 const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay } = enums;
 
-const { buildInitialValues, buildSchema } = utils.form;
+const { buildSchema } = utils.form;
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
 

@@ -5,9 +5,7 @@ import { Formik } from 'formik';
 
 import * as Styled from './form.styled';
 import data from './form.data';
-// import { api } from '@tidb-community/datasource';
 import useSWR from 'swr';
-// import { settings } from '@tidb-community/datasource/src/api/account';
 
 const { form, submitBtnTitle, agreementContent, formSchema } = data;
 const {

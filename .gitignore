@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env.*
 !.env.*.template
+!.env.development
+!.env.preview
+!.env.production
 
 # custom
 .idea/

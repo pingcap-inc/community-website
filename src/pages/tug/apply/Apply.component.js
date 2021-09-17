@@ -40,7 +40,7 @@ const Apply = () => {
 
   const FailModal = (props) => (
     <Modal title="提交失败" {...props}>
-      <p>{errorMessage}</p>
+      <p>{errorMessage ?? 'System Error'}</p>
       {!!fieldMessage && (
         <ul>
           {Object.keys(fieldMessage).map((key) => (

@@ -12,18 +12,42 @@ const previewFile = resolveRoot('.env.preview');
 const templeFile = resolveRoot('.env.circle-ci.template');
 
 (() => {
-  const previewValues = {};
-  if (isPreview) {
-    const data = fs.readFileSync(previewFile, 'utf8');
-    console.log('data!!', data);
-    const items = data.split(/\n/).filter(Boolean);
-    console.log('items!!', items);
-  }
+  const envValues = {};
 
   const data = fs.readFileSync(templeFile, 'utf8');
   const names = data.split(/=?\n/).filter(Boolean);
-  const values = names.map((name) => {
-    console.log(env[name], env[`PREVIEW_${name}`]);
-    return env[name];
+
+  if (isPreview) {
+    const re = /(.*?)=(.*)/;
+    const data = fs.readFileSync(previewFile, 'utf8');
+    const lines = data
+      .split(/\n/)
+      .filter(Boolean)
+      .map((line) => line.replace(/\s*=\s*/, '='));
+
+    lines.forEach((line) => {
+      const [, name, value] = re.exec(line);
+      envValues[name] = value;
+    });
+  }
+
+  names.forEach((name) => {
+    if (isPreview && !envValues[name]) {
+      envValues[name] = env[`PREVIEW_${name}`] || env[name];
+    } else {
+      return (envValues[name] = env[name]);
+    }
   });
+
+  if (fs.existsSync(localFile)) {
+    fs.renameSync(localFile, `${localFile}.bk`);
+  }
+
+  fs.writeFileSync(
+    localFile,
+    Object.entries(envValues)
+      .map(([name, value]) => value && `${name}=${value}`)
+      .filter(Boolean)
+      .join('\n')
+  );
 })();

@@ -59,7 +59,6 @@ const Apply = () => {
     api.tug
       .apply(data)
       .then((response) => {
-        setIsSubmitting(false);
         showSuccessModal(true);
       })
       .catch((error) => {

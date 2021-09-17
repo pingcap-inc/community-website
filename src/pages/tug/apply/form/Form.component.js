@@ -32,10 +32,10 @@ const Form = ({ onSubmit, isSubmitting }) => {
   if (isLoading) return <Skeleton active />;
 
   const initialValues = {
-    [phone.name]: settingsResp.data.phone,
-    [email.name]: settingsResp.data.email,
-    [companyName.name]: profileResp.data.companyName,
-    [jobTitle.name]: profileResp.data.jobTitle,
+    [phone.name]: settingsResp.data.phone ?? '',
+    [email.name]: settingsResp.data.email ?? '',
+    [companyName.name]: profileResp.data.companyName ?? '',
+    [jobTitle.name]: profileResp.data.jobTitle ?? '',
   };
 
   return (

@@ -13,7 +13,6 @@ const templeFile = resolveRoot('.env.circle-ci.template');
 
 (() => {
   const envValues = {};
-
   const data = fs.readFileSync(templeFile, 'utf8');
   const names = data.split(/=?\n/).filter(Boolean);
 

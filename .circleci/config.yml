@@ -67,7 +67,7 @@ commands:
 
   dump-env-vars:
     steps:
-      - run: ./env_dump.sh
+      - run: ./scripts/retrieveEnvVars.js
       - run:
           name: Prepare private env variables
           command: |

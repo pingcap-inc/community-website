@@ -104,7 +104,7 @@ const Apply = () => {
           </div>
         </div>
 
-        <div className={styles.end}>
+        <div className={styles.end} id="form">
           <Form onSubmit={handleSubmit} isSubmitting={isSubmitting} />
           <SuccessModal
             visible={successModal}

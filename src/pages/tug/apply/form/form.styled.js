@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Button as AntButton, Row as AntRow } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
-import * as Styled from './form.styled';
 
 export const FormContainer = styled.div`
   box-sizing: border-box;

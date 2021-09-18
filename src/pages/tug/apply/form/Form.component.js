@@ -100,7 +100,7 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input {...referrer} />
             </AntForm.Item>
 
-            <AntForm.Item name={referrer.name} extra={agreementContent}>
+            <AntForm.Item name="submit" extra={agreementContent}>
               <Styled.FormSubmitButton block type="primary" htmlType="submit" loading={isSubmitting}>
                 {submitBtnTitle}
               </Styled.FormSubmitButton>

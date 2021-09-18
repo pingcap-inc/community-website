@@ -1,7 +1,7 @@
 const path = require('path');
 const { withSentryConfig } = require('@sentry/nextjs');
 
-const { i18n } = require('./next-i18next.config');
+const { i18n } = require('./next-i18next.config.js');
 
 const unifyNodeModules = (names) =>
   names.reduce(

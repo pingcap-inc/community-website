@@ -48,7 +48,7 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input {...realName} />
             </AntForm.Item>
             <AntForm.Item name={phone.name} label={phone.placeholder} required>
-              <Input {...phone} disabled={!!settingsResp.data.phone_verified} />
+              <Input {...phone} disabled={!!settingsResp.data.phone} />
             </AntForm.Item>
             <AntForm.Item name={email.name} label={email.placeholder} required>
               <Input {...email} disabled={!!settingsResp.data.email_verified} />

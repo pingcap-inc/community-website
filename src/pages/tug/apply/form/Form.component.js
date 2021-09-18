@@ -34,8 +34,8 @@ const Form = ({ onSubmit, isSubmitting }) => {
   const initialValues = {
     [phone.name]: settingsResp.data.phone ?? '',
     [email.name]: settingsResp.data.email ?? '',
-    [companyName.name]: profileResp.data.companyName ?? '',
-    [jobTitle.name]: profileResp.data.jobTitle ?? '',
+    [companyName.name]: profileResp.data.company_name ?? '',
+    [jobTitle.name]: profileResp.data.job_title ?? '',
   };
 
   return (
@@ -54,10 +54,10 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input {...email} disabled={!!settingsResp.data.email} />
             </AntForm.Item>
             <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
-              <Input {...companyName} disabled={!!profileResp.data.companyName} />
+              <Input {...companyName} disabled={!!profileResp.data.company_name} />
             </AntForm.Item>
             <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
-              <Select {...jobTitle} disabled={!!profileResp.data.jobTitle} />
+              <Select {...jobTitle} disabled={!!profileResp.data.job_title} />
             </AntForm.Item>
             <AntForm.Item name={stageOfCompanyUseOfTidb.name} label={stageOfCompanyUseOfTidb.placeholder} required>
               <Select {...stageOfCompanyUseOfTidb} />

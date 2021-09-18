@@ -48,16 +48,16 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input {...realName} />
             </AntForm.Item>
             <AntForm.Item name={phone.name} label={phone.placeholder} required>
-              <Input {...phone} disabled={!!settingsResp.data.phone} />
+              <Input {...phone} disabled={!!settingsResp.data.phone_verified} />
             </AntForm.Item>
             <AntForm.Item name={email.name} label={email.placeholder} required>
-              <Input {...email} disabled={!!settingsResp.data.email} />
+              <Input {...email} disabled={!!settingsResp.data.email_verified} />
             </AntForm.Item>
             <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
-              <Input {...companyName} disabled={!!profileResp.data.company_name} />
+              <Input {...companyName} disabled={!!profileResp.data.company_name_editable} />
             </AntForm.Item>
             <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
-              <Select {...jobTitle} disabled={!!profileResp.data.job_title} />
+              <Select {...jobTitle} />
             </AntForm.Item>
             <AntForm.Item name={stageOfCompanyUseOfTidb.name} label={stageOfCompanyUseOfTidb.placeholder} required>
               <AutoComplete {...stageOfCompanyUseOfTidb} />

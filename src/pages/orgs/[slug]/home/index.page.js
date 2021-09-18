@@ -36,7 +36,7 @@ const PageContent = () => {
   const {
     data: topicsData,
     isValidating: isTopicsValidating,
-    revalidate,
+    mutate,
   } = useSWR(slug && ['orgs.org.topics', JSON.stringify({ slug, page, pageSize })]);
 
   const { meta, topics } = topicsData?.data ?? {};
@@ -62,7 +62,7 @@ const PageContent = () => {
         });
       })
       .finally(async () => {
-        await revalidate();
+        await mutate();
         setUrging(false);
       });
   };

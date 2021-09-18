@@ -11,7 +11,7 @@ import { AuthContext } from '~/context';
 
 const Content = () => {
   const [visibleModal, setVisibleModal] = useState();
-  const { data: settingsResp, error, mutate, revalidate } = useSWR('account.settings');
+  const { data: settingsResp, error, mutate } = useSWR('account.settings');
   const { login } = useContext(AuthContext);
 
   const isLoading = !error && !settingsResp;
@@ -30,7 +30,7 @@ const Content = () => {
   };
 
   const genModalProps = (modal) => ({
-    revalidate,
+    revalidate: mutate,
     onClose: onModalClose,
     visible: visibleModal === modal,
   });

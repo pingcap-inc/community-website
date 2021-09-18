@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
-import useSWR, { mutate } from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';
 
 import * as Styled from './company.styled';
@@ -27,6 +27,7 @@ const PageContent = ({ title }) => {
   const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
+  const { mutate } = useSWRConfig();
 
   useEffect(() => {
     (async () => {
@@ -35,7 +36,7 @@ const PageContent = ({ title }) => {
         mutate('operation.fetchRedDots');
       }
     })();
-  }, [redDots.companyInfo]);
+  }, [redDots.companyInfo, mutate]);
 
   if (isAnonymous) {
     login();

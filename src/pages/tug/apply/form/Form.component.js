@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form as AntForm, Input, Select, Checkbox } from 'formik-antd';
+import { Form as AntForm, Input, Select, Checkbox, AutoComplete } from 'formik-antd';
 import { Row, Col, Skeleton } from 'antd';
 import { Formik } from 'formik';
 
@@ -60,7 +60,7 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Select {...jobTitle} disabled={!!profileResp.data.job_title} />
             </AntForm.Item>
             <AntForm.Item name={stageOfCompanyUseOfTidb.name} label={stageOfCompanyUseOfTidb.placeholder} required>
-              <Select {...stageOfCompanyUseOfTidb} />
+              <AutoComplete {...stageOfCompanyUseOfTidb} />
             </AntForm.Item>
             <AntForm.Item name={reasonForApplication.name} label={reasonForApplication.placeholder} required>
               <Input {...reasonForApplication} />
@@ -94,7 +94,7 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input.TextArea rows={3} {...bio} />
             </AntForm.Item>
             <AntForm.Item name={channel.name} label={channel.placeholder}>
-              <Input {...channel} />
+              <AutoComplete {...channel} />
             </AntForm.Item>
             <AntForm.Item name={referrer.name} label={referrer.placeholder}>
               <Input {...referrer} />

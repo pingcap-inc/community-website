@@ -3,7 +3,7 @@ import { api, getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
 import { enums } from './fields';
 import * as Styled from './form.styled';
-const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay } = enums;
+const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay, channel } = enums;
 
 const { buildSchema } = utils.form;
 const formData = getFormData();
@@ -95,6 +95,7 @@ const data = {
     channel: {
       name: 'channel',
       placeholder: '在哪得知 TUG',
+      options: channel,
     },
     referrer: {
       name: 'referrer',

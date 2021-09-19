@@ -47,7 +47,7 @@ const Subscription = () => {
 
   return (
     <Styled.Container>
-      <Styled.Layout
+      <Styled.TwoColumns
         isSmallScreen={isSmallScreen}
         leftPanel={
           <>

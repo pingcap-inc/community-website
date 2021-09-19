@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './forum.styled';
 import Categories from './categories';
 import Post from './post';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
@@ -37,7 +37,7 @@ const Forum = () => {
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
-      <TwoColumnsLayout
+      <TwoColumnsSection
         reverseOnSmallScreen
         title={lang.title}
         leftPanel={

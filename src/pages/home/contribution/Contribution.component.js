@@ -3,7 +3,7 @@ import { Col, Row, Tooltip } from 'antd';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contribution.styled';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { getImage as getHomeImage } from '~/pages/home/home.utils';
 import { useIsSmallScreen } from '~/hooks';
@@ -19,7 +19,7 @@ const Contribution = () => {
 
   return (
     <Styled.Container id="contribution" isSmallScreen={isSmallScreen}>
-      <TwoColumnsLayout
+      <TwoColumnsSection
         title={lang.title}
         leftPanel={
           <>

@@ -2,11 +2,11 @@ import styled, { css } from 'styled-components';
 import { Button, Input } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link as LinkComp } from '~/components';
 import { getImage } from '~/pages/home/home.utils';
 
-export const Layout = styled(TwoColumnsLayout)`
+export const TwoColumns = styled(TwoColumnsSection)`
   ${(props) =>
     props.isSmallScreen &&
     css`

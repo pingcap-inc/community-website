@@ -1,9 +1,9 @@
 import React from 'react';
 import { Row } from 'antd';
 
-import * as Styled from './twoColumsLayout.styled';
+import * as Styled from './twoColumnsSection.styled';
 
-const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
+const TwoColumnsSection = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
   const panelProps = {
     $reverseOnSmallScreen: reverseOnSmallScreen,
   };
@@ -19,4 +19,4 @@ const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSm
   );
 };
 
-export default TwoColumnsLayout;
+export default TwoColumnsSection;

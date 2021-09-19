@@ -5,7 +5,7 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './activities.styled';
 import Activity from './activity';
 import Meetup from './meetup';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
@@ -40,7 +40,7 @@ const Activities = () => {
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
-      <TwoColumnsLayout
+      <TwoColumnsSection
         title={lang.title}
         leftPanel={
           <Styled.ActivitiesBox isSmallScreen={isSmallScreen}>

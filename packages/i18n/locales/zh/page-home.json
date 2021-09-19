@@ -316,7 +316,7 @@
     "slogan": "TiDB 及其生态项目由来自全球各地的 1400+ 位贡献者共同建设与维护",
     "joinButton": {
       "label": "加入社区",
-      "link": "https://accounts.pingcap.com/"
+      "link": "https://accounts.pingcap.com"
     },
     "links": {
       "contributorList": {

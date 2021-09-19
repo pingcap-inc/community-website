@@ -25,7 +25,7 @@ const Subscription = () => {
   const { t } = useTranslation('page-home');
 
   const lang = t('subscription', { returnObjects: true });
-  const { links: linksLang, emailInput: emailInputLang, terms: termsLang } = lang;
+  const { emailInput: emailInputLang, joinButton: joinButtonLang, links: linksLang, terms: termsLang } = lang;
 
   // any viewport smaller than large is consider small;
   // specific UI layout consideration
@@ -53,7 +53,7 @@ const Subscription = () => {
     <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
         <Row>
-          <Col xs={24} lg={16}>
+          <Styled.LeftPanel xs={24} lg={16}>
             <Row justify={isSmallScreen ? 'center' : undefined}>
               <Styled.SloganBox>
                 <Styled.Slogan>
@@ -63,17 +63,17 @@ const Subscription = () => {
               </Styled.SloganBox>
             </Row>
             <Row justify={isSmallScreen ? 'center' : undefined}>
-              <Styled.JoinButton type="primary" onClick={onClick('https://accounts.pingcap.com/')}>
-                {lang.joinButton.label}
-              </Styled.JoinButton>
+              <Styled.ActionButton type="primary" onClick={onClick(joinButtonLang.link)}>
+                {joinButtonLang.label}
+              </Styled.ActionButton>
             </Row>
-          </Col>
+          </Styled.LeftPanel>
           <Col xs={24} lg={8}>
             <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
             <Styled.EmailInput
               placeholder={emailInputLang.placeHolder}
               enterButton={emailInputLang.submit}
-              onChange={(evt) => setEmail(evt.target.value)}
+              onChange={(e) => setEmail(e.target.value)}
               onSearch={subscribeEmail}
             />
             <Styled.TermCaption>

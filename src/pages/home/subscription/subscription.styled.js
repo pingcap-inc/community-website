@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Button, Input, Row } from 'antd';
+import { Button, Col, Input, Row } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
 import { getImage } from '~/pages/home/home.utils';
@@ -19,16 +19,20 @@ export const Container = styled(Styled.Section)`
           text-align: center;
         }
 
-        ${JoinButton} {
-          margin-top: 28px;
-          margin-bottom: 50px;
+        ${ActionButton} {
+          margin-top: 2rem;
+          margin-bottom: 3rem;
         }
       `}
   }
 `;
 
-export const Content = styled.div`
-  ${mixins.responsive()};
+export const Content = styled(Styled.Content)``;
+
+export const LeftPanel = styled(Col)`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const SloganBox = styled(Row)`
@@ -46,6 +50,7 @@ export const TermCaption = styled.div`
   margin-top: 2rem;
   color: ${colors.M1};
   font-size: 14px;
+  line-height: 1;
 `;
 
 export const Link = styled(LinkComp)`
@@ -54,9 +59,7 @@ export const Link = styled(LinkComp)`
   text-decoration: underline;
 `;
 
-export const JoinButton = styled(Button)`
-  margin-top: 46px;
-`;
+export const ActionButton = styled(Button)``;
 
 export const EmailInput = styled(Input.Search).attrs({
   allowClear: true,

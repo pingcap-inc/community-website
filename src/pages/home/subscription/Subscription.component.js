@@ -25,7 +25,12 @@ const Subscription = () => {
   const { t } = useTranslation('page-home');
 
   const lang = t('subscription', { returnObjects: true });
-  const { emailInput: emailInputLang, joinButton: joinButtonLang, links: linksLang, terms: termsLang } = lang;
+  const {
+    contributorList: contributorListLang,
+    emailInput: emailInputLang,
+    joinButton: joinButtonLang,
+    terms: termsLang,
+  } = lang;
 
   // validate and subscribe
   const subscribeEmail = () => {
@@ -52,8 +57,8 @@ const Subscription = () => {
         leftPanel={
           <>
             <Styled.Slogan>
-              {lang.slogan}, {linksLang.see}
-              <Styled.Link href={linksLang.contributorList.url}>{linksLang.contributorList.label}</Styled.Link>
+              {lang.slogan}
+              <Styled.Link href={contributorListLang.link}>{contributorListLang.label}</Styled.Link>
             </Styled.Slogan>
             <Styled.ActionButton type="primary" onClick={onClick(joinButtonLang.link)}>
               {joinButtonLang.label}

@@ -1,19 +1,16 @@
 import React from 'react';
-import { Col, Row } from 'antd';
 
 import * as Styled from './cooperation.styled';
+import { useIsSmallScreen } from '~/hooks';
 
-const Cooperation = () => (
-  <Styled.Container>
-    <Styled.Content>
-      <Styled.LeftPanel>
-        <Row>
-          <Styled.LeftPanel>Left</Styled.LeftPanel>
-          <Col>Right</Col>
-        </Row>
-      </Styled.LeftPanel>
-    </Styled.Content>
-  </Styled.Container>
-);
+const Cooperation = () => {
+  const { isSmallScreen } = useIsSmallScreen();
+
+  return (
+    <Styled.Container>
+      <Styled.TwoColumns isSmallScreen={isSmallScreen} leftPanel={<>Left Panel</>} rightPanel={<>Right Panel</>} />
+    </Styled.Container>
+  );
+};
 
 export default Cooperation;

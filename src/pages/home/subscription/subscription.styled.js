@@ -7,6 +7,8 @@ import { Link as LinkComp } from '~/components';
 import { getImage } from '~/pages/home/home.utils';
 
 export const TwoColumns = styled(TwoColumnsSection)`
+  color: ${colors.M1};
+
   ${(props) =>
     props.isSmallScreen &&
     css`
@@ -28,20 +30,18 @@ export const Container = styled(Styled.Section)`
 `;
 
 export const Slogan = styled.div`
-  color: ${colors.M1};
   font-size: 20px;
 `;
 
 export const TermCaption = styled.div`
   margin-top: 2rem;
-  color: ${colors.M1};
   font-size: 14px;
   line-height: 1;
 `;
 
 export const Link = styled(LinkComp)`
+  color: inherit;
   font-size: inherit;
-  color: ${colors.M1};
   text-decoration: underline;
 `;
 

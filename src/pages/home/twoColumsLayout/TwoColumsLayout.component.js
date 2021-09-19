@@ -10,7 +10,7 @@ const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSm
 
   return (
     <Styled.Content className={className}>
-      <Styled.Title>{title}</Styled.Title>
+      {title && <Styled.Title>{title}</Styled.Title>}
       <Row justify="space-between">
         <Styled.LeftPanel {...panelProps}>{leftPanel}</Styled.LeftPanel>
         <Styled.RightPanel {...panelProps}>{rightPanel}</Styled.RightPanel>

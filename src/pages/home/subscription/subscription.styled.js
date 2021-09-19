@@ -45,7 +45,9 @@ export const Link = styled(LinkComp)`
   text-decoration: underline;
 `;
 
-export const ActionButton = styled(Button)`
+export const ActionButton = styled(Button).attrs({
+  type: 'primary',
+})`
   margin-top: 2rem;
 `;
 

@@ -1,13 +1,13 @@
 import * as yup from 'yup';
 import React, { useState } from 'react';
-import { message } from 'antd';
 import { api } from '@tidb-community/datasource';
+import { message } from 'antd';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './subscription.styled';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
-import { useRouter } from 'next/router';
 
 const schema = yup.object().shape({
   email: yup.string().email(),
@@ -15,14 +15,14 @@ const schema = yup.object().shape({
 
 const Subscription = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
   const { isSmallScreen } = useIsSmallScreen();
+  const { t } = useTranslation('page-home');
 
   const onClick = (link) => (e) => {
     e.preventDefault();
     linkUtils.handleRedirect(router, link);
   };
-  const [email, setEmail] = useState('');
-  const { t } = useTranslation('page-home');
 
   const lang = t('subscription', { returnObjects: true });
   const {
@@ -60,9 +60,7 @@ const Subscription = () => {
               {lang.slogan}
               <Styled.Link href={contributorListLang.link}>{contributorListLang.label}</Styled.Link>
             </Styled.Slogan>
-            <Styled.ActionButton type="primary" onClick={onClick(joinButtonLang.link)}>
-              {joinButtonLang.label}
-            </Styled.ActionButton>
+            <Styled.ActionButton onClick={onClick(joinButtonLang.link)}>{joinButtonLang.label}</Styled.ActionButton>
           </>
         }
         rightPanel={

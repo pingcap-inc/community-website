@@ -3,33 +3,38 @@ import { Button, Input, Row } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
 import { getImage } from '~/pages/home/home.utils';
+import { Link as LinkComp } from '~/components';
 
-const { Section } = Styled;
+export const Container = styled(Styled.Section)`
+  && {
+    background-image: url(${getImage('subscription-background.svg')});
+    background-size: cover;
+    padding: 4rem 0;
 
-export const Container = styled.div`
+    ${(props) =>
+      props.isSmallScreen &&
+      css`
+        ${Content} {
+          ${mixins.flexCenter()};
+          text-align: center;
+        }
+
+        ${JoinButton} {
+          margin-top: 28px;
+          margin-bottom: 50px;
+        }
+      `}
+  }
+`;
+
+export const Content = styled.div`
   ${mixins.responsive()};
-
-  ${(props) =>
-    props.isSmallScreen &&
-    css`
-      ${mixins.flexCenter()};
-      text-align: center;
-    `}
 `;
 
 export const SloganBox = styled(Row)`
   max-width: 634px;
   padding-right: 8px;
   padding-left: 8px;
-`;
-
-export const SubscriptionSection = styled(Section)`
-  && {
-    background-image: url(${getImage('subscription-background.svg')});
-    background-size: cover;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
 `;
 
 export const Slogan = styled.div`
@@ -43,40 +48,25 @@ export const TermCaption = styled.div`
   font-size: 14px;
 `;
 
-export const Link = styled.a`
+export const Link = styled(LinkComp)`
+  font-size: inherit;
   color: ${colors.M1};
   text-decoration: underline;
-
-  &:hover {
-    text-decoration: underline;
-    color: inherit;
-    cursor: pointer;
-  }
 `;
 
 export const JoinButton = styled(Button)`
-  ${mixins.flexCenter()};
-
-  ${(props) =>
-    props.$isSmallScreen
-      ? css`
-          margin-bottom: 50px;
-          margin-top: 28px;
-        `
-      : css`
-          margin-top: 46px;
-        `}
+  margin-top: 46px;
 `;
 
-export const EmailInput = styled(Input.Search)`
+export const EmailInput = styled(Input.Search).attrs({
+  allowClear: true,
+  size: 'large',
+})`
   margin-top: 2rem;
-  border-radius: 6px;
   max-width: 350px;
 
-  &,
-  .ant-btn,
-  .ant-input-affix-wrapper {
+  .ant-input-search-button {
     font-size: 16px;
-    height: 45px;
+    ${mixins.verticalLineMiddle('40px')};
   }
 `;

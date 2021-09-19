@@ -50,8 +50,8 @@ const Subscription = () => {
   };
 
   return (
-    <Styled.SubscriptionSection>
-      <Styled.Container isSmallScreen={isSmallScreen}>
+    <Styled.Container isSmallScreen={isSmallScreen}>
+      <Styled.Content>
         <Row>
           <Col xs={24} lg={16}>
             <Row justify={isSmallScreen ? 'center' : undefined}>
@@ -63,11 +63,7 @@ const Subscription = () => {
               </Styled.SloganBox>
             </Row>
             <Row justify={isSmallScreen ? 'center' : undefined}>
-              <Styled.JoinButton
-                type="primary"
-                $isSmallScreen={isSmallScreen}
-                onClick={onClick('https://accounts.pingcap.com/')}
-              >
+              <Styled.JoinButton type="primary" onClick={onClick('https://accounts.pingcap.com/')}>
                 {lang.joinButton.label}
               </Styled.JoinButton>
             </Row>
@@ -76,10 +72,8 @@ const Subscription = () => {
             <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
             <Styled.EmailInput
               placeholder={emailInputLang.placeHolder}
-              allowClear
               enterButton={emailInputLang.submit}
               onChange={(evt) => setEmail(evt.target.value)}
-              size="large"
               onSearch={subscribeEmail}
             />
             <Styled.TermCaption>
@@ -88,8 +82,8 @@ const Subscription = () => {
             </Styled.TermCaption>
           </Col>
         </Row>
-      </Styled.Container>
-    </Styled.SubscriptionSection>
+      </Styled.Content>
+    </Styled.Container>
   );
 };
 

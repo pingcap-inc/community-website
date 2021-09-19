@@ -1,14 +1,13 @@
 import * as yup from 'yup';
 import React, { useState } from 'react';
-import { Col, Grid, message, Row } from 'antd';
 import { api } from '@tidb-community/datasource';
+import { message } from 'antd';
+import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './subscription.styled';
-import { useRouter } from 'next/router';
 import { link as linkUtils } from '~/utils';
-
-const { useBreakpoint } = Grid;
+import { useIsSmallScreen } from '~/hooks';
 
 const schema = yup.object().shape({
   email: yup.string().email(),
@@ -16,20 +15,22 @@ const schema = yup.object().shape({
 
 const Subscription = () => {
   const router = useRouter();
+  const [email, setEmail] = useState('');
+  const { isSmallScreen } = useIsSmallScreen();
+  const { t } = useTranslation('page-home');
+
   const onClick = (link) => (e) => {
     e.preventDefault();
     linkUtils.handleRedirect(router, link);
   };
-  const bp = useBreakpoint();
-  const [email, setEmail] = useState('');
-  const { t } = useTranslation('page-home');
 
   const lang = t('subscription', { returnObjects: true });
-  const { links: linksLang, emailInput: emailInputLang, terms: termsLang } = lang;
-
-  // any viewport smaller than large is consider small;
-  // specific UI layout consideration
-  const isSmallScreen = !bp.lg;
+  const {
+    contributorList: contributorListLang,
+    emailInput: emailInputLang,
+    joinButton: joinButtonLang,
+    terms: termsLang,
+  } = lang;
 
   // validate and subscribe
   const subscribeEmail = () => {
@@ -50,46 +51,35 @@ const Subscription = () => {
   };
 
   return (
-    <Styled.SubscriptionSection>
-      <Styled.Container isSmallScreen={isSmallScreen}>
-        <Row>
-          <Col xs={24} lg={16}>
-            <Row justify={isSmallScreen ? 'center' : undefined}>
-              <Styled.SloganBox>
-                <Styled.Slogan>
-                  {lang.slogan}, {linksLang.see}
-                  <Styled.Link href={linksLang.contributorList.url}>{linksLang.contributorList.label}</Styled.Link>
-                </Styled.Slogan>
-              </Styled.SloganBox>
-            </Row>
-            <Row justify={isSmallScreen ? 'center' : undefined}>
-              <Styled.JoinButton
-                type="primary"
-                $isSmallScreen={isSmallScreen}
-                onClick={onClick('https://accounts.pingcap.com/')}
-              >
-                {lang.joinButton.label}
-              </Styled.JoinButton>
-            </Row>
-          </Col>
-          <Col xs={24} lg={8}>
+    <Styled.Container>
+      <Styled.TwoColumns
+        isSmallScreen={isSmallScreen}
+        leftPanel={
+          <>
+            <Styled.Slogan>
+              {lang.slogan}
+              <Styled.Link href={contributorListLang.link}>{contributorListLang.label}</Styled.Link>
+            </Styled.Slogan>
+            <Styled.ActionButton onClick={onClick(joinButtonLang.link)}>{joinButtonLang.label}</Styled.ActionButton>
+          </>
+        }
+        rightPanel={
+          <>
             <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
             <Styled.EmailInput
               placeholder={emailInputLang.placeHolder}
-              allowClear
               enterButton={emailInputLang.submit}
-              onChange={(evt) => setEmail(evt.target.value)}
-              size="large"
+              onChange={(e) => setEmail(e.target.value)}
               onSearch={subscribeEmail}
             />
             <Styled.TermCaption>
               {lang.termsDesc}
               <Styled.Link href={termsLang.link}>{termsLang.label}</Styled.Link>
             </Styled.TermCaption>
-          </Col>
-        </Row>
-      </Styled.Container>
-    </Styled.SubscriptionSection>
+          </>
+        }
+      />
+    </Styled.Container>
   );
 };
 

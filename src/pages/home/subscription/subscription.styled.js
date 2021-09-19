@@ -1,82 +1,67 @@
 import styled, { css } from 'styled-components';
-import { Button, Input, Row } from 'antd';
+import { Button, Input } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
+import { Link as LinkComp } from '~/components';
 import { getImage } from '~/pages/home/home.utils';
 
-const { Section } = Styled;
-
-export const Container = styled.div`
-  ${mixins.responsive()};
+export const TwoColumns = styled(TwoColumnsSection)`
+  color: ${colors.M1};
 
   ${(props) =>
     props.isSmallScreen &&
     css`
       ${mixins.flexCenter()};
       text-align: center;
+
+      ${ActionButton} {
+        margin-bottom: 3rem;
+      }
     `}
 `;
 
-export const SloganBox = styled(Row)`
-  max-width: 634px;
-  padding-right: 8px;
-  padding-left: 8px;
-`;
-
-export const SubscriptionSection = styled(Section)`
+export const Container = styled(Styled.Section)`
   && {
     background-image: url(${getImage('subscription-background.svg')});
     background-size: cover;
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding: 4rem 0;
   }
 `;
 
 export const Slogan = styled.div`
-  color: ${colors.M1};
   font-size: 20px;
 `;
 
 export const TermCaption = styled.div`
   margin-top: 2rem;
-  color: ${colors.M1};
   font-size: 14px;
+  line-height: 1;
 `;
 
-export const Link = styled.a`
-  color: ${colors.M1};
+export const Link = styled(LinkComp)`
+  color: inherit;
+  font-size: inherit;
   text-decoration: underline;
-
-  &:hover {
-    text-decoration: underline;
-    color: inherit;
-    cursor: pointer;
-  }
 `;
 
-export const JoinButton = styled(Button)`
-  ${mixins.flexCenter()};
-
-  ${(props) =>
-    props.$isSmallScreen
-      ? css`
-          margin-bottom: 50px;
-          margin-top: 28px;
-        `
-      : css`
-          margin-top: 46px;
-        `}
-`;
-
-export const EmailInput = styled(Input.Search)`
+export const ActionButton = styled(Button).attrs({
+  type: 'primary',
+})`
   margin-top: 2rem;
-  border-radius: 6px;
+`;
+
+export const EmailInput = styled(Input.Search).attrs({
+  allowClear: true,
+  size: 'large',
+})`
+  margin-top: 2rem;
   max-width: 350px;
 
-  &,
-  .ant-btn,
-  .ant-input-affix-wrapper {
-    font-size: 16px;
-    height: 45px;
+  && {
+    .ant-input-search-button {
+      ${mixins.verticalLineMiddle('40px')};
+      font-size: 16px;
+    }
   }
 `;

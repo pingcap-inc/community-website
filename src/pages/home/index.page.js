@@ -16,9 +16,11 @@ import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
-const TEN_MINS = 10 * 60;
+// FIXME: temporily rollback ISR back to SSR due to a CI build error
+// We need to fix the circular dependencies issue with i18n locales
+// const TEN_MINS = 10 * 60;
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
   const client = await api.initStrapiClient();
   const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
@@ -61,7 +63,7 @@ export const getStaticProps = async (ctx) => {
         }
       ),
     },
-    revalidate: TEN_MINS,
+    // revalidate: TEN_MINS,
   };
 };
 

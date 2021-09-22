@@ -12,7 +12,7 @@ import { form as formUtils } from '~/utils';
 
 const VerifyCodeInput = withVerifyCode(Input);
 
-const Modal = ({ revalidate, ...props }) => {
+const Modal = ({ mutate, ...props }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { onClose } = props;
@@ -28,7 +28,7 @@ const Modal = ({ revalidate, ...props }) => {
       })
       .then(() => {
         message.success('手机号码更新成功');
-        revalidate();
+        mutate();
         onClose();
       })
       .finally(() => {

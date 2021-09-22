@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react';
 import { api } from '@tidb-community/datasource';
-import { mutate } from 'swr';
+import { useSWRConfig } from 'swr';
 
 import CreateOrganization from './content.component';
 import { AuthContext, MeContext } from '~/context';
@@ -11,6 +11,7 @@ import { PageLoader } from '~/components';
 const PageContent = () => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
+  const { mutate } = useSWRConfig();
 
   useEffect(() => {
     (async () => {
@@ -19,7 +20,7 @@ const PageContent = () => {
         mutate('operation.fetchRedDots');
       }
     })();
-  }, [isLoggedIn]);
+  }, [isLoggedIn, mutate]);
 
   if (isAnonymous) {
     login();

@@ -1,11 +1,12 @@
 import React from 'react';
+import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
 import About from './about';
+import Cooperation from './cooperation';
 import List from './list';
-import useSWR from 'swr';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list/list.constants';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
@@ -71,6 +72,7 @@ const Page = () => {
       <CoreLayout domain="tidb.io">
         <About />
         <List />
+        <Cooperation />
       </CoreLayout>
     </PageDataContext.Provider>
   );

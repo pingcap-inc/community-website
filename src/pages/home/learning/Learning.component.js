@@ -4,7 +4,7 @@ import { Trans, useTranslation } from 'next-i18next';
 import { useRouter } from 'next/router';
 
 import * as Styled from './learning.styled';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/home/home.utils';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
@@ -24,7 +24,7 @@ const Learning = () => {
 
   return (
     <Styled.Container id="learning" isSmallScreen={isSmallScreen}>
-      <TwoColumnsLayout
+      <TwoColumnsSection
         title={lang.title}
         leftPanel={
           <>

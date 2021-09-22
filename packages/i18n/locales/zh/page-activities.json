@@ -24,5 +24,12 @@
       "location": "活动地点",
       "button": "筛选"
     }
+  },
+  "cooperation": {
+    "desc": "TiDB 社区致力于新技术新思想的发展与传播，如果你正在组织一场 TiDB 相关的活动，欢迎联系我们提供合作与支持。",
+    "button": {
+      "label": "活动合作",
+      "link": "/contact-us/cooperation"
+    }
   }
 }

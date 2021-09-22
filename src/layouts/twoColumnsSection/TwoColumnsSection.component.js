@@ -1,16 +1,16 @@
 import React from 'react';
 import { Row } from 'antd';
 
-import * as Styled from './twoColumsLayout.styled';
+import * as Styled from './twoColumnsSection.styled';
 
-const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
+const TwoColumnsSection = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
   const panelProps = {
     $reverseOnSmallScreen: reverseOnSmallScreen,
   };
 
   return (
     <Styled.Content className={className}>
-      <Styled.Title>{title}</Styled.Title>
+      {title && <Styled.Title>{title}</Styled.Title>}
       <Row justify="space-between">
         <Styled.LeftPanel {...panelProps}>{leftPanel}</Styled.LeftPanel>
         <Styled.RightPanel {...panelProps}>{rightPanel}</Styled.RightPanel>
@@ -19,4 +19,4 @@ const TwoColumnsLayout = ({ className, title, leftPanel, rightPanel, reverseOnSm
   );
 };
 
-export default TwoColumnsLayout;
+export default TwoColumnsSection;

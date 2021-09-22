@@ -11,7 +11,7 @@ import { form as formUtils } from '~/utils';
 
 const VerifyCodeInput = withVerifyCode(Input);
 
-const Modal = ({ verified, revalidate, ...props }) => {
+const Modal = ({ verified, mutate, ...props }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const { onClose } = props;
@@ -27,7 +27,7 @@ const Modal = ({ verified, revalidate, ...props }) => {
       })
       .then(() => {
         message.success('邮箱更新成功');
-        revalidate();
+        mutate();
         onClose();
       })
       .finally(() => {

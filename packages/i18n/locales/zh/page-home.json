@@ -313,17 +313,14 @@
   },
   "subscription": {
     "title": "订阅 TiDB 社区的最新资讯",
-    "slogan": "TiDB 及其生态项目由来自全球各地的 1400+ 位贡献者共同建设与维护",
+    "slogan": "TiDB 及其生态项目由来自全球各地的 1400+ 位贡献者共同建设与维护，由此查看",
     "joinButton": {
       "label": "加入社区",
-      "link": "https://accounts.pingcap.com/"
+      "link": "https://accounts.pingcap.com"
     },
-    "links": {
-      "contributorList": {
-        "url": "https://contributor.tidb.io/people/contributor",
-        "label": "贡献者列表"
-      },
-      "see": "由此查看"
+    "contributorList": {
+      "label": "贡献者列表",
+      "link": "https://contributor.tidb.io/people/contributor"
     },
     "subscribe": "订阅 TiDB 社区的最新资讯",
     "emailInput": {

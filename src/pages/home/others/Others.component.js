@@ -3,7 +3,7 @@ import { Col, Row } from 'antd';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './others.styled';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import VideoThumbnail from './videoThumbnail';
 import { PageDataContext } from '~/context';
 import { getImage } from '~/pages/home/home.utils';
@@ -28,7 +28,7 @@ const Others = () => {
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
-      <TwoColumnsLayout
+      <TwoColumnsSection
         title={lang.title}
         leftPanel={
           <>

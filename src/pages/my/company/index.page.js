@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
-import useSWR, { mutate } from 'swr';
+import useSWR, { useSWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';
 
 import * as Styled from './company.styled';
@@ -24,8 +24,10 @@ export const getServerSideProps = async (ctx) => {
 
 const PageContent = ({ title }) => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
-  const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
+  const { meData } = useContext(MeContext);
+  const { mutate } = useSWRConfig();
+
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
 
   useEffect(() => {
@@ -35,7 +37,7 @@ const PageContent = ({ title }) => {
         mutate('operation.fetchRedDots');
       }
     })();
-  }, [redDots.companyInfo]);
+  }, [redDots.companyInfo, mutate]);
 
   if (isAnonymous) {
     login();

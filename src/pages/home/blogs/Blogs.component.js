@@ -7,7 +7,7 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './blogs.styled';
 import Blog from './blog';
 import Categories from '~/pages/home/forum/categories';
-import TwoColumnsLayout from '~/pages/home/twoColumsLayout';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
@@ -36,7 +36,7 @@ const Blogs = () => {
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
-      <TwoColumnsLayout
+      <TwoColumnsSection
         title={lang.title}
         reverseOnSmallScreen
         leftPanel={

@@ -6,13 +6,13 @@
   &_content {
     @include responsive-lte-md {
       flex-direction: column;
+      text-align: center;
     }
 
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 5rem 0;
-    margin-bottom: 6rem;
 
     &_left {
       padding: 1rem;
@@ -20,18 +20,31 @@
       &_title {
         @include H1(ZH);
         color: $M1;
+        img {
+          height: 80px;
+        }
       }
 
       &_summary {
         @include P1(ZH);
         color: $M1;
-        margin-top: 2rem;
+        margin: {
+          top: 24px;
+          bottom: 40px;
+        }
+        padding: {
+          right: 148px;
+        }
+        @include responsive-lte-md {
+          padding: {
+            right: 0;
+          }
+        }
         line-height: 2;
       }
     }
 
     &_right {
-      padding: 1rem;
       min-width: 20rem;
     }
   }
@@ -39,16 +52,15 @@
 
 .organization_chart {
   &_content {
-    @include responsive-lte-md {
-      padding: 0;
-    }
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 4rem 0;
+    padding: 150px 0;
     width: 100%;
+    @include responsive-lte-md {
+      padding: 50px 0;
+    }
 
     &_title {
       @include H1(ZH);
@@ -56,9 +68,14 @@
     }
 
     &_image {
-      margin-top: 2rem;
+      margin-top: 100px;
+      padding: 0 150px;
       img {
         width: 100%;
+      }
+      @include responsive-lte-md {
+        margin-top: 50px;
+        padding: 0 20px;
       }
     }
   }
@@ -73,11 +90,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 6rem;
-  padding: {
-    top: 4rem;
-    bottom: 6rem;
-  }
+  padding: 150px 0;
 
   &_title {
     @include H1(ZH);
@@ -142,11 +155,7 @@
 
   display: flex;
   justify-content: space-between;
-  margin-top: 6rem;
-  padding: {
-    top: 4rem;
-    bottom: 6rem;
-  }
+  padding: 150px 0;
 
   &_left {
     @include responsive-lte-md {
@@ -229,7 +238,7 @@
 
 .people {
   background-color: $M2;
-  padding: 4rem 0;
+  padding: 150px 0;
 
   &_content {
     display: flex;

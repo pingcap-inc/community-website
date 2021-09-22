@@ -1,5 +1,3 @@
-export const JOIN_TUG_LINK = 'https://forms.pingcap.com/f/0569186a-719f-4863-90f2-b5a2a5c668ed';
-
 export const COOKIE_KEYS = {
   LOCALE: '__tidb-locale',
 };

@@ -25,4 +25,11 @@ export type form = {
       readonly provinces;
     };
   };
+  readonly tug: {
+    readonly enums: {
+      readonly stageOfCompanyUseOfTidb: SelectItem[];
+      readonly preferredWayOfSharing: SelectItem[];
+      readonly rolesWantToPlay: SelectItem[];
+    };
+  };
 };

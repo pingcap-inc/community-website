@@ -69,7 +69,7 @@ export const navItems = [
         items: [
           {
             title: '加入用户组',
-            link: '/tug',
+            link: 'https://tug.tidb.io/people',
           },
           {
             title: 'MVA',

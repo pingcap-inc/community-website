@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import Router from 'next/router';
 import { Modal, Button } from 'antd';
 
@@ -18,7 +18,7 @@ const SuccessModal = (props) => (
   </Modal>
 );
 
-const Apply = () => {
+const Apply = (factory, deps) => {
   const title = 'TiDB User Group 会员申请';
 
   const postImageUrl = '/images/people/apply/post.png';
@@ -38,19 +38,22 @@ const Apply = () => {
   const [errorMessage, setErrorMessage] = useState('');
   const [fieldMessage, setFieldMessage] = useState(undefined);
 
-  const FailModal = (props) => (
-    <Modal title="提交失败" {...props}>
-      <p>{errorMessage ?? 'System Error'}</p>
-      {!!fieldMessage && (
-        <ul>
-          {Object.keys(fieldMessage).map((key) => (
-            <li key={key}>
-              {key}: {fieldMessage[key].join(', ')}
-            </li>
-          ))}
-        </ul>
-      )}
-    </Modal>
+  const FailModal = useCallback(
+    (props) => (
+      <Modal title="提交失败" {...props}>
+        <p>{errorMessage ?? 'System Error'}</p>
+        {!!fieldMessage && (
+          <ul>
+            {Object.keys(fieldMessage).map((key) => (
+              <li key={key}>
+                {key}: {fieldMessage[key].join(', ')}
+              </li>
+            ))}
+          </ul>
+        )}
+      </Modal>
+    ),
+    [errorMessage, fieldMessage]
   );
 
   const [isSubmitting, setIsSubmitting] = useState(false);

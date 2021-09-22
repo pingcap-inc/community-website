@@ -6,8 +6,8 @@ import { api } from '@tidb-community/datasource';
 
 import * as Styled from './content.styled';
 import Box from './box';
-import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
 import { AuthContext } from '~/context';
+import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
 
 const Content = () => {
   const [visibleModal, setVisibleModal] = useState();
@@ -30,7 +30,7 @@ const Content = () => {
   };
 
   const genModalProps = (modal) => ({
-    revalidate: mutate,
+    mutate,
     onClose: onModalClose,
     visible: visibleModal === modal,
   });

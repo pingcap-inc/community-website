@@ -24,10 +24,11 @@ export const getServerSideProps = async (ctx) => {
 
 const PageContent = ({ title }) => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
-  const { meData } = useContext(MeContext);
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
-  const redDots = redDotsUtils.transformRespToMap(redDotsResp);
+  const { meData } = useContext(MeContext);
   const { mutate } = useSWRConfig();
+
+  const redDots = redDotsUtils.transformRespToMap(redDotsResp);
 
   useEffect(() => {
     (async () => {

@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react';
 import Router from 'next/router';
 import { Modal, Button } from 'antd';
 
-import styles from './Apply.module.scss';
+import styles from './apply.module.scss';
 import Container from '~/components/Container/Container';
 import { CoreLayout } from '~/layouts';
 import Form from './form';

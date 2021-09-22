@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import Apply from './Apply.component';
-import { title, description } from './Apply.data';
+import { title, description } from './apply.data';
 import { AuthContext } from '~/context';
 import { CommunityHead } from '~/components';
 

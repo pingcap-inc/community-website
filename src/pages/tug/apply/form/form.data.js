@@ -23,8 +23,8 @@ const data = {
       name: 'real_name',
       placeholder: '真实姓名',
       validator: Yup.string()
-        .min(2, ({ min }) => `真实姓名最短为${min}个字符`)
-        .max(20, ({ max }) => `真实姓名最长为${max}个字符`)
+        .min(2, ({ min }) => `真实姓名最短为 ${min} 个字符`)
+        .max(20, ({ max }) => `真实姓名最长为 ${max} 个字符`)
         .required('真实姓名不可为空'),
     },
     phone: {
@@ -41,8 +41,8 @@ const data = {
       name: 'company_name',
       placeholder: '公司',
       validator: Yup.string()
-        .min(2, ({ min }) => `公司最短为${min}个字符`)
-        .max(20, ({ max }) => `公司最长为${max}个字符`)
+        .min(2, ({ min }) => `公司最短为 ${min} 个字符`)
+        .max(20, ({ max }) => `公司最长为 ${max} 个字符`)
         .required('公司不可为空'),
     },
     jobTitle: {
@@ -61,8 +61,8 @@ const data = {
       name: 'reason_for_application',
       placeholder: '你加⼊ TUG 的原因',
       validator: Yup.string()
-        .min(5, ({ min }) => `原因最短为${min}个字符`)
-        .max(500, ({ max }) => `原因最长为${max}个字符`)
+        .min(5, ({ min }) => `原因最短为 ${min} 个字符`)
+        .max(500, ({ max }) => `原因最长为 ${max} 个字符`)
         .required('原因不可为空'),
     },
     preferredWayOfSharing: {
@@ -81,16 +81,16 @@ const data = {
       name: 'wechat_id',
       placeholder: '微信 ID（确保可以搜索到，以便于⼩助⼿可以邀请进群）',
       validator: Yup.string()
-        .min(2, ({ min }) => `微信 ID 最短为${min}个字符`)
-        .max(25, ({ max }) => `微信 ID 最长为${max}个字符`)
+        .min(2, ({ min }) => `微信 ID 最短为 ${min} 个字符`)
+        .max(25, ({ max }) => `微信 ID 最长为 ${max} 个字符`)
         .required('微信 ID 不可为空'),
     },
     bio: {
       name: 'bio',
       placeholder: '三四句话介绍⼀下⾃⼰（⽤于⼊群介绍）',
       validator: Yup.string()
-        .min(5, ({ min }) => `自我介绍最短为${min}个字符`)
-        .max(200, ({ max }) => `自我介绍最长为${max}个字符`),
+        .min(5, ({ min }) => `自我介绍最短为 ${min} 个字符`)
+        .max(200, ({ max }) => `自我介绍最长为 ${max} 个字符`),
     },
     channel: {
       name: 'channel',
@@ -101,8 +101,8 @@ const data = {
       name: 'referrer',
       placeholder: '推荐⼈',
       validator: Yup.string()
-        .min(2, ({ min }) => `推荐⼈最短为${min}个字符`)
-        .max(10, ({ max }) => `推荐⼈最长为${max}个字符`),
+        .min(2, ({ min }) => `推荐⼈最短为 ${min} 个字符`)
+        .max(10, ({ max }) => `推荐⼈最长为 ${max} 个字符`),
     },
   },
   submitBtnTitle: '提交申请',

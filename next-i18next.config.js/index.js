@@ -11,8 +11,9 @@ const reloadInterval = isProd ? 10 * ONE_MIN : 30 * ONE_SECOND;
 module.exports = {
   i18n: {
     defaultLocale: 'zh',
-    locales: ['zh', 'en'],
     fallbackLng: ['zh', 'en'],
+    localeDetection: false,
+    locales: ['zh', 'en'],
   },
   use: [HttpBackend],
   ns: ['common', 'page-activities', 'page-contact-us', 'page-home', 'page-organization-benefits', 'page-orgs'],

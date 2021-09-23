@@ -2,10 +2,10 @@ import React from 'react';
 import { Form as AntForm, Input, Select, Checkbox, AutoComplete } from 'formik-antd';
 import { Row, Col, Skeleton } from 'antd';
 import { Formik } from 'formik';
+import useSWR from 'swr';
 
 import * as Styled from './form.styled';
 import data from './form.data';
-import useSWR from 'swr';
 
 const { form, submitBtnTitle, agreementContent, formSchema } = data;
 const {

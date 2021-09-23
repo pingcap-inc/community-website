@@ -6,7 +6,7 @@ import * as activityData from './activity/activity.data';
 import * as resourcesData from './resources';
 import genUserMenu from './user';
 
-import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _applyTidbIoSpecRule, _makeHiddenItems } from './utils';
+import { buildUrlPrefixPattern, replaceNavLinks, replaceLink, _makeHiddenItems } from './utils';
 
 export const getData = ({ domain, domainConfig, env, locale, path, meData, redDots }) => {
   const defaultLocale = 'zh';
@@ -44,8 +44,6 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData, redDo
       };
     }),
   ];
-
-  rules = _applyTidbIoSpecRule(rules, { domain, path, domainConfig });
 
   const userProfileNavItems = genUserProfileItems({ meData, redDots });
   const userItems = genUserMenu(meData);

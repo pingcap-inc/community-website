@@ -1,4 +1,4 @@
-import { replaceNavLinks, buildUrlPrefixPattern, _applyTidbIoSpecRule } from './utils';
+import { replaceNavLinks, buildUrlPrefixPattern } from './utils';
 
 const mockNavItems = [
   {
@@ -112,23 +112,6 @@ const replaceCases = [
   },
 ];
 
-const tidbIoItems = [
-  {
-    link: 'https://tidb.io',
-    browserLink: '/',
-  },
-];
-
-const tidbIoOrgItems = [
-  {
-    link: 'https://tidb.io/orgs',
-  },
-];
-
-const tidbIoDomainConfig = {
-  'tidb.io': 'tidb.io',
-};
-
 const regexpCases = [
   {
     domain: 'foo.bar',
@@ -177,45 +160,6 @@ describe('nav/utils', () => {
           }
         }
       });
-    });
-
-    it('should handle tidb.io if in domain tidb.io', () => {
-      const rootPathRules = _applyTidbIoSpecRule([], { domain: 'tidb.io', path: '', domainConfig: tidbIoDomainConfig });
-      const rootPathResult = replaceNavLinks({ items: tidbIoItems, rules: rootPathRules });
-      expect(rootPathResult[0].link).toBe('/home');
-      expect(rootPathResult[0].browserLink).toBe('/');
-
-      const noneRootPathRules = _applyTidbIoSpecRule([], {
-        domain: 'tidb.io',
-        path: '/foo',
-        domainConfig: tidbIoDomainConfig,
-      });
-      const noneRootPathResults = replaceNavLinks({ items: tidbIoItems, rules: noneRootPathRules });
-      expect(noneRootPathResults[0].link).toBe('/home');
-    });
-
-    it('should handle tidb.io if in domain tidb.io but not with target empty path', () => {
-      const rules = _applyTidbIoSpecRule([], { domain: 'tidb.io', path: '', domainConfig: tidbIoDomainConfig });
-      const result = replaceNavLinks({ items: tidbIoOrgItems, rules });
-      expect(result[0].link).toBe('https://tidb.io/orgs');
-    });
-
-    it('should not handle tidb.io if not in domain tidb.io', () => {
-      const rules = _applyTidbIoSpecRule([], { domain: 'tug.tidb.io', path: '', domainConfig: tidbIoDomainConfig });
-      const result = replaceNavLinks({ items: tidbIoItems, rules });
-      expect(result[0].link).toBe('https://tidb.io');
-      expect(result[0].browserLink).toBe('/');
-    });
-
-    it('should not handle tidb.io if in domain tidb.io bot not root path', () => {
-      const rules = _applyTidbIoSpecRule([], {
-        domain: 'tug.tidb.io',
-        path: '/foo',
-        domainConfig: { 'tidb.io': 'tidb.io' },
-      });
-      const result = replaceNavLinks({ items: tidbIoItems, rules });
-      expect(result[0].link).toBe('https://tidb.io');
-      expect(result[0].browserLink).toBe('/');
     });
   });
 

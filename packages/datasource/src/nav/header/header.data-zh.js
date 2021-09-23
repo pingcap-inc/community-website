@@ -65,15 +65,15 @@ export const navItems = [
       },
       {
         title: '用户组',
-        link: '/',
+        link: 'https://tidb.io/tug',
         items: [
           {
             title: '加入用户组',
-            link: 'https://tug.tidb.io/people',
+            link: 'https://tidb.io/tug/apply',
           },
           {
             title: 'MVA',
-            link: 'https://tug.tidb.io/mva',
+            link: 'https://tidb.io/tug/mva',
           },
         ],
       },

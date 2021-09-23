@@ -5,7 +5,7 @@ import { CoreLayout } from '~/layouts';
 
 const Layout = ({ children }) => {
   return (
-    <CoreLayout domain="tug.tidb.io" hasMargin>
+    <CoreLayout hasMargin>
       <Styled.Container>{children}</Styled.Container>
     </CoreLayout>
   );

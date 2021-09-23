@@ -21,7 +21,7 @@ const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onN
   return <ActivityBanner {...data} onClick={() => onNavClick({ link, target: '_blank' })} />;
 };
 
-const Core = ({ MainWrapper = Styled.Main, children, domain = 'tug.tidb.io', hasMargin, locale = 'zh' }) => {
+const Core = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMargin, locale = 'zh' }) => {
   const router = useRouter();
   const { login, logout, isLoggedIn } = useContext(AuthContext);
   const { meData, isMeValidating } = useContext(MeContext);

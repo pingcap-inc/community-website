@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
-import { Button, Input } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { Button, Checkbox, Input } from 'antd';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link as LinkComp } from '~/components';
@@ -51,17 +51,28 @@ export const ActionButton = styled(Button).attrs({
   margin-top: 2rem;
 `;
 
-export const EmailInput = styled(Input.Search).attrs({
+export const EmailInput = styled(Input.Search).attrs((props) => ({
   allowClear: true,
   size: 'large',
-})`
+  onSearch: !props.submitDisabled && props.onSubmit,
+}))`
   margin-top: 2rem;
   max-width: 350px;
 
   && {
     .ant-input-search-button {
+      ${(props) =>
+        props.submitDisabled &&
+        css`
+          cursor: not-allowed;
+          opacity: 70%;
+        `};
       ${mixins.verticalLineMiddle('40px')};
       font-size: 16px;
     }
   }
+`;
+
+export const LegalCheckbox = styled(Checkbox)`
+  margin-right: 8px;
 `;

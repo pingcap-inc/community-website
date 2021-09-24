@@ -35,7 +35,9 @@ const Subscription = () => {
   // validate and subscribe
   const subscribeEmail = () => {
     schema.isValid({ email }).then(async (valid) => {
-      if (valid) {
+      if (!legalConfirmation) {
+        message.warn(emailInputLang.legalMsg);
+      } else if (valid) {
         try {
           await api.subscribe.addEmail(email);
           message.success(emailInputLang.successMsg);
@@ -49,6 +51,10 @@ const Subscription = () => {
       }
     });
   };
+
+  const checkLegal = () => setLegalConfirmation(!legalConfirmation);
+
+  const [legalConfirmation, setLegalConfirmation] = useState(false);
 
   return (
     <Styled.Container>
@@ -70,9 +76,11 @@ const Subscription = () => {
               placeholder={emailInputLang.placeHolder}
               enterButton={emailInputLang.submit}
               onChange={(e) => setEmail(e.target.value)}
-              onSearch={subscribeEmail}
+              submitDisabled={!legalConfirmation}
+              onSubmit={subscribeEmail}
             />
             <Styled.TermCaption>
+              <Styled.LegalCheckbox checked={legalConfirmation} onChange={checkLegal} />
               {lang.termsDesc}
               <Styled.Link href={termsLang.link}>{termsLang.label}</Styled.Link>
             </Styled.TermCaption>

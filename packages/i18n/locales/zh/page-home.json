@@ -331,7 +331,7 @@
       "legalMsg": "请确认隐私条款",
       "invalidMsg": "请输入合法的邮件地址"
     },
-    "termsDesc": "我同意 TiDB Community 的",
+    "termsDesc": "本人已阅读并同意 TiDB Community 的",
     "terms": {
       "label": "隐私政策",
       "link": "https://pingcap.com/zh/privacy-policy/"

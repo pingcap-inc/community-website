@@ -1,5 +1,7 @@
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
+import { Button } from 'antd';
+import Link from 'next/Link';
 
 import Container from '~/components/Container/Container';
 import HowToBecome from '~/components/people/HowToBecome/HowToBecome';
@@ -9,7 +11,6 @@ import styles from './index.module.scss';
 import tugData from '~/data/tug';
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
-import Button from '~/components/Button/Button';
 import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
 
 export const getStaticProps = () => {
@@ -116,9 +117,9 @@ const People = ({
                 </div>
                 <div className={styles.header_content_left_summary}>{description}</div>
                 <div className={styles.header_content_left_summary}>
-                  <Button as={MyLink} href={applyUrl}>
-                    加入 TUG
-                  </Button>
+                  <Link href={applyUrl}>
+                    <Button type="primary">加入 TUG</Button>
+                  </Link>
                 </div>
               </div>
               <div className={styles.header_content_right}>

@@ -8,7 +8,7 @@ import TMCItem from '~/components/people/TMCItem/TMCItem';
 import styles from './index.module.scss';
 import tugData from '~/data/tug';
 import { CoreLayout } from '~/layouts';
-import { TugHead } from '~/components';
+import { CommunityHead } from '~/components';
 import Button from '~/components/Button/Button';
 import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
 
@@ -104,7 +104,7 @@ const People = ({
 
   return (
     <>
-      <TugHead title={title} description={description} />
+      <CommunityHead title={title} description={description} />
 
       <CoreLayout>
         <div className={styles.header}>

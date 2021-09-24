@@ -13,7 +13,6 @@
     "uuid": "3b257ffe-0f24-478f-89e2-28daa0286a73"
   },
   "dependencies": {
-    "@tidb-community/datasource": "*",
     "dotenv": "10.0.0",
     "knex": "0.21.18",
     "sqlite3": "5.0.2",
@@ -29,6 +28,7 @@
     "strapi-utils": "3.6.8"
   },
   "devDependencies": {
-    "axios": "0.21.4"
+    "axios": "0.21.4",
+    "@tidb-community/datasource": "*"
   }
 }

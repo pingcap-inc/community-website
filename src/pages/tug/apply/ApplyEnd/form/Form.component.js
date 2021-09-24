@@ -54,7 +54,7 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input {...email} disabled={!!settingsResp.data.email_verified} />
             </AntForm.Item>
             <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
-              <Input {...companyName} disabled={!!profileResp.data.company_name_editable} />
+              <Input {...companyName} disabled={!profileResp.data.company_name_editable} />
             </AntForm.Item>
             <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
               <Select {...jobTitle} />

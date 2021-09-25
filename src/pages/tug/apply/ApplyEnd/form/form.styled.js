@@ -5,7 +5,6 @@ import { colors, mixins } from '@tidb-community/ui';
 export const FormContainer = styled.div`
   box-sizing: border-box;
   margin: auto;
-  max-width: 540px;
   padding: 40px;
   background-color: rgb(247, 248, 249);
 `;

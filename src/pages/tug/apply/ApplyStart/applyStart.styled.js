@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-export const Wrapper = styled.div`
-  max-width: 540px;
-`;
+export const Wrapper = styled.div``;
 
 export const Title = styled.h1`
   text-align: center;

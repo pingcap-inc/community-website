@@ -13,6 +13,7 @@ export const Title = styled.h1`
 
 export const Post = styled.div`
   margin-bottom: 80px;
+
   img {
     width: 100%;
   }
@@ -54,12 +55,11 @@ export const WhyJoinListItem = styled.div`
 `;
 
 export const WhyJoinListItemIcon = styled.div`
-  width: 40px;
-  height: 40px;
   margin-right: 10px;
+
+  &,
   img {
-    width: 40px;
-    height: 40px;
+    ${mixins.size('40px')};
   }
 `;
 

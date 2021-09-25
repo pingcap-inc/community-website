@@ -22,7 +22,7 @@ const Page = () => {
   const { t } = useTranslation('page-organization-benefits');
 
   return (
-    <CoreLayout domain="tidb.io" locale="zh" MainWrapper={Styled.MainWrapper}>
+    <CoreLayout MainWrapper={Styled.MainWrapper}>
       <CommunityHead {...t('head', { returnObjects: true })} />
       <Styled.Container>
         <Banner t={t} />

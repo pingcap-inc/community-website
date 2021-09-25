@@ -1,3 +1,1 @@
-import ApplyStart from './ApplyStart.component';
-
-export default ApplyStart;
+export { default } from './ApplyStart.component';

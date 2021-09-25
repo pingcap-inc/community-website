@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 
-export const Wrapper = styled.div`
-  max-width: 540px;
-`;
+export const Wrapper = styled.div``;
 
 export const Title = styled.h1`
   text-align: center;
@@ -13,6 +11,7 @@ export const Title = styled.h1`
 
 export const Post = styled.div`
   margin-bottom: 80px;
+
   img {
     width: 100%;
   }
@@ -46,21 +45,19 @@ export const WhyJoinList = styled.div`
 export const WhyJoinListItem = styled.div`
   display: flex;
   align-items: center;
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
-  @include ${mixins.responsive} {
-    justify-content: center;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 `;
 
 export const WhyJoinListItemIcon = styled.div`
-  width: 40px;
-  height: 40px;
   margin-right: 10px;
+
+  &,
   img {
-    width: 40px;
-    height: 40px;
+    ${mixins.size('40px')};
   }
 `;
 

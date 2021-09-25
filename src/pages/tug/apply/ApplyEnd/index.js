@@ -1,3 +1,1 @@
-import ApplyEnd from './ApplyEnd.component';
-
-export default ApplyEnd;
+export { default } from './ApplyEnd.component';

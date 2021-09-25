@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import Apply from './Apply.component';
 import { AuthContext } from '~/context';
 import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { title, description } from './apply.data';
 
@@ -28,10 +29,10 @@ const PageContent = () => {
 };
 
 const Page = () => (
-  <>
+  <CoreLayout>
     <CommunityHead title={title} description={description} />
     <PageContent />
-  </>
+  </CoreLayout>
 );
 
 export default Page;

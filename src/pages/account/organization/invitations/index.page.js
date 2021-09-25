@@ -17,7 +17,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Page = () => (
-  <CoreLayout domain="tidb.io" MainWrapper={Styled.MainWrapper}>
+  <CoreLayout MainWrapper={Styled.MainWrapper}>
     <CommunityHead title="团队邀请" />
     <Invitations />
   </CoreLayout>

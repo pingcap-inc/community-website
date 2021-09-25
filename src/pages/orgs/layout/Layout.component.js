@@ -33,7 +33,7 @@ const Layout = ({ children }) => {
   };
 
   return (
-    <CoreLayout domain="tidb.io" MainWrapper={Styled.Main}>
+    <CoreLayout MainWrapper={Styled.Main}>
       <Banner {...bannerProps}>
         <Tabs slug={query.slug} />
       </Banner>

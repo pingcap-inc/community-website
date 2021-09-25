@@ -46,11 +46,10 @@ export const WhyJoinList = styled.div`
 export const WhyJoinListItem = styled.div`
   display: flex;
   align-items: center;
-  &:not(:last-child) {
-    margin-bottom: 20px;
-  }
-  @include ${mixins.responsive} {
-    justify-content: center;
+  margin-bottom: 20px;
+
+  &:last-child {
+    margin-bottom: 0;
   }
 `;
 

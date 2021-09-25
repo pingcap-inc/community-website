@@ -69,7 +69,7 @@ const Page = () => {
     <PageDataContext.Provider value={{ data }}>
       <CommunityHead title={t('pageTitle')} />
 
-      <CoreLayout domain="tidb.io">
+      <CoreLayout>
         <About />
         <List />
         <Cooperation />

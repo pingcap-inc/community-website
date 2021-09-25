@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import Router from 'next/router';
+import { useRouter } from 'next/router';
 import { Modal, Button } from 'antd';
 import { api } from '@tidb-community/datasource';
 
-import Form from './form';
 import * as Styled from './applyEnd.styled';
+import Form from './form';
 
 const SuccessModal = (props) => (
   <Modal title="提交成功！" {...props}>
@@ -17,10 +17,11 @@ const SuccessModal = (props) => (
 );
 
 const ApplyEnd = (props) => {
+  const router = useRouter();
   const [successModal, showSuccessModal] = useState(false);
   const [failModal, showFailModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [fieldMessage, setFieldMessage] = useState(undefined);
+  const [fieldMessage, setFieldMessage] = useState();
 
   const FailModal = useCallback(
     (props) => (
@@ -57,7 +58,7 @@ const ApplyEnd = (props) => {
   };
 
   const handleSuccess = () => {
-    Router.push('/tug');
+    router.push('/tug');
   };
 
   return (

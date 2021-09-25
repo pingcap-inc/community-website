@@ -23,7 +23,7 @@ const Layout = ({ children, title }) => {
         )}
       </NextHead>
 
-      <CoreLayout domain="tidb.io" hasMargin>
+      <CoreLayout hasMargin>
         <Styled.Container>
           <Row gutter={[32, 32]}>
             <Col xs={24} sm={8} md={6}>

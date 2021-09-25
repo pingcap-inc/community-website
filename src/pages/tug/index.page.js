@@ -1,8 +1,9 @@
 import React from 'react';
 import { v4 as uuidV4 } from 'uuid';
 import { Button } from 'antd';
-import Link from 'next/Link';
+import { useRouter } from 'next/router';
 
+import { link as linkUtils } from '~/utils';
 import Container from '~/components/Container/Container';
 import HowToBecome from '~/components/people/HowToBecome/HowToBecome';
 import MyLink from '~/components/MyLink';
@@ -90,6 +91,13 @@ const People = ({
   tmc,
   leader,
 }) => {
+  const router = useRouter();
+
+  const onClick = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
+
   const howToBecomeDom = [];
 
   howToBecome.forEach((item, index) => {
@@ -117,9 +125,9 @@ const People = ({
                 </div>
                 <div className={styles.header_content_left_summary}>{description}</div>
                 <div className={styles.header_content_left_summary}>
-                  <Link href={applyUrl}>
-                    <Button type="primary">加入 TUG</Button>
-                  </Link>
+                  <Button type="primary" onClick={onClick(applyUrl)}>
+                    加入 TUG
+                  </Button>
                 </div>
               </div>
               <div className={styles.header_content_right}>

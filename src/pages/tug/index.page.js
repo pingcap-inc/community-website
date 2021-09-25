@@ -14,6 +14,8 @@ import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
 
+const getImageUrl = (filename) => '/images/people/' + filename;
+
 export const getStaticProps = () => {
   const title = 'TiDB User Group 会员';
   const description =
@@ -27,9 +29,9 @@ export const getStaticProps = () => {
 
   const howToBecomeTitle = '如何成为 TUG 会员';
   const howToBecome = [
-    { index: 1, iconUrl: '/images/people/how-to-become-1.svg', title: '填写信息', link: applyUrl },
-    { index: 2, iconUrl: '/images/people/how-to-become-2.svg', title: '信息审核' },
-    { index: 3, iconUrl: '/images/people/how-to-become-3.svg', title: '邀请加入' },
+    { index: 1, iconUrl: getImageUrl('how-to-become-1.svg'), title: '填写信息', link: applyUrl },
+    { index: 2, iconUrl: getImageUrl('how-to-become-2.svg'), title: '信息审核' },
+    { index: 3, iconUrl: getImageUrl('how-to-become-3.svg'), title: '邀请加入' },
   ];
 
   const progressTitle = 'TUG 会员进阶路线';
@@ -105,7 +107,7 @@ const People = ({
     if (index !== howToBecome.length - 1) {
       howToBecomeDom.push(
         <div key={uuidV4()} className={styles.how_to_become_list_arrow}>
-          <img src="/images/people/arrow.svg" alt=">" />
+          <img src={getImageUrl('arrow.svg')} alt=">" />
         </div>
       );
     }
@@ -121,7 +123,7 @@ const People = ({
             <div className={styles.header_content}>
               <div className={styles.header_content_left}>
                 <div className={styles.header_content_left_title}>
-                  <img src="/images/people/tug-logo.svg" alt="" />
+                  <img src={getImageUrl('tug-logo.svg')} alt="" />
                 </div>
                 <div className={styles.header_content_left_summary}>{description}</div>
                 <div className={styles.header_content_left_summary}>
@@ -131,7 +133,7 @@ const People = ({
                 </div>
               </div>
               <div className={styles.header_content_right}>
-                <img src="/images/people/header-right.svg" alt="" />
+                <img src={getImageUrl('header-right.svg')} alt="" />
               </div>
             </div>
           </Container>
@@ -159,7 +161,7 @@ const People = ({
           <div className={styles.progress_left}>
             <div className={styles.progress_left_header}>
               <div className={styles.progress_left_header_icon}>
-                <img src="/images/people/progress-header-left.svg" alt="" />
+                <img src={getImageUrl('progress-header-left.svg')} alt="" />
               </div>
               <div className={styles.progress_left_header_text}>
                 <div className={styles.progress_left_header_text_title}>{progressTitle}</div>
@@ -171,7 +173,7 @@ const People = ({
                 <div className={styles.progress_left_step_1_header}>
                   <div className={styles.progress_left_step_1_header_index}>1</div>
                   <div className={styles.progress_left_step_1_header_widget}>
-                    <img src="/images/people/progress-widget-1.svg" alt="" />
+                    <img src={getImageUrl('progress-widget-1.svg')} alt="" />
                   </div>
                 </div>
                 <div className={styles.progress_left_step_1_text}>{progressStep1}</div>
@@ -180,7 +182,7 @@ const People = ({
                 <div className={styles.progress_left_step_2_header}>
                   <div className={styles.progress_left_step_2_header_index}>2</div>
                   <div className={styles.progress_left_step_2_header_widget}>
-                    <img src="/images/people/progress-widget-2.svg" alt="" />
+                    <img src={getImageUrl('progress-widget-2.svg')} alt="" />
                   </div>
                 </div>
                 <div className={styles.progress_left_step_2_text}>{progressStep2}</div>
@@ -189,10 +191,10 @@ const People = ({
           </div>
           <div className={styles.progress_right}>
             <div className={styles.progress_right_icon}>
-              <img src="/images/people/progress-header-right.svg" alt="" />
+              <img src={getImageUrl('progress-header-right.svg')} alt="" />
             </div>
             <div className={styles.progress_right_chart}>
-              <img src="/images/people/progress-chart.svg" alt="" />
+              <img src={getImageUrl('progress-chart.svg')} alt="" />
             </div>
           </div>
         </Container>

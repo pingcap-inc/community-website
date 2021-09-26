@@ -101,7 +101,8 @@ const ContactUs = () => {
       <Styled.PopoverContainer>
         <NavLinks />
         <Styled.GuideContent isSmallScreen={bp.xs}>
-          <p>遇到紧急事故、或是需要技术交流、社区合作可以在这里联系社区专家哦~</p>
+          {/* 紧急事故、 */}
+          <p>遇到或是需要技术交流、社区合作可以在这里联系社区专家哦~</p>
           <Button type="primary" size="small" onClick={onGuideClose}>
             知道了
           </Button>

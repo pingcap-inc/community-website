@@ -4,17 +4,18 @@
   "description": "A Strapi application for local development",
   "scripts": {
     "build": "strapi build",
-    "dev": "strapi develop",
+    "dev": "STRAPI_DB_CLIENT=sqlite strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
     "sync": "node scripts/sync.js"
   },
   "strapi": {
-    "uuid": "3b257ffe-0f24-478f-89e2-28daa0286a73"
+    "uuid": "7d8bdecd-e3cf-4ad6-bcf6-a72d8d8793f6"
   },
   "dependencies": {
     "dotenv": "10.0.0",
     "knex": "0.21.18",
+    "mysql": "2.18.1",
     "sqlite3": "5.0.2",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",

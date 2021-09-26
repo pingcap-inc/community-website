@@ -4,9 +4,9 @@ import { Row, Col, Skeleton } from 'antd';
 import { Formik } from 'formik';
 import useSWR from 'swr';
 
+import * as R from 'ramda';
 import * as Styled from './form.styled';
 import data from './form.data';
-import * as R from 'ramda';
 
 const { form, submitBtnTitle, formSchema } = data;
 const {

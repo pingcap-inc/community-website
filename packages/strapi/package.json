@@ -10,12 +10,12 @@
     "sync": "node scripts/sync.js"
   },
   "strapi": {
-    "uuid": "3b257ffe-0f24-478f-89e2-28daa0286a73"
+    "uuid": "7d8bdecd-e3cf-4ad6-bcf6-a72d8d8793f6"
   },
   "dependencies": {
     "dotenv": "10.0.0",
     "knex": "0.21.18",
-    "sqlite3": "5.0.2",
+    "mysql": "^2.18.1",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",
@@ -27,6 +27,11 @@
     "strapi-plugin-users-permissions": "3.6.8",
     "strapi-utils": "3.6.8"
   },
+  "engines": {
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": "^6.0.0"
+  },
+  "license": "MIT",
   "devDependencies": {
     "axios": "0.21.4",
     "@tidb-community/datasource": "*"

@@ -19,13 +19,13 @@ PUBLISH_DIRTY_REPO_ERROR := "publish will use git-commit-id as image version, pl
 
 publish:  ## build docker image for production and publish it to docker registry
 	@status=$$(git status --porcelain); \
-    if test "x$${status}" = x; then \
+	if test "x$${status}" = x; then \
 		echo "Working directory is clean, continue..." >&2; \
-    else \
-        echo "\033[0;31mWorking directory is dirty. \033[0m" >&2; \
-        echo $(PUBLISH_DIRTY_REPO_ERROR); \
-        exit 1; \
-    fi
+	else \
+		echo "\033[0;31mWorking directory is dirty. \033[0m" >&2; \
+		echo $(PUBLISH_DIRTY_REPO_ERROR); \
+		exit 1; \
+	fi
 	docker build . -t $(image_name)
 	docker tag $(image_name) $(DOCKER_REGISTRY)$(image_name)
 	docker push $(DOCKER_REGISTRY)$(image_name)

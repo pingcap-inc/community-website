@@ -50,12 +50,12 @@ const ContactUs = () => {
 
   const NavLinks = () => (
     <ul>
-      <li>
+      {/* <li>
         <NavLink path="/contact-us/incident">
           <h3>紧急事故处理</h3>
           <p>若非紧急事故，请发帖</p>
         </NavLink>
-      </li>
+      </li> */}
       <li>
         <NavLink path="/contact-us/consultancy">
           <h3>技术专家交流</h3>
@@ -68,10 +68,10 @@ const ContactUs = () => {
           <p>技术合作、社区活动</p>
         </NavLink>
       </li>
-      <li>
+      {/* <li>
         <h3>商业咨询</h3>
         <p>4006790886</p>
-      </li>
+      </li> */}
     </ul>
   );
 
@@ -101,7 +101,8 @@ const ContactUs = () => {
       <Styled.PopoverContainer>
         <NavLinks />
         <Styled.GuideContent isSmallScreen={bp.xs}>
-          <p>遇到紧急事故、或是需要技术交流、社区合作可以在这里联系社区专家哦~</p>
+          {/* 遇到或是紧急事故、 */}
+          <p>需要技术交流、社区合作可以在这里联系社区专家哦~</p>
           <Button type="primary" size="small" onClick={onGuideClose}>
             知道了
           </Button>

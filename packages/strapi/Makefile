@@ -15,15 +15,17 @@ help: ## This help.
 dev-build: ## build docker image for local develop
 	docker build . -t $(image_name)
 
-publish: check-git-status  ## build docker image and publish to docker registry
+PUBLISH_DIRTY_REPO_ERROR := "publish will use git-commit-id as image version, please run this command in production only."
+
+publish:  ## build docker image for production and publish it to docker registry
+	@status=$$(git status --porcelain); \
+    if test "x$${status}" = x; then \
+		echo "Working directory is clean, continue..." >&2; \
+    else \
+        echo "\033[0;31mWorking directory is dirty. \033[0m" >&2; \
+        echo $(PUBLISH_DIRTY_REPO_ERROR); \
+        exit 1; \
+    fi
 	docker build . -t $(image_name)
 	docker tag $(image_name) $(DOCKER_REGISTRY)$(image_name)
 	docker push $(DOCKER_REGISTRY)$(image_name)
-
-check-git-status:  ## check if repo is dirty
-	@status=$$(git status --porcelain); \
-    if test "x$${status}" = x; then \
-    	echo Working directory is clean >&1; \
-    else \
-        echo Working directory is dirty >&2; \
-    fi

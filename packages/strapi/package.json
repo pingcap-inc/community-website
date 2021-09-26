@@ -4,7 +4,7 @@
   "description": "A Strapi application for local development",
   "scripts": {
     "build": "strapi build",
-    "dev": "strapi develop",
+    "dev": "STRAPI_DB_CLIENT=sqlite strapi develop",
     "start": "strapi start",
     "strapi": "strapi",
     "sync": "node scripts/sync.js"
@@ -15,7 +15,8 @@
   "dependencies": {
     "dotenv": "10.0.0",
     "knex": "0.21.18",
-    "mysql": "^2.18.1",
+    "mysql": "2.18.1",
+    "sqlite3": "5.0.2",
     "strapi": "3.6.8",
     "strapi-admin": "3.6.8",
     "strapi-connector-bookshelf": "3.6.8",
@@ -27,11 +28,6 @@
     "strapi-plugin-users-permissions": "3.6.8",
     "strapi-utils": "3.6.8"
   },
-  "engines": {
-    "node": ">=10.16.0 <=14.x.x",
-    "npm": "^6.0.0"
-  },
-  "license": "MIT",
   "devDependencies": {
     "axios": "0.21.4",
     "@tidb-community/datasource": "*"

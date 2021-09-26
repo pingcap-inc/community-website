@@ -6,6 +6,7 @@ import useSWR from 'swr';
 
 import * as Styled from './form.styled';
 import data from './form.data';
+import * as R from 'ramda';
 
 const { form, submitBtnTitle, formSchema } = data;
 const {
@@ -51,72 +52,80 @@ const Form = ({ onSubmit, isSubmitting }) => {
       <Styled.FormTitle>申请信息</Styled.FormTitle>
       <Styled.Form>
         <Formik initialValues={initialValues} validationSchema={formSchema} onSubmit={onSubmit}>
-          <AntForm layout="vertical">
-            <AntForm.Item name={realName.name} label={realName.placeholder} required>
-              <Input {...realName} />
-            </AntForm.Item>
-            <AntForm.Item name={phone.name} label={phone.placeholder} required>
-              <Input {...phone} disabled={!!settingsResp.data.phone} />
-            </AntForm.Item>
-            <AntForm.Item name={email.name} label={email.placeholder} required>
-              <Input {...email} disabled={!!settingsResp.data.email_verified} />
-            </AntForm.Item>
-            <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
-              <Input {...companyName} disabled={!profileResp.data.company_name_editable} />
-            </AntForm.Item>
-            <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
-              <Select {...jobTitle} />
-            </AntForm.Item>
-            <AntForm.Item name={stageOfCompanyUseOfTidb.name} label={stageOfCompanyUseOfTidb.placeholder} required>
-              <AutoComplete {...stageOfCompanyUseOfTidb} />
-            </AntForm.Item>
-            <AntForm.Item name={reasonForApplication.name} label={reasonForApplication.placeholder} required>
-              <Input {...reasonForApplication} />
-            </AntForm.Item>
-            <AntForm.Item name={preferredWayOfSharing.name} label={preferredWayOfSharing.placeholder} required>
-              <Checkbox.Group style={{ width: '100%' }} {...preferredWayOfSharing}>
-                <Row>
-                  {preferredWayOfSharing.items.map((value) => (
-                    <Col key={value.value} span={24}>
-                      <Checkbox value={value.value}>{value.label}</Checkbox>
-                    </Col>
-                  ))}
-                </Row>
-              </Checkbox.Group>
-            </AntForm.Item>
-            <AntForm.Item name={rolesWantToPlay.name} label={rolesWantToPlay.placeholder} required>
-              <Checkbox.Group style={{ width: '100%' }} {...rolesWantToPlay}>
-                <Row>
-                  {rolesWantToPlay.items.map((value) => (
-                    <Col key={value.value} span={24}>
-                      <Checkbox value={value.value}>{value.label}</Checkbox>
-                    </Col>
-                  ))}
-                </Row>
-              </Checkbox.Group>
-            </AntForm.Item>
-            <AntForm.Item name={wechatId.name} label={wechatId.placeholder} required>
-              <Input {...wechatId} />
-            </AntForm.Item>
-            <AntForm.Item name={bio.name} label={bio.placeholder}>
-              <Input.TextArea rows={3} {...bio} />
-            </AntForm.Item>
-            <AntForm.Item name={channel.name} label={channel.placeholder}>
-              <AutoComplete {...channel} />
-            </AntForm.Item>
-            <AntForm.Item name={referrer.name} label={referrer.placeholder}>
-              <Input {...referrer} />
-            </AntForm.Item>
+          {({ errors }) => (
+            <AntForm layout="vertical">
+              <AntForm.Item name={realName.name} label={realName.placeholder} required>
+                <Input {...realName} />
+              </AntForm.Item>
+              <AntForm.Item name={phone.name} label={phone.placeholder} required>
+                <Input {...phone} disabled={!!settingsResp.data.phone} />
+              </AntForm.Item>
+              <AntForm.Item name={email.name} label={email.placeholder} required>
+                <Input {...email} disabled={!!settingsResp.data.email_verified} />
+              </AntForm.Item>
+              <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
+                <Input {...companyName} disabled={!profileResp.data.company_name_editable} />
+              </AntForm.Item>
+              <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
+                <Select {...jobTitle} />
+              </AntForm.Item>
+              <AntForm.Item name={stageOfCompanyUseOfTidb.name} label={stageOfCompanyUseOfTidb.placeholder} required>
+                <AutoComplete {...stageOfCompanyUseOfTidb} />
+              </AntForm.Item>
+              <AntForm.Item name={reasonForApplication.name} label={reasonForApplication.placeholder} required>
+                <Input {...reasonForApplication} />
+              </AntForm.Item>
+              <AntForm.Item name={preferredWayOfSharing.name} label={preferredWayOfSharing.placeholder} required>
+                <Checkbox.Group style={{ width: '100%' }} {...preferredWayOfSharing}>
+                  <Row>
+                    {preferredWayOfSharing.items.map((value) => (
+                      <Col key={value.value} span={24}>
+                        <Checkbox value={value.value}>{value.label}</Checkbox>
+                      </Col>
+                    ))}
+                  </Row>
+                </Checkbox.Group>
+              </AntForm.Item>
+              <AntForm.Item name={rolesWantToPlay.name} label={rolesWantToPlay.placeholder} required>
+                <Checkbox.Group style={{ width: '100%' }} {...rolesWantToPlay}>
+                  <Row>
+                    {rolesWantToPlay.items.map((value) => (
+                      <Col key={value.value} span={24}>
+                        <Checkbox value={value.value}>{value.label}</Checkbox>
+                      </Col>
+                    ))}
+                  </Row>
+                </Checkbox.Group>
+              </AntForm.Item>
+              <AntForm.Item name={wechatId.name} label={wechatId.placeholder} required>
+                <Input {...wechatId} />
+              </AntForm.Item>
+              <AntForm.Item name={bio.name} label={bio.placeholder}>
+                <Input.TextArea rows={3} {...bio} />
+              </AntForm.Item>
+              <AntForm.Item name={channel.name} label={channel.placeholder}>
+                <AutoComplete {...channel} />
+              </AntForm.Item>
+              <AntForm.Item name={referrer.name} label={referrer.placeholder}>
+                <Input {...referrer} />
+              </AntForm.Item>
 
-            <AntForm.Item name="submit">
-              <Styled.FormSubmitButton block type="primary" htmlType="submit" loading={isSubmitting}>
-                {submitBtnTitle}
-              </Styled.FormSubmitButton>
-            </AntForm.Item>
-            <AntForm.Item name={agreement.name}>
-              <Checkbox {...agreement}>{agreement.content}</Checkbox>
-            </AntForm.Item>
-          </AntForm>
+              <AntForm.Item name="submit">
+                <Styled.FormSubmitButton
+                  block
+                  type="primary"
+                  htmlType="submit"
+                  loading={isSubmitting}
+                  disabled={!R.isEmpty(errors)}
+                >
+                  {submitBtnTitle}
+                </Styled.FormSubmitButton>
+              </AntForm.Item>
+              <AntForm.Item name={agreement.name}>
+                <Checkbox {...agreement}>{agreement.content}</Checkbox>
+              </AntForm.Item>
+            </AntForm>
+          )}
         </Formik>
       </Styled.Form>
     </Styled.FormContainer>

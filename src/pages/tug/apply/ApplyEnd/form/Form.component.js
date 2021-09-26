@@ -7,7 +7,7 @@ import useSWR from 'swr';
 import * as Styled from './form.styled';
 import data from './form.data';
 
-const { form, submitBtnTitle, agreementContent, formSchema } = data;
+const { form, submitBtnTitle, formSchema } = data;
 const {
   realName,
   phone,
@@ -22,6 +22,7 @@ const {
   bio,
   channel,
   referrer,
+  agreement,
 } = form;
 
 const Form = ({ onSubmit, isSubmitting }) => {
@@ -100,10 +101,13 @@ const Form = ({ onSubmit, isSubmitting }) => {
               <Input {...referrer} />
             </AntForm.Item>
 
-            <AntForm.Item name="submit" extra={agreementContent}>
+            <AntForm.Item name="submit">
               <Styled.FormSubmitButton block type="primary" htmlType="submit" loading={isSubmitting}>
                 {submitBtnTitle}
               </Styled.FormSubmitButton>
+            </AntForm.Item>
+            <AntForm.Item name={agreement.name}>
+              <Checkbox {...agreement}>{agreement.content}</Checkbox>
             </AntForm.Item>
           </AntForm>
         </Formik>

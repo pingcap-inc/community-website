@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "tidbio_homepage_qa_topics",
   "info": {
-    "name": "Tidbio-homepage-qa-topics"
+    "name": "tidbio-homepage-qa-topics",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -12,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "topic_url": {
-      "type": "string"
+      "type": "string",
+      "regex": "^https://asktug.com/t/[\\w|-]+/\\d+.*",
+      "required": true
     }
   }
 }

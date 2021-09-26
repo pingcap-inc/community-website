@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "tidbio_homepage_blogs",
   "info": {
-    "name": "tidbio-homepage-blogs"
+    "name": "tidbio-homepage-blogs",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -12,6 +13,11 @@
   "pluginOptions": {},
   "attributes": {
     "topic_url": {
+      "type": "string",
+      "regex": "^https://asktug.com/t/[\\w|-]+/\\d+.*",
+      "required": true
+    },
+    "title": {
       "type": "string"
     }
   }

@@ -33,10 +33,17 @@ const Form = ({ onSubmit, isSubmitting }) => {
   if (isLoading) return <Skeleton active />;
 
   const initialValues = {
+    [realName.name]: '',
     [phone.name]: settingsResp.data.phone ?? '',
     [email.name]: settingsResp.data.email ?? '',
     [companyName.name]: profileResp.data.company_name ?? '',
     [jobTitle.name]: profileResp.data.job_title ?? '',
+    [stageOfCompanyUseOfTidb.name]: '',
+    [reasonForApplication.name]: '',
+    [preferredWayOfSharing.name]: '',
+    [rolesWantToPlay.name]: '',
+    [wechatId.name]: '',
+    [agreement.name]: '',
   };
 
   return (

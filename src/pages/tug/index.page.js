@@ -48,8 +48,10 @@ export const getStaticProps = () => {
   const peopleMemberSummary = 'TMC 是 TUG 最高决策组织，负责统筹 TUG 发展与规划、重要人事任免、全年大事安排等';
   const peopleLeaderTitle = 'LEADER';
   const peopleLeaderSummary = 'TUG 各区域负责人，负责统筹本区域内TUG 的发展以及活动规划';
+  const peopleAdviserTitle = '顾问团';
+  const peopleAdviserSummary = 'TUG 特邀顾问，拥有诸多技术经验，负责帮助解答 TUG 中技术问题';
 
-  const { tmc, leader } = tugData;
+  const { tmc, leader, adviser } = tugData;
 
   return {
     props: {
@@ -68,8 +70,11 @@ export const getStaticProps = () => {
       peopleMemberSummary,
       peopleLeaderTitle,
       peopleLeaderSummary,
+      peopleAdviserTitle,
+      peopleAdviserSummary,
       tmc,
       leader,
+      adviser,
     },
   };
 };
@@ -90,8 +95,11 @@ const People = ({
   peopleMemberSummary,
   peopleLeaderTitle,
   peopleLeaderSummary,
+  peopleAdviserTitle,
+  peopleAdviserSummary,
   tmc,
   leader,
+  adviser,
 }) => {
   const router = useRouter();
 
@@ -214,6 +222,15 @@ const People = ({
             <div className={styles.people_content_summary}>{peopleLeaderSummary}</div>
             <div className={styles.people_content_list}>
               {leader.map((item, index) => (
+                <TMCItem key={index} {...item} />
+              ))}
+            </div>
+
+            <div className={styles.people_content_split} />
+            <div className={styles.people_content_title}>{peopleAdviserTitle}</div>
+            <div className={styles.people_content_summary}>{peopleAdviserSummary}</div>
+            <div className={styles.people_content_list}>
+              {adviser.map((item, index) => (
                 <TMCItem key={index} {...item} />
               ))}
             </div>

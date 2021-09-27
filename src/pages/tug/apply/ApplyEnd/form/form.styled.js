@@ -1,11 +1,10 @@
 import styled from 'styled-components';
 import { Button as AntButton, Row as AntRow } from 'antd';
-import { colors, mixins } from '@tidb-community/ui';
+import { mixins, Link } from '@tidb-community/ui';
 
 export const FormContainer = styled.div`
   box-sizing: border-box;
   margin: auto;
-  max-width: 540px;
   padding: 40px;
   background-color: rgb(247, 248, 249);
 `;
@@ -28,6 +27,4 @@ export const Form = styled.div``;
 
 export const FormSubmitButton = styled(AntButton)``;
 
-export const FormSubmitAgreement = styled.a`
-  color: ${colors.B1};
-`;
+export const FormSubmitAgreement = styled(Link)``;

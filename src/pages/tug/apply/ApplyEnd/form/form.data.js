@@ -104,16 +104,20 @@ const data = {
         .min(2, ({ min }) => `推荐⼈最短为 ${min} 个字符`)
         .max(10, ({ max }) => `推荐⼈最长为 ${max} 个字符`),
     },
+    agreement: {
+      name: 'agreement',
+      validator: Yup.bool().oneOf([true], '需阅读并同意相关协议').required('需阅读并同意相关协议'),
+      content: (
+        <>
+          本人已阅读并同意 TiDB Community 的
+          <Styled.FormSubmitAgreement href="https://pingcap.com/zh/privacy-policy/" target="_blank" rel="noreferrer">
+            《隐私政策》
+          </Styled.FormSubmitAgreement>
+        </>
+      ),
+    },
   },
   submitBtnTitle: '提交申请',
-  agreementContent: (
-    <>
-      提交即表明你已阅读并同意
-      <Styled.FormSubmitAgreement href="https://pingcap.com/zh/privacy-policy/" target="_blank" rel="noreferrer">
-        《隐私协议》
-      </Styled.FormSubmitAgreement>
-    </>
-  ),
 };
 
 data.formSchema = buildSchema(data.form);

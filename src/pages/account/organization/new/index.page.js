@@ -43,7 +43,7 @@ const PageContent = () => {
   }
 
   return (
-    <CoreLayout domain="tidb.io">
+    <CoreLayout>
       <CreateOrganization />
     </CoreLayout>
   );

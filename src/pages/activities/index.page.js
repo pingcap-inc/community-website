@@ -52,8 +52,8 @@ const Page = () => {
   const params = {
     _limit: pageSize,
     _publicationState: isProd ? undefined : 'preview',
-    _start: (current - 1) * pageSize,
     _sort: 'date:DESC',
+    _start: (current - 1) * pageSize,
     category: filters.category === CATEGORIES[0] ? undefined : filters.category,
     type: filters.type === TYPES[0] ? undefined : filters.type,
     date: filters.date === DATES[0] ? undefined : filters.date,

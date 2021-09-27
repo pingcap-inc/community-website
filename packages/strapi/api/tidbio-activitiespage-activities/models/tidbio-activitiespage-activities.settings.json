@@ -15,9 +15,6 @@
     "title": {
       "type": "string"
     },
-    "location": {
-      "type": "string"
-    },
     "type": {
       "type": "string"
     },
@@ -33,6 +30,12 @@
       "pluginOptions": {}
     },
     "category": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "location": {
       "type": "string"
     }
   }

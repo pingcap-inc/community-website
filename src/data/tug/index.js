@@ -131,6 +131,51 @@ const data = {
       title: 'Head of APAC',
       role: 'APAC 区域组 Leader',
     },
+    {
+      avatar: '',
+      name: '代晓磊',
+      company: '360',
+      title: '智慧商业数据库运维高级专家',
+      role: '华北组 Leader',
+    },
+  ],
+
+  adviser: [
+    {
+      avatar: '',
+      name: '孙晓光',
+      company: 'PingCAP Community Development',
+      title: '团队负责人',
+      role: 'TUG 2019 北京区 leader TUG 顾问团成员',
+    },
+    {
+      avatar: '',
+      name: '侯圣文',
+      company: '贝壳找房',
+      title: '基础平台总监',
+      role: 'TUG 顾问团成员',
+    },
+    {
+      avatar: '',
+      name: '贾世闻',
+      company: '京东云',
+      title: '交付部架构师',
+      role: 'TUG 顾问团成员',
+    },
+    {
+      avatar: '',
+      name: '赵仕庆',
+      company: '京东科技',
+      title: '研发工程师',
+      role: 'TUG 顾问团成员',
+    },
+    {
+      avatar: '',
+      name: '代晓磊',
+      company: '360',
+      title: '智慧商业数据库运维高级专家',
+      role: 'TUG 顾问团成员',
+    },
   ],
 
   mva2019,

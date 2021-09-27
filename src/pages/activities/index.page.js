@@ -4,7 +4,8 @@ import { api } from '@tidb-community/datasource';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
-import About from './about';
+//  TODO: comment out About module as Calendar is not ready for MVP
+// import About from './about';
 import Cooperation from './cooperation';
 import List from './list';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list/list.constants';
@@ -52,6 +53,7 @@ const Page = () => {
     _limit: pageSize,
     _publicationState: isProd ? undefined : 'preview',
     _start: (current - 1) * pageSize,
+    _sort: 'date:DESC',
     category: filters.category === CATEGORIES[0] ? undefined : filters.category,
     type: filters.type === TYPES[0] ? undefined : filters.type,
     date: filters.date === DATES[0] ? undefined : filters.date,
@@ -70,7 +72,7 @@ const Page = () => {
       <CommunityHead title={t('pageTitle')} />
 
       <CoreLayout>
-        <About />
+        {/* <About /> */}
         <List />
         <Cooperation />
       </CoreLayout>

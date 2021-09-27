@@ -9,6 +9,7 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './list.styled';
 import slice, { initialState } from '~/pages/activities/activities.slice';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
+import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
@@ -28,20 +29,22 @@ const Dropdown = ({ name, placeholder, options }) => (
   </Styled.DropdownWrapper>
 );
 
-const Activity = ({ title, location, type, date, image }) => (
+const Activity = ({ title, link, location, type, date, image }) => (
   <Styled.ActivityCard>
-    <Styled.ImageWrapper>
-      <Image alt={title} src={image} layout="fill" objectFit="cover" />
-    </Styled.ImageWrapper>
-    <h3>{title}</h3>
-    <ul>
-      <li>
-        <EnvironmentOutlined />
-        {location}
-      </li>
-      <li>{type}</li>
-      <li>{dayjs(date).format('YYYY.MM.DD')}</li>
-    </ul>
+    <Link href={link}>
+      <Styled.ImageWrapper>
+        <Image alt={title} src={image} layout="fill" objectFit="cover" />
+      </Styled.ImageWrapper>
+      <h3>{title}</h3>
+      <ul>
+        <li>
+          <EnvironmentOutlined />
+          {location}
+        </li>
+        <li>{type}</li>
+        <li>{dayjs(date).format('YYYY.MM.DD')}</li>
+      </ul>
+    </Link>
   </Styled.ActivityCard>
 );
 

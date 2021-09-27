@@ -3,6 +3,7 @@ import { v4 as uuidV4 } from 'uuid';
 import { Button } from 'antd';
 import { useRouter } from 'next/router';
 
+import { getI18nProps } from '~/utils/i18n.utils';
 import { link as linkUtils } from '~/utils';
 import Container from '~/components/Container/Container';
 import HowToBecome from '~/components/people/HowToBecome/HowToBecome';
@@ -49,6 +50,16 @@ const peopleLeaderTitle = 'LEADER';
 const peopleLeaderSummary = 'TUG 各区域负责人，负责统筹本区域内TUG 的发展以及活动规划';
 const peopleAdviserTitle = '顾问团';
 const peopleAdviserSummary = 'TUG 特邀顾问，拥有诸多技术经验，负责帮助解答 TUG 中技术问题';
+
+export const getStaticProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
 
 const Tug = () => {
   const { tmc, leader, adviser } = tugData;

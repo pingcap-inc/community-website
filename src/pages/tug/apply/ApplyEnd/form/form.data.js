@@ -109,9 +109,9 @@ const data = {
       validator: Yup.bool().oneOf([true], '需阅读并同意相关协议').required('需阅读并同意相关协议'),
       content: (
         <>
-          提交即表明你已阅读并同意
+          本人已阅读并同意 TiDB Community 的
           <Styled.FormSubmitAgreement href="https://pingcap.com/zh/privacy-policy/" target="_blank" rel="noreferrer">
-            《隐私协议》
+            《隐私政策》
           </Styled.FormSubmitAgreement>
         </>
       ),

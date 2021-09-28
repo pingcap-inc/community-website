@@ -82,7 +82,7 @@ const Page = () => {
     location: filters.location === R.head(LOCATIONS) ? undefined : filters.location,
     ...dataParam,
   };
-  const { data: activities = [] } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
+  const { data: activities } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
   const { data: total } = useSWR(['tidbio-activitiespage-activities/count', JSON.stringify(params)], fetcher);
 
   const data = {

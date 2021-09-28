@@ -54,7 +54,7 @@ export const ActionButton = styled(Button).attrs({
 export const EmailInput = styled(Input.Search).attrs((props) => ({
   allowClear: true,
   size: 'large',
-  onSearch: !props.submitDisabled && props.onSubmit,
+  onSearch: !props.$submitDisabled && props.onSubmit,
 }))`
   margin-top: 2rem;
   max-width: 350px;
@@ -62,7 +62,7 @@ export const EmailInput = styled(Input.Search).attrs((props) => ({
   && {
     .ant-input-search-button {
       ${(props) =>
-        props.submitDisabled &&
+        props.$submitDisabled &&
         css`
           cursor: not-allowed;
           opacity: 70%;

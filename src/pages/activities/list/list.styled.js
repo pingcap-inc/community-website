@@ -69,6 +69,11 @@ export const ImageWrapper = styled.div`
   margin-bottom: 0.5rem;
 `;
 
+export const SpinContainer = styled.div`
+  ${mixins.flexCenter()};
+  margin: 3.5rem auto;
+`;
+
 export const Pagination = styled(AntPagination).attrs({
   size: 'small',
 })`

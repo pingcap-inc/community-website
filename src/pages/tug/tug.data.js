@@ -52,9 +52,9 @@ const data = {
     },
     {
       avatar: '',
-      name: '贺磊',
-      company: '奇虎 360',
-      title: '高级 DBA',
+      name: '代晓磊',
+      company: '360',
+      title: '智慧商业数据库运维高级专家',
       role: '华北组 Leader',
     },
     {
@@ -127,13 +127,6 @@ const data = {
       title: 'Head of APAC',
       role: 'APAC 区域组 Leader',
     },
-    {
-      avatar: '',
-      name: '代晓磊',
-      company: '360',
-      title: '智慧商业数据库运维高级专家',
-      role: '华北组 Leader',
-    },
   ],
 
   adviser: [
@@ -142,7 +135,13 @@ const data = {
       name: '孙晓光',
       company: 'PingCAP Community Development',
       title: '团队负责人',
-      role: 'TUG 2019 北京区 leader TUG 顾问团成员',
+      role: (
+        <>
+          TUG 2019 北京区 Leader
+          <br />
+          TUG 顾问团成员
+        </>
+      ),
     },
     {
       avatar: '',
@@ -170,7 +169,13 @@ const data = {
       name: '代晓磊',
       company: '360',
       title: '智慧商业数据库运维高级专家',
-      role: 'TUG 顾问团成员',
+      role: (
+        <>
+          TUG 顾问团成员
+          <br />
+          华北组 Leader
+        </>
+      ),
     },
   ],
 };

@@ -115,6 +115,8 @@ const List = () => {
     },
   };
 
+  console.log('activities!!', activities);
+
   return (
     <Styled.Container id="all-activities" isSmallScreen={isSmallScreen}>
       <Styled.Title>{lang.title}</Styled.Title>

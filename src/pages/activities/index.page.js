@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
 //  TODO: comment out About module as Calendar is not ready for MVP
-// import About from './about';
+import About from './about';
 import Cooperation from './cooperation';
 import List from './list';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list/list.constants';
@@ -95,7 +95,7 @@ const Page = () => {
       <CommunityHead title={t('pageTitle')} />
 
       <CoreLayout>
-        {/* <About /> */}
+        <About />
         <List />
         <Cooperation />
       </CoreLayout>

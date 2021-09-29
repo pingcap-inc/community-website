@@ -1,19 +1,19 @@
 import React, { useRef } from 'react';
 import { Button } from 'antd';
-import { Calendar } from '@tidb-community/ui';
+import { AntdCalendar } from '@tidb-community/ui';
 
 import { getTitle } from '../utils';
 
 export default {
-  title: getTitle('Calendar'),
-  component: Calendar,
+  title: getTitle('AntdCalendar'),
+  component: AntdCalendar,
 };
 
 const Template = ({ ...args }) => {
   const ref = useRef();
   return (
     <>
-      <Calendar {...args} />
+      <AntdCalendar {...args} />
       <br />
       <Button type="primary" size="small" onClick={() => ref.current.reset()}>
         Reset

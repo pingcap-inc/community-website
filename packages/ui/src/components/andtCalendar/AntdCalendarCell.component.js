@@ -1,8 +1,8 @@
 import React from 'react';
 
-import * as Styled from './CalendarCell.styled';
+import * as Styled from './AntdCalendarCell.styled';
 
-const CalendarCell = ({ date, data }) => {
+const AntdCalendarCell = ({ date, data }) => {
   return (
     <Styled.Wrapper>
       <div>
@@ -16,4 +16,4 @@ const CalendarCell = ({ date, data }) => {
   );
 };
 
-export default CalendarCell;
+export default AntdCalendarCell;

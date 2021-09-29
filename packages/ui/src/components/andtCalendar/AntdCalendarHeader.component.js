@@ -1,8 +1,8 @@
 import React from 'react';
 
-import * as Styled from './CalendarHeader.styled';
+import * as Styled from './AntdCalendarHeader.styled';
 
-const CalendarHeader = ({ value }) => {
+const AntdCalendarHeader = ({ value }) => {
   return (
     <Styled.Wrapper>
       {value.format('MMMM')} {value.year()}
@@ -10,4 +10,4 @@ const CalendarHeader = ({ value }) => {
   );
 };
 
-export default CalendarHeader;
+export default AntdCalendarHeader;

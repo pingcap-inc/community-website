@@ -9,6 +9,7 @@ export {
   ActivityBanner,
   ActivityCards,
   BenefitCards,
+  Calendar,
   CountDown,
   Footer,
   Header,

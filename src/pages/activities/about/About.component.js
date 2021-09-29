@@ -1,12 +1,14 @@
 import Image from 'next/image';
-import React, { useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { Button, Row } from 'antd';
 import { Trans, useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
+import { Calendar } from '@tidb-community/ui';
 
 import * as Styled from './about.styled';
 import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
+import { PageDataContext } from '~/context';
 
 const About = () => {
   const cardRef = useRef();
@@ -18,6 +20,9 @@ const About = () => {
   const { paragraph2: paragraph2Lang, devcon: devconLang } = lang;
 
   const isVerticalCard = cardSize.width < 500;
+
+  const { data } = useContext(PageDataContext);
+  const { activities } = data;
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
@@ -51,7 +56,9 @@ const About = () => {
             </Styled.Card>
           </Styled.LeftPanel>
 
-          <Styled.RightPanel>Calendar</Styled.RightPanel>
+          <Styled.RightPanel>
+            <Calendar data={activities} />
+          </Styled.RightPanel>
         </Row>
       </Styled.Content>
     </Styled.Container>

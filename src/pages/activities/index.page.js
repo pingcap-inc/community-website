@@ -90,6 +90,9 @@ const Page = () => {
     total,
   };
 
+  // eslint-disable-next-line no-console
+  console.log('tidbio-activitiespage-activities', activities);
+
   return (
     <PageDataContext.Provider value={{ data }}>
       <CommunityHead title={t('pageTitle')} />

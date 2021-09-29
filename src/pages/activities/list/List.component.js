@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useContext, useEffect } from 'react';
 import dayjs from 'dayjs';
-import { Button, Col, Form, Row, Select } from 'antd';
+import { Button, Col, Empty, Form, Row, Select, Spin } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
@@ -29,24 +29,37 @@ const Dropdown = ({ name, placeholder, options }) => (
   </Styled.DropdownWrapper>
 );
 
-const Activity = ({ title, link, location, type, date, image }) => (
-  <Styled.ActivityCard>
-    <Link href={link}>
-      <Styled.ImageWrapper>
-        <Image alt={title} src={image} layout="fill" objectFit="cover" />
-      </Styled.ImageWrapper>
-      <h3>{title}</h3>
-      <ul>
-        <li>
-          <EnvironmentOutlined />
-          {location}
-        </li>
-        <li>{type}</li>
-        <li>{dayjs(date).format('YYYY.MM.DD')}</li>
-      </ul>
-    </Link>
-  </Styled.ActivityCard>
-);
+const Activity = ({ title, link, location, type, date, image }) => {
+  const imgProps = {
+    alt: title,
+    src: image,
+    layout: 'fill',
+    objectFit: 'cover',
+    priority: true,
+    placeholder: 'blur',
+    blurDataURL:
+      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII=',
+  };
+
+  return (
+    <Styled.ActivityCard>
+      <Link href={link}>
+        <Styled.ImageWrapper>
+          <Image {...imgProps} />
+        </Styled.ImageWrapper>
+        <h3>{title}</h3>
+        <ul>
+          <li>
+            <EnvironmentOutlined />
+            {location}
+          </li>
+          <li>{type}</li>
+          <li>{dayjs(date).format('YYYY.MM.DD')}</li>
+        </ul>
+      </Link>
+    </Styled.ActivityCard>
+  );
+};
 
 const List = () => {
   const dispatch = useDispatch();
@@ -124,17 +137,25 @@ const List = () => {
         </Row>
       </Styled.Filters>
 
-      <Row gutter={[32, 32]}>
-        {activities.map((activity, idx) => {
-          const props = {
-            key: idx,
-            ...activity,
-            image: commonUtils.getStrapiImgProps(activity.image),
-          };
+      {activities?.length ? (
+        <Row gutter={[32, 32]}>
+          {activities.map((activity, idx) => {
+            const props = {
+              key: idx,
+              ...activity,
+              image: commonUtils.getStrapiImgProps(activity.image),
+            };
 
-          return <Activity {...props} />;
-        })}
-      </Row>
+            return <Activity {...props} />;
+          })}
+        </Row>
+      ) : !activities ? (
+        <Styled.SpinContainer>
+          <Spin size="large" />
+        </Styled.SpinContainer>
+      ) : (
+        <Empty description={lang.empty} />
+      )}
 
       <Styled.Pagination {...paginationProps} />
     </Styled.Container>

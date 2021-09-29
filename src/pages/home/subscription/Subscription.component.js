@@ -73,11 +73,11 @@ const Subscription = () => {
           <>
             <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
             <Styled.EmailInput
-              placeholder={emailInputLang.placeHolder}
+              $submitDisabled={!legalConfirmation}
               enterButton={emailInputLang.submit}
               onChange={(e) => setEmail(e.target.value)}
-              submitDisabled={!legalConfirmation}
               onSubmit={subscribeEmail}
+              placeholder={emailInputLang.placeHolder}
             />
             <Styled.TermCaption>
               <Styled.LegalCheckbox checked={legalConfirmation} onChange={checkLegal} />

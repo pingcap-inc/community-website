@@ -60,7 +60,7 @@ const Activities = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.meetupTitle}
-                <Link href="https://tidb.io/archived/events/#activities">{viewAllLang}</Link>
+                <Link href="https://tidb.io/activities">{viewAllLang}</Link>
               </Styled.ModuleTitle>
               <Meetups onClick={onClick} meetups={data.meetups} />
             </Styled.Module>
@@ -68,7 +68,7 @@ const Activities = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.devActivitiesTitle}
-                <Link href="https://tidb.io/archived/events/#activities">{viewAllLang}</Link>
+                <Link href="https://tidb.io/activities">{viewAllLang}</Link>
               </Styled.ModuleTitle>
               <Meetups onClick={onClick} meetups={data.devActivities} />
             </Styled.Module>

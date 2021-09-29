@@ -1,12 +1,20 @@
 import Image from 'next/image';
 import React from 'react';
 
+import { link as linkUtils } from '~/utils';
 import Button from '~/components/Button/Button';
 import Container from '~/components/Container/Container';
-import MyLink from '~/components/MyLink';
 import styles from './HomeMVA.module.scss';
+import { useRouter } from 'next/router';
 
 export default function HomeMVA() {
+  const router = useRouter();
+
+  const onClick = (link) => (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, link);
+  };
+
   return (
     <div className={styles.wrapper}>
       <Container className={styles.container}>
@@ -16,9 +24,7 @@ export default function HomeMVA() {
           TiDB，是经过认证的技术先锋，享受极高的社区荣誉。
         </div>
         <div className={styles.buttons}>
-          <Button as={MyLink} href={'/tug/mva'}>
-            查看更多
-          </Button>
+          <Button onClick={onClick('/tug/mva')}>查看更多</Button>
         </div>
       </Container>
       <div className={styles.image}>

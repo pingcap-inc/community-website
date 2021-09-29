@@ -22,9 +22,9 @@ const Template = ({ ...args }) => {
   );
 };
 
-export const WithReset = Template.bind({});
+export const antdCalendar = Template.bind({});
 
-WithReset.args = {
+antdCalendar.args = {
   data: [
     {
       title: 'title-1',

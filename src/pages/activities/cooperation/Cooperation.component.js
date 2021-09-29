@@ -30,9 +30,9 @@ const Cooperation = () => {
           </Styled.LeftPanel>
         }
         rightPanel={
-          <>
+          <Styled.RightPanel>
             <Styled.Logo />
-          </>
+          </Styled.RightPanel>
         }
       />
     </Styled.Container>

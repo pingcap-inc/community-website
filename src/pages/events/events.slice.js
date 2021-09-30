@@ -9,7 +9,7 @@ export const initialState = {
 };
 
 export default createSlice({
-  name: 'activities',
+  name: 'events',
   initialState,
 
   reducers: {

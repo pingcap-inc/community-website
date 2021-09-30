@@ -5,7 +5,7 @@
     "paragraph1": "TiDB 社区自成立以来，每年都会举办上百场丰富多彩的活动，覆盖了全球几万名来自不同领域的开发者、TiDB 用户和爱好者。",
     "paragraph2": {
       "text": "你可以<0>在此</0>处筛选查看历年活动列表，也可以通过<1>表单</1>联系我们，提交你的活动创意，TiDB 社区期待你的参与。",
-      "link1": "#all-activities",
+      "link1": "#all-events",
       "link2": "/contact-us/cooperation"
     },
     "devcon": {

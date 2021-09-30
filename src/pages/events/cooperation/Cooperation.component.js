@@ -9,7 +9,7 @@ import { useIsSmallScreen } from '~/hooks';
 const Cooperation = () => {
   const router = useRouter();
   const { isSmallScreen } = useIsSmallScreen();
-  const { t } = useTranslation('page-activities');
+  const { t } = useTranslation('page-events');
 
   const onClick = (link) => (e) => {
     e.preventDefault();

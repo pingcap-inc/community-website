@@ -12,7 +12,7 @@ const About = () => {
   const cardRef = useRef();
   const cardSize = useSize(cardRef);
   const { isSmallScreen } = useIsSmallScreen();
-  const { t } = useTranslation('page-activities');
+  const { t } = useTranslation('page-events');
 
   const lang = t('about', { returnObjects: true });
   const { paragraph2: paragraph2Lang, devcon: devconLang } = lang;

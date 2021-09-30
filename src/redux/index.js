@@ -1,11 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import activitiesSlice from '~/pages/activities/activities.slice';
+import eventsSlice from '~/pages/events/events.slice';
 
 export const store = configureStore({
   reducer: {
-    activities: activitiesSlice.reducer,
+    events: eventsSlice.reducer,
   },
 });
 
-export { activitiesSlice };
+export { eventsSlice };

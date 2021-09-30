@@ -28,7 +28,7 @@ const fetcher = async (path, params) => {
 };
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-activities'])(ctx);
+  const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
   const isEnabled = process.env.NEXT_PUBLIC_FT_ACTIVITIES;
 
   if (!isEnabled) {
@@ -47,8 +47,8 @@ export const getServerSideProps = async (ctx) => {
 const Page = () => {
   const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
-  const { t } = useTranslation('page-activities');
-  const { filters, current, pageSize } = useSelector((state) => state.activities);
+  const { t } = useTranslation('page-events');
+  const { filters, current, pageSize } = useSelector((state) => state.events);
 
   const dataParam = (() => {
     let year;
@@ -82,11 +82,11 @@ const Page = () => {
     location: filters.location === R.head(LOCATIONS) ? undefined : filters.location,
     ...dataParam,
   };
-  const { data: activities } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
+  const { data: events } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
   const { data: total } = useSWR(['tidbio-activitiespage-activities/count', JSON.stringify(params)], fetcher);
 
   const data = {
-    activities,
+    events,
     total,
   };
 

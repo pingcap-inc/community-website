@@ -16,7 +16,7 @@ module.exports = {
     locales: ['zh', 'en'],
   },
   use: [HttpBackend],
-  ns: ['common', 'page-activities', 'page-contact-us', 'page-home', 'page-organization-benefits', 'page-orgs'],
+  ns: ['common', 'page-events', 'page-contact-us', 'page-home', 'page-organization-benefits', 'page-orgs'],
   backend: {
     loadPath: `${process.env.NEXT_PUBLIC_LOCALES_BASE_URL}/{{lng}}/{{ns}}.json`,
     reloadInterval,

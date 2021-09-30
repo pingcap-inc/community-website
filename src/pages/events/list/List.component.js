@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './list.styled';
-import slice, { initialState } from '~/pages/activities/activities.slice';
+import slice, { initialState } from '~/pages/events/events.slice';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
@@ -63,10 +63,10 @@ const Activity = ({ title, link, location, type, date, image }) => {
 
 const List = () => {
   const dispatch = useDispatch();
-  const { filters, ...paginationData } = useSelector((state) => state.activities);
+  const { filters, ...paginationData } = useSelector((state) => state.events);
   const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
-  const { t } = useTranslation('page-activities');
+  const { t } = useTranslation('page-events');
 
   useEffect(() => {
     if (!breakpoint.lg) {

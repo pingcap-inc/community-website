@@ -8,6 +8,8 @@ import { CommunityHead } from '~/components';
 
 export { getServerSideProps } from '../utils';
 
+// FIXME: The incident report form was marked as unvisible in CP-225
+// If we'd like to revert it back, we can rename _index.page.js to index.page.js
 const Page = () => {
   const { t } = useTranslation('page-contact-us');
   const lang = t('incident', {

@@ -42,7 +42,7 @@ const Event = ({ title, link, location, type, date, image }) => {
   };
 
   return (
-    <Styled.ActivityCard>
+    <Styled.EventCard>
       <Link href={link}>
         <Styled.ImageWrapper>
           <Image {...imgProps} />
@@ -57,7 +57,7 @@ const Event = ({ title, link, location, type, date, image }) => {
           <li>{dayjs(date).format('YYYY.MM.DD')}</li>
         </ul>
       </Link>
-    </Styled.ActivityCard>
+    </Styled.EventCard>
   );
 };
 

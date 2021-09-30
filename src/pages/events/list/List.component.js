@@ -29,7 +29,7 @@ const Dropdown = ({ name, placeholder, options }) => (
   </Styled.DropdownWrapper>
 );
 
-const Activity = ({ title, link, location, type, date, image }) => {
+const Event = ({ title, link, location, type, date, image }) => {
   const imgProps = {
     alt: title,
     src: image,
@@ -78,7 +78,7 @@ const List = () => {
 
   const lang = t('list', { returnObjects: true });
   const { filters: filtersLang } = lang;
-  const { activities, total } = data;
+  const { events, total } = data;
 
   const isMobile = !breakpoint.md;
   const filtersColProps = isMobile
@@ -116,7 +116,7 @@ const List = () => {
   };
 
   return (
-    <Styled.Container id="all-activities" isSmallScreen={isSmallScreen}>
+    <Styled.Container id="all-events" isSmallScreen={isSmallScreen}>
       <Styled.Title>{lang.title}</Styled.Title>
 
       <Styled.Filters {...filtersProps}>
@@ -137,19 +137,19 @@ const List = () => {
         </Row>
       </Styled.Filters>
 
-      {activities?.length ? (
+      {events?.length ? (
         <Row gutter={[32, 32]}>
-          {activities.map((activity, idx) => {
+          {events.map((event, idx) => {
             const props = {
               key: idx,
-              ...activity,
-              image: commonUtils.getStrapiImgProps(activity.image),
+              ...event,
+              image: commonUtils.getStrapiImgProps(event.image),
             };
 
-            return <Activity {...props} />;
+            return <Event {...props} />;
           })}
         </Row>
-      ) : !activities ? (
+      ) : !events ? (
         <Styled.SpinContainer>
           <Spin size="large" />
         </Styled.SpinContainer>

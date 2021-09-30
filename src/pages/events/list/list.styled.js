@@ -23,7 +23,7 @@ export const DropdownWrapper = styled(Col).attrs({
   }
 `;
 
-export const ActivityCard = styled(Col).attrs({
+export const EventCard = styled(Col).attrs({
   xs: 24,
   sm: 12,
   md: 8,

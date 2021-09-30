@@ -8,6 +8,7 @@ const AntdCalendar = ({ data }) => {
   const onSelect = (date) => {
     // eslint-disable-next-line no-console
     console.log('date', date);
+    return false;
   };
 
   return (

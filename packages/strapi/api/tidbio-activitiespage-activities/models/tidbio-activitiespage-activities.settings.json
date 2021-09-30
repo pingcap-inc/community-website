@@ -18,8 +18,9 @@
     "type": {
       "type": "string"
     },
-    "date": {
-      "type": "date"
+    "startDate": {
+      "type": "date",
+      "required": true
     },
     "image": {
       "collection": "file",
@@ -37,6 +38,10 @@
     },
     "location": {
       "type": "string"
+    },
+    "endDate": {
+      "type": "date",
+      "required": true
     }
   }
 }

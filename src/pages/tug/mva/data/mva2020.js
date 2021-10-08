@@ -1,7 +1,6 @@
 const data = [
   {
     name: '李银龙',
-    avatar: '',
     company: '马上消费金融',
     title: '容器云数据库负责人',
     links: [
@@ -17,7 +16,6 @@ const data = [
   },
   {
     name: '贺磊',
-    avatar: '',
     company: '360',
     title: '高级 DBA',
     links: [
@@ -41,7 +39,6 @@ const data = [
   },
   {
     name: '田帅萌',
-    avatar: '',
     company: '京东数科',
     title: 'DBA',
     links: [
@@ -61,7 +58,6 @@ const data = [
   },
   {
     name: '靳献旗',
-    avatar: '',
     company: '汽车之家',
     title: '高级 DBA',
     links: [
@@ -81,7 +77,6 @@ const data = [
   },
   {
     name: '李振环',
-    avatar: '',
     company: '贝壳金服',
     title: '大数据工程师',
     links: [
@@ -97,7 +92,6 @@ const data = [
   },
   {
     name: '孙晓光',
-    avatar: '',
     company: '知乎',
     title: '技术平台负责人',
     links: [
@@ -109,7 +103,6 @@ const data = [
   },
   {
     name: '罗瑞星',
-    avatar: '',
     company: '百胜中国',
     title: '大数据经理',
     links: [
@@ -125,7 +118,6 @@ const data = [
   },
   {
     name: '刘春雷',
-    avatar: '',
     company: '58 集团',
     title: 'DBA',
     links: [
@@ -149,7 +141,6 @@ const data = [
   },
   {
     name: '胡盼盼',
-    avatar: '',
     company: '微众银行',
     title: '数据库平台经理',
     links: [
@@ -169,7 +160,6 @@ const data = [
   },
   {
     name: '胡国青',
-    avatar: '',
     company: '数据库从业者',
     title: '',
     links: [
@@ -185,7 +175,6 @@ const data = [
   },
   {
     name: '张雯',
-    avatar: '',
     company: 'bilibili',
     title: 'DBA',
     links: [
@@ -205,7 +194,6 @@ const data = [
   },
   {
     name: '徐嘉埥',
-    avatar: '',
     company: '建信金科',
     title: 'DBA',
     links: [
@@ -221,7 +209,6 @@ const data = [
   },
   {
     name: '皮雪锋',
-    avatar: '',
     company: '云集',
     title: '研发经理',
     links: [
@@ -233,7 +220,6 @@ const data = [
   },
   {
     name: '刘江',
-    avatar: '',
     company: '伴鱼',
     title: 'DBA',
     links: [
@@ -257,7 +243,6 @@ const data = [
   },
   {
     name: '朱博帅',
-    avatar: '',
     company: '阿里云',
     title: '数据库技术服务专家',
     links: [
@@ -273,7 +258,6 @@ const data = [
   },
   {
     name: '代晓磊',
-    avatar: '',
     company: '360',
     title: '数据库运维专家',
     links: [
@@ -297,7 +281,6 @@ const data = [
   },
   {
     name: '赵海军',
-    avatar: '',
     company: '理想汽车',
     title: '数据库负责人',
     links: [
@@ -321,7 +304,6 @@ const data = [
   },
   {
     name: '黄潇',
-    avatar: '',
     company: '美团',
     title: '高级 DBA',
     links: [
@@ -341,7 +323,6 @@ const data = [
   },
   {
     name: '于振华',
-    avatar: '',
     company: '北银金科',
     title: '云计算应用部副总经理',
     links: [
@@ -357,7 +338,6 @@ const data = [
   },
   {
     name: '许超',
-    avatar: '',
     company: 'VIPKID',
     title: '资深数据库工程师',
     links: [
@@ -373,7 +353,6 @@ const data = [
   },
   {
     name: '常彦德',
-    avatar: '',
     company: 'UCloud',
     title: '存储组件产品部负责人',
     links: [
@@ -385,7 +364,6 @@ const data = [
   },
   {
     name: '汪涉洋',
-    avatar: '',
     company: '车好多',
     title: '大数据负责人',
     links: [
@@ -401,7 +379,6 @@ const data = [
   },
   {
     name: '李文杰',
-    avatar: '',
     company: '网易互娱',
     title: '数据研发工程师',
     links: [
@@ -417,7 +394,6 @@ const data = [
   },
   {
     name: '贾世闻',
-    avatar: '',
     company: '京东云',
     title: '架构师',
     links: [
@@ -429,7 +405,6 @@ const data = [
   },
   {
     name: '羊欢',
-    avatar: '',
     company: 'OPPO',
     title: '高级运维工程师',
     links: [
@@ -445,7 +420,6 @@ const data = [
   },
   {
     name: '胡然',
-    avatar: '',
     company: '龙湖地产',
     title: 'DBA 负责人',
     links: [
@@ -461,7 +435,6 @@ const data = [
   },
   {
     name: '冀浩东',
-    avatar: '',
     company: '转转',
     title: '数据库负责人',
     links: [
@@ -477,7 +450,6 @@ const data = [
   },
   {
     name: '张亿皓',
-    avatar: '',
     company: '小红书',
     title: '大数据研发工程师',
     links: [
@@ -493,7 +465,6 @@ const data = [
   },
   {
     name: '闫晓宇',
-    avatar: '',
     company: '得物',
     title: '数据库团队负责人',
     links: [

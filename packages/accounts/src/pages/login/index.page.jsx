@@ -40,29 +40,37 @@ const Page = () => {
   const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError, true);
 
   return (
-    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={login}>
+    <Formik validationSchema={formSchema} initialValues={{ ...initialValues, loginType: 0 }} onSubmit={login}>
       {({ values, errors, touched, setFieldValue, setErrors, setTouched }) => (
         <Form>
           <FormikOption fieldName={loginType.name}>
             {({ option }) => (
               <>
-                <FormItem name={phone.name} hidden={option !== LOGIN_TYPE.VERIFY_CODE}>
-                  <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...phone} size="large" />
-                </FormItem>
-                <FormItem name={verifyCode.name} hidden={option !== LOGIN_TYPE.VERIFY_CODE}>
-                  <VerifyInput
-                    {...verifyCode}
-                    sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
-                    buttonDisabled={errors[phone.name] || !values[phone.name]}
-                    size="large"
-                  />
-                </FormItem>
-                <FormItem name={identifier.name} hidden={option !== LOGIN_TYPE.PASSWORD}>
-                  <Input {...identifier} size="large" />
-                </FormItem>
-                <FormItem name={password.name} hidden={option !== LOGIN_TYPE.PASSWORD}>
-                  <Input.Password {...password} size="large" />
-                </FormItem>
+                {option === LOGIN_TYPE.VERIFY_CODE && (
+                  <>
+                    <FormItem name={phone.name}>
+                      <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...phone} size="large" />
+                    </FormItem>
+                    <FormItem name={verifyCode.name}>
+                      <VerifyInput
+                        {...verifyCode}
+                        sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
+                        buttonDisabled={errors[phone.name] || !values[phone.name]}
+                        size="large"
+                      />
+                    </FormItem>
+                  </>
+                )}
+                {option === LOGIN_TYPE.PASSWORD && (
+                  <>
+                    <FormItem name={identifier.name}>
+                      <Input {...identifier} size="large" />
+                    </FormItem>
+                    <FormItem name={password.name}>
+                      <Input.Password {...password} size="large" />
+                    </FormItem>
+                  </>
+                )}
                 <ActionLink onClick={() => setFieldValue(loginType.name, 1 - option)}>
                   {LOGIN_TYPE_NAME[1 - option]}
                 </ActionLink>

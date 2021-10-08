@@ -37,7 +37,7 @@ export const buildInitialValues = (formData) => {
   const iterateObject = (obj, initialValues) => {
     const { name, initialValue, ...rest } = obj;
     if (name) {
-      initialValues[name] = initialValue ?? undefined;
+      initialValues[name] = initialValue || undefined;
       delete obj.initialValue;
     }
     for (const key in rest) {

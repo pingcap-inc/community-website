@@ -40,7 +40,7 @@ const Page = () => {
   const sendVerifyCode = wrapFormikSubmitFunction(verifyCode.sendVerifyCode, handleError, true);
 
   return (
-    <Formik validationSchema={formSchema} initialValues={initialValues} onSubmit={login}>
+    <Formik validationSchema={formSchema} initialValues={{ ...initialValues, loginType: 0 }} onSubmit={login}>
       {({ values, errors, touched, setFieldValue, setErrors, setTouched }) => (
         <Form>
           <FormikOption fieldName={loginType.name}>

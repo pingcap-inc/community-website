@@ -44,38 +44,38 @@ const Page = () => {
       {({ values, errors, touched, setFieldValue, setErrors, setTouched }) => (
         <Form>
           <FormikOption fieldName={loginType.name}>
-            {({ option }) =>
-              option === LOGIN_TYPE.VERIFY_CODE ? (
-                <>
-                  <FormItem name={phone.name}>
-                    <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...phone} size="large" />
-                  </FormItem>
-                  <FormItem name={verifyCode.name}>
-                    <VerifyInput
-                      {...verifyCode}
-                      sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
-                      buttonDisabled={errors[phone.name] || !values[phone.name]}
-                      size="large"
-                    />
-                  </FormItem>
-                  <ActionLink onClick={() => setFieldValue(loginType.name, 1 - option)}>
-                    {LOGIN_TYPE_NAME[1 - option]}
-                  </ActionLink>
-                </>
-              ) : (
-                <>
-                  <FormItem name={identifier.name}>
-                    <Input {...identifier} size="large" />
-                  </FormItem>
-                  <FormItem name={password.name}>
-                    <Input.Password {...password} size="large" />
-                  </FormItem>
-                  <ActionLink onClick={() => setFieldValue(loginType.name, 1 - option)}>
-                    {LOGIN_TYPE_NAME[1 - option]}
-                  </ActionLink>
-                </>
-              )
-            }
+            {({ option }) => (
+              <>
+                {option === LOGIN_TYPE.VERIFY_CODE && (
+                  <>
+                    <FormItem name={phone.name}>
+                      <Input prefix={<PhoneInputPrefix>+86</PhoneInputPrefix>} {...phone} size="large" />
+                    </FormItem>
+                    <FormItem name={verifyCode.name}>
+                      <VerifyInput
+                        {...verifyCode}
+                        sendVerifyCode={() => sendVerifyCode(values[phone.name], { setErrors, setTouched })}
+                        buttonDisabled={errors[phone.name] || !values[phone.name]}
+                        size="large"
+                      />
+                    </FormItem>
+                  </>
+                )}
+                {option === LOGIN_TYPE.PASSWORD && (
+                  <>
+                    <FormItem name={identifier.name}>
+                      <Input {...identifier} size="large" />
+                    </FormItem>
+                    <FormItem name={password.name}>
+                      <Input.Password {...password} size="large" />
+                    </FormItem>
+                  </>
+                )}
+                <ActionLink onClick={() => setFieldValue(loginType.name, 1 - option)}>
+                  {LOGIN_TYPE_NAME[1 - option]}
+                </ActionLink>
+              </>
+            )}
           </FormikOption>
           <SubmitButton>登录</SubmitButton>
           <Flex>

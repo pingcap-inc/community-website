@@ -115,9 +115,9 @@
     "writeBlog": "写博客",
     "articleCategories": "文章分类",
     "intro": "「博客」是社区的技术文章集合地，用户可以在这里查看、分享高质量的博客文章，学习干货。",
-    "comply": "发表、分享技术文章请自觉遵守",
+    "comply": "发表、分享技术文章请参考",
     "doc": {
-      "text": "发布须知",
+      "text": "技术文章撰写&发布指引",
       "link": "https://asktug.com/t/topic/69773"
     },
     "categories": [
@@ -250,7 +250,7 @@
         {
           "title": "深入了解 TiDB",
           "desc": "帮助你熟悉分布式数据库的基本概念，在脑海中建⽴知识库，包括但不限于分布式数据库中的 SQL 语⾔、关键组件、算法。已经熟悉这些内容的同学可以跳过本节。 ",
-          "link": "https://pingcap.github.io/tidb-dev-guide/understand-tidb/introduction-of-tidb-architecture"
+          "link": "https://pingcap.github.io/tidb-dev-guide/understand-tidb/introduction.html"
         },
         {
           "title": "项目管理",

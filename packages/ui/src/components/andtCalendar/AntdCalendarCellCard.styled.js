@@ -3,8 +3,7 @@ import { Space } from 'antd';
 import { colors, mixins } from '../../index';
 
 export const Wrapper = styled.div`
-  //box-sizing: border-box;
-  //padding: 20px;
+  padding: 8px;
   width: 300px;
   //background-color: #e9eaee;
 `;
@@ -67,8 +66,4 @@ export const Location = styled.div`
       }
     }
   }
-`;
-
-export const Intro = styled.div`
-  font-size: 16px;
 `;

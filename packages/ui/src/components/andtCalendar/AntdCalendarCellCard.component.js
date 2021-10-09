@@ -9,7 +9,7 @@ const AntdCalendarCellCard = ({ data }) => {
 
   return (
     <Styled.Wrapper>
-      <Styled.Header>
+      <Styled.Header align="center">
         <div
           style={{ width: 8, height: 8, borderRadius: 8, overflow: 'hidden', backgroundColor: getColorByType(type) }}
         />

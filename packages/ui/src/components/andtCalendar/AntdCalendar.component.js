@@ -33,7 +33,7 @@ const AntdCalendar = ({ data }) => {
       headerRender={({ value }) => (
         <AntdCalendarHeader value={value} handlePrev={handlePrev} handleNext={handleNext} handleNow={handleNow} />
       )}
-      dateCellRender={(value) => <AntdCalendarCell date={value} data={data} />}
+      dateFullCellRender={(value) => <AntdCalendarCell date={value} data={data} />}
     />
   );
 };

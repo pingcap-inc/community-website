@@ -1,15 +1,22 @@
 import React from 'react';
+import { EnvironmentOutlined } from '@ant-design/icons';
 
 import * as Styled from './AntdCalendarCellCard.styled';
+import { getColorByType } from './utils';
 
 const AntdCalendarCellCard = ({ data }) => {
   const { startDate, endDate, title, location, type, link, category, image } = data;
 
   return (
     <Styled.Wrapper>
-      <Styled.Date>
-        {startDate} - {endDate}
-      </Styled.Date>
+      <Styled.Header>
+        <div
+          style={{ width: 8, height: 8, borderRadius: 8, overflow: 'hidden', backgroundColor: getColorByType(type) }}
+        />
+        <Styled.Date>
+          {startDate} - {endDate}
+        </Styled.Date>
+      </Styled.Header>
       <Styled.Title>
         <a href={link}>{title}</a>
       </Styled.Title>
@@ -17,12 +24,13 @@ const AntdCalendarCellCard = ({ data }) => {
         <img src={image} alt={title} />
       </Styled.Image>
       <Styled.Location>
-        {location} | {type} | {category}
+        <ul>
+          <li>
+            <EnvironmentOutlined /> {location}
+          </li>
+          <li>{category}</li>
+        </ul>
       </Styled.Location>
-      <Styled.Intro>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium aliquam debitis error eum impedit ipsa
-        ipsam laborum praesentium, quisquam voluptas! Aut dolor dolorem est fugiat ipsum provident quia quidem tenetur?
-      </Styled.Intro>
     </Styled.Wrapper>
   );
 };

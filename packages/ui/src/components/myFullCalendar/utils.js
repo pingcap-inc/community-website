@@ -4,7 +4,4 @@ const typeToColorMap = {
   other: '#00AEEF',
 };
 
-export const getColorByType = (type) => {
-  if (type in Object.keys(typeToColorMap)) return typeToColorMap[type];
-  else return typeToColorMap.other;
-};
+export const getColorByType = (type) => typeToColorMap[type] ?? typeToColorMap.other;

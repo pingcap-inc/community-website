@@ -4,8 +4,10 @@ import { Button, Row } from 'antd';
 import { Trans, useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
 
+import { MyFullCalendar } from '@tidb-community/ui';
+
 import * as Styled from './about.styled';
-import { Link, MyFullCalendar } from '~/components';
+import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 import { PageDataContext } from '~/context';
 

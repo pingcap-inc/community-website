@@ -8,15 +8,8 @@ module.exports = {
   // will also work for any other 3rd-party packages that attempt to do this.
   overrides: [
     {
-      include: ['./node_modules', './node_modules/@fullcalendar/common/'],
-      plugins: [
-        [
-          'babel-plugin-transform-require-ignore',
-          {
-            extensions: ['.css'],
-          },
-        ],
-      ],
+      include: ['./node_modules'],
+      plugins: [['babel-plugin-transform-import-ignore', { patterns: ['.css'] }]],
     },
   ],
 };

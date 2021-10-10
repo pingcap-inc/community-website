@@ -78,7 +78,15 @@ if (process.env.ENABLE_SENTRY === 'true') {
 
 // for transpiling all ESM @fullcalendar/* packages
 // also, for piping fullcalendar thru babel (to learn why, see babel.config.js)
-const withTM = require('next-transpile-modules')(['@fullcalendar/react', '@fullcalendar/daygrid']);
+const withTM = require('next-transpile-modules')([
+  // Need to specify all @fullcalendar modules separately
+  // with next-transpile-modules^6.x …
+  // refer to https://github.com/fullcalendar/fullcalendar-example-projects/pull/19 for more detail
+  '@fullcalendar/core',
+  '@fullcalendar/react',
+  '@fullcalendar/common',
+  '@fullcalendar/daygrid',
+]);
 
 module.exports = withTM(nextConfig);
 // module.exports = nextConfig

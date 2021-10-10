@@ -2,6 +2,7 @@ export { default as ActivityBanner } from './activityBanner';
 export { default as ActivityCards } from './activityCards';
 export { default as BenefitCards } from './benefitCards';
 export { default as AntdCalendar } from './andtCalendar';
+export { default as MyFullCalendar } from './myFullCalendar';
 export { default as CountDown } from './countDown';
 export { default as Footer } from './footer';
 export { default as Header } from './header';

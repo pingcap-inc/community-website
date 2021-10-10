@@ -10,6 +10,7 @@ export {
   ActivityCards,
   BenefitCards,
   AntdCalendar,
+  MyFullCalendar,
   CountDown,
   Footer,
   Header,

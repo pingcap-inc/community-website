@@ -6,18 +6,11 @@ import AntdCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType } from './utils';
 
 const MyFullCalendar = ({ data }) => {
-  const handleDateClick = (date) => {
-    alert(date);
-  };
-
-  function renderEventContent(eventInfo) {
-    const cardData = eventInfo.event._def.extendedProps;
-    return (
-      <Popover content={<AntdCalendarCellCard data={cardData} />} title="" trigger="click">
-        <div>{eventInfo.event.title}</div>
-      </Popover>
-    );
-  }
+  const renderEventContent = (eventInfo) => (
+    <Popover content={<AntdCalendarCellCard data={eventInfo.event._def.extendedProps} />} title="" trigger="click">
+      <div>{eventInfo.event.title}</div>
+    </Popover>
+  );
 
   data = data?.map((value) => ({
     ...value,
@@ -30,9 +23,8 @@ const MyFullCalendar = ({ data }) => {
     <FullCalendar
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
-      // weekends={false}
       events={data}
-      dateClick={handleDateClick}
+      // dateClick={handleDateClick}
       eventContent={renderEventContent}
     />
   );

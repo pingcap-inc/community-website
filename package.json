@@ -37,8 +37,6 @@
   "dependencies": {
     "@ant-design/icons": "4.6.4",
     "@formatjs/intl-numberformat": "7.2.3",
-    "@fullcalendar/daygrid": "5.9.0",
-    "@fullcalendar/react": "5.9.0",
     "@reduxjs/toolkit": "1.6.1",
     "@sentry/nextjs": "6.12.0",
     "ahooks": "2.10.9",
@@ -75,6 +73,7 @@
     "babel-eslint": "10.1.0",
     "babel-jest": "27.1.0",
     "babel-plugin-styled-components": "1.13.2",
+    "babel-plugin-transform-require-ignore": "^0.1.1",
     "babel-preset-react-app": "10.0.0",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",

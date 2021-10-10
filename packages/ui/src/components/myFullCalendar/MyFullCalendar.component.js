@@ -19,7 +19,7 @@ const MyFullCalendar = ({ data }) => {
     );
   }
 
-  data = data.map((value) => ({
+  data = data?.map((value) => ({
     ...value,
     _title: value.title,
     start: value.startDate,

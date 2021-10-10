@@ -9,11 +9,7 @@ export default {
 };
 
 const Template = ({ ...args }) => {
-  return (
-    <>
-      <MyFullCalendar {...args} />
-    </>
-  );
+  return <MyFullCalendar {...args} />;
 };
 
 export const myFullCalendar = Template.bind({});
@@ -23,7 +19,7 @@ const imageUrl =
 const linkUrl = 'https://tidb.io/';
 
 myFullCalendar.args = {
-  events: [
+  data: [
     {
       title: '2020 ⿊客⻢拉松with这里是超级长的标题1',
       type: 'activity',

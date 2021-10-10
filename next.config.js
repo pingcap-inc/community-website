@@ -1,3 +1,5 @@
+let nextConfig;
+
 const path = require('path');
 const { withSentryConfig } = require('@sentry/nextjs');
 
@@ -69,7 +71,14 @@ if (process.env.ENABLE_SENTRY === 'true') {
       auto: true,
     },
   };
-  module.exports = withSentryConfig(config, SentryWebpackPluginOptions);
+  nextConfig = withSentryConfig(config, SentryWebpackPluginOptions);
 } else {
-  module.exports = config;
+  nextConfig = config;
 }
+
+// for transpiling all ESM @fullcalendar/* packages
+// also, for piping fullcalendar thru babel (to learn why, see babel.config.js)
+const withTM = require('next-transpile-modules')(['@fullcalendar/react', '@fullcalendar/daygrid']);
+
+module.exports = withTM(nextConfig);
+// module.exports = nextConfig

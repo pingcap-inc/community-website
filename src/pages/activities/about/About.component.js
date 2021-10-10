@@ -3,7 +3,7 @@ import React, { useContext, useRef } from 'react';
 import { Button, Row } from 'antd';
 import { Trans, useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
-import { AntdCalendar } from '@tidb-community/ui';
+import { MyFullCalendar } from '@tidb-community/ui';
 
 import * as Styled from './about.styled';
 import { Link } from '~/components';
@@ -57,7 +57,7 @@ const About = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <AntdCalendar data={activities} />
+            <MyFullCalendar data={activities} />
           </Styled.RightPanel>
         </Row>
       </Styled.Content>

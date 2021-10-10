@@ -5,20 +5,21 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import AntdCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType } from './utils';
 
-const MyFullCalendar = ({ events }) => {
+const MyFullCalendar = ({ data }) => {
   const handleDateClick = (date) => {
     alert(date);
   };
 
   function renderEventContent(eventInfo) {
-    const data = eventInfo.event._def.extendedProps;
+    const cardData = eventInfo.event._def.extendedProps;
     return (
-      <Popover content={<AntdCalendarCellCard data={data} />} title="" trigger="click">
+      <Popover content={<AntdCalendarCellCard data={cardData} />} title="" trigger="click">
         <div>{eventInfo.event.title}</div>
       </Popover>
     );
   }
-  events = events.map((value) => ({
+
+  data = data.map((value) => ({
     ...value,
     _title: value.title,
     start: value.startDate,
@@ -30,7 +31,7 @@ const MyFullCalendar = ({ events }) => {
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
       // weekends={false}
-      events={events}
+      events={data}
       dateClick={handleDateClick}
       eventContent={renderEventContent}
     />

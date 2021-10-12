@@ -29,8 +29,9 @@ const MyFullCalendar = ({ data }) => {
       headerToolbar={{
         start: 'title', // will normally be on the left. if RTL, will be on the right
         center: '',
-        end: 'prev,next' // will normally be on the right. if RTL, will be on the left
+        end: 'prev,next', // will normally be on the right. if RTL, will be on the left
       }}
+      contentHeight="auto"
     />
   );
 };

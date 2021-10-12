@@ -72,7 +72,7 @@ export const CardInfo = styled(Col).attrs((props) => ({
 
 export const CalendarCard = styled.div`
   ${mixins.boxShadow()};
-  padding: 10px;
+  padding: 20px;
   border-radius: 6px;
   border: 1px solid ${colors.T2};
   background: ${colors.M1};

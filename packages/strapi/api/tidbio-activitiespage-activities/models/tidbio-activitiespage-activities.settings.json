@@ -22,6 +22,10 @@
       "type": "date",
       "required": true
     },
+    "endDate": {
+      "type": "date",
+      "required": true
+    },
     "image": {
       "collection": "file",
       "via": "related",
@@ -38,10 +42,6 @@
     },
     "location": {
       "type": "string"
-    },
-    "endDate": {
-      "type": "date",
-      "required": true
     }
   }
 }

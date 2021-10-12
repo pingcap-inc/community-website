@@ -26,6 +26,11 @@ const MyFullCalendar = ({ data }) => {
       events={data}
       // dateClick={handleDateClick}
       eventContent={renderEventContent}
+      headerToolbar={{
+        start: 'title', // will normally be on the left. if RTL, will be on the right
+        center: '',
+        end: 'prev,next' // will normally be on the right. if RTL, will be on the left
+      }}
     />
   );
 };

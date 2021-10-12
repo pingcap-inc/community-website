@@ -33,6 +33,9 @@ const About = () => {
     linkUtils.handleRedirect(router, link);
   };
 
+  const descLength = 50;
+  const desc = cardLang.desc.length > descLength ? cardLang.desc.substr(0, descLength) + '...' : cardLang.desc;
+
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
@@ -53,11 +56,11 @@ const About = () => {
 
             <Styled.Card ref={cardRef}>
               <Styled.CardImg $isVertical={isVerticalCard}>
-                <Image alt={cardLang.title} src={cardLang.image} layout="fill" objectFit="scale-down" />
+                <Image alt={cardLang.title} src={cardLang.image} layout="fill" objectFit="cover" />
               </Styled.CardImg>
               <Styled.CardInfo $isVertical={isVerticalCard}>
                 <h3>{cardLang.title}</h3>
-                <p>{cardLang.desc}</p>
+                <p>{desc}</p>
                 <Button type="primary" size="small" onClick={handleCardButtonClick(cardLang.link)}>
                   {cardLang.button}
                 </Button>
@@ -66,7 +69,9 @@ const About = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <MyFullCalendar data={activities} />
+            <Styled.CalendarCard>
+              <MyFullCalendar data={activities} />
+            </Styled.CalendarCard>
           </Styled.RightPanel>
         </Row>
       </Styled.Content>

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Col, Row } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 const { Content, Section, Title } = Styled;
 
@@ -50,6 +50,7 @@ export const CardInfo = styled(Col).attrs((props) => ({
   span: props.$isVertical ? 24 : 12,
 }))`
   padding: 1rem 2rem;
+  max-height: 250px;
 
   h3,
   p {
@@ -67,4 +68,13 @@ export const CardInfo = styled(Col).attrs((props) => ({
     font-size: 14px;
     color: ${colors.F2};
   }
+`;
+
+export const CalendarCard = styled.div`
+  ${mixins.boxShadow()};
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid ${colors.T2};
+  background: ${colors.M1};
+  overflow: hidden;
 `;

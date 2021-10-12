@@ -14,7 +14,8 @@ const FullCalendarCellCard = ({ data }) => {
           style={{ width: 8, height: 8, borderRadius: 8, overflow: 'hidden', backgroundColor: getColorByType(type) }}
         />
         <Styled.Date>
-          {startDate} - {endDate}
+          {startDate}
+          {endDate !== undefined ? ' - ' + endDate : ''}
         </Styled.Date>
       </Styled.Header>
       <Styled.Title>

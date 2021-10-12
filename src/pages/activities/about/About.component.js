@@ -3,7 +3,7 @@ import React, { useContext, useRef } from 'react';
 import { Button, Row } from 'antd';
 import { Trans, useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
-import { link as linkUtils } from '~/utils';
+import { common as commonUtils, link as linkUtils } from '~/utils';
 
 import { MyFullCalendar } from '@tidb-community/ui';
 
@@ -70,7 +70,12 @@ const About = () => {
 
           <Styled.RightPanel>
             <Styled.CalendarCard>
-              <MyFullCalendar data={activities} />
+              <MyFullCalendar
+                data={activities.map((activity) => {
+                  activity.image = commonUtils.getStrapiImgProps(activity.image);
+                  return activity;
+                })}
+              />
             </Styled.CalendarCard>
           </Styled.RightPanel>
         </Row>

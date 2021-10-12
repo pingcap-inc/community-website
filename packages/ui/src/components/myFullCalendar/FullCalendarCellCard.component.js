@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { EnvironmentOutlined } from '@ant-design/icons';
 
 import * as Styled from './FullCalendarCellCard.styled';
@@ -22,7 +23,7 @@ const FullCalendarCellCard = ({ data }) => {
         <a href={link}>{_title}</a>
       </Styled.Title>
       <Styled.Image>
-        <img src={image} alt={_title} />
+        <Image src={image} alt={_title} layout="fill" objectFit="cover" />
       </Styled.Image>
       <Styled.Location>
         <ul>

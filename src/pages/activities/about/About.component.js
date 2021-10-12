@@ -70,12 +70,7 @@ const About = () => {
 
           <Styled.RightPanel>
             <Styled.CalendarCard>
-              <MyFullCalendar
-                data={activities.map((activity) => {
-                  activity.image = activity.image[0].src;
-                  return activity;
-                })}
-              />
+              <MyFullCalendar data={activities.map((activity) => ({ ...activity, image: activity.image[0].src }))} />
             </Styled.CalendarCard>
           </Styled.RightPanel>
         </Row>

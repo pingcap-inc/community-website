@@ -3,15 +3,15 @@ import React, { useContext, useRef } from 'react';
 import { Button, Row } from 'antd';
 import { Trans, useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
-import { useRouter } from 'next/router';
+import { link as linkUtils } from '~/utils';
 
 import { MyFullCalendar } from '@tidb-community/ui';
 
-import { common as commonUtils, link as linkUtils } from '~/utils';
 import * as Styled from './about.styled';
 import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 import { PageDataContext } from '~/context';
+import { useRouter } from 'next/router';
 
 const About = () => {
   const cardRef = useRef();
@@ -70,13 +70,7 @@ const About = () => {
 
           <Styled.RightPanel>
             <Styled.CalendarCard>
-              <MyFullCalendar
-                data={activities.map((v, i) => ({
-                  key: i,
-                  ...v,
-                  image: commonUtils.getStrapiImgProps(i.image),
-                }))}
-              />
+              <MyFullCalendar data={activities} />
             </Styled.CalendarCard>
           </Styled.RightPanel>
         </Row>

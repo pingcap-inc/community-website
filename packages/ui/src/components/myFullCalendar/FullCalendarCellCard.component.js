@@ -6,6 +6,7 @@ import { getColorByType } from './utils';
 
 const FullCalendarCellCard = ({ data }) => {
   const { startDate, endDate, _title, location, type, link, category, image } = data;
+  console.log('FullCalendarCellCard data', data);
   return (
     <Styled.Wrapper>
       <Styled.Header align="center">

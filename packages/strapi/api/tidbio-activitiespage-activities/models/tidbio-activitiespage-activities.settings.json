@@ -18,13 +18,14 @@
     "type": {
       "type": "string"
     },
+    "date": {
+      "type": "date"
+    },
     "startDate": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "endDate": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "image": {
       "collection": "file",

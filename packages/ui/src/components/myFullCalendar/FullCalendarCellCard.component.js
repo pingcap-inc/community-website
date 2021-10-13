@@ -6,7 +6,7 @@ import * as Styled from './FullCalendarCellCard.styled';
 import { getColorByType } from './utils';
 
 const FullCalendarCellCard = ({ data }) => {
-  const { startDate, endDate, _title, location, type, link, category, image } = data;
+  const { date, startDate, endDate, _title, location, type, link, category, image } = data;
   console.log('FullCalendarCellCard data', data);
   return (
     <Styled.Wrapper>
@@ -14,10 +14,7 @@ const FullCalendarCellCard = ({ data }) => {
         <div
           style={{ width: 8, height: 8, borderRadius: 8, overflow: 'hidden', backgroundColor: getColorByType(type) }}
         />
-        <Styled.Date>
-          {startDate}
-          {endDate !== undefined ? ' - ' + endDate : ''}
-        </Styled.Date>
+        <Styled.Date>{date ?? `${startDate} - ${endDate}`}</Styled.Date>
       </Styled.Header>
       <Styled.Title>
         <a href={link}>{_title}</a>

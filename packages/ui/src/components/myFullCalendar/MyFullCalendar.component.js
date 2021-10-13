@@ -14,10 +14,10 @@ const MyFullCalendar = ({ data }) => {
 
   data = data?.map((value) => ({
     ...value,
-    _title: value.title,
     start: value.startDate,
     end: value.endDate,
     color: getColorByType(value.type),
+    card: value,
   }));
   return (
     <FullCalendar

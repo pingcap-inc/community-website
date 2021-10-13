@@ -1,13 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 import { EnvironmentOutlined } from '@ant-design/icons';
 
 import * as Styled from './FullCalendarCellCard.styled';
 import { getColorByType } from './utils';
 
 const FullCalendarCellCard = ({ data }) => {
-  const { date, startDate, endDate, _title, location, type, link, category, image } = data;
-  console.log('FullCalendarCellCard data', data);
+  const {
+    card: { date, startDate, endDate, title, location, type, link, category, image },
+  } = data;
   return (
     <Styled.Wrapper>
       <Styled.Header align="center">
@@ -17,10 +17,10 @@ const FullCalendarCellCard = ({ data }) => {
         <Styled.Date>{date ?? `${startDate} - ${endDate}`}</Styled.Date>
       </Styled.Header>
       <Styled.Title>
-        <a href={link}>{_title}</a>
+        <a href={link}>{title}</a>
       </Styled.Title>
       <Styled.Image>
-        <Image src={image} alt={_title} layout="fill" objectFit="cover" />
+        <img src={image.src} alt={title} />
       </Styled.Image>
       <Styled.Location>
         <ul>

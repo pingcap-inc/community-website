@@ -79,9 +79,9 @@ export const CalendarCard = styled.div`
   overflow: hidden;
   .fc-button-primary {
     color: #1e2b37;
-    background-color: rgba(0,0,0,0) !important;
-    border-color: rgba(0,0,0,0) !important;
-    &:hover {
+    background-color: rgba(0, 0, 0, 0) !important;
+    &:hover,
+    &:active {
       color: #1e2b37;
     }
   }

@@ -23,7 +23,7 @@ export const DropdownWrapper = styled(Col).attrs({
   }
 `;
 
-export const ActivityCard = styled(Col).attrs({
+export const EventCard = styled(Col).attrs({
   xs: 24,
   sm: 12,
   md: 8,
@@ -67,6 +67,11 @@ export const ImageWrapper = styled.div`
   overflow: hidden;
   height: 150px;
   margin-bottom: 0.5rem;
+`;
+
+export const SpinContainer = styled.div`
+  ${mixins.flexCenter()};
+  margin: 3.5rem auto;
 `;
 
 export const Pagination = styled(AntPagination).attrs({

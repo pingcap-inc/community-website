@@ -54,7 +54,7 @@ export const navItems = [
   },
   {
     title: 'Events',
-    link: 'https://tidb.io/archived/events/#activities',
+    link: 'https://tidb.io/events',
   },
   {
     title: 'Community',

@@ -21,6 +21,12 @@
     "date": {
       "type": "date"
     },
+    "startDate": {
+      "type": "date"
+    },
+    "endDate": {
+      "type": "date"
+    },
     "image": {
       "collection": "file",
       "via": "related",

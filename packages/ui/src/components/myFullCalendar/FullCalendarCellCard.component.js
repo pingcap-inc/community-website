@@ -8,13 +8,21 @@ const FullCalendarCellCard = ({ data }) => {
   const {
     card: { date, startDate, endDate, title, location, type, link, category, image },
   } = data;
+
+  let actualDate;
+  if (!!startDate && !!endDate) {
+    actualDate = `${startDate} - ${endDate}`;
+  } else {
+    actualDate = date;
+  }
+
   return (
     <Styled.Wrapper>
       <Styled.Header align="center">
         <div
           style={{ width: 8, height: 8, borderRadius: 8, overflow: 'hidden', backgroundColor: getColorByType(type) }}
         />
-        <Styled.Date>{date ?? `${startDate} - ${endDate}`}</Styled.Date>
+        <Styled.Date>{actualDate}</Styled.Date>
       </Styled.Header>
       <Styled.Title>
         <a href={link}>{title}</a>

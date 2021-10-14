@@ -16,7 +16,7 @@ const MyFullCalendar = ({ data }) => {
     ...value,
     start: value.startDate,
     end: value.endDate,
-    color: getColorByType(value.type),
+    color: getColorByType(value.category),
     card: value,
   }));
   return (

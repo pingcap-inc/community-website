@@ -20,7 +20,13 @@ const FullCalendarCellCard = ({ data }) => {
     <Styled.Wrapper>
       <Styled.Header align="center">
         <div
-          style={{ width: 8, height: 8, borderRadius: 8, overflow: 'hidden', backgroundColor: getColorByType(type) }}
+          style={{
+            width: 8,
+            height: 8,
+            borderRadius: 8,
+            overflow: 'hidden',
+            backgroundColor: getColorByType(category),
+          }}
         />
         <Styled.Date>{actualDate}</Styled.Date>
       </Styled.Header>

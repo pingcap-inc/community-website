@@ -91,7 +91,8 @@ const Page = () => {
   };
 
   // eslint-disable-next-line no-console
-  console.log('tidbio-activitiespage-activities', activities);
+  console.log('tidbio-activitiespage params', params);
+  console.log('tidbio-activitiespage-activities', data);
 
   return (
     <PageDataContext.Provider value={{ data }}>

@@ -25,7 +25,7 @@ const About = () => {
   const isVerticalCard = cardSize.width < 500;
 
   const { data } = useContext(PageDataContext);
-  const { activities } = data;
+  const { events } = data;
 
   const router = useRouter();
   const handleCardButtonClick = (link) => (e) => {
@@ -71,14 +71,16 @@ const About = () => {
           <Styled.RightPanel>
             <Styled.CalendarCard>
               <MyFullCalendar
-                data={activities.map((activity, idx) => {
-                  const image = commonUtils.getStrapiImgProps(activity.image);
-                  return {
-                    key: idx,
-                    ...activity,
-                    image,
-                  };
-                })}
+                data={
+                  events?.map((val, idx) => {
+                    const image = commonUtils.getStrapiImgProps(val.image);
+                    return {
+                      key: idx,
+                      ...val,
+                      image,
+                    };
+                  }) ?? []
+                }
               />
             </Styled.CalendarCard>
           </Styled.RightPanel>

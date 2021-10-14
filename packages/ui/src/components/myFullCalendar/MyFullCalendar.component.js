@@ -4,6 +4,7 @@ import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import FullCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType } from './utils';
+import moment from 'moment';
 
 const MyFullCalendar = ({ data }) => {
   const renderEventContent = (eventInfo) => (
@@ -12,10 +13,11 @@ const MyFullCalendar = ({ data }) => {
     </Popover>
   );
 
+  const dateFormat = 'YYYY-MM-DD';
   data = data?.map((value) => ({
     ...value,
     start: value.startDate,
-    end: value.endDate,
+    end: moment(value.endDate, dateFormat).add(1, 'days').format(dateFormat),
     color: getColorByType(value.category),
     card: value,
   }));

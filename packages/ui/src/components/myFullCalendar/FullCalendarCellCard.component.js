@@ -6,7 +6,7 @@ import { getColorByType } from './utils';
 
 const FullCalendarCellCard = ({ data }) => {
   const {
-    card: { date, startDate, endDate, title, location, type, link, category, image },
+    card: { date, startDate, endDate, title, location, link, category, image },
   } = data;
 
   let actualDate;

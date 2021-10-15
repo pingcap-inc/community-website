@@ -80,9 +80,24 @@ export const CalendarCard = styled.div`
   .fc-button-primary {
     color: #1e2b37;
     background-color: rgba(0, 0, 0, 0) !important;
+  }
+  .fc-button {
     &:hover,
-    &:active {
-      color: #1e2b37;
+    &:active,
+    &:focus,
+    &:focus-visible {
+      color: #1e2b37 !important;
+      box-shadow: 0 0 0 0;
+    }
+  }
+  .fc-event-main {
+    height: 12px;
+    line-height: 12px;
+    font-size: 10px;
+  }
+  .fc-daygrid-day-number {
+    &:hover {
+      color: ${colors.B1};
     }
   }
 `;

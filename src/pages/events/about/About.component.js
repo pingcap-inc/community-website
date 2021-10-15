@@ -53,7 +53,9 @@ const About = () => {
                 />
               </p>
             </Styled.Desc>
+          </Styled.LeftPanel>
 
+          <Styled.RightPanel>
             <Styled.Card ref={cardRef}>
               <Styled.CardImg $isVertical={isVerticalCard}>
                 <Image alt={cardLang.title} src={cardLang.image} layout="fill" objectFit="cover" />
@@ -66,24 +68,24 @@ const About = () => {
                 </Button>
               </Styled.CardInfo>
             </Styled.Card>
-          </Styled.LeftPanel>
-
-          <Styled.RightPanel>
-            <Styled.CalendarCard>
-              <MyFullCalendar
-                data={
-                  events?.map((val, idx) => {
-                    const image = commonUtils.getStrapiImgProps(val.image);
-                    return {
-                      key: idx,
-                      ...val,
-                      image,
-                    };
-                  }) ?? []
-                }
-              />
-            </Styled.CalendarCard>
           </Styled.RightPanel>
+        </Row>
+
+        <Row>
+          <Styled.CalendarCard>
+            <MyFullCalendar
+              data={
+                events?.map((val, idx) => {
+                  const image = commonUtils.getStrapiImgProps(val.image);
+                  return {
+                    key: idx,
+                    ...val,
+                    image,
+                  };
+                }) ?? []
+              }
+            />
+          </Styled.CalendarCard>
         </Row>
       </Styled.Content>
     </Styled.Container>

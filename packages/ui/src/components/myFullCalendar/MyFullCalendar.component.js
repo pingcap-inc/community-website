@@ -18,7 +18,8 @@ const MyFullCalendar = ({ data }) => {
     ...value,
     start: value.startDate,
     end: moment(value.endDate, dateFormat).add(1, 'days').format(dateFormat),
-    color: getColorByType(value.category),
+    color: getColorByType(value.category) + '1E',
+    textColor: '#1e2b37',
     card: value,
   }));
   return (

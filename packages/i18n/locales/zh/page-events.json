@@ -17,10 +17,10 @@
         "desc": "“PingCAP DevCon” 是由 PingCAP 举办的年度顶级数据技术盛会，大会已连续举办三年，成为观测开源产业、数据库前瞻趋势的风向标。本次大会旨在探讨前沿科技与数字化趋势的融合，解读行业领袖观点，分享技术大咖实战经验，展示用户场景的多元化创新，并展现多元化数据技术生态。",
         "button": "前往查看",
         "link": "https://pingcap.com/zh/events/devcon2021/",
-        "image": "https://tidb.io/archived/images/community/devcon2021/entry-banner-mobile.png"
+        "image": "/images/activities/devcon2021.png"
       },
       {
-        "title": "TUG 企业行",
+        "title": "DevCon 2021 专区",
         "desc": "TUG 企业行系列活动是由 TiDB 社区主办，通过走进各互联网头部企业，与数据库/大数据专家面对面交流了解数据库/大数据前沿技术动态及应用实践。目前 TUG 企业行已成功在 VIPKID、爱奇艺、知乎、网易游戏、转转、喜马拉雅、UCloud、58同城、360 等十多家企业举办。",
         "button": "前往查看",
         "link": "https://asktug.com/c/community-activities/go-to-users",

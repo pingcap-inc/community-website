@@ -1,0 +1,20 @@
+.activity {
+  background-color: rgba(#FF6D78, .3);
+  &:hover {
+    background-color: #FF6D78 !important;
+  }
+}
+
+.meetup {
+  background-color: rgba(#4FC172, .3);
+  &:hover {
+    background-color: #4FC172 !important;
+  }
+}
+
+.other {
+  background-color: rgba(#00AEEF, .3);
+  &:hover {
+    background-color: #00AEEF !important;
+  }
+}

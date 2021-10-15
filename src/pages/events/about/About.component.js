@@ -63,7 +63,7 @@ const About = () => {
           <Styled.Title>{about.title}</Styled.Title>
           <Row gutter={[32, 32]}>
             {card.map((v, i) => (
-              <Col key={i} span={12}>
+              <Col key={i} sm={24} md={12}>
                 <Styled.Card ref={cardRef}>
                   <Styled.CardImg $isVertical={isVerticalCard}>
                     <Image alt={v.title} src={v.image} layout="fill" objectFit="cover" />

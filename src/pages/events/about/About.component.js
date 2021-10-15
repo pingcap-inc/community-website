@@ -1,14 +1,13 @@
 import Image from 'next/image';
 import React, { useContext, useRef } from 'react';
-import { Button, Row } from 'antd';
-import { Trans, useTranslation } from 'next-i18next';
+import { Button, Col, Row } from 'antd';
+import { useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
 import { common as commonUtils, link as linkUtils } from '~/utils';
 
 import { MyFullCalendar } from '@tidb-community/ui';
 
 import * as Styled from './about.styled';
-import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 import { PageDataContext } from '~/context';
 import { useRouter } from 'next/router';
@@ -19,8 +18,9 @@ const About = () => {
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-events');
 
-  const lang = t('about', { returnObjects: true });
-  const { paragraph2: paragraph2Lang, card: cardLang } = lang;
+  const calendar = t('calendar', { returnObjects: true });
+  const about = t('about', { returnObjects: true });
+  const { card } = about;
 
   const isVerticalCard = cardSize.width < 500;
 
@@ -33,45 +33,16 @@ const About = () => {
     linkUtils.handleRedirect(router, link);
   };
 
-  const descLength = 50;
-  const desc = cardLang.desc.length > descLength ? cardLang.desc.substr(0, descLength) + '...' : cardLang.desc;
+  const getDesc = (desc) => {
+    const descLength = 50;
+    return desc.length > descLength ? desc.substr(0, descLength) + '...' : desc;
+  };
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
       <Styled.Content>
-        <Row gutter={[32, 32]}>
-          <Styled.LeftPanel>
-            <Styled.Title>{lang.title}</Styled.Title>
-
-            <Styled.Desc>
-              <p>{lang.paragraph1}</p>
-              <p>
-                <Trans
-                  t={t}
-                  i18nKey={'about.paragraph2.text'}
-                  components={[<Link href={paragraph2Lang.link1} />, <Link href={paragraph2Lang.link2} />]}
-                />
-              </p>
-            </Styled.Desc>
-          </Styled.LeftPanel>
-
-          <Styled.RightPanel>
-            <Styled.Card ref={cardRef}>
-              <Styled.CardImg $isVertical={isVerticalCard}>
-                <Image alt={cardLang.title} src={cardLang.image} layout="fill" objectFit="cover" />
-              </Styled.CardImg>
-              <Styled.CardInfo $isVertical={isVerticalCard}>
-                <h3>{cardLang.title}</h3>
-                <p>{desc}</p>
-                <Button type="primary" size="small" onClick={handleCardButtonClick(cardLang.link)}>
-                  {cardLang.button}
-                </Button>
-              </Styled.CardInfo>
-            </Styled.Card>
-          </Styled.RightPanel>
-        </Row>
-
-        <Row>
+        <Styled.TopSection>
+          <Styled.Title>{calendar.title}</Styled.Title>
           <Styled.CalendarCard>
             <MyFullCalendar
               data={
@@ -86,7 +57,29 @@ const About = () => {
               }
             />
           </Styled.CalendarCard>
-        </Row>
+        </Styled.TopSection>
+
+        <Styled.TopSection>
+          <Styled.Title>{about.title}</Styled.Title>
+          <Row gutter={[32, 32]}>
+            {card.map((v, i) => (
+              <Col key={i} span={12}>
+                <Styled.Card ref={cardRef}>
+                  <Styled.CardImg $isVertical={isVerticalCard}>
+                    <Image alt={v.title} src={v.image} layout="fill" objectFit="cover" />
+                  </Styled.CardImg>
+                  <Styled.CardInfo $isVertical={isVerticalCard}>
+                    <h3>{v.title}</h3>
+                    <p>{getDesc(v.desc)}</p>
+                    <Button type="primary" size="small" onClick={handleCardButtonClick(v.link)}>
+                      {v.button}
+                    </Button>
+                  </Styled.CardInfo>
+                </Styled.Card>
+              </Col>
+            ))}
+          </Row>
+        </Styled.TopSection>
       </Styled.Content>
     </Styled.Container>
   );

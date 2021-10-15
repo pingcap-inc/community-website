@@ -22,6 +22,12 @@ export const RightPanel = styled(Col).attrs({
   md: { span: 12, order: 2 },
 })``;
 
+export const TopSection = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+`;
+
 export const Desc = styled.div`
   margin-bottom: 4rem;
 
@@ -87,7 +93,7 @@ export const CalendarCard = styled.div`
     &:focus,
     &:focus-visible {
       color: #1e2b37 !important;
-      box-shadow: 0 0 0 0;
+      box-shadow: 0 0 0 0 !important;
     }
   }
   .fc-event-main {

@@ -46,9 +46,10 @@ export const EventCard = styled(Col).attrs({
 
     li {
       line-height: 1.2;
+      font-size: 14px;
       display: inline-block;
-      padding-right: 0.5rem;
-      margin-right: 0.5rem;
+      padding-right: 0.25rem;
+      margin-right: 0.25rem;
       color: ${colors.F2};
       border-right: 1px solid ${colors.F2};
 

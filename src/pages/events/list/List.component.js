@@ -29,7 +29,7 @@ const Dropdown = ({ name, placeholder, options }) => (
   </Styled.DropdownWrapper>
 );
 
-const Event = ({ title, link, location, type, date, image }) => {
+const Event = ({ title, link, location, type, date, endDate, startDate, image }) => {
   const imgProps = {
     alt: title,
     src: image,
@@ -40,6 +40,16 @@ const Event = ({ title, link, location, type, date, image }) => {
     blurDataURL:
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII=',
   };
+
+  const dateObj = date ?? startDate;
+  let durationObj;
+  if (date) {
+    durationObj = null;
+  } else if (endDate && startDate) {
+    durationObj = dayjs(endDate).diff(dayjs(startDate), 'days');
+  } else {
+    durationObj = null;
+  }
 
   return (
     <Styled.EventCard>
@@ -54,7 +64,8 @@ const Event = ({ title, link, location, type, date, image }) => {
             {location}
           </li>
           <li>{type}</li>
-          <li>{dayjs(date).format('YYYY.MM.DD')}</li>
+          <li>{dayjs(dateObj).format('YYYY.MM.DD')}</li>
+          {durationObj && <li>{durationObj} 天</li>}
         </ul>
       </Link>
     </Styled.EventCard>

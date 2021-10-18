@@ -85,9 +85,17 @@ const Page = () => {
   const { data: events } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
   const { data: total } = useSWR(['tidbio-activitiespage-activities/count', JSON.stringify(params)], fetcher);
 
+  const paramsForCalendar = {
+    _publicationState: isProd ? undefined : 'preview',
+    _sort: 'date:DESC',
+    ...dataParam,
+  };
+  const dateForCalendar = useSWR(['tidbio-activitiespage-activities', JSON.stringify(paramsForCalendar)], fetcher);
+
   const data = {
     events,
     total,
+    dateForCalendar,
   };
 
   return (

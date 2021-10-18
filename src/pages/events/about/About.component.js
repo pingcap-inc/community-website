@@ -25,7 +25,9 @@ const About = () => {
   const isVerticalCard = cardSize.width < 500;
 
   const { data } = useContext(PageDataContext);
-  const { events } = data;
+  const { dateForCalendar } = data;
+
+  const events = dateForCalendar.data;
 
   const router = useRouter();
   const handleCardButtonClick = (link) => (e) => {

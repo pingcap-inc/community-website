@@ -26,7 +26,6 @@ import { store } from '~/redux';
 
 import '@fullcalendar/common/main.css';
 import '@fullcalendar/daygrid/main.css';
-import '@fullcalendar/list/main.css';
 
 dayjs.extend(relativeTime);
 // TODO: Need to sync with NextJS locale value

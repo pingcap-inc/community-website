@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Popover } from 'antd';
 import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
-import listPlugin from '@fullcalendar/list'; // a plugin!
 import FullCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType } from './utils';
 import moment from 'moment';
@@ -41,28 +40,10 @@ const MyFullCalendar = ({ data }) => {
       classNames,
     };
   });
-
-  const [initialView, setInitialView] = useState('dayGridMonth');
-  const handleResize = (e) => {
-    if (e.target.innerWidth > 600) {
-      setInitialView('dayGridMonth');
-    } else {
-      setInitialView('listMonth');
-    }
-  };
-  useEffect(() => {
-    const eventType = 'resize';
-    window.addEventListener(eventType, handleResize);
-    return () => {
-      window.removeEventListener(eventType, handleResize);
-    };
-  }, []);
-
   return (
     <FullCalendar
-      key={initialView}
-      plugins={[dayGridPlugin, listPlugin]}
-      initialView={initialView}
+      plugins={[dayGridPlugin]}
+      initialView="dayGridMonth"
       events={data}
       // dateClick={handleDateClick}
       eventContent={renderEventContent}

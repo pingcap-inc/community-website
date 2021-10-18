@@ -41,12 +41,12 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII=',
   };
 
-  const dateObj = date ?? startDate;
+  const dateObj = startDate ?? date;
   let durationObj;
-  if (date) {
+  if (endDate && startDate) {
+    durationObj = dayjs(endDate).diff(dayjs(startDate), 'days') + 1;
+  } else if (date) {
     durationObj = null;
-  } else if (endDate && startDate) {
-    durationObj = dayjs(endDate).diff(dayjs(startDate), 'days');
   } else {
     durationObj = null;
   }

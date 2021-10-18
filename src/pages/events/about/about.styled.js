@@ -97,9 +97,12 @@ export const CalendarCard = styled.div`
     }
   }
   .fc-event-main {
-    height: 12px;
-    line-height: 12px;
-    font-size: 10px;
+    height: 14px;
+    line-height: 14px;
+    font-size: 12px;
+  }
+  .fc-daygrid-event {
+    border: none !important;
   }
   .fc-daygrid-day-number {
     &:hover {

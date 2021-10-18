@@ -109,4 +109,7 @@ export const CalendarCard = styled.div`
       color: ${colors.B1};
     }
   }
+  .fc-list-event-time {
+    display: none;
+  }
 `;

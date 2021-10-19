@@ -101,6 +101,7 @@ export const CalendarCard = styled.div`
     height: 14px;
     line-height: 14px;
     font-size: 12px;
+    overflow: hidden !important;
   }
   .fc-daygrid-event {
     border: none !important;

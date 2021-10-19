@@ -2,6 +2,7 @@ import React from 'react';
 import { Popover } from 'antd';
 import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import allLocales from '@fullcalendar/core/locales-all';
 import FullCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType } from './utils';
 import moment from 'moment';
@@ -42,6 +43,8 @@ const MyFullCalendar = ({ data }) => {
   });
   return (
     <FullCalendar
+      locales={allLocales}
+      locale="zh" // the initial locale
       plugins={[dayGridPlugin]}
       initialView="dayGridMonth"
       events={data}

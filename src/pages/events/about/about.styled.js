@@ -86,6 +86,7 @@ export const CalendarCard = styled.div`
   .fc-button-primary {
     color: #1e2b37;
     background-color: rgba(0, 0, 0, 0) !important;
+    height: 40px !important;
   }
   .fc-button,
   .fc-button-primary {

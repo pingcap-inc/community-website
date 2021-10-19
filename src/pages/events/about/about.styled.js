@@ -87,7 +87,8 @@ export const CalendarCard = styled.div`
     color: #1e2b37;
     background-color: rgba(0, 0, 0, 0) !important;
   }
-  .fc-button {
+  .fc-button,
+  .fc-button-primary {
     &:hover,
     &:active,
     &:focus,

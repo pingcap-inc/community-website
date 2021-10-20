@@ -89,15 +89,11 @@ export const CalendarCard = styled.div`
     border: none !important;
     height: 40px !important;
   }
-  .fc-button,
-  .fc-button-primary {
-    &:hover,
-    &:active,
-    &:focus,
-    &:focus-visible {
-      color: #1e2b37 !important;
-      box-shadow: 0 0 0 0 !important;
-    }
+  .fc-button-primary:hover,
+  .fc-button-primary:active,
+  .fc-button-primary:focus {
+    color: #1e2b37 !important;
+    box-shadow: 0 0 0 0 !important;
   }
   .fc-event-main {
     height: 14px;

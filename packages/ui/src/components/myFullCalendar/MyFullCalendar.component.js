@@ -15,6 +15,16 @@ const MyFullCalendar = ({ data }) => {
       <div>{eventInfo.event.title}</div>
     </Popover>
   );
+
+  // const eventMouseEnter = ({ event }) => {
+  //   console.log('eventMouseEnter');
+  //   event.setProp('backgroundColor', '#4FC172');
+  // }
+  // const eventMouseLeave = ({ event }) => {
+  //   console.log('eventMouseLeave');
+  //   event.setProp('backgroundColor', '#FF6D78');
+  // }
+
   const renderDayCellContent = ({ date }) => date.getUTCDate();
 
   const dateFormat = 'YYYY-MM-DD';

@@ -15,6 +15,7 @@ const MyFullCalendar = ({ data }) => {
       <div>{eventInfo.event.title}</div>
     </Popover>
   );
+  const renderDayCellContent = ({ date }) => date.getUTCDate();
 
   const dateFormat = 'YYYY-MM-DD';
   data = data?.map((value) => {
@@ -50,6 +51,7 @@ const MyFullCalendar = ({ data }) => {
       events={data}
       // dateClick={handleDateClick}
       eventContent={renderEventContent}
+      dayCellContent={renderDayCellContent}
       headerToolbar={{
         start: 'title', // will normally be on the left. if RTL, will be on the right
         center: '',

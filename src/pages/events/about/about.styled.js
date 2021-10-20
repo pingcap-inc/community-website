@@ -113,4 +113,10 @@ export const CalendarCard = styled.div`
       color: ${colors.B1};
     }
   }
+  .fc-col-header-cell-cushion {
+    cursor: default;
+    &:hover {
+      color: #1e2b37;
+    }
+  }
 `;

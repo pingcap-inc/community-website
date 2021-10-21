@@ -44,7 +44,7 @@ const MyFullCalendar = ({ data }) => {
       default:
         className = 'other';
     }
-    const classNames = [styles[className]];
+    const classNames = [styles[className], styles.event_container];
     return {
       ...value,
       start: value.startDate,

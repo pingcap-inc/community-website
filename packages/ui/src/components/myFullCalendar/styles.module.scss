@@ -10,6 +10,10 @@
   background-color: rgba(#00aeef, 0.3);
 }
 
+.event_container {
+  transition: all 100ms;
+}
+
 .event {
   padding: 0 4px;
   div {

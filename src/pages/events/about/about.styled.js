@@ -46,6 +46,9 @@ export const Card = styled(Row)`
   border: 1px solid ${colors.T2};
   background: ${colors.M1};
   overflow: hidden;
+  &:not(:first-child) {
+    margin-top: 32px;
+  }
 `;
 
 export const CardImg = styled(Col).attrs((props) => ({

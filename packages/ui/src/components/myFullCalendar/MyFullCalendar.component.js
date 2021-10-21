@@ -18,14 +18,34 @@ const MyFullCalendar = ({ data }) => {
     </Popover>
   );
 
-  // const eventMouseEnter = ({ event }) => {
-  //   console.log('eventMouseEnter');
-  //   event.setProp('backgroundColor', '#4FC172');
-  // }
-  // const eventMouseLeave = ({ event }) => {
-  //   console.log('eventMouseLeave');
-  //   event.setProp('backgroundColor', '#FF6D78');
-  // }
+  // 4D is hex(30% * 255)
+  const transparency = '4D';
+  const eventMouseEnter = ({ event }) => {
+    const { extendedProps } = event;
+    switch (extendedProps.category) {
+      case '开发者活动/竞赛':
+        event.setProp('backgroundColor', '#FF6D78');
+        break;
+      case 'meetup':
+        event.setProp('backgroundColor', '#4FC172');
+        break;
+      default:
+        event.setProp('backgroundColor', '#00AEEF');
+    }
+  };
+  const eventMouseLeave = ({ event }) => {
+    const { extendedProps } = event;
+    switch (extendedProps.category) {
+      case '开发者活动/竞赛':
+        event.setProp('backgroundColor', '#FF6D78' + transparency);
+        break;
+      case 'meetup':
+        event.setProp('backgroundColor', '#4FC172' + transparency);
+        break;
+      default:
+        event.setProp('backgroundColor', '#00AEEF' + transparency);
+    }
+  };
 
   const renderDayCellContent = ({ date }) => date.getUTCDate();
 
@@ -47,8 +67,6 @@ const MyFullCalendar = ({ data }) => {
       ...value,
       start: value.startDate,
       end: moment(value.endDate, dateFormat).add(1, 'days').format(dateFormat),
-      // 4D is hex(30% * 255)
-      color: getColorByType(value.category) + '4D',
       textColor: '#1e2b37',
       card: value,
       classNames,
@@ -70,6 +88,8 @@ const MyFullCalendar = ({ data }) => {
         end: 'prev,next', // will normally be on the right. if RTL, will be on the left
       }}
       contentHeight="auto"
+      eventMouseEnter={eventMouseEnter}
+      eventMouseLeave={eventMouseLeave}
     />
   );
 };

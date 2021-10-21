@@ -12,7 +12,9 @@ import styles from './styles.module.scss';
 const MyFullCalendar = ({ data }) => {
   const renderEventContent = (eventInfo) => (
     <Popover content={<FullCalendarCellCard data={eventInfo.event._def.extendedProps} />} title="" trigger="click">
-      <div>{eventInfo.event.title}</div>
+      <div className={styles.event}>
+        <div>{eventInfo.event.title}</div>
+      </div>
     </Popover>
   );
 

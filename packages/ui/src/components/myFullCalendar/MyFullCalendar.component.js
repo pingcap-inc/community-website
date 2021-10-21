@@ -22,29 +22,11 @@ const MyFullCalendar = ({ data }) => {
   const transparency = '4D';
   const eventMouseEnter = ({ event }) => {
     const { extendedProps } = event;
-    switch (extendedProps.category) {
-      case '开发者活动/竞赛':
-        event.setProp('backgroundColor', '#FF6D78');
-        break;
-      case 'meetup':
-        event.setProp('backgroundColor', '#4FC172');
-        break;
-      default:
-        event.setProp('backgroundColor', '#00AEEF');
-    }
+    event.setProp('backgroundColor', getColorByType(extendedProps.category));
   };
   const eventMouseLeave = ({ event }) => {
     const { extendedProps } = event;
-    switch (extendedProps.category) {
-      case '开发者活动/竞赛':
-        event.setProp('backgroundColor', '#FF6D78' + transparency);
-        break;
-      case 'meetup':
-        event.setProp('backgroundColor', '#4FC172' + transparency);
-        break;
-      default:
-        event.setProp('backgroundColor', '#00AEEF' + transparency);
-    }
+    event.setProp('backgroundColor', getColorByType(extendedProps.category) + transparency);
   };
 
   const renderDayCellContent = ({ date }) => date.getUTCDate();

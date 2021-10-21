@@ -4,4 +4,4 @@ const typeToColorMap = {
   其他活动: '#00AEEF',
 };
 
-export const getColorByType = (type) => typeToColorMap[type] ?? typeToColorMap.other;
+export const getColorByType = (type) => typeToColorMap[type] ?? typeToColorMap['其他活动'];

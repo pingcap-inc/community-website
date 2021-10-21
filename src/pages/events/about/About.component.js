@@ -62,9 +62,9 @@ const About = () => {
                   />
                 </p>
               </Styled.Desc>
-              <Row gutter={[32, 32]}>
+              <Styled.CardList>
                 {card.map((v, i) => (
-                  <Styled.Card ref={cardRef}>
+                  <Styled.Card key={i} ref={cardRef}>
                     <Styled.CardImg $isVertical={isVerticalCard}>
                       <Image alt={v.title} src={v.image} layout="fill" objectFit="cover" />
                     </Styled.CardImg>
@@ -77,7 +77,7 @@ const About = () => {
                     </Styled.CardInfo>
                   </Styled.Card>
                 ))}
-              </Row>
+              </Styled.CardList>
             </Styled.TopSection>
           </LeftPanel>
           <RightPanel>

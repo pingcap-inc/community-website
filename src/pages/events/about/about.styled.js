@@ -38,6 +38,8 @@ export const Desc = styled.div`
   }
 `;
 
+export const CardList = styled.div``;
+
 export const Card = styled(Row)`
   ${mixins.boxShadow()};
   border-radius: 6px;

@@ -118,5 +118,6 @@ export const CalendarCard = styled.div`
     &:hover {
       color: #1e2b37;
     }
+    font-weight: 400;
   }
 `;

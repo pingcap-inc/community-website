@@ -1,15 +1,11 @@
 import styled, { css } from 'styled-components';
-import { Styled, colors } from '@tidb-community/ui';
+import { Styled } from '@tidb-community/ui';
 
 const { ModuleTitle, Section } = Styled;
 
 export { ModuleTitle };
 
-export const Container = styled(Section)`
-  && {
-    background: ${colors.M2};
-  }
-`;
+export const Container = styled(Section)``;
 
 export const Module = styled.div`
   margin-bottom: 3rem;

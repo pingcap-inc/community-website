@@ -7,14 +7,9 @@ const { ModuleTitle, Section, Text } = Styled;
 
 export { ModuleTitle, Section, Text };
 
-export const Container = styled(Section)`
-  && {
-    background: ${colors.M2};
-  }
-`;
+export const Container = styled(Section)``;
 
 export const Link = styled(RawLink)`
-  color: ${colors.B1};
   font-size: revert;
   &:hover {
     color: ${colors.B1};

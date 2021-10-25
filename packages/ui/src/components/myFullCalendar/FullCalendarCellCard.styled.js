@@ -37,6 +37,7 @@ export const Title = styled.div`
 export const Image = styled.div`
   margin-bottom: 10px;
   width: 100%;
+  min-height: 140px;
   img {
     width: 100%;
   }

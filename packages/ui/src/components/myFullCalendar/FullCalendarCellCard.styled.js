@@ -8,7 +8,9 @@ export const Wrapper = styled.div`
   //background-color: #e9eaee;
 `;
 
-export const Header = styled(Space)`
+export const Header = styled(Space).attrs({
+  align: 'center',
+})`
   margin-bottom: 10px;
   font-size: 12px;
 `;

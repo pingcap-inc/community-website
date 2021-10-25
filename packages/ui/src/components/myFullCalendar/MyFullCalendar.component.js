@@ -4,7 +4,7 @@ import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import allLocales from '@fullcalendar/core/locales-all';
 import FullCalendarCellCard from './FullCalendarCellCard.component';
-import { getColorByType } from './utils';
+import { getColorByType, processData } from './utils';
 import moment from 'moment';
 
 import styles from './styles.module.scss';
@@ -31,29 +31,7 @@ const MyFullCalendar = ({ data }) => {
 
   const renderDayCellContent = ({ date }) => date.getUTCDate();
 
-  const dateFormat = 'YYYY-MM-DD';
-  data = data?.map((value) => {
-    let className = '';
-    switch (value.category) {
-      case '开发者活动/竞赛':
-        className = 'activity';
-        break;
-      case 'meetup':
-        className = 'meetup';
-        break;
-      default:
-        className = 'other';
-    }
-    const classNames = [styles[className], styles.event_container];
-    return {
-      ...value,
-      start: value.startDate,
-      end: moment(value.endDate, dateFormat).add(1, 'days').format(dateFormat),
-      textColor: '#1e2b37',
-      card: value,
-      classNames,
-    };
-  });
+  data = processData(data)
   return (
     <FullCalendar
       locales={allLocales}

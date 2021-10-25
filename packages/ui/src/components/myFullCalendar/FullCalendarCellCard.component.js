@@ -18,7 +18,7 @@ const FullCalendarCellCard = ({ data }) => {
 
   return (
     <Styled.Wrapper>
-      <Styled.Header align="center">
+      <Styled.Header>
         <div
           style={{
             width: 8,

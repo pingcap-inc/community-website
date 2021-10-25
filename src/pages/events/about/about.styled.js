@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Col, Row } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 const { Content, Section, Title } = Styled;
 
@@ -22,6 +22,12 @@ export const RightPanel = styled(Col).attrs({
   md: { span: 12, order: 2 },
 })``;
 
+export const TopSection = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 4rem;
+  }
+`;
+
 export const Desc = styled.div`
   margin-bottom: 4rem;
 
@@ -32,12 +38,17 @@ export const Desc = styled.div`
   }
 `;
 
+export const CardList = styled.div``;
+
 export const Card = styled(Row)`
   ${mixins.boxShadow()};
   border-radius: 6px;
   border: 1px solid ${colors.T2};
   background: ${colors.M1};
   overflow: hidden;
+  &:not(:first-child) {
+    margin-top: 32px;
+  }
 `;
 
 export const CardImg = styled(Col).attrs((props) => ({
@@ -50,6 +61,7 @@ export const CardInfo = styled(Col).attrs((props) => ({
   span: props.$isVertical ? 24 : 12,
 }))`
   padding: 1rem 2rem;
+  max-height: 250px;
 
   h3,
   p {
@@ -66,5 +78,46 @@ export const CardInfo = styled(Col).attrs((props) => ({
   p {
     font-size: 14px;
     color: ${colors.F2};
+  }
+`;
+
+export const CalendarCard = styled.div`
+  ${mixins.boxShadow()};
+  padding: 20px;
+  border-radius: 6px;
+  border: 1px solid ${colors.T2};
+  background: ${colors.M1};
+  overflow: hidden;
+  .fc-button-primary {
+    color: #1e2b37;
+    background-color: rgba(0, 0, 0, 0) !important;
+    border: none !important;
+    height: 40px !important;
+  }
+  .fc-button-primary:hover,
+  .fc-button-primary:active,
+  .fc-button-primary:focus {
+    color: #1e2b37 !important;
+    box-shadow: 0 0 0 0 !important;
+  }
+  .fc-event-main {
+    height: 14px;
+    line-height: 14px;
+    font-size: 12px;
+  }
+  .fc-daygrid-event {
+    border: none !important;
+  }
+  .fc-daygrid-day-number {
+    &:hover {
+      color: ${colors.B1};
+    }
+  }
+  .fc-col-header-cell-cushion {
+    cursor: default;
+    &:hover {
+      color: #1e2b37;
+    }
+    font-weight: 400;
   }
 `;

@@ -7,6 +7,8 @@ const { env } = process;
 const { log } = console;
 
 const SYNC_APIS = [
+  'tidbio-activitiespage-activities',
+  'tidbio-homepage-banner-promotions',
   'tidbio-asktug-blogs',
   'tidbio-asktug-qa-topics',
   'tidbio-blibli-recent-videos',

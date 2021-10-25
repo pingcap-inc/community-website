@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { useTranslation } from 'next-i18next';
 
 //  TODO: comment out About module as Calendar is not ready for MVP
-// import About from './about';
+import About from './about';
 import Cooperation from './cooperation';
 import List from './list';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list/list.constants';
@@ -85,9 +85,17 @@ const Page = () => {
   const { data: events } = useSWR(['tidbio-activitiespage-activities', JSON.stringify(params)], fetcher);
   const { data: total } = useSWR(['tidbio-activitiespage-activities/count', JSON.stringify(params)], fetcher);
 
+  const paramsForCalendar = {
+    _publicationState: isProd ? undefined : 'preview',
+    _sort: 'date:DESC',
+    ...dataParam,
+  };
+  const calendarData = useSWR(['tidbio-activitiespage-activities', JSON.stringify(paramsForCalendar)], fetcher);
+
   const data = {
     events,
     total,
+    calendarData,
   };
 
   return (
@@ -95,7 +103,7 @@ const Page = () => {
       <CommunityHead title={t('pageTitle')} />
 
       <CoreLayout>
-        {/* <About /> */}
+        <About />
         <List />
         <Cooperation />
       </CoreLayout>

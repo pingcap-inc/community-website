@@ -1,0 +1,25 @@
+/* suffix 4D means hex(30% * 255) */
+.activity {
+  background-color: #ff6d784d;
+}
+
+.meetup {
+  background-color: #4fc1724d;
+}
+
+.other {
+  background-color: #00aeef4d;
+}
+
+.event_container {
+  transition: all 250ms;
+}
+
+.event {
+  padding: 0 4px;
+}
+
+.event div {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

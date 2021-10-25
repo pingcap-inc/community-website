@@ -90,12 +90,12 @@ const Page = () => {
     _sort: 'date:DESC',
     ...dataParam,
   };
-  const dateForCalendar = useSWR(['tidbio-activitiespage-activities', JSON.stringify(paramsForCalendar)], fetcher);
+  const calendarData = useSWR(['tidbio-activitiespage-activities', JSON.stringify(paramsForCalendar)], fetcher);
 
   const data = {
     events,
     total,
-    dateForCalendar,
+    calendarData,
   };
 
   return (

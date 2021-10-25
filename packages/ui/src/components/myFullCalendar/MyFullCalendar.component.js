@@ -5,7 +5,6 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import allLocales from '@fullcalendar/core/locales-all';
 import FullCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType, processData } from './utils';
-import moment from 'moment';
 
 import styles from './styles.module.scss';
 
@@ -31,7 +30,7 @@ const MyFullCalendar = ({ data }) => {
 
   const renderDayCellContent = ({ date }) => date.getUTCDate();
 
-  data = processData(data)
+  data = processData(data);
   return (
     <FullCalendar
       locales={allLocales}

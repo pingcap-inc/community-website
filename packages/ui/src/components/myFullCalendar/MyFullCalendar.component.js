@@ -6,7 +6,7 @@ import allLocales from '@fullcalendar/core/locales-all';
 import FullCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType, processData } from './utils';
 
-import styles from './styles.module.scss';
+import styles from './styles.module.less';
 
 const MyFullCalendar = ({ data }) => {
   const renderEventContent = (eventInfo) => (

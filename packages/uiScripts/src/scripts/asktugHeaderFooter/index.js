@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import useSWR from 'swr';
 import { Col } from 'antd';
-import { Footer, Header, constants, createAppGlobalStyle, ActivityBanner } from '@tidb-community/ui';
+import { Footer, Header, constants, createAppGlobalStyle } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 
 import './index.scss';
@@ -58,14 +58,15 @@ const AskTugHeaderWrapper = ({ children }) => {
   return <MeContext.Provider value={{ meData: meResp?.data, mutateMe, isMeValidating }}>{children}</MeContext.Provider>;
 };
 
-const ActivityBannerComponent = () => {
-  const { meData } = useContext(MeContext);
-  // Don't render the banner if the user is alreay in an org
-  if (meData?.org) return null;
-
-  const { link, ...data } = nav.activity;
-  return <ActivityBanner {...data} onClick={() => onNavClick({ link })} />;
-};
+// disabled for operation reason
+// const ActivityBannerComponent = () => {
+//   const { meData } = useContext(MeContext);
+//   // Don't render the banner if the user is alreay in an org
+//   if (meData?.org) return null;
+//
+//   const { link, ...data } = nav.activity;
+//   return <ActivityBanner {...data} onClick={() => onNavClick({ link })} />;
+// };
 
 const HeaderComponent = () => {
   const { meData } = useContext(MeContext);
@@ -111,7 +112,7 @@ const HeaderComponent = () => {
 headerElem.classList.add(appClassName);
 ReactDOM.render(
   <AskTugHeaderWrapper>
-    <ActivityBannerComponent />
+    {/*<ActivityBannerComponent />*/}
     <HeaderComponent />
     <GlobalStyle />
   </AskTugHeaderWrapper>,

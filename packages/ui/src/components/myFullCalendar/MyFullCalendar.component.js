@@ -3,6 +3,7 @@ import { Popover } from 'antd';
 import FullCalendar from '@fullcalendar/react'; // must go before plugins
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import allLocales from '@fullcalendar/core/locales-all';
+
 import FullCalendarCellCard from './FullCalendarCellCard.component';
 import { getColorByType, processData } from './utils';
 
@@ -46,6 +47,7 @@ const MyFullCalendar = ({ data }) => {
         center: '',
         end: 'prev,next', // will normally be on the right. if RTL, will be on the left
       }}
+      titleFormat={(date) => `${date.date.year} 年 ${date.date.month} 月`}
       contentHeight="auto"
       eventMouseEnter={eventMouseEnter}
       eventMouseLeave={eventMouseLeave}

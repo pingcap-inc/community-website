@@ -9,10 +9,10 @@ import { useTranslation } from 'next-i18next';
 import * as Styled from './list.styled';
 import slice, { initialState } from '~/pages/events/events.slice';
 import { CATEGORIES, TYPES, DATES, LOCATIONS } from './list.constants';
-import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
+import { PlainLink } from './list.styled';
 
 const { Option } = Select;
 const { actions } = slice;
@@ -53,7 +53,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
 
   return (
     <Styled.EventCard>
-      <Link href={link}>
+      <PlainLink href={link}>
         <Styled.ImageWrapper>
           <Image {...imgProps} />
         </Styled.ImageWrapper>
@@ -67,7 +67,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
           <li>{dayjs(dateObj).format('YYYY.MM.DD')}</li>
           {durationObj && <li>{durationObj} 天</li>}
         </ul>
-      </Link>
+      </PlainLink>
     </Styled.EventCard>
   );
 };

@@ -102,7 +102,7 @@ const Tug = () => {
                 </div>
               </div>
               <div className={styles.header_content_right}>
-                <img src={getImageUrl('header-right.svg')} alt="" />
+                <img width={350} src={getImageUrl('header-right.png')} alt="" />
               </div>
             </div>
           </Container>

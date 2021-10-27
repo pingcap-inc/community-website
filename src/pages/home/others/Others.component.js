@@ -72,14 +72,14 @@ const Others = () => {
             <Styled.Divider />
             <Styled.Subtitle>{collaborationLang.subtitle}</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
+              <Styled.Logo height={64} src={getImage('others-flink-event-logos.png')} />
             </Styled.LogoWrapper>
             <Styled.SmallerText>
               <Styled.SmallerLink href={collaborationLang.link1}>{collaborationLang.name1}</Styled.SmallerLink>
               {collaborationLang.desc1}
             </Styled.SmallerText>
             <Styled.LogoWrapper>
-              <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
+              <Styled.Logo height={36} src={getImage('others-action-event-logos.png')} />
             </Styled.LogoWrapper>
             <Styled.SmallerText>
               <Styled.SmallerLink href={collaborationLang.link2}>{collaborationLang.name2}</Styled.SmallerLink>

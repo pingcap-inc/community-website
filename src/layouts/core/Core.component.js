@@ -39,7 +39,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMarg
   const { navItems: headerNavItems, userProfileNavItems } = data.header;
   const { navItems: footerNavItems, icons: footerIcons } = data.footer;
 
-  const title = 'TiDB Community';
+  const title = 'TiDB | COMMUNITY';
   const logo = <img alt={title} src="/images/tidb-logo.svg" />;
 
   const onNavClick = ({ link, browserLink, isSelected, target }) => {

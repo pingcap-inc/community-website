@@ -16,4 +16,11 @@ export default css`
       color: ${colors.F1};
     }
   }
+
+  .ant-input:focus {
+    border-color: ${colors.B1};
+    outline: 0;
+    -webkit-box-shadow: 0 0 0 2px ${colors.B1}33;
+    box-shadow: 0 0 0 2px ${colors.B1}33;
+  }
 `;

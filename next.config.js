@@ -40,6 +40,7 @@ const config = {
       '@tidb-community/ui': path.resolve('./packages/ui/src'),
       '@': path.resolve('./'),
       '~': path.resolve('./src'),
+      '@634750802/a-editor': path.resolve('./node_modules/@634750802/a-editor/dist/index.full-es.js'),
     };
 
     config.module.rules.push({

@@ -31,10 +31,12 @@ const FullCalendarCellCard = ({ data }) => {
         <Styled.Date>{actualDate}</Styled.Date>
       </Styled.Header>
       <Styled.Title>
-        <a href={link}>{title}</a>
+        <a href={link} target="_blank" rel="noreferrer">
+          {title}
+        </a>
       </Styled.Title>
       <Styled.Image>
-        <a href={link}>
+        <a href={link} target="_blank" rel="noreferrer">
           <img src={image.src} alt={title} />
         </a>
       </Styled.Image>

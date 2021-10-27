@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Input, Select } from 'antd';
-import TiEditor from '@634750802/a-editor';
 
 export const MainWrapper = styled.div`
   background: #e9eaee;

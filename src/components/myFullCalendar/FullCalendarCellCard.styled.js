@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Space } from 'antd';
-import { colors, mixins } from '../../index';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const Wrapper = styled.div`
   padding: 8px;

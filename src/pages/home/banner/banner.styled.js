@@ -1,12 +1,11 @@
 import * as polished from 'polished';
 import styled, { css } from 'styled-components';
 import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 import LogoSvg from './logo.svg';
 
 const githubBlack = '#24292e';
-const githubLightGrey = '#f0f0f0';
 
 export const Container = styled(Styled.Section)`
   && {
@@ -70,6 +69,7 @@ export const LeftPanel = styled(Col).attrs({
   display: flex;
   flex-direction: column;
   align-content: space-between;
+
   & > * {
     flex: 1;
   }
@@ -103,7 +103,7 @@ export const Intro = styled.h2`
   && {
     ${mixins.reset()};
     font-size: 16px;
-    color: ${colors.M1};
+    color: ${colors.F1};
     font-weight: normal;
     margin-bottom: 2rem;
   }
@@ -122,9 +122,10 @@ export const TryButton = styled(Button).attrs({
 
 export const StarButton = styled.span`
   position: relative;
+  background: linear-gradient(top to bottom, ${colors.M1}, ${colors.M2});
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
   display: inline-block;
   border-radius: 4px;
-  background: ${githubLightGrey};
   font-weight: bold;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   cursor: pointer;
@@ -151,8 +152,8 @@ export const TooltipContainer = styled.div`
 `;
 
 export const StarButtonTooltip = styled(Tooltip).attrs({
-  color: githubLightGrey,
   visible: true,
+  color: colors.M2,
 })``;
 
 export const NavItem = styled(Col).attrs({
@@ -260,7 +261,7 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
       &,
       button {
         ${mixins.size('6px', '40px')}
-        background: ${polished.rgba(colors.M1, 0.2)};
+        background: ${polished.rgba(colors.F2, 0.1)};
         border-radius: 3px;
       }
 
@@ -268,7 +269,7 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
         &,
         button {
           ${mixins.size('6px', '50px')}
-          background: ${polished.rgba(colors.M1, 0.6)};
+          background: ${polished.rgba(colors.F2, 0.3)};
         }
       }
     }

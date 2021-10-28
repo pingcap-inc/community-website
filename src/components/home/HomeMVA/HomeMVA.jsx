@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import { link as linkUtils } from '~/utils';
-import Button from '~/components/Button/Button';
+import { Button } from 'antd';
 import Container from '~/components/Container/Container';
 import styles from './HomeMVA.module.scss';
 import { useRouter } from 'next/router';
@@ -24,7 +24,9 @@ export default function HomeMVA() {
           TiDB，是经过认证的技术先锋，享受极高的社区荣誉。
         </div>
         <div className={styles.buttons}>
-          <Button onClick={onClick('/tug/mva')}>查看更多</Button>
+          <Button type="primary" onClick={onClick('/tug/mva')}>
+            查看更多
+          </Button>
         </div>
       </Container>
       <div className={styles.image}>

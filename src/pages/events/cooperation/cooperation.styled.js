@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 
-import LogoSvg from './logo.svg';
 import { ActionButton, Container, TwoColumns as RawTwoColumns } from '~/pages/home/subscription/subscription.styled';
 
 export { ActionButton, Container };
@@ -26,6 +25,6 @@ export const RightPanel = styled.div`
   text-align: right;
 `;
 
-export const Logo = styled(LogoSvg)`
+export const Logo = styled.img.attrs({ src: '/images/events/event-logos.png' })`
   height: 150px;
 `;

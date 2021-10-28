@@ -37,7 +37,7 @@ export default css`
       border: none;
 
       &:hover {
-        background-color: #3739d2 !important;
+        background-color: ${colors.B1} !important;
       }
 
       &[disabled] {
@@ -69,7 +69,7 @@ export default css`
       color: ${colors.B1};
 
       &:hover {
-        color: #3739d2 !important;
+        color: ${colors.B1} !important;
       }
 
       &[disabled] {

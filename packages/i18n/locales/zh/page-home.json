@@ -17,7 +17,7 @@
       },
       "activity": {
         "label": "活动",
-        "link": "https://asktug.com/c/community-activities"
+        "link": "https://tidb.io/events"
       }
     }
   },
@@ -223,7 +223,7 @@
             "label": "TiDB User Group"
           },
           {
-            "link": "https://asktug.com/c/community-activities",
+            "link": "https://tidb.io/events",
             "label": "参与活动"
           }
         ]

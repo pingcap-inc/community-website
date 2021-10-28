@@ -1,7 +1,7 @@
 @import '~/styles/common';
 
 .header {
-  background-color: #190f4c;
+  background-color: #f7f8f9;
 
   &_content {
     @include responsive-lte-md {
@@ -19,7 +19,7 @@
 
       &_title {
         @include H1(ZH);
-        color: $M1;
+        color: $F1;
         img {
           height: 80px;
         }
@@ -27,7 +27,7 @@
 
       &_summary {
         @include P1(ZH);
-        color: $M1;
+        color: $F1;
         margin: {
           top: 24px;
           bottom: 40px;

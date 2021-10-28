@@ -1,11 +1,12 @@
 import styled from 'styled-components';
+import * as themeColors from '../../colors';
 
 export const borderRadius = 6;
 export const avatarSize = 40;
 const colors = {
-  primary: '#BE1D32',
-  black: '#2C2C2C',
-  borderGray: '#E9EAEE',
+  primary: themeColors.B1,
+  black: themeColors.F1,
+  borderGray: themeColors.T2,
 };
 
 export const makeContainer = (el) => styled(el)`

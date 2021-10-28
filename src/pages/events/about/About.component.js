@@ -5,10 +5,8 @@ import { Trans, useTranslation } from 'next-i18next';
 import { useSize } from 'ahooks';
 import { common as commonUtils, link as linkUtils } from '~/utils';
 
-import { MyFullCalendar } from '@tidb-community/ui';
-
 import * as Styled from './about.styled';
-import { Link } from '~/components';
+import { Link, MyFullCalendar } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 import { PageDataContext } from '~/context';
 import { useRouter } from 'next/router';

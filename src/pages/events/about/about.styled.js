@@ -72,7 +72,6 @@ export const CardInfo = styled(Col).attrs((props) => ({
     font-size: 20px;
     font-weight: normal;
     line-height: 1.2;
-    text-decoration: underline;
   }
 
   p {

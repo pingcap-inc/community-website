@@ -23,7 +23,24 @@ export const makeContainer = (el) => styled(el)`
   }
 `;
 
-export const CoverImage = styled.div``;
+export const CoverImageContainer = styled.div`
+  width: 100%;
+  padding-top: 28.5714%; /* 7:2 Aspect Ratio */
+  position: relative;
+  border-bottom: 1px solid ${colors.borderGray};
+`;
+
+export const CoverImage = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  cursor: pointer;
+`;
 
 export const Content = styled.div`
   background: white;
@@ -39,6 +56,7 @@ export const AuthorAvatar = styled.div`
   max-width: ${avatarSize}px;
   min-width: ${avatarSize}px;
   margin-right: 8px;
+  cursor: pointer;
 `;
 
 export const AuthorInfo = styled.div`
@@ -50,6 +68,7 @@ export const AuthorInfo = styled.div`
 export const AuthorName = styled.div`
   font-weight: bold;
   color: ${colors.black};
+  cursor: pointer;
 `;
 
 export const AuthorPublishedAt = styled.div`
@@ -62,6 +81,13 @@ export const Title = styled.div`
   font-size: 24px;
   line-height: 33px;
   color: ${colors.black};
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+
+  &:hover {
+    color: ${colors.primary};
+  }
 `;
 
 export const Meta = styled.div`

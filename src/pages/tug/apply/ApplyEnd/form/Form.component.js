@@ -8,7 +8,7 @@ import * as R from 'ramda';
 import * as Styled from './form.styled';
 import data from './form.data';
 
-import { fetchOrganizationOptions } from '~/pages/account/organization/new/form/form.data';
+import { fetchOrganizationOptions } from '~/utils/form.utils';
 import { RemoteSelect } from '@tidb-community/ui';
 
 const { form, submitBtnTitle, formSchema } = data;

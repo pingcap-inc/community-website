@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Row } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { Styled, colors } from '@tidb-community/ui';
 
 import { Link as RawLink } from '~/components';
 
@@ -21,9 +21,7 @@ export const SmallerLink = styled(Link)`
 `;
 
 export const Container = styled(Section)`
-  && {
-    ${mixins.responsive()};
-  }
+  background-color: ${colors.M2};
 `;
 
 export const Subtitle = styled.span`

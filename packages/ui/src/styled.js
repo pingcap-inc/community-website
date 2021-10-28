@@ -44,7 +44,7 @@ export const Title = styled.h2`
   &::after {
     ${mixins.size('3rem', '10px')};
     content: '';
-    background: ${colors.T1};
+    background: ${colors.B1};
     position: absolute;
     bottom: -6px;
     left: 0;

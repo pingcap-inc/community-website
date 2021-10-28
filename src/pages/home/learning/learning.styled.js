@@ -7,7 +7,11 @@ import { Link as RawLink } from '~/components';
 
 const { Section, Text, ModuleTitle } = Styled;
 
-export { Section as Container, Text, ModuleTitle };
+export const Container = styled(Section)`
+  background-color: ${colors.M2};
+`;
+
+export { Text, ModuleTitle };
 
 export const Link = styled(RawLink)`
   color: ${colors.F2};

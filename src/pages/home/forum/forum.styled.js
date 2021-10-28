@@ -9,7 +9,7 @@ export { ModuleTitle, CenterOnSmallScreen };
 
 export const Container = styled(Section)`
   && {
-    background: ${colors.M2};
+    background: ${colors.M1};
   }
 `;
 

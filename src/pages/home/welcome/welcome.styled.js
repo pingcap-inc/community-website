@@ -2,8 +2,6 @@ import styled, { css } from 'styled-components';
 import { Radio, Row } from 'antd';
 import { Styled, colors, mixins } from '@tidb-community/ui';
 
-import { getImage } from '~/pages/home/home.utils';
-
 const { Content, Section } = Styled;
 
 export { Content };
@@ -12,7 +10,7 @@ export const Container = styled(Section)`
   && {
     text-align: center;
     padding: 5rem 0 0;
-    background: ${colors.M2};
+    //background: ${colors.M2};
 
     ${(props) =>
       props.isSmallScreen &&
@@ -91,7 +89,8 @@ export const Title = styled.h2`
     left: 0;
     bottom: 0;
     width: 100%;
-    background: ${colors.T1};
+    background: ${colors.B1};
+    opacity: 20%;
     z-index: -1;
   }
 `;
@@ -109,7 +108,7 @@ export const Numbers = styled(Row)`
     font-size: 32px;
     font-style: normal;
     font-weight: bold;
-    color: #37a379;
+    color: ${colors.F1};
   }
 
   span {
@@ -121,15 +120,15 @@ export const Numbers = styled(Row)`
 export const HowTo = styled.div`
   ${mixins.flexVerticalCenter()};
   text-align: left;
-  color: ${colors.M1};
-  background: url(${getImage('banner-howto-desktop.svg')}) no-repeat center center;
+  color: ${colors.F1};
+  background: ${colors.M2};
   background-size: cover;
   height: 123px;
 
   h2,
   ul {
     ${mixins.reset()};
-    color: ${colors.M1} !important;
+    color: ${colors.F1} !important;
     font-size: 18px;
     font-weight: normal !important;
   }
@@ -147,7 +146,7 @@ export const HowTo = styled.div`
       cursor: pointer;
       margin-left: 3rem;
       display: inline-block;
-      border-left: 7px solid ${colors.T1};
+      border-left: 7px solid ${colors.B1};
       padding-left: 1rem;
 
       &:first-child {
@@ -160,8 +159,7 @@ export const HowTo = styled.div`
     props.isSmallScreen &&
     css`
       height: 218px;
-      background-image: url(${getImage('banner-howto-mobile.svg')});
-
+      background: ${colors.M2};
       ${Content} {
         flex-direction: column;
 

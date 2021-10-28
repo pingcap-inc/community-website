@@ -5,7 +5,7 @@ export const F1 = '#2c2c2c';
 export const F2 = '#565656';
 export const B2 = '#00aeef';
 export const B3 = '#172d72';
-export const B4 = '#000431';
+export const B4 = '#f7f8f9';
 export const T1 = '#69c384';
 export const T3 = '#ee6d85';
 export const T7 = '#e30c34';
@@ -16,7 +16,7 @@ export const T7 = '#e30c34';
  */
 export const M1 = '#ffffff';
 export const M2 = '#f7f8f9';
-export const B1 = '#3d3fea';
+export const B1 = '#be1d32';
 export const T2 = '#e9eaee';
 export const T4 = '#7d3f98';
 export const T5 = '#f8c200';

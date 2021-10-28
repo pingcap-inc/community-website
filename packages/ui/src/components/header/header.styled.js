@@ -20,6 +20,7 @@ export const Logo = styled.div`
   ${(props) => (props.xs ? mixins.logoTitle('h3') : mixins.logoTitle('h1'))}
 
   cursor: pointer;
+  color: #000431;
 
   img {
     ${(props) => (props.xs ? mixins.size('16px', '18.5px') : mixins.size('32px', '37px'))}

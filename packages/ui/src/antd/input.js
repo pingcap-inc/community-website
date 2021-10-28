@@ -7,6 +7,7 @@ export default css`
   .ant-input-affix-wrapper {
     color: ${colors.F2};
     border-color: ${colors.C2};
+    outline: ${colors.B1};
 
     &:hover {
       &:not(.ant-input-disabled) {
@@ -22,6 +23,12 @@ export default css`
     .anticon {
       color: ${colors.F2};
     }
+  }
+
+  .ant-input-affix-wrapper-focused {
+    // the prefix 33 is the opacity of the focus ring, in hex
+    -webkit-box-shadow: 0 0 0 2px ${colors.B1}33;
+    box-shadow: 0 0 0 2px ${colors.B1}33;
   }
 
   .ant-form-item-has-error .ant-input,

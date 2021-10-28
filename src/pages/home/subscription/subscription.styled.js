@@ -7,7 +7,7 @@ import { Link as LinkComp } from '~/components';
 import { getImage } from '~/pages/home/home.utils';
 
 export const TwoColumns = styled(TwoColumnsSection)`
-  color: ${colors.M1};
+  color: ${colors.F1};
 
   ${(props) =>
     props.isSmallScreen &&
@@ -47,6 +47,7 @@ export const Link = styled(LinkComp)`
 
 export const ActionButton = styled(Button).attrs({
   type: 'primary',
+  ghost: true,
 })`
   margin-top: 2rem;
 `;

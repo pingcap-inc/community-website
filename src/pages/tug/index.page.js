@@ -93,9 +93,7 @@ const Tug = () => {
           <Container>
             <div className={styles.header_content}>
               <div className={styles.header_content_left}>
-                <div className={styles.header_content_left_title}>
-                  <img src={getImageUrl('tug-logo.svg')} alt="" />
-                </div>
+                <div className={styles.header_content_left_title}>TUG 会员</div>
                 <div className={styles.header_content_left_summary}>{description}</div>
                 <div className={styles.header_content_left_summary}>
                   <Button type="primary" onClick={onClick(applyUrl)}>
@@ -104,7 +102,7 @@ const Tug = () => {
                 </div>
               </div>
               <div className={styles.header_content_right}>
-                <img src={getImageUrl('header-right.svg')} alt="" />
+                <img width={400} src={getImageUrl('header-right.png')} alt="" />
               </div>
             </div>
           </Container>

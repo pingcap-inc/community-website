@@ -7,6 +7,7 @@ export { default as Header } from './header';
 export { default as Link } from './link';
 export { default as PlainMenu } from './plainMenu';
 export { default as RemoteSelect } from './remoteSelect';
+export { default as RemoteAutoComplete } from './remoteAutoComplete';
 export { default as Upload } from './upload';
 export { default as UserProfile } from './userProfile';
 export { default as ViewMoreButton } from './viewMoreButton';

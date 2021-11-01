@@ -1,7 +1,7 @@
 import React from 'react';
-import { Checkbox, Form, FormItem, Input } from 'formik-antd';
+import { Checkbox, Form, FormItem, Input, AutoComplete } from 'formik-antd';
 import { Formik } from 'formik';
-import { Link, withVerifyCode } from '@tidb-community/ui';
+import { Link, withVerifyCode, RemoteAutoComplete } from '@tidb-community/ui';
 import { parse } from 'querystring';
 import { useLocation } from 'react-router-dom';
 import { utils } from '@tidb-community/common';
@@ -10,7 +10,7 @@ import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
 import { SubmitButton, PhoneInputPrefix } from '~/components/form';
-import { signup as callSignup } from '~/api';
+import { signup as callSignup, fetchOrganizationOptions } from '~/api';
 import { form, formSchema, initialValues } from './register.form';
 import { handleError } from '~/utils/errors';
 
@@ -24,6 +24,14 @@ const { privacy, prefixText: agreementsPrefixText, ...agreementsProps } = agreem
 const Page = () => {
   const location = useLocation();
   const query = parse(location.search.slice(1));
+
+  const fetchOpts = {
+    AutoComplete,
+    fetchOptions: fetchOrganizationOptions,
+    name: 'company_name',
+    placeholder: '请输入公司名称',
+    maxLength: 128,
+  };
 
   const signup = wrapFormikSubmitFunction((data) => {
     const redirectTo = query.redirect_to || '';
@@ -39,7 +47,7 @@ const Page = () => {
       {({ values, errors, setErrors, setTouched }) => (
         <Form>
           <FormItem name={company.name}>
-            <Input {...company} size="large" />
+            <RemoteAutoComplete {...fetchOpts} size="large" />
           </FormItem>
           <FormItem name={email.name}>
             <Input {...email} size="large" />

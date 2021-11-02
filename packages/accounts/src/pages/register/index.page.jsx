@@ -28,9 +28,6 @@ const Page = () => {
   const fetchOpts = {
     AutoComplete,
     fetchOptions: fetchOrganizationOptions,
-    name: 'company_name',
-    placeholder: '请输入公司名称',
-    maxLength: 128,
   };
 
   const signup = wrapFormikSubmitFunction((data) => {
@@ -47,7 +44,7 @@ const Page = () => {
       {({ values, errors, setErrors, setTouched }) => (
         <Form>
           <FormItem name={company.name}>
-            <RemoteAutoComplete {...fetchOpts} size="large" />
+            <RemoteAutoComplete {...fetchOpts} {...company} size="large" />
           </FormItem>
           <FormItem name={email.name}>
             <Input {...email} size="large" />

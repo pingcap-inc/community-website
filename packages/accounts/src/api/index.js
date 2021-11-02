@@ -80,6 +80,5 @@ export const fetchOrganizationOptions = (word) =>
   client.get('/api/search-company', { params: { word } }).then((result) =>
     result.data.map(({ name }, i) => ({
       value: name,
-      label: i,
     }))
   );

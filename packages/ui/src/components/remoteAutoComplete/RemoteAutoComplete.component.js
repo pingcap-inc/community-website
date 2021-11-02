@@ -10,6 +10,7 @@ const RemoteAutoComplete = ({ fetchOptions, debounceTimeout = 800, AutoComplete 
 
   const debounceFetcher = useMemo(() => {
     const loadOptions = (value) => {
+      if (value === undefined || value === '') return;
       fetchRef.current += 1;
       const fetchId = fetchRef.current;
 

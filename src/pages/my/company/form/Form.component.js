@@ -30,8 +30,6 @@ const FormComponent = () => {
     [position.name]: data.job_title,
   };
 
-  console.log(initialValues);
-
   const fetchOpt = {
     fetchOptions: fetchOrganizationOptions,
     Select,

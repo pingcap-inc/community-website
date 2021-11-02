@@ -10,6 +10,7 @@ import { Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { common as commonUtils, link as linkUtils } from '~/utils';
+import HotTagList from './HotTagList';
 
 const BlogHomePage = ({}) => {
   const router = useRouter();
@@ -37,6 +38,7 @@ const BlogHomePage = ({}) => {
                 <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
                   写博客
                 </Button>
+                <HotTagList />
               </Styled.End>
             </Styled.Container>
           </Styled.Content>

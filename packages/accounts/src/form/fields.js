@@ -62,7 +62,7 @@ export const email = {
 
 export const company = {
   name: 'company',
-  placeholder: '请输入所在的公司',
+  placeholder: '请选择所在的公司',
   validator: Yup.string()
     .min(1, ({ min }) => `最少输入${min}个字符`)
     .max(100, ({ max }) => `最多输入${max}个字符`)

@@ -1,19 +1,12 @@
 import * as Yup from 'yup';
 import { Select } from 'formik-antd';
-import { api, getFormData } from '@tidb-community/datasource';
+import { getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
+import { fetchOrganizationOptions } from '~/utils/form.utils';
 
 const { buildInitialValues, buildSchema } = utils.form;
 const formData = getFormData();
 const { organizationSizes, organizationTypes, personalPositions, provinces } = formData.org.enums;
-
-export const fetchOrganizationOptions = (word) =>
-  api.orgs.searchCompany({ word }).then((result) =>
-    result.data.map(({ name }) => ({
-      label: name,
-      value: name,
-    }))
-  );
 
 const data = {
   form: {

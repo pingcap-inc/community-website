@@ -15,6 +15,7 @@ export {
   Link,
   PlainMenu,
   RemoteSelect,
+  RemoteAutoComplete,
   Upload,
   UserProfile,
   ViewMoreButton,

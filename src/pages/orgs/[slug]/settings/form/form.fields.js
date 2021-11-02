@@ -3,7 +3,7 @@ import { utils } from '@tidb-community/common';
 import { Select } from 'formik-antd';
 
 import { getFormData } from '@tidb-community/datasource';
-import { fetchOrganizationOptions } from '~/pages/account/organization/new/form/form.data';
+import { fetchOrganizationOptions } from '~/utils/form.utils';
 
 const { buildSchema } = utils.form;
 const formData = getFormData();

@@ -8,6 +8,9 @@ import * as R from 'ramda';
 import * as Styled from './form.styled';
 import data from './form.data';
 
+import { fetchOrganizationOptions } from '~/utils/form.utils';
+import { RemoteSelect } from '@tidb-community/ui';
+
 const { form, submitBtnTitle, formSchema } = data;
 const {
   realName,
@@ -47,6 +50,11 @@ const Form = ({ onSubmit, isSubmitting }) => {
     [agreement.name]: '',
   };
 
+  const fetchOpt = {
+    fetchOptions: fetchOrganizationOptions,
+    Select,
+  };
+
   return (
     <Styled.FormContainer>
       <Styled.FormTitle>申请信息</Styled.FormTitle>
@@ -64,7 +72,7 @@ const Form = ({ onSubmit, isSubmitting }) => {
                 <Input {...email} disabled={!!settingsResp.data.email_verified} />
               </AntForm.Item>
               <AntForm.Item name={companyName.name} label={companyName.placeholder} required>
-                <Input {...companyName} disabled={!profileResp.data.company_name_editable} />
+                <RemoteSelect {...companyName} {...fetchOpt} disabled={!profileResp.data.company_name_editable} />
               </AntForm.Item>
               <AntForm.Item name={jobTitle.name} label={jobTitle.placeholder} required>
                 <Select {...jobTitle} />

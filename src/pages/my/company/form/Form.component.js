@@ -3,7 +3,7 @@ import Link from 'next/link';
 import React, { useContext, useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
-import { Form, FormItem, Input, Select } from 'formik-antd';
+import { Form, FormItem, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { api } from '@tidb-community/datasource';
 
@@ -11,6 +11,8 @@ import * as Styled from './form.styled';
 import { MeContext } from '~/context';
 import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
+import { fetchOrganizationOptions } from '~/utils/form.utils';
+import { RemoteSelect } from '@tidb-community/ui';
 
 const FormComponent = () => {
   const { meData } = useContext(MeContext);
@@ -26,6 +28,11 @@ const FormComponent = () => {
   const initialValues = {
     [companyName.name]: data.company_name,
     [position.name]: data.job_title,
+  };
+
+  const fetchOpt = {
+    fetchOptions: fetchOrganizationOptions,
+    Select,
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
@@ -64,7 +71,7 @@ const FormComponent = () => {
                 }
                 name={companyName.name}
               >
-                <Input {...companyName} disabled={!isEditable} />
+                <RemoteSelect {...companyName} {...fetchOpt} disabled={!isEditable} />
               </FormItem>
 
               <FormItem label="职位" name={position.name}>

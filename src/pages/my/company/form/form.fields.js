@@ -10,6 +10,7 @@ export const fields = {
     name: 'company_name',
     placeholder: '请输入',
     maxLength: 128,
+    labelInValue: false,
   },
   position: {
     name: 'job_title',

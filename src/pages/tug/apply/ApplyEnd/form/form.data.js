@@ -40,10 +40,8 @@ const data = {
     companyName: {
       name: 'company_name',
       placeholder: '公司',
-      validator: Yup.string()
-        .min(2, ({ min }) => `公司最短为 ${min} 个字符`)
-        .max(20, ({ max }) => `公司最长为 ${max} 个字符`)
-        .required('公司不可为空'),
+      labelInValue: false,
+      validator: Yup.mixed().required('公司不可为空'),
     },
     jobTitle: {
       name: 'job_title',

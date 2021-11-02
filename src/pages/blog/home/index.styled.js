@@ -6,7 +6,7 @@ const { Content, Section, Title } = Styled;
 export { Content, Title };
 
 export const Background = styled.div`
-  //background-color: ${colors.M2};
+  background-color: ${colors.M2};
 `;
 
 export const Container = styled.div`

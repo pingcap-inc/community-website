@@ -6,8 +6,17 @@ import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
 
 import ClassificationList from './ClassificationList';
+import { Button } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
+import { useRouter } from 'next/router';
+import { common as commonUtils, link as linkUtils } from '~/utils';
 
 const BlogHomePage = ({}) => {
+  const router = useRouter();
+  const handleClickWrite = (e) => {
+    e.preventDefault();
+    linkUtils.handleRedirect(router, '/blog');
+  };
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -24,7 +33,11 @@ const BlogHomePage = ({}) => {
                 <ClassificationList />
               </Styled.Start>
               <Styled.Center>Center</Styled.Center>
-              <Styled.End>End</Styled.End>
+              <Styled.End>
+                <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
+                  写博客
+                </Button>
+              </Styled.End>
             </Styled.Container>
           </Styled.Content>
         </CoreLayout>

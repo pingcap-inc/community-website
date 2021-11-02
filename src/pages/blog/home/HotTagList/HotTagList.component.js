@@ -3,7 +3,7 @@ import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Card } from 'antd';
 
-const allClassifications = [
+const hotTags = [
   { name: '全部分类', url: 'blog', selected: true },
   { name: '原理解读', url: 'blog' },
   { name: '新手区', url: 'blog' },
@@ -17,7 +17,7 @@ const HotTagList = ({}) => {
     <Styled.Container>
       <Card title="热门标签" extra={<a href="#">查看全部</a>} style={{ width: 300 }}>
         <Styled.List>
-          {allClassifications.map((item) => (
+          {hotTags.map((item) => (
             <Item data={item} />
           ))}
         </Styled.List>

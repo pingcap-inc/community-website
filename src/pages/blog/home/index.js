@@ -9,7 +9,7 @@ import ClassificationList from './ClassificationList';
 import { Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
-import { common as commonUtils, link as linkUtils } from '~/utils';
+import { link as linkUtils } from '~/utils';
 import HotTagList from './HotTagList';
 
 const BlogHomePage = ({}) => {

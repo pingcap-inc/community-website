@@ -6,7 +6,7 @@ const { Content, Section, Title } = Styled;
 export { Content, Title };
 
 export const Container = styled.div`
-  //display: flex;
+  width: 240px;
 `;
 
 export const List = styled.div``;

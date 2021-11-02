@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 import { link as linkUtils } from '~/utils';
 import HotTagList from './HotTagList';
 
-const BlogHomePage = ({}) => {
+const BlogHomePage = () => {
   const router = useRouter();
   const handleClickWrite = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const BlogHomePage = ({}) => {
       <CommunityHead
         title="博客"
         // description
-        keyword
+        // keyword
       />
 
       <Styled.Background>

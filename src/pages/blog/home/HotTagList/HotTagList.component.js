@@ -12,10 +12,10 @@ const hotTags = [
   { name: '新手区成长', url: 'blog' },
 ];
 
-const HotTagList = ({}) => {
+const HotTagList = () => {
   return (
     <Styled.Container>
-      <Card title="热门标签" extra={<a href="#">查看全部</a>} style={{ width: 300 }}>
+      <Card title="热门标签" extra={<Link href="/blog">查看全部</Link>} style={{ width: 300 }}>
         <Styled.List>
           {hotTags.map((item) => (
             <Item data={item} />

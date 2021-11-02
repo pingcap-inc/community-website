@@ -1,9 +1,5 @@
 import styled from 'styled-components';
-import { colors, Styled } from '@tidb-community/ui';
-
-const { Content, Section, Title } = Styled;
-
-export { Content, Title };
+import { colors } from '@tidb-community/ui';
 
 export const Container = styled.div`
   margin-top: 2rem;

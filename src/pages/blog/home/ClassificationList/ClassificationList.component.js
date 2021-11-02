@@ -8,7 +8,7 @@ const allClassifications = [
   { name: '原理解读', url: 'blog' },
 ];
 
-const ClassificationList = ({}) => {
+const ClassificationList = () => {
   return (
     <Styled.Container>
       <Styled.List>

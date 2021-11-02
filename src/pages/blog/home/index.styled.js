@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { colors, Styled } from '@tidb-community/ui';
 
-const { Content, Section, Title } = Styled;
+const { Content } = Styled;
 
-export { Content, Title };
+export { Content };
 
 export const Background = styled.div`
   background-color: ${colors.M2};

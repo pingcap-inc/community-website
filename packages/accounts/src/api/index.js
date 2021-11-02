@@ -76,4 +76,10 @@ export const canForgetResetPassword = async () => {
     });
 };
 
-export const fetchOrganizationOptions = (word) => client.get('/api/search-company', { params: { word } });
+export const fetchOrganizationOptions = (word) =>
+  client.get('/api/search-company', { params: { word } }).then((result) =>
+    result.data.map(({ name }, i) => ({
+      value: name,
+      label: i,
+    }))
+  );

@@ -14,7 +14,7 @@ export const Container = styled(Row).attrs({
   gutter: [24, 24],
 })`
   //display: flex;
-  margin: 2rem auto;
+  padding: 2rem 0;
 `;
 
 export const Start = styled(Col).attrs({

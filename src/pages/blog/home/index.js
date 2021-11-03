@@ -29,21 +29,23 @@ const BlogHomePage = () => {
       />
 
       <BlogLayout>
-        <Styled.Container>
-          <Styled.Start>
-            <ClassificationList />
-          </Styled.Start>
-          <Styled.Center>
-            <OrderBySwitch />
-            <BlogList />
-          </Styled.Center>
-          <Styled.End>
-            <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
-              写博客
-            </Button>
-            <HotTagList />
-          </Styled.End>
-        </Styled.Container>
+        <Styled.Content>
+          <Styled.Container>
+            <Styled.Start>
+              <ClassificationList />
+            </Styled.Start>
+            <Styled.Center>
+              <OrderBySwitch />
+              <BlogList />
+            </Styled.Center>
+            <Styled.End>
+              <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
+                写博客
+              </Button>
+              <HotTagList />
+            </Styled.End>
+          </Styled.Container>
+        </Styled.Content>
       </BlogLayout>
     </PageDataContext.Provider>
   );

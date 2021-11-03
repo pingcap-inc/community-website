@@ -1,5 +1,9 @@
 import styled from 'styled-components';
+import { Styled } from '@tidb-community/ui';
 import { Row, Col } from 'antd';
+
+const { Content } = Styled;
+export { Content };
 
 export const List = styled(Row).attrs({
   gutter: [24, 24],

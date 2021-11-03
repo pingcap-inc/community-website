@@ -139,13 +139,15 @@ const TagPage = () => {
       />
 
       <BlogLayout>
-        <Styled.List>
-          {allTags.map((item, key) => (
-            <Styled.Item key={key}>
-              <TagItem data={item} />
-            </Styled.Item>
-          ))}
-        </Styled.List>
+        <Styled.Content>
+          <Styled.List>
+            {allTags.map((item, key) => (
+              <Styled.Item key={key}>
+                <TagItem data={item} />
+              </Styled.Item>
+            ))}
+          </Styled.List>
+        </Styled.Content>
       </BlogLayout>
     </PageDataContext.Provider>
   );

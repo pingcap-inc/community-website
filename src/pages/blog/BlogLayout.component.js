@@ -6,9 +6,7 @@ import { CoreLayout } from '~/layouts';
 const BlogLayout = ({ children }) => {
   return (
     <CoreLayout>
-      <Styled.Background>
-        <Styled.Content>{children}</Styled.Content>
-      </Styled.Background>
+      <Styled.Background>{children}</Styled.Background>
     </CoreLayout>
   );
 };

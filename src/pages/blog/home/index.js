@@ -11,6 +11,8 @@ import { EditOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 import { link as linkUtils } from '~/utils';
 import HotTagList from './HotTagList';
+import OrderBySwitch from './OrderBySwitch';
+import BlogList from './BlogList';
 
 const BlogHomePage = () => {
   const router = useRouter();
@@ -33,7 +35,10 @@ const BlogHomePage = () => {
               <Styled.Start>
                 <ClassificationList />
               </Styled.Start>
-              <Styled.Center>Center</Styled.Center>
+              <Styled.Center>
+                <OrderBySwitch />
+                <BlogList />
+              </Styled.Center>
               <Styled.End>
                 <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
                   写博客

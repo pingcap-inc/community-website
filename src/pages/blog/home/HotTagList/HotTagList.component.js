@@ -15,7 +15,7 @@ const hotTags = [
 const HotTagList = () => {
   return (
     <Styled.Container>
-      <Card title="热门标签" extra={<Link href="/blog">查看全部</Link>} style={{ width: 300 }}>
+      <Card title="热门标签" extra={<Link href="/blog">查看全部</Link>}>
         <Styled.List>
           {hotTags.map((item) => (
             <Item data={item} />

@@ -14,3 +14,8 @@ export const List = styled(Row).attrs({
 export const Item = styled(Col).attrs({
   span: 6,
 })``;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+`;

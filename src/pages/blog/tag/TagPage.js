@@ -1,5 +1,6 @@
 import React from 'react';
 import * as Styled from './index.styled';
+import { Pagination } from 'antd';
 
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
@@ -147,6 +148,9 @@ const TagPage = () => {
               </Styled.Item>
             ))}
           </Styled.List>
+          <Styled.Pagination>
+            <Pagination defaultCurrent={1} total={50} />
+          </Styled.Pagination>
         </Styled.Content>
       </BlogLayout>
     </PageDataContext.Provider>

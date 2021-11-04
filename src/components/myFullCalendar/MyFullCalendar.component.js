@@ -47,7 +47,7 @@ const MyFullCalendar = ({ data }) => {
         center: '',
         end: 'prev,next', // will normally be on the right. if RTL, will be on the left
       }}
-      titleFormat={(date) => `${date.date.year} 年 ${date.date.month} 月`}
+      titleFormat={(date) => `${date.date.year} 年 ${date.date.month + 1} 月`}
       contentHeight="auto"
       eventMouseEnter={eventMouseEnter}
       eventMouseLeave={eventMouseLeave}

@@ -1,9 +1,9 @@
 import * as polished from 'polished';
 import styled, { css } from 'styled-components';
-import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { Button, Carousel as AntCarousel } from 'antd';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
-import { useIsSmallScreen } from '~/hooks';
+
 const githubBlack = '#24292e';
 const githubLightGrey = '#f0f0f0';
 
@@ -71,32 +71,35 @@ export const LearnButton = styled(Button).attrs({ type: 'primary' })``;
 
 // vertically center the carousel
 export const CarouselWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
+  ${(props) =>
+    props.isSmallScreen
+      ? css`
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+        `
+      : css`
+          margin-top: 2rem;
+        `}
 `;
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({
-  dots: !props.isSmallScreen,
   dotPosition: props.isSmallScreen ? 'bottom' : 'right',
   autoplay: process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local',
   speed: 1000,
   autoplaySpeed: 8000,
 }))`
+  width: 100%;
+
   .slick-slide {
-    padding-right: 1rem;
+    padding-right: 1.5rem;
     cursor: pointer;
   }
 
-  .slick-current {
-    margin-bottom: 0.2rem;
-  }
-
   .slick-track {
-    width: 100%;
     height: auto !important;
   }
 
@@ -120,8 +123,47 @@ export const Carousel = styled(AntCarousel).attrs((props) => ({
       }
     }
   }
+}
+
+${(props) =>
+  props.isSmallScreen &&
+  css`
+    margin-bottom: 3rem;
+
+    .slick-slide {
+      padding-right: 0;
+    }
+
+    .slick-dots {
+      margin: 0 auto;
+      bottom: -32px;
+
+      li {
+        margin: 3px 8px;
+
+        &,
+        button {
+          ${mixins.size('40px', '6px')}
+        }
+
+        &.slick-active {
+          &,
+          button {
+            ${mixins.size('50px', '6px')}
+          }
+        }
+      }
+    }
+  `}
+
+;
 `;
 
-export const Recommendation = styled.img`
-  width: 100%;
+export const Recommendation = styled.div`
+  margin: 0 auto;
+  height: ${(props) => `${props.height}px`};
+  background: ${(props) => `url(${props.image}) center no-repeat`};
+  background-size: contain;
+  position: relative;
+  width: 110%;
 `;

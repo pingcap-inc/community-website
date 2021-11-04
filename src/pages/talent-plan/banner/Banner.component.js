@@ -1,10 +1,7 @@
 import React from 'react';
-import { Col, Row } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 
 import * as Styled from './banner.styled';
-import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 import { useTranslation } from 'next-i18next';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
@@ -31,14 +28,32 @@ const Banner = () => {
           }
           rightPanel={
             <Styled.CarouselWrapper>
-              <Styled.Carousel>
-                {[1, 2, 3].map((el) => (
-                  <Styled.Recommendation key={el} src={getImage(`banner-rec-${el}.svg`)} alt={`rec-${el}`} />
-                ))}
+              <Styled.Carousel isSmallScreen={isSmallScreen}>
+                {[1, 2, 3].map((el) => {
+                  const props = {
+                    image: getImage(`banner-rec-${el}.svg`),
+                    key: el,
+                    height: (() => {
+                      if (breakpoint.lg) {
+                        return 300;
+                      }
+                      if (breakpoint.md) {
+                        return 300;
+                      }
+                      if (breakpoint.sm) {
+                        return 300;
+                      }
+                      if (breakpoint.xs) {
+                        return 200;
+                      }
+                    })(),
+                  };
+                  return <Styled.Recommendation {...props} />;
+                })}
               </Styled.Carousel>
             </Styled.CarouselWrapper>
           }
-        ></TwoColumnsSection>
+        />
       </Styled.Content>
     </Styled.Container>
   );

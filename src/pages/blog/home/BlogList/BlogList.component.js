@@ -22,18 +22,17 @@ const blogInfo = {
     comments: 666,
   },
   coverImageUrl: 'https://fakeimg.pl/1540x440/',
-  onClickTag: () => console.log('onClickTag'),
-  onClick: () => console.log('onClick'),
-  onClickAuthor: () => console.log('onClickAuthor'),
 };
 
 const BlogList = () => {
   return (
     <Styled.Container>
       <Styled.List>
-        {/*{[1,2,3,4,5,6].map((item) => (*/}
-        {/*  <BlogInfo {...blogInfo} />*/}
-        {/*))}*/}
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <Styled.Item>
+            <BlogInfo {...blogInfo} />
+          </Styled.Item>
+        ))}
       </Styled.List>
     </Styled.Container>
   );

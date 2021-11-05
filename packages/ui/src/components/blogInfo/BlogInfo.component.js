@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import * as Styled from './blogInfo.styled';
@@ -23,9 +23,7 @@ const BlogInfo = ({
   onClickAuthor,
   author,
 }) => {
-  const Container = useMemo(() => {
-    return Styled.makeContainer(el);
-  }, [el]);
+  const Container = Styled.makeContainer(el);
 
   const handleClick = useCallback(() => {
     onClick(id);

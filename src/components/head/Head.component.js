@@ -45,6 +45,21 @@ const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keywor
         `,
         }}
       />
+
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `
+            var _hmt = _hmt || [];
+            (function() {
+             var hm = document.createElement("script");
+             hm.src = "https://hm.baidu.com/hm.js?2321846dd5ff3a4f0ffeef2e2a25e218";
+             var s = document.getElementsByTagName("script")[0]; 
+             s.parentNode.insertBefore(hm, s);
+            })();
+        `,
+        }}
+      />
+
       {children}
     </NextHead>
   );

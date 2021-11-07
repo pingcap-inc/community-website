@@ -95,7 +95,106 @@
     ]
   },
   "team": {
-    "intro": "test "
+    "title": "我们的团队",
+    "members": [
+      {
+        "nameEN": "Karim",
+        "nameZH": "江坤",
+        "org": "Digital China",
+        "role": "PMC",
+        "github": "pupillord"
+      },
+      {
+        "nameEN": "David",
+        "nameZH": "杨运帷",
+        "org": "Digital China",
+        "role": "Active Contributor",
+        "github": "AmoebaProtozoa"
+      },
+      {
+        "nameEN": "Xiaoguang Sun",
+        "nameZH": "孙晓光",
+        "org": "PingCAP",
+        "role": "PMC",
+        "github": "sunxiaoguang"
+      },
+      {
+        "nameEN": "Junyi Yang",
+        "nameZH": "杨俊逸",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "rebelice"
+      },
+      {
+        "nameEN": "Jian Zhang",
+        "nameZH": "张建",
+        "org": "PingCAP",
+        "role": "PMC",
+        "github": "zz-jason"
+      },
+      {
+        "nameEN": "Tong Mu",
+        "nameZH": "童牧",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "you06"
+      },
+      {
+        "nameEN": "Connor",
+        "nameZH": "张博康",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "Connor1996"
+      },
+      {
+        "nameEN": "xurui",
+        "nameZH": "徐锐",
+        "org": "oltp group",
+        "role": "Senior Mentor",
+        "github": "cfzjywxk"
+      },
+      {
+        "nameEN": "Cui Yiding",
+        "nameZH": "崔一丁",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "winoros"
+      },
+      {
+        "nameEN": "Xiang Zhang",
+        "nameZH": "张翔",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "zhangyangyu"
+      },
+      {
+        "nameEN": "Andy",
+        "nameZH": "骆迪安",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "andylokandy"
+      },
+      {
+        "nameEN": "Panda",
+        "nameZH": "王能杰",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "wangnengjie"
+      },
+      {
+        "nameEN": "Jiguang Wang",
+        "nameZH": "万继光",
+        "org": "华中科技大学",
+        "role": "PMC"
+      },
+      {
+        "nameEN": "Hammer Li",
+        "nameZH": "李思岑",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "L–LYR"
+      }
+    ]
   },
   "participation": {
     "intro": "test "

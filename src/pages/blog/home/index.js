@@ -22,9 +22,9 @@ const classifications = [
 ];
 
 const hotTags = [
-  { name: '全部分类', url: 'blog', selected: true },
+  { name: '全部分类', url: 'blog' },
   { name: '原理解读', url: 'blog' },
-  { name: '新手区', url: 'blog' },
+  { name: '新手区', url: 'blog', selected: true },
   { name: '性能调油', url: 'blog' },
   { name: '部署监控', url: 'blog' },
   { name: '新手区成长', url: 'blog' },

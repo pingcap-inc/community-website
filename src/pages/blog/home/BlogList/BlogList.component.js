@@ -28,9 +28,9 @@ const BlogList = () => {
   return (
     <Styled.Container>
       <Styled.List>
-        {[1, 2, 3, 4, 5, 6].map((item) => (
+        {[1, 2, 3, 4, 5, 6].map((key) => (
           <Styled.Item>
-            <BlogInfo {...blogInfo} />
+            <BlogInfo key={key} {...blogInfo} />
           </Styled.Item>
         ))}
       </Styled.List>

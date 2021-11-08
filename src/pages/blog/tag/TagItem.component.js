@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './TagItem.styled';
 import { Card } from 'antd';
 
-const TagItem = ({ data: { name, articleNum, description } }) => {
+const TagItem = ({ name, articleNum, description }) => {
   return (
     <Card title="">
       <Styled.Title># {name}</Styled.Title>

@@ -12,7 +12,7 @@ const OrderBySwitch = () => {
     <Styled.Container>
       <Styled.List>
         {orderBy.map((item) => (
-          <Item data={item} />
+          <Item {...item} />
         ))}
       </Styled.List>
       <Styled.AllTag>
@@ -22,7 +22,7 @@ const OrderBySwitch = () => {
   );
 };
 
-const Item = ({ data: { name, url, selected } }) => {
+const Item = ({ name, url, selected }) => {
   return (
     <Link href={`/${url}`}>
       <Styled.Item selected={!!selected}>{name}</Styled.Item>

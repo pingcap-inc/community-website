@@ -16,6 +16,15 @@ const tagItemProps = {
     'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
 };
 
+const hotTags = [
+  { name: '全部分类', url: 'blog' },
+  { name: '原理解读', url: 'blog' },
+  { name: '新手区', url: 'blog', selected: true },
+  { name: '性能调油', url: 'blog' },
+  { name: '部署监控', url: 'blog' },
+  { name: '新手区成长', url: 'blog' },
+];
+
 const TagDetail = () => {
   const router = useRouter();
   const handleClickWrite = (e) => {
@@ -35,7 +44,7 @@ const TagDetail = () => {
         <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
           写博客
         </Button>
-        <HotTagList />
+        <HotTagList hotTags={hotTags} />
       </Styled.End>
     </Styled.Container>
   );

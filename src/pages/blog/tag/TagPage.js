@@ -144,7 +144,7 @@ const TagPage = () => {
           <Styled.List>
             {allTags.map((item, key) => (
               <Styled.Item key={key}>
-                <TagItem data={item} />
+                <TagItem {...item} />
               </Styled.Item>
             ))}
           </Styled.List>

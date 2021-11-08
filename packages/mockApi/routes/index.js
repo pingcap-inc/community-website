@@ -18,5 +18,6 @@ router.use('/api/social', require('./social'));
 router.use('/api/tidb-releases', require('./tidbReleases'));
 router.use('/next-api/subscribe', require('./subscribe'));
 router.use('/api/tug', require('./tug'));
+router.use('/blog/api', require('./blog'));
 
 module.exports = router;

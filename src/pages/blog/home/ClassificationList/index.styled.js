@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
 
 export const Container = styled.div`
-  //width: 240px;
+  ${mixins.showOnDesktop()}
 `;
 
 export const List = styled.div``;

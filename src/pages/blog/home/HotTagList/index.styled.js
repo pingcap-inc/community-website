@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
 
 export const Container = styled.div`
+  ${mixins.showOnDesktop()}
   margin-top: 2rem;
   a {
     color: ${colors.T7};

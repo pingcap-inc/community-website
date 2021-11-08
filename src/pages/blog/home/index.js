@@ -10,9 +10,25 @@ import { PageDataContext } from '~/context';
 import ClassificationList from './ClassificationList';
 import { link as linkUtils } from '~/utils';
 import HotTagList from './HotTagList';
+import ClassificationListMobile from './ClassificationListMobile';
 import OrderBySwitch from './OrderBySwitch';
 import BlogList from './BlogList';
 import BlogLayout from '../BlogLayout.component';
+import SearchOnMobile from './SearchOnMobile';
+
+const classifications = [
+  { name: '全部分类', url: 'blog', selected: true },
+  { name: '原理解读', url: 'blog' },
+];
+
+const hotTags = [
+  { name: '全部分类', url: 'blog', selected: true },
+  { name: '原理解读', url: 'blog' },
+  { name: '新手区', url: 'blog' },
+  { name: '性能调油', url: 'blog' },
+  { name: '部署监控', url: 'blog' },
+  { name: '新手区成长', url: 'blog' },
+];
 
 const BlogHomePage = () => {
   const router = useRouter();
@@ -32,17 +48,21 @@ const BlogHomePage = () => {
         <Styled.Content>
           <Styled.Container>
             <Styled.Start>
-              <ClassificationList />
+              <ClassificationList classifications={classifications} />
             </Styled.Start>
             <Styled.Center>
+              <ClassificationListMobile classifications={classifications} />
+              <SearchOnMobile />
               <OrderBySwitch />
               <BlogList />
             </Styled.Center>
             <Styled.End>
-              <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
-                写博客
-              </Button>
-              <HotTagList />
+              <Styled.WriteBlog>
+                <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
+                  写博客
+                </Button>
+              </Styled.WriteBlog>
+              <HotTagList hotTags={hotTags} />
             </Styled.End>
           </Styled.Container>
         </Styled.Content>

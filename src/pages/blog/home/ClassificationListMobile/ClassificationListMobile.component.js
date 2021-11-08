@@ -2,22 +2,14 @@ import React from 'react';
 import * as Styled from './index.styled';
 import Link from 'next/link';
 
-const orderBy = [
-  { name: '推荐排序', url: 'blog', selected: true },
-  { name: '时间排序', url: 'blog' },
-];
-
-const OrderBySwitch = () => {
+const ClassificationListMobile = ({classifications}) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {orderBy.map((item) => (
+        {classifications.map((item) => (
           <Item data={item} />
         ))}
       </Styled.List>
-      <Styled.AllTag>
-        <Link href={'blog/tag'}>全部标签</Link>
-      </Styled.AllTag>
     </Styled.Container>
   );
 };
@@ -30,4 +22,4 @@ const Item = ({ data: { name, url, selected } }) => {
   );
 };
 
-export default OrderBySwitch;
+export default ClassificationListMobile;

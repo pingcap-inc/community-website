@@ -1,9 +1,36 @@
 import styled from 'styled-components';
-import { Styled } from '@tidb-community/ui';
+import { constants, Styled } from '@tidb-community/ui';
 import { Row, Col } from 'antd';
 
 const { Content } = Styled;
 export { Content };
+
+export const Container = styled(Row).attrs({
+  gutter: 24,
+})`
+  @media screen and (max-width: ${constants.breakPoints.md}) {
+    padding: 1rem 0;
+  }
+
+  @media screen and (min-width: ${constants.breakPoints.md}) {
+    padding: 2rem 0;
+  }
+`;
+
+export const Start = styled(Col).attrs({
+  sm: 24,
+  md: 4,
+})``;
+
+export const Center = styled(Col).attrs({
+  sm: 24,
+  md: 14,
+})``;
+
+export const End = styled(Col).attrs({
+  sm: 24,
+  md: 6,
+})``;
 
 export const List = styled(Row).attrs({
   gutter: [24, 24],

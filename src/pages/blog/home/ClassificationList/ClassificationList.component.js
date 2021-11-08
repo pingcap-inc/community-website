@@ -3,16 +3,11 @@ import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Divider } from 'antd';
 
-const allClassifications = [
-  { name: '全部分类', url: 'blog', selected: true },
-  { name: '原理解读', url: 'blog' },
-];
-
-const ClassificationList = () => {
+const ClassificationList = ({ classifications }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {allClassifications.map((item) => (
+        {classifications.map((item) => (
           <Item data={item} />
         ))}
       </Styled.List>

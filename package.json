@@ -66,7 +66,7 @@
     "yup": "0.32.9"
   },
   "devDependencies": {
-    "@634750802/a-editor": "0.2.1",
+    "@634750802/a-editor": "0.2.3",
     "@babel/eslint-parser": "7.15.4",
     "@sentry/webpack-plugin": "1.17.1",
     "@svgr/webpack": "5.5.0",

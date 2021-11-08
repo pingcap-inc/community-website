@@ -120,4 +120,6 @@ BlogInfo.propTypes = {
   bottomExtends: PropTypes.node,
 };
 
+BlogInfo.Tag = Styled.Tag;
+
 export default BlogInfo;

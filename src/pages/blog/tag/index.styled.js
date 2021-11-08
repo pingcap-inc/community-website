@@ -12,7 +12,9 @@ export const List = styled(Row).attrs({
 `;
 
 export const Item = styled(Col).attrs({
-  span: 6,
+  xs: 24,
+  md: 12,
+  lg: 6,
 })``;
 
 export const Pagination = styled.div`

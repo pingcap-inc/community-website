@@ -1,5 +1,5 @@
 import * as Styled from './editing.styled';
-import TiEditor, { createFactory } from '@634750802/a-editor';
+import TiEditor from '@634750802/a-editor';
 import { Button, Checkbox, Input } from 'antd';
 import React from 'react';
 import { useEditContext } from '../edit.context';

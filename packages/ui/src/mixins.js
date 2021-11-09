@@ -161,3 +161,23 @@ export const resetFontFamily = () => css`
 export const boxShadow = () => `
   box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
 `;
+
+export const showOnDesktop = (display = 'block') => `
+  @media screen and (max-width: ${breakPoints.md}) {
+    display: none;
+  }
+
+  @media screen and (min-width: ${breakPoints.md}) {
+    display: ${display};
+  }
+`;
+
+export const showOnMobile = (display = 'block') => `
+  @media screen and (max-width: ${breakPoints.md}) {
+    display: ${display};
+  }
+
+  @media screen and (min-width: ${breakPoints.md}) {
+    display: none;
+  }
+`;

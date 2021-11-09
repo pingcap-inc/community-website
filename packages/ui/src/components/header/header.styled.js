@@ -5,6 +5,7 @@ import * as mixins from '../../mixins';
 import { menuPopupId } from './header.constants';
 
 export const Container = styled.div`
+  background-color: ${colors.M1};
   border-bottom: 1px solid ${colors.T2};
   z-index: 3;
 `;

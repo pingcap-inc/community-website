@@ -4,6 +4,7 @@ import { colors } from '@tidb-community/ui';
 
 export const RouteLink = styled(Link)`
   color: #aaa;
+  //white-space: nowrap;
 
   &:hover {
     color: ${colors.B1};

@@ -1,15 +1,8 @@
-const { errorResp, successResp } = require('../../utils');
-const { categories } = require('./categories.data');
+const { successResp } = require('../../../utils');
+const { categories } = require('./categories.mock');
 
 module.exports = (req, res) => {
-  const { id } = req.body;
-
-  if (id === undefined) {
-    return errorResp({
-      code: 400,
-      detail: 'you need to input a category id',
-    })(req, res);
-  }
-
-  successResp(categories[id])(req, res);
+  const { id } = req.params;
+  const data = categories[id];
+  return successResp(data)(req, res);
 };

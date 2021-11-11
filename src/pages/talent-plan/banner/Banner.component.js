@@ -1,5 +1,4 @@
 import React from 'react';
-import { useRouter } from 'next/router';
 
 import * as Styled from './banner.styled';
 import { useIsSmallScreen } from '~/hooks';
@@ -8,8 +7,6 @@ import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 
 const Banner = () => {
-  const router = useRouter();
-
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-talent-plan');
 

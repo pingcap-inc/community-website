@@ -11,7 +11,6 @@ export const Container = styled(Styled.Section)`
 
 export const Content = styled(Styled.Content)`
   position: relative;
-  padding: 5rem 1rem 2rem;
 `;
 
 export const ContainerGray = styled(Styled.Section)`

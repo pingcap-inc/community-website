@@ -11,7 +11,7 @@ export const Container = styled(Styled.Section)`
 
 export const Content = styled(Styled.Content)`
   position: relative;
-  padding: 1rem 1rem 2rem;
+  padding-top: 3rem;
 `;
 
 export const ProjectCard = styled.div`

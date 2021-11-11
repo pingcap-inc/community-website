@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import * as Styled from './partitcipation.styled';
-import { useIsSmallScreen } from '~/hooks';
 import { useTranslation } from 'next-i18next';
 import { Styled as CommonStyled } from '@tidb-community/ui';
 import { Col, Image, Row, Tabs } from 'antd';
@@ -14,7 +13,6 @@ const { TabPane } = Tabs;
 const Participation = () => {
   const router = useRouter();
 
-  const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-talent-plan');
 
   const lang = t('participation', { returnObjects: true });
@@ -24,8 +22,8 @@ const Participation = () => {
   const stepsContent = [
     <Styled.StepBoxContent>
       <Row gutter={16}>
-        {lang.paths.map((path, index) => (
-          <Col span={12}>
+        {lang.paths.map((path) => (
+          <Col span={12} key={path}>
             <Styled.PathCardWrapper>
               <Styled.PathCard onClick={() => router.push(path.url)}>
                 <Styled.PathCardHeader> {path.name} </Styled.PathCardHeader>
@@ -86,8 +84,8 @@ const Participation = () => {
         <Styled.ContainerGray>
           <Styled.Content>
             <Row>
-              {lang.becomings.map((el, idx) => (
-                <Col span={6}>
+              {lang.becomings.map((el) => (
+                <Col xs={24} md={6} key={el.title}>
                   <Styled.BecomingBox>
                     <Styled.BecomingBoxContent>
                       <Styled.BecomingHeader>{el.title}</Styled.BecomingHeader>

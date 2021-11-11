@@ -10,6 +10,8 @@ import Labs from '~/pages/talent-plan/labs';
 import Team from '~/pages/talent-plan/team';
 import Participation from '~/pages/talent-plan/participation';
 import NextSteps from '~/pages/talent-plan/nextSteps';
+import Organizers from '~/pages/talent-plan/organizers';
+import Stories from '~/pages/talent-plan/stories';
 import Others from '~/pages/talent-plan/others';
 
 export const getServerSideProps = async (ctx) => {
@@ -21,14 +23,6 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 };
-
-function Organizers() {
-  return null;
-}
-
-function Stories() {
-  return null;
-}
 
 const Page = ({ data }) => (
   <PageDataContext.Provider value={{ data }}>

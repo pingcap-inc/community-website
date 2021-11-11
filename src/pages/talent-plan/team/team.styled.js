@@ -46,5 +46,5 @@ export const MemberCardLine = styled.div`
 
 export const Content = styled(Styled.Content)`
   position: relative;
-  padding: 5rem 1rem 7.5rem;
+  padding-bottom: 3rem;
 `;

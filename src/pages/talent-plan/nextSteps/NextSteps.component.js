@@ -1,13 +1,10 @@
 import React from 'react';
-import { Button, Col, Row } from 'antd';
+import { Col, Row } from 'antd';
 import { useRouter } from 'next/router';
 
 import * as Styled from './nextSteps.styled';
-import { useIsSmallScreen } from '~/hooks';
 import { useTranslation } from 'next-i18next';
 import { Styled as CommonStyled } from '@tidb-community/ui';
-import { ProjectCardContent } from './nextSteps.styled';
-import { Link } from '~/components';
 import { link as linkUtils } from '~/utils';
 
 const NextSteps = () => {
@@ -18,7 +15,6 @@ const NextSteps = () => {
     linkUtils.handleRedirect(router, link);
   };
 
-  const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-talent-plan');
 
   const lang = t('nextSteps', { returnObjects: true });
@@ -30,15 +26,14 @@ const NextSteps = () => {
         {/* Since the data for this section are richly formatted, I decided
        not to use the i18n patter*/}
         <Row gutter={16}>
-          <Col span={12}>
+          <Col sm={24} lg={12}>
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> A. 参加 TCP 项目 </Styled.ProjectCardTitle>
                 Talent Challenge Program 是为通过 Talent Plan 课程考核的高校学生提供的开源项目实训平台，每个赛季将持续
                 2~3 个月。 通过参与 Talent Challenge Program，你可以获得： <br />
                 · 亲身参与世界级开源项目的独特体验，你的实践成果将有机会应用于国内外各行各业 <br />
-                · 一对一 Mentor 辅导，每个项目设有专门的 Mentor 辅导，助你攻克难关，快速 get 职场技能 <br />
-                ·
+                · 一对一 Mentor 辅导，每个项目设有专门的 Mentor 辅导，助你攻克难关，快速 get 职场技能 <br />·
                 丰厚的项目奖金，每个项目根据难易程度设有不同额度的项目奖金，顺利完成项目即可获得项目奖金，实践赚钱两不误{' '}
                 <br />
                 · 优质的实习/校招机会，项目实习期间表现优秀的 Mentee 有机会获得由 PingCAP 及 PingCAP
@@ -47,24 +42,10 @@ const NextSteps = () => {
                 <Styled.ProjectCardButton
                   onClick={onClick('https://github.com/pingcap/talent-plan/tree/master/talent-challenge-program2021')}
                 >
-                  {' '}
-                  立即申请{' '}
+                  立即申请
                 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
-
-            <Styled.ProjectCard>
-              <Styled.ProjectCardContent>
-                <Styled.ProjectCardTitle> D. 参与 TiDB Hackathon </Styled.ProjectCardTitle>
-                TiDB Hackathon 是由 TiDB
-                社区举办的黑客马拉松大赛，选手需围绕组委会规定的主题做出一个完整的作品并由评审最终评选出获奖者。作为社区最硬核的保留项目，黑客马拉松每年都吸引大量的社区开发者、高校学生、用户等积极参与。丰厚的奖金，极客的项目，等你来挑战！2021
-                年 12 月 1日 开启报名，敬请期待。 Talent Challenge Program 2021
-                正在进行中，点击“立即申请”开始你的实训之旅吧！
-                <Styled.ProjectCardButton disabled> 敬请期待 </Styled.ProjectCardButton>
-              </Styled.ProjectCardContent>
-            </Styled.ProjectCard>
-          </Col>
-          <Col span={12}>
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> B. 参与 TiDB 开发 </Styled.ProjectCardTitle>
@@ -77,12 +58,12 @@ const NextSteps = () => {
                   disabled
                   onClick={onClick('https://pingcap.github.io/tidb-dev-guide/get-started/install-golang')}
                 >
-                  {' '}
-                  敬请期待{' '}
+                  敬请期待
                 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
-
+          </Col>
+          <Col sm={24} lg={12}>
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> C. 参加社区项目 TiDB for PostgreSQL </Styled.ProjectCardTitle>
@@ -94,9 +75,19 @@ const NextSteps = () => {
                 <Styled.ProjectCardButton
                   onClick={onClick('https://github.com/DigitalChinaOpenSource/TiDB-for-PostgreSQL')}
                 >
-                  {' '}
-                  立即参与{' '}
+                  立即参与
                 </Styled.ProjectCardButton>
+              </Styled.ProjectCardContent>
+            </Styled.ProjectCard>
+
+            <Styled.ProjectCard>
+              <Styled.ProjectCardContent>
+                <Styled.ProjectCardTitle> D. 参与 TiDB Hackathon </Styled.ProjectCardTitle>
+                TiDB Hackathon 是由 TiDB
+                社区举办的黑客马拉松大赛，选手需围绕组委会规定的主题做出一个完整的作品并由评审最终评选出获奖者。作为社区最硬核的保留项目，黑客马拉松每年都吸引大量的社区开发者、高校学生、用户等积极参与。丰厚的奖金，极客的项目，等你来挑战！2021
+                年 12 月 1日 开启报名，敬请期待。 Talent Challenge Program 2021
+                正在进行中，点击“立即申请”开始你的实训之旅吧！
+                <Styled.ProjectCardButton disabled> 敬请期待 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
 

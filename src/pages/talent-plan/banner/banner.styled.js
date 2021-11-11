@@ -4,9 +4,6 @@ import { Button, Carousel as AntCarousel } from 'antd';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 
-const githubBlack = '#24292e';
-const githubLightGrey = '#f0f0f0';
-
 export const Container = styled(Styled.Section)`
   && {
     color: ${colors.F1};
@@ -25,24 +22,6 @@ export const Content = styled(Styled.Content)`
     props.isSmallScreen &&
     css`
       padding: 0 0 5.5rem;
-
-      ${LeftPanel} {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        > * {
-          display: block;
-        }
-
-        p {
-          text-align: center;
-        }
-
-        .ant-btn-primary {
-          margin-bottom: 2rem;
-        }
-      }
 
       ${Intro} {
         width: 80%;

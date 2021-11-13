@@ -26,7 +26,7 @@ const Banner = () => {
           rightPanel={
             <Styled.CarouselWrapper>
               <Styled.Carousel isSmallScreen={isSmallScreen}>
-                {[1, 2, 3].map((el) => {
+                {[3, 1, 2].map((el) => {
                   const props = {
                     image: getImage(`banner-rec-${el}.svg`),
                     key: el,

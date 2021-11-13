@@ -98,18 +98,17 @@
     "title": "我们的团队",
     "members": [
       {
+        "nameEN": "Jiguang Wang",
+        "nameZH": "万继光",
+        "org": "华中科技大学",
+        "role": "PMC"
+      },
+      {
         "nameEN": "Karim",
         "nameZH": "江坤",
         "org": "Digital China",
         "role": "PMC",
         "github": "pupillord"
-      },
-      {
-        "nameEN": "David",
-        "nameZH": "杨运帷",
-        "org": "Digital China",
-        "role": "Active Contributor",
-        "github": "AmoebaProtozoa"
       },
       {
         "nameEN": "Xiaoguang Sun",
@@ -119,13 +118,6 @@
         "github": "sunxiaoguang"
       },
       {
-        "nameEN": "Junyi Yang",
-        "nameZH": "杨俊逸",
-        "org": "PingCAP",
-        "role": "Committer",
-        "github": "rebelice"
-      },
-      {
         "nameEN": "Jian Zhang",
         "nameZH": "张建",
         "org": "PingCAP",
@@ -133,11 +125,11 @@
         "github": "zz-jason"
       },
       {
-        "nameEN": "Tong Mu",
-        "nameZH": "童牧",
+        "nameEN": "Junyi Yang",
+        "nameZH": "杨俊逸",
         "org": "PingCAP",
-        "role": "Senior Mentor",
-        "github": "you06"
+        "role": "Committer",
+        "github": "rebelice"
       },
       {
         "nameEN": "Connor",
@@ -147,6 +139,20 @@
         "github": "Connor1996"
       },
       {
+        "nameEN": "Xiang Zhang",
+        "nameZH": "张翔",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "zhangyangyu"
+      },
+      {
+        "nameEN": "David",
+        "nameZH": "杨运帷",
+        "org": "Digital China",
+        "role": "Active Contributor",
+        "github": "AmoebaProtozoa"
+      },
+      {
         "nameEN": "xurui",
         "nameZH": "徐锐",
         "org": "oltp group",
@@ -154,18 +160,18 @@
         "github": "cfzjywxk"
       },
       {
+        "nameEN": "Tong Mu",
+        "nameZH": "童牧",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "you06"
+      },
+      {
         "nameEN": "Cui Yiding",
         "nameZH": "崔一丁",
         "org": "PingCAP",
         "role": "Senior Mentor",
         "github": "winoros"
-      },
-      {
-        "nameEN": "Xiang Zhang",
-        "nameZH": "张翔",
-        "org": "PingCAP",
-        "role": "Committer",
-        "github": "zhangyangyu"
       },
       {
         "nameEN": "Andy",
@@ -182,24 +188,32 @@
         "github": "wangnengjie"
       },
       {
-        "nameEN": "Jiguang Wang",
-        "nameZH": "万继光",
-        "org": "华中科技大学",
-        "role": "PMC"
-      },
-      {
         "nameEN": "Hammer Li",
         "nameZH": "李思岑",
         "org": "华中科技大学",
         "role": "Mentor",
         "github": "L–LYR"
+      },
+      {
+        "nameEN": "Chen Jingang",
+        "nameZH": "陈劲刚",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "Whorra"
+      },
+      {
+        "nameEN": "Li Xiang",
+        "nameZH": "李响",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "LX-676655103"
       }
     ]
   },
   "participation": {
     "title": "深度参与 Talent Plan",
-    "tab1": "成为 TP 建设者",
-    "tab2": "学习 TP",
+    "tab1": "成为 Talent Plan 建设者",
+    "tab2": "学习 Talent Plan",
     "steps": [
       "结合个人兴趣爱好以及知识背景，从以下卡片中点击选择适合自己的学习路径",
       "填写报名表单，加入课程学习小组，开始学习",
@@ -253,7 +267,7 @@
     ]
   },
   "nextSteps": {
-    "title": "下一步探索"
+    "title": "进一步学习"
   },
   "organizers": {
     "title": "发起/组织者"

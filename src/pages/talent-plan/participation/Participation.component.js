@@ -17,7 +17,7 @@ const Participation = () => {
 
   const lang = t('participation', { returnObjects: true });
 
-  const [isOnFirstTab, setIsOnFirstTab] = useState(false);
+  const [isOnFirstTab, setIsOnFirstTab] = useState(true);
 
   const stepsContent = [
     <Styled.StepBoxContent>
@@ -40,15 +40,26 @@ const Participation = () => {
       </Link>
     </Styled.StepBoxContent>,
     <Styled.StepBoxContent>
-      · 提交方式：发送邮件至 talent-plan@tidb.io,7*24 小时全年接受作业 <br />
-      · 邮件主题建议：【Talent Plan 作业评估申请】课程名称 - 申请人 - 联系方式 <br />·
-      邮件正文建议：正文中建议写明提交的作业编号，解题思路以及个人简介
+      <ul>
+        <li>提交方式：发送邮件至 talent-plan@tidb.io,7*24 小时全年接受作业</li>
+        <li>邮件主题建议：【Talent Plan 作业评估申请】课程名称 - 申请人 - 联系方式</li>
+        <li>
+          邮件正文建议：
+          <ul>
+            <li>每个作业的解题思路阐述，请标明作业编号</li>
+            <li>所有代码按照原目录结构做成压缩文件附上</li>
+            <li>应届生可以考虑附上简历</li>
+          </ul>
+        </li>
+      </ul>
     </Styled.StepBoxContent>,
     <Styled.StepBoxContent>
-      · 线上成绩 60 分以上（含 60 分），视为“通过”，发放结业证书，具有申请 TCP 项目的资格 <br />
-      · 线上成绩 70 分以上（含 70 分），视为“良好”，发放结业证书，具有申请 TCP 项目的资格 <br />
-      · 线上成绩 85 分以上（含 85 分），视为“优秀”，发放结业证书，具有申请 TCP 项目的资格 <br />· 线上成绩低于 60
-      分，视为“不及格”，可在一周内对课程作业进行修改完善，若评估通过，亦可获得结业证书。
+      <ul>
+        <li> 线上成绩 60 分以上（含 60 分），视为“通过”，发放结业证书，具有申请 TCP 项目的资格</li>
+        <li> 线上成绩 70 分以上（含 70 分），视为“良好”，发放结业证书，具有申请 TCP 项目的资格</li>
+        <li> 线上成绩 85 分以上（含 85 分），视为“优秀”，发放结业证书，具有申请 TCP 项目的资格</li>
+        <li>线上成绩低于 60 分，视为“不及格”，可在一周内对课程作业进行修改完善，若评估通过，亦可获得结业证书。</li>
+      </ul>
     </Styled.StepBoxContent>,
   ];
 

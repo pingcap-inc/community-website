@@ -6,7 +6,8 @@ router.post('/categories', require('./categories/create-categories'));
 router.put('/categories/:id', require('./categories/update-categories'));
 router.delete('/categories/:id', require('./categories/delete-categories'));
 
-router.get('/posts', require('./posts/posts'));
+router.get('/posts/latest', require('./posts/posts'));
+router.get('/posts/recommend', require('./posts/posts'));
 router.get('/posts/:id', require('./posts/[id]'));
 router.get('/posts/:id/comments', require('./posts/[id]').comments);
 router.post('/posts/:id/comments', require('./posts/[id]').comment);

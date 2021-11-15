@@ -51,10 +51,10 @@ export default function BlogHomepage({ categories, tags }) {
         <Styled.Content>
           <Styled.Container>
             <Styled.Start>
-              <ClassificationList classifications={classifications} />
+              <ClassificationList categories={categories} />
             </Styled.Start>
             <Styled.Center>
-              <ClassificationListMobile classifications={classifications} />
+              <ClassificationListMobile categories={categories} />
               <SearchOnMobile />
               <OrderBySwitch />
               <BlogList />

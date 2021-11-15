@@ -84,9 +84,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - .env.local
-            - .next
-            - public/scripts
+            - ./*
 
   build:
     docker:
@@ -105,10 +103,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - .env.local
-            - .next
-            - public/locales
-            - public/scripts
+            - ./*
 
   deploy:
     parameters:

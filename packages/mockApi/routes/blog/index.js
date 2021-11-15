@@ -13,4 +13,6 @@ router.post('/posts', require('./posts/create-posts'));
 router.put('/posts/:id', require('./posts/update-posts'));
 router.delete('/posts/:id', require('./posts/delete-posts'));
 
+router.get('/tags', require('./tags/tags'));
+
 module.exports = router;

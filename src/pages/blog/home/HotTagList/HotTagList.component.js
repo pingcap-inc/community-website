@@ -3,12 +3,12 @@ import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Card } from 'antd';
 
-const HotTagList = ({ hotTags }) => {
+const HotTagList = ({ hotTags: { content } }) => {
   return (
     <Styled.Container>
       <Card title="热门标签" extra={<Link href="/blog/tag">查看全部</Link>}>
         <Styled.List>
-          {hotTags.map((item) => (
+          {content.map((item) => (
             <Item data={item} />
           ))}
         </Styled.List>
@@ -17,9 +17,10 @@ const HotTagList = ({ hotTags }) => {
   );
 };
 
-const Item = ({ data: { name, url, selected } }) => {
+const Item = ({ data: { name, selected } }) => {
+  const url = `/blog/tags/${name}`;
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.Item selected={!!selected}># {name}</Styled.Item>
     </Link>
   );

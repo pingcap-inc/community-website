@@ -2,11 +2,11 @@ import React from 'react';
 
 import * as Styled from './edit.styled';
 import { CoreLayout } from '~/layouts';
-import '../../../../../node_modules/@634750802/a-editor/dist/style.css';
+import '@634750802/a-editor/dist/style.css';
 import { Tabs } from 'antd';
 import Editing from './editing/Editing.component';
 import EditContext, { useEditContextProvider } from './edit.context';
-import Previewing from '~/pages/blogs/[id]/edit/previewing/Previewing.component';
+import Previewing from '~/pages/blog/[id]/edit/previewing/Previewing.component';
 
 const BlogEditPage = () => {
   const editContextValue = useEditContextProvider();

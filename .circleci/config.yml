@@ -1,62 +1,16 @@
 version: 2.1
 
 commands:
-  create_concatenated_package_lock:
-    description: 'Concatenate all package-lock.json files recognized by lerna.js into single file. File is used as checksum source for part of caching key.'
-    parameters:
-      filename:
-        type: string
-    steps:
-      - run:
-          name: Combine package-lock.json files to single file
-          command: |
-            npx lerna list -p -a | awk -F packages '$2!="" {printf "\"packages%s/package-lock.json\" ", $2}' | xargs cat > << parameters.filename >>
-
   install-deps:
-    parameters:
-      onlyInstall:
-        type: boolean
-        default: false
-
     steps:
       - checkout
       - run: curl -sL https://sentry.io/get-cli/ | bash
-      - restore_cache:
-          keys:
-            - v2-deps-{{ checksum "package-lock.json" }}
-            - v2-deps
-      - when:
-          condition: << parameters.onlyInstall >>
-          steps:
-            - run: npm install --ignore-scripts
-      - unless:
-          condition: << parameters.onlyInstall >>
-          steps:
-            - create_concatenated_package_lock:
-                filename: combined-package-lock.txt
-            - restore_cache:
-                keys:
-                  - v2-sub-deps-{{ checksum "combined-package-lock.txt" }}
-                  - v2-sub-deps
-            - run: |
-                npm -v
-                npm install
-            - save_cache:
-                paths:
-                  - packages/accounts/node_modules
-                  - packages/common/node_modules
-                  - packages/datasource/node_modules
-                  - packages/i18n/node_modules
-                  - packages/mockApi/node_modules
-                  - packages/strapi/node_modules
-                  - packages/trackingScript/node_modules
-                  - packages/ui/node_modules
-                  - packages/uiScripts/node_modules
-                key: v2-sub-deps-{{ checksum "combined-package-lock.txt" }}
-      - save_cache:
-          key: v2-deps-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
+      - run: |
+          node -v
+          npm -v
+      - run: npm ci
+      - run: lerna bootstrap --ci
+      - run: npm run build:shared
 
   prepare-sentry:
     steps:
@@ -165,8 +119,7 @@ jobs:
     docker:
       - image: circleci/node:14.13.0
     steps:
-      - install-deps:
-          onlyInstall: true
+      - install-deps
       - attach_workspace:
           at: .
       - deploy-website:

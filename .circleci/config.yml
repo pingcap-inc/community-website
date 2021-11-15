@@ -9,7 +9,7 @@ commands:
           node -v
           npm -v
       - run: npm ci
-      - run: lerna bootstrap --ci
+      - run: npm run install:lerna
       - run: npm run build:shared
 
   prepare-sentry:

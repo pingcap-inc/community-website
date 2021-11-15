@@ -159,6 +159,8 @@ workflows:
                 - main
 
       - hold-for-preview-deploy:
+          requires:
+            - verify
           type: approval
           filters:
             branches:

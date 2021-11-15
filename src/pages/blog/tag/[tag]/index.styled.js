@@ -19,12 +19,12 @@ export const Container = styled(Row).attrs({
 
 export const Start = styled(Col).attrs({
   sm: 24,
-  md: 4,
+  md: 6,
 })``;
 
 export const Center = styled(Col).attrs({
   sm: 24,
-  md: 14,
+  md: 12,
 })``;
 
 export const End = styled(Col).attrs({

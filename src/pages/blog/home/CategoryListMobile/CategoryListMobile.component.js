@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './index.styled';
 import Link from 'next/link';
 
-const ClassificationListMobile = ({ categories: { content } }) => {
+const CategoryListMobile = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
@@ -22,4 +22,4 @@ const Item = ({ data: { name, url, selected } }) => {
   );
 };
 
-export default ClassificationListMobile;
+export default CategoryListMobile;

@@ -12,8 +12,8 @@ import { PageDataContext } from '~/context';
 import { link as linkUtils } from '~/utils';
 
 import BlogLayout from './BlogLayout.component';
-import ClassificationList from './home/ClassificationList';
-import ClassificationListMobile from './home/ClassificationListMobile';
+import CategoryList from './home/CategoryList';
+import CategoryListMobile from './home/CategoryListMobile';
 import SearchOnMobile from './home/SearchOnMobile';
 import OrderBySwitch from './home/OrderBySwitch';
 import BlogList from './home/BlogList';
@@ -51,10 +51,10 @@ export default function BlogHomepage({ categories, tags }) {
         <Styled.Content>
           <Styled.Container>
             <Styled.Start>
-              <ClassificationList categories={categories} />
+              <CategoryList categories={categories} />
             </Styled.Start>
             <Styled.Center>
-              <ClassificationListMobile categories={categories} />
+              <CategoryListMobile categories={categories} />
               <SearchOnMobile />
               <OrderBySwitch />
               <BlogList />

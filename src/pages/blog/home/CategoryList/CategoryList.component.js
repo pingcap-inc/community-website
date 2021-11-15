@@ -3,7 +3,7 @@ import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Divider } from 'antd';
 
-const ClassificationList = ({ categories: { content } }) => {
+const CategoryList = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
@@ -36,4 +36,4 @@ const FixedLink = ({ url, children }) => {
   );
 };
 
-export default ClassificationList;
+export default CategoryList;

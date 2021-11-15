@@ -3,11 +3,11 @@ import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Divider } from 'antd';
 
-const ClassificationList = ({ classifications }) => {
+const ClassificationList = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {classifications.map((item) => (
+        {content.map((item) => (
           <Item data={item} />
         ))}
       </Styled.List>

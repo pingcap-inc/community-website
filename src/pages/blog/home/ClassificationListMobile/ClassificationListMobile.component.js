@@ -2,11 +2,11 @@ import React from 'react';
 import * as Styled from './index.styled';
 import Link from 'next/link';
 
-const ClassificationListMobile = ({classifications}) => {
+const ClassificationListMobile = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {classifications.map((item) => (
+        {content.map((item) => (
           <Item data={item} />
         ))}
       </Styled.List>

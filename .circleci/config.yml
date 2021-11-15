@@ -64,14 +64,6 @@ jobs:
   verify:
     docker:
       - image: circleci/node:14.13.0
-    steps:
-      - install-deps
-      - dump-env-vars
-      - verify-and-build
-
-  build:
-    docker:
-      - image: circleci/node:14.13.0
     parameters:
       stage:
         default: 'production'
@@ -88,6 +80,28 @@ jobs:
       - prepare-sentry
       - dump-env-vars
       - verify-and-build
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .env.local
+            - .next
+            - public/locales
+            - public/scripts
+            - node_modules
+
+  build:
+    docker:
+      - image: circleci/node:14.13.0
+    parameters:
+      stage:
+        default: 'production'
+        type: enum
+        enum: ['production', 'preview']
+    environment:
+      CI_STAGE: << parameters.stage >>
+    steps:
+      - attach_workspace:
+          at: .
       - copy-locales
       - persist_to_workspace:
           root: .
@@ -96,6 +110,7 @@ jobs:
             - .next
             - public/locales
             - public/scripts
+            - node_modules
 
   deploy:
     parameters:
@@ -106,7 +121,6 @@ jobs:
     docker:
       - image: circleci/node:14.13.0
     steps:
-      - install-deps
       - attach_workspace:
           at: .
       - deploy-website:
@@ -152,10 +166,8 @@ workflows:
 
       - build:
           stage: preview
-          filters:
-            branches:
-              ignore:
-                - main
+          requires:
+            - verify
 
       - hold-for-preview-deploy:
           requires:

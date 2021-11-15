@@ -2,7 +2,6 @@
   "name": "@pingcap/tug-website",
   "private": true,
   "scripts": {
-    "install:lerna": "lerna bootstrap --ci",
     "build": "next build && npm run build:uiScripts",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:accounts:staging": "lerna run --scope @tidb-community/accounts build:staging",

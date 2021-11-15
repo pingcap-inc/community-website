@@ -8,7 +8,9 @@ commands:
       - run: |
           node -v
           npm -v
-      - run: npm ci
+      - run:
+           command: npm ci
+           no_output_timeout: 20m
 
   prepare-sentry:
     steps:

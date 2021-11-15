@@ -7,10 +7,10 @@ import { useRouter } from 'next/router';
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
 
-import ClassificationList from './ClassificationList';
+import CategoryList from './CategoryList';
 import { link as linkUtils } from '~/utils';
 import HotTagList from './HotTagList';
-import ClassificationListMobile from './ClassificationListMobile';
+import CategoryListMobile from './CategoryListMobile';
 import OrderBySwitch from './OrderBySwitch';
 import BlogList from './BlogList';
 import BlogLayout from '../BlogLayout.component';
@@ -48,10 +48,10 @@ const BlogHomePage = () => {
         <Styled.Content>
           <Styled.Container>
             <Styled.Start>
-              <ClassificationList classifications={classifications} />
+              <CategoryList classifications={classifications} />
             </Styled.Start>
             <Styled.Center>
-              <ClassificationListMobile classifications={classifications} />
+              <CategoryListMobile classifications={classifications} />
               <SearchOnMobile />
               <OrderBySwitch />
               <BlogList />

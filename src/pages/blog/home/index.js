@@ -4,9 +4,6 @@ import { Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 import { useRouter } from 'next/router';
 
-import { CommunityHead } from '~/components';
-import { PageDataContext } from '~/context';
-
 import ClassificationList from './ClassificationList';
 import { link as linkUtils } from '~/utils';
 import HotTagList from './HotTagList';
@@ -37,37 +34,29 @@ const BlogHomePage = () => {
     linkUtils.handleRedirect(router, '/blog/new/edit');
   };
   return (
-    <PageDataContext.Provider value={{}}>
-      <CommunityHead
-        title="博客"
-        // description
-        // keyword
-      />
-
-      <BlogLayout>
-        <Styled.Content>
-          <Styled.Container>
-            <Styled.Start>
-              <ClassificationList classifications={classifications} />
-            </Styled.Start>
-            <Styled.Center>
-              <ClassificationListMobile classifications={classifications} />
-              <SearchOnMobile />
-              <OrderBySwitch />
-              <BlogList />
-            </Styled.Center>
-            <Styled.End>
-              <Styled.WriteBlog>
-                <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
-                  写博客
-                </Button>
-              </Styled.WriteBlog>
-              <HotTagList hotTags={hotTags} />
-            </Styled.End>
-          </Styled.Container>
-        </Styled.Content>
-      </BlogLayout>
-    </PageDataContext.Provider>
+    <BlogLayout>
+      <Styled.Content>
+        <Styled.Container>
+          <Styled.Start>
+            <ClassificationList classifications={classifications} />
+          </Styled.Start>
+          <Styled.Center>
+            <ClassificationListMobile classifications={classifications} />
+            <SearchOnMobile />
+            <OrderBySwitch />
+            <BlogList />
+          </Styled.Center>
+          <Styled.End>
+            <Styled.WriteBlog>
+              <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
+                写博客
+              </Button>
+            </Styled.WriteBlog>
+            <HotTagList hotTags={hotTags} />
+          </Styled.End>
+        </Styled.Container>
+      </Styled.Content>
+    </BlogLayout>
   );
 };
 

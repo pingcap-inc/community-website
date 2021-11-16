@@ -1,7 +1,4 @@
 import * as React from 'react';
-import { useRouter } from 'next/router';
-import { Button } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
 
 import { api } from '@tidb-community/datasource';
 
@@ -10,7 +7,6 @@ import * as styled from './index.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
-import { link as linkUtils } from '~/utils';
 
 import BlogLayout from './BlogLayout.component';
 import CategoryList from './home/CategoryList';
@@ -19,6 +15,7 @@ import SearchOnMobile from './home/SearchOnMobile';
 import OrderBySwitch from './home/OrderBySwitch';
 import BlogList from './BlogList';
 import HotTagList from './HotTagList';
+import WriteBlogButton from './WriteBlogButton';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
@@ -38,15 +35,10 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default function BlogHomepage({ categories, blogs, hotTags }) {
-  const router = useRouter();
-  const handleClickWrite = (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, '/blog');
-  };
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客"
+        title="博客 - 首页"
         // description
         // keyword
       />
@@ -64,9 +56,7 @@ export default function BlogHomepage({ categories, blogs, hotTags }) {
             </styled.Center>
             <styled.End>
               <styled.WriteBlog>
-                <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
-                  写博客
-                </Button>
+                <WriteBlogButton />
               </styled.WriteBlog>
               <HotTagList hotTags={hotTags} />
             </styled.End>

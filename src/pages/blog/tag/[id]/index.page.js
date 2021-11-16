@@ -1,12 +1,10 @@
 import React from 'react';
-import { useRouter } from 'next/router';
-import { Button } from 'antd';
-import { EditOutlined } from '@ant-design/icons';
 import * as Styled from './index.styled';
+
+import { api } from '@tidb-community/datasource';
 
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
-import { link as linkUtils } from '~/utils';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 import OrderBySwitch from '../../home/OrderBySwitch';
@@ -14,7 +12,7 @@ import BlogList from '../../BlogList';
 import HotTagList from '../../HotTagList';
 import TagItem from './TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
-import { api } from '@tidb-community/datasource';
+import WriteBlogButton from '../../WriteBlogButton';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
@@ -36,13 +34,6 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const TagDetail = ({ blogs, hotTags, tag }) => {
-  const router = useRouter();
-
-  const handleClickWrite = (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, '/blog');
-  };
-
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -62,9 +53,7 @@ const TagDetail = ({ blogs, hotTags, tag }) => {
               <BlogList blogs={blogs} />
             </Styled.Center>
             <Styled.End>
-              <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
-                写博客
-              </Button>
+              <WriteBlogButton />
               <HotTagList hotTags={hotTags} />
             </Styled.End>
           </Styled.Container>

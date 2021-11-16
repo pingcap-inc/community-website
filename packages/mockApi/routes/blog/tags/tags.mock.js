@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   content: [
     {
       creatorId: 1,

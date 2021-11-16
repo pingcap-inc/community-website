@@ -17,7 +17,7 @@ import CategoryList from './home/CategoryList';
 import CategoryListMobile from './home/CategoryListMobile';
 import SearchOnMobile from './home/SearchOnMobile';
 import OrderBySwitch from './home/OrderBySwitch';
-import BlogList from './home/BlogList';
+import BlogList from './BlogList';
 import HotTagList from './home/HotTagList';
 
 export const getServerSideProps = async (ctx) => {

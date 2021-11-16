@@ -10,39 +10,33 @@ import { link as linkUtils } from '~/utils';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 import OrderBySwitch from '../../home/OrderBySwitch';
-import BlogList from '../../home/BlogList';
+import BlogList from '../../BlogList';
 import HotTagList from '../../home/HotTagList';
 import TagItem from './TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
 import { api } from '@tidb-community/datasource';
 
-const getTageInfo = (tag) => {
-  return {
-    name: tag,
-    articleNum: 104,
-    description:
-      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat',
-  };
-};
-
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
 
+  const { id } = ctx.params;
+
   const blogs = await api.blog.getLatest();
   const tags = await api.blog.getTags();
+  const tag = await api.blog.getTagById(id);
 
   return {
     props: {
       ...i18nProps,
       blogs,
       tags,
+      tag,
     },
   };
 };
 
-const TagDetail = ({ blogs, tags }) => {
+const TagDetail = ({ blogs, tags, tag }) => {
   const router = useRouter();
-  const { tag } = router.query;
 
   const handleClickWrite = (e) => {
     e.preventDefault();
@@ -61,7 +55,7 @@ const TagDetail = ({ blogs, tags }) => {
         <Styled.Content>
           <Styled.Container>
             <Styled.Start>
-              <TagItem {...getTageInfo(tag)} />
+              <TagItem {...tag} />
             </Styled.Start>
             <Styled.Center>
               <OrderBySwitch />

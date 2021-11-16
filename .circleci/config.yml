@@ -90,6 +90,15 @@ jobs:
             - .next
             - public/scripts
             - node_modules
+            - packages/accounts/node_modules
+            - packages/common/node_modules
+            - packages/datasource/node_modules
+            - packages/i18n/node_modules
+            - packages/mockApi/node_modules
+            - packages/strapi/node_modules
+            - packages/trackingScript/node_modules
+            - packages/ui/node_modules
+            - packages/uiScripts/node_modules
 
   build:
     docker:
@@ -103,7 +112,8 @@ jobs:
       CI_STAGE: << parameters.stage >>
     steps:
       - checkout
-      - install-deps
+      - attach_workspace:
+          at: .
       - build
       - copy-locales
       - persist_to_workspace:
@@ -114,6 +124,15 @@ jobs:
             - public/scripts
             - public/locales
             - node_modules
+            - packages/accounts/node_modules
+            - packages/common/node_modules
+            - packages/datasource/node_modules
+            - packages/i18n/node_modules
+            - packages/mockApi/node_modules
+            - packages/strapi/node_modules
+            - packages/trackingScript/node_modules
+            - packages/ui/node_modules
+            - packages/uiScripts/node_modules
 
   deploy:
     parameters:

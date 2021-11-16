@@ -7,12 +7,14 @@ export default css`
   .ant-select {
     color: ${colors.F1};
 
-    &-focused:not(.ant-select-disabled),
-    &:not(.ant-select-disabled):hover,
-    &-focus:not(.ant-select-disabled) {
-      .ant-select-selector {
-        border-color: ${colors.B1} !important;
-        box-shadow: 0 0 0 2px ${polished.rgba(colors.B1, 0.2)} !important;
+    &:not(.ant-select-borderless) {
+      &-focused:not(.ant-select-disabled),
+      &:not(.ant-select-disabled):hover,
+      &-focus:not(.ant-select-disabled) {
+        .ant-select-selector {
+          border-color: ${colors.B1} !important;
+          box-shadow: 0 0 0 2px ${polished.rgba(colors.B1, 0.2)} !important;
+        }
       }
     }
 

@@ -1,18 +1,15 @@
 import React from 'react';
-import * as Styled from './index.styled';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const orderBy = [
-  { name: '推荐排序', url: 'blog', selected: true },
-  { name: '时间排序', url: 'blog' },
-];
+import * as Styled from './index.styled';
 
-const OrderBySwitch = () => {
+const OrderBySwitch = ({ items }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {orderBy.map((item) => (
-          <Item {...item} />
+        {items.map((value, index) => (
+          <Item key={index} {...value} />
         ))}
       </Styled.List>
       <Styled.AllTag>
@@ -22,10 +19,12 @@ const OrderBySwitch = () => {
   );
 };
 
-const Item = ({ name, url, selected }) => {
+const Item = ({ name, url }) => {
+  const { asPath } = useRouter();
+  const selected = asPath === url;
   return (
     <Link href={`/${url}`}>
-      <Styled.Item selected={!!selected}>{name}</Styled.Item>
+      <Styled.Item selected={selected}>{name}</Styled.Item>
     </Link>
   );
 };

@@ -1,4 +1,4 @@
-import blogClient from '~/api/blogClient';
+import blogClient from '../../blogClient';
 
 export * as post from './[id]';
 

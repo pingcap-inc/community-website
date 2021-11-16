@@ -1,6 +1,4 @@
-export const enum PostOrigin {
-  ORIGIN = 'ORIGIN',
-}
+export type PostOrigin = 'ORIGIN' | 'REPOST';
 
 export interface Post {
   id: number;

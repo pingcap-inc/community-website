@@ -2,7 +2,7 @@ import * as Styled from './editing.styled';
 import TiEditor from '@634750802/a-editor';
 import { Button, Checkbox, Input } from 'antd';
 import React from 'react';
-import { useEditContext } from '../edit.context';
+import { useEditContext, useEditMethods } from '../edit.context';
 
 const demoCategories = [
   { label: 'cat1', value: 'cat1' },
@@ -14,8 +14,10 @@ const demoTags = Array(10)
   .map((_, i) => ({ label: `Label ${i}`, value: i }));
 
 const Editing = () => {
-  const { factory, title, setTitle, origin, setOrigin, category, setCategory, tags, setTags, value, setValue } =
+  const { factory, title, setTitle, origin, setOrigin, category, setCategory, tags, setTags, content, setContent } =
     useEditContext();
+
+  const { save, saveAndPublish } = useEditMethods();
 
   const onTitleChange = (e) => {
     setTitle(e.currentTarget.value);
@@ -45,7 +47,7 @@ const Editing = () => {
           />
         </Styled.Meta>
         <Styled.Editor>
-          <TiEditor value={value} onChange={setValue} factory={factory} placeholder="请在此处开始撰写正文……" />
+          <TiEditor value={content} onChange={setContent} factory={factory} placeholder="请在此处开始撰写正文……" />
         </Styled.Editor>
       </Styled.Content>
       <Styled.Footer>
@@ -63,8 +65,12 @@ const Editing = () => {
         />
       </Styled.Footer>
       <Styled.Actions>
-        <Button type="primary">发布</Button>
-        <Button type="default">保存草稿</Button>
+        <Button type="primary" onClick={saveAndPublish}>
+          发布
+        </Button>
+        <Button type="default" onClick={save}>
+          保存草稿
+        </Button>
       </Styled.Actions>
     </>
   );

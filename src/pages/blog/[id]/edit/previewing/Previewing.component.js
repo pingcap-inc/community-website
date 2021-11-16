@@ -9,7 +9,7 @@ import TiEditor from '@634750802/a-editor';
 const noop = () => {};
 
 const Previewing = () => {
-  const { factory, title, origin, tags, value } = useEditContext();
+  const { factory, title, origin, tags, content } = useEditContext();
 
   return (
     <>
@@ -23,7 +23,7 @@ const Previewing = () => {
           ))}
         </Styled.Meta>
         <Styled.Editor>
-          <TiEditor value={value} onChange={noop} factory={factory} disabled />
+          <TiEditor value={content} onChange={noop} factory={factory} disabled />
         </Styled.Editor>
         {typeof origin === 'string' ? (
           <PreviewingStyled.Declaration>声明：本文转载于 ${origin}</PreviewingStyled.Declaration>

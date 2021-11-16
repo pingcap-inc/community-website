@@ -6,6 +6,8 @@ import { EditOutlined } from '@ant-design/icons';
 import * as Styled from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
 
+import * as styled from './index.styled';
+
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
@@ -22,19 +24,21 @@ import HotTagList from './home/HotTagList';
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
 
-  const tags = await api.blog.getLatest();
   const categories = await api.blog.getCategories();
+  const blogs = await api.blog.getRecommend();
+  const tags = await api.blog.getTags();
 
   return {
     props: {
       ...i18nProps,
       categories,
+      blogs,
       tags,
     },
   };
 };
 
-export default function BlogHomepage({ categories, tags }) {
+export default function BlogHomepage({ categories, blogs, tags }) {
   const router = useRouter();
   const handleClickWrite = (e) => {
     e.preventDefault();
@@ -48,27 +52,27 @@ export default function BlogHomepage({ categories, tags }) {
         // keyword
       />
       <BlogLayout>
-        <Styled.Content>
-          <Styled.Container>
-            <Styled.Start>
+        <styled.Content>
+          <styled.Container>
+            <styled.Start>
               <CategoryList categories={categories} />
-            </Styled.Start>
-            <Styled.Center>
+            </styled.Start>
+            <styled.Center>
               <CategoryListMobile categories={categories} />
               <SearchOnMobile />
               <OrderBySwitch />
-              <BlogList />
-            </Styled.Center>
-            <Styled.End>
-              <Styled.WriteBlog>
+              <BlogList blogs={blogs} />
+            </styled.Center>
+            <styled.End>
+              <styled.WriteBlog>
                 <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
                   写博客
                 </Button>
-              </Styled.WriteBlog>
+              </styled.WriteBlog>
               <HotTagList hotTags={tags} />
-            </Styled.End>
-          </Styled.Container>
-        </Styled.Content>
+            </styled.End>
+          </styled.Container>
+        </styled.Content>
       </BlogLayout>
     </PageDataContext.Provider>
   );

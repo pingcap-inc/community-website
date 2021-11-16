@@ -25,10 +25,13 @@ commands:
           command: |
             cat .env.local
 
-  verify-and-build:
+  verify:
     steps:
       - run: npm run lint
       - run: npm test
+
+  build:
+    steps:
       - run:
           command: npm run build
           no_output_timeout: 5m
@@ -79,7 +82,7 @@ jobs:
       - install-deps
       - prepare-sentry
       - dump-env-vars
-      - verify-and-build
+      - verify
       - persist_to_workspace:
           root: .
           paths:
@@ -100,8 +103,8 @@ jobs:
       CI_STAGE: << parameters.stage >>
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - install-deps
+      - build
       - copy-locales
       - persist_to_workspace:
           root: .
@@ -109,6 +112,7 @@ jobs:
             - .env.local
             - .next
             - public/scripts
+            - public/locales
             - node_modules
 
   deploy:

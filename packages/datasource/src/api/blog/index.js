@@ -1,5 +1,6 @@
 import client from '../client';
-import { BLOG_API_URL_PREFIX } from './common';
+
+const BLOG_API_URL_PREFIX = 'blog/api';
 
 export * as posts from './posts';
 export * as common from './common';

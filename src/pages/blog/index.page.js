@@ -3,7 +3,6 @@ import { useRouter } from 'next/router';
 import { Button } from 'antd';
 import { EditOutlined } from '@ant-design/icons';
 
-import * as Styled from '@tidb-community/ui';
 import { api } from '@tidb-community/datasource';
 
 import * as styled from './index.styled';

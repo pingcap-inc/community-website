@@ -83,22 +83,6 @@ jobs:
       - prepare-sentry
       - dump-env-vars
       - verify
-      - persist_to_workspace:
-          root: .
-          paths:
-            - .env.local
-            - .next
-            - public/scripts
-            - node_modules
-            - packages/accounts/node_modules
-            - packages/common/node_modules
-            - packages/datasource/node_modules
-            - packages/i18n/node_modules
-            - packages/mockApi/node_modules
-            - packages/strapi/node_modules
-            - packages/trackingScript/node_modules
-            - packages/ui/node_modules
-            - packages/uiScripts/node_modules
 
   build:
     docker:
@@ -112,8 +96,9 @@ jobs:
       CI_STAGE: << parameters.stage >>
     steps:
       - checkout
-      - attach_workspace:
-          at: .
+      - install-deps
+      - prepare-sentry
+      - dump-env-vars
       - build
       - copy-locales
       - persist_to_workspace:
@@ -124,15 +109,6 @@ jobs:
             - public/scripts
             - public/locales
             - node_modules
-            - packages/accounts/node_modules
-            - packages/common/node_modules
-            - packages/datasource/node_modules
-            - packages/i18n/node_modules
-            - packages/mockApi/node_modules
-            - packages/strapi/node_modules
-            - packages/trackingScript/node_modules
-            - packages/ui/node_modules
-            - packages/uiScripts/node_modules
 
   deploy:
     parameters:

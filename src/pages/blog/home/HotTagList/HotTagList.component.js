@@ -18,7 +18,7 @@ const HotTagList = ({ hotTags: { content } }) => {
 };
 
 const Item = ({ data: { name, selected } }) => {
-  const url = `/blog/tags/${name}`;
+  const url = `/blog/tag/${name}`;
   return (
     <Link href={url}>
       <Styled.Item selected={!!selected}># {name}</Styled.Item>

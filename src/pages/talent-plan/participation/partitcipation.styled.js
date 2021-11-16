@@ -57,7 +57,9 @@ export const StepBoxHeader = styled.div`
 
 export const PathCardWrapper = styled.div`
   padding-bottom: 1rem;
-  height: 100%;
+  // PM says the all the cards should be the same height...
+  // ...so we need to set the height of the card here
+  height: 150px;
 `;
 
 export const PathCard = styled.div`
@@ -101,11 +103,16 @@ export const BecomingBox = styled.div`
 `;
 
 export const BecomingHeader = styled.div`
-  font-size: 18px;
+  font-size: 16px;
   padding-bottom: 1rem;
 `;
 
 export const BecomingBoxContent = styled.div`
   margin-left: 0.5rem;
   font-size: 14px;
+`;
+
+export const Becomings = styled.div`
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  display: grid;
 `;

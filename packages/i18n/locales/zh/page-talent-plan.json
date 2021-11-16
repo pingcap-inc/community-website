@@ -257,6 +257,10 @@
         "desc": "我们欢迎熟悉一门课程或者多门课程的学习者能够从事作业批改、技术分享、学习指导等活动。参加其中任何一项活动，你将成为 Mentor。"
       },
       {
+        "title": "成为 Active Contributor",
+        "desc": "当你一年内有 6 个 PR 被接受时，你将成为当年度的 Active Contributor"
+      },
+      {
         "title": "成为 Senior Mentor",
         "desc": "一个 Mentor 累计参加 6 次活动，并且直接辅导 10 人以上，将成为 Senior Mentor"
       },

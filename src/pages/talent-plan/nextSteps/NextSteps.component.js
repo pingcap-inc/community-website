@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './nextSteps.styled';
 import { useTranslation } from 'next-i18next';
-import { Styled as CommonStyled } from '@tidb-community/ui';
+import { Link, Styled as CommonStyled } from '@tidb-community/ui';
 import { link as linkUtils } from '~/utils';
 
 const NextSteps = () => {
@@ -41,7 +41,7 @@ const NextSteps = () => {
                 <Styled.ProjectCardButton
                   onClick={onClick('https://github.com/pingcap/talent-plan/tree/master/talent-challenge-program2021')}
                 >
-                  立即申请
+                  立即关注
                 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
@@ -54,10 +54,9 @@ const NextSteps = () => {
                 </p>
                 <p>同时你也可以在开发者论坛和其他开发者们交流学习。</p>
                 <Styled.ProjectCardButton
-                  disabled
                   onClick={onClick('https://pingcap.github.io/tidb-dev-guide/get-started/install-golang')}
                 >
-                  敬请期待
+                  立即学习
                 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
@@ -77,11 +76,10 @@ const NextSteps = () => {
           <Col sm={24} lg={12}>
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
-                <Styled.ProjectCardTitle> 参与 TiDB Hackathon </Styled.ProjectCardTitle>
+                <Styled.ProjectCardTitle> 参与 TiDB Hackathon 年度比赛 </Styled.ProjectCardTitle>
                 TiDB Hackathon 是由 TiDB
                 社区举办的黑客马拉松大赛，选手需围绕组委会规定的主题做出一个完整的作品并由评审最终评选出获奖者。作为社区最硬核的保留项目，黑客马拉松每年都吸引大量的社区开发者、高校学生、用户等积极参与。丰厚的奖金，极客的项目，等你来挑战！2021
-                年 12 月 1日 开启报名，敬请期待。 Talent Challenge Program 2021
-                正在进行中，点击“立即申请”开始你的实训之旅吧！
+                年 12 月 1日 开启报名，敬请期待。
                 <Styled.ProjectCardButton disabled> 敬请期待 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
@@ -90,25 +88,30 @@ const NextSteps = () => {
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> 探索更多社区玩法 </Styled.ProjectCardTitle>
                 <ol>
-                  <li>TiDB 社区每年举办上百场活动，覆盖开发者、用户上万人，欢迎参与活动</li>
-                  <li>如果你对 TiDB 相关产品和技术的应用感兴趣，欢迎来用户论坛和 TUG 交流学习</li>
+                  <li>
+                    TiDB 社区每年举办上百场活动，覆盖开发者、用户上万人，欢迎
+                    <Link href="https://tidb.io/events">参与活动</Link>
+                  </li>
+                  <li>
+                    如果你对 TiDB 相关产品和技术的应用感兴趣，欢迎来<Link href="https://asktug.com">用户论坛</Link>和{' '}
+                    <Link href="https://tidb.io/tug">TUG 交流学习</Link>
+                  </li>
                   <li>更多技术内容请前往博客学习</li>
                 </ol>
-                <Styled.ProjectCardButton onClick={onClick('https://tidb.io')}> 立即参与 </Styled.ProjectCardButton>
+                <Styled.ProjectCardButton onClick={onClick('https://tidb.io')}>开始探索</Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
 
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> 校园招聘 </Styled.ProjectCardTitle>
-
+                PingCAP 及 TiDB 生态企业向优秀高校毕业生敞开大门
                 <Styled.ProjectCardButton
                   onClick={onClick(
                     'https://campus.pingcap.com/campus_apply/pingcap/39951/#/?anchorName=default_joblist&sourceToken='
                   )}
                 >
-                  {' '}
-                  立即参与{' '}
+                  立即参与
                 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>

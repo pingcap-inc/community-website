@@ -20,11 +20,10 @@ const Team = () => {
               <Styled.MemberCard>
                 <Styled.MemberCardAvatar size={48} src={getImage(`team-${member.nameZH}.png`)} />
                 <Styled.MemberCardContent>
-                  <Styled.MemberCardHeader>{member.nameZH}</Styled.MemberCardHeader>
-                  <Styled.MemberCardLine>{member.nameEN}</Styled.MemberCardLine>
-                  <Styled.MemberCardLine>{member.org}</Styled.MemberCardLine>
-                  <Styled.MemberCardLine>{member.role}</Styled.MemberCardLine>
-                  <Styled.MemberCardLine>{member.github}</Styled.MemberCardLine>
+                  {member.nameZH && <Styled.MemberCardHeader>{member.nameZH}</Styled.MemberCardHeader>}
+                  {member.org && <Styled.MemberCardLine>Org: {member.org}</Styled.MemberCardLine>}
+                  {member.role && <Styled.MemberCardLine>Role: {member.role}</Styled.MemberCardLine>}
+                  {member.github && <Styled.MemberCardLine>GitHub: {member.github}</Styled.MemberCardLine>}
                 </Styled.MemberCardContent>
               </Styled.MemberCard>
             </Styled.CardWrapper>

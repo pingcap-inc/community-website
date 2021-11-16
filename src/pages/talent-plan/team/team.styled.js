@@ -14,7 +14,7 @@ export const CardWrapper = styled(Col)`
 `;
 
 export const MemberCard = styled.div`
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  ${mixins.boxShadow()}
   border-radius: 4px;
   background-color: ${colors.M2};
   padding: 1rem;
@@ -37,11 +37,16 @@ export const MemberCardHeader = styled.div`
 
 export const MemberCardLine = styled.div`
   color: ${colors.F2};
-  font-size: 14px;
+  font-size: 12px;
   font-weight: normal;
   word-wrap: break-word;
-  text-overflow: ellipsis;
-  ${mixins.lineClamp(1)};
+  ${mixins.lineClamp(1)}
+  
+  // disable line-clamp on hover
+  &:hover {
+    overflow: visible;
+    ${mixins.lineClamp(2)}
+  
 `;
 
 export const Content = styled(Styled.Content)`

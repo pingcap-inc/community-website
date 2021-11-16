@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, Styled } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 export const Container = styled(Styled.Section)`
   && {
@@ -21,14 +21,14 @@ export const CardWrap = styled.div`
 `;
 
 export const StoryCard = styled.div`
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  ${mixins.boxShadow()}
   border-radius: 4px;
   background-color: ${colors.M2};
 
   cursor: pointer;
   height: 100%;
 
-  padding: 1.5rem 1.5rem calc(1.5rem + 64px) 1.5rem;
+  padding: 2rem 2rem calc(2rem + 64px) 2rem;
   border-top: 4px solid ${colors.B1};
 `;
 
@@ -37,7 +37,7 @@ export const StoryCardBottom = styled.div`
   display: flex;
   position: absolute;
   align-items: center;
-  bottom: 1.5rem;
+  bottom: 2rem;
 `;
 
 export const StoryCardInfoName = styled.div`

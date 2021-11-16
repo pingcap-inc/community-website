@@ -18,7 +18,7 @@ const Others = () => {
         <Row gutter={16}>
           {[1, 2, 3, 4].map((idx) => (
             <Styled.ImageContainer md={6}>
-              <Styled.LogoImage preview={false} height="48px" src={getImage(`organizers-logo-${idx}.png`)} />
+              <Styled.LogoImage preview={false} height="64px" src={getImage(`organizers-logo-${idx}.png`)} />
             </Styled.ImageContainer>
           ))}
         </Row>

@@ -23,5 +23,6 @@ export const ImageContainer = styled(Col)`
 
 export const LogoImage = styled(Image)`
   // horizontally center the image
+  width: auto;
   margin: 0 auto;
 `;

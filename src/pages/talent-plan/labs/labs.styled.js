@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Col, Row as AntRow } from 'antd';
-import { colors, Styled } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 export const Container = styled(Styled.Section)`
   && {
@@ -16,7 +16,7 @@ export const Content = styled(Styled.Content)`
 
 export const LabCard = styled.div`
   height: 100px;
-  box-shadow: 1px 3px rgba(0, 0, 0, 0.2), 1px 1px rgba(0, 0, 0, 0.14), 2px 1px -1px rgba(0, 0, 0, 0.12);
+  ${mixins.boxShadow()}
   border-radius: 4px;
   background-color: ${colors.M2};
   padding: 1rem;

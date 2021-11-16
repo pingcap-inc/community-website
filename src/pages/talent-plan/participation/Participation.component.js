@@ -94,18 +94,16 @@ const Participation = () => {
       {isOnFirstTab && (
         <Styled.ContainerGray>
           <Styled.Content>
-            <Row>
+            <Styled.Becomings>
               {lang.becomings.map((el) => (
-                <Col xs={24} md={6} key={el.title}>
-                  <Styled.BecomingBox>
-                    <Styled.BecomingBoxContent>
-                      <Styled.BecomingHeader>{el.title}</Styled.BecomingHeader>
-                      {el.desc}
-                    </Styled.BecomingBoxContent>
-                  </Styled.BecomingBox>
-                </Col>
+                <Styled.BecomingBox>
+                  <Styled.BecomingBoxContent>
+                    <Styled.BecomingHeader>{el.title}</Styled.BecomingHeader>
+                    {el.desc}
+                  </Styled.BecomingBoxContent>
+                </Styled.BecomingBox>
               ))}
-            </Row>
+            </Styled.Becomings>
           </Styled.Content>
         </Styled.ContainerGray>
       )}

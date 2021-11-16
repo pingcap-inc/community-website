@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, Styled } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 import { Button } from 'antd';
 
 export const Container = styled(Styled.Section)`
@@ -12,12 +12,13 @@ export const Container = styled(Styled.Section)`
 export const Content = styled(Styled.Content)`
   position: relative;
   padding-top: 3rem;
+  padding-bottom: 3rem;
 `;
 
 export const ProjectCard = styled.div`
   color: ${colors.F1};
   font-size: 14px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.14), 0 2px 1px -1px rgba(0, 0, 0, 0.12);
+  ${mixins.boxShadow()}
   border-radius: 4px;
   background-color: ${colors.M2};
   padding: 48px;

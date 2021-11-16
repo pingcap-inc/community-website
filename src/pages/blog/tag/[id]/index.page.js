@@ -11,7 +11,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 
 import OrderBySwitch from '../../home/OrderBySwitch';
 import BlogList from '../../BlogList';
-import HotTagList from '../../home/HotTagList';
+import HotTagList from '../../HotTagList';
 import TagItem from './TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
 import { api } from '@tidb-community/datasource';
@@ -22,20 +22,20 @@ export const getServerSideProps = async (ctx) => {
   const { id } = ctx.params;
 
   const blogs = await api.blog.getLatest();
-  const tags = await api.blog.getTags();
+  const hotTags = await api.blog.getHotTags();
   const tag = await api.blog.getTagById(id);
 
   return {
     props: {
       ...i18nProps,
       blogs,
-      tags,
+      hotTags,
       tag,
     },
   };
 };
 
-const TagDetail = ({ blogs, tags, tag }) => {
+const TagDetail = ({ blogs, hotTags, tag }) => {
   const router = useRouter();
 
   const handleClickWrite = (e) => {
@@ -65,7 +65,7 @@ const TagDetail = ({ blogs, tags, tag }) => {
               <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
                 写博客
               </Button>
-              <HotTagList hotTags={tags} />
+              <HotTagList hotTags={hotTags} />
             </Styled.End>
           </Styled.Container>
         </Styled.Content>

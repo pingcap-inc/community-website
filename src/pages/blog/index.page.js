@@ -18,26 +18,26 @@ import CategoryListMobile from './home/CategoryListMobile';
 import SearchOnMobile from './home/SearchOnMobile';
 import OrderBySwitch from './home/OrderBySwitch';
 import BlogList from './BlogList';
-import HotTagList from './home/HotTagList';
+import HotTagList from './HotTagList';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
 
   const categories = await api.blog.getCategories();
   const blogs = await api.blog.getRecommend();
-  const tags = await api.blog.getTags();
+  const hotTags = await api.blog.getHotTags();
 
   return {
     props: {
       ...i18nProps,
       categories,
       blogs,
-      tags,
+      hotTags,
     },
   };
 };
 
-export default function BlogHomepage({ categories, blogs, tags }) {
+export default function BlogHomepage({ categories, blogs, hotTags }) {
   const router = useRouter();
   const handleClickWrite = (e) => {
     e.preventDefault();
@@ -68,7 +68,7 @@ export default function BlogHomepage({ categories, blogs, tags }) {
                   写博客
                 </Button>
               </styled.WriteBlog>
-              <HotTagList hotTags={tags} />
+              <HotTagList hotTags={hotTags} />
             </styled.End>
           </styled.Container>
         </styled.Content>

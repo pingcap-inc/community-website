@@ -34,7 +34,7 @@ const BlogHomePage = () => {
   const router = useRouter();
   const handleClickWrite = (e) => {
     e.preventDefault();
-    linkUtils.handleRedirect(router, '/blog');
+    linkUtils.handleRedirect(router, '/blog/new/edit');
   };
   return (
     <PageDataContext.Provider value={{}}>

@@ -21,6 +21,7 @@ router.put('/posts/:id', require('./posts/update-posts'));
 router.delete('/posts/:id', require('./posts/delete-posts'));
 
 router.get('/tags', require('./tags/tags'));
+router.get('/tags/hot', require('./tags/tags'));
 router.get('/tags/:id', require('./tags/[id]'));
 
 router.get('/principal', require('./common/principal'));

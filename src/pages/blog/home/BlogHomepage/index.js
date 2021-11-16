@@ -20,6 +20,10 @@ const orderBy = [
 ];
 
 export default function BlogHomepage({ categories, blogs, hotTags }) {
+  const categoriesWithAll = { ...categories };
+  const contentWithAll = [...categories.content];
+  categoriesWithAll.content = contentWithAll;
+  contentWithAll.unshift({ name: '全部分类', slug: '' });
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -31,10 +35,10 @@ export default function BlogHomepage({ categories, blogs, hotTags }) {
         <styled.Content>
           <styled.Container>
             <styled.Start>
-              <CategoryList categories={categories} />
+              <CategoryList categories={categoriesWithAll} />
             </styled.Start>
             <styled.Center>
-              <CategoryListMobile categories={categories} />
+              <CategoryListMobile categories={categoriesWithAll} />
               <SearchOnMobile />
               <OrderBySwitch items={orderBy} />
               <BlogList blogs={blogs} />

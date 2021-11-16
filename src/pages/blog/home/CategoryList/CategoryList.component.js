@@ -2,13 +2,14 @@ import React from 'react';
 import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Divider } from 'antd';
+import { useRouter } from 'next/router';
 
 const CategoryList = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {content.map((item) => (
-          <Item data={item} />
+        {content.map((value, index) => (
+          <Item key={index} {...value} />
         ))}
       </Styled.List>
       <Divider />
@@ -20,10 +21,13 @@ const CategoryList = ({ categories: { content } }) => {
   );
 };
 
-const Item = ({ data: { name, url, selected } }) => {
+const Item = ({ name, slug }) => {
+  const { asPath } = useRouter();
+  const url = slug === '' ? `/blog` : `/blog/${slug}`;
+  const selected = asPath === url;
   return (
     <Link href={`/${url}`}>
-      <Styled.Item selected={!!selected}>{name}</Styled.Item>
+      <Styled.Item selected={selected}>{name}</Styled.Item>
     </Link>
   );
 };

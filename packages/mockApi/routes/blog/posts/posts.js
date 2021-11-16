@@ -1,4 +1,4 @@
-const { successResp } = require('~/utils');
+const { successResp } = require('../../../utils');
 const { content } = require('./posts.mock');
 
 module.exports = (req, res) => {

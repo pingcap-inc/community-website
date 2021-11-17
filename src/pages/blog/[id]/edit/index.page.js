@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import * as Styled from './edit.styled';
 import { CoreLayout } from '~/layouts';
-import '@634750802/a-editor/dist/style.css';
+import '@pingcap-inc/tidb-community-editor/dist/style.css';
 import { Skeleton, Tabs } from 'antd';
 import Editing from './editing/Editing.component';
 import EditContext, { useEditContextProvider } from './edit.context';

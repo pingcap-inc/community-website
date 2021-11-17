@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import * as Styled from './comments.styled';
-import { Alert, Avatar, Button, Col, Comment, Divider, Input, List, Pagination, Row, Skeleton } from 'antd';
+import { Alert, Avatar, Button, Col, Comment, Input, List, Pagination, Row, Skeleton } from 'antd';
 import { AuthContext, MeContext } from '~/context';
 import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';

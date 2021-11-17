@@ -23,7 +23,7 @@ const CategoryList = ({ categories: { content } }) => {
 
 const Item = ({ name, slug }) => {
   const { asPath } = useRouter();
-  const url = slug === '' ? `/blog` : `/blog/${slug}`;
+  const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
   const selected = asPath === url;
   return (
     <Link href={`/${url}`}>

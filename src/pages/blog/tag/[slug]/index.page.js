@@ -16,6 +16,11 @@ import WriteBlogButton from '../../WriteBlogButton';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 
+const orderBy = [
+  { name: '推荐排序', url: '/blog' },
+  { name: '时间排序', url: '/blog/latest' },
+];
+
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
 
@@ -49,10 +54,10 @@ const TagDetail = ({ blogs, hotTags, tag }) => {
           <Styled.Breadcrumb>
             <Breadcrumb>
               <Breadcrumb.Item>
-                <Link href={'blog'}>博客首页</Link>
+                <Link href={'/blog'}>博客首页</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link href={'blog/tag'}>标签</Link>
+                <Link href={'/blog/tag'}>标签</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>{tag.name}</Breadcrumb.Item>
             </Breadcrumb>
@@ -62,7 +67,7 @@ const TagDetail = ({ blogs, hotTags, tag }) => {
               <TagItem {...tag} />
             </Styled.Start>
             <Styled.Center>
-              <OrderBySwitch />
+              <OrderBySwitch items={orderBy} />
               <BlogList blogs={blogs} />
             </Styled.Center>
             <Styled.End>

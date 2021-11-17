@@ -19,11 +19,11 @@ import Link from 'next/link';
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
 
-  const { id } = ctx.params;
+  const { slug } = ctx.params;
 
   const blogs = await api.blog.getLatest();
   const hotTags = await api.blog.getHotTags();
-  const tag = await api.blog.getTagById(id);
+  const tag = await api.blog.getTagBySlug(slug);
 
   return {
     props: {
@@ -54,6 +54,7 @@ const TagDetail = ({ blogs, hotTags, tag }) => {
               <Breadcrumb.Item>
                 <Link href={'blog/tag'}>标签</Link>
               </Breadcrumb.Item>
+              <Breadcrumb.Item>{tag.name}</Breadcrumb.Item>
             </Breadcrumb>
           </Styled.Breadcrumb>
           <Styled.Container>

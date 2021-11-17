@@ -9,7 +9,7 @@ const WriteBlogButton = () => {
   const router = useRouter();
   const handleClickWrite = (e) => {
     e.preventDefault();
-    linkUtils.handleRedirect(router, '/blog/posts/new');
+    linkUtils.handleRedirect(router, 'blog/posts/new');
   };
   return (
     <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>

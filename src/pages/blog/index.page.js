@@ -3,6 +3,7 @@ import * as React from 'react';
 import { api } from '@tidb-community/datasource';
 
 import { getI18nProps } from '~/utils/i18n.utils';
+
 import BlogHomepage from './home/BlogHomepage';
 
 export const getServerSideProps = async (ctx) => {

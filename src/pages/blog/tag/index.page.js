@@ -1,6 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
+import { Pagination, Breadcrumb } from 'antd';
+
 import * as Styled from './index.styled';
-import { Pagination } from 'antd';
+
+import { api } from '@tidb-community/datasource';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
@@ -8,7 +12,6 @@ import { PageDataContext } from '~/context';
 
 import TagItem from './TagItem.component';
 import BlogLayout from '../BlogLayout.component';
-import { api } from '@tidb-community/datasource';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
@@ -34,6 +37,16 @@ const TagPage = ({ tags: { content } }) => {
 
       <BlogLayout>
         <Styled.Content>
+          <Styled.Breadcrumb>
+            <Breadcrumb>
+              <Breadcrumb.Item>
+                <Link href={'blog'}>博客首页</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link href={'blog/tag'}>标签</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+          </Styled.Breadcrumb>
           <Styled.List>
             {content.map((item, key) => (
               <Styled.Item key={key}>

@@ -1,7 +1,5 @@
 const { successResp } = require('../../../utils');
 const { content } = require('./categories.mock');
-const { categories } = require('./categories.mock');
-const { LOCALHOST } = require('../../../constants');
 
 module.exports = (req, res) => {
   const { page, size } = req.query;

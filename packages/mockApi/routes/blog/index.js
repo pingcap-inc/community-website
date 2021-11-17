@@ -8,6 +8,7 @@ router.delete('/categories/:id', require('./categories/delete-categories'));
 
 router.get('/posts', require('./posts/posts'));
 router.get('/posts/:id', require('./posts/[id]'));
+router.get('/posts/:id/comments', require('./posts/[id]').comments);
 router.post('/posts', require('./posts/create-posts'));
 router.put('/posts/:id', require('./posts/update-posts'));
 router.delete('/posts/:id', require('./posts/delete-posts'));

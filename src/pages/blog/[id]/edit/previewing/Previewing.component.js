@@ -11,6 +11,10 @@ const noop = () => {};
 const Previewing = () => {
   const { factory, title, origin, tags, content } = useEditContext();
 
+  if (!process.browser) {
+    return <></>;
+  }
+
   return (
     <>
       <Styled.Content>
@@ -26,7 +30,7 @@ const Previewing = () => {
           <TiEditor value={content} onChange={noop} factory={factory} disabled />
         </Styled.Editor>
         {typeof origin === 'string' ? (
-          <PreviewingStyled.Declaration>声明：本文转载于 ${origin}</PreviewingStyled.Declaration>
+          <PreviewingStyled.Declaration>声明：本文转载于 {origin}</PreviewingStyled.Declaration>
         ) : undefined}
       </Styled.Content>
     </>

@@ -29,7 +29,7 @@ const MyFullCalendar = ({ data }) => {
     event.setProp('backgroundColor', getColorByType(extendedProps.category) + transparency);
   };
 
-  const renderDayCellContent = ({ date }) => date.getUTCDate();
+  const renderDayCellContent = ({ date }) => date.getDate();
 
   data = processData(data);
   return (

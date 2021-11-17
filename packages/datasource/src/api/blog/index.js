@@ -11,3 +11,5 @@ export const getHotTags = () => client.get(`${BLOG_API_URL_PREFIX}/tags/hot`);
 export const getTagById = (id) => client.get(`${BLOG_API_URL_PREFIX}/tags/${id}`);
 
 export const getCategories = () => client.get(`${BLOG_API_URL_PREFIX}/categories`);
+
+export * as posts from './posts';

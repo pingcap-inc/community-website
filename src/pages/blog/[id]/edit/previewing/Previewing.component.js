@@ -4,7 +4,7 @@ import * as Styled from '../editing/editing.styled';
 import * as PreviewingStyled from './previewing.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { OriginLabel, RepostLabel } from '../../components/labels';
-import TiEditor from '@634750802/a-editor';
+import TiEditor from '@pingcap-inc/tidb-community-editor';
 
 const noop = () => {};
 

@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import { createFactory } from '@634750802/a-editor';
+import { createFactory } from '@pingcap-inc/tidb-community-editor';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 

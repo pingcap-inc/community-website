@@ -1,12 +1,13 @@
 import styled from 'styled-components';
-import { constants, Styled } from '@tidb-community/ui';
+import { mixins, colors, Styled, constants } from '@tidb-community/ui';
 import { Row, Col } from 'antd';
 
 const { Content } = Styled;
+
 export { Content };
 
-export const Breadcrumb = styled.div`
-  padding-top: 2rem;
+export const Background = styled.div`
+  background-color: ${colors.M2};
 `;
 
 export const Container = styled(Row).attrs({
@@ -22,34 +23,20 @@ export const Container = styled(Row).attrs({
 `;
 
 export const Start = styled(Col).attrs({
-  xs: 24,
   sm: 24,
-  md: 6,
+  md: 4,
 })``;
 
 export const Center = styled(Col).attrs({
-  xs: 24,
   sm: 24,
-  md: 12,
+  md: 14,
 })``;
 
 export const End = styled(Col).attrs({
-  xs: 24,
   sm: 24,
   md: 6,
 })``;
 
-export const List = styled(Row).attrs({
-  gutter: [24, 24],
-})`
-  padding: 2rem 0;
-`;
-
-export const Item = styled(Col).attrs({
-  span: 6,
-})``;
-
-export const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
+export const WriteBlog = styled.div`
+  ${mixins.showOnDesktop()}
 `;

@@ -10,9 +10,11 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import OrderBySwitch from '../../home/OrderBySwitch';
 import BlogList from '../../BlogList';
 import HotTagList from '../../HotTagList';
-import TagItem from './TagItem.component';
+import TagItem from '../TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
 import WriteBlogButton from '../../WriteBlogButton';
+import { Breadcrumb } from 'antd';
+import Link from 'next/link';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
@@ -44,6 +46,16 @@ const TagDetail = ({ blogs, hotTags, tag }) => {
 
       <BlogLayout>
         <Styled.Content>
+          <Styled.Breadcrumb>
+            <Breadcrumb>
+              <Breadcrumb.Item>
+                <Link href={'blog'}>博客首页</Link>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link href={'blog/tag'}>标签</Link>
+              </Breadcrumb.Item>
+            </Breadcrumb>
+          </Styled.Breadcrumb>
           <Styled.Container>
             <Styled.Start>
               <TagItem {...tag} />

@@ -28,8 +28,7 @@
     "test": "jest",
     "test:changed": "npm test -- --changedSince=origin/main",
     "test:cov": "npm test -- --coverage",
-    "test:watch": "npm test -- --watch",
-    "preinstall": "npm config set '//npm.pkg.github.com/:_authToken' \"${GITHUB_TOKEN}\""
+    "test:watch": "npm test -- --watch"
   },
   "engines": {
     "node": "14.13.0",

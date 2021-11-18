@@ -27,6 +27,10 @@ const Editing = () => {
     setOrigin(e.currentTarget.value);
   };
 
+  if (!process.browser) {
+    return <></>;
+  }
+
   return (
     <>
       <Styled.Content>

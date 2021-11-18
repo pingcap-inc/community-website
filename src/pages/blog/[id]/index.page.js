@@ -11,6 +11,7 @@ import '@pingcap-inc/tidb-community-editor/dist/style.css';
 import AuthorInfo from './components/AuthorInfo';
 import Interactions from './components/Interactions';
 import Comments from './components/Comments';
+import StatusAlert from './components/StatusAlert';
 
 const noop = () => {};
 
@@ -18,7 +19,7 @@ const BlogPage = () => {
   const router = useRouter();
   const { isReady, query } = router;
 
-  const { data: blogInfo } = useSWR([isReady && 'blog.posts.post.info', query.id]);
+  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.posts.post.info', query.id]);
   const isLoading = !blogInfo;
 
   const factory = useMemo(() => createFactory(), []);
@@ -36,9 +37,10 @@ const BlogPage = () => {
           <Breadcrumb.Item href="/blog">博客</Breadcrumb.Item>
           <Breadcrumb.Item>{blogInfo.category?.name}</Breadcrumb.Item>
         </Breadcrumb>
+        <StatusAlert blogInfo={blogInfo} />
         <Styled.Content>
           <Styled.Side>
-            <Interactions blogInfo={blogInfo} />
+            <Interactions blogInfo={blogInfo} reload={reload} />
           </Styled.Side>
 
           <Styled.Title>{blogInfo.title}</Styled.Title>

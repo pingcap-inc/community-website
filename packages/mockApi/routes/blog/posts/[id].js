@@ -86,3 +86,22 @@ module.exports.comments = (req, res) => {
   };
   return successResp(data)(req, res);
 };
+
+module.exports.comment = (req, res) => {
+  return successResp({})(req, res);
+};
+module.exports.like = (req, res) => {
+  return successResp({})(req, res);
+};
+module.exports.cancelLike = (req, res) => {
+  return successResp({})(req, res);
+};
+module.exports.favorite = (req, res) => {
+  return successResp({})(req, res);
+};
+module.exports.cancelFavorite = (req, res) => {
+  return successResp({})(req, res);
+};
+module.exports.share = (req, res) => {
+  res.status(200).json(123);
+};

@@ -7,6 +7,13 @@ export const Interaction = styled.div`
   width: 28px;
   text-align: center;
   opacity: 0.6;
+  transition: opacity 0.25s ease, color 0.25s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+    color: ${colors.B1};
+  }
 
   .anticon > svg {
     width: 28px;

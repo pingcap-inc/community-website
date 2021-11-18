@@ -4,18 +4,21 @@ import { Alert, Avatar, Button, Col, Comment, Input, List, Pagination, Row, Skel
 import { AuthContext, MeContext } from '~/context';
 import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
+import { Element } from 'react-scroll';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
 
   return (
-    <Styled.CommentsContainer>
-      <Styled.Title>评论</Styled.Title>
+    <Element name="comments">
+      <Styled.CommentsContainer>
+        <Styled.Title>评论</Styled.Title>
 
-      <CommentInput blogInfo={blogInfo} onCommented={(tick) => setTick(tick + 1)} />
+        <CommentInput blogInfo={blogInfo} onCommented={(tick) => setTick(tick + 1)} />
 
-      <CommentList blogInfo={blogInfo} tick={tick} />
-    </Styled.CommentsContainer>
+        <CommentList blogInfo={blogInfo} tick={tick} />
+      </Styled.CommentsContainer>
+    </Element>
   );
 };
 

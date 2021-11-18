@@ -55,3 +55,16 @@ export async function visit(id, shareId) {
 export async function share(id) {
   return await blogClient.post(`/api/posts/${id}/share`);
 }
+
+export async function comments(id, page, size = 10) {
+  return await blogClient.get(`/api/posts/${id}/comments`, {
+    params: { page, size },
+  });
+}
+
+export async function comment(id, content, replyTo) {
+  return await blogClient.post(`/api/posts/${id}/comments`, {
+    content,
+    replyCommentID: replyTo,
+  });
+}

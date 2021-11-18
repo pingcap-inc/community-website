@@ -2,6 +2,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { createFactory } from '@pingcap-inc/tidb-community-editor';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
+import { message } from 'antd';
 
 const EditContext = createContext({
   title: '',
@@ -29,9 +30,39 @@ export function useEditContextProvider() {
   const [category, setCategory] = useState(undefined);
   const [tags, setTags] = useState([]);
   const [content, setContent] = useState([{ type: 'paragraph', children: [{ text: '' }] }]);
+  const [blogInfo, setBlogInfo] = useState(undefined);
+  const [loading, setLoading] = useState(false);
+
+  const reload = useCallback((id) => {
+    if (id === 'new') {
+      setTitle('');
+      setOrigin(false);
+      setCategory(undefined);
+      setContent([{ type: 'paragraph', children: [{ text: '' }] }]);
+      setTags([]);
+      setBlogInfo(undefined);
+      return Promise.resolve();
+    } else {
+      setLoading(true);
+      return api.blog.posts.post
+        .info(Number(id))
+        .then((info) => {
+          setTitle(info.title);
+          setOrigin(info.origin === 'ORIGIN' ? false : info.sourceURL);
+          setTags(info.tags);
+          setCategory(info.category);
+          setContent(JSON.parse(info.content));
+          setBlogInfo(info);
+        })
+        .finally(() => setLoading(false));
+    }
+  }, []);
 
   return {
     factory,
+    reload,
+    loading,
+    blogInfo,
     title,
     setTitle,
     origin,
@@ -48,39 +79,57 @@ export function useEditContextProvider() {
 export function useEditMethods() {
   const router = useRouter();
   const editContext = useEditContext();
+  const [operating, setOperating] = useState(false);
 
   const {
     query: { id },
   } = router;
 
   const save = useCallback(async () => {
-    const { title, origin, category, tags, content } = editContext;
-    const body = {
-      title,
-      origin: typeof origin === 'string' ? 'REPOST' : 'ORIGIN',
-      sourceURL: typeof origin === 'string' ? origin : undefined,
-      content: JSON.stringify(content),
-      category: category?.id,
-      tags: tags.map((tag) => tag.id),
-      coverImageURL: undefined, // TODO
-    };
-    if (id === 'new') {
-      const res = await api.blog.posts.create(body);
-      await router.push({ query: { '[id]': res.id } });
-      return res;
-    } else {
-      return api.blog.posts.post.update(Number(id), body);
+    try {
+      const { title, origin, category, tags, content } = editContext;
+      const body = {
+        title,
+        origin: typeof origin === 'string' ? 'REPOST' : 'ORIGIN',
+        sourceURL: typeof origin === 'string' ? origin : undefined,
+        content: JSON.stringify(content),
+        category: category?.id,
+        tags: tags.map((tag) => tag.id),
+        coverImageURL: undefined, // TODO
+      };
+      if (id === 'new') {
+        const res = await api.blog.posts.create(body);
+        await router.push(`/blog/${res.id}`);
+        return res;
+      } else {
+        await api.blog.posts.post.update(Number(id), body);
+        await router.push(`/blog/${id}`);
+        return { id: Number(id) };
+      }
+    } catch (e) {
+      message.error('保存失败：' + String(e?.message ?? e));
+      throw e;
+    } finally {
+      setOperating(false);
     }
   }, [id, router, editContext]);
 
-  const saveAndPublish = useCallback(async () => {
+  const saveAndSubmit = useCallback(async () => {
     const { id } = await save();
-    await api.blog.posts.post.publish(id);
+    try {
+      await api.blog.posts.post.submit(id);
+    } catch (e) {
+      message.error('提交失败：' + String(e?.message ?? e));
+      throw e;
+    } finally {
+      setOperating(false);
+    }
   }, [save]);
 
   return {
     save,
-    saveAndPublish,
+    saveAndSubmit,
+    operating,
   };
 }
 

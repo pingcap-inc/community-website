@@ -1,7 +1,21 @@
 export type PostOrigin = 'ORIGIN' | 'REPOST';
+export type PostStatus = 'DRAFT' | 'PENDING' | 'REJECTED' | 'PUBLISHED' | 'ARCHIVED';
+
+export interface Meta {
+  id: number;
+  name: string;
+  slug: string;
+}
 
 export interface Post {
   id: number;
+  title: string;
+  content: string;
+  category: Meta;
+  tags: Meta[];
+  origin: PostOrigin;
+  status: PostStatus;
+  sourceURL: string;
 }
 
 interface Page<T> {

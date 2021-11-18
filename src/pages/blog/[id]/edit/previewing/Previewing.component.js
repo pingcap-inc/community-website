@@ -23,7 +23,7 @@ const Previewing = () => {
           {typeof origin === 'string' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
           {tags.map((tag) => (
-            <BlogInfo.Tag key={tag.value}>{tag.value}</BlogInfo.Tag>
+            <BlogInfo.Tag key={tag.id}>{tag.name}</BlogInfo.Tag>
           ))}
         </Styled.Meta>
         <Styled.Editor>

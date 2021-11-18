@@ -1,23 +1,23 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Button, Checkbox, Input } from 'antd';
+import { Alert, Button, Checkbox, Input } from 'antd';
 import React from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 
 const demoCategories = [
-  { label: 'cat1', value: 'cat1' },
-  { label: 'cat2', value: 'cat2' },
+  { name: 'cat1', id: 'cat1' },
+  { name: 'cat2', id: 'cat2' },
 ];
 
 const demoTags = Array(10)
   .fill(0)
-  .map((_, i) => ({ label: `Label ${i}`, value: i }));
+  .map((_, i) => ({ name: `Label ${i}`, id: i }));
 
-const Editing = () => {
+const Editing = ({ blogInfo }) => {
   const { factory, title, setTitle, origin, setOrigin, category, setCategory, tags, setTags, content, setContent } =
     useEditContext();
 
-  const { save, saveAndPublish } = useEditMethods();
+  const { save, saveAndSubmit, operating } = useEditMethods();
 
   const onTitleChange = (e) => {
     setTitle(e.currentTarget.value);
@@ -38,13 +38,14 @@ const Editing = () => {
         <Styled.Meta>
           <Styled.CategorySelect
             placeholder="请选择分类"
-            options={demoCategories}
-            value={category}
+            options={demoCategories.map(({ name, id }) => ({ label: name, value: id }))}
+            value={category && { label: category.name, value: category.id }}
             onChange={setCategory}
+            labelInValue
           />
           <Styled.TagsSelect
             placeholder="最多选择 4 个标签 🏷️"
-            options={demoTags}
+            options={demoTags.map(({ name, id }) => ({ label: name, value: id }))}
             value={tags}
             onChange={setTags}
             labelInValue
@@ -69,15 +70,25 @@ const Editing = () => {
         />
       </Styled.Footer>
       <Styled.Actions>
-        <Button type="primary" onClick={saveAndPublish}>
+        {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
+        {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
+        <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
           发布
         </Button>
-        <Button type="default" onClick={save}>
+        <Button type="default" onClick={save} disabled={operating}>
           保存草稿
         </Button>
       </Styled.Actions>
     </>
   );
+};
+
+const PublishedAlert = () => {
+  return <Alert type="warning" message="您正在编辑一个已发布的博客，修改或重新提交会将该博客下线。" />;
+};
+
+const PendingAlert = () => {
+  return <Alert type="warning" message="您正在编辑一个审核中的博客，修改则需要重新提交审核。" />;
 };
 
 export default Editing;

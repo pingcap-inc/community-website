@@ -18,8 +18,10 @@ const BlogEditPage = () => {
     query: { id },
   } = router;
   useEffect(() => {
-    reload(id);
-  }, [id, reload]);
+    if (router.isReady) {
+      reload(id);
+    }
+  }, [id, reload, router]);
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>

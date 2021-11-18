@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
+import { useRouter } from 'next/router';
 
 export const useLikes = (blogInfo) => {
   const [liked, setLiked] = useState(blogInfo.liked);
@@ -73,4 +74,36 @@ export const useShares = (blogInfo) => {
   };
 
   return { shares, share };
+};
+
+export const useEdit = (blogInfo) => {
+  const router = useRouter();
+  const edit = () => {
+    router.push(`/blog/${blogInfo.id}/edit`);
+  };
+  return { edit };
+};
+
+export const useReview = (blogInfo, reload) => {
+  const [reviewing, setReviewing] = useState(false);
+  const publish = () => {
+    setReviewing(true);
+    return api.blog.posts.post
+      .publish(blogInfo.id)
+      .then(reload)
+      .finally(() => {
+        setReviewing(false);
+      });
+  };
+  const reject = () => {
+    setReviewing(true);
+    return api.blog.posts.post
+      .reject(blogInfo.id)
+      .then(reload)
+      .finally(() => {
+        setReviewing(false);
+      });
+  };
+
+  return { publish, reject, reviewing };
 };

@@ -63,7 +63,11 @@ export const Actions = styled.div`
   margin-top: 32px;
 
   > .ant-btn:not(:first-child) {
-    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  > .ant-alert {
+    margin-bottom: 32px;
   }
 `;
 

@@ -1,17 +1,9 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
 import { Alert, Button, Checkbox, Input } from 'antd';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
-
-const demoCategories = [
-  { name: 'cat1', id: 'cat1' },
-  { name: 'cat2', id: 'cat2' },
-];
-
-const demoTags = Array(10)
-  .fill(0)
-  .map((_, i) => ({ name: `Label ${i}`, id: i }));
+import { demoCategories, demoTags } from './demo-data';
 
 const Editing = ({ blogInfo }) => {
   const { factory, title, setTitle, origin, setOrigin, category, setCategory, tags, setTags, content, setContent } =
@@ -27,6 +19,22 @@ const Editing = ({ blogInfo }) => {
     setOrigin(e.currentTarget.value);
   };
 
+  const mappedCategoriesCollection = useMemo(() => {
+    return demoCategories.map(fromServerMeta);
+  }, []);
+
+  const mappedCategory = useMemo(() => {
+    return fromServerMeta(category);
+  }, [category]);
+
+  const mappedTagsCollection = useMemo(() => {
+    return demoTags.map(fromServerMeta);
+  }, []);
+
+  const mappedTags = useMemo(() => {
+    return tags.map(fromServerMeta);
+  }, [tags]);
+
   if (!process.browser) {
     return <></>;
   }
@@ -38,16 +46,16 @@ const Editing = ({ blogInfo }) => {
         <Styled.Meta>
           <Styled.CategorySelect
             placeholder="请选择分类"
-            options={demoCategories.map(({ name, id }) => ({ label: name, value: id }))}
-            value={category && { label: category.name, value: category.id }}
-            onChange={setCategory}
+            options={mappedCategoriesCollection}
+            value={mappedCategory}
+            onChange={(category) => setCategory(toServerMeta(category))}
             labelInValue
           />
           <Styled.TagsSelect
-            placeholder="最多选择 4 个标签 🏷️"
-            options={demoTags.map(({ name, id }) => ({ label: name, value: id }))}
-            value={tags}
-            onChange={setTags}
+            placeholder="最多选择 5 个标签 🏷️"
+            options={mappedTagsCollection}
+            value={mappedTags}
+            onChange={(tags) => setTags(tags.slice(0, 5).map(toServerMeta))}
             labelInValue
           />
         </Styled.Meta>
@@ -89,6 +97,21 @@ const PublishedAlert = () => {
 
 const PendingAlert = () => {
   return <Alert type="warning" message="您正在编辑一个审核中的博客，修改则需要重新提交审核。" />;
+};
+
+const fromServerMeta = (obj) => {
+  if (!obj) {
+    return obj;
+  }
+  const { id, name } = obj;
+  return { label: name, value: id, key: id };
+};
+const toServerMeta = (obj) => {
+  if (!obj) {
+    return obj;
+  }
+  const { label, value } = obj;
+  return { id: value, name: label };
 };
 
 export default Editing;

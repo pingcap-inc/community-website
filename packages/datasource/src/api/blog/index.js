@@ -3,15 +3,15 @@ import blogClient from '../blogClient';
 export * as posts from './posts';
 export * as common from './common';
 
-export const getLatest = () => blogClient.get(`/posts/latest`);
+export const getLatest = () => blogClient.get(`/api/posts/latest`);
 
-export const getRecommend = () => blogClient.get(`/posts/recommend`);
+export const getRecommend = () => blogClient.get(`/api/posts/recommend`);
 
-export const getTags = () => blogClient.get(`/tags`);
-export const getHotTags = () => blogClient.get(`/tags/hot`);
-export const getTagById = (id) => blogClient.get(`/tags/${id}`);
-export const getTagBySlug = (slug) => blogClient.get(`/tags/slug/${slug}`);
+export const getTags = () => blogClient.get(`/api/tags`);
+export const getHotTags = () => blogClient.get(`/api/tags/hot`);
+export const getTagById = (id) => blogClient.get(`/api/tags/${id}`);
+export const getTagBySlug = (slug) => blogClient.get(`/api/tags/slug/${slug}`);
 
-export const getCategories = () => blogClient.get(`/categories`);
-export const getCategoryById = (id) => blogClient.get(`/categories/${id}`);
-export const getCategoryBySlug = (slug) => blogClient.get(`/categories/slug/${slug}`);
+export const getCategories = () => blogClient.get(`/api/categories`);
+export const getCategoryById = (id) => blogClient.get(`/api/categories/${id}`);
+export const getCategoryBySlug = (slug) => blogClient.get(`/api/categories/slug/${slug}`);

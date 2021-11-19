@@ -1,19 +1,17 @@
-import client from '../client';
-
-const BLOG_API_URL_PREFIX = 'blog/api';
+import blogClient from '../blogClient';
 
 export * as posts from './posts';
 export * as common from './common';
 
-export const getLatest = () => client.get(`${BLOG_API_URL_PREFIX}/posts/latest`);
+export const getLatest = () => blogClient.get(`/posts/latest`);
 
-export const getRecommend = () => client.get(`${BLOG_API_URL_PREFIX}/posts/recommend`);
+export const getRecommend = () => blogClient.get(`/posts/recommend`);
 
-export const getTags = () => client.get(`${BLOG_API_URL_PREFIX}/tags`);
-export const getHotTags = () => client.get(`${BLOG_API_URL_PREFIX}/tags/hot`);
-export const getTagById = (id) => client.get(`${BLOG_API_URL_PREFIX}/tags/${id}`);
-export const getTagBySlug = (slug) => client.get(`${BLOG_API_URL_PREFIX}/tags/slug/${slug}`);
+export const getTags = () => blogClient.get(`/tags`);
+export const getHotTags = () => blogClient.get(`/tags/hot`);
+export const getTagById = (id) => blogClient.get(`/tags/${id}`);
+export const getTagBySlug = (slug) => blogClient.get(`/tags/slug/${slug}`);
 
-export const getCategories = () => client.get(`${BLOG_API_URL_PREFIX}/categories`);
-export const getCategoryById = (id) => client.get(`${BLOG_API_URL_PREFIX}/categories/${id}`);
-export const getCategoryBySlug = (slug) => client.get(`${BLOG_API_URL_PREFIX}/categories/slug/${slug}`);
+export const getCategories = () => blogClient.get(`/categories`);
+export const getCategoryById = (id) => blogClient.get(`/categories/${id}`);
+export const getCategoryBySlug = (slug) => blogClient.get(`/categories/slug/${slug}`);

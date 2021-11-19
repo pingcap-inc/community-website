@@ -1,13 +1,18 @@
 import React from 'react';
-import * as Styled from './TagItem.styled';
+import Link from 'next/link';
 import { Card } from 'antd';
 
-const TagItem = ({ name, articleNum, description }) => {
+import * as Styled from './TagItem.styled';
+
+const TagItem = ({ name, slug, posts, description }) => {
+  const url = `/blog/tag/${slug}`;
   return (
     <Card title="">
-      <Styled.Title># {name}</Styled.Title>
+      <Styled.Title>
+        <Link href={url}>{`# ${name}`}</Link>
+      </Styled.Title>
       <Styled.Description>{description}</Styled.Description>
-      <Styled.Footer>{articleNum} 篇文章</Styled.Footer>
+      <Styled.Footer>{posts ?? 0} 篇文章</Styled.Footer>
     </Card>
   );
 };

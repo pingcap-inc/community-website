@@ -1,5 +1,5 @@
 const { successResp } = require('../../../utils');
-const { content } = require('./categories.mock');
+const { content } = require('./tags.mock');
 
 module.exports = (req, res) => {
   const { id } = req.params;

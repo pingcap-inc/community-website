@@ -5,6 +5,10 @@ import { Row, Col } from 'antd';
 const { Content } = Styled;
 export { Content };
 
+export const Breadcrumb = styled.div`
+  padding-top: 2rem;
+`;
+
 export const Container = styled(Row).attrs({
   gutter: 24,
 })`
@@ -18,16 +22,19 @@ export const Container = styled(Row).attrs({
 `;
 
 export const Start = styled(Col).attrs({
+  xs: 24,
   sm: 24,
   md: 6,
 })``;
 
 export const Center = styled(Col).attrs({
+  xs: 24,
   sm: 24,
   md: 12,
 })``;
 
 export const End = styled(Col).attrs({
+  xs: 24,
   sm: 24,
   md: 6,
 })``;

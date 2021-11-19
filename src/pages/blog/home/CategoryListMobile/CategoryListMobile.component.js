@@ -1,26 +1,23 @@
 import React from 'react';
+import * as Styled from './index.styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import * as Styled from './index.styled';
-
-const OrderBySwitch = ({ items }) => {
+const CategoryListMobile = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {items.map((value, index) => (
+        {content.map((value, index) => (
           <Item key={index} {...value} />
         ))}
       </Styled.List>
-      <Styled.AllTag>
-        <Link href={'blog/tag'}>全部标签</Link>
-      </Styled.AllTag>
     </Styled.Container>
   );
 };
 
-const Item = ({ name, url }) => {
+const Item = ({ name, slug }) => {
   const { asPath } = useRouter();
+  const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
   const selected = asPath === url;
   return (
     <Link href={`/${url}`}>
@@ -29,4 +26,4 @@ const Item = ({ name, url }) => {
   );
 };
 
-export default OrderBySwitch;
+export default CategoryListMobile;

@@ -2,13 +2,14 @@ import React from 'react';
 import * as Styled from './index.styled';
 import Link from 'next/link';
 import { Divider } from 'antd';
+import { useRouter } from 'next/router';
 
-const ClassificationList = ({ classifications }) => {
+const CategoryList = ({ categories: { content } }) => {
   return (
     <Styled.Container>
       <Styled.List>
-        {classifications.map((item) => (
-          <Item data={item} />
+        {content.map((value, index) => (
+          <Item key={index} {...value} />
         ))}
       </Styled.List>
       <Divider />
@@ -20,10 +21,13 @@ const ClassificationList = ({ classifications }) => {
   );
 };
 
-const Item = ({ data: { name, url, selected } }) => {
+const Item = ({ name, slug }) => {
+  const { asPath } = useRouter();
+  const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
+  const selected = asPath === url;
   return (
     <Link href={`/${url}`}>
-      <Styled.Item selected={!!selected}>{name}</Styled.Item>
+      <Styled.Item selected={selected}>{name}</Styled.Item>
     </Link>
   );
 };
@@ -36,4 +40,4 @@ const FixedLink = ({ url, children }) => {
   );
 };
 
-export default ClassificationList;
+export default CategoryList;

@@ -1,5 +1,5 @@
 module.exports = {
-  categories: [
+  content: [
     {
       creatorId: 1,
       createdAt: '2021-10-28T11:38:49.000+00:00',

@@ -25,13 +25,13 @@ const blogInfo = {
   coverImageUrl: 'https://fakeimg.pl/1540x440/',
 };
 
-const BlogList = () => {
+const BlogList = ({ blogs: { content } }) => {
   const router = useRouter();
 
   return (
     <Styled.Container>
       <Styled.List>
-        {[1, 2, 3, 4, 5, 6].map((key) => (
+        {content.map((key) => (
           <Styled.Item>
             <BlogInfo key={key} {...blogInfo} onClick={() => router.push(`/blog/${key}`)} />
           </Styled.Item>

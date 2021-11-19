@@ -1,15 +1,17 @@
 import React from 'react';
-import * as Styled from './index.styled';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { Card } from 'antd';
 
-const HotTagList = ({ hotTags }) => {
+import * as Styled from './index.styled';
+
+const HotTagList = ({ hotTags: { content } }) => {
   return (
     <Styled.Container>
       <Card title="热门标签" extra={<Link href="/blog/tag">查看全部</Link>}>
         <Styled.List>
-          {hotTags.map((item) => (
-            <Item data={item} />
+          {content.map((item) => (
+            <Item {...item} />
           ))}
         </Styled.List>
       </Card>
@@ -17,9 +19,12 @@ const HotTagList = ({ hotTags }) => {
   );
 };
 
-const Item = ({ data: { name, url, selected } }) => {
+const Item = ({ name, slug }) => {
+  const { asPath } = useRouter();
+  const url = `/blog/tag/${slug}`;
+  const selected = asPath === url;
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.Item selected={!!selected}># {name}</Styled.Item>
     </Link>
   );

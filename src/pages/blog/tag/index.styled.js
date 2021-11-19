@@ -5,6 +5,10 @@ import { Row, Col } from 'antd';
 const { Content } = Styled;
 export { Content };
 
+export const Breadcrumb = styled.div`
+  padding-top: 2rem;
+`;
+
 export const List = styled(Row).attrs({
   gutter: [24, 24],
 })`

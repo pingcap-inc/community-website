@@ -16,3 +16,4 @@ export const getCategoryById = (id) => client.get(`${BLOG_API_URL_PREFIX}/catego
 export const getCategoryBySlug = (slug) => client.get(`${BLOG_API_URL_PREFIX}/categories/slug/${slug}`);
 
 export * as posts from './posts';
+export * as common from './common';

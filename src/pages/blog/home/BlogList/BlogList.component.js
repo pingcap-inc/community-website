@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Styled from './index.styled';
 import { BlogInfo } from '@tidb-community/ui';
+import { useRouter } from 'next/router';
 
 const blogInfo = {
   id: 10086,
@@ -25,12 +26,14 @@ const blogInfo = {
 };
 
 const BlogList = () => {
+  const router = useRouter();
+
   return (
     <Styled.Container>
       <Styled.List>
         {[1, 2, 3, 4, 5, 6].map((key) => (
           <Styled.Item>
-            <BlogInfo key={key} {...blogInfo} />
+            <BlogInfo key={key} {...blogInfo} onClick={() => router.push(`/blog/${key}`)} />
           </Styled.Item>
         ))}
       </Styled.List>

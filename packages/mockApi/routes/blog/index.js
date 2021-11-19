@@ -10,6 +10,13 @@ router.delete('/categories/:id', require('./categories/delete-categories'));
 router.get('/posts/latest', require('./posts/posts'));
 router.get('/posts/recommend', require('./posts/posts'));
 router.get('/posts/:id', require('./posts/[id]'));
+router.get('/posts/:id/comments', require('./posts/[id]').comments);
+router.post('/posts/:id/comments', require('./posts/[id]').comment);
+router.patch('/posts/:id/like', require('./posts/[id]').like);
+router.patch('/posts/:id/like/cancel', require('./posts/[id]').cancelLike);
+router.patch('/posts/:id/favorite', require('./posts/[id]').favorite);
+router.patch('/posts/:id/favorite/cancel', require('./posts/[id]').cancelFavorite);
+router.post('/posts/:id/share', require('./posts/[id]').share);
 router.post('/posts', require('./posts/create-posts'));
 router.put('/posts/:id', require('./posts/update-posts'));
 router.delete('/posts/:id', require('./posts/delete-posts'));
@@ -18,5 +25,7 @@ router.get('/tags', require('./tags/tags'));
 router.get('/tags/hot', require('./tags/tags'));
 router.get('/tags/:id', require('./tags/[id]'));
 router.get('/tags/slug/:slug', require('./tags/[slug]'));
+
+router.get('/principal', require('./common/principal'));
 
 module.exports = router;

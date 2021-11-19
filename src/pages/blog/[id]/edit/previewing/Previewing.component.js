@@ -11,6 +11,10 @@ const noop = () => {};
 const Previewing = () => {
   const { factory, title, origin, tags, content } = useEditContext();
 
+  if (!process.browser) {
+    return <></>;
+  }
+
   return (
     <>
       <Styled.Content>
@@ -19,14 +23,14 @@ const Previewing = () => {
           {typeof origin === 'string' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
           {tags.map((tag) => (
-            <BlogInfo.Tag key={tag.value}>{tag.value}</BlogInfo.Tag>
+            <BlogInfo.Tag key={tag.id}>{tag.name}</BlogInfo.Tag>
           ))}
         </Styled.Meta>
         <Styled.Editor>
           <TiEditor value={content} onChange={noop} factory={factory} disabled />
         </Styled.Editor>
         {typeof origin === 'string' ? (
-          <PreviewingStyled.Declaration>声明：本文转载于 ${origin}</PreviewingStyled.Declaration>
+          <PreviewingStyled.Declaration>声明：本文转载于 {origin}</PreviewingStyled.Declaration>
         ) : undefined}
       </Styled.Content>
     </>

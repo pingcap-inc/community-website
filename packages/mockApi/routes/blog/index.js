@@ -2,7 +2,7 @@ const router = require('express').Router();
 
 router.get('/categories', require('./categories/categories'));
 router.get('/categories/:id', require('./categories/[id]'));
-router.get('/categories/slug/:slug', require('./categories/[slug]'));
+router.get('/categories/search/bySlug', require('./categories/[slug]'));
 router.post('/categories', require('./categories/create-categories'));
 router.put('/categories/:id', require('./categories/update-categories'));
 router.delete('/categories/:id', require('./categories/delete-categories'));
@@ -24,7 +24,12 @@ router.delete('/posts/:id', require('./posts/delete-posts'));
 router.get('/tags', require('./tags/tags'));
 router.get('/tags/hot', require('./tags/tags'));
 router.get('/tags/:id', require('./tags/[id]'));
-router.get('/tags/slug/:slug', require('./tags/[slug]'));
+router.get('/tags/search/bySlug', require('./tags/[slug]'));
+
+router.get('/users/:id/posts', require('./users/posts'));
+router.get('/users/:id/likes', require('./users/likes'));
+router.get('/users/:id/favorites', require('./users/favorites'));
+router.get('/users/:id/comments', require('./users/comments'));
 
 router.get('/principal', require('./common/principal'));
 

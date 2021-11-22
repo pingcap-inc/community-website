@@ -26,6 +26,11 @@ router.get('/tags/hot', require('./tags/tags'));
 router.get('/tags/:id', require('./tags/[id]'));
 router.get('/tags/slug/:slug', require('./tags/[slug]'));
 
+router.get('/users/:id/posts', require('./users/posts'));
+router.get('/users/:id/likes', require('./users/likes'));
+router.get('/users/:id/favorites', require('./users/favorites'));
+router.get('/users/:id/comments', require('./users/comments'));
+
 router.get('/principal', require('./common/principal'));
 
 module.exports = router;

@@ -2,6 +2,7 @@ import blogClient from '../blogClient';
 
 export * as posts from './posts';
 export * as common from './common';
+export * as users from './users';
 
 export const getLatest = () => blogClient.get(`/api/posts/latest`);
 

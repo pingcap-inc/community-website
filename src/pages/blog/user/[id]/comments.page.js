@@ -19,13 +19,10 @@ export const getServerSideProps = async (ctx) => {
 
   const { id } = ctx.params;
 
-  const comments = await api.blog.users.getComments(id);
-
   return {
     props: {
       ...i18nProps,
       id,
-      comments,
     },
   };
 };

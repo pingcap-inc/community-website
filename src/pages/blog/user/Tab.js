@@ -1,9 +1,8 @@
 import React from 'react';
 import * as Styled from './Tab.styled';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
 
-const Tab = () => {
+const Tab = ({ id, selectedKey }) => {
   const numPosts = 7;
   const numComments = 13;
   const numLike = 65;
@@ -11,21 +10,20 @@ const Tab = () => {
   return (
     <Styled.Tab>
       <Styled.Tab>
-        <TabItem name={`文章 ${numPosts}`} url="blog/me/posts" />
-        <TabItem name={`评论 ${numComments}`} url="blog/me/comments" />
-        <TabItem name={`赞 ${numLike}`} url="blog/me/like" />
-        <TabItem name={`收藏 ${numFav}`} url="blog/me/fav" />
+        <TabItem id={id} selectedKey={selectedKey} name={`文章 ${numPosts}`} urlKey="posts" />
+        <TabItem id={id} selectedKey={selectedKey} name={`评论 ${numComments}`} urlKey="comments" />
+        <TabItem id={id} selectedKey={selectedKey} name={`赞 ${numLike}`} urlKey="like" />
+        <TabItem id={id} selectedKey={selectedKey} name={`收藏 ${numFav}`} urlKey="favorites" />
       </Styled.Tab>
     </Styled.Tab>
   );
 };
 
-const TabItem = ({ name, url }) => {
-  const router = useRouter();
-  // console.log('router.pathname', router.pathname)
-  const selected = router.pathname === '/' + url;
+const TabItem = ({ id, selectedKey, name, urlKey }) => {
+  const url = `/blog/user/${id}/${urlKey}`;
+  const selected = selectedKey === urlKey;
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.TabItem selected={!!selected}>{name}</Styled.TabItem>
     </Link>
   );

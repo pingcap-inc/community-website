@@ -9,7 +9,7 @@ export const getLatest = () => blogClient.get(`/api/posts/latest`);
 export const getRecommend = () => blogClient.get(`/api/posts/recommend`);
 
 export const getTags = () => blogClient.get(`/api/tags`);
-export const getHotTags = () => blogClient.get(`/api/tags/hot`);
+export const getHotTags = () => blogClient.get(`/api/tags?sort=posts,desc`);
 export const getTagById = (id) => blogClient.get(`/api/tags/${id}`);
 export const getTagBySlug = (slug) => blogClient.get(`/api/tags/slug/${slug}`);
 

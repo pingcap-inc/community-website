@@ -21,7 +21,7 @@ export const useLikes = (blogInfo) => {
       setLiked(false);
       setLikes((likes) => likes - 1);
     } else {
-      api.blog.posts.post.cancelFavorite(blogInfo.id).catch();
+      api.blog.posts.post.like(blogInfo.id).catch();
       setLiked(true);
       setLikes((likes) => likes + 1);
     }
@@ -48,7 +48,7 @@ export const useFavorites = (blogInfo) => {
       setFavorited(false);
       setFavorites((favorites) => favorites - 1);
     } else {
-      api.blog.posts.post.cancelFavorite(blogInfo.id).catch();
+      api.blog.posts.post.favorite(blogInfo.id).catch();
       setFavorited(true);
       setFavorites((favorites) => favorites + 1);
     }

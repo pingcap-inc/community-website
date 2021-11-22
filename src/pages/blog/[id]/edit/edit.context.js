@@ -91,9 +91,9 @@ export function useEditMethods() {
       const body = {
         title,
         origin: typeof origin === 'string' ? 'REPOST' : 'ORIGIN',
-        sourceURL: typeof origin === 'string' ? origin : undefined,
+        sourceURL: typeof origin === 'string' ? origin : null,
         content: JSON.stringify(content),
-        category: category?.id,
+        category: category?.id ?? null,
         tags: tags.map((tag) => tag.id),
         coverImageURL: undefined, // TODO
       };

@@ -40,9 +40,11 @@ const TagPage = ({ tags: { content } }) => {
           <Styled.Breadcrumb>
             <Breadcrumb>
               <Breadcrumb.Item>
-                <Link href={'/blog'}>博客首页</Link>
+                <Link href={'/blog'}>博客</Link>
               </Breadcrumb.Item>
-              <Breadcrumb.Item>标签</Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <Link href={'/blog/tag'}>标签</Link>
+              </Breadcrumb.Item>
             </Breadcrumb>
           </Styled.Breadcrumb>
           <Styled.List>

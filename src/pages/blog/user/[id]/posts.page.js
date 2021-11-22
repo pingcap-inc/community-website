@@ -66,10 +66,10 @@ const Posts = ({ id }) => {
         <Styled.Content>
           <Styled.Container>
             <Styled.Breadcrumb>
-              <Breadcrumb.Item>博客</Breadcrumb.Item>
               <Breadcrumb.Item>
-                <Link href="">我的</Link>
+                <Link href="/blog">博客</Link>
               </Breadcrumb.Item>
+              <Breadcrumb.Item>用户</Breadcrumb.Item>
             </Styled.Breadcrumb>
 
             <Tab id={id} selectedKey="posts" />

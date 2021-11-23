@@ -28,6 +28,11 @@ interface Page<T> {
   };
 }
 
+interface Pagination {
+  page?: number;
+  size?: number;
+}
+
 export interface UserInfo {
   id: number;
   username: string;

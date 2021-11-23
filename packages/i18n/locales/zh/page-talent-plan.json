@@ -1,0 +1,321 @@
+{
+  "banner": {
+    "title": "Talent Plan",
+    "intro": "以 Talent Plan 开源数据库开发课程为依托，联合优秀高校和企业，建设成对全国各高校数据库开发人才培养的最佳实践平台。既能帮助学习者掌握数据库开发的理论知识，进行实际数据库开发锻炼，又能给与学习者使用开源资源，开发开源软件的培养。",
+    "start": "开始学习"
+  },
+  "labs": {
+    "title": "谁在使用我们的项目",
+    "orgs": [
+      {
+        "img": "/images/talent-plan/labs-logo-3.png",
+        "name": "华中科技大学国家光电实验室并行数据实验室"
+      },
+      {
+        "img": "/images/talent-plan/labs-logo-6.png",
+        "name": "中国科学技术大学 ADSL 实验室"
+      },
+      {
+        "img": "/images/talent-plan/labs-logo-4.png",
+        "name": "南开大学数据库实验室"
+      },
+      {
+        "img": "/images/talent-plan/labs-logo-1.png",
+        "name": "电子科技大学计算机科学与工程学院"
+      },
+      {
+        "img": "/images/talent-plan/labs-logo-2.png",
+        "name": "华东师范大学数据科学与工程学院"
+      },
+      {
+        "img": "/images/talent-plan/labs-logo-5.png",
+        "name": "人民大学信息学院"
+      }
+    ]
+  },
+  "institutes": {
+    "title": "个人学习者来源",
+    "names": [
+      "加州大学",
+      "华中科技大学",
+      "中国科学技术大学",
+      "华东师范大学",
+      "南开大学",
+      "电子科技大学",
+      "北京邮电大学",
+      "上海交通大学",
+      "浙江大学",
+      "北京航空航天大学",
+      "武汉大学",
+      "广东工业大学",
+      "北京大学",
+      "复旦大学",
+      "华南理工大学",
+      "宾州州立大学",
+      "吉林大学",
+      "亚琛工业大学",
+      "澳大利亚国立大学",
+      "早稻田大学",
+      "大连理工大学",
+      "东南大学",
+      "四川大学",
+      "西安交通大学",
+      "南京大学",
+      "清华大学",
+      "西北工业大学",
+      "中国科学院大学",
+      "中山大学",
+      "同济大学",
+      "哈尔滨工业大学",
+      "北京科技大学",
+      "东北大学",
+      "深圳大学",
+      "桂林电子科技大学",
+      "山东大学",
+      "雪城大学",
+      "芝加哥大学",
+      "天津大学",
+      "卡内基梅隆大学",
+      "北京理工大学",
+      "乔治亚理工大学",
+      "俄亥俄州立大学",
+      "南加利福利亚大学",
+      "新南威尔士大学",
+      "伊利诺伊大学",
+      "瑞典皇家理工大学",
+      "不列颠哥伦比亚大学",
+      "爱丁堡大学",
+      "北卡罗来纳大学",
+      "杜克大学",
+      "赫尔辛基大学",
+      "苏黎世联邦理工大学",
+      "墨尔本皇家理工大学",
+      "台湾大学",
+      "威斯康辛大学",
+      "佐治亚理工学院",
+      "南洋理工大学",
+      "新加坡国立大学",
+      "南加州大学"
+    ]
+  },
+  "team": {
+    "title": "我们的团队",
+    "members": [
+      {
+        "nameEN": "Jiguang Wang",
+        "nameZH": "万继光",
+        "org": "华中科技大学",
+        "role": "PMC"
+      },
+      {
+        "nameEN": "Karim",
+        "nameZH": "江坤",
+        "org": "Digital China",
+        "role": "PMC",
+        "github": "pupillord"
+      },
+      {
+        "nameEN": "Xiaoguang Sun",
+        "nameZH": "孙晓光",
+        "org": "PingCAP",
+        "role": "PMC",
+        "github": "sunxiaoguang"
+      },
+      {
+        "nameEN": "Jian Zhang",
+        "nameZH": "张建",
+        "org": "PingCAP",
+        "role": "PMC",
+        "github": "zz-jason"
+      },
+      {
+        "nameEN": "Junyi Yang",
+        "nameZH": "杨俊逸",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "rebelice"
+      },
+      {
+        "nameEN": "Connor",
+        "nameZH": "张博康",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "Connor1996"
+      },
+      {
+        "nameEN": "Xiang Zhang",
+        "nameZH": "张翔",
+        "org": "PingCAP",
+        "role": "Committer",
+        "github": "zhangyangyu"
+      },
+      {
+        "nameEN": "David",
+        "nameZH": "杨运帷",
+        "org": "Digital China",
+        "role": "Active Contributor",
+        "github": "AmoebaProtozoa"
+      },
+      {
+        "nameEN": "xurui",
+        "nameZH": "徐锐",
+        "org": "oltp group",
+        "role": "Senior Mentor",
+        "github": "cfzjywxk"
+      },
+      {
+        "nameEN": "Tong Mu",
+        "nameZH": "童牧",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "you06"
+      },
+      {
+        "nameEN": "Cui Yiding",
+        "nameZH": "崔一丁",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "winoros"
+      },
+      {
+        "nameEN": "Andy",
+        "nameZH": "骆迪安",
+        "org": "PingCAP",
+        "role": "Senior Mentor",
+        "github": "andylokandy"
+      },
+      {
+        "nameEN": "Panda",
+        "nameZH": "王能杰",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "wangnengjie"
+      },
+      {
+        "nameEN": "Hammer Li",
+        "nameZH": "李思岑",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "L–LYR"
+      },
+      {
+        "nameEN": "Chen Jingang",
+        "nameZH": "陈劲刚",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "Whorra"
+      },
+      {
+        "nameEN": "Li Xiang",
+        "nameZH": "李响",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "LX-676655103"
+      }
+    ]
+  },
+  "participation": {
+    "title": "深度参与 Talent Plan",
+    "tab1": "成为 Talent Plan 建设者",
+    "tab2": "学习 Talent Plan",
+    "steps": [
+      "结合个人兴趣爱好以及知识背景，从以下卡片中点击选择适合自己的学习路径",
+      "填写报名表单，加入课程学习小组，开始学习",
+      "完成课程作业并提交",
+      "通过线上课程考核，获得 Talent Plan 线上结业证书"
+    ],
+    "paths": [
+      {
+        "name": "路径（一）",
+        "desc": "实现一个 Mini 版本的分布式关系型数据库",
+        "url": "https://github.com/tidb-incubator/tinysql"
+      },
+      {
+        "name": "路径（二）",
+        "desc": "实现一个 Mini 版本的 Key-value 数据库",
+        "url": "https://github.com/tidb-incubator/tinykv"
+      },
+      {
+        "name": "路径（三）",
+        "desc": "参与工业级开源分布式关系型数据库 TiDB 开发实践",
+        "url": "https://github.com/pingcap/community/blob/master/contributors/README.md"
+      },
+      {
+        "name": "路径（四）",
+        "desc": "参与工业级开源分布式 Key-value 数据库 TiKV 的开发实践",
+        "url": "https://github.com/pingcap/community/blob/master/contributors/README.md"
+      },
+      {
+        "name": "路径（五）",
+        "desc": "Rust 编程原理与实践",
+        "url": "https://github.com/pingcap/talent-plan/blob/master/courses/rust/README.md"
+      }
+    ],
+    "becomings": [
+      {
+        "title": "成为 Contributor",
+        "desc": "当你向 Talent Plan 下任何课程提交 PR 并得到批准之后，你就成为了 Contributor。Talent Plan 项目欢迎对课程内容代码、测试用例、试题、课程文字等各个领域的贡献。"
+      },
+      {
+        "title": "成为 Mentor",
+        "desc": "我们欢迎熟悉一门课程或者多门课程的学习者能够从事作业批改、技术分享、学习指导等活动。参加其中任何一项活动，你将成为 Mentor。"
+      },
+      {
+        "title": "成为 Active Contributor",
+        "desc": "当你一年内有 6 个 PR 被接受时，你将成为当年度的 Active Contributor"
+      },
+      {
+        "title": "成为 Senior Mentor",
+        "desc": "一个 Mentor 累计参加 6 次活动，并且直接辅导 10 人以上，将成为 Senior Mentor"
+      },
+      {
+        "title": "成为 Committer",
+        "desc": "Committer 是 Talent Plan 项目下某一门或者多门课程的专家，或者一门新课程的创建人。一般地，当你累计提交 PR 达到30个时，或者你为 Talent Plan 创建的新课程被 PMC 接受时，你应该联系 PMC 阐述你的贡献。当你获得 3+ PMC 成员的同意之后，你将成为一名Committer。"
+      }
+    ]
+  },
+  "nextSteps": {
+    "title": "进一步探索"
+  },
+  "organizers": {
+    "title": "发起/组织者"
+  },
+  "others": {
+    "title": "其他资源"
+  },
+  "stories": {
+    "title": "学员故事",
+    "stories": [
+      {
+        "content": "我超级喜欢 PingCAP 的氛围还有培训方式。这次培训从语言和数据库理论学习到跟进最新论文，再到动手实操小 Demo，了解了 TiDB 各个模块的代码，丰富的课程让我对数据库的理解又加深了一层。希望自己以后的研究东西能够更贴近到具体的场景和系统中去发现问题，并把自己的研究成果落地。",
+        "name": "兰海",
+        "desc": "第一期线下课程优秀学员"
+      },
+      {
+        "content": "参加了 Talent  Plan 是一次非常珍贵的体验，一方面是学到了许多的没有接触过的分布式领域的知识，另一方面也结识了来自全国各个高校的优秀的小伙伴以及 PingCAP 的各位厉害的导师，也为我之后来PingCAP 实习埋下了伏笔。",
+        "name": "张艺文",
+        "desc": "第二期线下课程优秀学员"
+      },
+      {
+        "content": "参加这次 Talent Plan，我不仅学习到了丰富的知识，还深入地参与到具有挑战性的工程项目。更重要的是交到了一群非常优秀、靠谱的朋友。非常感谢 PingCAP 举办这个活动，希望 Talent Plan 越办越好。",
+        "name": "黄文俊",
+        "desc": "第三期线下课程优秀学员"
+      },
+      {
+        "content": "经过 Talent Plan 的学习让我明白了，在实验室里 fancy 的想法在工业界可能并不 work，实际应用环境要比实验室环境严格苛刻很多很多。经过这次线下课程的学习，我以后在设计方案的时候会着重考虑从现实角度出发。",
+        "name": "邹欢",
+        "desc": "第三期线下课程最具潜力奖获得者"
+      },
+      {
+        "content": "这次参加 Talent Plan 收获十分巨大，首先是认识了一群很棒的小伙伴，正如崔秋老师说的，一个月时间很短，但是友谊却是一辈子的。然后，我对整个 TiDB 生态以及其中的各个模块有了更高层次的认识和理解，也切身体验到了PingCAP 很 Cool 的 Geek 氛围，总之度过了很有意义的一个月。\n",
+        "name": "林宁",
+        "desc": "第三期线下课程最具潜力获奖者"
+      },
+      {
+        "content": "工作后参加 Talent Plan 是非常神奇的体验。在这不仅能学习到 TiDB 各个模块的基础理论，还能听到一线的开发直接分享在生产环境中实践的一些细节和经验。最后还能和大家一起齐心协力去落地一个项目，并见证它成为这个优秀开源数据库的一部分。感觉自己回到了久违的学生时光。",
+        "name": "郑向升",
+        "desc": "第四期线下课程学员代表"
+      }
+    ]
+  }
+}

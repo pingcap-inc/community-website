@@ -40,7 +40,6 @@ const Learning = () => {
 
             <Styled.VideoHeader>
               <Styled.TitleLink href="https://learn.pingcap.com/learner/course/6">{lang.videosTitle}</Styled.TitleLink>
-              <Styled.FreeLabel>{lang.freeLabel}</Styled.FreeLabel>
             </Styled.VideoHeader>
 
             <Styled.VideosRow wrap={false}>

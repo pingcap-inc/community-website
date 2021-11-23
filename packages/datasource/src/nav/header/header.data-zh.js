@@ -60,6 +60,10 @@ export const navItems = [
     title: '社区',
     items: [
       {
+        title: 'Talent Plan',
+        link: 'https://tidb.io/talent-plan',
+      },
+      {
         title: '社区行为准则',
         link: 'https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md',
       },

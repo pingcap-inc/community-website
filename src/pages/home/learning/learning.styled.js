@@ -43,13 +43,6 @@ export const VideoHeader = styled.h3`
   margin-top: 2.5rem;
 `;
 
-export const FreeLabel = styled.span`
-  display: inline-block;
-  margin-left: 0.5rem;
-  color: ${colors.T1};
-  font-weight: normal;
-`;
-
 export const LinksRow = styled(Row)`
   margin-bottom: 1rem;
 `;

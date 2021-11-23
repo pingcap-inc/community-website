@@ -3,7 +3,7 @@ import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 import { useRouter } from 'next/router';
 
-export const useLikes = (blogInfo) => {
+export const useLikes = (blogInfo, isLogin) => {
   const [liked, setLiked] = useState(blogInfo.liked);
   const [likes, setLikes] = useState(blogInfo.likes);
 
@@ -16,6 +16,10 @@ export const useLikes = (blogInfo) => {
   }, [blogInfo.likes]);
 
   const like = () => {
+    if (!isLogin) {
+      message.info('请先登录').then();
+      return;
+    }
     if (liked) {
       api.blog.posts.post.cancelLike(blogInfo.id).catch();
       setLiked(false);
@@ -30,7 +34,7 @@ export const useLikes = (blogInfo) => {
   return { liked, like, likes };
 };
 
-export const useFavorites = (blogInfo) => {
+export const useFavorites = (blogInfo, isLogin) => {
   const [favorited, setFavorited] = useState(blogInfo.favorited);
   const [favorites, setFavorites] = useState(blogInfo.favorites);
 
@@ -43,6 +47,10 @@ export const useFavorites = (blogInfo) => {
   }, [blogInfo.favorites]);
 
   const favorite = () => {
+    if (!isLogin) {
+      message.info('请先登录').then();
+      return;
+    }
     if (favorited) {
       api.blog.posts.post.cancelFavorite(blogInfo.id).catch();
       setFavorited(false);

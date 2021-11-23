@@ -16,13 +16,13 @@ import { useEdit, useFavorites, useLikes, useReview, useShares } from './interac
 import { usePrincipal } from '../../../blog.hooks';
 
 const Interactions = ({ blogInfo, reload }) => {
-  const { liked, like, likes } = useLikes(blogInfo);
-  const { favorited, favorite, favorites } = useFavorites(blogInfo);
-  const { share, shares } = useShares(blogInfo);
+  const { isLogin, isAuthor, hasAuthority } = usePrincipal();
+
+  const { liked, like, likes } = useLikes(blogInfo, isLogin);
+  const { favorited, favorite, favorites } = useFavorites(blogInfo, isLogin);
+  const { share, shares } = useShares(blogInfo, isLogin);
   const { edit } = useEdit(blogInfo);
   const { publish, reject } = useReview(blogInfo, reload);
-
-  const { isAuthor, hasAuthority } = usePrincipal();
 
   const actions = [];
   if (blogInfo.status === 'PUBLISHED') {

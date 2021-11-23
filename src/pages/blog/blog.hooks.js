@@ -16,8 +16,8 @@ export const usePrincipal = () => {
         setAuthorities(authorities);
       })
       .catch((e) => {
-        if (!e.response || !/^40[13]$/.test(e.response.status)) {
-          return message.error(String(e?.response?.data?.message ?? e?.message ?? e));
+        if (!e || !/^40[13]$/.test(e.status)) {
+          return message.error(String(e?.data?.message ?? e?.message ?? e));
         }
       });
   }, []);
@@ -44,7 +44,7 @@ export const usePrincipal = () => {
   );
 
   const isLogin = useMemo(() => {
-    return typeof id !== undefined;
+    return typeof id === 'number';
   }, [id]);
 
   return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id };

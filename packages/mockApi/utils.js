@@ -6,9 +6,9 @@ const { MESSAGES } = require('./constants');
 const { fake, datatype } = faker;
 
 const errorResp =
-  ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors } = {}) =>
+  ({ code = 400, detail = MESSAGES.INVALID_PARAMS, errors, ...rest } = {}) =>
   (req, res) => {
-    res.status(code).json({ detail, errors });
+    res.status(code).json({ detail, errors, ...rest });
   };
 
 const successResp =

@@ -19,6 +19,7 @@ const BlogEditPage = () => {
   const { isLogin } = usePrincipal();
 
   useEffect(() => {
+    console.log('isLogin', isLogin);
     if (!isLogin) {
       login();
     }

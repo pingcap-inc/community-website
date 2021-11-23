@@ -1,6 +1,7 @@
 const { successResp } = require('../../../utils');
 
 module.exports = (req, res) => {
+  // return errorResp({ code: 403, message: 'Forbidden' })(req, res)
   return successResp({
     id: 2,
     roles: ['READER'],

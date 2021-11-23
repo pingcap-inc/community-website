@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 
 import * as Styled from './edit.styled';
 import { CoreLayout } from '~/layouts';
@@ -8,11 +8,21 @@ import Editing from './editing/Editing.component';
 import EditContext, { useEditContextProvider } from './edit.context';
 import Previewing from '~/pages/blog/[id]/edit/previewing/Previewing.component';
 import { useRouter } from 'next/router';
+import { usePrincipal } from '../../blog.hooks';
+import { AuthContext } from '../../../../context';
 
 const BlogEditPage = () => {
   const editContextValue = useEditContextProvider();
   const router = useRouter();
   const { reload, loading, blogInfo } = editContextValue;
+  const { login } = useContext(AuthContext);
+  const { isLogin } = usePrincipal();
+
+  useEffect(() => {
+    if (!isLogin) {
+      login();
+    }
+  }, [isLogin, login]);
 
   const {
     query: { id },

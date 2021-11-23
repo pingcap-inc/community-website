@@ -4,12 +4,12 @@ export * as posts from './posts';
 export * as common from './common';
 export * as users from './users';
 
-export const getLatest = () => blogClient.get(`/api/posts/latest`);
+export const getLatest = (params) => blogClient.get(`/api/posts/latest`, { params });
 
-export const getRecommend = () => blogClient.get(`/api/posts/recommend`);
+export const getRecommend = (params) => blogClient.get(`/api/posts/recommend`, { params });
 
-export const getTags = () => blogClient.get(`/api/tags`);
-export const getHotTags = () => blogClient.get(`/api/tags?sort=posts,desc`);
+export const getTags = (params) => blogClient.get(`/api/tags`, { params });
+export const getHotTags = (params) => blogClient.get(`/api/tags?sort=posts,desc`, { params });
 export const getTagById = (id) => blogClient.get(`/api/tags/${id}`);
 export const getTagBySlug = (slug) => blogClient.get(`/api/tags/search/bySlug?slug=${slug}`);
 

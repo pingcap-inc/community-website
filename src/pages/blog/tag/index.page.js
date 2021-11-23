@@ -26,7 +26,12 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const TagPage = ({ tags: { content } }) => {
+const TagPage = ({
+  tags: {
+    content,
+    page: { current, totalElements },
+  },
+}) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -55,7 +60,7 @@ const TagPage = ({ tags: { content } }) => {
             ))}
           </Styled.List>
           <Styled.Pagination>
-            <Pagination defaultCurrent={1} total={50} />
+            <Pagination defaultCurrent={1} current={current} total={totalElements} />
           </Styled.Pagination>
         </Styled.Content>
       </BlogLayout>

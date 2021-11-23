@@ -5,8 +5,8 @@ export const Container = styled.div`
 `;
 
 export const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
+  //display: flex;
+  //flex-wrap: wrap;
 `;
 
 export const Item = styled.div`

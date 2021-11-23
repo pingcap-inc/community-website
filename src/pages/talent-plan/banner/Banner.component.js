@@ -5,6 +5,7 @@ import { useIsSmallScreen } from '~/hooks';
 import { useTranslation } from 'next-i18next';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
+import { Link } from '~/components';
 
 const Banner = () => {
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
@@ -17,16 +18,18 @@ const Banner = () => {
       <Styled.Content>
         <TwoColumnsSection
           leftPanel={
-            <>
+            <Styled.LeftPanel>
               <Styled.Title>{lang.title}</Styled.Title>
               <Styled.Intro>{lang.intro}</Styled.Intro>
-              <Styled.LearnButton>{lang.start}</Styled.LearnButton>
-            </>
+              <Link href="#learn">
+                <Styled.LearnButton>{lang.start}</Styled.LearnButton>
+              </Link>
+            </Styled.LeftPanel>
           }
           rightPanel={
             <Styled.CarouselWrapper>
               <Styled.Carousel isSmallScreen={isSmallScreen}>
-                {[3, 1, 2].map((el) => {
+                {[1, 2, 3].map((el) => {
                   const props = {
                     image: getImage(`banner-rec-${el}.svg`),
                     key: el,

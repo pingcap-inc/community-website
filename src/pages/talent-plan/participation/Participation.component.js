@@ -77,7 +77,7 @@ const Participation = () => {
     <>
       <Styled.Container>
         <Styled.Content>
-          <CommonStyled.Title>{lang.title}</CommonStyled.Title>
+          <CommonStyled.Title id="learn">{lang.title}</CommonStyled.Title>
           <Tabs onChange={(idx) => setIsOnFirstTab(idx === '1')}>
             <TabPane tab={lang.tab1} key={1}>
               <Image src={getImage('participation-org.jpg')} />

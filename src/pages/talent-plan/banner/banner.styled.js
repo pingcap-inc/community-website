@@ -48,6 +48,10 @@ export const Title = styled.h1`
 
 export const LearnButton = styled(Button).attrs({ type: 'primary' })``;
 
+export const LeftPanel = styled.div`
+  padding-top: 2.5rem;
+`;
+
 // vertically center the carousel
 export const CarouselWrapper = styled.div`
   ${(props) =>

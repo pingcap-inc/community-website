@@ -52,7 +52,9 @@ const NextSteps = () => {
                   本模块旨在帮助贡献者从新手成长为 TiDB 专家，熟悉 TiDB
                   的设计和实施，从而能够在现实世界中流畅地使用它，并进行深入开发工作。
                 </p>
-                <p>同时你也可以在开发者论坛和其他开发者们交流学习。</p>
+                <p>
+                  同时你也可以在<Link href={'https://internals.tidb.io'}>开发者论坛</Link>和其他开发者们交流学习。
+                </p>
                 <Styled.ProjectCardButton
                   onClick={onClick('https://pingcap.github.io/tidb-dev-guide/get-started/install-golang')}
                 >

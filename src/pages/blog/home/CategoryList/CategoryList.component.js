@@ -27,7 +27,7 @@ const CategoryList = ({ categories: { content } }) => {
 const Item = ({ name, slug }) => {
   const { asPath } = useRouter();
   const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
-  const selected = asPath === url || asPath.startsWith(url + '/');
+  const selected = asPath === url || asPath + '/latest' === url;
   return (
     <Link href={`/${url}`}>
       <Styled.Item selected={selected}>{name}</Styled.Item>

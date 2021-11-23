@@ -18,4 +18,9 @@ export const Item = styled.div`
 export const FixedLink = styled.div`
   padding: 0.25rem 1rem;
   margin: 0.5rem 0;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  &:hover {
+    color: ${colors.B1};
+  }
 `;

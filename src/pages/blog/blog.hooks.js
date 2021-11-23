@@ -47,5 +47,5 @@ export const usePrincipal = () => {
     return typeof id !== undefined;
   }, [id]);
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin };
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id };
 };

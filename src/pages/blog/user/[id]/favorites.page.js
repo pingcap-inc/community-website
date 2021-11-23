@@ -9,7 +9,7 @@ import { PageDataContext } from '~/context';
 
 import BlogLayout from '../../BlogLayout.component';
 import Tab from '../Tab';
-import { api } from '@tidb-community/datasource/src';
+import { api } from '@tidb-community/datasource';
 import BlogList from '../../BlogList';
 
 export const getServerSideProps = async (ctx) => {

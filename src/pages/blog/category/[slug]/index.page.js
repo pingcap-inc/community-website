@@ -22,9 +22,11 @@ export const getServerSideProps = async (ctx) => {
   const { slug } = ctx.params;
 
   const category = await api.blog.getCategoryBySlug(slug);
-  const categories = await api.blog.getCategories();
-  const blogs = await api.blog.getRecommend();
-  const hotTags = await api.blog.getHotTags();
+  const [categories, blogs, hotTags] = await Promise.all([
+    api.blog.getCategories(),
+    api.blog.getRecommend({ categoryID: category.id }),
+    api.blog.getHotTags(),
+  ]);
 
   return {
     props: {

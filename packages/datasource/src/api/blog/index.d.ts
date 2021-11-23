@@ -23,8 +23,8 @@ export function getCategoryById(id: number): Promise<CategoryDetails>;
 export function getCategoryBySlug(slug: string): Promise<CategoryDetails>;
 
 interface PostQuery {
-  tagID: number;
-  categoryID: number;
+  tagID?: number;
+  categoryID?: number;
 }
 
 interface Tag {

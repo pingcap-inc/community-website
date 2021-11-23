@@ -1,16 +1,15 @@
 import React from 'react';
-import { Checkbox, Form, FormItem, Input, AutoComplete } from 'formik-antd';
+import { AutoComplete, Checkbox, Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
-import { Link, withVerifyCode, RemoteAutoComplete } from '@tidb-community/ui';
+import { Link, RemoteAutoComplete, withVerifyCode } from '@tidb-community/ui';
 import { parse } from 'querystring';
 import { useLocation } from 'react-router-dom';
 import { utils } from '@tidb-community/common';
 
-import { Flex } from '~/components/layout';
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
-import { SubmitButton, PhoneInputPrefix } from '~/components/form';
-import { signup as callSignup, fetchOrganizationOptions } from '~/api';
+import { PhoneInputPrefix, SubmitButton } from '~/components/form';
+import { fetchOrganizationOptions, signup as callSignup } from '~/api';
 import { form, formSchema, initialValues } from './register.form';
 import { handleError } from '~/utils/errors';
 
@@ -19,7 +18,7 @@ const { wrapFormikSubmitFunction } = utils.form;
 
 const VerifyInput = withVerifyCode(Input);
 
-const { privacy, prefixText: agreementsPrefixText, ...agreementsProps } = agreements;
+const { privacy, terms, prefixText: agreementsPrefixText, ...agreementsProps } = agreements;
 
 const Page = () => {
   const location = useLocation();
@@ -60,17 +59,20 @@ const Page = () => {
               size="large"
             />
           </FormItem>
-          <Flex>
-            <FormItem name={agreements.name}>
-              <Checkbox {...agreementsProps}>
-                {agreementsPrefixText}
-                <Link href={privacy.url}>{privacy.title}</Link>
-              </Checkbox>
-            </FormItem>
-            <RouteLink to={`/login${location.search}`} style={{ lineHeight: '32px' }}>
-              已有账号？去登录
-            </RouteLink>
-          </Flex>
+          <FormItem name={agreements.name}>
+            <Checkbox {...agreementsProps}>
+              {agreementsPrefixText}
+              <Link href={privacy.url}>
+                <span className="no-wrap">{privacy.title}</span>
+              </Link>
+              <Link href={terms.url}>
+                <span className="no-wrap">{terms.title}</span>
+              </Link>
+            </Checkbox>
+          </FormItem>
+          <RouteLink to={`/login${location.search}`} style={{ lineHeight: '36px' }}>
+            <span className="no-wrap">已有账号？去登录</span>
+          </RouteLink>
           <SubmitButton>注册</SubmitButton>
         </Form>
       )}

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 
@@ -16,7 +16,9 @@ export const usePrincipal = () => {
         setAuthorities(authorities);
       })
       .catch((e) => {
-        return message.error(String(e?.message ?? e));
+        if (!e.response || !/^40[13]$/.test(e.response.status)) {
+          return message.error(String(e?.response?.data?.message ?? e?.message ?? e));
+        }
       });
   }, []);
 
@@ -41,5 +43,9 @@ export const usePrincipal = () => {
     [id]
   );
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor };
+  const isLogin = useMemo(() => {
+    return typeof id !== undefined;
+  }, [id]);
+
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin };
 };

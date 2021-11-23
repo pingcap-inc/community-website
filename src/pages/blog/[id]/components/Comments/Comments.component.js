@@ -5,6 +5,7 @@ import { AuthContext, MeContext } from '~/context';
 import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
 import { Element } from 'react-scroll';
+import { formatIsoDatetime } from '~/utils/common.utils';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
@@ -93,7 +94,7 @@ const CommentList = ({ blogInfo, tick }) => {
               author={item.commenter.username}
               avatar={item.commenter.avatarURL}
               content={item.content}
-              datetime={item.createdAt}
+              datetime={formatIsoDatetime(item.createdAt)}
             />
           </li>
         )}

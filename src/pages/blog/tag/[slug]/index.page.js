@@ -22,7 +22,7 @@ const orderBy = [
 ];
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
+  const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { slug } = ctx.params;
 
@@ -41,6 +41,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const TagDetail = ({ blogs, hotTags, tag }) => {
+  console.log('tag', tag);
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead

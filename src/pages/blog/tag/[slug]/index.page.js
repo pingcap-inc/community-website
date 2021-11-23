@@ -26,9 +26,9 @@ export const getServerSideProps = async (ctx) => {
 
   const { slug } = ctx.params;
 
-  const blogs = await api.blog.getLatest();
-  const hotTags = await api.blog.getHotTags();
   const tag = await api.blog.getTagBySlug(slug);
+
+  const [blogs, hotTags] = await Promise.all([api.blog.getLatest({ tagID: tag.id }), api.blog.getHotTags()]);
 
   return {
     props: {

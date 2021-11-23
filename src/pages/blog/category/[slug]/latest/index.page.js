@@ -1,5 +1,5 @@
 import { getI18nProps } from '../../../../../utils/i18n.utils';
-import { api } from '@tidb-community/datasource/src';
+import { api } from '@tidb-community/datasource';
 import CategoryPage from '../index.page';
 
 export const getServerSideProps = async (ctx) => {

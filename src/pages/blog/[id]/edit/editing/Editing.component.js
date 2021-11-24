@@ -65,7 +65,12 @@ const Editing = ({ blogInfo }) => {
     <>
       <Styled.Content>
         <ImgCrop aspect={7}>
-          <Upload maxCount={1} multiple={false} showUploadList={false} onChange={({ file }) => uploadCoverImage(file)}>
+          <Upload
+            maxCount={1}
+            multiple={false}
+            showUploadList={false}
+            onChange={({ file }) => uploadCoverImage(file.originFileObj)}
+          >
             {coverImageURL ? (
               <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>
                 <Button

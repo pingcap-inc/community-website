@@ -3,6 +3,7 @@ import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 
 export const usePrincipal = () => {
+  const [loading, setLoading] = useState(true);
   const [id, setId] = useState(undefined);
   const [roles, setRoles] = useState([]);
   const [authorities, setAuthorities] = useState([]);
@@ -19,6 +20,9 @@ export const usePrincipal = () => {
         if (!e || !/^40[13]$/.test(e.status)) {
           return message.error(String(e?.data?.message ?? e?.message ?? e));
         }
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -47,5 +51,5 @@ export const usePrincipal = () => {
     return typeof id === 'number';
   }, [id]);
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id };
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading };
 };

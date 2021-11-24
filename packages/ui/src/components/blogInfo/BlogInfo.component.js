@@ -7,7 +7,6 @@ import { Avatar } from 'antd';
 import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
 
 const BlogInfo = ({
-  el = 'div',
   id,
   usernameExtends = undefined,
   publishedAt,
@@ -25,8 +24,6 @@ const BlogInfo = ({
   onClickAuthor,
   author,
 }) => {
-  const Container = Styled.makeContainer(el);
-
   const handleClick = useCallback(() => {
     onClick(id);
   }, [id, onClick]);
@@ -42,7 +39,7 @@ const BlogInfo = ({
   const publishedAtFormatted = useMemo(() => dayjs(publishedAt).format('YYYY-MM-DD HH:mm'), [publishedAt]);
 
   return (
-    <Container>
+    <Styled.Container>
       {coverImageURL && coverImageURL.length !== 0 && (
         <Styled.CoverImageContainer>
           <Styled.CoverImage style={{ backgroundImage: `url(${coverImageURL})` }} onClick={handleClick} />
@@ -85,7 +82,7 @@ const BlogInfo = ({
         </Styled.Interactions>
         {bottomExtends}
       </Styled.Content>
-    </Container>
+    </Styled.Container>
   );
 };
 

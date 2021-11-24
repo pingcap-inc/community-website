@@ -30,6 +30,7 @@ export const getServerSideProps = async (ctx) => {
       ...i18nProps,
       id,
       data: { content, ...rest },
+      user,
     },
   };
 };

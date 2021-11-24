@@ -121,7 +121,9 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
               avatar={
                 <Avatar onClick={() => router.push(`/blog/user/${item.commenter.id}`)} src={item.commenter.avatarURL} />
               }
-              content={item.content}
+              content={
+                (item.repliedTo ? `回复 @${item.repliedTo.username || item.repliedTo.name}：` : '') + item.content
+              }
               datetime={formatIsoDatetime(item.createdAt)}
               actions={
                 meData

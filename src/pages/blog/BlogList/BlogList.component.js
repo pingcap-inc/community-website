@@ -2,11 +2,20 @@ import React from 'react';
 import * as Styled from './index.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
+import { Pagination } from 'antd';
+import { useRouterPage } from '~/utils/pagination.utils';
 
 // import { link as linkUtils } from '~/utils';
 
-const BlogList = ({ blogs: { content } }) => {
+const BlogList = ({
+  blogs: {
+    content,
+    page: { number, totalElements },
+  },
+}) => {
   const router = useRouter();
+  const { onPageChange } = useRouterPage();
+
   return (
     <Styled.Container>
       <Styled.List>
@@ -29,6 +38,9 @@ const BlogList = ({ blogs: { content } }) => {
           );
         })}
       </Styled.List>
+      <Styled.Pagination>
+        <Pagination current={number} total={totalElements} onChange={onPageChange} />
+      </Styled.Pagination>
     </Styled.Container>
   );
 };

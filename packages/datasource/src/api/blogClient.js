@@ -14,7 +14,12 @@ const blogClient = axios.create({
 });
 
 blogClient.interceptors.response.use(
-  ({ data }) => data,
+  ({ data }) => {
+    if (typeof data?.page?.number === 'number') {
+      data.page.number += 1;
+    }
+    return data;
+  },
   (err) => {
     const { config, response } = err;
 

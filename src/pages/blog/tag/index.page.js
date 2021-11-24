@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Pagination, Breadcrumb } from 'antd';
+import { Breadcrumb, Pagination } from 'antd';
 
 import * as Styled from './index.styled';
 
@@ -12,11 +12,14 @@ import { PageDataContext } from '~/context';
 
 import TagItem from './TagItem.component';
 import BlogLayout from '../BlogLayout.component';
+import { getPageQuery, useRouterPage } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
 
-  const tags = await api.blog.getTags();
+  const { page, size } = getPageQuery(ctx.query);
+
+  const tags = await api.blog.getTags({ page, size });
 
   return {
     props: {
@@ -29,9 +32,11 @@ export const getServerSideProps = async (ctx) => {
 const TagPage = ({
   tags: {
     content,
-    page: { current, totalElements },
+    page: { number, totalElements },
   },
 }) => {
+  const { onPageChange } = useRouterPage();
+
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -60,7 +65,7 @@ const TagPage = ({
             ))}
           </Styled.List>
           <Styled.Pagination>
-            <Pagination defaultCurrent={1} current={current} total={totalElements} />
+            <Pagination current={number} total={totalElements} onChange={onPageChange} />
           </Styled.Pagination>
         </Styled.Content>
       </BlogLayout>

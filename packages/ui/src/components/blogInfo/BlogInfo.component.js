@@ -55,7 +55,7 @@ const BlogInfo = ({
           </Styled.AuthorAvatar>
           <Styled.AuthorInfo>
             <Styled.AuthorName onClick={handleClickAuthor}>
-              {author.name}
+              {author.username || author.name}
               {usernameExtends}
             </Styled.AuthorName>
             <Styled.AuthorPublishedAt>{publishedAtFormatted}</Styled.AuthorPublishedAt>

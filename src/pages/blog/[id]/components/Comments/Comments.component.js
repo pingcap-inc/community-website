@@ -9,27 +9,34 @@ import { formatIsoDatetime } from '~/utils/common.utils';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
+  const [replyTo, setReplyTo] = useState(undefined);
+
+  const onCommented = () => {
+    setReplyTo(undefined);
+    setTick((tick) => tick + 1);
+  };
 
   return (
     <Element name="comments">
       <Styled.CommentsContainer>
         <Styled.Title>评论</Styled.Title>
 
-        <CommentInput blogInfo={blogInfo} onCommented={(tick) => setTick(tick + 1)} />
+        <CommentInput blogInfo={blogInfo} onCommented={onCommented} replyTo={replyTo} />
 
-        <CommentList blogInfo={blogInfo} tick={tick} />
+        <CommentList blogInfo={blogInfo} tick={tick} onClickReply={setReplyTo} />
       </Styled.CommentsContainer>
     </Element>
   );
 };
 
-const CommentInput = ({ blogInfo, onCommented }) => {
+const CommentInput = ({ blogInfo, onCommented, replyTo }) => {
   const { meData, isMeValidating } = useContext(MeContext);
   const { login } = useContext(AuthContext);
   const [comment, setComment] = useState('');
 
   const onComment = () => {
-    api.blog.posts.post.comment(blogInfo.id, comment).then(() => {
+    api.blog.posts.post.comment(blogInfo.id, comment, replyTo?.id).then(() => {
+      setComment('');
       onCommented?.();
     });
   };
@@ -60,7 +67,12 @@ const CommentInput = ({ blogInfo, onCommented }) => {
       content={
         <Row gutter={8}>
           <Col flex="auto">
-            <Input placeholder="添加评论" value={comment} onChange={(event) => setComment(event.target.value)} />
+            <Input
+              placeholder="添加评论"
+              value={comment}
+              onChange={(event) => setComment(event.target.value)}
+              prefix={replyTo ? <span>回复 @{replyTo.username || replyTo.name}</span> : undefined}
+            />
           </Col>
           <Col span="56px">
             <Button htmlType="button" size="small" type="primary" onClick={onComment}>
@@ -73,7 +85,8 @@ const CommentInput = ({ blogInfo, onCommented }) => {
   );
 };
 
-const CommentList = ({ blogInfo, tick }) => {
+const CommentList = ({ blogInfo, tick, onClickReply }) => {
+  const { meData } = useContext(MeContext);
   const [page, setPage] = useState(1);
 
   const { loading, comments, totalComments, reload } = useComments(blogInfo.id, page);
@@ -95,6 +108,15 @@ const CommentList = ({ blogInfo, tick }) => {
               avatar={item.commenter.avatarURL}
               content={item.content}
               datetime={formatIsoDatetime(item.createdAt)}
+              actions={
+                meData
+                  ? [
+                      <span key="reply" onClick={() => onClickReply(item.commenter)}>
+                        回复
+                      </span>,
+                    ]
+                  : undefined
+              }
             />
           </li>
         )}

@@ -10,7 +10,6 @@ import { PageDataContext } from '~/context';
 import BlogLayout from '../../BlogLayout.component';
 import Tab from '../Tab';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../BlogList';
 import { BlogInfo } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
 

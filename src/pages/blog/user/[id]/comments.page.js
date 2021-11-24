@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { BlogInfo } from '@tidb-community/ui';
 
 import { getI18nProps } from '~/utils/i18n.utils';
-import { link as linkUtils } from '~/utils';
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
 

@@ -12,6 +12,8 @@ const BlogList = ({
     content,
     page: { number, totalElements },
   },
+  usernameExtends,
+  bottomExtends,
 }) => {
   const router = useRouter();
   const { onPageChange } = useRouterPage();
@@ -28,6 +30,8 @@ const BlogList = ({
             <Styled.Item key={value.id}>
               <BlogInfo
                 {...value}
+                usernameExtends={usernameExtends}
+                bottomExtends={bottomExtends}
                 onClick={onClick}
                 onClickAuthor={onClickAuthor}
                 onClickCategory={onClickCategory}

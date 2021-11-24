@@ -71,12 +71,16 @@ export const useShares = (blogInfo) => {
   const share = () => {
     api.blog.posts.post
       .share(blogInfo.id)
-      .then((shareId) => {
+      .then(({ shared, shareID }) => {
         const href = window.location.href;
-        return navigator.clipboard.writeText(`${href}${href.includes('?') ? '&' : '?'}shareId=${shareId}`);
+        return navigator.clipboard
+          .writeText(`${href}${href.includes('?') ? '&' : '?'}shareId=${shareID}`)
+          .then(() => shared);
       })
-      .then(() => {
-        setShares((share) => share + 1);
+      .then((shared) => {
+        if (!shared) {
+          setShares((share) => share + 1);
+        }
         return message.success('已经复制链接到剪切板');
       });
   };

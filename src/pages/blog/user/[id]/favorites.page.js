@@ -17,7 +17,11 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { id } = ctx.params;
-  const { content: rawContent, ...rest } = await api.blog.users.getLikes(id);
+
+  const [user, { content: rawContent, ...rest }] = await Promise.all([
+    api.blog.users.get(id),
+    api.blog.users.getLikes(id),
+  ]);
 
   const content = rawContent.map(({ post }) => post);
 
@@ -25,14 +29,13 @@ export const getServerSideProps = async (ctx) => {
     props: {
       ...i18nProps,
       id,
-      blogs: { content, ...rest },
+      data: { content, ...rest },
     },
   };
 };
 
-const Favorites = ({ id, blogs }) => {
+const Favorites = ({ id, data: { content }, user: { posts, likes, comments, favorites } }) => {
   const router = useRouter();
-  const { content } = blogs;
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -51,7 +54,14 @@ const Favorites = ({ id, blogs }) => {
               <Breadcrumb.Item>用户</Breadcrumb.Item>
             </Styled.Breadcrumb>
 
-            <Tab id={id} selectedKey="favorites" />
+            <Tab
+              id={id}
+              selectedKey="favorites"
+              posts={posts}
+              likes={likes}
+              favorites={favorites}
+              comments={comments}
+            />
 
             <Styled.List>
               {content.map((value) => {
@@ -59,7 +69,6 @@ const Favorites = ({ id, blogs }) => {
                 const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
                 const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
                 const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
-                value.author = value.user;
                 value.usernameExtends = '收藏了文章';
                 return (
                   <Styled.Item key={value.id}>

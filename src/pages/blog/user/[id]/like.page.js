@@ -17,7 +17,11 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { id } = ctx.params;
-  const { content: rawContent, ...rest } = await api.blog.users.getLikes(id);
+
+  const [user, { content: rawContent, ...rest }] = await Promise.all([
+    api.blog.users.get(id),
+    api.blog.users.getLikes(id),
+  ]);
 
   const content = rawContent.map(({ post }) => post);
 
@@ -25,12 +29,13 @@ export const getServerSideProps = async (ctx) => {
     props: {
       ...i18nProps,
       id,
-      blogs: { content, ...rest },
+      data: { content, ...rest },
+      user,
     },
   };
 };
 
-const Like = ({ id, blogs: { content } }) => {
+const Like = ({ id, data: { content }, user: { posts, likes, comments, favorites } }) => {
   const router = useRouter();
 
   return (
@@ -51,7 +56,7 @@ const Like = ({ id, blogs: { content } }) => {
               <Breadcrumb.Item>用户</Breadcrumb.Item>
             </Styled.Breadcrumb>
 
-            <Tab id={id} selectedKey="like" />
+            <Tab id={id} selectedKey="like" posts={posts} likes={likes} favorites={favorites} comments={comments} />
 
             <Styled.List>
               {content.map((value) => {

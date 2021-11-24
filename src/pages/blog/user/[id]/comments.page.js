@@ -18,18 +18,19 @@ export const getServerSideProps = async (ctx) => {
 
   const { id } = ctx.params;
 
-  const data = await api.blog.users.getComments(id);
+  const [user, data] = await Promise.all([api.blog.users.get(id), api.blog.users.getComments(id)]);
 
   return {
     props: {
       ...i18nProps,
       id,
       data,
+      user,
     },
   };
 };
 
-const Comments = ({ id, data: { content } }) => {
+const Comments = ({ id, data: { content }, user: { posts, likes, comments, favorites } }) => {
   const router = useRouter();
 
   return (
@@ -50,7 +51,7 @@ const Comments = ({ id, data: { content } }) => {
               <Breadcrumb.Item>用户</Breadcrumb.Item>
             </Styled.Breadcrumb>
 
-            <Tab id={id} selectedKey="comments" />
+            <Tab id={id} selectedKey="comments" posts={posts} likes={likes} favorites={favorites} comments={comments} />
 
             <Styled.List>
               {content.map((value) => {

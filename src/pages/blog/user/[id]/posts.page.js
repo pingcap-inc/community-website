@@ -18,19 +18,19 @@ export const getServerSideProps = async (ctx) => {
 
   const { id } = ctx.params;
 
-  const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getPosts(id)]);
+  const [user, data] = await Promise.all([api.blog.users.get(id), api.blog.users.getPosts(id)]);
 
   return {
     props: {
       ...i18nProps,
       id,
-      blogs,
+      data,
       user,
     },
   };
 };
 
-const Posts = ({ id, blogs: { content }, user: { posts, likes, comments, favorites } }) => {
+const Posts = ({ id, data: { content }, user: { posts, likes, comments, favorites } }) => {
   const router = useRouter();
 
   return (
@@ -58,8 +58,6 @@ const Posts = ({ id, blogs: { content }, user: { posts, likes, comments, favorit
               const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
               const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
               const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
-              value.author = value.commenter;
-              value.usernameExtends = '评论了文章';
               return (
                 <Styled.Item key={value.id}>
                   <BlogInfo

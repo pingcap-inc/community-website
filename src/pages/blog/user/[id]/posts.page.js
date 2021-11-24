@@ -11,6 +11,8 @@ import BlogLayout from '../../BlogLayout.component';
 import Tab from '../Tab';
 import { api } from '@tidb-community/datasource';
 import BlogList from '../../BlogList';
+import { BlogInfo } from '@tidb-community/ui';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -29,7 +31,9 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Posts = ({ id, blogs, user: { posts, likes, comments, favorites } }) => {
+const Posts = ({ id, blogs: { content }, user: { posts, likes, comments, favorites } }) => {
+  const router = useRouter();
+
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -50,7 +54,25 @@ const Posts = ({ id, blogs, user: { posts, likes, comments, favorites } }) => {
 
             <Tab id={id} selectedKey="posts" posts={posts} likes={likes} favorites={favorites} comments={comments} />
 
-            <BlogList blogs={blogs} />
+            {content.map((value) => {
+              const onClick = () => router.push(`/blog/${value.id}`);
+              const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
+              const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
+              const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
+              value.author = value.commenter;
+              value.usernameExtends = '评论了文章';
+              return (
+                <Styled.Item key={value.id}>
+                  <BlogInfo
+                    {...value}
+                    onClick={onClick}
+                    onClickAuthor={onClickAuthor}
+                    onClickCategory={onClickCategory}
+                    onClickTag={onClickTag}
+                  />
+                </Styled.Item>
+              );
+            })}
           </Styled.Container>
         </Styled.Content>
       </BlogLayout>

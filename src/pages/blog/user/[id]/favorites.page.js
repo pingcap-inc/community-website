@@ -10,7 +10,8 @@ import { PageDataContext } from '~/context';
 import BlogLayout from '../../BlogLayout.component';
 import Tab from '../Tab';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../BlogList';
+import { BlogInfo } from '@tidb-community/ui';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -30,6 +31,8 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Favorites = ({ id, blogs }) => {
+  const router = useRouter();
+  const { content } = blogs;
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -50,7 +53,27 @@ const Favorites = ({ id, blogs }) => {
 
             <Tab id={id} selectedKey="favorites" />
 
-            <BlogList blogs={blogs} />
+            <Styled.List>
+              {content.map((value) => {
+                const onClick = () => router.push(`/blog/${value.id}`);
+                const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
+                const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
+                const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
+                value.author = value.user;
+                value.usernameExtends = '收藏了文章';
+                return (
+                  <Styled.Item key={value.id}>
+                    <BlogInfo
+                      {...value}
+                      onClick={onClick}
+                      onClickAuthor={onClickAuthor}
+                      onClickCategory={onClickCategory}
+                      onClickTag={onClickTag}
+                    />
+                  </Styled.Item>
+                );
+              })}
+            </Styled.List>
           </Styled.Container>
         </Styled.Content>
       </BlogLayout>

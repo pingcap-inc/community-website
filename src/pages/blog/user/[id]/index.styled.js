@@ -17,10 +17,7 @@ export const Tab = styled.div`
   padding: 1rem 0;
 `;
 
-export const List = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-`;
+export const List = styled.div``;
 
 export const TabItem = styled.div`
   cursor: pointer;
@@ -30,5 +27,5 @@ export const TabItem = styled.div`
 `;
 
 export const Item = styled.div`
-  margin: 0.5rem 0;
+  margin-bottom: 1rem;
 `;

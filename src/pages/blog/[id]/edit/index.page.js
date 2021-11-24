@@ -14,9 +14,9 @@ import { AuthContext } from '../../../../context';
 const BlogEditPage = () => {
   const editContextValue = useEditContextProvider();
   const router = useRouter();
-  const { reload, loading, blogInfo } = editContextValue;
+  const { reload, blogInfo } = editContextValue;
   const { login } = useContext(AuthContext);
-  const { isLogin } = usePrincipal();
+  const { isLogin, loading } = usePrincipal();
 
   useEffect(() => {
     if (!loading && !isLogin) {

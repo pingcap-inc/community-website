@@ -25,9 +25,8 @@ const BlogList = ({
           const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
           const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
           return (
-            <Styled.Item>
+            <Styled.Item key={value.id}>
               <BlogInfo
-                key={value.id}
                 {...value}
                 onClick={onClick}
                 onClickAuthor={onClickAuthor}

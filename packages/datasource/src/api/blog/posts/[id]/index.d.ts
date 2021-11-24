@@ -55,7 +55,7 @@ export interface CreatePost {
 export interface PostComment {
   id: number;
   content: string;
-  repliedTo: UserInfo;
+  repliedTo?: UserInfo;
   commenter: UserInfo;
   createdAt: string;
   lastModifiedAt: string;

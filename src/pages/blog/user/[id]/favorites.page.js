@@ -1,14 +1,6 @@
 import React from 'react';
-import * as Styled from './index.styled';
-import { Breadcrumb } from 'antd';
-import Link from 'next/link';
 
 import { getI18nProps } from '~/utils/i18n.utils';
-import { CommunityHead } from '~/components';
-import { PageDataContext } from '~/context';
-
-import BlogLayout from '../../BlogLayout.component';
-import Tab from '../Tab';
 import { api } from '@tidb-community/datasource';
 import BlogList from '../../BlogList';
 import UserDetailsLayout from './Layout.component';

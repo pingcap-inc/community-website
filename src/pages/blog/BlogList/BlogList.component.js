@@ -22,7 +22,7 @@ const BlogList = ({
         {content.map((value) => {
           const onClick = () => router.push(`/blog/${value.id}`);
           const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
-          const onClickCategory = () => router.push(`/blog/category/${value.id}`);
+          const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
           const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
           return (
             <Styled.Item>

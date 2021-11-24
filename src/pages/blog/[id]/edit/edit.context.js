@@ -3,6 +3,7 @@ import { createFactory } from '@pingcap-inc/tidb-community-editor';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 import { message } from 'antd';
+import Axios from 'axios';
 
 const EditContext = createContext({
   title: '',
@@ -26,12 +27,24 @@ export function useEditContext() {
 export function useEditContextProvider() {
   const factory = useMemo(() => createFactory(), []);
   const [title, setTitle] = useState('');
+  const [coverImageURL, setCoverImageURL] = useState(undefined);
   const [origin, setOrigin] = useState(false);
   const [category, setCategory] = useState(undefined);
   const [tags, setTags] = useState([]);
   const [content, setContent] = useState([{ type: 'paragraph', children: [{ text: '' }] }]);
   const [blogInfo, setBlogInfo] = useState(undefined);
   const [loading, setLoading] = useState(false);
+
+  const uploadCoverImage = useCallback(async (file) => {
+    const { downloadURL, uploadURL } = await api.blog.common.upload(file.filename, file.type);
+    await Axios.put(uploadURL, file, {
+      headers: {
+        'content-type': file.type,
+        'x-oss-object-acl': 'public-read',
+      },
+    });
+    setCoverImageURL(downloadURL);
+  }, []);
 
   const reload = useCallback((id) => {
     if (id === 'new') {
@@ -65,6 +78,9 @@ export function useEditContextProvider() {
     blogInfo,
     title,
     setTitle,
+    coverImageURL,
+    setCoverImageURL,
+    uploadCoverImage,
     origin,
     setOrigin,
     category,
@@ -87,7 +103,7 @@ export function useEditMethods() {
 
   const save = useCallback(async () => {
     try {
-      const { title, origin, category, tags, content } = editContext;
+      const { title, coverImageURL, origin, category, tags, content } = editContext;
       const body = {
         title,
         origin: typeof origin === 'string' ? 'REPOST' : 'ORIGINAL',
@@ -95,7 +111,7 @@ export function useEditMethods() {
         content: JSON.stringify(content),
         category: category?.id ?? null,
         tags: tags.map((tag) => tag.id),
-        coverImageURL: undefined, // TODO
+        coverImageURL: coverImageURL,
       };
       if (id === 'new') {
         const res = await api.blog.posts.create(body);

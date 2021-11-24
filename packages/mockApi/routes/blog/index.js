@@ -32,5 +32,7 @@ router.get('/users/:id/favorites', require('./users/favorites'));
 router.get('/users/:id/comments', require('./users/comments'));
 
 router.get('/principal', require('./common/principal'));
+router.post('/upload/image/auth', require('./common/upload'));
+router.put('/fake-upload', require('./common/upload').fakeUpload);
 
 module.exports = router;

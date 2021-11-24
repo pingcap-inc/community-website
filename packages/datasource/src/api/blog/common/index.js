@@ -6,3 +6,7 @@ export const principal = () => {
     isReturnErrorResponse: true,
   });
 };
+
+export const upload = (filename, contentType) => {
+  return blogClient.post('/api/upload/image/auth', { filename, contentType });
+};

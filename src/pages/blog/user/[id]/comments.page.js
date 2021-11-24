@@ -11,7 +11,7 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { id } = ctx.params;
-  const [user, comments] = await Promise.all([api.blog.users.get(id), api.blog.users.getLikes(id)]);
+  const [user, comments] = await Promise.all([api.blog.users.get(id), api.blog.users.getComments(id)]);
 
   return {
     props: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, List } from 'antd';
+import { Avatar, Button, List } from 'antd';
 import Link from 'next/link';
 
 import { getI18nProps } from '~/utils/i18n.utils';
@@ -43,15 +43,22 @@ const CommentsList = ({
     <List
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
-      renderItem={({ post, content, commenter }) => (
+      renderItem={({ post, content, commenter, repliedTo }) => (
         <li>
           <List.Item>
-            <>
+            <p>
               <Avatar src={commenter.avatarURL} size="small" />
+              &nbsp;
               {commenter.username || commenter.name}
-              评论了
-              <Link href={`/blog/${post.id}`}>「{post.title}」</Link>：{content}
-            </>
+              &nbsp; 在
+              <Link href={`/blog/${post.id}`}>
+                <a className="ant-btn-link" type="link">
+                  「{post.title}」
+                </a>
+              </Link>
+              &nbsp;
+              {repliedTo ? <>回复了&nbsp;@{repliedTo.username || repliedTo.name}</> : '评论了'}：{content}
+            </p>
           </List.Item>
         </li>
       )}

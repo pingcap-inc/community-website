@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 import { Button } from 'antd';
+import { Link as RawLink } from '@tidb-community/ui';
 
 export const Container = styled(Styled.Section)`
   && {
@@ -41,4 +42,8 @@ export const ProjectCardButton = styled(Button).attrs({ type: 'primary' })`
   right: 0;
   bottom: 0;
   display: block;
+`;
+
+export const Link = styled(RawLink)`
+  text-decoration: underline !important;
 `;

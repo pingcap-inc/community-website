@@ -86,7 +86,7 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
           <Styled.Declaration>声明：本文转载于 {blogInfo.sourceURL}</Styled.Declaration>
         ) : undefined}
 
-        <Comments blogInfo={blogInfo} />
+        {blogInfo.status === 'PUBLISHED' ? <Comments blogInfo={blogInfo} /> : undefined}
       </Styled.VisualContainer>
     </CoreLayout>
   );

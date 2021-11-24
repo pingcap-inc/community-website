@@ -12,14 +12,30 @@ import AuthorInfo from './components/AuthorInfo';
 import Interactions from './components/Interactions';
 import Comments from './components/Comments';
 import StatusAlert from './components/StatusAlert';
+import { api } from '@tidb-community/datasource';
 
 const noop = () => {};
 
-const BlogPage = () => {
+export const getServerSideProps = async (ctx) => {
+  const { id } = ctx.params;
+
+  const blogInfo = await api.blog.posts.post.info(Number(id));
+
+  return {
+    props: {
+      blogInfo,
+    },
+  };
+};
+
+const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   const router = useRouter();
   const { isReady, query } = router;
 
-  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.posts.post.info', query.id]);
+  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.posts.post.info', query.id], {
+    initialData: ssrBlogInfo,
+    revalidateOnMount: true,
+  });
   const isLoading = !blogInfo;
 
   const factory = useMemo(() => createFactory(), []);
@@ -35,7 +51,9 @@ const BlogPage = () => {
       <Styled.VisualContainer>
         <Breadcrumb>
           <Breadcrumb.Item href="/blog">博客</Breadcrumb.Item>
-          <Breadcrumb.Item>{blogInfo.category?.name}</Breadcrumb.Item>
+          <Breadcrumb.Item href={`/blog/categories/${blogInfo.category?.slug}`}>
+            {blogInfo.category?.name}
+          </Breadcrumb.Item>
         </Breadcrumb>
         <StatusAlert blogInfo={blogInfo} />
         <Styled.Content>
@@ -53,7 +71,9 @@ const BlogPage = () => {
             {blogInfo.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
             {blogInfo.tags.map((tag) => (
-              <BlogInfo.Tag key={tag.slug}>{tag.name}</BlogInfo.Tag>
+              <BlogInfo.Tag key={tag.slug} onClick={() => router.push(`/blog/tag/${tag.slug}`)}>
+                {tag.name}
+              </BlogInfo.Tag>
             ))}
           </Styled.Meta>
 

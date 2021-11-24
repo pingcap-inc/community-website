@@ -6,6 +6,7 @@ import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
 import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
+import { useRouter } from 'next/router';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
@@ -97,6 +98,7 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
 };
 
 const CommentList = ({ blogInfo, tick, onClickReply }) => {
+  const router = useRouter();
   const { meData } = useContext(MeContext);
   const [page, setPage] = useState(1);
 
@@ -116,7 +118,9 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
           <li>
             <Comment
               author={item.commenter.username}
-              avatar={item.commenter.avatarURL}
+              avatar={
+                <Avatar onClick={() => router.push(`/blog/user/${item.commenter.id}`)} src={item.commenter.avatarURL} />
+              }
               content={item.content}
               datetime={formatIsoDatetime(item.createdAt)}
               actions={

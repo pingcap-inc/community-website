@@ -9,7 +9,7 @@ const colors = {
   borderGray: themeColors.T2,
 };
 
-export const makeContainer = (el) => styled(el)`
+export const Container = styled.div`
   list-style: none;
   display: block;
 

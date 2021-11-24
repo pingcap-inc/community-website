@@ -36,7 +36,7 @@ export function useEditContextProvider() {
   const [loading, setLoading] = useState(false);
 
   const uploadCoverImage = useCallback(async (file) => {
-    const { downloadURL, uploadURL } = await api.blog.common.upload(file.filename, file.type);
+    const { downloadURL, uploadURL } = await api.blog.common.upload(file.name, file.type);
     await Axios.put(uploadURL, file, {
       headers: {
         'content-type': file.type,

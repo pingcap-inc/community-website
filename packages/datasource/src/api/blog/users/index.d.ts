@@ -36,10 +36,10 @@ interface UserDetails extends UserInfo {
 
 export function getPosts(userId: number, query?: Query): Promise<Page<Post>>;
 
-export function getLikes(userId: number, query?: Query): Promise<Page<Like>>;
+export function getLikes(userId: number, query?: Pagination): Promise<Page<Like>>;
 
-export function getFavorites(userId: number, query?: Query): Promise<Page<Favorite>>;
+export function getFavorites(userId: number, query?: Pagination): Promise<Page<Favorite>>;
 
-export function getComments(userId: number, query?: Query): Promise<Page<Comment>>;
+export function getComments(userId: number, query?: Pagination): Promise<Page<Comment>>;
 
 export function get(userId: number): Promise<UserDetails>;

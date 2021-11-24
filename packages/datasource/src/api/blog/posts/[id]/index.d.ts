@@ -1,4 +1,4 @@
-export type PostOrigin = 'ORIGIN' | 'REPOST';
+export type PostOrigin = 'ORIGINAL' | 'REPOST';
 export type PostStatus = 'DRAFT' | 'PENDING' | 'REJECTED' | 'PUBLISHED' | 'ARCHIVED';
 
 export interface Meta {

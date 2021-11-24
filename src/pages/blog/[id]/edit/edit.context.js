@@ -48,7 +48,7 @@ export function useEditContextProvider() {
         .info(Number(id))
         .then((info) => {
           setTitle(info.title);
-          setOrigin(info.origin === 'ORIGIN' ? false : info.sourceURL);
+          setOrigin(info.origin === 'ORIGINAL' ? false : info.sourceURL);
           setTags(info.tags);
           setCategory(info.category);
           setContent(JSON.parse(info.content));
@@ -90,7 +90,7 @@ export function useEditMethods() {
       const { title, origin, category, tags, content } = editContext;
       const body = {
         title,
-        origin: typeof origin === 'string' ? 'REPOST' : 'ORIGIN',
+        origin: typeof origin === 'string' ? 'REPOST' : 'ORIGINAL',
         sourceURL: typeof origin === 'string' ? origin : null,
         content: JSON.stringify(content),
         category: category?.id ?? null,

@@ -61,6 +61,11 @@ export interface PostComment {
   lastModifiedAt: string;
 }
 
+interface Share {
+  shareID: number;
+  shared: boolean;
+}
+
 export function info(id: number): Promise<PostDetails>;
 
 export function update(id: number, body: CreatePost): Promise<Post>;
@@ -87,7 +92,7 @@ export function cancelFavorite(id: number): Promise<void>;
 
 export function visit(id: number): Promise<void>;
 
-export function share(id: number): Promise<number>;
+export function share(id: number): Promise<Share>;
 
 export function comments(id: number, page: number, pageSize?: number): Promise<Page<PostComment>>;
 

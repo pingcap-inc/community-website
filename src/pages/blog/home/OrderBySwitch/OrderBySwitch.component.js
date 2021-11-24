@@ -21,9 +21,9 @@ const OrderBySwitch = ({ items }) => {
 
 const Item = ({ name, url }) => {
   const { asPath } = useRouter();
-  const selected = asPath === url;
+  const selected = asPath === url || asPath.startsWith(url + '?');
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.Item selected={selected}>{name}</Styled.Item>
     </Link>
   );

@@ -21,7 +21,7 @@ export const useRouterPage = () => {
     (page, pageSize) => {
       router
         .push({
-          query: { page, size: pageSize },
+          query: Object.assign({}, router.query, { page, size: pageSize }),
         })
         .then();
     },

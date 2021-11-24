@@ -26,6 +26,7 @@ router.get('/tags/hot', require('./tags/tags'));
 router.get('/tags/:id', require('./tags/[id]'));
 router.get('/tags/search/bySlug', require('./tags/[slug]'));
 
+router.get('/users/:id', require('./users/[userId]'));
 router.get('/users/:id/posts', require('./users/posts'));
 router.get('/users/:id/likes', require('./users/likes'));
 router.get('/users/:id/favorites', require('./users/favorites'));

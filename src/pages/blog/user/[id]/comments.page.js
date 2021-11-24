@@ -46,10 +46,12 @@ const CommentsList = ({
       renderItem={({ post, content, commenter }) => (
         <li>
           <List.Item>
-            <Avatar src={commenter.avatarURL} size="small" />
-            {commenter.username || commenter.name}
-            评论了
-            <Link href={`/blog/${post.id}`}>「{post.title}」</Link>：{content}
+            <>
+              <Avatar src={commenter.avatarURL} size="small" />
+              {commenter.username || commenter.name}
+              评论了
+              <Link href={`/blog/${post.id}`}>「{post.title}」</Link>：{content}
+            </>
           </List.Item>
         </li>
       )}

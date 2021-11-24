@@ -25,11 +25,11 @@ const CategoryList = ({ categories: { content } }) => {
 };
 
 const Item = ({ name, slug }) => {
-  const { asPath } = useRouter();
+  const { query } = useRouter();
   const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
-  const selected = asPath === url || asPath + '/latest' === url;
+  const selected = (query.slug || '') === slug;
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.Item selected={selected}>{name}</Styled.Item>
     </Link>
   );
@@ -37,7 +37,7 @@ const Item = ({ name, slug }) => {
 
 const FixedLink = ({ url, children }) => {
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.FixedLink>{children}</Styled.FixedLink>
     </Link>
   );

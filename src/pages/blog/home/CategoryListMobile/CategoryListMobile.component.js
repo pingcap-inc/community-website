@@ -16,11 +16,11 @@ const CategoryListMobile = ({ categories: { content } }) => {
 };
 
 const Item = ({ name, slug }) => {
-  const { asPath } = useRouter();
+  const { query } = useRouter();
   const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
-  const selected = asPath === url;
+  const selected = (query.slug || '') === slug;
   return (
-    <Link href={`/${url}`}>
+    <Link href={url}>
       <Styled.Item selected={selected}>{name}</Styled.Item>
     </Link>
   );

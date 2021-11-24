@@ -13,6 +13,10 @@ export const Item = styled.div`
   margin: 0.5rem 0;
   background-color: ${(props) => (props.selected ? colors.M1 : '')};
   border-left: ${(props) => (props.selected ? `4px solid ${colors.T7}` : 'none')};
+  transition: color 0.25s ease;
+  &:hover {
+    color: ${colors.B1};
+  }
 `;
 
 export const FixedLink = styled.div`

@@ -1,13 +1,29 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input } from 'antd';
+import { Alert, Button, Checkbox, Input, Upload } from 'antd';
 import React, { useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 import { demoCategories, demoTags } from './demo-data';
+import ImgCrop from 'antd-img-crop';
+import { DeleteOutlined } from '@ant-design/icons';
 
 const Editing = ({ blogInfo }) => {
-  const { factory, title, setTitle, origin, setOrigin, category, setCategory, tags, setTags, content, setContent } =
-    useEditContext();
+  const {
+    factory,
+    coverImageURL,
+    setCoverImageURL,
+    uploadCoverImage,
+    title,
+    setTitle,
+    origin,
+    setOrigin,
+    category,
+    setCategory,
+    tags,
+    setTags,
+    content,
+    setContent,
+  } = useEditContext();
 
   const { save, saveAndSubmit, operating } = useEditMethods();
 
@@ -17,6 +33,12 @@ const Editing = ({ blogInfo }) => {
 
   const onChangeOrigin = (e) => {
     setOrigin(e.currentTarget.value);
+  };
+
+  const onClickRemoveCoverImage = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setCoverImageURL(undefined);
   };
 
   const mappedCategoriesCollection = useMemo(() => {
@@ -42,6 +64,24 @@ const Editing = ({ blogInfo }) => {
   return (
     <>
       <Styled.Content>
+        <ImgCrop aspect={7}>
+          <Upload maxCount={1} multiple={false} showUploadList={false} onChange={({ file }) => uploadCoverImage(file)}>
+            {coverImageURL ? (
+              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>
+                <Button
+                  htmlType="button"
+                  size="large"
+                  danger
+                  type="link"
+                  icon={<DeleteOutlined />}
+                  onClick={onClickRemoveCoverImage}
+                />
+              </Styled.CoverImage>
+            ) : (
+              <Styled.CoverImagePlaceholder>+ 插入封面图</Styled.CoverImagePlaceholder>
+            )}
+          </Upload>
+        </ImgCrop>
         <Styled.TitleInput placeholder="博客标题......" value={title} onChange={onTitleChange} />
         <Styled.Meta>
           <Styled.CategorySelect

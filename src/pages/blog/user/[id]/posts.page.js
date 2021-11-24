@@ -29,7 +29,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Posts = ({ id, blogs, users: { posts, likes, comments, favorites } }) => {
+const Posts = ({ id, blogs, user: { posts, likes, comments, favorites } }) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead

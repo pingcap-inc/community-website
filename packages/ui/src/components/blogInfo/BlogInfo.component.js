@@ -97,7 +97,7 @@ const AuthorShape = PropTypes.shape({
 
 const MetaShape = PropTypes.shape({
   id: PropTypes.number.isRequired,
-  name: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
 });
 
@@ -107,7 +107,7 @@ BlogInfo.propTypes = {
   title: PropTypes.string.isRequired,
   author: AuthorShape.isRequired,
   category: MetaShape,
-  tags: PropTypes.arrayOf(MetaShape.isRequired).isRequired,
+  tags: PropTypes.arrayOf(MetaShape.isRequired),
   publishedAt: PropTypes.string.isRequired,
   likes: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,

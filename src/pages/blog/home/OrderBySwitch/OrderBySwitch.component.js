@@ -13,7 +13,7 @@ const OrderBySwitch = ({ items }) => {
         ))}
       </Styled.List>
       <Styled.AllTag>
-        <Link href={'blog/tag'}>全部标签</Link>
+        <Link href={'/blog/tag'}>全部标签</Link>
       </Styled.AllTag>
     </Styled.Container>
   );

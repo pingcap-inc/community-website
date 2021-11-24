@@ -16,11 +16,6 @@ import WriteBlogButton from '../../WriteBlogButton';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 
-const orderBy = [
-  { name: '推荐排序', url: '/blog' },
-  { name: '时间排序', url: '/blog/latest' },
-];
-
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
@@ -28,7 +23,7 @@ export const getServerSideProps = async (ctx) => {
 
   const tag = await api.blog.getTagBySlug(slug);
 
-  const [blogs, hotTags] = await Promise.all([api.blog.getLatest({ tagID: tag.id }), api.blog.getHotTags()]);
+  const [blogs, hotTags] = await Promise.all([api.blog.getRecommend({ tagID: tag.id }), api.blog.getHotTags()]);
 
   return {
     props: {
@@ -36,12 +31,17 @@ export const getServerSideProps = async (ctx) => {
       blogs,
       hotTags,
       tag,
+      slug,
     },
   };
 };
 
-const TagDetail = ({ blogs, hotTags, tag }) => {
-  console.log('tag', tag);
+const TagDetail = ({ blogs, hotTags, tag, slug }) => {
+  const orderBy = [
+    { name: '推荐排序', url: `/blog/tag/${slug}` },
+    { name: '时间排序', url: `/blog/tag/${slug}/latest` },
+  ];
+
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead

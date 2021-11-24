@@ -4,7 +4,6 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
 import BlogList from '../../BlogList';
 import UserDetailsLayout from './Layout.component';
-import useSWR from 'swr';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
 

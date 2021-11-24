@@ -1,5 +1,5 @@
 import React from 'react';
-import { Avatar, Button, List } from 'antd';
+import { Avatar, List } from 'antd';
 import Link from 'next/link';
 
 import { getI18nProps } from '~/utils/i18n.utils';

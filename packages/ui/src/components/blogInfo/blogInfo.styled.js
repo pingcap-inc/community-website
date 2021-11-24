@@ -67,9 +67,18 @@ export const AuthorInfo = styled.div`
 `;
 
 export const AuthorName = styled.div`
+  display: flex;
+`;
+
+export const AuthorNameBase = styled.div`
   font-weight: bold;
   color: ${colors.black};
   cursor: pointer;
+`;
+
+export const AuthorNameExtend = styled.div`
+  margin-left: 0.5rem;
+  color: ${colors.black};
 `;
 
 export const AuthorPublishedAt = styled.div`

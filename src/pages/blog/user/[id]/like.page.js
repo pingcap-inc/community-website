@@ -11,50 +11,31 @@ import BlogLayout from '../../BlogLayout.component';
 import Tab from '../Tab';
 import { api } from '@tidb-community/datasource';
 import BlogList from '../../BlogList';
+import UserDetailsLayout from './Layout.component';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { id } = ctx.params;
-  const { content: rawContent, ...rest } = await api.blog.users.getLikes(id);
+  const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getLikes(id)]);
 
-  const content = rawContent.map(({ post }) => post);
+  blogs.content = blogs.content.map(({ post }) => post);
 
   return {
     props: {
       ...i18nProps,
       id,
-      blogs: { content, ...rest },
+      user,
+      blogs,
     },
   };
 };
 
-const Like = ({ id, blogs }) => {
+const Like = ({ id, blogs, user }) => {
   return (
-    <PageDataContext.Provider value={{}}>
-      <CommunityHead
-        title="博客"
-        // description
-        // keyword
-      />
-
-      <BlogLayout>
-        <Styled.Content>
-          <Styled.Container>
-            <Styled.Breadcrumb>
-              <Breadcrumb.Item>
-                <Link href="/blog">博客</Link>
-              </Breadcrumb.Item>
-              <Breadcrumb.Item>用户</Breadcrumb.Item>
-            </Styled.Breadcrumb>
-
-            <Tab id={id} selectedKey="like" />
-
-            <BlogList blogs={blogs} />
-          </Styled.Container>
-        </Styled.Content>
-      </BlogLayout>
-    </PageDataContext.Provider>
+    <UserDetailsLayout userDetails={user} item="赞" itemKey="like">
+      <BlogList blogs={blogs} />
+    </UserDetailsLayout>
   );
 };
 

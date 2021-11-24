@@ -21,7 +21,7 @@ export interface Post {
 interface Page<T> {
   content: T[];
   page: {
-    current: number;
+    number: number; // 0 based
     totalElements: number;
     totalPages: number;
     size: number;

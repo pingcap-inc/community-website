@@ -50,7 +50,7 @@ const BlogPage = () => {
           </Styled.Meta>
 
           <Styled.Meta>
-            {blogInfo.origin !== 'ORIGIN' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
+            {blogInfo.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
             {blogInfo.tags.map((tag) => (
               <BlogInfo.Tag key={tag.slug}>{tag.name}</BlogInfo.Tag>
@@ -62,7 +62,7 @@ const BlogPage = () => {
           </Styled.Editor>
         </Styled.Content>
 
-        {blogInfo.origin !== 'ORIGIN' ? (
+        {blogInfo.origin !== 'ORIGINAL' ? (
           <Styled.Declaration>声明：本文转载于 {blogInfo.sourceURL}</Styled.Declaration>
         ) : undefined}
 

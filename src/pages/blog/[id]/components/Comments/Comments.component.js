@@ -16,12 +16,16 @@ const Comments = ({ blogInfo }) => {
     setTick((tick) => tick + 1);
   };
 
+  const onClearReplyTo = () => {
+    setReplyTo(undefined);
+  };
+
   return (
     <Element name="comments">
       <Styled.CommentsContainer>
         <Styled.Title>评论</Styled.Title>
 
-        <CommentInput blogInfo={blogInfo} onCommented={onCommented} replyTo={replyTo} />
+        <CommentInput blogInfo={blogInfo} onCommented={onCommented} onClearReplyTo={onClearReplyTo} replyTo={replyTo} />
 
         <CommentList blogInfo={blogInfo} tick={tick} onClickReply={setReplyTo} />
       </Styled.CommentsContainer>
@@ -29,7 +33,7 @@ const Comments = ({ blogInfo }) => {
   );
 };
 
-const CommentInput = ({ blogInfo, onCommented, replyTo }) => {
+const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
   const { meData, isMeValidating } = useContext(MeContext);
   const { login } = useContext(AuthContext);
   const [comment, setComment] = useState('');
@@ -39,6 +43,12 @@ const CommentInput = ({ blogInfo, onCommented, replyTo }) => {
       setComment('');
       onCommented?.();
     });
+  };
+
+  const onKeyDown = (event) => {
+    if (event.code === 'Backspace' && comment === '') {
+      onClearReplyTo();
+    }
   };
 
   if (isMeValidating) {
@@ -71,11 +81,12 @@ const CommentInput = ({ blogInfo, onCommented, replyTo }) => {
               placeholder="添加评论"
               value={comment}
               onChange={(event) => setComment(event.target.value)}
+              onKeyDown={onKeyDown}
               prefix={replyTo ? <span>回复 @{replyTo.username || replyTo.name}</span> : undefined}
             />
           </Col>
           <Col span="56px">
-            <Button htmlType="button" size="small" type="primary" onClick={onComment}>
+            <Button disabled={comment === ''} htmlType="button" size="small" type="primary" onClick={onComment}>
               评论
             </Button>
           </Col>

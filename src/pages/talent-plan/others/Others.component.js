@@ -2,7 +2,7 @@ import React from 'react';
 
 import * as Styled from './others.styled';
 import { useTranslation } from 'next-i18next';
-import { Link, Styled as CommonStyled } from '@tidb-community/ui';
+import { Styled as CommonStyled } from '@tidb-community/ui';
 
 const Others = () => {
   const { t } = useTranslation('page-talent-plan');

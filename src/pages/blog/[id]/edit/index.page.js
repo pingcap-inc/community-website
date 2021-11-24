@@ -19,11 +19,10 @@ const BlogEditPage = () => {
   const { isLogin } = usePrincipal();
 
   useEffect(() => {
-    console.log('isLogin', isLogin);
-    if (!isLogin) {
+    if (!loading && !isLogin) {
       login();
     }
-  }, [isLogin, login]);
+  }, [isLogin, login, loading]);
 
   const {
     query: { id },

@@ -17,18 +17,19 @@ export const getServerSideProps = async (ctx) => {
 
   const { id } = ctx.params;
 
-  const blogs = await api.blog.users.getPosts(id);
+  const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getPosts(id)]);
 
   return {
     props: {
       ...i18nProps,
       id,
       blogs,
+      user,
     },
   };
 };
 
-const Posts = ({ id, blogs }) => {
+const Posts = ({ id, blogs, users: { posts, likes, comments, favorites } }) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -47,7 +48,7 @@ const Posts = ({ id, blogs }) => {
               <Breadcrumb.Item>用户</Breadcrumb.Item>
             </Styled.Breadcrumb>
 
-            <Tab id={id} selectedKey="posts" />
+            <Tab id={id} selectedKey="posts" posts={posts} likes={likes} favorites={favorites} comments={comments} />
 
             <BlogList blogs={blogs} />
           </Styled.Container>

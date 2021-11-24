@@ -27,10 +27,19 @@ interface Comment {
   commenter: UserInfo;
 }
 
-export function getPosts(userId: string, query?: Query): Promise<Page<Post>>;
+interface UserDetails extends UserInfo {
+  posts: 0;
+  favorite: 0;
+  likes: 0;
+  comments: 0;
+}
 
-export function getLikes(userId: string, query?: Query): Promise<Page<Like>>;
+export function getPosts(userId: number, query?: Query): Promise<Page<Post>>;
 
-export function getFavorites(userId: string, query?: Query): Promise<Page<Favorite>>;
+export function getLikes(userId: number, query?: Query): Promise<Page<Like>>;
 
-export function getComments(userId: string, query?: Query): Promise<Page<Comment>>;
+export function getFavorites(userId: number, query?: Query): Promise<Page<Favorite>>;
+
+export function getComments(userId: number, query?: Query): Promise<Page<Comment>>;
+
+export function get(userId: number): Promise<UserDetails>;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import UserDetailsLayout from './Layout.component';
-import { api } from '@tidb-community/datasource/src';
+import { api } from '@tidb-community/datasource';
 import { useRouterPage } from '../../../../utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {

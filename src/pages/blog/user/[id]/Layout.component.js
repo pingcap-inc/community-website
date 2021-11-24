@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import { CommunityHead } from '../../../../components';
 import BlogLayout from '../../BlogLayout.component';
-import * as Styled from '@tidb-community/ui/src';
+import * as Styled from './index.styled';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 import Tab from '../Tab';

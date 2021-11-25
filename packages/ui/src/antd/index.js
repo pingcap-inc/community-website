@@ -16,6 +16,7 @@ import stepsStyles from './steps';
 import tableStyles from './table';
 import tabsStyles from './tabs';
 import breadcrumb from './breadcrumb';
+import link from './link';
 
 export default css`
   ${alertStyles};
@@ -34,4 +35,5 @@ export default css`
   ${tableStyles};
   ${tabsStyles};
   ${breadcrumb};
+  ${link};
 `;

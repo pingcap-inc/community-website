@@ -1,8 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 import { useRouter } from 'next/router';
-import { MeContext } from '../../../../../context';
+import copy from 'copy-to-clipboard';
 
 export const useLikes = (blogInfo, isLogin) => {
   const [liked, setLiked] = useState(blogInfo.liked);
@@ -67,7 +67,6 @@ export const useFavorites = (blogInfo, isLogin) => {
 };
 
 export const useShares = (blogInfo) => {
-  const { meData } = useContext(MeContext);
   const [shares, setShares] = useState(blogInfo.shares);
 
   const share = () => {
@@ -78,7 +77,8 @@ export const useShares = (blogInfo) => {
         const title = blogInfo.title;
         const author = blogInfo.author.username || blogInfo.author.name;
         const url = `${href}${href.includes('?') ? '&' : '?'}shareId=${shareID}`;
-        return navigator.clipboard.writeText(`${title} - ${author} 的博客 - ${url}`).then(() => shared);
+        copy(`${title} - ${author} 的博客 - ${url}`);
+        return shared;
       })
       .then((shared) => {
         if (!shared) {

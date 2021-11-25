@@ -13,16 +13,21 @@ import Interactions from './components/Interactions';
 import Comments from './components/Comments';
 import StatusAlert from './components/StatusAlert';
 import { api } from '@tidb-community/datasource';
+import { getI18nProps } from '~/utils/i18n.utils';
+import { CommunityHead } from '~/components';
 
 const noop = () => {};
 
 export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
   const { id } = ctx.params;
 
   const blogInfo = await api.blog.posts.post.info(Number(id)).catch(() => undefined);
 
   return {
     props: {
+      ...i18nProps,
       blogInfo,
     },
   };
@@ -48,6 +53,12 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
+      <CommunityHead
+        title={`博客 - ${blogInfo.title}`}
+        // description
+        // keyword
+      />
+
       <Styled.VisualContainer>
         <Breadcrumb>
           <Breadcrumb.Item href="/blog">博客</Breadcrumb.Item>

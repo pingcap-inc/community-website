@@ -21,7 +21,6 @@ const Participation = () => {
   const [isOnFirstTab, setIsOnFirstTab] = useState(true);
 
   const { isSmallScreen } = useIsSmallScreen();
-
   const stepsContent = [
     <Styled.StepBoxContent>
       <Row gutter={16}>

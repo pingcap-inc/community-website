@@ -3,11 +3,11 @@ import TiEditor from '@pingcap-inc/tidb-community-editor';
 import { Alert, Button, Checkbox, Input, Upload } from 'antd';
 import React, { useCallback, useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
-import { demoCategories, demoTags } from './demo-data';
 import ImgCrop from 'antd-img-crop';
 import { DeleteOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
+import { useCategories, useTags } from './editing.hooks';
 
 const Editing = ({ blogInfo }) => {
   const {
@@ -43,17 +43,20 @@ const Editing = ({ blogInfo }) => {
     setCoverImageURL(undefined);
   };
 
+  const allCategories = useCategories();
+  const allTags = useTags();
+
   const mappedCategoriesCollection = useMemo(() => {
-    return demoCategories.map(fromServerMeta);
-  }, []);
+    return allCategories.map(fromServerMeta);
+  }, [allCategories]);
 
   const mappedCategory = useMemo(() => {
     return fromServerMeta(category);
   }, [category]);
 
   const mappedTagsCollection = useMemo(() => {
-    return demoTags.map(fromServerMeta);
-  }, []);
+    return allTags.map(fromServerMeta);
+  }, [allTags]);
 
   const mappedTags = useMemo(() => {
     return tags.map(fromServerMeta);

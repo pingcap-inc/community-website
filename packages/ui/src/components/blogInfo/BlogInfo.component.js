@@ -36,7 +36,13 @@ const BlogInfo = ({
     onClickCategory(category);
   }, [category, onClickCategory]);
 
-  const publishedAtFormatted = useMemo(() => dayjs(publishedAt).format('YYYY-MM-DD HH:mm'), [publishedAt]);
+  const publishedAtFormatted = useMemo(() => {
+    if (publishedAt) {
+      return dayjs(publishedAt).format('YYYY-MM-DD HH:mm');
+    } else {
+      return '未发布';
+    }
+  }, [publishedAt]);
 
   return (
     <Styled.Container>

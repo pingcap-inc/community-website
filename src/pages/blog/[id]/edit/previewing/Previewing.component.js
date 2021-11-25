@@ -5,8 +5,6 @@ import * as PreviewingStyled from './previewing.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { OriginLabel, RepostLabel } from '../../components/labels';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Button } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
 
 const noop = () => {};
 

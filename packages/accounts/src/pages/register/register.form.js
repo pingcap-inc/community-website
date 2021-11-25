@@ -22,6 +22,10 @@ export const form = {
       title: '《隐私协议》',
       url: 'https://pingcap.com/zh/privacy-policy/',
     },
+    terms: {
+      title: '《使用条款》',
+      url: 'https://pingcap.com/zh/terms-of-use',
+    },
     validator: Yup.bool().oneOf([true], '需阅读并同意相关协议').required('需阅读并同意相关协议'),
     initialValue: false,
   },

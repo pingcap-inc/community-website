@@ -75,10 +75,10 @@ export const useShares = (blogInfo) => {
       .share(blogInfo.id)
       .then(({ shared, shareID }) => {
         const href = window.location.href;
-        const user = meData?.username ? ` @${meData.username} ` : '';
         const title = blogInfo.title;
+        const author = blogInfo.author.username || blogInfo.author.name;
         const url = `${href}${href.includes('?') ? '&' : '?'}shareId=${shareID}`;
-        return navigator.clipboard.writeText(`用户${user}分享了博客「${title}」 \n${url}`).then(() => shared);
+        return navigator.clipboard.writeText(`${title} - ${author} 的博客 - ${url}`).then(() => shared);
       })
       .then((shared) => {
         if (!shared) {

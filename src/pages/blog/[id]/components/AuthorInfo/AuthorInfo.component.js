@@ -16,8 +16,12 @@ const AuthorInfo = ({ blogInfo }) => {
       />
       &nbsp;
       <b>{blogInfo.author.username}</b>
-      &nbsp; 发表于 &nbsp;
-      <b>{moment(blogInfo.publishedAt).format('YYYY-MM-DD')}</b>
+      {blogInfo.publishedAt ? (
+        <>
+          &nbsp; 发表于 &nbsp;
+          <b>{moment(blogInfo.publishedAt).format('YYYY-MM-DD')}</b>
+        </>
+      ) : undefined}
     </Styled.AuthorContainer>
   );
 };

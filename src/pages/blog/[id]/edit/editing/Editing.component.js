@@ -77,12 +77,12 @@ const Editing = ({ blogInfo }) => {
   return (
     <>
       <Styled.Content>
-        <ImgCrop aspect={7}>
+        <ImgCrop aspect={7} modalTitle="调整图片" modalOk="确认" modalCancel="返回">
           <Upload
             maxCount={1}
             multiple={false}
             showUploadList={false}
-            onChange={({ file }) => uploadCoverImage(file.originFileObj)}
+            onChange={({ file }) => file.status === 'done' && uploadCoverImage(file.originFileObj)}
           >
             {coverImageURL ? (
               <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>

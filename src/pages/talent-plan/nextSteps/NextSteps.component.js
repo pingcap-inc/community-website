@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './nextSteps.styled';
 import { useTranslation } from 'next-i18next';
-import { Link, Styled as CommonStyled } from '@tidb-community/ui';
 import { link as linkUtils } from '~/utils';
+import { Styled as CommonStyled } from '@tidb-community/ui';
 
 const NextSteps = () => {
   const router = useRouter();
@@ -53,7 +53,8 @@ const NextSteps = () => {
                   的设计和实施，从而能够在现实世界中流畅地使用它，并进行深入开发工作。
                 </p>
                 <p>
-                  同时你也可以在<Link href={'https://internals.tidb.io'}>开发者论坛</Link>和其他开发者们交流学习。
+                  同时你也可以在<Styled.Link href={'https://internals.tidb.io'}>开发者论坛</Styled.Link>
+                  和其他开发者们交流学习。
                 </p>
                 <Styled.ProjectCardButton
                   onClick={onClick('https://pingcap.github.io/tidb-dev-guide/get-started/install-golang')}
@@ -81,7 +82,7 @@ const NextSteps = () => {
                 <Styled.ProjectCardTitle> 参与 TiDB Hackathon 年度比赛 </Styled.ProjectCardTitle>
                 TiDB Hackathon 是由 TiDB
                 社区举办的黑客马拉松大赛，选手需围绕组委会规定的主题做出一个完整的作品并由评审最终评选出获奖者。作为社区最硬核的保留项目，黑客马拉松每年都吸引大量的社区开发者、高校学生、用户等积极参与。丰厚的奖金，极客的项目，等你来挑战！2021
-                年 12 月 1日 开启报名，敬请期待。
+                年 12 月 9 日 开启报名，敬请期待。
                 <Styled.ProjectCardButton disabled> 敬请期待 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
@@ -92,11 +93,12 @@ const NextSteps = () => {
                 <ol>
                   <li>
                     TiDB 社区每年举办上百场活动，覆盖开发者、用户上万人，欢迎
-                    <Link href="https://tidb.io/events">参与活动</Link>
+                    <Styled.Link href="https://tidb.io/events">参与活动</Styled.Link>
                   </li>
                   <li>
-                    如果你对 TiDB 相关产品和技术的应用感兴趣，欢迎来<Link href="https://asktug.com">用户论坛</Link>和{' '}
-                    <Link href="https://tidb.io/tug">TUG 交流学习</Link>
+                    如果你对 TiDB 相关产品和技术的应用感兴趣，欢迎来
+                    <Styled.Link href="https://asktug.com">用户论坛</Styled.Link>和{' '}
+                    <Styled.Link href="https://tidb.io/tug">TUG 交流学习</Styled.Link>
                   </li>
                   <li>更多技术内容请前往博客学习</li>
                 </ol>

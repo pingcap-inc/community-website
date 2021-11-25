@@ -17,7 +17,7 @@ const Others = () => {
         <CommonStyled.Title>{lang.title}</CommonStyled.Title>
         <Row gutter={16}>
           {[1, 2, 3, 4].map((idx) => (
-            <Styled.ImageContainer md={6}>
+            <Styled.ImageContainer xs={12} md={6}>
               <Styled.LogoImage preview={false} height="64px" src={getImage(`organizers-logo-${idx}.png`)} />
             </Styled.ImageContainer>
           ))}

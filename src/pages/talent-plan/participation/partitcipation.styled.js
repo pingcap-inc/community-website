@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors, Styled } from '@tidb-community/ui';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 
@@ -59,7 +59,7 @@ export const PathCardWrapper = styled.div`
   padding-bottom: 1rem;
   // PM says the all the cards should be the same height...
   // ...so we need to set the height of the card here
-  height: 150px;
+  position: relative;
 `;
 
 export const PathCard = styled.div`
@@ -114,5 +114,10 @@ export const BecomingBoxContent = styled.div`
 
 export const Becomings = styled.div`
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  display: grid;
+  ${(props) =>
+    !props.isSmallScreen &&
+    css`
+      display: grid;
+    `};
+  padding-bottom: 1rem;
 `;

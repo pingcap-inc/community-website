@@ -7,6 +7,7 @@ import { Styled as CommonStyled } from '@tidb-community/ui';
 import { Col, Image, Row, Tabs } from 'antd';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 import { Link } from '~/components';
+import { useIsSmallScreen } from '~/hooks';
 
 const { TabPane } = Tabs;
 
@@ -19,6 +20,7 @@ const Participation = () => {
 
   const [isOnFirstTab, setIsOnFirstTab] = useState(true);
 
+  const { isSmallScreen } = useIsSmallScreen();
   const stepsContent = [
     <Styled.StepBoxContent>
       <Row gutter={16}>
@@ -80,7 +82,7 @@ const Participation = () => {
           <CommonStyled.Title id="learn">{lang.title}</CommonStyled.Title>
           <Tabs onChange={(idx) => setIsOnFirstTab(idx === '1')}>
             <TabPane tab={lang.tab1} key={1}>
-              <Image src={getImage('participation-org.jpg')} />
+              <Image preview={false} src={getImage('participation-org.jpg')} />
             </TabPane>
             <TabPane tab={lang.tab2} key={2}>
               <Row gutter={32}>
@@ -94,7 +96,7 @@ const Participation = () => {
       {isOnFirstTab && (
         <Styled.ContainerGray>
           <Styled.Content>
-            <Styled.Becomings>
+            <Styled.Becomings isSmallScreen={isSmallScreen}>
               {lang.becomings.map((el) => (
                 <Styled.BecomingBox>
                   <Styled.BecomingBoxContent>

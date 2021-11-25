@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, Styled } from '@tidb-community/ui';
+import { colors, Link as RawLink, Styled } from '@tidb-community/ui';
 
 export const Container = styled(Styled.Section)`
   && {
@@ -12,4 +12,8 @@ export const Content = styled(Styled.Content)`
   position: relative;
   padding-top: 3rem;
   color: ${colors.F1};
+`;
+
+export const Link = styled(RawLink)`
+  text-decoration: underline !important;
 `;

@@ -27,6 +27,8 @@ export const CoverImage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
 `;
 
 export const CoverImagePlaceholder = styled.div`

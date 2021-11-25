@@ -60,7 +60,7 @@ const Editing = ({ blogInfo }) => {
   }, [tags]);
 
   const uploadFile = useCallback(async (file) => {
-    const { uploadURL, downloadURL } = await api.blog.common.upload(file.name, file.contentType);
+    const { uploadURL, downloadURL } = await api.blog.common.upload(file.name, file.type);
     await Axios.put(uploadURL, file, {
       headers: {
         'content-type': file.type,

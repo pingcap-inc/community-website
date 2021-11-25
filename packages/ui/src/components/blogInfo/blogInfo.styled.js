@@ -29,6 +29,7 @@ export const CoverImageContainer = styled.div`
   padding-top: 28.5714%; /* 7:2 Aspect Ratio */
   position: relative;
   border-bottom: 1px solid ${colors.borderGray};
+  overflow: hidden;
 `;
 
 export const CoverImage = styled.div`

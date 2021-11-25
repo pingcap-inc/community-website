@@ -17,7 +17,7 @@ import WriteBlogButton from '../../WriteBlogButton';
 import HotTagList from '../../HotTagList';
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
+  const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { slug } = ctx.params;
 

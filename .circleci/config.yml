@@ -23,8 +23,8 @@ commands:
           filename: combined-package-lock.txt
       - restore_cache:
           keys:
-            - v3.2-deps-{{ checksum "combined-package-lock.txt" }}
-            - v3.2-deps
+            - v3.3-deps-{{ checksum "combined-package-lock.txt" }}
+            - v3.3-deps
       - run:
           command: |
             npm ci
@@ -33,7 +33,16 @@ commands:
           paths:
             - ~/.npm
             - ~/.cache
-          key: v3.2-deps-{{ checksum "combined-package-lock.txt" }}
+            - packages/accounts/node_modules
+            - packages/common/node_modules
+            - packages/datasource/node_modules
+            - packages/i18n/node_modules
+            - packages/mockApi/node_modules
+            - packages/strapi/node_modules
+            - packages/trackingScript/node_modules
+            - packages/ui/node_modules
+            - packages/uiScripts/node_modules
+          key: v3.3-deps-{{ checksum "combined-package-lock.txt" }}
 
   prepare-sentry:
     steps:

@@ -15,7 +15,7 @@ import BlogLayout from '../BlogLayout.component';
 import { getPageQuery, useRouterPage } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
+  const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { page, size } = getPageQuery(ctx.query);
 

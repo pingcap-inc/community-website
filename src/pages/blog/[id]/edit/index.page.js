@@ -10,6 +10,18 @@ import Previewing from '~/pages/blog/[id]/edit/previewing/Previewing.component';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
 import { AuthContext } from '../../../../context';
+import { getI18nProps } from '~/utils/i18n.utils';
+import { CommunityHead } from '~/components';
+
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
 
 const BlogEditPage = () => {
   const editContextValue = useEditContextProvider();
@@ -35,6 +47,11 @@ const BlogEditPage = () => {
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
+      <CommunityHead
+        title="博客 - 编辑文章"
+        // description
+        // keyword
+      />
       <Styled.Container>
         <EditContext.Provider value={editContextValue}>
           {loading ? (

@@ -144,12 +144,14 @@ const Editing = ({ blogInfo }) => {
       <Styled.Actions>
         {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
         {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
-        <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
-          发布
-        </Button>
-        <Button type="default" onClick={save} disabled={operating}>
-          保存草稿
-        </Button>
+        <div className="btns">
+          <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
+            发布
+          </Button>
+          <Button type="default" onClick={save} disabled={operating}>
+            保存草稿
+          </Button>
+        </div>
       </Styled.Actions>
     </>
   );

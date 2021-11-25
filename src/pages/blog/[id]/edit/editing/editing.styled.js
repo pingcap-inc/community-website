@@ -99,8 +99,10 @@ export const Footer = styled.div`
 export const Actions = styled.div`
   margin-top: 32px;
 
-  > .ant-btn:not(:first-child) {
-    margin-right: 16px;
+  .btns {
+    > .ant-btn:not(:first-child) {
+      margin-left: 16px;
+    }
   }
 
   > .ant-alert {

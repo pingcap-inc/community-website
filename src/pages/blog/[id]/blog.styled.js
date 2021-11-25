@@ -26,6 +26,22 @@ export const Side = styled.div`
   left: -52px;
 `;
 
+export const CoverImage = styled.div`
+  margin-left: -37px;
+  margin-right: -37px;
+  margin-top: -30px;
+  border-bottom: 2px ${colors.B4} solid;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
+`;
+
 export const Title = styled.h1`
   display: block;
   font-size: 32px;

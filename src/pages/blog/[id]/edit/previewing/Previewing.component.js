@@ -5,11 +5,13 @@ import * as PreviewingStyled from './previewing.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { OriginLabel, RepostLabel } from '../../components/labels';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
+import { Button } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 
 const noop = () => {};
 
 const Previewing = () => {
-  const { factory, title, origin, tags, content } = useEditContext();
+  const { factory, title, origin, tags, content, coverImageURL } = useEditContext();
 
   if (!process.browser) {
     return <></>;
@@ -18,6 +20,9 @@ const Previewing = () => {
   return (
     <>
       <Styled.Content>
+        {coverImageURL ? (
+          <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }} />
+        ) : undefined}
         <Styled.TitleInput disabled value={title} />
         <Styled.Meta>
           {typeof origin === 'string' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}

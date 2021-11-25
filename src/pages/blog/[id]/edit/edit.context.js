@@ -54,6 +54,7 @@ export function useEditContextProvider() {
       setContent([{ type: 'paragraph', children: [{ text: '' }] }]);
       setTags([]);
       setBlogInfo(undefined);
+      setCoverImageURL(undefined);
       return Promise.resolve();
     } else {
       setLoading(true);
@@ -66,6 +67,7 @@ export function useEditContextProvider() {
           setCategory(info.category);
           setContent(JSON.parse(info.content));
           setBlogInfo(info);
+          setCoverImageURL(info.coverImageURL);
         })
         .finally(() => setLoading(false));
     }

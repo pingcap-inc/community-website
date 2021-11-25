@@ -61,6 +61,10 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
             <Interactions blogInfo={blogInfo} reload={reload} />
           </Styled.Side>
 
+          {blogInfo.coverImageURL ? (
+            <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blogInfo.coverImageURL)})` }} />
+          ) : undefined}
+
           <Styled.Title>{blogInfo.title}</Styled.Title>
 
           <Styled.Meta>

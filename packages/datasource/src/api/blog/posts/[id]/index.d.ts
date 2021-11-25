@@ -16,6 +16,7 @@ export interface Post {
   origin: PostOrigin;
   status: PostStatus;
   sourceURL: string;
+  coverImageURL?: string;
 }
 
 interface Page<T> {

@@ -42,7 +42,10 @@ const BlogInfo = ({
     <Styled.Container>
       {coverImageURL && coverImageURL.length !== 0 && (
         <Styled.CoverImageContainer>
-          <Styled.CoverImage style={{ backgroundImage: `url(${coverImageURL})` }} onClick={handleClick} />
+          <Styled.CoverImage
+            style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}
+            onClick={handleClick}
+          />
         </Styled.CoverImageContainer>
       )}
       <Styled.Content>

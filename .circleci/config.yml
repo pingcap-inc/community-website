@@ -23,8 +23,8 @@ commands:
           filename: combined-package-lock.txt
       - restore_cache:
           keys:
-            - v2-sub-deps-{{ checksum "combined-package-lock.txt" }}
-            - v2-sub-deps
+            - v3-sub-deps-{{ checksum "combined-package-lock.txt" }}
+            - v3-sub-deps
       - run:
           command: |
             npm set cache .npm
@@ -33,7 +33,7 @@ commands:
       - save_cache:
           paths:
             - .npm
-          key: v2-sub-deps-{{ checksum "combined-package-lock.txt" }}
+          key: v3-sub-deps-{{ checksum "combined-package-lock.txt" }}
 
   prepare-sentry:
     steps:

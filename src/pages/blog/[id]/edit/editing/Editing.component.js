@@ -1,11 +1,13 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
 import { Alert, Button, Checkbox, Input, Upload } from 'antd';
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 import { demoCategories, demoTags } from './demo-data';
 import ImgCrop from 'antd-img-crop';
 import { DeleteOutlined } from '@ant-design/icons';
+import { api } from '@tidb-community/datasource';
+import Axios from 'axios';
 
 const Editing = ({ blogInfo }) => {
   const {
@@ -57,6 +59,17 @@ const Editing = ({ blogInfo }) => {
     return tags.map(fromServerMeta);
   }, [tags]);
 
+  const uploadFile = useCallback(async (file) => {
+    const { uploadURL, downloadURL } = await api.blog.common.upload(file.name, file.contentType);
+    await Axios.put(uploadURL, file, {
+      headers: {
+        'content-type': file.type,
+        'x-oss-object-acl': 'public-read',
+      },
+    });
+    return downloadURL;
+  }, []);
+
   if (!process.browser) {
     return <></>;
   }
@@ -105,7 +118,13 @@ const Editing = ({ blogInfo }) => {
           />
         </Styled.Meta>
         <Styled.Editor>
-          <TiEditor value={content} onChange={setContent} factory={factory} placeholder="请在此处开始撰写正文……" />
+          <TiEditor
+            value={content}
+            onChange={setContent}
+            factory={factory}
+            placeholder="请在此处开始撰写正文……"
+            uploadFile={uploadFile}
+          />
         </Styled.Editor>
       </Styled.Content>
       <Styled.Footer>

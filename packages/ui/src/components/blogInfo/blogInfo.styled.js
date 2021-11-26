@@ -67,9 +67,17 @@ export const AuthorInfo = styled.div`
   line-height: 17px;
 `;
 
-export const AuthorName = styled.div`s
+export const AuthorName = styled.div`
+  display: flex;
+`;
+
+export const AuthorNameBase = styled.div`
   color: #565656;
   cursor: pointer;
+`;
+
+export const AuthorNameExtend = styled.div`
+  margin-left: 0.25rem;
 `;
 
 export const AuthorPublishedAt = styled.div`

@@ -18,8 +18,9 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { page, size } = getPageQuery(ctx.query);
+  const sort = 'posts,desc';
 
-  const tags = await api.blog.getTags({ page, size });
+  const tags = await api.blog.getTags({ page, size, sort });
 
   return {
     props: {

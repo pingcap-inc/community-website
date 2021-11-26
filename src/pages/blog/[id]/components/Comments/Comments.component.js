@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import * as Styled from './comments.styled';
-import { Alert, Avatar, Button, Col, Comment, Input, List, Pagination, Row, Skeleton } from 'antd';
+import { Avatar, Button, Col, Comment, Input, List, Pagination, Row, Skeleton } from 'antd';
 import { AuthContext, MeContext } from '~/context';
 import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
@@ -58,17 +58,13 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
 
   if (!meData) {
     return (
-      <Alert
-        message={
-          <p>
-            请&nbsp;
-            <a type="link" onClick={() => login()}>
-              登录
-            </a>
-            &nbsp;以继续评论
-          </p>
-        }
-      />
+      <Styled.LoginAlert>
+        请{' '}
+        <a type="link" onClick={() => login()}>
+          登录
+        </a>{' '}
+        以继续评论
+      </Styled.LoginAlert>
     );
   }
 

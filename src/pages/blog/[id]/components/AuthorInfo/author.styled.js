@@ -11,3 +11,7 @@ export const AuthorContainer = styled.div`
     font-weight: bold;
   }
 `;
+
+export const Profile = styled.span`
+  cursor: pointer;
+`;

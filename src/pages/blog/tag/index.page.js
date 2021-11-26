@@ -40,7 +40,7 @@ const TagPage = ({
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客 - 全部标签"
+        title="博客 - 标签"
         // description
         // keyword
       />

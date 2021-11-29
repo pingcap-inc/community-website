@@ -120,6 +120,7 @@ export function useEditMethods() {
         await router.push(`/blog/${res.id}`);
         return res;
       } else {
+        await api.blog.posts.post.cancelPublish(Number(id));
         await api.blog.posts.post.update(Number(id), body);
         await router.push(`/blog/${id}`);
         return { id: Number(id) };

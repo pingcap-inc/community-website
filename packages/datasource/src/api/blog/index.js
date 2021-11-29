@@ -16,3 +16,6 @@ export const getTagBySlug = (slug) => blogClient.get(`/api/tags/search/bySlug?sl
 export const getCategories = () => blogClient.get(`/api/categories`);
 export const getCategoryById = (id) => blogClient.get(`/api/categories/${id}`);
 export const getCategoryBySlug = (slug) => blogClient.get(`/api/categories/search/bySlug?slug=${slug}`);
+
+export const getAudits = () => blogClient.get(`/api/audits`);
+export const auditById = (id) => blogClient.get(`/api/audits/${id}`);

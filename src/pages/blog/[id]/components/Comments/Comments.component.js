@@ -60,9 +60,9 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
     return (
       <Styled.LoginAlert>
         请{' '}
-        <a type="link" onClick={() => login()}>
+        <Button type="link" onClick={() => login()}>
           登录
-        </a>{' '}
+        </Button>{' '}
         以继续评论
       </Styled.LoginAlert>
     );

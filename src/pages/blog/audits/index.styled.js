@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins, colors, Styled, constants } from '@tidb-community/ui';
+import { colors, Styled } from '@tidb-community/ui';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
 
 const { Content } = Styled;

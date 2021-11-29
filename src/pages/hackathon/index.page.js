@@ -2,6 +2,8 @@ import * as Styled from './index.styled';
 import { FAQCollapsePanel, getImage, ProcedureCardsGroup } from './index.styled';
 import { CoreLayout } from '~/layouts';
 import { Col, Image, Row } from 'antd';
+import { useIsSmallScreen } from '~/hooks';
+import _ from 'lodash';
 
 const SectionTitle = ({ children }) => (
   <Styled.SectionTitle>
@@ -10,10 +12,10 @@ const SectionTitle = ({ children }) => (
   </Styled.SectionTitle>
 );
 
-const ProcedureCard = ({ title, date, desc, buttonText, buttonLink }) => (
+const ProcedureCard = ({ title, date, desc, buttonText, buttonLink, sm }) => (
   <>
-    <Styled.ProcedureCardDivider />
-    <Styled.ProcedureCardWrapper>
+    {!sm && <Styled.ProcedureCardDivider />}
+    <Styled.ProcedureCardWrapper isSmallScreen={sm}>
       <Styled.ProcedureCard>
         <Styled.ProcedureCardGradientSlice />
         <Styled.ProcedureCardTitle>{title}</Styled.ProcedureCardTitle>
@@ -58,6 +60,35 @@ const JudgeCard = ({ name, desc, src, detail }) => {
   );
 };
 
+const groupsData = [
+  {
+    name: '工具组',
+    desc: '对 TiDB安装部署、数据流转、集群容灾、运维和可视化等配套工具的优化',
+  },
+  { name: '内核组', desc: '为 TiDB性能、稳定性、易用性等各方面做出提升，也可以构建云原生时代的 TiDB 内核等' },
+  { name: '生态组', desc: '对 TiDB/TiKV 上下游能力的连接、增强，例如管控中间件，周边应用框架适配等' },
+  { name: '创意组', desc: '欢迎其他任何 Cool idea，创造不设限！PS. Chaos Mesh 爱好者看过来' },
+];
+
+const stepsData = _.flatten(
+  _.times(
+    5,
+    _.constant([
+      {
+        title: '第一步',
+        date: '2019-10-01',
+        desc: (
+          <div>
+            报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
+            <Styled.Link href={''}>查看参赛指南。</Styled.Link>
+          </div>
+        ),
+        action: 'submit',
+      },
+    ])
+  )
+);
+
 const FAQData = [
   { q: '1. 每支参赛队伍最多几个人？', a: '团队参赛最多 4 人为一个小组。单人参赛也支持哦～' },
   {
@@ -73,123 +104,115 @@ const FAQData = [
   { q: '6. 校园团队奖参与评选的人群是？', a: '该团队成为需要全员皆为：未毕业大学生、硕士、博士。' },
 ];
 
+const carouselData = [
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+  'https://via.placeholder.com/420x240.png',
+];
+
+const splitCarousel = (data, size) => {
+  // split data into groups of 3
+  return _.chunk(data, size);
+};
+
+const BannerNavButtonsGroup = ({ isSmallScreen }) => (
+  <Styled.BannerNavButtonsGroup isSmallScreen={isSmallScreen}>
+    <Styled.BannerNavButton>介绍</Styled.BannerNavButton>
+    <Styled.BannerNavButton>奖项</Styled.BannerNavButton>
+    <Styled.BannerNavButton>评委</Styled.BannerNavButton>
+    <Styled.BannerNavButton>积分榜</Styled.BannerNavButton>
+    <Styled.BannerNavButton>常见问题</Styled.BannerNavButton>
+    <Styled.BannerNavButton>合作伙伴</Styled.BannerNavButton>
+  </Styled.BannerNavButtonsGroup>
+);
+
 const Page = () => {
+  const { isSmallScreen } = useIsSmallScreen();
+
   return (
     <CoreLayout>
       <Styled.Container>
-        <Styled.Banner>
-          <Styled.BannerContent>
-            <Styled.BannerTitle />
-            <Styled.BannerButtonsGroup>
-              <Styled.BannerButton>立即报名</Styled.BannerButton>
-              <Styled.BannerButton>加入官方群</Styled.BannerButton>
-              <Styled.BannerButton>赛事咨询</Styled.BannerButton>
-            </Styled.BannerButtonsGroup>
-            <Styled.BannerNavButtonsGroup>
-              <Styled.BannerNavButton>介绍</Styled.BannerNavButton>
-              <Styled.BannerNavButton>奖项</Styled.BannerNavButton>
-              <Styled.BannerNavButton>评委</Styled.BannerNavButton>
-              <Styled.BannerNavButton>积分榜</Styled.BannerNavButton>
-              <Styled.BannerNavButton>常见问题</Styled.BannerNavButton>
-              <Styled.BannerNavButton>合作伙伴</Styled.BannerNavButton>
-            </Styled.BannerNavButtonsGroup>
-          </Styled.BannerContent>
-        </Styled.Banner>
+        <Styled.BannerWrapper>
+          <Styled.Banner isSmallScreen={isSmallScreen}>
+            <Styled.BannerContent isSmallScreen={isSmallScreen}>
+              <Styled.BannerTitle />
+              <Styled.BannerButtonsGroup isSmallScreen={isSmallScreen}>
+                <Styled.BannerButton>立即报名</Styled.BannerButton>
+                <Styled.BannerButton>加入官方群</Styled.BannerButton>
+                <Styled.BannerButton>赛事咨询</Styled.BannerButton>
+              </Styled.BannerButtonsGroup>
+              {!isSmallScreen && <BannerNavButtonsGroup />}
+            </Styled.BannerContent>
+          </Styled.Banner>
+          {isSmallScreen && <BannerNavButtonsGroup isSmallScreen={isSmallScreen} />}
+        </Styled.BannerWrapper>
         <Styled.Section>
           <SectionTitle>大赛介绍</SectionTitle>
           本次 Hackathon 主题为「Explore the Sky」，尽情发挥天马行空的想象，用 TiDB 创造无限可能。
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>主题赛道</SectionTitle>
-          <Styled.Table>
-            <thead>
-              {[{ name: '工具组' }, { name: '内核组' }, { name: '生态组' }, { name: '创意组' }].map((item, idx) => (
-                <Styled.TableHeaderCell>
-                  <Styled.TableHeaderCellContent>
-                    <div>{item.name}</div>
-                    <Styled.TableHeaderIcon src={getImage(`group-icon-${idx + 1}.svg`)} />
-                  </Styled.TableHeaderCellContent>
-                </Styled.TableHeaderCell>
-              ))}
-            </thead>
-            <tr>
-              {[
-                '对 TiDB 安装部署、数据流转、集群容灾、运维和可视化等配套工具的优化',
-                '为 TiDB 性能、稳定性、易用性等各方面做出提升，也可以构建云原生时代的 TiDB 内核等',
-                '对 TiDB/TiKV 上下游能力的连接、增强，例如管控中间件，周边应用框架适配等',
-                '欢迎其他任何 Cool idea，创造不设限！PS. Chaos Mesh 爱好者看过来',
-              ].map((item, idx) => (
-                <Styled.TableCell>
-                  <Styled.TableCellContent> {item} </Styled.TableCellContent>
-                </Styled.TableCell>
-              ))}
-            </tr>
-          </Styled.Table>
+          {_.chunk(groupsData, isSmallScreen ? 2 : 4).map((data) => (
+            <Styled.Table>
+              <thead>
+                {data.map((item, idx) => (
+                  <Styled.TableHeaderCell isSmallScreen={isSmallScreen}>
+                    <Styled.TableHeaderCellContent>
+                      <div>{item.name}</div>
+                      <Styled.TableHeaderIcon src={getImage(`group-icon-${idx + 1}.svg`)} />
+                    </Styled.TableHeaderCellContent>
+                  </Styled.TableHeaderCell>
+                ))}
+              </thead>
+              <tr>
+                {data.map((item, idx) => (
+                  <Styled.TableCell isSmallScreen={isSmallScreen}>
+                    <Styled.TableCellContent> {item.desc} </Styled.TableCellContent>
+                  </Styled.TableCell>
+                ))}
+              </tr>
+            </Styled.Table>
+          ))}
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>参赛流程</SectionTitle>
-          <ProcedureCardsGroup>
-            <ProcedureCard
-              title="提交报名"
-              date="截至 12月27日"
-              buttonLink="google.com"
-              desc={
-                <div>
-                  报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
-                  <Styled.Link href={''}>查看参赛指南。</Styled.Link>
-                </div>
-              }
-              buttonText="text"
-            />
-            <ProcedureCard
-              title="提交报名"
-              date="截至 12月27日"
-              buttonLink="google.com"
-              desc={
-                <div>
-                  报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
-                  <Styled.Link href={''}>查看参赛指南。</Styled.Link>
-                </div>
-              }
-              buttonText="text"
-            />
-            <ProcedureCard
-              title="提交报名"
-              date="截至 12月27日"
-              buttonLink="google.com"
-              desc={
-                <div>
-                  报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
-                  <Styled.Link href={''}>查看参赛指南。</Styled.Link>
-                </div>
-              }
-              buttonText="text"
-            />
-            <ProcedureCard
-              title="提交报名"
-              date="截至 12月27日"
-              buttonLink="google.com"
-              desc={
-                <div>
-                  报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
-                  <Styled.Link href={''}>查看参赛指南。</Styled.Link>
-                </div>
-              }
-              buttonText="text"
-            />
-            <ProcedureCard
-              title="提交报名"
-              date="截至 12月27日"
-              buttonLink="google.com"
-              desc={
-                <div>
-                  报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
-                  <Styled.Link href={''}>查看参赛指南。</Styled.Link>
-                </div>
-              }
-              buttonText="text"
-            />
-          </ProcedureCardsGroup>
+          {!isSmallScreen ? (
+            <ProcedureCardsGroup>
+              {stepsData.map((step) => (
+                <ProcedureCard
+                  title={step.title}
+                  date={step.date}
+                  buttonLink={step.url}
+                  desc={step.desc}
+                  buttonText={step.action}
+                />
+              ))}
+            </ProcedureCardsGroup>
+          ) : (
+            <>
+              {_.chunk(stepsData, 2).map((data) => (
+                <ProcedureCardsGroup>
+                  {data.slice(0, 2).map((step) => (
+                    <ProcedureCard
+                      sm
+                      title={step.title}
+                      date={step.date}
+                      buttonLink={step.url}
+                      desc={step.desc}
+                      buttonText={step.action}
+                    />
+                  ))}
+                </ProcedureCardsGroup>
+              ))}
+            </>
+          )}
 
           <Styled.LocationSpan>六城联动线下 Hacking：北京、上海、杭州、成都、深圳、广州</Styled.LocationSpan>
         </Styled.Section>
@@ -244,7 +267,7 @@ const Page = () => {
               '个人&团队品牌宣传',
               '专题采访',
             ].map((benefit, idx) => (
-              <Col span={8}>
+              <Col xs={24} md={8}>
                 <BenefitCard icon={getImage(`benefit-icon-${idx + 1}.svg`)} content={benefit} />
               </Col>
             ))}
@@ -257,36 +280,36 @@ const Page = () => {
             <hr />
           </Styled.JudgesLabel>
           <Row justify="space-between" gutter={16}>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskld'}
               />
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'dasld'}
               />
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskdjasjjaskld'}
               />
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskskld'}
               />
             </Col>
           </Row>
@@ -296,36 +319,36 @@ const Page = () => {
             <hr />
           </Styled.JudgesLabel>
           <Row justify="space-between" gutter={16}>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskdjad'}
               />
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskdjasdjaskld'}
               />
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskjaskld'}
               />
             </Col>
-            <Col>
+            <Col xs={12} md={6}>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
-                detail={'daskdjasjdasdjkalsdjalksdjaskld'}
+                detail={'daskdjjakld'}
               />
             </Col>
           </Row>
@@ -344,41 +367,25 @@ const Page = () => {
         <Styled.Section>
           <SectionTitle>专题报道</SectionTitle>
           <Styled.Carousel>
-            <Styled.CarouselInner>
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-            </Styled.CarouselInner>
-            <Styled.CarouselInner>
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-            </Styled.CarouselInner>
-            <Styled.CarouselInner>
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-            </Styled.CarouselInner>
+            {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (
+              <Styled.CarouselInner>
+                {group.map((url) => (
+                  <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />
+                ))}
+              </Styled.CarouselInner>
+            ))}
           </Styled.Carousel>
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>往期回顾</SectionTitle>
           <Styled.Carousel>
-            <Styled.CarouselInner>
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-            </Styled.CarouselInner>
-            <Styled.CarouselInner>
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-            </Styled.CarouselInner>
-            <Styled.CarouselInner>
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-              <Image width="33.3%" src="https://via.placeholder.com/420x240.png" />
-            </Styled.CarouselInner>
+            {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (
+              <Styled.CarouselInner>
+                {group.map((url) => (
+                  <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />
+                ))}
+              </Styled.CarouselInner>
+            ))}
           </Styled.Carousel>
         </Styled.Section>
       </Styled.Container>

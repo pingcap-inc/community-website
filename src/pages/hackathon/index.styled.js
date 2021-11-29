@@ -14,6 +14,11 @@ const textColor = '#fff';
 const horizontalPadding = css`
   padding-left: ${columnWidth}%;
   padding-right: ${columnWidth}%;
+
+  @media only screen and (max-width: 768px) {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
 `;
 export const Container = styled.div`
   background: ${backgroundColor};
@@ -50,29 +55,49 @@ export const SectionTitle = styled.div`
 
 export const getImage = (name) => `/images/hackathon/${name}`;
 
+export const BannerWrapper = styled.div`
+  margin-bottom: 4rem;
+`;
+
 export const Banner = styled.div`
-  margin-bottom: 6rem;
-  background: url(${getImage('banner-bg.jpg')}) no-repeat center center;
+  margin-bottom: 2rem;
+  background: url(${(props) => getImage(props.isSmallScreen ? 'banner-bg-mobile.jpg' : 'banner-bg.jpg')}) no-repeat
+    center center;
   // center background image
   background-size: cover;
-  height: 32rem;
+  height: ${(props) => (props.isSmallScreen ? '24rem' : '32rem')};
+  position: relative;
 `;
 
 export const BannerContent = styled.div`
   padding-top: 8rem;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      padding-top: 3rem;
+    `};
   ${horizontalPadding};
 `;
 export const BannerTitle = styled(BannerTitleSvg)`
-  width: 30rem;
+  width: min(30rem, 100%);
   margin-bottom: 4rem;
 `;
 
 export const BannerButtonsGroup = styled.div`
-  width: 24rem;
+  width: min(24rem, 100%);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 2rem;
-  margin-bottom: 4rem;
+  grid-gap: 1rem;
+
+  ${(props) =>
+    props.isSmallScreen
+      ? css`
+          position: absolute;
+          bottom: 1rem;
+        `
+      : css`
+          margin-bottom: 4rem;
+        `}
 `;
 
 export const BannerButton = styled(Button).attrs({
@@ -89,12 +114,20 @@ export const BannerButton = styled(Button).attrs({
 `;
 
 export const BannerNavButton = styled.a`
+  white-space: nowrap;
+
   &:hover {
     color: #84fcfc;
   }
 `;
 
 export const BannerNavButtonsGroup = styled.div`
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      text-align: center;
+      ${horizontalPadding};
+    `}
   ${BannerNavButton} + ${BannerNavButton} {
     border-left: solid 1px white;
     padding-left: 1rem;
@@ -104,6 +137,14 @@ export const BannerNavButtonsGroup = styled.div`
     padding-right: 1rem;
   }
 `;
+export const TableCell = styled.td`
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      width: 50%;
+    `}
+`;
+export const TableHeaderCell = styled(TableCell)``;
 
 export const Table = styled.table`
   margin-left: auto;
@@ -112,10 +153,9 @@ export const Table = styled.table`
   background-origin: border-box; /* set background to start from border-box */
   border-spacing: 20px; /* space between each cell */
   border: 0.1px solid transparent; /* optional */
+  table-layout: fixed;
 `;
 
-export const TableCell = styled.td``;
-export const TableHeaderCell = styled.th``;
 export const TableHeaderIcon = styled.div`
   height: 2rem;
   width: 2rem;
@@ -202,7 +242,30 @@ export const ProcedureCardWrapper = styled.div`
   display: flex;
   align-items: center;
   height: available;
-  max-width: ${columnWidth * 2}vw;
+  ${(props) =>
+    !props.isSmallScreen
+      ? css`
+          max-width: ${columnWidth * 2}%;
+        `
+      : css`
+          &:first-child {
+            padding-right: 1rem;
+            position: relative;
+          }
+          &:not(:last-child) {
+            &:after {
+              display: block;
+              position: absolute;
+              bottom: -1rem;
+              right: -1rem;
+              z-index: 2;
+              content: url(${getImage('procedure-card-divider-mobile.svg')});
+            }
+          }
+          margin-bottom: 2rem;
+          width: 50%;
+        `}
+}
 `;
 
 export const ProcedureCardDivider = styled.div`
@@ -317,7 +380,7 @@ export const JudgeCardOverlay = styled.div`
 
 export const JudgeCardContent = styled.div`
   position: absolute;
-  bottom: 0;
+  bottom: 1rem;
   // background is a gradient from left to right with diminishing opacity
   background-image: linear-gradient(to right, rgba(36, 35, 106, 1) 0%, rgba(36, 35, 106, 0) 100%); /* the gradient */
   height: 4rem;
@@ -340,8 +403,9 @@ export const JudgeCardDescription = styled.div`
 `;
 
 export const JudgeCard = styled.div`
-  width: 240px;
+  //width: 240px;
   height: 300px;
+  margin-bottom: 1rem;
   // padding
   background-image: url(${(props) => props.src});
   background-repeat: no-repeat;
@@ -428,6 +492,7 @@ export const FAQCollapse = styled(Collapse).attrs({
 `;
 export const FAQCollapsePanel = styled(Collapse.Panel)`
   background: ${backgroundColor};
+
   .ant-collapse-content-box {
     // vertically center the text
     display: flex;
@@ -443,14 +508,17 @@ export const FAQButton = styled.a`
   padding-top: 3rem;
   color: #84fcfc;
   align-items: center;
+
   &:hover {
     color: #674ff0;
   }
+
   &:after {
     display: block;
     content: url(${getImage('faq-arrow-right.svg')});
     height: 24px;
     width: 24px;
+
     &:hover {
       color: #674ff0;
     }

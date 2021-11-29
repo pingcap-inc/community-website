@@ -1,14 +1,10 @@
 import * as React from 'react';
-import { usePrincipal } from '../blog.hooks';
 import { CommunityHead } from '~/components';
-import { PageLoader } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
-import Tab from '../user/Tab';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
-import BlogList from '../BlogList';
 import { api } from '@tidb-community/datasource';
 import AuditList from './AuditList';
 
@@ -26,7 +22,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const PageContent = ({ blogs }) => {
-  const { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading } = usePrincipal();
+  // const { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading } = usePrincipal();
   // TODO: check if current logon user is administrator
   return (
     <BlogLayout>

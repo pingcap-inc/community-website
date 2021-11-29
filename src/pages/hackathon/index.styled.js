@@ -1,0 +1,496 @@
+import styled, { css } from 'styled-components';
+import titleBackgroundSvg from './title-bg.svg';
+import BannerTitleSvg from './banner-title.svg';
+import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
+import { Link as RawLink } from '~/components';
+import CollapseIconSvg from './faq-collapse.svg';
+import ExpandIconSvg from './faq-expand.svg';
+import { mixins } from '@tidb-community/ui';
+
+const columnWidth = 7.14285714;
+const backgroundColor = '#191821';
+const textColor = '#fff';
+
+const horizontalPadding = css`
+  padding-left: ${columnWidth}%;
+  padding-right: ${columnWidth}%;
+`;
+export const Container = styled.div`
+  background: ${backgroundColor};
+  color: ${textColor};
+`;
+
+export const Section = styled.div`
+  // horizontal paddings are 1/14 of the page width
+  ${horizontalPadding};
+  padding-bottom: 6rem;
+  text-align: center;
+`;
+export const SectionTitleBackground = styled(titleBackgroundSvg)`
+  // align the svg on the center
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: -1;
+  height: 3rem;
+  width: 3rem;
+`;
+
+export const SectionTitle = styled.div`
+  font-size: 24px;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 2;
+
+  // center the title, background is an image
+  text-align: center;
+  background-image: url(${SectionTitleBackground});
+`;
+
+export const getImage = (name) => `/images/hackathon/${name}`;
+
+export const Banner = styled.div`
+  margin-bottom: 6rem;
+  background: url(${getImage('banner-bg.jpg')}) no-repeat center center;
+  // center background image
+  background-size: cover;
+  height: 32rem;
+`;
+
+export const BannerContent = styled.div`
+  padding-top: 8rem;
+  ${horizontalPadding};
+`;
+export const BannerTitle = styled(BannerTitleSvg)`
+  width: 30rem;
+  margin-bottom: 4rem;
+`;
+
+export const BannerButtonsGroup = styled.div`
+  width: 24rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 2rem;
+  margin-bottom: 4rem;
+`;
+
+export const BannerButton = styled(Button).attrs({
+  type: 'primary',
+  size: 'small',
+})`
+  width: 6rem;
+  height: 2.4rem !important;
+  background: #674ff0 !important;
+
+  &:hover {
+    background-color: #3c26b5 !important;
+  }
+`;
+
+export const BannerNavButton = styled.a`
+  &:hover {
+    color: #84fcfc;
+  }
+`;
+
+export const BannerNavButtonsGroup = styled.div`
+  ${BannerNavButton} + ${BannerNavButton} {
+    border-left: solid 1px white;
+    padding-left: 1rem;
+  }
+
+  ${BannerNavButton}:not(:last-child) {
+    padding-right: 1rem;
+  }
+`;
+
+export const Table = styled.table`
+  margin-left: auto;
+  margin-right: auto;
+  background-image: linear-gradient(to bottom, #84fcfc 0%, #674ff0 100%); /* the gradient */
+  background-origin: border-box; /* set background to start from border-box */
+  border-spacing: 20px; /* space between each cell */
+  border: 0.1px solid transparent; /* optional */
+`;
+
+export const TableCell = styled.td``;
+export const TableHeaderCell = styled.th``;
+export const TableHeaderIcon = styled.div`
+  height: 2rem;
+  width: 2rem;
+  background-image: url(${(props) => props.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-left: min(8rem, 10%);
+`;
+
+export const TableCellContent = styled.div`
+  height: 10rem !important;
+  padding: 1rem;
+  background-color: ${backgroundColor};
+`;
+
+export const TableHeaderCellContent = styled(TableCellContent)`
+  height: 4rem !important;
+  justify-content: space-between;
+  background-color: ${backgroundColor};
+  display: flex;
+`;
+
+export const ProcedureCard = styled.div`
+  background-color: #333333;
+  padding: 1rem;
+  padding-top: calc(1rem + 8px);
+  padding-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  text-align: left;
+  height: 100%;
+`;
+export const ProcedureCardGradientSlice = styled.div`
+  height: 8px;
+  top: 0;
+  width: 100%;
+  position: absolute;
+  background-image: linear-gradient(to right, #84fcfc 0%, #674ff0 100%); /* the gradient */
+  background-origin: border-box; /* set background to start from border-box */
+  border-spacing: 20px; /* space between each cell */
+  border: 0.1px solid transparent; /* optional */
+`;
+
+export const ProcedureCardTitle = styled.div`
+  width: 100%;
+  font-size: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #84fcfc;
+`;
+
+export const ProcedureCardDate = styled.div`
+  width: 100%;
+  padding-top: 0.5rem;
+  font-size: 14px;
+  margin-bottom: 1rem;
+`;
+
+export const ProcedureCardDescription = styled.div`
+  width: 100%;
+  font-size: 14px;
+  margin-bottom: 1rem;
+`;
+export const ProcedureCardButton = styled(RawLink)`
+  color: #84fcfc;
+  width: 100%;
+  text-decoration: none;
+
+  &:hover {
+    color: #674ff0;
+  }
+
+  text-align: right;
+  // fix to the end of the card
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+`;
+
+export const ProcedureCardWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  height: available;
+  max-width: ${columnWidth * 2}vw;
+`;
+
+export const ProcedureCardDivider = styled.div`
+  width: 20.596px;
+  height: 32.707px;
+  background-image: url(${getImage('procedure-card-divider.svg')});
+`;
+
+export const ProcedureCardsGroup = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  ${ProcedureCardDivider}:first-child {
+    display: none;
+  }
+`;
+
+export const Link = styled(RawLink)`
+  font-size: 14px;
+  color: #84fcfc;
+  text-decoration: none;
+
+  &:hover {
+    color: #674ff0;
+  }
+`;
+
+export const LocationSpan = styled.div`
+  padding-top: 3rem;
+`;
+
+export const Prize = styled.div`
+  height: 322px;
+  width: 282px;
+  background-image: url(${(props) => props.src});
+  background-position: top;
+  background-repeat: no-repeat;
+`;
+
+export const PrizeTitle = styled.div`
+  padding-top: 3rem;
+  font-size: 24px;
+  font-weight: 300;
+`;
+
+export const PrizeCount = styled.div`
+  padding-top: 1rem;
+  font-size: 16px;
+  font-weight: 300;
+`;
+export const PrizeReward = styled.div`
+  padding-top: 0.5rem;
+  height: 3rem;
+  font-size: 24px;
+`;
+
+export const PrizesRow = styled(Row)`
+  padding-bottom: 3rem;
+`;
+
+export const PrizesLabel = styled.div`
+  color: #84fcfc;
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 3rem;
+`;
+
+export const BenefitCard = styled.div`
+  // padding
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  background: ${backgroundColor};
+  align-items: center;
+`;
+
+export const BenefitCardWrapper = styled.div`
+  // gradient border
+  background-image: linear-gradient(to right, #84fcfc 0%, #674ff0 100%); /* the gradient */
+  background-origin: border-box; /* set background to start from border-box */
+  border-spacing: 20px; /* space between each cell */
+  border: 0.1px solid transparent; /* optional */
+  margin-bottom: 2rem;
+`;
+
+export const BenefitCardIcon = styled.div`
+  height: 3rem;
+  width: 3rem;
+  background-image: url(${(props) => props.src});
+  background-repeat: no-repeat;
+`;
+
+export const BenefitCardContent = styled.div`
+  font-size: 18px;
+  color: #84fcfc;
+`;
+
+export const JudgeCardOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(36, 35, 106, 0.5);
+  padding: 1rem;
+  text-align: start;
+`;
+
+export const JudgeCardContent = styled.div`
+  position: absolute;
+  bottom: 0;
+  // background is a gradient from left to right with diminishing opacity
+  background-image: linear-gradient(to right, rgba(36, 35, 106, 1) 0%, rgba(36, 35, 106, 0) 100%); /* the gradient */
+  height: 4rem;
+  width: 100%;
+  text-align: start;
+  padding: 0.5rem;
+  padding-left: 1rem;
+`;
+
+export const JudgeCardName = styled.div`
+  font-size: 1rem;
+  font-weight: 300;
+  color: #fff;
+`;
+
+export const JudgeCardDescription = styled.div`
+  font-size: 14px;
+  font-weight: 300;
+  color: #fff;
+`;
+
+export const JudgeCard = styled.div`
+  width: 240px;
+  height: 300px;
+  // padding
+  background-image: url(${(props) => props.src});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+
+  ${JudgeCardOverlay} {
+    display: none;
+  }
+
+  &:hover {
+    ${JudgeCardOverlay} {
+      display: block;
+    }
+
+    ${JudgeCardContent} {
+      display: none;
+    }
+  }
+`;
+
+export const JudgesLabel = styled.div`
+  color: #84fcfc;
+  width: 100%;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 300;
+  margin-bottom: 3rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &:not(:first-child) {
+    margin-top: 3rem;
+  }
+
+  hr {
+    border: 0.1px dashed #674ff0;
+    width: 100%;
+    padding-left: 1rem;
+  }
+
+  div {
+    width: 3rem;
+  }
+`;
+
+export const FAQWrapper = styled.div`
+  max-width: 60rem;
+  // center horizontally
+  margin: 0 auto;
+`;
+
+export const CollapseIcon = styled(CollapseIconSvg)`
+  height: 2rem;
+  width: 2rem;
+`;
+
+export const ExpandIcon = styled(ExpandIconSvg)`
+  height: 2rem;
+  width: 2rem;
+`;
+
+export const FAQCollapse = styled(Collapse).attrs({
+  defaultActiveKey: ['1'],
+  expandIconPosition: 'right',
+  expandIcon: ({ isActive }) => (isActive ? <CollapseIcon /> : <ExpandIcon />),
+  ghost: true,
+  accordion: true,
+})`
+  background: ${backgroundColor};
+
+  .ant-collapse-header {
+    padding: 0;
+    height: 3rem;
+    line-height: 3rem;
+    color: #ffffff !important;
+    font-size: 16px;
+    text-align: left;
+    border-bottom: 0.1px dashed #84fcfc;
+  }
+`;
+export const FAQCollapsePanel = styled(Collapse.Panel)`
+  background: ${backgroundColor};
+  .ant-collapse-content-box {
+    // vertically center the text
+    display: flex;
+    align-items: center;
+    height: 4rem;
+    text-align: left;
+    color: #fff;
+  }
+`;
+
+export const FAQButton = styled.a`
+  display: inline-flex;
+  padding-top: 3rem;
+  color: #84fcfc;
+  align-items: center;
+  &:hover {
+    color: #674ff0;
+  }
+  &:after {
+    display: block;
+    content: url(${getImage('faq-arrow-right.svg')});
+    height: 24px;
+    width: 24px;
+    &:hover {
+      color: #674ff0;
+    }
+  }
+`;
+
+export const Carousel = styled(RawCarousel).attrs({
+  dotPosition: 'bottom',
+})`
+  .slick-slide {
+    padding-right: 0;
+  }
+
+  .slick-dots {
+    margin: 0 auto;
+    bottom: -32px;
+
+    li {
+      margin: 3px 8px;
+
+      &,
+      button {
+        ${mixins.size('40px', '6px')}
+      }
+
+      &.slick-active {
+        &,
+        button {
+          ${mixins.size('50px', '6px')}
+        }
+      }
+    }
+  }
+`;
+
+export const CarouselInner = styled.div`
+  display: flex;
+
+  .ant-image {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+`;

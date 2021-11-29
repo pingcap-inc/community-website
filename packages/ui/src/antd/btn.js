@@ -32,13 +32,15 @@ export default css`
       border-radius: 6px;
     }
 
-    &-primary {
-      background-color: ${colors.B1};
-      border: none;
-
+    &-background-ghost {
       &:hover {
         background-color: ${colors.B1} !important;
       }
+    }
+
+    &-primary {
+      background-color: ${colors.B1};
+      border: none;
 
       &[disabled] {
         color: ${colors.M1};

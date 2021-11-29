@@ -51,8 +51,11 @@ const CommentsList = ({
               &nbsp;
               {commenter.username || commenter.name}
               &nbsp; 在
-              <Link className="ant-btn-link" href={`/blog/${post.id}`}>
-                「{post.title}」
+              <Link href={`/blog/${post.id}`}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a className="ant-btn-link" type="link">
+                  「{post.title}」
+                </a>
               </Link>
               &nbsp;
               {repliedTo ? <>回复了&nbsp;@{repliedTo.username || repliedTo.name}</> : '评论了'}：{content}

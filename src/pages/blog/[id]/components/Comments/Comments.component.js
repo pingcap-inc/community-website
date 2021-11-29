@@ -59,10 +59,10 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
   if (!meData) {
     return (
       <Styled.LoginAlert>
-        请{' '}
-        <Button type="link" onClick={() => login()}>
+        请 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+        <a type="link" onClick={() => login()}>
           登录
-        </Button>{' '}
+        </a>{' '}
         以继续评论
       </Styled.LoginAlert>
     );

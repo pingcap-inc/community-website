@@ -23,7 +23,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const CommentsPage = ({ id, user, comments }) => {
+const CommentsPage = ({ user, comments }) => {
   return (
     <UserDetailsLayout userDetails={user} item="评论" itemKey="comments">
       <CommentsList comments={comments} />
@@ -51,10 +51,8 @@ const CommentsList = ({
               &nbsp;
               {commenter.username || commenter.name}
               &nbsp; 在
-              <Link href={`/blog/${post.id}`}>
-                <a className="ant-btn-link" type="link">
-                  「{post.title}」
-                </a>
+              <Link className="ant-btn-link" href={`/blog/${post.id}`}>
+                「{post.title}」
               </Link>
               &nbsp;
               {repliedTo ? <>回复了&nbsp;@{repliedTo.username || repliedTo.name}</> : '评论了'}：{content}

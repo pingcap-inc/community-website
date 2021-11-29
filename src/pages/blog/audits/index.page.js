@@ -27,11 +27,7 @@ export const getServerSideProps = async (ctx) => {
 
 const PageContent = ({ blogs }) => {
   const { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading } = usePrincipal();
-  // TODO: remove mock val
-  const isAdmin = true;
-  if (!isAdmin) {
-    return null;
-  }
+  // TODO: check if current logon user is administrator
   return (
     <BlogLayout>
       <Styled.Content>

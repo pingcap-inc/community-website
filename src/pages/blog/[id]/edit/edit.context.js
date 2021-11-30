@@ -34,6 +34,7 @@ export function useEditContextProvider() {
   const [content, setContent] = useState([{ type: 'paragraph', children: [{ text: '' }] }]);
   const [blogInfo, setBlogInfo] = useState(undefined);
   const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState('');
 
   const uploadCoverImage = useCallback(async (file) => {
     const { downloadURL, uploadURL } = await api.blog.common.upload(file.name, file.type);
@@ -55,6 +56,7 @@ export function useEditContextProvider() {
       setTags([]);
       setBlogInfo(undefined);
       setCoverImageURL(undefined);
+      setStatus('DRAFT');
       return Promise.resolve();
     } else {
       setLoading(true);
@@ -68,6 +70,7 @@ export function useEditContextProvider() {
           setContent(JSON.parse(info.content));
           setBlogInfo(info);
           setCoverImageURL(info.coverImageURL);
+          setStatus(info.status);
         })
         .finally(() => setLoading(false));
     }
@@ -91,6 +94,7 @@ export function useEditContextProvider() {
     setTags,
     content,
     setContent,
+    status,
   };
 }
 
@@ -105,7 +109,7 @@ export function useEditMethods() {
 
   const save = useCallback(async () => {
     try {
-      const { title, coverImageURL, origin, category, tags, content } = editContext;
+      const { title, coverImageURL, origin, category, tags, content, state } = editContext;
       const body = {
         title,
         origin: typeof origin === 'string' ? 'REPOST' : 'ORIGINAL',
@@ -120,7 +124,7 @@ export function useEditMethods() {
         await router.push(`/blog/${res.id}`);
         return res;
       } else {
-        await api.blog.posts.post.cancelPublish(Number(id));
+        if (state === 'PUBLISHED') await api.blog.posts.post.cancelPublish(Number(id));
         await api.blog.posts.post.update(Number(id), body);
         await router.push(`/blog/${id}`);
         return { id: Number(id) };

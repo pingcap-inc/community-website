@@ -13,7 +13,7 @@ const Editing = ({ blogInfo }) => {
   const {
     factory,
     // coverImageURL,
-    setCoverImageURL,
+    // setCoverImageURL,
     // uploadCoverImage,
     title,
     setTitle,

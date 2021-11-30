@@ -12,12 +12,13 @@ import { PageDataContext } from '~/context';
 
 import TagItem from './TagItem.component';
 import BlogLayout from '../BlogLayout.component';
-import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { page = 1, size = 999 } = getPageQuery(ctx.query);
+  // const { page = 1, size = 999 } = getPageQuery(ctx.query);
+  const page = 1;
+  const size = 99999;
   const sort = 'posts,desc';
 
   const tags = await api.blog.getTags({ page, size, sort });

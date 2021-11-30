@@ -23,7 +23,7 @@ export default function BlogHomepage({ categories, blogs, hotTags }) {
   const categoriesWithAll = { ...categories };
   const contentWithAll = [...categories.content];
   categoriesWithAll.content = contentWithAll;
-  contentWithAll.unshift({ name: '全部分类', slug: '' });
+  contentWithAll.unshift({ name: '全部文章', slug: '' });
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead

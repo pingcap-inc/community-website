@@ -28,9 +28,9 @@ export const getServerSideProps = async (ctx) => {
 
 const PageContent = ({ blogs }) => {
   const { hasRole } = usePrincipal();
-  const isAdmin = hasRole('ADMIN');
+  const isEditor = hasRole('EDITOR');
   // TODO: check if current logon user is administrator
-  if (!isAdmin) {
+  if (!isEditor) {
     return '403';
   }
   return (

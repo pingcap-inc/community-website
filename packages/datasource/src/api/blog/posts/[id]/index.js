@@ -12,6 +12,10 @@ export async function submit(id) {
   return await blogClient.patch(`/api/posts/${id}/submit`);
 }
 
+export async function cancelSubmit(id) {
+  return await blogClient.patch(`/api/posts/${id}/submit/cancel`);
+}
+
 export async function reject(id) {
   return await blogClient.patch(`/api/posts/${id}/reject`);
 }

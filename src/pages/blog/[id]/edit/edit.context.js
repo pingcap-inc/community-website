@@ -4,6 +4,7 @@ import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 import { message } from 'antd';
 import Axios from 'axios';
+import { cancelSubmit } from '@tidb-community/datasource/src/api/blog/posts/[id]';
 
 const EditContext = createContext({
   title: '',
@@ -124,7 +125,7 @@ export function useEditMethods() {
         await router.push(`/blog/${res.id}`);
         return res;
       } else {
-        if (state === 'PUBLISHED') await api.blog.posts.post.cancelPublish(Number(id));
+        if (state === 'PUBLISHED') await api.blog.posts.post.cancelSubmit(Number(id));
         await api.blog.posts.post.update(Number(id), body);
         await router.push(`/blog/${id}`);
         return { id: Number(id) };
@@ -141,7 +142,7 @@ export function useEditMethods() {
     const { id } = await save();
     const { state } = editContext;
     try {
-      if (state === 'PUBLISHED') await api.blog.posts.post.cancelPublish(Number(id));
+      if (state === 'PUBLISHED') await api.blog.posts.post.cancelSubmit(Number(id));
       await api.blog.posts.post.submit(id);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));

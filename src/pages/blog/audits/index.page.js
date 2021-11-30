@@ -7,23 +7,28 @@ import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
 import { api } from '@tidb-community/datasource';
 import AuditList from './AuditList';
+import { usePrincipal } from '../blog.hooks';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const blogs = await api.blog.getAudits();
+  const data = await api.blog.getAudits();
 
   return {
     props: {
       ...i18nProps,
-      blogs,
+      data,
     },
   };
 };
 
-const PageContent = ({ blogs }) => {
-  // const { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading } = usePrincipal();
+const PageContent = ({ data }) => {
+  const { hasRole } = usePrincipal();
+  const isAdmin = hasRole('ADMIN');
   // TODO: check if current logon user is administrator
+  if (!isAdmin) {
+    return null;
+  }
   return (
     <BlogLayout>
       <Styled.Content>
@@ -34,7 +39,7 @@ const PageContent = ({ blogs }) => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>待审核</Breadcrumb.Item>
           </Styled.Breadcrumb>
-          <AuditList data={blogs} />
+          <AuditList data={data} />
         </Styled.Container>
       </Styled.Content>
     </BlogLayout>

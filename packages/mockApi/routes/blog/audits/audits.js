@@ -1,5 +1,5 @@
 const { successResp } = require('../../../utils');
-const { content } = require('../posts/posts.mock');
+const { content } = require('./audits.mock');
 
 module.exports = (req, res) => {
   const { page, size } = req.query;

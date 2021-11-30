@@ -4,7 +4,6 @@ import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 import { message } from 'antd';
 import Axios from 'axios';
-import { cancelSubmit } from '@tidb-community/datasource/src/api/blog/posts/[id]';
 
 const EditContext = createContext({
   title: '',

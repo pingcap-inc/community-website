@@ -80,29 +80,30 @@ const Editing = ({ blogInfo }) => {
   return (
     <>
       <Styled.Content>
-        <ImgCrop aspect={7} modalTitle="调整图片" modalOk="确认" modalCancel="返回">
-          <Upload
-            maxCount={1}
-            multiple={false}
-            showUploadList={false}
-            onChange={({ file }) => file.status === 'done' && uploadCoverImage(file.originFileObj)}
-          >
-            {coverImageURL ? (
-              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>
-                <Button
-                  htmlType="button"
-                  size="large"
-                  danger
-                  type="link"
-                  icon={<DeleteOutlined />}
-                  onClick={onClickRemoveCoverImage}
-                />
-              </Styled.CoverImage>
-            ) : (
-              <Styled.CoverImagePlaceholder>+ 插入封面图</Styled.CoverImagePlaceholder>
-            )}
-          </Upload>
-        </ImgCrop>
+        {/*disable cover image*/}
+        {/*<ImgCrop aspect={7} modalTitle="调整图片" modalOk="确认" modalCancel="返回">*/}
+        {/*  <Upload*/}
+        {/*    maxCount={1}*/}
+        {/*    multiple={false}*/}
+        {/*    showUploadList={false}*/}
+        {/*    onChange={({ file }) => file.status === 'done' && uploadCoverImage(file.originFileObj)}*/}
+        {/*  >*/}
+        {/*    {coverImageURL ? (*/}
+        {/*      <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>*/}
+        {/*        <Button*/}
+        {/*          htmlType="button"*/}
+        {/*          size="large"*/}
+        {/*          danger*/}
+        {/*          type="link"*/}
+        {/*          icon={<DeleteOutlined />}*/}
+        {/*          onClick={onClickRemoveCoverImage}*/}
+        {/*        />*/}
+        {/*      </Styled.CoverImage>*/}
+        {/*    ) : (*/}
+        {/*      <Styled.CoverImagePlaceholder>+ 插入封面图</Styled.CoverImagePlaceholder>*/}
+        {/*    )}*/}
+        {/*  </Upload>*/}
+        {/*</ImgCrop>*/}
         <Styled.TitleInput placeholder="博客标题......" value={title} onChange={onTitleChange} />
         <Styled.Meta>
           <Styled.CategorySelect

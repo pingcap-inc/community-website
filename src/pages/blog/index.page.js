@@ -11,7 +11,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { getCategories, getRecommend, getHotTags } = api.blog;
 
-  const [categories, blogs, hotTags] = await new Promise.all([getCategories, getRecommend, getHotTags]);
+  const [categories, blogs, hotTags] = await Promise.all([getCategories(), getRecommend(), getHotTags()]);
 
   return {
     props: {

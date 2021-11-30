@@ -44,8 +44,10 @@ export const CoverImagePlaceholder = styled.div`
   cursor: pointer;
 `;
 
-export const TitleInput = styled(Input).attrs({
+export const TitleInput = styled(Input.TextArea).attrs({
   bordered: false,
+  rows: 1,
+  autoSize: true,
 })`
   margin-top: 25px;
   display: block;

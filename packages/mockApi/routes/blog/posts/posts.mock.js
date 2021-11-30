@@ -8,7 +8,7 @@ module.exports = {
         avatarURL: 'https://www.gravatar.com/avatar/8e0ecab6358b4760cdd695f06d63af61?d=identicon',
       },
       origin: 'REPOST',
-      title: 'title',
+      title: '此屬性可以讓過長文字直接換至下一行此屬性可以讓過長文字直接換至下一行此屬性可以讓過長文字直接換至下一行',
       coverImageURL: null,
       publishedAt: '2021-11-22T06:33:03.000+00:00',
       recommended: null,

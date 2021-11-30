@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   const data = {
     id: _id,
     version: 2,
-    title: 'title',
+    title: '此屬性可以讓過長文字直接換至下一行此屬性可以讓過長文字直接換至下一行此屬性可以讓過長文字直接換至下一行',
     content: '[{"type":"paragraph","children":[{"text":"feawfewf"}]}]',
     status: 'PUBLISHED',
     origin: 'REPOST',

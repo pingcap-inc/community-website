@@ -1,10 +1,10 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input, Upload } from 'antd';
+import { Alert, Button, Checkbox, Input } from 'antd';
 import React, { useCallback, useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
-import ImgCrop from 'antd-img-crop';
-import { DeleteOutlined } from '@ant-design/icons';
+// import ImgCrop from 'antd-img-crop';
+// import { DeleteOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
@@ -12,9 +12,9 @@ import { useCategories, useTags } from './editing.hooks';
 const Editing = ({ blogInfo }) => {
   const {
     factory,
-    coverImageURL,
+    // coverImageURL,
     setCoverImageURL,
-    uploadCoverImage,
+    // uploadCoverImage,
     title,
     setTitle,
     origin,
@@ -37,11 +37,11 @@ const Editing = ({ blogInfo }) => {
     setOrigin(e.currentTarget.value);
   };
 
-  const onClickRemoveCoverImage = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setCoverImageURL(undefined);
-  };
+  // const onClickRemoveCoverImage = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setCoverImageURL(undefined);
+  // };
 
   const allCategories = useCategories();
   const allTags = useTags();

@@ -139,7 +139,9 @@ export function useEditMethods() {
 
   const saveAndSubmit = useCallback(async () => {
     const { id } = await save();
+    const { state } = editContext;
     try {
+      if (state === 'PUBLISHED') await api.blog.posts.post.cancelPublish(Number(id));
       await api.blog.posts.post.submit(id);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
@@ -147,7 +149,7 @@ export function useEditMethods() {
     } finally {
       setOperating(false);
     }
-  }, [save]);
+  }, [save, editContext]);
 
   return {
     save,

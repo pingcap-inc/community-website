@@ -127,7 +127,7 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
                 actions={
                   meData
                     ? [
-                        <span key="reply" onClick={() => onClickReply(item.commenter)}>
+                        <span key="reply" onClick={() => onClickReply(item)}>
                           回复
                         </span>,
                       ]

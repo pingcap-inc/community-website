@@ -5,10 +5,11 @@ import * as PreviewingStyled from './previewing.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { OriginLabel, RepostLabel } from '../../components/labels';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
+import { Button } from 'antd';
 
 const noop = () => {};
 
-const Previewing = () => {
+const Previewing = ({ blogInfo }) => {
   const { factory, title, origin, tags, content, coverImageURL } = useEditContext();
 
   if (!process.browser) {
@@ -36,6 +37,18 @@ const Previewing = () => {
           <PreviewingStyled.Declaration>声明：本文转载于 {origin}</PreviewingStyled.Declaration>
         ) : undefined}
       </Styled.Content>
+      <Styled.Actions>
+        {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
+        {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
+        <div className="btns">
+          <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
+            发布
+          </Button>
+          <Button type="default" onClick={save} disabled={operating}>
+            保存草稿
+          </Button>
+        </div>
+      </Styled.Actions>
     </>
   );
 };

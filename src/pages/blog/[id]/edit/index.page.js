@@ -62,7 +62,7 @@ const BlogEditPage = () => {
                 <Editing blogInfo={blogInfo} />
               </Tabs.TabPane>
               <Tabs.TabPane tab="预览" key="previewing">
-                <Previewing />
+                <Previewing blogInfo={blogInfo} />
               </Tabs.TabPane>
             </Tabs>
           )}

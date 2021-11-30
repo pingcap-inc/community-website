@@ -161,11 +161,11 @@ const Editing = ({ blogInfo }) => {
   );
 };
 
-const PublishedAlert = () => {
+export const PublishedAlert = () => {
   return <Alert type="warning" message="您正在编辑一个已发布的博客，修改或重新提交会将该博客下线。" />;
 };
 
-const PendingAlert = () => {
+export const PendingAlert = () => {
   return <Alert type="warning" message="您正在编辑一个审核中的博客，修改则需要重新提交审核。" />;
 };
 

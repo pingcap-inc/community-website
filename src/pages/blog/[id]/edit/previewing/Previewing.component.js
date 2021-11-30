@@ -21,7 +21,7 @@ const Previewing = () => {
         {coverImageURL ? (
           <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }} />
         ) : undefined}
-        <Styled.TitleInput disabled value={title} />
+        <Styled.TitleInput readOnly value={title} />
         <Styled.Meta>
           {typeof origin === 'string' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 

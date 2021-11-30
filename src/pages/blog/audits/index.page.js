@@ -6,28 +6,32 @@ import Link from 'next/link';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
 import { api } from '@tidb-community/datasource';
-import AuditList from './AuditList';
+import BlogList from '../BlogList';
 import { usePrincipal } from '../blog.hooks';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const data = await api.blog.getAudits();
+  const { page, size } = getPageQuery(ctx.query);
+  const sort = 'posts,desc';
+
+  const blogs = await api.blog.getLatest({ page, size, sort });
 
   return {
     props: {
       ...i18nProps,
-      data,
+      blogs,
     },
   };
 };
 
-const PageContent = ({ data }) => {
+const PageContent = ({ blogs }) => {
   const { hasRole } = usePrincipal();
   const isAdmin = hasRole('ADMIN');
   // TODO: check if current logon user is administrator
   if (!isAdmin) {
-    return null;
+    return '403';
   }
   return (
     <BlogLayout>
@@ -39,7 +43,7 @@ const PageContent = ({ data }) => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>待审核</Breadcrumb.Item>
           </Styled.Breadcrumb>
-          <AuditList data={data} />
+          <BlogList blogs={blogs} />
         </Styled.Container>
       </Styled.Content>
     </BlogLayout>

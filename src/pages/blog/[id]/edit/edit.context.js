@@ -124,7 +124,19 @@ export function useEditMethods() {
         await router.push(`/blog/${res.id}`);
         return res;
       } else {
-        if (state === 'PUBLISHED') await api.blog.posts.post.cancelSubmit(Number(id));
+        switch (state) {
+          case 'PUBLISHED': {
+            await api.blog.posts.post.cancelPublish(Number(id));
+            break;
+          }
+          case 'DRAFT':
+          case 'PENDING': {
+            await api.blog.posts.post.cancelSubmit(Number(id));
+            break;
+          }
+          default:
+            break;
+        }
         await api.blog.posts.post.update(Number(id), body);
         await router.push(`/blog/${id}`);
         return { id: Number(id) };
@@ -141,7 +153,19 @@ export function useEditMethods() {
     const { id } = await save();
     const { state } = editContext;
     try {
-      if (state === 'PUBLISHED') await api.blog.posts.post.cancelSubmit(Number(id));
+      switch (state) {
+        case 'PUBLISHED': {
+          await api.blog.posts.post.cancelPublish(Number(id));
+          break;
+        }
+        case 'DRAFT':
+        case 'PENDING': {
+          await api.blog.posts.post.cancelSubmit(Number(id));
+          break;
+        }
+        default:
+          break;
+      }
       await api.blog.posts.post.submit(id);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));

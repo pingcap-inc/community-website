@@ -1,21 +1,23 @@
 import React from 'react';
+import Link from 'next/link';
 import * as Styled from './author.styled';
 import { Avatar } from 'antd';
 import moment from 'moment';
-import { useRouter } from 'next/router';
 
 const AuthorInfo = ({ blogInfo }) => {
-  const router = useRouter();
+  const userPageURL = `/blog/user/${blogInfo.author.id}`;
 
   return (
     <Styled.AuthorContainer>
-      <Avatar
-        src={blogInfo.author.avatarURL}
-        size={18}
-        onClick={() => router.push(`/blog/user/${blogInfo.author.id}`)}
-      />
-      &nbsp;
-      <b>{blogInfo.author.username}</b>
+      <Styled.Profile>
+        <Link href={userPageURL}>
+          <Avatar src={blogInfo.author.avatarURL} size={18} />
+        </Link>
+        &nbsp;
+        <Link href={userPageURL}>
+          <b>{blogInfo.author.username}</b>
+        </Link>
+      </Styled.Profile>
       {blogInfo.publishedAt ? (
         <>
           &nbsp; 发表于 &nbsp;

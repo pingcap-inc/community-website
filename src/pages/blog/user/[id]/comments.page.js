@@ -23,7 +23,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const CommentsPage = ({ id, user, comments }) => {
+const CommentsPage = ({ user, comments }) => {
   return (
     <UserDetailsLayout userDetails={user} item="评论" itemKey="comments">
       <CommentsList comments={comments} />
@@ -52,6 +52,7 @@ const CommentsList = ({
               {commenter.username || commenter.name}
               &nbsp; 在
               <Link href={`/blog/${post.id}`}>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a className="ant-btn-link" type="link">
                   「{post.title}」
                 </a>

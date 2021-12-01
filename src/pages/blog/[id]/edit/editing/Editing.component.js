@@ -1,10 +1,10 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input, Upload } from 'antd';
+import { Alert, Button, Checkbox, Input } from 'antd';
 import React, { useCallback, useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
-import ImgCrop from 'antd-img-crop';
-import { DeleteOutlined } from '@ant-design/icons';
+// import ImgCrop from 'antd-img-crop';
+// import { DeleteOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
@@ -12,9 +12,9 @@ import { useCategories, useTags } from './editing.hooks';
 const Editing = ({ blogInfo }) => {
   const {
     factory,
-    coverImageURL,
-    setCoverImageURL,
-    uploadCoverImage,
+    // coverImageURL,
+    // setCoverImageURL,
+    // uploadCoverImage,
     title,
     setTitle,
     origin,
@@ -37,11 +37,11 @@ const Editing = ({ blogInfo }) => {
     setOrigin(e.currentTarget.value);
   };
 
-  const onClickRemoveCoverImage = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setCoverImageURL(undefined);
-  };
+  // const onClickRemoveCoverImage = (e) => {
+  //   e.preventDefault();
+  //   e.stopPropagation();
+  //   setCoverImageURL(undefined);
+  // };
 
   const allCategories = useCategories();
   const allTags = useTags();
@@ -80,29 +80,30 @@ const Editing = ({ blogInfo }) => {
   return (
     <>
       <Styled.Content>
-        <ImgCrop aspect={7} modalTitle="调整图片" modalOk="确认" modalCancel="返回">
-          <Upload
-            maxCount={1}
-            multiple={false}
-            showUploadList={false}
-            onChange={({ file }) => file.status === 'done' && uploadCoverImage(file.originFileObj)}
-          >
-            {coverImageURL ? (
-              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>
-                <Button
-                  htmlType="button"
-                  size="large"
-                  danger
-                  type="link"
-                  icon={<DeleteOutlined />}
-                  onClick={onClickRemoveCoverImage}
-                />
-              </Styled.CoverImage>
-            ) : (
-              <Styled.CoverImagePlaceholder>+ 插入封面图</Styled.CoverImagePlaceholder>
-            )}
-          </Upload>
-        </ImgCrop>
+        {/*disable cover image*/}
+        {/*<ImgCrop aspect={7} modalTitle="调整图片" modalOk="确认" modalCancel="返回">*/}
+        {/*  <Upload*/}
+        {/*    maxCount={1}*/}
+        {/*    multiple={false}*/}
+        {/*    showUploadList={false}*/}
+        {/*    onChange={({ file }) => file.status === 'done' && uploadCoverImage(file.originFileObj)}*/}
+        {/*  >*/}
+        {/*    {coverImageURL ? (*/}
+        {/*      <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}>*/}
+        {/*        <Button*/}
+        {/*          htmlType="button"*/}
+        {/*          size="large"*/}
+        {/*          danger*/}
+        {/*          type="link"*/}
+        {/*          icon={<DeleteOutlined />}*/}
+        {/*          onClick={onClickRemoveCoverImage}*/}
+        {/*        />*/}
+        {/*      </Styled.CoverImage>*/}
+        {/*    ) : (*/}
+        {/*      <Styled.CoverImagePlaceholder>+ 插入封面图</Styled.CoverImagePlaceholder>*/}
+        {/*    )}*/}
+        {/*  </Upload>*/}
+        {/*</ImgCrop>*/}
         <Styled.TitleInput placeholder="博客标题......" value={title} onChange={onTitleChange} />
         <Styled.Meta>
           <Styled.CategorySelect
@@ -160,11 +161,11 @@ const Editing = ({ blogInfo }) => {
   );
 };
 
-const PublishedAlert = () => {
+export const PublishedAlert = () => {
   return <Alert type="warning" message="您正在编辑一个已发布的博客，修改或重新提交会将该博客下线。" />;
 };
 
-const PendingAlert = () => {
+export const PendingAlert = () => {
   return <Alert type="warning" message="您正在编辑一个审核中的博客，修改则需要重新提交审核。" />;
 };
 

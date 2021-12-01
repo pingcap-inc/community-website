@@ -2,10 +2,8 @@ import React from 'react';
 import * as Styled from './index.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
-import { Pagination } from 'antd';
+import { Pagination, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';
-
-// import { link as linkUtils } from '~/utils';
 
 const BlogList = ({
   blogs: {
@@ -17,6 +15,10 @@ const BlogList = ({
 }) => {
   const router = useRouter();
   const { onPageChange } = useRouterPage();
+
+  if (!content) {
+    return <Skeleton active />;
+  }
 
   return (
     <Styled.Container>

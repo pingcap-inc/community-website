@@ -7,6 +7,13 @@ export const Container = styled.div.attrs({})`
 
 export const List = styled.div.attrs({})`
   display: flex;
+  overflow: scroll;
+  // code at below is for hidden scroll on different browser
+  scrollbar-width: none; /* firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
 `;
 
 export const Item = styled.div.attrs({})`
@@ -16,4 +23,5 @@ export const Item = styled.div.attrs({})`
   border-radius: 0.25rem;
   border: 1px solid ${colors.C4};
   font-size: 14px;
+  white-space: nowrap;
 `;

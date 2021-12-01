@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Breadcrumb, Pagination } from 'antd';
+import { Breadcrumb } from 'antd';
 
 import * as Styled from './index.styled';
 
@@ -12,14 +12,16 @@ import { PageDataContext } from '~/context';
 
 import TagItem from './TagItem.component';
 import BlogLayout from '../BlogLayout.component';
-import { getPageQuery, useRouterPage } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { page, size } = getPageQuery(ctx.query);
+  // const { page = 1, size = 999 } = getPageQuery(ctx.query);
+  const page = 1;
+  const size = 99999;
+  const sort = 'posts,desc';
 
-  const tags = await api.blog.getTags({ page, size });
+  const tags = await api.blog.getTags({ page, size, sort });
 
   return {
     props: {
@@ -29,18 +31,11 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const TagPage = ({
-  tags: {
-    content,
-    page: { number, totalElements },
-  },
-}) => {
-  const { onPageChange } = useRouterPage();
-
+const TagPage = ({ tags: { content } }) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客 - 全部标签"
+        title="博客 - 标签"
         // description
         // keyword
       />
@@ -64,9 +59,6 @@ const TagPage = ({
               </Styled.Item>
             ))}
           </Styled.List>
-          <Styled.Pagination>
-            <Pagination current={number} total={totalElements} onChange={onPageChange} />
-          </Styled.Pagination>
         </Styled.Content>
       </BlogLayout>
     </PageDataContext.Provider>

@@ -60,9 +60,11 @@ const BlogInfo = ({
             <Avatar size={Styled.avatarSize} src={author.avatarURL} />
           </Styled.AuthorAvatar>
           <Styled.AuthorInfo>
-            <Styled.AuthorName onClick={handleClickAuthor}>
-              {author.username || author.name}
-              {usernameExtends}
+            <Styled.AuthorName>
+              <Styled.AuthorNameBase onClick={handleClickAuthor}>
+                {author.username || author.name}
+              </Styled.AuthorNameBase>
+              <Styled.AuthorNameExtend>{usernameExtends}</Styled.AuthorNameExtend>
             </Styled.AuthorName>
             <Styled.AuthorPublishedAt>{publishedAtFormatted}</Styled.AuthorPublishedAt>
           </Styled.AuthorInfo>

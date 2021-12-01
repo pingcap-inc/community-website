@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Link from 'next/link';
 import * as Styled from './comments.styled';
 import { Avatar, Button, Col, Comment, Input, List, Pagination, Row, Skeleton } from 'antd';
 import { AuthContext, MeContext } from '~/context';
@@ -6,7 +7,6 @@ import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
 import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
-import { useRouter } from 'next/router';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
@@ -59,7 +59,7 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
   if (!meData) {
     return (
       <Styled.LoginAlert>
-        请{' '}
+        请 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a type="link" onClick={() => login()}>
           登录
         </a>{' '}
@@ -94,7 +94,6 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
 };
 
 const CommentList = ({ blogInfo, tick, onClickReply }) => {
-  const router = useRouter();
   const { meData } = useContext(MeContext);
   const [page, setPage] = useState(1);
 
@@ -110,29 +109,34 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
         loading={loading}
         itemLayout="horizontal"
         dataSource={comments}
-        renderItem={(item) => (
-          <li>
-            <Comment
-              author={item.commenter.username}
-              avatar={
-                <Avatar onClick={() => router.push(`/blog/user/${item.commenter.id}`)} src={item.commenter.avatarURL} />
-              }
-              content={
-                (item.repliedTo ? `回复 @${item.repliedTo.username || item.repliedTo.name}：` : '') + item.content
-              }
-              datetime={formatIsoDatetime(item.createdAt)}
-              actions={
-                meData
-                  ? [
-                      <span key="reply" onClick={() => onClickReply(item.commenter)}>
-                        回复
-                      </span>,
-                    ]
-                  : undefined
-              }
-            />
-          </li>
-        )}
+        renderItem={(item) => {
+          const commenterUserURL = `/blog/user/${item.commenter.id}`;
+          return (
+            <li>
+              <Comment
+                author={<Link href={commenterUserURL}>{item.commenter.username}</Link>}
+                avatar={
+                  <Link href={commenterUserURL}>
+                    <Avatar src={item.commenter.avatarURL} />
+                  </Link>
+                }
+                content={
+                  (item.repliedTo ? `回复 @${item.repliedTo.username || item.repliedTo.name}：` : '') + item.content
+                }
+                datetime={formatIsoDatetime(item.createdAt)}
+                actions={
+                  meData
+                    ? [
+                        <span key="reply" onClick={() => onClickReply(item)}>
+                          回复
+                        </span>,
+                      ]
+                    : undefined
+                }
+              />
+            </li>
+          );
+        }}
       />
       <Pagination pageSize={10} current={page} onChange={(page) => setPage(page)} total={totalComments} />
     </>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import * as themeColors from '../../colors';
 
 export const borderRadius = 6;
-export const avatarSize = 40;
+export const avatarSize = 32;
 const colors = {
   primary: themeColors.B1,
   black: themeColors.F1,
@@ -68,9 +68,16 @@ export const AuthorInfo = styled.div`
 `;
 
 export const AuthorName = styled.div`
-  font-weight: bold;
-  color: ${colors.black};
+  display: flex;
+`;
+
+export const AuthorNameBase = styled.div`
+  color: #565656;
   cursor: pointer;
+`;
+
+export const AuthorNameExtend = styled.div`
+  margin-left: 0.25rem;
 `;
 
 export const AuthorPublishedAt = styled.div`

@@ -20,8 +20,3 @@ export const Item = styled(Col).attrs({
   md: 12,
   lg: 6,
 })``;
-
-export const Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-`;

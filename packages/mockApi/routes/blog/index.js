@@ -36,4 +36,7 @@ router.get('/principal', require('./common/principal'));
 router.post('/upload/image/auth', require('./common/upload'));
 router.put('/fake-upload', require('./common/upload').fakeUpload);
 
+router.get('/audits', require('./audits/audits'));
+router.get('/audits/:id', require('./audits/[id]'));
+
 module.exports = router;

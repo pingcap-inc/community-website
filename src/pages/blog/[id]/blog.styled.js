@@ -30,6 +30,7 @@ export const CoverImage = styled.div`
   margin-left: -37px;
   margin-right: -37px;
   margin-top: -30px;
+  margin-bottom: 2rem;
   border-bottom: 2px ${colors.B4} solid;
   background-size: cover;
   background-repeat: no-repeat;

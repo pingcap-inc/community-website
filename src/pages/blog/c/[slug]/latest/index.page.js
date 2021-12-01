@@ -3,7 +3,7 @@ import { api } from '@tidb-community/datasource';
 import CategoryPage from '../index.page';
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
+  const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { slug } = ctx.params;
 

@@ -17,7 +17,7 @@ const CategoryListMobile = ({ categories: { content } }) => {
 
 const Item = ({ name, slug }) => {
   const { query } = useRouter();
-  const url = slug === '' ? `/blog` : `/blog/category/${slug}`;
+  const url = slug === '' ? `/blog` : `/blog/c/${slug}`;
   const selected = (query.slug || '') === slug;
   return (
     <Link href={url}>

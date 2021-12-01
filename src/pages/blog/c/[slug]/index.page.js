@@ -48,8 +48,8 @@ export default function CategoryPage({ category, categories, blogs, hotTags }) {
   const { slug } = category;
 
   const orderBy = [
-    { name: '推荐排序', url: `/blog/category/${slug}` },
-    { name: '时间排序', url: `/blog/category/${slug}/latest` },
+    { name: '推荐排序', url: `/blog/c/${slug}` },
+    { name: '时间排序', url: `/blog/c/${slug}/latest` },
   ];
 
   return (

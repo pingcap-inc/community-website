@@ -2,7 +2,7 @@ import { createContext, useCallback, useContext, useMemo, useState } from 'react
 import { createFactory } from '@pingcap-inc/tidb-community-editor';
 import { api } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
-import { message } from 'antd';
+import { message, Modal } from 'antd';
 import Axios from 'axios';
 
 const EditContext = createContext({
@@ -34,7 +34,6 @@ export function useEditContextProvider() {
   const [content, setContent] = useState([{ type: 'paragraph', children: [{ text: '' }] }]);
   const [blogInfo, setBlogInfo] = useState(undefined);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState('');
 
   const uploadCoverImage = useCallback(async (file) => {
     const { downloadURL, uploadURL } = await api.blog.common.upload(file.name, file.type);
@@ -56,7 +55,6 @@ export function useEditContextProvider() {
       setTags([]);
       setBlogInfo(undefined);
       setCoverImageURL(undefined);
-      setStatus('DRAFT');
       return Promise.resolve();
     } else {
       setLoading(true);
@@ -70,7 +68,6 @@ export function useEditContextProvider() {
           setContent(JSON.parse(info.content));
           setBlogInfo(info);
           setCoverImageURL(info.coverImageURL);
-          setStatus(info.status);
         })
         .finally(() => setLoading(false));
     }
@@ -94,7 +91,6 @@ export function useEditContextProvider() {
     setTags,
     content,
     setContent,
-    status,
   };
 }
 
@@ -102,6 +98,7 @@ export function useEditMethods() {
   const router = useRouter();
   const editContext = useEditContext();
   const [operating, setOperating] = useState(false);
+  const { reload } = editContext;
 
   const {
     query: { id },
@@ -109,7 +106,7 @@ export function useEditMethods() {
 
   const save = useCallback(async () => {
     try {
-      const { title, coverImageURL, origin, category, tags, content, state } = editContext;
+      const { title, coverImageURL, origin, category, tags, content, blogInfo } = editContext;
       const body = {
         title,
         origin: typeof origin === 'string' ? 'REPOST' : 'ORIGINAL',
@@ -124,19 +121,7 @@ export function useEditMethods() {
         await router.push(`/blog/${res.id}`);
         return res;
       } else {
-        switch (state) {
-          case 'PUBLISHED': {
-            await api.blog.posts.post.cancelPublish(Number(id));
-            break;
-          }
-          case 'DRAFT':
-          case 'PENDING': {
-            await api.blog.posts.post.cancelSubmit(Number(id));
-            break;
-          }
-          default:
-            break;
-        }
+        await fixStatus(Number(id), blogInfo.status);
         await api.blog.posts.post.update(Number(id), body);
         await router.push(`/blog/${id}`);
         return { id: Number(id) };
@@ -151,35 +136,50 @@ export function useEditMethods() {
 
   const saveAndSubmit = useCallback(async () => {
     const { id } = await save();
-    const { state } = editContext;
     try {
-      switch (state) {
-        case 'PUBLISHED': {
-          await api.blog.posts.post.cancelPublish(Number(id));
-          break;
-        }
-        case 'DRAFT':
-        case 'PENDING': {
-          await api.blog.posts.post.cancelSubmit(Number(id));
-          break;
-        }
-        default:
-          break;
-      }
+      // save() make sure status is DRAFT
       await api.blog.posts.post.submit(id);
+      reload(id);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;
     } finally {
       setOperating(false);
     }
-  }, [save, editContext]);
+  }, [save, reload]);
 
   return {
     save,
     saveAndSubmit,
     operating,
   };
+}
+
+async function fixStatus(id, status) {
+  switch (status) {
+    case 'PENDING':
+      await api.blog.posts.post.cancelSubmit(id);
+      break;
+    case 'PUBLISHED':
+      try {
+        await new Promise((resolve, reject) => {
+          Modal.confirm({
+            title: '确认操作',
+            content: '内容更新后需要重新审核才能上线',
+            onOk: () => resolve(),
+            onCancel: () => reject('canceled'),
+          });
+        });
+        await api.blog.posts.post.cancelPublish(id);
+      } catch (e) {
+        if (e !== 'canceled') {
+          throw e;
+        }
+      }
+      break;
+    default:
+      break;
+  }
 }
 
 export default EditContext;

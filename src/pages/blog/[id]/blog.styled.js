@@ -89,4 +89,7 @@ export const Actions = styled.div`
 export const Editor = styled.div`
   margin-top: 12px;
   padding: 0 11px;
+  a {
+    color: ${colors.B1};
+  }
 `;

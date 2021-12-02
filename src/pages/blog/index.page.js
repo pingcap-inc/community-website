@@ -9,9 +9,9 @@ import BlogHomepage from './home/BlogHomepage';
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
+  const { page, size } = ctx.params;
   const { getCategories, getRecommend, getHotTags } = api.blog;
-
-  const [categories, blogs, hotTags] = await Promise.all([getCategories(), getRecommend(), getHotTags()]);
+  const [categories, blogs, hotTags] = await Promise.all([getCategories(), getRecommend({ page, size }), getHotTags()]);
 
   return {
     props: {

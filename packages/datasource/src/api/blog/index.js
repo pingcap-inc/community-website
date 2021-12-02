@@ -8,6 +8,8 @@ export const getLatest = (params) => blogClient.get(`/api/posts/latest`, { param
 
 export const getRecommend = (params) => blogClient.get(`/api/posts/recommend`, { params });
 
+export const getPosts = (params) => blogClient.get(`/api/posts`, { params });
+
 export const getTags = (params) => blogClient.get(`/api/tags`, { params });
 export const getHotTags = (params) => blogClient.get(`/api/tags?sort=posts,desc`, { params });
 export const getTagById = (id) => blogClient.get(`/api/tags/${id}`);

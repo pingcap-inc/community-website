@@ -21,6 +21,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { slug } = ctx.params;
 
+  // const { page, size } = getPageQuery(ctx.query);
   const category = await api.blog.getCategoryBySlug(slug);
   const [categories, blogs, hotTags] = await Promise.all([
     api.blog.getCategories(),

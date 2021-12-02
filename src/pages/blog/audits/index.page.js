@@ -14,10 +14,9 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { page, size } = getPageQuery(ctx.query);
-  const sort = 'posts,desc';
   const status = 'PENDING';
 
-  const blogs = await api.blog.getPosts({ page, size, sort, status });
+  const blogs = await api.blog.getPosts({ page, size, status });
 
   return {
     props: {

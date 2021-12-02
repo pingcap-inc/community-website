@@ -13,7 +13,7 @@ const WriteBlogButton = () => {
   };
   return (
     <Button icon={<EditOutlined />} onClick={handleClickWrite} type="primary" block>
-      写博客
+      写文章
     </Button>
   );
 };

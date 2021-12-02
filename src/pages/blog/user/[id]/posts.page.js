@@ -44,7 +44,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
   }, [id, status]);
 
   return (
-    <UserDetailsLayout userDetails={user} item="博客" itemKey="posts">
+    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts">
       {principal.id === Number(id) ? (
         <Select value={status} options={statuses} onChange={(status) => setStatus(status)} bordered={false} />
       ) : undefined}

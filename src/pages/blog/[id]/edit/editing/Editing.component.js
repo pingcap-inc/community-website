@@ -104,7 +104,7 @@ const Editing = ({ blogInfo }) => {
         {/*    )}*/}
         {/*  </Upload>*/}
         {/*</ImgCrop>*/}
-        <Styled.TitleInput placeholder="博客标题......" value={title} onChange={onTitleChange} />
+        <Styled.TitleInput placeholder="文章标题......" value={title} onChange={onTitleChange} />
         <Styled.Meta>
           <Styled.CategorySelect
             placeholder="请选择分类"
@@ -162,11 +162,11 @@ const Editing = ({ blogInfo }) => {
 };
 
 export const PublishedAlert = () => {
-  return <Alert type="warning" message="您正在编辑一个已发布的博客，修改或重新提交会将该博客下线。" />;
+  return <Alert type="warning" message="您正在编辑一个已发布的文章，修改或重新提交会将该文章下线。" />;
 };
 
 export const PendingAlert = () => {
-  return <Alert type="warning" message="您正在编辑一个审核中的博客，修改则需要重新提交审核。" />;
+  return <Alert type="warning" message="您正在编辑一个审核中的文章，修改则需要重新提交审核。" />;
 };
 
 const fromServerMeta = (obj) => {

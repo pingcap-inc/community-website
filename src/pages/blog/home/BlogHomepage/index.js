@@ -27,7 +27,7 @@ export default function BlogHomepage({ categories, blogs, hotTags }) {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客 - 首页"
+        title="专栏 - 首页"
         // description
         // keyword
       />

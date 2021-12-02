@@ -54,14 +54,14 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
       <CommunityHead
-        title={`博客 - ${blogInfo.title}`}
+        title={`专栏 - ${blogInfo.title}`}
         // description
         // keyword
       />
 
       <Styled.VisualContainer>
         <Breadcrumb>
-          <Breadcrumb.Item href="/blog">博客</Breadcrumb.Item>
+          <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
           <Breadcrumb.Item href={`/blog/categories/${blogInfo.category?.slug}`}>
             {blogInfo.category?.name}
           </Breadcrumb.Item>

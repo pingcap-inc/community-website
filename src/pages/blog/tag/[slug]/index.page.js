@@ -45,7 +45,7 @@ const TagDetail = ({ blogs, hotTags, tag, slug }) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客"
+        title={`专栏 - ${tag.name}`}
         // description
         // keyword
       />
@@ -55,7 +55,7 @@ const TagDetail = ({ blogs, hotTags, tag, slug }) => {
           <Styled.Breadcrumb>
             <Breadcrumb>
               <Breadcrumb.Item>
-                <Link href={'/blog'}>博客</Link>
+                <Link href={'/blog'}>专栏</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
                 <Link href={'/blog/tag'}>标签</Link>

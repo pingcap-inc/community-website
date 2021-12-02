@@ -22,7 +22,7 @@ const UserDetailsLayout = ({ itemKey, item, userDetails, children }) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客"
+        title="专栏"
         // description
         // keyword
       />
@@ -32,7 +32,7 @@ const UserDetailsLayout = ({ itemKey, item, userDetails, children }) => {
           <Styled.Container>
             <Styled.Breadcrumb>
               <Breadcrumb.Item>
-                <Link href="/blog">博客</Link>
+                <Link href="/blog">专栏</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>{itemText}</Breadcrumb.Item>
             </Styled.Breadcrumb>

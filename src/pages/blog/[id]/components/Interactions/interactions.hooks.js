@@ -77,7 +77,7 @@ export const useShares = (blogInfo) => {
         const title = blogInfo.title;
         const author = blogInfo.author.username || blogInfo.author.name;
         const url = `${href}${href.includes('?') ? '&' : '?'}shareId=${shareID}`;
-        copy(`${title} - ${author} 的博客 - ${url}`);
+        copy(`${title} - ${author} 的专栏 - ${url}`);
         return shared;
       })
       .then((shared) => {

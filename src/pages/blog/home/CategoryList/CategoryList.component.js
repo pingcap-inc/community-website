@@ -18,8 +18,8 @@ const CategoryList = ({ categories: { content } }) => {
       </Styled.List>
       <Divider />
       {isEditor && <FixedLink url={`/blog/audits`}>待审核列表</FixedLink>}
-      {isLogin && <FixedLink url={`/blog/user/${id}/posts`}>我的博客</FixedLink>}
-      <FixedLink url={'/blog'}>博客发布指南</FixedLink>
+      {isLogin && <FixedLink url={`/blog/user/${id}/posts`}>我的专栏</FixedLink>}
+      <FixedLink url={'/blog'}>专栏发布指南</FixedLink>
       <FixedLink url={'/blog'}>隐私协议</FixedLink>
       <FixedLink url={'/blog'}>联系我们</FixedLink>
     </Styled.Container>

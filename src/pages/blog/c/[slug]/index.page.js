@@ -55,7 +55,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags }) {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="博客 - 首页"
+        title="专栏 - 首页"
         // description
         // keyword
       />

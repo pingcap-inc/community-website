@@ -48,7 +48,7 @@ const BlogEditPage = () => {
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
       <CommunityHead
-        title="博客 - 编辑文章"
+        title="专栏 - 编辑文章"
         // description
         // keyword
       />

@@ -109,6 +109,7 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
         loading={loading}
         itemLayout="horizontal"
         dataSource={comments}
+        locale={{ emptyText: '暂无评论' }}
         renderItem={(item) => {
           const commenterUserURL = `/blog/user/${item.commenter.id}`;
           return (

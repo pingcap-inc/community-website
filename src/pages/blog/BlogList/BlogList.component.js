@@ -47,9 +47,6 @@ const BlogList = ({
           }}
         />
       </Styled.List>
-      <Styled.Pagination>
-        <Pagination current={number} total={totalElements} onChange={onPageChange} />
-      </Styled.Pagination>
     </Styled.Container>
   );
 };

@@ -14,9 +14,3 @@ export const Item = styled.div`
     margin-top: 2rem;
   }
 `;
-
-export const Pagination = styled.div`
-  margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-`;

@@ -2,7 +2,7 @@ import React from 'react';
 import * as Styled from './index.styled';
 import { BlogInfo } from '@tidb-community/ui';
 import { useRouter } from 'next/router';
-import { List, Pagination, Skeleton } from 'antd';
+import { List, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';
 
 const BlogList = ({

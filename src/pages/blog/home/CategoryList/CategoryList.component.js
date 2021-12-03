@@ -19,9 +19,9 @@ const CategoryList = ({ categories: { content } }) => {
       <Divider />
       {isEditor && <FixedLink url={`/blog/audits`}>待审核列表</FixedLink>}
       {isLogin && <FixedLink url={`/blog/user/${id}/posts`}>我的专栏</FixedLink>}
-      <FixedLink url={'/blog'}>专栏发布指南</FixedLink>
-      <FixedLink url={'/blog'}>隐私协议</FixedLink>
-      <FixedLink url={'/blog'}>联系我们</FixedLink>
+      <FixedLink url={'https://asktug.com/t/topic/69773'}>专栏发布指南</FixedLink>
+      <FixedLink url={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>
+      <FixedLink url={'mailto:/api'}>联系我们</FixedLink>
     </Styled.Container>
   );
 };

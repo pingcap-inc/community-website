@@ -79,7 +79,7 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
               value={comment}
               onChange={(event) => setComment(event.target.value)}
               onKeyDown={onKeyDown}
-              prefix={replyTo ? <span>回复 @{replyTo.username || replyTo.name}</span> : undefined}
+              prefix={replyTo ? <span>回复 @{replyTo.commenter.username || replyTo.commenter.name}</span> : undefined}
             />
           </Col>
           <Col span="56px">

@@ -8,15 +8,15 @@ import * as Styled from './index.styled';
 import { api } from '@tidb-community/datasource';
 import BlogList from '../BlogList';
 import { usePrincipal } from '../blog.hooks';
-import { getPageQuery } from '~/utils/pagination.utils';
+// import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { page, size } = getPageQuery(ctx.query);
+  // const { page, size } = getPageQuery(ctx.query);
   const status = 'PENDING';
 
-  const blogs = await api.blog.getPosts({ page, size, status });
+  const blogs = await api.blog.getPosts({ status });
 
   return {
     props: {

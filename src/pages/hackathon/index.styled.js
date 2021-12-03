@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import titleBackgroundSvg from './title-bg.svg';
 import BannerTitleSvg from './banner-title.svg';
+import BannerTitleMobileSvg from './banner-title-mobile.svg';
 import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
 import { Link as RawLink } from '~/components';
 import CollapseIconSvg from './faq-collapse.svg';
@@ -83,15 +84,20 @@ export const BannerTitle = styled(BannerTitleSvg)`
   margin-bottom: 4rem;
 `;
 
+export const BannerTitleMobile = styled(BannerTitleMobileSvg)`
+  width: min(30rem, 100%);
+  margin-bottom: 4rem;
+`;
+
 export const BannerButtonsGroup = styled.div`
   width: min(24rem, 100%);
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 1rem;
-
+  //display: grid;
+  display: flex;
+  gap: 1rem;
   ${(props) =>
     props.isSmallScreen
       ? css`
+          width: 100%;
           position: absolute;
           bottom: 1rem;
         `
@@ -111,6 +117,37 @@ export const BannerButton = styled(Button).attrs({
   &:hover {
     background-color: #3c26b5 !important;
   }
+`;
+
+export const BannerQRCodeOverlay = styled.div`
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+`;
+
+export const BannerQRCodeContent = styled.div`
+  // qrcode image as background
+  margin: 0 auto;
+`;
+
+export const BannerQRCodeText = styled.div`
+  width: 100%;
+  text-align: center;
+  color: white;
+  padding-top: 1rem;
+`;
+
+export const BannerQRCodeImage = styled.div`
+  width: 256px;
+  height: 256px;
+  background: url('${getImage('banner-qrcode.jpg')}') no-repeat center center;
+  background-size: contain;
 `;
 
 export const BannerNavButton = styled.a`
@@ -167,7 +204,7 @@ export const TableHeaderIcon = styled.div`
 `;
 
 export const TableCellContent = styled.div`
-  height: 10rem !important;
+  height: 16rem !important;
   padding: 1rem;
   background-color: ${backgroundColor};
 `;
@@ -187,7 +224,7 @@ export const ProcedureCard = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
   position: relative;
   text-align: left;
   height: 100%;
@@ -240,8 +277,8 @@ export const ProcedureCardButton = styled(RawLink)`
 
 export const ProcedureCardWrapper = styled.div`
   display: flex;
-  align-items: center;
-  height: available;
+  align-items: start;
+  //height: 30rem;
   ${(props) =>
     !props.isSmallScreen
       ? css`
@@ -269,16 +306,21 @@ export const ProcedureCardWrapper = styled.div`
 `;
 
 export const ProcedureCardDivider = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 20.596px;
-  height: 32.707px;
+  z-index: 1;
   background-image: url(${getImage('procedure-card-divider.svg')});
+  background-repeat: no-repeat;
+  background-position: center;
 `;
 
 export const ProcedureCardsGroup = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: stretch;
 
   ${ProcedureCardDivider}:first-child {
     display: none;
@@ -308,8 +350,16 @@ export const Prize = styled.div`
 `;
 
 export const PrizeTitle = styled.div`
-  padding-top: 3rem;
-  font-size: 24px;
+  ${(props) =>
+    props.huge
+      ? css`
+          font-size: 24px;
+          padding-top: 3rem;
+        `
+      : css`
+          font-size: 14px;
+          padding-top: 4rem;
+        `}
   font-weight: 300;
 `;
 
@@ -369,10 +419,9 @@ export const BenefitCardContent = styled.div`
 
 export const JudgeCardOverlay = styled.div`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  bottom: 1rem;
+  width: calc(100% - 1rem);
+  height: calc(100% - 1rem);
   background-color: rgba(36, 35, 106, 0.5);
   padding: 1rem;
   text-align: start;
@@ -383,7 +432,7 @@ export const JudgeCardContent = styled.div`
   bottom: 1rem;
   // background is a gradient from left to right with diminishing opacity
   background-image: linear-gradient(to right, rgba(36, 35, 106, 1) 0%, rgba(36, 35, 106, 0) 100%); /* the gradient */
-  height: 4rem;
+  height: 6rem;
   width: 100%;
   text-align: start;
   padding: 0.5rem;
@@ -497,7 +546,6 @@ export const FAQCollapsePanel = styled(Collapse.Panel)`
     // vertically center the text
     display: flex;
     align-items: center;
-    height: 4rem;
     text-align: left;
     color: #fff;
   }

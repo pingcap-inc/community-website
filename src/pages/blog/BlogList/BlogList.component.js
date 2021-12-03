@@ -26,6 +26,7 @@ const BlogList = ({
         <List
           pagination={{ current: number, total: totalElements, onChange: onPageChange }}
           dataSource={content}
+          locale={{ emptyText: '暂无文章' }}
           renderItem={(value) => {
             const onClick = () => router.push(`/blog/${value.id}`);
             const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);

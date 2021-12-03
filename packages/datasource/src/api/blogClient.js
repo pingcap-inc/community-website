@@ -12,7 +12,12 @@ const blogClient = axios.create({
     accept: 'application/json',
   },
 });
-
+// axios.interceptors.request.use((config) => {
+//   console.log('request params：', config);
+//   return config;
+// }, error => {
+//   return Promise.reject(error);
+// });
 blogClient.interceptors.response.use(
   ({ data }) => {
     if (typeof data?.page?.number === 'number') {

@@ -175,15 +175,20 @@ export const BannerNavButtonsGroup = styled.div`
   }
 `;
 export const TableCell = styled.td`
+  height: 100%;
   ${(props) =>
-    props.isSmallScreen &&
-    css`
-      width: 50%;
-    `}
+    props.isSmallScreen
+      ? css`
+          width: 50%;
+        `
+      : css`
+          width: 25%;
+        `}
 `;
 export const TableHeaderCell = styled(TableCell)``;
 
 export const Table = styled.table`
+  height: 1px;
   margin-left: auto;
   margin-right: auto;
   background-image: linear-gradient(to bottom, #84fcfc 0%, #674ff0 100%); /* the gradient */
@@ -204,7 +209,9 @@ export const TableHeaderIcon = styled.div`
 `;
 
 export const TableCellContent = styled.div`
-  height: 16rem !important;
+  //height: 16rem !important;
+  height: inherit;
+  text-align: start;
   padding: 1rem;
   background-color: ${backgroundColor};
 `;
@@ -378,13 +385,22 @@ export const PrizesRow = styled(Row)`
   padding-bottom: 3rem;
 `;
 
-export const PrizesLabel = styled.div`
+export const GlowLabel = styled.div`
   color: #84fcfc;
-  width: 100%;
   text-align: left;
   font-size: 20px;
+  line-height: 4rem;
   font-weight: 300;
-  margin-bottom: 3rem;
+  ${(props) =>
+    props.tall &&
+    css`
+      margin-bottom: 3rem;
+    `}
+  width: fit-content;
+  background-image: url(${getImage('prizes-label-bg.svg')});
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
 `;
 
 export const BenefitCard = styled.div`
@@ -494,7 +510,7 @@ export const JudgesLabel = styled.div`
   }
 
   hr {
-    border: 0.1px dashed #674ff0;
+    border: 1px dashed #674ff0;
     width: 100%;
     padding-left: 1rem;
   }

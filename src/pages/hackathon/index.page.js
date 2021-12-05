@@ -76,7 +76,7 @@ const groupsData = [
     name: '生态组',
     desc: '丰富 TiDB/TiKV/TiDB Cloud 应用生态，补充和增强上下游工具、平台、应用对 TiDB/TiKV/TiDB Cloud 的支持能力，例如增强 MySQL 生态中间件、应用框架对 TiDB 的兼容性，基于 TiDB Cloud 的云上应用开发等。',
   },
-  { name: '创意组', desc: '欢迎其他任何 Cool idea，创造不设限！\n PS. Chaos Mesh 爱好者看过来' },
+  { name: '∞', desc: '欢迎其他任何 Cool idea，创造不设限！\n PS. Chaos Mesh 爱好者看过来' },
 ];
 
 const stepsData = [
@@ -286,7 +286,7 @@ const Page = () => {
         </Styled.Section>
         <Styled.Section id="prizes">
           <SectionTitle>大赛奖项</SectionTitle>
-          <Styled.PrizesLabel> Top 3 奖项</Styled.PrizesLabel>
+          <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
               <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
@@ -299,7 +299,7 @@ const Page = () => {
             </Col>
           </Styled.PrizesRow>
           奖金为税前金额
-          <Styled.PrizesLabel> 特别奖项 </Styled.PrizesLabel>
+          <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
               <Prize title={'CTO 特别奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
@@ -340,7 +340,7 @@ const Page = () => {
               <Prize title={'神秘奖项'} count={'？'} reward={'现场揭晓'} src={getImage('prize-special.svg')} />
             </Col>
           </Styled.PrizesRow>
-          <Styled.PrizesLabel> 其他参赛福利 </Styled.PrizesLabel>
+          <Styled.GlowLabel tall> 其他参赛福利 </Styled.GlowLabel>
           <Styled.PrizesRow gutter={32}>
             {[
               '专业导师赛前辅导',
@@ -359,7 +359,7 @@ const Page = () => {
         <Styled.Section id="judges">
           <SectionTitle>评委&导师</SectionTitle>
           <Styled.JudgesLabel>
-            <div>评委</div>
+            <Styled.GlowLabel>评委</Styled.GlowLabel>
             <hr />
           </Styled.JudgesLabel>
           <Row justify="space-between" gutter={16}>
@@ -376,7 +376,7 @@ const Page = () => {
           </Row>
 
           <Styled.JudgesLabel>
-            <div>导师</div>
+            <Styled.GlowLabel>导师</Styled.GlowLabel>
             <hr />
           </Styled.JudgesLabel>
           <Row justify="space-between" gutter={16}>

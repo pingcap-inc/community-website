@@ -61,8 +61,9 @@ export async function share(id) {
 }
 
 export async function comments(id, page, size = 10) {
+  const sort = 'createdAt,desc';
   return await blogClient.get(`/api/posts/${id}/comments`, {
-    params: { page, size },
+    params: { page, size, sort },
   });
 }
 

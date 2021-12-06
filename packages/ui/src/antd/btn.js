@@ -41,8 +41,9 @@ export default css`
       }
 
       &[disabled] {
-        color: ${colors.M1};
-        opacity: 0.6;
+        background-color: ${colors.B1} !important;
+        color: ${colors.M1} !important;
+        opacity: 0.6 !important;
       }
 
       &.ant-btn-background-ghost {

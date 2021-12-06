@@ -6,11 +6,13 @@ import BlogList from '../../BlogList';
 import UserDetailsLayout from './Layout.component';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
+import { getPageQuery } from '../../../../utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { id, page, size } = ctx.params;
+  const { page, size } = getPageQuery(ctx.query);
+  const { id } = ctx.params;
   const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getPosts(id, { page, size })]);
 
   return {

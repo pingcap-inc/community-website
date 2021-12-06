@@ -4,11 +4,13 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
 import BlogList from '../../BlogList';
 import UserDetailsLayout from './Layout.component';
+import { getPageQuery } from '../../../../utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { id, page, size } = ctx.params;
+  const { page, size } = getPageQuery(ctx.query);
+  const { id } = ctx.params;
   const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getFavorites(id, { page, size })]);
 
   blogs.content = blogs.content.map(({ post }) => post);

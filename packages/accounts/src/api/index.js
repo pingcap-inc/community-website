@@ -15,8 +15,8 @@ export const phoneLoginCheck = async ({ phone }) => {
   await client.post('/api/login/phone/check', { phone });
 };
 
-export const sendCode = async (path, { phone, re_token_v3 }) => {
-  await client.post(`/api/${path}/send-code`, { phone, re_token_v3 }).catch(handleSendCodeLimitError);
+export const sendCode = async (path, { phone }) => {
+  await client.post(`/api/${path}/send-code`, { phone }).catch(handleSendCodeLimitError);
 };
 
 const postLogin = async ({ redirect_to, sso_callbacks }) => {
@@ -29,13 +29,13 @@ const postLogin = async ({ redirect_to, sso_callbacks }) => {
   };
 };
 
-export const phoneLogin = async ({ phone, code, re_token_v3, redirect_to }) => {
-  const { data: resp } = await client.post('/api/login/phone', { phone, code, re_token_v3, redirect_to });
+export const phoneLogin = async ({ phone, code, redirect_to }) => {
+  const { data: resp } = await client.post('/api/login/phone', { phone, code, redirect_to });
   return postLogin(resp);
 };
 
-export const passwordLogin = async ({ identifier, password, re_token_v3, redirect_to }) => {
-  const { data: resp } = await client.post('/api/login/password', { identifier, password, re_token_v3, redirect_to });
+export const passwordLogin = async ({ identifier, password, redirect_to }) => {
+  const { data: resp } = await client.post('/api/login/password', { identifier, password, redirect_to });
   return postLogin(resp);
 };
 
@@ -46,17 +46,17 @@ export const socialLogin = ({ provider, redirect_to }) => {
   );
 };
 
-export const signup = async ({ company, email, phone, code, re_token_v3, redirect_to }) => {
-  const { data: resp } = await client.post('/api/signup', { company, email, phone, code, re_token_v3, redirect_to });
+export const signup = async ({ company, email, phone, code, redirect_to }) => {
+  const { data: resp } = await client.post('/api/signup', { company, email, phone, code, redirect_to });
   return postLogin(resp);
 };
 
-export const forgetSendCode = async ({ identifier, re_token_v3 }) => {
-  await client.post(`/api/forget/send-code`, { identifier, re_token_v3 }).catch(handleSendCodeLimitError);
+export const forgetSendCode = async ({ identifier }) => {
+  await client.post(`/api/forget/send-code`, { identifier }).catch(handleSendCodeLimitError);
 };
 
-export const forgetVerifyCode = async ({ identifier, code, re_token_v3 }) => {
-  return client.post('/api/forget/verify', { identifier, code, re_token_v3 });
+export const forgetVerifyCode = async ({ identifier, code }) => {
+  return client.post('/api/forget/verify', { identifier, code });
 };
 
 export const forgetResetPassword = async ({ new_password }) => {

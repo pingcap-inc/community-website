@@ -1,4 +1,3 @@
-import NextHead from 'next/head';
 import React, { useEffect, useContext } from 'react';
 import { Col, Row } from 'antd';
 
@@ -17,12 +16,6 @@ const Layout = ({ children, title }) => {
 
   return (
     <>
-      <NextHead>
-        {process.env.NEXT_PUBLIC_RECAPTCHA_KEY && (
-          <script src={`https://www.recaptcha.net/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_KEY}`} />
-        )}
-      </NextHead>
-
       <CoreLayout hasMargin>
         <Styled.Container>
           <Row gutter={[32, 32]}>

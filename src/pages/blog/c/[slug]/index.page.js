@@ -15,17 +15,18 @@ import OrderBySwitch from '../../home/OrderBySwitch';
 import BlogList from '../../BlogList';
 import WriteBlogButton from '../../WriteBlogButton';
 import HotTagList from '../../HotTagList';
+import { getPageQuery } from '../../../../utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { slug } = ctx.params;
 
-  // const { page, size } = getPageQuery(ctx.query);
+  const { page, size } = getPageQuery(ctx.query);
   const category = await api.blog.getCategoryBySlug(slug);
   const [categories, blogs, hotTags] = await Promise.all([
     api.blog.getCategories(),
-    api.blog.getRecommend({ categoryID: category.id }),
+    api.blog.getRecommend({ categoryID: category.id, page, size }),
     api.blog.getHotTags(),
   ]);
 

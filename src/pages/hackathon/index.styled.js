@@ -90,18 +90,18 @@ export const BannerTitleMobile = styled(BannerTitleMobileSvg)`
 `;
 
 export const BannerButtonsGroup = styled.div`
-  width: min(24rem, 100%);
-  //display: grid;
   display: flex;
   gap: 1rem;
+  justify-content: space-between;
   ${(props) =>
     props.isSmallScreen
       ? css`
-          width: 100%;
+          width: calc(100% - 44px) !important;
           position: absolute;
           bottom: 1rem;
         `
       : css`
+          width: min(24rem, 100%);
           margin-bottom: 4rem;
         `}
 `;
@@ -210,13 +210,18 @@ export const TableHeaderIcon = styled.div`
 
 export const TableCellContent = styled.div`
   //height: 16rem !important;
-  height: inherit;
+  height: 100%;
   text-align: start;
-  padding: 1rem;
+  //padding: 1rem;
   background-color: ${backgroundColor};
 `;
 
+export const TableCellContentInner = styled.div`
+  padding: 1rem;
+`;
+
 export const TableHeaderCellContent = styled(TableCellContent)`
+  padding: 1rem;
   height: 4rem !important;
   justify-content: space-between;
   background-color: ${backgroundColor};
@@ -296,6 +301,7 @@ export const ProcedureCardWrapper = styled.div`
             padding-right: 1rem;
             position: relative;
           }
+
           &:not(:last-child) {
             &:after {
               display: block;
@@ -306,6 +312,7 @@ export const ProcedureCardWrapper = styled.div`
               content: url(${getImage('procedure-card-divider-mobile.svg')});
             }
           }
+
           margin-bottom: 2rem;
           width: 50%;
         `}
@@ -335,7 +342,7 @@ export const ProcedureCardsGroup = styled.div`
 `;
 
 export const Link = styled(RawLink)`
-  font-size: 14px;
+  font-size: ${(props) => props.fontSize || '14px'};
   color: #84fcfc;
   text-decoration: none;
 
@@ -436,8 +443,16 @@ export const BenefitCardContent = styled.div`
 export const JudgeCardOverlay = styled.div`
   position: absolute;
   bottom: 1rem;
-  width: calc(100% - 1rem);
-  height: calc(100% - 1rem);
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(0.5 * (100vw - 44px - 1rem));
+          height: calc(0.625 * (100vw - 44px - 1rem));
+        `
+      : css`
+          width: ${columnWidth * 2}vw;
+          height: ${columnWidth * 2.5}vw;
+        `}
   background-color: rgba(36, 35, 106, 0.5);
   padding: 1rem;
   text-align: start;
@@ -445,11 +460,22 @@ export const JudgeCardOverlay = styled.div`
 
 export const JudgeCardContent = styled.div`
   position: absolute;
+  overflow: hidden;
+  // ellipsis
+  text-overflow: ellipsis;
+
   bottom: 1rem;
   // background is a gradient from left to right with diminishing opacity
   background-image: linear-gradient(to right, rgba(36, 35, 106, 1) 0%, rgba(36, 35, 106, 0) 100%); /* the gradient */
   height: 6rem;
-  width: 100%;
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(0.5 * (100vw - 44px - 1rem));
+        `
+      : css`
+          width: ${columnWidth * 2}vw;
+        `}
   text-align: start;
   padding: 0.5rem;
   padding-left: 1rem;
@@ -468,8 +494,16 @@ export const JudgeCardDescription = styled.div`
 `;
 
 export const JudgeCard = styled.div`
-  //width: 240px;
-  height: 300px;
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(0.5 * (100vw - 44px - 1rem));
+          height: calc(0.625 * (100vw - 44px - 1rem));
+        `
+      : css`
+          width: ${columnWidth * 2}vw;
+          height: ${columnWidth * 2.5}vw;
+        `}
   margin-bottom: 1rem;
   // padding
   background-image: url(${(props) => props.src});

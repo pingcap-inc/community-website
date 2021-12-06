@@ -1,5 +1,5 @@
 import * as Styled from './index.styled';
-import { FAQCollapsePanel, getImage, ProcedureCardsGroup } from './index.styled';
+import { FAQCollapsePanel, getImage, ProcedureCardsGroup, TableCellContentInner } from './index.styled';
 import { CoreLayout } from '~/layouts';
 import { Col, Image, Row } from 'antd';
 import { useIsSmallScreen } from '~/hooks';
@@ -51,13 +51,13 @@ const BenefitCard = ({ icon, content }) => {
   );
 };
 
-const JudgeCard = ({ name, desc, src, detail }) => {
+const JudgeCard = ({ name, desc, src, detail, sm }) => {
   return (
-    <Styled.JudgeCard src={src}>
-      <Styled.JudgeCardOverlay>{detail}</Styled.JudgeCardOverlay>
-      <Styled.JudgeCardContent>
+    <Styled.JudgeCard src={src} sm={sm}>
+      <Styled.JudgeCardOverlay sm={sm}>{detail}</Styled.JudgeCardOverlay>
+      <Styled.JudgeCardContent sm={sm}>
         <Styled.JudgeCardName>{name}</Styled.JudgeCardName>
-        <Styled.JudgeCardDescription>{desc}</Styled.JudgeCardDescription>
+        <Styled.JudgeCardDescription sm={sm}>{desc}</Styled.JudgeCardDescription>
       </Styled.JudgeCardContent>
     </Styled.JudgeCard>
   );
@@ -89,7 +89,7 @@ const stepsData = [
         <Styled.Link href={'https://asktug.com/t/topic/273502'}>查看参赛指南。</Styled.Link>
       </div>
     ),
-    action: '完成报名',
+    action: '立即报名',
     url: 'https://forms.pingcap.com/f/TiDBHackathon2021apply',
   },
   {
@@ -109,14 +109,14 @@ const stepsData = [
       </div>
     ),
     action: '查看学习资料',
-    url: 'https://asktug.com/t/topic/27350',
+    url: 'https://asktug.com/t/topic/273503',
   },
   {
     title: 'STEP 4 ：现场调试',
     date: '1月8日（周六）',
     desc: <div>北京、上海、杭州、成都、深圳、广州任选一处决赛参赛点，还可以走进 PingCAP Office 感受 P 社文化。</div>,
     action: '下载答辩 PPT 模板',
-    url: 'TODO',
+    url: 'https://asktug.com/t/topic/273653',
   },
   {
     title: 'STEP 5：现场答辩&颁奖',
@@ -158,14 +158,31 @@ const judgesData = [
     desc: 'Tetrate 创始工程师',
     detail: 'Tetrate 创始工程师，Apache 软件基金会董事，Apache SkyWalking 创始人。',
   },
+  {
+    name: '吴晟',
+    desc: 'Tetrate 创始工程师',
+    detail: 'Tetrate 创始工程师，Apache 软件基金会董事，Apache SkyWalking 创始人。',
+  },
+  {
+    name: '吴晟',
+    desc: 'Tetrate 创始工程师',
+    detail: 'Tetrate 创始工程师，Apache 软件基金会董事，Apache SkyWalking 创始人。',
+  },
 ];
 
 const carouselData = [
-  'https://via.placeholder.com/420x240.png',
-  'https://via.placeholder.com/420x240.png',
-  'https://via.placeholder.com/420x240.png',
-  'https://via.placeholder.com/420x240.png',
-  'https://via.placeholder.com/420x240.png',
+  {
+    img: getImage('prev-18.jpg'),
+    url: 'https://tidb.io/archived/events/hackathon2018/',
+  },
+  {
+    img: getImage('prev-19.jpg'),
+    url: 'https://tidb.io/archived/events/hackathon2019/',
+  },
+  {
+    img: getImage('prev-20.jpg'),
+    url: 'https://tidb.io/archived/events/hackathon2020/',
+  },
 ];
 
 const splitCarousel = (data, size) => {
@@ -180,7 +197,7 @@ const BannerNavButtonsGroup = ({ isSmallScreen }) => (
     <Styled.BannerNavButton onClick={toHash('intro')}>介绍</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('prizes')}>奖项</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('judges')}>评委</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>
+    {/*<Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>*/}
     <Styled.BannerNavButton onClick={toHash('faq')}>常见问题</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('partners')}>合作伙伴</Styled.BannerNavButton>
   </Styled.BannerNavButtonsGroup>
@@ -242,7 +259,9 @@ const Page = () => {
               <tr>
                 {data.map((item, idx) => (
                   <Styled.TableCell isSmallScreen={isSmallScreen}>
-                    <Styled.TableCellContent> {item.desc} </Styled.TableCellContent>
+                    <Styled.TableCellContent>
+                      <TableCellContentInner>{item.desc}</TableCellContentInner>
+                    </Styled.TableCellContent>
                   </Styled.TableCell>
                 ))}
               </tr>
@@ -288,17 +307,16 @@ const Page = () => {
           <SectionTitle>大赛奖项</SectionTitle>
           <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
-            <Col>
+            <Col xs={{ order: 2 }} md={{ order: 1 }}>
               <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
             </Col>
-            <Col>
+            <Col xs={{ order: 1 }} md={{ order: 2 }}>
               <Prize title={'一等奖'} count={'1 支队伍'} reward={''} src={getImage('prize-1.svg')} huge />
             </Col>
-            <Col>
+            <Col xs={{ order: 3 }}>
               <Prize title={'三等奖'} count={'6 支队伍'} reward={''} src={getImage('prize-3.svg')} huge />
             </Col>
           </Styled.PrizesRow>
-          奖金为税前金额
           <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
@@ -340,7 +358,11 @@ const Page = () => {
               <Prize title={'神秘奖项'} count={'？'} reward={'现场揭晓'} src={getImage('prize-special.svg')} />
             </Col>
           </Styled.PrizesRow>
-          <Styled.GlowLabel tall> 其他参赛福利 </Styled.GlowLabel>
+          注：所有奖项奖金均为税前金额，奖项
+          <Styled.Link fontSize="16px" href="https://asktug.com/t/topic/273513">
+            评选规则
+          </Styled.Link>
+          可参考评分规则 。<Styled.GlowLabel tall> 其他参赛福利 </Styled.GlowLabel>
           <Styled.PrizesRow gutter={32}>
             {[
               '专业导师赛前辅导',
@@ -364,12 +386,13 @@ const Page = () => {
           </Styled.JudgesLabel>
           <Row justify="space-between" gutter={16}>
             {judgesData.map((judge) => (
-              <Col xs={12} md={6}>
+              <Col>
                 <JudgeCard
                   name={judge.name}
                   desc={judge.desc}
                   src={getImage(`judge-${judge.name}.png`)}
                   detail={judge.detail}
+                  sm={isSmallScreen}
                 />
               </Col>
             ))}
@@ -380,36 +403,49 @@ const Page = () => {
             <hr />
           </Styled.JudgesLabel>
           <Row justify="space-between" gutter={16}>
-            <Col xs={12} md={6}>
+            <Col>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
                 detail={'daskdjad'}
+                sm={isSmallScreen}
               />
             </Col>
-            <Col xs={12} md={6}>
+            <Col>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
                 detail={'daskdjasdjaskld'}
+                sm={isSmallScreen}
               />
             </Col>
-            <Col xs={12} md={6}>
+            <Col>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
                 detail={'daskjaskld'}
+                sm={isSmallScreen}
               />
             </Col>
-            <Col xs={12} md={6}>
+            <Col>
               <JudgeCard
                 name="Dinanele"
                 desc="Theory of computation"
                 src={getImage('judge-avatar-1.png')}
                 detail={'daskdjjakld'}
+                sm={isSmallScreen}
+              />
+            </Col>
+            <Col>
+              <JudgeCard
+                name="Dinanele"
+                desc="Theory of computation"
+                src={getImage('judge-avatar-1.png')}
+                detail={'daskdjjakld'}
+                sm={isSmallScreen}
               />
             </Col>
           </Row>
@@ -425,25 +461,31 @@ const Page = () => {
           </Styled.FAQWrapper>
           <Styled.FAQButton>更多赛事 FAQ</Styled.FAQButton>
         </Styled.Section>
-        <Styled.Section>
-          <SectionTitle>专题报道</SectionTitle>
-          <Styled.Carousel>
-            {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (
-              <Styled.CarouselInner>
-                {group.map((url) => (
-                  <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />
-                ))}
-              </Styled.CarouselInner>
-            ))}
-          </Styled.Carousel>
-        </Styled.Section>
+        {/*<Styled.Section>*/}
+        {/*  <SectionTitle>专题报道</SectionTitle>*/}
+        {/*  <Styled.Carousel>*/}
+        {/*    {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (*/}
+        {/*      <Styled.CarouselInner>*/}
+        {/*        {group.map((url) => (*/}
+        {/*          <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />*/}
+        {/*        ))}*/}
+        {/*      </Styled.CarouselInner>*/}
+        {/*    ))}*/}
+        {/*  </Styled.Carousel>*/}
+        {/*</Styled.Section>*/}
         <Styled.Section>
           <SectionTitle>往期回顾</SectionTitle>
           <Styled.Carousel>
             {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (
               <Styled.CarouselInner>
-                {group.map((url) => (
-                  <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />
+                {group.map((item) => (
+                  <Styled.Link href={item.url}>
+                    <Image
+                      preview={false}
+                      width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'}
+                      src={item.img}
+                    />
+                  </Styled.Link>
                 ))}
               </Styled.CarouselInner>
             ))}

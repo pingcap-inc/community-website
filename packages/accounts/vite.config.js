@@ -49,6 +49,7 @@ export default ({ mode }) => {
       alias: {
         '@/public': resolve(__dirname, '../../public'),
         '@': resolve(__dirname, '../../src'),
+        '@tidb-community/ui': resolve(__dirname, '../../packages/ui/es'),
         '~': resolve(__dirname, 'src'),
         ...unifyNodeModules([
           'antd',

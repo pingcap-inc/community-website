@@ -1,17 +1,18 @@
 import { getI18nProps } from '../../../../../utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
 import CategoryPage from '../index.page';
+import { getPageQuery } from '../../../../../utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { slug } = ctx.params;
 
-  // const { page, size } = getPageQuery(ctx.query);
+  const { page, size } = getPageQuery(ctx.query);
   const category = await api.blog.getCategoryBySlug(slug);
   const [categories, blogs, hotTags] = await Promise.all([
     api.blog.getCategories(),
-    api.blog.getLatest({ categoryID: category.id }),
+    api.blog.getLatest({ categoryID: category.id, page, size }),
     api.blog.getHotTags(),
   ]);
 

@@ -5,6 +5,7 @@ export const CommentsContainer = styled.div`
   padding: 30px 37px;
   background: white;
   border-radius: 6px;
+  margin-top: 32px;
 `;
 
 export const Title = styled.div`

@@ -4,6 +4,10 @@ import { colors } from '@tidb-community/ui';
 
 export const MainWrapper = styled.div`
   background: #e9eaee;
+  *::selection {
+    color: #000f0f !important;
+    background-color: #fff0f0;
+  }
 `;
 
 export const VisualContainer = styled.div`

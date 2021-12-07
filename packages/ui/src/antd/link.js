@@ -1,7 +1,13 @@
 import { css } from 'styled-components';
 
+const linkColor = '#73061c';
+
 export default css`
-  a:hover {
-    color: #73061c;
+  a {
+    color: ${linkColor};
+    &:hover {
+      color: ${linkColor};
+      text-decoration: underline;
+    }
   }
 `;

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import * as themeColors from '../../colors';
+import { colors as themeColors } from '@tidb-community/ui';
 
 export const borderRadius = 6;
 export const avatarSize = 32;
@@ -85,17 +85,12 @@ export const AuthorPublishedAt = styled.div`
 `;
 
 export const Title = styled.div`
-  margin-top: 8px;
-  margin-left: ${avatarSize + 8}px;
-  font-size: 24px;
-  line-height: 33px;
-  color: ${colors.black};
-  cursor: pointer;
-
-  transition: color 0.25s ease;
-
-  &:hover {
-    color: ${colors.primary};
+  a {
+    margin-top: 8px;
+    margin-left: ${avatarSize + 8}px;
+    font-size: 24px;
+    line-height: 33px;
+    color: ${colors.black};
   }
 `;
 

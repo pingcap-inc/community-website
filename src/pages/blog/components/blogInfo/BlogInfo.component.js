@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
+import Link from 'next/link';
 
 import * as Styled from './blogInfo.styled';
 import { Avatar } from 'antd';
@@ -20,14 +21,9 @@ const BlogInfo = ({
   comments,
   bottomExtends,
   coverImageURL = undefined,
-  onClick,
   onClickAuthor,
   author,
 }) => {
-  const handleClick = useCallback(() => {
-    onClick(id);
-  }, [id, onClick]);
-
   const handleClickAuthor = useCallback(() => {
     onClickAuthor(author);
   }, [author, onClickAuthor]);
@@ -48,10 +44,7 @@ const BlogInfo = ({
     <Styled.Container>
       {coverImageURL && coverImageURL.length !== 0 && (
         <Styled.CoverImageContainer>
-          <Styled.CoverImage
-            style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }}
-            onClick={handleClick}
-          />
+          <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(coverImageURL)})` }} />
         </Styled.CoverImageContainer>
       )}
       <Styled.Content>
@@ -69,8 +62,8 @@ const BlogInfo = ({
             <Styled.AuthorPublishedAt>{publishedAtFormatted}</Styled.AuthorPublishedAt>
           </Styled.AuthorInfo>
         </Styled.Author>
-        <Styled.Title onClick={handleClick}>
-          {title}
+        <Styled.Title>
+          <Link href={`/blog/${id}`}>{title}</Link>
           {titleExtends}
         </Styled.Title>
         <Styled.Meta>

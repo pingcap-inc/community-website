@@ -28,7 +28,6 @@ const BlogList = ({
           dataSource={content}
           locale={{ emptyText: '暂无文章' }}
           renderItem={(value) => {
-            const onClick = () => router.push(`/blog/${value.id}`);
             const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
             const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
             const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
@@ -38,7 +37,6 @@ const BlogList = ({
                   {...value}
                   usernameExtends={usernameExtends}
                   bottomExtends={bottomExtends}
-                  onClick={onClick}
                   onClickAuthor={onClickAuthor}
                   onClickCategory={onClickCategory}
                   onClickTag={onClickTag}

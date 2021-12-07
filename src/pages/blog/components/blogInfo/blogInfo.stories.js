@@ -1,6 +1,7 @@
 import { BlogInfo } from '@tidb-community/ui';
-import { getTitle } from '../utils';
+import { getTitle } from '@tidb-community/ui/stories/2_components/utils';
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   title: getTitle('BlogInfo'),
   component: BlogInfo,

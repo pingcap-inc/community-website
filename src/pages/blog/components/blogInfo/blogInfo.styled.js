@@ -13,15 +13,15 @@ export const Container = styled.div`
   list-style: none;
   display: block;
 
-  > :first-child {
-    border-top-left-radius: ${borderRadius}px;
-    border-top-right-radius: ${borderRadius}px;
-  }
-
-  > :last-child {
-    border-bottom-left-radius: ${borderRadius}px;
-    border-bottom-right-radius: ${borderRadius}px;
-  }
+  // > :first-child {
+  //   border-top-left-radius: ${borderRadius}px;
+  //   border-top-right-radius: ${borderRadius}px;
+  // }
+  //
+  // > :last-child {
+  //   border-bottom-left-radius: ${borderRadius}px;
+  //   border-bottom-right-radius: ${borderRadius}px;
+  // }
 `;
 
 export const CoverImageContainer = styled.div`
@@ -85,12 +85,17 @@ export const AuthorPublishedAt = styled.div`
 `;
 
 export const Title = styled.div`
+  margin-top: 8px;
+  margin-left: ${avatarSize + 8}px;
   a {
-    margin-top: 8px;
-    margin-left: ${avatarSize + 8}px;
+    display: block;
     font-size: 24px;
     line-height: 33px;
-    color: ${colors.black};
+    color: ${colors.black} !important;
+    &:hover {
+      color: ${colors.primary} !important;
+      text-decoration: none !important;
+    }
   }
 `;
 

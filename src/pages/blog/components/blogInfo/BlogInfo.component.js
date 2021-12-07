@@ -113,7 +113,6 @@ BlogInfo.propTypes = {
   likes: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,
   coverImageURL: PropTypes.string,
-  onClick: PropTypes.func,
   onClickAuthor: PropTypes.func,
   onClickCategory: PropTypes.func.isRequired,
   onClickTag: PropTypes.func.isRequired,

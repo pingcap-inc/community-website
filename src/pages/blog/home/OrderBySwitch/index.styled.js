@@ -5,7 +5,8 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0.5rem 0;
+  height: 40px;
+  margin-bottom: 32px;
 `;
 
 export const List = styled.div`
@@ -15,7 +16,7 @@ export const List = styled.div`
 
 export const Item = styled.div`
   cursor: pointer;
-  margin: 0.5rem;
+  margin: 0 0.5rem;
   color: ${(props) => (props.selected ? colors.B1 : '')};
   border-bottom: ${(props) => (props.selected ? `4px solid ${colors.B1}` : 'none')};
 `;

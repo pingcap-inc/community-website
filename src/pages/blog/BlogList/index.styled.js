@@ -11,6 +11,6 @@ export const List = styled.div`
 
 export const Item = styled.div`
   &:not(:first-child) {
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
 `;

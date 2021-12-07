@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors as themeColors } from '@tidb-community/ui';
+import { colors as themeColors, mixins } from '@tidb-community/ui';
 import { borderRadiusSize } from '../common.styled';
 
 export const avatarSize = 32;
@@ -85,6 +85,7 @@ export const AuthorPublishedAt = styled.div`
 `;
 
 export const Title = styled.div`
+  ${mixins.lineClamp(3)};
   margin-top: 8px;
   margin-left: ${avatarSize + 8}px;
   a {

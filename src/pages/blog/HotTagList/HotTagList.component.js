@@ -1,20 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { Card } from 'antd';
 
 import * as Styled from './index.styled';
 
 const HotTagList = ({ hotTags: { content } }) => {
   return (
     <Styled.Container>
-      <Card title="热门标签" extra={<Link href="/blog/tag">查看全部</Link>}>
+      <Styled.Card title="热门标签" extra={<Link href="/blog/tag">查看全部</Link>}>
         <Styled.List>
           {content.map((item) => (
             <Item {...item} key={item.id} />
           ))}
         </Styled.List>
-      </Card>
+      </Styled.Card>
     </Styled.Container>
   );
 };

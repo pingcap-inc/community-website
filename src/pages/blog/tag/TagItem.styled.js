@@ -1,5 +1,11 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
+import { Card as AntdCard } from 'antd';
+import { borderRadius } from '../components/common.styled';
+
+export const Card = styled(AntdCard)`
+  ${borderRadius};
+`;
 
 export const Title = styled.div`
   ${mixins.typography('h3')}

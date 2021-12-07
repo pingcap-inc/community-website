@@ -1,12 +1,19 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
+import { Card as AntdCard } from 'antd';
+import { borderRadius } from '../components/common.styled';
 
 export const Container = styled.div`
   ${mixins.showOnDesktop()}
+  ${borderRadius}
   margin-top: 2rem;
   a {
     color: ${colors.T7};
   }
+`;
+
+export const Card = styled(AntdCard)`
+  ${borderRadius}
 `;
 
 export const List = styled.div`
@@ -15,6 +22,7 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
+  ${borderRadius};
   cursor: pointer;
   margin: 0.5rem;
   color: ${(props) => (props.selected ? colors.T7 : '')};

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors as themeColors } from '@tidb-community/ui';
+import { borderRadiusSize } from '../common.styled';
 
-export const borderRadius = 6;
 export const avatarSize = 32;
 const colors = {
   primary: themeColors.B1,
@@ -14,13 +14,13 @@ export const Container = styled.div`
   display: block;
 
   > :first-child {
-    border-top-left-radius: ${borderRadius}px;
-    border-top-right-radius: ${borderRadius}px;
+    border-top-left-radius: ${borderRadiusSize};
+    border-top-right-radius: ${borderRadiusSize};
   }
 
   > :last-child {
-    border-bottom-left-radius: ${borderRadius}px;
-    border-bottom-right-radius: ${borderRadius}px;
+    border-bottom-left-radius: ${borderRadiusSize};
+    border-bottom-right-radius: ${borderRadiusSize};
   }
 `;
 
@@ -107,7 +107,7 @@ export const Meta = styled.div`
 export const Category = styled.span`
   display: inline-block;
   padding: 2px 8px;
-  border-radius: ${borderRadius}px;
+  border-radius: ${borderRadiusSize}px;
   border: 1px solid ${colors.borderGray};
   color: ${colors.black};
   font-size: 12px;

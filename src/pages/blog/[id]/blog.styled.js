@@ -46,7 +46,7 @@ export const CoverImage = styled.div`
 export const Title = styled.h1`
   display: block;
   font-size: 32px;
-  line-height: 32px;
+  line-height: 1.5;
 `;
 
 export const Meta = styled.div`

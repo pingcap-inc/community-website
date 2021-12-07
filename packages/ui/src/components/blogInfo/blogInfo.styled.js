@@ -72,7 +72,7 @@ export const AuthorName = styled.div`
 `;
 
 export const AuthorNameBase = styled.div`
-  color: #565656;
+  color: #2c2c2c;
   cursor: pointer;
 `;
 

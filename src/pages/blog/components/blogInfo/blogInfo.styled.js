@@ -13,15 +13,15 @@ export const Container = styled.div`
   list-style: none;
   display: block;
 
-  // > :first-child {
-  //   border-top-left-radius: ${borderRadius}px;
-  //   border-top-right-radius: ${borderRadius}px;
-  // }
-  //
-  // > :last-child {
-  //   border-bottom-left-radius: ${borderRadius}px;
-  //   border-bottom-right-radius: ${borderRadius}px;
-  // }
+  > :first-child {
+    border-top-left-radius: ${borderRadius}px;
+    border-top-right-radius: ${borderRadius}px;
+  }
+
+  > :last-child {
+    border-bottom-left-radius: ${borderRadius}px;
+    border-bottom-right-radius: ${borderRadius}px;
+  }
 `;
 
 export const CoverImageContainer = styled.div`

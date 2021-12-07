@@ -443,11 +443,12 @@ export const BenefitCardContent = styled.div`
 export const JudgeCardOverlay = styled.div`
   position: absolute;
   bottom: 1rem;
+  overflow: scroll;
   ${(props) =>
     props.sm
       ? css`
-          width: calc(0.5 * (100vw - 44px - 1rem));
-          height: calc(0.625 * (100vw - 44px - 1rem));
+          width: calc(0.5 * (100vw - 44px - 2rem));
+          height: calc(0.625 * (100vw - 44px - 2rem));
         `
       : css`
           width: ${columnWidth * 2}vw;
@@ -467,11 +468,11 @@ export const JudgeCardContent = styled.div`
   bottom: 1rem;
   // background is a gradient from left to right with diminishing opacity
   background-image: linear-gradient(to right, rgba(36, 35, 106, 1) 0%, rgba(36, 35, 106, 0) 100%); /* the gradient */
-  height: 6rem;
+  //height: 6rem;
   ${(props) =>
     props.sm
       ? css`
-          width: calc(0.5 * (100vw - 44px - 1rem));
+          width: calc(0.5 * (100vw - 44px - 2rem));
         `
       : css`
           width: ${columnWidth * 2}vw;
@@ -497,8 +498,8 @@ export const JudgeCard = styled.div`
   ${(props) =>
     props.sm
       ? css`
-          width: calc(0.5 * (100vw - 44px - 1rem));
-          height: calc(0.625 * (100vw - 44px - 1rem));
+          width: calc(0.5 * (100vw - 44px - 2rem));
+          height: calc(0.625 * (100vw - 44px - 2rem));
         `
       : css`
           width: ${columnWidth * 2}vw;
@@ -545,7 +546,7 @@ export const JudgesLabel = styled.div`
 
   hr {
     border: 1px dashed #674ff0;
-    width: 100%;
+    width: 90%;
     padding-left: 1rem;
   }
 
@@ -653,10 +654,17 @@ export const Carousel = styled(RawCarousel).attrs({
 `;
 
 export const CarouselInner = styled.div`
-  display: flex;
-
+  display: flex !important;
   .ant-image {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+`;
+
+export const CarouselDescription = styled.div`
+  color: white;
+  font-size: 1rem;
+`;
+export const CarouselContent = styled.div`
+  width: ${(props) => props.width};
 `;

@@ -172,16 +172,19 @@ const judgesData = [
 
 const carouselData = [
   {
-    img: getImage('prev-18.jpg'),
-    url: 'https://tidb.io/archived/events/hackathon2018/',
+    img: getImage('prev-20.jpg'),
+    url: 'https://tidb.io/archived/events/hackathon2020/',
+    desc: 'TiDB Hackathon 2020',
   },
   {
     img: getImage('prev-19.jpg'),
     url: 'https://tidb.io/archived/events/hackathon2019/',
+    desc: 'TiDB Hackathon 2019',
   },
   {
-    img: getImage('prev-20.jpg'),
-    url: 'https://tidb.io/archived/events/hackathon2020/',
+    img: getImage('prev-18.jpg'),
+    url: 'https://tidb.io/archived/events/hackathon2018/',
+    desc: 'TiDB Hackathon 2018',
   },
 ];
 
@@ -384,7 +387,7 @@ const Page = () => {
             <Styled.GlowLabel>评委</Styled.GlowLabel>
             <hr />
           </Styled.JudgesLabel>
-          <Row justify="space-between" gutter={16}>
+          <Row justify="space-between" gutter={0}>
             {judgesData.map((judge) => (
               <Col>
                 <JudgeCard
@@ -459,7 +462,11 @@ const Page = () => {
               ))}
             </Styled.FAQCollapse>
           </Styled.FAQWrapper>
-          <Styled.FAQButton>更多赛事 FAQ</Styled.FAQButton>
+          <Styled.FAQButton
+            onClick={() => handleRedirect(router, 'https://asktug.com/c/Mutual-communication/Hackathon')}
+          >
+            更多赛事 FAQ
+          </Styled.FAQButton>
         </Styled.Section>
         {/*<Styled.Section>*/}
         {/*  <SectionTitle>专题报道</SectionTitle>*/}
@@ -479,13 +486,14 @@ const Page = () => {
             {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (
               <Styled.CarouselInner>
                 {group.map((item) => (
-                  <Styled.Link href={item.url}>
-                    <Image
-                      preview={false}
-                      width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'}
-                      src={item.img}
-                    />
-                  </Styled.Link>
+                  <Styled.CarouselContent
+                    width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'}
+                  >
+                    <Styled.Link href={item.url}>
+                      <Image preview={false} src={item.img} />
+                    </Styled.Link>
+                    <Styled.CarouselDescription>{item.desc}</Styled.CarouselDescription>
+                  </Styled.CarouselContent>
                 ))}
               </Styled.CarouselInner>
             ))}

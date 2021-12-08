@@ -9,6 +9,9 @@ export const Card = styled(AntdCard)`
 
 export const Title = styled.div`
   ${mixins.typography('h3')}
+  a {
+    color: ${colors.F1};
+  }
 `;
 
 export const Description = styled.div`

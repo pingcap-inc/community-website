@@ -108,7 +108,7 @@ export const Meta = styled.div`
 export const Category = styled.span`
   display: inline-block;
   padding: 2px 8px;
-  border-radius: ${borderRadiusSize}px;
+  border-radius: ${borderRadiusSize};
   border: 1px solid ${colors.borderGray};
   color: ${colors.black};
   font-size: 12px;

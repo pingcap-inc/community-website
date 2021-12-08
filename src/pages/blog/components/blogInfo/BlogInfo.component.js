@@ -63,7 +63,7 @@ const BlogInfo = ({
           </Styled.AuthorInfo>
         </Styled.Author>
         <Styled.Title>
-          <Link href={`/blog/${id}`}>{title}</Link>
+          <Link href={`/blog/${id}`}>{title === '' ? ' [未填写文章标题] ' : title}</Link>
           {titleExtends}
         </Styled.Title>
         <Styled.Meta>

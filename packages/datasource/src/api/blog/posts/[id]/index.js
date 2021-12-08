@@ -73,3 +73,7 @@ export async function comment(id, content, replyTo) {
     replyCommentID: replyTo,
   });
 }
+
+export async function del(id) {
+  return await blogClient.delete(`/api/posts/${id}`);
+}

@@ -100,3 +100,5 @@ export function share(id: number): Promise<Share>;
 export function comments(id: number, page: number, pageSize?: number): Promise<Page<PostComment>>;
 
 export function comment(id: number, body: string, replyTo?: number): Promise<void>;
+
+export function del(id: number): Promise<void>;

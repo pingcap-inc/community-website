@@ -122,3 +122,12 @@ export const useReview = (blogInfo, reload) => {
 
   return { publish, reject, reviewing };
 };
+
+export const useRemove = (blogInfo) => {
+  const router = useRouter();
+  const remove = () => {
+    return api.blog.posts.post.del(blogInfo.id).then(() => router.replace('/blog'));
+  };
+
+  return { remove };
+};

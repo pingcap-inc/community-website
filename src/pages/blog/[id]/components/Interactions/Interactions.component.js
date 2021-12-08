@@ -10,10 +10,12 @@ import {
   StarFilled,
   StarOutlined,
   StopOutlined,
+  DeleteOutlined,
 } from '@ant-design/icons';
 import { scroller } from 'react-scroll';
-import { useEdit, useFavorites, useLikes, useReview, useShares } from './interactions.hooks';
+import { useEdit, useFavorites, useLikes, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
+import { Popconfirm } from 'antd';
 
 const Interactions = ({ blogInfo, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();
@@ -23,6 +25,7 @@ const Interactions = ({ blogInfo, reload }) => {
   const { share, shares } = useShares(blogInfo, isLogin);
   const { edit } = useEdit(blogInfo);
   const { publish, reject } = useReview(blogInfo, reload);
+  const { remove } = useRemove(blogInfo);
 
   const actions = [];
   if (blogInfo.status === 'PUBLISHED') {
@@ -35,7 +38,8 @@ const Interactions = ({ blogInfo, reload }) => {
       />,
       <Interaction key="likes" icon={liked ? HeartFilled : HeartOutlined} count={likes} onClick={like} />,
       <Interaction key="favorites" icon={favorited ? StarFilled : StarOutlined} count={favorites} onClick={favorite} />,
-      <Interaction key="shares" icon={ShareAltOutlined} count={shares} onClick={share} />
+      <Interaction key="shares" icon={ShareAltOutlined} count={shares} onClick={share} />,
+      <Interaction key="remove" icon={DeleteOutlined} count={remove} onClick={remove} name="remove" />
     );
   }
   if (isAuthor(blogInfo)) {
@@ -51,7 +55,22 @@ const Interactions = ({ blogInfo, reload }) => {
   return <>{actions}</>;
 };
 
-const Interaction = ({ icon: Icon, count, onClick }) => {
+const Interaction = ({ icon: Icon, count, onClick, name }) => {
+  if (name === 'remove') {
+    return (
+      <Popconfirm
+        placement="topLeft"
+        title={'请确认是否删除？（此操作不可撤销）'}
+        onConfirm={onClick}
+        okText="确认"
+        cancelText="取消"
+      >
+        <Styled.Interaction>
+          <Icon />
+        </Styled.Interaction>
+      </Popconfirm>
+    );
+  }
   return (
     <Styled.Interaction onClick={onClick}>
       <Icon />

@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import * as styled from './index.styled';
 
-import { api } from '@tidb-community/datasource';
-
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
 

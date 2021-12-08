@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import titleBackgroundSvg from './title-bg.svg';
 import BannerTitleSvg from './banner-title.svg';
 import BannerTitleMobileSvg from './banner-title-mobile.svg';
-import { Button, Carousel as RawCarousel, Col, Collapse, Row, Image } from 'antd';
+import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
 import { Link as RawLink } from '~/components';
 import CollapseIconSvg from './faq-collapse.svg';
 import ExpandIconSvg from './faq-expand.svg';

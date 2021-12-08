@@ -6,7 +6,7 @@ export const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 40px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 `;
 
 export const List = styled.div`

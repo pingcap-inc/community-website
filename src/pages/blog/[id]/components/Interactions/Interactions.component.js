@@ -38,12 +38,15 @@ const Interactions = ({ blogInfo, reload }) => {
       />,
       <Interaction key="likes" icon={liked ? HeartFilled : HeartOutlined} count={likes} onClick={like} />,
       <Interaction key="favorites" icon={favorited ? StarFilled : StarOutlined} count={favorites} onClick={favorite} />,
-      <Interaction key="shares" icon={ShareAltOutlined} count={shares} onClick={share} />,
-      <Interaction key="remove" icon={DeleteOutlined} count={remove} onClick={remove} name="remove" />
+      <Interaction key="shares" icon={ShareAltOutlined} count={shares} onClick={share} />
     );
+  }
+  if (blogInfo.status === 'DRAFT') {
+    actions.push(<Interaction key="remove" icon={DeleteOutlined} count={remove} onClick={remove} name="remove" />);
   }
   if (isAuthor(blogInfo)) {
     actions.push(<Interaction key="edit" icon={EditOutlined} onClick={edit} />);
+    actions.push(<Interaction key="remove" icon={DeleteOutlined} count={remove} onClick={remove} name="remove" />);
   }
   if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {
     actions.push(

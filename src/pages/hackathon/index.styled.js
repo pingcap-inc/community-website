@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import titleBackgroundSvg from './title-bg.svg';
 import BannerTitleSvg from './banner-title.svg';
 import BannerTitleMobileSvg from './banner-title-mobile.svg';
-import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
+import { Button, Carousel as RawCarousel, Col, Collapse, Row, Image } from 'antd';
 import { Link as RawLink } from '~/components';
 import CollapseIconSvg from './faq-collapse.svg';
 import ExpandIconSvg from './faq-expand.svg';
@@ -29,7 +29,8 @@ export const Container = styled.div`
 export const Section = styled.div`
   // horizontal paddings are 1/14 of the page width
   ${horizontalPadding};
-  padding-bottom: 6rem;
+  padding-bottom: 3rem;
+  padding-top: 3rem;
   text-align: center;
 `;
 export const SectionTitleBackground = styled(titleBackgroundSvg)`
@@ -494,6 +495,19 @@ export const JudgeCardDescription = styled.div`
   color: #fff;
 `;
 
+export const DummyJudgeCard = styled.div`
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(0.5 * (100vw - 44px - 2rem));
+          height: calc(0.625 * (100vw - 44px - 2rem));
+        `
+      : css`
+          width: ${columnWidth * 2}vw;
+          height: ${columnWidth * 2.5}vw;
+        `}
+`;
+
 export const JudgeCard = styled.div`
   ${(props) =>
     props.sm
@@ -667,4 +681,21 @@ export const CarouselDescription = styled.div`
 `;
 export const CarouselContent = styled.div`
   width: ${(props) => props.width};
+`;
+
+export const LogoWrapper = styled(Row)`
+  display: flex;
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+`;
+
+export const LogoBox = styled(Col).attrs({ lg: 5, xs: 12 })``;
+export const Logo = styled(Image).attrs({ preview: false })`
+  max-height: 5rem;
+`;
+
+export const PartnerSection = styled(Section)`
+  background: white;
+  color: black;
 `;

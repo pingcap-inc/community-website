@@ -1,5 +1,5 @@
-import * as Styled from '~/pages/hackathon/index.styled';
-import { getImage } from '~/pages/hackathon/index.styled';
+import * as Styled from '~/pages/hackathon2021/index.styled';
+import { getImage } from '~/pages/hackathon2021/index.styled';
 
 export const groupsData = [
   {

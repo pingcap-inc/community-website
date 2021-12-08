@@ -7,7 +7,7 @@ import _ from 'lodash';
 import { handleRedirect } from '~/utils/link.utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { carouselData, FAQData, groupsData, judgesData, stepsData } from '~/pages/hackathon/datasource';
+import { carouselData, FAQData, groupsData, judgesData, stepsData } from '~/pages/hackathon2021/datasource';
 
 const SectionTitle = ({ children }) => (
   <Styled.SectionTitle>
@@ -269,7 +269,7 @@ const Page = () => {
                 <JudgeCard
                   name={judge.name}
                   desc={judge.desc}
-                  src={getImage(`judge-${judge.name}.webp`)}
+                  src={getImage(`judges/${encodeURIComponent(judge.name)}.png`)}
                   detail={judge.detail}
                   sm={isSmallScreen}
                 />

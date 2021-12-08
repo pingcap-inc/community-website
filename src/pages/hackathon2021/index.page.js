@@ -119,18 +119,19 @@ const Page = () => {
         </Styled.BannerWrapper>
         <Styled.Section id="intro">
           <SectionTitle>大赛介绍</SectionTitle>
-          本次 Hackathon 主题为「Explore the Sky」，尽情发挥天马行空的想象，用 TiDB 创造无限可能。
+          TiDB Hackathon 自 2017 年起已连续举办四届，本次届主题为「Explore the
+          Sky」，参赛者可以尽情发挥天马行空的想象，用 TiDB 创造无限可能。
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>主题赛道</SectionTitle>
-          {_.chunk(groupsData, isSmallScreen ? 2 : 4).map((data) => (
+          {_.chunk(groupsData, isSmallScreen ? 2 : 4).map((data, chunkId) => (
             <Styled.Table>
               <thead>
                 {data.map((item, idx) => (
                   <Styled.TableHeaderCell isSmallScreen={isSmallScreen}>
                     <Styled.TableHeaderCellContent>
                       <div>{item.name}</div>
-                      <Styled.TableHeaderIcon src={getImage(`group-icon-${idx + 1}.svg`)} />
+                      <Styled.TableHeaderIcon src={getImage(`group-icon-${chunkId * 2 + idx + 1}.svg`)} />
                     </Styled.TableHeaderCellContent>
                   </Styled.TableHeaderCell>
                 ))}
@@ -312,35 +313,43 @@ const Page = () => {
         <Styled.PartnerSection id="partners">
           <SectionTitle>合作伙伴</SectionTitle>
           黄金赞助
-          <Styled.LogoWrapper justify="center">
+          <Styled.LogoWrapper>
             {_.range(1, 3).map((i) => (
-              <Styled.LogoBox>
-                <Styled.Logo src={getImage(`gold-sponsor-${i}.png`)} />
-              </Styled.LogoBox>
+              <img
+                src={getImage(`gold-sponsor-${i}.png`)}
+                height={isSmallScreen ? 60 : 80}
+                alt={`gold-sponsor-${i}.png`}
+              />
             ))}
           </Styled.LogoWrapper>
           白银赞助
-          <Styled.LogoWrapper justify="center">
+          <Styled.LogoWrapper>
             {_.range(1, 5).map((i) => (
-              <Styled.LogoBox>
-                <Styled.Logo src={getImage(`silver-sponsor-${i}.png`)} />
-              </Styled.LogoBox>
+              <img
+                src={getImage(`silver-sponsor-${i}.png`)}
+                height={isSmallScreen ? 60 : 80}
+                alt={`silver-sponsor-${i}.png`}
+              />
             ))}
           </Styled.LogoWrapper>
           协作方
-          <Styled.LogoWrapper justify="center">
+          <Styled.LogoWrapper>
             {_.range(1, 3).map((i) => (
-              <Styled.LogoBox>
-                <Styled.Logo src={getImage(`corecognizer-logo-${i}.png`)} />
-              </Styled.LogoBox>
+              <img
+                src={getImage(`corecognizer-logo-${i}.png`)}
+                height={isSmallScreen ? 60 : 80}
+                alt={`corecognizer-logo-${i}.png`}
+              />
             ))}
           </Styled.LogoWrapper>
           媒体/合作社区
-          <Styled.LogoWrapper justify="center">
+          <Styled.LogoWrapper>
             {_.range(17, 0, -1).map((i) => (
-              <Styled.LogoBox>
-                <Styled.Logo src={getImage(`partner-logo-${i}.png`)} />
-              </Styled.LogoBox>
+              <img
+                src={getImage(`partner-logo-${i}.png`)}
+                height={isSmallScreen ? 60 : 80}
+                alt={`partner-logo-${i}.png`}
+              />
             ))}
           </Styled.LogoWrapper>
         </Styled.PartnerSection>

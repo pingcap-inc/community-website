@@ -541,7 +541,8 @@ export const JudgeCard = styled.div`
     display: none;
   }
 
-  &:hover {
+  &:hover,
+  &:active {
     ${JudgeCardOverlay} {
       display: block;
     }
@@ -693,19 +694,19 @@ export const CarouselContent = styled.div`
   width: ${(props) => props.width};
 `;
 
-export const LogoWrapper = styled(Row)`
+export const LogoWrapper = styled.div`
   display: flex;
+  gap: 2em;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin-top: 2rem;
   margin-bottom: 2rem;
-`;
 
-export const LogoBox = styled(Col).attrs({ lg: 5, xs: 12 })`
-  margin-bottom: 2rem;
-`;
-export const Logo = styled(Image).attrs({ preview: false })`
-  height: 5em;
-  width: 12.5em;
+  img {
+    margin-bottom: 2rem;
+  }
 `;
 
 export const PartnerSection = styled(Section)`

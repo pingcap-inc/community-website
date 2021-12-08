@@ -3,12 +3,12 @@ import { getImage } from '~/pages/hackathon2021/index.styled';
 
 export const groupsData = [
   {
-    name: '工具组',
-    desc: '对 TiDB 部署运维、数据流转（数据迁移、数据复制、全量导入导出）、集群容灾、诊断和可视化等配套工具的优化或新创意。',
-  },
-  {
     name: '内核组',
     desc: '为 TiDB、TiKV、PD 性能、稳定性、易用性或功能等各方面做出提升，也可以构建云原生时代的 TiDB 内核等。',
+  },
+  {
+    name: '工具组',
+    desc: '对 TiDB 部署运维、数据流转（数据迁移、数据复制、全量导入导出）、集群容灾、诊断和可视化等配套工具的优化或新创意。',
   },
   {
     name: '生态组',
@@ -19,7 +19,7 @@ export const groupsData = [
 export const stepsData = [
   {
     title: 'STEP 1：提交报名',
-    date: '截至 12月27日',
+    date: '截至 12 月 27 日',
     desc: (
       <div>
         报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
@@ -31,14 +31,14 @@ export const stepsData = [
   },
   {
     title: 'STEP 2：完成组队',
-    date: '报名后 - 12月28日',
+    date: '报名后 - 12 月 28 日',
     desc: <div>报名成功即可启动组队，找到你喜欢的队友组成战队，选拔队长，拟定队名，提交团队 RFC</div>,
     action: '提交 RFC',
     url: 'https://forms.pingcap.com/f/TiDBHackathon2021RFC',
   },
   {
     title: 'STEP 3：赛前准备',
-    date: '截至 1月7日（共 10天）',
+    date: '截至 1 月 7 日（共 10 天）',
     desc: (
       <div>
         我们给你准备了充分的<Styled.Link href={'https://asktug.com/t/topic/273503'}>学习资料</Styled.Link>
@@ -50,14 +50,14 @@ export const stepsData = [
   },
   {
     title: 'STEP 4：预赛答辩',
-    date: '1月8日（周六）',
+    date: '1 月 8 日（周六）',
     desc: <div>北京、上海、杭州、成都、深圳、广州任选一处决赛参赛点，还可以走进 PingCAP Office 感受 P 社文化。</div>,
     action: '下载答辩 PPT 模板',
     url: 'https://asktug.com/t/topic/273653',
   },
   {
     title: 'STEP 5：决赛答辩&颁奖',
-    date: '1月9日（周日）',
+    date: '1 月 9 日（周日）',
     desc: <div>决赛现场如火如荼，众多奖项等你拿！</div>,
   },
 ];
@@ -73,7 +73,7 @@ export const FAQData = [
     q: '5. 什么时候可以开始编写代码？',
     a: '组队完成后就可以开始编写代码了！如果遇到学习资料中尚未解答的问题，可以加入Hackathon 2021 参赛群，群内将有导师不定期线上答疑，以及集中直播分享。',
   },
-  { q: '6. 校园团队奖参与评选的人群是？', a: '该团队成为需要全员皆为：未毕业大学生、硕士、博士。' },
+  { q: '6. 校园团队奖参与评选的人群是？', a: '该团队需要全员皆为：未毕业大学生、硕士、博士。' },
 ];
 export const judgesData = [
   {

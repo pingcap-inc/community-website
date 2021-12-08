@@ -1,16 +1,16 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
-import { borderRadius } from '../../components/common.styled';
+import { borderRadiusSize } from '../../components/common.styled';
 
 export const Container = styled.div`
   ${mixins.showOnDesktop()}
-  ${borderRadius}
 `;
 
 export const List = styled.div``;
 
 export const Item = styled.div`
-  ${borderRadius};
+  border-top-right-radius: ${borderRadiusSize};
+  border-bottom-right-radius: ${borderRadiusSize};
   cursor: pointer;
   padding: 0 1rem;
   background-color: ${(props) => (props.selected ? colors.M1 : '')};

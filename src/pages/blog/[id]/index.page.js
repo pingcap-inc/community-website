@@ -60,12 +60,12 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
       />
 
       <Styled.VisualContainer>
-        <Breadcrumb>
+        <Styled.Breadcrumb>
           <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
           <Breadcrumb.Item href={`/blog/categories/${blogInfo.category?.slug}`}>
             {blogInfo.category?.name}
           </Breadcrumb.Item>
-        </Breadcrumb>
+        </Styled.Breadcrumb>
         <StatusAlert blogInfo={blogInfo} />
         <Styled.Content>
           <Styled.Side>

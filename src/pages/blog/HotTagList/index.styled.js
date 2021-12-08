@@ -6,7 +6,7 @@ import { borderRadius } from '../components/common.styled';
 export const Container = styled.div`
   ${mixins.showOnDesktop()}
   ${borderRadius}
-  margin-top: 2rem;
+  margin-top: 1rem;
   a {
     color: ${colors.T7};
   }

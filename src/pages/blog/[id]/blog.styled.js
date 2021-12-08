@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { transparentize } from 'polished';
+import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { colors } from '@tidb-community/ui';
 
 export const MainWrapper = styled.div`
@@ -14,6 +15,10 @@ export const VisualContainer = styled.div`
   position: relative;
   max-width: 991px;
   margin: 32px auto 54px;
+`;
+
+export const Breadcrumb = styled(AntdBreadcrumb)`
+  padding-left: 16px;
 `;
 
 export const Content = styled.main`

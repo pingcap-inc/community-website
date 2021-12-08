@@ -85,7 +85,8 @@ export const judgesData = [
   {
     name: '代闻',
     desc: 'PingCAP TiDB Cloud 负责人',
-    detail: '负责 TiDB Cloud 产品和业务',
+    detail:
+      '负责 TiDB Cloud 产品和业务，在大规模后台架构、物联网应用、媒体行业转型、企业混合IT和自动化运维等方面有丰富经验。',
   },
   {
     name: '冯光普',
@@ -156,7 +157,8 @@ export const judgesData = [
   {
     name: '余军',
     desc: 'PingCAP 解决方案团队负责人',
-    detail: '开源粉丝',
+    detail:
+      '拥有 20 年企业级开源软件架构经验，前富麦科技 CTO、前 Red Hat 中国区解决方案业务总监、前惠普分布式计算高级技术专家，长期服务于银行机构、券商及大型保险行业等，专注于企业级分布式系统 / 高可用架构设计及开源 IT 战略规划咨询。',
   },
   {
     name: '俞勇',

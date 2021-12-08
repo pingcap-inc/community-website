@@ -8,7 +8,7 @@ import CollapseIconSvg from './faq-collapse.svg';
 import ExpandIconSvg from './faq-expand.svg';
 import { mixins } from '@tidb-community/ui';
 
-const columnWidth = 7.14285714;
+const columnWidth = 7.5;
 const backgroundColor = '#191821';
 const textColor = '#fff';
 
@@ -53,6 +53,12 @@ export const SectionTitle = styled.div`
   // center the title, background is an image
   text-align: center;
   background-image: url(${SectionTitleBackground});
+`;
+
+export const SectionFooter = styled.div`
+  font-size: 1em;
+  font-weight: 300;
+  opacity: 0.4;
 `;
 
 export const getImage = (name) => `/images/hackathon/${name}`;
@@ -442,9 +448,13 @@ export const BenefitCardContent = styled.div`
 `;
 
 export const JudgeCardOverlay = styled.div`
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 300;
   position: absolute;
-  bottom: 1rem;
-  overflow: scroll;
+  bottom: 2rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
   ${(props) =>
     props.sm
       ? css`
@@ -466,7 +476,7 @@ export const JudgeCardContent = styled.div`
   // ellipsis
   text-overflow: ellipsis;
 
-  bottom: 1rem;
+  bottom: 2rem;
   // background is a gradient from left to right with diminishing opacity
   background-image: linear-gradient(to right, rgba(36, 35, 106, 1) 0%, rgba(36, 35, 106, 0) 100%); /* the gradient */
   //height: 6rem;
@@ -519,7 +529,7 @@ export const JudgeCard = styled.div`
           width: ${columnWidth * 2}vw;
           height: ${columnWidth * 2.5}vw;
         `}
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   // padding
   background-image: url(${(props) => props.src});
   background-repeat: no-repeat;
@@ -690,9 +700,12 @@ export const LogoWrapper = styled(Row)`
   margin-bottom: 2rem;
 `;
 
-export const LogoBox = styled(Col).attrs({ lg: 5, xs: 12 })``;
+export const LogoBox = styled(Col).attrs({ lg: 5, xs: 12 })`
+  margin-bottom: 2rem;
+`;
 export const Logo = styled(Image).attrs({ preview: false })`
-  max-height: 5rem;
+  height: 5em;
+  width: 12.5em;
 `;
 
 export const PartnerSection = styled(Section)`

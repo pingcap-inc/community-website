@@ -280,6 +280,7 @@ const Page = () => {
                 <Styled.DummyJudgeCard sm={isSmallScreen} />
               ))}
           </Row>
+          <Styled.SectionFooter>评委按姓名字母排序</Styled.SectionFooter>
         </Styled.Section>
         <Styled.Section id="faq">
           <SectionTitle>常见问题</SectionTitle>
@@ -308,7 +309,7 @@ const Page = () => {
         {/*    ))}*/}
         {/*  </Styled.Carousel>*/}
         {/*</Styled.Section>*/}
-        <Styled.PartnerSection>
+        <Styled.PartnerSection id="partners">
           <SectionTitle>合作伙伴</SectionTitle>
           黄金赞助
           <Styled.LogoWrapper justify="center">
@@ -336,7 +337,7 @@ const Page = () => {
           </Styled.LogoWrapper>
           媒体/合作社区
           <Styled.LogoWrapper justify="center">
-            {_.range(1, 18).map((i) => (
+            {_.range(17, 0, -1).map((i) => (
               <Styled.LogoBox>
                 <Styled.Logo src={getImage(`partner-logo-${i}.png`)} />
               </Styled.LogoBox>

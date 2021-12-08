@@ -13,7 +13,7 @@ export const MainWrapper = styled.div`
 export const VisualContainer = styled.div`
   position: relative;
   max-width: 991px;
-  margin: 70px auto 54px;
+  margin: 32px auto 54px;
 `;
 
 export const Content = styled.main`

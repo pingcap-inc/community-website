@@ -28,5 +28,5 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default function LatestCategoryPage(props) {
-  return <CategoryPage {...props} />;
+  return <CategoryPage {...props} blogApi={api.blog.getLatest} />;
 }

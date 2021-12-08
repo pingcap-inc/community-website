@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import * as styled from './index.styled';
 
+import { api } from '@tidb-community/datasource';
+
 import { CommunityHead } from '~/components';
 import { PageDataContext } from '~/context';
 
@@ -10,7 +12,7 @@ import CategoryList from '../CategoryList';
 import CategoryListMobile from '../CategoryListMobile';
 import SearchOnMobile from '../SearchOnMobile';
 import OrderBySwitch from '../OrderBySwitch';
-import BlogList from '../../BlogList';
+import { BlogListInfiniteScroll } from '../../BlogList';
 import HotTagList from '../../HotTagList';
 import WriteBlogButton from '../../WriteBlogButton';
 
@@ -19,7 +21,7 @@ const orderBy = [
   { name: '时间排序', url: '/blog/latest' },
 ];
 
-export default function BlogHomepage({ categories, blogs, hotTags }) {
+export default function BlogHomepage({ categories, blogs, hotTags, blogApi }) {
   const categoriesWithAll = { ...categories };
   const contentWithAll = [...categories.content];
   categoriesWithAll.content = contentWithAll;
@@ -41,7 +43,7 @@ export default function BlogHomepage({ categories, blogs, hotTags }) {
               <CategoryListMobile categories={categoriesWithAll} />
               <SearchOnMobile />
               <OrderBySwitch items={orderBy} />
-              <BlogList blogs={blogs} />
+              <BlogListInfiniteScroll blogs={blogs} api={blogApi} />
             </styled.Center>
             <styled.End>
               <styled.WriteBlog>

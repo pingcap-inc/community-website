@@ -1,5 +1,6 @@
 import { getI18nProps } from '../../../../utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
+import TagDetail from './index.page';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -21,4 +22,6 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-export { default } from './index.page';
+export default function TagDetailLatestPage(props) {
+  return <TagDetail {...props} blogApi={api.blog.getLatest} />;
+}

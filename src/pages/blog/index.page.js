@@ -24,5 +24,5 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default function BlogHomePage(props) {
-  return <BlogHomepage {...props} />;
+  return <BlogHomepage {...props} blogApi={api.blog.getRecommend} />;
 }

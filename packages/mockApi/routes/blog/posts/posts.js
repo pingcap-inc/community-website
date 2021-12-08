@@ -6,7 +6,7 @@ module.exports = (req, res) => {
   const _page = page ? Number.parseInt(page) : 1;
   const _size = size ? Number.parseInt(size) : 20;
   const data = {
-    content,
+    content: content.slice(_page * _size, (_page + 1) * _size),
     page: {
       size: _size,
       totalElements: content.length,

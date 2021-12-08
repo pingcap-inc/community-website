@@ -8,7 +8,7 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 import OrderBySwitch from '../../home/OrderBySwitch';
-import BlogList from '../../BlogList';
+import { BlogListInfiniteScroll } from '../../BlogList';
 import HotTagList from '../../HotTagList';
 import TagItem from '../TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
@@ -36,11 +36,13 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const TagDetail = ({ blogs, hotTags, tag, slug }) => {
+const TagDetail = ({ blogs, hotTags, tag, slug, blogApi }) => {
   const orderBy = [
     { name: '推荐排序', url: `/blog/tag/${slug}` },
     { name: '时间排序', url: `/blog/tag/${slug}/latest` },
   ];
+
+  blogApi = blogApi ?? api.blog.getRecommend;
 
   return (
     <PageDataContext.Provider value={{}}>
@@ -69,7 +71,7 @@ const TagDetail = ({ blogs, hotTags, tag, slug }) => {
             </Styled.Start>
             <Styled.Center>
               <OrderBySwitch items={orderBy} />
-              <BlogList blogs={blogs} />
+              <BlogListInfiniteScroll blogs={blogs} api={blogApi} params={{ tagID: tag.id }} />
             </Styled.Center>
             <Styled.End>
               <WriteBlogButton />

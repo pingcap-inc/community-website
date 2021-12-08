@@ -12,7 +12,7 @@ import CategoryList from '../../home/CategoryList';
 import CategoryListMobile from '../../home/CategoryListMobile';
 import SearchOnMobile from '../../home/SearchOnMobile';
 import OrderBySwitch from '../../home/OrderBySwitch';
-import BlogList from '../../BlogList';
+import { BlogListInfiniteScroll } from '../../BlogList';
 import WriteBlogButton from '../../WriteBlogButton';
 import HotTagList from '../../HotTagList';
 import { getPageQuery } from '../../../../utils/pagination.utils';
@@ -41,7 +41,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-export default function CategoryPage({ category, categories, blogs, hotTags }) {
+export default function CategoryPage({ category, categories, blogs, hotTags, blogApi }) {
   const categoriesWithAll = { ...categories };
   const contentWithAll = [...categories.content];
   categoriesWithAll.content = contentWithAll;
@@ -53,6 +53,8 @@ export default function CategoryPage({ category, categories, blogs, hotTags }) {
     { name: '推荐排序', url: `/blog/c/${slug}` },
     { name: '时间排序', url: `/blog/c/${slug}/latest` },
   ];
+
+  blogApi = blogApi ?? api.blog.getRecommend;
 
   return (
     <PageDataContext.Provider value={{}}>
@@ -71,7 +73,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags }) {
               <CategoryListMobile categories={categoriesWithAll} />
               <SearchOnMobile />
               <OrderBySwitch items={orderBy} />
-              <BlogList blogs={blogs} />
+              <BlogListInfiniteScroll blogs={blogs} api={blogApi} params={{ categoryID: category.id }} />
             </styled.Center>
             <styled.End>
               <styled.WriteBlog>

@@ -7,7 +7,7 @@ import _ from 'lodash';
 import { handleRedirect } from '~/utils/link.utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { carouselData, FAQData, groupsData, judgesData, stepsData } from '~/pages/hackathon2021/datasource';
+import { carouselData, FAQData, groupsData, judgesData, stepsData } from '~/pages/events/hackathon2021/datasource';
 
 const SectionTitle = ({ children }) => (
   <Styled.SectionTitle>

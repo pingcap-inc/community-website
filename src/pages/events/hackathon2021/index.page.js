@@ -324,11 +324,21 @@ const Page = () => {
           </Styled.LogoWrapper>
           白银赞助
           <Styled.LogoWrapper>
-            {_.range(1, 5).map((i) => (
+            {_.range(1, 2).map((i) => (
               <img
                 src={getImage(`silver-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}
                 alt={`silver-sponsor-${i}.png`}
+              />
+            ))}
+          </Styled.LogoWrapper>
+          云资源赞助
+          <Styled.LogoWrapper>
+            {_.range(1, 4).map((i) => (
+              <img
+                src={getImage(`cloud-sponsor-${i}.png`)}
+                height={isSmallScreen ? 60 : 80}
+                alt={`cloud-sponsor-${i}.png`}
               />
             ))}
           </Styled.LogoWrapper>

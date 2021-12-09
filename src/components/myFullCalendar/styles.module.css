@@ -20,6 +20,10 @@
   color: #2c2c2c;
 }
 
+.event:hover {
+  color: #fff;
+}
+
 .event div {
   overflow: hidden;
   text-overflow: ellipsis;

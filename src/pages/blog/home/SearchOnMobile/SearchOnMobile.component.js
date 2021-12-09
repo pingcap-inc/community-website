@@ -1,15 +1,12 @@
 import React from 'react';
 import * as Styled from './index.styled';
-import { Input } from 'antd'
+import { Input } from 'antd';
 
 const SearchOnMobile = () => {
-  const onSearch = (value, event) => {
-    // eslint-disable-next-line no-console
-    console.log('search value', value);
-  }
+  const onSearch = (value, event) => {};
   return (
     <Styled.Container>
-      <Input placeholder="请输入搜索关键字" allowClear onSearch={onSearch} style={{ width: "100%" }} />
+      <Input placeholder="请输入搜索关键字" allowClear onSearch={onSearch} style={{ width: '100%' }} />
     </Styled.Container>
   );
 };

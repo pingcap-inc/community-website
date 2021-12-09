@@ -8,7 +8,6 @@ import { PageDataContext } from '~/context';
 import BlogLayout from '../../BlogLayout.component';
 import CategoryList from '../CategoryList';
 import CategoryListMobile from '../CategoryListMobile';
-import SearchOnMobile from '../SearchOnMobile';
 import OrderBySwitch from '../OrderBySwitch';
 import { BlogListInfiniteScroll } from '../../BlogList';
 import HotTagList from '../../HotTagList';
@@ -39,7 +38,7 @@ export default function BlogHomepage({ categories, blogs, hotTags, blogApi }) {
             </styled.Start>
             <styled.Center>
               <CategoryListMobile categories={categoriesWithAll} />
-              <SearchOnMobile />
+              {/*<SearchOnMobile />*/}
               <OrderBySwitch items={orderBy} />
               <BlogListInfiniteScroll blogs={blogs} api={blogApi} />
             </styled.Center>

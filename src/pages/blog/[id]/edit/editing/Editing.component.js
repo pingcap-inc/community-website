@@ -1,6 +1,6 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input } from 'antd';
+import { Alert, Button, Checkbox, Input, message } from 'antd';
 import React, { useCallback, useMemo } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 // import ImgCrop from 'antd-img-crop';
@@ -26,6 +26,13 @@ const Editing = ({ blogInfo }) => {
     content,
     setContent,
   } = useEditContext();
+
+  const validation = (callback) => {
+    if (title !== '') {
+      return callback();
+    }
+    message.warn('请输入标题');
+  };
 
   const { save, saveAndSubmit, operating } = useEditMethods();
 
@@ -149,10 +156,10 @@ const Editing = ({ blogInfo }) => {
         {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
         {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <div className="btns">
-          <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
+          <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
             发布
           </Button>
-          <Button type="default" onClick={save} disabled={operating}>
+          <Button type="default" onClick={() => validation(save)} disabled={operating}>
             保存草稿
           </Button>
         </div>

@@ -214,7 +214,7 @@ const Page = () => {
           <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
-              <Prize title={'CTO 特别奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+              <Prize title={'技术潜力奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
             </Col>
             <Col>
               <Prize title={'无限创意奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />

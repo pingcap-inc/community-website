@@ -1,6 +1,12 @@
 import * as Styled from '~/pages/events/hackathon2021/index.styled';
 import { getImage } from '~/pages/events/hackathon2021/index.styled';
 
+export const seo = {
+  title: 'TiDB Hackathon 2021',
+  description: '本次 Hackathon 主题为「Explore the Sky」，尽情发挥天马行空的想象，用 TiDB 创造无限可能。',
+  keywords: ['黑客马拉松', 'TiDB', 'Hackathon'],
+};
+
 export const groupsData = [
   {
     name: '内核组',
@@ -83,6 +89,12 @@ export const judgesData = [
       '陈肃，2010 年获中国科学院研究生院软件理论博士学位后加入中国移动研究院用户行为实验室，历任算法工程师、项目经理、实验室技术负责人。2015 加入亿瑞互动科技（北京）有限公司任技术 VP，负责大后端+自适应学习系统的研发工作。2017 年以合伙人身份加入 DataPipeline 任 CTO，负责公司的产品技术研发工作。',
   },
   {
+    name: '陈昱',
+    desc: '云启资本合伙人',
+    detail:
+      '重点关注大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了 PingCAP、Zilliz、Jina AI、Singularity、TigerGraph、Graviti、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、数睿数据、追势科技和比瓴科技等优秀企业。',
+  },
+  {
     name: '代闻',
     desc: 'PingCAP TiDB Cloud 负责人',
     detail:
@@ -141,6 +153,12 @@ export const judgesData = [
     name: '吴晟',
     desc: 'Apache 软件基金会董事，Tetrate 创始工程师',
     detail: 'Tetrate 创始工程师，Apache 软件基金会董事，Apache SkyWalking 创始人。',
+  },
+  {
+    name: '谢佳',
+    desc: '华创资本合伙人',
+    detail:
+      '专注于企业软件及服务领域的早期投资，2015 年加入华创资本，研究驱动型投资人，覆盖的领域包括 SaaS / Cloud Infra / AI&DataTech / Cybersecurity 等。在华创资本负责推动和执行的投资案例包括：PingCAP、ONES、梦诚科技、天旦、中睿天下、FONE、石墨文档、JuiceData、百观科技、小满科技等。',
   },
   {
     name: '徐之浩',

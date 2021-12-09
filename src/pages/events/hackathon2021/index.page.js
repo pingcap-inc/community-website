@@ -7,7 +7,8 @@ import _ from 'lodash';
 import { handleRedirect } from '~/utils/link.utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { carouselData, FAQData, groupsData, judgesData, stepsData } from '~/pages/events/hackathon2021/datasource';
+import { carouselData, FAQData, groupsData, judgesData, seo, stepsData } from '~/pages/events/hackathon2021/datasource';
+import { CommunityHead } from '~/components';
 
 const SectionTitle = ({ children }) => (
   <Styled.SectionTitle>
@@ -88,6 +89,8 @@ const Page = () => {
   const [QROverlay, setQROverlay] = useState(false);
   return (
     <CoreLayout>
+      <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
+
       {QROverlay && (
         <Styled.BannerQRCodeOverlay onClick={() => setQROverlay(false)}>
           <Styled.BannerQRCodeContent>

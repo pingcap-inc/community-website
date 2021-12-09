@@ -3,11 +3,11 @@ import * as Styled from './interactions.styled';
 import {
   CommentOutlined,
   EditOutlined,
-  HeartFilled,
+  HeartTwoTone,
   HeartOutlined,
   SendOutlined,
   ShareAltOutlined,
-  StarFilled,
+  StarTwoTone,
   StarOutlined,
   StopOutlined,
   DeleteOutlined,
@@ -32,33 +32,43 @@ const Interactions = ({ blogInfo, reload }) => {
     actions.push(
       <Interaction
         key="comments"
-        icon={CommentOutlined}
+        icon={<CommentOutlined />}
         count={blogInfo.comments}
         onClick={() => scroller.scrollTo('comments', { smooth: true })}
       />,
-      <Interaction key="likes" icon={liked ? HeartFilled : HeartOutlined} count={likes} onClick={like} />,
-      <Interaction key="favorites" icon={favorited ? StarFilled : StarOutlined} count={favorites} onClick={favorite} />,
-      <Interaction key="shares" icon={ShareAltOutlined} count={shares} onClick={share} />
+      <Interaction
+        key="likes"
+        icon={liked ? <HeartTwoTone twoToneColor={'#be1d32'} /> : <HeartOutlined />}
+        count={likes}
+        onClick={like}
+      />,
+      <Interaction
+        key="favorites"
+        icon={favorited ? <StarTwoTone twoToneColor={'#f8c200'} /> : <StarOutlined />}
+        count={favorites}
+        onClick={favorite}
+      />,
+      <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
     );
   }
   if (blogInfo.status === 'DRAFT') {
-    actions.push(<Interaction key="remove" icon={DeleteOutlined} count={remove} onClick={remove} name="remove" />);
+    actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);
   }
   if (isAuthor(blogInfo)) {
-    actions.push(<Interaction key="edit" icon={EditOutlined} onClick={edit} />);
-    actions.push(<Interaction key="remove" icon={DeleteOutlined} count={remove} onClick={remove} name="remove" />);
+    actions.push(<Interaction key="edit" icon={<EditOutlined />} onClick={edit} />);
+    actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);
   }
   if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {
     actions.push(
-      <Interaction key="publish" icon={SendOutlined} onClick={publish} />,
-      <Interaction key="reject" icon={StopOutlined} onClick={reject} />
+      <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />,
+      <Interaction key="reject" icon={<StopOutlined />} onClick={reject} />
     );
   }
 
   return <>{actions}</>;
 };
 
-const Interaction = ({ icon: Icon, count, onClick, name }) => {
+const Interaction = ({ icon, twoToneColor, count, onClick, name }) => {
   if (name === 'remove') {
     return (
       <Popconfirm
@@ -68,15 +78,13 @@ const Interaction = ({ icon: Icon, count, onClick, name }) => {
         okText="确认"
         cancelText="取消"
       >
-        <Styled.Interaction>
-          <Icon />
-        </Styled.Interaction>
+        <Styled.Interaction>{icon}</Styled.Interaction>
       </Popconfirm>
     );
   }
   return (
     <Styled.Interaction onClick={onClick}>
-      <Icon />
+      {icon}
 
       {typeof count === 'number' ? <span className="count">{count}</span> : undefined}
     </Styled.Interaction>

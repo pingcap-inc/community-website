@@ -314,7 +314,7 @@ const Page = () => {
           <SectionTitle>合作伙伴</SectionTitle>
           黄金赞助
           <Styled.LogoWrapper>
-            {_.range(1, 3).map((i) => (
+            {_.range(1, 4).map((i) => (
               <img
                 src={getImage(`gold-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

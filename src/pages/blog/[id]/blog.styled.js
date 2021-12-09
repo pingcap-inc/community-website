@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { transparentize } from 'polished';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
-import { colors } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const MainWrapper = styled.div`
   background: #e9eaee;
@@ -15,6 +15,9 @@ export const VisualContainer = styled.div`
   position: relative;
   max-width: 991px;
   margin: 32px auto 54px;
+  ${mixins.onMobile(css`
+    padding: 0 1rem;
+  `)};
 `;
 
 export const Breadcrumb = styled(AntdBreadcrumb)`

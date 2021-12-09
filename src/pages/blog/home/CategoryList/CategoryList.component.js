@@ -21,7 +21,7 @@ const CategoryList = ({ categories: { content } }) => {
       {isLogin && <FixedLink url={`/blog/user/${id}/posts`}>我的专栏</FixedLink>}
       <FixedLink url={'https://asktug.com/t/topic/69773'}>专栏发布指南</FixedLink>
       <FixedLink url={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>
-      <FixedLink url={'mailto:/api'}>联系我们</FixedLink>
+      <FixedLink url={'mailto:community@tidb.io'}>联系我们</FixedLink>
     </Styled.Container>
   );
 };

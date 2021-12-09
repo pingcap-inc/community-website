@@ -51,12 +51,11 @@ const Interactions = ({ blogInfo, reload }) => {
       <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
     );
   }
-  if (blogInfo.status === 'DRAFT') {
+  if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {
     actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);
   }
   if (isAuthor(blogInfo)) {
     actions.push(<Interaction key="edit" icon={<EditOutlined />} onClick={edit} />);
-    actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);
   }
   if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {
     actions.push(

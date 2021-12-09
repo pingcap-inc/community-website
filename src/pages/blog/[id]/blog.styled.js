@@ -7,7 +7,7 @@ export const MainWrapper = styled.div`
   background: #e9eaee;
   *::selection {
     color: #000f0f !important;
-    background-color: rgba(#f2bfbf, 0.5);
+    background-color: #f7d8d9 !important;
   }
 `;
 

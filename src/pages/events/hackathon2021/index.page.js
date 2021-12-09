@@ -9,6 +9,17 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { carouselData, FAQData, groupsData, judgesData, seo, stepsData } from '~/pages/events/hackathon2021/datasource';
 import { CommunityHead } from '~/components';
+import { getI18nProps } from '~/utils/i18n.utils';
+
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
 
 const SectionTitle = ({ children }) => (
   <Styled.SectionTitle>
@@ -122,8 +133,8 @@ const Page = () => {
         </Styled.BannerWrapper>
         <Styled.Section id="intro">
           <SectionTitle>大赛介绍</SectionTitle>
-          TiDB Hackathon 自 2017 年起已连续举办四届，本次届主题为「Explore the
-          Sky」，参赛者可以尽情发挥天马行空的想象，用 TiDB 创造无限可能。
+          TiDB Hackathon 自 2017 年起已连续举办四届，本届主题为「Explore the Sky」，参赛者可以尽情发挥天马行空的想象，用
+          TiDB 创造无限可能。
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>主题赛道</SectionTitle>

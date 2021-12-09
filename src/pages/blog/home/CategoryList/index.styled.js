@@ -3,7 +3,7 @@ import { mixins, colors } from '@tidb-community/ui';
 import { borderRadiusSize } from '../../components/common.styled';
 
 export const Container = styled.div`
-  ${mixins.showOnDesktop()}
+  ${mixins.showOnDesktop()};
 `;
 
 export const List = styled.div``;

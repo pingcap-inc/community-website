@@ -25,7 +25,11 @@ export const Container = styled(Row).attrs({
 export const Start = styled(Col).attrs({
   sm: 24,
   md: 4,
-})``;
+})`
+  position: sticky !important;
+  top: 2rem;
+  height: 100%;
+`;
 
 export const Center = styled(Col).attrs({
   sm: 24,

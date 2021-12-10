@@ -214,7 +214,7 @@ const Page = () => {
           <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
-              <Prize title={'CTO 特别奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+              <Prize title={'技术潜力奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
             </Col>
             <Col>
               <Prize title={'无限创意奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
@@ -368,7 +368,7 @@ const Page = () => {
           </Styled.LogoWrapper>
           媒体/合作社区
           <Styled.LogoWrapper>
-            {_.range(17, 0, -1).map((i) => (
+            {_.range(16, 0, -1).map((i) => (
               <img
                 src={getImage(`partner-logo-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

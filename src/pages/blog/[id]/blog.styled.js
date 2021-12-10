@@ -33,7 +33,7 @@ export const Side = styled.div`
 
 export const Main = styled.div`
   //position: relative;
-  max-width: 991px;
+  width: 991px;
   margin: 2rem;
   ${mixins.onMobile(css`
     padding: 0 1rem;

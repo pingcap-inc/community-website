@@ -67,9 +67,7 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
     }
     default: {
       BreadcrumbDOM = (
-        <Breadcrumb.Item href={`/blog/categories/${blogInfo.category?.slug}`}>
-          {blogInfo.category?.name}
-        </Breadcrumb.Item>
+        <Breadcrumb.Item href={`/blog/c/${blogInfo.category?.slug}`}>{blogInfo.category?.name}</Breadcrumb.Item>
       );
     }
   }

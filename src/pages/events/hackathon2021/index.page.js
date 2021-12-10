@@ -368,7 +368,7 @@ const Page = () => {
           </Styled.LogoWrapper>
           媒体/合作社区
           <Styled.LogoWrapper>
-            {_.range(17, 0, -1).map((i) => (
+            {_.range(16, 0, -1).map((i) => (
               <img
                 src={getImage(`partner-logo-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

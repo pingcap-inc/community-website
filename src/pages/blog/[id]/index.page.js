@@ -50,7 +50,9 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
     return JSON.parse(blogInfo?.content || '[]');
   }, [blogInfo]);
 
-  const { isLogin, id, hasRole } = usePrincipal();
+  const { id } = usePrincipal();
+
+  if (isLoading) return <Skeleton active />;
 
   let BreadcrumbDOM;
   switch (blogInfo.status) {
@@ -72,8 +74,6 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
     }
   }
 
-  if (isLoading) return <Skeleton active />;
-
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
       <CommunityHead
@@ -82,51 +82,55 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
         // keyword
       />
 
-      <Styled.VisualContainer>
-        <Styled.Breadcrumb>
-          <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
-          {BreadcrumbDOM}
-          <Breadcrumb.Item>{blogInfo.title}</Breadcrumb.Item>
-        </Styled.Breadcrumb>
-        <Styled.StatusAlert>
-          <StatusAlert blogInfo={blogInfo} />
-        </Styled.StatusAlert>
-        <Styled.Content>
-          <Styled.Side>
-            <Interactions blogInfo={blogInfo} reload={reload} />
-          </Styled.Side>
+      {/*<Styled.VisualContainer>*/}
+      <Styled.Content>
+        <Styled.Side>
+          <Interactions blogInfo={blogInfo} reload={reload} />
+        </Styled.Side>
+        <Styled.Main>
+          <Styled.Breadcrumb>
+            <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
+            {BreadcrumbDOM}
+            <Breadcrumb.Item>{blogInfo.title}</Breadcrumb.Item>
+          </Styled.Breadcrumb>
+          <Styled.StatusAlert>
+            <StatusAlert blogInfo={blogInfo} />
+          </Styled.StatusAlert>
 
-          {blogInfo.coverImageURL ? (
-            <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blogInfo.coverImageURL)})` }} />
+          <Styled.Body>
+            {blogInfo.coverImageURL ? (
+              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blogInfo.coverImageURL)})` }} />
+            ) : undefined}
+
+            <Styled.Title>{blogInfo.title}</Styled.Title>
+
+            <Styled.Meta>
+              <AuthorInfo blogInfo={blogInfo} />
+            </Styled.Meta>
+
+            <Styled.Meta>
+              {blogInfo.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
+
+              {blogInfo.tags.map((tag) => (
+                <BlogInfo.Tag key={tag.slug} onClick={() => router.push(`/blog/tag/${tag.slug}`)}>
+                  {tag.name}
+                </BlogInfo.Tag>
+              ))}
+            </Styled.Meta>
+
+            <Styled.Editor>
+              <Content fragment={fragment} factory={factory} />
+            </Styled.Editor>
+          </Styled.Body>
+
+          {blogInfo.origin !== 'ORIGINAL' ? (
+            <Styled.Declaration>声明：本文转载于 {blogInfo.sourceURL}</Styled.Declaration>
           ) : undefined}
 
-          <Styled.Title>{blogInfo.title}</Styled.Title>
-
-          <Styled.Meta>
-            <AuthorInfo blogInfo={blogInfo} />
-          </Styled.Meta>
-
-          <Styled.Meta>
-            {blogInfo.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
-
-            {blogInfo.tags.map((tag) => (
-              <BlogInfo.Tag key={tag.slug} onClick={() => router.push(`/blog/tag/${tag.slug}`)}>
-                {tag.name}
-              </BlogInfo.Tag>
-            ))}
-          </Styled.Meta>
-
-          <Styled.Editor>
-            <Content fragment={fragment} factory={factory} />
-          </Styled.Editor>
-        </Styled.Content>
-
-        {blogInfo.origin !== 'ORIGINAL' ? (
-          <Styled.Declaration>声明：本文转载于 {blogInfo.sourceURL}</Styled.Declaration>
-        ) : undefined}
-
-        {blogInfo.status === 'PUBLISHED' ? <Comments blogInfo={blogInfo} /> : undefined}
-      </Styled.VisualContainer>
+          {blogInfo.status === 'PUBLISHED' ? <Comments blogInfo={blogInfo} /> : undefined}
+        </Styled.Main>
+      </Styled.Content>
+      {/*</Styled.VisualContainer>*/}
     </CoreLayout>
   );
 };

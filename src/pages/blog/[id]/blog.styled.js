@@ -11,15 +11,6 @@ export const MainWrapper = styled.div`
   }
 `;
 
-export const VisualContainer = styled.div`
-  position: relative;
-  max-width: 991px;
-  margin: 32px auto 54px;
-  ${mixins.onMobile(css`
-    padding: 0 1rem;
-  `)};
-`;
-
 export const Breadcrumb = styled(AntdBreadcrumb)`
   padding-left: 16px;
 `;
@@ -28,18 +19,33 @@ export const StatusAlert = styled.div`
   margin-top: 16px;
 `;
 
-export const Content = styled.main`
+export const Content = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export const Side = styled.div`
+  position: sticky;
+  height: 100%;
+  margin-top: 4rem;
+  top: 2rem;
+`;
+
+export const Main = styled.div`
+  //position: relative;
+  max-width: 991px;
+  margin: 2rem;
+  ${mixins.onMobile(css`
+    padding: 0 1rem;
+  `)};
+`;
+
+export const Body = styled.main`
   margin-top: 16px;
   padding: 30px 37px;
   border-radius: 6px;
   min-height: 413px;
   background: white;
-`;
-
-export const Side = styled.div`
-  position: absolute;
-  top: 56px;
-  left: -52px;
 `;
 
 export const CoverImage = styled.div`

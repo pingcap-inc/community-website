@@ -201,13 +201,13 @@ const Page = () => {
           <SectionTitle>大赛奖项</SectionTitle>
           <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
-            <Col xs={{ order: 2 }} md={{ order: 1 }}>
-              <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
-            </Col>
-            <Col xs={{ order: 1 }} md={{ order: 2 }}>
+            <Col>
               <Prize title={'一等奖'} count={'1 支队伍'} reward={''} src={getImage('prize-1.svg')} huge />
             </Col>
-            <Col xs={{ order: 3 }}>
+            <Col>
+              <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
+            </Col>
+            <Col>
               <Prize title={'三等奖'} count={'6 支队伍'} reward={''} src={getImage('prize-3.svg')} huge />
             </Col>
           </Styled.PrizesRow>
@@ -217,8 +217,21 @@ const Page = () => {
               <Prize title={'技术潜力奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
             </Col>
             <Col>
+              <Prize title={'用户之选奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+            </Col>
+            <Col>
+              <Prize
+                title={'云上应用奖'}
+                count={'1 支队伍'}
+                reward={'¥3000+云资源代金券'}
+                src={getImage('prize-special.svg')}
+              />
+            </Col>
+            <Col>
               <Prize title={'无限创意奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
             </Col>
+          </Styled.PrizesRow>
+          <Styled.PrizesRow justify={'space-around'}>
             <Col>
               <Prize title={'积分挑战奖'} count={'3 支队伍'} reward={'¥2000'} src={getImage('prize-special.svg')} />
             </Col>
@@ -230,8 +243,6 @@ const Page = () => {
                 src={getImage('prize-special.svg')}
               />
             </Col>
-          </Styled.PrizesRow>
-          <Styled.PrizesRow justify={'space-around'}>
             <Col>
               <Prize
                 title={'校园团队奖'}
@@ -260,11 +271,11 @@ const Page = () => {
           <Styled.PrizesRow gutter={32}>
             {[
               '专业导师赛前辅导',
-              '参赛者证书',
-              '参赛者专属周边',
-              '获奖队伍专题推广',
-              '个人&团队品牌宣传',
-              '专题采访',
+              '评委大咖深度点评',
+              '技术同好现场交流',
+              '优秀项目孵化落地',
+              '获奖团队品牌曝光',
+              '参赛者专属大礼包',
             ].map((benefit, idx) => (
               <Col xs={24} md={8}>
                 <BenefitCard icon={getImage(`benefit-icon-${idx + 1}.svg`)} content={benefit} />

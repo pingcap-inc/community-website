@@ -24,6 +24,10 @@ export const Breadcrumb = styled(AntdBreadcrumb)`
   padding-left: 16px;
 `;
 
+export const StatusAlert = styled.div`
+  margin-top: 16px;
+`;
+
 export const Content = styled.main`
   margin-top: 16px;
   padding: 30px 37px;

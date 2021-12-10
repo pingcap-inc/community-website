@@ -66,7 +66,9 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
             {blogInfo.category?.name}
           </Breadcrumb.Item>
         </Styled.Breadcrumb>
-        <StatusAlert blogInfo={blogInfo} />
+        <Styled.StatusAlert>
+          <StatusAlert blogInfo={blogInfo} />
+        </Styled.StatusAlert>
         <Styled.Content>
           <Styled.Side>
             <Interactions blogInfo={blogInfo} reload={reload} />

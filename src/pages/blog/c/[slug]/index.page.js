@@ -45,7 +45,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags, blo
   const categoriesWithAll = { ...categories };
   const contentWithAll = [...categories.content];
   categoriesWithAll.content = contentWithAll;
-  contentWithAll.unshift({ name: '全部分类', slug: '' });
+  contentWithAll.unshift({ name: '全部文章', slug: '' });
 
   const { slug } = category;
 

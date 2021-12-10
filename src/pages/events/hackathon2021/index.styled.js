@@ -419,7 +419,7 @@ export const GlowLabel = styled.div`
 
 export const BenefitCard = styled.div`
   // padding
-  padding: 2rem;
+  padding: 1.5rem;
   display: flex;
   justify-content: space-between;
   background: ${backgroundColor};

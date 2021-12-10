@@ -3,6 +3,7 @@ import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
+import { usePrincipal } from '~/pages/blog/blog.hooks';
 
 export const useLikes = (blogInfo, isLogin) => {
   const [liked, setLiked] = useState(blogInfo.liked);
@@ -125,8 +126,9 @@ export const useReview = (blogInfo, reload) => {
 
 export const useRemove = (blogInfo) => {
   const router = useRouter();
+  const { id } = usePrincipal();
   const remove = () => {
-    return api.blog.posts.post.del(blogInfo.id).then(() => router.replace('/blog'));
+    return api.blog.posts.post.del(blogInfo.id).then(() => router.replace(`/blog/user/${id}/posts`));
   };
 
   return { remove };

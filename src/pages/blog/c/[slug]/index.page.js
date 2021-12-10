@@ -10,7 +10,7 @@ import BlogLayout from '../../BlogLayout.component';
 import * as styled from '../../home/BlogHomepage/index.styled';
 import CategoryList from '../../home/CategoryList';
 import CategoryListMobile from '../../home/CategoryListMobile';
-import SearchOnMobile from '../../home/SearchOnMobile';
+// import SearchOnMobile from '../../home/SearchOnMobile';
 import OrderBySwitch from '../../home/OrderBySwitch';
 import { BlogListInfiniteScroll } from '../../BlogList';
 import WriteBlogButton from '../../WriteBlogButton';
@@ -71,7 +71,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags, blo
             </styled.Start>
             <styled.Center>
               <CategoryListMobile categories={categoriesWithAll} />
-              <SearchOnMobile />
+              {/*<SearchOnMobile />*/}
               <OrderBySwitch items={orderBy} />
               <BlogListInfiniteScroll blogs={blogs} api={blogApi} params={{ categoryID: category.id }} />
             </styled.Center>

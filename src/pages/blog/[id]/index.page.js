@@ -15,6 +15,7 @@ import StatusAlert from './components/StatusAlert';
 import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
+import { usePrincipal } from '../blog.hooks';
 
 const noop = () => {};
 
@@ -49,6 +50,28 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
     return JSON.parse(blogInfo?.content || '[]');
   }, [blogInfo]);
 
+  const { isLogin, id, hasRole } = usePrincipal();
+
+  let BreadcrumbDOM;
+  switch (blogInfo.status) {
+    case 'DRAFT': {
+      BreadcrumbDOM = (
+        <>
+          <Breadcrumb.Item href={`/blog/user/${id}/posts`}>我的专栏</Breadcrumb.Item>
+          <Breadcrumb.Item href={`/blog/user/${id}/posts`}>草稿</Breadcrumb.Item>
+        </>
+      );
+      break;
+    }
+    default: {
+      BreadcrumbDOM = (
+        <Breadcrumb.Item href={`/blog/categories/${blogInfo.category?.slug}`}>
+          {blogInfo.category?.name}
+        </Breadcrumb.Item>
+      );
+    }
+  }
+
   if (isLoading) return <Skeleton active />;
 
   return (
@@ -62,9 +85,8 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
       <Styled.VisualContainer>
         <Styled.Breadcrumb>
           <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
-          <Breadcrumb.Item href={`/blog/categories/${blogInfo.category?.slug}`}>
-            {blogInfo.category?.name}
-          </Breadcrumb.Item>
+          {BreadcrumbDOM}
+          <Breadcrumb.Item>{blogInfo.title}</Breadcrumb.Item>
         </Styled.Breadcrumb>
         <Styled.StatusAlert>
           <StatusAlert blogInfo={blogInfo} />

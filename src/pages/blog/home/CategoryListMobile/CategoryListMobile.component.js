@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './index.styled';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const CategoryListMobile = ({ categories: { content } }) => {

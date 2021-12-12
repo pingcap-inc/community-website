@@ -14,8 +14,11 @@ const ROLE_NAMES = {
   [ROLES.MEMBER]: '成员',
 };
 
+const LOCALHOST = 'http://127.0.0.1';
+
 module.exports = {
   MESSAGES,
   ROLES,
   ROLE_NAMES,
+  LOCALHOST,
 };

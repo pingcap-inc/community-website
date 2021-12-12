@@ -40,6 +40,12 @@ const config = {
       '@tidb-community/ui': path.resolve('./packages/ui/src'),
       '@': path.resolve('./'),
       '~': path.resolve('./src'),
+      '@pingcap-inc/tidb-community-editor/dist/style.css': path.resolve(
+        './node_modules/@pingcap-inc/tidb-community-editor/dist/style.css'
+      ),
+      '@pingcap-inc/tidb-community-editor': path.resolve(
+        './node_modules/@pingcap-inc/tidb-community-editor/dist/index.full-es.js'
+      ),
     };
 
     config.module.rules.push({

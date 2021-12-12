@@ -1,15 +1,16 @@
 import React from 'react';
-import { AutoComplete, Checkbox, Form, FormItem, Input } from 'formik-antd';
+
+import { Checkbox, Form, FormItem, Input, AutoComplete } from 'formik-antd';
 import { Formik } from 'formik';
-import { Link, RemoteAutoComplete, withVerifyCode } from '@tidb-community/ui';
+import { Link, withVerifyCode, RemoteAutoComplete } from '@tidb-community/ui';
 import { parse } from 'querystring';
 import { useLocation } from 'react-router-dom';
 import { utils } from '@tidb-community/common';
 
 import { RouteLink } from '~/components/links';
 import { SimpleLayout } from '~/layout';
-import { PhoneInputPrefix, SubmitButton } from '~/components/form';
-import { fetchOrganizationOptions, signup as callSignup } from '~/api';
+import { SubmitButton, PhoneInputPrefix } from '~/components/form';
+import { signup as callSignup, fetchOrganizationOptions } from '~/api';
 import { form, formSchema, initialValues } from './register.form';
 import { handleError } from '~/utils/errors';
 

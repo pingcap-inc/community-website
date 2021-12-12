@@ -1,6 +1,7 @@
 import * as R from 'ramda';
 
 import { ROLE_KEYS } from '~/constants';
+import dayjs from 'dayjs';
 
 // https://stackoverflow.com/a/60738940/14257627
 export const camelize = (str) => str.replace(/-./g, (x) => x[1].toUpperCase());
@@ -29,3 +30,5 @@ export const genOptionValues = (values) =>
     value,
     children: value,
   }));
+
+export const formatIsoDatetime = (isoDatetime) => dayjs(isoDatetime).format('YYYY-MM-DD HH:mm');

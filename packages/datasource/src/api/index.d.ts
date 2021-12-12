@@ -2,6 +2,7 @@ export * as events from './events';
 export * as orgs from './orgs';
 export * as tug from './tug';
 export * as subscribe from './subscribe';
+export * as blog from './blog';
 export { me } from './me';
 
 export type ApiResponse<T, Detail> = {

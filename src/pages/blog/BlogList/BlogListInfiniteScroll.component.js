@@ -8,7 +8,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 const BlogList = ({
   blogs: {
     content,
-    page: { number },
+    page: { number, totalPages },
   },
   usernameExtends,
   bottomExtends,
@@ -19,7 +19,7 @@ const BlogList = ({
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(content);
   const [page, setPage] = useState(number ?? 1);
-  const [hasMore, setHasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(page < totalPages);
   const size = 20;
 
   const loadMoreData = async () => {

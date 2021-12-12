@@ -16,6 +16,8 @@ import { BlogListInfiniteScroll } from '../../BlogList';
 import WriteBlogButton from '../../WriteBlogButton';
 import HotTagList from '../../HotTagList';
 import { getPageQuery } from '../../../../utils/pagination.utils';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -42,6 +44,8 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default function CategoryPage({ category, categories, blogs, hotTags, blogApi }) {
+  const router = useRouter();
+
   const categoriesWithAll = { ...categories };
   const contentWithAll = [...categories.content];
   categoriesWithAll.content = contentWithAll;
@@ -55,6 +59,15 @@ export default function CategoryPage({ category, categories, blogs, hotTags, blo
   ];
 
   blogApi = blogApi ?? api.blog.getRecommend;
+
+  const [data, setData] = useState(blogs);
+  const getNewData = async () => {
+    const newData = await blogApi();
+    setData(newData);
+  };
+  useEffect(() => {
+    getNewData();
+  }, [router.asPath]);
 
   return (
     <PageDataContext.Provider value={{}}>
@@ -73,7 +86,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags, blo
               <CategoryListMobile categories={categoriesWithAll} />
               {/*<SearchOnMobile />*/}
               <OrderBySwitch items={orderBy} />
-              <BlogListInfiniteScroll blogs={blogs} api={blogApi} params={{ categoryID: category.id }} />
+              <BlogListInfiniteScroll blogs={data} api={blogApi} params={{ categoryID: category.id }} />
             </styled.Center>
             <styled.End>
               <styled.WriteBlog>

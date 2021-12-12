@@ -8,7 +8,8 @@ export const Container = styled.div`
 
 export const List = styled.div``;
 
-export const Item = styled.div`
+export const Item = styled.a`
+  display: block;
   border-top-right-radius: ${borderRadiusSize};
   border-bottom-right-radius: ${borderRadiusSize};
   cursor: pointer;
@@ -16,14 +17,15 @@ export const Item = styled.div`
   background-color: ${(props) => (props.selected ? colors.M1 : '')};
   border-left: ${(props) => (props.selected ? `4px solid ${colors.T7}` : 'none')};
   transition: color 0.25s ease;
-  &:hover {
-    color: ${colors.B1};
-  }
-  height: 40px;
-  line-height: 40px;
+  color: ${colors.F1} !important;
   &:not(:last-child) {
     margin-bottom: 0.5rem;
   }
+  &:hover {
+    color: ${colors.B1} !important;
+  }
+  height: 40px;
+  line-height: 40px;
 `;
 
 export const FixedLink = styled.div`

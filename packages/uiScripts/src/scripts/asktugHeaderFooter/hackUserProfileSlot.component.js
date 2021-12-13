@@ -4,7 +4,7 @@ const HackUserProfileSlot = () => {
   const [width, setWidth] = useState(0);
 
   const resetWidth = () => {
-    const el = document.querySelector('.d-header .panel');
+    const el = document.querySelector('.d-header');
     if (el) {
       setWidth((parseInt(getComputedStyle(el).width) ?? 0) + 16);
     }
@@ -22,7 +22,7 @@ const HackUserProfileSlot = () => {
         mutation.addedNodes.forEach(function (node) {
           if (node.id === 'ember6') {
             resetWidth();
-            slotObserver.observe(document.querySelector('.d-header .panel'), {
+            slotObserver.observe(document.querySelector('.d-header'), {
               subtree: true,
               childList: true,
             });

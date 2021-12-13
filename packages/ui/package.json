@@ -11,6 +11,7 @@
   "description": "React UI libarary for TiDB Community",
   "main": "./lib/index",
   "module": "./es/index",
+  "sideEffects": false,
   "files": [
     "es",
     "lib"

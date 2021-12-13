@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 
+const RAW_USER_PROFILE_SELECTOR = '.d-header .panel';
+
 const HackUserProfileSlot = () => {
   const [width, setWidth] = useState(0);
 
   const resetWidth = () => {
-    const el = document.querySelector('.d-header');
+    // ref to raw user profile el
+    const el = document.querySelector(RAW_USER_PROFILE_SELECTOR);
     if (el) {
       setWidth((parseInt(getComputedStyle(el).width) ?? 0) + 16);
     }
@@ -22,7 +25,7 @@ const HackUserProfileSlot = () => {
         mutation.addedNodes.forEach(function (node) {
           if (node.id === 'ember6') {
             resetWidth();
-            slotObserver.observe(document.querySelector('.d-header'), {
+            slotObserver.observe(document.querySelector(RAW_USER_PROFILE_SELECTOR), {
               subtree: true,
               childList: true,
             });

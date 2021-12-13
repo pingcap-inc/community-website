@@ -36,6 +36,6 @@ module.exports = {
       cache: 'default',
     },
   },
-  debug: isProd,
+  debug: !isProd,
   serializeConfig: false,
 };

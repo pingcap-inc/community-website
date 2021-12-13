@@ -43,11 +43,11 @@ const ProcedureCard = ({ title, date, desc, buttonText, buttonLink, sm }) => (
   </>
 );
 
-const Prize = ({ title, reward, count, src, huge }) => {
+const Prize = ({ title, reward, count, src, huge, rewardSize }) => {
   return (
     <Styled.Prize src={src}>
       <Styled.PrizeTitle huge={huge}>{title}</Styled.PrizeTitle>
-      <Styled.PrizeReward>{reward}</Styled.PrizeReward>
+      <Styled.PrizeReward style={{ fontSize: rewardSize }}>{reward}</Styled.PrizeReward>
       <Styled.PrizeCount>{count}</Styled.PrizeCount>
     </Styled.Prize>
   );
@@ -225,6 +225,7 @@ const Page = () => {
                 count={'1 支队伍'}
                 reward={'¥3000+云资源代金券'}
                 src={getImage('prize-special.svg')}
+                rewardSize={20}
               />
             </Col>
             <Col>

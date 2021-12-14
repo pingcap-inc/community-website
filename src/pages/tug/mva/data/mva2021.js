@@ -119,6 +119,58 @@ const data = [
       },
     ],
   },
+   {
+    name: '姬永飞',
+    company: '天翼云',
+    title: '高级后端开发工程师',
+    links: [
+      {
+        name: 'CDC 同步到 S3 的故障',
+        href: 'https://asktug.com/t/topic/95744',
+      },
+      {
+        name: 'BR 备份到 S3 时 endpoint 参数加目录分隔符后缀问题排查',
+        href: 'https://asktug.com/t/topic/273002',
+      },
+      {
+        name: 'TiDB K8s 定时备份状态异常问题排查',
+        href: 'https://asktug.com/t/topic/272815',
+      },
+      {
+        name: 'TiDB 5.0 两阶段提交',
+        href: 'https://asktug.com/t/topic/243260',
+      },
+      {
+        name: '一条 like 条件的慢 SQL 语句优化',
+        href: 'https://asktug.com/t/topic/243259',
+      },
+      {
+        name: '悲观事务死锁检测',
+        href: 'https://asktug.com/t/topic/243258',
+      },
+      {
+        name: 'Placement Rules 原理',
+        href: 'https://asktug.com/t/topic/243257',
+      },
+      {
+        name: 'TiDB K8s 删除备份阻塞问题排查',
+        href: 'https://asktug.com/t/topic/243240',
+      },
+      {
+        name: '一个联合索引使用问题以及优化方案',
+        href: 'https://asktug.com/t/topic/152989',
+      },
+      {
+        name: 'TiDB AutoCommit OFF 问题',
+        href: 'https://asktug.com/t/topic/95647',
+      },
+       {
+        name: 'TiDB 赋权问题',
+        href: 'https://asktug.com/t/topic/93968',
+      },
+    ],
+  },
+  
   {
     name: '张政俊',
     company: '中欧基金',

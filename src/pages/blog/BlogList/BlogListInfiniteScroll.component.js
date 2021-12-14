@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../components/blogInfo';
 import { useRouter } from 'next/router';
@@ -37,10 +37,6 @@ const BlogList = ({
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    loadMoreData();
-  }, []);
 
   if (!content) {
     return <Skeleton active />;

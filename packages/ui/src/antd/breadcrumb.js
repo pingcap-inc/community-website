@@ -4,10 +4,8 @@ import * as colors from '../colors';
 
 export default css`
   .ant-breadcrumb {
-    &-link {
-      &:hover {
-        color: ${colors.B1};
-      }
+    a:hover {
+      color: ${colors.B1};
     }
   }
 `;

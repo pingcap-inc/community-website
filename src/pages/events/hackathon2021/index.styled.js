@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import titleBackgroundSvg from './title-bg.svg';
 import BannerTitleSvg from './banner-title.svg';
 import BannerTitleMobileSvg from './banner-title-mobile.svg';
-import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
+import { Button, Carousel as RawCarousel, Col, Collapse, Row } from 'antd';
 import { Link as RawLink } from '~/components';
 import CollapseIconSvg from './faq-collapse.svg';
 import ExpandIconSvg from './faq-expand.svg';
@@ -363,11 +363,15 @@ export const LocationSpan = styled.div`
 `;
 
 export const Prize = styled.div`
-  height: 322px;
-  width: 282px;
+  margin: 0 auto;
+  min-height: 322px;
+  min-width: 193.2px;
+  max-height: 169.2px;
+  max-width: 282px;
   background-image: url(${(props) => props.src});
   background-position: top;
   background-repeat: no-repeat;
+  background-size: contain;
 `;
 
 export const PrizeTitle = styled.div`
@@ -375,24 +379,31 @@ export const PrizeTitle = styled.div`
     props.huge
       ? css`
           font-size: 24px;
-          padding-top: 3rem;
+          padding-top: 20%;
         `
       : css`
           font-size: 14px;
-          padding-top: 4rem;
+          padding-top: 20%;
         `}
   font-weight: 300;
 `;
 
 export const PrizeCount = styled.div`
-  padding-top: 1rem;
+  padding-top: 20%;
   font-size: 16px;
   font-weight: 300;
 `;
 export const PrizeReward = styled.div`
   padding-top: 0.5rem;
-  height: 3rem;
-  font-size: 20px;
+  height: 1rem;
+  ${(props) =>
+    props.tiny
+      ? css`
+          font-size: 16px;
+        `
+      : css`
+          font-size: 20px;
+        `}
 `;
 
 export const PrizesRow = styled(Row)`

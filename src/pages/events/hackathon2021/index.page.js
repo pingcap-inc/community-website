@@ -162,7 +162,11 @@ const Page = ({ data }) => {
                   立即报名
                 </Styled.BannerButton>
                 <Styled.BannerButton onClick={() => setQROverlay(true)}>加入官方群</Styled.BannerButton>
-                <Styled.BannerButton onClick={toHash('faq')}>赛事咨询</Styled.BannerButton>
+                <Styled.BannerButton
+                  onClick={() => handleRedirect(router, 'https://forms.pingcap.com/f/TiDBHackathon2021Volunteer')}
+                >
+                  志愿者
+                </Styled.BannerButton>
               </Styled.BannerButtonsGroup>
               {!isSmallScreen && <BannerNavButtonsGroup />}
             </Styled.BannerContent>
@@ -239,13 +243,13 @@ const Page = ({ data }) => {
           <SectionTitle>大赛奖项</SectionTitle>
           <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
-            <Col>
+            <Col xs={24} md={8}>
               <Prize title={'一等奖'} count={'1 支队伍'} reward={''} src={getImage('prize-1.svg')} huge />
             </Col>
-            <Col>
+            <Col xs={12} md={8}>
               <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
             </Col>
-            <Col>
+            <Col xs={12} md={8}>
               <Prize title={'三等奖'} count={'6 支队伍'} reward={''} src={getImage('prize-3.svg')} huge />
             </Col>
           </Styled.PrizesRow>
@@ -263,7 +267,7 @@ const Page = ({ data }) => {
                 count={'1 支队伍'}
                 reward={'¥3000+云资源代金券'}
                 src={getImage('prize-special.svg')}
-                rewardSize={20}
+                rewardSize={16}
               />
             </Col>
             <Col>

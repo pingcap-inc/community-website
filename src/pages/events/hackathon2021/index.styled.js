@@ -8,7 +8,7 @@ import CollapseIconSvg from './faq-collapse.svg';
 import ExpandIconSvg from './faq-expand.svg';
 import { mixins } from '@tidb-community/ui';
 
-const columnWidth = 7.5;
+export const columnWidth = 7.5;
 const backgroundColor = '#191821';
 const textColor = '#fff';
 
@@ -392,7 +392,7 @@ export const PrizeCount = styled.div`
 export const PrizeReward = styled.div`
   padding-top: 0.5rem;
   height: 3rem;
-  font-size: 24px;
+  font-size: 20px;
 `;
 
 export const PrizesRow = styled(Row)`
@@ -680,6 +680,7 @@ export const Carousel = styled(RawCarousel).attrs({
 
 export const CarouselInner = styled.div`
   display: flex !important;
+  position: relative;
   .ant-image {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -712,4 +713,66 @@ export const LogoWrapper = styled.div`
 export const PartnerSection = styled(Section)`
   background: white;
   color: black;
+`;
+
+export const NewsCardContent = styled.div`
+  position: absolute;
+  overflow: hidden;
+  // ellipsis
+  text-overflow: ellipsis;
+
+  bottom: 2rem;
+  // background is a gradient from left to right with diminishing opacity
+  background: rgb(0, 0, 0, 75%); /* the gradient */
+  //height: 6rem;
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(1.04 * (100vw - 44px - 2rem));
+        `
+      : css`
+          width: ${columnWidth * 3 * 1.2}vw;
+        `}
+  text-align: start;
+  padding: 0.5rem;
+  padding-left: 1rem;
+`;
+
+export const NewsCardTitle = styled.div`
+  font-size: 1rem;
+  font-weight: 300;
+  color: #fff;
+`;
+export const DummyNewsCard = styled.div`
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(0.5 * (100vw - 44px - 2rem));
+          height: calc(0.625 * (100vw - 44px - 2rem));
+        `
+      : css`
+          width: ${columnWidth * 3 * 1.2}vw;
+          height: ${columnWidth * 2.25 * 1.2}vw;
+        `}
+`;
+
+export const NewsCard = styled.div`
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(1.04 * (100vw - 44px - 2rem));
+          height: calc(0.83 * (100vw - 44px - 2rem));
+        `
+      : css`
+          width: ${columnWidth * 3 * 1.2}vw;
+          height: ${columnWidth * 2.25 * 1.2}vw;
+        `}
+  margin-bottom: 2rem;
+  // padding
+  background-image: url(${(props) => props.src});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+  cursor: pointer;
 `;

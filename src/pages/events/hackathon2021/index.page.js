@@ -1,5 +1,12 @@
 import * as Styled from './index.styled';
-import { FAQCollapsePanel, getImage, ProcedureCardsGroup, TableCellContentInner } from './index.styled';
+import {
+  FAQCollapsePanel,
+  getImage,
+  Link,
+  NewsCardContent,
+  ProcedureCardsGroup,
+  TableCellContentInner,
+} from './index.styled';
 import { CoreLayout } from '~/layouts';
 import { Col, Image, Row } from 'antd';
 import { useIsSmallScreen } from '~/hooks';
@@ -10,13 +17,35 @@ import { useState } from 'react';
 import { carouselData, FAQData, groupsData, judgesData, seo, stepsData } from '~/pages/events/hackathon2021/datasource';
 import { CommunityHead } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { api } from '@tidb-community/datasource';
+import jsConvert from 'js-convert-case';
+import Leaderboard from '~/pages/events/hackathon2021/leaderboard';
+import { common as commonUtils } from '~/utils';
+import { getStrapiImgProps } from '~/utils/common.utils';
 
 export const getServerSideProps = async (ctx) => {
+  const client = await api.initStrapiClient();
+  const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
+
+  const data = await Promise.all([
+    client.get('tidbio-hackathon-2021-leaderboards'),
+    client.get('tidbio-hackathon-2021-news'),
+  ]);
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   return {
     props: {
       ...i18nProps,
+      data: jsConvert.camelKeys(
+        {
+          leaderboard: data[0],
+          news: data[1],
+        },
+        {
+          recursive: true,
+          recursiveInArray: true,
+        }
+      ),
     },
   };
 };
@@ -76,6 +105,14 @@ const JudgeCard = ({ name, desc, src, detail, sm }) => {
   );
 };
 
+const NewsCard = ({ title, src, url, sm }) => {
+  return (
+    <Styled.NewsCard src={src} sm={sm}>
+      <Styled.NewsCardContent sm={sm}> {title} </Styled.NewsCardContent>
+    </Styled.NewsCard>
+  );
+};
+
 const splitCarousel = (data, size) => {
   // split data into groups of 3
   return _.chunk(data, size);
@@ -94,10 +131,11 @@ const BannerNavButtonsGroup = ({ isSmallScreen }) => (
   </Styled.BannerNavButtonsGroup>
 );
 
-const Page = () => {
+const Page = ({ data }) => {
   const { isSmallScreen } = useIsSmallScreen();
   const router = useRouter();
   const [QROverlay, setQROverlay] = useState(false);
+  console.log(data);
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -309,6 +347,10 @@ const Page = () => {
           </Row>
           <Styled.SectionFooter>评委按姓名字母排序</Styled.SectionFooter>
         </Styled.Section>
+        <Styled.Section>
+          <SectionTitle>积分榜</SectionTitle>
+          <Leaderboard sm={isSmallScreen} data={data.leaderboard} />
+        </Styled.Section>
         <Styled.Section id="faq">
           <SectionTitle>常见问题</SectionTitle>
           <Styled.FAQWrapper>
@@ -324,18 +366,25 @@ const Page = () => {
             更多赛事 FAQ
           </Styled.FAQButton>
         </Styled.Section>
-        {/*<Styled.Section>*/}
-        {/*  <SectionTitle>专题报道</SectionTitle>*/}
-        {/*  <Styled.Carousel>*/}
-        {/*    {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (*/}
-        {/*      <Styled.CarouselInner>*/}
-        {/*        {group.map((url) => (*/}
-        {/*          <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />*/}
-        {/*        ))}*/}
-        {/*      </Styled.CarouselInner>*/}
-        {/*    ))}*/}
-        {/*  </Styled.Carousel>*/}
-        {/*</Styled.Section>*/}
+        <Styled.Section>
+          <SectionTitle>专题报道</SectionTitle>
+          <Row justify="space-between">
+            {data.news.map((item) => (
+              <Col>
+                <NewsCard
+                  onClick={() => handleRedirect(router, item.url)}
+                  name={item.title}
+                  src={commonUtils.getStrapiImgProps(item.preview).src}
+                  sm={isSmallScreen}
+                  title={item.title}
+                />
+              </Col>
+            ))}
+            {isSmallScreen ||
+              (judgesData.length % 3 !== 0 &&
+                _.range(3 - (data.news.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
+          </Row>
+        </Styled.Section>
         <Styled.PartnerSection id="partners">
           <SectionTitle>合作伙伴</SectionTitle>
           黄金赞助

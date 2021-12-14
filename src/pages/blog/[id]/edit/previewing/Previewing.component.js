@@ -2,7 +2,8 @@ import React from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 import * as Styled from '../editing/editing.styled';
 import * as PreviewingStyled from './previewing.styled';
-import { BlogInfo } from '@tidb-community/ui';
+
+import BlogInfo from '../../../components/blogInfo';
 import { OriginLabel, RepostLabel } from '../../components/labels';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
 import { Button } from 'antd';

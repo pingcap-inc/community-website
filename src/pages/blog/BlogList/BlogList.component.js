@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styled from './index.styled';
-import { BlogInfo } from '@tidb-community/ui';
+import BlogInfo from '../components/blogInfo';
 import { useRouter } from 'next/router';
 import { List, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';

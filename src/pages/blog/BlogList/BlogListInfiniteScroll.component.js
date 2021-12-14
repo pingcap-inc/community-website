@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as Styled from './index.styled';
-import { BlogInfo } from '@tidb-community/ui';
+import BlogInfo from '../components/blogInfo';
 import { useRouter } from 'next/router';
 import { Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -37,6 +37,10 @@ const BlogList = ({
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    loadMoreData();
+  }, []);
 
   if (!content) {
     return <Skeleton active />;

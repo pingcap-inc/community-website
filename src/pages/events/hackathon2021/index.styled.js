@@ -2,7 +2,7 @@ import styled, { css } from 'styled-components';
 import titleBackgroundSvg from './title-bg.svg';
 import BannerTitleSvg from './banner-title.svg';
 import BannerTitleMobileSvg from './banner-title-mobile.svg';
-import { Button, Carousel as RawCarousel, Col, Collapse, Row } from 'antd';
+import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
 import { Link as RawLink } from '~/components';
 import CollapseIconSvg from './faq-collapse.svg';
 import ExpandIconSvg from './faq-expand.svg';
@@ -364,10 +364,17 @@ export const LocationSpan = styled.div`
 
 export const Prize = styled.div`
   margin: 0 auto;
-  min-height: 322px;
-  min-width: 193.2px;
-  max-height: 169.2px;
-  max-width: 282px;
+
+  ${(props) =>
+    props.sm
+      ? css`
+          width: ${282 * 0.7}px;
+          height: ${322 * 0.7}px;
+        `
+      : css`
+          height: 322px;
+          width: 282px;
+        `}
   background-image: url(${(props) => props.src});
   background-position: top;
   background-repeat: no-repeat;
@@ -379,22 +386,22 @@ export const PrizeTitle = styled.div`
     props.huge
       ? css`
           font-size: 24px;
-          padding-top: 20%;
+          padding-top: ${props.sm ? '15%' : '20%'};
         `
       : css`
           font-size: 14px;
-          padding-top: 20%;
+          padding-top: 30%;
         `}
   font-weight: 300;
 `;
 
 export const PrizeCount = styled.div`
-  padding-top: 20%;
+  padding-top: 15%;
   font-size: 16px;
   font-weight: 300;
 `;
 export const PrizeReward = styled.div`
-  padding-top: 0.5rem;
+  padding-top: 5%;
   height: 1rem;
   ${(props) =>
     props.tiny
@@ -692,6 +699,7 @@ export const Carousel = styled(RawCarousel).attrs({
 export const CarouselInner = styled.div`
   display: flex !important;
   position: relative;
+
   .ant-image {
     padding-left: 0.5rem;
     padding-right: 0.5rem;

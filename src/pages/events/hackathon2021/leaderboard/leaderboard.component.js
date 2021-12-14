@@ -19,12 +19,24 @@ const mapPrizeLogo = (prize) => {
 };
 
 const Leaderboard = ({ data, sm }) => {
+  const LIMIT = 20;
+  const isShowingAll = data.length <= LIMIT;
+  const [limit, setLimit] = useState(LIMIT);
   data = data.sort((a, b) => b.score - a.score);
 
   const switchOptions = [
     { label: '团队', value: 'teamName' },
     { label: '项目', value: 'projectName' },
   ];
+
+  const expandOrCollapse = () => {
+    console.log(limit);
+    if (limit === LIMIT) {
+      setLimit(data.length);
+    } else {
+      setLimit(LIMIT);
+    }
+  };
 
   const [activeColumn, setActiveColumn] = useState('teamName');
 
@@ -58,7 +70,7 @@ const Leaderboard = ({ data, sm }) => {
           </Styled.TableHeadRow>
         </Styled.TableHead>
         <Styled.TableBody>
-          {data.map((row, index) => {
+          {data.slice(0, limit).map((row, index) => {
             return (
               <Styled.TableRow key={index} index={index}>
                 <Styled.TableCell>{mapPrizeLogo(index + 1)}</Styled.TableCell>
@@ -93,6 +105,11 @@ const Leaderboard = ({ data, sm }) => {
           })}
         </Styled.TableBody>
       </Styled.Table>
+      {!isShowingAll && (
+        <Styled.ExpandButton onClick={expandOrCollapse}>
+          {limit >= data.length ? '收起' : '查看更多'}
+        </Styled.ExpandButton>
+      )}
     </Styled.Leaderboard>
   );
 };

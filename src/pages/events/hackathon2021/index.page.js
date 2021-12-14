@@ -1,12 +1,5 @@
 import * as Styled from './index.styled';
-import {
-  FAQCollapsePanel,
-  getImage,
-  Link,
-  NewsCardContent,
-  ProcedureCardsGroup,
-  TableCellContentInner,
-} from './index.styled';
+import { FAQCollapsePanel, getImage, ProcedureCardsGroup, TableCellContentInner } from './index.styled';
 import { CoreLayout } from '~/layouts';
 import { Col, Image, Row } from 'antd';
 import { useIsSmallScreen } from '~/hooks';
@@ -21,11 +14,9 @@ import { api } from '@tidb-community/datasource';
 import jsConvert from 'js-convert-case';
 import Leaderboard from '~/pages/events/hackathon2021/leaderboard';
 import { common as commonUtils } from '~/utils';
-import { getStrapiImgProps } from '~/utils/common.utils';
 
 export const getServerSideProps = async (ctx) => {
   const client = await api.initStrapiClient();
-  const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
   const data = await Promise.all([
     client.get('tidbio-hackathon-2021-leaderboards'),
@@ -72,10 +63,12 @@ const ProcedureCard = ({ title, date, desc, buttonText, buttonLink, sm }) => (
   </>
 );
 
-const Prize = ({ title, reward, count, src, huge, rewardSize }) => {
+const Prize = ({ title, reward, count, src, huge, rewardSize, sm }) => {
   return (
-    <Styled.Prize src={src}>
-      <Styled.PrizeTitle huge={huge}>{title}</Styled.PrizeTitle>
+    <Styled.Prize src={src} sm={sm}>
+      <Styled.PrizeTitle huge={huge} sm={sm}>
+        {title}
+      </Styled.PrizeTitle>
       <Styled.PrizeReward style={{ fontSize: rewardSize }}>{reward}</Styled.PrizeReward>
       <Styled.PrizeCount>{count}</Styled.PrizeCount>
     </Styled.Prize>
@@ -243,26 +236,60 @@ const Page = ({ data }) => {
           <SectionTitle>大赛奖项</SectionTitle>
           <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
-            <Col xs={24} md={8}>
-              <Prize title={'一等奖'} count={'1 支队伍'} reward={''} src={getImage('prize-1.svg')} huge />
+            <Col xs={24} lg={8}>
+              <Prize
+                sm={isSmallScreen}
+                title={'一等奖'}
+                count={'1 支队伍'}
+                reward={''}
+                src={getImage('prize-1.svg')}
+                huge
+              />
             </Col>
-            <Col xs={12} md={8}>
-              <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
+            <Col xs={12} lg={8}>
+              <Prize
+                sm={isSmallScreen}
+                title={'二等奖'}
+                count={'3 支队伍'}
+                reward={''}
+                src={getImage('prize-2.svg')}
+                huge
+              />
             </Col>
-            <Col xs={12} md={8}>
-              <Prize title={'三等奖'} count={'6 支队伍'} reward={''} src={getImage('prize-3.svg')} huge />
+            <Col xs={12} lg={8}>
+              <Prize
+                sm={isSmallScreen}
+                title={'三等奖'}
+                count={'6 支队伍'}
+                reward={''}
+                src={getImage('prize-3.svg')}
+                huge
+              />
             </Col>
           </Styled.PrizesRow>
           <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
-              <Prize title={'技术潜力奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
-            </Col>
-            <Col>
-              <Prize title={'用户之选奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'技术潜力奖'}
+                count={'1 支队伍'}
+                reward={'¥5000'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
+                title={'用户之选奖'}
+                count={'1 支队伍'}
+                reward={'¥5000'}
+                src={getImage('prize-special.svg')}
+              />
+            </Col>
+            <Col>
+              <Prize
+                sm={isSmallScreen}
                 title={'云上应用奖'}
                 count={'1 支队伍'}
                 reward={'¥3000+云资源代金券'}
@@ -271,15 +298,28 @@ const Page = ({ data }) => {
               />
             </Col>
             <Col>
-              <Prize title={'无限创意奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'无限创意奖'}
+                count={'1 支队伍'}
+                reward={'¥5000'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
           </Styled.PrizesRow>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
-              <Prize title={'积分挑战奖'} count={'3 支队伍'} reward={'¥2000'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'积分挑战奖'}
+                count={'3 支队伍'}
+                reward={'¥2000'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
                 title={'最佳人气奖'}
                 count={'1 支队伍'}
                 reward={'罗技机械键盘'}
@@ -288,6 +328,7 @@ const Page = ({ data }) => {
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
                 title={'校园团队奖'}
                 count={'1 支队伍'}
                 reward={'教育基金 ¥5000'}
@@ -296,6 +337,7 @@ const Page = ({ data }) => {
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
                 title={'决赛入围奖'}
                 count={'20 支队伍'}
                 reward={'倍轻松按摩仪'}
@@ -303,7 +345,13 @@ const Page = ({ data }) => {
               />
             </Col>
             <Col>
-              <Prize title={'神秘奖项'} count={'？'} reward={'现场揭晓'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'神秘奖项'}
+                count={'？'}
+                reward={'现场揭晓'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
           </Styled.PrizesRow>
           注：所有奖项奖金均为税前金额，奖项
@@ -374,9 +422,8 @@ const Page = ({ data }) => {
           <SectionTitle>专题报道</SectionTitle>
           <Row justify="space-between">
             {data.news.map((item) => (
-              <Col>
+              <Col onClick={() => handleRedirect(router, item.url)}>
                 <NewsCard
-                  onClick={() => handleRedirect(router, item.url)}
                   name={item.title}
                   src={commonUtils.getStrapiImgProps(item.preview).src}
                   sm={isSmallScreen}

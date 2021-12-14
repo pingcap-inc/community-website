@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { columnWidth } from '~/pages/events/hackathon2021/index.styled';
-import { Radio, Switch } from 'antd';
+import { Radio } from 'antd';
 
 export const Leaderboard = styled.div`
   width: ${10 * columnWidth}vw;
@@ -12,6 +12,7 @@ export const Table = styled.table`
   // table with 5 columns, rows are of alternating color, header is purple
   font-size: 1rem;
   width: 100%;
+  margin-bottom: 1rem;
 `;
 
 export const TableHeadRow = styled.tr`
@@ -47,6 +48,7 @@ export const ColumnSwitch = styled(Radio.Group)`
   background: #211a4b;
   border-radius: 1rem;
   border: none;
+
   label {
     line-height: 1.65rem;
     height: 1.6rem;
@@ -56,19 +58,32 @@ export const ColumnSwitch = styled(Radio.Group)`
     border: none !important;
     color: #a9a0d9;
   }
+
   label:first-child {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
   }
+
   label:last-child {
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
   }
+
   .ant-radio-button-wrapper-checked {
     border-radius: 1rem;
     background: #6b6290 !important;
   }
+
   .ant-radio-button-wrapper:not(:first-child)::before {
     display: none;
+  }
+`;
+
+export const ExpandButton = styled.a`
+  color: #84fcfc;
+  text-decoration: none;
+
+  &:hover {
+    color: #674ff0;
   }
 `;

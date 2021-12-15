@@ -83,9 +83,7 @@ const NextSteps = () => {
                 TiDB Hackathon 是由 TiDB
                 社区举办的黑客马拉松大赛，选手需围绕组委会规定的主题做出一个完整的作品并由评审最终评选出获奖者。作为社区最硬核的保留项目，黑客马拉松每年都吸引大量的社区开发者、高校学生、用户等积极参与。丰厚的奖金，极客的项目，等你来挑战！2021
                 年 12 月 9 日 开启报名，敬请期待。
-                <Styled.ProjectCardButton onClick={onClick('https://tidb.io/events/hackathon2021')}>
-                  {' '}
-                  了解更多{' '}
+                <Styled.ProjectCardButton onClick={onClick('https://tidb.io/events/hackathon2021')}>了解更多
                 </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>

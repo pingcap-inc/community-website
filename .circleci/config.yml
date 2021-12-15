@@ -7,7 +7,9 @@ commands:
       - run: node -v
       - run: npm -v
       - run:
-          command: npm ci
+          command: |
+            npm config set '//npm.pkg.github.com/:_authToken' "${GITHUB_TOKEN}"
+            npm ci
           no_output_timeout: 20m
 
   prepare-sentry:

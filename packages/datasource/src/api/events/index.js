@@ -3,10 +3,14 @@ import { useCallback, useEffect } from 'react';
 const API_ERROR_EVENT = '@tidb-community/datasource:API_ERROR';
 
 export const dispatchApiError = (detail) => {
-  const e = new CustomEvent(API_ERROR_EVENT, {
-    detail,
-  });
-  window.dispatchEvent(e);
+  if (process.browser) {
+    const e = new CustomEvent(API_ERROR_EVENT, {
+      detail,
+    });
+    window.dispatchEvent(e);
+  } else {
+    console.error(`API error: ${detail}`);
+  }
 };
 
 export const useApiErrorListener = (listener, ...rest) => {

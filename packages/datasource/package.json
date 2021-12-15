@@ -9,6 +9,7 @@
   "description": "Navigation and i18n datasource for TiDB community.",
   "main": "lib/index.js",
   "module": "es/index.js",
+  "sideEffects": false,
   "files": [
     "es",
     "lib",

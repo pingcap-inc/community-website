@@ -5,8 +5,13 @@ export const getErrorMessage = (err) => {
     return err;
   }
 
-  if (R.is(Object, err) && !!err.detail) {
-    return err.detail;
+  if (R.is(Object, err)) {
+    if (!!err.detail) {
+      return err.detail;
+    } else if (!!err.message) {
+      // blog api
+      return err.message;
+    }
   }
 
   if (R.is(Error, err)) {

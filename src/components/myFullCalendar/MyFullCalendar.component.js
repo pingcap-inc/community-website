@@ -23,10 +23,12 @@ const MyFullCalendar = ({ data }) => {
   const eventMouseEnter = ({ event }) => {
     const { extendedProps } = event;
     event.setProp('backgroundColor', getColorByType(extendedProps.category));
+    event.setProp('textColor', '#ffffff');
   };
   const eventMouseLeave = ({ event }) => {
     const { extendedProps } = event;
     event.setProp('backgroundColor', getColorByType(extendedProps.category) + transparency);
+    event.setProp('textColor', '#2c2c2c');
   };
 
   const renderDayCellContent = ({ date }) => date.getDate();

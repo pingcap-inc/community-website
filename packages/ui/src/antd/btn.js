@@ -32,17 +32,20 @@ export default css`
       border-radius: 6px;
     }
 
+    &-background-ghost {
+      &:hover {
+        background-color: ${colors.B1} !important;
+      }
+    }
+
     &-primary {
       background-color: ${colors.B1};
       border: none;
 
-      &:hover {
-        background-color: ${colors.B1} !important;
-      }
-
       &[disabled] {
-        color: ${colors.M1};
-        opacity: 0.6;
+        background-color: ${colors.B1} !important;
+        color: ${colors.M1} !important;
+        opacity: 0.6 !important;
       }
 
       &.ant-btn-background-ghost {

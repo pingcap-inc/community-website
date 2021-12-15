@@ -25,5 +25,5 @@ export const Item = styled.div`
   ${borderRadius};
   cursor: pointer;
   margin: 0.5rem;
-  color: ${(props) => (props.selected ? colors.T7 : '')};
+  color: ${(props) => (props.selected ? colors.B1 : '')};
 `;

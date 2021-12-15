@@ -5,6 +5,11 @@ import { borderRadius } from '../components/common.styled';
 
 export const Card = styled(AntdCard)`
   ${borderRadius};
+  transition: all 250ms;
+  box-shadow: none;
+  &:hover {
+    box-shadow: 6px 6px 12px 12px ${colors.C2};
+  }
 `;
 
 export const Title = styled.div`

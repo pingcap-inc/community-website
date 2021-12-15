@@ -43,7 +43,7 @@ const Leaderboard = ({ data, sm }) => {
   const onSwitchChange = (e) => setActiveColumn(e.target.value);
 
   return (
-    <Styled.Leaderboard>
+    <Styled.Leaderboard sm={sm}>
       <Styled.Table>
         <Styled.TableHead>
           <Styled.TableHeadRow>

@@ -371,8 +371,8 @@ export const Prize = styled.div`
   ${(props) =>
     props.sm
       ? css`
-          width: ${282 * 0.7}px;
-          height: ${322 * 0.7}px;
+          width: ${282 * 0.5}px;
+          height: ${322 * 0.5}px;
         `
       : css`
           height: 322px;
@@ -388,8 +388,8 @@ export const PrizeTitle = styled.div`
   ${(props) =>
     props.huge
       ? css`
-          font-size: 24px;
-          padding-top: ${props.sm ? '15%' : '20%'};
+          font-size: ${(props) => (props.sm ? '1.2rem' : '1.5rem')};
+          padding-top: ${props.sm ? '12%' : '20%'};
         `
       : css`
           font-size: 14px;
@@ -404,8 +404,8 @@ export const PrizeCount = styled.div`
   font-weight: 300;
 `;
 export const PrizeReward = styled.div`
-  padding-top: 5%;
-  height: 1rem;
+  padding-top: 0%;
+  height: ${(props) => (props.sm ? '0.5rem' : '1rem')};
   ${(props) =>
     props.tiny
       ? css`
@@ -779,6 +779,7 @@ export const DummyNewsCard = styled.div`
 `;
 
 export const NewsCard = styled.div`
+  margin: auto 0;
   ${(props) =>
     props.sm
       ? css`

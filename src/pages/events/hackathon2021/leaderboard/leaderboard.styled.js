@@ -3,9 +3,9 @@ import { columnWidth } from '~/pages/events/hackathon2021/index.styled';
 import { Radio } from 'antd';
 
 export const Leaderboard = styled.div`
-  width: ${10 * columnWidth}vw;
+  width: ${(props) => (props.sm ? '100%' : 10 * columnWidth + 'vw')};
   // horizontally center
-  margin-left: calc(50% - ${5 * columnWidth}vw);
+  margin: 0 auto;
 `;
 
 export const Table = styled.table`

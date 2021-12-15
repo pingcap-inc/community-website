@@ -69,7 +69,9 @@ const Prize = ({ title, reward, count, src, huge, rewardSize, sm }) => {
       <Styled.PrizeTitle huge={huge} sm={sm}>
         {title}
       </Styled.PrizeTitle>
-      <Styled.PrizeReward style={{ fontSize: rewardSize }}>{reward}</Styled.PrizeReward>
+      <Styled.PrizeReward sm={sm} style={{ fontSize: rewardSize }}>
+        {reward}
+      </Styled.PrizeReward>
       <Styled.PrizeCount>{count}</Styled.PrizeCount>
     </Styled.Prize>
   );
@@ -294,7 +296,7 @@ const Page = ({ data }) => {
                 count={'1 支队伍'}
                 reward={'¥3000+云资源代金券'}
                 src={getImage('prize-special.svg')}
-                rewardSize={16}
+                rewardSize={isSmallScreen ? 12 : 16}
               />
             </Col>
             <Col>
@@ -332,6 +334,7 @@ const Page = ({ data }) => {
                 title={'校园团队奖'}
                 count={'1 支队伍'}
                 reward={'教育基金 ¥5000'}
+                rewardSize={isSmallScreen ? 14 : 16}
                 src={getImage('prize-special.svg')}
               />
             </Col>
@@ -420,7 +423,7 @@ const Page = ({ data }) => {
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>专题报道</SectionTitle>
-          <Row justify="space-between">
+          <Row justify="space-around">
             {data.news.map((item) => (
               <Col onClick={() => handleRedirect(router, item.url)}>
                 <NewsCard

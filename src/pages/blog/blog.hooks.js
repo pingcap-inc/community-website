@@ -8,7 +8,20 @@ const KEY_ID = 'b.p.i';
 const KEY_ROLES = 'b.p.r';
 const KEY_AUTHORITIES = 'b.p.a';
 
-export const usePrincipal = () => {
+const usePrincipalSsr = () => {
+  return {
+    loading: false,
+    id: undefined,
+    authorities: [],
+    roles: [],
+    hasAuthority: () => false,
+    hasRole: () => false,
+    isAuthor: () => false,
+    isLogin: () => false,
+  };
+};
+
+const usePrincipalBrowser = () => {
   const [loading, setLoading] = useState(true);
   const [id, setId] = useState(() => Number(storage.getItem(KEY_ID)) || undefined);
   const [roles, setRoles] = useState(() => JSON.parse(storage.getItem(KEY_ROLES) || '[]'));
@@ -67,16 +80,21 @@ export const usePrincipal = () => {
   return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading };
 };
 
+export const usePrincipal = typeof window === 'undefined' ? usePrincipalSsr : usePrincipalBrowser;
+
 /**
  *
- * @param storage {Storage}
+ * @param storage {Storage | undefined}
  * @returns boolean
  */
 function check(storage) {
+  if (!storage) {
+    return false;
+  }
   const checkKey = '__check';
-  localStorage.setItem(checkKey, 'ok');
-  if (localStorage.getItem(checkKey) === 'ok') {
-    localStorage.removeItem(checkKey);
+  storage.setItem(checkKey, 'ok');
+  if (storage.getItem(checkKey) === 'ok') {
+    storage.removeItem(checkKey);
     return true;
   } else {
     return false;
@@ -89,12 +107,14 @@ function check(storage) {
  * @returns Storage
  */
 function getStorage() {
-  if (check(sessionStorage)) {
-    return sessionStorage;
-  }
+  if (typeof window !== 'undefined') {
+    if (check(window.sessionStorage)) {
+      return window.sessionStorage;
+    }
 
-  if (check(localStorage)) {
-    return localStorage;
+    if (check(window.localStorage)) {
+      return window.localStorage;
+    }
   }
 
   let mockStorage = {};

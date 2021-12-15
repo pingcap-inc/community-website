@@ -22,7 +22,14 @@ import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
 //   return <ActivityBanner {...data} onClick={() => onNavClick({ link, target: '_blank' })} />;
 // };
 
-const Core = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMargin, locale = 'zh' }) => {
+const Core = ({
+  MainWrapper = Styled.Main,
+  children,
+  domain = 'tidb.io',
+  hasMargin,
+  locale = 'zh',
+  backgroundColor,
+}) => {
   const router = useRouter();
   const { login, logout, isLoggedIn } = useContext(AuthContext);
   const { meData /*isMeValidating*/ } = useContext(MeContext);
@@ -71,7 +78,7 @@ const Core = ({ MainWrapper = Styled.Main, children, domain = 'tidb.io', hasMarg
 
   return (
     <NavContext.Provider value={{ navData: data, onNavClick, currentNav }}>
-      <Styled.Container>
+      <Styled.Container style={{ backgroundColor }}>
         {/*{renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}*/}
         <Header
           {...headerProps}

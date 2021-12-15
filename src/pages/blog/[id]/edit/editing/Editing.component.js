@@ -157,7 +157,7 @@ const Editing = ({ blogInfo }) => {
         {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <div className="btns">
           <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
-            发布
+            提交
           </Button>
           <Button type="default" onClick={() => validation(save)} disabled={operating}>
             保存草稿

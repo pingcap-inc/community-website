@@ -170,7 +170,6 @@ const data = [
       },
     ],
   },
-  
   {
     name: '张政俊',
     company: '中欧基金',
@@ -347,6 +346,25 @@ const data = [
       {
         name: '端到端的实时计算：TiDB + Flink 最佳实践',
         href: 'https://asktug.com/t/topic/182780',
+      },
+    ],
+  },
+  {
+    name: '胡然',
+    company: '龙湖地产',
+    title: 'IT 基础负责人',
+    links: [
+      {
+        name: 'TiDB 优化之消失的统计信息',
+        href: 'https://asktug.com/t/topic/95565',
+      },
+      {
+        name: 'TiDB 实例间数据同步之 TiCDC 实践',
+        href: 'https://asktug.com/t/topic/95299',
+      },
+      {
+        name: 'TiDB DM 扩容和监控',
+        href: 'https://asktug.com/t/topic/67685',
       },
     ],
   },

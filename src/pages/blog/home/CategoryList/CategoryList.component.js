@@ -39,9 +39,9 @@ const Item = ({ name, slug }) => {
 
 const FixedLink = ({ url, children }) => {
   return (
-    <Link href={url}>
-      <Styled.FixedLink>{children}</Styled.FixedLink>
-    </Link>
+    <Styled.FixedLink href={url} target="_blank" rel="noreferrer noopener">
+      {children}
+    </Styled.FixedLink>
   );
 };
 

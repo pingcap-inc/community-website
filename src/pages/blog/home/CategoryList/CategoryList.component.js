@@ -1,6 +1,5 @@
 import React from 'react';
 import * as Styled from './index.styled';
-import Link from 'next/link';
 import { Divider } from 'antd';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';

@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const PageContent = ({ page, size }) => {
-  const { hasRole } = usePrincipal();
+  const { hasAuthority } = usePrincipal();
   const [blogs, setBlogs] = useState(undefined);
 
   useEffect(() => {
@@ -36,10 +36,9 @@ const PageContent = ({ page, size }) => {
     fetchData();
   }, [page, size]);
 
-  const isEditor = hasRole('EDITOR');
-  // TODO: check if current logon user is administrator
-  if (!isEditor) {
-    return '您没有Editor权限，无法查看本页面';
+  const hasPermission = hasAuthority('REVIEW_POST');
+  if (!hasPermission) {
+    return '您没有 REVIEW_POST 权限，无法查看本页面';
   }
 
   return (

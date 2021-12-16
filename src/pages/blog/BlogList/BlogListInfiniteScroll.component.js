@@ -20,7 +20,24 @@ const BlogList = ({
   const [data, setData] = useState(content);
   const [page, setPage] = useState(number ?? 1);
   const [hasMore, setHasMore] = useState(page < totalPages);
+  const [fistLoad, setFirstLoad] = useState(false);
   const size = 20;
+
+  const reloadData = async () => {
+    setLoading(true);
+    setPage(1);
+    setData([]);
+    setHasMore(true);
+    try {
+      const json = await api({ page: 1, size, ...params });
+      setData(json.content);
+      setPage(json.page.number + 1);
+      setHasMore(page < json.page.totalPages);
+    } catch (e) {
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const loadMoreData = async () => {
     if (loading) {
@@ -37,6 +54,16 @@ const BlogList = ({
       setLoading(false);
     }
   };
+
+  const paramsSignature = JSON.stringify(params);
+
+  useEffect(() => {
+    if (fistLoad) {
+      reloadData();
+    } else {
+      setFirstLoad(true);
+    }
+  }, [paramsSignature]);
 
   useEffect(() => {
     loadMoreData();
@@ -63,6 +90,7 @@ const BlogList = ({
           <List
             // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
             dataSource={data}
+            loading={loading && data.length === 0}
             locale={{ emptyText: '暂无文章' }}
             renderItem={(value) => {
               const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);

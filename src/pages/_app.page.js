@@ -1,6 +1,6 @@
 import '@formatjs/intl-numberformat/polyfill';
 import '@formatjs/intl-numberformat/locale-data/en';
-import 'antd/dist/antd.css';
+import '@pingcap-inc/tidb-community-ui/dist/antd.css';
 import 'dayjs/locale/zh';
 import * as R from 'ramda';
 import React, { useEffect, useState } from 'react';

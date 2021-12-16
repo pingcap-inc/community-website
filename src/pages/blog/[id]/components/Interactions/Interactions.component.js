@@ -11,7 +11,8 @@ import {
   StarOutlined,
   StopOutlined,
   DeleteOutlined,
-  VerticalAlignTopOutlined,
+  PushpinTwoTone,
+  PushpinOutlined,
 } from '@ant-design/icons';
 import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
@@ -53,13 +54,13 @@ const Interactions = ({ blogInfo, reload }) => {
       <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
     );
     if (hasAuthority('REVIEW_POST')) {
-      if (recommended) {
-        actions.push(
-          <Interaction key="recommend" icon={<VerticalAlignTopOutlined />} count={shares} onClick={recommend} />
-        );
-      } else {
-        actions.push(<Interaction key="unRecommend" icon={<StopOutlined />} count={shares} onClick={recommend} />);
-      }
+      actions.push(
+        <Interaction
+          key="recommend"
+          icon={recommended ? <PushpinTwoTone twoToneColor={'#999'} /> : <PushpinOutlined />}
+          onClick={recommend}
+        />
+      );
     }
   }
   if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {

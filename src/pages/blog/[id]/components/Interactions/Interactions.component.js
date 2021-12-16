@@ -11,9 +11,10 @@ import {
   StarOutlined,
   StopOutlined,
   DeleteOutlined,
+  VerticalAlignTopOutlined,
 } from '@ant-design/icons';
 import { scroller } from 'react-scroll';
-import { useEdit, useFavorites, useLikes, useRemove, useReview, useShares } from './interactions.hooks';
+import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
 import { Popconfirm } from 'antd';
 
@@ -26,6 +27,7 @@ const Interactions = ({ blogInfo, reload }) => {
   const { edit } = useEdit(blogInfo);
   const { publish, reject } = useReview(blogInfo, reload);
   const { remove } = useRemove(blogInfo);
+  const { recommended, recommend } = useRecommend(blogInfo);
 
   const actions = [];
   if (blogInfo.status === 'PUBLISHED') {
@@ -50,6 +52,15 @@ const Interactions = ({ blogInfo, reload }) => {
       />,
       <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
     );
+    if (hasAuthority('REVIEW_POST')) {
+      if (recommended) {
+        actions.push(
+          <Interaction key="recommend" icon={<VerticalAlignTopOutlined />} count={shares} onClick={recommend} />
+        );
+      } else {
+        actions.push(<Interaction key="unRecommend" icon={<StopOutlined />} count={shares} onClick={recommend} />);
+      }
+    }
   }
   if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {
     actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);

@@ -46,7 +46,7 @@ const Previewing = ({ blogInfo }) => {
         {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <div className="btns">
           <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
-            发布
+            提交
           </Button>
           <Button type="default" onClick={save} disabled={operating}>
             保存草稿

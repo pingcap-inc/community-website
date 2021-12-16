@@ -39,7 +39,11 @@ export const Center = styled(Col).attrs({
 export const End = styled(Col).attrs({
   sm: 24,
   md: 6,
-})``;
+})`
+  position: sticky !important;
+  top: 2rem;
+  height: 100%;
+`;
 
 export const WriteBlog = styled.div`
   ${mixins.showOnDesktop()}

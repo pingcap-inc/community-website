@@ -9,6 +9,6 @@ export const Tab = styled.div`
 export const TabItem = styled.div`
   cursor: pointer;
   margin: 0 0.5rem;
-  color: ${(props) => (props.selected ? colors.T7 : '')};
-  border-bottom: ${(props) => (props.selected ? `4px solid ${colors.T7}` : 'none')};
+  color: ${(props) => (props.selected ? colors.B1 : '')};
+  border-bottom: ${(props) => (props.selected ? `4px solid ${colors.B1}` : 'none')};
 `;

@@ -368,6 +368,29 @@ const data = [
       },
     ],
   },
+  {
+    name: '顾大伟',
+    company: '360',
+    title: '数据库运维专家',
+    links: [
+      {
+        name: '扩容 TiKV 节点遇到的坑',
+        href: 'https://asktug.com/t/topic/183585',
+      },
+      {
+        name: 'Tidb duration 耗时异常上升案例',
+        href: 'https://asktug.com/t/topic/243253',
+      },
+      {
+        name: 'TiCDC 实现 TiDB 备份方案',
+        href: 'https://asktug.com/t/topic/182918',
+      },
+      {
+        name: 'TiFlash 尝鲜小案例',
+        href: 'https://asktug.com/t/topic/182847',
+      },
+    ],
+  },
 ];
 
 export default data;

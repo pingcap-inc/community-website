@@ -69,6 +69,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.15.4",
     "@pingcap-inc/tidb-community-editor": "0.2.5",
+    "@pingcap-inc/tidb-community-ui": "1.0.1",
     "@sentry/webpack-plugin": "1.17.1",
     "@svgr/webpack": "5.5.0",
     "@testing-library/jest-dom": "5.14.1",

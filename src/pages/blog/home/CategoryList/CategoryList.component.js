@@ -30,9 +30,9 @@ const Item = ({ name, slug }) => {
   const url = slug === '' ? `/blog` : `/blog/c/${slug}`;
   const selected = (query.slug || '') === slug;
   return (
-    <Styled.Item href={url} selected={selected}>
-      {name}
-    </Styled.Item>
+    <Link href={url} passHref>
+      <Styled.Item selected={selected}>{name}</Styled.Item>
+    </Link>
   );
 };
 

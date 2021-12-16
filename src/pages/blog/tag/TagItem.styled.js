@@ -8,7 +8,7 @@ export const Card = styled(AntdCard)`
   transition: all 250ms;
   box-shadow: none;
   &:hover {
-    box-shadow: 6px 6px 12px 12px ${colors.C2};
+    box-shadow: 0 2px 6px 0 ${colors.C2};
   }
 `;
 

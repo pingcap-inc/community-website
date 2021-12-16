@@ -66,7 +66,7 @@ const Interactions = ({ blogInfo, reload }) => {
   if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {
     actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);
   }
-  if (isAuthor(blogInfo)) {
+  if (isAuthor(blogInfo) || hasAuthority('REVIEW_POST')) {
     actions.push(<Interaction key="edit" icon={<EditOutlined />} onClick={edit} />);
   }
   if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {

@@ -72,7 +72,7 @@ export const BannerWrapper = styled.div`
 
 export const Banner = styled.div`
   margin-bottom: 2rem;
-  background: url(${(props) => getImage(props.isSmallScreen ? 'banner-bg-mobile.jpg' : 'banner-bg.jpg')}) no-repeat
+  background: url(${(props) => getImage(props.isSmallScreen ? 'banner-bg-mobile.webp' : 'banner-bg.webp')}) no-repeat
     center center;
   // center background image
   background-size: cover;

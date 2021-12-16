@@ -43,7 +43,9 @@ const BlogList = ({
 
   useEffect(() => {
     if (fistLoad) {
+      setPage(1);
       setData([]);
+      setHasMore(true);
       loadMoreData();
     } else {
       setFirstLoad(true);
@@ -75,6 +77,7 @@ const BlogList = ({
           <List
             // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
             dataSource={data}
+            loading={loading && data.length === 0}
             locale={{ emptyText: '暂无文章' }}
             renderItem={(value) => {
               const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);

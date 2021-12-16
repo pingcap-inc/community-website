@@ -111,6 +111,8 @@ const Editing = ({ blogInfo }) => {
         {/*    )}*/}
         {/*  </Upload>*/}
         {/*</ImgCrop>*/}
+        {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
+        {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <Styled.TitleInput placeholder="文章标题......" value={title} onChange={onTitleChange} />
         <Styled.Meta>
           <Styled.CategorySelect
@@ -153,8 +155,6 @@ const Editing = ({ blogInfo }) => {
         />
       </Styled.Footer>
       <Styled.Actions>
-        {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
-        {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <div className="btns">
           <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
             提交

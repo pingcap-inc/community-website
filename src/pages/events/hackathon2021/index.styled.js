@@ -12,6 +12,11 @@ const columnWidth = 7.5;
 const backgroundColor = '#191821';
 const textColor = '#fff';
 
+export const getImage = (name) =>
+  process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local'
+    ? `https://img4.pingcap.com/images/hackathon/${name}`
+    : `/images/hackathon/${name}`;
+
 const horizontalPadding = css`
   padding-left: ${columnWidth}%;
   padding-right: ${columnWidth}%;
@@ -60,8 +65,6 @@ export const SectionFooter = styled.div`
   font-weight: 300;
   opacity: 0.4;
 `;
-
-export const getImage = (name) => `/images/hackathon/${name}`;
 
 export const BannerWrapper = styled.div`
   margin-bottom: 4rem;

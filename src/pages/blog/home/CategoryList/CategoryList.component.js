@@ -3,6 +3,7 @@ import * as Styled from './index.styled';
 import { Divider } from 'antd';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
+import Link from 'next/link';
 
 const CategoryList = ({ categories: { content } }) => {
   const { isLogin, id, hasAuthority } = usePrincipal();

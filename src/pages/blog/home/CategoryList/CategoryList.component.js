@@ -5,8 +5,8 @@ import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
 
 const CategoryList = ({ categories: { content } }) => {
-  const { isLogin, id, hasRole } = usePrincipal();
-  const isEditor = hasRole('EDITOR');
+  const { isLogin, id, hasAuthority } = usePrincipal();
+  const showAudits = hasAuthority('REVIEW_POST');
 
   return (
     <Styled.Container>
@@ -16,7 +16,7 @@ const CategoryList = ({ categories: { content } }) => {
         ))}
       </Styled.List>
       <Divider />
-      {isEditor && <FixedLink url={`/blog/audits`}>待审核列表</FixedLink>}
+      {showAudits && <FixedLink url={`/blog/audits`}>待审核</FixedLink>}
       {isLogin && <FixedLink url={`/blog/user/${id}/posts`}>我的专栏</FixedLink>}
       <FixedLink url={'https://asktug.com/t/topic/69773'}>专栏发布指南</FixedLink>
       <FixedLink url={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>

@@ -20,6 +20,7 @@ const BlogList = ({
   const [data, setData] = useState(content);
   const [page, setPage] = useState(number ?? 1);
   const [hasMore, setHasMore] = useState(page < totalPages);
+  const [fistLoad, setFirstLoad] = useState(false);
   const size = 20;
 
   const loadMoreData = async () => {
@@ -37,6 +38,17 @@ const BlogList = ({
       setLoading(false);
     }
   };
+
+  const paramsSignature = JSON.stringify(params);
+
+  useEffect(() => {
+    if (fistLoad) {
+      setData([]);
+      loadMoreData();
+    } else {
+      setFirstLoad(true);
+    }
+  }, [paramsSignature]);
 
   useEffect(() => {
     loadMoreData();

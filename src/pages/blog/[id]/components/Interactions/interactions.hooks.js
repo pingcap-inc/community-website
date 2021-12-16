@@ -137,9 +137,9 @@ export const useRemove = (blogInfo) => {
 export const useRecommend = (blogInfo) => {
   const router = useRouter();
   const { id } = usePrincipal();
+  const { recommended } = blogInfo;
   const recommend = () => {
     const then = () => router.replace(`/blog/user/${id}/posts`);
-    const { recommended } = blogInfo;
     if (recommended) {
       return api.blog.posts.post.recommend(blogInfo.id).then(then);
     }

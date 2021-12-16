@@ -23,6 +23,22 @@ const BlogList = ({
   const [fistLoad, setFirstLoad] = useState(false);
   const size = 20;
 
+  const reloadData = async () => {
+    setLoading(true);
+    setPage(1);
+    setData([]);
+    setHasMore(true);
+    try {
+      const json = await api({ page: 1, size, ...params });
+      setData(json.content);
+      setPage(json.page.number + 1);
+      setHasMore(page < json.page.totalPages);
+    } catch (e) {
+    } finally {
+      setLoading(false);
+    }
+  };
+
   const loadMoreData = async () => {
     if (loading) {
       return;
@@ -43,10 +59,7 @@ const BlogList = ({
 
   useEffect(() => {
     if (fistLoad) {
-      setPage(1);
-      setData([]);
-      setHasMore(true);
-      loadMoreData();
+      reloadData();
     } else {
       setFirstLoad(true);
     }

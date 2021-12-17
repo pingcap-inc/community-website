@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import titleBackgroundSvg from './title-bg.svg';
+import ballImage from './ball.png';
 import BannerTitleSvg from './banner-title.svg';
 import BannerTitleMobileSvg from './banner-title-mobile.svg';
 import { Button, Carousel as RawCarousel, Collapse, Row } from 'antd';
@@ -38,8 +38,12 @@ export const Section = styled.div`
   padding-top: 3rem;
   text-align: center;
 `;
-export const SectionTitleBackground = styled(titleBackgroundSvg)`
+export const SectionTitleBackground = styled.span`
   // align the svg on the center
+  background-image: url(${JSON.stringify(ballImage.src)});
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
   position: absolute;
   top: 0;
   left: 50%;

@@ -158,7 +158,11 @@ const Page = ({ data }) => {
                   立即报名
                 </Styled.BannerButton>
                 <Styled.BannerButton onClick={() => setQROverlay(true)}>加入官方群</Styled.BannerButton>
-                <Styled.BannerButton onClick={toHash('faq')}>赛事咨询</Styled.BannerButton>
+                <Styled.BannerButton
+                  onClick={() => handleRedirect(router, 'https://forms.pingcap.com/f/TiDBHackathon2021Volunteer')}
+                >
+                  志愿者
+                </Styled.BannerButton>
               </Styled.BannerButtonsGroup>
               {!isSmallScreen && <BannerNavButtonsGroup />}
             </Styled.BannerContent>
@@ -431,6 +435,9 @@ const Page = ({ data }) => {
                 />
               </Col>
             ))}
+            {isSmallScreen ||
+              (judgesData.length % 3 !== 0 &&
+                _.range(3 - (data.news.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
           </Row>
         </Styled.Section>
         <Styled.PartnerSection id="partners">

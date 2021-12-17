@@ -13,7 +13,7 @@ const CategoryList = ({ categories: { content } }) => {
     <Styled.Container>
       <Styled.List>
         {content.map((value) => (
-          <Item key={value.id} {...value} />
+          <Item key={value.slug} {...value} />
         ))}
       </Styled.List>
       <Divider />

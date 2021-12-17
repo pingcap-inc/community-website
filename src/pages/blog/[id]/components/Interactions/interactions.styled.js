@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
 export const Interaction = styled.div`
-  margin-bottom: 18px;
   color: ${colors.F2};
   width: 28px;
   text-align: center;
@@ -24,4 +23,10 @@ export const Interaction = styled.div`
     line-height: 30px;
     font-size: 14px;
   }
+`;
+
+export const Divided = styled.div`
+  height: 2px;
+  margin: 24px auto;
+  background-color: ${colors.C4};
 `;

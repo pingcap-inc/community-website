@@ -17,7 +17,7 @@ import {
 import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
-import { Popconfirm } from 'antd';
+import { Popconfirm, Space } from 'antd';
 import { colors } from '@tidb-community/ui';
 
 const Interactions = ({ blogInfo, reload }) => {
@@ -32,6 +32,7 @@ const Interactions = ({ blogInfo, reload }) => {
   const { recommended, recommend } = useRecommend(blogInfo);
 
   const actions = [];
+  const adminActions = [];
   if (blogInfo.status === 'PUBLISHED') {
     actions.push(
       <Interaction
@@ -55,7 +56,7 @@ const Interactions = ({ blogInfo, reload }) => {
       <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
     );
     if (hasAuthority('REVIEW_POST')) {
-      actions.push(
+      adminActions.push(
         <Interaction
           key="recommend"
           icon={recommended ? <PushpinTwoTone twoToneColor={colors.F2} /> : <PushpinOutlined />}
@@ -65,19 +66,31 @@ const Interactions = ({ blogInfo, reload }) => {
     }
   }
   if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {
-    actions.push(<Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />);
+    adminActions.push(
+      <Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />
+    );
   }
   if (isAuthor(blogInfo) || hasAuthority('REVIEW_POST')) {
-    actions.push(<Interaction key="edit" icon={<EditOutlined />} onClick={edit} />);
+    adminActions.push(<Interaction key="edit" icon={<EditOutlined />} onClick={edit} />);
   }
   if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {
-    actions.push(
+    adminActions.push(
       <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />,
       <Interaction key="reject" icon={<StopOutlined />} onClick={reject} />
     );
   }
 
-  return <>{actions}</>;
+  return (
+    <>
+      <Space direction={'vertical'} size={16}>
+        {actions}
+      </Space>
+      <Styled.Divided />
+      <Space direction={'vertical'} size={16}>
+        {adminActions}
+      </Space>
+    </>
+  );
 };
 
 const Interaction = ({ icon, count, onClick, name }) => {

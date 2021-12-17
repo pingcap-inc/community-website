@@ -64,7 +64,7 @@ const BlogInfo = ({
             </Link>
           )}
           {tags?.map((tag) => (
-            <Link href={`/blog/tag/${tag.slug}`} passHref>
+            <Link key={tag.slug} href={`/blog/tag/${tag.slug}`} passHref>
               <Styled.Tag key={tag.id}>{tag.name}</Styled.Tag>
             </Link>
           ))}

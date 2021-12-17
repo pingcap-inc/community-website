@@ -784,11 +784,11 @@ export const NewsCard = styled.div`
     props.sm
       ? css`
           width: calc(1.04 * (100vw - 44px - 2rem));
-          height: calc(0.83 * (100vw - 44px - 2rem));
+          height: calc(0.59 * (100vw - 44px - 2rem));
         `
       : css`
           width: ${columnWidth * 3 * 1.2}vw;
-          height: ${columnWidth * 2.25 * 1.2}vw;
+          height: ${columnWidth * 1.71 * 1.2}vw;
         `}
   margin-bottom: 2rem;
   // padding

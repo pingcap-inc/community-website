@@ -10,13 +10,33 @@ import { useState } from 'react';
 import { carouselData, FAQData, groupsData, judgesData, seo, stepsData } from '~/pages/events/hackathon2021/datasource';
 import { CommunityHead } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { api } from '@tidb-community/datasource';
+import jsConvert from 'js-convert-case';
+import Leaderboard from '~/pages/events/hackathon2021/leaderboard';
+import { common as commonUtils } from '~/utils';
 
 export const getServerSideProps = async (ctx) => {
+  const client = await api.initStrapiClient();
+
+  const data = await Promise.all([
+    client.get('tidbio-hackathon-2021-leaderboards'),
+    client.get('tidbio-hackathon-2021-news'),
+  ]);
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   return {
     props: {
       ...i18nProps,
+      data: jsConvert.camelKeys(
+        {
+          leaderboard: data[0],
+          news: data[1],
+        },
+        {
+          recursive: true,
+          recursiveInArray: true,
+        }
+      ),
     },
   };
 };
@@ -43,11 +63,15 @@ const ProcedureCard = ({ title, date, desc, buttonText, buttonLink, sm }) => (
   </>
 );
 
-const Prize = ({ title, reward, count, src, huge, rewardSize }) => {
+const Prize = ({ title, reward, count, src, huge, rewardSize, sm }) => {
   return (
-    <Styled.Prize src={src}>
-      <Styled.PrizeTitle huge={huge}>{title}</Styled.PrizeTitle>
-      <Styled.PrizeReward style={{ fontSize: rewardSize }}>{reward}</Styled.PrizeReward>
+    <Styled.Prize src={src} sm={sm}>
+      <Styled.PrizeTitle huge={huge} sm={sm}>
+        {title}
+      </Styled.PrizeTitle>
+      <Styled.PrizeReward sm={sm} style={{ fontSize: rewardSize }}>
+        {reward}
+      </Styled.PrizeReward>
       <Styled.PrizeCount>{count}</Styled.PrizeCount>
     </Styled.Prize>
   );
@@ -76,6 +100,14 @@ const JudgeCard = ({ name, desc, src, detail, sm }) => {
   );
 };
 
+const NewsCard = ({ title, src, url, sm }) => {
+  return (
+    <Styled.NewsCard src={src} sm={sm}>
+      <Styled.NewsCardContent sm={sm}> {title} </Styled.NewsCardContent>
+    </Styled.NewsCard>
+  );
+};
+
 const splitCarousel = (data, size) => {
   // split data into groups of 3
   return _.chunk(data, size);
@@ -88,16 +120,18 @@ const BannerNavButtonsGroup = ({ isSmallScreen }) => (
     <Styled.BannerNavButton onClick={toHash('intro')}>介绍</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('prizes')}>奖项</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('judges')}>评委</Styled.BannerNavButton>
-    {/*<Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>*/}
+    <Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('faq')}>常见问题</Styled.BannerNavButton>
+    <Styled.BannerNavButton onClick={toHash('news')}>专题报道</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('partners')}>合作伙伴</Styled.BannerNavButton>
   </Styled.BannerNavButtonsGroup>
 );
 
-const Page = () => {
+const Page = ({ data }) => {
   const { isSmallScreen } = useIsSmallScreen();
   const router = useRouter();
   const [QROverlay, setQROverlay] = useState(false);
+  console.log(data);
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -201,43 +235,90 @@ const Page = () => {
           <SectionTitle>大赛奖项</SectionTitle>
           <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
-            <Col>
-              <Prize title={'一等奖'} count={'1 支队伍'} reward={''} src={getImage('prize-1.svg')} huge />
+            <Col xs={24} lg={8}>
+              <Prize
+                sm={isSmallScreen}
+                title={'一等奖'}
+                count={'1 支队伍'}
+                reward={''}
+                src={getImage('prize-1.svg')}
+                huge
+              />
             </Col>
-            <Col>
-              <Prize title={'二等奖'} count={'3 支队伍'} reward={''} src={getImage('prize-2.svg')} huge />
+            <Col xs={12} lg={8}>
+              <Prize
+                sm={isSmallScreen}
+                title={'二等奖'}
+                count={'3 支队伍'}
+                reward={''}
+                src={getImage('prize-2.svg')}
+                huge
+              />
             </Col>
-            <Col>
-              <Prize title={'三等奖'} count={'6 支队伍'} reward={''} src={getImage('prize-3.svg')} huge />
+            <Col xs={12} lg={8}>
+              <Prize
+                sm={isSmallScreen}
+                title={'三等奖'}
+                count={'6 支队伍'}
+                reward={''}
+                src={getImage('prize-3.svg')}
+                huge
+              />
             </Col>
           </Styled.PrizesRow>
           <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
-              <Prize title={'技术潜力奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
-            </Col>
-            <Col>
-              <Prize title={'用户之选奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'技术潜力奖'}
+                count={'1 支队伍'}
+                reward={'¥5000'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
+                title={'用户之选奖'}
+                count={'1 支队伍'}
+                reward={'¥5000'}
+                src={getImage('prize-special.svg')}
+              />
+            </Col>
+            <Col>
+              <Prize
+                sm={isSmallScreen}
                 title={'云上应用奖'}
                 count={'1 支队伍'}
                 reward={'¥3000+云资源代金券'}
                 src={getImage('prize-special.svg')}
-                rewardSize={20}
+                rewardSize={isSmallScreen ? 12 : 16}
               />
             </Col>
             <Col>
-              <Prize title={'无限创意奖'} count={'1 支队伍'} reward={'¥5000'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'无限创意奖'}
+                count={'1 支队伍'}
+                reward={'¥5000'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
           </Styled.PrizesRow>
           <Styled.PrizesRow justify={'space-around'}>
             <Col>
-              <Prize title={'积分挑战奖'} count={'3 支队伍'} reward={'¥2000'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'积分挑战奖'}
+                count={'3 支队伍'}
+                reward={'¥2000'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
                 title={'最佳人气奖'}
                 count={'1 支队伍'}
                 reward={'罗技机械键盘'}
@@ -246,14 +327,17 @@ const Page = () => {
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
                 title={'校园团队奖'}
                 count={'1 支队伍'}
                 reward={'教育基金 ¥5000'}
+                rewardSize={isSmallScreen ? 14 : 16}
                 src={getImage('prize-special.svg')}
               />
             </Col>
             <Col>
               <Prize
+                sm={isSmallScreen}
                 title={'决赛入围奖'}
                 count={'20 支队伍'}
                 reward={'倍轻松按摩仪'}
@@ -261,7 +345,13 @@ const Page = () => {
               />
             </Col>
             <Col>
-              <Prize title={'神秘奖项'} count={'？'} reward={'现场揭晓'} src={getImage('prize-special.svg')} />
+              <Prize
+                sm={isSmallScreen}
+                title={'神秘奖项'}
+                count={'？'}
+                reward={'现场揭晓'}
+                src={getImage('prize-special.svg')}
+              />
             </Col>
           </Styled.PrizesRow>
           注：所有奖项奖金均为税前金额，奖项
@@ -309,6 +399,10 @@ const Page = () => {
           </Row>
           <Styled.SectionFooter>评委按姓名字母排序</Styled.SectionFooter>
         </Styled.Section>
+        <Styled.Section id="scores">
+          <SectionTitle>积分榜</SectionTitle>
+          <Leaderboard sm={isSmallScreen} data={data.leaderboard} />
+        </Styled.Section>
         <Styled.Section id="faq">
           <SectionTitle>常见问题</SectionTitle>
           <Styled.FAQWrapper>
@@ -324,18 +418,21 @@ const Page = () => {
             更多赛事 FAQ
           </Styled.FAQButton>
         </Styled.Section>
-        {/*<Styled.Section>*/}
-        {/*  <SectionTitle>专题报道</SectionTitle>*/}
-        {/*  <Styled.Carousel>*/}
-        {/*    {splitCarousel(carouselData, isSmallScreen ? 1 : 3).map((group) => (*/}
-        {/*      <Styled.CarouselInner>*/}
-        {/*        {group.map((url) => (*/}
-        {/*          <Image width={100 / splitCarousel(carouselData, isSmallScreen ? 1 : 3)[0].length + '%'} src={url} />*/}
-        {/*        ))}*/}
-        {/*      </Styled.CarouselInner>*/}
-        {/*    ))}*/}
-        {/*  </Styled.Carousel>*/}
-        {/*</Styled.Section>*/}
+        <Styled.Section id="news">
+          <SectionTitle>专题报道</SectionTitle>
+          <Row justify="space-around">
+            {data.news.map((item) => (
+              <Col onClick={() => handleRedirect(router, item.url)}>
+                <NewsCard
+                  name={item.title}
+                  src={commonUtils.getStrapiImgProps(item.preview).src}
+                  sm={isSmallScreen}
+                  title={item.title}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Styled.Section>
         <Styled.PartnerSection id="partners">
           <SectionTitle>合作伙伴</SectionTitle>
           黄金赞助
@@ -380,7 +477,7 @@ const Page = () => {
           </Styled.LogoWrapper>
           媒体/合作社区
           <Styled.LogoWrapper>
-            {_.range(16, 0, -1).map((i) => (
+            {_.range(17, 0, -1).map((i) => (
               <img
                 src={getImage(`partner-logo-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

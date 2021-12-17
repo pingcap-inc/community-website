@@ -28,7 +28,8 @@ export const Item = styled.a`
   line-height: 40px;
 `;
 
-export const FixedLink = styled.div`
+export const FixedLink = styled.a`
+  display: block;
   padding: 0.25rem 1rem;
   margin: 0.5rem 0;
   cursor: pointer;

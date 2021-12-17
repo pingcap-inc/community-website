@@ -82,6 +82,10 @@ if (process.env.ENABLE_SENTRY === 'true') {
   nextConfig = config;
 }
 
+if (process.env.CDN_URL) {
+  nextConfig.assetPrefix = process.env.CDN_URL;
+}
+
 // for transpiling all ESM @fullcalendar/* packages
 // also, for piping fullcalendar thru babel (to learn why, see babel.config.js)
 const withTM = require('next-transpile-modules')([

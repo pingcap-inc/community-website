@@ -18,6 +18,7 @@ import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
 import { Popconfirm } from 'antd';
+import { colors } from '@tidb-community/ui';
 
 const Interactions = ({ blogInfo, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();
@@ -57,7 +58,7 @@ const Interactions = ({ blogInfo, reload }) => {
       actions.push(
         <Interaction
           key="recommend"
-          icon={recommended ? <PushpinTwoTone twoToneColor={'#999'} /> : <PushpinOutlined />}
+          icon={recommended ? <PushpinTwoTone twoToneColor={colors.F2} /> : <PushpinOutlined />}
           onClick={recommend}
         />
       );
@@ -79,7 +80,7 @@ const Interactions = ({ blogInfo, reload }) => {
   return <>{actions}</>;
 };
 
-const Interaction = ({ icon, twoToneColor, count, onClick, name }) => {
+const Interaction = ({ icon, count, onClick, name }) => {
   if (name === 'remove') {
     return (
       <Popconfirm

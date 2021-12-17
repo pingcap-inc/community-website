@@ -135,15 +135,16 @@ export const useRemove = (blogInfo) => {
 };
 
 export const useRecommend = (blogInfo) => {
-  const router = useRouter();
-  const { id } = usePrincipal();
   const { recommended } = blogInfo;
   const recommend = () => {
-    const then = () => router.replace(`/blog/user/${id}/posts`);
     if (recommended) {
-      return api.blog.posts.post.recommend(blogInfo.id).then(then);
+      return api.blog.posts.post.recommend(blogInfo.id).then(() => {
+        message.success('置顶成功');
+      });
     }
-    return api.blog.posts.post.cancelRecommend(blogInfo.id).then(then);
+    return api.blog.posts.post.cancelRecommend(blogInfo.id).then(() => {
+      message.success('取消置顶成功');
+    });
   };
 
   return { recommended, recommend };

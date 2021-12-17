@@ -8,7 +8,7 @@ export const Container = styled.div`
   ${borderRadius}
   margin-top: 1rem;
   a {
-    color: ${colors.T7};
+    color: ${colors.B1};
   }
 `;
 

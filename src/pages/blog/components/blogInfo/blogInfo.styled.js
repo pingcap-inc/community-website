@@ -87,11 +87,12 @@ export const AuthorPublishedAt = styled.div`
 `;
 
 export const Title = styled.div`
-  ${mixins.lineClamp(3)};
   margin-top: 8px;
   margin-left: ${avatarSize + 8}px;
+  display: flex;
+  align-items: center;
   a {
-    display: block;
+    ${mixins.lineClamp(1)};
     font-size: 24px;
     line-height: 33px;
     color: ${colors.black} !important;

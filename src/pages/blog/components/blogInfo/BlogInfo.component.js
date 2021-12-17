@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import * as Styled from './blogInfo.styled';
 import { Avatar } from 'antd';
-import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
+import { HeartOutlined, MessageOutlined, PushpinOutlined } from '@ant-design/icons';
 
 const BlogInfo = ({
   id,
@@ -20,6 +20,7 @@ const BlogInfo = ({
   bottomExtends,
   coverImageURL = undefined,
   author,
+  recommended = false,
 }) => {
   const publishedAtFormatted = useMemo(() => {
     if (publishedAt) {
@@ -54,6 +55,7 @@ const BlogInfo = ({
           </Styled.AuthorInfo>
         </Styled.Author>
         <Styled.Title>
+          {!recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
           <Link href={`/blog/${id}`}>{title === '' ? ' [未填写文章标题] ' : title}</Link>
           {titleExtends}
         </Styled.Title>

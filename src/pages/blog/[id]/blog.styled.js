@@ -5,10 +5,6 @@ import { colors, mixins } from '@tidb-community/ui';
 
 export const MainWrapper = styled.div`
   background: #e9eaee;
-  *::selection {
-    color: #000f0f !important;
-    background-color: #f7d8d9 !important;
-  }
 `;
 
 export const Breadcrumb = styled(AntdBreadcrumb)`

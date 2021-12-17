@@ -5,7 +5,7 @@ import { Breadcrumb, Skeleton } from 'antd';
 import * as Styled from './blog.styled';
 import { CoreLayout } from '~/layouts';
 import { OriginLabel, RepostLabel } from './components/labels';
-import { BlogInfo } from '@tidb-community/ui';
+import BlogInfo from '../components/blogInfo';
 import TiEditor, { createFactory } from '@pingcap-inc/tidb-community-editor';
 import '@pingcap-inc/tidb-community-editor/dist/style.css';
 import AuthorInfo from './components/AuthorInfo';

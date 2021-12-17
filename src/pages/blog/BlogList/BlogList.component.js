@@ -1,6 +1,6 @@
 import React from 'react';
 import * as Styled from './index.styled';
-import { BlogInfo } from '@tidb-community/ui';
+import BlogInfo from '../components/blogInfo';
 import { useRouter } from 'next/router';
 import { List, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';
@@ -29,7 +29,7 @@ const BlogList = ({
           locale={{ emptyText: '暂无文章' }}
           renderItem={(value) => {
             const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
-            const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
+            const onClickCategory = () => router.push(`/blog/c/${value.category.slug}`);
             const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
             return (
               <Styled.Item key={value.id}>

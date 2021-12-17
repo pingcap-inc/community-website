@@ -14,24 +14,13 @@ const BlogInfo = ({
   title,
   titleExtends = undefined,
   category = undefined,
-  onClickCategory,
   tags,
-  onClickTag,
   likes,
   comments,
   bottomExtends,
   coverImageURL = undefined,
-  onClickAuthor,
   author,
 }) => {
-  const handleClickAuthor = useCallback(() => {
-    onClickAuthor(author);
-  }, [author, onClickAuthor]);
-
-  const handleClickCategory = useCallback(() => {
-    onClickCategory(category);
-  }, [category, onClickCategory]);
-
   const publishedAtFormatted = useMemo(() => {
     if (publishedAt) {
       return dayjs(publishedAt).format('YYYY-MM-DD HH:mm');
@@ -49,14 +38,16 @@ const BlogInfo = ({
       )}
       <Styled.Content>
         <Styled.Author>
-          <Styled.AuthorAvatar onClick={handleClickAuthor}>
-            <Avatar size={Styled.avatarSize} src={author.avatarURL} />
-          </Styled.AuthorAvatar>
+          <Link href={`/blog/user/${author.id}`} passHref>
+            <Styled.AuthorAvatar>
+              <Avatar size={Styled.avatarSize} src={author.avatarURL} />
+            </Styled.AuthorAvatar>
+          </Link>
           <Styled.AuthorInfo>
             <Styled.AuthorName>
-              <Styled.AuthorNameBase onClick={handleClickAuthor}>
-                {author.username || author.name}
-              </Styled.AuthorNameBase>
+              <Link href={`/blog/user/${author.id}`} passHref>
+                <Styled.AuthorNameBase>{author.username || author.name}</Styled.AuthorNameBase>
+              </Link>
               <Styled.AuthorNameExtend>{usernameExtends}</Styled.AuthorNameExtend>
             </Styled.AuthorName>
             <Styled.AuthorPublishedAt>{publishedAtFormatted}</Styled.AuthorPublishedAt>
@@ -67,11 +58,15 @@ const BlogInfo = ({
           {titleExtends}
         </Styled.Title>
         <Styled.Meta>
-          {category && <Styled.Category onClick={handleClickCategory}>{category.name}</Styled.Category>}
+          {category && (
+            <Link href={`/blog/c/${category.slug}`} passHref>
+              <Styled.Category>{category.name}</Styled.Category>
+            </Link>
+          )}
           {tags?.map((tag) => (
-            <Styled.Tag key={tag.id} onClick={() => onClickTag(tag)}>
-              {tag.name}
-            </Styled.Tag>
+            <Link href={`/blog/tag/${tag.slug}`} passHref>
+              <Styled.Tag key={tag.id}>{tag.name}</Styled.Tag>
+            </Link>
           ))}
         </Styled.Meta>
         <Styled.Interactions>
@@ -113,9 +108,6 @@ BlogInfo.propTypes = {
   likes: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,
   coverImageURL: PropTypes.string,
-  onClickAuthor: PropTypes.func,
-  onClickCategory: PropTypes.func.isRequired,
-  onClickTag: PropTypes.func.isRequired,
   titleExtends: PropTypes.node,
   usernameExtends: PropTypes.node,
   bottomExtends: PropTypes.node,

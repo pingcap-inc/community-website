@@ -54,7 +54,8 @@ export const Author = styled.div`
   align-items: center;
 `;
 
-export const AuthorAvatar = styled.div`
+export const AuthorAvatar = styled.a`
+  display: block;
   max-width: ${avatarSize}px;
   min-width: ${avatarSize}px;
   margin-right: 8px;
@@ -71,7 +72,8 @@ export const AuthorName = styled.div`
   display: flex;
 `;
 
-export const AuthorNameBase = styled.div`
+export const AuthorNameBase = styled.a`
+  display: block;
   color: #2c2c2c;
   cursor: pointer;
 `;
@@ -105,7 +107,7 @@ export const Meta = styled.div`
   margin-left: ${avatarSize + 8}px;
 `;
 
-export const Category = styled.span`
+export const Category = styled.a`
   display: inline-block;
   padding: 2px 8px;
   border-radius: ${borderRadiusSize};
@@ -123,7 +125,7 @@ export const Category = styled.span`
   }
 `;
 
-export const Tag = styled.span`
+export const Tag = styled.a`
   display: inline-block;
   &:not(:first-child) {
     margin-left: 16px;

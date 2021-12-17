@@ -76,7 +76,7 @@ export const Banner = styled.div`
     center center;
   // center background image
   background-size: cover;
-  height: ${(props) => (props.isSmallScreen ? '24rem' : '32rem')};
+  height: ${(props) => (props.isSmallScreen ? 'calc(100vh - 84px)' : '32rem')};
   position: relative;
 `;
 
@@ -90,7 +90,7 @@ export const BannerContent = styled.div`
   ${horizontalPadding};
 `;
 export const BannerTitle = styled(BannerTitleSvg)`
-  width: min(30rem, 100%);
+  width: min(35rem, 100%);
   margin-bottom: 4rem;
 `;
 

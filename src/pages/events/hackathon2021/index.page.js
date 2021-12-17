@@ -120,8 +120,9 @@ const BannerNavButtonsGroup = ({ isSmallScreen }) => (
     <Styled.BannerNavButton onClick={toHash('intro')}>介绍</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('prizes')}>奖项</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('judges')}>评委</Styled.BannerNavButton>
-    {/*<Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>*/}
+    <Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('faq')}>常见问题</Styled.BannerNavButton>
+    <Styled.BannerNavButton onClick={toHash('news')}>专题报道</Styled.BannerNavButton>
     <Styled.BannerNavButton onClick={toHash('partners')}>合作伙伴</Styled.BannerNavButton>
   </Styled.BannerNavButtonsGroup>
 );
@@ -402,7 +403,7 @@ const Page = ({ data }) => {
           </Row>
           <Styled.SectionFooter>评委按姓名字母排序</Styled.SectionFooter>
         </Styled.Section>
-        <Styled.Section>
+        <Styled.Section id="scores">
           <SectionTitle>积分榜</SectionTitle>
           <Leaderboard sm={isSmallScreen} data={data.leaderboard} />
         </Styled.Section>
@@ -421,7 +422,7 @@ const Page = ({ data }) => {
             更多赛事 FAQ
           </Styled.FAQButton>
         </Styled.Section>
-        <Styled.Section>
+        <Styled.Section id="news">
           <SectionTitle>专题报道</SectionTitle>
           <Row justify="space-around">
             {data.news.map((item) => (
@@ -483,7 +484,7 @@ const Page = ({ data }) => {
           </Styled.LogoWrapper>
           媒体/合作社区
           <Styled.LogoWrapper>
-            {_.range(16, 0, -1).map((i) => (
+            {_.range(17, 0, -1).map((i) => (
               <img
                 src={getImage(`partner-logo-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

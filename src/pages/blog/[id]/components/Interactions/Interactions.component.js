@@ -55,7 +55,7 @@ const Interactions = ({ blogInfo, reload }) => {
       />,
       <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
     );
-    if (hasAuthority('REVIEW_POST')) {
+    if (hasAuthority('RECOMMEND_POST')) {
       adminActions.push(
         <Interaction
           key="recommend"

@@ -17,11 +17,11 @@ const CategoryList = ({ categories: { content } }) => {
         ))}
       </Styled.List>
       <Divider />
-      {showAudits && <FixedLink url={`/blog/audits`}>待审核</FixedLink>}
-      {isLogin && <FixedLink url={`/blog/user/${id}/posts`}>我的专栏</FixedLink>}
-      <FixedLink url={'https://asktug.com/t/topic/69773'}>专栏发布指南</FixedLink>
-      <FixedLink url={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>
-      <FixedLink url={'mailto:community@tidb.io'}>联系我们</FixedLink>
+      {showAudits && <NextLink href={`/blog/audits`}>待审核</NextLink>}
+      {isLogin && <NextLink href={`/blog/user/${id}/posts`}>我的专栏</NextLink>}
+      <FixedLink href={'https://asktug.com/t/topic/69773'}>专栏发布指南</FixedLink>
+      <FixedLink href={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>
+      <FixedLink href={'mailto:community@tidb.io'}>联系我们</FixedLink>
     </Styled.Container>
   );
 };
@@ -37,11 +37,19 @@ const Item = ({ name, slug }) => {
   );
 };
 
-const FixedLink = ({ url, children }) => {
+const FixedLink = ({ href, children }) => {
   return (
-    <Styled.FixedLink href={url} target="_blank" rel="noreferrer noopener">
+    <Styled.FixedLink href={href} target="_blank" rel="noreferrer noopener">
       {children}
     </Styled.FixedLink>
+  );
+};
+
+const NextLink = ({ href, children }) => {
+  return (
+    <Link href={href} passHref>
+      <Styled.FixedLink>{children}</Styled.FixedLink>
+    </Link>
   );
 };
 

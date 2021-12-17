@@ -6,7 +6,7 @@ import * as Styled from './TagItem.styled';
 const TagItem = ({ name, slug, posts }) => {
   const url = `/blog/tag/${slug}`;
   return (
-    <Styled.Card title="">
+    <Styled.Card title="" bordered={false}>
       <Styled.Title>
         <Link href={url}>{`# ${name}`}</Link>
       </Styled.Title>

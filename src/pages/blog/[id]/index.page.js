@@ -119,6 +119,10 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
             <Styled.Editor>
               <Content fragment={fragment} factory={factory} />
             </Styled.Editor>
+
+            <Styled.BottomActions>
+              <Interactions blogInfo={blogInfo} reload={reload} />
+            </Styled.BottomActions>
           </Styled.Body>
 
           {blogInfo.origin !== 'ORIGINAL' ? (

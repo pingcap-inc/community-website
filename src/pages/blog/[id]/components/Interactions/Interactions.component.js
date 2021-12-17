@@ -17,7 +17,7 @@ import {
 import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
-import { Popconfirm, Space } from 'antd';
+import { Popconfirm } from 'antd';
 import { colors } from '@tidb-community/ui';
 
 const Interactions = ({ blogInfo, reload }) => {
@@ -81,15 +81,11 @@ const Interactions = ({ blogInfo, reload }) => {
   }
 
   return (
-    <>
-      <Space direction={'vertical'} size={16}>
-        {actions}
-      </Space>
+    <Styled.Interactions>
+      <Styled.Actions>{actions}</Styled.Actions>
       <Styled.Divided />
-      <Space direction={'vertical'} size={16}>
-        {adminActions}
-      </Space>
-    </>
+      <Styled.Actions>{adminActions}</Styled.Actions>
+    </Styled.Interactions>
   );
 };
 
@@ -103,15 +99,16 @@ const Interaction = ({ icon, count, onClick, name }) => {
         okText="确认"
         cancelText="取消"
       >
-        <Styled.Interaction>{icon}</Styled.Interaction>
+        <Styled.Interaction>
+          <Styled.Icon>{icon}</Styled.Icon>
+        </Styled.Interaction>
       </Popconfirm>
     );
   }
   return (
     <Styled.Interaction onClick={onClick}>
-      {icon}
-
-      {typeof count === 'number' ? <span className="count">{count}</span> : undefined}
+      <Styled.Icon>{icon}</Styled.Icon>
+      <Styled.Count>{typeof count === 'number' && count}</Styled.Count>
     </Styled.Interaction>
   );
 };

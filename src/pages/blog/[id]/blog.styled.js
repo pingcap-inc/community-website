@@ -25,10 +25,24 @@ export const Content = styled.div`
 `;
 
 export const Side = styled.div`
-  position: sticky;
-  height: 100%;
-  margin-top: 4rem;
-  top: 2rem;
+  ${mixins.onDesktop(css`
+    position: sticky;
+    height: 100%;
+    margin-top: 4rem;
+    top: 2rem;
+  `)};
+  ${mixins.onMobile(css`
+    display: none;
+  `)};
+`;
+
+export const BottomActions = styled.div`
+  ${mixins.onDesktop(css`
+    display: none;
+  `)};
+  ${mixins.onMobile(css`
+    margin-top: 32px;
+  `)};
 `;
 
 export const Main = styled.div`

@@ -125,12 +125,6 @@ export const judgesData = [
       '曾在 IBM 中国系统科技实验室、微软亚洲工程院搜索技术中心和阿里巴巴阿里云智能等企业部门工作。一直在开源系统软件、数据库、高性能计算、云计算、大数据等分布式系统领域从事相关技术工作，参与了众多企业级系统软件技术研发和产品创新的商业实践。',
   },
   {
-    name: '乔木',
-    desc: 'Google Cloud Data Management Specialist',
-    detail:
-      '前 AWS 数据库以及存储服务 Subject Matter Expert，现 Google Cloud 数据库服务 Specialist。在云计算数据库的架构以及使用方面有丰富经验。',
-  },
-  {
     name: '李凯',
     desc: '美团数据库研发中心负责人',
     detail:
@@ -149,6 +143,12 @@ export const judgesData = [
     desc: '小米大数据委员会秘书长',
     detail:
       '中国计算机学会大数据 SIG 联席主席，TGO 鲲鹏会会员。14 年 ICT 技术及产品管理经验，先后供职于锐捷网络、摩托罗拉、思科、微软、Quixey、2017 年加入小米。在数字化转型、数据中台、数据治理等领域有着扎实的理论积累及丰富的实践经验。',
+  },
+  {
+    name: '乔木',
+    desc: 'Google Cloud Data Management Specialist',
+    detail:
+      '前 AWS 数据库以及存储服务 Subject Matter Expert，现 Google Cloud 数据库服务 Specialist。在云计算数据库的架构以及使用方面有丰富经验。',
   },
   {
     name: '沈旸',

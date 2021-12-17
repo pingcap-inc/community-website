@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/tidbio-hackathon-2021-news",
+      "handler": "tidbio-hackathon2021-news.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tidbio-hackathon-2021-news/count",
+      "handler": "tidbio-hackathon2021-news.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/tidbio-hackathon-2021-news/:id",
+      "handler": "tidbio-hackathon2021-news.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/tidbio-hackathon-2021-news",
+      "handler": "tidbio-hackathon2021-news.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/tidbio-hackathon-2021-news/:id",
+      "handler": "tidbio-hackathon2021-news.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/tidbio-hackathon-2021-news/:id",
+      "handler": "tidbio-hackathon2021-news.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

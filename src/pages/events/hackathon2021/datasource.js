@@ -119,6 +119,18 @@ export const judgesData = [
       'Apache Foundation Member, Apache IPMC Member\n Apache Dolphin Scheduler PMC，ClickHouse 华人社区创始人，中国 2021 年开源杰出人物。\n 郭炜先生毕业于北京大学，先后在中金、IBM、Teradata 任大数据方重要职位，对大数据前沿研究做出卓越贡献。',
   },
   {
+    name: '贺军',
+    desc: '建信金科基础技术中心架构师',
+    detail:
+      '曾在 IBM 中国系统科技实验室、微软亚洲工程院搜索技术中心和阿里巴巴阿里云智能等企业部门工作。一直在开源系统软件、数据库、高性能计算、云计算、大数据等分布式系统领域从事相关技术工作，参与了众多企业级系统软件技术研发和产品创新的商业实践。',
+  },
+  {
+    name: '乔木',
+    desc: 'Google Cloud Data Management Specialist',
+    detail:
+      '前 AWS 数据库以及存储服务 Subject Matter Expert，现 Google Cloud 数据库服务 Specialist。在云计算数据库的架构以及使用方面有丰富经验。',
+  },
+  {
     name: '李凯',
     desc: '美团数据库研发中心负责人',
     detail:

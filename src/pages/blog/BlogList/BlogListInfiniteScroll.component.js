@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../components/blogInfo';
-import { useRouter } from 'next/router';
 import { Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -15,7 +14,6 @@ const BlogList = ({
   api,
   params,
 }) => {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(content);
   const [page, setPage] = useState(number ?? 1);

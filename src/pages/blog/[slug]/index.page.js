@@ -37,8 +37,9 @@ export const getServerSideProps = async (ctx) => {
 const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   const router = useRouter();
   const { isReady, query } = router;
+  const { slug } = query;
 
-  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', { slug: query.slug }], {
+  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', { slug }], {
     initialData: ssrBlogInfo,
     revalidateOnMount: true,
   });

@@ -16,7 +16,7 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 const fetcher = async (path, params) => {
-  const client = await api.initStrapiClient();
+  const client = api.cmsProxyClient;
 
   try {
     params = JSON.parse(params);

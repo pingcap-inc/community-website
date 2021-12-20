@@ -4,7 +4,7 @@ import { api } from '@tidb-community/datasource';
 const handler = async (req, res) => {
   const { dataset, ...params } = req.query;
 
-  const client = api.initStrapiClient();
+  const client = await api.initStrapiClient();
 
   if (!/get/i.test(req.method)) {
     res.status(403).json({ message: 'forbidden' });

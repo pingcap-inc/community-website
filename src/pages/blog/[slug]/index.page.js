@@ -38,7 +38,7 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   const router = useRouter();
   const { isReady, query } = router;
 
-  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.posts.post.info', query.id], {
+  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', { slug: query.slug }], {
     initialData: ssrBlogInfo,
     revalidateOnMount: true,
   });

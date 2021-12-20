@@ -6,6 +6,11 @@ const handler = async (req, res) => {
 
   const client = api.initStrapiClient();
 
+  if (!/get/i.test(req.method)) {
+    res.status(403).json({ message: 'forbidden' });
+    return;
+  }
+
   try {
     const response = await client.request({
       method: req.method,

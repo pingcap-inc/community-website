@@ -22,7 +22,7 @@ const fetcher = async (path, params) => {
     params = JSON.parse(params);
   } catch (err) {}
 
-  return client.get('cms/' + path, {
+  return client.get('next-api/cms/' + path, {
     params,
   });
 };

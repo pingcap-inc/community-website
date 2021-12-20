@@ -1,7 +1,6 @@
 const { successResp } = require('../../../utils');
 
 module.exports = (req, res) => {
-  const { slug } = req.params;
   const data = {
     id: 12845,
     slug: '45210957b48cad68bf241ca97b1c16a8ca028ea4',

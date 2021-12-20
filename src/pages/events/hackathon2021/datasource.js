@@ -125,12 +125,6 @@ export const judgesData = [
       '曾在 IBM 中国系统科技实验室、微软亚洲工程院搜索技术中心和阿里巴巴阿里云智能等企业部门工作。一直在开源系统软件、数据库、高性能计算、云计算、大数据等分布式系统领域从事相关技术工作，参与了众多企业级系统软件技术研发和产品创新的商业实践。',
   },
   {
-    name: '乔木',
-    desc: 'Google Cloud Data Management Specialist',
-    detail:
-      '前 AWS 数据库以及存储服务 Subject Matter Expert，现 Google Cloud 数据库服务 Specialist。在云计算数据库的架构以及使用方面有丰富经验。',
-  },
-  {
     name: '李凯',
     desc: '美团数据库研发中心负责人',
     detail:
@@ -149,6 +143,12 @@ export const judgesData = [
     desc: '小米大数据委员会秘书长',
     detail:
       '中国计算机学会大数据 SIG 联席主席，TGO 鲲鹏会会员。14 年 ICT 技术及产品管理经验，先后供职于锐捷网络、摩托罗拉、思科、微软、Quixey、2017 年加入小米。在数字化转型、数据中台、数据治理等领域有着扎实的理论积累及丰富的实践经验。',
+  },
+  {
+    name: '乔木',
+    desc: 'Google Cloud Data Management Specialist',
+    detail:
+      '前 AWS 数据库以及存储服务 Subject Matter Expert，现 Google Cloud 数据库服务 Specialist。在云计算数据库的架构以及使用方面有丰富经验。',
   },
   {
     name: '沈旸',
@@ -183,12 +183,6 @@ export const judgesData = [
     desc: 'PingCAP 混沌工程团队负责人',
     detail:
       'PingCAP 混沌工程团队负责人，CNCF 开源项目 Chaos Mesh 的发起人和维护者。之前主要负责分布式数据库 TiDB 的稳定性测试框架的设计和开发任务，目前致力于探索混沌工程的实施和推广工作。开源爱好者，“KubeCon + CloudNativeCon Europe 2021” 和 “KubeCon + CloudNativeCon North America 2021” 计划委员会成员。',
-  },
-  {
-    name: '余军',
-    desc: 'PingCAP 解决方案团队负责人',
-    detail:
-      '拥有 20 年企业级开源软件架构经验，前富麦科技 CTO、前 Red Hat 中国区解决方案业务总监、前惠普分布式计算高级技术专家，长期服务于银行机构、券商及大型保险行业等，专注于企业级分布式系统 / 高可用架构设计及开源 IT 战略规划咨询。',
   },
   {
     name: '俞勇',

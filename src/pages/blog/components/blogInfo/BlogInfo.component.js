@@ -56,7 +56,7 @@ const BlogInfo = ({
           </Styled.AuthorInfo>
         </Styled.Author>
         <Styled.Title>
-          {!recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
+          {recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
           <Link href={`/blog/${slug}`}>{title === '' ? ' [未填写文章标题] ' : title}</Link>
           {titleExtends}
         </Styled.Title>

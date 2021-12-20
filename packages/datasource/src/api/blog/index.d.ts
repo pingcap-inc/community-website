@@ -8,6 +8,8 @@ export function getLatest(query?: PostQuery): Page<Post>;
 
 export function getRecommend(query?: PostQuery): Page<Post>;
 
+export function getPostBySlug(query?: PostDetails): Promise<Post>;
+
 export function getTags(pagination?: Pagination): Promise<Page<Tag>>;
 
 export function getHotTags(pagination?: Pagination): Promise<Page<Tag>>;
@@ -49,4 +51,10 @@ interface CategoryDetails extends Category {
   description: string;
   posts: 0;
   createdAt: null;
+}
+
+interface PostDetails {
+  slug: string;
+  visit?: boolean;
+  fromShareId?: string;
 }

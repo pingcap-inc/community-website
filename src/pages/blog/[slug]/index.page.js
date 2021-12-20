@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { slug } = ctx.params;
 
-  const blogInfo = await api.blog.getPostBySlug({ slug });
+  const blogInfo = await api.blog.getPostBySlug(slug);
 
   return {
     props: {
@@ -39,7 +39,7 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   const { isReady, query } = router;
   const { slug } = query;
 
-  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', { slug }], {
+  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', slug], {
     initialData: ssrBlogInfo,
     revalidateOnMount: true,
   });

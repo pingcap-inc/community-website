@@ -119,6 +119,57 @@ const data = [
       },
     ],
   },
+   {
+    name: '姬永飞',
+    company: '天翼云',
+    title: '高级后端开发工程师',
+    links: [
+      {
+        name: 'CDC 同步到 S3 的故障',
+        href: 'https://asktug.com/t/topic/95744',
+      },
+      {
+        name: 'BR 备份到 S3 时 endpoint 参数加目录分隔符后缀问题排查',
+        href: 'https://asktug.com/t/topic/273002',
+      },
+      {
+        name: 'TiDB K8s 定时备份状态异常问题排查',
+        href: 'https://asktug.com/t/topic/272815',
+      },
+      {
+        name: 'TiDB 5.0 两阶段提交',
+        href: 'https://asktug.com/t/topic/243260',
+      },
+      {
+        name: '一条 like 条件的慢 SQL 语句优化',
+        href: 'https://asktug.com/t/topic/243259',
+      },
+      {
+        name: '悲观事务死锁检测',
+        href: 'https://asktug.com/t/topic/243258',
+      },
+      {
+        name: 'Placement Rules 原理',
+        href: 'https://asktug.com/t/topic/243257',
+      },
+      {
+        name: 'TiDB K8s 删除备份阻塞问题排查',
+        href: 'https://asktug.com/t/topic/243240',
+      },
+      {
+        name: '一个联合索引使用问题以及优化方案',
+        href: 'https://asktug.com/t/topic/152989',
+      },
+      {
+        name: 'TiDB AutoCommit OFF 问题',
+        href: 'https://asktug.com/t/topic/95647',
+      },
+       {
+        name: 'TiDB 赋权问题',
+        href: 'https://asktug.com/t/topic/93968',
+      },
+    ],
+  },
   {
     name: '张政俊',
     company: '中欧基金',
@@ -295,6 +346,209 @@ const data = [
       {
         name: '端到端的实时计算：TiDB + Flink 最佳实践',
         href: 'https://asktug.com/t/topic/182780',
+      },
+    ],
+  },
+  {
+    name: '胡然',
+    company: '龙湖地产',
+    title: 'IT 基础负责人',
+    links: [
+      {
+        name: 'TiDB 优化之消失的统计信息',
+        href: 'https://asktug.com/t/topic/95565',
+      },
+      {
+        name: 'TiDB 实例间数据同步之 TiCDC 实践',
+        href: 'https://asktug.com/t/topic/95299',
+      },
+      {
+        name: 'TiDB DM 扩容和监控',
+        href: 'https://asktug.com/t/topic/67685',
+      },
+    ],
+  },
+  {
+    name: '顾大伟',
+    company: '360',
+    title: '数据库运维专家',
+    links: [
+      {
+        name: '扩容 TiKV 节点遇到的坑',
+        href: 'https://asktug.com/t/topic/183585',
+      },
+      {
+        name: 'Tidb duration 耗时异常上升案例',
+        href: 'https://asktug.com/t/topic/243253',
+      },
+      {
+        name: 'TiCDC 实现 TiDB 备份方案',
+        href: 'https://asktug.com/t/topic/182918',
+      },
+      {
+        name: 'TiFlash 尝鲜小案例',
+        href: 'https://asktug.com/t/topic/182847',
+      },
+    ],
+  },
+  {
+    name: '赵河',
+    company: '企查查',
+    title: '大数据部门 DBA',
+    links: [
+      {
+        name: '一次 meet_lock 告警异常处理过程',
+        href: 'https://asktug.com/t/topic/93906',
+      },
+      {
+        name: 'TiDB 4.0 生产环境扩容 TiKV 节点详细步骤',
+        href: 'https://asktug.com/t/topic/213017',
+      },
+       {
+        name: 'TiDB 目录结构分析',
+        href: 'https://asktug.com/t/topic/152999',
+      },
+      {
+        name: '【TiDB CPU 使用率过高之一】Scheduler worker CPU',
+        href: 'https://asktug.com/t/topic/93500',
+      },
+    ],
+  },
+    {
+    name: '闫彬彬',
+    company: '联通软件研究院',
+    title: '数据库运维',
+    links: [
+      {
+        name: '悲观事务加锁验证',
+        href: 'https://asktug.com/t/topic/273045',
+      },
+      {
+        name: 'TiDB 中的 key 和 MVCC value 解析',
+        href: 'https://asktug.com/t/topic/93906',
+      },
+      {
+        name: 'TiDB 4.0 生产环境扩容 TiKV 节点详细步骤',
+        href: 'https://asktug.com/t/topic/213017',
+      },
+       {
+        name: 'TiDB5.0.3-ARM 平台性能测试',
+        href: 'https://asktug.com/t/topic/183732',
+      },
+      {
+        name: '通过 label 调度副本测试',
+        href: 'https://asktug.com/t/topic/212816',
+      },
+    ],
+  },
+   {
+    name: '胡呈清',
+    company: '爱可生',
+    title: '华东区 DBA',
+    links: [
+      {
+        name: '使用Zabbix监控TiDB（二）',
+        href: 'https://asktug.com/t/topic/272890',
+      },
+      {
+        name: '如何理解TiDB允许广义上的幻读',
+        href: 'https://asktug.com/t/topic/272797',
+      },
+       {
+        name: '使用Zabbix监控TiDB（一）',
+        href: 'https://asktug.com/t/topic/272777',
+      },
+    ],
+  },
+  {
+    name: '熊双辉',
+    company: '阿里云存储',
+    title: '基础平台开发',
+    links: [
+      {
+        name: 'TiDB-v4.0.x 支持 OLAP 场景的一些实践经验',
+        href: 'https://asktug.com/t/topic/68565',
+      },
+      {
+        name: 'TiKV 节点磁盘耗尽恢复经验',
+        href: 'https://asktug.com/t/topic/68516',
+      },
+       {
+        name: '记一次使用 TiUP 半自动升级 TiDB 集群经验',
+        href: 'https://asktug.com/t/topic/68481',
+      },
+    ],
+  },
+  {
+    name: '高振娇',
+    company: 'PingCAP',
+    title: '社区技术专家',
+    links: [
+      {
+        name: 'TiDB GC 之监控及日志解读',
+        href: 'https://asktug.com/t/topic/67761',
+      },
+      {
+        name: 'TiDB GC 之原理浅析',
+        href: 'https://asktug.com/t/topic/67760',
+      },
+       {
+        name: 'TiDB GC 之处理案例 & FAQ',
+        href: 'https://asktug.com/t/topic/67764',
+      },
+    ],
+  },
+   {
+    name: '苏志鹏',
+    company: 'PingCAP',
+    title: 'DBA',
+    links: [
+      {
+        name: 'PD 如何调度 Region',
+        href: 'https://asktug.com/t/topic/242808',
+      },
+      {
+        name: 'TiDB run and debug on M1',
+        href: 'https://asktug.com/t/topic/183125',
+      },
+       {
+        name: 'TIDB 不容易发现的 lightning tidb-backend 模式导入优化',
+        href: 'https://asktug.com/t/topic/94981',
+      },
+    ],
+  },
+   {
+    name: '秦天爽',
+    company: 'PingCAP',
+    title: '高级解决方案架构师',
+    links: [
+      {
+        name: 'TiDB 集群可用性增强：TiDB 5.0 的 Joint Consensus 机制介绍',
+        href: 'https://asktug.com/t/topic/273586',
+      },
+      {
+        name: '同城双中心自适应同步方案：DR Auto-Sync 详解',
+        href: 'https://asktug.com/t/topic/212812',
+      },
+       {
+        name: '使用 TiDB 时的连接池和负载均衡器配置策略',
+        href: 'https://asktug.com/t/topic/182953',
+      },
+      {
+        name: 'TiDB 数据库开发规范',
+        href: 'https://asktug.com/t/topic/93819',
+      },
+       {
+        name: 'TiDB 集群的可用性详解及 TiKV Label 规划',
+        href: 'https://asktug.com/t/topic/69435',
+      },
+       {
+        name: '如何在 TiDB 上高效运行序列号生成服务',
+        href: 'https://asktug.com/t/topic/69478',
+      },
+       {
+        name: '还在用变量去实现多维度分组排序吗？你 out 了！',
+        href: 'https://asktug.com/t/topic/69437',
       },
     ],
   },

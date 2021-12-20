@@ -436,7 +436,7 @@ const Page = ({ data }) => {
               </Col>
             ))}
             {isSmallScreen ||
-              (judgesData.length % 3 !== 0 &&
+              (data.news.length % 3 !== 0 &&
                 _.range(3 - (data.news.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
           </Row>
         </Styled.Section>

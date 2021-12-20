@@ -103,6 +103,7 @@ const MetaShape = PropTypes.shape({
 BlogInfo.propTypes = {
   el: PropTypes.string,
   id: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: AuthorShape.isRequired,
   category: MetaShape,

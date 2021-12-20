@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
 
   const { slug } = ctx.params;
 
-  const blogInfo = await api.blog.getPostBySlug(slug);
+  const blogInfo = await api.blog.getPostBySlug({ slug });
 
   return {
     props: {

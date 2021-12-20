@@ -35,4 +35,5 @@ interface StrapiClientProps {
 export const client: AxiosInstance;
 export const blogClient: AxiosInstance;
 export const nextClient: AxiosInstance;
+export const cmsProxyClient: AxiosInstance;
 export const initStrapiClient: (props?: StrapiClientProps) => AxiosInstance;

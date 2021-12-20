@@ -12,12 +12,12 @@ const handler = async (req, res) => {
   }
 
   try {
-    const response = await client.request({
+    const data = await client.request({
       method: req.method,
       url: '/' + dataset.join('/'),
       params,
     });
-    res.status(response.status).json(response.data);
+    res.status(200).json(data);
   } catch (/** @type import('axios').AxiosError*/ e) {
     res.status(e?.response?.status ?? 500).json(e?.response?.data ?? e.message);
   }

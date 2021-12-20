@@ -16,13 +16,13 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 const fetcher = async (path, params) => {
-  const client = api.nextClient;
+  const client = api.cmsProxyClient;
 
   try {
     params = JSON.parse(params);
   } catch (err) {}
 
-  return client.get('next-api/cms/' + path, {
+  return client.get(path, {
     params,
   });
 };

@@ -31,7 +31,7 @@ const Blogs = () => {
     size: 'large',
     icon: <EditFilled />,
     children: lang.writeBlog,
-    onClick: onClick('https://asktug.com/c/blog/'),
+    onClick: onClick('https://asktug.com/new-topic'),
   };
 
   return (

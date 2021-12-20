@@ -1,3 +1,5 @@
+import { AxiosInstance } from 'axios';
+
 export * as events from './events';
 export * as orgs from './orgs';
 export * as tug from './tug';
@@ -23,3 +25,14 @@ export type PageData<T, Key> = {
     [Key]: T[];
   };
 };
+
+interface StrapiClientProps {
+  baseUrl?: string;
+  email?: string;
+  password?: string;
+}
+
+export const client: AxiosInstance;
+export const blogClient: AxiosInstance;
+export const nextClient: AxiosInstance;
+export const initStrapiClient: (props?: StrapiClientProps) => AxiosInstance;

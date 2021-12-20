@@ -22,9 +22,9 @@ const noop = () => {};
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { id } = ctx.params;
+  const { slug } = ctx.params;
 
-  const blogInfo = await api.blog.posts.post.info(Number(id)).catch(() => undefined);
+  const blogInfo = await api.blog.getPostBySlug(slug);
 
   return {
     props: {

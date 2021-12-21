@@ -18,7 +18,6 @@ import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
 import { Popconfirm } from 'antd';
-import { colors } from '@tidb-community/ui';
 
 const Interactions = ({ blogInfo, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();

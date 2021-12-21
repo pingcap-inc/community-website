@@ -83,7 +83,7 @@ const Interactions = ({ blogInfo, reload }) => {
   return (
     <Styled.Interactions>
       <Styled.Actions>{actions}</Styled.Actions>
-      <Styled.Divided />
+      {adminActions.length !== 0 && <Styled.Divided />}
       <Styled.Actions>{adminActions}</Styled.Actions>
     </Styled.Interactions>
   );

@@ -4,6 +4,7 @@ import { colors, mixins } from '@tidb-community/ui';
 export const Interactions = styled.div`
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   ${mixins.onDesktop(css`
     flex-direction: column;
   `)};

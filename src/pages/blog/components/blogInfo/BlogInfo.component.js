@@ -57,12 +57,7 @@ const BlogInfo = ({
         </Styled.Author>
         <Styled.Title>
           {recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
-          <Link
-            href={{
-              pathname: '/blog/[slug]',
-              query: { slug },
-            }}
-          >
+          <Link href="/blog/[slug]" as={`/blog/${slug}`}>
             {title === '' ? ' [未填写文章标题] ' : title}
           </Link>
           {titleExtends}

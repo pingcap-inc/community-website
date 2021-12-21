@@ -141,10 +141,11 @@ export const useRecommend = (blogInfo) => {
       return api.blog.posts.post.recommend(blogInfo.id).then(() => {
         message.success('置顶成功');
       });
+    } else {
+      return api.blog.posts.post.cancelRecommend(blogInfo.id).then(() => {
+        message.success('取消置顶成功');
+      });
     }
-    return api.blog.posts.post.cancelRecommend(blogInfo.id).then(() => {
-      message.success('取消置顶成功');
-    });
   };
 
   return { recommended, recommend };

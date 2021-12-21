@@ -90,7 +90,6 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
           <Styled.Breadcrumb>
             <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
             {BreadcrumbDOM}
-            <Breadcrumb.Item>{blogInfo.title}</Breadcrumb.Item>
           </Styled.Breadcrumb>
           <Styled.StatusAlert>
             <StatusAlert blogInfo={blogInfo} />

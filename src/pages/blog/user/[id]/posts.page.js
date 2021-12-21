@@ -6,7 +6,7 @@ import BlogList from '../../BlogList';
 import UserDetailsLayout from './Layout.component';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
-import { getPageQuery } from '../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);

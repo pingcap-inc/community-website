@@ -8,7 +8,7 @@ export const MainWrapper = styled.div`
 `;
 
 export const Breadcrumb = styled(AntdBreadcrumb)`
-  padding-left: 16px;
+  padding: 0 1rem;
 `;
 
 export const StatusAlert = styled.div`
@@ -46,11 +46,15 @@ export const Main = styled.div`
   width: 991px;
   margin: 2rem;
   ${mixins.onMobile(css`
-    padding: 0 1rem;
+    padding: 0;
+    margin: 1rem 0;
   `)};
 `;
 
 export const Body = styled.main`
+  ${mixins.onMobile(css`
+    padding: 2rem 1rem;
+  `)};
   margin-top: 16px;
   padding: 30px 37px;
   border-radius: 6px;

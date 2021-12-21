@@ -16,6 +16,7 @@ import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
+import ErrorPage from '../../../components/errorPage';
 
 const noop = () => {};
 
@@ -54,6 +55,8 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   const { id } = usePrincipal();
 
   if (isLoading) return <Skeleton active />;
+
+  if (blogInfo.status === 'PENDING') return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
   let BreadcrumbDOM;
   switch (blogInfo.status) {

@@ -8,7 +8,7 @@ import Tab from '../Tab';
 import { PageDataContext } from '../../../../context';
 import { usePrincipal } from '../../blog.hooks';
 
-const UserDetailsLayout = ({ itemKey, item, userDetails, children }) => {
+const UserDetailsLayout = ({ itemKey, item, userDetails, children, tabExtend }) => {
   const principal = usePrincipal();
 
   const itemText = useMemo(() => {
@@ -37,14 +37,17 @@ const UserDetailsLayout = ({ itemKey, item, userDetails, children }) => {
               <Breadcrumb.Item>{itemText}</Breadcrumb.Item>
             </Styled.Breadcrumb>
 
-            <Tab
-              id={userDetails.id}
-              selectedKey={itemKey}
-              posts={userDetails.posts}
-              likes={userDetails.likes}
-              favorites={userDetails.favorites}
-              comments={userDetails.comments}
-            />
+            <Styled.Action>
+              <Tab
+                id={userDetails.id}
+                selectedKey={itemKey}
+                posts={userDetails.posts}
+                likes={userDetails.likes}
+                favorites={userDetails.favorites}
+                comments={userDetails.comments}
+              />
+              {tabExtend && <div>{tabExtend}</div>}
+            </Styled.Action>
 
             {children}
           </Styled.Container>

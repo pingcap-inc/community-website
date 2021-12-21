@@ -44,12 +44,13 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       });
   }, [id, status]);
 
-  return (
-    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts">
-      {principal.id === Number(id) ? (
-        <Select value={status} options={statuses} onChange={(status) => setStatus(status)} bordered={false} />
-      ) : undefined}
+  const tabExtendDOM =
+    principal.id === Number(id) ? (
+      <Select value={status} options={statuses} onChange={(status) => setStatus(status)} />
+    ) : undefined;
 
+  return (
+    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
       {loading ? <Skeleton active /> : <BlogList blogs={blogs} />}
     </UserDetailsLayout>
   );

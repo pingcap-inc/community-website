@@ -6,6 +6,7 @@ import Link from 'next/link';
 import * as Styled from './blogInfo.styled';
 import { Avatar } from 'antd';
 import { HeartOutlined, MessageOutlined, PushpinOutlined } from '@ant-design/icons';
+import MyLink from '~/components/MyLink';
 
 const BlogInfo = ({
   id,
@@ -57,15 +58,7 @@ const BlogInfo = ({
         </Styled.Author>
         <Styled.Title>
           {recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
-          <Link
-            as={`/blog/${slug}`}
-            href={{
-              pathname: '/blog/[slug]',
-              query: { slug },
-            }}
-          >
-            {title === '' ? ' [未填写文章标题] ' : title}
-          </Link>
+          <MyLink href={`/blog/${slug}`}>{title === '' ? ' [未填写文章标题] ' : title}</MyLink>
           {titleExtends}
         </Styled.Title>
         <Styled.Meta>

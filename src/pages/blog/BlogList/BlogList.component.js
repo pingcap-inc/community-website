@@ -12,6 +12,7 @@ const BlogList = ({
   },
   usernameExtends,
   bottomExtends,
+  emptyText = '暂无文章',
 }) => {
   const router = useRouter();
   const { onPageChange } = useRouterPage();
@@ -26,7 +27,7 @@ const BlogList = ({
         <List
           pagination={{ current: number, total: totalElements, onChange: onPageChange }}
           dataSource={content}
-          locale={{ emptyText: '暂无文章' }}
+          locale={{ emptyText }}
           renderItem={(value) => {
             const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
             const onClickCategory = () => router.push(`/blog/c/${value.category.slug}`);

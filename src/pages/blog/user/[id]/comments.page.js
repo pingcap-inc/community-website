@@ -45,6 +45,7 @@ const CommentsList = ({
     <List
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
+      locale={{ emptyText: '暂无评论' }}
       renderItem={({ post, content, commenter, repliedTo }) => (
         <li>
           <List.Item>

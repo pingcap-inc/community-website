@@ -54,6 +54,7 @@ export const Main = styled.div`
 export const Body = styled.main`
   ${mixins.onMobile(css`
     padding: 2rem 1rem;
+    border-radius: 0;
   `)};
   margin-top: 16px;
   padding: 30px 37px;

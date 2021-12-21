@@ -3,15 +3,15 @@ import * as Styled from './interactions.styled';
 import {
   CommentOutlined,
   EditOutlined,
-  HeartTwoTone,
+  HeartFilled,
   HeartOutlined,
   SendOutlined,
   ShareAltOutlined,
-  StarTwoTone,
+  StarFilled,
   StarOutlined,
   StopOutlined,
   DeleteOutlined,
-  PushpinTwoTone,
+  PushpinFilled,
   PushpinOutlined,
 } from '@ant-design/icons';
 import { scroller } from 'react-scroll';
@@ -43,13 +43,13 @@ const Interactions = ({ blogInfo, reload }) => {
       />,
       <Interaction
         key="likes"
-        icon={liked ? <HeartTwoTone twoToneColor={'#be1d32'} /> : <HeartOutlined />}
+        icon={liked ? <HeartFilled style={{ color: '#be1d32' }} /> : <HeartOutlined />}
         count={likes}
         onClick={like}
       />,
       <Interaction
         key="favorites"
-        icon={favorited ? <StarTwoTone twoToneColor={'#f8c200'} /> : <StarOutlined />}
+        icon={favorited ? <StarFilled style={{ color: '#f8c200' }} /> : <StarOutlined />}
         count={favorites}
         onClick={favorite}
       />,
@@ -57,11 +57,7 @@ const Interactions = ({ blogInfo, reload }) => {
     );
     if (hasAuthority('RECOMMEND_POST')) {
       adminActions.push(
-        <Interaction
-          key="recommend"
-          icon={recommended ? <PushpinTwoTone twoToneColor={colors.F2} /> : <PushpinOutlined />}
-          onClick={recommend}
-        />
+        <Interaction key="recommend" icon={recommended ? <PushpinFilled /> : <PushpinOutlined />} onClick={recommend} />
       );
     }
   }

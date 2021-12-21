@@ -51,7 +51,7 @@ export const Interaction = styled.div`
   `)};
 
   color: ${colors.F2};
-  opacity: 0.6;
+  //opacity: 0.6;
   transition: opacity 0.25s ease, color 0.25s ease;
   cursor: pointer;
 

@@ -28,7 +28,7 @@ const Interactions = ({ blogInfo, reload }) => {
   const { edit } = useEdit(blogInfo);
   const { publish, reject } = useReview(blogInfo, reload);
   const { remove } = useRemove(blogInfo);
-  const { recommended, recommend } = useRecommend(blogInfo);
+  const { recommended, recommend } = useRecommend(blogInfo, reload);
 
   const actions = [];
   const adminActions = [];

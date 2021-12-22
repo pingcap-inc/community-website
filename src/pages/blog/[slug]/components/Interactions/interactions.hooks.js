@@ -135,14 +135,17 @@ export const useRemove = (blogInfo) => {
 };
 
 export const useRecommend = (blogInfo) => {
-  const { recommended } = blogInfo;
+  const { recommended: initRecommended } = blogInfo;
+  const [recommended, setRecommended] = useState(initRecommended);
   const recommend = () => {
     if (recommended === false) {
       return api.blog.posts.post.recommend(blogInfo.id).then(() => {
+        setRecommended(true);
         message.success('置顶成功');
       });
     } else {
       return api.blog.posts.post.cancelRecommend(blogInfo.id).then(() => {
+        setRecommended(false);
         message.success('取消置顶成功');
       });
     }

@@ -17,7 +17,7 @@ const usePrincipalSsr = () => {
     hasAuthority: () => false,
     hasRole: () => false,
     isAuthor: () => false,
-    isLogin: () => false,
+    isLogin: false,
   };
 };
 

@@ -46,7 +46,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
 
   const tabExtendDOM =
     principal.id === Number(id) ? (
-      <Select value={status} options={statuses} onChange={(status) => setStatus(status)} />
+      <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
     ) : undefined;
 
   return (

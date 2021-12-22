@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
+export const CommentListPagination = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+`;
+
 export const CommentsContainer = styled.div`
   padding: 30px 37px;
   background: white;

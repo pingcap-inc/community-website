@@ -7,6 +7,7 @@ import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
 import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
+import { CommentListPagination } from './comments.styled';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
@@ -139,7 +140,9 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
           );
         }}
       />
-      <Pagination pageSize={10} current={page} onChange={(page) => setPage(page)} total={totalComments} />
+      <Styled.CommentListPagination>
+        <Pagination pageSize={10} current={page} onChange={(page) => setPage(page)} total={totalComments} />
+      </Styled.CommentListPagination>
     </>
   );
 };

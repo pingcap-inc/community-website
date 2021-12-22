@@ -86,15 +86,18 @@ export const AuthorPublishedAt = styled.div`
   color: #565656;
 `;
 
+const lineHeight = '2rem';
 export const Title = styled.div`
   margin-top: 8px;
   margin-left: ${avatarSize + 8}px;
   display: flex;
-  align-items: center;
+  svg {
+    height: ${lineHeight};
+  }
   a {
-    ${mixins.lineClamp(1)};
+    ${mixins.lineClamp(3)};
     font-size: 24px;
-    line-height: 33px;
+    line-height: ${lineHeight};
     color: ${colors.black} !important;
     &:hover {
       color: ${colors.primary} !important;

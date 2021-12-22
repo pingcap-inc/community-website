@@ -1,1 +1,1 @@
-export const getImage = (name) => `/images/talent-plan/${name}`;
+export const getImage = (name) => `https://img4.pingcap.com/images/talent-plan/${name}`;

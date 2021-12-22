@@ -23,6 +23,7 @@ const BlogInfo = ({
   coverImageURL = undefined,
   author,
   recommended = false,
+  getPostUrl = (slug) => `/blog/${slug}`,
 }) => {
   const publishedAtFormatted = useMemo(() => {
     if (publishedAt) {
@@ -58,7 +59,7 @@ const BlogInfo = ({
         </Styled.Author>
         <Styled.Title>
           {recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
-          <MyLink href={`/blog/${slug}`}>{title === '' ? ' [未填写文章标题] ' : title}</MyLink>
+          <MyLink href={getPostUrl(slug)}>{title === '' ? ' [未填写文章标题] ' : title}</MyLink>
           {titleExtends}
         </Styled.Title>
         <Styled.Meta>

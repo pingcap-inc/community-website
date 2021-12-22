@@ -25,18 +25,25 @@ export const getServerSideProps = async (ctx) => {
 
   const { slug } = ctx.params;
 
-  const blogInfo = await api.blog.getPostBySlug(slug);
+  let blogInfo = null,
+    isPending = false;
+  try {
+    blogInfo = await api.blog.getPostBySlug(slug);
+  } catch (e) {
+    if (e.errCode === 'POST_NOT_FOUND') isPending = true;
+  }
 
   return {
     props: {
       ...i18nProps,
       blogInfo,
+      isPending,
     },
   };
 };
 
-const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
-  const { id, isAuthor, hasAuthority } = usePrincipal();
+export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
+  const { id, hasAuthority } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;
@@ -56,7 +63,7 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
 
   if (isLoading) return <Skeleton active />;
 
-  if ((!hasAuthority('REVIEW_POST') || !isAuthor(blogInfo)) && blogInfo.status === 'PENDING')
+  if (isPending || (!hasAuthority('READ_OTHERS_POST') && blogInfo.status === 'PENDING'))
     return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
   let BreadcrumbDOM;

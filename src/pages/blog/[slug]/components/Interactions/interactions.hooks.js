@@ -137,7 +137,7 @@ export const useRemove = (blogInfo) => {
 export const useRecommend = (blogInfo) => {
   const { recommended } = blogInfo;
   const recommend = () => {
-    if (recommended) {
+    if (recommended === false) {
       return api.blog.posts.post.recommend(blogInfo.id).then(() => {
         message.success('置顶成功');
       });

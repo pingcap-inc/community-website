@@ -7,7 +7,6 @@ import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
 import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
-import { CommentListPagination } from './comments.styled';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);

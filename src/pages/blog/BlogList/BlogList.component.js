@@ -1,7 +1,6 @@
 import React from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../components/blogInfo';
-import { useRouter } from 'next/router';
 import { List, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';
 
@@ -15,7 +14,6 @@ const BlogList = ({
   emptyText = '暂无文章',
   getPostUrl,
 }) => {
-  const router = useRouter();
   const { onPageChange } = useRouterPage();
 
   if (!content) {

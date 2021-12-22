@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { api } from '@tidb-community/datasource';
-import { message } from 'antd';
+import { message, Modal, Input } from 'antd';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
+import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 export const useLikes = (blogInfo, isLogin) => {
   const [liked, setLiked] = useState(blogInfo.liked);
@@ -102,6 +103,7 @@ export const useEdit = (blogInfo) => {
 
 export const useReview = (blogInfo, reload) => {
   const [reviewing, setReviewing] = useState(false);
+  const [rejectReason, setRejectReason] = useState('');
   const publish = () => {
     setReviewing(true);
     return api.blog.posts.post
@@ -113,12 +115,23 @@ export const useReview = (blogInfo, reload) => {
   };
   const reject = () => {
     setReviewing(true);
-    return api.blog.posts.post
-      .reject(blogInfo.id)
-      .then(reload)
-      .finally(() => {
-        setReviewing(false);
-      });
+    Modal.confirm({
+      title: '请输入拒绝理由',
+      icon: <ExclamationCircleOutlined />,
+      content: <Input.TextArea onChange={(event) => setRejectReason(event.target.value)} />,
+      okText: '确定',
+      okType: 'danger',
+      cancelText: '取消',
+      onOk() {
+        return api.blog.posts.post
+          .reject(blogInfo.id, rejectReason)
+          .then(reload)
+          .finally(() => {
+            setReviewing(false);
+          });
+      },
+      onCancel() {},
+    });
   };
 
   return { publish, reject, reviewing };

@@ -84,7 +84,7 @@ export function submit(id: number): Promise<void>;
 
 export function cancelSubmit(id: number): Promise<void>;
 
-export function reject(id: number): Promise<void>;
+export function reject(id: number, reason: string): Promise<void>;
 
 export function recommend(id: number): Promise<void>;
 

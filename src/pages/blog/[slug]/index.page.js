@@ -16,7 +16,7 @@ import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
-// import ErrorPage from '../../../components/errorPage';
+import ErrorPage from '../../../components/errorPage';
 
 const noop = () => {};
 
@@ -36,8 +36,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
-  const { id } = usePrincipal();
-  // const { id, isAuthor, hasAuthority } = usePrincipal();
+  const { id, isAuthor, hasAuthority } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;
@@ -57,8 +56,8 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
 
   if (isLoading) return <Skeleton active />;
 
-  // if ((!hasAuthority('REVIEW_POST') || !isAuthor()) && blogInfo.status === 'PENDING')
-  //   return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
+  if ((!hasAuthority('REVIEW_POST') || !isAuthor()) && blogInfo.status === 'PENDING')
+    return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
   let BreadcrumbDOM;
   switch (blogInfo.status) {

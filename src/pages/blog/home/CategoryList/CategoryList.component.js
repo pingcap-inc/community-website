@@ -17,9 +17,9 @@ const CategoryList = ({ categories: { content } }) => {
         ))}
       </Styled.List>
       <Divider />
+      {showAudits && <NextLink href={`/blog/audits`}>待审核</NextLink>}
+      {isLogin && <NextLink href={`/blog/user/${id}/posts`}>我的专栏</NextLink>}
       <div>
-        {showAudits && <NextLink href={`/blog/audits`}>待审核</NextLink>}
-        {isLogin && <NextLink href={`/blog/user/${id}/posts`}>我的专栏</NextLink>}
         <FixedLink href={'https://asktug.com/t/topic/69773'}>专栏发布指南</FixedLink>
         <FixedLink href={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>
         <FixedLink href={'mailto:community@tidb.io'}>联系我们</FixedLink>

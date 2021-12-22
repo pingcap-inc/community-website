@@ -16,7 +16,7 @@ import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
-import ErrorPage from '../../../components/errorPage';
+// import ErrorPage from '../../../components/errorPage';
 
 const noop = () => {};
 
@@ -36,7 +36,8 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
-  const { isAuthor, hasAuthority } = usePrincipal();
+  const { id } = usePrincipal();
+  // const { id, isAuthor, hasAuthority } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;
@@ -53,8 +54,6 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
   const fragment = useMemo(() => {
     return JSON.parse(blogInfo?.content || '[]');
   }, [blogInfo]);
-
-  const { id } = usePrincipal();
 
   if (isLoading) return <Skeleton active />;
 

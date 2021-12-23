@@ -450,7 +450,7 @@ const Page = ({ data }) => {
           </Styled.LogoWrapper>
           白银赞助
           <Styled.LogoWrapper>
-            {_.range(1, 3).map((i) => (
+            {_.range(1, 4).map((i) => (
               <img
                 src={getImage(`silver-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

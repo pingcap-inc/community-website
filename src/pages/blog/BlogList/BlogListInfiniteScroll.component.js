@@ -18,7 +18,7 @@ const BlogList = ({
   const [data, setData] = useState(content);
   const [page, setPage] = useState(number ?? 1);
   const [hasMore, setHasMore] = useState(page < totalPages);
-  const [fistLoad, setFirstLoad] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(false);
   const size = 20;
 
   const reloadData = async () => {
@@ -43,7 +43,7 @@ const BlogList = ({
     }
     setLoading(true);
     try {
-      const json = await api({ page, size, ...params });
+      const json = await api({ page: page + 1, size, ...params });
       setData([...data, ...json.content]);
       setPage(json.page.number + 1);
       setHasMore(page < json.page.totalPages);
@@ -56,7 +56,7 @@ const BlogList = ({
   const paramsSignature = JSON.stringify(params);
 
   useEffect(() => {
-    if (fistLoad) {
+    if (firstLoad) {
       reloadData();
     } else {
       setFirstLoad(true);

@@ -458,7 +458,7 @@ const Page = ({ data }) => {
               />
             ))}
           </Styled.LogoWrapper>
-          云资源赞助
+          云资源赞助/云技术服务支持
           <Styled.LogoWrapper>
             {_.range(1, 4).map((i) => (
               <img

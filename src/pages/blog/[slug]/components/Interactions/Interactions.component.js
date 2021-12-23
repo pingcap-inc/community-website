@@ -17,7 +17,7 @@ import {
 import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
-import { Popconfirm } from 'antd';
+import { Popconfirm, Tooltip } from 'antd';
 
 const Interactions = ({ blogInfo, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();
@@ -34,44 +34,68 @@ const Interactions = ({ blogInfo, reload }) => {
   const adminActions = [];
   if (blogInfo.status === 'PUBLISHED') {
     actions.push(
-      <Interaction
-        key="comments"
-        icon={<CommentOutlined />}
-        count={blogInfo.comments}
-        onClick={() => scroller.scrollTo('comments', { smooth: true })}
-      />,
-      <Interaction
-        key="likes"
-        icon={liked ? <HeartFilled style={{ color: '#be1d32' }} /> : <HeartOutlined />}
-        count={likes}
-        onClick={like}
-      />,
-      <Interaction
-        key="favorites"
-        icon={favorited ? <StarFilled style={{ color: '#f8c200' }} /> : <StarOutlined />}
-        count={favorites}
-        onClick={favorite}
-      />,
-      <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
+      <Tooltip placement="rightTop" title={'评论'}>
+        <Interaction
+          key="comments"
+          icon={<CommentOutlined />}
+          count={blogInfo.comments}
+          onClick={() => scroller.scrollTo('comments', { smooth: true })}
+        />
+      </Tooltip>,
+      <Tooltip placement="rightTop" title={'点赞'}>
+        <Interaction
+          key="likes"
+          icon={liked ? <HeartFilled style={{ color: '#be1d32' }} /> : <HeartOutlined />}
+          count={likes}
+          onClick={like}
+        />
+      </Tooltip>,
+      <Tooltip placement="rightTop" title={'收藏'}>
+        <Interaction
+          key="favorites"
+          icon={favorited ? <StarFilled style={{ color: '#f8c200' }} /> : <StarOutlined />}
+          count={favorites}
+          onClick={favorite}
+        />
+      </Tooltip>,
+      <Tooltip placement="rightTop" title={'分享'}>
+        <Interaction key="shares" icon={<ShareAltOutlined />} count={shares} onClick={share} />
+      </Tooltip>
     );
     if (hasAuthority('RECOMMEND_POST')) {
       adminActions.push(
-        <Interaction key="recommend" icon={recommended ? <PushpinFilled /> : <PushpinOutlined />} onClick={recommend} />
+        <Tooltip placement="rightTop" title={'置顶'}>
+          <Interaction
+            key="recommend"
+            icon={recommended ? <PushpinFilled /> : <PushpinOutlined />}
+            onClick={recommend}
+          />
+        </Tooltip>
       );
     }
   }
   if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {
     adminActions.push(
-      <Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />
+      <Tooltip placement="rightTop" title={'删除'}>
+        <Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />
+      </Tooltip>
     );
   }
   if (isAuthor(blogInfo) || hasAuthority('REVIEW_POST')) {
-    adminActions.push(<Interaction key="edit" icon={<EditOutlined />} onClick={edit} />);
+    adminActions.push(
+      <Tooltip placement="rightTop" title={'编辑'}>
+        <Interaction key="edit" icon={<EditOutlined />} onClick={edit} />
+      </Tooltip>
+    );
   }
   if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {
     adminActions.push(
-      <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />,
-      <Interaction key="reject" icon={<StopOutlined />} onClick={reject} />
+      <Tooltip placement="rightTop" title={'发布'}>
+        <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />
+      </Tooltip>,
+      <Tooltip placement="rightTop" title={'拒绝'}>
+        <Interaction key="reject" icon={<StopOutlined />} onClick={reject} />
+      </Tooltip>
     );
   }
 
@@ -84,7 +108,7 @@ const Interactions = ({ blogInfo, reload }) => {
   );
 };
 
-const Interaction = ({ icon, count, onClick, name }) => {
+const Interaction = ({ icon, count, onClick, name, ...rest }) => {
   if (name === 'remove') {
     return (
       <Popconfirm
@@ -101,7 +125,7 @@ const Interaction = ({ icon, count, onClick, name }) => {
     );
   }
   return (
-    <Styled.Interaction onClick={onClick}>
+    <Styled.Interaction onClick={onClick} {...rest}>
       <Styled.Icon>{icon}</Styled.Icon>
       <Styled.Count>{typeof count === 'number' && count}</Styled.Count>
     </Styled.Interaction>

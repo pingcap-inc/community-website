@@ -450,7 +450,7 @@ const Page = ({ data }) => {
           </Styled.LogoWrapper>
           白银赞助
           <Styled.LogoWrapper>
-            {_.range(1, 3).map((i) => (
+            {_.range(1, 4).map((i) => (
               <img
                 src={getImage(`silver-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}
@@ -458,9 +458,9 @@ const Page = ({ data }) => {
               />
             ))}
           </Styled.LogoWrapper>
-          云资源赞助
+          云资源赞助/云技术服务支持
           <Styled.LogoWrapper>
-            {_.range(1, 4).map((i) => (
+            {_.range(1, 5).map((i) => (
               <img
                 src={getImage(`cloud-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

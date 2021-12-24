@@ -148,8 +148,7 @@ export const useRemove = (blogInfo) => {
 };
 
 export const useRecommend = (blogInfo) => {
-  const { recommended: initRecommended } = blogInfo;
-  const [recommended, setRecommended] = useState(initRecommended);
+  const [recommended, setRecommended] = useState(blogInfo.recommended === true);
   const recommend = () => {
     if (recommended === false) {
       return api.blog.posts.post.recommend(blogInfo.id).then(() => {

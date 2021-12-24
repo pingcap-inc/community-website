@@ -43,7 +43,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
-  const { id, hasAuthority, isAuthor } = usePrincipal();
+  const { id, isAuthor } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;

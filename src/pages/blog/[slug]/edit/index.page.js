@@ -37,13 +37,13 @@ const BlogEditPage = () => {
   }, [isLogin, login, loading]);
 
   const {
-    query: { id },
+    query: { slug },
   } = router;
   useEffect(() => {
     if (router.isReady) {
-      reload(id);
+      reload(slug);
     }
-  }, [id, reload, router]);
+  }, [slug, reload, router]);
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>

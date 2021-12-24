@@ -5,7 +5,7 @@ import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 import BlogHomepage from './home/BlogHomepage';
-import { getPageQuery } from '../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 const { getCategories, getRecommend, getHotTags } = api.blog;
 

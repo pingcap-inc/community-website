@@ -139,7 +139,9 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
           );
         }}
       />
-      <Pagination pageSize={10} current={page} onChange={(page) => setPage(page)} total={totalComments} />
+      <Styled.CommentListPagination>
+        <Pagination pageSize={10} current={page} onChange={(page) => setPage(page)} total={totalComments} />
+      </Styled.CommentListPagination>
     </>
   );
 };

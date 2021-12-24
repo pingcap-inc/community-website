@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../components/blogInfo';
-import { useRouter } from 'next/router';
 import { Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
@@ -15,12 +14,11 @@ const BlogList = ({
   api,
   params,
 }) => {
-  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(content);
   const [page, setPage] = useState(number ?? 1);
   const [hasMore, setHasMore] = useState(page < totalPages);
-  const [fistLoad, setFirstLoad] = useState(false);
+  const [firstLoad, setFirstLoad] = useState(false);
   const size = 20;
 
   const reloadData = async () => {
@@ -45,7 +43,7 @@ const BlogList = ({
     }
     setLoading(true);
     try {
-      const json = await api({ page, size, ...params });
+      const json = await api({ page: page + 1, size, ...params });
       setData([...data, ...json.content]);
       setPage(json.page.number + 1);
       setHasMore(page < json.page.totalPages);
@@ -58,7 +56,7 @@ const BlogList = ({
   const paramsSignature = JSON.stringify(params);
 
   useEffect(() => {
-    if (fistLoad) {
+    if (firstLoad) {
       reloadData();
     } else {
       setFirstLoad(true);
@@ -93,19 +91,9 @@ const BlogList = ({
             loading={loading && data.length === 0}
             locale={{ emptyText: '暂无文章' }}
             renderItem={(value) => {
-              const onClickAuthor = () => router.push(`/blog/user/${value.author.id}`);
-              const onClickCategory = () => router.push(`/blog/category/${value.category.slug}`);
-              const onClickTag = (tag) => router.push(`/blog/tag/${tag.slug}`);
               return (
                 <Styled.Item key={value.id}>
-                  <BlogInfo
-                    {...value}
-                    usernameExtends={usernameExtends}
-                    bottomExtends={bottomExtends}
-                    onClickAuthor={onClickAuthor}
-                    onClickCategory={onClickCategory}
-                    onClickTag={onClickTag}
-                  />
+                  <BlogInfo {...value} usernameExtends={usernameExtends} bottomExtends={bottomExtends} />
                 </Styled.Item>
               );
             }}

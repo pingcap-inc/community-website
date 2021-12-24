@@ -1,37 +1,30 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 
 import * as Styled from './blogInfo.styled';
 import { Avatar } from 'antd';
-import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
+import { HeartOutlined, MessageOutlined, PushpinOutlined } from '@ant-design/icons';
+import MyLink from '~/components/MyLink';
 
 const BlogInfo = ({
   id,
+  slug,
   usernameExtends = undefined,
   publishedAt,
   title,
   titleExtends = undefined,
   category = undefined,
-  onClickCategory,
   tags,
-  onClickTag,
   likes,
   comments,
   bottomExtends,
   coverImageURL = undefined,
-  onClickAuthor,
   author,
+  recommended = false,
+  getPostUrl = (slug) => `/blog/${slug}`,
 }) => {
-  const handleClickAuthor = useCallback(() => {
-    onClickAuthor(author);
-  }, [author, onClickAuthor]);
-
-  const handleClickCategory = useCallback(() => {
-    onClickCategory(category);
-  }, [category, onClickCategory]);
-
   const publishedAtFormatted = useMemo(() => {
     if (publishedAt) {
       return dayjs(publishedAt).format('YYYY-MM-DD HH:mm');
@@ -49,29 +42,36 @@ const BlogInfo = ({
       )}
       <Styled.Content>
         <Styled.Author>
-          <Styled.AuthorAvatar onClick={handleClickAuthor}>
-            <Avatar size={Styled.avatarSize} src={author.avatarURL} />
-          </Styled.AuthorAvatar>
+          <Link href={`/blog/user/${author.id}`} passHref>
+            <Styled.AuthorAvatar>
+              <Avatar size={Styled.avatarSize} src={author.avatarURL} />
+            </Styled.AuthorAvatar>
+          </Link>
           <Styled.AuthorInfo>
             <Styled.AuthorName>
-              <Styled.AuthorNameBase onClick={handleClickAuthor}>
-                {author.username || author.name}
-              </Styled.AuthorNameBase>
+              <Link href={`/blog/user/${author.id}`} passHref>
+                <Styled.AuthorNameBase>{author.username || author.name}</Styled.AuthorNameBase>
+              </Link>
               <Styled.AuthorNameExtend>{usernameExtends}</Styled.AuthorNameExtend>
             </Styled.AuthorName>
             <Styled.AuthorPublishedAt>{publishedAtFormatted}</Styled.AuthorPublishedAt>
           </Styled.AuthorInfo>
         </Styled.Author>
         <Styled.Title>
-          <Link href={`/blog/${id}`}>{title === '' ? ' [未填写文章标题] ' : title}</Link>
+          {recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
+          <MyLink href={getPostUrl(slug)}>{title === '' ? ' [未填写文章标题] ' : title}</MyLink>
           {titleExtends}
         </Styled.Title>
         <Styled.Meta>
-          {category && <Styled.Category onClick={handleClickCategory}>{category.name}</Styled.Category>}
+          {category && (
+            <Link href={`/blog/c/${category.slug}`} passHref>
+              <Styled.Category>{category.name}</Styled.Category>
+            </Link>
+          )}
           {tags?.map((tag) => (
-            <Styled.Tag key={tag.id} onClick={() => onClickTag(tag)}>
-              {tag.name}
-            </Styled.Tag>
+            <Link key={tag.slug} href={`/blog/tag/${tag.slug}`} passHref>
+              <Styled.Tag key={tag.id}>{tag.name}</Styled.Tag>
+            </Link>
           ))}
         </Styled.Meta>
         <Styled.Interactions>
@@ -105,6 +105,7 @@ const MetaShape = PropTypes.shape({
 BlogInfo.propTypes = {
   el: PropTypes.string,
   id: PropTypes.number.isRequired,
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   author: AuthorShape.isRequired,
   category: MetaShape,
@@ -113,9 +114,6 @@ BlogInfo.propTypes = {
   likes: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,
   coverImageURL: PropTypes.string,
-  onClickAuthor: PropTypes.func,
-  onClickCategory: PropTypes.func.isRequired,
-  onClickTag: PropTypes.func.isRequired,
   titleExtends: PropTypes.node,
   usernameExtends: PropTypes.node,
   bottomExtends: PropTypes.node,

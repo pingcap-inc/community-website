@@ -5,14 +5,10 @@ import { colors, mixins } from '@tidb-community/ui';
 
 export const MainWrapper = styled.div`
   background: #e9eaee;
-  *::selection {
-    color: #000f0f !important;
-    background-color: #f7d8d9 !important;
-  }
 `;
 
 export const Breadcrumb = styled(AntdBreadcrumb)`
-  padding-left: 16px;
+  padding: 0 1rem;
 `;
 
 export const StatusAlert = styled.div`
@@ -25,10 +21,24 @@ export const Content = styled.div`
 `;
 
 export const Side = styled.div`
-  position: sticky;
-  height: 100%;
-  margin-top: 4rem;
-  top: 2rem;
+  ${mixins.onDesktop(css`
+    position: sticky;
+    height: 100%;
+    margin-top: 4rem;
+    top: 2rem;
+  `)};
+  ${mixins.onMobile(css`
+    display: none;
+  `)};
+`;
+
+export const BottomActions = styled.div`
+  ${mixins.onDesktop(css`
+    display: none;
+  `)};
+  ${mixins.onMobile(css`
+    margin-top: 32px;
+  `)};
 `;
 
 export const Main = styled.div`
@@ -36,11 +46,16 @@ export const Main = styled.div`
   width: 991px;
   margin: 2rem;
   ${mixins.onMobile(css`
-    padding: 0 1rem;
+    padding: 0;
+    margin: 1rem 0;
   `)};
 `;
 
 export const Body = styled.main`
+  ${mixins.onMobile(css`
+    padding: 2rem 1rem;
+    border-radius: 0;
+  `)};
   margin-top: 16px;
   padding: 30px 37px;
   border-radius: 6px;

@@ -6,7 +6,7 @@ import '@pingcap-inc/tidb-community-editor/dist/style.css';
 import { Skeleton, Tabs } from 'antd';
 import Editing from './editing/Editing.component';
 import EditContext, { useEditContextProvider } from './edit.context';
-import Previewing from '~/pages/blog/[id]/edit/previewing/Previewing.component';
+import Previewing from './previewing/Previewing.component';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
 import { AuthContext } from '../../../../context';

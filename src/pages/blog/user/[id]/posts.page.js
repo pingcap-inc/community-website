@@ -6,7 +6,7 @@ import BlogList from '../../BlogList';
 import UserDetailsLayout from './Layout.component';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
-import { getPageQuery } from '../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -26,7 +26,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Posts = ({ id, blogs: ssrBlogs, user }) => {
-  const principal = usePrincipal();
+  const { isLogin } = usePrincipal();
 
   const [blogs, setBlogs] = useState(ssrBlogs);
   const [status, setStatus] = useState('PUBLISHED');
@@ -44,12 +44,12 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       });
   }, [id, status]);
 
-  return (
-    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts">
-      {principal.id === Number(id) ? (
-        <Select value={status} options={statuses} onChange={(status) => setStatus(status)} bordered={false} />
-      ) : undefined}
+  const tabExtendDOM = isLogin ? (
+    <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
+  ) : undefined;
 
+  return (
+    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
       {loading ? <Skeleton active /> : <BlogList blogs={blogs} />}
     </UserDetailsLayout>
   );

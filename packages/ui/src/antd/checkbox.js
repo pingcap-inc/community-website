@@ -5,6 +5,10 @@ import * as mixins from '../mixins';
 
 export default css`
   .ant-checkbox {
+    &-inner {
+      border-radius: 2px;
+    }
+
     &-wrapper {
       span:nth-child(2) {
         ${mixins.typography('p2')}

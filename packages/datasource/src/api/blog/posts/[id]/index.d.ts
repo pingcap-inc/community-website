@@ -8,7 +8,13 @@ export interface Meta {
 }
 
 export interface Post {
+  creatorId: number;
+  modifierId: number;
+  deletedAt: string;
+  publishedAt: string;
   id: number;
+  slug: string;
+  version: string;
   title: string;
   content: string;
   category: Meta;
@@ -17,6 +23,9 @@ export interface Post {
   status: PostStatus;
   sourceURL: string;
   coverImageURL?: string;
+  rejectReason?: string;
+  recommended: boolean;
+  public: boolean;
 }
 
 interface Page<T> {
@@ -75,7 +84,7 @@ export function submit(id: number): Promise<void>;
 
 export function cancelSubmit(id: number): Promise<void>;
 
-export function reject(id: number): Promise<void>;
+export function reject(id: number, reason: string): Promise<void>;
 
 export function recommend(id: number): Promise<void>;
 

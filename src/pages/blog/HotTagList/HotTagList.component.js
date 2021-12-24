@@ -23,8 +23,8 @@ const Item = ({ name, slug }) => {
   const url = `/blog/tag/${slug}`;
   const selected = asPath === url;
   return (
-    <Link href={url}>
-      <Styled.Item selected={!!selected}># {name}</Styled.Item>
+    <Link href={url} passHref>
+      <Styled.Item selected={selected}># {name}</Styled.Item>
     </Link>
   );
 };

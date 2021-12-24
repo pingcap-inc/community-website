@@ -16,29 +16,40 @@ import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
+import ErrorPage from '../../../components/errorPage';
 
 const noop = () => {};
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
-  const { id } = ctx.params;
+  const { slug } = ctx.params;
 
-  const blogInfo = await api.blog.posts.post.info(Number(id)).catch(() => undefined);
+  let blogInfo = null,
+    isPending = false;
+  try {
+    blogInfo = await api.blog.getPostBySlug(slug);
+  } catch (e) {
+    if (e.errCode === 'POST_NOT_FOUND') isPending = true;
+  }
 
   return {
     props: {
       ...i18nProps,
       blogInfo,
+      isPending,
     },
   };
 };
 
-const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
+export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
+  const { id, hasAuthority } = usePrincipal();
+
   const router = useRouter();
   const { isReady, query } = router;
+  const { slug } = query;
 
-  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.posts.post.info', query.id], {
+  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', slug], {
     initialData: ssrBlogInfo,
     revalidateOnMount: true,
   });
@@ -50,9 +61,10 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
     return JSON.parse(blogInfo?.content || '[]');
   }, [blogInfo]);
 
-  const { id } = usePrincipal();
-
   if (isLoading) return <Skeleton active />;
+
+  if (isPending || (!hasAuthority('READ_OTHERS_POST') && blogInfo.status === 'PENDING'))
+    return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
   let BreadcrumbDOM;
   switch (blogInfo.status) {
@@ -89,7 +101,6 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
           <Styled.Breadcrumb>
             <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
             {BreadcrumbDOM}
-            <Breadcrumb.Item>{blogInfo.title}</Breadcrumb.Item>
           </Styled.Breadcrumb>
           <Styled.StatusAlert>
             <StatusAlert blogInfo={blogInfo} />
@@ -119,6 +130,10 @@ const BlogPage = ({ blogInfo: ssrBlogInfo }) => {
             <Styled.Editor>
               <Content fragment={fragment} factory={factory} />
             </Styled.Editor>
+
+            <Styled.BottomActions>
+              <Interactions blogInfo={blogInfo} reload={reload} />
+            </Styled.BottomActions>
           </Styled.Body>
 
           {blogInfo.origin !== 'ORIGINAL' ? (

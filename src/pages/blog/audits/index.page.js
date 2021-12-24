@@ -51,7 +51,7 @@ const PageContent = ({ page, size }) => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>待审核</Breadcrumb.Item>
           </Styled.Breadcrumb>
-          {blogs ? <BlogList blogs={blogs} /> : <Spin />}
+          {blogs ? <BlogList blogs={blogs} getPostUrl={(slug) => `/blog/audits/${slug}`} /> : <Spin />}
         </Styled.Container>
       </Styled.Content>
     </BlogLayout>

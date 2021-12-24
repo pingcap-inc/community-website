@@ -16,8 +16,8 @@ export async function cancelSubmit(id) {
   return await blogClient.patch(`/api/posts/${id}/submit/cancel`);
 }
 
-export async function reject(id) {
-  return await blogClient.patch(`/api/posts/${id}/reject`);
+export async function reject(id, reason) {
+  return await blogClient.patch(`/api/posts/${id}/reject`, { reason });
 }
 
 export async function recommend(id) {

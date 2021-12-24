@@ -101,7 +101,7 @@ export function useEditMethods() {
   const { reload } = editContext;
 
   const {
-    query: { id },
+    query: { slug },
   } = router;
 
   const save = useCallback(async () => {
@@ -116,7 +116,7 @@ export function useEditMethods() {
         tags: tags.map((tag) => tag.id),
         coverImageURL: coverImageURL,
       };
-      if (id === 'new') {
+      if (slug === 'new') {
         const res = await api.blog.posts.create(body);
         await router.push(`/blog/${res.id}`);
         return res;

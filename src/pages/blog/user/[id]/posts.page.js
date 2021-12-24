@@ -26,7 +26,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Posts = ({ id, blogs: ssrBlogs, user }) => {
-  const principal = usePrincipal();
+  const { isLogin } = usePrincipal();
 
   const [blogs, setBlogs] = useState(ssrBlogs);
   const [status, setStatus] = useState('PUBLISHED');
@@ -44,10 +44,9 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       });
   }, [id, status]);
 
-  const tabExtendDOM =
-    principal.id === Number(id) ? (
-      <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
-    ) : undefined;
+  const tabExtendDOM = isLogin ? (
+    <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
+  ) : undefined;
 
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>

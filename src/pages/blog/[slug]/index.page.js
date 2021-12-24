@@ -43,7 +43,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
-  const { id, hasAuthority } = usePrincipal();
+  const { id, hasAuthority, isAuthor } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;
@@ -63,8 +63,9 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
 
   if (isLoading) return <Skeleton active />;
 
-  if (isPending || (!hasAuthority('READ_OTHERS_POST') && blogInfo.status === 'PENDING'))
-    return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
+  if (!isAuthor(blogInfo)) {
+    if (isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
+  }
 
   let BreadcrumbDOM;
   switch (blogInfo.status) {

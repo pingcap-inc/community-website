@@ -26,7 +26,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Posts = ({ id, blogs: ssrBlogs, user }) => {
-  const { isLogin, hasAuthority } = usePrincipal();
+  const { isLogin, hasAuthority, id: logonUserId } = usePrincipal();
 
   const statuses = [
     {
@@ -35,7 +35,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
     },
   ];
 
-  if (isLogin && hasAuthority('READ_OTHERS_POST')) {
+  if (logonUserId === Number(id) || hasAuthority('READ_OTHERS_POST')) {
     statuses.push(
       {
         label: '草稿',

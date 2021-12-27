@@ -96,7 +96,7 @@ export const useShares = (blogInfo) => {
 export const useEdit = (blogInfo) => {
   const router = useRouter();
   const edit = () => {
-    router.push(`/blog/${blogInfo.id}/edit`);
+    router.push(`/blog/${blogInfo.slug}/edit`);
   };
   return { edit };
 };

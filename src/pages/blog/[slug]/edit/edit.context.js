@@ -123,7 +123,7 @@ export function useEditMethods() {
       } else {
         await fixStatus(blogInfo.id, blogInfo.status);
         await api.blog.posts.post.update(blogInfo.id, body);
-        await router.push(`/blog/${blogInfo.id}`);
+        await router.push(`/blog/${blogInfo.slug}`);
         return { id: blogInfo.id };
       }
     } catch (e) {

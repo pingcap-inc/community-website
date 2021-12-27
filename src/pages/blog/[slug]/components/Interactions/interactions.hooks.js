@@ -121,7 +121,7 @@ export const useReview = (blogInfo, reload) => {
   };
   const reject = () => {
     const rejectReason = window.prompt('请输入拒绝理由');
-    handleRejectSubmit(rejectReason);
+    if (rejectReason !== null) handleRejectSubmit(rejectReason);
   };
   // const reject = () => {
   //   setReviewing(true);

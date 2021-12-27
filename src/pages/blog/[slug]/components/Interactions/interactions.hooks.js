@@ -102,11 +102,7 @@ export const useEdit = (blogInfo) => {
 
 export const useReview = (blogInfo, reload) => {
   const [reviewing, setReviewing] = useState(false);
-  // const [rejectReason, setRejectReason] = useState('');
-  // const rejectReasonInputRef = useRef(null);
   const handleRejectSubmit = (rejectReason) => {
-    // console.log("!!rejectReasonInputRef", rejectReasonInputRef);
-    // const rejectReason = rejectReasonInputRef.current.value
     api.blog.posts.post
       .reject(blogInfo.id, rejectReason)
       .then(reload)
@@ -132,7 +128,6 @@ export const useReview = (blogInfo, reload) => {
   //   Modal.confirm({
   //     title: '请输入拒绝理由',
   //     icon: <ExclamationCircleOutlined />,
-  //     // content: <Input.TextArea ref={rejectReasonInputRef} />,
   //     content: <Input.TextArea onChange={(event => setRejectReason(event.target.value))} />,
   //     okText: '确定',
   //     okType: 'danger',

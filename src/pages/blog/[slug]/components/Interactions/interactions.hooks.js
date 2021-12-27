@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { api } from '@tidb-community/datasource';
 import { message, Modal, Input } from 'antd';
 import { useRouter } from 'next/router';
@@ -103,7 +103,18 @@ export const useEdit = (blogInfo) => {
 
 export const useReview = (blogInfo, reload) => {
   const [reviewing, setReviewing] = useState(false);
-  const [rejectReason, setRejectReason] = useState('');
+  // const [rejectReason, setRejectReason] = useState('');
+  // const rejectReasonInputRef = useRef(null);
+  const handleRejectSubmit = (rejectReason) => {
+    // console.log("!!rejectReasonInputRef", rejectReasonInputRef);
+    // const rejectReason = rejectReasonInputRef.current.value
+    api.blog.posts.post
+      .reject(blogInfo.id, rejectReason)
+      .then(reload)
+      .finally(() => {
+        setReviewing(false);
+      });
+  };
   const publish = () => {
     setReviewing(true);
     return api.blog.posts.post
@@ -114,25 +125,23 @@ export const useReview = (blogInfo, reload) => {
       });
   };
   const reject = () => {
-    setReviewing(true);
-    Modal.confirm({
-      title: '请输入拒绝理由',
-      icon: <ExclamationCircleOutlined />,
-      content: <Input.TextArea onChange={(event) => setRejectReason(event.target.value)} />,
-      okText: '确定',
-      okType: 'danger',
-      cancelText: '取消',
-      onOk() {
-        return api.blog.posts.post
-          .reject(blogInfo.id, rejectReason)
-          .then(reload)
-          .finally(() => {
-            setReviewing(false);
-          });
-      },
-      onCancel() {},
-    });
+    const rejectReason = window.prompt('请输入拒绝理由');
+    handleRejectSubmit(rejectReason);
   };
+  // const reject = () => {
+  //   setReviewing(true);
+  //   Modal.confirm({
+  //     title: '请输入拒绝理由',
+  //     icon: <ExclamationCircleOutlined />,
+  //     // content: <Input.TextArea ref={rejectReasonInputRef} />,
+  //     content: <Input.TextArea onChange={(event => setRejectReason(event.target.value))} />,
+  //     okText: '确定',
+  //     okType: 'danger',
+  //     cancelText: '取消',
+  //     onOk: handleRejectSubmit,
+  //     onCancel() {},
+  //   });
+  // };
 
   return { publish, reject, reviewing };
 };

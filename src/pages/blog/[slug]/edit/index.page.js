@@ -9,7 +9,7 @@ import EditContext, { useEditContextProvider } from './edit.context';
 import Previewing from './previewing/Previewing.component';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
-import { AuthContext } from '../../../../context';
+import { AuthContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 

@@ -124,7 +124,7 @@ export function useEditMethods() {
         await fixStatus(blogInfo.id, blogInfo.status);
         await api.blog.posts.post.update(blogInfo.id, body);
         await router.push(`/blog/${blogInfo.slug}`);
-        return { id: blogInfo.id };
+        return blogInfo;
       }
     } catch (e) {
       message.error('保存失败：' + String(e?.message ?? e));
@@ -135,11 +135,11 @@ export function useEditMethods() {
   }, [slug, router, editContext]);
 
   const saveAndSubmit = useCallback(async () => {
-    const { id } = await save();
+    const { slug, id } = await save();
     try {
       // save() make sure status is DRAFT
       await api.blog.posts.post.submit(id);
-      reload(id);
+      reload(slug);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;

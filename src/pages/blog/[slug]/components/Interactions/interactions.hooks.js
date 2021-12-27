@@ -1,10 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '@tidb-community/datasource';
-import { message, Modal, Input } from 'antd';
+import { message } from 'antd';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
-import { ExclamationCircleOutlined } from '@ant-design/icons';
 
 export const useLikes = (blogInfo, isLogin) => {
   const [liked, setLiked] = useState(blogInfo.liked);

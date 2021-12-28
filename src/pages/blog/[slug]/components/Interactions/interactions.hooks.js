@@ -102,14 +102,6 @@ export const useEdit = (blogInfo) => {
 
 export const useReview = (blogInfo, reload) => {
   const [reviewing, setReviewing] = useState(false);
-  const handleRejectSubmit = (rejectReason) => {
-    api.blog.posts.post
-      .reject(blogInfo.id, rejectReason)
-      .then(reload)
-      .finally(() => {
-        setReviewing(false);
-      });
-  };
   const publish = () => {
     setReviewing(true);
     return api.blog.posts.post
@@ -119,23 +111,14 @@ export const useReview = (blogInfo, reload) => {
         setReviewing(false);
       });
   };
-  const reject = () => {
-    const rejectReason = window.prompt('请输入拒绝理由');
-    if (rejectReason !== null) handleRejectSubmit(rejectReason);
+  const reject = (rejectReason) => {
+    api.blog.posts.post
+      .reject(blogInfo.id, rejectReason)
+      .then(reload)
+      .finally(() => {
+        setReviewing(false);
+      });
   };
-  // const reject = () => {
-  //   setReviewing(true);
-  //   Modal.confirm({
-  //     title: '请输入拒绝理由',
-  //     icon: <ExclamationCircleOutlined />,
-  //     content: <Input.TextArea onChange={(event => setRejectReason(event.target.value))} />,
-  //     okText: '确定',
-  //     okType: 'danger',
-  //     cancelText: '取消',
-  //     onOk: handleRejectSubmit,
-  //     onCancel() {},
-  //   });
-  // };
 
   return { publish, reject, reviewing };
 };

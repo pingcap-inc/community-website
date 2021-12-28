@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as Styled from './interactions.styled';
 import {
   CommentOutlined,
@@ -17,7 +17,7 @@ import {
 import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
 import { usePrincipal } from '../../../blog.hooks';
-import { Popconfirm, Tooltip } from 'antd';
+import { Input, Modal, Popconfirm, Tooltip } from 'antd';
 
 const Interactions = ({ blogInfo, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();
@@ -29,6 +29,16 @@ const Interactions = ({ blogInfo, reload }) => {
   const { publish, reject } = useReview(blogInfo, reload);
   const { remove } = useRemove(blogInfo);
   const { recommended, recommend } = useRecommend(blogInfo, reload);
+
+  const [isRejectReasonModalVisible, setIsRejectReasonModalVisible] = useState(false);
+  const [rejectReason, setRejectReason] = useState('');
+  const handleOk = () => {
+    reject(rejectReason);
+    setIsRejectReasonModalVisible(false);
+  };
+  const handleCancel = () => {
+    setIsRejectReasonModalVisible(false);
+  };
 
   const actions = [];
   const adminActions = [];
@@ -94,17 +104,30 @@ const Interactions = ({ blogInfo, reload }) => {
         <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />
       </Tooltip>,
       <Tooltip placement="rightTop" title={'拒绝'}>
-        <Interaction key="reject" icon={<StopOutlined />} onClick={reject} />
+        <Interaction key="reject" icon={<StopOutlined />} onClick={() => setIsRejectReasonModalVisible(true)} />
       </Tooltip>
     );
   }
 
   return (
-    <Styled.Interactions>
-      <Styled.Actions>{actions}</Styled.Actions>
-      {adminActions.length !== 0 && actions.length !== 0 && <Styled.Divided />}
-      <Styled.Actions>{adminActions}</Styled.Actions>
-    </Styled.Interactions>
+    <>
+      <Styled.Interactions>
+        <Styled.Actions>{actions}</Styled.Actions>
+        {adminActions.length !== 0 && actions.length !== 0 && <Styled.Divided />}
+        <Styled.Actions>{adminActions}</Styled.Actions>
+      </Styled.Interactions>
+      <Modal
+        title="请输入拒绝理由"
+        visible={isRejectReasonModalVisible}
+        o
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="确认"
+        cancelText="取消"
+      >
+        <Input.TextArea onChange={(event) => setRejectReason(event.target.value)} />
+      </Modal>
+    </>
   );
 };
 

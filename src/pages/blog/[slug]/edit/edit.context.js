@@ -46,8 +46,8 @@ export function useEditContextProvider() {
     setCoverImageURL(downloadURL);
   }, []);
 
-  const reload = useCallback((id) => {
-    if (id === 'new') {
+  const reload = useCallback((slug) => {
+    if (slug === 'new') {
       setTitle('');
       setOrigin(false);
       setCategory(undefined);
@@ -58,8 +58,8 @@ export function useEditContextProvider() {
       return Promise.resolve();
     } else {
       setLoading(true);
-      return api.blog.posts.post
-        .info(Number(id))
+      return api.blog
+        .getPostBySlug(slug)
         .then((info) => {
           setTitle(info.title);
           setOrigin(info.origin === 'ORIGINAL' ? false : info.sourceURL);
@@ -101,7 +101,7 @@ export function useEditMethods() {
   const { reload } = editContext;
 
   const {
-    query: { id },
+    query: { slug },
   } = router;
 
   const save = useCallback(async () => {
@@ -116,15 +116,15 @@ export function useEditMethods() {
         tags: tags.map((tag) => tag.id),
         coverImageURL: coverImageURL,
       };
-      if (id === 'new') {
+      if (slug === 'new') {
         const res = await api.blog.posts.create(body);
-        await router.push(`/blog/${res.id}`);
+        await router.push(`/blog/${res.slug}`);
         return res;
       } else {
-        await fixStatus(Number(id), blogInfo.status);
-        await api.blog.posts.post.update(Number(id), body);
-        await router.push(`/blog/${id}`);
-        return { id: Number(id) };
+        await fixStatus(blogInfo.id, blogInfo.status);
+        await api.blog.posts.post.update(blogInfo.id, body);
+        await router.push(`/blog/${blogInfo.slug}`);
+        return blogInfo;
       }
     } catch (e) {
       message.error('保存失败：' + String(e?.message ?? e));
@@ -132,14 +132,14 @@ export function useEditMethods() {
     } finally {
       setOperating(false);
     }
-  }, [id, router, editContext]);
+  }, [slug, router, editContext]);
 
   const saveAndSubmit = useCallback(async () => {
-    const { id } = await save();
+    const { slug, id } = await save();
     try {
       // save() make sure status is DRAFT
       await api.blog.posts.post.submit(id);
-      reload(id);
+      reload(slug);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;

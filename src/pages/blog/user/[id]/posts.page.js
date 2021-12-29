@@ -26,7 +26,31 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Posts = ({ id, blogs: ssrBlogs, user }) => {
-  const { isLogin } = usePrincipal();
+  const { isLogin, hasAuthority, id: logonUserId } = usePrincipal();
+
+  const statuses = [
+    {
+      label: '已发布',
+      value: 'PUBLISHED',
+    },
+  ];
+
+  if (logonUserId === Number(id) || hasAuthority('READ_OTHERS_POST')) {
+    statuses.push(
+      {
+        label: '草稿',
+        value: 'DRAFT',
+      },
+      {
+        label: '审核中',
+        value: 'PENDING',
+      },
+      {
+        label: '审核未通过',
+        value: 'REJECTED',
+      }
+    );
+  }
 
   const [blogs, setBlogs] = useState(ssrBlogs);
   const [status, setStatus] = useState('PUBLISHED');
@@ -54,24 +78,5 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
     </UserDetailsLayout>
   );
 };
-
-const statuses = [
-  {
-    label: '已发布',
-    value: 'PUBLISHED',
-  },
-  {
-    label: '草稿',
-    value: 'DRAFT',
-  },
-  {
-    label: '审核中',
-    value: 'PENDING',
-  },
-  {
-    label: '审核未通过',
-    value: 'REJECTED',
-  },
-];
 
 export default Posts;

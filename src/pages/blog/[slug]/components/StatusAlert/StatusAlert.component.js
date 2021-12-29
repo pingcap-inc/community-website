@@ -11,7 +11,12 @@ const StatusAlert = ({ blogInfo }) => {
   }
 
   if (blogInfo.status === 'REJECTED') {
-    return <Alert type="error" message="该文章被审核人员拒绝发布，请修改后重新提交审核。" />;
+    return (
+      <Alert
+        type="error"
+        message={`该文章被审核人员拒绝发布，请修改后重新提交审核。拒绝原因：${blogInfo.rejectReason}`}
+      />
+    );
   }
 
   if (blogInfo.status === 'ARCHIVED') {

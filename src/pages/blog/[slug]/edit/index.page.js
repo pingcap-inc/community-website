@@ -9,7 +9,7 @@ import EditContext, { useEditContextProvider } from './edit.context';
 import Previewing from './previewing/Previewing.component';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
-import { AuthContext } from '../../../../context';
+import { AuthContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 
@@ -37,13 +37,13 @@ const BlogEditPage = () => {
   }, [isLogin, login, loading]);
 
   const {
-    query: { id },
+    query: { slug },
   } = router;
   useEffect(() => {
     if (router.isReady) {
-      reload(id);
+      reload(slug);
     }
-  }, [id, reload, router]);
+  }, [slug, reload, router]);
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>

@@ -10,6 +10,7 @@ import { GetServerSideProps } from 'next';
 import { Space } from 'antd';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  // @ts-ignore
   const i18nProps = await getI18nProps(['common'])(ctx);
   return {
     props: {
@@ -20,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 export default function ProfilePage() {
   return (
-    <PageDataContext.Provider value={{}}>
+    <PageDataContext.Provider value={{ data: undefined }}>
       <CommunityHead />
       <CoreLayout backgroundColor={'#e9eaee'}>
         <Styled.Content>

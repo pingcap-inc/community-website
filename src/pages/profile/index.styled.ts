@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
-import { mixins, colors, Styled, constants } from '@tidb-community/ui';
+import { Styled, constants } from '@tidb-community/ui';
 
 const { Content } = Styled;
 

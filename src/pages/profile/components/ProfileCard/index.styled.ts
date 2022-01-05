@@ -23,7 +23,7 @@ export const Action = styled.div`
 export const Edit = styled.div``;
 export const Chat = styled.div``;
 
-export const AvatarSize = `6rem`;
+export const AvatarSize = `5rem`;
 export const Avatar = styled.div`
   ${mixins.radius(AvatarSize)};
   ${mixins.boxShadow()};

@@ -3,13 +3,16 @@ import * as Styled from './index.styled';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
-// import { getI18nProps } from '~/utils/i18n.utils';
+import { getI18nProps } from '~/utils/i18n.utils';
 import ProfileCard from './components/ProfileCard';
 import { GetServerSideProps } from 'next';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
   return {
-    props: {},
+    props: {
+      ...i18nProps,
+    },
   };
 };
 

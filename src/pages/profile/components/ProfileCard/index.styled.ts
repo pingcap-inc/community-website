@@ -1,6 +1,5 @@
 import styled from 'styled-components';
-import { Row, Col } from 'antd';
-import { mixins, colors, Styled, constants } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
 
 export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};

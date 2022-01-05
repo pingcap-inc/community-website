@@ -10,11 +10,13 @@ export const Container = styled.div.attrs({})`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 export const Action = styled.div`
   display: flex;
   justify-content: space-between;
+  width: 100%;
 `;
 
 export const Edit = styled.div``;
@@ -24,10 +26,13 @@ export const AvatarSize = `4rem`;
 export const Avatar = styled.div`
   width: ${AvatarSize};
   height: ${AvatarSize};
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 export const Name = styled.div`
   display: flex;
-  justify-content: center;
   margin-top: 1rem;
 `;
 export const NameText = styled.div`
@@ -44,8 +49,6 @@ export const Description = styled.div`
 `;
 export const JoinDate = styled.div`
   ${mixins.typography('p2')};
-  display: flex;
-  justify-content: center;
   margin-left: 0.5rem;
   margin-top: 1rem;
 `;
@@ -57,12 +60,14 @@ export const Nums = styled.div`
 `;
 export const NumsItem = styled.div`
   &:not(:last-child) {
-    border-right: 2px solid ${colors.C4};
+    border-right: 2px solid ${colors.C2};
   }
+  margin: 1rem 0;
+  padding: 0 1rem;
 `;
 export const NumsItemKeyName = styled.div`
-  ${mixins.p2};
+  ${mixins.typography('p2')};
 `;
 export const NumsItemValue = styled.div`
-  ${mixins.h2};
+  ${mixins.typography('h1')};
 `;

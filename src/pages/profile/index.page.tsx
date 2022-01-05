@@ -22,9 +22,7 @@ export default function ProfilePage() {
           <Styled.Container>
             <Styled.Start>
               <ProfileCard
-                avatarUrl={
-                  'https://tidb.io/_next/image?url=%2Fimages%2Favatar%2F%25E6%25B2%2588%25E6%2597%25B8.jpg&w=256&q=75'
-                }
+                avatarUrl={'https://pic2.zhimg.com/v2-e78360ca7f3ba089565a80abee166749_xl.jpg'}
                 name={'这是一个昵称'}
                 level={6}
                 description={

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
-import Image from 'next/image';
+// import Image from 'next/image';
 import { FieldBinaryOutlined, EditFilled, MailFilled } from '@ant-design/icons';
 
 export interface IProfileCard {
@@ -29,7 +29,8 @@ export default function ProfileCard(props: IProfileCard) {
         </Styled.Chat>
       </Styled.Action>
       <Styled.Avatar>
-        <Image src={avatarUrl} width={Styled.AvatarSize} height={Styled.AvatarSize} />
+        {/*<Image src={avatarUrl} alt={name} width={Styled.AvatarSize} height={Styled.AvatarSize} />*/}
+        <img src={avatarUrl} alt={name} />
       </Styled.Avatar>
       <Styled.Name>
         <Styled.NameText>{name}</Styled.NameText>

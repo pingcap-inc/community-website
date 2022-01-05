@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
+import * as polished from 'polished';
 
 export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
@@ -7,10 +8,6 @@ export const Container = styled.div.attrs({})`
   border-radius: 4px;
   border-top: 4px solid ${colors.B1};
   padding: 0.5rem 1rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 `;
 
 export const Action = styled.div`
@@ -19,13 +16,21 @@ export const Action = styled.div`
   width: 100%;
 `;
 
+export const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+`;
+
 export const Edit = styled.div``;
 export const Chat = styled.div``;
 
 export const AvatarSize = `5rem`;
 export const Avatar = styled.div`
   ${mixins.radius(AvatarSize)};
-  ${mixins.boxShadow()};
+  box-shadow: 0 2px 6px 0 ${polished.rgba('#000', 0.5)};
   img {
     width: 100%;
     height: 100%;
@@ -33,7 +38,7 @@ export const Avatar = styled.div`
 `;
 export const Name = styled.div`
   display: flex;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `;
 export const NameText = styled.div`
   ${mixins.typography('h3')};
@@ -45,18 +50,19 @@ export const Level = styled.div`
 `;
 export const Description = styled.div`
   ${mixins.typography('p2')};
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `;
 export const JoinDate = styled.div`
   ${mixins.typography('p2')};
   margin-left: 0.5rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
 `;
 
 export const Nums = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+  margin-bottom: 1.5rem;
 `;
 export const NumsItem = styled.div`
   display: flex;

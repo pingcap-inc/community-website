@@ -158,8 +158,14 @@ export const resetFontFamily = () => css`
     sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 `;
 
-export const boxShadow = () => css`
-  box-shadow: 0 2px 6px ${polished.rgba('#000', 0.08)};
+export const boxShadow = (
+  hOffset = '0',
+  vOffset = '2px',
+  blur = '6px',
+  spread = '0',
+  color = polished.rgba('#000', 0.08)
+) => css`
+  box-shadow: ${hOffset} ${vOffset} ${blur} ${spread} ${color};
 `;
 
 export const onMobile = (styles) => css`

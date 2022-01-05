@@ -131,7 +131,6 @@ const Page = ({ data }) => {
   const { isSmallScreen } = useIsSmallScreen();
   const router = useRouter();
   const [QROverlay, setQROverlay] = useState(false);
-  console.log(data);
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />

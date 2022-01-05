@@ -19,7 +19,6 @@ export {
   Upload,
   UserProfile,
   ViewMoreButton,
-  BlogInfo,
   withActionMenu,
   withVerifyCode,
 } from './components';

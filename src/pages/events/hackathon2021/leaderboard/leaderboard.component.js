@@ -30,7 +30,6 @@ const Leaderboard = ({ data, sm }) => {
   ];
 
   const expandOrCollapse = () => {
-    console.log(limit);
     if (limit === LIMIT) {
       setLimit(data.length);
     } else {

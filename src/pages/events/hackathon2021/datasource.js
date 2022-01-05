@@ -134,9 +134,8 @@ export const judgesData = [
     name: '潘娟',
     desc: 'SphereEx 联合创始人 & CTO，Apache ShardingSphere PMC',
     detail:
-      'SphereEx 联合创始人 & CTO，Apache Member & Apache ShardingSphere PMC，Apache brpc (Incubating) Mentor & Apache AGE (Incubating)\
-       Mentor，AWS Data Hero，中国木兰开源社区导师。\n 曾负责京东数科数据库智能平台的设计与研发，现专注于分布式数据库 &\
-        中间件生态及开源领域。被评为《2020 中国开源先锋人物》，2021 OSCAR 尖峰开源人物。',
+      'SphereEx 联合创始人 & CTO，Apache Member & Apache ShardingSphere PMC，Apache brpc (Incubating) Mentor & Apache AGE (Incubating) Mentor，AWS Data Hero，中国木兰开源社区导师。' +
+      '\n 曾负责京东数科数据库智能平台的设计与研发，现专注于分布式数据库 & 中间件生态及开源领域。被评为《2020 中国开源先锋人物》，2021 OSCAR 尖峰开源人物。',
   },
   {
     name: '潘英超',

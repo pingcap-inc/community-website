@@ -193,3 +193,10 @@ export const showOnMobile = (display = 'block') => css`
     display: none;
   }
 `;
+
+export const radius = (size = '4rem') => css`
+  width: ${size};
+  height: ${size};
+  border-radius: ${size};
+  overflow: hidden;
+`;

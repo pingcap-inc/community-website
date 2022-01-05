@@ -3,6 +3,7 @@ import { Row, Col } from 'antd';
 import { mixins, colors, Styled, constants } from '@tidb-community/ui';
 
 export const Container = styled.div.attrs({})`
+  ${mixins.boxShadow()};
   background-color: #fff;
   border-radius: 4px;
   border-top: 4px solid ${colors.B1};
@@ -22,10 +23,10 @@ export const Action = styled.div`
 export const Edit = styled.div``;
 export const Chat = styled.div``;
 
-export const AvatarSize = `4rem`;
+export const AvatarSize = `6rem`;
 export const Avatar = styled.div`
-  width: ${AvatarSize};
-  height: ${AvatarSize};
+  ${mixins.radius(AvatarSize)};
+  ${mixins.boxShadow()};
   img {
     width: 100%;
     height: 100%;
@@ -59,6 +60,10 @@ export const Nums = styled.div`
   margin-top: 2rem;
 `;
 export const NumsItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   &:not(:last-child) {
     border-right: 2px solid ${colors.C2};
   }

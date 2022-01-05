@@ -32,7 +32,7 @@ const config = {
 
       ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-components']),
 
-      // Make sure we will build directly from the source code for internal comsumers,
+      // Make sure we will build directly from the source code for internal consumers,
       // which gives us an instant reaction if anything updates
       '@tidb-community/common': path.resolve('./packages/common/src'),
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),

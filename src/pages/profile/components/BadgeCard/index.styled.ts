@@ -20,12 +20,14 @@ export const Header = styled.div`
 
 export const Title = styled.div`
   display: flex;
+  align-items: flex-end;
 `;
 export const TitleText = styled.div`
-  ${mixins.typography('h2')};
+  ${mixins.typography('h3')};
 `;
 export const TitleNums = styled.div`
-  ${mixins.typography('p1')};
+  ${mixins.typography('p2')};
+  margin-left: 0.5rem;
 `;
 export const ActiveMore = styled.div``;
 

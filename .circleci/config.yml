@@ -24,14 +24,14 @@ commands:
           filename: combined-package-lock.txt
       - restore_cache:
           keys:
-            - npm-cache-{{ checksum "combined-package-lock.txt" }}
-            - npm-cache
+            - npm-cache-v1-{{ checksum "combined-package-lock.txt" }}
+            - npm-cache-v1
       - run:
           command: |
             npm ci
           no_output_timeout: 20m
       - save_cache:
-          key: npm-cache-{{ checksum "combined-package-lock.txt" }}
+          key: npm-cache-v1-{{ checksum "combined-package-lock.txt" }}
           paths:
             - .npm
             - ./.next/cache

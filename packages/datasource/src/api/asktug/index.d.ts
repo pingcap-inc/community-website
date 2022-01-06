@@ -1,7 +1,7 @@
 import { ApiRequestFunction } from '../index';
 
 interface Badges {
-  data?: (DataEntity)[] | null;
+  data?: DataEntity[] | null;
 }
 
 interface BadgeEntity {
@@ -12,4 +12,4 @@ interface BadgeEntity {
   has_badge: boolean;
 }
 
-export const getBadgesList: ApiRequestFunction<void, { data: Badges }>;
+export const getBadgesList: ApiRequestFunction<void, Badges>;

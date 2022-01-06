@@ -1,5 +1,7 @@
 import styled from 'styled-components';
+// @ts-ignore
 import { colors, mixins } from '@tidb-community/ui';
+// @ts-ignore
 import { Link as RawLink } from '~/components';
 
 export const Title = styled.div`
@@ -12,6 +14,7 @@ export const LevelContainer = styled.div`
   border-radius: 6px;
   width: 100%;
   padding: 1rem;
+  margin-bottom: 1rem;
 `;
 
 export const Name = styled.span`
@@ -33,7 +36,9 @@ export const Score = styled.span`
   color: ${colors.B1};
 `;
 
-export const Rank = styled(Name)``;
+export const Rank = styled(Name)`
+  padding-left: 4px;
+`;
 
 export const Tip = styled.div`
   ${mixins.typography('p2')};
@@ -53,3 +58,25 @@ export const Link = styled(RawLink)`
 `;
 
 export const Main = styled.div``;
+
+export const BadgesContainer = styled.div``;
+
+export const Badge = styled.div`
+  // two columns with equal width; first is icon, second is name
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 6px;
+  background-color: ${colors.M1};
+  ${(props) => !props.owned && `filter: grayscale(100%)}; opacity: 50%;`};
+`;
+
+export const BadgeIcon = styled.img`
+  width: 64px;
+  height: 64px;
+`;
+
+export const BadgeName = styled.span``;

@@ -39,46 +39,17 @@ export default function ProfileAnswerPage() {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        <ListItem
-          url={'#'}
-          title={'ansbile升级集群V3到4.0.14问题'}
-          summary={
-            '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
-          }
-          metadataEnd={date}
-        />
-        <ListItem
-          url={'#'}
-          title={'ansbile升级集群V3到4.0.14问题'}
-          summary={
-            '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
-          }
-          metadataEnd={date}
-        />
-        <ListItem
-          url={'#'}
-          title={'ansbile升级集群V3到4.0.14问题'}
-          summary={
-            '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
-          }
-          metadataEnd={date}
-        />
-        <ListItem
-          url={'#'}
-          title={'ansbile升级集群V3到4.0.14问题'}
-          summary={
-            '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
-          }
-          metadataEnd={date}
-        />
-        <ListItem
-          url={'#'}
-          title={'ansbile升级集群V3到4.0.14问题'}
-          summary={
-            '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
-          }
-          metadataEnd={date}
-        />
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+          <ListItem
+            key={value}
+            url={'#'}
+            title={'ansbile升级集群V3到4.0.14问题'}
+            summary={
+              '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
+            }
+            metadataEnd={date}
+          />
+        ))}
       </CommonStyled.List>
       <CommonStyled.Pagination>
         <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />

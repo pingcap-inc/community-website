@@ -18,13 +18,10 @@ import { Space } from 'antd';
 // };
 
 export interface IProps {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-export default function ProfileLayout({children}: IProps) {
-  const onChange = () => {
-    //  TODO: handle page change
-  };
+export default function ProfileLayout({ children }: IProps) {
   return (
     <PageDataContext.Provider value={{ data: undefined }}>
       <CommunityHead />
@@ -47,9 +44,7 @@ export default function ProfileLayout({children}: IProps) {
                 <BadgeCard nums={{ current: 8, total: 27 }} />
               </Space>
             </Styled.Start>
-            <Styled.End>
-              {children}
-            </Styled.End>
+            <Styled.End>{children}</Styled.End>
           </Styled.Container>
         </Styled.Content>
       </CoreLayout>

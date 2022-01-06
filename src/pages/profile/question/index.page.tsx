@@ -8,7 +8,7 @@ import { GetServerSideProps } from 'next';
 import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import dayjs from 'dayjs';
-import { EyeOutlined, HeartOutlined, MessageOutlined, StarOutlined } from '@ant-design/icons';
+import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   // @ts-ignore

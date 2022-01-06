@@ -3,9 +3,13 @@ import * as Styled from './index.styled';
 import Link from 'next/link';
 
 export enum EUgcType {
+  // eslint-disable-next-line no-unused-vars
   answer,
+  // eslint-disable-next-line no-unused-vars
   question,
+  // eslint-disable-next-line no-unused-vars
   post,
+  // eslint-disable-next-line no-unused-vars
   favorite,
 }
 

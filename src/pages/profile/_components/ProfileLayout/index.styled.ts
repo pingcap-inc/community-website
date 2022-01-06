@@ -7,7 +7,7 @@ const { Content } = Styled;
 export { Content };
 
 export const Container = styled(Row).attrs({
-  gutter: 32,
+  gutter: [32, 32],
 })`
   @media screen and (max-width: ${constants.breakPoints.md}) {
     padding: 1rem 0;

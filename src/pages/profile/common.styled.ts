@@ -14,4 +14,5 @@ export const Pagination = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: 1.5rem;
 `;

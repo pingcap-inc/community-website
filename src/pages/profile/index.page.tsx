@@ -4,10 +4,11 @@ import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
-import ProfileCard from './components/ProfileCard';
-import BadgeCard from './components/BadgeCard';
+import ProfileCard from './_components/ProfileCard';
+import BadgeCard from './_components/BadgeCard';
+import Tab, { EUgcType } from './_components/Tab';
 import { GetServerSideProps } from 'next';
-import { Space } from 'antd';
+import { Pagination, Space } from 'antd';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   // @ts-ignore
@@ -20,6 +21,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 };
 
 export default function ProfilePage() {
+  const onChange = () => {
+    //  TODO: handle page change
+  };
   return (
     <PageDataContext.Provider value={{ data: undefined }}>
       <CommunityHead />
@@ -42,7 +46,15 @@ export default function ProfilePage() {
                 <BadgeCard nums={{ current: 8, total: 27 }} />
               </Space>
             </Styled.Start>
-            <Styled.End></Styled.End>
+            <Styled.End>
+              <Styled.Action>
+                <Tab selected={EUgcType.answer} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
+              </Styled.Action>
+              <Styled.List>List</Styled.List>
+              <Styled.Pagination>
+                <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
+              </Styled.Pagination>
+            </Styled.End>
           </Styled.Container>
         </Styled.Content>
       </CoreLayout>

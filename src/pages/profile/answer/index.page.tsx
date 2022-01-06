@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Styled from './index.styled';
+// import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
@@ -38,6 +38,7 @@ export default function ProfileAnswerPage() {
       </CommonStyled.Action>
       <CommonStyled.List>
         <AnswerItem
+          url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
@@ -45,6 +46,7 @@ export default function ProfileAnswerPage() {
           date={new Date()}
         />
         <AnswerItem
+          url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
@@ -52,6 +54,7 @@ export default function ProfileAnswerPage() {
           date={new Date()}
         />
         <AnswerItem
+          url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
@@ -59,6 +62,7 @@ export default function ProfileAnswerPage() {
           date={new Date()}
         />
         <AnswerItem
+          url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
@@ -66,6 +70,7 @@ export default function ProfileAnswerPage() {
           date={new Date()}
         />
         <AnswerItem
+          url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'

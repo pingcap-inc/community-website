@@ -9,7 +9,7 @@ export const AnswerItem = styled.div`
   padding: 2rem;
 `;
 
-export const Title = styled.div`
+export const Title = styled.a`
   display: flex;
   ${mixins.typography('h2')};
 `;

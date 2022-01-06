@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mixins } from '@tidb-community/ui';
 
-export const AnswerItem = styled.div`
+export const ListItem = styled.div`
   margin-bottom: 2rem;
   ${mixins.boxShadow()};
   background-color: #fff;
@@ -19,10 +19,15 @@ export const TitleText = styled.div`
 `;
 
 export const Summary = styled.div`
-  margin: 0.5rem auto;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 `;
 
 export const Metadata = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 `;
+
+export const MetadataStart = styled.div``;
+
+export const MetadataEnd = styled.div``;

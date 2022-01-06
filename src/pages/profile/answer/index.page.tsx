@@ -6,7 +6,8 @@ import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination, Select } from 'antd';
-import AnswerItem from '~/pages/profile/answer/AnswerItem';
+import ListItem from '../_components/ListItem';
+import dayjs from 'dayjs';
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   // @ts-ignore
@@ -26,6 +27,7 @@ export default function ProfileAnswerPage() {
   const onChange = () => {
     //  TODO: handle page change
   };
+  const date = dayjs(new Date()).format();
   return (
     <ProfileLayout>
       <CommonStyled.Action>
@@ -37,45 +39,45 @@ export default function ProfileAnswerPage() {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        <AnswerItem
+        <ListItem
           url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
           }
-          date={new Date()}
+          metadataEnd={date}
         />
-        <AnswerItem
+        <ListItem
           url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
           }
-          date={new Date()}
+          metadataEnd={date}
         />
-        <AnswerItem
+        <ListItem
           url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
           }
-          date={new Date()}
+          metadataEnd={date}
         />
-        <AnswerItem
+        <ListItem
           url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
           }
-          date={new Date()}
+          metadataEnd={date}
         />
-        <AnswerItem
+        <ListItem
           url={'#'}
           title={'ansbile升级集群V3到4.0.14问题'}
           summary={
             '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
           }
-          date={new Date()}
+          metadataEnd={date}
         />
       </CommonStyled.List>
       <CommonStyled.Pagination>

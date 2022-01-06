@@ -28,8 +28,10 @@ export default function ProfileAnswerPage() {
     <ProfileLayout>
       <Styled.Action>
         <Tab selected={EUgcType.answer} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
-        <Select>
+        <Select defaultValue={''}>
           <Select.Option value={''}>回答状态</Select.Option>
+          <Select.Option value={'1'}>回答状态</Select.Option>
+          <Select.Option value={'2'}>回答状态</Select.Option>
         </Select>
       </Styled.Action>
       <Styled.List>List</Styled.List>

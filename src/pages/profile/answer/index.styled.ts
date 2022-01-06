@@ -41,6 +41,7 @@ export const End = styled(Col).attrs({
 export const Action = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
 `;
 
 export const List = styled.div`

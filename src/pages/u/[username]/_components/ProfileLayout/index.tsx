@@ -6,7 +6,7 @@ import { PageDataContext } from '~/context';
 import ProfileCard from '../ProfileCard';
 import BadgeCard from '../BadgeCard';
 import { Space } from 'antd';
-import { IRawBadges } from '~/pages/profile/api';
+import { IRawBadges } from '../../api';
 
 export interface IProps {
   children: React.ReactNode;

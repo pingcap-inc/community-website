@@ -30,7 +30,7 @@ export const TitleNums = styled.div`
   ${mixins.typography('p2')};
   margin-left: 0.5rem;
 `;
-export const ActiveMore = styled.div``;
+export const ActiveMore = styled.a``;
 
 export const Body = styled.div`
   display: flex;

@@ -3,6 +3,7 @@ import * as Styled from './index.styled';
 import { BulbFilled } from '@ant-design/icons';
 import { IRawBadges } from '~/pages/profile/api';
 import { Tooltip } from 'antd';
+import Link from 'next/link';
 
 export interface IProfileCard {
   badges: IRawBadges[];
@@ -10,7 +11,6 @@ export interface IProfileCard {
 
 export default function ProfileCard(props: IProfileCard) {
   const { badges } = props;
-  console.log('!!badges', badges);
   const hasBadges = badges.filter((value) => value.has_badge === true);
   const hasNotBadges = badges.filter((value) => value.has_badge === false);
   const nums = { total: badges.length, current: hasBadges.length };
@@ -24,9 +24,11 @@ export default function ProfileCard(props: IProfileCard) {
             {nums.current}/{nums.total}
           </Styled.TitleNums>
         </Styled.Title>
-        <Styled.ActiveMore>
-          <BulbFilled /> 点亮更多徽章
-        </Styled.ActiveMore>
+        <Link href={'https://asktug.com/badges'} passHref>
+          <Styled.ActiveMore>
+            <BulbFilled /> 点亮更多徽章
+          </Styled.ActiveMore>
+        </Link>
       </Styled.Header>
       <Styled.Body>
         {mergedBadges.map((value) => (

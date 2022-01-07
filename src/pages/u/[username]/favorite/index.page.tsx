@@ -8,20 +8,26 @@ import { GetServerSideProps } from 'next';
 import { Pagination } from 'antd';
 import ListItem from '../_components/ListItem';
 import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
+import { ParsedUrlQuery } from 'querystring';
 
 interface IProps {
   badges: IRawBadges[];
 }
+interface IQuery extends ParsedUrlQuery {
+  username: string;
+}
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
+  const { username } = ctx.params;
   const [i18nProps, badges, profile] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesById('cw1997'),
-    getUserProfileById('cw1997'),
+    getBadgesById(username),
+    getUserProfileById(username),
   ]);
   return { props: { ...i18nProps, badges, profile } };
 };
+
 export default function ProfileAnswerPage(props: IProps) {
   const { badges } = props;
   const onChange = () => {

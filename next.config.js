@@ -68,8 +68,8 @@ const config = {
         permanent: false,
       },
       {
-        source: '/profile',
-        destination: '/profile/answer',
+        source: '/u/:username',
+        destination: '/u/:username/answer',
         permanent: false,
       },
     ];

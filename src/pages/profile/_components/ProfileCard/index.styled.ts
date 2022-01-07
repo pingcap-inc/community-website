@@ -61,6 +61,7 @@ export const JoinDate = styled.div`
 export const Nums = styled.div`
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   margin-top: 2rem;
   margin-bottom: 1.5rem;
 `;

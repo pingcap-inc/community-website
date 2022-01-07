@@ -6,22 +6,14 @@ import { PageDataContext } from '~/context';
 import ProfileCard from '../ProfileCard';
 import BadgeCard from '../BadgeCard';
 import { Space } from 'antd';
-
-// export const getServerSideProps: GetServerSideProps = async (ctx) => {
-//   // @ts-ignore
-//   const i18nProps = await getI18nProps(['common'])(ctx);
-//   return {
-//     props: {
-//       ...i18nProps,
-//     },
-//   };
-// };
+import { IRawBadges } from '~/pages/profile/api';
 
 export interface IProps {
   children: React.ReactNode;
+  badges: IRawBadges[];
 }
 
-export default function ProfileLayout({ children }: IProps) {
+export default function ProfileLayout({ children, badges }: IProps) {
   return (
     <PageDataContext.Provider value={{ data: undefined }}>
       <CommunityHead />
@@ -41,7 +33,7 @@ export default function ProfileLayout({ children }: IProps) {
                   joinDate={'2020.01.10'}
                   nums={{ like: 45, answer: 16, post: 9 }}
                 />
-                <BadgeCard nums={{ current: 8, total: 27 }} />
+                <BadgeCard badges={badges} />
               </Space>
             </Styled.Start>
             <Styled.End>{children}</Styled.End>

@@ -8,28 +8,32 @@ import { GetServerSideProps } from 'next';
 import { Pagination, Select } from 'antd';
 import ListItem from '../_components/ListItem';
 import dayjs from 'dayjs';
+import { getBadgesById } from '../api';
+
+// interface IProps {
+//   badges: IRawBadges[]
+// }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   // @ts-ignore
   const i18nProps = await getI18nProps(['common'])(ctx);
+  const badges = await getBadgesById('cw1997');
   return {
     props: {
       ...i18nProps,
+      badges,
     },
   };
 };
 
-export interface IProps {
-  children: React.ReactNode;
-}
-
-export default function ProfileAnswerPage() {
+export default function ProfileAnswerPage(props: any) {
+  const { badges } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
   const date = dayjs(new Date()).format();
   return (
-    <ProfileLayout>
+    <ProfileLayout badges={badges}>
       <CommonStyled.Action>
         <Tab selected={EUgcType.answer} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
         <Select defaultValue={''}>

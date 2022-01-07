@@ -15,6 +15,7 @@ export const Container = styled.div.attrs({})`
 export const Header = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   width: 100%;
 `;
 
@@ -31,8 +32,19 @@ export const TitleNums = styled.div`
 `;
 export const ActiveMore = styled.div``;
 
-export const Body = styled.div``;
+export const Body = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+`;
 
-export const Badge = (props) => styled.div`
-  ${props.active && 'opacity: 80%;'}
+export const Badge = styled.div`
+  opacity: ${(props) => (props.hasBadge ? '100%' : '50%')};
+  width: 2.5rem;
+  margin: 0.5rem;
+  //height: 2.5rem;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;

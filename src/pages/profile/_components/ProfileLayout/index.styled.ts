@@ -18,22 +18,18 @@ export const Container = styled(Row).attrs({
   }
 `;
 
-const totalSpan = 24;
-const desktopStartSpan = 6;
-const desktopEndSpan = totalSpan - desktopStartSpan;
-
 export const Start = styled(Col).attrs({
   xs: 24,
   sm: 24,
-  md: desktopStartSpan,
-  lg: desktopStartSpan,
-  xl: desktopStartSpan,
+  md: 8,
+  lg: 6,
+  xl: 6,
 })``;
 
 export const End = styled(Col).attrs({
   xs: 24,
   sm: 24,
-  md: desktopEndSpan,
-  lg: desktopEndSpan,
-  xl: desktopEndSpan,
+  md: 16,
+  lg: 18,
+  xl: 18,
 })``;

@@ -59,6 +59,17 @@ const config = {
   async rewrites() {
     return [{ source: '/next-api/:path*', destination: '/api/:path*' }];
   },
+
+  async redirects() {
+    return [
+      {
+        // this will match `/english(default)/something` being requested
+        source: '/profile',
+        destination: '/profile/answer',
+        permanent: false,
+      },
+    ];
+  },
 };
 
 if (process.env.ENABLE_SENTRY === 'true') {

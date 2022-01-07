@@ -7,7 +7,6 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination, Select } from 'antd';
 import ListItem from '../_components/ListItem';
-import dayjs from 'dayjs';
 import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 

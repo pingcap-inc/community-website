@@ -63,7 +63,11 @@ const config = {
   async redirects() {
     return [
       {
-        // this will match `/english(default)/something` being requested
+        source: '/blog/user/:id',
+        destination: '/blog/user/:id/posts',
+        permanent: false,
+      },
+      {
         source: '/profile',
         destination: '/profile/answer',
         permanent: false,

@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Styled from './index.styled';
 // import Image from 'next/image';
 import { FieldBinaryOutlined, EditFilled, MailFilled } from '@ant-design/icons';
+import Link from 'next/link';
 
 export interface IProfileCard {
   avatarUrl: string;
@@ -22,7 +23,10 @@ export default function ProfileCard(props: IProfileCard) {
     <Styled.Container>
       <Styled.Action>
         <Styled.Edit>
-          <EditFilled />
+          {/*TODO: show edit link when the profile is current logon user*/}
+          <Link href={'https://tidb.io/my/profile'}>
+            <EditFilled />
+          </Link>
         </Styled.Edit>
         <Styled.Chat>
           私信 <MailFilled />

@@ -8,25 +8,23 @@ import { GetServerSideProps } from 'next';
 import { Pagination, Select } from 'antd';
 import ListItem from '../_components/ListItem';
 import dayjs from 'dayjs';
-import { getBadgesById } from '../api';
+import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
 
-// interface IProps {
-//   badges: IRawBadges[]
-// }
+interface IProps {
+  badges: IRawBadges[];
+}
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  // @ts-ignore
-  const i18nProps = await getI18nProps(['common'])(ctx);
-  const badges = await getBadgesById('cw1997');
-  return {
-    props: {
-      ...i18nProps,
-      badges,
-    },
-  };
+  const [i18nProps, badges, profile] = await Promise.all([
+    // @ts-ignore
+    getI18nProps(['common'])(ctx),
+    getBadgesById('cw1997'),
+    getUserProfileById('cw1997'),
+  ]);
+  return { props: { ...i18nProps, badges, profile } };
 };
 
-export default function ProfileAnswerPage(props: any) {
+export default function ProfileAnswerPage(props: IProps) {
   const { badges } = props;
   const onChange = () => {
     //  TODO: handle page change

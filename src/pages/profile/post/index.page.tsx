@@ -9,22 +9,24 @@ import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import dayjs from 'dayjs';
 import { HeartOutlined, MessageOutlined, StarOutlined, EyeOutlined } from '@ant-design/icons';
+import { getBadgesById, getUserProfileById, IRawBadges } from '~/pages/profile/api';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  // @ts-ignore
-  const i18nProps = await getI18nProps(['common'])(ctx);
-  return {
-    props: {
-      ...i18nProps,
-    },
-  };
-};
-
-export interface IProps {
-  children: React.ReactNode;
+interface IProps {
+  badges: IRawBadges[];
 }
 
-export default function ProfileAnswerPage() {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const [i18nProps, badges, profile] = await Promise.all([
+    // @ts-ignore
+    getI18nProps(['common'])(ctx),
+    getBadgesById('cw1997'),
+    getUserProfileById('cw1997'),
+  ]);
+  return { props: { ...i18nProps, badges, profile } };
+};
+
+export default function ProfileAnswerPage(props: IProps) {
+  const { badges } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
@@ -46,7 +48,7 @@ export default function ProfileAnswerPage() {
     </Space>
   );
   return (
-    <ProfileLayout>
+    <ProfileLayout badges={badges}>
       <CommonStyled.Action>
         <Tab selected={EUgcType.post} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
         <Select defaultValue={''}>

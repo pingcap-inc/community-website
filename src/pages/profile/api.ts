@@ -31,3 +31,7 @@ export async function getBadgesById(id: string): Promise<IRawBadges[]> {
   badgesMap.forEach((value) => badgesArr.push(value));
   return badgesArr;
 }
+
+export async function getUserProfileById(id: string): Promise<{}> {
+  return {};
+}

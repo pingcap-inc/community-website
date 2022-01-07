@@ -7,27 +7,28 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination } from 'antd';
 import ListItem from '../_components/ListItem';
+import { getBadgesById, getUserProfileById, IRawBadges } from '~/pages/profile/api';
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  // @ts-ignore
-  const i18nProps = await getI18nProps(['common'])(ctx);
-  return {
-    props: {
-      ...i18nProps,
-    },
-  };
-};
-
-export interface IProps {
-  children: React.ReactNode;
+interface IProps {
+  badges: IRawBadges[];
 }
 
-export default function ProfileAnswerPage() {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const [i18nProps, badges, profile] = await Promise.all([
+    // @ts-ignore
+    getI18nProps(['common'])(ctx),
+    getBadgesById('cw1997'),
+    getUserProfileById('cw1997'),
+  ]);
+  return { props: { ...i18nProps, badges, profile } };
+};
+export default function ProfileAnswerPage(props: IProps) {
+  const { badges } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
   return (
-    <ProfileLayout>
+    <ProfileLayout badges={badges}>
       <CommonStyled.Action>
         <Tab selected={EUgcType.favorite} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
       </CommonStyled.Action>

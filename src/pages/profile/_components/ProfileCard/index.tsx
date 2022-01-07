@@ -22,12 +22,12 @@ export default function ProfileCard(props: IProfileCard) {
   return (
     <Styled.Container>
       <Styled.Action>
-        <Styled.Edit>
-          {/*TODO: show edit link when the profile is current logon user*/}
-          <Link href={'https://tidb.io/my/profile'}>
+        {/*TODO: show edit link when the profile is current logon user*/}
+        <Link href={'https://tidb.io/my/profile'} passHref>
+          <Styled.Edit>
             <EditFilled />
-          </Link>
-        </Styled.Edit>
+          </Styled.Edit>
+        </Link>
         <Styled.Chat>
           私信 <MailFilled />
         </Styled.Chat>

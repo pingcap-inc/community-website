@@ -24,7 +24,7 @@ export const Main = styled.div`
   padding: 0 1rem;
 `;
 
-export const Edit = styled.div``;
+export const Edit = styled.a``;
 export const Chat = styled.div``;
 
 export const AvatarSize = `5rem`;

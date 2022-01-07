@@ -7,7 +7,7 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination } from 'antd';
 import ListItem from '../_components/ListItem';
-import { getBadgesById, getUserProfileById, IRawBadges } from '~/pages/profile/api';
+import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
 
 interface IProps {
   badges: IRawBadges[];

@@ -7,9 +7,8 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
-import dayjs from 'dayjs';
 import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
-import { getBadgesById, getUserProfileById, IRawBadges } from '~/pages/profile/api';
+import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 
 interface IProps {

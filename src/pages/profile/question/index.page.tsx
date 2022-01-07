@@ -10,6 +10,7 @@ import ListItem from '../_components/ListItem';
 import dayjs from 'dayjs';
 import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
 import { getBadgesById, getUserProfileById, IRawBadges } from '~/pages/profile/api';
+import { getRelativeDatetime } from '~/utils/datetime.utils';
 
 interface IProps {
   badges: IRawBadges[];
@@ -30,7 +31,7 @@ export default function ProfileAnswerPage(props: IProps) {
   const onChange = () => {
     //  TODO: handle page change
   };
-  const date = dayjs(new Date()).format();
+  const date = getRelativeDatetime(new Date('Jan 01,2022 01:02:03'));
   const numsDom = (
     <Space size={24}>
       <div>

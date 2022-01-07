@@ -9,6 +9,7 @@ import { Pagination, Select } from 'antd';
 import ListItem from '../_components/ListItem';
 import dayjs from 'dayjs';
 import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
+import { getRelativeDatetime } from '~/utils/datetime.utils';
 
 interface IProps {
   badges: IRawBadges[];
@@ -29,7 +30,7 @@ export default function ProfileAnswerPage(props: IProps) {
   const onChange = () => {
     //  TODO: handle page change
   };
-  const date = dayjs(new Date()).format();
+  const date = getRelativeDatetime(new Date('Jan 01,2022 01:02:03'));
   return (
     <ProfileLayout badges={badges}>
       <CommonStyled.Action>

@@ -15,7 +15,7 @@ import OrderBySwitch from '../../home/OrderBySwitch';
 import { BlogListInfiniteScroll } from '../../BlogList';
 import WriteBlogButton from '../../WriteBlogButton';
 import HotTagList from '../../HotTagList';
-import { getPageQuery } from '../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -57,7 +57,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags, blo
   blogApi = blogApi ?? api.blog.getRecommend;
 
   return (
-    <PageDataContext.Provider value={{}}>
+    <PageDataContext.Provider value={{ showRecommendedIcon: true }}>
       <CommunityHead
         title="专栏 - 首页"
         // description

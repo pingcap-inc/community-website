@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import dayjs from 'dayjs';
 import Link from 'next/link';
@@ -7,6 +7,7 @@ import * as Styled from './blogInfo.styled';
 import { Avatar } from 'antd';
 import { HeartOutlined, MessageOutlined, PushpinOutlined } from '@ant-design/icons';
 import MyLink from '~/components/MyLink';
+import { PageDataContext } from '~/context';
 
 const BlogInfo = ({
   id,
@@ -25,6 +26,7 @@ const BlogInfo = ({
   recommended = false,
   getPostUrl = (slug) => `/blog/${slug}`,
 }) => {
+  const { showRecommendedIcon } = useContext(PageDataContext);
   const publishedAtFormatted = useMemo(() => {
     if (publishedAt) {
       return dayjs(publishedAt).format('YYYY-MM-DD HH:mm');
@@ -58,7 +60,7 @@ const BlogInfo = ({
           </Styled.AuthorInfo>
         </Styled.Author>
         <Styled.Title>
-          {recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
+          {showRecommendedIcon && recommended && <PushpinOutlined style={{ marginRight: 8, fontSize: 20 }} />}
           <MyLink href={getPostUrl(slug)}>{title === '' ? ' [未填写文章标题] ' : title}</MyLink>
           {titleExtends}
         </Styled.Title>

@@ -44,7 +44,7 @@ const Page = () => {
 
   const { meData } = useContext(MeContext);
 
-  if (!data || !badges)
+  if (!data || !badges || !meData)
     return (
       <Layout>
         <PageLoader />
@@ -74,14 +74,14 @@ const Page = () => {
         <Progress percent={pointsData.level_desc.progress * 100} />
         <Styled.Tip>
           还差 {pointsData.level_desc.min_exps - pointsData.current_points} 经验升级为 V{pointsData.current_level + 1}
-          ，查看<Styled.Link>升级小攻略</Styled.Link>
+          ，查看<Styled.Link href="/vip-center/rules">升级小攻略</Styled.Link>
         </Styled.Tip>
       </Styled.LevelContainer>
       <Styled.Title>徽章成就</Styled.Title>
       <Styled.BadgesContainer>
         <Row gutter={[16, 16]}>
           {badgesData.map((badge) => (
-            <Col sm={12} md={8} lg={6}>
+            <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>
                 <Styled.BadgeIcon src={badge.image} />
                 <Styled.BadgeName>{badge.name}</Styled.BadgeName>

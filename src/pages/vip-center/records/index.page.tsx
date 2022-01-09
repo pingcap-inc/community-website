@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 // @ts-ignore
 import Layout from '~/pages/vip-center/layout';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';
 // @ts-ignore
-import { MeContext } from '~/context';
-// @ts-ignore
 import { PageLoader } from '~/components';
 import * as Styled from './index.styled';
 import { AwardedPointEntry } from '@tidb-community/datasource/src/api/points';
-import { Tutorial, Link } from '../index.styled';
+import { Link, Tutorial } from '../index.styled';
 
 const Page = () => {
   const { isReady } = useRouter();
@@ -39,8 +37,6 @@ const Page = () => {
 
   const pointsData = data?.data;
 
-  const { meData } = useContext(MeContext);
-  // {"digest":"连续签到 1 天","points":2,"exps":2,"comment":"","created_at":"2022-01-04"}
   const columns = [
     {
       title: '摘要',
@@ -91,7 +87,12 @@ const Page = () => {
       <Styled.Table
         columns={columns}
         dataSource={tableData}
-        pagination={{ position: ['bottomCenter'], onChange, total, pageSize: perPage }}
+        pagination={{
+          position: ['bottomCenter'],
+          onChange,
+          total,
+          pageSize: perPage,
+        }}
       />
     </Layout>
   );

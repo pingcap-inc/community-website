@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 // @ts-ignore
-import { colors, mixins } from '@tidb-community/ui';
-// @ts-ignore
-import { Link as RawLink } from '~/components';
+import { colors } from '@tidb-community/ui';
 
 export const PointsContainer = styled.div`
   background-color: ${colors.M1};

@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 // @ts-ignore
 import Layout from '~/pages/vip-center/layout';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';
-// @ts-ignore
-import { MeContext } from '~/context';
 // @ts-ignore
 import { PageLoader } from '~/components';
 import * as Styled from './index.styled';

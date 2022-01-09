@@ -2,7 +2,7 @@ const { successResp, errorResp } = require('../../utils');
 module.exports = (req, res) => {
   const { product_id, consignee_name, consignee_phone, consignee_phone_code, consignee_addrss, comment } = req.body;
 
-  for (let param in [product_id, consignee_name, consignee_phone, consignee_addrss]) {
+  for (let param in [product_id, consignee_name, consignee_phone, consignee_addrss, consignee_phone_code, comment]) {
     if (!param) {
       return errorResp({
         errors: {

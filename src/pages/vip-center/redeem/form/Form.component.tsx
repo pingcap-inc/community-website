@@ -6,13 +6,10 @@ import { Formik } from 'formik';
 import { api } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
-// @ts-ignore
-import { MeContext } from '~/context';
 import { fields, schema } from './form.fields';
 // @ts-ignore
 import { form as formUtils } from '~/utils';
 // @ts-ignore
-import { fetchOrganizationOptions } from '~/utils/form.utils';
 import { FormModalContext } from '../index.page';
 
 const FormComponent = () => {
@@ -94,7 +91,7 @@ const FormComponent = () => {
                   <Col>
                     <Button
                       size="small"
-                      disabled={phoneNumber.validate(formik.values['phoneNumber'])}
+                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined}
                       onClick={() => sendCode(formik)}
                     >
                       获取验证码

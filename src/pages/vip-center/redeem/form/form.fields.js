@@ -1,8 +1,5 @@
 import { utils } from '@tidb-community/common';
-import { getFormData } from '@tidb-community/datasource';
 
-const formData = getFormData();
-const { personalPositions } = formData.org.enums;
 const { buildSchema } = utils.form;
 
 export const fields = {

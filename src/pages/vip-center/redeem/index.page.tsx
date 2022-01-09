@@ -8,9 +8,8 @@ import { PageLoader } from '~/components';
 import { useRouter } from 'next/router';
 
 import * as Styled from './index.styled';
-import { Link } from '../index.styled';
-import { Tutorial } from '../index.styled';
-import { Col, Row, Button, Modal } from 'antd';
+import { Link, Tutorial } from '../index.styled';
+import { Button, Col, Modal, Row } from 'antd';
 import FormComponent from './form';
 
 export const FormModalContext = React.createContext<any>({
@@ -31,10 +30,6 @@ const Page = () => {
   const showModal = (id) => () => {
     setIsModalVisible(true);
     setCurrentProductId(id);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
   };
 
   const handleCancel = () => {

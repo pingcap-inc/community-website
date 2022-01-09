@@ -1,4 +1,4 @@
-const { errorResp, successResp } = require('../../utils');
+const { successResp } = require('../../utils');
 
 module.exports = (req, res) => {
   const { currentPage, perPage } = req.query;

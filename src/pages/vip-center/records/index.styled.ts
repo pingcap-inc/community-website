@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 // @ts-ignore
-import { colors, mixins } from '@tidb-community/ui';
+import { colors } from '@tidb-community/ui';
 import { Table as RawTable } from 'antd';
 
 export const PointsContainer = styled.div`

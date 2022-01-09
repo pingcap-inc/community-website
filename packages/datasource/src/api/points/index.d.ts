@@ -17,7 +17,6 @@ export interface LevelDesc {
 
 export const getMe: ApiRequestFunction<void, { data: GetMeData }>;
 
-
 export interface CheckInData {
   continues_checkin_count: number;
   points: number;
@@ -25,7 +24,6 @@ export interface CheckInData {
 }
 
 export const checkIn: ApiRequestFunction<void, { data: CheckInData }>;
-
 
 interface ProductDataEntry {
   id: number;
@@ -44,14 +42,17 @@ interface RedeemData {
   comment: string;
 }
 
-export const redeem: ApiRequestFunction<{
-  product_id: number;
-  consignee_name: string;
-  consignee_phone: string;
-  consignee_phone_code: string;
-  consignee_addrss: string;
-  comment: string;
-}, { data: RedeemData }>;
+export const redeem: ApiRequestFunction<
+  {
+    product_id: number;
+    consignee_name: string;
+    consignee_phone: string;
+    consignee_phone_code: string;
+    consignee_addrss: string;
+    comment: string;
+  },
+  { data: RedeemData }
+>;
 
 export interface RedeemRecordEntry {
   product_id: number;
@@ -66,7 +67,7 @@ export interface RedeemRecordEntry {
   created_at: string;
 }
 
-export const getRedeemRecords: ApiRequestFunction<void, { data: RedeemRecordEntry }>;
+export const getRedeemRecords: ApiRequestFunction<void, { data: RedeemRecordEntry[] }>;
 
 interface AwardedPointEntry {
   digest: string;
@@ -76,5 +77,7 @@ interface AwardedPointEntry {
   created_at: string;
 }
 
-export const getAwardedPoints: ApiRequestFunction<{ currentPage: number, perPage: number },
-  { data: AwardedPointEntry[], total_num: number, per_page: number, cur_page: number }>;
+export const getAwardedPoints: ApiRequestFunction<
+  { currentPage: number; perPage: number },
+  { data: AwardedPointEntry[]; total_num: number; per_page: number; cur_page: number }
+>;

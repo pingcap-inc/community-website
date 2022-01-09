@@ -80,3 +80,18 @@ export const BadgeIcon = styled.img`
 `;
 
 export const BadgeName = styled.span``;
+
+export const Tutorial = styled.div`
+  color: ${colors.F1};
+  text-align: left;
+  font-size: 14px;
+  position: relative;
+  padding-left: 1rem;
+  &:before {
+    position: absolute;
+    top: 1px;
+    left: 0;
+    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12.71' height='12.71' viewBox='0 0 12.71 12.71'%3E%3Cpath id='Icon_simple-gratipay' data-name='Icon simple-gratipay' d='M12.71,6.355A6.355,6.355,0,1,1,6.355,0,6.355,6.355,0,0,1,12.71,6.355ZM8.94,3.96a1.3,1.3,0,0,0-1.751.3A.973.973,0,0,1,6.4,4.6a.973.973,0,0,1-.79-.336,1.3,1.3,0,0,0-1.75-.3A1.316,1.316,0,0,0,3.51,5.8L6.4,9.718,9.291,5.8a1.318,1.318,0,0,0-.35-1.843Z' fill='%23f8c200'/%3E%3C/svg%3E%0A");
+    margin-right: 4px;
+  }
+`;

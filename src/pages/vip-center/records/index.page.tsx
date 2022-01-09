@@ -9,8 +9,8 @@ import { MeContext } from '~/context';
 // @ts-ignore
 import { PageLoader } from '~/components';
 import * as Styled from './index.styled';
-import { Table } from 'antd';
 import { AwardedPointEntry } from '@tidb-community/datasource/src/api/points';
+import { Tutorial } from '../index.styled';
 
 const Page = () => {
   const { isReady } = useRouter();
@@ -82,7 +82,7 @@ const Page = () => {
           </span>
         </div>
         <div>
-          <Styled.Tutorial>升级攻略</Styled.Tutorial>
+          <Tutorial>升级攻略</Tutorial>
         </div>
       </Styled.PointsContainer>
 

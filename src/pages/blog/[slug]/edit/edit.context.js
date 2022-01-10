@@ -139,7 +139,7 @@ export function useEditMethods() {
     try {
       // save() make sure status is DRAFT
       await api.blog.posts.post.submit(id);
-      reload(slug);
+      await reload(slug);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;
@@ -153,7 +153,8 @@ export function useEditMethods() {
     try {
       // save() make sure status is DRAFT
       await api.blog.posts.post.publish(id);
-      reload(slug);
+      await reload(slug);
+      await router.push(`/blog/${slug}`);
     } catch (e) {
       message.error('发布失败：' + String(e?.message ?? e));
       throw e;

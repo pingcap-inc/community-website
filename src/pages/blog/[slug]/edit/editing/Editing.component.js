@@ -161,15 +161,15 @@ const Editing = ({ blogInfo }) => {
       <Styled.Actions>
         <div className="btns">
           {hasPermission ? (
-            <Button type="primary" onClick={() => validation(saveAndPublish)} disabled={operating}>
+            <Button type="primary" onClick={() => validation(saveAndPublish)} loading={operating}>
               发布
             </Button>
           ) : (
-            <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
+            <Button type="primary" onClick={() => validation(saveAndSubmit)} loading={operating}>
               提交
             </Button>
           )}
-          <Button type="default" onClick={() => validation(save)} disabled={operating}>
+          <Button type="default" onClick={() => validation(save)} loading={operating}>
             保存草稿
           </Button>
         </div>

@@ -104,42 +104,49 @@ export function useEditMethods() {
     query: { slug },
   } = router;
 
-  const save = useCallback(async () => {
-    try {
-      const { title, coverImageURL, origin, category, tags, content, blogInfo } = editContext;
-      const body = {
-        title,
-        origin: typeof origin === 'string' ? 'REPOST' : 'ORIGINAL',
-        sourceURL: typeof origin === 'string' ? origin : null,
-        content: JSON.stringify(content),
-        category: category?.id ?? null,
-        tags: tags.map((tag) => tag.id),
-        coverImageURL: coverImageURL,
-      };
-      if (slug === 'new') {
-        const res = await api.blog.posts.create(body);
-        await router.push(`/blog/${res.slug}`);
-        return res;
-      } else {
-        await fixStatus(blogInfo.id, blogInfo.status);
-        await api.blog.posts.post.update(blogInfo.id, body);
-        await router.push(`/blog/${blogInfo.slug}`);
-        return blogInfo;
+  const save = useCallback(
+    async (callback = async () => await router.push) => {
+      try {
+        const { title, coverImageURL, origin, category, tags, content, blogInfo } = editContext;
+        const body = {
+          title,
+          origin: typeof origin === 'string' ? 'REPOST' : 'ORIGINAL',
+          sourceURL: typeof origin === 'string' ? origin : null,
+          content: JSON.stringify(content),
+          category: category?.id ?? null,
+          tags: tags.map((tag) => tag.id),
+          coverImageURL: coverImageURL,
+        };
+        if (slug === 'new') {
+          const res = await api.blog.posts.create(body);
+          await reload(slug);
+          // await router.push(`/blog/${res.slug}`);
+          await callback?.(res.slug);
+          return res;
+        } else {
+          await fixStatus(blogInfo.id, blogInfo.status);
+          await api.blog.posts.post.update(blogInfo.id, body);
+          await reload(slug);
+          // await router.push(`/blog/${blogInfo.slug}`);
+          await callback?.(blogInfo.slug);
+          return blogInfo;
+        }
+      } catch (e) {
+        message.error('保存失败：' + String(e?.message ?? e));
+        throw e;
+      } finally {
+        setOperating(false);
       }
-    } catch (e) {
-      message.error('保存失败：' + String(e?.message ?? e));
-      throw e;
-    } finally {
-      setOperating(false);
-    }
-  }, [slug, router, editContext]);
+    },
+    [slug, router, editContext]
+  );
 
   const saveAndSubmit = useCallback(async () => {
-    const { slug, id } = await save();
     try {
+      const { slug, id } = await save(undefined);
       // save() make sure status is DRAFT
       await api.blog.posts.post.submit(id);
-      await reload(slug);
+      await router.push(`/blog/${slug}`);
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;
@@ -149,11 +156,10 @@ export function useEditMethods() {
   }, [save, reload]);
 
   const saveAndPublish = useCallback(async () => {
-    const { slug, id } = await save();
     try {
+      const { slug, id } = await save(undefined);
       // save() make sure status is DRAFT
       await api.blog.posts.post.publish(id);
-      await reload(slug);
       await router.push(`/blog/${slug}`);
     } catch (e) {
       message.error('发布失败：' + String(e?.message ?? e));

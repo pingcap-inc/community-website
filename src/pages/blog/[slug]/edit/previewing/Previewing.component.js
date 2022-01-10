@@ -6,15 +6,26 @@ import * as PreviewingStyled from './previewing.styled';
 import BlogInfo from '../../../_components/blogInfo';
 import { OriginLabel, RepostLabel } from '../../components/labels';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { PendingAlert, PublishedAlert } from '../editing/Editing.component';
+import { usePrincipal } from '~/pages/blog/blog.hooks';
 
 const noop = () => {};
 
 const Previewing = ({ blogInfo }) => {
   const { factory, title, origin, tags, content, coverImageURL } = useEditContext();
 
-  const { save, saveAndSubmit, operating } = useEditMethods();
+  const { save, saveAndSubmit, saveAndPublish, operating } = useEditMethods();
+
+  const { hasAuthority } = usePrincipal();
+  const hasPermission = hasAuthority('PUBLISH_POST');
+
+  const validation = (callback) => {
+    if (title !== '') {
+      return callback();
+    }
+    message.warn('请输入标题');
+  };
 
   if (!process.browser) {
     return <></>;
@@ -45,9 +56,15 @@ const Previewing = ({ blogInfo }) => {
         {blogInfo?.status === 'PUBLISHED' ? <PublishedAlert /> : undefined}
         {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <div className="btns">
-          <Button type="primary" onClick={saveAndSubmit} disabled={operating}>
-            提交
-          </Button>
+          {hasPermission ? (
+            <Button type="primary" onClick={() => validation(saveAndPublish)} disabled={operating}>
+              发布
+            </Button>
+          ) : (
+            <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
+              提交
+            </Button>
+          )}
           <Button type="default" onClick={save} disabled={operating}>
             保存草稿
           </Button>

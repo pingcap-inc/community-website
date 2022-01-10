@@ -148,9 +148,24 @@ export function useEditMethods() {
     }
   }, [save, reload]);
 
+  const saveAndPublish = useCallback(async () => {
+    const { slug, id } = await save();
+    try {
+      // save() make sure status is DRAFT
+      await api.blog.posts.post.publish(id);
+      reload(slug);
+    } catch (e) {
+      message.error('发布失败：' + String(e?.message ?? e));
+      throw e;
+    } finally {
+      setOperating(false);
+    }
+  }, [save, reload]);
+
   return {
     save,
     saveAndSubmit,
+    saveAndPublish,
     operating,
   };
 }

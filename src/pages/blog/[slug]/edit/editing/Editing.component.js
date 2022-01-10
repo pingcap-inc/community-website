@@ -8,6 +8,7 @@ import { useEditContext, useEditMethods } from '../edit.context';
 import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
+import { usePrincipal } from '~/pages/blog/blog.hooks';
 
 const Editing = ({ blogInfo }) => {
   const {
@@ -34,7 +35,10 @@ const Editing = ({ blogInfo }) => {
     message.warn('请输入标题');
   };
 
-  const { save, saveAndSubmit, operating } = useEditMethods();
+  const { save, saveAndSubmit, saveAndPublish, operating } = useEditMethods();
+
+  const { hasAuthority } = usePrincipal();
+  const hasPermission = hasAuthority('PUBLISH_POST');
 
   const onTitleChange = (e) => {
     setTitle(e.currentTarget.value);
@@ -156,9 +160,15 @@ const Editing = ({ blogInfo }) => {
       </Styled.Footer>
       <Styled.Actions>
         <div className="btns">
-          <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
-            提交
-          </Button>
+          {hasPermission ? (
+            <Button type="primary" onClick={() => validation(saveAndPublish)} disabled={operating}>
+              发布
+            </Button>
+          ) : (
+            <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
+              提交
+            </Button>
+          )}
           <Button type="default" onClick={() => validation(save)} disabled={operating}>
             保存草稿
           </Button>

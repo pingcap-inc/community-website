@@ -2,7 +2,7 @@ import React from 'react';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../BlogList';
+import BlogList from '../../components/BlogList';
 import UserDetailsLayout from './Layout.component';
 import { getPageQuery } from '../../../../utils/pagination.utils';
 

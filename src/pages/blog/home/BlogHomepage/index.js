@@ -6,9 +6,9 @@ import BlogLayout from '../../BlogLayout.component';
 import CategoryList from '../CategoryList';
 import CategoryListMobile from '../CategoryListMobile';
 import OrderBySwitch from '../OrderBySwitch';
-import { BlogListInfiniteScroll } from '../../BlogList';
-import HotTagList from '../../HotTagList';
-import WriteBlogButton from '../../WriteBlogButton';
+import { BlogListInfiniteScroll } from '../../components/BlogList';
+import HotTagList from '../../components/HotTagList';
+import WriteBlogButton from '../../components/WriteBlogButton';
 
 const orderBy = [
   { name: '推荐排序', url: '/blog' },

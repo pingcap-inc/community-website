@@ -12,9 +12,9 @@ import CategoryList from '../../home/CategoryList';
 import CategoryListMobile from '../../home/CategoryListMobile';
 // import SearchOnMobile from '../../home/SearchOnMobile';
 import OrderBySwitch from '../../home/OrderBySwitch';
-import { BlogListInfiniteScroll } from '../../components/BlogList';
-import WriteBlogButton from '../../components/WriteBlogButton';
-import HotTagList from '../../components/HotTagList';
+import { BlogListInfiniteScroll } from '../../_components/BlogList';
+import WriteBlogButton from '../../_components/WriteBlogButton';
+import HotTagList from '../../_components/HotTagList';
 import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {

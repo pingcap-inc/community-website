@@ -8,11 +8,11 @@ import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 import OrderBySwitch from '../../home/OrderBySwitch';
-import { BlogListInfiniteScroll } from '../../components/BlogList';
-import HotTagList from '../../components/HotTagList';
+import { BlogListInfiniteScroll } from '../../_components/BlogList';
+import HotTagList from '../../_components/HotTagList';
 import TagItem from '../TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
-import WriteBlogButton from '../../components/WriteBlogButton';
+import WriteBlogButton from '../../_components/WriteBlogButton';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 

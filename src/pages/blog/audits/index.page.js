@@ -6,7 +6,7 @@ import Link from 'next/link';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../components/BlogList';
+import BlogList from '../_components/BlogList';
 import { usePrincipal } from '../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useEffect, useState } from 'react';

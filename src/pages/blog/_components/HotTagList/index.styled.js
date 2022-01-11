@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
 import { Card as AntdCard } from 'antd';
-import { borderRadius } from '../components/common.styled';
+import { borderRadius } from '../common.styled';
 
 export const Container = styled.div`
   ${mixins.showOnDesktop()}

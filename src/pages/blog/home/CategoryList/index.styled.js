@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
-import { borderRadiusSize } from '../../components/common.styled';
+import { borderRadiusSize } from '../../_components/common.styled';
 
 export const Container = styled.div`
   ${mixins.showOnDesktop()};

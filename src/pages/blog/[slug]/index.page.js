@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
+import Link from 'next/link';
 import * as Styled from './blog.styled';
 import { CoreLayout } from '~/layouts';
 import { OriginLabel, RepostLabel } from './components/labels';
@@ -122,9 +123,9 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
               {blogInfo.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
               {blogInfo.tags.map((tag) => (
-                <BlogInfo.Tag key={tag.slug} onClick={() => router.push(`/blog/tag/${tag.slug}`)}>
-                  {tag.name}
-                </BlogInfo.Tag>
+                <Link href={`/blog/tag/${tag.slug}`} passHref>
+                  <BlogInfo.Tag key={tag.slug}>{tag.name}</BlogInfo.Tag>
+                </Link>
               ))}
             </Styled.Meta>
 

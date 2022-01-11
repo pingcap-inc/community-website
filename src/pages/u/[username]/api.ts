@@ -32,6 +32,24 @@ export async function getBadgesById(id: string): Promise<IRawBadges[]> {
   return badgesArr;
 }
 
-export async function getUserProfileById(id: string): Promise<{}> {
-  return {};
+export interface IProfile {
+  username: string;
+  avatar_url: string;
+  bio: string;
+  joined_at: string;
+  level: number;
+  points: number;
+  exps: number;
+  level_desc: {
+    min_exps: number;
+    max_exps: number;
+    progress: number;
+  };
+  can_edit: boolean;
+}
+
+export async function getUserProfileById(id: string): Promise<IProfile> {
+  const result = await axios.get(`https://accounts.pingcap.com/api/users/${id}`);
+  const { data } = result.data;
+  return data;
 }

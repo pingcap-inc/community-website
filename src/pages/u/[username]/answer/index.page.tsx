@@ -7,12 +7,13 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination, Select } from 'antd';
 import ListItem from '../_components/ListItem';
-import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
+import { getBadgesById, getUserProfileById, IProfile, IRawBadges } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 
 interface IProps {
   badges: IRawBadges[];
+  profile: IProfile;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -30,13 +31,13 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges } = props;
+  const { badges, profile } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
   const date = getRelativeDatetime(new Date('Jan 01,2022 01:02:03'));
   return (
-    <ProfileLayout badges={badges}>
+    <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
         <Tab selected={EUgcType.answer} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
         <Select defaultValue={''}>

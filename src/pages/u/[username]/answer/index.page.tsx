@@ -33,13 +33,14 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username, page, size } = ctx.params;
   const actualPage: number = page !== undefined ? Number(page) ?? 1 : 1;
-  const actualSize: number = size !== undefined ? Number(page) ?? 30 : 30;
+  const actualSize: number = size !== undefined ? Number(size) ?? 30 : 30;
+  const offset = actualPage * 30 - actualSize;
   const [i18nProps, badges, profile, answers] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesById(username),
     getUserProfileById(username),
-    getAnswersById(username, actualPage * 30 - actualSize),
+    getAnswersById(username, offset),
   ]);
   return { props: { ...i18nProps, badges, profile, answers } };
 };

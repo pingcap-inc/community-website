@@ -8,46 +8,50 @@ import { GetServerSideProps } from 'next';
 import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
-import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
+import {
+  getBadgesById,
+  getPostUrl,
+  getQuestionsById,
+  getUserProfileById,
+  IProfile,
+  IQuestions,
+  IRawBadges,
+} from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 
 interface IProps {
   badges: IRawBadges[];
+  profile: IProfile;
+  questions: IQuestions[];
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
+  page?: string;
+  size?: string;
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username } = ctx.params;
-  const [i18nProps, badges, profile] = await Promise.all([
+  const { username, page, size } = ctx.params;
+  const actualPage: number = page !== undefined ? Number(page) ?? 0 : 0;
+  const actualSize: number = size !== undefined ? Number(size) ?? 30 : 30;
+  const [i18nProps, badges, profile, questions] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesById(username),
     getUserProfileById(username),
+    getQuestionsById(username, actualPage, actualSize),
   ]);
-  return { props: { ...i18nProps, badges, profile } };
+  return { props: { ...i18nProps, badges, profile, questions } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges } = props;
+  const { badges, profile, questions } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
-  const date = getRelativeDatetime(new Date('Jan 01,2022 01:02:03'));
-  const numsDom = (
-    <Space size={24}>
-      <div>
-        <MessageOutlined /> 16
-      </div>
-      <div>
-        <EyeOutlined /> 16
-      </div>
-    </Space>
-  );
   return (
-    <ProfileLayout badges={badges}>
+    <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
         <Tab selected={EUgcType.question} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
         <Select defaultValue={''}>
@@ -57,16 +61,23 @@ export default function ProfileAnswerPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+        {questions.map((value) => (
           <ListItem
-            key={value}
-            url={'#'}
-            title={'ansbile升级集群V3到4.0.14问题'}
-            summary={
-              '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
+            key={value.id}
+            url={getPostUrl(value.id, 1)}
+            title={value.title}
+            summary={''}
+            metadataStart={
+              <Space size={24}>
+                <div>
+                  <MessageOutlined /> {value.reply_count}
+                </div>
+                <div>
+                  <EyeOutlined /> {value.views}
+                </div>
+              </Space>
             }
-            metadataStart={numsDom}
-            metadataEnd={date}
+            metadataEnd={getRelativeDatetime(value.created_at)}
           />
         ))}
       </CommonStyled.List>

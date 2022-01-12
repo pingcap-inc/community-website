@@ -80,6 +80,9 @@ export interface IUserAction {
   excerpt: string;
 }
 
+export const getPostUrl = (topic_id: number, post_number: number) =>
+  `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;
+
 export async function getAnswersById(id: string, offset: number = 0): Promise<IUserAction[]> {
   const result = await axios.get(
     `${askTUGDomain}/user_actions.json?offset=${offset}&username=${id}&filter=${EUserActionFilter.REPLY}`
@@ -88,5 +91,17 @@ export async function getAnswersById(id: string, offset: number = 0): Promise<IU
   return user_actions ?? [];
 }
 
-export const getPostUrl = (topic_id: number, post_number: number) =>
-  `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;
+export interface IQuestions {
+  id: number;
+  title: string;
+  posts_count: number;
+  reply_count: number;
+  created_at: Date;
+  views: number;
+  like_count: number;
+}
+
+export async function getQuestionsById(id: string, page: number = 0, per_page: number): Promise<IQuestions[]> {
+  const result = await axios.get(`${askTUGDomain}/topics/created-by/${id}.json?page=${page}&per_page=${per_page}`);
+  return result.data.topic_list?.topics ?? [];
+}

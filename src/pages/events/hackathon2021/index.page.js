@@ -131,7 +131,6 @@ const Page = ({ data }) => {
   const { isSmallScreen } = useIsSmallScreen();
   const router = useRouter();
   const [QROverlay, setQROverlay] = useState(false);
-  console.log(data);
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -158,11 +157,7 @@ const Page = ({ data }) => {
                   立即报名
                 </Styled.BannerButton>
                 <Styled.BannerButton onClick={() => setQROverlay(true)}>加入官方群</Styled.BannerButton>
-                <Styled.BannerButton
-                  onClick={() => handleRedirect(router, 'https://forms.pingcap.com/f/TiDBHackathon2021Volunteer')}
-                >
-                  志愿者
-                </Styled.BannerButton>
+                <Styled.BannerButton onClick={toHash('faq')}>赛事咨询</Styled.BannerButton>
               </Styled.BannerButtonsGroup>
               {!isSmallScreen && <BannerNavButtonsGroup />}
             </Styled.BannerContent>
@@ -436,7 +431,7 @@ const Page = ({ data }) => {
               </Col>
             ))}
             {isSmallScreen ||
-              (judgesData.length % 3 !== 0 &&
+              (data.news.length % 3 !== 0 &&
                 _.range(3 - (data.news.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
           </Row>
         </Styled.Section>
@@ -454,7 +449,7 @@ const Page = ({ data }) => {
           </Styled.LogoWrapper>
           白银赞助
           <Styled.LogoWrapper>
-            {_.range(1, 3).map((i) => (
+            {_.range(1, 4).map((i) => (
               <img
                 src={getImage(`silver-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}
@@ -462,9 +457,9 @@ const Page = ({ data }) => {
               />
             ))}
           </Styled.LogoWrapper>
-          云资源赞助
+          云资源赞助/云技术服务支持
           <Styled.LogoWrapper>
-            {_.range(1, 4).map((i) => (
+            {_.range(1, 5).map((i) => (
               <img
                 src={getImage(`cloud-sponsor-${i}.png`)}
                 height={isSmallScreen ? 60 : 80}

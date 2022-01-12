@@ -20,6 +20,7 @@ router.post('/posts/:id/share', require('./posts/[id]').share);
 router.post('/posts', require('./posts/create-posts'));
 router.put('/posts/:id', require('./posts/update-posts'));
 router.delete('/posts/:id', require('./posts/delete-posts'));
+router.get('/posts/:slug/detail', require('./posts/[slug]'));
 
 router.get('/tags', require('./tags/tags'));
 router.get('/tags/hot', require('./tags/tags'));

@@ -16,8 +16,8 @@ const createAppGlobalStyle = () => createGlobalStyle`
 
     * {
       &::selection {
-        color: ${colors.M1} !important;
-        background: ${colors.B1};
+        color: #000f0f !important;
+        background-color: #f7d8d9 !important;
       }
     }
 

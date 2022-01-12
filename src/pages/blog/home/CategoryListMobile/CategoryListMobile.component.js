@@ -1,6 +1,7 @@
 import React from 'react';
 import * as Styled from './index.styled';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const CategoryListMobile = ({ categories: { content } }) => {
   return (
@@ -19,9 +20,9 @@ const Item = ({ name, slug }) => {
   const url = slug === '' ? `/blog` : `/blog/c/${slug}`;
   const selected = (query.slug || '') === slug;
   return (
-    <a href={url}>
+    <Link href={url} passHref>
       <Styled.Item selected={selected}>{name}</Styled.Item>
-    </a>
+    </Link>
   );
 };
 

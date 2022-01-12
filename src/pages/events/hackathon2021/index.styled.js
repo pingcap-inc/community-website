@@ -408,7 +408,7 @@ export const PrizeCount = styled.div`
   font-weight: 300;
 `;
 export const PrizeReward = styled.div`
-  padding-top: 0%;
+  padding-top: 0;
   height: ${(props) => (props.sm ? '0.5rem' : '1rem')};
   ${(props) =>
     props.tiny
@@ -773,27 +773,18 @@ export const DummyNewsCard = styled.div`
   ${(props) =>
     props.sm
       ? css`
-          width: calc(0.5 * (100vw - 44px - 2rem));
-          height: calc(0.625 * (100vw - 44px - 2rem));
+          width: calc(1.04 * (100vw - 44px - 2rem));
+          height: calc(0.5942857143 * (100vw - 44px - 2rem));
         `
       : css`
           width: ${columnWidth * 3 * 1.2}vw;
-          height: ${columnWidth * 2.25 * 1.2}vw;
+          height: ${columnWidth * 1.7142857143 * 1.2}vw;
         `}
 `;
 
-export const NewsCard = styled.div`
+export const NewsCard = styled(DummyNewsCard)`
   margin: auto 0;
-  ${(props) =>
-    props.sm
-      ? css`
-          width: calc(1.04 * (100vw - 44px - 2rem));
-          height: calc(0.83 * (100vw - 44px - 2rem));
-        `
-      : css`
-          width: ${columnWidth * 3 * 1.2}vw;
-          height: ${columnWidth * 2.25 * 1.2}vw;
-        `}
+
   margin-bottom: 2rem;
   // padding
   background-image: url(${(props) => props.src});

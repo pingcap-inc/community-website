@@ -6,7 +6,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import UserDetailsLayout from './Layout.component';
 import { api } from '@tidb-community/datasource';
 import { useRouterPage } from '~/utils/pagination.utils';
-import { getPageQuery } from '../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -45,6 +45,7 @@ const CommentsList = ({
     <List
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
+      locale={{ emptyText: '暂无评论' }}
       renderItem={({ post, content, commenter, repliedTo }) => (
         <li>
           <List.Item>

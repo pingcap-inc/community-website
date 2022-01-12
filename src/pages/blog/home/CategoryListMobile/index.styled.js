@@ -16,8 +16,9 @@ export const List = styled.div.attrs({})`
   }
 `;
 
-export const Item = styled.div.attrs({})`
+export const Item = styled.a`
   color: ${colors.C4};
+  display: block;
   padding: 0.125rem 0.5rem;
   margin: 0.5rem 0.25rem;
   border-radius: 0.25rem;

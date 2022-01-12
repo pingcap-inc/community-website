@@ -12,6 +12,11 @@ export const Container = styled.div`
 
 export const Breadcrumb = styled(AntdBreadcrumb)``;
 
+export const Action = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
 export const Tab = styled.div`
   display: flex;
   padding: 1rem 0;

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 import { Card as AntdCard } from 'antd';
-import { borderRadius } from '../components/common.styled';
+import { borderRadius } from '../_components/common.styled';
 
 export const Card = styled(AntdCard)`
   ${borderRadius};

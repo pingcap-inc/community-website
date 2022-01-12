@@ -1,4 +1,4 @@
-import { getI18nProps } from '../../../../utils/i18n.utils';
+import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
 import TagDetail from './index.page';
 

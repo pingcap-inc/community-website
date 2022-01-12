@@ -5,7 +5,9 @@ import { api } from '@tidb-community/datasource';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 import BlogHomepage from './home/BlogHomepage';
-import { getPageQuery } from '../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
+import { CommunityHead } from '~/components';
+import { PageDataContext } from '~/context';
 
 const { getCategories, getRecommend, getHotTags } = api.blog;
 
@@ -25,5 +27,14 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default function BlogHomePage(props) {
-  return <BlogHomepage {...props} blogApi={getRecommend} />;
+  return (
+    <PageDataContext.Provider value={{ showRecommendedIcon: true }}>
+      <CommunityHead
+        title="专栏 - 首页"
+        // description
+        // keyword
+      />
+      <BlogHomepage {...props} blogApi={getRecommend} />
+    </PageDataContext.Provider>
+  );
 }

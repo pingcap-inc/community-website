@@ -552,7 +552,6 @@ const data = [
       },
     ],
   },
-  
   {
     name: '薛港',
     company: '移动云',
@@ -596,7 +595,6 @@ const data = [
       },
     ],
   },
-  
   {
     name: '崔滢',
     company: '龙湖地产',

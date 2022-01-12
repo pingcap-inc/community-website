@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../BlogList';
+import BlogList from '../../_components/BlogList';
 import UserDetailsLayout from './Layout.component';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
-import { getPageQuery } from '../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -26,7 +26,31 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Posts = ({ id, blogs: ssrBlogs, user }) => {
-  const principal = usePrincipal();
+  const { isLogin, hasAuthority, id: logonUserId } = usePrincipal();
+
+  const statuses = [
+    {
+      label: '已发布',
+      value: 'PUBLISHED',
+    },
+  ];
+
+  if (logonUserId === Number(id) || hasAuthority('READ_OTHERS_POST')) {
+    statuses.push(
+      {
+        label: '草稿',
+        value: 'DRAFT',
+      },
+      {
+        label: '审核中',
+        value: 'PENDING',
+      },
+      {
+        label: '审核未通过',
+        value: 'REJECTED',
+      }
+    );
+  }
 
   const [blogs, setBlogs] = useState(ssrBlogs);
   const [status, setStatus] = useState('PUBLISHED');
@@ -44,34 +68,15 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       });
   }, [id, status]);
 
-  return (
-    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts">
-      {principal.id === Number(id) ? (
-        <Select value={status} options={statuses} onChange={(status) => setStatus(status)} bordered={false} />
-      ) : undefined}
+  const tabExtendDOM = isLogin ? (
+    <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
+  ) : undefined;
 
+  return (
+    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
       {loading ? <Skeleton active /> : <BlogList blogs={blogs} />}
     </UserDetailsLayout>
   );
 };
-
-const statuses = [
-  {
-    label: '已发布',
-    value: 'PUBLISHED',
-  },
-  {
-    label: '草稿',
-    value: 'DRAFT',
-  },
-  {
-    label: '审核中',
-    value: 'PENDING',
-  },
-  {
-    label: '审核未通过',
-    value: 'REJECTED',
-  },
-];
 
 export default Posts;

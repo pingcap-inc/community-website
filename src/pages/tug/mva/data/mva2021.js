@@ -552,6 +552,88 @@ const data = [
       },
     ],
   },
+  {
+    name: '薛港',
+    company: '移动云',
+    title: '高级软件研发工程师',
+    links: [
+      {
+        name: '把云数据库服务变成黑盒子：ServerlessDB for HTAP丨Hacking Camp 进行时',
+        href: 'https://asktug.com/t/topic/153645',
+      },
+      {
+        name: 'PD 启动主流程分析',
+        href: 'https://asktug.com/t/topic/69399',
+      },
+       {
+        name: 'PD 调度器模块',
+        href: 'https://asktug.com/t/topic/69397',
+      },
+      {
+        name: 'PD 三类选主流程梳理',
+        href: 'https://asktug.com/t/topic/69332',
+      },
+       {
+        name: 'PD 关于 TSO 分配源代码分析',
+        href: 'https://asktug.com/t/topic/69336',
+      },
+       {
+        name: 'PD 关于 ID 分配的源码分析',
+        href: 'https://asktug.com/t/topic/69335',
+      },
+       {
+        name: 'PD API 基础框架源码分析',
+        href: 'https://asktug.com/t/topic/69334',
+      },
+      {
+        name: 'PD 模块梳理',
+        href: 'https://asktug.com/t/topic/69329',
+      },
+       {
+        name: 'PD 客户端源码分析',
+        href: 'https://asktug.com/t/topic/69398',
+      },
+    ],
+  },
+  {
+    name: '崔滢',
+    company: '龙湖地产',
+    title: 'DBA',
+    links: [
+      {
+        name: 'DM 多库合并至 TiDB',
+        href: 'https://asktug.com/t/topic/213029',
+      },
+      {
+        name: '数字化转型背后的 TiDB，以地产行业为例',
+        href: 'https://asktug.com/t/topic/273771',
+      },
+       {
+        name: 'SQL Server 迁移 TiDB 场景的实践',
+        href: 'https://asktug.com/t/topic/213030',
+      },
+    ],
+  },
+  
+  {
+    name: '漆锐',
+    company: '神州数码',
+    title: 'TiDB For PG 项目核心研发',
+    links: [
+      {
+        name: '在 TiDB 中实现一个关键字——Parser 篇',
+        href: 'https://asktug.com/t/topic/303135',
+      },
+      {
+        name: 'TiDB SQL 调优实战——索引问题',
+        href: 'https://asktug.com/t/topic/213007',
+      },
+       {
+        name: '基于阿里云 ECS 部署的 TiDB 2.1.14 升级到 4.0.0-rc 实践',
+        href: 'https://asktug.com/t/topic/153306',
+      },
+    ],
+  },
 ];
 
 export default data;

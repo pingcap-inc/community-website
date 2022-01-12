@@ -55,19 +55,33 @@ export async function getUserProfileByUsername(username: string): Promise<IProfi
 }
 
 export enum EUserActionFilter {
+  // eslint-disable-next-line no-unused-vars
   LIKE = 1,
+  // eslint-disable-next-line no-unused-vars
   WAS_LIKED = 2,
+  // eslint-disable-next-line no-unused-vars
   BOOKMARK = 3,
+  // eslint-disable-next-line no-unused-vars
   NEW_TOPIC = 4,
+  // eslint-disable-next-line no-unused-vars
   REPLY = 5,
+  // eslint-disable-next-line no-unused-vars
   RESPONSE = 6,
+  // eslint-disable-next-line no-unused-vars
   MENTION = 7,
+  // eslint-disable-next-line no-unused-vars
   QUOTE = 9,
+  // eslint-disable-next-line no-unused-vars
   EDIT = 11,
+  // eslint-disable-next-line no-unused-vars
   NEW_PRIVATE_MESSAGE = 12,
+  // eslint-disable-next-line no-unused-vars
   GOT_PRIVATE_MESSAGE = 13,
+  // eslint-disable-next-line no-unused-vars
   SOLVED = 15,
+  // eslint-disable-next-line no-unused-vars
   ASSIGNED = 16,
+  // eslint-disable-next-line no-unused-vars
 }
 
 export interface IUserAction {

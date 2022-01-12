@@ -21,10 +21,7 @@ export interface IProfileCard {
 
 export default function ProfileCard(props: IProfileCard) {
   const { avatarUrl, name, level, description, joinDate, nums } = props;
-  // const { meData } = useContext(MeContext);
-  {
-    /*TODO: show edit link when the profile is current logon user*/
-  }
+  //TODO: show edit link when the profile is current logon user
   const isMySelf = true;
   return (
     <Styled.Container>

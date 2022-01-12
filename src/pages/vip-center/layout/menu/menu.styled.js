@@ -1,5 +1,18 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
+import { Menu } from 'antd';
+
+export const MobileMenu = styled(Menu)`
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: none;
+  border: none;
+
+  .ant-menu-item {
+    margin: 0 !important;
+  }
+`;
 
 export const Container = styled.ul`
   ${mixins.reset()};

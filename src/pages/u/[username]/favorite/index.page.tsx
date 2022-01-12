@@ -8,10 +8,10 @@ import { GetServerSideProps } from 'next';
 import { Pagination } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
-  getBadgesById,
-  getFavoritesById,
+  getBadgesByUsername,
+  getFavoritesByUsername,
   getPostUrl,
-  getUserProfileById,
+  getUserProfileByUsername,
   IProfile,
   IRawBadges,
   IUserAction,
@@ -38,9 +38,9 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   const [i18nProps, badges, profile, favorites] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesById(username),
-    getUserProfileById(username),
-    getFavoritesById(username, offset),
+    getBadgesByUsername(username),
+    getUserProfileByUsername(username),
+    getFavoritesByUsername(username, offset),
   ]);
   return { props: { ...i18nProps, badges, profile, favorites } };
 };

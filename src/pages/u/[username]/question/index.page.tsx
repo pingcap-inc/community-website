@@ -9,10 +9,10 @@ import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
 import {
-  getBadgesById,
+  getBadgesByUsername,
   getPostUrl,
-  getQuestionsById,
-  getUserProfileById,
+  getQuestionsByUsername,
+  getUserProfileByUsername,
   IProfile,
   IQuestions,
   IRawBadges,
@@ -38,9 +38,9 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   const [i18nProps, badges, profile, questions] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesById(username),
-    getUserProfileById(username),
-    getQuestionsById(username, actualPage, actualSize),
+    getBadgesByUsername(username),
+    getUserProfileByUsername(username),
+    getQuestionsByUsername(username, actualPage, actualSize),
   ]);
   return { props: { ...i18nProps, badges, profile, questions } };
 };

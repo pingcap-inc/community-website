@@ -8,12 +8,13 @@ import { GetServerSideProps } from 'next';
 import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { HeartOutlined, MessageOutlined, StarOutlined, EyeOutlined } from '@ant-design/icons';
-import { getBadgesById, getUserProfileById, IRawBadges } from '../api';
+import { getBadgesByUsername, getUserProfileByUsername, IProfile, IRawBadges } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 
 interface IProps {
   badges: IRawBadges[];
+  profile: IProfile;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -24,14 +25,14 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   const [i18nProps, badges, profile] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesById(username),
-    getUserProfileById(username),
+    getBadgesByUsername(username),
+    getUserProfileByUsername(username),
   ]);
   return { props: { ...i18nProps, badges, profile } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges } = props;
+  const { badges, profile } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
@@ -53,7 +54,7 @@ export default function ProfileAnswerPage(props: IProps) {
     </Space>
   );
   return (
-    <ProfileLayout badges={badges}>
+    <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
         <Tab selected={EUgcType.post} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
         <Select defaultValue={''}>

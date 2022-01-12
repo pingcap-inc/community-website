@@ -22,9 +22,9 @@ async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
   return badgesMap;
 }
 
-export async function getBadgesById(id: string): Promise<IRawBadges[]> {
+export async function getBadgesByUsername(username: string): Promise<IRawBadges[]> {
   const badgesMap = await getAllBadges();
-  const result = await axios.get(`${askTUGDomain}/user-badges/${id}.json`);
+  const result = await axios.get(`${askTUGDomain}/user-badges/${username}.json`);
   const { badges } = result.data;
   badges.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
   const badgesArr: IRawBadges[] = [];
@@ -48,8 +48,8 @@ export interface IProfile {
   can_edit: boolean;
 }
 
-export async function getUserProfileById(id: string): Promise<IProfile> {
-  const result = await axios.get(`https://accounts.pingcap.com/api/users/${id}`);
+export async function getUserProfileByUsername(username: string): Promise<IProfile> {
+  const result = await axios.get(`https://accounts.pingcap.com/api/users/${username}`);
   const { data } = result.data;
   return data;
 }
@@ -83,17 +83,17 @@ export interface IUserAction {
 export const getPostUrl = (topic_id: number, post_number: number) =>
   `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;
 
-export async function getAnswersById(id: string, offset: number = 0): Promise<IUserAction[]> {
+export async function getAnswersByUsername(username: string, offset: number = 0): Promise<IUserAction[]> {
   const result = await axios.get(
-    `${askTUGDomain}/user_actions.json?offset=${offset}&username=${id}&filter=${EUserActionFilter.REPLY}`
+    `${askTUGDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`
   );
   const { user_actions } = result.data;
   return user_actions ?? [];
 }
 
-export async function getFavoritesById(id: string, offset: number = 0): Promise<IUserAction[]> {
+export async function getFavoritesByUsername(username: string, offset: number = 0): Promise<IUserAction[]> {
   const result = await axios.get(
-    `${askTUGDomain}/user_actions.json?offset=${offset}&username=${id}&filter=${EUserActionFilter.BOOKMARK}`
+    `${askTUGDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`
   );
   const { user_actions } = result.data;
   return user_actions ?? [];
@@ -109,7 +109,13 @@ export interface IQuestions {
   like_count: number;
 }
 
-export async function getQuestionsById(id: string, page: number = 0, per_page: number): Promise<IQuestions[]> {
-  const result = await axios.get(`${askTUGDomain}/topics/created-by/${id}.json?page=${page}&per_page=${per_page}`);
+export async function getQuestionsByUsername(
+  username: string,
+  page: number = 0,
+  per_page: number
+): Promise<IQuestions[]> {
+  const result = await axios.get(
+    `${askTUGDomain}/topics/created-by/${username}.json?page=${page}&per_page=${per_page}`
+  );
   return result.data.topic_list?.topics ?? [];
 }

@@ -17,7 +17,7 @@ export default function ListItem(props: IProps) {
       <Link href={url} passHref>
         <Styled.Title>{title}</Styled.Title>
       </Link>
-      <Styled.Summary>{summary}</Styled.Summary>
+      <Styled.Summary dangerouslySetInnerHTML={{ __html: summary }} />
       {(metadataStart || metadataEnd) && (
         <Styled.Metadata>
           <Styled.MetadataStart>{metadataStart}</Styled.MetadataStart>

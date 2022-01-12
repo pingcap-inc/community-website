@@ -71,16 +71,22 @@ export enum EUserActionFilter {
 }
 
 export interface IUserAction {
+  topic_id: number;
+  post_id: number;
+  post_number: number;
   title: string;
   username: string;
   created_at: Date;
   excerpt: string;
 }
 
-export async function getAnswersById(id: string, offset: number = 1): Promise<IUserAction[]> {
+export async function getAnswersById(id: string, offset: number = 0): Promise<IUserAction[]> {
   const result = await axios.get(
     `${askTUGDomain}/user_actions.json?offset=${offset}&username=${id}&filter=${EUserActionFilter.REPLY}`
   );
-  const { data } = result.data;
-  return data.user_actions;
+  const { user_actions } = result.data;
+  return user_actions ?? [];
 }
+
+export const getPostUrl = (topic_id: number, post_number: number) =>
+  `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;

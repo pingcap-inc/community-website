@@ -7,35 +7,48 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination, Select } from 'antd';
 import ListItem from '../_components/ListItem';
-import { getBadgesById, getUserProfileById, IProfile, IRawBadges } from '../api';
+import {
+  getAnswersById,
+  getBadgesById,
+  getPostUrl,
+  getUserProfileById,
+  IProfile,
+  IRawBadges,
+  IUserAction,
+} from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
+  answers: IUserAction[];
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
+  page?: string;
+  size?: string;
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username } = ctx.params;
-  const [i18nProps, badges, profile] = await Promise.all([
+  const { username, page, size } = ctx.params;
+  const actualPage: number = page !== undefined ? Number(page) ?? 1 : 1;
+  const actualSize: number = size !== undefined ? Number(page) ?? 30 : 30;
+  const [i18nProps, badges, profile, answers] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesById(username),
     getUserProfileById(username),
+    getAnswersById(username, actualPage * 30 - actualSize),
   ]);
-  return { props: { ...i18nProps, badges, profile } };
+  return { props: { ...i18nProps, badges, profile, answers } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile } = props;
+  const { badges, profile, answers } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
-  const date = getRelativeDatetime(new Date('Jan 01,2022 01:02:03'));
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
@@ -47,15 +60,13 @@ export default function ProfileAnswerPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+        {answers.map((value) => (
           <ListItem
-            key={value}
-            url={'#'}
-            title={'ansbile升级集群V3到4.0.14问题'}
-            summary={
-              '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
-            }
-            metadataEnd={date}
+            key={value.post_id}
+            url={getPostUrl(value.topic_id, value.post_number)}
+            title={value.title}
+            summary={value.excerpt}
+            metadataEnd={getRelativeDatetime(value.created_at)}
           />
         ))}
       </CommonStyled.List>

@@ -9,7 +9,7 @@ import { CommunityHead } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 
 const Layout = ({ children }) => {
-  const { setIsAuthRequired } = useContext(AuthContext);
+  const { setIsAuthRequired, isAnonymous, login } = useContext(AuthContext);
 
   useEffect(() => {
     setIsAuthRequired(true);
@@ -17,6 +17,11 @@ const Layout = ({ children }) => {
   }, [setIsAuthRequired]);
 
   const { isSmallScreen } = useIsSmallScreen();
+
+  if (isAnonymous) {
+    login();
+    return null;
+  }
 
   return (
     <>

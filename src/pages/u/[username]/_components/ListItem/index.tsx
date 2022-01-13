@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
-import Link from 'next/link';
 
 export interface IProps {
   url: string;
@@ -14,9 +13,7 @@ export default function ListItem(props: IProps) {
   const { url, title, summary, metadataStart, metadataEnd } = props;
   return (
     <Styled.ListItem>
-      <Link href={url} passHref>
-        <Styled.Title>{title}</Styled.Title>
-      </Link>
+      <Styled.Title href={url}>{title}</Styled.Title>
       <Styled.Summary dangerouslySetInnerHTML={{ __html: summary }} />
       {(metadataStart || metadataEnd) && (
         <Styled.Metadata>

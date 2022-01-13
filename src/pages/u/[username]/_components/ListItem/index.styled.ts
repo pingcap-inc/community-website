@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { mixins } from '@tidb-community/ui';
+import Anchor from '~/components/Anchor';
 
 export const ListItem = styled.div`
   margin-bottom: 2rem;
@@ -9,7 +10,7 @@ export const ListItem = styled.div`
   padding: 2rem;
 `;
 
-export const Title = styled.a`
+export const Title = styled(Anchor)`
   display: flex;
   ${mixins.typography('h2')};
 `;

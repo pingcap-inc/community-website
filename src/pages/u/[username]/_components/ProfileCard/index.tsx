@@ -3,6 +3,8 @@ import * as Styled from './index.styled';
 // import Image from 'next/image';
 import { FieldBinaryOutlined, EditFilled, MailFilled } from '@ant-design/icons';
 import Link from 'next/link';
+import { useContext } from 'react';
+import { MeContext } from '~/context';
 // import { useContext } from 'react';
 // import { MeContext } from '~/context';
 
@@ -21,12 +23,13 @@ export interface IProfileCard {
 
 export default function ProfileCard(props: IProfileCard) {
   const { avatarUrl, name, level, description, joinDate, nums } = props;
-  //TODO: show edit link when the profile is current logon user
-  const isMySelf = true;
+  const me = useContext(MeContext);
+  const currentUsername = me?.meData?.username;
+  const isCurrentLogonUser = name === currentUsername;
   return (
     <Styled.Container>
       <Styled.Action>
-        {isMySelf && (
+        {isCurrentLogonUser && (
           <Link href={'https://tidb.io/my/profile'} passHref>
             <Styled.Edit>
               <EditFilled />

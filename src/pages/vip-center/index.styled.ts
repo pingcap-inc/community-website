@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 // @ts-ignore
 import { Link as RawLink } from '~/components';
+import { Tooltip as RawTooltip } from 'antd';
 
 export const Title = styled.div`
   ${mixins.typography('h3')};
@@ -87,6 +88,7 @@ export const Tutorial = styled.div`
   font-size: 14px;
   position: relative;
   padding-left: 1rem;
+
   &:before {
     position: absolute;
     top: 1px;
@@ -94,4 +96,13 @@ export const Tutorial = styled.div`
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12.71' height='12.71' viewBox='0 0 12.71 12.71'%3E%3Cpath id='Icon_simple-gratipay' data-name='Icon simple-gratipay' d='M12.71,6.355A6.355,6.355,0,1,1,6.355,0,6.355,6.355,0,0,1,12.71,6.355ZM8.94,3.96a1.3,1.3,0,0,0-1.751.3A.973.973,0,0,1,6.4,4.6a.973.973,0,0,1-.79-.336,1.3,1.3,0,0,0-1.75-.3A1.316,1.316,0,0,0,3.51,5.8L6.4,9.718,9.291,5.8a1.318,1.318,0,0,0-.35-1.843Z' fill='%23f8c200'/%3E%3C/svg%3E%0A");
     margin-right: 4px;
   }
+`;
+
+export const Tooltip = styled(RawTooltip)``;
+
+export const Count = styled.span`
+  font-size: 16px;
+  padding-left: 4px;
+  font-weight: 300;
+  color: #c7c7c7;
 `;

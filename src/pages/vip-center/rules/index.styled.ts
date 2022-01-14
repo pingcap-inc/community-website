@@ -17,7 +17,7 @@ export const Container = styled.div`
 
   a {
     text-decoration: none;
-    color: #409eff;
+    color: ${colors.B1};
   }
 
   p {
@@ -25,7 +25,7 @@ export const Container = styled.div`
   }
 
   p.ps {
-    color: #056ab3;
+    color: ${colors.B1};
   }
 
   .red-backgroud {
@@ -47,5 +47,4 @@ export const Container = styled.div`
     border: 1px solid;
     padding: 0.5rem;
   }
-
 `;

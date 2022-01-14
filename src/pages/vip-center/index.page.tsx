@@ -60,8 +60,8 @@ const Page = () => {
             <Styled.Name>{meData.username}</Styled.Name>
             <Styled.Level>V{pointsData.current_level}</Styled.Level>
           </div>
-          <Button type="primary" onClick={checkIn} disabled={!checkedIn}>
-            {checkedIn ? '签到' : '已签到'}
+          <Button type="primary" onClick={checkIn} disabled={checkedIn}>
+            {!checkedIn ? '签到' : '已签到'}
           </Button>
           <Modal title="签到成功" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <p>{checkInMessage}</p>
@@ -71,13 +71,20 @@ const Page = () => {
           <Styled.Score>{pointsData.current_points}</Styled.Score>
           <Styled.Rank>/rank {pointsData.current_rank}</Styled.Rank>
         </Row>
-        <Progress percent={pointsData.level_desc.progress * 100} />
+        <Styled.Tooltip title={`当前经验值 ${pointsData.current_exps}`}>
+          <Progress showInfo={false} percent={pointsData.level_desc.progress * 100} />
+        </Styled.Tooltip>
         <Styled.Tip>
-          还差 {pointsData.level_desc.min_exps - pointsData.current_points} 经验升级为 V{pointsData.current_level + 1}
+          还差 {pointsData.level_desc.max_exps - pointsData.current_points} 经验升级为 V{pointsData.current_level + 1}
           ，查看<Styled.Link href="/vip-center/rules">升级小攻略</Styled.Link>
         </Styled.Tip>
       </Styled.LevelContainer>
-      <Styled.Title>徽章成就</Styled.Title>
+      <Styled.Title>
+        徽章成就{' '}
+        <Styled.Count>
+          {badgesData.filter((v) => v.has_badge).length} / {badgesData.length}
+        </Styled.Count>
+      </Styled.Title>
       <Styled.BadgesContainer>
         <Row gutter={[16, 16]}>
           {badgesData.map((badge) => (

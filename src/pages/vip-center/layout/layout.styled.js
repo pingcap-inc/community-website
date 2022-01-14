@@ -1,8 +1,9 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
+import { mixins } from '@tidb-community/ui';
 
 export const Wrapper = styled.div`
-  background-color: ${colors.M2};
+  background-color: #e9eaee;
+  padding-bottom: 2rem;
 `;
 
 export const Container = styled.div`

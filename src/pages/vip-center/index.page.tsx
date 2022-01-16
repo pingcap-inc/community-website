@@ -13,7 +13,9 @@ import { MeContext } from '../../context/me.context';
 const Page = () => {
   const { isReady } = useRouter();
 
-  const { data } = useSWR<api.ApiResponse<{ data: api.points.GetMeData }, any>, any>(isReady && ['points.getMe']);
+  const { data, mutate } = useSWR<api.ApiResponse<{ data: api.points.GetMeData }, any>, any>(
+    isReady && ['points.getMe']
+  );
   const { data: badges } = useSWR<api.ApiResponse<api.asktug.Badges, any>, any>(isReady && ['asktug.getBadgesList']);
   const pointsData = data?.data;
   const badgesData = badges?.data;
@@ -30,6 +32,7 @@ const Page = () => {
       );
       setIsModalVisible(true);
     }
+    await mutate();
   };
 
   const [isModalVisible, setIsModalVisible] = useState(false);

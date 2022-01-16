@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import { api } from '@tidb-community/datasource';
 // @ts-ignore
 import { PageLoader } from '~/components';
-import { MeContext } from '../../context/me.context';
+import { MeContext } from '../../context';
 
 const Page = () => {
   const { isReady } = useRouter();
@@ -20,13 +20,11 @@ const Page = () => {
   const pointsData = data?.data;
   const badgesData = badges?.data;
 
-  const [checkedIn, setCheckedIn] = useState(pointsData?.is_today_checked);
   const [checkInMessage, setCheckInMessage] = useState('');
 
   const checkIn = async () => {
     const res = await api.points.checkIn();
     if (res.data) {
-      setCheckedIn(true);
       setCheckInMessage(
         `成功签到！\n连续签到 ${res.data.continues_checkin_count} 天, 成功获得 ${res.data.points} 积分奖励\n。明天继续签到可获得 ${res.data.tomorrow_points} 积分。`
       );
@@ -63,8 +61,8 @@ const Page = () => {
             <Styled.Name>{meData.username}</Styled.Name>
             <Styled.Level>V{pointsData.current_level}</Styled.Level>
           </div>
-          <Button type="primary" onClick={checkIn} disabled={checkedIn}>
-            {!checkedIn ? '签到' : '已签到'}
+          <Button type="primary" onClick={checkIn} disabled={pointsData.is_today_checked}>
+            {!pointsData.is_today_checked ? '签到' : '已签到'}
           </Button>
           <Modal title="签到成功" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
             <p>{checkInMessage}</p>
@@ -74,11 +72,27 @@ const Page = () => {
           <Styled.Score>{pointsData.current_points}</Styled.Score>
           <Styled.Rank>/rank {pointsData.current_rank}</Styled.Rank>
         </Row>
-        <Styled.Tooltip title={`当前经验值 ${pointsData.current_exps}`}>
+        <Styled.Tooltip
+          align={{
+            offset: [-16, 0],
+            // @ts-ignore
+            targetOffset: [-pointsData.level_desc.progress * 100 + '%', 0],
+          }}
+          placement="topLeft"
+          title={`当前经验值 ${pointsData.current_exps}`}
+        >
           <Progress showInfo={false} percent={pointsData.level_desc.progress * 100} />
         </Styled.Tooltip>
+        <Row justify={'space-between'}>
+          <Col>
+            <Styled.Subscript>{pointsData.level_desc.min_exps}</Styled.Subscript>
+          </Col>
+          <Col>
+            <Styled.Subscript>{pointsData.level_desc.max_exps}</Styled.Subscript>
+          </Col>
+        </Row>
         <Styled.Tip>
-          还差 {pointsData.level_desc.max_exps - pointsData.current_points} 经验升级为 V{pointsData.current_level + 1}
+          还差 {pointsData.level_desc.max_exps - pointsData.current_exps} 经验升级为 V{pointsData.current_level + 1}
           ，查看<Styled.Link href="/vip-center/rules">升级小攻略</Styled.Link>
         </Styled.Tip>
       </Styled.LevelContainer>
@@ -89,7 +103,7 @@ const Page = () => {
         </Styled.Count>
       </Styled.Title>
       <Styled.BadgesContainer>
-        <Row gutter={[16, 16]}>
+        <Row gutter={[16, 8]}>
           {badgesData.map((badge) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>

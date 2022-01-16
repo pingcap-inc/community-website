@@ -41,6 +41,11 @@ export const Rank = styled(Name)`
   padding-left: 4px;
 `;
 
+export const Subscript = styled.div`
+  ${mixins.typography('p2')};
+  color: ${colors.F2};
+`;
+
 export const Tip = styled.div`
   ${mixins.typography('p2')};
   color: ${colors.F2};
@@ -80,7 +85,10 @@ export const BadgeIcon = styled.img`
   height: 64px;
 `;
 
-export const BadgeName = styled.span``;
+export const BadgeName = styled.span`
+  width: 100%;
+  text-align: center;
+`;
 
 export const Tutorial = styled.div`
   color: ${colors.F1};
@@ -98,7 +106,7 @@ export const Tutorial = styled.div`
   }
 `;
 
-export const Tooltip = styled(RawTooltip)``;
+export const Tooltip: typeof RawTooltip = styled(RawTooltip)``;
 
 export const Count = styled.span`
   font-size: 16px;

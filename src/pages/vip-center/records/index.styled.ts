@@ -9,6 +9,7 @@ export const PointsContainer = styled.div`
   justify-content: space-between;
   background-color: ${colors.M1};
   padding: 1rem;
+  border-radius: 6px;
 `;
 
 export const PointsContainerLabel = styled.span`

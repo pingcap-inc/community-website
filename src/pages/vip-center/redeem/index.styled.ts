@@ -1,11 +1,12 @@
 import styled from 'styled-components';
 // @ts-ignore
-import { colors } from '@tidb-community/ui';
+import { colors, mixin } from '@tidb-community/ui';
 
 export const PointsContainer = styled.div`
   background-color: ${colors.M1};
   padding: 1rem;
   margin-bottom: 1rem;
+  border-radius: 6px;
 `;
 
 export const PointsContainerInner = styled.div`

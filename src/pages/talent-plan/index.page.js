@@ -13,6 +13,7 @@ import NextSteps from '~/pages/talent-plan/nextSteps';
 import Organizers from '~/pages/talent-plan/organizers';
 import Stories from '~/pages/talent-plan/stories';
 import Others from '~/pages/talent-plan/others';
+import Ranking from '~/pages/talent-plan/ranking';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common', 'page-talent-plan'])(ctx);
@@ -29,6 +30,7 @@ const Page = ({ data }) => (
     <CommunityHead />
     <CoreLayout>
       <Banner />
+      <Ranking />
       <Labs />
       <Institutes />
       <Team />

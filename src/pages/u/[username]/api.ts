@@ -2,6 +2,7 @@ import axios from 'axios';
 
 const askTUGDomain = 'https://asktug.com';
 const blogDomain = process.env.NEXT_PUBLIC_API_BASE_URL ?? '';
+const asktugApiDefaultPageSize = 30;
 
 export interface IRawBadges {
   id: number;
@@ -98,7 +99,12 @@ export interface IUserAction {
 export const getPostUrl = (topic_id: number, post_number: number) =>
   `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;
 
-export async function getAnswersByUsername(username: string, offset: number = 0): Promise<IUserAction[]> {
+export async function getAnswersByUsername(
+  username: string,
+  pageNumber: number = 0,
+  pageSize: number = 10
+): Promise<IUserAction[]> {
+  const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
   const result = await axios.get(
     `${askTUGDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`
   );

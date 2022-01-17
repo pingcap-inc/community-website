@@ -2,10 +2,11 @@ import * as React from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Pagination, Select } from 'antd';
+import { Select } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAnswersByUsername,
@@ -18,6 +19,7 @@ import {
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
+import { useRouter } from 'next/router';
 
 interface IProps {
   badges: IRawBadges[];
@@ -31,25 +33,22 @@ interface IQuery extends ParsedUrlQuery {
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username, page, size } = ctx.params;
-  const actualPage: number = page !== undefined ? Number(page) ?? 1 : 1;
-  const actualSize: number = size !== undefined ? Number(size) ?? 30 : 30;
-  const offset = actualPage * 30 - actualSize;
+  const { username } = ctx.params;
+  const pageInfo = getPageQuery(ctx.query);
   const [i18nProps, badges, profile, answers] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
-    getAnswersByUsername(username, offset),
+    getAnswersByUsername(username, pageInfo.page, pageInfo.size),
   ]);
   return { props: { ...i18nProps, badges, profile, answers } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
   const { badges, profile, answers } = props;
-  const onChange = () => {
-    //  TODO: handle page change
-  };
+  const router = useRouter();
+  const pageInfo = getPageQuery(router.query);
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
@@ -71,9 +70,6 @@ export default function ProfileAnswerPage(props: IProps) {
           />
         ))}
       </CommonStyled.List>
-      <CommonStyled.Pagination>
-        <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
-      </CommonStyled.Pagination>
     </ProfileLayout>
   );
 }

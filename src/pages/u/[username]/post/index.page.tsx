@@ -7,7 +7,7 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
-import { HeartOutlined, MessageOutlined, StarOutlined, EyeOutlined } from '@ant-design/icons';
+import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
 import { getBadgesByUsername, getPostsByUsername, getUserProfileByUsername, IPost, IProfile, IRawBadges } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';

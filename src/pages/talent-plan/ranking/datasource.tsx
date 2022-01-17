@@ -254,3 +254,26 @@ export const tikv_columns = [
     key: 'score',
   },
 ];
+
+export const tikv_columns_participation = [
+  {
+    title: '战队名称',
+    dataIndex: 'name',
+    key: 'name',
+  },
+  {
+    title: '单位',
+    dataIndex: 'college',
+    key: 'college',
+  },
+  {
+    title: 'Github ID',
+    dataIndex: 'github',
+    key: 'github',
+  },
+  {
+    title: '互动积分',
+    dataIndex: 'score',
+    key: 'score',
+  },
+];

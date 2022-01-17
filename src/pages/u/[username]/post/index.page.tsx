@@ -8,51 +8,38 @@ import { GetServerSideProps } from 'next';
 import { Pagination, Select, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { HeartOutlined, MessageOutlined, StarOutlined, EyeOutlined } from '@ant-design/icons';
-import { getBadgesByUsername, getUserProfileByUsername, IProfile, IRawBadges } from '../api';
+import { getBadgesByUsername, getPostsByUsername, getUserProfileByUsername, IPost, IProfile, IRawBadges } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
+  posts: IPost[];
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
+  page?: string;
+  size?: string;
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
-  const [i18nProps, badges, profile] = await Promise.all([
+  const [i18nProps, badges, profile, posts] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
+    getPostsByUsername(username),
   ]);
-  return { props: { ...i18nProps, badges, profile } };
+  return { props: { ...i18nProps, badges, profile, posts } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile } = props;
+  const { badges, profile, posts } = props;
   const onChange = () => {
     //  TODO: handle page change
   };
-  const date = getRelativeDatetime(new Date('Jan 01,2022 01:02:03'));
-  const numsDom = (
-    <Space size={24}>
-      <div>
-        <HeartOutlined /> 16
-      </div>
-      <div>
-        <MessageOutlined /> 16
-      </div>
-      <div>
-        <StarOutlined /> 16
-      </div>
-      <div>
-        <EyeOutlined /> 16
-      </div>
-    </Space>
-  );
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
@@ -64,16 +51,29 @@ export default function ProfileAnswerPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((value) => (
+        {posts.map((value) => (
           <ListItem
-            key={value}
-            url={'#'}
-            title={'ansbile升级集群V3到4.0.14问题'}
-            summary={
-              '这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl: 这个场景就比较痛苦了，官方后续只会支持tiup 的迭代。。Evict 的策略 是通过 PD 来设定的，目前你出现的问题，基本上都是环境问题了，可能无法解决 :rofl:'
+            key={value.id}
+            url={`/blog/${value.slug}`}
+            title={value.title}
+            summary={value.title}
+            metadataStart={
+              <Space size={24}>
+                <div>
+                  <HeartOutlined /> {value.likes}
+                </div>
+                <div>
+                  <MessageOutlined /> {value.comments}
+                </div>
+                {/*<div>*/}
+                {/*  <StarOutlined /> xx*/}
+                {/*</div>*/}
+                {/*<div>*/}
+                {/*  <EyeOutlined /> xx*/}
+                {/*</div>*/}
+              </Space>
             }
-            metadataStart={numsDom}
-            metadataEnd={date}
+            metadataEnd={getRelativeDatetime(value.publishedAt)}
           />
         ))}
       </CommonStyled.List>

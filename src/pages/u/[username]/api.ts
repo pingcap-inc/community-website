@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 const askTUGDomain = 'https://asktug.com';
+const blogDomain = process.env.NEXT_PUBLIC_API_BASE_URL ?? '';
 
 export interface IRawBadges {
   id: number;
@@ -132,4 +133,38 @@ export async function getQuestionsByUsername(
     `${askTUGDomain}/topics/created-by/${username}.json?page=${page}&per_page=${per_page}`
   );
   return result.data.topic_list?.topics ?? [];
+}
+
+export interface IBlogAuthor {
+  id: number;
+  username: string;
+  avatarURL: string;
+}
+
+export interface IBlogCategory {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface IPost {
+  id: number;
+  slug: string;
+  status: string;
+  author: IBlogAuthor;
+  origin: string;
+  title: string;
+  publishedAt: Date;
+  recommended: boolean;
+  recommendAt?: Date;
+  tags: [];
+  likes: number;
+  comments: number;
+}
+
+export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IPost[]> {
+  const pageStr = page ?? '';
+  const sizeStr = size ?? '';
+  const result = await axios.get(`${blogDomain}/blog/api/users/${username}/posts?page=${pageStr}&size=${sizeStr}`);
+  return result.data.content ?? [];
 }

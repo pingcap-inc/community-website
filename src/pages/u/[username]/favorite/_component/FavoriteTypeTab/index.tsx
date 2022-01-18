@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Radio } from 'antd';
 import Link from 'next/link';
-import * as CommonStyled from './index.styled';
+import * as Styled from './index.styled';
 
 export enum EFavoriteType {
   // eslint-disable-next-line no-unused-vars
@@ -17,15 +16,13 @@ export interface IProps {
 
 export default function FavoriteTypeTab({ username, currentType }: IProps) {
   return (
-    <CommonStyled.Tab>
-      <Radio.Group defaultValue={currentType}>
-        <Link href={`/u/${username}/favorite/${EFavoriteType.article}`} passHref>
-          <Radio.Button value={EFavoriteType.article}>文章</Radio.Button>
-        </Link>
-        <Link href={`/u/${username}/favorite/${EFavoriteType.topic}`} passHref>
-          <Radio.Button value={EFavoriteType.topic}>帖子</Radio.Button>
-        </Link>
-      </Radio.Group>
-    </CommonStyled.Tab>
+    <Styled.Tab>
+      <Link href={`/u/${username}/favorite/${EFavoriteType.article}`} passHref>
+        <Styled.TabItem selected={currentType === EFavoriteType.article}>文章</Styled.TabItem>
+      </Link>
+      <Link href={`/u/${username}/favorite/${EFavoriteType.topic}`} passHref>
+        <Styled.TabItem selected={currentType === EFavoriteType.topic}>帖子</Styled.TabItem>
+      </Link>
+    </Styled.Tab>
   );
 }

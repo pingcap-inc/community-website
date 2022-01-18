@@ -65,7 +65,7 @@ export default function ProfileAnswerPage(props: IProps) {
       <CommonStyled.Action>
         <Tab selected={EUgcType.favorite} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
       </CommonStyled.Action>
-      <FavoriteTypeTab currentType={EFavoriteType.topic} username={username} />
+      <FavoriteTypeTab currentType={EFavoriteType.article} username={username} />
       <CommonStyled.List>
         {/*{favorites.map((value) => (*/}
         {/*  <ListItem*/}

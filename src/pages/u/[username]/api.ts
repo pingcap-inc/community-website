@@ -166,6 +166,7 @@ export interface IPost {
   author: IBlogAuthor;
   origin: string;
   title: string;
+  summary: string;
   publishedAt: Date;
   recommended: boolean;
   recommendAt?: Date;

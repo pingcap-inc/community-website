@@ -105,7 +105,7 @@ export default function ProfileAnswerPage(props: IProps) {
                 key={value.id}
                 url={`/blog/${value.slug}`}
                 title={value.title}
-                summary={value.title}
+                summary={value.summary}
                 metadataStart={
                   <Space size={24}>
                     <div>

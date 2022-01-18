@@ -113,7 +113,12 @@ export async function getAnswersByUsername(
   return user_actions ?? [];
 }
 
-export async function getFavoritesByUsername(username: string, offset: number = 0): Promise<IUserAction[]> {
+export async function getFavoritesByUsername(
+  username: string,
+  pageNumber: number = 0,
+  pageSize: number = 10
+): Promise<IUserAction[]> {
+  const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
   const result = await axios.get(
     `${askTUGDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`
   );

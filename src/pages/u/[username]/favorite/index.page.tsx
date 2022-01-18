@@ -5,7 +5,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Pagination } from 'antd';
+import { List, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getBadgesByUsername,
@@ -18,11 +18,16 @@ import {
 } from '../api';
 import { ParsedUrlQuery } from 'querystring';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useRouter } from 'next/router';
+import { getPageQuery } from '~/utils/pagination.utils';
+import { useState } from 'react';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   favorites: IUserAction[];
+  username: string;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -31,24 +36,28 @@ interface IQuery extends ParsedUrlQuery {
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username, page, size } = ctx.params;
-  const actualPage: number = page !== undefined ? Number(page) ?? 1 : 1;
-  const actualSize: number = size !== undefined ? Number(size) ?? 30 : 30;
-  const offset = actualPage * 30 - actualSize;
+  const { username } = ctx.params;
+  const pageInfo = getPageQuery(ctx.query);
   const [i18nProps, badges, profile, favorites] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
-    getFavoritesByUsername(username, offset),
+    getFavoritesByUsername(username, pageInfo.page, pageInfo.size),
   ]);
-  return { props: { ...i18nProps, badges, profile, favorites } };
+  return { props: { ...i18nProps, badges, profile, favorites, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, favorites } = props;
-  const onChange = () => {
-    //  TODO: handle page change
+  const { badges, profile, favorites, username } = props;
+  const router = useRouter();
+  const pageInfo = getPageQuery(router.query);
+  const [page, setPage] = useState(pageInfo.page);
+  const [data, setData] = useState(favorites);
+  const loadMoreData = async () => {
+    const newData = await getFavoritesByUsername(username, page, pageInfo.size);
+    setData((data) => [...data, ...newData]);
+    setPage((page) => page + 1);
   };
   return (
     <ProfileLayout badges={badges} profile={profile}>
@@ -56,19 +65,40 @@ export default function ProfileAnswerPage(props: IProps) {
         <Tab selected={EUgcType.favorite} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
       </CommonStyled.Action>
       <CommonStyled.List>
-        {favorites.map((value) => (
-          <ListItem
-            key={value.post_id}
-            url={getPostUrl(value.topic_id, value.post_number)}
-            title={value.title}
-            summary={value.excerpt}
-            metadataEnd={getRelativeDatetime(value.created_at)}
+        {/*{favorites.map((value) => (*/}
+        {/*  <ListItem*/}
+        {/*    key={value.post_id}*/}
+        {/*    url={getPostUrl(value.topic_id, value.post_number)}*/}
+        {/*    title={value.title}*/}
+        {/*    summary={value.excerpt}*/}
+        {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
+        {/*  />*/}
+        {/*))}*/}
+        <InfiniteScroll
+          dataLength={data.length}
+          next={loadMoreData}
+          hasMore={data.length !== 0}
+          loader={
+            <div style={{ marginTop: '16px' }}>
+              <Skeleton avatar paragraph={{ rows: 1 }} active />
+            </div>
+          }
+        >
+          <List
+            dataSource={data}
+            locale={{ emptyText: '暂无数据' }}
+            renderItem={(value) => (
+              <ListItem
+                key={value.post_id}
+                url={getPostUrl(value.topic_id, value.post_number)}
+                title={value.title}
+                summary={value.excerpt}
+                metadataEnd={getRelativeDatetime(value.created_at)}
+              />
+            )}
           />
-        ))}
+        </InfiniteScroll>
       </CommonStyled.List>
-      <CommonStyled.Pagination>
-        <Pagination showQuickJumper defaultCurrent={2} total={500} onChange={onChange} />
-      </CommonStyled.Pagination>
     </ProfileLayout>
   );
 }

@@ -16,6 +16,8 @@ import {
   IProfile,
   IQuestions,
   IRawBadges,
+  getSummaryByUsername,
+  IProfileSummary,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
@@ -27,6 +29,7 @@ import { useState } from 'react';
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
+  summary: IProfileSummary;
   questions: IQuestions[];
   username: string;
 }
@@ -39,18 +42,19 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, questions] = await Promise.all([
+  const [i18nProps, badges, profile, summary, questions] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
+    getSummaryByUsername(username),
     getQuestionsByUsername(username, pageInfo.page, pageInfo.size),
   ]);
-  return { props: { ...i18nProps, badges, profile, questions, username } };
+  return { props: { ...i18nProps, badges, profile, summary, questions, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, questions, username } = props;
+  const { badges, profile, summary, questions, username } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);
@@ -63,7 +67,15 @@ export default function ProfileAnswerPage(props: IProps) {
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
-        <Tab selected={EUgcType.question} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
+        <Tab
+          selected={EUgcType.question}
+          nums={{
+            answer: summary.user_summary.post_count,
+            question: summary.user_summary.topic_count,
+            // post: summary.user_summary.post_count,
+            // favorite: summary.user_summary.post_count,
+          }}
+        />
         <Select defaultValue={''}>
           <Select.Option value={''}>提问状态</Select.Option>
           <Select.Option value={'1'}>提问状态</Select.Option>

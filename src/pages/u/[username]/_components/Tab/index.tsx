@@ -17,10 +17,10 @@ export enum EUgcType {
 export interface IPropsTab {
   selected: EUgcType;
   nums: {
-    answer: number;
-    question: number;
-    post: number;
-    favorite: number;
+    answer?: number;
+    question?: number;
+    post?: number;
+    favorite?: number;
   };
 }
 

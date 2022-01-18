@@ -11,9 +11,11 @@ import ListItem from '../_components/ListItem';
 import {
   getAskTugFavoritesByUsername,
   getBadgesByUsername,
+  getSummaryByUsername,
   getTopicUrl,
   getUserProfileByUsername,
   IProfile,
+  IProfileSummary,
   IRawBadges,
   IUserAction,
 } from '../api';
@@ -27,6 +29,7 @@ import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_c
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
+  summary: IProfileSummary;
   favoriteTopics: IUserAction[];
   username: string;
 }
@@ -39,18 +42,19 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, favoriteTopics] = await Promise.all([
+  const [i18nProps, badges, profile, summary, favoriteTopics] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
+    getSummaryByUsername(username),
     getAskTugFavoritesByUsername(username, pageInfo.page, pageInfo.size),
   ]);
-  return { props: { ...i18nProps, badges, profile, favoriteTopics, username } };
+  return { props: { ...i18nProps, badges, profile, summary, favoriteTopics, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, favoriteTopics, username } = props;
+  const { badges, profile, summary, favoriteTopics, username } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);
@@ -63,7 +67,15 @@ export default function ProfileAnswerPage(props: IProps) {
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
-        <Tab selected={EUgcType.favorite} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
+        <Tab
+          selected={EUgcType.favorite}
+          nums={{
+            answer: summary.user_summary.post_count,
+            question: summary.user_summary.topic_count,
+            // post: summary.user_summary.post_count,
+            // favorite: summary.user_summary.post_count,
+          }}
+        />
       </CommonStyled.Action>
       <FavoriteTypeTab currentType={EFavoriteType.article} username={username} />
       <CommonStyled.List>

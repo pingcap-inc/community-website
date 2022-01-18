@@ -70,15 +70,6 @@ export default function ProfileAnswerPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        {/*{answers.map((value) => (*/}
-        {/*  <ListItem*/}
-        {/*    key={value.post_id}*/}
-        {/*    url={getPostUrl(value.topic_id, value.post_number)}*/}
-        {/*    title={value.title}*/}
-        {/*    summary={value.excerpt}*/}
-        {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
-        {/*  />*/}
-        {/*))}*/}
         <InfiniteScroll
           dataLength={data.length}
           next={loadMoreData}
@@ -88,10 +79,8 @@ export default function ProfileAnswerPage(props: IProps) {
               <Skeleton avatar paragraph={{ rows: 1 }} active />
             </div>
           }
-          // endMessage={<Divider plain>没有更多数据了</Divider>}
         >
           <List
-            // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
             dataSource={data}
             locale={{ emptyText: '暂无数据' }}
             renderItem={(value) => {

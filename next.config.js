@@ -72,6 +72,11 @@ const config = {
         destination: '/u/:username/answer',
         permanent: false,
       },
+      {
+        source: '/u/:username/favorite',
+        destination: '/u/:username/favorite/topic',
+        permanent: false,
+      },
     ];
   },
 };

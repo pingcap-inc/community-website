@@ -11,7 +11,7 @@ import ListItem from '../_components/ListItem';
 import {
   getAnswersByUsername,
   getBadgesByUsername,
-  getPostUrl,
+  getTopicUrl,
   getUserProfileByUsername,
   IProfile,
   IRawBadges,
@@ -73,7 +73,7 @@ export default function ProfileAnswerPage(props: IProps) {
         {/*{answers.map((value) => (*/}
         {/*  <ListItem*/}
         {/*    key={value.post_id}*/}
-        {/*    url={getPostUrl(value.topic_id, value.post_number)}*/}
+        {/*    url={getTopicUrl(value.topic_id, value.post_number)}*/}
         {/*    title={value.title}*/}
         {/*    summary={value.excerpt}*/}
         {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
@@ -96,7 +96,7 @@ export default function ProfileAnswerPage(props: IProps) {
               return (
                 <ListItem
                   key={value.post_id}
-                  url={getPostUrl(value.topic_id, value.post_number)}
+                  url={getTopicUrl(value.topic_id, value.post_number)}
                   title={value.title}
                   summary={value.excerpt}
                   metadataEnd={getRelativeDatetime(value.created_at)}

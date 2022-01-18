@@ -1,33 +1,33 @@
 import * as React from 'react';
+import { useState } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { List, Select, Skeleton, Space } from 'antd';
+import { List, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
-import { EyeOutlined, MessageOutlined } from '@ant-design/icons';
 import {
+  getAskTugFavoritesByUsername,
   getBadgesByUsername,
   getTopicUrl,
-  getQuestionsByUsername,
   getUserProfileByUsername,
   IProfile,
-  IQuestions,
   IRawBadges,
+  IUserAction,
 } from '../api';
-import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
-import { getPageQuery } from '~/utils/pagination.utils';
+import { getRelativeDatetime } from '~/utils/datetime.utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { getPageQuery } from '~/utils/pagination.utils';
+import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
-  questions: IQuestions[];
+  favoriteTopics: IUserAction[];
   username: string;
 }
 interface IQuery extends ParsedUrlQuery {
@@ -39,54 +39,40 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, questions] = await Promise.all([
+  const [i18nProps, badges, profile, favoriteTopics] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
-    getQuestionsByUsername(username, pageInfo.page, pageInfo.size),
+    getAskTugFavoritesByUsername(username, pageInfo.page, pageInfo.size),
   ]);
-  return { props: { ...i18nProps, badges, profile, questions, username } };
+  return { props: { ...i18nProps, badges, profile, favoriteTopics, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, questions, username } = props;
+  const { badges, profile, favoriteTopics, username } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);
-  const [data, setData] = useState(questions);
+  const [data, setData] = useState(favoriteTopics);
   const loadMoreData = async () => {
-    const newData = await getQuestionsByUsername(username, page, pageInfo.size);
+    const newData = await getAskTugFavoritesByUsername(username, page, pageInfo.size);
     setData((data) => [...data, ...newData]);
     setPage((page) => page + 1);
   };
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
-        <Tab selected={EUgcType.question} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
-        <Select defaultValue={''}>
-          <Select.Option value={''}>提问状态</Select.Option>
-          <Select.Option value={'1'}>提问状态</Select.Option>
-          <Select.Option value={'2'}>提问状态</Select.Option>
-        </Select>
+        <Tab selected={EUgcType.favorite} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
       </CommonStyled.Action>
+      <FavoriteTypeTab currentType={EFavoriteType.topic} username={username}/>
       <CommonStyled.List>
-        {/*{questions.map((value) => (*/}
+        {/*{favorites.map((value) => (*/}
         {/*  <ListItem*/}
-        {/*    key={value.id}*/}
-        {/*    url={getTopicUrl(value.id, 1)}*/}
+        {/*    key={value.post_id}*/}
+        {/*    url={getTopicUrl(value.topic_id, value.post_number)}*/}
         {/*    title={value.title}*/}
-        {/*    summary={''}*/}
-        {/*    metadataStart={*/}
-        {/*      <Space size={24}>*/}
-        {/*        <div>*/}
-        {/*          <MessageOutlined /> {value.reply_count}*/}
-        {/*        </div>*/}
-        {/*        <div>*/}
-        {/*          <EyeOutlined /> {value.views}*/}
-        {/*        </div>*/}
-        {/*      </Space>*/}
-        {/*    }*/}
+        {/*    summary={value.excerpt}*/}
         {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
         {/*  />*/}
         {/*))}*/}
@@ -105,20 +91,10 @@ export default function ProfileAnswerPage(props: IProps) {
             locale={{ emptyText: '暂无数据' }}
             renderItem={(value) => (
               <ListItem
-                key={value.id}
-                url={getTopicUrl(value.id, 1)}
+                key={value.post_id}
+                url={getTopicUrl(value.topic_id, value.post_number)}
                 title={value.title}
-                summary={''}
-                metadataStart={
-                  <Space size={24}>
-                    <div>
-                      <MessageOutlined /> {value.reply_count}
-                    </div>
-                    <div>
-                      <EyeOutlined /> {value.views}
-                    </div>
-                  </Space>
-                }
+                summary={value.excerpt}
                 metadataEnd={getRelativeDatetime(value.created_at)}
               />
             )}

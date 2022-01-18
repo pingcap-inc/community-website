@@ -6,6 +6,12 @@ export const Action = styled.div`
   align-items: center;
 `;
 
+export const Tab = styled.div`
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+`;
+
 export const List = styled.div`
   margin: 1.5rem auto;
 `;

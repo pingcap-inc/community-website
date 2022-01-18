@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useState } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
@@ -8,9 +9,9 @@ import { GetServerSideProps } from 'next';
 import { List, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
-  getBadgesByUsername,
   getAskTugFavoritesByUsername,
-  getPostUrl,
+  getBadgesByUsername,
+  getTopicUrl,
   getUserProfileByUsername,
   IProfile,
   IRawBadges,
@@ -21,12 +22,12 @@ import { getRelativeDatetime } from '~/utils/datetime.utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
-import { useState } from 'react';
+import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
-  favorites: IUserAction[];
+  favoriteTopics: IUserAction[];
   username: string;
 }
 interface IQuery extends ParsedUrlQuery {
@@ -38,22 +39,22 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, favorites] = await Promise.all([
+  const [i18nProps, badges, profile, favoriteTopics] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getAskTugFavoritesByUsername(username, pageInfo.page, pageInfo.size),
   ]);
-  return { props: { ...i18nProps, badges, profile, favorites, username } };
+  return { props: { ...i18nProps, badges, profile, favoriteTopics, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, favorites, username } = props;
+  const { badges, profile, favoriteTopics, username } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);
-  const [data, setData] = useState(favorites);
+  const [data, setData] = useState(favoriteTopics);
   const loadMoreData = async () => {
     const newData = await getAskTugFavoritesByUsername(username, page, pageInfo.size);
     setData((data) => [...data, ...newData]);
@@ -64,11 +65,12 @@ export default function ProfileAnswerPage(props: IProps) {
       <CommonStyled.Action>
         <Tab selected={EUgcType.favorite} nums={{ answer: 3, question: 4, post: 5, favorite: 6 }} />
       </CommonStyled.Action>
+      <FavoriteTypeTab currentType={EFavoriteType.topic} username={username} />
       <CommonStyled.List>
         {/*{favorites.map((value) => (*/}
         {/*  <ListItem*/}
         {/*    key={value.post_id}*/}
-        {/*    url={getPostUrl(value.topic_id, value.post_number)}*/}
+        {/*    url={getTopicUrl(value.topic_id, value.post_number)}*/}
         {/*    title={value.title}*/}
         {/*    summary={value.excerpt}*/}
         {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
@@ -90,7 +92,7 @@ export default function ProfileAnswerPage(props: IProps) {
             renderItem={(value) => (
               <ListItem
                 key={value.post_id}
-                url={getPostUrl(value.topic_id, value.post_number)}
+                url={getTopicUrl(value.topic_id, value.post_number)}
                 title={value.title}
                 summary={value.excerpt}
                 metadataEnd={getRelativeDatetime(value.created_at)}

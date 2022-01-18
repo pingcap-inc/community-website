@@ -97,7 +97,7 @@ export interface IUserAction {
   excerpt: string;
 }
 
-export const getPostUrl = (topic_id: number, post_number: number) =>
+export const getTopicUrl = (topic_id: number, post_number: number) =>
   `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;
 
 export async function getAnswersByUsername(

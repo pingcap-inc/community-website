@@ -183,3 +183,21 @@ export async function getPostsByUsername(username: string, page?: number, size?:
   );
   return result.data.content ?? [];
 }
+
+export interface IProfileSummary {
+  user_summary: {
+    likes_given: number;
+    likes_received: number;
+    topics_entered: number;
+    posts_read_count: number;
+    days_visited: number;
+    topic_count: number;
+    post_count: number;
+    time_read: number;
+  };
+}
+
+export async function getSummaryByUsername(username: string): Promise<IProfileSummary> {
+  const result = await axios.get(`${askTUGDomain}/u/${username}/summary.json`);
+  return result.data;
+}

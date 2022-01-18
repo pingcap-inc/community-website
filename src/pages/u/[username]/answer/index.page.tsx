@@ -54,12 +54,10 @@ export default function ProfileAnswerPage(props: IProps) {
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);
   const [data, setData] = useState(answers);
-  const [hasMore, setHasMore] = useState(true);
   const loadMoreData = async () => {
     const newData = await getAnswersByUsername(username, page, pageInfo.size);
     setData((data) => [...data, ...newData]);
     setPage((page) => page + 1);
-    setHasMore(newData.length !== 0);
   };
   return (
     <ProfileLayout badges={badges} profile={profile}>
@@ -84,7 +82,7 @@ export default function ProfileAnswerPage(props: IProps) {
         <InfiniteScroll
           dataLength={data.length}
           next={loadMoreData}
-          hasMore={hasMore}
+          hasMore={data.length !== 0}
           loader={
             <div style={{ marginTop: '16px' }}>
               <Skeleton avatar paragraph={{ rows: 1 }} active />

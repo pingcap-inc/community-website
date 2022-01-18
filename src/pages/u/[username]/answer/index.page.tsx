@@ -6,7 +6,7 @@ import { getPageQuery } from '~/utils/pagination.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Select } from 'antd';
+import { Divider, List, Select, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAnswersByUsername,
@@ -20,11 +20,14 @@ import {
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useState } from 'react';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   answers: IUserAction[];
+  username: string;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -42,13 +45,20 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getUserProfileByUsername(username),
     getAnswersByUsername(username, pageInfo.page, pageInfo.size),
   ]);
-  return { props: { ...i18nProps, badges, profile, answers } };
+  return { props: { ...i18nProps, badges, profile, answers, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, answers } = props;
+  const { badges, profile, answers, username } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
+  const [page, setPage] = useState(pageInfo.page);
+  const [data, setData] = useState(answers);
+  const loadMoreData = async () => {
+    const newData = await getAnswersByUsername(username, page, pageInfo.size);
+    setData((data) => [...data, ...newData]);
+    setPage((page) => page + 1);
+  };
   return (
     <ProfileLayout badges={badges} profile={profile}>
       <CommonStyled.Action>
@@ -60,15 +70,43 @@ export default function ProfileAnswerPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        {answers.map((value) => (
-          <ListItem
-            key={value.post_id}
-            url={getPostUrl(value.topic_id, value.post_number)}
-            title={value.title}
-            summary={value.excerpt}
-            metadataEnd={getRelativeDatetime(value.created_at)}
+        {/*{answers.map((value) => (*/}
+        {/*  <ListItem*/}
+        {/*    key={value.post_id}*/}
+        {/*    url={getPostUrl(value.topic_id, value.post_number)}*/}
+        {/*    title={value.title}*/}
+        {/*    summary={value.excerpt}*/}
+        {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
+        {/*  />*/}
+        {/*))}*/}
+        <InfiniteScroll
+          dataLength={data.length}
+          next={loadMoreData}
+          hasMore={data.length !== 0}
+          loader={
+            <div style={{ marginTop: '16px' }}>
+              <Skeleton avatar paragraph={{ rows: 1 }} active />
+            </div>
+          }
+          // endMessage={<Divider plain>没有更多数据了</Divider>}
+        >
+          <List
+            // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
+            dataSource={data}
+            locale={{ emptyText: '暂无数据' }}
+            renderItem={(value) => {
+              return (
+                <ListItem
+                  key={value.post_id}
+                  url={getPostUrl(value.topic_id, value.post_number)}
+                  title={value.title}
+                  summary={value.excerpt}
+                  metadataEnd={getRelativeDatetime(value.created_at)}
+                />
+              );
+            }}
           />
-        ))}
+        </InfiniteScroll>
       </CommonStyled.List>
     </ProfileLayout>
   );

@@ -1,7 +1,8 @@
 import axios from 'axios';
 
-const askTUGDomain = 'https://asktug.com';
+const askTUGDomain = `${process.env.NEXT_PUBLIC_API_BASE_URL}/_asktug` ?? 'https://asktug.com';
 const blogDomain = process.env.NEXT_PUBLIC_API_BASE_URL ?? '';
+const accountsDomain = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '';
 const asktugApiDefaultPageSize = 30;
 
 export interface IRawBadges {
@@ -28,7 +29,7 @@ export async function getBadgesByUsername(username: string): Promise<IRawBadges[
   const badgesMap = await getAllBadges();
   const result = await axios.get(`${askTUGDomain}/user-badges/${username}.json`);
   const { badges } = result.data;
-  badges.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
+  badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
   const badgesArr: IRawBadges[] = [];
   badgesMap.forEach((value) => badgesArr.push(value));
   return badgesArr;
@@ -51,7 +52,7 @@ export interface IProfile {
 }
 
 export async function getUserProfileByUsername(username: string): Promise<IProfile> {
-  const result = await axios.get(`https://accounts.pingcap.com/api/users/${username}`);
+  const result = await axios.get(`${accountsDomain}/api/users/${username}`);
   const { data } = result.data;
   return data;
 }

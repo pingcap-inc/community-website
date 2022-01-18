@@ -178,6 +178,8 @@ export interface IPost {
 export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IPost[]> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
-  const result = await axios.get(`${blogDomain}/blog/api/users/${username}/posts?page=${pageStr}&size=${sizeStr}`);
+  const result = await axios.get(
+    `${blogDomain}/blog/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`
+  );
   return result.data.content ?? [];
 }

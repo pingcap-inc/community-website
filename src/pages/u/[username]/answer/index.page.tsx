@@ -6,7 +6,7 @@ import { getPageQuery } from '~/utils/pagination.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { List, Select, Spin } from 'antd';
+import { List, Select, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAnswersByUsername,
@@ -85,7 +85,11 @@ export default function ProfileAnswerPage(props: IProps) {
           dataLength={data.length}
           next={loadMoreData}
           hasMore={hasMore}
-          loader={<Spin />}
+          loader={
+            <div style={{ marginTop: '16px' }}>
+              <Skeleton avatar paragraph={{ rows: 1 }} active />
+            </div>
+          }
           // endMessage={<Divider plain>没有更多数据了</Divider>}
         >
           <List

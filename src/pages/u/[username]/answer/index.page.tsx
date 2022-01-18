@@ -70,6 +70,15 @@ export default function ProfileAnswerPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
+        {/*{answers.map((value) => (*/}
+        {/*  <ListItem*/}
+        {/*    key={value.post_id}*/}
+        {/*    url={getPostUrl(value.topic_id, value.post_number)}*/}
+        {/*    title={value.title}*/}
+        {/*    summary={value.excerpt}*/}
+        {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
+        {/*  />*/}
+        {/*))}*/}
         <InfiniteScroll
           dataLength={data.length}
           next={loadMoreData}

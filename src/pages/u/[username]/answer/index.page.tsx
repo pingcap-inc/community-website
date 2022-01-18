@@ -6,7 +6,7 @@ import { getPageQuery } from '~/utils/pagination.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Divider, List, Select, Skeleton } from 'antd';
+import { List, Select, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAnswersByUsername,

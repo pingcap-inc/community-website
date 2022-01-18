@@ -113,7 +113,7 @@ export async function getAnswersByUsername(
   return user_actions ?? [];
 }
 
-export async function getFavoritesByUsername(
+export async function getAskTugFavoritesByUsername(
   username: string,
   pageNumber: number = 0,
   pageSize: number = 10

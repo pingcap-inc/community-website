@@ -9,7 +9,7 @@ import { List, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getBadgesByUsername,
-  getFavoritesByUsername,
+  getAskTugFavoritesByUsername,
   getPostUrl,
   getUserProfileByUsername,
   IProfile,
@@ -43,7 +43,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
-    getFavoritesByUsername(username, pageInfo.page, pageInfo.size),
+    getAskTugFavoritesByUsername(username, pageInfo.page, pageInfo.size),
   ]);
   return { props: { ...i18nProps, badges, profile, favorites, username } };
 };
@@ -55,7 +55,7 @@ export default function ProfileAnswerPage(props: IProps) {
   const [page, setPage] = useState(pageInfo.page);
   const [data, setData] = useState(favorites);
   const loadMoreData = async () => {
-    const newData = await getFavoritesByUsername(username, page, pageInfo.size);
+    const newData = await getAskTugFavoritesByUsername(username, page, pageInfo.size);
     setData((data) => [...data, ...newData]);
     setPage((page) => page + 1);
   };

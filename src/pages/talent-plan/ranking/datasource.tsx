@@ -237,21 +237,25 @@ export const tikv_columns = [
     title: '战队名称',
     dataIndex: 'name',
     key: 'name',
+    width: '25%'
   },
   {
     title: '单位',
     dataIndex: 'college',
     key: 'college',
+    width: '25%'
   },
   {
     title: 'Github ID',
     dataIndex: 'github',
     key: 'github',
+    width: '25%',
   },
   {
     title: '分数',
     dataIndex: 'score',
     key: 'score',
+    width: '25%',
   },
 ];
 
@@ -260,20 +264,24 @@ export const tikv_columns_participation = [
     title: '战队名称',
     dataIndex: 'name',
     key: 'name',
+    width: '25%'
   },
   {
     title: '单位',
     dataIndex: 'college',
     key: 'college',
+    width: '25%'
   },
   {
     title: 'Github ID',
     dataIndex: 'github',
     key: 'github',
+    width: '25%'
   },
   {
     title: '互动积分',
     dataIndex: 'score',
     key: 'score',
+    width: '25%',
   },
 ];

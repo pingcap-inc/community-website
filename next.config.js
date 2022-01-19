@@ -74,7 +74,7 @@ const config = {
       },
       {
         source: '/u/:username/favorite',
-        destination: '/u/:username/favorite/topic',
+        destination: '/u/:username/favorite/article',
         permanent: false,
       },
     ];

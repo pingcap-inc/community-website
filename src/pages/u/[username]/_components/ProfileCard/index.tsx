@@ -15,9 +15,9 @@ export interface IProfileCard {
   description: string;
   joinDate: string;
   nums: {
-    like: number;
-    answer: number;
-    post: number;
+    like?: number;
+    answer?: number;
+    post?: number;
   };
 }
 
@@ -56,15 +56,15 @@ export default function ProfileCard(props: IProfileCard) {
         <Styled.Nums>
           <Styled.NumsItem>
             <Styled.NumsItemKeyName>获赞</Styled.NumsItemKeyName>
-            <Styled.NumsItemValue>{nums.like}</Styled.NumsItemValue>
+            <Styled.NumsItemValue>{nums.like ?? 'N/A'}</Styled.NumsItemValue>
           </Styled.NumsItem>
           <Styled.NumsItem>
             <Styled.NumsItemKeyName>回答</Styled.NumsItemKeyName>
-            <Styled.NumsItemValue>{nums.answer}</Styled.NumsItemValue>
+            <Styled.NumsItemValue>{nums.answer ?? 'N/A'}</Styled.NumsItemValue>
           </Styled.NumsItem>
           <Styled.NumsItem>
             <Styled.NumsItemKeyName>文章</Styled.NumsItemKeyName>
-            <Styled.NumsItemValue>{nums.post}</Styled.NumsItemValue>
+            <Styled.NumsItemValue>{nums.post ?? 'N/A'}</Styled.NumsItemValue>
           </Styled.NumsItem>
         </Styled.Nums>
       </Styled.Main>

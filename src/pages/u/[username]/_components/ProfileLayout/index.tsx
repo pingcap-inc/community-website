@@ -12,9 +12,10 @@ export interface IProps {
   children: React.ReactNode;
   badges: IRawBadges[];
   profile: IProfile;
+  nums: { like?: number; answer?: number; post?: number };
 }
 
-export default function ProfileLayout({ children, badges, profile }: IProps) {
+export default function ProfileLayout({ children, badges, profile, nums }: IProps) {
   return (
     <PageDataContext.Provider value={{ data: undefined }}>
       <CommunityHead />
@@ -29,7 +30,7 @@ export default function ProfileLayout({ children, badges, profile }: IProps) {
                   level={profile.level}
                   description={profile.bio}
                   joinDate={profile.joined_at}
-                  nums={{ like: 45, answer: 16, post: 9 }}
+                  nums={nums}
                 />
                 <BadgeCard badges={badges} />
               </Space>

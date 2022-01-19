@@ -3,7 +3,7 @@ import * as Styled from './index.styled';
 import { BulbFilled } from '@ant-design/icons';
 import { IRawBadges } from '../../api';
 import { Tooltip } from 'antd';
-import Link from 'next/link';
+import { colors } from '@tidb-community/ui';
 
 export interface IProfileCard {
   badges: IRawBadges[];
@@ -24,11 +24,9 @@ export default function ProfileCard(props: IProfileCard) {
             {nums.current}/{nums.total}
           </Styled.TitleNums>
         </Styled.Title>
-        <Link href={'https://asktug.com/badges'} passHref>
-          <Styled.ActiveMore>
-            <BulbFilled /> 点亮更多徽章
-          </Styled.ActiveMore>
-        </Link>
+        <Styled.ActiveMore href={'https://asktug.com/badges'}>
+          <BulbFilled style={{ color: colors.T5 }} /> 点亮更多徽章
+        </Styled.ActiveMore>
       </Styled.Header>
       <Styled.Body>
         {mergedBadges.map((value) => (

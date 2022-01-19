@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { mixins } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
+import Anchor from '~/components/Anchor';
 
 export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
@@ -25,12 +26,15 @@ export const Title = styled.div`
 `;
 export const TitleText = styled.div`
   ${mixins.typography('h3')};
+  color: ${colors.F2};
 `;
 export const TitleNums = styled.div`
   ${mixins.typography('p2')};
   margin-left: 0.5rem;
 `;
-export const ActiveMore = styled.a``;
+export const ActiveMore = styled(Anchor)`
+  color: ${colors.B1};
+`;
 
 export const Body = styled.div`
   display: flex;

@@ -1,6 +1,8 @@
 import * as React from 'react';
-import Link from 'next/link';
 import * as Styled from './index.styled';
+import { Tabs } from 'antd';
+import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 export enum EFavoriteType {
   // eslint-disable-next-line no-unused-vars
@@ -15,14 +17,18 @@ export interface IProps {
 }
 
 export default function FavoriteTypeTab({ username, currentType }: IProps) {
+  const [activeKey, setActiveKey] = useState(currentType);
+  const router = useRouter();
+  const handleChange = async (key: EFavoriteType) => {
+    await router.push(`/u/${username}/favorite/${key}`);
+    setActiveKey(key);
+  };
   return (
     <Styled.Tab>
-      <Link href={`/u/${username}/favorite/${EFavoriteType.article}`} passHref>
-        <Styled.TabItem selected={currentType === EFavoriteType.article}>文章</Styled.TabItem>
-      </Link>
-      <Link href={`/u/${username}/favorite/${EFavoriteType.topic}`} passHref>
-        <Styled.TabItem selected={currentType === EFavoriteType.topic}>帖子</Styled.TabItem>
-      </Link>
+      <Tabs defaultActiveKey={currentType} onChange={handleChange} activeKey={activeKey} animated={false}>
+        <Tabs.TabPane tab={'文章'} key={EFavoriteType.article} />
+        <Tabs.TabPane tab={'帖子'} key={EFavoriteType.topic} />
+      </Tabs>
     </Styled.Tab>
   );
 }

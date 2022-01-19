@@ -16,21 +16,19 @@ import {
   IProfileSummary,
   IRawBadges,
 } from '../api';
-import { api } from '@tidb-community/datasource';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-
-const { getPostsByUsername } = api.blog.users.username;
+import { getPostsByUsername, getPostUrlBySlug, IResponse, IPost } from '../username';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
-  posts: api.blog.users.username.IResponse<api.blog.users.username.IPost>;
+  posts: IResponse<IPost>;
   username: string;
 }
 interface IQuery extends ParsedUrlQuery {
@@ -132,7 +130,7 @@ export default function ProfileAnswerPage(props: IProps) {
             renderItem={(value) => (
               <ListItem
                 key={value.id}
-                url={`/blog/${value.slug}`}
+                url={getPostUrlBySlug(value.slug)}
                 title={value.title}
                 summary={value.summary}
                 metadataStart={

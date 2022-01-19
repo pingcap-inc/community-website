@@ -1,8 +1,5 @@
 import { Page, Pagination, Post, PostStatus, UserInfo } from '../posts/[id]';
 
-import * as username from './username';
-export { username };
-
 interface Query extends Pagination {
   status?: PostStatus;
 }

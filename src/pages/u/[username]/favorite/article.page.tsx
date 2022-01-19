@@ -22,15 +22,13 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
-import { api } from '@tidb-community/datasource';
-
-const { getFavoritesByUsername, getPostUrlBySlug } = api.blog.users.username;
+import { getFavoritesByUsername, getPostUrlBySlug, IResponse, IPost } from '../username';
 
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
-  posts: api.blog.users.username.IResponse<api.blog.users.username.IPost>;
+  posts: IResponse<IPost>;
   username: string;
 }
 interface IQuery extends ParsedUrlQuery {

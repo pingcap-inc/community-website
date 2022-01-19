@@ -1,4 +1,5 @@
-import { blogClient } from '../../index';
+import { api } from '@tidb-community/datasource';
+const { blogClient } = api;
 
 export interface IBlogAuthor {
   id: number;

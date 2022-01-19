@@ -23,9 +23,8 @@ import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 import { api } from '@tidb-community/datasource';
-import { getPostUrlBySlug } from '@tidb-community/datasource/src/api/blog/users/username';
 
-const { getFavoritesByUsername } = api.blog.users.username;
+const { getFavoritesByUsername, getPostUrlBySlug } = api.blog.users.username;
 
 interface IProps {
   badges: IRawBadges[];

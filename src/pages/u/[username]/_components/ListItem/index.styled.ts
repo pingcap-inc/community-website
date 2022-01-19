@@ -3,7 +3,7 @@ import { mixins } from '@tidb-community/ui';
 import Anchor from '~/components/Anchor';
 
 export const ListItem = styled.div`
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
   ${mixins.boxShadow()};
   background-color: #fff;
   border-radius: 4px;

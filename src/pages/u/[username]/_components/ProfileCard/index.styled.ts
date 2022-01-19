@@ -75,7 +75,7 @@ export const NumsItem = styled.div`
     border-right: 2px solid ${colors.C2};
   }
   margin: 1rem 0;
-  padding: 0 2.5rem;
+  padding: 0 1.5rem;
 `;
 export const NumsItemKeyName = styled.div`
   ${mixins.typography('p2')};

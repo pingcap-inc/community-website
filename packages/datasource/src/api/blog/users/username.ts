@@ -40,6 +40,10 @@ export interface IResponse<T> {
   page: IPage;
 }
 
+export function getPostUrlBySlug(slug: IPost['slug']): string {
+  return `/blog/${slug}`;
+}
+
 export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IResponse<IPost>> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';

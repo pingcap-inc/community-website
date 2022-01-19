@@ -27,7 +27,7 @@ type EnrollFormContentAuditByIncumbencyCert = EnrollFormContentBase & {
 
 type EnrollFormContent = EnrollFormContentAuditByEmailCode | EnrollFormContentAuditByIncumbencyCert;
 
-const enroll: ApiRequestFunction<EnrollFormContent, void> & {
+declare const enroll: ApiRequestFunction<EnrollFormContent, void> & {
   sendCode: typeof sendCode;
   uploadIncumbencyCert: typeof uploadIncumbencyCert;
 };

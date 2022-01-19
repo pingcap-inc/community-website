@@ -3,6 +3,7 @@ import * as Styled from './index.styled';
 import { Tabs } from 'antd';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { Tab } from './index.styled';
 
 export enum EFavoriteType {
   // eslint-disable-next-line no-unused-vars
@@ -24,11 +25,11 @@ export default function FavoriteTypeTab({ username, currentType }: IProps) {
     setActiveKey(key);
   };
   return (
-    <Styled.Tab>
-      <Tabs defaultActiveKey={currentType} onChange={handleChange} activeKey={activeKey} animated={false}>
+    <Styled.FavoriteTypeTab>
+      <Styled.Tab defaultActiveKey={currentType} onChange={handleChange} activeKey={activeKey} animated={false}>
         <Tabs.TabPane tab={'文章'} key={EFavoriteType.article} />
         <Tabs.TabPane tab={'帖子'} key={EFavoriteType.topic} />
-      </Tabs>
-    </Styled.Tab>
+      </Styled.Tab>
+    </Styled.FavoriteTypeTab>
   );
 }

@@ -3,7 +3,6 @@ import * as Styled from './index.styled';
 import { Tabs } from 'antd';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { Tab } from './index.styled';
 
 export enum EFavoriteType {
   // eslint-disable-next-line no-unused-vars

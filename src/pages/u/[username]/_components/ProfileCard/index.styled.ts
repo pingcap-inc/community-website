@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
 import * as polished from 'polished';
+import Anchor from '~/components/Anchor';
 
 export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
@@ -25,7 +26,7 @@ export const Main = styled.div`
 `;
 
 export const Edit = styled.a``;
-export const Chat = styled.div``;
+export const Chat = styled(Anchor)``;
 
 export const AvatarSize = `5rem`;
 export const Avatar = styled.div`

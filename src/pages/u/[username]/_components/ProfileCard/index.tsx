@@ -36,7 +36,7 @@ export default function ProfileCard(props: IProfileCard) {
             </Styled.Edit>
           </Link>
         )}
-        <Styled.Chat>
+        <Styled.Chat href={`https://asktug.com/new-message?username=${props.name}`}>
           私信 <MailFilled />
         </Styled.Chat>
       </Styled.Action>

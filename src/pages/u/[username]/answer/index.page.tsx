@@ -64,7 +64,14 @@ export default function ProfileAnswerPage(props: IProps) {
     setPage((page) => page + 1);
   };
   return (
-    <ProfileLayout badges={badges} profile={profile}>
+    <ProfileLayout
+      badges={badges}
+      profile={profile}
+      nums={{
+        like: summary.user_summary.likes_received,
+        answer: summary.user_summary.post_count,
+      }}
+    >
       <CommonStyled.Action>
         <Tab
           selected={EUgcType.answer}

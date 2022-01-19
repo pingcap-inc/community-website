@@ -28,9 +28,32 @@ export interface IPost {
   comments: number;
 }
 
-export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IPost[]> {
+export interface IPage {
+  number: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
+}
+
+export interface IResponse<T> {
+  content: T[];
+  page: IPage;
+}
+
+export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IResponse<IPost>> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
   const result = await blogClient.get(`/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`);
-  return result.data.content ?? [];
+  return result.data;
+}
+
+export async function getFavoritesByUsername(
+  username: string,
+  page?: number,
+  size?: number
+): Promise<IResponse<IPost>> {
+  const pageStr = page ?? '';
+  const sizeStr = size ?? '';
+  const result = await blogClient.get(`/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`);
+  return result.data;
 }

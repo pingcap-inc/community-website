@@ -30,7 +30,7 @@ interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
-  posts: api.blog.users.username.IPost[];
+  posts: api.blog.users.username.IResponse<api.blog.users.username.IPost>;
   username: string;
 }
 interface IQuery extends ParsedUrlQuery {
@@ -56,12 +56,14 @@ export default function ProfileAnswerPage(props: IProps) {
   const { badges, profile, summary, posts, username } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
-  const [page, setPage] = useState(pageInfo.page);
-  const [data, setData] = useState(posts);
+  const [pageNumber, setPageNumber] = useState(pageInfo.page);
+  const [data, setData] = useState(posts.content);
+  const [hasMore, setHasMore] = useState(posts.page.number < posts.page.totalPages);
   const loadMoreData = async () => {
-    const newData = await getPostsByUsername(username, page, pageInfo.size);
-    setData((data) => [...data, ...newData]);
-    setPage((page) => page + 1);
+    const newPosts = await getPostsByUsername(username, pageNumber, pageInfo.size);
+    setData((data) => [...data, ...newPosts.content]);
+    setPageNumber((pageNumber) => pageNumber + 1);
+    setHasMore(newPosts.page.number < newPosts.page.totalPages);
   };
   return (
     <ProfileLayout
@@ -117,7 +119,7 @@ export default function ProfileAnswerPage(props: IProps) {
         <InfiniteScroll
           dataLength={data.length}
           next={loadMoreData}
-          hasMore={data.length !== 0}
+          hasMore={hasMore}
           loader={
             <div style={{ marginTop: '16px' }}>
               <Skeleton avatar paragraph={{ rows: 1 }} active />

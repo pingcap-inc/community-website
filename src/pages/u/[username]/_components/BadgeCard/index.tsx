@@ -35,7 +35,7 @@ export default function ProfileCard(props: IProfileCard) {
           <Styled.Badge key={value.id} hasBadge={value.has_badge}>
             <Tooltip
               placement="topLeft"
-              title={`${value.name} - ${value.description} ${
+              title={`${value.name}${value.description ? ' - ' + value.description : ''} ${
                 value.long_description ? `(${value.long_description})` : ''
               }`}
             >

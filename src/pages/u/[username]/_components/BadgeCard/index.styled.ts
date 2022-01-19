@@ -39,7 +39,8 @@ export const Body = styled.div`
 `;
 
 export const Badge = styled.div`
-  opacity: ${(props) => (props.hasBadge ? '100%' : '50%')};
+  ${mixins.boxShadow()};
+  opacity: ${(props) => (props.hasBadge ? '100%' : '30%')};
   width: 2.5rem;
   margin: 0.5rem;
   //height: 2.5rem;

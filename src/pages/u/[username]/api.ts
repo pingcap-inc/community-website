@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 const askTUGDomain = `${process.env.NEXT_PUBLIC_API_BASE_URL}/_asktug` ?? 'https://asktug.com';
-const blogDomain = process.env.NEXT_PUBLIC_API_BASE_URL ?? '';
 const accountsDomain = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '';
 const asktugApiDefaultPageSize = 30;
 
@@ -145,43 +144,6 @@ export async function getQuestionsByUsername(
     `${askTUGDomain}/topics/created-by/${username}.json?page=${page}&per_page=${per_page}`
   );
   return result.data.topic_list?.topics ?? [];
-}
-
-export interface IBlogAuthor {
-  id: number;
-  username: string;
-  avatarURL: string;
-}
-
-export interface IBlogCategory {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface IPost {
-  id: number;
-  slug: string;
-  status: string;
-  author: IBlogAuthor;
-  origin: string;
-  title: string;
-  summary: string;
-  publishedAt: Date;
-  recommended: boolean;
-  recommendAt?: Date;
-  tags: [];
-  likes: number;
-  comments: number;
-}
-
-export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IPost[]> {
-  const pageStr = page ?? '';
-  const sizeStr = size ?? '';
-  const result = await axios.get(
-    `${blogDomain}/blog/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`
-  );
-  return result.data.content ?? [];
 }
 
 export interface IProfileSummary {

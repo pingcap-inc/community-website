@@ -10,14 +10,13 @@ import ListItem from '../_components/ListItem';
 import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
 import {
   getBadgesByUsername,
-  getPostsByUsername,
   getSummaryByUsername,
   getUserProfileByUsername,
-  IPost,
   IProfile,
   IProfileSummary,
   IRawBadges,
 } from '../api';
+import { api } from '@tidb-community/datasource';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
@@ -25,11 +24,13 @@ import { getPageQuery } from '~/utils/pagination.utils';
 import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
+const { getPostsByUsername } = api.blog.users.username;
+
 interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
-  posts: IPost[];
+  posts: api.blog.users.username.IPost[];
   username: string;
 }
 interface IQuery extends ParsedUrlQuery {

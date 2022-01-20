@@ -105,12 +105,12 @@ export async function getAnswersByUsername(
   pageNumber: number = 1,
   pageSize: number = 10
 ): Promise<IUserAction[]> {
-  const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
+  const offset = (pageNumber - 1) * pageSize;
   const result = await axios.get(
     `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`
   );
   const { user_actions } = result.data;
-  return user_actions ?? [];
+  return user_actions.slice(0, pageSize - 1) ?? [];
 }
 
 export async function getAskTugFavoritesByUsername(

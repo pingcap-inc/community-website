@@ -6,7 +6,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { List, Skeleton } from 'antd';
+import { Divider, List, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getBadgesByUsername,
@@ -114,6 +114,7 @@ export default function ProfileAnswerPage(props: IProps) {
               </div>
             )
           }
+          endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           <List
             dataSource={data}

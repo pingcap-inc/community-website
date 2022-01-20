@@ -6,7 +6,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { List, Skeleton } from 'antd';
+import { Divider, List, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAskTugFavoritesByUsername,
@@ -59,10 +59,19 @@ export default function ProfileAnswerPage(props: IProps) {
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);
   const [data, setData] = useState(favoriteTopics);
+  const [hasMore, setHasMore] = useState(favoriteTopics.length !== 0);
+  const [loading, setLoading] = useState(false);
   const loadMoreData = async () => {
-    const newData = await getAskTugFavoritesByUsername(username, page, pageInfo.size);
-    setData((data) => [...data, ...newData]);
-    setPage((page) => page + 1);
+    setLoading(true);
+    try {
+      const newData = await getAskTugFavoritesByUsername(username, page, pageInfo.size);
+      setData((data) => [...data, ...newData]);
+      setPage((page) => page + 1);
+      setHasMore(newData.length !== 0);
+    } catch (e) {
+      console.error(e);
+    }
+    setLoading(false);
   };
   return (
     <ProfileLayout
@@ -98,16 +107,20 @@ export default function ProfileAnswerPage(props: IProps) {
         <InfiniteScroll
           dataLength={data.length}
           next={loadMoreData}
-          hasMore={data.length !== 0}
+          hasMore={hasMore}
           loader={
-            <div style={{ marginTop: '16px' }}>
-              <Skeleton avatar paragraph={{ rows: 1 }} active />
-            </div>
+            loading && (
+              <div style={{ marginTop: '16px' }}>
+                <Skeleton avatar paragraph={{ rows: 1 }} active />
+              </div>
+            )
           }
+          endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           <List
             dataSource={data}
             locale={{ emptyText: '暂无数据' }}
+            loading={loading}
             renderItem={(value) => (
               <ListItem
                 key={value.post_id}

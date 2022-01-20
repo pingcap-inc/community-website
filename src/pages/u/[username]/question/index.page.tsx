@@ -129,7 +129,7 @@ export default function ProfileAnswerPage(props: IProps) {
               </div>
             )
           }
-          endMessage={<Divider plain>没有更多内容了</Divider>}
+          endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           <List
             dataSource={data}

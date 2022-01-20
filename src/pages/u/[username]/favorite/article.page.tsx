@@ -58,11 +58,19 @@ export default function ProfileAnswerPage(props: IProps) {
   const [pageNumber, setPageNumber] = useState(pageInfo.page);
   const [data, setData] = useState(posts.content);
   const [hasMore, setHasMore] = useState(posts.page.number < posts.page.totalPages);
+  const [loading, setLoading] = useState(false);
   const loadMoreData = async () => {
-    const newPosts = await getFavoritesByUsername(username, pageNumber, pageInfo.size);
-    setData((data) => [...data, ...newPosts.content]);
-    setPageNumber((pageNumber) => pageNumber + 1);
-    setHasMore(newPosts.page.number < newPosts.page.totalPages);
+    setLoading(true);
+    try {
+      const newPosts = await getFavoritesByUsername(username, pageNumber, pageInfo.size);
+      const newData = newPosts.content ?? [];
+      setData((data) => [...data, ...newData]);
+      setPageNumber((pageNumber) => pageNumber + 1);
+      setHasMore(newPosts.page.number < newPosts.page.totalPages);
+    } catch (e) {
+      console.error(e);
+    }
+    setLoading(false);
   };
   return (
     <ProfileLayout
@@ -100,14 +108,17 @@ export default function ProfileAnswerPage(props: IProps) {
           next={loadMoreData}
           hasMore={hasMore}
           loader={
-            <div style={{ marginTop: '16px' }}>
-              <Skeleton avatar paragraph={{ rows: 1 }} active />
-            </div>
+            loading && (
+              <div style={{ marginTop: '16px' }}>
+                <Skeleton avatar paragraph={{ rows: 1 }} active />
+              </div>
+            )
           }
         >
           <List
             dataSource={data}
             locale={{ emptyText: '暂无数据' }}
+            loading={loading}
             renderItem={(value) => (
               <ListItem
                 key={value.id}

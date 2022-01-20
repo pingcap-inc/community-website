@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const askTugApiDomain = `${process.env.NEXT_PUBLIC_API_BASE_URL}/_asktug` ?? 'https://asktug.com';
+const askTugApiDomain = process.env.NEXT_PUBLIC_ASKTUG_BASE_URL ?? 'https://asktug.com';
 const askTugDomain = 'https://asktug.com';
 const accountsDomain = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '';
 const asktugApiDefaultPageSize = 30;

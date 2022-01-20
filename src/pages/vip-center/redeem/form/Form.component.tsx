@@ -121,11 +121,7 @@ const FormComponent = () => {
             </Col>
 
             <Col xs={24}>
-              <FormItem
-                label={<Styled.Label>{comment.placeholder}</Styled.Label>}
-                name={comment.name}
-                validate={address.validate}
-              >
+              <FormItem label={<Styled.Label>{comment.placeholder}</Styled.Label>} name={comment.name}>
                 <Input {...comment} />
               </FormItem>
             </Col>

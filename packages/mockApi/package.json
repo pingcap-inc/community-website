@@ -13,6 +13,7 @@
     "dayjs": "1.10.4",
     "express": "4.17.1",
     "faker": "5.5.3",
+    "http-proxy-middleware": "2.0.1",
     "lodash": "4.17.21",
     "morgan": "1.10.0"
   },

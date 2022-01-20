@@ -30,11 +30,16 @@ const FormComponent = () => {
         consignee_addrss: values['address'],
         comment: values['comment'],
       })
-      .then((res) => (res.data.redeem_success ? message.success : message.error).call(message, res.data.comment))
-      .catch(() => message.error('网络错误，请稍后再试'))
+      .then((res) => {
+        (res.data.redeem_success ? message.success : message.error).call(message, res.data.comment);
+        setOpen(false);
+      })
+      .catch((err) => {
+        if (typeof err.errors != undefined) message.error(R.values(err.errors).join(', '));
+        else message.error(err.detail);
+      })
       .finally(() => {
         setIsSubmitting(false);
-        setOpen(false);
       });
   });
 
@@ -63,7 +68,11 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24}>
-              <FormItem label={<Styled.Label>{receiver.placeholder}</Styled.Label>} name={receiver.name}>
+              <FormItem
+                label={<Styled.Label>{receiver.placeholder}</Styled.Label>}
+                name={receiver.name}
+                validate={receiver.validate}
+              >
                 <Input {...receiver} />
               </FormItem>
             </Col>
@@ -102,13 +111,21 @@ const FormComponent = () => {
             </Col>
 
             <Col xs={24}>
-              <FormItem label={<Styled.Label>{address.placeholder}</Styled.Label>} name={address.name}>
+              <FormItem
+                label={<Styled.Label>{address.placeholder}</Styled.Label>}
+                name={address.name}
+                validate={address.validate}
+              >
                 <Input {...address} />
               </FormItem>
             </Col>
 
             <Col xs={24}>
-              <FormItem label={<Styled.Label>{comment.placeholder}</Styled.Label>} name={comment.name}>
+              <FormItem
+                label={<Styled.Label>{comment.placeholder}</Styled.Label>}
+                name={comment.name}
+                validate={address.validate}
+              >
                 <Input {...comment} />
               </FormItem>
             </Col>

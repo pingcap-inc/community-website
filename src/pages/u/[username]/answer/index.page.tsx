@@ -40,30 +40,30 @@ interface IQuery extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
-  const pageInfo = getPageQuery(ctx.query);
+  // const pageInfo = getPageQuery(ctx.query);
   const [i18nProps, badges, profile, summary, answers] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getAnswersByUsername(username, pageInfo.page, pageInfo.size),
+    getAnswersByUsername(username),
   ]);
   return { props: { ...i18nProps, badges, profile, summary, answers, username } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
   const { badges, profile, summary, answers, username } = props;
-  const router = useRouter();
-  const pageInfo = getPageQuery(router.query);
-  const [page, setPage] = useState(pageInfo.page);
+  // const router = useRouter();
+  // const pageInfo = getPageQuery(router.query);
+  const [page, setPage] = useState(1);
   const [data, setData] = useState(answers);
   const [hasMore, setHasMore] = useState(data.length !== 0);
   const [loading, setLoading] = useState(false);
   const loadMoreData = async () => {
     setLoading(true);
     try {
-      const newData = await getAnswersByUsername(username, page, pageInfo.size);
+      const newData = await getAnswersByUsername(username, page);
       setData((data) => [...data, ...newData]);
       setPage((page) => page + 1);
       setHasMore(newData.length !== 0);

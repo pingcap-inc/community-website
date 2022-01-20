@@ -1,4 +1,5 @@
 import { api } from '@tidb-community/datasource';
+
 const { blogClient } = api;
 
 export interface IBlogAuthor {
@@ -49,8 +50,7 @@ export async function getPostsByUsername(username: string, page?: number, size?:
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
   const url = `/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`;
-  const result = await blogClient.get(url);
-  return result.data;
+  return await blogClient.get(url);
 }
 
 export async function getFavoritesByUsername(
@@ -61,6 +61,5 @@ export async function getFavoritesByUsername(
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
   const url = `/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`;
-  const result = await blogClient.get(url);
-  return result.data;
+  return await blogClient.get(url);
 }

@@ -47,6 +47,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getSummaryByUsername(username),
     getPostsByUsername(username),
   ]);
+  // console.log('!!posts', posts);
   return { props: { ...i18nProps, badges, profile, summary, posts, username } };
 };
 

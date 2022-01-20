@@ -29,12 +29,14 @@ export default function ProfileCard(props: IProfileCard) {
   return (
     <Styled.Container>
       <Styled.Action>
-        {isCurrentLogonUser && (
+        {isCurrentLogonUser ? (
           <Link href={'https://tidb.io/my/profile'} passHref>
             <Styled.Edit>
               <EditFilled />
             </Styled.Edit>
           </Link>
+        ) : (
+          <div />
         )}
         <Styled.Chat href={`https://asktug.com/new-message?username=${props.name}`}>
           私信 <MailFilled />

@@ -4,7 +4,6 @@ const asktugProdDomain = 'https://asktug.com';
 const askTugApiDomain = process.env.NEXT_PUBLIC_ASKTUG_PROXY_BASE_URL ?? asktugProdDomain;
 const askTugDomain = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? asktugProdDomain;
 const accountsDomain = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '';
-const asktugApiDefaultPageSize = 30;
 
 export interface IRawBadges {
   id: number;
@@ -116,15 +115,15 @@ export async function getAnswersByUsername(
 
 export async function getAskTugFavoritesByUsername(
   username: string,
-  pageNumber: number = 0,
+  pageNumber: number = 1,
   pageSize: number = 10
 ): Promise<IUserAction[]> {
-  const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
+  const offset = (pageNumber - 1) * pageSize;
   const result = await axios.get(
     `${askTugDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`
   );
   const { user_actions } = result.data;
-  return user_actions ?? [];
+  return user_actions.slice(0, pageSize - 1) ?? [];
 }
 
 export interface IQuestions {

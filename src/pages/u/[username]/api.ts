@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const askTUGDomain = `${process.env.NEXT_PUBLIC_API_BASE_URL}/_asktug` ?? 'https://asktug.com';
+const askTugApiDomain = `${process.env.NEXT_PUBLIC_API_BASE_URL}/_asktug` ?? 'https://asktug.com';
+const askTugDomain = 'https://asktug.com';
 const accountsDomain = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '';
 const asktugApiDefaultPageSize = 30;
 
@@ -17,7 +18,7 @@ export interface IRawBadges {
 }
 
 async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
-  const result = await axios.get(`${askTUGDomain}/badges.json`);
+  const result = await axios.get(`${askTugApiDomain}/badges.json`);
   const { badges } = result.data;
   const badgesMap = new Map<IRawBadges['id'], IRawBadges>();
   badges.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: false }));
@@ -26,7 +27,7 @@ async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
 
 export async function getBadgesByUsername(username: string): Promise<IRawBadges[]> {
   const badgesMap = await getAllBadges();
-  const result = await axios.get(`${askTUGDomain}/user-badges/${username}.json`);
+  const result = await axios.get(`${askTugApiDomain}/user-badges/${username}.json`);
   const { badges } = result.data;
   badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
   const badgesArr: IRawBadges[] = [];
@@ -97,7 +98,7 @@ export interface IUserAction {
 }
 
 export const getTopicUrl = (topic_id: number, post_number: number) =>
-  `${askTUGDomain}/t/topic/${topic_id}/${post_number}`;
+  `${askTugDomain}/t/topic/${topic_id}/${post_number}`;
 
 export async function getAnswersByUsername(
   username: string,
@@ -106,7 +107,7 @@ export async function getAnswersByUsername(
 ): Promise<IUserAction[]> {
   const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
   const result = await axios.get(
-    `${askTUGDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`
+    `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`
   );
   const { user_actions } = result.data;
   return user_actions ?? [];
@@ -119,7 +120,7 @@ export async function getAskTugFavoritesByUsername(
 ): Promise<IUserAction[]> {
   const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
   const result = await axios.get(
-    `${askTUGDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`
+    `${askTugDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`
   );
   const { user_actions } = result.data;
   return user_actions ?? [];
@@ -141,7 +142,7 @@ export async function getQuestionsByUsername(
   per_page: number
 ): Promise<IQuestions[]> {
   const result = await axios.get(
-    `${askTUGDomain}/topics/created-by/${username}.json?page=${page}&per_page=${per_page}`
+    `${askTugApiDomain}/topics/created-by/${username}.json?page=${page}&per_page=${per_page}`
   );
   return result.data.topic_list?.topics ?? [];
 }
@@ -160,6 +161,6 @@ export interface IProfileSummary {
 }
 
 export async function getSummaryByUsername(username: string): Promise<IProfileSummary> {
-  const result = await axios.get(`${askTUGDomain}/u/${username}/summary.json`);
+  const result = await axios.get(`${askTugApiDomain}/u/${username}/summary.json`);
   return result.data;
 }

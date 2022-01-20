@@ -48,7 +48,8 @@ export function getPostUrlBySlug(slug: IPost['slug']): string {
 export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IResponse<IPost>> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
-  const result = await blogClient.get(`/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`);
+  const url = `/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`;
+  const result = await blogClient.get(url);
   return result.data;
 }
 
@@ -59,6 +60,7 @@ export async function getFavoritesByUsername(
 ): Promise<IResponse<IPost>> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
-  const result = await blogClient.get(`/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`);
+  const url = `/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`;
+  const result = await blogClient.get(url);
   return result.data;
 }

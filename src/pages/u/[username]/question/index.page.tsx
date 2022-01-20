@@ -18,7 +18,6 @@ import {
   IRawBadges,
   getSummaryByUsername,
   IProfileSummary,
-  getAnswersByUsername,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';

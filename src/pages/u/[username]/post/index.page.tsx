@@ -5,7 +5,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { List, Select, Skeleton, Space } from 'antd';
+import { Divider, List, Select, Skeleton, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
 import {
@@ -55,13 +55,21 @@ export default function ProfileAnswerPage(props: IProps) {
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [pageNumber, setPageNumber] = useState(pageInfo.page);
-  const [data, setData] = useState(posts.content);
+  const [data, setData] = useState(posts.content ?? []);
   const [hasMore, setHasMore] = useState(posts.page.number < posts.page.totalPages);
+  const [loading, setLoading] = useState(false);
   const loadMoreData = async () => {
-    const newPosts = await getPostsByUsername(username, pageNumber, pageInfo.size);
-    setData((data) => [...data, ...newPosts.content]);
-    setPageNumber((pageNumber) => pageNumber + 1);
-    setHasMore(newPosts.page.number < newPosts.page.totalPages);
+    setLoading(true);
+    try {
+      const newPosts = await getPostsByUsername(username, pageNumber, pageInfo.size);
+      const newData = newPosts.content ?? [];
+      setData((data) => [...data, ...newData]);
+      setPageNumber((pageNumber) => pageNumber + 1);
+      setHasMore(newPosts.page.number < newPosts.page.totalPages);
+    } catch (e) {
+      console.error(e);
+    }
+    setLoading(false);
   };
   return (
     <ProfileLayout
@@ -119,14 +127,18 @@ export default function ProfileAnswerPage(props: IProps) {
           next={loadMoreData}
           hasMore={hasMore}
           loader={
-            <div style={{ marginTop: '16px' }}>
-              <Skeleton avatar paragraph={{ rows: 1 }} active />
-            </div>
+            loading && (
+              <div style={{ marginTop: '16px' }}>
+                <Skeleton avatar paragraph={{ rows: 1 }} active />
+              </div>
+            )
           }
+          endMessage={<Divider plain>没有更多内容了</Divider>}
         >
           <List
             dataSource={data}
             locale={{ emptyText: '暂无数据' }}
+            loading={loading}
             renderItem={(value) => (
               <ListItem
                 key={value.id}

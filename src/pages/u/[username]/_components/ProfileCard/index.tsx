@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
 // import Image from 'next/image';
-import { FieldBinaryOutlined, EditFilled, MailFilled } from '@ant-design/icons';
+import { IdcardOutlined, EditFilled, MailFilled } from '@ant-design/icons';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { MeContext } from '~/context';
@@ -51,7 +51,7 @@ export default function ProfileCard(props: IProfileCard) {
         </Styled.Name>
         <Styled.Description>{description}</Styled.Description>
         <Styled.JoinDate>
-          <FieldBinaryOutlined /> 于 {joinDate} 加入
+          <IdcardOutlined /> 于 {joinDate} 加入
         </Styled.JoinDate>
         <Styled.Nums>
           <Styled.NumsItem>

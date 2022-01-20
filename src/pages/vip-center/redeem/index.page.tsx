@@ -52,7 +52,9 @@ const Page = () => {
         <Styled.PointsContainer>
           <Tutorial>
             每周五统一寄送上周期兑换的礼品，约 3-7 个工作日左右可收到，如没有喜欢的礼品， 请点击参加
-            <Link href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6">周边定制意见征集</Link>
+            <Link href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6" fontSize="14px">
+              周边定制意见征集
+            </Link>
           </Tutorial>
           <Styled.PointsContainerInner>
             <div>
@@ -76,7 +78,11 @@ const Page = () => {
                 <Styled.ProductLine red>
                   {product.points} 积分 (剩余 {product.remains} 件)
                 </Styled.ProductLine>
-                <Button type="default" onClick={showModal(product.id)}>
+                <Button
+                  type="default"
+                  onClick={showModal(product.id)}
+                  disabled={pointsData.current_points < product.points}
+                >
                   立即兑换
                 </Button>
               </Styled.Product>

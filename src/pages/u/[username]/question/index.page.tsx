@@ -48,7 +48,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getQuestionsByUsername(username, pageInfo.page, pageInfo.size),
+    getQuestionsByUsername(username, pageInfo.page),
   ]);
   return { props: { ...i18nProps, badges, profile, summary, questions, username } };
 };
@@ -60,7 +60,7 @@ export default function ProfileAnswerPage(props: IProps) {
   const [page, setPage] = useState(pageInfo.page);
   const [data, setData] = useState(questions);
   const loadMoreData = async () => {
-    const newData = await getQuestionsByUsername(username, page, pageInfo.size);
+    const newData = await getQuestionsByUsername(username, page);
     setData((data) => [...data, ...newData]);
     setPage((page) => page + 1);
   };

@@ -102,7 +102,7 @@ export const getTopicUrl = (topic_id: number, post_number: number) =>
 
 export async function getAnswersByUsername(
   username: string,
-  pageNumber: number = 0,
+  pageNumber: number = 1,
   pageSize: number = 10
 ): Promise<IUserAction[]> {
   const offset = pageNumber * asktugApiDefaultPageSize - pageSize;
@@ -138,12 +138,11 @@ export interface IQuestions {
 
 export async function getQuestionsByUsername(
   username: string,
-  page: number = 0,
-  per_page: number
+  page: number = 1,
+  per_page: number = 10
 ): Promise<IQuestions[]> {
-  const result = await axios.get(
-    `${askTugApiDomain}/topics/created-by/${username}.json?page=${page}&per_page=${per_page}`
-  );
+  const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${page - 1}&per_page=${per_page}`;
+  const result = await axios.get(url);
   return result.data.topic_list?.topics ?? [];
 }
 

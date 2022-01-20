@@ -5,8 +5,6 @@ import { IdcardOutlined, EditFilled, MailFilled } from '@ant-design/icons';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { MeContext } from '~/context';
-// import { useContext } from 'react';
-// import { MeContext } from '~/context';
 
 export interface IProfileCard {
   avatarUrl: string;

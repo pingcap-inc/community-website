@@ -1,8 +1,12 @@
 import * as React from 'react';
+import { ParsedUrlQuery } from 'querystring';
+// import { useRouter } from 'next/router';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { useState } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
-import { getPageQuery } from '~/utils/pagination.utils';
+// import { getPageQuery } from '~/utils/pagination.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
@@ -20,10 +24,6 @@ import {
   IUserAction,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
-import { ParsedUrlQuery } from 'querystring';
-import { useRouter } from 'next/router';
-import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState } from 'react';
 
 interface IProps {
   badges: IRawBadges[];

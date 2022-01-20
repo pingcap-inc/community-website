@@ -22,14 +22,14 @@ export const Start = styled(Col).attrs({
   xs: 24,
   sm: 24,
   md: 8,
-  lg: 7,
-  xl: 7,
+  lg: 8,
+  xl: 8,
 })``;
 
 export const End = styled(Col).attrs({
   xs: 24,
   sm: 24,
   md: 16,
-  lg: 17,
-  xl: 17,
+  lg: 16,
+  xl: 16,
 })``;

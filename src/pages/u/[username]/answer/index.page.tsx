@@ -14,6 +14,7 @@ import { Divider, List, Select, Skeleton } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAnswersByUsername,
+  getAskTugFavoritesNumberByUsername,
   getBadgesByUsername,
   getSummaryByUsername,
   getTopicUrl,
@@ -24,15 +25,17 @@ import {
   IUserAction,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
-import { getPostsNumberByUsername } from '~/pages/u/[username]/username';
+import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 
 interface IProps {
+  username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
+  postsNumber: number | null;
+  askTugFavoritesNumber: number | null;
+  postFavoritesNumber: number | null;
   answers: IUserAction[];
-  username: string;
-  postsNumber?: number;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -43,20 +46,37 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   // const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, summary, answers, postsNumber] = await Promise.all([
-    // @ts-ignore
-    getI18nProps(['common'])(ctx),
-    getBadgesByUsername(username),
-    getUserProfileByUsername(username),
-    getSummaryByUsername(username),
-    getAnswersByUsername(username),
-    getPostsNumberByUsername(username),
-  ]);
-  return { props: { ...i18nProps, badges, profile, summary, answers, username, postsNumber } };
+  const [i18nProps, badges, profile, summary, answers, postsNumber, askTugFavoritesNumber, postFavoritesNumber] =
+    await Promise.all([
+      // @ts-ignore
+      getI18nProps(['common'])(ctx),
+      getBadgesByUsername(username),
+      getUserProfileByUsername(username),
+      getSummaryByUsername(username),
+      getAnswersByUsername(username),
+      getPostsNumberByUsername(username),
+      getAskTugFavoritesNumberByUsername(username),
+      getPostFavoritesNumberByUsername(username),
+    ]);
+  return {
+    props: {
+      ...i18nProps,
+      username,
+      badges,
+      profile,
+      summary,
+      answers,
+      postsNumber,
+      askTugFavoritesNumber,
+      postFavoritesNumber,
+    },
+  };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, summary, answers, username, postsNumber } = props;
+  const { badges, profile, summary, answers, username, postsNumber, askTugFavoritesNumber, postFavoritesNumber } =
+    props;
+  const allFavoritesNumber: number = (askTugFavoritesNumber ?? 0) + (postFavoritesNumber ?? 0);
   // const router = useRouter();
   // const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(1);
@@ -93,7 +113,7 @@ export default function ProfileAnswerPage(props: IProps) {
             answer: summary.user_summary.post_count,
             question: summary.user_summary.topic_count,
             post: postsNumber,
-            // favorite: summary.user_summary.post_count,
+            favorite: allFavoritesNumber,
           }}
         />
         <Select defaultValue={''}>

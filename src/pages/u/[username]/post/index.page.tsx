@@ -9,6 +9,7 @@ import { Divider, List, Select, Skeleton, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
 import {
+  getAskTugFavoritesNumberByUsername,
   getBadgesByUsername,
   getSummaryByUsername,
   getUserProfileByUsername,
@@ -22,15 +23,24 @@ import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { getPostsByUsername, getPostUrlBySlug, IResponse, IPost, getPostsNumberByUsername } from '../username';
+import {
+  getPostsByUsername,
+  getPostUrlBySlug,
+  IResponse,
+  IPost,
+  getPostsNumberByUsername,
+  getPostFavoritesNumberByUsername,
+} from '../username';
 
 interface IProps {
+  username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
+  postsNumber: number | null;
+  askTugFavoritesNumber: number | null;
+  postFavoritesNumber: number | null;
   posts: IResponse<IPost>;
-  username: string;
-  postsNumber?: number;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -40,21 +50,37 @@ interface IQuery extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
-  const [i18nProps, badges, profile, summary, posts, postsNumber] = await Promise.all([
-    // @ts-ignore
-    getI18nProps(['common'])(ctx),
-    getBadgesByUsername(username),
-    getUserProfileByUsername(username),
-    getSummaryByUsername(username),
-    getPostsByUsername(username),
-    getPostsNumberByUsername(username),
-  ]);
+  const [i18nProps, badges, profile, summary, posts, postsNumber, askTugFavoritesNumber, postFavoritesNumber] =
+    await Promise.all([
+      // @ts-ignore
+      getI18nProps(['common'])(ctx),
+      getBadgesByUsername(username),
+      getUserProfileByUsername(username),
+      getSummaryByUsername(username),
+      getPostsByUsername(username),
+      getPostsNumberByUsername(username),
+      getAskTugFavoritesNumberByUsername(username),
+      getPostFavoritesNumberByUsername(username),
+    ]);
   // console.log('!!posts', posts);
-  return { props: { ...i18nProps, badges, profile, summary, posts, username, postsNumber } };
+  return {
+    props: {
+      ...i18nProps,
+      username,
+      badges,
+      profile,
+      summary,
+      posts,
+      postsNumber,
+      askTugFavoritesNumber,
+      postFavoritesNumber,
+    },
+  };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, summary, posts, username, postsNumber } = props;
+  const { username, badges, profile, summary, posts, postsNumber, askTugFavoritesNumber, postFavoritesNumber } = props;
+  const allFavoritesNumber: number = (askTugFavoritesNumber ?? 0) + (postFavoritesNumber ?? 0);
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [pageNumber, setPageNumber] = useState(pageInfo.page);
@@ -92,7 +118,7 @@ export default function ProfileAnswerPage(props: IProps) {
             answer: summary.user_summary.post_count,
             question: summary.user_summary.topic_count,
             post: postsNumber,
-            // favorite: summary.user_summary.post_count,
+            favorite: allFavoritesNumber,
           }}
         />
         <Select defaultValue={''}>

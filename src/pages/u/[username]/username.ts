@@ -69,7 +69,7 @@ export async function getFavoritesByUsername(
   return await blogClient.get(url);
 }
 
-export async function getFavoritesNumberByUsername(username: string): Promise<number | undefined> {
+export async function getPostFavoritesNumberByUsername(username: string): Promise<number | null> {
   const data = await getFavoritesByUsername(username);
-  return data?.page?.totalElements;
+  return data?.page?.totalElements ?? null;
 }

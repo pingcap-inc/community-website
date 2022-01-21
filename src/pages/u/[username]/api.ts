@@ -106,9 +106,8 @@ export async function getAnswersByUsername(
   pageSize: number = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
-  const result = await axios.get(
-    `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`
-  );
+  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`;
+  const result = await axios.get(url);
   const { user_actions } = result.data;
   return user_actions.slice(0, pageSize - 1) ?? [];
 }
@@ -119,9 +118,8 @@ export async function getAskTugFavoritesByUsername(
   pageSize: number = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
-  const result = await axios.get(
-    `${askTugDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`
-  );
+  const url = `${askTugDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
+  const result = await axios.get(url);
   const { user_actions } = result.data;
   return user_actions.slice(0, pageSize - 1) ?? [];
 }
@@ -160,6 +158,7 @@ export interface IProfileSummary {
 }
 
 export async function getSummaryByUsername(username: string): Promise<IProfileSummary> {
-  const result = await axios.get(`${askTugApiDomain}/u/${username}/summary.json`);
+  const url = `${askTugApiDomain}/u/${username}/summary.json`;
+  const result = await axios.get(url);
   return result.data;
 }

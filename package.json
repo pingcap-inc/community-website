@@ -19,6 +19,7 @@
     "server:reload": "pm2 reload pm2.config.js",
     "server:start": "pm2 start pm2.config.js",
     "start": "next start",
+    "next:dev": "next dev",
     "start:accounts": "lerna run --scope @tidb-community/accounts start",
     "start:i18n": "lerna run --scope @tidb-community/i18n start",
     "start:mockApi": "lerna run --scope @tidb-community/mock-api start",

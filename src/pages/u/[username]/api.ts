@@ -124,6 +124,11 @@ export async function getAskTugFavoritesByUsername(
   return user_actions.slice(0, pageSize - 1) ?? [];
 }
 
+export async function getAskTugFavoritesNumberByUsername(username: string): Promise<number | undefined> {
+  //TODO: find how to get AskTug Favorites Number By Username
+  return undefined;
+}
+
 export interface IQuestions {
   id: number;
   title: string;

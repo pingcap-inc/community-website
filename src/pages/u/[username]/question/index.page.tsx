@@ -64,9 +64,9 @@ export default function ProfileAnswerPage(props: IProps) {
   const loadMoreData = async () => {
     setLoading(true);
     try {
-      setPage((page) => page + 1);
       const newData = await getQuestionsByUsername(username, page);
       setData((data) => [...data, ...newData]);
+      setPage((page) => page + 1);
       setHasMore(newData.length !== 0);
     } catch (e) {
       console.error(e);

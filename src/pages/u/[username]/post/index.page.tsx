@@ -62,10 +62,10 @@ export default function ProfileAnswerPage(props: IProps) {
   const loadMoreData = async () => {
     setLoading(true);
     try {
-      setPageNumber((pageNumber) => pageNumber + 1);
       const newPosts = await getPostsByUsername(username, pageNumber, pageInfo.size);
       const newData = newPosts.content ?? [];
       setData((data) => [...data, ...newData]);
+      setPageNumber((pageNumber) => pageNumber + 1);
       setHasMore(newPosts.page.number < newPosts.page.totalPages);
     } catch (e) {
       console.error(e);

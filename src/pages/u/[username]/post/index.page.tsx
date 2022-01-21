@@ -22,7 +22,7 @@ import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { getPostsByUsername, getPostUrlBySlug, IResponse, IPost } from '../username';
+import { getPostsByUsername, getPostUrlBySlug, IResponse, IPost, getPostsNumberByUsername } from '../username';
 
 interface IProps {
   badges: IRawBadges[];
@@ -30,6 +30,7 @@ interface IProps {
   summary: IProfileSummary;
   posts: IResponse<IPost>;
   username: string;
+  postsNumber?: number;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -39,20 +40,21 @@ interface IQuery extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
-  const [i18nProps, badges, profile, summary, posts] = await Promise.all([
+  const [i18nProps, badges, profile, summary, posts, postsNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
     getPostsByUsername(username),
+    getPostsNumberByUsername(username),
   ]);
   // console.log('!!posts', posts);
-  return { props: { ...i18nProps, badges, profile, summary, posts, username } };
+  return { props: { ...i18nProps, badges, profile, summary, posts, username, postsNumber } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, summary, posts, username } = props;
+  const { badges, profile, summary, posts, username, postsNumber } = props;
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [pageNumber, setPageNumber] = useState(pageInfo.page);
@@ -80,6 +82,7 @@ export default function ProfileAnswerPage(props: IProps) {
       nums={{
         like: summary.user_summary.likes_received,
         answer: summary.user_summary.post_count,
+        post: postsNumber,
       }}
     >
       <CommonStyled.Action>
@@ -88,7 +91,7 @@ export default function ProfileAnswerPage(props: IProps) {
           nums={{
             answer: summary.user_summary.post_count,
             question: summary.user_summary.topic_count,
-            // post: summary.user_summary.post_count,
+            post: postsNumber,
             // favorite: summary.user_summary.post_count,
           }}
         />

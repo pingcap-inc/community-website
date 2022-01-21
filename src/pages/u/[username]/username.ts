@@ -53,6 +53,11 @@ export async function getPostsByUsername(username: string, page?: number, size?:
   return await blogClient.get(url);
 }
 
+export async function getPostsNumberByUsername(username: string): Promise<number | undefined> {
+  const data = await getPostsByUsername(username);
+  return data?.page?.totalElements;
+}
+
 export async function getFavoritesByUsername(
   username: string,
   page?: number,

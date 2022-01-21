@@ -24,6 +24,7 @@ import {
   IUserAction,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
+import { getPostsNumberByUsername } from '~/pages/u/[username]/username';
 
 interface IProps {
   badges: IRawBadges[];
@@ -31,6 +32,7 @@ interface IProps {
   summary: IProfileSummary;
   answers: IUserAction[];
   username: string;
+  postsNumber?: number;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -41,19 +43,20 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   // const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, summary, answers] = await Promise.all([
+  const [i18nProps, badges, profile, summary, answers, postsNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
     getAnswersByUsername(username),
+    getPostsNumberByUsername(username),
   ]);
-  return { props: { ...i18nProps, badges, profile, summary, answers, username } };
+  return { props: { ...i18nProps, badges, profile, summary, answers, username, postsNumber } };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { badges, profile, summary, answers, username } = props;
+  const { badges, profile, summary, answers, username, postsNumber } = props;
   // const router = useRouter();
   // const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(1);
@@ -80,6 +83,7 @@ export default function ProfileAnswerPage(props: IProps) {
       nums={{
         like: summary.user_summary.likes_received,
         answer: summary.user_summary.post_count,
+        post: postsNumber,
       }}
     >
       <CommonStyled.Action>
@@ -88,7 +92,7 @@ export default function ProfileAnswerPage(props: IProps) {
           nums={{
             answer: summary.user_summary.post_count,
             question: summary.user_summary.topic_count,
-            // post: summary.user_summary.post_count,
+            post: postsNumber,
             // favorite: summary.user_summary.post_count,
           }}
         />

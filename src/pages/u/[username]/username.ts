@@ -68,3 +68,8 @@ export async function getFavoritesByUsername(
   const url = `/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`;
   return await blogClient.get(url);
 }
+
+export async function getFavoritesNumberByUsername(username: string): Promise<number | undefined> {
+  const data = await getFavoritesByUsername(username);
+  return data?.page?.totalElements;
+}

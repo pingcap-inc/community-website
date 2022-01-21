@@ -24,12 +24,12 @@ import { useRouter } from 'next/router';
 import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 import {
-  getFavoritesByUsername,
   getPostUrlBySlug,
   IResponse,
-  IPost,
+  getPostFavoritesByUsername,
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
+  IPostFavorite,
 } from '../username';
 
 interface IProps {
@@ -40,7 +40,7 @@ interface IProps {
   postsNumber: number | null;
   askTugFavoritesNumber: number | null;
   postFavoritesNumber: number | null;
-  posts: IResponse<IPost>;
+  posts: IResponse<IPostFavorite>;
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -58,11 +58,12 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       getBadgesByUsername(username),
       getUserProfileByUsername(username),
       getSummaryByUsername(username),
-      getFavoritesByUsername(username, pageInfo.page, pageInfo.size),
+      getPostFavoritesByUsername(username, pageInfo.page, pageInfo.size),
       getPostsNumberByUsername(username),
       getAskTugFavoritesNumberByUsername(username),
       getPostFavoritesNumberByUsername(username),
     ]);
+  console.log('!!posts', posts);
   return {
     props: {
       ...i18nProps,
@@ -92,7 +93,7 @@ export default function ProfileAnswerPage(props: IProps) {
     try {
       const nextPage = pageNumber + 1;
       setPageNumber(nextPage);
-      const newPosts = await getFavoritesByUsername(username, nextPage);
+      const newPosts = await getPostFavoritesByUsername(username, nextPage);
       const newData = newPosts.content ?? [];
       setData((data) => [...data, ...newData]);
       setHasMore(newPosts.page.number < newPosts.page.totalPages);
@@ -152,11 +153,11 @@ export default function ProfileAnswerPage(props: IProps) {
             loading={loading}
             renderItem={(value) => (
               <ListItem
-                key={value.id}
-                url={getPostUrlBySlug(value.slug)}
-                title={value.title}
-                summary={value.summary}
-                metadataEnd={getRelativeDatetime(value.publishedAt)}
+                key={value.post.id}
+                url={getPostUrlBySlug(value.post.slug)}
+                title={value.post.title}
+                summary={value.post.summary}
+                metadataEnd={getRelativeDatetime(value.post.publishedAt)}
               />
             )}
           />

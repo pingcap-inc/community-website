@@ -30,6 +30,11 @@ export interface IPost {
   comments: number;
 }
 
+export interface IPostFavorite {
+  post: IPost;
+  user: IBlogAuthor;
+}
+
 export interface IPage {
   number: number;
   size: number;
@@ -58,11 +63,11 @@ export async function getPostsNumberByUsername(username: string): Promise<number
   return data?.page?.totalElements;
 }
 
-export async function getFavoritesByUsername(
+export async function getPostFavoritesByUsername(
   username: string,
   page?: number,
   size?: number
-): Promise<IResponse<IPost>> {
+): Promise<IResponse<IPostFavorite>> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
   const url = `/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`;
@@ -70,6 +75,6 @@ export async function getFavoritesByUsername(
 }
 
 export async function getPostFavoritesNumberByUsername(username: string): Promise<number | null> {
-  const data = await getFavoritesByUsername(username);
+  const data = await getPostFavoritesByUsername(username);
   return data?.page?.totalElements ?? null;
 }

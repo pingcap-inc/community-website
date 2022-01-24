@@ -121,9 +121,9 @@ export default function ProfileAnswerPage(props: IProps) {
           }}
         />
         <Select value={solved} onChange={(value) => router.push(`/u/${username}/question/${value}`)}>
-          <Select.Option value={ESolved.all}>全部</Select.Option>
-          <Select.Option value={ESolved.solved}>已解决</Select.Option>
-          <Select.Option value={ESolved.unsolved}>未解决</Select.Option>
+          <Select.Option value={''}>全部</Select.Option>
+          <Select.Option value={'solved'}>已解决</Select.Option>
+          <Select.Option value={'unsolved'}>未解决</Select.Option>
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>

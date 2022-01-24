@@ -120,7 +120,7 @@ export default function ProfileAnswerPage(props: IProps) {
             favorite: allFavoritesNumber,
           }}
         />
-        <Select value={solved} onChange={(value) => router.push(`/u/${username}/question/${value}`)}>
+        <Select defaultValue={''} value={''} onChange={(value) => router.push(`/u/${username}/question/${value}`)}>
           <Select.Option value={''}>全部</Select.Option>
           <Select.Option value={'solved'}>已解决</Select.Option>
           <Select.Option value={'unsolved'}>未解决</Select.Option>

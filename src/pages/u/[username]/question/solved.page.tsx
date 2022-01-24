@@ -29,7 +29,7 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 
-const solved: ESolved = ESolved.all;
+const solved: ESolved = ESolved.solved;
 
 interface IProps {
   username: string;

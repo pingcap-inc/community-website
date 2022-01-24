@@ -130,8 +130,8 @@ export interface IQuestions {
 export enum ESolved {
   /*eslint-disable no-unused-vars*/
   all = '',
-  solved = 'noyes',
-  unsolved = '',
+  solved = 'yes',
+  unsolved = 'no',
   /*eslint-enable no-unused-vars*/
 }
 

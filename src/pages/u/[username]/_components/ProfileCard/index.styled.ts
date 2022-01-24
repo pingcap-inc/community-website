@@ -60,7 +60,7 @@ export const JoinDate = styled.div`
   margin-top: 1.5rem;
 `;
 export const JoinDateIcon = styled(IdcardOutlined)`
-  height: 1.5rem;
+  font-size: 1.5rem;
 `;
 
 export const Nums = styled.div`

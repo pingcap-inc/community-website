@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       getBadgesByUsername(username),
       getUserProfileByUsername(username),
       getSummaryByUsername(username),
-      getQuestionsByUsername(username, pageInfo.page),
+      getQuestionsByUsername(username, undefined, pageInfo.page),
       getPostsNumberByUsername(username),
       getAskTugFavoritesNumberByUsername(username),
       getPostFavoritesNumberByUsername(username),
@@ -89,7 +89,7 @@ export default function ProfileAnswerPage(props: IProps) {
     try {
       const nextPage = page + 1;
       setPage(nextPage);
-      const newData = await getQuestionsByUsername(username, nextPage);
+      const newData = await getQuestionsByUsername(username, undefined, nextPage);
       setData((data) => [...data, ...newData]);
       setHasMore(newData.length !== 0);
     } catch (e) {

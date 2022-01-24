@@ -141,10 +141,19 @@ export interface IQuestions {
 
 export async function getQuestionsByUsername(
   username: string,
+  solved?: boolean,
   page: number = 1,
   per_page: number = 10
 ): Promise<IQuestions[]> {
-  const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${page - 1}&per_page=${per_page}`;
+  let solvedParam: string = '';
+  if (solved === true) {
+    solvedParam = 'yes';
+  } else if (solved === false) {
+    solvedParam = 'no';
+  }
+  const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${
+    page - 1
+  }&per_page=${per_page}&solved=${solvedParam}`;
   const result = await axios.get(url);
   return result.data.topic_list?.topics ?? [];
 }

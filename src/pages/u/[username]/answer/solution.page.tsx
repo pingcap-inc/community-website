@@ -118,7 +118,12 @@ export default function ProfileAnswerPage(props: IProps) {
             favorite: allFavoritesNumber,
           }}
         />
-        <Select value={''} onChange={(value) => router.push(`/u/${username}/answer/${value}`)}>
+        <Select
+          defaultValue={'solution'}
+          value={'solution'}
+          onChange={(value) => router.push(`/u/${username}/answer/${value}`)}
+          style={{ width: '10rem' }}
+        >
           <Select.Option value={''}>全部</Select.Option>
           <Select.Option value={'solution'}>被标记为解决方案</Select.Option>
         </Select>

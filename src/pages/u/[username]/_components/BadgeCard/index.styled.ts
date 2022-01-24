@@ -38,6 +38,7 @@ export const ActiveMore = styled(Anchor)`
 
 export const Body = styled.div`
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 1rem;
 `;

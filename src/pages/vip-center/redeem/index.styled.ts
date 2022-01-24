@@ -49,5 +49,5 @@ export const ProductLine = styled.div`
   text-align: center;
   width: 100%;
   font-size: 14px;
-  color: ${(props) => (props.red ? colors.B1 : colors.F1)};
+  color: ${(props) => (props.red ? colors.B1 : props.gray ? colors.C4 : colors.F1)};
 `;

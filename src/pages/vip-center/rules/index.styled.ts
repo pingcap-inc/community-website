@@ -5,6 +5,7 @@ export const Container = styled.div`
   padding: 1rem;
   border-radius: 6px;
   background-color: ${colors.M1};
+  font-size: 14px;
 
   .title {
     text-align: center;
@@ -20,10 +21,6 @@ export const Container = styled.div`
     color: ${colors.B1};
   }
 
-  p {
-    text-indent: 2rem;
-  }
-
   p.ps {
     color: ${colors.B1};
   }
@@ -37,6 +34,7 @@ export const Container = styled.div`
     border: 1px solid;
     border-collapse: collapse;
     text-align: center;
+    margin-bottom: 12px;
   }
 
   table h4 {

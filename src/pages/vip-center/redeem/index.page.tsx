@@ -75,7 +75,7 @@ const Page = () => {
               <Styled.Product>
                 <Styled.ProductImage src={product.cover_url} />
                 <Styled.ProductLine>{product.name}</Styled.ProductLine>
-                <Styled.ProductLine red>
+                <Styled.ProductLine red={pointsData.current_points < product.points} gray>
                   {product.points} 积分 (剩余 {product.remains} 件)
                 </Styled.ProductLine>
                 <Button

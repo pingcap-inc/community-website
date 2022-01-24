@@ -31,6 +31,7 @@ const Page = () => {
     { title: '详细地址', dataIndex: 'consignee_addrss' },
     { title: '备注', dataIndex: 'comment' },
     { title: '物流单号', dataIndex: 'tracking_number' },
+    { title: '物流公司', dataIndex: 'courier_company' },
     { title: '时间', dataIndex: 'created_at' },
   ];
 

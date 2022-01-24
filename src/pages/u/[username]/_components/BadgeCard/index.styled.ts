@@ -6,7 +6,7 @@ export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
   background-color: #fff;
   border-radius: 4px;
-  padding: 2rem 1rem;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -38,15 +38,17 @@ export const ActiveMore = styled(Anchor)`
 
 export const Body = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 1rem;
+  //gap: .5rem;
+  //width: 100%;
 `;
 
 export const Badge = styled.div`
   opacity: ${(props) => (props.hasBadge ? '100%' : '30%')};
-  width: 2.5rem;
   margin: 0.5rem;
+  width: 2.5rem;
   //height: 2.5rem;
   img {
     width: 100%;

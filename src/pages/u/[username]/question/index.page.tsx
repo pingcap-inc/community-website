@@ -117,10 +117,10 @@ export default function ProfileAnswerPage(props: IProps) {
             favorite: allFavoritesNumber,
           }}
         />
-        <Select defaultValue={''}>
-          <Select.Option value={''}>提问状态</Select.Option>
-          <Select.Option value={'1'}>提问状态</Select.Option>
-          <Select.Option value={'2'}>提问状态</Select.Option>
+        <Select defaultValue={'all'}>
+          <Select.Option value={'all'}>全部</Select.Option>
+          <Select.Option value={'resolved'}>已解决</Select.Option>
+          <Select.Option value={'unresolved'}>未解决</Select.Option>
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>

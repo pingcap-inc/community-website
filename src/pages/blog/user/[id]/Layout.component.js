@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import { CommunityHead } from '../../../../components';
+import { CommunityHead } from '~/components';
 import BlogLayout from '../../BlogLayout.component';
 import * as Styled from './index.styled';
 import { Breadcrumb } from 'antd';
 import Link from 'next/link';
 import Tab from '../Tab';
-import { PageDataContext } from '../../../../context';
+import { PageDataContext } from '~/context';
 import { usePrincipal } from '../../blog.hooks';
 
 const UserDetailsLayout = ({ itemKey, item, userDetails, children, tabExtend }) => {

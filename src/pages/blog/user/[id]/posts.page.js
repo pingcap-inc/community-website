@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../BlogList';
+import BlogList from '../../_components/BlogList';
 import UserDetailsLayout from './Layout.component';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';

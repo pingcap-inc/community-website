@@ -2,16 +2,13 @@ import * as React from 'react';
 
 import * as styled from './index.styled';
 
-import { CommunityHead } from '~/components';
-import { PageDataContext } from '~/context';
-
 import BlogLayout from '../../BlogLayout.component';
 import CategoryList from '../CategoryList';
 import CategoryListMobile from '../CategoryListMobile';
 import OrderBySwitch from '../OrderBySwitch';
-import { BlogListInfiniteScroll } from '../../BlogList';
-import HotTagList from '../../HotTagList';
-import WriteBlogButton from '../../WriteBlogButton';
+import { BlogListInfiniteScroll } from '../../_components/BlogList';
+import HotTagList from '../../_components/HotTagList';
+import WriteBlogButton from '../../_components/WriteBlogButton';
 
 const orderBy = [
   { name: '推荐排序', url: '/blog' },
@@ -24,33 +21,26 @@ export default function BlogHomepage({ categories, blogs, hotTags, blogApi }) {
   categoriesWithAll.content = contentWithAll;
   contentWithAll.unshift({ name: '全部文章', slug: '' });
   return (
-    <PageDataContext.Provider value={{}}>
-      <CommunityHead
-        title="专栏 - 首页"
-        // description
-        // keyword
-      />
-      <BlogLayout>
-        <styled.Content>
-          <styled.Container>
-            <styled.Start>
-              <CategoryList categories={categoriesWithAll} />
-            </styled.Start>
-            <styled.Center>
-              <CategoryListMobile categories={categoriesWithAll} />
-              {/*<SearchOnMobile />*/}
-              <OrderBySwitch items={orderBy} />
-              <BlogListInfiniteScroll blogs={blogs} api={blogApi} />
-            </styled.Center>
-            <styled.End>
-              <styled.WriteBlog>
-                <WriteBlogButton />
-              </styled.WriteBlog>
-              <HotTagList hotTags={hotTags} />
-            </styled.End>
-          </styled.Container>
-        </styled.Content>
-      </BlogLayout>
-    </PageDataContext.Provider>
+    <BlogLayout>
+      <styled.Content>
+        <styled.Container>
+          <styled.Start>
+            <CategoryList categories={categoriesWithAll} />
+          </styled.Start>
+          <styled.Center>
+            <CategoryListMobile categories={categoriesWithAll} />
+            {/*<SearchOnMobile />*/}
+            <OrderBySwitch items={orderBy} />
+            <BlogListInfiniteScroll blogs={blogs} api={blogApi} />
+          </styled.Center>
+          <styled.End>
+            <styled.WriteBlog>
+              <WriteBlogButton />
+            </styled.WriteBlog>
+            <HotTagList hotTags={hotTags} />
+          </styled.End>
+        </styled.Container>
+      </styled.Content>
+    </BlogLayout>
   );
 }

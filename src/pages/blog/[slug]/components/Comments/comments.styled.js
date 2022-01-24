@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { colors } from '@tidb-community/ui';
+import styled, { css } from 'styled-components';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const CommentListPagination = styled.div`
   display: flex;
@@ -12,6 +12,9 @@ export const CommentsContainer = styled.div`
   background: white;
   border-radius: 6px;
   margin-top: 32px;
+  ${mixins.onMobile(css`
+    border-radius: 0;
+  `)};
 `;
 
 export const Title = styled.div`

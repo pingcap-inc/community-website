@@ -90,11 +90,14 @@ export const getTopicUrl = (topic_id: number, post_number: number) =>
 
 export async function getAnswersByUsername(
   username: string,
+  markedSolution: boolean = false,
   pageNumber: number = 1,
   pageSize: number = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
-  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.REPLY}`;
+  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
+    EUserActionFilter.REPLY
+  }${markedSolution ? '&unsolved=1' : ''}`;
   const result = await axios.get(url);
   const { user_actions } = result.data;
   return user_actions.slice(0, pageSize - 1) ?? [];

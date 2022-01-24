@@ -23,6 +23,9 @@ export const Summary = styled.div`
   margin-top: 0.5rem;
   margin-bottom: 1rem;
   word-wrap: break-word;
+  .emoji {
+    height: 1.5rem;
+  }
 `;
 
 export const Metadata = styled.div`

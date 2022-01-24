@@ -1,10 +1,11 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
 // import Image from 'next/image';
-import { IdcardOutlined, EditFilled, MailFilled } from '@ant-design/icons';
+import { EditFilled, MailFilled } from '@ant-design/icons';
 import Link from 'next/link';
 import { useContext } from 'react';
 import { MeContext } from '~/context';
+import { askTugDomain } from '~/pages/u/[username]/api';
 
 export interface IProfileCard {
   avatarUrl: string;
@@ -36,7 +37,7 @@ export default function ProfileCard(props: IProfileCard) {
         ) : (
           <div />
         )}
-        <Styled.Chat href={`https://asktug.com/new-message?username=${props.name}`}>
+        <Styled.Chat href={`${askTugDomain}/new-message?username=${props.name}`}>
           私信 <MailFilled />
         </Styled.Chat>
       </Styled.Action>
@@ -51,7 +52,7 @@ export default function ProfileCard(props: IProfileCard) {
         </Styled.Name>
         <Styled.Description>{description}</Styled.Description>
         <Styled.JoinDate>
-          <IdcardOutlined /> 于 {joinDate} 加入
+          <Styled.JoinDateIcon /> 于 {joinDate} 加入
         </Styled.JoinDate>
         <Styled.Nums>
           <Styled.NumsItem>

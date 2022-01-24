@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
 import * as polished from 'polished';
 import Anchor from '~/components/Anchor';
+import { IdcardOutlined } from '@ant-design/icons';
 
 export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
@@ -57,6 +58,9 @@ export const JoinDate = styled.div`
   ${mixins.typography('p2')};
   margin-left: 0.5rem;
   margin-top: 1.5rem;
+`;
+export const JoinDateIcon = styled(IdcardOutlined)`
+  height: 1.5rem;
 `;
 
 export const Nums = styled.div`

@@ -58,33 +58,21 @@ export async function getUserProfileByUsername(username: string): Promise<IProfi
 }
 
 export enum EUserActionFilter {
-  // eslint-disable-next-line no-unused-vars
+  /*eslint-disable no-unused-vars*/
   LIKE = 1,
-  // eslint-disable-next-line no-unused-vars
   WAS_LIKED = 2,
-  // eslint-disable-next-line no-unused-vars
   BOOKMARK = 3,
-  // eslint-disable-next-line no-unused-vars
   NEW_TOPIC = 4,
-  // eslint-disable-next-line no-unused-vars
   REPLY = 5,
-  // eslint-disable-next-line no-unused-vars
   RESPONSE = 6,
-  // eslint-disable-next-line no-unused-vars
   MENTION = 7,
-  // eslint-disable-next-line no-unused-vars
   QUOTE = 9,
-  // eslint-disable-next-line no-unused-vars
   EDIT = 11,
-  // eslint-disable-next-line no-unused-vars
   NEW_PRIVATE_MESSAGE = 12,
-  // eslint-disable-next-line no-unused-vars
   GOT_PRIVATE_MESSAGE = 13,
-  // eslint-disable-next-line no-unused-vars
   SOLVED = 15,
-  // eslint-disable-next-line no-unused-vars
   ASSIGNED = 16,
-  // eslint-disable-next-line no-unused-vars
+  /*eslint-enable no-unused-vars*/
 }
 
 export interface IUserAction {
@@ -139,21 +127,23 @@ export interface IQuestions {
   like_count: number;
 }
 
+export enum ESolved {
+  /*eslint-disable no-unused-vars*/
+  all = '',
+  solved = 'noyes',
+  unsolved = '',
+  /*eslint-enable no-unused-vars*/
+}
+
 export async function getQuestionsByUsername(
   username: string,
-  solved?: boolean,
+  solved: ESolved = ESolved.all,
   page: number = 1,
   per_page: number = 10
 ): Promise<IQuestions[]> {
-  let solvedParam: string = '';
-  if (solved === true) {
-    solvedParam = 'yes';
-  } else if (solved === false) {
-    solvedParam = 'no';
-  }
   const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${
     page - 1
-  }&per_page=${per_page}&solved=${solvedParam}`;
+  }&per_page=${per_page}&solved=${solved}`;
   const result = await axios.get(url);
   return result.data.topic_list?.topics ?? [];
 }

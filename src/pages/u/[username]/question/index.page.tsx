@@ -19,6 +19,7 @@ import {
   getSummaryByUsername,
   IProfileSummary,
   getAskTugFavoritesNumberByUsername,
+  ESolved,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
@@ -27,6 +28,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
+
+const solved: ESolved = ESolved.all;
 
 interface IProps {
   username: string;
@@ -54,7 +57,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       getBadgesByUsername(username),
       getUserProfileByUsername(username),
       getSummaryByUsername(username),
-      getQuestionsByUsername(username, undefined, pageInfo.page),
+      getQuestionsByUsername(username, solved, pageInfo.page),
       getPostsNumberByUsername(username),
       getAskTugFavoritesNumberByUsername(username),
       getPostFavoritesNumberByUsername(username),
@@ -89,7 +92,7 @@ export default function ProfileAnswerPage(props: IProps) {
     try {
       const nextPage = page + 1;
       setPage(nextPage);
-      const newData = await getQuestionsByUsername(username, undefined, nextPage);
+      const newData = await getQuestionsByUsername(username, solved, nextPage);
       setData((data) => [...data, ...newData]);
       setHasMore(newData.length !== 0);
     } catch (e) {

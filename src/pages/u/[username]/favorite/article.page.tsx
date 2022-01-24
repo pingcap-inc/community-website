@@ -63,7 +63,6 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       getAskTugFavoritesNumberByUsername(username),
       getPostFavoritesNumberByUsername(username),
     ]);
-  console.log('!!posts', posts);
   return {
     props: {
       ...i18nProps,

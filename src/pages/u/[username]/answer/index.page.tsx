@@ -116,10 +116,9 @@ export default function ProfileAnswerPage(props: IProps) {
             favorite: allFavoritesNumber,
           }}
         />
-        <Select defaultValue={''}>
-          <Select.Option value={''}>回答状态</Select.Option>
-          <Select.Option value={'1'}>回答状态</Select.Option>
-          <Select.Option value={'2'}>回答状态</Select.Option>
+        <Select defaultValue={'all'}>
+          <Select.Option value={'all'}>全部</Select.Option>
+          <Select.Option value={'marked'}>被标记为解决方案</Select.Option>
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>

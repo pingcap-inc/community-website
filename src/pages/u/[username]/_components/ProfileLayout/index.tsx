@@ -23,7 +23,7 @@ export default function ProfileLayout({ children, badges, profile, nums }: IProp
         <Styled.Content>
           <Styled.Container>
             <Styled.Start>
-              <Space direction="vertical" size={32}>
+              <Space direction="vertical" size={32} style={{ width: '100%' }}>
                 <ProfileCard
                   avatarUrl={profile.avatar_url}
                   name={profile.username}

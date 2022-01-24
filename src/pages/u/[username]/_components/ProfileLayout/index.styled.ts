@@ -21,15 +21,17 @@ export const Container = styled(Row).attrs({
 export const Start = styled(Col).attrs({
   xs: 24,
   sm: 24,
-  md: 8,
+  md: 10,
   lg: 8,
   xl: 8,
+  xxl: 8,
 })``;
 
 export const End = styled(Col).attrs({
   xs: 24,
   sm: 24,
-  md: 16,
+  md: 14,
   lg: 16,
   xl: 16,
+  xxl: 16,
 })``;

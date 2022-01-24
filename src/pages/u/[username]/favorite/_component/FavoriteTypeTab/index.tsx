@@ -14,9 +14,13 @@ export enum EFavoriteType {
 export interface IProps {
   username: string;
   currentType: EFavoriteType;
+  nums: {
+    article?: number;
+    topic?: number;
+  };
 }
 
-export default function FavoriteTypeTab({ username, currentType }: IProps) {
+export default function FavoriteTypeTab({ username, currentType, nums }: IProps) {
   const [activeKey, setActiveKey] = useState(currentType);
   const router = useRouter();
   const handleChange = async (key: EFavoriteType) => {
@@ -26,8 +30,8 @@ export default function FavoriteTypeTab({ username, currentType }: IProps) {
   return (
     <Styled.FavoriteTypeTab>
       <Styled.Tab defaultActiveKey={currentType} onChange={handleChange} activeKey={activeKey} animated={false}>
-        <Tabs.TabPane tab={'文章'} key={EFavoriteType.article} />
-        <Tabs.TabPane tab={'帖子'} key={EFavoriteType.topic} />
+        <Tabs.TabPane tab={`文章 ${nums.article ?? ''}`} key={EFavoriteType.article} />
+        <Tabs.TabPane tab={`帖子 ${nums.topic ?? ''}`} key={EFavoriteType.topic} />
       </Styled.Tab>
     </Styled.FavoriteTypeTab>
   );

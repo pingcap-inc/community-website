@@ -161,6 +161,7 @@ export interface IProfileSummary {
     topic_count: number;
     post_count: number;
     time_read: number;
+    bookmark_count: number;
   };
 }
 

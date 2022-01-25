@@ -12,7 +12,7 @@ export default css`
     border-radius: 4px;
     box-shadow: none;
 
-    &:hover:not(&-link):not(&-primary):not(&-text),
+    &:hover:not(&-link):not(&-primary):not(&-text):not(&[disabled]),
     &:focus:not(&-link):not(&-primary):not(&-text) {
       color: ${colors.B1};
       border-color: ${colors.B1};

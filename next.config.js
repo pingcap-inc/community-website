@@ -17,7 +17,7 @@ const unifyNodeModules = (names) =>
 const config = {
   i18n,
 
-  pageExtensions: ['page.js'],
+  pageExtensions: ['page.js', 'page.tsx'],
 
   images: {
     domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],

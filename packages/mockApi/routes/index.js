@@ -19,5 +19,8 @@ router.use('/api/tidb-releases', require('./tidbReleases'));
 router.use('/next-api/subscribe', require('./subscribe'));
 router.use('/api/tug', require('./tug'));
 router.use('/blog/api', require('./blog'));
+router.use('/api/asktug', require('./asktug'));
+router.use('/api/points', require('./points'));
+router.use('/api/sms', require('./sms'));
 
 module.exports = router;

@@ -52,7 +52,8 @@ export default function ProfileCard(props: IProfileCard) {
         </Styled.Name>
         <Styled.Description>{description}</Styled.Description>
         <Styled.JoinDate>
-          <Styled.JoinDateIcon /> 于 {joinDate} 加入
+          <Styled.JoinDateIcon />
+          <Styled.JoinDateText>于 {joinDate} 加入</Styled.JoinDateText>
         </Styled.JoinDate>
         <Styled.Nums>
           <Styled.NumsItem>

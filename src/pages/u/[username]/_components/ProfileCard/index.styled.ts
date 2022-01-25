@@ -55,12 +55,17 @@ export const Description = styled.div`
   margin-top: 1.5rem;
 `;
 export const JoinDate = styled.div`
-  ${mixins.typography('p2')};
-  margin-left: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 1.5rem;
 `;
 export const JoinDateIcon = styled(IdcardOutlined)`
   font-size: 1.5rem;
+`;
+export const JoinDateText = styled.div`
+  ${mixins.typography('p2')};
+  margin-left: 0.5rem;
 `;
 
 export const Nums = styled.div`

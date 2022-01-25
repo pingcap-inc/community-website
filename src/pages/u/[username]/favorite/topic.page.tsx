@@ -44,14 +44,14 @@ interface IQuery extends ParsedUrlQuery {
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
-  const pageInfo = getPageQuery(ctx.query);
+  // const pageInfo = getPageQuery(ctx.query);
   const [i18nProps, badges, profile, summary, favoriteTopics, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getAskTugFavoritesByUsername(username, pageInfo.page, pageInfo.size),
+    getAskTugFavoritesByUsername(username),
     getPostsNumberByUsername(username),
     getPostFavoritesNumberByUsername(username),
   ]);

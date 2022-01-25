@@ -18,7 +18,6 @@ import {
   IRawBadges,
   getSummaryByUsername,
   IProfileSummary,
-  getAskTugFavoritesNumberByUsername,
   ESolved,
 } from '../api';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
@@ -37,7 +36,6 @@ interface IProps {
   profile: IProfile;
   summary: IProfileSummary;
   postsNumber: number | null;
-  askTugFavoritesNumber: number | null;
   postFavoritesNumber: number | null;
   questions: IQuestions[];
 }
@@ -50,18 +48,16 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, summary, questions, postsNumber, askTugFavoritesNumber, postFavoritesNumber] =
-    await Promise.all([
-      // @ts-ignore
-      getI18nProps(['common'])(ctx),
-      getBadgesByUsername(username),
-      getUserProfileByUsername(username),
-      getSummaryByUsername(username),
-      getQuestionsByUsername(username, solved, pageInfo.page),
-      getPostsNumberByUsername(username),
-      getAskTugFavoritesNumberByUsername(username),
-      getPostFavoritesNumberByUsername(username),
-    ]);
+  const [i18nProps, badges, profile, summary, questions, postsNumber, postFavoritesNumber] = await Promise.all([
+    // @ts-ignore
+    getI18nProps(['common'])(ctx),
+    getBadgesByUsername(username),
+    getUserProfileByUsername(username),
+    getSummaryByUsername(username),
+    getQuestionsByUsername(username, solved, pageInfo.page),
+    getPostsNumberByUsername(username),
+    getPostFavoritesNumberByUsername(username),
+  ]);
   return {
     props: {
       ...i18nProps,
@@ -71,16 +67,15 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       summary,
       questions,
       postsNumber,
-      askTugFavoritesNumber,
       postFavoritesNumber,
     },
   };
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { username, badges, profile, summary, questions, postsNumber, askTugFavoritesNumber, postFavoritesNumber } =
-    props;
-  const allFavoritesNumber: number = (askTugFavoritesNumber ?? 0) + (postFavoritesNumber ?? 0);
+  const { username, badges, profile, summary, questions, postsNumber, postFavoritesNumber } = props;
+  const askTugFavoritesNumber = summary.user_summary.bookmark_count;
+  const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(pageInfo.page);

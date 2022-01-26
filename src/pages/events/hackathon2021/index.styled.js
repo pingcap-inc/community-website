@@ -360,9 +360,21 @@ export const Link = styled(RawLink)`
   color: #84fcfc;
   text-decoration: none;
 
-  &:hover {
-    color: #674ff0;
-  }
+  ${(props) =>
+    props.border
+      ? css`
+          //margin-top: 1rem;
+          padding: 0 0.5rem;
+          border: 1px solid transparent;
+          &:hover {
+            border: 1px solid #84fcfc;
+          }
+        `
+      : css`
+          &:hover {
+            color: #674ff0;
+          }
+        `}
 `;
 
 export const LocationSpan = styled.div`
@@ -793,4 +805,65 @@ export const NewsCard = styled(DummyNewsCard)`
   background-size: cover;
   object-fit: cover;
   cursor: pointer;
+`;
+
+export const WinnerCardOverlay = styled.div`
+  top: 0;
+  left: 0;
+  right: 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 300;
+  position: absolute;
+  bottom: 3rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  text-align: start;
+`;
+export const WinnerCardContent = styled(NewsCardContent)`
+  bottom: 3rem;
+`;
+
+export const WinnerCard = styled(DummyNewsCard)`
+  padding-top: 1rem;
+  margin: auto 0;
+
+  margin-bottom: 3rem;
+  // padding
+  background-image: url(${(props) => props.src});
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  object-fit: cover;
+  cursor: pointer;
+
+  &:hover {
+    ${WinnerCardContent} {
+      display: none;
+    }
+
+    ${WinnerCardOverlay} {
+      display: inherit;
+    }
+  }
+
+  &:not(:hover) {
+    ${WinnerCardOverlay} {
+      display: none;
+    }
+  }
+`;
+
+export const WinnerRow = styled(Row)`
+  padding-bottom: 1rem;
+`;
+
+export const FinalistCard = styled(DummyNewsCard)`
+  background-color: #291f6b;
+  color: white;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding: 1.2rem;
 `;

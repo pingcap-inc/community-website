@@ -65,7 +65,6 @@ const Leaderboard = ({ data, sm }) => {
               </>
             )}
             <Styled.TableHeadCell>总积分</Styled.TableHeadCell>
-            <Styled.TableHeadCell>投票</Styled.TableHeadCell>
           </Styled.TableHeadRow>
         </Styled.TableHead>
         <Styled.TableBody>
@@ -94,11 +93,6 @@ const Leaderboard = ({ data, sm }) => {
                   </>
                 )}
                 <Styled.TableCell>{row.score}</Styled.TableCell>
-                <Styled.TableCell>
-                  <Link fontSize="16px" href={row.pollUrl}>
-                    投票
-                  </Link>
-                </Styled.TableCell>
               </Styled.TableRow>
             );
           })}

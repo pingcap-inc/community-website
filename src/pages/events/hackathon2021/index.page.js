@@ -200,7 +200,7 @@ const Page = ({ data }) => {
                 <WinnerCard
                   name={item.name}
                   prize={item.prize}
-                  src={getImage(`winner-${item.name}.jpg`)}
+                  src={`/images/hackathon/winner-${item.name}.jpg`}
                   sm={isSmallScreen}
                   intro={item.intro}
                   github={item.github}
@@ -219,14 +219,14 @@ const Page = ({ data }) => {
           <Row justify="space-around">
             {finalists.map((item) => (
               <Col onClick={() => handleRedirect(router, item.url)}>
-                <Styled.FinalistCard>{item.intro}</Styled.FinalistCard>
-                <Row justify="start">
+                <Styled.FinalistCard sm={isSmallScreen}>{item.intro}</Styled.FinalistCard>
+                <Styled.FinalistRow justify="start" sm={isSmallScreen}>
                   <div>团队名称：{item.team}</div>
-                </Row>
-                <Row justify="space-between">
+                </Styled.FinalistRow>
+                <Styled.FinalistRow justify="space-between" sm={isSmallScreen}>
                   <div>项目名称：{item.project}</div>
                   <Styled.Link href={item.rfc}> RFC </Styled.Link>
-                </Row>
+                </Styled.FinalistRow>
               </Col>
             ))}
             {isSmallScreen ||

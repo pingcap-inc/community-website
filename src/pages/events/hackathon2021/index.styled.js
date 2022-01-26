@@ -865,5 +865,18 @@ export const FinalistCard = styled(DummyNewsCard)`
   color: white;
   margin-bottom: 1rem;
   margin-top: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 1.2rem;
+`;
+
+export const FinalistRow = styled(Row)`
+  ${(props) =>
+    props.sm
+      ? css`
+          width: calc(1.04 * (100vw - 44px - 2rem));
+        `
+      : css`
+          width: ${columnWidth * 3 * 1.2}vw;
+        `}
 `;

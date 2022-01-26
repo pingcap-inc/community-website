@@ -5,7 +5,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Divider, List, Select, Skeleton, Space } from 'antd';
+import { Divider, List, Skeleton, Space } from 'antd';
 import ListItem from '../_components/ListItem';
 import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
 import {
@@ -116,11 +116,6 @@ export default function ProfileAnswerPage(props: IProps) {
             favorite: allFavoritesNumber,
           }}
         />
-        <Select defaultValue={''}>
-          <Select.Option value={''}>文章状态</Select.Option>
-          <Select.Option value={'1'}>文章状态</Select.Option>
-          <Select.Option value={'2'}>文章状态</Select.Option>
-        </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
         {/*{posts.map((value) => (*/}

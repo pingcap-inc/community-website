@@ -3,9 +3,8 @@ import * as Styled from './index.styled';
 // import Image from 'next/image';
 import { EditFilled, MailFilled } from '@ant-design/icons';
 import Link from 'next/link';
-import { useContext } from 'react';
-import { MeContext } from '~/context';
 import { askTugDomain } from '~/pages/u/[username]/api';
+import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 
 export interface IProfileCard {
   avatarUrl: string;
@@ -22,9 +21,7 @@ export interface IProfileCard {
 
 export default function ProfileCard(props: IProfileCard) {
   const { avatarUrl, name, level, description, joinDate, nums } = props;
-  const me = useContext(MeContext);
-  const currentUsername = me?.meData?.username;
-  const isCurrentLogonUser = name === currentUsername;
+  const isCurrentLogonUser = useCurrentLogonUser(name);
   return (
     <Styled.Container>
       <Styled.Action>

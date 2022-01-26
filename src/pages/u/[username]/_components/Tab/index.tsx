@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Styled from './index.styled';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 
 export enum EUgcType {
   // eslint-disable-next-line no-unused-vars
@@ -29,6 +30,7 @@ export default function Tab(props: IPropsTab) {
   const router = useRouter();
   const { username } = router.query;
   const prefix = `/u/${username}`;
+  const isCurrentLogonUser = useCurrentLogonUser(username as string);
   return (
     <Styled.Tab>
       <Link href={`${prefix}/answer`} passHref>
@@ -40,9 +42,11 @@ export default function Tab(props: IPropsTab) {
       <Link href={`${prefix}/post`} passHref>
         <Styled.TabItem selected={selected === EUgcType.post}>文章 {nums.post}</Styled.TabItem>
       </Link>
-      <Link href={`${prefix}/favorite`} passHref>
-        <Styled.TabItem selected={selected === EUgcType.favorite}>收藏 {nums.favorite}</Styled.TabItem>
-      </Link>
+      {isCurrentLogonUser && (
+        <Link href={`${prefix}/favorite`} passHref>
+          <Styled.TabItem selected={selected === EUgcType.favorite}>收藏 {nums.favorite}</Styled.TabItem>
+        </Link>
+      )}
     </Styled.Tab>
   );
 }

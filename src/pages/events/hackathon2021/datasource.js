@@ -277,7 +277,8 @@ export const winners = [
   },
   {
     github: 'https://github.com/collie-dev',
-    intro: '我们这么菜评委不会生气吧',
+    intro:
+      'collie diagnosing platform 集 故障场景信息收集 / ui 在线观察分析 / 机器学习辅助诊断 于一身的故障诊断分析解决平台',
     name: '我们这么菜评委不会生气吧',
     prize: '三等奖￥20000',
     rfc: 'https://github.com/WPH95/collie',

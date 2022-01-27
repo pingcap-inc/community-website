@@ -126,10 +126,10 @@ export const BannerButton = styled(Button).attrs({
 })`
   width: 6rem;
   height: 2.4rem !important;
-  background: #674ff0 !important;
-
-  &:hover {
-    background-color: #3c26b5 !important;
+  background: #9d9d9d !important;
+  cursor: not-allowed;
+  .ant-click-animating-node {
+    display: none;
   }
 `;
 
@@ -811,11 +811,11 @@ export const WinnerCardOverlay = styled.div`
   top: 0;
   left: 0;
   right: 0;
+  bottom: 0;
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 300;
   position: absolute;
-  bottom: 3rem;
   overflow-x: hidden;
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.5);
@@ -823,14 +823,14 @@ export const WinnerCardOverlay = styled.div`
   text-align: start;
 `;
 export const WinnerCardContent = styled(NewsCardContent)`
-  bottom: 3rem;
+  bottom: 0;
 `;
 
 export const WinnerCard = styled(DummyNewsCard)`
   padding-top: 1rem;
   margin: auto 0;
+  position: relative;
 
-  margin-bottom: 3rem;
   // padding
   background-image: url(${(props) => props.src});
   background-repeat: no-repeat;
@@ -857,7 +857,8 @@ export const WinnerCard = styled(DummyNewsCard)`
 `;
 
 export const WinnerRow = styled(Row)`
-  padding-bottom: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 3rem;
 `;
 
 export const FinalistCard = styled(DummyNewsCard)`

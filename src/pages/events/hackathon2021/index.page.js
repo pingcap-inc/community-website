@@ -74,7 +74,6 @@ const WinnerCard = ({ github, intro, video, name, prize, rfc, src, sm }) => {
       <div>
         <Styled.WinnerCard src={src} sm={sm}>
           <Styled.WinnerCardContent sm={sm}>
-            {' '}
             {prize} <br /> {name}
           </Styled.WinnerCardContent>
           <Styled.WinnerCardOverlay>{intro}</Styled.WinnerCardOverlay>
@@ -142,7 +141,7 @@ const Page = ({ data }) => {
               {isSmallScreen ? <Styled.BannerTitleMobile /> : <Styled.BannerTitle />}
 
               <Styled.BannerButtonsGroup isSmallScreen={isSmallScreen}>
-                <Styled.BannerButton disabled>报名截止</Styled.BannerButton>
+                <Styled.BannerButton>报名截止</Styled.BannerButton>
               </Styled.BannerButtonsGroup>
               {!isSmallScreen && <BannerNavButtonsGroup />}
             </Styled.BannerContent>

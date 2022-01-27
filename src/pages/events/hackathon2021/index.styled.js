@@ -36,7 +36,7 @@ export const Section = styled.div`
   ${horizontalPadding};
   padding-bottom: 3rem;
   padding-top: 3rem;
-  text-align: center;
+  ${(props) => !props.leftAlign && 'text-align: center;'}
 `;
 export const SectionTitleBackground = styled.span`
   // align the svg on the center
@@ -863,8 +863,9 @@ export const WinnerRow = styled(Row)`
 export const FinalistCard = styled(DummyNewsCard)`
   background-color: #291f6b;
   color: white;
+  text-align: left;
   margin-bottom: 1rem;
-  margin-top: 1rem;
+  margin-top: 3rem;
   overflow-x: hidden;
   overflow-y: auto;
   padding: 1.2rem;

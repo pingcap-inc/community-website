@@ -149,7 +149,7 @@ const Page = ({ data }) => {
           </Styled.Banner>
           {isSmallScreen && <BannerNavButtonsGroup isSmallScreen={isSmallScreen} />}
         </Styled.BannerWrapper>
-        <Styled.Section id="intro">
+        <Styled.Section leftAlign id="intro">
           <SectionTitle>大赛回顾</SectionTitle>
           <p>
             主题为「Explore the Sky」的 TiDB Hackathon 2021 完美收官！今年已经是 TiDB Hackathon

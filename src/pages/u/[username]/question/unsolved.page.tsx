@@ -27,6 +27,7 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
+import { filterSelectWidth } from '../common.styled';
 
 const solved: ESolved = ESolved.unsolved;
 
@@ -119,6 +120,7 @@ export default function ProfileAnswerPage(props: IProps) {
           defaultValue={'unsolved'}
           value={'unsolved'}
           onChange={(value) => router.push(`/u/${username}/question/${value}`)}
+          style={{ width: filterSelectWidth }}
         >
           <Select.Option value={''}>全部</Select.Option>
           <Select.Option value={'solved'}>已解决</Select.Option>

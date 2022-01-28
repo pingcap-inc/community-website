@@ -26,6 +26,7 @@ import {
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 import { useRouter } from 'next/router';
+import { filterSelectWidth } from '../common.styled';
 
 interface IProps {
   username: string;
@@ -117,7 +118,7 @@ export default function ProfileAnswerPage(props: IProps) {
           defaultValue={'solution'}
           value={'solution'}
           onChange={(value) => router.push(`/u/${username}/answer/${value}`)}
-          style={{ width: '10rem' }}
+          style={{ width: filterSelectWidth }}
         >
           <Select.Option value={''}>全部</Select.Option>
           <Select.Option value={'solution'}>被标记为解决方案</Select.Option>

@@ -109,7 +109,7 @@ export async function getAskTugFavoritesByUsername(
   pageSize: number = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
-  const url = `${askTugDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
+  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
   const result = await axios.get(url);
   const { user_actions } = result.data;
   return user_actions.slice(0, pageSize - 1) ?? [];

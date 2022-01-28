@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
@@ -22,8 +22,8 @@ import {
 import { ParsedUrlQuery } from 'querystring';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useRouter } from 'next/router';
-import { getPageQuery } from '~/utils/pagination.utils';
+// import { useRouter } from 'next/router';
+// import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 
@@ -34,7 +34,6 @@ interface IProps {
   summary: IProfileSummary;
   postsNumber: number | null;
   postFavoritesNumber: number | null;
-  favoriteTopics: IUserAction[];
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
@@ -45,13 +44,12 @@ interface IQuery extends ParsedUrlQuery {
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username } = ctx.params;
   // const pageInfo = getPageQuery(ctx.query);
-  const [i18nProps, badges, profile, summary, favoriteTopics, postsNumber, postFavoritesNumber] = await Promise.all([
+  const [i18nProps, badges, profile, summary, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getAskTugFavoritesByUsername(username),
     getPostsNumberByUsername(username),
     getPostFavoritesNumberByUsername(username),
   ]);
@@ -62,7 +60,6 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       badges,
       profile,
       summary,
-      favoriteTopics,
       postsNumber,
       postFavoritesNumber,
     },
@@ -70,14 +67,14 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfileAnswerPage(props: IProps) {
-  const { username, badges, profile, summary, favoriteTopics, postsNumber, postFavoritesNumber } = props;
+  const { username, badges, profile, summary, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
-  const router = useRouter();
-  const pageInfo = getPageQuery(router.query);
-  const [page, setPage] = useState(pageInfo.page);
-  const [data, setData] = useState(favoriteTopics);
-  const [hasMore, setHasMore] = useState(favoriteTopics.length !== 0);
+  // const router = useRouter();
+  // const pageInfo = getPageQuery(router.query);
+  const [page, setPage] = useState(0);
+  const [data, setData] = useState<IUserAction[]>([]);
+  const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const loadMoreData = async () => {
     setLoading(true);
@@ -92,6 +89,9 @@ export default function ProfileAnswerPage(props: IProps) {
     }
     setLoading(false);
   };
+  useEffect(() => {
+    loadMoreData();
+  }, []);
   return (
     <ProfileLayout
       badges={badges}

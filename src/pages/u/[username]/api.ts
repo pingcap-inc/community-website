@@ -96,8 +96,8 @@ export async function getAnswersByUsername(
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
-    EUserActionFilter.REPLY
-  }${markedSolution ? '&unsolved=1' : ''}`;
+    markedSolution ? EUserActionFilter.SOLVED : EUserActionFilter.REPLY
+  }`;
   const result = await axios.get(url);
   const { user_actions } = result.data;
   return user_actions.slice(0, pageSize - 1) ?? [];

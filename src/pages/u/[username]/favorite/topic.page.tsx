@@ -26,6 +26,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 // import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
+import {useCurrentLogonUser} from "~/pages/u/[username]/profile.hook";
+import ErrorPage from '~/components/errorPage';
 
 interface IProps {
   username: string;
@@ -92,6 +94,10 @@ export default function ProfileAnswerPage(props: IProps) {
   useEffect(() => {
     loadMoreData();
   }, []);
+  const isCurrentLogonUser = useCurrentLogonUser(username);
+  if (!isCurrentLogonUser) {
+    return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />
+  }
   return (
     <ProfileLayout
       badges={badges}

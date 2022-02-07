@@ -30,6 +30,8 @@ import {
   getPostFavoritesNumberByUsername,
   IPostFavorite,
 } from '../username';
+import {useCurrentLogonUser} from "~/pages/u/[username]/profile.hook";
+import ErrorPage from '~/components/errorPage';
 
 interface IProps {
   username: string;
@@ -97,6 +99,10 @@ export default function ProfileAnswerPage(props: IProps) {
     }
     setLoading(false);
   };
+  const isCurrentLogonUser = useCurrentLogonUser(username);
+  if (!isCurrentLogonUser) {
+    return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />
+  }
   return (
     <ProfileLayout
       badges={badges}

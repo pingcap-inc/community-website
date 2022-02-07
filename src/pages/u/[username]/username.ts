@@ -58,9 +58,15 @@ export async function getPostsByUsername(username: string, page?: number, size?:
   return await blogClient.get(url);
 }
 
-export async function getPostsNumberByUsername(username: string): Promise<number | undefined> {
-  const data = await getPostsByUsername(username);
-  return data?.page?.totalElements;
+export async function getPostsNumberByUsername(username: string): Promise<number | null> {
+  let postNumber: number|null = null;
+  try {
+    const data = await getPostsByUsername(username);
+    postNumber = data?.page?.totalElements ?? null;
+  } catch (e) {
+    console.error('getPostsNumberByUsername error')
+  }
+  return postNumber
 }
 
 export async function getPostFavoritesByUsername(
@@ -75,6 +81,12 @@ export async function getPostFavoritesByUsername(
 }
 
 export async function getPostFavoritesNumberByUsername(username: string): Promise<number | null> {
-  const data = await getPostFavoritesByUsername(username);
-  return data?.page?.totalElements ?? null;
+  let number: number|null = null;
+  try {
+    const data = await getPostFavoritesByUsername(username);
+    number = data?.page?.totalElements ?? null;
+  } catch (e) {
+    console.error('getPostsNumberByUsername error')
+  }
+  return number
 }

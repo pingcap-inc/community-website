@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
 import Anchor from '~/components/Anchor';
 
 export const ListItem = styled.div`
@@ -25,6 +25,12 @@ export const Summary = styled.div`
   word-wrap: break-word;
   .emoji {
     height: 1.5rem;
+  }
+  a {
+    color: ${colors.B1};
+    &:hover {
+      text-decoration: underline;
+    }
   }
 `;
 

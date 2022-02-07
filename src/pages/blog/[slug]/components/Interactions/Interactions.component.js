@@ -21,6 +21,7 @@ import { Input, Modal, Popconfirm, Tooltip } from 'antd';
 
 const Interactions = ({ blogInfo, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();
+  const isReviewer = hasAuthority('REVIEW_POST');
 
   const { liked, like, likes } = useLikes(blogInfo, isLogin);
   const { favorited, favorite, favorites } = useFavorites(blogInfo, isLogin);
@@ -84,21 +85,19 @@ const Interactions = ({ blogInfo, reload }) => {
       );
     }
   }
-  if (blogInfo.status === 'DRAFT' || isAuthor(blogInfo)) {
+  if (isAuthor(blogInfo) || isReviewer) {
     adminActions.push(
       <Tooltip placement="rightTop" title={'删除'}>
         <Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />
       </Tooltip>
     );
-  }
-  if (isAuthor(blogInfo) || hasAuthority('REVIEW_POST')) {
     adminActions.push(
       <Tooltip placement="rightTop" title={'编辑'}>
         <Interaction key="edit" icon={<EditOutlined />} onClick={edit} />
       </Tooltip>
     );
   }
-  if (blogInfo.status === 'PENDING' && hasAuthority('REVIEW_POST')) {
+  if (blogInfo.status === 'PENDING' && isReviewer) {
     adminActions.push(
       <Tooltip placement="rightTop" title={'发布'}>
         <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />

@@ -1,7 +1,9 @@
-import { getI18nProps } from '../../../../../utils/i18n.utils';
+import React from 'react';
+import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
 import CategoryPage from '../index.page';
-import { getPageQuery } from '../../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
+import { PageDataContext } from '~/context';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -28,5 +30,9 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export default function LatestCategoryPage(props) {
-  return <CategoryPage {...props} blogApi={api.blog.getLatest} />;
+  return (
+    <PageDataContext.Provider value={{ showRecommendedIcon: false }}>
+      <CategoryPage {...props} blogApi={api.blog.getLatest} />
+    </PageDataContext.Provider>
+  );
 }

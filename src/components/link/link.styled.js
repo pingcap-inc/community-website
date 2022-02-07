@@ -5,6 +5,6 @@ export const Container = styled.span`
   color: ${colors.F1};
   text-underline: ${colors.F1};
   text-decoration: underline;
-  font-size: 16px;
+  font-size: ${(props) => props.fontSize};
   cursor: pointer;
 `;

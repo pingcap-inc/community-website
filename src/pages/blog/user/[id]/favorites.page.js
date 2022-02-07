@@ -2,9 +2,9 @@ import React from 'react';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../BlogList';
+import BlogList from '../../_components/BlogList';
 import UserDetailsLayout from './Layout.component';
-import { getPageQuery } from '../../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);

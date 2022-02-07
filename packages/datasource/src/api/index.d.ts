@@ -5,6 +5,8 @@ export * as orgs from './orgs';
 export * as tug from './tug';
 export * as subscribe from './subscribe';
 export * as blog from './blog';
+export * as asktug from './asktug';
+export * as points from './points';
 export { me } from './me';
 
 export type ApiResponse<T, Detail> = {

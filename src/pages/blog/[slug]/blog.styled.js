@@ -46,6 +46,7 @@ export const Main = styled.div`
   width: 991px;
   margin: 2rem;
   ${mixins.onMobile(css`
+    width: 100%;
     padding: 0;
     margin: 1rem 0;
   `)};

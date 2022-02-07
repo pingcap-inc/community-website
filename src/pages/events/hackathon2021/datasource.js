@@ -24,7 +24,7 @@ export const groupsData = [
 ];
 export const stepsData = [
   {
-    title: 'STEP 1：提交报名',
+    title: 'STEP 1intro: "提交报名',
     date: '截至 12 月 27 日',
     desc: (
       <div>
@@ -36,14 +36,14 @@ export const stepsData = [
     url: 'https://forms.pingcap.com/f/TiDBHackathon2021apply',
   },
   {
-    title: 'STEP 2：完成组队',
+    title: 'STEP 2intro: "完成组队',
     date: '报名后 - 12 月 28 日',
     desc: <div>报名成功即可启动组队，找到你喜欢的队友组成战队，选拔队长，拟定队名，提交团队 RFC</div>,
     action: '提交 RFC',
     url: 'https://forms.pingcap.com/f/TiDBHackathon2021RFC',
   },
   {
-    title: 'STEP 3：赛前准备',
+    title: 'STEP 3intro: "赛前准备',
     date: '截至 1 月 7 日（共 10 天）',
     desc: (
       <div>
@@ -55,14 +55,14 @@ export const stepsData = [
     url: 'https://asktug.com/t/topic/273503',
   },
   {
-    title: 'STEP 4：预赛答辩',
+    title: 'STEP 4intro: "预赛答辩',
     date: '1 月 8 日（周六）',
     desc: <div>北京、上海、杭州、成都、深圳、广州任选一处决赛参赛点，还可以走进 PingCAP Office 感受 P 社文化。</div>,
     action: '下载答辩 PPT 模板',
     url: 'https://asktug.com/t/topic/273653',
   },
   {
-    title: 'STEP 5：决赛答辩&颁奖',
+    title: 'STEP 5intro: "决赛答辩&颁奖',
     date: '1 月 9 日（周日）',
     desc: <div>决赛现场如火如荼，众多奖项等你拿！</div>,
   },
@@ -79,7 +79,7 @@ export const FAQData = [
     q: '5. 什么时候可以开始编写代码？',
     a: '组队完成后就可以开始编写代码了！如果遇到学习资料中尚未解答的问题，可以加入Hackathon 2021 参赛群，群内将有导师不定期线上答疑，以及集中直播分享。',
   },
-  { q: '6. 校园团队奖参与评选的人群是？', a: '该团队需要全员皆为：未毕业大学生、硕士、博士。' },
+  { q: '6. 校园团队奖参与评选的人群是？', a: '该团队需要全员皆为intro: "未毕业大学生、硕士、博士。' },
 ];
 export const judgesData = [
   {
@@ -169,7 +169,7 @@ export const judgesData = [
     name: '谢佳',
     desc: '华创资本合伙人',
     detail:
-      '专注于企业软件及服务领域的早期投资，2015 年加入华创资本，研究驱动型投资人，覆盖的领域包括 SaaS / Cloud Infra / AI&DataTech / Cybersecurity 等。在华创资本负责推动和执行的投资案例包括：PingCAP、ONES、梦诚科技、天旦、中睿天下、FONE、石墨文档、JuiceData、百观科技、小满科技等。',
+      '专注于企业软件及服务领域的早期投资，2015 年加入华创资本，研究驱动型投资人，覆盖的领域包括 SaaS / Cloud Infra / AI&DataTech / Cybersecurity 等。在华创资本负责推动和执行的投资案例包括intro: "PingCAP、ONES、梦诚科技、天旦、中睿天下、FONE、石墨文档、JuiceData、百观科技、小满科技等。',
   },
   {
     name: '徐之浩',
@@ -227,5 +227,238 @@ export const carouselData = [
     img: getImage('prev-18.jpg'),
     url: 'https://tidb.io/archived/events/hackathon2018/',
     desc: 'TiDB Hackathon 2018',
+  },
+];
+
+export const winners = [
+  {
+    github: 'https://github.com/shenzhengcmss/tidb-support-s3',
+    intro:
+      'TiDB冷热数据分层存储主要考虑的是热数据存放在TiKV上以及很少几率查询分析的冷数据存放到便宜通用的云存储S3上，同时使S3存储引擎支持TiDB部分算子下推，实现TiDB基于S3冷数据分析查询。',
+    name: 'He3',
+    prize: '一等奖￥100000',
+    rfc: 'https://github.com/shenzhengcmss/tidb-support-s3/blob/main/TiDB%20%e5%86%b7%e7%83%ad%e6%95%b0%e6%8d%ae%e5%88%86%e5%b1%82%e5%ad%98%e5%82%a8.md',
+    video: 'https://www.bilibili.com/video/BV1Y44y1L7VZ?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/tigraph/tidb',
+    intro:
+      '语法完备的分布式图数据库。对2021年TiGraph项目的一次革命性进化。全新的借鉴自pgql的完备语法，数据存储于TiKV并实现了算子下推。DDL与编解码方面实现了对原有结构的极小侵入与改动',
+    name: 'TiMatch',
+    prize: '二等奖￥50000',
+    rfc: 'https://github.com/tigraph/rfc-2022/blob/main/README.md',
+    video: 'https://www.bilibili.com/video/BV1Wq4y1c7Aj?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/hackathon2021-pCloud',
+    intro:
+      '灵感来自于 iCloud，希望能随时随地方便用户开启备份上云的功能，针对备份需求改进现有的付费模式，利用云上存储，更方便快捷的实现备份恢复到任意时间点的功能。',
+    name: 'pCloud',
+    prize: '二等奖￥50000, 最佳市场潜力（云启）￥8000',
+    rfc: 'https://github.com/hackathon2021-pCloud/pCloud',
+    video: 'https://www.bilibili.com/video/BV1Kr4y1e7iB?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/TiLaker/tikv-client-java',
+    intro: 'TiDB 数据实时入湖工具',
+    name: 'TiLaker',
+    prize: '二等奖￥50000, 最佳市场潜力（华创）￥8000 ,最佳人气奖 罗技键盘人手1个',
+    rfc: 'https://github.com/TiLaker/tilaker',
+    video: 'https://www.bilibili.com/video/BV1t3411Y7yV?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/Long-Live-the-DoDo',
+    intro:
+      'Flashback 是用于在用户发生误操作的时候，快速回滚至原先版本，避免产生重大损失的特性，得益于 MVCC 机制，我们可以让 TiDB 在某些方面做的比 Oracle Flashback 更强大！',
+    name: '渡渡鸟复兴会',
+    prize: '三等奖￥20000',
+    rfc: 'https://github.com/Long-Live-the-DoDo/rfc',
+    video: 'https://www.bilibili.com/video/BV1ZF411H73L?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/collie-dev',
+    intro:
+      'collie diagnosing platform 集 故障场景信息收集 / ui 在线观察分析 / 机器学习辅助诊断 于一身的故障诊断分析解决平台',
+    name: '我们这么菜评委不会生气吧',
+    prize: '三等奖￥20000',
+    rfc: 'https://github.com/WPH95/collie',
+    video: 'https://www.bilibili.com/video/BV143411Y76Y?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/hackathon2021index/tidb/blob/hackathon5.3/hackathan_rfc.md',
+    intro: '用 lightning 的方式来实现 索引相关 ddl: 生成 sst 文件然后 ingest 到 tikv.',
+    name: '黑马警长',
+    prize: '三等奖￥20000',
+    rfc: 'https://github.com/hackathon2021index/tidb/blob/hackathon5.3/hackathan_rfc.md',
+    video: 'https://www.bilibili.com/video/BV1KT4y127SP?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/oom-ai/oomstore',
+    intro:
+      'oom.ai 特征平台支持集成 TiDB/TiKV 作为存储，让 TiDB 的用户只需进行简单的配置，即可解锁机器学习特征平台，为模型提供可靠的数据支持。',
+    name: 'oom.ai',
+    prize: '三等奖￥20000',
+    rfc: 'https://github.com/oom-ai/rfc-tidb-hackathon-2022',
+    video: 'https://www.bilibili.com/video/BV1XS4y157S5?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/Hackathon-2022-TiVP',
+    intro:
+      'TiVP is a Visual Plan for TiDB SQL explaination integreted with Dashboard. 该项目旨在可视化 TiDB 生成的执行计划。',
+    name: 'TiVP',
+    prize: '三等奖￥20000, 用户之选奖￥5000',
+    rfc: 'https://github.com/yiwen92/Hackathon-2021-TiVP/blob/master/README.md',
+    video: 'https://www.bilibili.com/video/BV12b4y1J77R?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/TPC-TiKV',
+    intro: 'Better TiKV!!!',
+    name: 'TPC',
+    prize: '三等奖￥20000, 技术潜力奖￥5000',
+    rfc: 'https://github.com/TPC-TiKV/rfc',
+    video: 'https://www.bilibili.com/video/BV1U44y1W7im?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/TiInterstellar/tidb',
+    intro:
+      '为 TiDB 设计了一个新功能，某表会自动将历史数据分区，并移入更便宜的对象存储（S3）中去。同时对外的SQL查询接口不变，依然可以同时查询到 SSD 磁盘，也能查询到对象存储中的数据。',
+    name: 'Interstellar',
+    prize: '云上应用￥3000',
+    rfc: 'https://github.com/TiInterstellar/tidb',
+    video: '',
+  },
+  {
+    github: 'https://github.com/fantastic-things/chaoscraft/blob/main/README.MD',
+    intro: '在游戏中展示 Kubernetes 工作负载并进行混沌实验。',
+    name: '滑滑蛋',
+    prize: '无限创意￥5000',
+    rfc: 'https://github.com/fantastic-things/chaoscraft/blob/main/README.MD',
+    video: 'https://www.bilibili.com/video/BV1jP4y177FH?spm_id_from=333.999.0.0',
+  },
+  {
+    github: 'https://github.com/PDSL-AI/Tenseigan',
+    intro:
+      'Tenseigan是针对 TiDB 的一个分布式数据库的调优测试框架，该工具能够提供intro: "自动调参、参数影响度评估等功能，集成了多种 workload，支持 cloud 和 on-promise 环境。',
+    name: 'Matrix',
+    prize: '最佳校园￥5000, 最佳市场潜力（明势）￥8000',
+    rfc: 'https://github.com/CheneyDing/2021-TiDB-Hackthon-RFC/blob/main/README.md',
+    video: 'https://www.bilibili.com/video/BV1yq4y1c7NV?spm_id_from=333.999.0.0',
+  },
+  {
+    github: undefined,
+    intro:
+      'Gitlab在TiDB上的究极兼容！！实现一个兼容PG协议的TiDB，兼容Gitlab。启动多Gitlab实例，看看换了一个协议的TiDB数据库还能不能撑住！比以前更强，还是更弱，让我们拭目以待！',
+    name: 'TiGi',
+    prize: '积分挑战奖￥2000',
+    rfc: 'https://github.com/DigitalChinaOpenSource/TiGi',
+    video: undefined,
+  },
+  {
+    github: undefined,
+    intro:
+      'lotusdb 是一个 Go 语言实现的单机 kv 存储引擎，具有读写速度快、读写放大极低的特点。 我们希望能够使 lotusdb 成为 TiKV 中除了 rocksdb 之外的新选择。',
+    name: 'lotusdb',
+    prize: '积分挑战奖￥2000',
+    rfc: 'https://github.com/flower-corp/lotusdb/blob/main/hackathon-rfc.md',
+    video: undefined,
+  },
+  {
+    github: undefined,
+    intro:
+      '我们在使用 TiDB 前缀索引表的过程中，针对我们的查询，执行效率不高，我们针对这种查询尝试进行优化，希望在这种查询下能达到普通索引的效率',
+    name: '摸鱼不',
+    prize: '积分挑战奖￥2000',
+    rfc: 'https://github.com/jiyfhust/prefix_index/blob/main/RFC.md',
+    video: undefined,
+  },
+  {
+    github: undefined,
+    intro:
+      'TiDelta 能帮助你整合 TiDB 关键路径的性能 metrics，并生成 Metrics Diff Report，方便用户对比任何两个时间段，或者是升级前后、测试库和生产库的性能指标。',
+    name: 'TiAlphas',
+    prize: '最佳人气奖 罗技键盘人手1个',
+    rfc: 'https://github.com/Yui-Song/tidelta',
+    video: undefined,
+  },
+];
+
+export const finalists = [
+  {
+    team: 'Bubbles',
+    project: 'Deploy TiDB on Cloud',
+    intro: '提供一个可视化平台，在公有云平台上快速部署TiDB。',
+    rfc: 'https://github.com/jiayang-zheng/deploy-tidb-on-cloud/blob/main/README.md',
+  },
+
+  {
+    team: 'ChaosMore',
+    project: 'ChaosMore',
+    intro: '基于eBPF 为 ChaosMesh 设计自定义混沌工程的插件机制和能力',
+    rfc: 'https://github.com/vanx7/chaos-more',
+  },
+
+  {
+    team: '豫园',
+    project: 'TiMultiple',
+    intro: '基于Raft Learner和Raw API实现多集群读写分离和在线灾备',
+    rfc: 'https://github.com/lizhenhuan/tikv',
+  },
+
+  {
+    team: '都江堰',
+    project: 'Dujiang Weir',
+    intro:
+      'Weir 是伴鱼公司研发针对 TiDB 场景的七层负载均衡器。同许多面向分库分表的七层负载均衡不同，它的目标是为 TiDB' +
+      ' 带来更强的数据库治理能力，以非侵入的方式为 TiDB 提供了许多不适合在内核中实现的能力。我们相信一个能够以非侵入方式模块化扩展的 Weir 能够为它带来无穷的活力，成为整个 TiDB 生态能力扩展的桥头堡。',
+    rfc: 'https://github.com/tidb-hackathon/dujiangyan/blob/main/README.md',
+  },
+
+  {
+    team: 'Ti可立刻',
+    project: 'Ti Click',
+    intro:
+      '通过在线IDE的方式，快速搭建TiDB的可编程和编译的在线实验室。提高用户的TiDB生态的初体验。 此外还可以让用户在线尝试包括TiDB' +
+      ' Cloud服务在内的多项服务，降低TiDB生态的尝鲜复杂程度。',
+    rfc: 'https://github.com/ti-click/',
+  },
+
+  {
+    team: 'Matrix',
+    project: 'Tenseigan',
+    intro:
+      'Tenseigan是针对 TiDB 的一个分布式数据库的调优测试框架，该工具能够提供intro: "自动调参、参数影响度评估等功能，集成了多种' +
+      ' workload，支持 cloud 和 on-promise 环境。',
+    rfc: 'https://github.com/CheneyDing/2021-TiDB-Hackthon-RFC/blob/main/README.md',
+  },
+
+  {
+    team: 'NbNative',
+    project: '让TiDB在云上智能的说话。',
+    intro:
+      '解决当前TiDB在云上云原生方式运维的局限性，为TiDB在云上提供云原生场景下智能化运维手段，让TiDB在云上智能的说话。',
+    rfc: 'https://github.com/NbNative/RFC',
+  },
+
+  {
+    team: 'OneLastCode',
+    project: 'Incremental Analyze Table',
+    intro: 'We will cache the result of analyze request in TiKV node to avoid' + ' calculating again next time.',
+    rfc: 'https://github.com/tikv/rfcs/pull/83',
+  },
+
+  {
+    team: 'FR',
+    project: 'TiExec',
+    intro:
+      'TiExec 会尝试给通过此工具运行的程序做一些性能优化，在某些场景下会带来直接的性能提升，如在 TiDB 的某 OLTP' +
+      ' 场景对部分组件进行优化之后的初步测试显示能带来约 6-11% 的整体性能提升',
+    rfc: 'https://github.com/hnes/tiexec/blob/main/RFC.md',
+  },
+
+  {
+    team: 'Ti2Sky',
+    project: 'TiTravel',
+    intro: '扩展TiDB能力，实现对负载的一键录制与回放，从而帮助用户便捷地进行场景仿真和压力测试',
+    rfc: 'https://github.com/ti2sky/RFC',
   },
 ];

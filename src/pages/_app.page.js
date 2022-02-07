@@ -41,7 +41,6 @@ const fetcher = (path, params) => {
   try {
     params = JSON.parse(params);
   } catch (err) {}
-
   return R.path(path.split('.'), api)(params);
 };
 

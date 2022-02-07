@@ -5,6 +5,8 @@ import { getCaptchaToken } from '@tidb-community/common/utils/form';
 
 import { dispatchApiError } from './events';
 
+const CSRF_MSG = 'CSRF Failed: CSRF token missing or incorrect.';
+
 const isDispatchGlobalApiError = (status) => {
   return ![400, 409, 428].includes(status);
 };
@@ -43,9 +45,12 @@ client.interceptors.response.use(
     }
 
     const { data, status } = response;
+
     const { isDispatchApiError, isReturnErrorResponse } = config;
 
     if (typeof window !== 'undefined') {
+      // if CSRF error, reload window to refresh CSRF token
+      if (data.detail === CSRF_MSG) window.location.reload();
       let isDispatch = false;
 
       if (isDispatchApiError?.({ data, status })) {

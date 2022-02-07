@@ -6,7 +6,7 @@ import Link from 'next/link';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../BlogList';
+import BlogList from '../_components/BlogList';
 import { usePrincipal } from '../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useEffect, useState } from 'react';
@@ -28,12 +28,12 @@ const PageContent = ({ page, size }) => {
   const [blogs, setBlogs] = useState(undefined);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData(page, size) {
       const status = 'PENDING';
       const data = await api.blog.getPosts({ status, page, size });
       setBlogs(data);
     }
-    fetchData();
+    fetchData(page, size);
   }, [page, size]);
 
   const hasPermission = hasAuthority('REVIEW_POST');
@@ -58,10 +58,10 @@ const PageContent = ({ page, size }) => {
   );
 };
 
-const Page = ({ blogs }) => (
+const Page = (props) => (
   <>
     <CommunityHead title="待审核文章" />
-    <PageContent blogs={blogs} />
+    <PageContent {...props} />
   </>
 );
 

@@ -1,5 +1,5 @@
 import * as Styled from './index.styled';
-import { FAQCollapsePanel, getImage, ProcedureCardsGroup, TableCellContentInner } from './index.styled';
+import { getImage, TableCellContentInner } from './index.styled';
 import { CoreLayout } from '~/layouts';
 import { Col, Image, Row } from 'antd';
 import { useIsSmallScreen } from '~/hooks';
@@ -7,7 +7,7 @@ import _ from 'lodash';
 import { handleRedirect } from '~/utils/link.utils';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { carouselData, FAQData, groupsData, judgesData, seo, stepsData } from '~/pages/events/hackathon2021/datasource';
+import { carouselData, finalists, groupsData, judgesData, seo, winners } from '~/pages/events/hackathon2021/datasource';
 import { CommunityHead } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
@@ -48,46 +48,6 @@ const SectionTitle = ({ children }) => (
   </Styled.SectionTitle>
 );
 
-const ProcedureCard = ({ title, date, desc, buttonText, buttonLink, sm }) => (
-  <>
-    {!sm && <Styled.ProcedureCardDivider />}
-    <Styled.ProcedureCardWrapper isSmallScreen={sm}>
-      <Styled.ProcedureCard>
-        <Styled.ProcedureCardGradientSlice />
-        <Styled.ProcedureCardTitle>{title}</Styled.ProcedureCardTitle>
-        <Styled.ProcedureCardDate>{date}</Styled.ProcedureCardDate>
-        <Styled.ProcedureCardDescription>{desc}</Styled.ProcedureCardDescription>
-        <Styled.ProcedureCardButton href={buttonLink}>{buttonText}</Styled.ProcedureCardButton>
-      </Styled.ProcedureCard>
-    </Styled.ProcedureCardWrapper>
-  </>
-);
-
-const Prize = ({ title, reward, count, src, huge, rewardSize, sm }) => {
-  return (
-    <Styled.Prize src={src} sm={sm}>
-      <Styled.PrizeTitle huge={huge} sm={sm}>
-        {title}
-      </Styled.PrizeTitle>
-      <Styled.PrizeReward sm={sm} style={{ fontSize: rewardSize }}>
-        {reward}
-      </Styled.PrizeReward>
-      <Styled.PrizeCount>{count}</Styled.PrizeCount>
-    </Styled.Prize>
-  );
-};
-
-const BenefitCard = ({ icon, content }) => {
-  return (
-    <Styled.BenefitCardWrapper>
-      <Styled.BenefitCard>
-        <Styled.BenefitCardIcon src={icon} />
-        <Styled.BenefitCardContent>{content}</Styled.BenefitCardContent>
-      </Styled.BenefitCard>
-    </Styled.BenefitCardWrapper>
-  );
-};
-
 const JudgeCard = ({ name, desc, src, detail, sm }) => {
   return (
     <Styled.JudgeCard src={src} sm={sm}>
@@ -100,11 +60,43 @@ const JudgeCard = ({ name, desc, src, detail, sm }) => {
   );
 };
 
-const NewsCard = ({ title, src, url, sm }) => {
+const NewsCard = ({ title, src, sm }) => {
   return (
     <Styled.NewsCard src={src} sm={sm}>
       <Styled.NewsCardContent sm={sm}> {title} </Styled.NewsCardContent>
     </Styled.NewsCard>
+  );
+};
+
+const WinnerCard = ({ github, intro, video, name, prize, rfc, src, sm }) => {
+  return (
+    <>
+      <div>
+        <Styled.WinnerCard src={src} sm={sm}>
+          <Styled.WinnerCardContent sm={sm}>
+            {prize} <br /> {name}
+          </Styled.WinnerCardContent>
+          <Styled.WinnerCardOverlay>{intro}</Styled.WinnerCardOverlay>
+        </Styled.WinnerCard>
+      </div>
+      <Styled.WinnerRow justify="center" gutter={16}>
+        {rfc && (
+          <Styled.Link border href={rfc}>
+            RFC
+          </Styled.Link>
+        )}
+        {github && (
+          <Styled.Link border href={github}>
+            Github Repo
+          </Styled.Link>
+        )}
+        {video && (
+          <Styled.Link border href={video}>
+            视频回放
+          </Styled.Link>
+        )}
+      </Styled.WinnerRow>
+    </>
   );
 };
 
@@ -113,17 +105,15 @@ const splitCarousel = (data, size) => {
   return _.chunk(data, size);
 };
 
-const toHash = (hash) => () => (window.location.hash = hash);
-
 const BannerNavButtonsGroup = ({ isSmallScreen }) => (
   <Styled.BannerNavButtonsGroup isSmallScreen={isSmallScreen}>
-    <Styled.BannerNavButton onClick={toHash('intro')}>介绍</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('prizes')}>奖项</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('judges')}>评委</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('faq')}>常见问题</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('news')}>专题报道</Styled.BannerNavButton>
-    <Styled.BannerNavButton onClick={toHash('partners')}>合作伙伴</Styled.BannerNavButton>
+    {/*<Styled.BannerNavButton onClick={toHash('intro')}>介绍</Styled.BannerNavButton>*/}
+    {/*<Styled.BannerNavButton onClick={toHash('prizes')}>奖项</Styled.BannerNavButton>*/}
+    {/*<Styled.BannerNavButton onClick={toHash('judges')}>评委</Styled.BannerNavButton>*/}
+    {/*<Styled.BannerNavButton onClick={toHash('scores')}>积分榜</Styled.BannerNavButton>*/}
+    {/*<Styled.BannerNavButton onClick={toHash('faq')}>常见问题</Styled.BannerNavButton>*/}
+    {/*<Styled.BannerNavButton onClick={toHash('news')}>专题报道</Styled.BannerNavButton>*/}
+    {/*<Styled.BannerNavButton onClick={toHash('partners')}>合作伙伴</Styled.BannerNavButton>*/}
   </Styled.BannerNavButtonsGroup>
 );
 
@@ -151,23 +141,29 @@ const Page = ({ data }) => {
               {isSmallScreen ? <Styled.BannerTitleMobile /> : <Styled.BannerTitle />}
 
               <Styled.BannerButtonsGroup isSmallScreen={isSmallScreen}>
-                <Styled.BannerButton
-                  onClick={() => handleRedirect(router, 'https://forms.pingcap.com/f/TiDBHackathon2021apply')}
-                >
-                  立即报名
-                </Styled.BannerButton>
-                <Styled.BannerButton onClick={() => setQROverlay(true)}>加入官方群</Styled.BannerButton>
-                <Styled.BannerButton onClick={toHash('faq')}>赛事咨询</Styled.BannerButton>
+                <Styled.BannerButton>报名截止</Styled.BannerButton>
               </Styled.BannerButtonsGroup>
               {!isSmallScreen && <BannerNavButtonsGroup />}
             </Styled.BannerContent>
           </Styled.Banner>
           {isSmallScreen && <BannerNavButtonsGroup isSmallScreen={isSmallScreen} />}
         </Styled.BannerWrapper>
-        <Styled.Section id="intro">
-          <SectionTitle>大赛介绍</SectionTitle>
-          TiDB Hackathon 自 2017 年起已连续举办四届，本届主题为「Explore the Sky」，参赛者可以尽情发挥天马行空的想象，用
-          TiDB 创造无限可能。
+        <Styled.Section leftAlign id="intro">
+          <SectionTitle>大赛回顾</SectionTitle>
+          <p>
+            主题为「Explore the Sky」的 TiDB Hackathon 2021 完美收官！今年已经是 TiDB Hackathon
+            第五届赛事，参赛规模创历届之最，共有 279人 ，64
+            支队伍参赛，有来自腾讯、华为、网易、美团、字节、京东、滴滴等企业的上班族，也有来自北大、北邮、中科院、上海交大、RMIT
+            等高校的学生。
+          </p>
+          <p>
+            在两天一夜的 Hacking Time 中，围绕着内核、工具、生态、「∞」四大赛道，选手们拿出了众多令评委惊艳的项目。在
+            TiDB 内核方向做出不少 hardcore 、大幅提升性能的创新项目，在工具方向对 TiDB
+            的可观测性及诊断易用性做出了大幅优化，在生态扩展方向百花齐放，出现了语法完备的分布式图数据库，给 TiDB
+            打通了入湖的高速通道，很多项目其实已经在 TiDB 的 Roadmap 里，并已经具备落地的成熟度。最终，有 10
+            支队伍瓜分了总计 40万元的现金奖，另有 10
+            支队伍分获无限创意奖、校园团队奖、用户之选奖、最佳市场潜力奖、云上应用奖、积分挑战奖、技术潜力奖、最佳人气奖。
+          </p>
         </Styled.Section>
         <Styled.Section>
           <SectionTitle>主题赛道</SectionTitle>
@@ -184,7 +180,7 @@ const Page = ({ data }) => {
                 ))}
               </thead>
               <tr>
-                {data.map((item, idx) => (
+                {data.map((item) => (
                   <Styled.TableCell isSmallScreen={isSmallScreen}>
                     <Styled.TableCellContent>
                       <TableCellContentInner>{item.desc}</TableCellContentInner>
@@ -196,182 +192,46 @@ const Page = ({ data }) => {
           ))}
         </Styled.Section>
         <Styled.Section>
-          <SectionTitle>参赛流程</SectionTitle>
-          {!isSmallScreen ? (
-            <ProcedureCardsGroup>
-              {stepsData.map((step) => (
-                <ProcedureCard
-                  title={step.title}
-                  date={step.date}
-                  desc={step.desc}
-                  buttonText={step.action}
-                  buttonLink={step.url}
+          <SectionTitle>获奖项目</SectionTitle>
+          <Row justify="space-around">
+            {winners.map((item) => (
+              <Col onClick={() => handleRedirect(router, item.url)}>
+                <WinnerCard
+                  name={item.name}
+                  prize={item.prize}
+                  src={`/images/hackathon/winner-${item.name}.jpg`}
+                  sm={isSmallScreen}
+                  intro={item.intro}
+                  github={item.github}
+                  rfc={item.rfc}
+                  video={item.video}
                 />
-              ))}
-            </ProcedureCardsGroup>
-          ) : (
-            <>
-              {_.chunk(stepsData, 2).map((data) => (
-                <ProcedureCardsGroup>
-                  {data.slice(0, 2).map((step) => (
-                    <ProcedureCard
-                      sm
-                      title={step.title}
-                      date={step.date}
-                      buttonLink={step.url}
-                      desc={step.desc}
-                      buttonText={step.action}
-                    />
-                  ))}
-                </ProcedureCardsGroup>
-              ))}
-            </>
-          )}
-
-          <Styled.LocationSpan>六城联动线下 Hacking：北京、上海、杭州、成都、深圳、广州</Styled.LocationSpan>
-        </Styled.Section>
-        <Styled.Section id="prizes">
-          <SectionTitle>大赛奖项</SectionTitle>
-          <Styled.GlowLabel tall> Top 3 奖项</Styled.GlowLabel>
-          <Styled.PrizesRow justify={'space-around'}>
-            <Col xs={24} lg={8}>
-              <Prize
-                sm={isSmallScreen}
-                title={'一等奖'}
-                count={'1 支队伍'}
-                reward={''}
-                src={getImage('prize-1.svg')}
-                huge
-              />
-            </Col>
-            <Col xs={12} lg={8}>
-              <Prize
-                sm={isSmallScreen}
-                title={'二等奖'}
-                count={'3 支队伍'}
-                reward={''}
-                src={getImage('prize-2.svg')}
-                huge
-              />
-            </Col>
-            <Col xs={12} lg={8}>
-              <Prize
-                sm={isSmallScreen}
-                title={'三等奖'}
-                count={'6 支队伍'}
-                reward={''}
-                src={getImage('prize-3.svg')}
-                huge
-              />
-            </Col>
-          </Styled.PrizesRow>
-          <Styled.GlowLabel tall> 特别奖项 </Styled.GlowLabel>
-          <Styled.PrizesRow justify={'space-around'}>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'技术潜力奖'}
-                count={'1 支队伍'}
-                reward={'¥5000'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'用户之选奖'}
-                count={'1 支队伍'}
-                reward={'¥5000'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'云上应用奖'}
-                count={'1 支队伍'}
-                reward={'¥3000+云资源代金券'}
-                src={getImage('prize-special.svg')}
-                rewardSize={isSmallScreen ? 12 : 16}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'无限创意奖'}
-                count={'1 支队伍'}
-                reward={'¥5000'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-          </Styled.PrizesRow>
-          <Styled.PrizesRow justify={'space-around'}>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'积分挑战奖'}
-                count={'3 支队伍'}
-                reward={'¥2000'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'最佳人气奖'}
-                count={'1 支队伍'}
-                reward={'罗技机械键盘'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'校园团队奖'}
-                count={'1 支队伍'}
-                reward={'教育基金 ¥5000'}
-                rewardSize={isSmallScreen ? 14 : 16}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'决赛入围奖'}
-                count={'20 支队伍'}
-                reward={'倍轻松按摩仪'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-            <Col>
-              <Prize
-                sm={isSmallScreen}
-                title={'神秘奖项'}
-                count={'？'}
-                reward={'现场揭晓'}
-                src={getImage('prize-special.svg')}
-              />
-            </Col>
-          </Styled.PrizesRow>
-          注：所有奖项奖金均为税前金额，奖项
-          <Styled.Link fontSize="16px" href="https://asktug.com/t/topic/273513">
-            评选规则
-          </Styled.Link>
-          可参考评分规则 。<Styled.GlowLabel tall> 其他参赛福利 </Styled.GlowLabel>
-          <Styled.PrizesRow gutter={32}>
-            {[
-              '专业导师赛前辅导',
-              '评委大咖深度点评',
-              '技术同好现场交流',
-              '优秀项目孵化落地',
-              '获奖团队品牌曝光',
-              '参赛者专属大礼包',
-            ].map((benefit, idx) => (
-              <Col xs={24} md={8}>
-                <BenefitCard icon={getImage(`benefit-icon-${idx + 1}.svg`)} content={benefit} />
               </Col>
             ))}
-          </Styled.PrizesRow>
+            {isSmallScreen ||
+              (winners.length % 3 !== 0 &&
+                _.range(3 - (winners.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
+          </Row>
+        </Styled.Section>
+        <Styled.Section>
+          <SectionTitle>入围项目</SectionTitle>
+          <Row justify="space-around">
+            {finalists.map((item) => (
+              <Col onClick={() => handleRedirect(router, item.url)}>
+                <Styled.FinalistCard sm={isSmallScreen}>{item.intro}</Styled.FinalistCard>
+                <Styled.FinalistRow justify="start" sm={isSmallScreen}>
+                  <div>团队名称：{item.team}</div>
+                </Styled.FinalistRow>
+                <Styled.FinalistRow justify="space-between" sm={isSmallScreen}>
+                  <div>项目名称：{item.project}</div>
+                  <Styled.Link href={item.rfc}> RFC </Styled.Link>
+                </Styled.FinalistRow>
+              </Col>
+            ))}
+            {isSmallScreen ||
+              (finalists.length % 3 !== 0 &&
+                _.range(3 - (finalists.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
+          </Row>
         </Styled.Section>
         <Styled.Section id="judges">
           <SectionTitle>评委</SectionTitle>
@@ -401,21 +261,6 @@ const Page = ({ data }) => {
         <Styled.Section id="scores">
           <SectionTitle>积分榜</SectionTitle>
           <Leaderboard sm={isSmallScreen} data={data.leaderboard} />
-        </Styled.Section>
-        <Styled.Section id="faq">
-          <SectionTitle>常见问题</SectionTitle>
-          <Styled.FAQWrapper>
-            <Styled.FAQCollapse>
-              {FAQData.map((entry) => (
-                <FAQCollapsePanel header={entry.q}>{entry.a}</FAQCollapsePanel>
-              ))}
-            </Styled.FAQCollapse>
-          </Styled.FAQWrapper>
-          <Styled.FAQButton
-            onClick={() => handleRedirect(router, 'https://asktug.com/c/Mutual-communication/Hackathon')}
-          >
-            更多赛事 FAQ
-          </Styled.FAQButton>
         </Styled.Section>
         <Styled.Section id="news">
           <SectionTitle>专题报道</SectionTitle>

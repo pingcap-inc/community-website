@@ -4,7 +4,8 @@ import { api } from '@tidb-community/datasource';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import BlogHomepage from '../home/BlogHomepage';
-import { getPageQuery } from '../../../utils/pagination.utils';
+import { getPageQuery } from '~/utils/pagination.utils';
+import { PageDataContext } from '~/context';
 
 const { getCategories, getLatest, getHotTags } = api.blog;
 
@@ -24,6 +25,10 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-export default function BlogHomePage(props) {
-  return <BlogHomepage {...props} blogApi={getLatest} />;
+export default function BlogHomeLatestPage(props) {
+  return (
+    <PageDataContext.Provider value={{ showRecommendedIcon: false }}>
+      <BlogHomepage {...props} blogApi={getLatest} />
+    </PageDataContext.Provider>
+  );
 }

@@ -62,6 +62,7 @@ export const JoinDate = styled.div`
 `;
 export const JoinDateIcon = styled(IdcardOutlined)`
   font-size: 1.5rem;
+  color: ${colors.F2};
 `;
 export const JoinDateText = styled.div`
   ${mixins.typography('p2')};

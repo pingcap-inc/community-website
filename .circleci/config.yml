@@ -91,7 +91,7 @@ commands:
 jobs:
   verify:
     docker:
-      - image: circleci/node:14.18.3
+      - image: cimg/node:14.18.3
     parameters:
       stage:
         default: 'production'
@@ -112,7 +112,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:14.18.3
+      - image: cimg/node:14.18.3
     parameters:
       stage:
         default: 'production'
@@ -143,7 +143,7 @@ jobs:
         type: enum
         enum: ['production', 'preview']
     docker:
-      - image: circleci/node:14.13.0
+      - image: cimg/node:14.18.3
     steps:
       - checkout
       - attach_workspace:

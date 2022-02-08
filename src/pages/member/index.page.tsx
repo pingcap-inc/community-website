@@ -64,14 +64,24 @@ const Page = () => {
           <Button type="primary" onClick={checkIn} disabled={pointsData.is_today_checked}>
             {!pointsData.is_today_checked ? '签到' : '已签到'}
           </Button>
-          <Modal title="签到成功" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <Modal
+            title="签到成功"
+            visible={isModalVisible}
+            onOk={handleOk}
+            onCancel={handleCancel}
+            footer={[
+              <Button key="back" onClick={handleCancel}>
+                关闭
+              </Button>,
+            ]}
+          >
             <p>{checkInMessage}</p>
           </Modal>
         </Row>
         <Row align="middle">
-          <Styled.ExpLabel> EXP </Styled.ExpLabel>
+          <Styled.ExpLabel> 经验值 </Styled.ExpLabel>
           <Styled.Score>{pointsData.current_exps}</Styled.Score>
-          <Styled.Rank>/rank {pointsData.current_rank}</Styled.Rank>
+          <Styled.Rank>/排名 {pointsData.current_rank}</Styled.Rank>
         </Row>
         <Styled.Tooltip
           align={{
@@ -84,14 +94,6 @@ const Page = () => {
         >
           <Styled.Progress showInfo={false} percent={pointsData.level_desc.progress * 100} />
         </Styled.Tooltip>
-        <Row justify={'space-between'}>
-          <Col>
-            <Styled.Subscript>{pointsData.level_desc.min_exps} 经验</Styled.Subscript>
-          </Col>
-          <Col>
-            <Styled.Subscript>{pointsData.level_desc.max_exps} 经验</Styled.Subscript>
-          </Col>
-        </Row>
         <Styled.Tip>
           还差 {pointsData.level_desc.max_exps - pointsData.current_exps} 经验升级为 V{pointsData.current_level + 1}
           ，查看

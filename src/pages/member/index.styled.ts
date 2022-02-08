@@ -39,15 +39,12 @@ export const Score = styled.span`
 
 export const ExpLabel = styled.span`
   // gradient from left to right, orange to red
-  background: linear-gradient(to right, #fffcea 0%, #f47703 30%, #ffc801 60%, #f5ad9a 100%);
+  border: 1px solid ${colors.B1};
   padding: 4px 8px;
   margin-right: 4px;
-  line-height: 0.8;
-  border-radius: 8px;
+  border-radius: 1rem;
   font-size: 12px;
-  font-weight: bold;
-  font-style: italic;
-  color: white;
+  color: ${colors.B1};
 `;
 
 export const Rank = styled(Name)`

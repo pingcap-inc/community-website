@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors, Styled } from '@tidb-community/ui';
 import { getImage } from '../talent-plan.utils';
+import { FC, HTMLAttributes } from 'react';
 
 export const Container = styled(Styled.Section)`
   && {
@@ -14,7 +15,7 @@ export const Content = styled(Styled.Content)`
   position: relative;
 `;
 
-export const Banner = styled.div`
+export const Banner = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { sm: boolean }>`
   height: 0;
   width: 100%;
 

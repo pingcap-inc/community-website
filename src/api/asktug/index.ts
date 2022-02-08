@@ -87,6 +87,8 @@ export interface GetNotificationParams {
   limit?: number;
   recent?: 1;
   silent?: 1;
+  type?: NotificationType;
+  offset?: number;
 }
 
 export interface AsktugPrivateMessage {
@@ -116,7 +118,7 @@ export interface GetPrivateMessagesParams {
   unread?: 1;
 }
 
-export const getNotifications = (params: GetNotificationParams = {}) =>
-  asktugClient.get<Notifications, Notifications>('/notifications', { params });
+export const getNotifications = (params: GetNotificationParams = {}): Promise<Notifications> =>
+  asktugClient.get('/notifications', { params });
 
 export const readNotification = (id: number) => asktugClient.put('/notifications/mark-read', { params: { id } });

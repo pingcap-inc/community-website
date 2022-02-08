@@ -1,9 +1,13 @@
 {
   "extends": "react-app",
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
     "import/no-anonymous-default-export": 2,
     "no-console": [1, { "allow": ["warn", "error"] }],
-    "no-unused-vars": 2,
+    "@typescript-eslint/no-unused-vars": 2,
     "react/jsx-no-target-blank": [2, { "allowReferrer": true }]
   }
 }

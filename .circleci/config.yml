@@ -13,7 +13,7 @@ commands:
 
   install-deps:
     steps:
-      - run: curl -sL https://sentry.io/get-cli/ | bash
+      - run: wget https://sentry.io/get-cli/ | bash
       - run: node -v
       - run: npm -v
       - run: npm set cache .npm

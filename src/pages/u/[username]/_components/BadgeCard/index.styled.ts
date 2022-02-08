@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
 import Anchor from '~/components/Anchor';
+import { Space } from 'antd';
 
 export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
   background-color: #fff;
   border-radius: 4px;
-  padding: 32px 18px;
+  padding: 32px 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -36,19 +37,27 @@ export const ActiveMore = styled(Anchor)`
   color: ${colors.B1};
 `;
 
-export const Body = styled.div`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+//export const Body = styled.div`
+//  display: flex;
+//  justify-content: center;
+//  flex-wrap: wrap;
+//  margin-top: 32px;
+//  //gap: .5rem;
+//  //width: 100%;
+//`;
+
+export const Body = styled(Space).attrs({
+  gutter: [4, 8],
+  wrap: true,
+})`
   margin-top: 32px;
-  //gap: .5rem;
-  //width: 100%;
 `;
 
 export const Badge = styled.div`
   opacity: ${(props) => (props.hasBadge ? '100%' : '30%')};
-  padding: 4px;
-  height: 54px;
+  //margin: 4px;
+  width: 52px;
+  height: 52px;
   //height: 2.5rem;
   img {
     width: 100%;

@@ -91,7 +91,7 @@ commands:
 jobs:
   verify:
     docker:
-      - image: circleci/node:14.13.0
+      - image: circleci/node:14.18.3
     parameters:
       stage:
         default: 'production'
@@ -112,7 +112,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/node:14.13.0
+      - image: circleci/node:14.18.3
     parameters:
       stage:
         default: 'production'

@@ -12,7 +12,7 @@
     "deploy:production": "shipit production deploy",
     "deploy:preview": "shipit preview deploy",
     "dev": "npm run build:shared && (npm run start:i18n & npm run start:mockApi & npm run strapi:dev & next dev)",
-    "lint": "next lint && eslint . --ext .js,.jsx --ignore-path .gitignore",
+    "lint": "next lint && eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "lerna bootstrap && npm run build:shared",
     "prepare": "husky install",
     "server:init": "next build && npm run server:start",

@@ -36,6 +36,7 @@ export interface AsktugNotification<Data extends AsktugNotificationData = Asktug
   data: Data;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface AsktugNotificationData {}
 
 export interface TopicBasicData extends AsktugNotificationData {

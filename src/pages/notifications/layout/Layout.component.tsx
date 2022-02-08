@@ -6,6 +6,7 @@ import Menu, { MenuProps } from './menu';
 import { AuthContext } from '~/context';
 import { SiteLayout } from '~/layouts';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
 export interface LayoutProps extends MenuProps {}
 
 const Layout = ({ children, ...menuProps }: PropsWithChildren<LayoutProps>) => {

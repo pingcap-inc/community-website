@@ -4,7 +4,7 @@ import React from 'react';
 import MyLink from '~/components/MyLink';
 import styles from './MVAItem.module.scss';
 
-export default function MVAItem({ avatarUrl, name, company, title, links }) {
+export default function MVAItem({ name, company, title, links }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>

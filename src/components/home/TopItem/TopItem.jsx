@@ -4,18 +4,7 @@ import dayjs from 'dayjs';
 import MyLink from '~/components/MyLink';
 import styles from './TopItem.module.scss';
 
-export default function TopItem({
-  title,
-  categoryName,
-  categoryColor,
-  tags,
-  authorUrl,
-  authorName,
-  authorAvatarUrl,
-  replyCount,
-  lastPostedAt,
-  link,
-}) {
+export default function TopItem({ title, categoryName, categoryColor, tags, replyCount, lastPostedAt, link }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.title}>

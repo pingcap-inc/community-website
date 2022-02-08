@@ -60,7 +60,7 @@ const Page = () => {
     },
   ];
 
-  const onChange = (page: number, pageSize: number) => {
+  const onChange = (page: number) => {
     setCurrentPage(page);
   };
 

@@ -17,7 +17,6 @@ export const MobileMenu = styled(Menu)`
 export const Container = styled.ul`
   ${mixins.reset()};
   ${mixins.typography('p2')};
-  background: ${colors.M1};
   list-style: none;
   border: 1px solid ${colors.T2};
 `;
@@ -25,6 +24,8 @@ export const Container = styled.ul`
 export const Item = styled.li`
   ${mixins.flexVerticalCenter()};
   ${mixins.verticalLineMiddle('2.5rem')};
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   justify-content: space-between;
   padding: 0 1rem;
   cursor: pointer;

@@ -8,7 +8,7 @@ const Menu = ({ isMobile }) => {
 
   const { asPath } = router;
 
-  const pathPrefix = '/vip-center';
+  const pathPrefix = '/member';
   const routes = {
     '': '会员中心',
     '/redeem': '积分兑换',

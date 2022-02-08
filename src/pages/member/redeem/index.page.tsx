@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // @ts-ignore
-import Layout from '~/pages/vip-center/layout';
+import Layout from '~/pages/member/layout';
 import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';
 // @ts-ignore
@@ -81,7 +81,7 @@ const Page = () => {
                 <Button
                   type="default"
                   onClick={showModal(product.id)}
-                  disabled={pointsData.current_points < product.points}
+                  disabled={pointsData.current_points < product.points || product.remains === 0}
                 >
                   立即兑换
                 </Button>

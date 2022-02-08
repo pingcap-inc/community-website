@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from '~/pages/vip-center/layout';
+import Layout from '~/pages/member/layout';
 import * as Styled from './index.styled';
 
 const Page = () => (

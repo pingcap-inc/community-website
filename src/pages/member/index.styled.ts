@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 // @ts-ignore
 import { Link as RawLink } from '~/components';
-import { Tooltip as RawTooltip, Progress as RawProgress } from 'antd';
+import { Progress as RawProgress, Tooltip as RawTooltip } from 'antd';
 
 export const Title = styled.div`
   ${mixins.typography('h3')};
@@ -35,6 +35,19 @@ export const Score = styled.span`
   font-weight: bold;
   font-size: 30px;
   color: ${colors.B1};
+`;
+
+export const ExpLabel = styled.span`
+  // gradient from left to right, orange to red
+  background: linear-gradient(to right, #fffcea 0%, #f47703 30%, #ffc801 60%, #f5ad9a 100%);
+  padding: 4px 8px;
+  margin-right: 4px;
+  line-height: 0.8;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: bold;
+  font-style: italic;
+  color: white;
 `;
 
 export const Rank = styled(Name)`
@@ -83,6 +96,7 @@ export const Badge = styled.div`
 export const BadgeIcon = styled.img`
   width: 64px;
   height: 64px;
+  object-fit: contain;
 `;
 
 export const BadgeName = styled.span`

@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, message, Row } from 'antd';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
@@ -55,10 +55,32 @@ const FormComponent = () => {
     validationSchema: schema,
   };
 
+  const [codeCountdown, setCodeCountdown] = useState(0);
+
+  // const startCountdown = (count) => {
+  //   setCodeCountdown(count);
+  //   const interval = setInterval(() => {
+  //     setCodeCountdown(codeCountdown - 1);
+  //     if (codeCountdown <= 0) {
+  //       clearInterval(interval);
+  //     }
+  //   }, 1000);
+  // };
+
+  useEffect(() => {
+    if (codeCountdown === 0) setCodeCountdown(null);
+    if (!codeCountdown) return;
+    const intervalId = setInterval(() => setCodeCountdown(codeCountdown - 1), 1000);
+    return () => clearInterval(intervalId);
+  }, [codeCountdown]);
+
   const sendCode = (formik) => {
     return api.points
       .sendCode(formik.values['phoneNumber'])
-      .then(() => message.success('发送成功'))
+      .then(() => {
+        setCodeCountdown(60);
+        message.success('发送成功');
+      })
       .catch(() => message.error('发送失败'));
   };
 
@@ -100,10 +122,10 @@ const FormComponent = () => {
                   <Col>
                     <Button
                       size="small"
-                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined}
+                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined || codeCountdown > 0}
                       onClick={() => sendCode(formik)}
                     >
-                      获取验证码
+                      {codeCountdown > 0 ? `请等待 ${codeCountdown} 秒` : '发送验证码'}
                     </Button>
                   </Col>
                 </Row>

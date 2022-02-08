@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 // @ts-ignore
-import Layout from '~/pages/vip-center/layout';
+import Layout from '~/pages/member/layout';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';
@@ -79,7 +79,7 @@ const Page = () => {
         </div>
         <div>
           <Tutorial>
-            <Link href="/vip-center/rules">升级攻略</Link>
+            <Link href="/member/rules">升级攻略</Link>
           </Tutorial>
         </div>
       </Styled.PointsContainer>

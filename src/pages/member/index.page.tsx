@@ -1,7 +1,7 @@
 import * as Styled from './index.styled';
 import React, { useContext, useState } from 'react';
 // @ts-ignore
-import Layout from '~/pages/vip-center/layout';
+import Layout from '~/pages/member/layout';
 import { Button, Col, Modal, Row } from 'antd';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
@@ -69,6 +69,7 @@ const Page = () => {
           </Modal>
         </Row>
         <Row align="middle">
+          <Styled.ExpLabel> EXP </Styled.ExpLabel>
           <Styled.Score>{pointsData.current_exps}</Styled.Score>
           <Styled.Rank>/rank {pointsData.current_rank}</Styled.Rank>
         </Row>
@@ -85,22 +86,22 @@ const Page = () => {
         </Styled.Tooltip>
         <Row justify={'space-between'}>
           <Col>
-            <Styled.Subscript>{pointsData.level_desc.min_exps}</Styled.Subscript>
+            <Styled.Subscript>{pointsData.level_desc.min_exps} 经验</Styled.Subscript>
           </Col>
           <Col>
-            <Styled.Subscript>{pointsData.level_desc.max_exps}</Styled.Subscript>
+            <Styled.Subscript>{pointsData.level_desc.max_exps} 经验</Styled.Subscript>
           </Col>
         </Row>
         <Styled.Tip>
           还差 {pointsData.level_desc.max_exps - pointsData.current_exps} 经验升级为 V{pointsData.current_level + 1}
           ，查看
-          <Styled.Link fontSize="14px" href="/vip-center/rules">
+          <Styled.Link fontSize="14px" href="/member/rules">
             升级小攻略
           </Styled.Link>
         </Styled.Tip>
       </Styled.LevelContainer>
       <Styled.Title>
-        徽章成就{' '}
+        徽章成就
         <Styled.Count>
           {badgesData.filter((v) => v.has_badge).length} / {badgesData.length}
         </Styled.Count>

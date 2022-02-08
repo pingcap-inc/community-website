@@ -6,7 +6,7 @@ export const Container = styled.div.attrs({})`
   ${mixins.boxShadow()};
   background-color: #fff;
   border-radius: 4px;
-  padding: 1.5rem;
+  padding: 32px 18px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -40,15 +40,15 @@ export const Body = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  margin-top: 32px;
   //gap: .5rem;
   //width: 100%;
 `;
 
 export const Badge = styled.div`
   opacity: ${(props) => (props.hasBadge ? '100%' : '30%')};
-  margin: 0.5rem;
-  width: 2.5rem;
+  padding: 4px;
+  height: 54px;
   //height: 2.5rem;
   img {
     width: 100%;

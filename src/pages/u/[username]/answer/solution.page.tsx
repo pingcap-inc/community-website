@@ -27,6 +27,8 @@ import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 import { useRouter } from 'next/router';
 import { filterSelectWidth } from '../common.styled';
+import EmptyStatus from "~/pages/u/[username]/_components/EmptyStatus";
+import {forumUrl} from "~/pages/u/[username]/constant.data";
 
 interface IProps {
   username: string;
@@ -147,22 +149,28 @@ export default function ProfileAnswerPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          <List
-            dataSource={data}
-            loading={loading}
-            locale={{ emptyText: '暂无数据' }}
-            renderItem={(value) => {
-              return (
-                <ListItem
-                  key={value.post_id}
-                  url={getTopicUrl(value.topic_id, value.post_number)}
-                  title={value.title}
-                  summary={value.excerpt}
-                  metadataEnd={getRelativeDatetime(value.created_at)}
-                />
-              );
-            }}
-          />
+          {data.length === 0 ? (
+            <EmptyStatus description={"你还没有回答过任何问题"}>
+              快前往 <a href={forumUrl}>【问答论坛】</a> 答疑解惑吧～
+            </EmptyStatus>
+          ) : (
+            <List
+              dataSource={data}
+              loading={loading}
+              locale={{emptyText: '暂无数据'}}
+              renderItem={(value) => {
+                return (
+                  <ListItem
+                    key={value.post_id}
+                    url={getTopicUrl(value.topic_id, value.post_number)}
+                    title={value.title}
+                    summary={value.excerpt}
+                    metadataEnd={getRelativeDatetime(value.created_at)}
+                  />
+                );
+              }}
+            />
+          )}
         </InfiniteScroll>
       </CommonStyled.List>
     </ProfileLayout>

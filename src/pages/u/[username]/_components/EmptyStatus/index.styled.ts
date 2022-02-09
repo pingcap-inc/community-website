@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { mixins, colors } from '@tidb-community/ui';
-import Anchor from '~/components/Anchor';
 
 export const Container = styled.div`
   margin-bottom: 0.75rem;

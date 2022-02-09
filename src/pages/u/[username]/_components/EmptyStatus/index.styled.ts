@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { mixins } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
 
 export const Container = styled.div`
   ${mixins.boxShadow()};
@@ -11,6 +11,12 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  a {
+    color: ${colors.B1};
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 //export const Image = styled.div`

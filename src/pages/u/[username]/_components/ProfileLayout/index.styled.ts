@@ -8,13 +8,17 @@ export { Content };
 
 export const Container = styled.div`
   display: flex;
+  padding: 2rem 1rem;
   @media screen and (max-width: ${constants.breakPoints.md}) {
-    padding: 1rem 0;
+    flex-direction: column;
+    padding: 1rem 0.5rem;
+    & > div {
+      width: 100%;
+    }
   }
-
-  @media screen and (min-width: ${constants.breakPoints.md}) {
-    padding: 2rem 0;
-  }
+  //@media screen and (min-width: (${constants.breakPoints.md} + 1)) {
+  //  padding: 2rem 1rem;
+  //}
 `;
 
 export const Start = styled.div`
@@ -24,4 +28,8 @@ export const Start = styled.div`
 export const End = styled.div`
   width: calc(100% - 350px);
   margin-left: 2rem;
+  @media screen and (max-width: ${constants.breakPoints.md}) {
+    margin-top: 2rem;
+    margin-left: 0;
+  }
 `;

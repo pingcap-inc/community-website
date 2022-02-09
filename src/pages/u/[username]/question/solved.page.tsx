@@ -28,6 +28,8 @@ import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 import { filterSelectWidth } from '../common.styled';
+import EmptyStatus from "~/pages/u/[username]/_components/EmptyStatus";
+import {forumUrl} from "~/pages/u/[username]/constant.data";
 
 const solved: ESolved = ESolved.solved;
 
@@ -160,30 +162,36 @@ export default function ProfileAnswerPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          <List
-            dataSource={data}
-            locale={{ emptyText: '暂无数据' }}
-            loading={loading}
-            renderItem={(value) => (
-              <ListItem
-                key={value.id}
-                url={getTopicUrl(value.id, 1)}
-                title={value.title}
-                summary={''}
-                metadataStart={
-                  <Space size={24}>
-                    <div>
-                      <MessageOutlined /> {value.reply_count}
-                    </div>
-                    <div>
-                      <EyeOutlined /> {value.views}
-                    </div>
-                  </Space>
-                }
-                metadataEnd={getRelativeDatetime(value.created_at)}
-              />
+          {data.length === 0 ? (
+            <EmptyStatus description={"你还没有提出过任何问题"}>
+              快前往 <a href={forumUrl}>【问答论坛】</a> 答疑解惑吧～
+            </EmptyStatus>
+          ) : (
+            <List
+              dataSource={data}
+              locale={{ emptyText: '暂无数据' }}
+              loading={loading}
+              renderItem={(value) => (
+                <ListItem
+                  key={value.id}
+                  url={getTopicUrl(value.id, 1)}
+                  title={value.title}
+                  summary={''}
+                  metadataStart={
+                    <Space size={24}>
+                      <div>
+                        <MessageOutlined /> {value.reply_count}
+                      </div>
+                      <div>
+                        <EyeOutlined /> {value.views}
+                      </div>
+                    </Space>
+                  }
+                  metadataEnd={getRelativeDatetime(value.created_at)}
+                />
+              )}
+            />
             )}
-          />
         </InfiniteScroll>
       </CommonStyled.List>
     </ProfileLayout>

@@ -30,6 +30,8 @@ import {
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
 } from '../username';
+import EmptyStatus from "~/pages/u/[username]/_components/EmptyStatus";
+import {blogUrl} from "~/pages/u/[username]/constant.data";
 
 interface IProps {
   username: string;
@@ -156,36 +158,42 @@ export default function ProfileAnswerPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          <List
-            dataSource={data}
-            locale={{ emptyText: '暂无数据' }}
-            loading={loading}
-            renderItem={(value) => (
-              <ListItem
-                key={value.id}
-                url={getPostUrlBySlug(value.slug)}
-                title={value.title}
-                summary={value.summary}
-                metadataStart={
-                  <Space size={24}>
-                    <div>
-                      <HeartOutlined /> {value.likes}
-                    </div>
-                    <div>
-                      <MessageOutlined /> {value.comments}
-                    </div>
-                    {/*<div>*/}
-                    {/*  <StarOutlined /> xx*/}
-                    {/*</div>*/}
-                    {/*<div>*/}
-                    {/*  <EyeOutlined /> xx*/}
-                    {/*</div>*/}
-                  </Space>
-                }
-                metadataEnd={getRelativeDatetime(value.publishedAt)}
-              />
-            )}
-          />
+          {data.length === 0 ? (
+            <EmptyStatus description={"你还没有发表过任何文章"}>
+              快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
+            </EmptyStatus>
+          ) : (
+            <List
+              dataSource={data}
+              locale={{ emptyText: '暂无数据' }}
+              loading={loading}
+              renderItem={(value) => (
+                <ListItem
+                  key={value.id}
+                  url={getPostUrlBySlug(value.slug)}
+                  title={value.title}
+                  summary={value.summary}
+                  metadataStart={
+                    <Space size={24}>
+                      <div>
+                        <HeartOutlined /> {value.likes}
+                      </div>
+                      <div>
+                        <MessageOutlined /> {value.comments}
+                      </div>
+                      {/*<div>*/}
+                      {/*  <StarOutlined /> xx*/}
+                      {/*</div>*/}
+                      {/*<div>*/}
+                      {/*  <EyeOutlined /> xx*/}
+                      {/*</div>*/}
+                    </Space>
+                  }
+                  metadataEnd={getRelativeDatetime(value.publishedAt)}
+                />
+              )}
+            />
+          )}
         </InfiniteScroll>
       </CommonStyled.List>
     </ProfileLayout>

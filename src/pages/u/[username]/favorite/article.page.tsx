@@ -30,8 +30,10 @@ import {
   getPostFavoritesNumberByUsername,
   IPostFavorite,
 } from '../username';
-import {useCurrentLogonUser} from "~/pages/u/[username]/profile.hook";
+import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 import ErrorPage from '~/components/errorPage';
+import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import { blogUrl, forumUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {
   username: string;
@@ -101,7 +103,7 @@ export default function ProfileAnswerPage(props: IProps) {
   };
   const isCurrentLogonUser = useCurrentLogonUser(username);
   if (!isCurrentLogonUser) {
-    return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />
+    return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />;
   }
   return (
     <ProfileLayout
@@ -155,20 +157,26 @@ export default function ProfileAnswerPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          <List
-            dataSource={data}
-            locale={{ emptyText: '暂无数据' }}
-            loading={loading}
-            renderItem={(value) => (
-              <ListItem
-                key={value.post.id}
-                url={getPostUrlBySlug(value.post.slug)}
-                title={value.post.title}
-                summary={value.post.summary}
-                metadataEnd={getRelativeDatetime(value.post.publishedAt)}
-              />
-            )}
-          />
+          {data.length === 0 ? (
+            <EmptyStatus description={'你还没有收藏过任何内容'}>
+              快前往 <a href={forumUrl}>【问答论坛】</a> 和 <a href={blogUrl}>【社区专栏】</a> 发现更多技术干货吧～
+            </EmptyStatus>
+          ) : (
+            <List
+              dataSource={data}
+              locale={{ emptyText: '暂无数据' }}
+              loading={loading}
+              renderItem={(value) => (
+                <ListItem
+                  key={value.post.id}
+                  url={getPostUrlBySlug(value.post.slug)}
+                  title={value.post.title}
+                  summary={value.post.summary}
+                  metadataEnd={getRelativeDatetime(value.post.publishedAt)}
+                />
+              )}
+            />
+          )}
         </InfiniteScroll>
       </CommonStyled.List>
     </ProfileLayout>

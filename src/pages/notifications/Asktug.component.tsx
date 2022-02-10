@@ -4,8 +4,8 @@ import { DiscourseNotification, DiscourseNotificationProps } from '@pingcap-inc/
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AsktugFilter } from './layout/menu';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ConfigProvider, Divider, List, Skeleton } from 'antd';
+import { useCallback, useEffect, useMemo, useState } from 'react';
+import { ConfigProvider, List, Skeleton } from 'antd';
 
 type Notification = DiscourseNotificationProps['notification'];
 

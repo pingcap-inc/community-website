@@ -7,6 +7,7 @@ import UserDetailsLayout from './Layout.component';
 import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -56,17 +57,20 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
   const [status, setStatus] = useState('PUBLISHED');
   const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
+  const { page, size } = getPageQuery(router.query);
+
   useEffect(() => {
     setLoading(true);
     api.blog.users
-      .getPosts(id, { status })
+      .getPosts(id, { status, page, size })
       .then((blogs) => {
         setBlogs(blogs);
       })
       .finally(() => {
         setLoading(false);
       });
-  }, [id, status]);
+  }, [id, status, page, size]);
 
   const tabExtendDOM = isLogin ? (
     <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />

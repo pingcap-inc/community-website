@@ -14,9 +14,9 @@ router.get('', async (req, res) => {
     utils.successResp({
       notifications: [],
     })(req, res);
+  } else {
+    utils.successResp(data)(req, res);
   }
-
-  utils.successResp(data)(req, res);
 });
 
 module.exports = router;

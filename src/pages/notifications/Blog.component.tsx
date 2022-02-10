@@ -1,29 +1,23 @@
 import useSWRInfinite from 'swr/infinite';
 import { api, fetcher } from '~/api';
-import { DiscourseNotification, DiscourseNotificationProps } from '@pingcap-inc/tidb-community-site-components';
+import { BlogNotification, BlogNotificationProps } from '@pingcap-inc/tidb-community-site-components';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
-import { AsktugFilter } from './layout/menu';
+import { BlogFilter } from './layout/menu';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ConfigProvider, List, Skeleton } from 'antd';
+import { SpringPage } from '~/api/blog';
 
-type Notification = DiscourseNotificationProps['notification'];
+type Notification = BlogNotificationProps['notification'];
 
-interface Notifications {
-  notifications: Notification[];
-  total_rows_notifications: number;
-  seen_notification_id: number;
-  load_more_notifications: string;
+interface BlogProps {
+  filter: BlogFilter;
 }
 
-interface AsktugProps {
-  filter: AsktugFilter;
-}
-
-const Asktug = ({ filter }: AsktugProps) => {
-  const { data, mutate, size, setSize, isValidating } = useSWRInfinite<Notifications>(
-    (n) => ['asktug.getNotifications', { offset: n * 60, type: filter.type }],
-    { fetcher }
+const Blog = ({ filter }: BlogProps) => {
+  const { data, mutate, size, setSize, isValidating } = useSWRInfinite<SpringPage<Notification>>(
+    (n) => ['blog.getNotifications', { page: n + 1, type: filter.type }],
+    { fetcher, dedupingInterval: 100 }
   );
 
   const [notifications, setNotifications] = useState<Notification[]>([]);
@@ -37,7 +31,7 @@ const Asktug = ({ filter }: AsktugProps) => {
   useEffect(() => {
     if (!isValidating) {
       if (data) {
-        setNotifications(data.flatMap((notifications) => notifications.notifications));
+        setNotifications(data.flatMap((notifications) => notifications.content));
       } else {
         setNotifications([]);
       }
@@ -54,7 +48,7 @@ const Asktug = ({ filter }: AsktugProps) => {
     if (size === 0) {
       return true;
     }
-    return data[size - 1]?.notifications.length > 0;
+    return data[size - 1]?.content.length > 0;
   }, [data, size, isValidating]);
 
   const loadMoreData = useCallback(async () => {
@@ -63,13 +57,13 @@ const Asktug = ({ filter }: AsktugProps) => {
 
   const markRead = useCallback(
     async (id) => {
-      api.asktug.readNotification(id).catch(console.error);
+      api.blog.readNotification(id).catch(console.error);
       mutate((notifications) => {
         let changed = false;
         for (const bulk of notifications) {
-          for (const notification of bulk.notifications) {
-            if (notification.id === id && !notification.read) {
-              notification.read = true;
+          for (const notification of bulk.content) {
+            if (notification.id === id && !notification.haveRead) {
+              notification.haveRead = true;
               changed = true;
             }
           }
@@ -105,7 +99,7 @@ const Asktug = ({ filter }: AsktugProps) => {
           <List
             dataSource={notifications}
             renderItem={(item) => (
-              <DiscourseNotification
+              <BlogNotification
                 key={item.id}
                 notification={item}
                 wrap={(el) => <List.Item>{el}</List.Item>}
@@ -119,4 +113,4 @@ const Asktug = ({ filter }: AsktugProps) => {
   );
 };
 
-export default Asktug;
+export default Blog;

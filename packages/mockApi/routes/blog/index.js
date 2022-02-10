@@ -40,4 +40,6 @@ router.put('/fake-upload', require('./common/upload').fakeUpload);
 router.get('/audits', require('./audits/audits'));
 router.get('/audits/:id', require('./audits/[id]'));
 
+router.use('/notifications', require('./notifications'));
+
 module.exports = router;

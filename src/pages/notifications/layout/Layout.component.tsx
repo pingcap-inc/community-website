@@ -26,9 +26,7 @@ const Layout = ({ children, ...menuProps }: PropsWithChildren<LayoutProps>) => {
               <Menu {...menuProps} />
             </Col>
             <Col xs={24} sm={16} md={18}>
-              <Styled.Main>
-                <Styled.Content>{children}</Styled.Content>
-              </Styled.Main>
+              <Styled.Main>{children}</Styled.Main>
             </Col>
           </Row>
         </Styled.Container>

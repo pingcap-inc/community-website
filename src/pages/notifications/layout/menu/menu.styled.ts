@@ -32,6 +32,6 @@ export const Item = styled.li<FC<HTMLAttributes<HTMLDivElement>> & { isActive?: 
   ${(props) =>
     props.indent &&
     css`
-      padding-left: 3rem;
+      padding-left: 2rem;
     `}
 `;

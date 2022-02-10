@@ -4,8 +4,8 @@ import { DiscourseNotification, DiscourseNotificationProps } from '@pingcap-inc/
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AsktugFilter } from './layout/menu';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
-import { Divider, List, Skeleton } from 'antd';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ConfigProvider, Divider, List, Skeleton } from 'antd';
 
 type Notification = DiscourseNotificationProps['notification'];
 
@@ -26,11 +26,22 @@ const Asktug = ({ filter }: AsktugProps) => {
     { fetcher }
   );
 
-  const notifications = useRef<Notification[]>([]);
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
   useEffect(() => {
-    if (data && !isValidating) {
-      notifications.current = data.flatMap((notifications) => notifications.notifications);
+    setNotifications([]);
+    mutate(() => undefined, false);
+    setSize(1);
+  }, [filter]);
+
+  useEffect(() => {
+    console.log(data, size, isValidating);
+    if (!isValidating) {
+      if (data) {
+        setNotifications(data.flatMap((notifications) => notifications.notifications));
+      } else {
+        setNotifications([]);
+      }
     }
   }, [data, size, isValidating]);
 
@@ -41,7 +52,10 @@ const Asktug = ({ filter }: AsktugProps) => {
     if (!data) {
       return false;
     }
-    return data[size].notifications.length > 0;
+    if (size === 0) {
+      return true;
+    }
+    return data[size - 1]?.notifications.length > 0;
   }, [data, size, isValidating]);
 
   const loadMoreData = useCallback(async () => {
@@ -79,21 +93,25 @@ const Asktug = ({ filter }: AsktugProps) => {
       }}
     >
       <InfiniteScroll
-        dataLength={notifications.current.length}
+        dataLength={notifications.length}
         next={loadMoreData}
         hasMore={hasMore}
-        loader={<Skeleton avatar paragraph={{ rows: 1 }} active />}
-        endMessage={<Divider />}
+        loader={<Skeleton paragraph={{ rows: 1 }} active />}
         scrollableTarget="scrollableDiv"
       >
-        <List
-          dataSource={notifications.current}
-          renderItem={(item) => (
-            <List.Item key={item.id}>
-              <DiscourseNotification notification={item} wrap={(el) => <div>{el}</div>} markRead={markRead} />
-            </List.Item>
-          )}
-        />
+        <ConfigProvider renderEmpty={() => undefined}>
+          <List
+            dataSource={notifications}
+            renderItem={(item) => (
+              <DiscourseNotification
+                key={item.id}
+                notification={item}
+                wrap={(el) => <List.Item>{el}</List.Item>}
+                markRead={markRead}
+              />
+            )}
+          />
+        </ConfigProvider>
       </InfiniteScroll>
     </div>
   );

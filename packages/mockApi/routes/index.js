@@ -22,5 +22,6 @@ router.use('/blog/api', require('./blog'));
 router.use('/api/asktug', require('./asktug'));
 router.use('/api/points', require('./points'));
 router.use('/api/sms', require('./sms'));
+router.use('/_asktug/notifications', require('./notifications'));
 
 module.exports = router;

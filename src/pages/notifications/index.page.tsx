@@ -9,7 +9,7 @@ const Page = () => {
 
   return (
     <Layout filter={filter} onFilterChange={setFilter}>
-      {filter.from === 'asktug' ? <Asktug filter={filter} /> : undefined}
+      {filter?.from === 'asktug' ? <Asktug filter={filter} /> : undefined}
     </Layout>
   );
 };

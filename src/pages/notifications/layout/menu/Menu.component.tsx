@@ -53,6 +53,12 @@ const Menu = ({ filter, onFilterChange }: MenuProps) => {
     }
   }, [filter]);
 
+  useEffect(() => {
+    if (!filter) {
+      onFilterChange(list[0].filter);
+    }
+  }, [filter, onFilterChange]);
+
   const click = (filter: Filter) => {
     return () => {
       onFilterChange(filter);

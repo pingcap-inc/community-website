@@ -119,7 +119,7 @@ export function useEditMethods() {
         };
         if (slug === 'new') {
           const res = await api.blog.posts.create(body);
-          await reload(slug);
+          await reload(res.slug);
           // await router.push(`/blog/${res.slug}`);
           await callback?.(res.slug);
           return res;
@@ -145,8 +145,11 @@ export function useEditMethods() {
     try {
       const { slug, id } = await save(undefined);
       // save() make sure status is DRAFT
-      await api.blog.posts.post.submit(id);
-      await router.push(`/blog/${slug}`);
+      try {
+        await api.blog.posts.post.submit(id);
+      } finally {
+        await router.push(`/blog/${slug}`);
+      }
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;
@@ -159,8 +162,11 @@ export function useEditMethods() {
     try {
       const { slug, id } = await save(undefined);
       // save() make sure status is DRAFT
-      await api.blog.posts.post.publish(id);
-      await router.push(`/blog/${slug}`);
+      try {
+        await api.blog.posts.post.publish(id);
+      } finally {
+        await router.push(`/blog/${slug}`);
+      }
     } catch (e) {
       message.error('发布失败：' + String(e?.message ?? e));
       throw e;

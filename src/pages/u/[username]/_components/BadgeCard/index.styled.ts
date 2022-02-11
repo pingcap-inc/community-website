@@ -53,7 +53,7 @@ export const Body = styled(Space).attrs({
   margin-top: 32px;
 `;
 
-export const Badge = styled.div`
+export const Badge = styled.div<{ hasBadge?: boolean }>`
   opacity: ${(props) => (props.hasBadge ? '100%' : '30%')};
   //margin: 4px;
   width: 52px;

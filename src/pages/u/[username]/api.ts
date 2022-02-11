@@ -90,9 +90,9 @@ export const getTopicUrl = (topic_id: number, post_number: number) =>
 
 export async function getAnswersByUsername(
   username: string,
-  markedSolution: boolean = false,
-  pageNumber: number = 1,
-  pageSize: number = 10
+  markedSolution = false,
+  pageNumber = 1,
+  pageSize = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
@@ -105,8 +105,8 @@ export async function getAnswersByUsername(
 
 export async function getAskTugFavoritesByUsername(
   username: string,
-  pageNumber: number = 1,
-  pageSize: number = 10
+  pageNumber = 1,
+  pageSize = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
@@ -136,8 +136,8 @@ export enum ESolved {
 export async function getQuestionsByUsername(
   username: string,
   solved: ESolved = ESolved.all,
-  page: number = 1,
-  per_page: number = 10
+  page = 1,
+  per_page = 10
 ): Promise<IQuestions[]> {
   const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${
     page - 1

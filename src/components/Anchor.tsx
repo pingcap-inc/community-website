@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+// eslint-disable-next-line
 export interface IProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 export default function Anchor({ target, rel, children, ...rest }: IProps) {

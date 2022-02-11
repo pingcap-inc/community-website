@@ -23,7 +23,7 @@ const Content = () => {
     has_password: hasPassword,
   } = data;
 
-  const openModal = (type) => (e) => setVisibleModal(type);
+  const openModal = (type) => () => setVisibleModal(type);
 
   const onModalClose = () => {
     setVisibleModal();
@@ -35,7 +35,7 @@ const Content = () => {
     visible: visibleModal === modal,
   });
 
-  const bind = (provider) => (e) => {
+  const bind = (provider) => () => {
     api.social.login({
       provider,
       redirect_to: window.location.href,
@@ -52,7 +52,7 @@ const Content = () => {
     login();
   };
 
-  const unbind = (provider) => (e) => {
+  const unbind = (provider) => () => {
     Modal.confirm({
       title: '确定解绑 GitHub 账号吗？',
       icon: <ExclamationCircleOutlined />,

@@ -4,7 +4,7 @@ import { List, Popconfirm, Button } from 'antd';
 import { api } from '@tidb-community/datasource';
 
 const AuditList = ({ data }) => {
-  const confirm = (id, isAccept) => {
+  const confirm = (id) => {
     return api.blog.auditById(id);
   };
   return (

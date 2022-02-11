@@ -210,7 +210,7 @@ const Page = ({ data }) => {
             ))}
             {isSmallScreen ||
               (winners.length % 3 !== 0 &&
-                _.range(3 - (winners.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
+                _.range(3 - (winners.length % 3)).map(() => <Styled.DummyNewsCard sm={isSmallScreen} />))}
           </Row>
         </Styled.Section>
         <Styled.Section>
@@ -230,7 +230,7 @@ const Page = ({ data }) => {
             ))}
             {isSmallScreen ||
               (finalists.length % 3 !== 0 &&
-                _.range(3 - (finalists.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
+                _.range(3 - (finalists.length % 3)).map(() => <Styled.DummyNewsCard sm={isSmallScreen} />))}
           </Row>
         </Styled.Section>
         <Styled.Section id="judges">
@@ -252,7 +252,7 @@ const Page = ({ data }) => {
               </Col>
             ))}
             {judgesData.length % (isSmallScreen ? 2 : 5) !== 0 &&
-              _.range((isSmallScreen ? 2 : 5) - (judgesData.length % (isSmallScreen ? 2 : 5))).map((_) => (
+              _.range((isSmallScreen ? 2 : 5) - (judgesData.length % (isSmallScreen ? 2 : 5))).map(() => (
                 <Styled.DummyJudgeCard sm={isSmallScreen} />
               ))}
           </Row>
@@ -277,7 +277,7 @@ const Page = ({ data }) => {
             ))}
             {isSmallScreen ||
               (data.news.length % 3 !== 0 &&
-                _.range(3 - (data.news.length % 3)).map((_) => <Styled.DummyNewsCard sm={isSmallScreen} />))}
+                _.range(3 - (data.news.length % 3)).map(() => <Styled.DummyNewsCard sm={isSmallScreen} />))}
           </Row>
         </Styled.Section>
         <Styled.PartnerSection id="partners">

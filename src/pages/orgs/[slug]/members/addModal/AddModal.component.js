@@ -29,7 +29,7 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
     onChange: (e) => setSearchQuery(e.target.value),
     placeholder: '输入用户名搜索',
     prefix: <SearchOutlined />,
-    suffix: searchQuery && <CloseCircleFilled onClick={(e) => setSearchQuery('')} />,
+    suffix: searchQuery && <CloseCircleFilled onClick={() => setSearchQuery('')} />,
     value: searchQuery,
   };
 
@@ -49,11 +49,11 @@ const ModalContent = ({ mutateMembers, onCancel }) => {
     }
   };
 
-  const onUserUnselected = (userId) => (e) => {
+  const onUserUnselected = (userId) => () => {
     setSelectedUsers(selectedUsers.filter((user) => user.id !== userId));
   };
 
-  const onAdd = async (e) => {
+  const onAdd = async () => {
     const userIds = selectedUsers.map(({ id }) => id);
     try {
       setIsSubmitting(true);

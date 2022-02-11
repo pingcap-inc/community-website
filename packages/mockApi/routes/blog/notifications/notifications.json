@@ -1,0 +1,88 @@
+{
+  "content": [
+    {
+      "id": 3,
+      "type": "LIKE",
+      "title": "你的文章 [这是一个测试] 被 orgtest1 点赞了",
+      "haveRead": false,
+      "target_url": null,
+      "recipient": {
+        "id": 2,
+        "username": "Hacker_1K80hkuZ",
+        "avatarURL": "https://www.gravatar.com/avatar/8e0ecab6358b4760cdd695f06d63af61?d=identicon"
+      },
+      "actor": {
+        "id": 12,
+        "username": "orgtest1",
+        "avatarURL": "https://asktug.com/user_avatar/asktug.com/gangshen/90/77770_2.png"
+      },
+      "relatedPost": {
+        "id": 13192,
+        "slug": "12f0afd1",
+        "title": "这是一个测试"
+      },
+      "relatedComment": null
+    },
+    {
+      "id": 4,
+      "type": "FAVORITE",
+      "title": "你的文章 [这是一个测试] 被 orgtest1 收藏了",
+      "haveRead": false,
+      "target_url": null,
+      "recipient": {
+        "id": 2,
+        "username": "Hacker_1K80hkuZ",
+        "avatarURL": "https://www.gravatar.com/avatar/8e0ecab6358b4760cdd695f06d63af61?d=identicon"
+      },
+      "actor": {
+        "id": 12,
+        "username": "orgtest1",
+        "avatarURL": "https://asktug.com/user_avatar/asktug.com/gangshen/90/77770_2.png"
+      },
+      "relatedPost": {
+        "id": 13192,
+        "slug": "12f0afd1",
+        "title": "这是一个测试"
+      },
+      "relatedComment": null
+    },
+    {
+      "id": 5,
+      "type": "COMMENT",
+      "title": "orgtest1 评论了你的文章 [这是一个测试]: \"egaweg\"",
+      "haveRead": false,
+      "target_url": null,
+      "recipient": {
+        "id": 2,
+        "username": "Hacker_1K80hkuZ",
+        "avatarURL": "https://www.gravatar.com/avatar/8e0ecab6358b4760cdd695f06d63af61?d=identicon"
+      },
+      "actor": {
+        "id": 12,
+        "username": "orgtest1",
+        "avatarURL": "https://asktug.com/user_avatar/asktug.com/gangshen/90/77770_2.png"
+      },
+      "relatedPost": {
+        "id": 13192,
+        "slug": "12f0afd1",
+        "title": "这是一个测试"
+      },
+      "relatedComment": {
+        "id": 7,
+        "content": "egaweg",
+        "replyComment": null,
+        "commenter": {
+          "id": 12,
+          "username": "orgtest1",
+          "avatarURL": "https://asktug.com/user_avatar/asktug.com/gangshen/90/77770_2.png"
+        }
+      }
+    }
+  ],
+  "page": {
+    "number": 1,
+    "size": 20,
+    "totalElements": 3,
+    "totalPages": 1
+  }
+}

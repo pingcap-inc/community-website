@@ -20,7 +20,7 @@ const Menu = () => {
   const companyPath = genPath('company');
   const settingsPath = genPath('settings');
 
-  const onClick = (path) => (e) => {
+  const onClick = (path) => () => {
     router.push(path);
   };
 

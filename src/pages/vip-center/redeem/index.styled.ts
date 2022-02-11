@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 // @ts-ignore
 import { colors } from '@tidb-community/ui';
+import { FC, HTMLAttributes } from 'react';
 
 export const PointsContainer = styled.div`
   background-color: ${colors.M1};
@@ -44,7 +45,7 @@ export const ProductImage = styled.img`
   margin-bottom: 1rem;
 `;
 
-export const ProductLine = styled.div`
+export const ProductLine = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { red?: boolean; gray?: boolean }>`
   height: 3rem;
   text-align: center;
   width: 100%;

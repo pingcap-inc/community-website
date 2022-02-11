@@ -16,7 +16,7 @@ const SuccessModal = (props) => (
   </Modal>
 );
 
-const ApplyEnd = (props) => {
+const ApplyEnd = () => {
   const router = useRouter();
   const [successModal, showSuccessModal] = useState(false);
   const [failModal, showFailModal] = useState(false);
@@ -46,7 +46,7 @@ const ApplyEnd = (props) => {
     setIsSubmitting(true);
     api.tug
       .apply(data)
-      .then((response) => {
+      .then(() => {
         showSuccessModal(true);
       })
       .catch((error) => {

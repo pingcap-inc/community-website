@@ -3,7 +3,7 @@ import { Button } from 'antd';
 
 import * as Styled from './box.styled';
 
-const Box = ({ title, text, extra, children, settingsLabel = '设置', onSettingsClick = (e) => {} }) => {
+const Box = ({ title, text, extra, children, settingsLabel = '设置', onSettingsClick = () => {} }) => {
   return (
     <Styled.Container>
       {children ? (

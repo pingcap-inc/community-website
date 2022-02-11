@@ -10,7 +10,6 @@ import MyLink from '~/components/MyLink';
 import { PageDataContext } from '~/context';
 
 const BlogInfo = ({
-  id,
   slug,
   usernameExtends = undefined,
   publishedAt,

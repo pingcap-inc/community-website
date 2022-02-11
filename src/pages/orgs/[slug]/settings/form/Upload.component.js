@@ -36,7 +36,7 @@ const Upload = ({ infoResp, isAdmin, lang, mutateInfo, slug }) => {
       return isJpgOrPng && isLt2M;
     },
 
-    customRequest: ({ file, filename, onProgress, onSuccess, onError }) => {
+    customRequest: ({ file, onProgress, onSuccess, onError }) => {
       api.orgs.org
         .uploadLogo({ slug, file, onUploadProgress: onProgress })
         .then((resp) => {

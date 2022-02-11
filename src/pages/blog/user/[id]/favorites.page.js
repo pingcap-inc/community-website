@@ -24,7 +24,7 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const Favorites = ({ id, blogs, user }) => {
+const Favorites = ({ blogs, user }) => {
   return (
     <UserDetailsLayout userDetails={user} item="收藏" itemKey="favorites">
       <BlogList blogs={blogs} usernameExtends="收藏了" emptyText="暂无收藏" />

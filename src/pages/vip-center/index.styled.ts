@@ -4,6 +4,7 @@ import { colors, mixins } from '@tidb-community/ui';
 // @ts-ignore
 import { Link as RawLink } from '~/components';
 import { Tooltip as RawTooltip, Progress as RawProgress } from 'antd';
+import { FC, HTMLAttributes } from 'react';
 
 export const Title = styled.div`
   ${mixins.typography('h3')};
@@ -58,7 +59,7 @@ export const Container = styled.div`
   padding-top: 2rem;
 `;
 
-export const Link = styled(RawLink)`
+export const Link = styled(RawLink)<any>`
   text-decoration: none;
   color: ${colors.B1};
 `;
@@ -67,7 +68,7 @@ export const Main = styled.div``;
 
 export const BadgesContainer = styled.div``;
 
-export const Badge = styled.div`
+export const Badge = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { owned: boolean }>`
   // two columns with equal width; first is icon, second is name
   display: flex;
   flex-direction: row;

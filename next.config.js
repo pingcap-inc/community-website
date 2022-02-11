@@ -17,7 +17,7 @@ const unifyNodeModules = (names) =>
 const config = {
   i18n,
 
-  pageExtensions: ['page.js', 'page.tsx'],
+  pageExtensions: ['page.js', 'page.jsx', 'page.tsx'],
 
   images: {
     domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
@@ -32,7 +32,7 @@ const config = {
 
       ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-components']),
 
-      // Make sure we will build directly from the source code for internal comsumers,
+      // Make sure we will build directly from the source code for internal consumers,
       // which gives us an instant reaction if anything updates
       '@tidb-community/common': path.resolve('./packages/common/src'),
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
@@ -58,6 +58,26 @@ const config = {
 
   async rewrites() {
     return [{ source: '/next-api/:path*', destination: '/api/:path*' }];
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/blog/user/:id',
+        destination: '/blog/user/:id/posts',
+        permanent: false,
+      },
+      {
+        source: '/u/:username',
+        destination: '/u/:username/answer',
+        permanent: false,
+      },
+      {
+        source: '/u/:username/favorite',
+        destination: '/u/:username/favorite/article',
+        permanent: false,
+      },
+    ];
   },
 };
 

@@ -19,6 +19,7 @@
     "server:reload": "pm2 reload pm2.config.js",
     "server:start": "pm2 start pm2.config.js",
     "start": "next start",
+    "next:dev": "next dev",
     "start:accounts": "lerna run --scope @tidb-community/accounts start",
     "start:i18n": "lerna run --scope @tidb-community/i18n start",
     "start:mockApi": "lerna run --scope @tidb-community/mock-api start",
@@ -68,7 +69,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.15.4",
-    "@pingcap-inc/tidb-community-editor": "0.2.5",
+    "@pingcap-inc/tidb-community-editor": "0.4.1",
     "@pingcap-inc/tidb-community-ui": "1.0.1",
     "@sentry/webpack-plugin": "1.17.1",
     "@svgr/webpack": "5.5.0",

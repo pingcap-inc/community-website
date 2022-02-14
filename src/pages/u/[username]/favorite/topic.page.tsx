@@ -6,7 +6,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Divider, List, Skeleton } from 'antd';
+import { Divider, List, Skeleton, Spin } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getAskTugFavoritesByUsername,
@@ -97,7 +97,9 @@ export default function ProfileAnswerPage(props: IProps) {
     loadMoreData();
   }, []);
   const isCurrentLogonUser = useCurrentLogonUser(username);
-  if (!isCurrentLogonUser) {
+  if (isCurrentLogonUser === undefined) {
+    return <Spin size="large" />;
+  } else if (isCurrentLogonUser === false) {
     return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />;
   }
   return (

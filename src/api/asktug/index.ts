@@ -116,6 +116,7 @@ export interface PrivateMessages {
 }
 
 export interface GetPrivateMessagesParams {
+  username: string;
   unread?: 1;
 }
 
@@ -123,3 +124,6 @@ export const getNotifications = (params: GetNotificationParams = {}): Promise<No
   asktugClient.get('/notifications', { params });
 
 export const readNotification = (id: number) => asktugClient.put('/notifications/mark-read', { params: { id } });
+
+export const getPrivateMessages = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
+  asktugClient.get(`/topics/private-messages/${params.username}`, { params });

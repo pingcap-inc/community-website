@@ -48,7 +48,9 @@ const Blog = ({ filter }: BlogProps) => {
     if (size === 0) {
       return true;
     }
-    return data[size - 1]?.content.length > 0;
+    console.log(data);
+    const lastPage = data[data.length - 1];
+    return lastPage.page.number < lastPage.page.totalPages;
   }, [data, size, isValidating]);
 
   const loadMoreData = useCallback(async () => {

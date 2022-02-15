@@ -1,13 +1,14 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
+import { NotificationOutlined } from '@ant-design/icons';
 
 const feedbackUrl = '';
 
 function Header() {
   return (
     <>
-      社区专栏上线啦！<Anchor href={feedbackUrl}>意见反馈</Anchor>看这里👀
+      <NotificationOutlined /> 社区专栏上线啦！<Anchor href={feedbackUrl}>意见反馈</Anchor>看这里👀
     </>
   );
 }
@@ -15,7 +16,7 @@ function Header() {
 export default function FeedbackCard() {
   return (
     <Styled.Container>
-      <Styled.Card title={<Header/>}>
+      <Styled.Card title={<Header />}>
         如果你在使用过程中想要告诉我们：
         <ul>
           <li>专栏 BUG</li>

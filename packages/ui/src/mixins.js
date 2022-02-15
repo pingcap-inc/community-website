@@ -206,3 +206,12 @@ export const radius = (size = '4rem') => css`
   border-radius: ${size};
   overflow: hidden;
 `;
+
+export const anchor = (color = colors.B1, textDecoration = 'underline') => css`
+  a {
+    color: ${color};
+    &:hover {
+      text-decoration: ${textDecoration};
+    }
+  }
+`;

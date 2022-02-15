@@ -1,15 +1,13 @@
 import styled from 'styled-components';
-import { mixins, colors } from '@tidb-community/ui';
+import { mixins } from '@tidb-community/ui';
 import { Card as AntdCard } from 'antd';
 import { borderRadius } from '../common.styled';
 
 export const Container = styled.div`
-  ${mixins.showOnDesktop()}
-  ${borderRadius}
+  ${mixins.showOnDesktop()};
+  ${borderRadius};
+  ${mixins.anchor()};
   margin-top: 1rem;
-  a {
-    color: ${colors.B1};
-  }
 `;
 
 //export const Header = styled.div`
@@ -17,5 +15,10 @@ export const Container = styled.div`
 //`;
 
 export const Card = styled(AntdCard)`
-  ${borderRadius}
+  ${borderRadius};
+  ${mixins.anchor()};
+  .ant-card-head-title {
+    overflow: visible;
+    white-space: unset;
+  }
 `;

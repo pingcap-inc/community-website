@@ -72,7 +72,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerPage(props: IProps) {
+export default function ProfileAnswerSolutionPage(props: IProps) {
   const router = useRouter();
   const { badges, profile, summary, answers, username, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;

@@ -123,19 +123,19 @@
     "categories": [
       {
         "name": "⽤户实践与应⽤",
-        "link": "https://tidb.io/blog/practice"
+        "link": "https://tidb.io/blog/tag/practice"
       },
       {
         "name": "原理解读",
-        "link": "https://tidb.io/blog/theory"
+        "link": "https://tidb.io/blog/tag/theory"
       },
       {
         "name": "经验教程",
-        "link": "https://tidb.io/blog/how-to"
+        "link": "https://tidb.io/blog/tag/how-to"
       },
       {
         "name": "测评",
-        "link": "https://tidb.io/blog/review"
+        "link": "https://tidb.io/blog/tag/review"
       }
     ]
   },

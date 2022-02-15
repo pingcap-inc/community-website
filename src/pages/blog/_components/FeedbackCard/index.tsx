@@ -15,7 +15,7 @@ function Header() {
 export default function FeedbackCard() {
   return (
     <Styled.Container>
-      <Styled.Card title={Header}>
+      <Styled.Card title={<Header/>}>
         如果你在使用过程中想要告诉我们：
         <ul>
           <li>专栏 BUG</li>

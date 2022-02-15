@@ -7,10 +7,14 @@ export const Container = styled.div`
   ${mixins.showOnDesktop()}
   ${borderRadius}
   margin-top: 1rem;
-  .ant-card-head a {
+  a {
     color: ${colors.B1};
   }
 `;
+
+//export const Header = styled.div`
+//  font-size: 14px;
+//`;
 
 export const Card = styled(AntdCard)`
   ${borderRadius}

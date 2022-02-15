@@ -27,8 +27,8 @@ import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 import { useRouter } from 'next/router';
 import { filterSelectWidth } from '../common.styled';
-import EmptyStatus from "~/pages/u/[username]/_components/EmptyStatus";
-import {forumUrl} from "~/pages/u/[username]/constant.data";
+import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import { forumUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {
   username: string;
@@ -72,7 +72,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerPage(props: IProps) {
+export default function ProfileAnswerIndexPage(props: IProps) {
   const router = useRouter();
   const { badges, profile, summary, answers, username, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
@@ -96,6 +96,7 @@ export default function ProfileAnswerPage(props: IProps) {
     }
     setLoading(false);
   };
+  const isEmpty: boolean = loading === false && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}
@@ -149,8 +150,8 @@ export default function ProfileAnswerPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          {data.length === 0 ? (
-            <EmptyStatus description={"你还没有回答过任何问题"}>
+          {isEmpty ? (
+            <EmptyStatus description={'你还没有回答过任何问题'}>
               快前往 <a href={forumUrl}>【问答论坛】</a> 答疑解惑吧～
             </EmptyStatus>
           ) : (

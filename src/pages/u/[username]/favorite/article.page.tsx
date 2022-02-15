@@ -6,7 +6,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import Tab, { EUgcType } from '../_components/Tab';
 import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
-import { Divider, List, Skeleton } from 'antd';
+import { Divider, List, Skeleton, Spin } from 'antd';
 import ListItem from '../_components/ListItem';
 import {
   getBadgesByUsername,
@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerPage(props: IProps) {
+export default function ProfileFavoriteArticlePage(props: IProps) {
   const { username, badges, profile, summary, posts, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
@@ -102,9 +102,12 @@ export default function ProfileAnswerPage(props: IProps) {
     setLoading(false);
   };
   const isCurrentLogonUser = useCurrentLogonUser(username);
-  if (!isCurrentLogonUser) {
+  if (isCurrentLogonUser === undefined) {
+    return <Spin size="large" />;
+  } else if (isCurrentLogonUser === false) {
     return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />;
   }
+  const isEmpty: boolean = loading === false && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}
@@ -157,7 +160,7 @@ export default function ProfileAnswerPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          {data.length === 0 ? (
+          {isEmpty ? (
             <EmptyStatus description={'你还没有收藏过任何内容'}>
               快前往 <a href={forumUrl}>【问答论坛】</a> 和 <a href={blogUrl}>【社区专栏】</a> 发现更多技术干货吧～
             </EmptyStatus>

@@ -30,8 +30,8 @@ import {
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
 } from '../username';
-import EmptyStatus from "~/pages/u/[username]/_components/EmptyStatus";
-import {blogUrl} from "~/pages/u/[username]/constant.data";
+import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import { blogUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {
   username: string;
@@ -74,7 +74,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerPage(props: IProps) {
+export default function ProfilePostPage(props: IProps) {
   const { username, badges, profile, summary, posts, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
@@ -159,7 +159,7 @@ export default function ProfileAnswerPage(props: IProps) {
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           {data.length === 0 ? (
-            <EmptyStatus description={"你还没有发表过任何文章"}>
+            <EmptyStatus description={'你还没有发表过任何文章'}>
               快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
             </EmptyStatus>
           ) : (

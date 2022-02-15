@@ -7,7 +7,8 @@ export const Banner = styled.div`
   justify-content: center;
   height: 48px;
   color: ${colors.M2};
-  background: url('${(props) => props.$backgroundImage}') center no-repeat;
+  ${(props) => (props.$backgroundImage !== '' ? `background: url('${props.$backgroundImage}') center no-repeat;` : '')}
+  ${(props) => (props.$backgroundColor !== '' ? `background-color: ${props.$backgroundColor};` : '')}
   background-size: cover;
   cursor: pointer;
 `;

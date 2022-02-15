@@ -3,18 +3,19 @@ import PropTypes from 'prop-types';
 
 import * as Styled from './activityBanner.styled';
 
-const ActivityBanner = ({ backgroundImage, buttonImage, text, onClick }) => {
+const ActivityBanner = ({ backgroundColor = '', backgroundImage = '', buttonImage = '', text, onClick }) => {
   return (
-    <Styled.Banner $backgroundImage={backgroundImage} onClick={onClick}>
+    <Styled.Banner $backgroundColor={backgroundColor} $backgroundImage={backgroundImage} onClick={onClick}>
       <span>{text}</span>
-      <Styled.ImgBtn alt={text} src={buttonImage} />
+      {buttonImage !== '' && <Styled.ImgBtn alt={text} src={buttonImage} />}
     </Styled.Banner>
   );
 };
 
 ActivityBanner.propTypes = {
-  backgroundImage: PropTypes.string.isRequired,
-  buttonImage: PropTypes.string.isRequired,
+  backgroundColor: PropTypes.string,
+  backgroundImage: PropTypes.string,
+  buttonImage: PropTypes.string,
   text: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 };

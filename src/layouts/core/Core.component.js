@@ -81,9 +81,10 @@ const Core = ({
       <Styled.Container style={{ backgroundColor }}>
         {/*{renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}*/}
         <ActivityBanner
+          backgroundColor={'#2c2c2c'}
           text={'社区专栏全新上线~ 点击进来围观！'}
-          backgroundImage={'https://tidb.io/images/activity/banner.svg'}
-          buttonImage={'https://tidb.io/images/activity/button.svg'}
+          // backgroundImage={'https://tidb.io/images/activity/banner.svg'}
+          // buttonImage={'https://tidb.io/images/activity/button.svg'}
           // link={'https://tidb.io/blog'}
           onClick={() => onNavClick({ link: 'https://tidb.io/blog', target: '_blank' })}
         />

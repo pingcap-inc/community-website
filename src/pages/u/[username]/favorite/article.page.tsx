@@ -77,7 +77,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerPage(props: IProps) {
+export default function ProfileFavoriteArticlePage(props: IProps) {
   const { username, badges, profile, summary, posts, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);

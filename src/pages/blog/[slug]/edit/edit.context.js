@@ -16,7 +16,6 @@ const EditContext = createContext({
   setCategory: () => {},
   setTags: () => {},
   setContent: () => {},
-  reload: () => {},
 });
 
 EditContext.displayName = 'EditContext';

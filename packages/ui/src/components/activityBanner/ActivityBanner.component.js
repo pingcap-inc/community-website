@@ -7,7 +7,7 @@ const ActivityBanner = ({ backgroundImage, buttonImage, text, onClick }) => {
   return (
     <Styled.Banner $backgroundImage={backgroundImage} onClick={onClick}>
       <span>{text}</span>
-      <Styled.ImgBtn alt="new organization" src={buttonImage} />
+      <Styled.ImgBtn alt={text} src={buttonImage} />
     </Styled.Banner>
   );
 };

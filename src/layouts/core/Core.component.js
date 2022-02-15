@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import useSWR from 'swr';
-import { Footer, Header, UserProfile, utils } from '@tidb-community/ui';
+import { ActivityBanner, Footer, Header, UserProfile, utils } from '@tidb-community/ui';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 
@@ -80,6 +80,13 @@ const Core = ({
     <NavContext.Provider value={{ navData: data, onNavClick, currentNav }}>
       <Styled.Container style={{ backgroundColor }}>
         {/*{renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}*/}
+        <ActivityBanner
+          text={'社区专栏全新上线~ 点击进来围观！'}
+          backgroundImage={'https://tidb.io/images/activity/banner.svg'}
+          buttonImage={'https://tidb.io/images/activity/button.svg'}
+          // link={'https://tidb.io/blog'}
+          onClick={() => onNavClick({ link: 'https://tidb.io/blog', target: '_blank' })}
+        />
         <Header
           {...headerProps}
           userProfileSlot={

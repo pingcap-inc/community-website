@@ -9,6 +9,7 @@ import OrderBySwitch from '../OrderBySwitch';
 import { BlogListInfiniteScroll } from '../../_components/BlogList';
 import HotTagList from '../../_components/HotTagList';
 import WriteBlogButton from '../../_components/WriteBlogButton';
+import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
 
 const orderBy = [
   { name: '推荐排序', url: '/blog' },
@@ -38,6 +39,7 @@ export default function BlogHomepage({ categories, blogs, hotTags, blogApi }) {
               <WriteBlogButton />
             </styled.WriteBlog>
             <HotTagList hotTags={hotTags} />
+            <FeedbackCard />
           </styled.End>
         </styled.Container>
       </styled.Content>

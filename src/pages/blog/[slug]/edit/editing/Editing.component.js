@@ -33,7 +33,7 @@ const Editing = ({ blogInfo }) => {
       message.warn('请输入标题');
       return;
     }
-    if (category === '') {
+    if (category === undefined) {
       message.warn('请选择分类');
       return;
     }

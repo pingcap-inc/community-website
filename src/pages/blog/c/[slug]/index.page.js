@@ -16,6 +16,7 @@ import { BlogListInfiniteScroll } from '../../_components/BlogList';
 import WriteBlogButton from '../../_components/WriteBlogButton';
 import HotTagList from '../../_components/HotTagList';
 import { getPageQuery } from '~/utils/pagination.utils';
+import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -80,6 +81,7 @@ export default function CategoryPage({ category, categories, blogs, hotTags, blo
                 <WriteBlogButton />
               </styled.WriteBlog>
               <HotTagList hotTags={hotTags} />
+              <FeedbackCard />
             </styled.End>
           </styled.Container>
         </styled.Content>

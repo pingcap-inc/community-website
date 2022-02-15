@@ -65,7 +65,7 @@ const Previewing = ({ blogInfo }) => {
               提交
             </Button>
           )}
-          <Button type="default" onClick={save} disabled={operating}>
+          <Button type="default" onClick={() => validation(save)} disabled={operating}>
             保存草稿
           </Button>
         </div>

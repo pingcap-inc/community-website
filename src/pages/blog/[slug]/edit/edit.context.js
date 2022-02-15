@@ -105,7 +105,7 @@ export function useEditMethods() {
   } = router;
 
   const save = useCallback(
-    async (callback = async () => await router.push) => {
+    async (callback = (slug) => router.push(`/blog/${slug}`)) => {
       try {
         const { title, coverImageURL, origin, category, tags, content, blogInfo } = editContext;
         const body = {

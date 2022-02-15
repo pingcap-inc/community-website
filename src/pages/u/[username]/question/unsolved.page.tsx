@@ -98,6 +98,7 @@ export default function ProfileQuestionUnsolvedPage(props: IProps) {
     }
     setLoading(false);
   };
+  const isEmpty: boolean = loading === false && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}
@@ -162,7 +163,7 @@ export default function ProfileQuestionUnsolvedPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          {data.length === 0 ? (
+          {isEmpty ? (
             <EmptyStatus description={'你还没有提出过任何问题'}>
               快前往 <a href={forumUrl}>【问答论坛】</a> 答疑解惑吧～
             </EmptyStatus>

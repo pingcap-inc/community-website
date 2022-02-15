@@ -98,6 +98,7 @@ export default function ProfilePostPage(props: IProps) {
     }
     setLoading(false);
   };
+  const isEmpty: boolean = loading === false && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}
@@ -158,7 +159,7 @@ export default function ProfilePostPage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          {data.length === 0 ? (
+          {isEmpty ? (
             <EmptyStatus description={'你还没有发表过任何文章'}>
               快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
             </EmptyStatus>

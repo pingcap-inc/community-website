@@ -107,6 +107,7 @@ export default function ProfileFavoriteArticlePage(props: IProps) {
   } else if (isCurrentLogonUser === false) {
     return <ErrorPage statusCode={403} errorMsg={'无法查看其他人的收藏内容'} />;
   }
+  const isEmpty: boolean = loading === false && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}
@@ -159,7 +160,7 @@ export default function ProfileFavoriteArticlePage(props: IProps) {
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
-          {loading === true && data.length === 0 ? (
+          {isEmpty ? (
             <EmptyStatus description={'你还没有收藏过任何内容'}>
               快前往 <a href={forumUrl}>【问答论坛】</a> 和 <a href={blogUrl}>【社区专栏】</a> 发现更多技术干货吧～
             </EmptyStatus>

@@ -29,10 +29,15 @@ const Editing = ({ blogInfo }) => {
   } = useEditContext();
 
   const validation = (callback) => {
-    if (title !== '') {
-      return callback();
+    if (title === '') {
+      message.warn('请输入标题');
+      return;
     }
-    message.warn('请输入标题');
+    if (category === '') {
+      message.warn('请选择分类');
+      return;
+    }
+    return callback();
   };
 
   const { save, saveAndSubmit, saveAndPublish, operating } = useEditMethods();

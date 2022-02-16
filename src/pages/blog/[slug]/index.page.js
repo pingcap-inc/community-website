@@ -23,13 +23,14 @@ const noop = () => {};
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
+  const ip = ctx.req.headers['X-Forwarded-For'];
 
   const { slug } = ctx.params;
 
   let blogInfo = null,
     isPending = false;
   try {
-    blogInfo = await api.blog.getPostBySlug(slug);
+    blogInfo = await api.blog.getPostBySlug(slug, ip);
   } catch (e) {
     if (e.errCode === 'POST_NOT_FOUND') isPending = true;
   }

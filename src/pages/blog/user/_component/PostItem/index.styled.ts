@@ -1,0 +1,39 @@
+import styled from 'styled-components';
+import { mixins } from '@tidb-community/ui';
+import { Card as AntdCard } from 'antd';
+import { borderRadiusSize } from '~/pages/blog/_components/common.styled';
+import Anchor from "~/components/Anchor";
+
+export const Container = styled(AntdCard)`
+  ${borderRadiusSize};
+`;
+
+export const Header = styled.div`
+  font-size: 1rem;
+`;
+
+export const Title = styled.div`
+  font-size: 2rem;
+  margin-top: 0.5rem;
+`;
+
+export const Author = styled(Anchor)`
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+`;
+
+const avatarSize = `2rem`;
+export const AuthorAvatar = styled.div`
+  ${mixins.radius(avatarSize)};
+  //width: ${avatarSize};
+  //height: ${avatarSize};
+  img {
+    width: 100%;
+    height: 100%;
+  }
+`;
+
+export const AuthorUsername = styled.div`
+  margin-left: .5rem;
+`;

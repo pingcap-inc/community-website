@@ -35,5 +35,7 @@ export const TabItem = styled.div`
 `;
 
 export const Item = styled.div`
-  margin: 0.5rem 0;
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
 `;

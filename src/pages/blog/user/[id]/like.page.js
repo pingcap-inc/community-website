@@ -28,7 +28,7 @@ export const getServerSideProps = async (ctx) => {
 const Like = ({ blogs, user }) => {
   return (
     <UserDetailsLayout userDetails={user} item="赞" itemKey="like">
-      <BlogList blogs={blogs} usernameExtends="喜欢了" emptyText="暂无点赞" />
+      <BlogList blogs={blogs} actionText="喜欢了文章" />
     </UserDetailsLayout>
   );
 };

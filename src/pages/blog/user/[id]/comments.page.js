@@ -1,6 +1,7 @@
 import React from 'react';
-import { Avatar, List } from 'antd';
-import Link from 'next/link';
+import * as Styled from './index.styled';
+import { List } from 'antd';
+// import Link from 'next/link';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import UserDetailsLayout from './Layout.component';
@@ -47,7 +48,11 @@ const CommentsList = ({
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
       locale={{ emptyText: '暂无评论' }}
-      renderItem={({ post, content }) => <CommentPostItem blogInfo={post} commentContent={content} />}
+      renderItem={({ post, content }) => (
+        <Styled.Item>
+          <CommentPostItem blogInfo={post} commentContent={content} />
+        </Styled.Item>
+      )}
     />
   );
 };

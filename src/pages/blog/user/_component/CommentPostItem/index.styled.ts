@@ -6,7 +6,6 @@ import { borderRadiusSize } from '~/pages/blog/_components/common.styled';
 export const Container = styled(AntdCard)`
   ${borderRadiusSize};
   ${mixins.anchor()};
-  margin-bottom: 1rem;
 `;
 
 export const Header = styled.div`

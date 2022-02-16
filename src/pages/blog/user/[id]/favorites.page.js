@@ -27,7 +27,7 @@ export const getServerSideProps = async (ctx) => {
 const Favorites = ({ blogs, user }) => {
   return (
     <UserDetailsLayout userDetails={user} item="收藏" itemKey="favorites">
-      <BlogList blogs={blogs} usernameExtends="收藏了" emptyText="暂无收藏" />
+      <BlogList blogs={blogs} actionText="收藏了文章" />
     </UserDetailsLayout>
   );
 };

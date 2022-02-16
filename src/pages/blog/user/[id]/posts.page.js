@@ -58,7 +58,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
   }
 
   const [blogs, setBlogs] = useState(ssrBlogs);
-  const [status, setStatus] = useState('PUBLISHED');
+  const [status, setStatus] = useState('');
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
@@ -82,7 +82,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
 
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
-      {loading ? <Skeleton active /> : <BlogList blogs={blogs} />}
+      {loading ? <Skeleton active /> : <BlogList blogs={blogs} actionText="发布了文章" />}
     </UserDetailsLayout>
   );
 };

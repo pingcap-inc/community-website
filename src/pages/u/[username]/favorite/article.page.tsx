@@ -32,7 +32,7 @@ import {
 } from '../username';
 import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 import ErrorPage from '~/components/errorPage';
-import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl, forumUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {

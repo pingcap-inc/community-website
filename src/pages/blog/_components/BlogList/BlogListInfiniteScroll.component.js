@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../blogInfo';
-import { Divider, List, Skeleton } from 'antd';
+import { List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const BlogList = ({

@@ -46,7 +46,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
-  const { id, isAuthor } = usePrincipal();
+  const { id, isAuthor, hasAuthority } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;
@@ -66,7 +66,8 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
 
   if (isLoading) return <Skeleton active />;
 
-  if (!isAuthor(blogInfo)) {
+  const hasPermission = isAuthor(blogInfo) || hasAuthority('REVIEW_POST');
+  if (!hasPermission) {
     if (isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
   }
 

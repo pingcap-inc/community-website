@@ -113,7 +113,7 @@
     "title": "专栏",
     "shareExperience": "想分享经验？",
     "writeBlog": "写专栏",
-    "articleCategories": "文章分类",
+    "articleCategories": "热门标签",
     "intro": "「专栏」是社区的技术文章集合地，用户可以在这里查看、分享高质量的专栏文章，学习干货。",
     "comply": "发表、分享技术文章请参考",
     "doc": {
@@ -122,20 +122,36 @@
     },
     "categories": [
       {
-        "name": "⽤户实践与应⽤",
-        "link": "https://tidb.io/blog/tag/practice"
+        "name": "实践案例",
+        "link": "https://tidb.io/blog/tag/practical-case"
       },
       {
-        "name": "原理解读",
-        "link": "https://tidb.io/blog/tag/theory"
+        "name": "TiDB 底层架构",
+        "link": "https://tidb.io/blog/tag/tidb-underlying-architecture"
       },
       {
-        "name": "经验教程",
-        "link": "https://tidb.io/blog/tag/how-to"
+        "name": "故障排查/诊断",
+        "link": "https://tidb.io/blog/tag/troubleshooting-and-diagnosis"
       },
       {
-        "name": "测评",
-        "link": "https://tidb.io/blog/tag/review"
+        "name": "管理与运维",
+        "link": "https://tidb.io/blog/tag/management-and-operation-and-maintenance"
+      },
+      {
+        "name": "性能调优",
+        "link": "https://tidb.io/blog/tag/performance-tuning"
+      },
+      {
+        "name": "安装 & 部署",
+        "link": "https://tidb.io/blog/tag/install-and-deploy"
+      },
+      {
+        "name": "数据库架构选型",
+        "link": "https://tidb.io/blog/tag/database-architecture-selection"
+      },
+      {
+        "name": "监控",
+        "link": "https://tidb.io/blog/tag/monitor"
       }
     ]
   },

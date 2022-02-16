@@ -99,6 +99,7 @@ export interface AsktugPrivateMessage {
   posters: {
     user_id: number;
   }[];
+  last_posted_at: string;
 }
 
 export interface AsktugUser {
@@ -127,3 +128,6 @@ export const readNotification = (id: number) => asktugClient.put('/notifications
 
 export const getPrivateMessages = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
   asktugClient.get(`/topics/private-messages/${params.username}`, { params });
+
+export const getPrivateMessagesSent = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
+  asktugClient.get(`/topics/private-messages-sent/${params.username}`, { params });

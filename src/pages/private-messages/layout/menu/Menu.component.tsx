@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import * as Styled from './menu.styled';
 import { useRouter } from 'next/router';
@@ -10,7 +10,7 @@ const Menu = () => {
   return (
     <Styled.Container>
       {list.map((item) => {
-        const href = `private-messages/${item.key}`;
+        const href = `/private-messages${item.key}`;
         return (
           <Link href={href}>
             <Styled.Item isActive={router.pathname === href}>{item.title}</Styled.Item>
@@ -29,9 +29,14 @@ interface MenuItemProps {
 
 const list: MenuItemProps[] = [
   {
-    key: '/',
-    title: 'titile',
-    isActive: true,
+    key: '',
+    title: '收件箱',
+    isActive: false,
+  },
+  {
+    key: '/sent',
+    title: '已发送',
+    isActive: false,
   },
 ];
 

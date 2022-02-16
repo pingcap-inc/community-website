@@ -4,7 +4,7 @@ import PrivateMessages from './PrivateMessages.component';
 import { usePrivateMessages } from '~/pages/private-messages/hooks';
 
 export default function Page() {
-  const messages = usePrivateMessages(false);
+  const messages = usePrivateMessages(true);
   return <PrivateMessages messages={messages} />;
 }
 

@@ -146,7 +146,7 @@ const CommentList = ({ blogInfo, tick, onClickReply, onClickDelete }) => {
                         <span key="reply" onClick={() => onClickReply(item)}>
                           回复
                         </span>,
-                        hasDeleteCommentPermission && item.commenter.id === id && (
+                        (hasDeleteCommentPermission || item.commenter.id === id) && (
                           <Popconfirm
                             placement="topLeft"
                             title={'你确认要删除此评论吗？'}

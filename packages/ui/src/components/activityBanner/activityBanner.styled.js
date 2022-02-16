@@ -4,7 +4,6 @@ import { colors, mixins } from '../../index';
 export const Banner = styled.div`
   ${mixins.typography('p2')};
   ${mixins.flexVerticalCenter()};
-  ${mixins.anchor()};
   justify-content: center;
   height: 32px;
   color: ${colors.M2};
@@ -12,6 +11,9 @@ export const Banner = styled.div`
   ${(props) => (props.$backgroundColor !== '' ? `background-color: ${props.$backgroundColor};` : '')}
   background-size: cover;
   cursor: pointer;
+  a {
+    color: #ffffff;
+  }
 `;
 
 export const Text = styled.div`

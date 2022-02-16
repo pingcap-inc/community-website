@@ -111,3 +111,5 @@ export function comments(id: number, page: number, pageSize?: number): Promise<P
 export function comment(id: number, body: string, replyTo?: number): Promise<void>;
 
 export function del(id: number): Promise<void>;
+
+export function delComment(id: number, commentId: number): Promise<void>;

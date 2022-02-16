@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import * as Styled from './comments.styled';
-import { Avatar, Button, Col, Comment, Input, List, Pagination, Row, Skeleton } from 'antd';
+import { Avatar, Button, Col, Comment, Input, List, Pagination, Popconfirm, Row, Skeleton } from 'antd';
 import { AuthContext, MeContext } from '~/context';
 import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
@@ -21,6 +21,17 @@ const Comments = ({ blogInfo }) => {
     setReplyTo(undefined);
   };
 
+  const onClickDelete = async (blogInfo, commentInfo, reload) => {
+    const blogId = blogInfo.id;
+    const commentId = commentInfo.id;
+    try {
+      await api.blog.posts.post.delComment(blogId, commentId);
+      reload();
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   return (
     <Element name="comments">
       <Styled.CommentsContainer>
@@ -28,7 +39,7 @@ const Comments = ({ blogInfo }) => {
 
         <CommentInput blogInfo={blogInfo} onCommented={onCommented} onClearReplyTo={onClearReplyTo} replyTo={replyTo} />
 
-        <CommentList blogInfo={blogInfo} tick={tick} onClickReply={setReplyTo} />
+        <CommentList blogInfo={blogInfo} tick={tick} onClickReply={setReplyTo} onClickDelete={onClickDelete} />
       </Styled.CommentsContainer>
     </Element>
   );
@@ -93,7 +104,7 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
   );
 };
 
-const CommentList = ({ blogInfo, tick, onClickReply }) => {
+const CommentList = ({ blogInfo, tick, onClickReply, onClickDelete }) => {
   const { meData } = useContext(MeContext);
   const [page, setPage] = useState(1);
 
@@ -131,6 +142,15 @@ const CommentList = ({ blogInfo, tick, onClickReply }) => {
                         <span key="reply" onClick={() => onClickReply(item)}>
                           回复
                         </span>,
+                        <Popconfirm
+                          placement="topLeft"
+                          title={'你确认要删除此评论吗？'}
+                          onConfirm={() => onClickDelete(blogInfo, item, reload)}
+                          okText="确认"
+                          cancelText="取消"
+                        >
+                          <span key="delete">删除</span>
+                        </Popconfirm>,
                       ]
                     : undefined
                 }

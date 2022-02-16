@@ -7,6 +7,7 @@ import UserDetailsLayout from './Layout.component';
 import { api } from '@tidb-community/datasource';
 import { useRouterPage } from '~/utils/pagination.utils';
 import { getPageQuery } from '~/utils/pagination.utils';
+import CommentPostItem from '~/pages/blog/user/_component/CommentPostItem';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -46,26 +47,7 @@ const CommentsList = ({
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
       locale={{ emptyText: '暂无评论' }}
-      renderItem={({ post, content, commenter, repliedTo }) => (
-        <li>
-          <List.Item>
-            <p>
-              <Avatar src={commenter.avatarURL} size="small" />
-              &nbsp;
-              {commenter.username || commenter.name}
-              &nbsp; 在
-              <Link href={`/blog/${post.id}`}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className="ant-btn-link" type="link">
-                  「{post.title}」
-                </a>
-              </Link>
-              &nbsp;
-              {repliedTo ? <>回复了&nbsp;@{repliedTo.username || repliedTo.name}</> : '评论了'}：{content}
-            </p>
-          </List.Item>
-        </li>
-      )}
+      renderItem={({ post, content }) => <CommentPostItem blogInfo={post} commentContent={content} />}
     />
   );
 };

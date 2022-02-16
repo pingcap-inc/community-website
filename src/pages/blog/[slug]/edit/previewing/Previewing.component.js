@@ -13,18 +13,31 @@ import { usePrincipal } from '~/pages/blog/blog.hooks';
 const noop = () => {};
 
 const Previewing = ({ blogInfo }) => {
-  const { factory, title, origin, tags, content, coverImageURL } = useEditContext();
+  const { category, factory, title, origin, tags, content, coverImageURL } = useEditContext();
 
   const { save, saveAndSubmit, saveAndPublish, operating } = useEditMethods();
 
   const { hasAuthority } = usePrincipal();
   const hasPermission = hasAuthority('PUBLISH_POST');
 
-  const validation = (callback) => {
-    if (title !== '') {
-      return callback();
+  const validationPublish = (callback) => {
+    if (title === '') {
+      message.warn('请输入标题');
+      return;
     }
-    message.warn('请输入标题');
+    if (category === undefined) {
+      message.warn('请选择分类');
+      return;
+    }
+    return callback();
+  };
+
+  const validationSaveDraft = (callback) => {
+    if (title === '') {
+      message.warn('请输入标题');
+      return;
+    }
+    return callback();
   };
 
   if (!process.browser) {
@@ -57,15 +70,15 @@ const Previewing = ({ blogInfo }) => {
         {blogInfo?.status === 'PENDING' ? <PendingAlert /> : undefined}
         <div className="btns">
           {hasPermission ? (
-            <Button type="primary" onClick={() => validation(saveAndPublish)} disabled={operating}>
+            <Button type="primary" onClick={() => validationPublish(saveAndPublish)} disabled={operating}>
               发布
             </Button>
           ) : (
-            <Button type="primary" onClick={() => validation(saveAndSubmit)} disabled={operating}>
+            <Button type="primary" onClick={() => validationPublish(saveAndSubmit)} disabled={operating}>
               提交
             </Button>
           )}
-          <Button type="default" onClick={() => validation(save)} disabled={operating}>
+          <Button type="default" onClick={() => validationSaveDraft(save)} disabled={operating}>
             保存草稿
           </Button>
         </div>

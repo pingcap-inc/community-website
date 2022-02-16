@@ -28,13 +28,21 @@ const Editing = ({ blogInfo }) => {
     setContent,
   } = useEditContext();
 
-  const validation = (callback) => {
+  const validationPublish = (callback) => {
     if (title === '') {
       message.warn('请输入标题');
       return;
     }
     if (category === undefined) {
       message.warn('请选择分类');
+      return;
+    }
+    return callback();
+  };
+
+  const validationSaveDraft = (callback) => {
+    if (title === '') {
+      message.warn('请输入标题');
       return;
     }
     return callback();
@@ -166,15 +174,15 @@ const Editing = ({ blogInfo }) => {
       <Styled.Actions>
         <div className="btns">
           {hasPermission ? (
-            <Button type="primary" onClick={() => validation(saveAndPublish)} loading={operating}>
+            <Button type="primary" onClick={() => validationPublish(saveAndPublish)} loading={operating}>
               发布
             </Button>
           ) : (
-            <Button type="primary" onClick={() => validation(saveAndSubmit)} loading={operating}>
+            <Button type="primary" onClick={() => validationPublish(saveAndSubmit)} loading={operating}>
               提交
             </Button>
           )}
-          <Button type="default" onClick={() => validation(save)} loading={operating}>
+          <Button type="default" onClick={() => validationSaveDraft(save)} loading={operating}>
             保存草稿
           </Button>
         </div>

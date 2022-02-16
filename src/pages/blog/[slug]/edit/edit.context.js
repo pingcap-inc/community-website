@@ -105,7 +105,7 @@ export function useEditMethods() {
   } = router;
 
   const save = useCallback(
-    async (callback = (slug) => router.push(`/blog/${slug}`)) => {
+    async (callback = (slug) => router.push(`/blog/${slug}/edit`)) => {
       try {
         const { title, coverImageURL, origin, category, tags, content, blogInfo } = editContext;
         const body = {
@@ -122,13 +122,15 @@ export function useEditMethods() {
           await reload(res.slug);
           // await router.push(`/blog/${res.slug}`);
           await callback?.(res.slug);
+          message.success('草稿保存成功!');
           return res;
         } else {
           await fixStatus(blogInfo.id, blogInfo.status);
           await api.blog.posts.post.update(blogInfo.id, body);
           await reload(slug);
           // await router.push(`/blog/${blogInfo.slug}`);
-          await callback?.(blogInfo.slug);
+          // await callback?.(blogInfo.slug);
+          message.success('草稿保存成功!');
           return blogInfo;
         }
       } catch (e) {

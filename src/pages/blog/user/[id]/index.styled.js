@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors, Styled } from '@tidb-community/ui';
-import { Breadcrumb as AntdBreadcrumb } from 'antd';
+import { Breadcrumb as AntdBreadcrumb, Card as AntdCard } from 'antd';
+import { borderRadiusSize } from '~/pages/blog/_components/common.styled';
 
 const { Content } = Styled;
 
@@ -38,4 +39,8 @@ export const Item = styled.div`
   &:not(:first-child) {
     margin-top: 1rem;
   }
+`;
+
+export const EmptyContainer = styled(AntdCard)`
+  ${borderRadiusSize};
 `;

@@ -24,6 +24,7 @@ const BlogInfo = ({
   author,
   recommended = false,
   getPostUrl = (slug) => `/blog/${slug}`,
+  actionText,
 }) => {
   const { showRecommendedIcon } = useContext(PageDataContext);
   const publishedAtFormatted = useMemo(() => {
@@ -42,6 +43,7 @@ const BlogInfo = ({
         </Styled.CoverImageContainer>
       )}
       <Styled.Content>
+        <Styled.ActionText>{actionText}</Styled.ActionText>
         <Styled.Author>
           <Link href={`/blog/user/${author.id}`} passHref>
             <Styled.AuthorAvatar>

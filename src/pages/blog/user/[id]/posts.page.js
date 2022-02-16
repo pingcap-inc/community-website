@@ -8,6 +8,8 @@ import { Select, Skeleton } from 'antd';
 import { usePrincipal } from '../../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useRouter } from 'next/router';
+import { blogUrl } from '~/pages/u/[username]/constant.data';
+import EmptyStatus from '~/components/EmptyStatus';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -82,7 +84,15 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
 
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
-      {loading ? <Skeleton active /> : <BlogList blogs={blogs} actionText="发布了文章" />}
+      {loading ? (
+        <Skeleton active />
+      ) : blogs.length === 0 ? (
+        <EmptyStatus description={'你还没有发表过任何文章'}>
+          快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
+        </EmptyStatus>
+      ) : (
+        <BlogList blogs={blogs} actionText="发布了文章" />
+      )}
     </UserDetailsLayout>
   );
 };

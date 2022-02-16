@@ -1,9 +1,9 @@
 import React from 'react';
 import * as Styled from './index.styled';
 // import BlogInfo from '../blogInfo';
+import PostItem from '~/pages/blog/user/_component/PostItem';
 import { List, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';
-import PostItem from '~/pages/blog/user/_component/PostItem';
 
 const BlogList = ({
   blogs: {
@@ -17,7 +17,6 @@ const BlogList = ({
   actionText,
 }) => {
   const { onPageChange } = useRouterPage();
-  console.log('!!actionText', actionText);
   if (!content) {
     return <Skeleton active />;
   }
@@ -37,6 +36,7 @@ const BlogList = ({
                 {/*  getPostUrl={getPostUrl}*/}
                 {/*  usernameExtends={usernameExtends}*/}
                 {/*  bottomExtends={bottomExtends}*/}
+                {/*  actionText={actionText}*/}
                 {/*/>*/}
                 <PostItem actionText={actionText} blogInfo={value} />
               </Styled.Item>

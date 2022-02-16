@@ -49,6 +49,10 @@ export const Content = styled.div`
   padding: 22px 24px 30px;
 `;
 
+export const ActionText = styled.div`
+  margin-bottom: 1rem;
+`;
+
 export const Author = styled.div`
   display: flex;
   align-items: center;

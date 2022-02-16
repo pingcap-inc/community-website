@@ -4,6 +4,7 @@ import { colors, mixins } from '../../index';
 export const Banner = styled.div`
   ${mixins.typography('p2')};
   ${mixins.flexVerticalCenter()};
+  ${mixins.anchor()};
   justify-content: center;
   height: 32px;
   color: ${colors.M2};

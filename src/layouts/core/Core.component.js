@@ -81,7 +81,8 @@ const Core = ({
       <Styled.Container style={{ backgroundColor }}>
         {/*{renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}*/}
         <ActivityBanner
-          backgroundColor={'#2c2c2c'}
+          // backgroundColor={'#2c2c2c'}
+          style={{ backgroundImage: 'linear-gradient(to right, #6E545B, #2C2C2C, #6E545B)' }}
           text={
             <>
               <svg

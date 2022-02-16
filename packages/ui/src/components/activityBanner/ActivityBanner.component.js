@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 
 import * as Styled from './activityBanner.styled';
 
-const ActivityBanner = ({ backgroundColor = '', backgroundImage = '', buttonImage = '', text, onClick }) => {
+const ActivityBanner = ({ backgroundColor = '', backgroundImage = '', buttonImage = '', text, onClick, ...rest }) => {
   return (
-    <Styled.Banner $backgroundColor={backgroundColor} $backgroundImage={backgroundImage} onClick={onClick}>
+    <Styled.Banner $backgroundColor={backgroundColor} $backgroundImage={backgroundImage} onClick={onClick} {...rest}>
       <Styled.Text>{text}</Styled.Text>
       {buttonImage !== '' && <Styled.ImgBtn alt={text} src={buttonImage} />}
     </Styled.Banner>

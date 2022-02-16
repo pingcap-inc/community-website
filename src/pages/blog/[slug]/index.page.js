@@ -92,7 +92,7 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
     <CoreLayout MainWrapper={Styled.MainWrapper}>
       <CommunityHead
         title={`专栏 - ${blogInfo.title}`}
-        // description
+        description={blogInfo.summary}
         // keyword
       />
 

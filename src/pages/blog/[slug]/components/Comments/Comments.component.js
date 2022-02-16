@@ -7,6 +7,7 @@ import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
 import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
+import { usePrincipal } from '~/pages/blog/blog.hooks';
 
 const Comments = ({ blogInfo }) => {
   const [tick, setTick] = useState(0);
@@ -110,6 +111,9 @@ const CommentList = ({ blogInfo, tick, onClickReply, onClickDelete }) => {
 
   const { loading, comments, totalComments, reload } = useComments(blogInfo.id, page);
 
+  const { id, isAuthor, hasAuthority } = usePrincipal();
+  const hasDeleteCommentPermission = isAuthor(blogInfo) || hasAuthority('REVIEW_POST');
+
   useEffect(() => {
     reload(tick);
   }, [reload, tick]);
@@ -142,15 +146,17 @@ const CommentList = ({ blogInfo, tick, onClickReply, onClickDelete }) => {
                         <span key="reply" onClick={() => onClickReply(item)}>
                           回复
                         </span>,
-                        <Popconfirm
-                          placement="topLeft"
-                          title={'你确认要删除此评论吗？'}
-                          onConfirm={() => onClickDelete(blogInfo, item, reload)}
-                          okText="确认"
-                          cancelText="取消"
-                        >
-                          <span key="delete">删除</span>
-                        </Popconfirm>,
+                        hasDeleteCommentPermission && item.commenter.id === id && (
+                          <Popconfirm
+                            placement="topLeft"
+                            title={'你确认要删除此评论吗？'}
+                            onConfirm={() => onClickDelete(blogInfo, item, reload)}
+                            okText="确认"
+                            cancelText="取消"
+                          >
+                            <span key="delete">删除</span>
+                          </Popconfirm>
+                        ),
                       ]
                     : undefined
                 }

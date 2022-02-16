@@ -31,13 +31,17 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
 
   const statuses = [
     {
-      label: '已发布',
-      value: 'PUBLISHED',
+      label: '全部',
+      value: '',
     },
   ];
 
   if (logonUserId === Number(id) || hasAuthority('READ_OTHERS_POST')) {
     statuses.push(
+      {
+        label: '已发布',
+        value: 'PUBLISHED',
+      },
       {
         label: '草稿',
         value: 'DRAFT',

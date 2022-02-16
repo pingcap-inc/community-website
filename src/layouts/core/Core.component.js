@@ -104,8 +104,8 @@ const Core = ({
           }
           // backgroundImage={'https://tidb.io/images/activity/banner.svg'}
           // buttonImage={'https://tidb.io/images/activity/button.svg'}
-          // link={'https://tidb.io/blog'}
-          onClick={() => onNavClick({ link: 'https://tidb.io/blog', target: '_blank' })}
+          link={'https://tidb.io/blog'}
+          // onClick={() => onNavClick({ link: 'https://tidb.io/blog', target: '_blank' })}
         />
         <Header
           {...headerProps}

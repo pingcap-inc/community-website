@@ -13,7 +13,7 @@ export const usePrivateMessages = (sent: boolean): (AsktugPrivateMessage & { use
   );
   return useMemo(() => {
     let messages = undefined;
-    if (data) {
+    if (data && data.users) {
       const userLookup = R.indexBy(R.prop('id'))(data.users);
       messages = R.map(
         (x) => ({ users: R.map((i) => userLookup[i.user_id] ?? 'unknown', x.posters), ...x }),

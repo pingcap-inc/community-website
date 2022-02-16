@@ -152,6 +152,14 @@
       {
         "name": "监控",
         "link": "https://tidb.io/blog/tag/monitor"
+      },
+      {
+        "name": "版本测评",
+        "link": "https://tidb.io/blog/tag/version-evaluation"
+      },
+      {
+        "name": "新版本/特性发布",
+        "link": "https://tidb.io/blog/tag/new-version-features-released"
       }
     ]
   },

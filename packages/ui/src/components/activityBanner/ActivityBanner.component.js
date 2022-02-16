@@ -6,7 +6,7 @@ import * as Styled from './activityBanner.styled';
 const ActivityBanner = ({ backgroundColor = '', backgroundImage = '', buttonImage = '', text, onClick }) => {
   return (
     <Styled.Banner $backgroundColor={backgroundColor} $backgroundImage={backgroundImage} onClick={onClick}>
-      <span>{text}</span>
+      <Styled.Text>{text}</Styled.Text>
       {buttonImage !== '' && <Styled.ImgBtn alt={text} src={buttonImage} />}
     </Styled.Banner>
   );

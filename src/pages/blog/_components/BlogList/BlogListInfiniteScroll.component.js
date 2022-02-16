@@ -80,10 +80,10 @@ const BlogList = ({
           hasMore={hasMore}
           loader={
             <div style={{ marginTop: '16px' }}>
-              <Skeleton avatar paragraph={{ rows: 1 }} active />
+              <Skeleton avatar paragraph={{ rows: 4 }} active />
             </div>
           }
-          endMessage={<Divider plain>没有更多文章了</Divider>}
+          // endMessage={<Divider plain>没有更多文章了</Divider>}
         >
           <List
             // pagination={{ current: number, total: totalElements, onChange: onPageChange }}

@@ -6,7 +6,7 @@ export { TitleRow, InformationRow, User } from '~/pages/home/forum/post/post.sty
 
 export const Container = styled(PostStyled.Container)`
   position: relative;
-  padding-left: 40px;
+  //padding-left: 40px;
 
   ${PostStyled.TitleRow} {
     svg {

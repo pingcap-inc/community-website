@@ -10,9 +10,13 @@ export const Container = styled.div`
   margin-top: 1rem;
 `;
 
-//export const Header = styled.div`
-//  font-size: 14px;
-//`;
+const iconSize = 24;
+export const HeaderRight = styled.div`
+  svg {
+    width: ${iconSize}px;
+    height: ${iconSize}px;
+  }
+`;
 
 export const Card = styled(AntdCard)`
   ${borderRadius};

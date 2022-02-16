@@ -23,7 +23,8 @@ const noop = () => {};
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
-  const ip = ctx.req.headers['X-Forwarded-For'];
+  const { req } = ctx;
+  const ip = req.headers['X-Forwarded-For'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
 
   const { slug } = ctx.params;
 

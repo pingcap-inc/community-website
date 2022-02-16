@@ -80,7 +80,10 @@ const BlogList = ({
           hasMore={hasMore}
           loader={
             <div style={{ marginTop: '16px' }}>
-              <Skeleton avatar paragraph={{ rows: 4 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
             </div>
           }
           // endMessage={<Divider plain>没有更多文章了</Divider>}
@@ -88,7 +91,7 @@ const BlogList = ({
           <List
             // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
             dataSource={data}
-            loading={loading && data.length === 0}
+            // loading={loading && data.length === 0}
             locale={{ emptyText: '暂无文章' }}
             renderItem={(value) => {
               return (

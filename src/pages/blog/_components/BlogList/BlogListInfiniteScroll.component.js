@@ -43,10 +43,11 @@ const BlogList = ({
     }
     setLoading(true);
     try {
-      const json = await api({ page: page + 1, size, ...params });
+      const nextPage = page + 1;
+      const json = await api({ page: nextPage, size, ...params });
       setData([...data, ...json.content]);
-      setPage(json.page.number + 1);
-      setHasMore(page < json.page.totalPages);
+      setPage(nextPage);
+      setHasMore(nextPage < json.page.totalPages);
     } catch (e) {
     } finally {
       setLoading(false);

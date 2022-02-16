@@ -132,4 +132,7 @@ export const Editor = styled.div`
       text-decoration: underline;
     }
   }
+  table {
+    width: 100% !important;
+  }
 `;

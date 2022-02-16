@@ -15,7 +15,16 @@ export const Header = styled.div`
 export const Title = styled.div`
   font-size: 1.5rem;
   margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
 `;
+
+export const TitleAnchor = styled(Anchor)`
+  margin-right: 0.5rem;
+`;
+
+//export const StatusBadge = styled.div`
+//`;
 
 export const Author = styled(Anchor)`
   margin-top: 0.25rem;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
-import Anchor from '~/components/Anchor';
+//import Anchor from '~/components/Anchor';
 
 export default function PostItem({ blogInfo, actionText, statusBadge }) {
   return (

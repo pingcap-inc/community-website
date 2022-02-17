@@ -25,7 +25,7 @@ const Previewing = ({ blogInfo }) => {
       message.warn('请输入标题');
       return;
     }
-    if (category === undefined) {
+    if (category === undefined || category === null) {
       message.warn('请选择分类');
       return;
     }

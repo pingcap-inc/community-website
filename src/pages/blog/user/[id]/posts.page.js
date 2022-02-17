@@ -29,7 +29,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Posts = ({ id, blogs: ssrBlogs, user }) => {
-  const { isLogin, hasAuthority, id: logonUserId } = usePrincipal();
+  const { hasAuthority, id: logonUserId } = usePrincipal();
 
   const statuses = [
     {
@@ -38,7 +38,9 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
     },
   ];
 
-  if (logonUserId === Number(id) || hasAuthority('READ_OTHERS_POST')) {
+  const showFilter = logonUserId === Number(id) || hasAuthority('READ_OTHERS_POST');
+
+  if (showFilter) {
     statuses.push(
       {
         label: '已发布',
@@ -78,7 +80,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       });
   }, [id, status, page, size]);
 
-  const tabExtendDOM = isLogin ? (
+  const tabExtendDOM = showFilter ? (
     <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
   ) : undefined;
 
@@ -86,7 +88,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
       {loading ? (
         <Skeleton active />
-      ) : blogs.length === 0 ? (
+      ) : blogs.page.totalElements === 0 ? (
         <EmptyStatus description={'你还没有发表过任何文章'}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
         </EmptyStatus>

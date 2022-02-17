@@ -89,7 +89,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       {loading ? (
         <Skeleton active />
       ) : blogs.page.totalElements === 0 ? (
-        <EmptyStatus description={'你还没有发表过任何文章'}>
+        <EmptyStatus description={'你还没有发表过任何文章'} style={{ boxShadow: 'none' }}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
         </EmptyStatus>
       ) : (

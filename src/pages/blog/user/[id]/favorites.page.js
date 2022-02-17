@@ -30,7 +30,7 @@ const Favorites = ({ blogs, user }) => {
   return (
     <UserDetailsLayout userDetails={user} item="收藏" itemKey="favorites">
       {blogs.page.totalElements === 0 ? (
-        <EmptyStatus description={'你还没有收藏过任何文章'}>
+        <EmptyStatus description={'你还没有收藏过任何文章'} style={{ boxShadow: 'none' }}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 收藏第一篇技术文章吧～
         </EmptyStatus>
       ) : (

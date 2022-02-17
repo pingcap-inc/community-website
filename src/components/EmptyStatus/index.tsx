@@ -6,9 +6,9 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   description: React.ReactNode;
 }
 
-export default function EmptyStatus({ description, children }: IProps) {
+export default function EmptyStatus({ description, children, ...rest }: IProps) {
   return (
-    <Styled.Container>
+    <Styled.Container {...rest}>
       <Empty description={description} image={'/images/profile/undraw_ride_a_bicycle_re_6tjy.svg'}>
         {children}
       </Empty>

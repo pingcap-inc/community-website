@@ -80,9 +80,15 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
       });
   }, [id, status, page, size]);
 
+  const onChangeFilter = (status) => {
+    setStatus(status);
+  };
+
   const tabExtendDOM = showFilter ? (
-    <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={(status) => setStatus(status)} />
+    <Select style={{ width: '8rem' }} value={status} options={statuses} onChange={onChangeFilter} />
   ) : undefined;
+
+  const isShowStatusBadge = status === '' && showFilter;
 
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
@@ -93,7 +99,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
         </EmptyStatus>
       ) : (
-        <BlogList blogs={blogs} showStatusBadge={status === ''} />
+        <BlogList blogs={blogs} showStatusBadge={isShowStatusBadge} />
       )}
     </UserDetailsLayout>
   );

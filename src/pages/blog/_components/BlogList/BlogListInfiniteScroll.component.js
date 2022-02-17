@@ -93,7 +93,7 @@ const BlogList = ({
             // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
             dataSource={data}
             // loading={loading && data.length === 0}
-            // locale={{ emptyText: '暂无文章' }}
+            locale={{ emptyText: ' ' }}
             renderItem={(value) => {
               return (
                 <Styled.Item key={value.id}>

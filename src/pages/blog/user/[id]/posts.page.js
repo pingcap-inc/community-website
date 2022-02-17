@@ -90,12 +90,25 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
 
   const isShowStatusBadge = status === '' && showFilter;
 
+  let emptyDescription = '你还没有发表过任何文章';
+  switch (status) {
+    case 'DRAFT':
+      emptyDescription = '你没有草稿状态的文章';
+      break;
+    case 'PENDING':
+      emptyDescription = '你没有审核中的文章';
+      break;
+    case 'REJECTED':
+      emptyDescription = '你没有审核未通过的文章';
+      break;
+  }
+
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
       {loading ? (
         <Skeleton active />
       ) : blogs.page.totalElements === 0 ? (
-        <EmptyStatus description={'你还没有发表过任何文章'} style={{ boxShadow: 'none' }}>
+        <EmptyStatus description={emptyDescription} style={{ boxShadow: 'none' }}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
         </EmptyStatus>
       ) : (

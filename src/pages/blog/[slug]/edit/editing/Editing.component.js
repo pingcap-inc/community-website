@@ -182,7 +182,7 @@ const Editing = ({ blogInfo }) => {
               提交
             </Button>
           )}
-          <Button type="default" onClick={() => validationSaveDraft(save)} loading={operating}>
+          <Button type="default" onClick={() => validationSaveDraft(() => save(true))} loading={operating}>
             保存草稿
           </Button>
         </div>

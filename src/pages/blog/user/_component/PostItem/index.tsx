@@ -5,7 +5,7 @@ import * as Styled from './index.styled';
 export default function PostItem({ blogInfo, actionText, statusBadge }) {
   return (
     <Styled.Container>
-      <Styled.Header>{actionText}</Styled.Header>
+      {actionText && actionText.length !== 0 && <Styled.Header>{actionText}</Styled.Header>}
       <Styled.Title>
         <Styled.TitleAnchor href={`/blog/${blogInfo.slug}`}>{blogInfo.title}</Styled.TitleAnchor>
         {/*<Styled.StatusBadge>*/}

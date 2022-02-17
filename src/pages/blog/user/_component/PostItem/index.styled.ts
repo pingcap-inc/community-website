@@ -10,11 +10,11 @@ export const Container = styled(AntdCard)`
 
 export const Header = styled.div`
   font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 export const Title = styled.div`
   font-size: 1.5rem;
-  margin-top: 0.5rem;
   display: flex;
   align-items: center;
 `;

@@ -43,7 +43,7 @@ const BlogInfo = ({
         </Styled.CoverImageContainer>
       )}
       <Styled.Content>
-        <Styled.ActionText>{actionText}</Styled.ActionText>
+        {actionText && actionText.length !== 0 && <Styled.ActionText>{actionText}</Styled.ActionText>}
         <Styled.Author>
           <Link href={`/blog/user/${author.id}`} passHref>
             <Styled.AuthorAvatar>

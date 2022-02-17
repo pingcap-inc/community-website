@@ -93,7 +93,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
         </EmptyStatus>
       ) : (
-        <BlogList blogs={blogs} actionText="发布了文章" showStatusBadge={status === ''} />
+        <BlogList blogs={blogs} showStatusBadge={status === ''} />
       )}
     </UserDetailsLayout>
   );

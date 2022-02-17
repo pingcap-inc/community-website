@@ -32,7 +32,7 @@ export const Author = styled(Anchor)`
   align-items: center;
 `;
 
-const avatarSize = `2rem`;
+const avatarSize = `1.5rem`;
 export const AuthorAvatar = styled.div`
   ${mixins.radius(avatarSize)};
   //width: ${avatarSize};

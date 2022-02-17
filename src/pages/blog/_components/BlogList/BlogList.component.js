@@ -21,7 +21,7 @@ const StatusBadge = ({ status }) => {
     }
     case 'PENDING': {
       color = '#7D3F98';
-      text = '';
+      text = '审核中';
       break;
     }
     case 'REJECTED': {

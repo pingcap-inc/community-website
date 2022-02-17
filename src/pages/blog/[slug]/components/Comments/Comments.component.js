@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Link from 'next/link';
 import * as Styled from './comments.styled';
-import { Avatar, Button, Col, Comment, Input, List, Pagination, Popconfirm, Row, Skeleton } from 'antd';
+import { Avatar, Button, Col, Comment, Input, List, message, Pagination, Popconfirm, Row, Skeleton } from 'antd';
 import { AuthContext, MeContext } from '~/context';
 import { api } from '@tidb-community/datasource';
 import { useComments } from './components.hooks';
@@ -52,10 +52,19 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
   const [comment, setComment] = useState('');
 
   const onComment = () => {
-    api.blog.posts.post.comment(blogInfo.id, comment, replyTo?.id).then(() => {
-      setComment('');
-      onCommented?.();
-    });
+    api.blog.posts.post
+      .comment(blogInfo.id, comment, replyTo?.id)
+      .then(() => {
+        setComment('');
+        onCommented?.();
+      })
+      .catch((error) => {
+        message.error(error.message);
+      });
+  };
+
+  const onChange = (event) => {
+    setComment(event.target.value);
   };
 
   const onKeyDown = (event) => {
@@ -89,7 +98,7 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
             <Input
               placeholder="添加评论"
               value={comment}
-              onChange={(event) => setComment(event.target.value)}
+              onChange={onChange}
               onKeyDown={onKeyDown}
               prefix={replyTo ? <span>回复 @{replyTo.commenter.username || replyTo.commenter.name}</span> : undefined}
             />

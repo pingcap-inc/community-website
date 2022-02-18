@@ -30,7 +30,7 @@ export const getServerSideProps = async (ctx) => {
   const category = await api.blog.getCategoryBySlug(slug);
   const [categories, blogs, hotTags] = await Promise.all([
     api.blog.getCategories(),
-    api.blog.getRecommend({ categoryID: category.id, page, size }),
+    api.blog.getLatest({ categoryID: category.id, page, size }),
     api.blog.getHotTags(),
   ]);
 
@@ -58,7 +58,7 @@ export default function CategoryPage({
     fallbackData: categoriesFromSSR,
     revalidateOnMount: true,
   });
-  const { data: blogs, error: blogsError } = useSWR(['blog.getRecommend', JSON.stringify({ page, size })], {
+  const { data: blogs, error: blogsError } = useSWR(['blog.getLatest', JSON.stringify({ page, size })], {
     fallbackData: blogsFromSSR,
     revalidateOnMount: true,
   });
@@ -101,7 +101,7 @@ export default function CategoryPage({
               <CategoryListMobile categories={categoriesWithAll} />
               {/*<SearchOnMobile />*/}
               <OrderBySwitch items={orderBy} />
-              <BlogListInfiniteScroll blogs={blogs} api={api.blog.getRecommend} params={{ categoryID: category.id }} />
+              <BlogListInfiniteScroll blogs={blogs} api={api.blog.getLatest} params={{ categoryID: category.id }} />
             </styled.Center>
             <styled.End>
               <styled.WriteBlog>

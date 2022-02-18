@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import { api } from '@tidb-community/datasource';
-import BlogList from '../../_components/BlogList';
-import UserDetailsLayout from './Layout.component';
+import BlogList from '~/pages/blog/_components/BlogList/BlogList.component';
+import UserDetailsLayout from '../Layout.component';
 import { Select, Skeleton } from 'antd';
-import { usePrincipal } from '../../blog.hooks';
+import { usePrincipal } from '../../../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
 import { useRouter } from 'next/router';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
@@ -16,7 +16,10 @@ export const getServerSideProps = async (ctx) => {
 
   const { page, size } = getPageQuery(ctx.query);
   const { id } = ctx.params;
-  const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getPosts(id, { page, size })]);
+  const [user, blogs] = await Promise.all([
+    api.blog.users.get({ userId: id }),
+    api.blog.users.getPosts({ userId: id, page, size }),
+  ]);
 
   return {
     props: {
@@ -71,7 +74,7 @@ const Posts = ({ id, blogs: ssrBlogs, user }) => {
   useEffect(() => {
     setLoading(true);
     api.blog.users
-      .getPosts(id, { status, page, size })
+      .getPosts({ userId: id, status, page, size })
       .then((blogs) => {
         setBlogs(blogs);
       })

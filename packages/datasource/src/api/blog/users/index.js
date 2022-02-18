@@ -1,7 +1,11 @@
 import blogClient from '../../blogClient';
 
-export const getComments = (userId, params) => blogClient.get(`/api/users/${userId}/comments`, { params });
-export const getPosts = (userId, params) => blogClient.get(`/api/users/${userId}/posts`, { params });
-export const getLikes = (userId, params) => blogClient.get(`/api/users/${userId}/likes`, { params });
-export const getFavorites = (userId, params) => blogClient.get(`/api/users/${userId}/favorites`, { params });
-export const get = (userId) => blogClient.get(`/api/users/${userId}`);
+export const getComments = ({ userId, page, size }) =>
+  blogClient.get(`/api/users/${userId}/comments`, { params: { page, size } });
+export const getPosts = ({ userId, page, size, status }) =>
+  blogClient.get(`/api/users/${userId}/posts`, { params: { userId, page, size, status } });
+export const getLikes = ({ userId, page, size }) =>
+  blogClient.get(`/api/users/${userId}/likes`, { params: { page, size } });
+export const getFavorites = ({ userId, page, size }) =>
+  blogClient.get(`/api/users/${userId}/favorites`, { params: { page, size } });
+export const get = ({ userId }) => blogClient.get(`/api/users/${userId}`);

@@ -30,7 +30,7 @@ const statuses = [
   },
 ];
 
-export type IProps = Omit<React.HTMLAttributes<HTMLSelectElement>, 'onChange'>;
+export type IProps = React.HTMLAttributes<HTMLDivElement>;
 
 export default function StatusSelect(props: IProps): JSX.Element {
   const router = useRouter();

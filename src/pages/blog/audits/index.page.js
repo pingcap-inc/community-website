@@ -37,7 +37,7 @@ const PageContent = () => {
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
-  if (hasPermission === false) return '您没有 REVIEW_POST 权限，无法查看本页面';
+  if (hasPermission === false) <ErrorPage statusCode={403} errorMsg={'您没有 REVIEW_POST 权限，无法查看本页面'} />;
 
   return (
     <BlogLayout>
@@ -49,7 +49,7 @@ const PageContent = () => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>待审核</Breadcrumb.Item>
           </Styled.Breadcrumb>
-          {blogs ? <BlogList blogs={blogs} getPostUrl={(slug) => `/blog/audits/${slug}`} /> : <Spin />}
+          <BlogList blogs={blogs} getPostUrl={(slug) => `/blog/audits/${slug}`} />
         </Styled.Container>
       </Styled.Content>
     </BlogLayout>

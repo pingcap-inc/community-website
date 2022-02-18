@@ -35,11 +35,10 @@ export const Author = styled(Anchor)`
 const avatarSize = `1.5rem`;
 export const AuthorAvatar = styled.div`
   ${mixins.radius(avatarSize)};
-  //width: ${avatarSize};
-  //height: ${avatarSize};
   img {
     width: 100%;
     height: 100%;
+    vertical-align: unset;
   }
 `;
 

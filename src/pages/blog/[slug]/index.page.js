@@ -53,7 +53,7 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
   const { slug } = query;
 
   const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify(slug)], {
-    initialData: ssrBlogInfo,
+    fallbackData: ssrBlogInfo,
     revalidateOnMount: true,
   });
   const isLoading = !blogInfo;

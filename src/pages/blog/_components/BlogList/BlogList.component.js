@@ -44,7 +44,7 @@ const BlogList = ({
   // usernameExtends,
   // bottomExtends,
   // emptyText = '暂无文章',
-  // getPostUrl,
+  getPostUrl,
   actionText,
   showStatusBadge = false,
 }) => {
@@ -74,6 +74,7 @@ const BlogList = ({
                   actionText={actionText}
                   blogInfo={value}
                   statusBadge={showStatusBadge ? <StatusBadge status={value.status} /> : undefined}
+                  getUrlBySlugCallback={getPostUrl}
                 />
               </Styled.Item>
             );

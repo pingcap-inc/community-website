@@ -1,28 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Skeleton } from 'antd';
 
 import * as Styled from './index.styled';
 
 import { api } from '@tidb-community/datasource';
 
 import { getI18nProps } from '~/utils/i18n.utils';
-import { CommunityHead } from '~/components';
+import { CommunityHead, ErrorPage } from '~/components';
 import { PageDataContext } from '~/context';
 
 import TagItem from './TagItem.component';
 import BlogLayout from '../BlogLayout.component';
+import useSWR from 'swr';
+
+const page = 1;
+const size = 99999;
+const sort = 'posts,desc';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
-
   // const { page = 1, size = 999 } = getPageQuery(ctx.query);
-  const page = 1;
-  const size = 99999;
-  const sort = 'posts,desc';
-
   const tags = await api.blog.getTags({ page, size, sort });
-
   return {
     props: {
       ...i18nProps,
@@ -31,7 +30,17 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const TagPage = ({ tags: { content } }) => {
+const TagPage = ({ tags: tagsFromSSR }) => {
+  const { data: tags, error: tagsError } = useSWR(['blog.getTags', JSON.stringify({ page, size, sort })], {
+    fallbackData: tagsFromSSR,
+    revalidateOnMount: true,
+  });
+
+  const loading = tags === undefined;
+  const error = tagsError !== undefined;
+  if (loading) return <Skeleton active />;
+  if (error) return <ErrorPage />;
+
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
@@ -53,7 +62,7 @@ const TagPage = ({ tags: { content } }) => {
             </Breadcrumb>
           </Styled.Breadcrumb>
           <Styled.List>
-            {content.map((item, key) => (
+            {tags.content.map((item, key) => (
               <Styled.Item key={key}>
                 <TagItem {...item} />
               </Styled.Item>

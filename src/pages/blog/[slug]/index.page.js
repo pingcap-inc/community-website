@@ -32,7 +32,7 @@ export const getServerSideProps = async (ctx) => {
   let blog = null,
     isPending = false;
   try {
-    blog = await api.blog.getPostBySlug(slug, ip);
+    blog = await api.blog.getPostBySlug({ slug, ip });
   } catch (e) {
     if (e.errCode === 'POST_NOT_FOUND') isPending = true;
   }
@@ -57,7 +57,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     data: blog,
     mutate: reload,
     error: blogError,
-  } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify(slug)], {
+  } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify({ slug })], {
     fallbackData: blogFromSSR,
     revalidateOnMount: true,
   });

@@ -10,7 +10,7 @@ export const getRecommend = (params) => blogClient.get(`/api/posts/recommend`, {
 
 export const getPosts = (params) => blogClient.get(`/api/posts`, { params });
 //TODO: need to pass header of X-Forward-For for forward client real ip to backend
-export const getPostBySlug = (slug, ip) =>
+export const getPostBySlug = ({ slug, ip }) =>
   blogClient.get(`/api/posts/${slug}/detail${ip !== undefined ? '?visit=true' : ''}`, {
     headers: { 'X-Forwarded-For': ip },
   });

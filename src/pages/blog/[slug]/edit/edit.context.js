@@ -59,7 +59,7 @@ export function useEditContextProvider() {
     } else {
       setLoading(true);
       return api.blog
-        .getPostBySlug(slug)
+        .getPostBySlug({ slug })
         .then((info) => {
           setTitle(info.title);
           setOrigin(info.origin === 'ORIGINAL' ? false : info.sourceURL);

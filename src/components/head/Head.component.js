@@ -1,7 +1,17 @@
 import React from 'react';
 import NextHead from 'next/head';
 
-const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keyword, title, titleSuffix, children }) => {
+const Head = ({
+  creator,
+  description,
+  faviconPathname,
+  googleAnalyticsId,
+  keyword,
+  title,
+  titleSuffix,
+  isArticle = false,
+  children,
+}) => {
   const fullTitle = [title, titleSuffix].filter(Boolean).join(' | ');
   const keywordStr = Array.isArray(keyword) ? keyword.join(',') : keyword;
 
@@ -11,12 +21,13 @@ const Head = ({ creator, description, faviconPathname, googleAnalyticsId, keywor
       <meta name="viewport" content="width=device-width,initial-scale=1" />
       <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
       <meta name="description" content={description} />
+      {creator && <meta name="author" content={creator} />}
       {keywordStr && <meta name="keyword" content={keywordStr} />}
 
       {/* 'Open Graph protocol' enables rich sharing info on Facebook */}
       <meta name="og:title" content={fullTitle} />
       <meta name="og:description" content={description} />
-      <meta name="og:type" content="website" />
+      <meta name="og:type" content={isArticle ? 'article' : 'website'} />
       <meta name="og:image" content={`/favicons/${faviconPathname}/android-chrome-512x512.png`} />
 
       {/* for sharing to twitter */}

@@ -2,6 +2,7 @@ import React, { useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
+import NextHead from 'next/head';
 import Link from 'next/link';
 import * as Styled from './blog.styled';
 import { CoreLayout } from '~/layouts';
@@ -64,6 +65,10 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
     return JSON.parse(blogInfo?.content || '[]');
   }, [blogInfo]);
 
+  const keyword = useMemo(() => {
+    return [blogInfo.category?.name ?? '', ...blogInfo.tags.map((tag) => tag.name)].filter(Boolean).join(',');
+  }, [blogInfo]);
+
   if (isLoading) return <Skeleton active />;
 
   const hasPermission = isAuthor(blogInfo) || hasAuthority('REVIEW_POST');
@@ -91,11 +96,14 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
-      <CommunityHead
-        title={`专栏 - ${blogInfo.title}`}
-        description={blogInfo.summary}
-        // keyword
-      />
+      <CommunityHead title={`专栏 - ${blogInfo.title}`} description={blogInfo.summary} keyword={keyword} isArticle />
+
+      <NextHead>
+        <meta name="twitter:label1" value="作者" />
+        <meta name="twitter:data1" value={blogInfo.author.username} />
+        <meta name="twitter:label2" value="Likes" />
+        <meta name="twitter:data2" value={`${blogInfo.likes} ❤`} />
+      </NextHead>
 
       {/*<Styled.VisualContainer>*/}
       <Styled.Content>

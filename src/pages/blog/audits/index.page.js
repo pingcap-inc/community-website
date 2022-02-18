@@ -28,16 +28,16 @@ const PageContent = () => {
 
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
-  const { data: blogs, error: blogsEror } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
+  const { data: blogs, error: blogsError } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
     revalidateOnMount: true,
   });
 
-  const error = blogsEror !== undefined;
-  const loading = blogs === undefined || hasPermission === undefined;
+  const error = blogsError;
+  const loading = !blogs || hasPermission === undefined;
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
-  if (!hasPermission) return '您没有 REVIEW_POST 权限，无法查看本页面';
+  if (hasPermission === false) return '您没有 REVIEW_POST 权限，无法查看本页面';
 
   return (
     <BlogLayout>

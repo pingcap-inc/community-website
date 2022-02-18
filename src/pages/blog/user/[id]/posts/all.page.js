@@ -39,8 +39,8 @@ const PostsAllPage = ({ userId }) => {
     JSON.stringify({ userId, status, page, size }),
   ]);
 
-  const error = userError !== undefined || blogsError !== undefined;
-  const loading = blogs === undefined || user === undefined;
+  const error = userError || blogsError;
+  const loading = !blogs || !user;
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 

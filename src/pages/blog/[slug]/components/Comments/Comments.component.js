@@ -9,7 +9,7 @@ import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 
-const Comments = ({ blogInfo }) => {
+const Comments = ({ blog }) => {
   const [tick, setTick] = useState(0);
   const [replyTo, setReplyTo] = useState(undefined);
 
@@ -22,8 +22,8 @@ const Comments = ({ blogInfo }) => {
     setReplyTo(undefined);
   };
 
-  const onClickDelete = async (blogInfo, commentInfo, reload) => {
-    const blogId = blogInfo.id;
+  const onClickDelete = async (blog, commentInfo, reload) => {
+    const blogId = blog.id;
     const commentId = commentInfo.id;
     try {
       await api.blog.posts.post.delComment(blogId, commentId);
@@ -38,22 +38,22 @@ const Comments = ({ blogInfo }) => {
       <Styled.CommentsContainer>
         <Styled.Title>评论</Styled.Title>
 
-        <CommentInput blogInfo={blogInfo} onCommented={onCommented} onClearReplyTo={onClearReplyTo} replyTo={replyTo} />
+        <CommentInput blog={blog} onCommented={onCommented} onClearReplyTo={onClearReplyTo} replyTo={replyTo} />
 
-        <CommentList blogInfo={blogInfo} tick={tick} onClickReply={setReplyTo} onClickDelete={onClickDelete} />
+        <CommentList blog={blog} tick={tick} onClickReply={setReplyTo} onClickDelete={onClickDelete} />
       </Styled.CommentsContainer>
     </Element>
   );
 };
 
-const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
+const CommentInput = ({ blog, onCommented, onClearReplyTo, replyTo }) => {
   const { meData, isMeValidating } = useContext(MeContext);
   const { login } = useContext(AuthContext);
   const [comment, setComment] = useState('');
 
   const onComment = () => {
     api.blog.posts.post
-      .comment(blogInfo.id, comment, replyTo?.id)
+      .comment(blog.id, comment, replyTo?.id)
       .then(() => {
         setComment('');
         onCommented?.();
@@ -114,14 +114,14 @@ const CommentInput = ({ blogInfo, onCommented, onClearReplyTo, replyTo }) => {
   );
 };
 
-const CommentList = ({ blogInfo, tick, onClickReply, onClickDelete }) => {
+const CommentList = ({ blog, tick, onClickReply, onClickDelete }) => {
   const { meData } = useContext(MeContext);
   const [page, setPage] = useState(1);
 
-  const { loading, comments, totalComments, reload } = useComments(blogInfo.id, page);
+  const { loading, comments, totalComments, reload } = useComments(blog.id, page);
 
   const { id, isAuthor, hasAuthority } = usePrincipal();
-  const hasDeleteCommentPermission = isAuthor(blogInfo) || hasAuthority('REVIEW_POST');
+  const hasDeleteCommentPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
 
   useEffect(() => {
     reload(tick);
@@ -159,7 +159,7 @@ const CommentList = ({ blogInfo, tick, onClickReply, onClickDelete }) => {
                           <Popconfirm
                             placement="topLeft"
                             title={'你确认要删除此评论吗？'}
-                            onConfirm={() => onClickDelete(blogInfo, item, reload)}
+                            onConfirm={() => onClickDelete(blog, item, reload)}
                             okText="确认"
                             cancelText="取消"
                           >

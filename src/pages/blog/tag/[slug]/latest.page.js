@@ -49,8 +49,8 @@ const TagDetail = ({ blogs: blogsFromSSR, hotTags, tag, slug }) => {
     revalidateOnMount: true,
   });
 
-  const error = blogsError !== undefined;
-  const loading = blogs === undefined;
+  const error = blogsError;
+  const loading = !blogs;
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 

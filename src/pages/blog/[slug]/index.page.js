@@ -61,8 +61,9 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     fallbackData: blogFromSSR,
     revalidateOnMount: true,
   });
-  const error = blogError !== undefined;
-  const loading = blog === undefined;
+  const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
+  const error = blogError;
+  const loading = !blog || hasPermission === undefined;
 
   const factory = useMemo(() => createFactory(), []);
 
@@ -73,7 +74,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
-  const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
   if (!hasPermission && isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
   const BreadcrumbDOM = [<Breadcrumb.Item href={`/blog/user/${id}/posts`}>我的专栏</Breadcrumb.Item>];

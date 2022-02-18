@@ -36,8 +36,8 @@ const TagPage = ({ tags: tagsFromSSR }) => {
     revalidateOnMount: true,
   });
 
-  const error = tagsError !== undefined;
-  const loading = tags === undefined;
+  const error = tagsError;
+  const loading = !tags;
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 

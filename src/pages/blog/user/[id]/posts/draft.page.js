@@ -38,8 +38,8 @@ const PostsPendingPage = ({ userId }) => {
 
   const { hasAuthority, id: logonUserId } = usePrincipal();
 
-  const error = userError !== undefined || blogsError !== undefined;
-  const loading = blogs === undefined || user === undefined;
+  const error = userError || blogsError;
+  const loading = !blogs || !user;
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 

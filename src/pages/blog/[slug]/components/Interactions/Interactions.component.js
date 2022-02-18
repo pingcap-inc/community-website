@@ -19,17 +19,17 @@ import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, us
 import { usePrincipal } from '../../../blog.hooks';
 import { Input, Modal, Popconfirm, Tooltip } from 'antd';
 
-const Interactions = ({ blogInfo, reload }) => {
+const Interactions = ({ blog, reload }) => {
   const { isLogin, isAuthor, hasAuthority } = usePrincipal();
   const isReviewer = hasAuthority('REVIEW_POST');
 
-  const { liked, like, likes } = useLikes(blogInfo, isLogin);
-  const { favorited, favorite, favorites } = useFavorites(blogInfo, isLogin);
-  const { share, shares } = useShares(blogInfo, isLogin);
-  const { edit } = useEdit(blogInfo);
-  const { publish, reject } = useReview(blogInfo, reload);
-  const { remove } = useRemove(blogInfo);
-  const { recommended, recommend } = useRecommend(blogInfo, reload);
+  const { liked, like, likes } = useLikes(blog, isLogin);
+  const { favorited, favorite, favorites } = useFavorites(blog, isLogin);
+  const { share, shares } = useShares(blog, isLogin);
+  const { edit } = useEdit(blog);
+  const { publish, reject } = useReview(blog, reload);
+  const { remove } = useRemove(blog);
+  const { recommended, recommend } = useRecommend(blog, reload);
 
   const [isRejectReasonModalVisible, setIsRejectReasonModalVisible] = useState(false);
   const [rejectReason, setRejectReason] = useState('');
@@ -43,13 +43,13 @@ const Interactions = ({ blogInfo, reload }) => {
 
   const actions = [];
   const adminActions = [];
-  if (blogInfo.status === 'PUBLISHED') {
+  if (blog.status === 'PUBLISHED') {
     actions.push(
       <Tooltip placement="rightTop" title={'评论'}>
         <Interaction
           key="comments"
           icon={<CommentOutlined />}
-          count={blogInfo.comments}
+          count={blog.comments}
           onClick={() => scroller.scrollTo('comments', { smooth: true })}
         />
       </Tooltip>,
@@ -85,7 +85,7 @@ const Interactions = ({ blogInfo, reload }) => {
       );
     }
   }
-  if (isAuthor(blogInfo) || isReviewer) {
+  if (isAuthor(blog) || isReviewer) {
     adminActions.push(
       <Tooltip placement="rightTop" title={'删除'}>
         <Interaction key="remove" icon={<DeleteOutlined />} count={remove} onClick={remove} name="remove" />
@@ -97,7 +97,7 @@ const Interactions = ({ blogInfo, reload }) => {
       </Tooltip>
     );
   }
-  if (blogInfo.status === 'PENDING' && isReviewer) {
+  if (blog.status === 'PENDING' && isReviewer) {
     adminActions.push(
       <Tooltip placement="rightTop" title={'发布'}>
         <Interaction key="publish" icon={<SendOutlined />} onClick={publish} />

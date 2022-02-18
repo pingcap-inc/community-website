@@ -52,8 +52,8 @@ const TagDetail = ({ blogs: blogsFromSSR, hotTags, tag, slug }) => {
     }
   );
 
-  const error = blogsError !== undefined;
-  const loading = blogs === undefined;
+  const error = blogsError;
+  const loading = !blogs;
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 

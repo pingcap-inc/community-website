@@ -76,7 +76,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
   if (!hasPermission && isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
-  const BreadcrumbDOM = [<Breadcrumb.Item href={`/blog/user/${id}/posts`}>我的专栏</Breadcrumb.Item>];
+  const BreadcrumbDOM = [<Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>];
   switch (blog.status) {
     case 'DRAFT': {
       BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/draft`}>草稿</Breadcrumb.Item>);
@@ -116,10 +116,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
           <Interactions blog={blog} reload={reload} />
         </Styled.Side>
         <Styled.Main>
-          <Styled.Breadcrumb>
-            <Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>
-            {BreadcrumbDOM}
-          </Styled.Breadcrumb>
+          <Styled.Breadcrumb>{BreadcrumbDOM}</Styled.Breadcrumb>
           <Styled.StatusAlert>
             <StatusAlert blog={blog} />
           </Styled.StatusAlert>

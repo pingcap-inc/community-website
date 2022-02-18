@@ -99,10 +99,10 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
       <CommunityHead title={`专栏 - ${blogInfo.title}`} description={blogInfo.summary} keyword={keyword} isArticle />
 
       <NextHead>
-        <meta name="twitter:label1" value="作者" />
-        <meta name="twitter:data1" value={blogInfo.author.username} />
-        <meta name="twitter:label2" value="Likes" />
-        <meta name="twitter:data2" value={`${blogInfo.likes} ❤`} />
+        <meta name="twitter:label1" content="By" />
+        <meta name="twitter:data1" content={blogInfo.author.username} />
+        <meta name="twitter:label2" content="Likes" />
+        <meta name="twitter:data2" content={`${blogInfo.likes} ❤`} />
       </NextHead>
 
       {/*<Styled.VisualContainer>*/}

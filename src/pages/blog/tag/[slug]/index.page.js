@@ -3,7 +3,7 @@ import * as Styled from './index.styled';
 
 import { api } from '@tidb-community/datasource';
 
-import { CommunityHead } from '~/components';
+import { CommunityHead, ErrorPage } from '~/components';
 import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
 
@@ -13,17 +13,21 @@ import HotTagList from '../../_components/HotTagList';
 import TagItem from '../TagItem.component';
 import BlogLayout from '../../BlogLayout.component';
 import WriteBlogButton from '../../_components/WriteBlogButton';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Skeleton } from 'antd';
 import Link from 'next/link';
+import useSWR from 'swr';
+import { getPageQuery } from '~/utils/pagination.utils';
+import { useRouter } from 'next/router';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
-
+  const { page, size } = getPageQuery(ctx.query);
   const { slug } = ctx.params;
-
   const tag = await api.blog.getTagBySlug(slug);
-
-  const [blogs, hotTags] = await Promise.all([api.blog.getRecommend({ tagID: tag.id }), api.blog.getHotTags()]);
+  const [blogs, hotTags] = await Promise.all([
+    api.blog.getRecommend({ tagID: tag.id, page, size }),
+    api.blog.getHotTags(),
+  ]);
 
   return {
     props: {
@@ -36,16 +40,30 @@ export const getServerSideProps = async (ctx) => {
   };
 };
 
-const TagDetail = ({ blogs, hotTags, tag, slug, blogApi }) => {
+const TagDetail = ({ blogs: blogsFromSSR, hotTags, tag, slug }) => {
+  const router = useRouter();
+  const { page, size } = getPageQuery(router.query);
+
+  const { data: blogs, error: blogsError } = useSWR(
+    ['blog.getRecommend', JSON.stringify({ tagID: tag.id, page, size })],
+    {
+      fallbackData: blogsFromSSR,
+      revalidateOnMount: true,
+    }
+  );
+
+  const loading = blogs === undefined;
+  const error = blogsError !== undefined;
+  if (loading) return <Skeleton active />;
+  if (error) return <ErrorPage />;
+
   const orderBy = [
     { name: '推荐排序', url: `/blog/tag/${slug}` },
     { name: '时间排序', url: `/blog/tag/${slug}/latest` },
   ];
 
-  blogApi = blogApi ?? api.blog.getRecommend;
-
   return (
-    <PageDataContext.Provider value={{}}>
+    <PageDataContext.Provider value={{ showRecommendedIcon: false }}>
       <CommunityHead
         title={`专栏 - ${tag.name}`}
         // description
@@ -71,7 +89,7 @@ const TagDetail = ({ blogs, hotTags, tag, slug, blogApi }) => {
             </Styled.Start>
             <Styled.Center>
               <OrderBySwitch items={orderBy} />
-              <BlogListInfiniteScroll blogs={blogs} api={blogApi} params={{ tagID: tag.id }} />
+              <BlogListInfiniteScroll blogs={blogs} api={api.blog.getRecommend} params={{ tagID: tag.id }} />
             </Styled.Center>
             <Styled.End>
               <WriteBlogButton />

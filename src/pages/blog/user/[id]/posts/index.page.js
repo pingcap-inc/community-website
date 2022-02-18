@@ -36,9 +36,7 @@ export const getServerSideProps = async (ctx) => {
 
 const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) => {
   const router = useRouter();
-
   const { page, size } = getPageQuery(router.query);
-
   const { data: user } = useSWR(['blog.users.get', JSON.stringify({ userId })], {
     initialData: userFromSSR,
     revalidateOnMount: true,

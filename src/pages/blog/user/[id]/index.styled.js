@@ -16,11 +16,12 @@ export const Breadcrumb = styled(AntdBreadcrumb)``;
 export const Action = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 `;
 
 export const Tab = styled.div`
   display: flex;
-  padding: 1rem 0;
 `;
 
 export const List = styled.div`

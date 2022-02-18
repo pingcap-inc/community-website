@@ -38,6 +38,8 @@ const PostsAllPage = ({ userId }) => {
   const loading = !blogs || !user;
   if (loading) return <Skeleton active />;
 
+  user.posts = blogs.page.totalElements;
+
   const tabExtendDOM = showFilter && <StatusSelect value={status} />;
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>

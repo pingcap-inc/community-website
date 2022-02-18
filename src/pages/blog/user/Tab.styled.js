@@ -3,7 +3,6 @@ import { colors } from '@tidb-community/ui';
 
 export const Tab = styled.div`
   display: flex;
-  padding: 1rem 0;
 `;
 
 export const TabItem = styled.div`

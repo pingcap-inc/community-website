@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CommunityHead, ErrorPage } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
-import { Breadcrumb, Skeleton, Spin } from 'antd';
+import { Breadcrumb, Skeleton } from 'antd';
 import Link from 'next/link';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';

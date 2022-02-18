@@ -38,11 +38,11 @@ const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) =>
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
   const { data: user } = useSWR(['blog.users.get', JSON.stringify({ userId })], {
-    initialData: userFromSSR,
+    fallbackData: userFromSSR,
     revalidateOnMount: true,
   });
   const { data: blogs } = useSWR(['blog.users.getPosts', JSON.stringify({ userId, status, page, size })], {
-    initialData: blogsFromSSR,
+    fallbackData: blogsFromSSR,
     revalidateOnMount: true,
   });
 

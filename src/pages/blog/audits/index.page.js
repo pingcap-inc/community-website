@@ -29,7 +29,6 @@ const PageContent = () => {
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
   const { data: blogs } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
-    initialData: undefined,
     revalidateOnMount: true,
   });
 

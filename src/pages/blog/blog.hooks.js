@@ -68,7 +68,7 @@ const usePrincipalBrowser = () => {
 
   const isAuthor = useCallback(
     (target) => {
-      return id !== undefined && (target.authorId === id || target.author?.id === id);
+      return id !== undefined && target?.author?.id === id;
     },
     [id]
   );

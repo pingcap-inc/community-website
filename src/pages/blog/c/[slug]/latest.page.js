@@ -85,7 +85,7 @@ export default function CategoryPage({
   ];
 
   return (
-    <PageDataContext.Provider value={{ showRecommendedIcon: true }}>
+    <PageDataContext.Provider value={{ showRecommendedIcon: false }}>
       <CommunityHead
         title={`专栏 - ${category.name}`}
         // description

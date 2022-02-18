@@ -12,6 +12,8 @@ import EmptyStatus from '~/components/EmptyStatus';
 import useSWR from 'swr';
 import StatusSelect from '~/pages/blog/user/[id]/posts/StatusSelect.component';
 
+const status = '';
+
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
   const { id: userId } = ctx.params;
@@ -22,8 +24,6 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 };
-
-const status = '';
 
 const PostsAllPage = ({ userId }) => {
   const router = useRouter();

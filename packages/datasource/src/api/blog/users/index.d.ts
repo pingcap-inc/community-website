@@ -34,7 +34,7 @@ interface UserDetails extends UserInfo {
   comments: 0;
 }
 
-export function getPosts(param: { userId: number; query?: Query }): Promise<Page<Post>>;
+export function getPosts(param: { userId: number; status?: string; query?: Query }): Promise<Page<Post>>;
 
 export function getLikes(param: { userId: number; query?: Pagination }): Promise<Page<Like>>;
 

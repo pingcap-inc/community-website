@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import { Button, Col, Row } from 'antd';
 
 import * as Styled from './layout.styled';
@@ -8,15 +8,15 @@ import { SiteLayout } from '~/layouts';
 import { MailOutlined } from '@ant-design/icons';
 
 import { useRouter } from 'next/router';
+
 const Layout: React.FC = ({ children }) => {
-  const { setIsAuthRequired } = useContext(AuthContext);
+  const { isAnonymous, login } = useContext(AuthContext);
   const router = useRouter();
 
-  useEffect(() => {
-    setIsAuthRequired(true);
-    return () => setIsAuthRequired(false);
-  }, [setIsAuthRequired]);
-
+  if (isAnonymous) {
+    login();
+    return null;
+  }
   return (
     <>
       <SiteLayout>

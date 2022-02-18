@@ -18,6 +18,10 @@ export const Item = styled.li<FC<HTMLAttributes<HTMLDivElement>> & { isActive?: 
   padding: 0 1rem;
   cursor: pointer;
 
+  &:not(:last-child) {
+    border-bottom: 1px solid ${colors.T2};
+  }
+
   &:hover {
     background: ${colors.M2};
   }

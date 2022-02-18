@@ -5,7 +5,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AsktugFilter } from './layout/menu';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConfigProvider, List, Skeleton } from 'antd';
+import { ConfigProvider, List, Spin } from 'antd';
+import { ListPlaceholder } from '~/pages/private-messages/PrivateMessages.component';
 
 type Notification = DiscourseNotificationProps['notification'];
 
@@ -19,6 +20,20 @@ interface Notifications {
 interface AsktugProps {
   filter: AsktugFilter;
 }
+
+export const ListLoader = () => (
+  <div
+    style={{
+      //  center the child
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100px',
+    }}
+  >
+    <Spin />
+  </div>
+);
 
 const Asktug = ({ filter }: AsktugProps) => {
   const { data, mutate, size, setSize, isValidating } = useSWRInfinite<Notifications>(
@@ -91,17 +106,16 @@ const Asktug = ({ filter }: AsktugProps) => {
         height: 600,
         overflow: 'auto',
         padding: '0 16px',
-        border: '1px solid rgba(140, 140, 140, 0.35)',
       }}
     >
       <InfiniteScroll
         dataLength={notifications.length}
         next={loadMoreData}
         hasMore={hasMore}
-        loader={<Skeleton paragraph={{ rows: 1 }} active />}
+        loader={<ListLoader />}
         scrollableTarget="scrollableDiv"
       >
-        <ConfigProvider renderEmpty={() => undefined}>
+        <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'还没有通知哦'} />}>
           <List
             dataSource={notifications}
             renderItem={(item) => (

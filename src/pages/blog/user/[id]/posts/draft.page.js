@@ -11,6 +11,7 @@ import { blogUrl } from '~/pages/u/[username]/constant.data';
 import EmptyStatus from '~/components/EmptyStatus';
 import useSWR from 'swr';
 import StatusSelect from '~/pages/blog/user/[id]/posts/StatusSelect.component';
+import { ErrorPage } from '~/components';
 
 const status = 'DRAFT';
 
@@ -27,20 +28,26 @@ export const getServerSideProps = async (ctx) => {
 
 const PostsPendingPage = ({ userId }) => {
   const router = useRouter();
-
   const { page, size } = getPageQuery(router.query);
 
-  const { hasAuthority, id: logonUserId } = usePrincipal();
-  const showFilter = logonUserId === Number(userId) || hasAuthority('READ_OTHERS_POST');
+  const { data: user, error: userError } = useSWR(['blog.users.get', JSON.stringify({ userId })]);
+  const { data: blogs, error: blogsError } = useSWR([
+    'blog.users.getPosts',
+    JSON.stringify({ userId, status, page, size }),
+  ]);
 
-  const { data: user } = useSWR(['blog.users.get', JSON.stringify({ userId })]);
-  const { data: blogs } = useSWR(['blog.users.getPosts', JSON.stringify({ userId, status, page, size })]);
-  const loading = !blogs || !user;
+  const { hasAuthority, id: logonUserId } = usePrincipal();
+
+  const error = userError !== undefined || blogsError !== undefined;
+  const loading = blogs === undefined || user === undefined;
+  if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
   user.posts = blogs.page.totalElements;
 
+  const showFilter = logonUserId === Number(userId) || hasAuthority('READ_OTHERS_POST');
   const tabExtendDOM = showFilter && <StatusSelect value={status} />;
+
   return (
     <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
       {loading ? (

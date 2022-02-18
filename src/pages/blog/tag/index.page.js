@@ -36,10 +36,10 @@ const TagPage = ({ tags: tagsFromSSR }) => {
     revalidateOnMount: true,
   });
 
-  const loading = tags === undefined;
   const error = tagsError !== undefined;
-  if (loading) return <Skeleton active />;
+  const loading = tags === undefined;
   if (error) return <ErrorPage />;
+  if (loading) return <Skeleton active />;
 
   return (
     <PageDataContext.Provider value={{}}>

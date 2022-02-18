@@ -56,10 +56,10 @@ export default function CategoryPage({ categories: categoriesFromSSR, blogs: blo
     revalidateOnMount: true,
   });
 
-  const loading = categories === undefined || blogs === undefined || hotTags === undefined;
   const error = categoriesError !== undefined || blogsError !== undefined || hotTagsError !== undefined;
-  if (loading) return <Skeleton active />;
+  const loading = categories === undefined || blogs === undefined || hotTags === undefined;
   if (error) return <ErrorPage />;
+  if (loading) return <Skeleton active />;
 
   const categoriesWithAll = { ...categories };
   const contentWithAll = [...categories.content];

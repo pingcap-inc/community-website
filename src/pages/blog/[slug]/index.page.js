@@ -7,7 +7,7 @@ import Link from 'next/link';
 import * as Styled from './blog.styled';
 import { CoreLayout } from '~/layouts';
 import { OriginLabel, RepostLabel } from './components/labels';
-import BlogInfo from '../_components/blogInfo';
+import BlogInfo from '../_components/BlogInfo';
 import TiEditor, { createFactory } from '@pingcap-inc/tidb-community-editor';
 import '@pingcap-inc/tidb-community-editor/dist/style.css';
 import AuthorInfo from './components/AuthorInfo';
@@ -29,10 +29,10 @@ export const getServerSideProps = async (ctx) => {
 
   const { slug } = ctx.params;
 
-  let blogInfo = null,
+  let blog = null,
     isPending = false;
   try {
-    blogInfo = await api.blog.getPostBySlug(slug, ip);
+    blog = await api.blog.getPostBySlug(slug, ip);
   } catch (e) {
     if (e.errCode === 'POST_NOT_FOUND') isPending = true;
   }
@@ -40,75 +40,80 @@ export const getServerSideProps = async (ctx) => {
   return {
     props: {
       ...i18nProps,
-      blogInfo,
+      blog,
       isPending,
     },
   };
 };
 
-export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
+export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const { id, isAuthor, hasAuthority } = usePrincipal();
 
   const router = useRouter();
   const { isReady, query } = router;
   const { slug } = query;
 
-  const { data: blogInfo, mutate: reload } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify(slug)], {
-    fallbackData: ssrBlogInfo,
+  const {
+    data: blog,
+    mutate: reload,
+    error: blogError,
+  } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify(slug)], {
+    fallbackData: blogFromSSR,
     revalidateOnMount: true,
   });
-  const isLoading = !blogInfo;
+  const error = blogError !== undefined;
+  const loading = blog === undefined;
 
   const factory = useMemo(() => createFactory(), []);
 
   const fragment = useMemo(() => {
-    return JSON.parse(blogInfo?.content || '[]');
-  }, [blogInfo]);
+    return JSON.parse(blog?.content ?? '[]');
+  }, [blog]);
 
-  const keyword = useMemo(() => {
-    return [blogInfo.category?.name ?? '', ...blogInfo.tags.map((tag) => tag.name)].filter(Boolean).join(',');
-  }, [blogInfo]);
+  if (error) return <ErrorPage />;
+  if (loading) return <Skeleton active />;
 
-  if (isLoading) return <Skeleton active />;
+  const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
+  if (!hasPermission && isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 
-  const hasPermission = isAuthor(blogInfo) || hasAuthority('REVIEW_POST');
-  if (!hasPermission) {
-    if (isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
-  }
-
-  let BreadcrumbDOM;
-  switch (blogInfo.status) {
+  const BreadcrumbDOM = [<Breadcrumb.Item href={`/blog/user/${id}/posts`}>我的专栏</Breadcrumb.Item>];
+  switch (blog.status) {
     case 'DRAFT': {
-      BreadcrumbDOM = (
-        <>
-          <Breadcrumb.Item href={`/blog/user/${id}/posts`}>我的专栏</Breadcrumb.Item>
-          <Breadcrumb.Item href={`/blog/user/${id}/posts`}>草稿</Breadcrumb.Item>
-        </>
-      );
+      BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/draft`}>草稿</Breadcrumb.Item>);
+      break;
+    }
+    case 'PENDING': {
+      BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/pending`}>审核中</Breadcrumb.Item>);
+      break;
+    }
+    case 'REJECTED': {
+      BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/rejected`}>未审核通过</Breadcrumb.Item>);
       break;
     }
     default: {
-      BreadcrumbDOM = (
-        <Breadcrumb.Item href={`/blog/c/${blogInfo.category?.slug}`}>{blogInfo.category?.name}</Breadcrumb.Item>
+      BreadcrumbDOM.push(
+        <Breadcrumb.Item href={`/blog/c/${blog.category?.slug}`}>{blog.category?.name}</Breadcrumb.Item>
       );
     }
   }
 
+  const keyword = [blog.category?.name ?? '', ...(blog.tags ?? []).map((tag) => tag.name)];
+
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
-      <CommunityHead title={`专栏 - ${blogInfo.title}`} description={blogInfo.summary} keyword={keyword} isArticle />
+      <CommunityHead title={`专栏 - ${blog.title}`} description={blog.summary} keyword={keyword} isArticle />
 
       <NextHead>
         <meta name="twitter:label1" content="By" />
-        <meta name="twitter:data1" content={blogInfo.author.username} />
+        <meta name="twitter:data1" content={blog.author.username} />
         <meta name="twitter:label2" content="Likes" />
-        <meta name="twitter:data2" content={`${blogInfo.likes} ❤`} />
+        <meta name="twitter:data2" content={`${blog.likes} ❤`} />
       </NextHead>
 
       {/*<Styled.VisualContainer>*/}
       <Styled.Content>
         <Styled.Side>
-          <Interactions blogInfo={blogInfo} reload={reload} />
+          <Interactions blog={blog} reload={reload} />
         </Styled.Side>
         <Styled.Main>
           <Styled.Breadcrumb>
@@ -116,24 +121,24 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
             {BreadcrumbDOM}
           </Styled.Breadcrumb>
           <Styled.StatusAlert>
-            <StatusAlert blogInfo={blogInfo} />
+            <StatusAlert blog={blog} />
           </Styled.StatusAlert>
 
           <Styled.Body>
-            {blogInfo.coverImageURL ? (
-              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blogInfo.coverImageURL)})` }} />
+            {blog.coverImageURL ? (
+              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blog.coverImageURL)})` }} />
             ) : undefined}
 
-            <Styled.Title>{blogInfo.title}</Styled.Title>
+            <Styled.Title>{blog.title}</Styled.Title>
 
             <Styled.Meta>
-              <AuthorInfo blogInfo={blogInfo} />
+              <AuthorInfo blog={blog} />
             </Styled.Meta>
 
             <Styled.Meta>
-              {blogInfo.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
+              {blog.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
-              {blogInfo.tags.map((tag) => (
+              {blog.tags.map((tag) => (
                 <Link href={`/blog/tag/${tag.slug}`} passHref>
                   <BlogInfo.Tag key={tag.slug}>{tag.name}</BlogInfo.Tag>
                 </Link>
@@ -145,15 +150,15 @@ export const BlogPage = ({ blogInfo: ssrBlogInfo, isPending }) => {
             </Styled.Editor>
 
             <Styled.BottomActions>
-              <Interactions blogInfo={blogInfo} reload={reload} />
+              <Interactions blog={blog} reload={reload} />
             </Styled.BottomActions>
           </Styled.Body>
 
-          {blogInfo.origin !== 'ORIGINAL' ? (
-            <Styled.Declaration>声明：本文转载于 {blogInfo.sourceURL}</Styled.Declaration>
+          {blog.origin !== 'ORIGINAL' ? (
+            <Styled.Declaration>声明：本文转载于 {blog.sourceURL}</Styled.Declaration>
           ) : undefined}
 
-          {blogInfo.status === 'PUBLISHED' ? <Comments blogInfo={blogInfo} /> : undefined}
+          {blog.status === 'PUBLISHED' ? <Comments blog={blog} /> : undefined}
         </Styled.Main>
       </Styled.Content>
       {/*</Styled.VisualContainer>*/}

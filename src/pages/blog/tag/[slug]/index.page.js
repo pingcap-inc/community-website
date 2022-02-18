@@ -52,10 +52,10 @@ const TagDetail = ({ blogs: blogsFromSSR, hotTags, tag, slug }) => {
     }
   );
 
-  const loading = blogs === undefined;
   const error = blogsError !== undefined;
-  if (loading) return <Skeleton active />;
+  const loading = blogs === undefined;
   if (error) return <ErrorPage />;
+  if (loading) return <Skeleton active />;
 
   const orderBy = [
     { name: '推荐排序', url: `/blog/tag/${slug}` },

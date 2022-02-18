@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CommunityHead } from '~/components';
+import { CommunityHead, ErrorPage } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { Breadcrumb, Skeleton, Spin } from 'antd';
 import Link from 'next/link';
@@ -28,11 +28,13 @@ const PageContent = () => {
 
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
-  const { data: blogs } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
+  const { data: blogs, error: blogsEror } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
     revalidateOnMount: true,
   });
 
+  const error = blogsEror !== undefined;
   const loading = blogs === undefined || hasPermission === undefined;
+  if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
   if (!hasPermission) return '您没有 REVIEW_POST 权限，无法查看本页面';

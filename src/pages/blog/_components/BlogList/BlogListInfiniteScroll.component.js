@@ -17,7 +17,7 @@ const BlogList = ({
   params,
 }) => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(content);
+  const [data, setData] = useState(content ?? []);
   const [page, setPage] = useState(number ?? 1);
   const [hasMore, setHasMore] = useState(page < totalPages);
   const [firstLoad, setFirstLoad] = useState(false);
@@ -90,7 +90,11 @@ const BlogList = ({
             </div>
           }
           // endMessage={<Divider plain>没有更多文章了</Divider>}
-          endMessage={
+          // endMessage={
+          //
+          // }
+        >
+          {loading === false && data.length === 0 ? (
             <EmptyStatus
               description={
                 <>
@@ -98,21 +102,21 @@ const BlogList = ({
                 </>
               }
             />
-          }
-        >
-          <List
-            // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
-            dataSource={data}
-            // loading={loading && data.length === 0}
-            locale={{ emptyText: ' ' }}
-            renderItem={(value) => {
-              return (
-                <Styled.Item key={value.id}>
-                  <BlogInfo {...value} usernameExtends={usernameExtends} bottomExtends={bottomExtends} />
-                </Styled.Item>
-              );
-            }}
-          />
+          ) : (
+            <List
+              // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
+              dataSource={data}
+              // loading={loading && data.length === 0}
+              locale={{ emptyText: ' ' }}
+              renderItem={(value) => {
+                return (
+                  <Styled.Item key={value.id}>
+                    <BlogInfo {...value} usernameExtends={usernameExtends} bottomExtends={bottomExtends} />
+                  </Styled.Item>
+                );
+              }}
+            />
+          )}
         </InfiniteScroll>
       </Styled.List>
     </Styled.Container>

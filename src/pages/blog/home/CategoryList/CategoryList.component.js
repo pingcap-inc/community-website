@@ -18,7 +18,7 @@ const CategoryList = ({ categories: { content } }) => {
       </Styled.List>
       <Divider />
       {showAudits && <NextLink href={`/blog/audits`}>待审核</NextLink>}
-      {isLogin && <NextLink href={`/blog/user/${id}/posts`}>我的专栏</NextLink>}
+      {isLogin && <NextLink href={`/blog/user/${id}/posts/all`}>我的专栏</NextLink>}
       <div>
         <FixedLink href={'https://tidb.io/blog/66c5e81b'}>专栏发布指南</FixedLink>
         <FixedLink href={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>

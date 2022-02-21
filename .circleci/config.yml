@@ -28,7 +28,7 @@ commands:
             - npm-cache-v1
       - run:
           command: |
-            npm ci
+            npm i
           no_output_timeout: 20m
 
   prepare-sentry:

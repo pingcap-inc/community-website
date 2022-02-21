@@ -20,8 +20,10 @@ import { getPageQuery } from '~/utils/pagination.utils';
 import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { Skeleton } from 'antd';
+import { Breadcrumb, Skeleton } from 'antd';
 import { parseSlugs } from './_components/BlogHomepage/utils';
+import TagItem from '~/pages/blog/tag/TagItem.component';
+import Link from 'next/link';
 
 const CATEGORY_ALL = { name: '首页', slug: '' };
 
@@ -127,11 +129,37 @@ export default function CategoryPage({
           filter = CATEGORY_ALL;
           break;
       }
+      console.log('chose', filter);
       if (filter) {
         setFilter(filter);
       }
     }
   }, [info, categories, hotTags]);
+
+  useEffect(() => {
+    if (info) {
+      switch (info.type) {
+        case 'tag':
+          setFilter((filter) => {
+            if (tag?.slug === info?.slug) {
+              return tag;
+            } else {
+              return filter;
+            }
+          });
+          break;
+        case 'category':
+          setFilter((filter) => {
+            if (category?.slug === info?.slug) {
+              return category;
+            } else {
+              return filter;
+            }
+          });
+          break;
+      }
+    }
+  }, [info, tag, category]);
 
   const orderBy = useMemo(() => {
     if (!info) {
@@ -173,22 +201,47 @@ export default function CategoryPage({
   return (
     <PageDataContext.Provider value={{ showRecommendedIcon: true }}>
       <CommunityHead
-        title={`专栏 - ${filter.name}`}
+        title={`专栏 - ${filter?.name ?? '加载中...'}`}
         // description
         // keyword
       />
       <BlogLayout>
         <styled.Content>
+          {info.type === 'tag' && (
+            <styled.Breadcrumb>
+              <Breadcrumb>
+                <Breadcrumb.Item>
+                  <Link href={'/blog'} shallow passHref>
+                    <a>专栏</a>
+                  </Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>
+                  <Link href={'/blog/tag'}>
+                    <a>标签</a>
+                  </Link>
+                </Breadcrumb.Item>
+                <Breadcrumb.Item>{tag?.name ?? '加载中...'}</Breadcrumb.Item>
+              </Breadcrumb>
+            </styled.Breadcrumb>
+          )}
           <styled.Container>
-            <styled.Start>
-              <CategoryList
-                categories={categories}
-                shallow
-                current={info.type === 'category' && info.slug}
-                type={info.type}
-              />
+            <styled.Start $forTag={info.type === 'tag'}>
+              {info.type === 'tag' ? (
+                tag ? (
+                  <TagItem {...tag} />
+                ) : (
+                  <Skeleton active />
+                )
+              ) : (
+                <CategoryList
+                  categories={categories}
+                  shallow
+                  current={info.type === 'category' && info.slug}
+                  type={info.type}
+                />
+              )}
             </styled.Start>
-            <styled.Center>
+            <styled.Center $forTag={info.type === 'tag'}>
               <CategoryListMobile
                 categories={categories}
                 shallow
@@ -197,11 +250,15 @@ export default function CategoryPage({
               />
               {/*<SearchOnMobile />*/}
               <OrderBySwitch items={orderBy} shallow />
-              <BlogListInfiniteScroll
-                blogs={blogsFromSSR}
-                api={api.blog.getList}
-                params={{ latest: info.latest, [`${info.type}ID`]: filter.id }}
-              />
+              {filter ? (
+                <BlogListInfiniteScroll
+                  blogs={blogsFromSSR}
+                  api={api.blog.getList}
+                  params={{ latest: info.latest, [`${info.type}ID`]: filter.id }}
+                />
+              ) : (
+                <Skeleton active />
+              )}
             </styled.Center>
             <styled.End>
               <styled.WriteBlog>

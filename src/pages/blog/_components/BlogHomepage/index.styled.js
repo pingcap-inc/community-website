@@ -22,19 +22,19 @@ export const Container = styled(Row).attrs({
   }
 `;
 
-export const Start = styled(Col).attrs({
+export const Start = styled(Col).attrs(({ $forTag }) => ({
   sm: 24,
-  md: 4,
-})`
+  md: $forTag ? 6 : 4,
+}))`
   position: sticky !important;
   top: 2rem;
   height: 100%;
 `;
 
-export const Center = styled(Col).attrs({
+export const Center = styled(Col).attrs(({ $forTag }) => ({
   sm: 24,
-  md: 14,
-})``;
+  md: $forTag ? 12 : 14,
+}))``;
 
 export const End = styled(Col).attrs({
   sm: 24,
@@ -43,6 +43,10 @@ export const End = styled(Col).attrs({
   position: sticky !important;
   top: 2rem;
   height: 100%;
+`;
+
+export const Breadcrumb = styled.div`
+  padding-top: 2rem;
 `;
 
 export const WriteBlog = styled.div`

@@ -3,6 +3,8 @@ import * as Styled from './index.styled';
 import BlogInfo from '../BlogInfo';
 import { List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import EmptyStatus from '~/components/EmptyStatus';
+import Anchor from '~/components/Anchor';
 
 const BlogList = ({
   blogs: {
@@ -88,6 +90,15 @@ const BlogList = ({
             </div>
           }
           // endMessage={<Divider plain>没有更多文章了</Divider>}
+          endMessage={
+            <EmptyStatus
+              description={
+                <>
+                  该分类下暂无文章，<Anchor href={'/blog/new/edit'}>【发表一篇】</Anchor>
+                </>
+              }
+            />
+          }
         >
           <List
             // pagination={{ current: number, total: totalElements, onChange: onPageChange }}

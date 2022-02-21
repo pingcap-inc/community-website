@@ -5,15 +5,17 @@ import { useEffect } from 'react';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
-
-  const { id } = ctx.params;
-
+  const { id: userId } = ctx.params;
   return {
     props: {
       ...i18nProps,
-      id,
+      userId,
     },
-  };
+    redirect: {
+      permanent: false,
+      destination: `/blog/user/${userId}/posts`,
+    },
+  }
 };
 
 export default function UserIndexPage({ id }) {

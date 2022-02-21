@@ -6,7 +6,7 @@
       "stream": true
     },
     "bootstrap": {
-      "ignore": "@tidb-community/strapi"
+      "ignore": ["@tidb-community/strapi", "@tidb-community/accounts"]
     }
   }
 }

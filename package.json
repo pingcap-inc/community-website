@@ -5,7 +5,7 @@
     "build": "next build && npm run build:uiScripts",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:accounts:staging": "lerna run --scope @tidb-community/accounts build:staging",
-    "build:shared": "lerna run --ignore @tidb-community/accounts --ignore @tidb-community/ui-scripts --ignore @tidb-community/strapi build",
+    "build:shared": "echo 'good luck'",
     "build:uiScripts": "lerna run --scope @tidb-community/ui-scripts build",
     "build:watch": "lerna run --no-bail build:watch",
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",

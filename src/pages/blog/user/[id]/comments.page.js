@@ -16,13 +16,12 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { page, size } = getPageQuery(ctx.query);
-  const { id } = ctx.params;
-  const [user, comments] = await Promise.all([api.blog.users.get(id), api.blog.users.getComments(id, { page, size })]);
+  const { id: userId } = ctx.params;
+  const [user, comments] = await Promise.all([api.blog.users.get({ userId }), api.blog.users.getComments({ userId, page, size })]);
 
   return {
     props: {
       ...i18nProps,
-      id,
       comments,
       user,
     },

@@ -12,14 +12,14 @@ export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { page, size } = getPageQuery(ctx.query);
-  const { id } = ctx.params;
-  const [user, blogs] = await Promise.all([api.blog.users.get(id), api.blog.users.getFavorites(id, { page, size })]);
+  const { id: userId } = ctx.params;
+  const [user, blogs] = await Promise.all([api.blog.users.get({userId}), api.blog.users.getFavorites({ userId, page, size })]);
 
   blogs.content = blogs.content.map(({ post }) => post);
   return {
     props: {
       ...i18nProps,
-      id,
+      userId,
       blogs,
       user,
     },

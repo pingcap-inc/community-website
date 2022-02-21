@@ -4,6 +4,9 @@
   "command": {
     "run": {
       "stream": true
+    },
+    "bootstrap": {
+      "ignore": "@tidb-community/strapi"
     }
   }
 }

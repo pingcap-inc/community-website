@@ -4,8 +4,13 @@ export * as posts from './posts';
 export * as common from './common';
 export * as users from './users';
 
+export const getList = ({ latest, ...params }) =>
+  blogClient.get(`/api/posts/${latest ? 'latest' : 'recommend'}`, { params });
+
+// deprecated, use getList({ latest: true })
 export const getLatest = (params) => blogClient.get(`/api/posts/latest`, { params });
 
+// deprecated, use getList({ latest: false })
 export const getRecommend = (params) => blogClient.get(`/api/posts/recommend`, { params });
 
 export const getPosts = (params) => blogClient.get(`/api/posts`, { params });

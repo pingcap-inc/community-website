@@ -6,7 +6,7 @@ const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
 const ONE_SECOND = 1 * 1000;
 const ONE_MIN = 60 * ONE_SECOND;
-const reloadInterval = isProd ? 10 * ONE_MIN : 30 * ONE_SECOND;
+const reloadInterval = 999999; // isProd ? 10 * ONE_MIN : 30 * ONE_SECOND;
 
 module.exports = {
   i18n: {

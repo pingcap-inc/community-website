@@ -1,12 +1,7 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import { api } from '@tidb-community/datasource';
-import { message } from 'antd';
-
-const storage = getStorage();
-
-const KEY_ID = 'b.p.i';
-const KEY_ROLES = 'b.p.r';
-const KEY_AUTHORITIES = 'b.p.a';
+import useSWR from 'swr';
+import { MeContext } from '~/context';
 
 const usePrincipalSsr = () => {
   return {
@@ -21,36 +16,19 @@ const usePrincipalSsr = () => {
   };
 };
 
-const usePrincipalBrowser = () => {
-  const [loading, setLoading] = useState(true);
-  const [id, setId] = useState(() => Number(storage.getItem(KEY_ID)) || undefined);
-  const [roles, setRoles] = useState(() => JSON.parse(storage.getItem(KEY_ROLES) || '[]'));
-  const [authorities, setAuthorities] = useState(() => JSON.parse(storage.getItem(KEY_AUTHORITIES) || '[]'));
+const UNAUTHORIZED = {
+  id: undefined,
+  roles: [],
+  authorities: [],
+};
 
-  useEffect(() => {
-    api.blog.common
-      .principal()
-      .then(({ id, roles, authorities }) => {
-        setId(id);
-        setRoles(roles);
-        setAuthorities(authorities);
-        storage.setItem(KEY_ID, String(id));
-        storage.setItem(KEY_ROLES, JSON.stringify(roles));
-        storage.setItem(KEY_AUTHORITIES, JSON.stringify(authorities));
-      })
-      .catch((e) => {
-        if (!e || !/^40[13]$/.test(e.status)) {
-          return message.error(String(e?.data?.message ?? e?.message ?? e));
-        } else {
-          storage.removeItem(KEY_ID);
-          storage.removeItem(KEY_ROLES);
-          storage.removeItem(KEY_AUTHORITIES);
-        }
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+const usePrincipalBrowser = () => {
+  const { meData } = useContext(MeContext);
+  const { data: principal, isValidating } = useSWR([meData?.username], {
+    fetcher: (username) => (username ? api.blog.common.principal() : Promise.resolve(UNAUTHORIZED)),
+  });
+
+  const { id, roles, authorities } = principal ?? UNAUTHORIZED;
 
   const hasRole = useCallback(
     (auth) => {
@@ -77,66 +55,7 @@ const usePrincipalBrowser = () => {
     return typeof id === 'number';
   }, [id]);
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading };
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading: isValidating };
 };
 
 export const usePrincipal = typeof window === 'undefined' ? usePrincipalSsr : usePrincipalBrowser;
-
-/**
- *
- * @param storage {Storage | undefined}
- * @returns boolean
- */
-function check(storage) {
-  if (!storage) {
-    return false;
-  }
-  const checkKey = '__check';
-  storage.setItem(checkKey, 'ok');
-  if (storage.getItem(checkKey) === 'ok') {
-    storage.removeItem(checkKey);
-    return true;
-  } else {
-    return false;
-  }
-}
-
-/**
- * Returns sessionStorage or localStorage or a mock storage
- *
- * @returns Storage
- */
-function getStorage() {
-  if (typeof window !== 'undefined') {
-    if (check(window.sessionStorage)) {
-      return window.sessionStorage;
-    }
-
-    if (check(window.localStorage)) {
-      return window.localStorage;
-    }
-  }
-
-  let mockStorage = {};
-
-  return {
-    getItem(key) {
-      return mockStorage[key];
-    },
-    setItem(key, value) {
-      mockStorage[key] = String(value);
-    },
-    removeItem(key) {
-      delete mockStorage[key];
-    },
-    key(index) {
-      return Object.keys(mockStorage)[index];
-    },
-    get length() {
-      return Object.keys(mockStorage).length;
-    },
-    clear() {
-      mockStorage = {};
-    },
-  };
-}

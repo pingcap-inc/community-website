@@ -1,76 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../BlogInfo';
 import { List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import EmptyStatus from '~/components/EmptyStatus';
 import Anchor from '~/components/Anchor';
+import useSWRInfinite from 'swr/infinite';
 
-const BlogList = ({
-  blogs: {
-    content,
-    page: { number, totalPages },
-  },
-  usernameExtends,
-  bottomExtends,
-  api,
-  params,
-}) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(content ?? []);
-  const [page, setPage] = useState(number ?? 1);
-  const [hasMore, setHasMore] = useState(page < totalPages);
-  const [firstLoad, setFirstLoad] = useState(false);
-  const size = 20;
+const BlogList = ({ blogs, usernameExtends, bottomExtends, api, params }) => {
+  const {
+    data: infiniteData,
+    setSize,
+    isValidating,
+    mutate,
+  } = useSWRInfinite((page) => ({ page: page + 1, size: 20, ...params }), {
+    initialData: blogs,
+    initialSize: blogs.page.number + 1,
+    revalidateOnMount: false,
+    revalidateFirstPage: false,
+    revalidateIfStale: true,
+    fetcher: api,
+  });
 
-  const reloadData = async () => {
-    setLoading(true);
-    setPage(1);
-    setData([]);
-    setHasMore(true);
-    try {
-      const json = await api({ page: 1, size, ...params });
-      setData(json.content);
-      setPage(json.page.number + 1);
-      setHasMore(page < json.page.totalPages);
-    } catch (e) {
-    } finally {
-      setLoading(false);
+  // use swr infinite holds all the resp lists
+  const data = useMemo(() => {
+    const set = new Set();
+    return infiniteData
+      ?.flatMap((data) => data.content)
+      ?.filter((item) => {
+        // filter repeated posts
+        if (set.has(item.slug)) {
+          return false;
+        } else {
+          set.add(item.slug);
+          return true;
+        }
+      });
+  }, [infiniteData]);
+
+  const hasMore = useMemo(() => {
+    // if not loaded, has more
+    if (!infiniteData) {
+      return true;
     }
-  };
+    const pageData = infiniteData[infiniteData.length - 1];
 
-  const loadMoreData = async () => {
-    if (loading) {
-      return;
+    if (isValidating) {
+      return true;
+    } else if (!pageData) {
+      return false;
     }
-    setLoading(true);
-    try {
-      const nextPage = page + 1;
-      const json = await api({ page: nextPage, size, ...params });
-      setData([...data, ...json.content]);
-      setPage(nextPage);
-      setHasMore(nextPage < json.page.totalPages);
-    } catch (e) {
-    } finally {
-      setLoading(false);
-    }
-  };
+    return pageData.page.number + 1 < pageData.page.totalPages;
+  }, [infiniteData, isValidating]);
 
-  const paramsSignature = JSON.stringify(params);
+  const loadMoreData = useCallback(() => {
+    setSize((size) => size + 1).then();
+  }, [setSize]);
 
   useEffect(() => {
-    if (firstLoad) {
-      reloadData();
-    } else {
-      setFirstLoad(true);
-    }
-  }, [paramsSignature]);
+    mutate([]).then();
+  }, [params.categoryID, params.tagID, mutate]);
 
-  useEffect(() => {
-    loadMoreData();
-  }, []);
-
-  if (!content) {
+  if (!data) {
     return <Skeleton active />;
   }
 
@@ -89,12 +80,8 @@ const BlogList = ({
               <Skeleton avatar paragraph={{ rows: 3 }} active />
             </div>
           }
-          // endMessage={<Divider plain>没有更多文章了</Divider>}
-          // endMessage={
-          //
-          // }
         >
-          {loading === false && data.length === 0 ? (
+          {!isValidating && data.length === 0 ? (
             <EmptyStatus
               description={
                 <>
@@ -104,9 +91,7 @@ const BlogList = ({
             />
           ) : (
             <List
-              // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
               dataSource={data}
-              // loading={loading && data.length === 0}
               locale={{ emptyText: ' ' }}
               renderItem={(value) => {
                 return (

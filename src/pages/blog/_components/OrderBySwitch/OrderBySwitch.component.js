@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import * as Styled from './index.styled';
 
-const OrderBySwitch = ({ items }) => {
+const OrderBySwitch = ({ items, shallow = false }) => {
   return (
     <Styled.Container>
       <Styled.List>
@@ -13,7 +13,9 @@ const OrderBySwitch = ({ items }) => {
         ))}
       </Styled.List>
       <Styled.AllTag>
-        <Link href={'/blog/tag'}>全部标签</Link>
+        <Link href={'/blog/tag'} shallow={shallow}>
+          全部标签
+        </Link>
       </Styled.AllTag>
     </Styled.Container>
   );
@@ -21,7 +23,7 @@ const OrderBySwitch = ({ items }) => {
 
 const Item = ({ name, url }) => {
   const { asPath } = useRouter();
-  const selected = asPath === url || asPath.startsWith(url + '?');
+  const selected = asPath === url;
   return (
     <Link href={url}>
       <Styled.Item selected={selected}>{name}</Styled.Item>

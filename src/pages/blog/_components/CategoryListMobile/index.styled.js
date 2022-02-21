@@ -25,4 +25,13 @@ export const Item = styled.a`
   border: 1px solid ${colors.C4};
   font-size: 14px;
   white-space: nowrap;
+  background-color: ${(props) => (props.selected ? colors.B1 : '')};
+  border-color: ${(props) => (props.selected ? colors.B1 : colors.C4)};
+  color: ${(props) => (props.selected ? colors.C2 : colors.C4)};
+
+  &:hover {
+    background-color: ${colors.B1};
+    color: ${colors.C2};
+    border-color: ${colors.C2};
+  }
 `;

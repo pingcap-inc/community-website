@@ -1,19 +1,19 @@
 import React from 'react';
 import * as Styled from './index.styled';
 import { Divider } from 'antd';
-import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
 import Link from 'next/link';
 
-const CategoryList = ({ categories: { content } }) => {
+const CategoryList = ({ categories: { content }, shallow = false, current, type }) => {
   const { isLogin, id, hasAuthority } = usePrincipal();
   const showAudits = hasAuthority('REVIEW_POST');
 
   return (
     <Styled.Container>
       <Styled.List>
+        <Item key="" name="全部文章" slug="" active={type === 'all'} shallow={shallow} />
         {content.map((value) => (
-          <Item key={value.slug} {...value} />
+          <Item key={value.slug} {...value} shallow={shallow} active={current === value.slug} />
         ))}
       </Styled.List>
       <Divider />
@@ -28,13 +28,11 @@ const CategoryList = ({ categories: { content } }) => {
   );
 };
 
-const Item = ({ name, slug }) => {
-  const { query } = useRouter();
+const Item = ({ name, slug, shallow, active }) => {
   const url = slug === '' ? `/blog` : `/blog/c/${slug}`;
-  const selected = (query.slug || '') === slug;
   return (
-    <Link href={url} passHref>
-      <Styled.Item selected={selected}>{name}</Styled.Item>
+    <Link href={url} passHref shallow={shallow}>
+      <Styled.Item selected={active}>{name}</Styled.Item>
     </Link>
   );
 };

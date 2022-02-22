@@ -23,7 +23,7 @@ const UNAUTHORIZED = {
 };
 
 const usePrincipalBrowser = () => {
-  const { meData } = useContext(MeContext);
+  const { meData, isMeValidating } = useContext(MeContext);
   const { data: principal, isValidating } = useSWR([meData?.username], {
     fetcher: (username) => (username ? api.blog.common.principal() : Promise.resolve(UNAUTHORIZED)),
   });
@@ -55,7 +55,7 @@ const usePrincipalBrowser = () => {
     return typeof id === 'number';
   }, [id]);
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading: isValidating };
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading: isMeValidating || isValidating };
 };
 
 export const usePrincipal = typeof window === 'undefined' ? usePrincipalSsr : usePrincipalBrowser;

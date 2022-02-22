@@ -9,8 +9,8 @@
     "storybook:build": "build-storybook"
   },
   "description": "React UI libarary for TiDB Community",
-  "main": "./lib/index",
-  "module": "./es/index",
+  "main": "./src/index",
+  "module": "./src/index",
   "sideEffects": [
     "*.css",
     "*.less"

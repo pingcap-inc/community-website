@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo } from 'react';
 import * as Styled from './index.styled';
 import BlogInfo from '../BlogInfo';
-import { List, Skeleton } from 'antd';
+import { Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import EmptyStatus from '~/components/EmptyStatus';
 import Anchor from '~/components/Anchor';
@@ -73,13 +73,14 @@ const BlogList = ({ blogs, usernameExtends, bottomExtends, api, params }) => {
           next={loadMoreData}
           hasMore={hasMore}
           loader={
-            <div style={{ marginTop: '16px' }}>
+            <div>
               <Skeleton avatar paragraph={{ rows: 3 }} active />
               <Skeleton avatar paragraph={{ rows: 3 }} active />
               <Skeleton avatar paragraph={{ rows: 3 }} active />
               <Skeleton avatar paragraph={{ rows: 3 }} active />
             </div>
           }
+          endMessage={<Divider plain>没有更多文章了</Divider>}
         >
           {!isValidating && data.length === 0 ? (
             <EmptyStatus

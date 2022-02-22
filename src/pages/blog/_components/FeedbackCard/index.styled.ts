@@ -10,7 +10,7 @@ export const Container = styled.div`
   margin-top: 1rem;
 `;
 
-const iconSize = 24;
+const iconSize = 16;
 export const HeaderRight = styled.div`
   svg {
     width: ${iconSize}px;

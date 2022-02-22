@@ -30,14 +30,17 @@ const statuses = [
   },
 ];
 
-export type IProps = React.HTMLAttributes<HTMLDivElement>;
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+  shallow?: boolean;
+}
 
-export default function StatusSelect(props: IProps): JSX.Element {
+export default function StatusSelect({ shallow, ...props }: IProps): JSX.Element {
   const router = useRouter();
   const { id: userId } = router.query;
   const onChangeFilter = (value, option) => {
     const { url } = option;
-    router.push(`/blog/user/${userId}/posts/${url}`);
+    const newUrl = `/blog/user/${userId}/posts/${url}`;
+    router.push(newUrl, newUrl, { shallow: shallow ?? false });
   };
   return <Select style={{ width: '8rem' }} options={statuses} onChange={onChangeFilter} {...props} />;
 }

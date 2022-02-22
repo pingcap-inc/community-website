@@ -13,6 +13,7 @@ module.exports = (req, res) => {
       'DELETE_COMMENT',
       'MODIFY_COMMENT',
       'READ_POST',
+      'READ_OTHERS_POST',
     ],
   })(req, res);
 };

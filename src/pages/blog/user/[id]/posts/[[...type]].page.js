@@ -10,32 +10,50 @@ import { useRouter } from 'next/router';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
 import EmptyStatus from '~/components/EmptyStatus';
 import useSWR from 'swr';
-import StatusSelect from '~/pages/blog/user/[id]/posts/StatusSelect.component';
+import StatusSelect from './StatusSelect.component';
+import { api } from '@tidb-community/datasource';
 import { ErrorPage } from '~/components';
-
-const status = 'REJECTED';
+import { getPageInfo } from './page-info';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
-  const { id: userId } = ctx.params;
+  const { page, size } = getPageQuery(ctx.query);
+  const { id: userId, type } = ctx.params;
+
+  const pageInfo = getPageInfo(type);
+
+  const [user, blogs] = await Promise.all([
+    api.blog.users.get({ userId }),
+    api.blog.users.getPosts({ userId, status: pageInfo.status, page, size }),
+  ]);
+
   return {
     props: {
       ...i18nProps,
       userId,
+      user,
+      blogs,
     },
   };
 };
 
-const PostsPendingPage = ({ userId }) => {
+const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) => {
   const router = useRouter();
-
   const { page, size } = getPageQuery(router.query);
+  const pageInfo = getPageInfo(router.query.type);
 
-  const { data: user, error: userError } = useSWR(['blog.users.get', JSON.stringify({ userId })]);
-  const { data: blogs, error: blogsError } = useSWR([
-    'blog.users.getPosts',
-    JSON.stringify({ userId, status, page, size }),
-  ]);
+  const { data: user, error: userError } = useSWR(['blog.users.get', JSON.stringify({ userId })], {
+    fallbackData: userFromSSR,
+    revalidateOnMount: true,
+  });
+
+  const { data: blogs, error: blogsError } = useSWR(
+    ['blog.users.getPosts', JSON.stringify({ userId, status: pageInfo.status, page, size })],
+    {
+      fallbackData: blogsFromSSR,
+      revalidateOnMount: true,
+    }
+  );
 
   const { hasAuthority, id: logonUserId } = usePrincipal();
 
@@ -44,21 +62,25 @@ const PostsPendingPage = ({ userId }) => {
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
-  user.posts = blogs.page.totalElements;
-
   const showFilter = logonUserId === Number(userId) || hasAuthority('READ_OTHERS_POST');
-  const tabExtendDOM = showFilter && <StatusSelect value={status} />;
+  const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
 
   return (
-    <UserDetailsLayout userDetails={user} item="专栏" itemKey="posts" tabExtend={tabExtendDOM}>
+    <UserDetailsLayout
+      userDetails={user}
+      postCount={blogs?.page.totalElements}
+      item="专栏"
+      itemKey="posts/all"
+      tabExtend={tabExtendDOM}
+    >
       {loading ? (
         <Skeleton active />
       ) : blogs.page.totalElements === 0 ? (
-        <EmptyStatus description={'你没有审核未通过的文章'} style={{ boxShadow: 'none' }}>
+        <EmptyStatus description={'你还没有发表过任何文章'} style={{ boxShadow: 'none' }}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写技术文章吧～
         </EmptyStatus>
       ) : (
-        <BlogList blogs={blogs} showStatusBadge={false} />
+        <BlogList blogs={blogs} showStatusBadge={pageInfo.showBadge ?? false} />
       )}
     </UserDetailsLayout>
   );

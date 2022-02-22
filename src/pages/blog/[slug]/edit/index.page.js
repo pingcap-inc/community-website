@@ -33,8 +33,7 @@ const BlogEditPage = () => {
 
   useEffect(() => {
     if (!loading && !isLogin) {
-      // login();
-      console.log('login');
+      login();
     }
   }, [isLogin, login, loading]);
 

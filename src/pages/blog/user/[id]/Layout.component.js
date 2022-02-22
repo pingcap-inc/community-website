@@ -7,9 +7,14 @@ import Link from 'next/link';
 import Tab from '../Tab';
 import { PageDataContext } from '~/context';
 import { usePrincipal } from '../../blog.hooks';
+import useSWR from 'swr';
 
-const UserDetailsLayout = ({ itemKey, item, userDetails, children, tabExtend }) => {
+const UserDetailsLayout = ({ itemKey, item, userDetails: initialUserDetails, children, tabExtend }) => {
   const principal = usePrincipal();
+  const { data: userDetails } = useSWR(['api.blog.users.get', { userId: initialUserDetails.id }], {
+    fallbackData: initialUserDetails,
+    revalidateOnMount: true,
+  });
 
   const itemText = useMemo(() => {
     if (userDetails.id === principal?.id) {

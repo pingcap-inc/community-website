@@ -25,7 +25,7 @@ const UNAUTHORIZED = {
 const usePrincipalBrowser = () => {
   const { meData, isMeValidating } = useContext(MeContext);
   const { data: principal, isValidating } = useSWR([meData?.username], {
-    fetcher: (username) => (username ? api.blog.common.principal() : Promise.resolve(UNAUTHORIZED)),
+    fetcher: () => api.blog.common.principal(),
   });
 
   const { id, roles, authorities } = principal ?? UNAUTHORIZED;

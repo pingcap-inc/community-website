@@ -26,6 +26,7 @@ const usePrincipalBrowser = () => {
   const { meData, isMeValidating } = useContext(MeContext);
   const { data: principal, isValidating } = useSWR([meData?.username], {
     fetcher: () => api.blog.common.principal(),
+    revalidateOnMount: true,
   });
 
   const { id, roles, authorities } = principal ?? UNAUTHORIZED;
@@ -55,7 +56,15 @@ const usePrincipalBrowser = () => {
     return typeof id === 'number';
   }, [id]);
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading: isMeValidating || isValidating };
+  const loading = useMemo(() => {
+    if (meData) {
+      return isMeValidating || isValidating || !principal;
+    } else {
+      return isMeValidating;
+    }
+  }, [meData, principal, isValidating, isMeValidating]);
+
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading };
 };
 
 export const usePrincipal = typeof window === 'undefined' ? usePrincipalSsr : usePrincipalBrowser;

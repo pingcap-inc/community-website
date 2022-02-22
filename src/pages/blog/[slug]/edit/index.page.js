@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from 'react';
 import * as Styled from './edit.styled';
 import { CoreLayout } from '~/layouts';
 import '@pingcap-inc/tidb-community-editor/dist/style.css';
-import { Skeleton, Tabs } from 'antd';
+import { Tabs } from 'antd';
 import Editing from './editing/Editing.component';
 import EditContext, { useEditContextProvider } from './edit.context';
 import Previewing from './previewing/Previewing.component';
@@ -28,11 +28,13 @@ const BlogEditPage = () => {
   const router = useRouter();
   const { reload, blogInfo } = editContextValue;
   const { login } = useContext(AuthContext);
-  const { isLogin, loading } = usePrincipal();
+  const p = usePrincipal();
+  const { isLogin, loading } = p;
 
   useEffect(() => {
     if (!loading && !isLogin) {
-      login();
+      // login();
+      console.log('login');
     }
   }, [isLogin, login, loading]);
 
@@ -55,7 +57,7 @@ const BlogEditPage = () => {
       <Styled.Container>
         <EditContext.Provider value={editContextValue}>
           {loading ? (
-            <Skeleton active />
+            <></>
           ) : (
             <Tabs>
               <Tabs.TabPane tab="编辑" key="editing">

@@ -76,7 +76,7 @@ const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) =>
       {loading ? (
         <Skeleton active />
       ) : blogs.page.totalElements === 0 ? (
-        <EmptyStatus description={'你还没有发表过任何文章'} style={{ boxShadow: 'none' }}>
+        <EmptyStatus description={'你还没有' + pageInfo.statusText + '文章'} style={{ boxShadow: 'none' }}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写技术文章吧～
         </EmptyStatus>
       ) : (

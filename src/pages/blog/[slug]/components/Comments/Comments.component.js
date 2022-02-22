@@ -9,7 +9,7 @@ import { Element } from 'react-scroll';
 import { formatIsoDatetime } from '~/utils/common.utils';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 
-const Comments = ({ blog }) => {
+const Comments = ({ blog, onTotalCommentsChange }) => {
   const [tick, setTick] = useState(0);
   const [replyTo, setReplyTo] = useState(undefined);
 
@@ -40,7 +40,13 @@ const Comments = ({ blog }) => {
 
         <CommentInput blog={blog} onCommented={onCommented} onClearReplyTo={onClearReplyTo} replyTo={replyTo} />
 
-        <CommentList blog={blog} tick={tick} onClickReply={setReplyTo} onClickDelete={onClickDelete} />
+        <CommentList
+          blog={blog}
+          tick={tick}
+          onClickReply={setReplyTo}
+          onClickDelete={onClickDelete}
+          onTotalCommentsChange={onTotalCommentsChange}
+        />
       </Styled.CommentsContainer>
     </Element>
   );
@@ -114,11 +120,15 @@ const CommentInput = ({ blog, onCommented, onClearReplyTo, replyTo }) => {
   );
 };
 
-const CommentList = ({ blog, tick, onClickReply, onClickDelete }) => {
+const CommentList = ({ blog, tick, onClickReply, onClickDelete, onTotalCommentsChange }) => {
   const { meData } = useContext(MeContext);
   const [page, setPage] = useState(1);
 
   const { loading, comments, totalComments, reload } = useComments(blog.id, page);
+
+  useEffect(() => {
+    onTotalCommentsChange?.(totalComments);
+  }, [onTotalCommentsChange, totalComments]);
 
   const { id, isAuthor, hasAuthority } = usePrincipal();
   const hasDeleteCommentPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');

@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
@@ -70,6 +70,21 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const fragment = useMemo(() => {
     return JSON.parse(blog?.content ?? '[]');
   }, [blog]);
+
+  const onTotalCommentsChange = useCallback(
+    (count) => {
+      reload(
+        (blog) => {
+          if (blog) {
+            blog.comments = count;
+          }
+          return blog;
+        },
+        { revalidate: false }
+      );
+    },
+    [reload]
+  );
 
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
@@ -155,7 +170,9 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             <Styled.Declaration>声明：本文转载于 {blog.sourceURL}</Styled.Declaration>
           ) : undefined}
 
-          {blog.status === 'PUBLISHED' ? <Comments blog={blog} /> : undefined}
+          {blog.status === 'PUBLISHED' ? (
+            <Comments blog={blog} onTotalCommentsChange={onTotalCommentsChange} />
+          ) : undefined}
         </Styled.Main>
       </Styled.Content>
       {/*</Styled.VisualContainer>*/}

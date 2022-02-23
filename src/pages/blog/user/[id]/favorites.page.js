@@ -31,7 +31,7 @@ export const getServerSideProps = async (ctx) => {
 
 const Favorites = ({ blogs, user }) => {
   blogs.content = blogs.content.map(({ post }) => post);
-  // blogs.content = blogs.content.filter((value) => value !== null);
+  blogs.content = blogs.content.filter((value) => value !== null);
   return (
     <UserDetailsLayout userDetails={user} item="收藏" itemKey="favorites">
       {blogs.page.totalElements === 0 ? (

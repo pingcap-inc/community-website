@@ -28,11 +28,12 @@ export const getServerSideProps = async (ctx) => {
   const ip = req.headers['X-Forwarded-For'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
 
   const { slug } = ctx.params;
+  const { shareId } = ctx.query;
 
   let blog = null,
     isPending = false;
   try {
-    blog = await api.blog.getPostBySlug({ slug, ip });
+    blog = await api.blog.getPostBySlug({ slug, ip, shareId });
   } catch (e) {
     if (e.errCode === 'POST_NOT_FOUND') isPending = true;
   }

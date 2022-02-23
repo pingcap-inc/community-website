@@ -14,10 +14,10 @@ export const getLatest = (params) => blogClient.get(`/api/posts/latest`, { param
 export const getRecommend = (params) => blogClient.get(`/api/posts/recommend`, { params });
 
 export const getPosts = (params) => blogClient.get(`/api/posts`, { params });
-//TODO: need to pass header of X-Forward-For for forward client real ip to backend
-export const getPostBySlug = ({ slug, ip }) =>
-  blogClient.get(`/api/posts/${slug}/detail${ip !== undefined ? '?visit=true' : ''}`, {
-    headers: { 'X-Forwarded-For': ip },
+export const getPostBySlug = ({ slug, ip, shareId, visit }) =>
+  blogClient.get(`/api/posts/${slug}/detail`, {
+    params: { shareId, visit },
+    headers: ip ? { 'X-Forwarded-For': ip } : undefined,
   });
 
 export const getTags = (params) => blogClient.get(`/api/tags`, { params });

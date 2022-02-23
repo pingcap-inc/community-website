@@ -34,7 +34,7 @@ const Like = ({ blogs, user }) => {
   blogs.content = blogs.content.filter((value) => value !== null);
   return (
     <UserDetailsLayout userDetails={user} item="赞" itemKey="like">
-      {blogs.page.totalElements === 0 ? (
+      {blogs.content.length === 0 ? (
         <EmptyStatus description={'你还没有点赞过任何文章'} style={{ boxShadow: 'none' }}>
           快前往 <a href={blogUrl}>【社区专栏】</a> 点赞第一篇技术文章吧～
         </EmptyStatus>

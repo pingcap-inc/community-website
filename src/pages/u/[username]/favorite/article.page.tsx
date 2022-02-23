@@ -170,7 +170,9 @@ export default function ProfileFavoriteArticlePage(props: IProps) {
               locale={{ emptyText: '暂无数据' }}
               loading={loading}
               renderItem={(value) =>
-                value && (
+                value?.post === null || value?.post === undefined ? (
+                  <ListItem key={0} url={'#'} title={'该文章已删除'} summary={'抱歉，该文章已删除'} />
+                ) : (
                   <ListItem
                     key={value.post.id}
                     url={getPostUrlBySlug(value.post.slug)}

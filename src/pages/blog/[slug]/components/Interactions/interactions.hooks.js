@@ -73,11 +73,11 @@ export const useShares = (blogInfo) => {
   const share = () => {
     api.blog.posts.post
       .share(blogInfo.id)
-      .then(({ shared, shareID }) => {
+      .then(({ shared }) => {
         const href = window.location.href;
         const title = blogInfo.title;
         const author = blogInfo.author.username || blogInfo.author.name;
-        const url = `${href}${href.includes('?') ? '&' : '?'}shareId=${shareID}`;
+        const url = href;
         copy(`${title} - ${author} 的专栏 - ${url}`);
         return shared;
       })

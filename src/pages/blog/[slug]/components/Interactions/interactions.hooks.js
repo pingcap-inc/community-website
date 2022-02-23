@@ -76,11 +76,11 @@ export const useShares = (blogInfo) => {
       .then(({ shared, shareID }) => {
         const title = blogInfo.title;
         const author = blogInfo.author.username || blogInfo.author.name;
-        const usp = new URLSearchParams(window.location.pathname);
+        const usp = new URLSearchParams(window.location.search);
         if (shareID) {
-          usp.set('shareID', String(shareID));
+          usp.set('shareId', String(shareID));
         }
-        const url = `${window.location.pathname}?${usp.toString()}`;
+        const url = `${window.location.origin}?${usp.toString()}`;
         copy(`${title} - ${author} 的专栏 - ${url}`);
         return shared;
       })

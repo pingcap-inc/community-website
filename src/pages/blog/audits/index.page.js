@@ -1,45 +1,43 @@
 import * as React from 'react';
-import { CommunityHead } from '~/components';
+import { CommunityHead, ErrorPage } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
-import { Breadcrumb, Spin } from 'antd';
+import { Breadcrumb, Skeleton } from 'antd';
 import Link from 'next/link';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
-import { api } from '@tidb-community/datasource';
 import BlogList from '../_components/BlogList';
 import { usePrincipal } from '../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+import { useRouter } from 'next/router';
+
+const status = 'PENDING';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
-  const { page, size } = getPageQuery(ctx.query);
   return {
     props: {
       ...i18nProps,
-      page,
-      size,
     },
   };
 };
 
-const PageContent = ({ page, size }) => {
+const PageContent = () => {
   const { hasAuthority } = usePrincipal();
-  const [blogs, setBlogs] = useState(undefined);
-
-  useEffect(() => {
-    async function fetchData(page, size) {
-      const status = 'PENDING';
-      const data = await api.blog.getPosts({ status, page, size });
-      setBlogs(data);
-    }
-    fetchData(page, size);
-  }, [page, size]);
-
   const hasPermission = hasAuthority('REVIEW_POST');
-  if (!hasPermission) {
-    return '您没有 REVIEW_POST 权限，无法查看本页面';
-  }
+
+  const router = useRouter();
+  const { page, size } = getPageQuery(router.query);
+  const { data: blogs, error: blogsError } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
+    revalidateOnMount: true,
+  });
+
+  const error = blogsError;
+  const loading = !blogs || hasPermission === undefined;
+  if (error) return <ErrorPage />;
+  if (loading) return <Skeleton active />;
+
+  if (hasPermission === false) <ErrorPage statusCode={403} errorMsg={'您没有 REVIEW_POST 权限，无法查看本页面'} />;
 
   return (
     <BlogLayout>
@@ -51,7 +49,7 @@ const PageContent = ({ page, size }) => {
             </Breadcrumb.Item>
             <Breadcrumb.Item>待审核</Breadcrumb.Item>
           </Styled.Breadcrumb>
-          {blogs ? <BlogList blogs={blogs} getPostUrl={(slug) => `/blog/audits/${slug}`} /> : <Spin />}
+          <BlogList blogs={blogs} getPostUrl={(slug) => `/blog/audits/${slug}`} />
         </Styled.Container>
       </Styled.Content>
     </BlogLayout>

@@ -6,8 +6,8 @@
     "build": "rimraf es lib && father build",
     "build:watch": "father build --watch"
   },
-  "main": "./lib/index",
-  "module": "./es/index",
+  "main": "./src/index",
+  "module": "./src/index",
   "files": [
     "es",
     "lib"

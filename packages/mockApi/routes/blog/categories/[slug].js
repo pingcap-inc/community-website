@@ -4,5 +4,6 @@ const { content } = require('./categories.mock');
 module.exports = (req, res) => {
   const { slug } = req.query;
   const data = content.filter((value) => value.slug === slug)?.[0];
+  data.id = slug;
   return successResp(data)(req, res);
 };

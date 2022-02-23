@@ -31,7 +31,7 @@ const Blogs = () => {
     size: 'large',
     icon: <EditFilled />,
     children: lang.writeBlog,
-    onClick: onClick('https://asktug.com/new-topic'),
+    onClick: onClick('https://tidb.io/blog/new/edit'),
   };
 
   return (
@@ -52,7 +52,9 @@ const Blogs = () => {
                 return <Blog {...props} />;
               })}
             </Styled.Blogs>
-            <Link href="https://asktug.com/latest">{t('common:viewAll')}</Link>
+            <Link href="https://tidb.io/blog/latest" passHref>
+              {t('common:viewAll')}
+            </Link>
           </>
         }
         rightPanel={
@@ -71,7 +73,7 @@ const Blogs = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.articleCategories}
-                <Link href="https://asktug.com/c/blog/">{t('common:viewAll')}</Link>
+                <Link href="https://tidb.io/blog/">{t('common:viewAll')}</Link>
               </Styled.ModuleTitle>
               <Categories categories={lang.categories} />
             </Styled.Module>

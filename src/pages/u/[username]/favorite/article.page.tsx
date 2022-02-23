@@ -32,7 +32,7 @@ import {
 } from '../username';
 import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 import ErrorPage from '~/components/errorPage';
-import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl, forumUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {
@@ -169,15 +169,19 @@ export default function ProfileFavoriteArticlePage(props: IProps) {
               dataSource={data}
               locale={{ emptyText: '暂无数据' }}
               loading={loading}
-              renderItem={(value) => (
-                <ListItem
-                  key={value.post.id}
-                  url={getPostUrlBySlug(value.post.slug)}
-                  title={value.post.title}
-                  summary={value.post.summary}
-                  metadataEnd={getRelativeDatetime(value.post.publishedAt)}
-                />
-              )}
+              renderItem={(value) =>
+                value?.post === null || value?.post === undefined ? (
+                  <ListItem key={0} url={'#'} title={'该文章已删除'} summary={'抱歉，该文章已删除'} />
+                ) : (
+                  <ListItem
+                    key={value.post.id}
+                    url={getPostUrlBySlug(value.post.slug)}
+                    title={value.post.title}
+                    summary={value.post.summary}
+                    metadataEnd={getRelativeDatetime(value.post.publishedAt)}
+                  />
+                )
+              }
             />
           )}
         </InfiniteScroll>

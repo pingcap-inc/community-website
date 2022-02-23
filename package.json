@@ -5,7 +5,7 @@
     "build": "next build && npm run build:uiScripts",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:accounts:staging": "lerna run --scope @tidb-community/accounts build:staging",
-    "build:shared": "lerna run --ignore @tidb-community/accounts --ignore @tidb-community/ui-scripts --ignore @tidb-community/strapi build",
+    "build:shared": "echo 'no shared needs build now'",
     "build:uiScripts": "lerna run --scope @tidb-community/ui-scripts build",
     "build:watch": "lerna run --no-bail build:watch",
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
@@ -63,7 +63,7 @@
     "react-is": "17.0.2",
     "react-redux": "7.2.5",
     "styled-components": "5.3.1",
-    "swr": "1.1.2",
+    "swr": "1.2.2",
     "uuid": "8.3.2",
     "yup": "0.32.9"
   },

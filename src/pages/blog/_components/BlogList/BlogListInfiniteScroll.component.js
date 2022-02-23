@@ -1,73 +1,67 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import * as Styled from './index.styled';
-import BlogInfo from '../blogInfo';
+import BlogInfo from '../BlogInfo';
 import { Divider, List, Skeleton } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import EmptyStatus from '~/components/EmptyStatus';
+import Anchor from '~/components/Anchor';
+import useSWRInfinite from 'swr/infinite';
 
-const BlogList = ({
-  blogs: {
-    content,
-    page: { number, totalPages },
-  },
-  usernameExtends,
-  bottomExtends,
-  api,
-  params,
-}) => {
-  const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(content);
-  const [page, setPage] = useState(number ?? 1);
-  const [hasMore, setHasMore] = useState(page < totalPages);
-  const [firstLoad, setFirstLoad] = useState(false);
-  const size = 20;
+const BlogList = ({ blogs, usernameExtends, bottomExtends, api, params }) => {
+  const {
+    data: infiniteData,
+    setSize,
+    isValidating,
+    mutate,
+  } = useSWRInfinite((page) => ({ page: page + 1, size: 20, ...params }), {
+    initialData: blogs,
+    initialSize: blogs.page.number + 1,
+    revalidateOnMount: false,
+    revalidateFirstPage: false,
+    revalidateIfStale: true,
+    fetcher: api,
+  });
 
-  const reloadData = async () => {
-    setLoading(true);
-    setPage(1);
-    setData([]);
-    setHasMore(true);
-    try {
-      const json = await api({ page: 1, size, ...params });
-      setData(json.content);
-      setPage(json.page.number + 1);
-      setHasMore(page < json.page.totalPages);
-    } catch (e) {
-    } finally {
-      setLoading(false);
+  // use swr infinite holds all the resp lists
+  const data = useMemo(() => {
+    const set = new Set();
+    return infiniteData
+      ?.flatMap((data) => data.content)
+      ?.filter((item) => {
+        // filter repeated posts
+        if (set.has(item.slug)) {
+          return false;
+        } else {
+          set.add(item.slug);
+          return true;
+        }
+      });
+  }, [infiniteData]);
+
+  const hasMore = useMemo(() => {
+    // if not loaded, has more
+    if (!infiniteData) {
+      return true;
     }
-  };
+    const pageData = infiniteData[infiniteData.length - 1];
 
-  const loadMoreData = async () => {
-    if (loading) {
-      return;
+    if (isValidating) {
+      return true;
+    } else if (!pageData) {
+      return false;
     }
-    setLoading(true);
-    try {
-      const json = await api({ page: page + 1, size, ...params });
-      setData([...data, ...json.content]);
-      setPage(json.page.number + 1);
-      setHasMore(page < json.page.totalPages);
-    } catch (e) {
-    } finally {
-      setLoading(false);
-    }
-  };
+    return pageData.page.number + 1 < pageData.page.totalPages;
+  }, [infiniteData, isValidating]);
 
-  const paramsSignature = JSON.stringify(params);
+  const loadMoreData = useCallback(() => {
+    setSize((size) => size + 1).then();
+  }, [setSize]);
 
   useEffect(() => {
-    if (firstLoad) {
-      reloadData();
-    } else {
-      setFirstLoad(true);
-    }
-  }, [paramsSignature]);
+    mutate([]).then();
+  }, [params.categoryID, params.tagID, mutate]);
 
-  useEffect(() => {
-    loadMoreData();
-  }, []);
-
-  if (!content) {
+  if (!data) {
     return <Skeleton active />;
   }
 
@@ -79,25 +73,36 @@ const BlogList = ({
           next={loadMoreData}
           hasMore={hasMore}
           loader={
-            <div style={{ marginTop: '16px' }}>
-              <Skeleton avatar paragraph={{ rows: 1 }} active />
+            <div>
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
+              <Skeleton avatar paragraph={{ rows: 3 }} active />
             </div>
           }
           endMessage={<Divider plain>没有更多文章了</Divider>}
         >
-          <List
-            // pagination={{ current: number, total: totalElements, onChange: onPageChange }}
-            dataSource={data}
-            loading={loading && data.length === 0}
-            locale={{ emptyText: '暂无文章' }}
-            renderItem={(value) => {
-              return (
-                <Styled.Item key={value.id}>
-                  <BlogInfo {...value} usernameExtends={usernameExtends} bottomExtends={bottomExtends} />
-                </Styled.Item>
-              );
-            }}
-          />
+          {!isValidating && data.length === 0 ? (
+            <EmptyStatus
+              description={
+                <>
+                  该分类下暂无文章，<Anchor href={'/blog/new/edit'}>【发表一篇】</Anchor>
+                </>
+              }
+            />
+          ) : (
+            <List
+              dataSource={data}
+              locale={{ emptyText: ' ' }}
+              renderItem={(value) => {
+                return (
+                  <Styled.Item key={value.id}>
+                    <BlogInfo {...value} usernameExtends={usernameExtends} bottomExtends={bottomExtends} />
+                  </Styled.Item>
+                );
+              }}
+            />
+          )}
         </InfiniteScroll>
       </Styled.List>
     </Styled.Container>

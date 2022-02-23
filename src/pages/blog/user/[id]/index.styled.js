@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors, Styled } from '@tidb-community/ui';
-import { Breadcrumb as AntdBreadcrumb } from 'antd';
+import { Breadcrumb as AntdBreadcrumb, Card as AntdCard } from 'antd';
+import { borderRadiusSize } from '~/pages/blog/_components/common.styled';
 
 const { Content } = Styled;
 
@@ -15,11 +16,12 @@ export const Breadcrumb = styled(AntdBreadcrumb)``;
 export const Action = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 `;
 
 export const Tab = styled.div`
   display: flex;
-  padding: 1rem 0;
 `;
 
 export const List = styled.div`
@@ -35,5 +37,11 @@ export const TabItem = styled.div`
 `;
 
 export const Item = styled.div`
-  margin: 0.5rem 0;
+  &:not(:first-child) {
+    margin-top: 1rem;
+  }
+`;
+
+export const EmptyContainer = styled(AntdCard)`
+  ${borderRadiusSize};
 `;

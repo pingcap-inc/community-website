@@ -6,7 +6,7 @@ import { borderRadius } from '../common.styled';
 export const Container = styled.div`
   ${mixins.showOnDesktop()}
   ${borderRadius}
-  margin-top: 1rem;
+  margin: 1rem 0;
   .ant-card-head a {
     color: ${colors.B1};
   }

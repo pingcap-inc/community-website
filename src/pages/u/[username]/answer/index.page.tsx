@@ -27,7 +27,7 @@ import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 import { useRouter } from 'next/router';
 import { filterSelectWidth } from '../common.styled';
-import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import EmptyStatus from '~/components/EmptyStatus';
 import { forumUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {

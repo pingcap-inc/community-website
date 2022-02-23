@@ -53,6 +53,10 @@ export const navItems = [
     ],
   },
   {
+    title: '专栏',
+    link: 'https://tidb.io/blog',
+  },
+  {
     title: '活动',
     link: 'https://tidb.io/events',
   },

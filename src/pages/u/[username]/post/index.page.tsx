@@ -30,7 +30,7 @@ import {
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
 } from '../username';
-import EmptyStatus from '~/pages/u/[username]/_components/EmptyStatus';
+import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {

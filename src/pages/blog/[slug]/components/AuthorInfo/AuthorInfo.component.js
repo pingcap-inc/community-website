@@ -4,24 +4,24 @@ import * as Styled from './author.styled';
 import { Avatar } from 'antd';
 import moment from 'moment';
 
-const AuthorInfo = ({ blogInfo }) => {
-  const userPageURL = `/blog/user/${blogInfo.author.id}`;
+const AuthorInfo = ({ blog }) => {
+  const userPageURL = `/blog/user/${blog.author.id}`;
 
   return (
     <Styled.AuthorContainer>
       <Styled.Profile>
         <Link href={userPageURL}>
-          <Avatar src={blogInfo.author.avatarURL} size={18} />
+          <Avatar src={blog.author.avatarURL} size={18} />
         </Link>
         &nbsp;
         <Link href={userPageURL}>
-          <b>{blogInfo.author.username}</b>
+          <b>{blog.author.username}</b>
         </Link>
       </Styled.Profile>
-      {blogInfo.publishedAt ? (
+      {blog.publishedAt ? (
         <>
           &nbsp; 发表于 &nbsp;
-          <b>{moment(blogInfo.publishedAt).format('YYYY-MM-DD')}</b>
+          <b>{moment(blog.publishedAt).format('YYYY-MM-DD')}</b>
         </>
       ) : undefined}
     </Styled.AuthorContainer>

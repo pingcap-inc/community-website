@@ -34,12 +34,12 @@ interface UserDetails extends UserInfo {
   comments: 0;
 }
 
-export function getPosts(userId: number, query?: Query): Promise<Page<Post>>;
+export function getPosts(param: { userId: number; status?: string; query?: Query }): Promise<Page<Post>>;
 
-export function getLikes(userId: number, query?: Pagination): Promise<Page<Like>>;
+export function getLikes(param: { userId: number; query?: Pagination }): Promise<Page<Like>>;
 
-export function getFavorites(userId: number, query?: Pagination): Promise<Page<Favorite>>;
+export function getFavorites(param: { userId: number; query?: Pagination }): Promise<Page<Favorite>>;
 
-export function getComments(userId: number, query?: Pagination): Promise<Page<Comment>>;
+export function getComments(param: { userId: number; query?: Pagination }): Promise<Page<Comment>>;
 
-export function get(userId: number): Promise<UserDetails>;
+export function get(param: { userId: number }): Promise<UserDetails>;

@@ -51,15 +51,16 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
   const router = useRouter();
   const { isReady, query } = router;
-  const { slug } = query;
+  const { slug, shareId } = query;
 
   const {
     data: blog,
     mutate: reload,
     error: blogError,
-  } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify({ slug })], {
+  } = useSWR([isReady && 'blog.getPostBySlug', JSON.stringify({ slug, shareId, visit: true })], {
     fallbackData: blogFromSSR,
     revalidateOnMount: true,
+    revalidateOnFocus: false,
   });
   const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
   const error = blogError;

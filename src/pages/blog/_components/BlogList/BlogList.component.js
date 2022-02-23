@@ -62,7 +62,7 @@ const BlogList = ({
           // locale={{ emptyText }}
           renderItem={(value) => {
             return (
-              <Styled.Item key={value.id}>
+              <Styled.Item>
                 {/*<BlogInfo*/}
                 {/*  {...value}*/}
                 {/*  getPostUrl={getPostUrl}*/}
@@ -73,7 +73,7 @@ const BlogList = ({
                 <PostItem
                   actionText={actionText}
                   blogInfo={value}
-                  statusBadge={showStatusBadge ? <StatusBadge status={value.status} /> : undefined}
+                  statusBadge={showStatusBadge && value ? <StatusBadge status={value.status} /> : undefined}
                   getUrlBySlugCallback={getPostUrl}
                 />
               </Styled.Item>

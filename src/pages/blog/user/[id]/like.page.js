@@ -13,13 +13,11 @@ export const getServerSideProps = async (ctx) => {
 
   const { page, size } = getPageQuery(ctx.query);
   const { id: userId } = ctx.params;
+  const sort = 'likedAt,desc';
   const [user, blogs] = await Promise.all([
     api.blog.users.get({ userId }),
-    api.blog.users.getLikes({ userId, page, size }),
+    api.blog.users.getLikes({ userId, page, size, sort }),
   ]);
-
-  blogs.content = blogs.content.map(({ post }) => post);
-  blogs.content = blogs.content.filter((value) => value !== null);
 
   return {
     props: {
@@ -32,6 +30,8 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const Like = ({ blogs, user }) => {
+  blogs.content = blogs.content.map(({ post }) => post);
+  blogs.content = blogs.content.filter((value) => value !== null);
   return (
     <UserDetailsLayout userDetails={user} item="赞" itemKey="like">
       {blogs.page.totalElements === 0 ? (

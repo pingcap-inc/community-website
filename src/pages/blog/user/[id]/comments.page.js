@@ -17,7 +17,11 @@ export const getServerSideProps = async (ctx) => {
 
   const { page, size } = getPageQuery(ctx.query);
   const { id: userId } = ctx.params;
-  const [user, comments] = await Promise.all([api.blog.users.get({ userId }), api.blog.users.getComments({ userId, page, size })]);
+  const sort = 'id,desc';
+  const [user, comments] = await Promise.all([
+    api.blog.users.get({ userId }),
+    api.blog.users.getComments({ userId, page, size, sort }),
+  ]);
 
   return {
     props: {
@@ -53,9 +57,9 @@ const CommentsList = ({
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
       // locale={{ emptyText: '暂无评论' }}
-      renderItem={({ post, content }) => (
+      renderItem={(value) => (
         <Styled.Item>
-          <CommentPostItem blogInfo={post} commentContent={content} />
+          <CommentPostItem value={value} />
         </Styled.Item>
       )}
     />

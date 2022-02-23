@@ -169,15 +169,17 @@ export default function ProfileFavoriteArticlePage(props: IProps) {
               dataSource={data}
               locale={{ emptyText: '暂无数据' }}
               loading={loading}
-              renderItem={(value) => (
-                <ListItem
-                  key={value.post.id}
-                  url={getPostUrlBySlug(value.post.slug)}
-                  title={value.post.title}
-                  summary={value.post.summary}
-                  metadataEnd={getRelativeDatetime(value.post.publishedAt)}
-                />
-              )}
+              renderItem={(value) =>
+                value && (
+                  <ListItem
+                    key={value.post.id}
+                    url={getPostUrlBySlug(value.post.slug)}
+                    title={value.post.title}
+                    summary={value.post.summary}
+                    metadataEnd={getRelativeDatetime(value.post.publishedAt)}
+                  />
+                )
+              }
             />
           )}
         </InfiniteScroll>

@@ -46,7 +46,7 @@ module.exports = (shipit) => {
 
   shipit.blTask('server:reload', async () => {
     await shipit.remote(`npm run server:reload`, {
-      cwd: `${process.env.DEPLOY_PATH}/current/project`,
+      cwd: `${process.env.DEPLOY_PATH}/current`,
     });
   });
 };

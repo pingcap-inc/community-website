@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import * as colors from './colors';
 import * as mixins from './mixins';
 
-export const Section = styled.div`
+export const Section = styled.div<{ isSmallScreen?: boolean }>`
   color: ${colors.F1};
   background: ${colors.M1};
   padding: 4rem 0 6rem;
@@ -51,7 +51,7 @@ export const Title = styled.h2`
   }
 `;
 
-export const ModuleTitle = styled.h3`
+export const ModuleTitle = styled.h3<{ justify?: string }>`
   ${mixins.flexVerticalCenter()};
   justify-content: space-between;
   line-height: 1;
@@ -71,7 +71,7 @@ export const Text = styled.div`
   color: ${colors.F2};
 `;
 
-export const CenterOnSmallScreen = styled.div`
+export const CenterOnSmallScreen = styled.div<{ isSmallScreen?: boolean }>`
   width: 100%;
 
   ${(props) =>

@@ -64,7 +64,7 @@ export const reset = () => css`
   padding: 0;
 `;
 
-export const centerBlock = (width) => css`
+export const centerBlock = (width?: string) => css`
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -74,7 +74,7 @@ export const centerBlock = (width) => css`
   `};
 `;
 
-export const verticalLineMiddle = (height = 0) => css`
+export const verticalLineMiddle = (height: string | number = 0) => css`
   line-height: ${height};
   height: ${height};
 `;
@@ -99,7 +99,7 @@ export const flexStart = (type = 'block') => css`
   justify-content: flex-start;
 `;
 
-export const size = (width, height = width) => css`
+export const size = (width: string | number, height: string | number = width) => css`
   width: ${width};
   height: ${height};
 `;
@@ -121,7 +121,7 @@ export const responsive = () => css`
   }
 
   @media screen and (min-width: ${breakPoints.xl}) {
-    max-width: ${responsiveWidths.lx};
+    max-width: ${responsiveWidths.xl};
   }
 `;
 

@@ -17,7 +17,8 @@
     "baseUrl": ".",
     "rootDir": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@tidb-community/*": ["./packages/*/src/index"]
     },
     "incremental": true
   },

@@ -41,6 +41,7 @@ jobs:
       DEPLOY_USER: ${{ secrets.HOST_PREVIEW_USER }}
       DEPLOY_PATH: ${{ secrets.DEPLOY_SERVICE_PATH }}
       DEPLOY_INSTANCES_NUM: ${{ secrets.INSTANCES_NUM }}
+      DEPLOY_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
   deploy-production:
     needs: [ build-production ]

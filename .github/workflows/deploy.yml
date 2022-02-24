@@ -30,6 +30,8 @@ on:
         required: true
       DEPLOY_INSTANCES_NUM:
         required: true
+      DEPLOY_PRIVATE_KEY:
+        required: true
 
 jobs:
   deploy:
@@ -66,7 +68,7 @@ jobs:
       - uses: webfactory/ssh-agent@v0.5.4
         name: Setup SSH Agent
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
 
       - name: Install shipit
         run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0

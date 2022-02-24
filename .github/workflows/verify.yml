@@ -6,7 +6,6 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
-    name: Install dependencies and verify codes
     permissions:
       contents: read
       packages: read

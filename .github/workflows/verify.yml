@@ -11,6 +11,8 @@ jobs:
       contents: read
       packages: read
     steps:
+      - uses: actions/checkout@v2.4.0
+
       - name: Use Node.js 16.14.0
         uses: actions/setup-node@v2.5.1
         with:

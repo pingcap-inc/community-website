@@ -7,7 +7,7 @@ module.exports = (shipit) => {
   shipit.initConfig({
     default: {
       workspace: '.',
-      deployTo: process.env.DEPLOY_SERVICE_PATH,
+      deployTo: process.env.DEPLOY_PATH,
 
       // The node_modules of packages are not sent since they've been bundled in the
       // main server. The root node_modules is still needed for starting the app.
@@ -26,27 +26,27 @@ module.exports = (shipit) => {
 
     preview: {
       servers: {
-        user: process.env.HOST_PREVIEW_USER,
-        host: process.env.HOST_PREVIEW_IP,
+        user: process.env.DEPLOY_USER,
+        host: process.env.DEPLOY_HOST,
       },
     },
 
     production: {
       servers: {
-        user: process.env.HOST_HK_1_USER,
-        host: process.env.HOST_HK_1_IP,
+        user: process.env.DEPLOY_USER,
+        host: process.env.DEPLOY_HOST,
       },
     },
   });
 
   shipit.on('published', () => {
-    shipit.remote(`export INSTANCES_NUM=${process.env.INSTANCES_NUM}`);
+    shipit.remote(`export INSTANCES_NUM=${process.env.DEPLOY_INSTANCES_NUM}`);
     shipit.start('server:reload');
   });
 
   shipit.blTask('server:reload', async () => {
     await shipit.remote(`npm run server:reload`, {
-      cwd: `${process.env.DEPLOY_SERVICE_PATH}/current/project`,
+      cwd: `${process.env.DEPLOY_PATH}/current/project`,
     });
   });
 };

@@ -9,6 +9,17 @@ on:
       host:
         required: true
         type: string
+    secrets:
+      MAILCHIMP_DC: true
+      MAILCHIMP_KEY: true
+      MAILCHIMP_LIST_ID: true
+      NEXT_PUBLIC_RECAPTCHA_KEY: true
+      NEXT_PUBLIC_STRAPI_EMAIL: true
+      NEXT_PUBLIC_STRAPI_PASSWORD: true
+      DEPLOY_HOST: true
+      DEPLOY_USER: true
+      DEPLOY_PATH: true
+      DEPLOY_INSTANCES_NUM: true
 
 jobs:
   deploy:
@@ -28,6 +39,9 @@ jobs:
         name: Download ${{ inputs.build-env }} artifact
         with:
           name: target-${{ inputs.build-env }}
+
+      - name: Un-compress target
+        run: tar -xf target.tar
 
       - name: Dump envs
         run: |
@@ -49,5 +63,9 @@ jobs:
 
       - name: Deploy
         run: |
-          ssh-keyscan "${{ secrets[inputs.host] }}" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
           npm run deploy:${{ inputs.build-env }}
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+

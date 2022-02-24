@@ -29,11 +29,11 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       build-env: preview
-      host: ${{ secrets.HOST_PREVIEW_IP }}
+      host: HOST_PREVIEW_IP
 
   deploy-production:
     needs: [ build-production ]
     uses: ./.github/workflows/deploy.yml
     with:
       build-env: production
-      host: ${{ secrets.HOST_HK_1_IP }}
+      host: HOST_HK_1_IP

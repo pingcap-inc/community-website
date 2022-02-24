@@ -31,5 +31,5 @@ jobs:
 
       - name: Deploy
         run: |
-          ssh-keyscan "${{ inputs.host }}" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan "${{ secrets[inputs.host] }}" >> ~/.ssh/known_hosts 2>/dev/null
           npm run deploy:${{ inputs.build-env }}

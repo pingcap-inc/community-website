@@ -26,7 +26,7 @@
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
     "strapi:dev": "lerna run --scope @tidb-community/strapi dev",
     "strapi:sync": "lerna run --scope @tidb-community/strapi sync",
-    "test": "jest",
+    "test": "cp babel.config.js.old babel.config.js && jest && rm babel.config.js",
     "test:changed": "npm test -- --changedSince=origin/main",
     "test:cov": "npm test -- --coverage",
     "test:watch": "npm test -- --watch"

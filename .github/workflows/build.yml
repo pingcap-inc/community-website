@@ -14,8 +14,6 @@ jobs:
     name: Build artifact for ${{ inputs.build-env }}
 
     steps:
-      - uses: actions/checkout@v2.4.0
-
       - name: Cache dependencies
         id: dep-caches
         uses: actions/cache@v2

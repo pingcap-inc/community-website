@@ -9,7 +9,7 @@ on:
 
 jobs:
   verify:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/verify.yml
 
   build-preview:
     needs: [ verify ]

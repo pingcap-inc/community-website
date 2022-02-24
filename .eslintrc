@@ -17,6 +17,6 @@
     "react/jsx-no-target-blank": [2, { "allowReferrer": true }],
     "@typescript-eslint/ban-ts-comment": "off",
     "@typescript-eslint/no-empty-function": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off"
+    "@typescript-eslint/no-empty-interface": "off"
   }
 }

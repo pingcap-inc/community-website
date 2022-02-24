@@ -14,6 +14,9 @@ const unifyNodeModules = (names) =>
     {}
   );
 
+/**
+ * @type {import('next').NextConfig}
+ **/
 const config = {
   i18n,
 

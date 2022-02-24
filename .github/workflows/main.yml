@@ -75,7 +75,7 @@ jobs:
         with:
           path: |
             node_modules
-          key: ${{ runner.os }}-${{ hashFiles(package-lock.json, 'packages/*/package-lock.json') }}
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
       - name: Install runtime dependencies
         run: npm install --only=prod

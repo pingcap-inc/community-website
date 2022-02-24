@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "build": "next build --no-lint",
+    "build:preview": "cat .env.preview >> .env.production && npm run build",
+    "build:production": "npm run build",
     "build:accounts": "lerna run --scope @tidb-community/accounts build",
     "build:accounts:staging": "lerna run --scope @tidb-community/accounts build:staging",
     "build:shared": "echo 'no shared needs build now'",

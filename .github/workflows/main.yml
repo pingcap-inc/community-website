@@ -10,13 +10,14 @@ on:
 jobs:
   verify:
     runs-on: ubuntu-latest
+    name: Install dependencies and verify codes
     permissions:
       contents: read
       packages: read
     steps:
       - uses: actions/checkout@v2.4.0
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.14.0
         uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.14.0
@@ -49,9 +50,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: [ verify ]
+    name: Build artifact for ${{ matrix.env }}
+    strategy:
+      matrix:
+        env: [preview, production]
 
     steps:
       - uses: actions/checkout@v2.4.0
+
+      - name: Should stop ${{ matrix.env }} build
+        run: echo "::set-output ${{ matrix.env }}=stop" && exit 0
+        if: ${{ matrix.env == 'production' && github.event_name != 'push' }}
 
       - name: Cache dependencies
         id: dep-caches
@@ -67,14 +76,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 16.14.0
         uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.14.0
           cache: 'npm'
 
-      - name: Build for preview
-        run: npm run build
+      - name: Build for ${{ matrix.env }}
+        run: npm run build:${{ matrix.env }}
 
       - name: Copy locales
         run: npm run copy:locales
@@ -105,14 +114,15 @@ jobs:
           path: target.tar
           if-no-files-found: error
 
-#      - name: Deploy to tidb.io 🚀
-#        uses: JamesIves/github-pages-deploy-action@releases/v3
-#        if: ${{ github.event_name != 'pull_request' &&  }}
-#        with:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          BRANCH: gh-pages # The branch the action should deploy to.
-#          FOLDER: build # The folder the action should deploy.
-#
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [ build ]
+    name: Deploy artifact for ${{ matrix.env }}
+    strategy:
+      matrix:
+        env: [preview, production]
+    if: ${{ needs.build.outputs[matrix.env] == 'stop' }}
+
 #      - name: Deploy to community-preview.tidb.io 🚀
 #        uses: afc163/surge-preview@v1
 #        if: ${{ github.event_name == 'pull_request' }}
@@ -122,3 +132,13 @@ jobs:
 #          dist: './build'
 #          teardown: true
 #          build: echo 'already built'
+
+
+#      - name: Deploy to tidb.io 🚀
+#        uses: JamesIves/github-pages-deploy-action@releases/v3
+#        if: ${{ github.event_name != 'pull_request' &&  }}
+#        with:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          BRANCH: gh-pages # The branch the action should deploy to.
+#          FOLDER: build # The folder the action should deploy.
+#

@@ -10,16 +10,26 @@ on:
         required: true
         type: string
     secrets:
-      MAILCHIMP_DC: true
-      MAILCHIMP_KEY: true
-      MAILCHIMP_LIST_ID: true
-      NEXT_PUBLIC_RECAPTCHA_KEY: true
-      NEXT_PUBLIC_STRAPI_EMAIL: true
-      NEXT_PUBLIC_STRAPI_PASSWORD: true
-      DEPLOY_HOST: true
-      DEPLOY_USER: true
-      DEPLOY_PATH: true
-      DEPLOY_INSTANCES_NUM: true
+      MAILCHIMP_DC:
+        required: true
+      MAILCHIMP_KEY:
+        required: true
+      MAILCHIMP_LIST_ID:
+        required: true
+      NEXT_PUBLIC_RECAPTCHA_KEY:
+        required: true
+      NEXT_PUBLIC_STRAPI_EMAIL:
+        required: true
+      NEXT_PUBLIC_STRAPI_PASSWORD:
+        required: true
+      DEPLOY_HOST:
+        required: true
+      DEPLOY_USER:
+        required: true
+      DEPLOY_PATH:
+        required: true
+      DEPLOY_INSTANCES_NUM:
+        required: true
 
 jobs:
   deploy:

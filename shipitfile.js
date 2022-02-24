@@ -11,7 +11,7 @@ module.exports = (shipit) => {
 
       // The node_modules of packages are not sent since they've been bundled in the
       // main server. The root node_modules is still needed for starting the app.
-      ignores: ['.git', 'packages/**/node_modules'],
+      ignores: ['.git', '.circle-ci*', '.github', '.husky', 'config', 'scripts', 'packages', 'src'],
       keepReleases: 3,
 
       // The workspace dir won't be removed after deploy

@@ -63,7 +63,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: target
-          path: target.${{ inputs.build-env }}.tar
+          name: target-${{ inputs.build-env }}
+          path: target.tar
           if-no-files-found: error
 

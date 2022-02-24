@@ -25,53 +25,15 @@ jobs:
       build-env: production
 
   deploy-preview:
-    runs-on: ubuntu-latest
     needs: [ build-preview ]
-    name: Deploy artifact for Preview
-    if: ${{ needs.build.outputs.preview != 'stop' }}
-
-    steps:
-      - name: Use Node.js 16.14.0
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: 16.14.0
-          cache: 'npm'
-
-      - name: Install shipit
-        run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0
+    uses: ./.github/workflows/deploy.yml
+    with:
+      build-env: preview
+      host: ${{ secrets.HOST_PREVIEW_IP }}
 
   deploy-production:
-    runs-on: ubuntu-latest
     needs: [ build-production ]
-    name: Deploy artifact for Preview
-    if: ${{ needs.build.outputs.preview != 'stop' }}
-
-    steps:
-      - name: Use Node.js 16.14.0
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: 16.14.0
-          cache: 'npm'
-
-      - name: Install shipit
-        run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0
-
-#      - name: Deploy to community-preview.tidb.io 🚀
-#        uses: afc163/surge-preview@v1
-#        if: ${{ github.event_name == 'pull_request' }}
-#        with:
-#          surge_token: ${{ secrets.SURGE_TOKEN }}
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          dist: './build'
-#          teardown: true
-#          build: echo 'already built'
-
-
-#      - name: Deploy to tidb.io 🚀
-#        uses: JamesIves/github-pages-deploy-action@releases/v3
-#        if: ${{ github.event_name != 'pull_request' &&  }}
-#        with:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          BRANCH: gh-pages # The branch the action should deploy to.
-#          FOLDER: build # The folder the action should deploy.
-#
+    uses: ./.github/workflows/deploy.yml
+    with:
+      build-env: production
+      host: ${{ secrets.HOST_HK_1_IP }}

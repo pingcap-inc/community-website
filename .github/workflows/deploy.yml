@@ -1,0 +1,35 @@
+name: Reusable build
+
+on:
+  workflow_call:
+    inputs:
+      build-env:
+        required: true
+        type: string
+      host:
+        required: true
+        type: string
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.build-env }}
+
+    steps:
+      - name: Use Node.js 16.14.0
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+
+      - name: Install shipit
+        run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0
+
+      - uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy
+        run: |
+          ssh-keyscan "${{ inputs.host }}" >> ~/.ssh/known_hosts 2>/dev/null
+          npm run deploy:${{ inputs.build-env }}

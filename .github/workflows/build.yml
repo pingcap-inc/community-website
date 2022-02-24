@@ -10,7 +10,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: Build artifact for ${{ inputs.build-env }}
 
     steps:
       - uses: actions/checkout@v2.4.0
@@ -35,6 +34,13 @@ jobs:
           node-version: 16.14.0
           cache: 'npm'
 
+      - name: Cache build result
+        uses: actions/cache@v2
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-${{ inputs.build-env }}
+
       - name: Build for ${{ inputs.build-env }}
         run: npm run build:${{ inputs.build-env }}
 
@@ -58,7 +64,7 @@ jobs:
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Bundle target
-        run: tar --exclude .next/cache -cf target.tar node_modules .next public/locales public/scripts
+        run: tar --exclude .next/cache -cf target.tar node_modules .next public/locales
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2

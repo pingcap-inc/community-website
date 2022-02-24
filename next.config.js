@@ -84,8 +84,6 @@ const config = {
       },
     ];
   },
-
-  env,
 };
 
 if (process.env.ENABLE_SENTRY === 'true') {

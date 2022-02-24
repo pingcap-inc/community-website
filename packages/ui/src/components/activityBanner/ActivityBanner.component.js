@@ -30,7 +30,7 @@ ActivityBanner.propTypes = {
   backgroundColor: PropTypes.string,
   backgroundImage: PropTypes.string,
   buttonImage: PropTypes.string,
-  text: PropTypes.string.isRequired,
+  // text: PropTypes.string.isRequired,
   onClick: PropTypes.func,
 };
 

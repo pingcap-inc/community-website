@@ -37,10 +37,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install
-        run: npm ci
+        run: npm ci --no-audit
         if: steps.dep-caches.outputs.cache-hit != 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint
         run: npm run lint
@@ -64,6 +62,11 @@ jobs:
             packages/*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
+      - name: Config npm token
+        run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v2.5.1
         with:
@@ -76,12 +79,30 @@ jobs:
       - name: Copy locales
         run: npm run copy:locales
 
+      - name: Remove node_modules
+        run: rm -rf node_modules packages/*/node_modules
+
+      - name: Cache prod dependencies
+        id: prod-dep-caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+
+      - name: Install production deps
+        run: npm ci --no-audit --production
+        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
+
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: target
           path: |
+            node_modules
             .next
+            !.next/cache
             public
           if-no-files-found: error
 

@@ -123,6 +123,9 @@ jobs:
         env: [preview, production]
     if: ${{ needs.build.outputs[matrix.env] == 'stop' }}
 
+    steps:
+      - uses: actions/checkout@v2.4.0
+
 #      - name: Deploy to community-preview.tidb.io 🚀
 #        uses: afc163/surge-preview@v1
 #        if: ${{ github.event_name == 'pull_request' }}

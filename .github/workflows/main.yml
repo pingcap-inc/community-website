@@ -47,72 +47,20 @@ jobs:
       - name: Test
         run: npm run test
 
-  build:
+  build-preview:
     runs-on: ubuntu-latest
-    needs: [ verify ]
-    name: Build artifact for ${{ matrix.env }}
-    strategy:
-      matrix:
-        env: [preview, production]
-
     steps:
-      - uses: actions/checkout@v2.4.0
-
-      - name: Should stop ${{ matrix.env }} build
-        run: echo "::set-output ${{ matrix.env }}=stop" && exit 0
-        if: ${{ matrix.env == 'production' && github.event_name != 'push' }}
-
-      - name: Cache dependencies
-        id: dep-caches
-        uses: actions/cache@v2
+      - uses: ./.github/actions/build
         with:
-          path: |
-            node_modules
-            packages/*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          build-env: preview
 
-      - name: Config npm token
-        run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Use Node.js 16.14.0
-        uses: actions/setup-node@v2.5.1
+  build-production:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'push' }}
+    steps:
+      - uses: ./.github/actions/build
         with:
-          node-version: 16.14.0
-          cache: 'npm'
-
-      - name: Build for ${{ matrix.env }}
-        run: npm run build:${{ matrix.env }}
-
-      - name: Copy locales
-        run: npm run copy:locales
-
-      - name: Remove node_modules
-        run: rm -rf node_modules packages/*/node_modules
-
-      - name: Cache prod dependencies
-        id: prod-dep-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-          key: ${{ runner.os }}-prod-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
-
-      - name: Install production deps
-        run: npm ci --no-audit --production --ignore-scripts
-        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
-
-      - name: Bundle target
-        run: tar --exclude .next/cache -cf target.tar node_modules .next public .nvmrc .env.production next.config.js sentry.* pm2.config.js
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: target
-          path: target.tar
-          if-no-files-found: error
+          build-env: production
 
   deploy-preview:
     runs-on: ubuntu-latest
@@ -121,7 +69,14 @@ jobs:
     if: ${{ needs.build.outputs.preview != 'stop' }}
 
     steps:
-      - uses: actions/checkout@v2.4.0
+      - name: Use Node.js 16.14.0
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+
+      - name: Install shipit
+        run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0
 
 #      - name: Deploy to community-preview.tidb.io 🚀
 #        uses: afc163/surge-preview@v1

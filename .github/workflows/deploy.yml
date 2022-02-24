@@ -81,4 +81,5 @@ jobs:
           NODE_PATH: /opt/hostedtoolcache/node/16.14.0/x64/lib/node_modules
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
 

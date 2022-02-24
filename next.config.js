@@ -23,6 +23,8 @@ const config = {
     domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
   },
 
+  styledComponents: true,
+
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {
     const { alias } = config.resolve;

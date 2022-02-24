@@ -114,14 +114,11 @@ jobs:
           path: target.tar
           if-no-files-found: error
 
-  deploy:
+  deploy-preview:
     runs-on: ubuntu-latest
     needs: [ build ]
-    name: Deploy artifact for ${{ matrix.env }}
-    strategy:
-      matrix:
-        env: [preview, production]
-    if: ${{ needs.build.outputs[matrix.env] == 'stop' }}
+    name: Deploy artifact for Preview
+    if: ${{ needs.build.outputs.preview != 'stop' }}
 
     steps:
       - uses: actions/checkout@v2.4.0

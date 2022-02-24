@@ -64,7 +64,23 @@ jobs:
 
   deploy-preview:
     runs-on: ubuntu-latest
-    needs: [ build ]
+    needs: [ build-preview ]
+    name: Deploy artifact for Preview
+    if: ${{ needs.build.outputs.preview != 'stop' }}
+
+    steps:
+      - name: Use Node.js 16.14.0
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+
+      - name: Install shipit
+        run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0
+
+  deploy-production:
+    runs-on: ubuntu-latest
+    needs: [ build-production ]
     name: Deploy artifact for Preview
     if: ${{ needs.build.outputs.preview != 'stop' }}
 

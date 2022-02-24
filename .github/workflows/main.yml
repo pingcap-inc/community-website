@@ -32,7 +32,7 @@ jobs:
         run: npm ci
         if: steps.dep-caches.outputs.cache-hit != 'true'
         env:
-          GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint
         run: npm run lint

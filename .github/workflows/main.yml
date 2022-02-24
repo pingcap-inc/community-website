@@ -92,11 +92,11 @@ jobs:
           key: ${{ runner.os }}-prod-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
       - name: Install production deps
-        run: npm ci --no-audit --production
+        run: npm ci --no-audit --production --ignore-scripts
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Bundle target
-        run: tar --exclude .next/cache -cf target.tar node_modules .next public
+        run: tar --exclude .next/cache -cf target.tar node_modules .next public .nvmrc .env.production next.config.js sentry.* pm2.config.js
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2

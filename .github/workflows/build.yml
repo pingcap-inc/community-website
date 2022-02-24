@@ -58,7 +58,7 @@ jobs:
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Bundle target
-        run: tar --exclude .next/cache -cf target.tar node_modules .next public .nvmrc .env.production next.config.js sentry.* pm2.config.js
+        run: tar --exclude .next/cache -cf target.tar node_modules .next public/locales public/scripts
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2

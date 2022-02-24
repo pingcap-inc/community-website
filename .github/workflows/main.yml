@@ -15,7 +15,7 @@ jobs:
     needs: [ verify ]
     uses: ./.github/workflows/build.yml
     with:
-      build-env: production
+      build-env: preview
 
   build-production:
     needs: [ verify ]

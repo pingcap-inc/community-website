@@ -28,11 +28,8 @@ jobs:
             packages/*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
-      - name: Install
-        run: npm ci
-        if: steps.dep-caches.outputs.cache-hit != 'true'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Config npm token
+        run: npm config set //npm.pkg.github.com/:_authToken ${{ secrets.GITHUB_TOKEN }}
 
       - name: Lint
         run: npm run lint

@@ -31,6 +31,8 @@ jobs:
       - name: Install
         run: npm ci
         if: steps.dep-caches.outputs.cache-hit != 'true'
+        env:
+          GITHUB_TOKEN: ${{ secret.GITHUB_TOKEN }}
 
       - name: Lint
         run: npm run lint
@@ -66,27 +68,11 @@ jobs:
       - name: Copy locales
         run: npm run copy:locales
 
-      - name: Move deps
-        run: mv node_modules node_modules_dev
-
-      - name: Cache dependencies
-        id: runtime-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-          key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
-
-      - name: Install runtime dependencies
-        run: npm install --only=prod
-        if: steps.runtime-caches.outputs.cache-hit != 'true'
-
       - name: Upload artifacts
         uses: actions/upload-artifact@v2
         with:
           name: target
           path: |
-            node_modules
             .next
             public
           if-no-files-found: error

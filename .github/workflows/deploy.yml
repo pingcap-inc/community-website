@@ -6,9 +6,6 @@ on:
       build-env:
         required: true
         type: string
-      host:
-        required: true
-        type: string
     secrets:
       MAILCHIMP_DC:
         required: true
@@ -53,7 +50,7 @@ jobs:
           name: target-${{ inputs.build-env }}
 
       - name: Un-compress target
-        run: tar -xf target.tar
+        run: tar -zxf target.tar && rm target.tar
 
       - name: Dump envs
         run: |
@@ -82,4 +79,5 @@ jobs:
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
           DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
           DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+          DEPLOY_INSTANCES_NUM: ${{ secrets.DEPLOY_INSTANCES_NUM }}
 

@@ -29,7 +29,6 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       build-env: preview
-      host: HOST_PREVIEW_IP
     secrets:
       MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
       MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}
@@ -48,7 +47,6 @@ jobs:
     uses: ./.github/workflows/deploy.yml
     with:
       build-env: production
-      host: HOST_HK_1_IP
     secrets:
       MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
       MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}

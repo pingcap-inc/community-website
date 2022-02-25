@@ -64,7 +64,7 @@ jobs:
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Bundle target
-        run: tar --exclude .next/cache -cf target.tar node_modules .next public/locales
+        run: tar --exclude .next/cache -zcf target.tar node_modules .next public/locales
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v2

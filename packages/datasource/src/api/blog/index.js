@@ -3,6 +3,7 @@ import blogClient from '../blogClient';
 export * as posts from './posts';
 export * as common from './common';
 export * as users from './users';
+export * as username from './username';
 
 export const getList = ({ latest, ...params }) =>
   blogClient.get(`/api/posts/${latest ? 'latest' : 'recommend'}`, { params });

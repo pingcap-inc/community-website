@@ -3,6 +3,7 @@ import { Page, Pagination, Post } from './posts/[id]';
 export * as posts from './posts';
 export * as common from './common';
 export * as users from './users';
+export * as username from './username';
 
 export function getList(query?: PostQuery & { latest: boolean }): Page<Post>;
 
@@ -61,4 +62,52 @@ interface PostDetails {
   slug: string;
   visit?: boolean;
   fromShareId?: string;
+}
+
+export enum EStatus {
+  ALL = '',
+  DRAFT = 'draft',
+  PENDING = 'pending',
+  REJECTED = 'rejected',
+  PUBLISHED = 'published',
+}
+
+export interface IBlogAuthor {
+  id: number;
+  username: string;
+  avatarURL: string;
+}
+
+export interface IBlogCategory {
+  id: number;
+  name: string;
+  slug: string;
+}
+
+export interface IPost {
+  id: number;
+  slug: string;
+  status: EStatus;
+  author: IBlogAuthor;
+  origin: string;
+  title: string;
+  summary: string;
+  publishedAt: Date;
+  recommended: boolean;
+  recommendAt?: Date;
+  tags: [];
+  likes: number;
+  comments: number;
+}
+
+export interface IPage {
+  number: number;
+  size: number;
+  totalElements: number;
+  totalPages: number;
+}
+
+export interface IResponse<T> {
+  content: T[];
+  page: IPage;
 }

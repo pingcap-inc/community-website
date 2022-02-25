@@ -19,11 +19,9 @@ import {
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
-import { getPageQuery } from '~/utils/pagination.utils';
-import { useState } from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import {
-  getPostsByUsername,
+  //getPostsByUsername,
   getPostUrlBySlug,
   IResponse,
   IPost,
@@ -32,6 +30,14 @@ import {
 } from '../username';
 import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
+import { api } from '@tidb-community/datasource';
+import { ErrorPage } from '~/components';
+import useSWRInfinite from 'swr/infinite';
+import { getPageInfo } from '~/pages/blog/user/[id]/posts/page-info';
+import StatusSelect from './StatusSelect.component';
+import { usePrincipal } from '~/pages/blog/blog.hooks';
+
+//const {EStatus} = api.blog
 
 interface IProps {
   username: string;
@@ -43,20 +49,25 @@ interface IProps {
   posts: IResponse<IPost>;
 }
 interface IQuery extends ParsedUrlQuery {
+  status?: string[];
   username: string;
   page?: string;
   size?: string;
 }
 
+const pageSize = 20;
+
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username } = ctx.params;
+  const { status, username } = ctx.params;
+  const pageInfo = getPageInfo(status);
   const [i18nProps, badges, profile, summary, posts, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getPostsByUsername(username),
+    api.blog.username.getPostsByUsername({ status: pageInfo.status, username }),
+    //getPostsByUsername(username),
     getPostsNumberByUsername(username),
     getPostFavoritesNumberByUsername(username),
   ]);
@@ -75,30 +86,44 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfilePostPage(props: IProps) {
-  const { username, badges, profile, summary, posts, postsNumber, postFavoritesNumber } = props;
+  const { username, badges, profile, summary, posts: postsFromSSR, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
+
   const router = useRouter();
-  const pageInfo = getPageQuery(router.query);
-  const [pageNumber, setPageNumber] = useState(pageInfo.page);
-  const [data, setData] = useState(posts.content ?? []);
-  const [hasMore, setHasMore] = useState(posts.page.number < posts.page.totalPages);
-  const [loading, setLoading] = useState(false);
-  const loadMoreData = async () => {
-    setLoading(true);
-    try {
-      const nextPage = pageNumber + 1;
-      setPageNumber(nextPage);
-      const newPosts = await getPostsByUsername(username, nextPage);
-      const newData = newPosts.content ?? [];
-      setData((data) => [...data, ...newData]);
-      setHasMore(newPosts.page.number < newPosts.page.totalPages);
-    } catch (e) {
-      console.error(e);
-    }
-    setLoading(false);
+  const { status } = router.query;
+  const pageInfo = getPageInfo(status as string[]);
+
+  const { hasAuthority } = usePrincipal();
+
+  const showFilter = true || hasAuthority('READ_OTHERS_POST');
+  const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
+
+  const getKey = (page) => {
+    return ['blog.username.getPostsByUsername', { status: pageInfo.status, username, page, size: pageSize }];
   };
-  const isEmpty: boolean = loading === false && data.length === 0;
+  const {
+    data: postsResp,
+    error: postsError,
+    size,
+    setSize,
+  } = useSWRInfinite<IResponse<IPost>>(getKey, {
+    fallbackData: [postsFromSSR],
+    revalidateOnMount: true,
+  });
+  const error = postsError;
+  const loading = !postsResp;
+  if (error) return <ErrorPage statusCode={500} errorMsg={'暂时无法获取博客数据，请稍候再试'} />;
+  if (loading) return <Skeleton active />;
+
+  const loadMoreData = async () => {
+    await setSize((size) => size + 1);
+  };
+  const hasMore = postsResp[0].page.totalPages > size;
+  const posts = [];
+  postsResp.forEach(({ content }) => posts.push(...content));
+  const isEmpty: boolean = loading === false && posts.length === 0;
+
   return (
     <ProfileLayout
       badges={badges}
@@ -118,36 +143,12 @@ export default function ProfilePostPage(props: IProps) {
             post: postsNumber,
             favorite: allFavoritesNumber,
           }}
+          extendDom={tabExtendDOM}
         />
       </CommonStyled.Action>
       <CommonStyled.List>
-        {/*{posts.map((value) => (*/}
-        {/*  <ListItem*/}
-        {/*    key={value.id}*/}
-        {/*    url={`/blog/${value.slug}`}*/}
-        {/*    title={value.title}*/}
-        {/*    summary={value.title}*/}
-        {/*    metadataStart={*/}
-        {/*      <Space size={24}>*/}
-        {/*        <div>*/}
-        {/*          <HeartOutlined /> {value.likes}*/}
-        {/*        </div>*/}
-        {/*        <div>*/}
-        {/*          <MessageOutlined /> {value.comments}*/}
-        {/*        </div>*/}
-        {/*        /!*<div>*!/*/}
-        {/*        /!*  <StarOutlined /> xx*!/*/}
-        {/*        /!*</div>*!/*/}
-        {/*        /!*<div>*!/*/}
-        {/*        /!*  <EyeOutlined /> xx*!/*/}
-        {/*        /!*</div>*!/*/}
-        {/*      </Space>*/}
-        {/*    }*/}
-        {/*    metadataEnd={getRelativeDatetime(value.publishedAt)}*/}
-        {/*  />*/}
-        {/*))}*/}
         <InfiniteScroll
-          dataLength={data.length}
+          dataLength={posts.length}
           next={loadMoreData}
           hasMore={hasMore}
           loader={
@@ -157,7 +158,7 @@ export default function ProfilePostPage(props: IProps) {
               </div>
             )
           }
-          endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
+          endMessage={posts.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           {isEmpty ? (
             <EmptyStatus description={'你还没有发表过任何文章'}>
@@ -165,7 +166,7 @@ export default function ProfilePostPage(props: IProps) {
             </EmptyStatus>
           ) : (
             <List
-              dataSource={data}
+              dataSource={posts}
               locale={{ emptyText: '暂无数据' }}
               loading={loading}
               renderItem={(value) => (

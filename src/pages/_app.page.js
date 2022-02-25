@@ -19,7 +19,7 @@ import '~/components/Button/Button.scss';
 import '~/components/Container/Container.scss';
 import '~/styles/globals.css';
 import ErrorPage from './_error.page';
-import nextI18NextConfig from '@/next-i18next.config.js';
+import nextI18NextConfig from '@/next-i18next.config';
 import { authContext, AuthContext, MeContext } from '~/context';
 import { isEmptyOrNil } from '~/utils/common.utils';
 import { store } from '~/redux';

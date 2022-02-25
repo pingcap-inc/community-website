@@ -51,6 +51,7 @@ jobs:
             node_modules
             packages/*/node_modules
           key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-production
 
       - uses: actions/download-artifact@v2
         name: Download ${{ inputs.build-env }} artifact

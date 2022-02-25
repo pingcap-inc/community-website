@@ -26,6 +26,7 @@ jobs:
             node_modules
             packages/*/node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build
 
       - name: Config npm token
         run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"

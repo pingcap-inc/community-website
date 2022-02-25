@@ -3,7 +3,7 @@ let nextConfig;
 const path = require('path');
 const { withSentryConfig } = require('@sentry/nextjs');
 
-const { i18n } = require('./next-i18next.config.js');
+const { i18n } = require('./next-i18next.config');
 
 const unifyNodeModules = (names) =>
   names.reduce(
@@ -123,5 +123,11 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/daygrid',
 ]);
 
-module.exports = withTM(nextConfig);
+const finalConfig = withTM(nextConfig);
+
+if (process.env.ANALYZE === 'true') {
+  module.exports = require('@next/bundle-analyzer')({ enabled: true })(finalConfig);
+} else {
+  module.exports = finalConfig;
+}
 // module.exports = nextConfig

@@ -2,7 +2,13 @@ import React from 'react';
 import { Select } from 'antd';
 import { useRouter } from 'next/router';
 
-const statuses = [
+interface IStatusInfo {
+  label: string;
+  value: string;
+  url: string;
+}
+
+const statuses: IStatusInfo[] = [
   {
     label: '全部',
     value: '',
@@ -32,6 +38,7 @@ const statuses = [
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   shallow?: boolean;
+  value: IStatusInfo['url'];
 }
 
 export default function StatusSelect({ shallow, ...props }: IProps): JSX.Element {

@@ -57,10 +57,10 @@ jobs:
           path: |
             node_modules
             packages/*/node_modules
-          key: ${{ runner.os }}-prod-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
       - name: Install production deps
-        run: npm ci --no-audit --production --ignore-scripts
+        run: npm ci --no-audit --production
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Bundle target

@@ -14,15 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
 
-      - name: Cache dependencies
-        id: dep-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
-
       - name: Config npm token
         run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
         env:
@@ -33,6 +24,16 @@ jobs:
         with:
           node-version: 16.14.0
           cache: 'npm'
+          cache-dependency-path: ['package-lock.json', 'packages/*/package-lock.json']
+
+      - name: Cache dependencies
+        id: dep-caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
       - name: Cache build result
         uses: actions/cache@v2
@@ -60,7 +61,7 @@ jobs:
           key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 
       - name: Install production deps
-        run: npm ci --no-audit --production
+        run: npm ci --no-audit --production --ignore-scripts
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Bundle target

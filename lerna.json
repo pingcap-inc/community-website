@@ -5,6 +5,5 @@
     "run": {
       "stream": true
     }
-  },
-  "ignore": ["@tidb-community/accounts", "@tidb-community/strapi", "@tidb-community/ui-scripts"]
+  }
 }

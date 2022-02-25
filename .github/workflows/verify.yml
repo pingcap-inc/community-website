@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 16.14.0
           cache: 'npm'
-          cache-dependency-path: ['package-lock.json', 'packages/*/package-lock.json']
+          cache-dependency-path: '**/package-lock.json'
 
       - name: Cache dependencies
         id: dep-caches

@@ -1,9 +1,0 @@
-{
-  "name": "@tidb-community/next-community-src",
-  "private": true,
-  "dependencies": {
-    "@tidb-community/common": "*",
-    "@tidb-community/datasource": "*",
-    "@tidb-community/ui": "*"
-  }
-}

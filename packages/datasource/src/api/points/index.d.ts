@@ -69,7 +69,7 @@ export interface RedeemRecordEntry {
 
 export const getRedeemRecords: ApiRequestFunction<void, { data: RedeemRecordEntry[] }>;
 
-interface AwardedPointEntry {
+export interface AwardedPointEntry {
   digest: string;
   points: number;
   exps: number;

@@ -1,0 +1,61 @@
+name: Main workflow
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  verify:
+    uses: ./.github/workflows/verify.yml
+
+  build-preview:
+    needs: [ verify ]
+    uses: ./.github/workflows/build.yml
+    with:
+      build-env: preview
+
+  build-production:
+    needs: [ verify ]
+    if: ${{ github.event_name == 'push' }}
+    uses: ./.github/workflows/build.yml
+    with:
+      build-env: production
+
+  deploy-preview:
+    needs: [ build-preview ]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      build-env: preview
+    secrets:
+      MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
+      MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}
+      MAILCHIMP_LIST_ID: ${{ secrets.MAILCHIMP_LIST_ID }}
+      NEXT_PUBLIC_RECAPTCHA_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }}
+      NEXT_PUBLIC_STRAPI_EMAIL: ${{ secrets.NEXT_PUBLIC_STRAPI_EMAIL }}
+      NEXT_PUBLIC_STRAPI_PASSWORD: ${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }}
+      DEPLOY_HOST: ${{ secrets.HOST_PREVIEW_IP }}
+      DEPLOY_USER: ${{ secrets.HOST_PREVIEW_USER }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_SERVICE_PATH }}
+      DEPLOY_INSTANCES_NUM: ${{ secrets.INSTANCES_NUM }}
+      DEPLOY_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+  deploy-production:
+    needs: [ build-production ]
+    uses: ./.github/workflows/deploy.yml
+    with:
+      build-env: production
+    secrets:
+      MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
+      MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}
+      MAILCHIMP_LIST_ID: ${{ secrets.MAILCHIMP_LIST_ID }}
+      NEXT_PUBLIC_RECAPTCHA_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }}
+      NEXT_PUBLIC_STRAPI_EMAIL: ${{ secrets.NEXT_PUBLIC_STRAPI_EMAIL }}
+      NEXT_PUBLIC_STRAPI_PASSWORD: ${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }}
+      DEPLOY_HOST: ${{ secrets.HOST_HK_1_IP }}
+      DEPLOY_USER: ${{ secrets.HOST_HK_1_USER }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_SERVICE_PATH }}
+      DEPLOY_INSTANCES_NUM: ${{ secrets.INSTANCES_NUM }}
+      DEPLOY_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}

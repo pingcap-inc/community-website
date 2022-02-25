@@ -2,25 +2,11 @@
   "name": "@tidb-community/common",
   "private": true,
   "version": "0.0.0",
-  "scripts": {
-    "build": "rimraf es lib && father build",
-    "build:watch": "father build --watch"
-  },
   "main": "./src/index",
   "module": "./src/index",
-  "files": [
-    "es",
-    "lib"
-  ],
   "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "7.14.0"
-  },
-  "devDependencies": {
-    "father": "2.30.6",
-    "father-build": "1.19.6",
-    "rimraf": "3.0.2"
-  },
+  "dependencies": {},
+  "devDependencies": {},
   "peerDependencies": {
     "axios": "^0.21.1",
     "js-cookie": "^2.2.1",

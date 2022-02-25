@@ -14,6 +14,9 @@ const unifyNodeModules = (names) =>
     {}
   );
 
+/**
+ * @type {import('next').NextConfig}
+ **/
 const config = {
   i18n,
 
@@ -22,6 +25,8 @@ const config = {
   images: {
     domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
   },
+
+  styledComponents: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {

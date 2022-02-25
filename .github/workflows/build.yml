@@ -1,0 +1,75 @@
+name: Reusable build
+
+on:
+  workflow_call:
+    inputs:
+      build-env:
+        required: true
+        type: string
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      - name: Config npm token
+        run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Use Node.js 16.14.0
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+
+      - name: Cache dependencies
+        id: dep-caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+
+      - name: Cache build result
+        uses: actions/cache@v2
+        with:
+          path: |
+            .next/cache
+          key: ${{ runner.os }}-${{ inputs.build-env }}
+
+      - name: Build for ${{ inputs.build-env }}
+        run: npm run build:${{ inputs.build-env }}
+
+      - name: Copy locales
+        run: npm run copy:locales
+
+      - name: Remove node_modules
+        run: rm -rf node_modules packages/*/node_modules
+
+      - name: Cache prod dependencies
+        id: prod-dep-caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+
+      - name: Install production deps
+        run: npm ci --no-audit --production --ignore-scripts --unsafe-perm
+        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
+
+      - name: Bundle target
+        run: tar --exclude .next/cache -zcf target.tar .next public/locales
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: target-${{ inputs.build-env }}
+          path: target.tar
+          if-no-files-found: error
+

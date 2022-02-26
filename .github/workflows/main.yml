@@ -59,3 +59,18 @@ jobs:
       DEPLOY_PATH: ${{ secrets.DEPLOY_SERVICE_PATH }}
       DEPLOY_INSTANCES_NUM: ${{ secrets.INSTANCES_NUM }}
       DEPLOY_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+  preview-pages-test:
+    needs: [ deploy-preview ]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Use Node.js 16.14.0
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16.14.0
+
+      - name: Install deps
+        run: npm i -g axios chalk
+
+      - name: Run page tests
+        run: node testurls.mjs

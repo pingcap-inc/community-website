@@ -44,7 +44,10 @@ jobs:
 
       - name: Build for ${{ inputs.build-env }}
         run: npm run build:${{ inputs.build-env }}
-
+        env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_RELEASE: tug-website@${GITHUB_SHA}
+  
       - name: Copy locales
         run: npm run copy:locales
 
@@ -60,9 +63,6 @@ jobs:
             packages/*/node_modules
           key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
           restore-keys: ${{ runner.os }}-production
-        env:
-          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
-          SENTRY_RELEASE: tug-website@${GITHUB_SHA}
 
       - name: Install production deps
         run: npm ci --no-audit --production --ignore-scripts --unsafe-perm

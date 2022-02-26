@@ -81,9 +81,8 @@ jobs:
             packages/*/node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
           restore-keys: ${{ runner.os }}-build
-
-      - name: Install deps
-        run: npm i -g axios chalk
+        env:
+          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.io
 
       - name: Run page tests
         run: node testurls.mjs

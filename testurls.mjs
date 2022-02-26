@@ -36,7 +36,7 @@ async function test (url) {
     console.log(url, chalk.gray('...'), chalk.green('[OK]'));
   } catch (e) {
     if (!e.response) {
-      console.error(url, chalk.gray('...'), chalk.red(`[${e?.response.status} ${e?.response.statusText}]`), e);
+      console.error(url, chalk.gray('...'), chalk.red(`[ERROR]`), e);
     } else {
       console.log(url, chalk.gray('...'), chalk.red(`[${e?.response.status} ${e?.response.statusText}]`));
     }
@@ -50,6 +50,7 @@ const failed = res.filter(res => res.status === 'rejected');
 
 if (failed.length > 0) {
   console.error(`${chalk.red('[FAILED]')} ${failed.length}/${urls.length} failed`);
+  process.exit(1)
 } else {
   console.log(`${chalk.green('[SUCCESS]')} all tests passed`);
 }

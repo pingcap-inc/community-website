@@ -70,6 +70,17 @@ jobs:
         uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.14.0
+          cache: 'npm'
+
+      - name: Cache dependencies
+        id: dep-caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build
 
       - name: Install deps
         run: npm i -g axios chalk

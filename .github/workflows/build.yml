@@ -33,6 +33,7 @@ jobs:
             node_modules
             packages/*/node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build
 
       - name: Cache build result
         uses: actions/cache@v2
@@ -58,6 +59,10 @@ jobs:
             node_modules
             packages/*/node_modules
           key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-production
+        env:
+          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_RELEASE: tug-website@${GITHUB_SHA}
 
       - name: Install production deps
         run: npm ci --no-audit --production --ignore-scripts --unsafe-perm

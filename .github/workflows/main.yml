@@ -81,8 +81,8 @@ jobs:
             packages/*/node_modules
           key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
           restore-keys: ${{ runner.os }}-build
-        env:
-          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.io
 
       - name: Run page tests
         run: node testurls.mjs
+        env:
+          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.io

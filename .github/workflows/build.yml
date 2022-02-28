@@ -46,7 +46,7 @@ jobs:
         run: npm run build:${{ inputs.build-env }}
         env:
           SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
-          SENTRY_RELEASE: tug-website@${GITHUB_SHA}
+          SENTRY_RELEASE: tug-website@${{ github.sha }}
   
       - name: Copy locales
         run: npm run copy:locales

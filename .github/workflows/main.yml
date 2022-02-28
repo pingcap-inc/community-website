@@ -16,6 +16,8 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       build-env: preview
+    secrets:
+      SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
 
   build-production:
     needs: [ verify ]
@@ -23,6 +25,8 @@ jobs:
     uses: ./.github/workflows/build.yml
     with:
       build-env: production
+    secrets:
+      SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
 
   deploy-preview:
     needs: [ build-preview ]

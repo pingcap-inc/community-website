@@ -59,7 +59,7 @@ export function useEditContextProvider() {
     } else {
       setLoading(true);
       return api.blog
-        .getPostBySlug(slug)
+        .getPostBySlug({ slug })
         .then((info) => {
           setTitle(info.title);
           setOrigin(info.origin === 'ORIGINAL' ? false : info.sourceURL);
@@ -105,7 +105,7 @@ export function useEditMethods() {
   } = router;
 
   const save = useCallback(
-    async (callback = async () => await router.push) => {
+    async (showMessage = false, callback = (slug) => router.push(`/blog/${slug}/edit`)) => {
       try {
         const { title, coverImageURL, origin, category, tags, content, blogInfo } = editContext;
         const body = {
@@ -119,16 +119,18 @@ export function useEditMethods() {
         };
         if (slug === 'new') {
           const res = await api.blog.posts.create(body);
-          await reload(slug);
+          await reload(res.slug);
           // await router.push(`/blog/${res.slug}`);
           await callback?.(res.slug);
+          if (showMessage === true) message.success('草稿保存成功!');
           return res;
         } else {
           await fixStatus(blogInfo.id, blogInfo.status);
           await api.blog.posts.post.update(blogInfo.id, body);
           await reload(slug);
           // await router.push(`/blog/${blogInfo.slug}`);
-          await callback?.(blogInfo.slug);
+          // await callback?.(blogInfo.slug);
+          if (showMessage === true) message.success('草稿保存成功!');
           return blogInfo;
         }
       } catch (e) {
@@ -143,10 +145,13 @@ export function useEditMethods() {
 
   const saveAndSubmit = useCallback(async () => {
     try {
-      const { slug, id } = await save(undefined);
+      const { slug, id } = await save(false);
       // save() make sure status is DRAFT
-      await api.blog.posts.post.submit(id);
-      await router.push(`/blog/${slug}`);
+      try {
+        await api.blog.posts.post.submit(id);
+      } finally {
+        await router.push(`/blog/${slug}`);
+      }
     } catch (e) {
       message.error('提交失败：' + String(e?.message ?? e));
       throw e;
@@ -159,8 +164,11 @@ export function useEditMethods() {
     try {
       const { slug, id } = await save(undefined);
       // save() make sure status is DRAFT
-      await api.blog.posts.post.publish(id);
-      await router.push(`/blog/${slug}`);
+      try {
+        await api.blog.posts.post.publish(id);
+      } finally {
+        await router.push(`/blog/${slug}`);
+      }
     } catch (e) {
       message.error('发布失败：' + String(e?.message ?? e));
       throw e;

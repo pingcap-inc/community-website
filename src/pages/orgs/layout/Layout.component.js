@@ -28,7 +28,7 @@ const Layout = ({ children }) => {
     isLoading: !data && !error,
   };
 
-  const onGuideButtonClick = (e) => {
+  const onGuideButtonClick = () => {
     window.open('https://asktug.com/t/topic/93405', '_blank').focus();
   };
 

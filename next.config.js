@@ -3,7 +3,7 @@ let nextConfig;
 const path = require('path');
 const { withSentryConfig } = require('@sentry/nextjs');
 
-const { i18n } = require('./next-i18next.config.js');
+const { i18n } = require('./next-i18next.config');
 
 const unifyNodeModules = (names) =>
   names.reduce(
@@ -14,14 +14,19 @@ const unifyNodeModules = (names) =>
     {}
   );
 
+/**
+ * @type {import('next').NextConfig}
+ **/
 const config = {
   i18n,
 
-  pageExtensions: ['page.js', 'page.tsx'],
+  pageExtensions: ['page.js', 'page.jsx', 'page.tsx'],
 
   images: {
     domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
   },
+
+  styledComponents: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {
@@ -32,7 +37,7 @@ const config = {
 
       ...unifyNodeModules(['antd', 'polished', 'ramda', 'react', 'react-dom', 'react-is', 'styled-components']),
 
-      // Make sure we will build directly from the source code for internal comsumers,
+      // Make sure we will build directly from the source code for internal consumers,
       // which gives us an instant reaction if anything updates
       '@tidb-community/common': path.resolve('./packages/common/src'),
       '@tidb-community/datasource': path.resolve('./packages/datasource/src'),
@@ -58,6 +63,26 @@ const config = {
 
   async rewrites() {
     return [{ source: '/next-api/:path*', destination: '/api/:path*' }];
+  },
+
+  async redirects() {
+    return [
+      {
+        source: '/blog/user/:id',
+        destination: '/blog/user/:id/posts',
+        permanent: false,
+      },
+      {
+        source: '/u/:username',
+        destination: '/u/:username/answer',
+        permanent: false,
+      },
+      {
+        source: '/u/:username/favorite',
+        destination: '/u/:username/favorite/article',
+        permanent: false,
+      },
+    ];
   },
 };
 
@@ -98,5 +123,11 @@ const withTM = require('next-transpile-modules')([
   '@fullcalendar/daygrid',
 ]);
 
-module.exports = withTM(nextConfig);
+const finalConfig = withTM(nextConfig);
+
+if (process.env.ANALYZE === 'true') {
+  module.exports = require('@next/bundle-analyzer')({ enabled: true })(finalConfig);
+} else {
+  module.exports = finalConfig;
+}
 // module.exports = nextConfig

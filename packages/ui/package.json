@@ -2,27 +2,19 @@
   "name": "@tidb-community/ui",
   "version": "0.3.2",
   "scripts": {
-    "build": "rimraf es lib && father build",
-    "build:watch": "father build --watch",
     "prepublishOnly": "npm run build && np --yolo --no-publish --branch $(git branch --show-current)",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook"
   },
   "description": "React UI libarary for TiDB Community",
-  "main": "./lib/index",
-  "module": "./es/index",
+  "main": "./src/index",
+  "module": "./src/index",
   "sideEffects": [
     "*.css",
     "*.less"
   ],
-  "files": [
-    "es",
-    "lib"
-  ],
   "license": "MIT",
-  "dependencies": {
-    "@babel/runtime": "7.14.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@ant-design/icons": "4.6.2",
     "@storybook/addon-actions": "6.2.9",
@@ -30,16 +22,11 @@
     "@storybook/addon-links": "6.2.9",
     "@storybook/react": "6.2.9",
     "antd": "4.15.6",
-    "father": "2.30.5",
-    "father-build": "1.19.5",
-    "less-loader": "7.3.0",
-    "np": "7.5.0",
     "polished": "4.1.2",
     "ramda": "0.27.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-is": "17.0.2",
-    "rimraf": "3.0.2"
+    "react-is": "17.0.2"
   },
   "peerDependencies": {
     "antd": "^4.15.4",

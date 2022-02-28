@@ -19,13 +19,24 @@ import '~/components/Button/Button.scss';
 import '~/components/Container/Container.scss';
 import '~/styles/globals.css';
 import ErrorPage from './_error.page';
-import nextI18NextConfig from '@/next-i18next.config.js';
+import nextI18NextConfig from '@/next-i18next.config';
 import { authContext, AuthContext, MeContext } from '~/context';
 import { isEmptyOrNil } from '~/utils/common.utils';
 import { store } from '~/redux';
 
 import '@fullcalendar/common/main.css';
 import '@fullcalendar/daygrid/main.css';
+
+import {
+  SiteComponentsContext,
+  defineSiteComponentsConfig,
+  Site,
+  Env,
+} from '@pingcap-inc/tidb-community-site-components';
+import '@pingcap-inc/tidb-community-site-components/dist/index.css';
+import Link from 'next/link';
+
+import { fetcher as newFetcher } from '~/api';
 
 dayjs.extend(relativeTime);
 // TODO: Need to sync with NextJS locale value
@@ -42,6 +53,38 @@ const fetcher = (path, params) => {
     params = JSON.parse(params);
   } catch (err) {}
   return R.path(path.split('.'), api)(params);
+};
+
+// some attributes would be passed through Link component like `className`
+const WrapLink = ({ url, children, ...attrs }) => {
+  return (
+    <Link href={url}>
+      <a href={url} {...attrs}>
+        {children}
+      </a>
+    </Link>
+  );
+};
+
+// define global configs for @pingcap-inc/tidb-community-site-components
+defineSiteComponentsConfig({
+  site: Site.home,
+  env: Env[process.env.NEXT_PUBLIC_RUNTIME_ENV],
+  wrapRouteLink: (key, url, node) => {
+    return (
+      <WrapLink url={url} key={key}>
+        {node}
+      </WrapLink>
+    );
+  },
+});
+
+const siteFetchers = {
+  fetchers: {
+    accounts: newFetcher,
+    blog: newFetcher,
+    asktug: newFetcher,
+  },
 };
 
 const App = ({ Component, pageProps, router }) => {
@@ -122,7 +165,9 @@ const App = ({ Component, pageProps, router }) => {
         <GlobalStyle />
         <AuthContext.Provider value={authContext}>
           <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
-            <WrappedComponent {...pageProps} />
+            <SiteComponentsContext.Provider value={siteFetchers}>
+              <WrappedComponent {...pageProps} />
+            </SiteComponentsContext.Provider>
           </MeContext.Provider>
         </AuthContext.Provider>
       </Provider>

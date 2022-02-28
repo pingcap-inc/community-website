@@ -42,7 +42,7 @@ export const getDataSource = ({ membersResp = {}, meData = {}, onDelete, onRoleC
         role: isAdmin ? <RoleDropdown {...roleDropdownProps} /> : roleName,
         operation:
           isAdmin || isMyself ? (
-            <Styled.Delete onClick={(e) => onDelete({ id, isMyself })}>{isMyself ? '退出' : '删除'}</Styled.Delete>
+            <Styled.Delete onClick={() => onDelete({ id, isMyself })}>{isMyself ? '退出' : '删除'}</Styled.Delete>
           ) : (
             <Styled.DisabledDelete>删除</Styled.DisabledDelete>
           ),

@@ -42,7 +42,7 @@ const ErrorPage = ({ statusCode, errorMsg }) => {
   const buttonProps = {
     type: 'primary',
     icon: <ArrowLeftOutlined />,
-    onClick: (e) => {
+    onClick: () => {
       router.push('/community', '/');
     },
   };

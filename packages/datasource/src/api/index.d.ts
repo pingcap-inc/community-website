@@ -17,16 +17,14 @@ export interface ApiRequestFunction<Params, ResponseData, ResponseDetails = stri
   (params: Params): Promise<ApiResponse<ResponseData, ResponseDetails>>;
 }
 
-export type PageData<T, Key> = {
+export interface PageData<T, Key extends string> {
   data: {
     meta: {
-      [`${Key}_count`]: number;
       page: number;
       page_size: number;
-    };
-    [Key]: T[];
-  };
-};
+    } & Record<`${Key}_count`, number>;
+  } & Record<Key, T[]>;
+}
 
 interface StrapiClientProps {
   baseUrl?: string;

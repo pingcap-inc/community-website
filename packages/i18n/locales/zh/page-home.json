@@ -13,7 +13,7 @@
       },
       "article": {
         "label": "文章",
-        "link": "https://asktug.com/c/blog"
+        "link": "https://tidb.io/blog"
       },
       "activity": {
         "label": "活动",
@@ -89,7 +89,7 @@
       },
       {
         "name": "技术⽂章",
-        "link": "https://asktug.com/c/blog"
+        "link": "https://tidb.io/blog"
       },
       {
         "name": "TUG 社区活动",
@@ -110,32 +110,56 @@
     ]
   },
   "blogs": {
-    "title": "博客",
+    "title": "社区专栏",
     "shareExperience": "想分享经验？",
-    "writeBlog": "写博客",
-    "articleCategories": "文章分类",
-    "intro": "「博客」是社区的技术文章集合地，用户可以在这里查看、分享高质量的博客文章，学习干货。",
+    "writeBlog": "写专栏",
+    "articleCategories": "热门标签",
+    "intro": "「专栏」是社区的技术文章集合地，用户可以在这里查看、分享高质量的专栏文章，学习干货。",
     "comply": "发表、分享技术文章请参考",
     "doc": {
       "text": "技术文章撰写&发布指引",
-      "link": "https://asktug.com/t/topic/69773"
+      "link": "https://tidb.io/blog/66c5e81b"
     },
     "categories": [
       {
-        "name": "⽤户实践与应⽤",
-        "link": "https://asktug.com/c/blog/practice"
+        "name": "实践案例",
+        "link": "https://tidb.io/blog/tag/practical-case"
       },
       {
-        "name": "原理解读",
-        "link": "https://asktug.com/c/blog/theory"
+        "name": "TiDB 底层架构",
+        "link": "https://tidb.io/blog/tag/tidb-underlying-architecture"
       },
       {
-        "name": "经验教程",
-        "link": "https://asktug.com/c/blog/how-to"
+        "name": "故障排查/诊断",
+        "link": "https://tidb.io/blog/tag/troubleshooting-and-diagnosis"
       },
       {
-        "name": "测评",
-        "link": "https://asktug.com/c/blog/review"
+        "name": "管理与运维",
+        "link": "https://tidb.io/blog/tag/management-and-operation-and-maintenance"
+      },
+      {
+        "name": "性能调优",
+        "link": "https://tidb.io/blog/tag/performance-tuning"
+      },
+      {
+        "name": "安装 & 部署",
+        "link": "https://tidb.io/blog/tag/install-and-deploy"
+      },
+      {
+        "name": "数据库架构选型",
+        "link": "https://tidb.io/blog/tag/database-architecture-selection"
+      },
+      {
+        "name": "监控",
+        "link": "https://tidb.io/blog/tag/monitor"
+      },
+      {
+        "name": "版本测评",
+        "link": "https://tidb.io/blog/tag/version-evaluation"
+      },
+      {
+        "name": "新版本/特性发布",
+        "link": "https://tidb.io/blog/tag/new-version-features-released"
       }
     ]
   },
@@ -209,8 +233,8 @@
         "title": "想了解更多实践案例？",
         "links": [
           {
-            "link": "https://asktug.com/c/blog/",
-            "label": "博客"
+            "link": "https://tidb.io/blog/",
+            "label": "专栏"
           }
         ]
       },

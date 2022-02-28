@@ -1,33 +1,20 @@
 {
   "name": "@tidb-community/datasource",
   "version": "0.3.2",
-  "scripts": {
-    "build": "rimraf es lib && father build",
-    "build:watch": "father build --watch",
-    "prepublishOnly": "npm run build && np --yolo --no-publish --branch $(git branch --show-current)"
-  },
+  "scripts": {},
   "description": "Navigation and i18n datasource for TiDB community.",
-  "main": "lib/index.js",
-  "module": "es/index.js",
+  "main": "src/index.js",
+  "module": "src/index.js",
   "sideEffects": false,
-  "files": [
-    "es",
-    "lib",
-    "types"
-  ],
   "license": "MIT",
   "types": "types/index.d.ts",
   "dependencies": {
-    "@babel/runtime": "7.14.0",
     "@tidb-community/common": "*",
     "js-cookie": "2.2.1"
   },
   "devDependencies": {
     "@types/js-cookie": "2.2.6",
-    "father": "2.30.5",
-    "father-build": "1.19.5",
-    "js-cookie": "2.2.1",
-    "np": "7.5.0"
+    "js-cookie": "2.2.1"
   },
   "peerDependencies": {
     "axios": "^0.21.1",

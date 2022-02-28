@@ -1,0 +1,44 @@
+name: Reusable verify
+
+on:
+  workflow_call:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: actions/checkout@v2.4.0
+
+      - name: Use Node.js 16.14.0
+        uses: actions/setup-node@v2.5.1
+        with:
+          node-version: 16.14.0
+          cache: 'npm'
+
+      - name: Resolve build dependencies
+        id: dep-caches
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            packages/*/node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-build
+
+      - name: Config npm token
+        run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install
+        run: npm ci --no-audit --unsafe-perm
+        if: steps.dep-caches.outputs.cache-hit != 'true'
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Test
+        run: npm run test

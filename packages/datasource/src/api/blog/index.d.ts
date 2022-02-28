@@ -4,6 +4,8 @@ export * as posts from './posts';
 export * as common from './common';
 export * as users from './users';
 
+export function getList(query?: PostQuery & { latest: boolean }): Page<Post>;
+
 export function getLatest(query?: PostQuery): Page<Post>;
 
 export function getRecommend(query?: PostQuery): Page<Post>;
@@ -27,6 +29,8 @@ export function getCategoryBySlug(slug: string): Promise<CategoryDetails>;
 interface PostQuery {
   tagID?: number;
   categoryID?: number;
+  page: number;
+  size: number;
 }
 
 interface Tag {

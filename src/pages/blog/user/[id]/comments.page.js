@@ -1,24 +1,31 @@
 import React from 'react';
-import { Avatar, List } from 'antd';
-import Link from 'next/link';
+import * as Styled from './index.styled';
+import { List } from 'antd';
+// import Link from 'next/link';
 
 import { getI18nProps } from '~/utils/i18n.utils';
 import UserDetailsLayout from './Layout.component';
 import { api } from '@tidb-community/datasource';
 import { useRouterPage } from '~/utils/pagination.utils';
 import { getPageQuery } from '~/utils/pagination.utils';
+import CommentPostItem from '~/pages/blog/user/_component/CommentPostItem';
+import EmptyStatus from '~/components/EmptyStatus';
+import { blogUrl } from '~/pages/u/[username]/constant.data';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
 
   const { page, size } = getPageQuery(ctx.query);
-  const { id } = ctx.params;
-  const [user, comments] = await Promise.all([api.blog.users.get(id), api.blog.users.getComments(id, { page, size })]);
+  const { id: userId } = ctx.params;
+  const sort = 'id,desc';
+  const [user, comments] = await Promise.all([
+    api.blog.users.get({ userId }),
+    api.blog.users.getComments({ userId, page, size, sort }),
+  ]);
 
   return {
     props: {
       ...i18nProps,
-      id,
       comments,
       user,
     },
@@ -41,30 +48,19 @@ const CommentsList = ({
 }) => {
   const { onPageChange } = useRouterPage();
 
-  return (
+  return content.length === 0 ? (
+    <EmptyStatus description={'你还没有评论过任何文章'} style={{ boxShadow: 'none' }}>
+      快前往 <a href={blogUrl}>【社区专栏】</a> 评论第一篇技术文章吧～
+    </EmptyStatus>
+  ) : (
     <List
       pagination={{ current: number, total: totalElements, onChange: onPageChange }}
       dataSource={content}
-      locale={{ emptyText: '暂无评论' }}
-      renderItem={({ post, content, commenter, repliedTo }) => (
-        <li>
-          <List.Item>
-            <p>
-              <Avatar src={commenter.avatarURL} size="small" />
-              &nbsp;
-              {commenter.username || commenter.name}
-              &nbsp; 在
-              <Link href={`/blog/${post.id}`}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className="ant-btn-link" type="link">
-                  「{post.title}」
-                </a>
-              </Link>
-              &nbsp;
-              {repliedTo ? <>回复了&nbsp;@{repliedTo.username || repliedTo.name}</> : '评论了'}：{content}
-            </p>
-          </List.Item>
-        </li>
+      // locale={{ emptyText: '暂无评论' }}
+      renderItem={(value) => (
+        <Styled.Item>
+          <CommentPostItem value={value} />
+        </Styled.Item>
       )}
     />
   );

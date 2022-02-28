@@ -5,7 +5,7 @@ import Link from 'next/link';
 const Tab = ({ id, selectedKey, posts = 0, likes = 0, comments = 0, favorites = 0 }) => {
   return (
     <Styled.Tab>
-      <TabItem id={id} selectedKey={selectedKey} name={`文章 ${posts}`} urlKey="posts" />
+      <TabItem id={id} selectedKey={selectedKey} name={`文章 ${posts}`} urlKey="posts/all" />
       <TabItem id={id} selectedKey={selectedKey} name={`评论 ${comments}`} urlKey="comments" />
       <TabItem id={id} selectedKey={selectedKey} name={`赞 ${likes}`} urlKey="like" />
       <TabItem id={id} selectedKey={selectedKey} name={`收藏 ${favorites}`} urlKey="favorites" />

@@ -3,7 +3,7 @@ import styles from './ArticleCategory.module.scss';
 import classnames from 'classnames';
 import MyLink from '~/components/MyLink';
 
-export default function ArticleCategory({ title, children, color, link, ...rest }) {
+export default function ArticleCategory({ title, children, color, link }) {
   return (
     <div className={styles.wrapper}>
       <MyLink href={link}>

@@ -7,7 +7,6 @@ import { api } from '@tidb-community/datasource';
 // @ts-ignore
 import { PageLoader } from '~/components';
 import * as Styled from './index.styled';
-import { AwardedPointEntry } from '@tidb-community/datasource/src/api/points';
 import { Link, Tutorial } from '../index.styled';
 
 const Page = () => {
@@ -20,7 +19,7 @@ const Page = () => {
   const [total, setTotal] = useState(0);
   // const { data: records } = useSWR<api.ApiResponse<{ data: api.points.AwardedPointEntry[] }, any>, any>(isReady && ['points.getAwardedPoints', {currentPage, perPage}]);
   // when currentPage changes, fetch new data
-  const [tableData, setTableData] = useState<AwardedPointEntry[]>([]);
+  const [tableData, setTableData] = useState<api.points.AwardedPointEntry[]>([]);
   useEffect(() => {
     api.points.getAwardedPoints({ currentPage, perPage }).then((data) => {
       setTableData(data.data);
@@ -60,7 +59,7 @@ const Page = () => {
     },
   ];
 
-  const onChange = (page: number, pageSize: number) => {
+  const onChange = (page: number) => {
     setCurrentPage(page);
   };
 

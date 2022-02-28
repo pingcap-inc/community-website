@@ -77,3 +77,7 @@ export async function comment(id, content, replyTo) {
 export async function del(id) {
   return await blogClient.delete(`/api/posts/${id}`);
 }
+
+export async function delComment(id, commentId) {
+  return await blogClient.delete(`/api/posts/${id}/comments/${commentId}`);
+}

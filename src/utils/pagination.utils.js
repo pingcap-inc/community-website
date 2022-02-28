@@ -6,7 +6,7 @@ const toNumber = (value, defaultValue) => {
   return isNaN(value) ? defaultValue : value;
 };
 
-export const getPageQuery = (query, defaults = { page: 1, size: 10 }) => {
+export const getPageQuery = (query, defaults = { page: 1, size: 20 }) => {
   const { page, size } = query;
   return {
     page: toNumber(page, defaults.page),

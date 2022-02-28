@@ -54,7 +54,7 @@ const FormComponent = ({ children, submitApi, submitApiFormatter, formFields, fo
         <Button
           type="primary"
           key="close"
-          onClick={(e) => {
+          onClick={() => {
             window.open(window.location, '_self').close();
           }}
         >

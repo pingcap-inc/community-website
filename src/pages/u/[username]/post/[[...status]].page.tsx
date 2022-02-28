@@ -98,7 +98,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   const { hasAuthority } = usePrincipal();
   const { meData } = useContext(MeContext);
 
-  const showFilter = meData.username === username || hasAuthority('READ_OTHERS_POST');
+  const showFilter = meData?.username === username || hasAuthority('READ_OTHERS_POST');
   const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
 
   const getKey = (page) => {

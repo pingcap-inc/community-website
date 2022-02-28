@@ -1,4 +1,5 @@
 import { api } from '@tidb-community/datasource';
+import { IResponseList, TPostStatus } from '../../../../packages/datasource/src/api/blog';
 
 const { blogClient } = api;
 
@@ -54,22 +55,30 @@ export function getPostUrlBySlug(slug: IPost['slug']): string {
   return `/blog/${slug}`;
 }
 
-export async function getPostsByUsername(username: string, page?: number, size?: number): Promise<IResponse<IPost>> {
-  const pageStr = page ?? '';
-  const sizeStr = size ?? '';
-  const url = `/api/users/username/${username}/posts?page=${pageStr}&size=${sizeStr}`;
-  return await blogClient.get(url);
+export async function getPostsByUsername(input: {
+  username: string;
+  status?: string;
+  page?: number;
+  size?: number;
+}): Promise<IResponse<IPost>> {
+  const { username, ...params } = input;
+  const url = `/api/users/username/${username}/posts`;
+  return await blogClient.get(url, { params });
 }
 
-export async function getPostsNumberByUsername(username: string): Promise<number | null> {
+export async function getPostsNumberByUsername(params: { username: string; status?: string }): Promise<number | null> {
   let postNumber: number | null = null;
   try {
-    const data = await getPostsByUsername(username);
+    const data = await getPostsByUsername(params);
     postNumber = data?.page?.totalElements ?? null;
   } catch (e) {
     console.error('getPostsNumberByUsername error');
   }
   return postNumber;
+}
+
+export function getListNumberFromResponse<T>(response: IResponseList<T>): number | null {
+  return response?.page?.totalElements ?? null;
 }
 
 export async function getPostFavoritesByUsername(

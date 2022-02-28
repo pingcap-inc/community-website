@@ -25,6 +25,7 @@ import {
   getPostUrlBySlug,
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
+  getListNumberFromResponse,
 } from '../username';
 import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
@@ -45,7 +46,7 @@ interface IProps {
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
-  postsNumber: number | null;
+  //postsNumber: number | null;
   postFavoritesNumber: number | null;
   posts: IResponseList<IResponsePostDetail>;
 }
@@ -61,7 +62,7 @@ const pageSize = 20;
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { status, username } = ctx.params;
   const pageInfo = getPageInfo(status);
-  const [i18nProps, badges, profile, summary, posts, postsNumber, postFavoritesNumber] = await Promise.all([
+  const [i18nProps, badges, profile, summary, posts, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
@@ -69,7 +70,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getSummaryByUsername(username),
     api.blog.username.getPostsByUsername({ status: pageInfo.status, username }),
     //getPostsByUsername(username),
-    getPostsNumberByUsername(username),
+    //getPostsNumberByUsername({username, status: pageInfo.status}),
     getPostFavoritesNumberByUsername(username),
   ]);
   return {
@@ -80,14 +81,13 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
       profile,
       summary,
       posts,
-      postsNumber,
       postFavoritesNumber,
     },
   };
 };
 
 export default function ProfilePostPage(props: IProps): JSX.Element {
-  const { username, badges, profile, summary, posts: postsFromSSR, postsNumber, postFavoritesNumber } = props;
+  const { username, badges, profile, summary, posts: postsFromSSR, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
 
@@ -126,6 +126,8 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   postsResp.forEach(({ content }) => posts.push(...content));
   const isEmpty: boolean = loading === false && posts.length === 0;
 
+  const postsNumber = getListNumberFromResponse(postsResp[0]);
+
   return (
     <ProfileLayout
       badges={badges}
@@ -163,8 +165,8 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
           endMessage={posts.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           {isEmpty ? (
-            <EmptyStatus description={'你还没有发表过任何文章'}>
-              快前往 <a href={blogUrl}>【社区专栏】</a> 撰写第一篇技术文章吧～
+            <EmptyStatus description={`你还没有${pageInfo.statusText}文章`}>
+              快前往 <a href={blogUrl}>【社区专栏】</a> 撰写技术文章吧～
             </EmptyStatus>
           ) : (
             <List
@@ -207,8 +209,11 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
 
 function MetadataEnd({ value }: { value: IResponsePostDetail }) {
   const { status } = value;
-  let datetime: Date = value.publishedAt;
+  let datetime: Date | undefined;
   switch (status) {
+    case 'PUBLISHED':
+      datetime = value.publishedAt;
+      break;
     case 'DRAFT':
       datetime = value.createdAt;
       break;

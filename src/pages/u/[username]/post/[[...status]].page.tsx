@@ -20,13 +20,7 @@ import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import {
-  //getPostsByUsername,
-  getPostUrlBySlug,
-  getPostsNumberByUsername,
-  getPostFavoritesNumberByUsername,
-  getListNumberFromResponse,
-} from '../username';
+import { getPostUrlBySlug, getPostFavoritesNumberByUsername, getListNumberFromResponse } from '../username';
 import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
 import { api } from '@tidb-community/datasource';
@@ -39,14 +33,11 @@ import { IResponseList, IResponsePostDetail } from '../../../../../packages/data
 import { useContext } from 'react';
 import { MeContext } from '~/context';
 
-//const {EStatus} = api.blog
-
 interface IProps {
   username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
-  //postsNumber: number | null;
   postFavoritesNumber: number | null;
   posts: IResponseList<IResponsePostDetail>;
 }
@@ -69,8 +60,6 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
     api.blog.username.getPostsByUsername({ status: pageInfo.status, username }),
-    //getPostsByUsername(username),
-    //getPostsNumberByUsername({username, status: pageInfo.status}),
     getPostFavoritesNumberByUsername(username),
   ]);
   return {

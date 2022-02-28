@@ -58,7 +58,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
     getQuestionsByUsername(username, solved, pageInfo.page),
-    getPostsNumberByUsername(username),
+    getPostsNumberByUsername({username}),
     getPostFavoritesNumberByUsername(username),
   ]);
   return {

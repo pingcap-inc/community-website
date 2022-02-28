@@ -1,5 +1,5 @@
 import { blogClient } from '~/api';
-import { IPost, IResponse } from './index';
+import { IResponsePostDetail, IResponseList } from './index';
 
 export async function getPostsByUsername(input: {
   status: string;
@@ -7,7 +7,7 @@ export async function getPostsByUsername(input: {
   sort?: string;
   page?: number;
   size?: number;
-}): Promise<IResponse<IPost>> {
+}): Promise<IResponseList<IResponsePostDetail>> {
   input.sort = input.sort ?? 'id,desc';
   input.sort = input.status.toUpperCase();
   const { username, ...params } = input;

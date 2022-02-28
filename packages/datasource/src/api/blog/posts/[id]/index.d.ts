@@ -1,48 +1,3 @@
-export type PostOrigin = 'ORIGINAL' | 'REPOST';
-export type PostStatus = 'DRAFT' | 'PENDING' | 'REJECTED' | 'PUBLISHED' | 'ARCHIVED';
-
-export interface Meta {
-  id: number;
-  name: string;
-  slug: string;
-}
-
-export interface Post {
-  creatorId: number;
-  modifierId: number;
-  deletedAt: string;
-  publishedAt: string;
-  id: number;
-  slug: string;
-  version: string;
-  title: string;
-  content: string;
-  category: Meta;
-  tags: Meta[];
-  origin: PostOrigin;
-  status: PostStatus;
-  sourceURL: string;
-  coverImageURL?: string;
-  rejectReason?: string;
-  recommended: boolean;
-  public: boolean;
-}
-
-interface Page<T> {
-  content: T[];
-  page: {
-    number: number; // 0 based
-    totalElements: number;
-    totalPages: number;
-    size: number;
-  };
-}
-
-interface Pagination {
-  page?: number;
-  size?: number;
-}
-
 export interface UserInfo {
   id: number;
   username: string;
@@ -50,7 +5,7 @@ export interface UserInfo {
   avatarURL: string;
 }
 
-export interface PostDetails extends Post {}
+export interface PostDetails extends IPost {}
 
 export interface CreatePost {
   title: string;
@@ -78,7 +33,7 @@ interface Share {
 
 export function info(id: number): Promise<PostDetails>;
 
-export function update(id: number, body: CreatePost): Promise<Post>;
+export function update(id: number, body: CreatePost): Promise<IPost>;
 
 export function submit(id: number): Promise<void>;
 

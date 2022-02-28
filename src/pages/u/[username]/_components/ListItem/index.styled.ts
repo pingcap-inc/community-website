@@ -10,12 +10,15 @@ export const ListItem = styled.div`
   padding: 2rem;
 `;
 
-export const Title = styled(Anchor)`
+export const Title = styled.div`
   display: flex;
+`;
+
+export const TitleText = styled(Anchor)`
   ${mixins.typography('h2')};
 `;
 
-export const TitleText = styled.div`
+export const TitleBadge = styled.div`
   margin-left: 0.5rem;
 `;
 

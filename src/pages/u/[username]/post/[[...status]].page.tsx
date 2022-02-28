@@ -23,8 +23,6 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 import {
   //getPostsByUsername,
   getPostUrlBySlug,
-  IResponse,
-  IPost,
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
 } from '../username';
@@ -36,6 +34,7 @@ import useSWRInfinite from 'swr/infinite';
 import { getPageInfo } from '~/pages/blog/user/[id]/posts/page-info';
 import StatusSelect from './StatusSelect.component';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
+import { IResponseList, IResponsePostDetail } from '../../../../../packages/datasource/src/api/blog';
 
 //const {EStatus} = api.blog
 
@@ -46,7 +45,7 @@ interface IProps {
   summary: IProfileSummary;
   postsNumber: number | null;
   postFavoritesNumber: number | null;
-  posts: IResponse<IPost>;
+  posts: IResponseList<IResponsePostDetail>;
 }
 interface IQuery extends ParsedUrlQuery {
   status?: string[];
@@ -85,7 +84,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfilePostPage(props: IProps) {
+export default function ProfilePostPage(props: IProps): JSX.Element {
   const { username, badges, profile, summary, posts: postsFromSSR, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
@@ -107,7 +106,7 @@ export default function ProfilePostPage(props: IProps) {
     error: postsError,
     size,
     setSize,
-  } = useSWRInfinite<IResponse<IPost>>(getKey, {
+  } = useSWRInfinite<IResponseList<IResponsePostDetail>>(getKey, {
     fallbackData: [postsFromSSR],
     revalidateOnMount: true,
   });
@@ -120,7 +119,7 @@ export default function ProfilePostPage(props: IProps) {
     await setSize((size) => size + 1);
   };
   const hasMore = postsResp[0].page.totalPages > size;
-  const posts: IPost[] = [];
+  const posts: IResponsePostDetail[] = [];
   postsResp.forEach(({ content }) => posts.push(...content));
   const isEmpty: boolean = loading === false && posts.length === 0;
 
@@ -175,6 +174,7 @@ export default function ProfilePostPage(props: IProps) {
                   url={getPostUrlBySlug(value.slug)}
                   title={value.title}
                   summary={value.summary}
+                  status={pageInfo.status === '' ? value.status : undefined}
                   metadataStart={
                     <Space size={24}>
                       <div>
@@ -202,13 +202,10 @@ export default function ProfilePostPage(props: IProps) {
   );
 }
 
-function MetadataEnd({ value }: { value: IPost }) {
+function MetadataEnd({ value }: { value: IResponsePostDetail }) {
   const { status } = value;
-  let datetime: Date | undefined = undefined;
+  let datetime: Date = value.publishedAt;
   switch (status) {
-    case 'PUBLISH':
-      datetime = value.publishedAt;
-      break;
     case 'DRAFT':
       datetime = value.createdAt;
       break;

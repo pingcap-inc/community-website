@@ -35,6 +35,8 @@ import { getPageInfo } from '~/pages/blog/user/[id]/posts/page-info';
 import StatusSelect from './StatusSelect.component';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { IResponseList, IResponsePostDetail } from '../../../../../packages/datasource/src/api/blog';
+import { useContext } from 'react';
+import { MeContext } from '~/context';
 
 //const {EStatus} = api.blog
 
@@ -94,8 +96,9 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   const pageInfo = getPageInfo(status as string[]);
 
   const { hasAuthority } = usePrincipal();
+  const { meData } = useContext(MeContext);
 
-  const showFilter = true || hasAuthority('READ_OTHERS_POST');
+  const showFilter = meData.username === username || hasAuthority('READ_OTHERS_POST');
   const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
 
   const getKey = (page) => {

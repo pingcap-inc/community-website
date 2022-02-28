@@ -50,8 +50,8 @@ export const getServerSideProps = async (ctx) => {
   const { page, size } = getPageQuery(ctx.query);
 
   const [category, tag] = await Promise.all([
-    type === 'category' ? api.blog.getCategoryBySlug(slug) : Promise.resolve(null),
-    type === 'tag' ? api.blog.getTagBySlug(slug) : Promise.resolve(null),
+    type === 'category' ? api.blog.getCategoryBySlug({ slug }) : Promise.resolve(null),
+    type === 'tag' ? api.blog.getTagBySlug({ slug }) : Promise.resolve(null),
   ]);
 
   const [blogs, categories, hotTags] = await Promise.all([

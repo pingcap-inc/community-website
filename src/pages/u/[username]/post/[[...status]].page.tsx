@@ -215,9 +215,9 @@ function MetadataEnd({ value }: { value: IPost }) {
     case 'PENDING':
       datetime = value.lastModifiedAt;
       break;
-    case 'REJECTED':
-      datetime = value.createdAt;
-      break;
+    //case 'REJECTED':
+    //  datetime = value.createdAt;
+    //  break;
   }
   return <>{datetime !== undefined ? getRelativeDatetime(datetime) : ''}</>;
 }

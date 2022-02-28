@@ -44,10 +44,10 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function StatusSelect({ shallow, ...props }: IProps): JSX.Element {
   const router = useRouter();
   const { username } = router.query;
-  const onChangeFilter = (value, option) => {
+  const onChangeFilter = async (value, option) => {
     const { url } = option;
     const newUrl = `/u/${username}/post/${url}`;
-    router.push(newUrl, newUrl, { shallow: shallow ?? false });
+    await router.push(newUrl, newUrl, { shallow: shallow ?? false });
   };
-  return <Select style={{ width: '6rem' }} options={statuses} onChange={onChangeFilter} {...props} />;
+  return <Select style={{ width: '8rem' }} options={statuses} onChange={onChangeFilter} {...props} />;
 }

@@ -22,7 +22,10 @@ export interface IPost {
   origin: string;
   title: string;
   summary: string;
-  publishedAt: Date;
+  publishedAt?: Date;
+  createdAt: Date;
+  lastModifiedAt: Date;
+  deletedAt?: Date;
   recommended: boolean;
   recommendAt?: Date;
   tags: [];

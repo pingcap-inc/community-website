@@ -120,7 +120,7 @@ export default function ProfilePostPage(props: IProps) {
     await setSize((size) => size + 1);
   };
   const hasMore = postsResp[0].page.totalPages > size;
-  const posts = [];
+  const posts: IPost[] = [];
   postsResp.forEach(({ content }) => posts.push(...content));
   const isEmpty: boolean = loading === false && posts.length === 0;
 
@@ -191,7 +191,7 @@ export default function ProfilePostPage(props: IProps) {
                       {/*</div>*/}
                     </Space>
                   }
-                  metadataEnd={getRelativeDatetime(value.publishedAt)}
+                  metadataEnd={<MetadataEnd value={value} />}
                 />
               )}
             />
@@ -200,4 +200,24 @@ export default function ProfilePostPage(props: IProps) {
       </CommonStyled.List>
     </ProfileLayout>
   );
+}
+
+function MetadataEnd({ value }: { value: IPost }) {
+  const { status } = value;
+  let datetime: Date | undefined = undefined;
+  switch (status) {
+    case 'PUBLISH':
+      datetime = value.publishedAt;
+      break;
+    case 'DRAFT':
+      datetime = value.createdAt;
+      break;
+    case 'PENDING':
+      datetime = value.lastModifiedAt;
+      break;
+    case 'REJECTED':
+      datetime = value.createdAt;
+      break;
+  }
+  return <>{datetime !== undefined ? getRelativeDatetime(datetime) : ''}</>;
 }

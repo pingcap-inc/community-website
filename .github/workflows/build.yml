@@ -6,6 +6,9 @@ on:
       build-env:
         required: true
         type: string
+    secrets:
+      SENTRY_TOKEN:
+        required: true
 
 jobs:
   build:
@@ -43,10 +46,15 @@ jobs:
           key: ${{ runner.os }}-${{ inputs.build-env }}
 
       - name: Build for ${{ inputs.build-env }}
-        run: npm run build:${{ inputs.build-env }}
+        run: |
+          npm run build:${{ inputs.build-env }}
+          echo sentry release:
+          echo tug-website@${{ github.sha }}
+          echo ${{ secrets.SENTRY_TOKEN }}
+
         env:
           SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
-          SENTRY_RELEASE: tug-website@${GITHUB_SHA}
+          SENTRY_RELEASE: tug-website@${{ github.sha }}
   
       - name: Copy locales
         run: npm run copy:locales

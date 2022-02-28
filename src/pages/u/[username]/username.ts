@@ -1,5 +1,5 @@
 import { api } from '@tidb-community/datasource';
-import { IResponseList, TPostStatus } from '../../../../packages/datasource/src/api/blog';
+import { IResponseList } from '../../../../packages/datasource/src/api/blog';
 
 const { blogClient } = api;
 

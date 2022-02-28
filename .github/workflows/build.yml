@@ -50,10 +50,7 @@ jobs:
           npm run build:${{ inputs.build-env }}
           echo sentry release:
           echo tug-website@${{ github.sha }}
-          if ["${{ secrets.SENTRY_TOKEN }}" != ""]; then
-                    echo "sentry token exists"
-            echo WOOHOO
-          fi
+          echo ${{ secrets.SENTRY_TOKEN }}
 
         env:
           SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}

@@ -88,12 +88,13 @@ export interface IUserAction {
 export const getTopicUrl = (topic_id: number, post_number: number) =>
   `${askTugDomain}/t/topic/${topic_id}/${post_number}`;
 
-export async function getAnswersByUsername(
-  username: string,
-  markedSolution = false,
-  pageNumber = 1,
-  pageSize = 10
-): Promise<IUserAction[]> {
+export async function getAnswersByUsername(input: {
+  username: string;
+  markedSolution?: boolean;
+  pageNumber?: number;
+  pageSize?: number;
+}): Promise<IUserAction[]> {
+  const { username, markedSolution = false, pageNumber = 1, pageSize = 10 } = input;
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
     markedSolution ? EUserActionFilter.SOLVED : EUserActionFilter.REPLY

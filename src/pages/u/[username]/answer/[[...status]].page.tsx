@@ -41,21 +41,22 @@ interface IProps {
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
+  solution?: string | string[];
   page?: string;
   size?: string;
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username } = ctx.params;
-  // const pageInfo = getPageQuery(ctx.query);
+  const { username, status } = ctx.params;
+  const markedSolution: boolean = status?.[0] === 'solution';
   const [i18nProps, badges, profile, summary, answers, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getAnswersByUsername(username),
-    getPostsNumberByUsername({username}),
+    getAnswersByUsername({ username, markedSolution }),
+    getPostsNumberByUsername({ username }),
     getPostFavoritesNumberByUsername(username),
   ]);
   return {
@@ -72,12 +73,16 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerIndexPage(props: IProps) {
-  const router = useRouter();
+export default function ProfileAnswerSolutionPage(props: IProps) {
   const { badges, profile, summary, answers, username, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
-  // const router = useRouter();
+
+  const router = useRouter();
+  const { status } = router.query;
+  const statusPathInfo: string = status?.[0] ?? '';
+  const markedSolution: boolean = status?.[0] === 'solution';
+
   // const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(1);
   const [data, setData] = useState(answers);
@@ -88,7 +93,7 @@ export default function ProfileAnswerIndexPage(props: IProps) {
     try {
       const nextPage = page + 1;
       setPage(nextPage);
-      const newData = await getAnswersByUsername(username, false, nextPage);
+      const newData = await getAnswersByUsername({ username, markedSolution, pageNumber: nextPage });
       setData((data) => [...data, ...newData]);
       setHasMore(newData.length !== 0);
     } catch (e) {
@@ -118,9 +123,9 @@ export default function ProfileAnswerIndexPage(props: IProps) {
           }}
         />
         <Select
-          defaultValue={''}
-          value={''}
-          onChange={(value) => router.push(`/u/${username}/answer/${value}`)}
+          defaultValue={statusPathInfo}
+          value={statusPathInfo}
+          onChange={(value) => router.push(`/u/${username}/answer/${value}`, undefined, { shallow: false })}
           style={{ width: filterSelectWidth }}
         >
           <Select.Option value={''}>全部</Select.Option>

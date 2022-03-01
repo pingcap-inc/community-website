@@ -5,13 +5,9 @@ import { useRouter } from 'next/router';
 import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 
 export enum EUgcType {
-  // eslint-disable-next-line no-unused-vars
   answer,
-  // eslint-disable-next-line no-unused-vars
   question,
-  // eslint-disable-next-line no-unused-vars
   post,
-  // eslint-disable-next-line no-unused-vars
   favorite,
 }
 
@@ -41,7 +37,7 @@ export default function Tab(props: IPropsTab) {
         <Link href={`${prefix}/question`} passHref>
           <Styled.TabItem selected={selected === EUgcType.question}>提问 {nums.question}</Styled.TabItem>
         </Link>
-        <Link href={`${prefix}/post`} passHref>
+        <Link href={`${prefix}/post/all`} passHref>
           <Styled.TabItem selected={selected === EUgcType.post}>文章 {nums.post}</Styled.TabItem>
         </Link>
         {isCurrentLogonUser && (

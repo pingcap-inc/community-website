@@ -104,7 +104,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   });
   const error = postsError;
   const loading = !postsResp;
-  if (error) return <ErrorPage statusCode={500} errorMsg={'暂时无法获取博客数据，请稍候再试'} />;
+  if (error) return <ErrorPage statusCode={500} errorMsg={'暂时无法获取专栏数据，请稍候再试'} />;
   if (loading) return <Skeleton active />;
 
   const loadMoreData = async () => {

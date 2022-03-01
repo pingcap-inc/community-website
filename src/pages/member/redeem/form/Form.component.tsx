@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Button, Col, message, Row } from 'antd';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
@@ -11,6 +11,7 @@ import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 // @ts-ignore
 import { FormModalContext } from '../index.page';
+import { CountDown } from 'packages/ui/src';
 
 const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,33 +56,19 @@ const FormComponent = () => {
     validationSchema: schema,
   };
 
-  const [codeCountdown, setCodeCountdown] = useState(0);
-
-  // const startCountdown = (count) => {
-  //   setCodeCountdown(count);
-  //   const interval = setInterval(() => {
-  //     setCodeCountdown(codeCountdown - 1);
-  //     if (codeCountdown <= 0) {
-  //       clearInterval(interval);
-  //     }
-  //   }, 1000);
-  // };
-
-  useEffect(() => {
-    if (codeCountdown === 0) setCodeCountdown(null);
-    if (!codeCountdown) return;
-    const intervalId = setInterval(() => setCodeCountdown(codeCountdown - 1), 1000);
-    return () => clearInterval(intervalId);
-  }, [codeCountdown]);
+  const [codeAvailable, setCodeAvailable] = useState(true);
 
   const sendCode = (formik) => {
     return api.points
       .sendCode(formik.values['phoneNumber'])
       .then(() => {
-        setCodeCountdown(60);
+        setCodeAvailable(false);
         message.success('发送成功');
       })
-      .catch(() => message.error('发送失败'));
+      .catch(() => {
+        setCodeAvailable(false);
+        message.error('发送失败');
+      });
   };
 
   return (
@@ -122,10 +109,18 @@ const FormComponent = () => {
                   <Col>
                     <Button
                       size="small"
-                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined || codeCountdown > 0}
+                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined || !codeAvailable}
                       onClick={() => sendCode(formik)}
                     >
-                      {codeCountdown > 0 ? `请等待 ${codeCountdown} 秒` : '发送验证码'}
+                      {codeAvailable ? (
+                        '发送验证码'
+                      ) : (
+                        <CountDown
+                          total={60 * 1000}
+                          onFinished={() => setCodeAvailable(true)}
+                          formatter={(s) => s / 1000}
+                        />
+                      )}
                     </Button>
                   </Col>
                 </Row>

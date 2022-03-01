@@ -1,6 +1,6 @@
 # TiDB User Group - website
 
-[![CircleCI Status](https://circleci.com/gh/pingcap/tug-website.svg?style=svg)](https://circleci.com/gh/pingcap/tug-website)
+[![Main workflow](https://github.com/pingcap-inc/tidb.io/actions/workflows/main.yml/badge.svg)](https://github.com/pingcap-inc/tidb.io/actions/workflows/main.yml)
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 

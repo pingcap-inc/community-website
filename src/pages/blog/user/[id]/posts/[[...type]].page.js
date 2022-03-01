@@ -62,8 +62,9 @@ const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) =>
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
-  const showFilter = logonUserId === Number(userId) || hasAuthority('READ_OTHERS_POST');
-  const showBadge = logonUserId === Number(userId) && pageInfo.showBadge;
+  const isCurrentUser = logonUserId === Number(userId);
+  const showFilter = isCurrentUser || hasAuthority('READ_OTHERS_POST');
+  const showBadge = isCurrentUser && pageInfo.showBadge;
   const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
 
   return (

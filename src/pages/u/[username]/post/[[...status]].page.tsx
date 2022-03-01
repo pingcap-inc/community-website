@@ -90,6 +90,8 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   const showFilter = meData?.username === username || hasAuthority('READ_OTHERS_POST');
   const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
 
+  const isShowStatusBadge: boolean = pageInfo.status === '' && meData?.username === username;
+
   const getKey = (page) => {
     return ['blog.username.getPostsByUsername', { status: pageInfo.status, username, page, size: pageSize }];
   };
@@ -168,7 +170,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
                   url={getPostUrlBySlug(value.slug)}
                   title={value.title}
                   summary={value.summary}
-                  status={pageInfo.status === '' ? value.status : undefined}
+                  status={isShowStatusBadge ? value.status : undefined}
                   metadataStart={
                     <Space size={24}>
                       <div>

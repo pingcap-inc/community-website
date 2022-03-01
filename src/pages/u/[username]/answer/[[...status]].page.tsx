@@ -125,7 +125,7 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
         <Select
           defaultValue={statusPathInfo}
           value={statusPathInfo}
-          onChange={(value) => router.push(`/u/${username}/answer/${value}`, undefined, { shallow: false })}
+          onChange={(value) => router.push(`/u/${username}/answer/${value}`, undefined, { shallow: true })}
           style={{ width: filterSelectWidth }}
         >
           <Select.Option value={''}>全部</Select.Option>

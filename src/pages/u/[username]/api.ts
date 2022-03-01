@@ -139,11 +139,21 @@ export async function getQuestionsByUsername(input: {
   per_page?: number;
 }): Promise<IQuestions[]> {
   const { username, solved = ESolved.all, page = 1, per_page = 10 } = input;
-  const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${
-    page - 1
-  }&per_page=${per_page}&solved=${solved}`;
-  const result = await axios.get(url);
-  return result.data.topic_list?.topics ?? [];
+  let result: IQuestions[];
+  if (solved === ESolved.all) {
+    const url = `${askTugApiDomain}/topics/created-by/${username}.json`;
+    const params = { solved: 1, page: page - 1, per_page };
+    const data = await axios.get(url, { params });
+    result = (data.data.topic_list?.topics as IQuestions[]) ?? [];
+  } else {
+    const unsolved = solved === ESolved.unsolved ? 1 : 0;
+    const url = `${askTugApiDomain}/user_actions.json`;
+    const offset = (page - 1) * per_page;
+    const params = { username, unsolved, offset };
+    const data = await axios.get(url, { params });
+    result = (data.data.user_actions as IQuestions[]) ?? [];
+  }
+  return result;
 }
 
 export interface IProfileSummary {

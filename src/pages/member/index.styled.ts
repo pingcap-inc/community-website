@@ -38,6 +38,16 @@ export const Score = styled.span`
   color: ${colors.B1};
 `;
 
+export const ExpLabel = styled.span`
+  // gradient from left to right, orange to red
+  border: 1px solid ${colors.B1};
+  padding: 4px 8px;
+  margin-right: 4px;
+  border-radius: 1rem;
+  font-size: 12px;
+  color: ${colors.B1};
+`;
+
 export const Rank = styled(Name)`
   padding-left: 4px;
 `;
@@ -84,6 +94,7 @@ export const Badge = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { owned: bo
 export const BadgeIcon = styled.img`
   width: 64px;
   height: 64px;
+  object-fit: contain;
 `;
 
 export const BadgeName = styled.span`

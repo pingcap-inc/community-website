@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 // @ts-ignore
-import { colors } from '@tidb-community/ui';
 import { FC, HTMLAttributes } from 'react';
+import { colors, mixins } from '@tidb-community/ui';
 
 export const PointsContainer = styled.div`
   background-color: ${colors.M1};
@@ -41,6 +41,8 @@ export const Product = styled.div`
 `;
 
 export const ProductImage = styled.img`
+  ${mixins.size('170px', '120px')}
+  object-fit: cover;
   width: 100%;
   margin-bottom: 1rem;
 `;

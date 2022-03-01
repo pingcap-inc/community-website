@@ -1,6 +1,6 @@
 import React from 'react';
 // @ts-ignore
-import Layout from '~/pages/vip-center/layout';
+import Layout from '~/pages/member/layout';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';

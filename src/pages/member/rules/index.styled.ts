@@ -14,6 +14,7 @@ export const Container = styled.div`
 
   .subtitle {
     font-size: 1.4rem;
+    padding-top: 0.5rem;
   }
 
   a {
@@ -35,6 +36,7 @@ export const Container = styled.div`
     border-collapse: collapse;
     text-align: center;
     margin-bottom: 12px;
+    margin-top: 12px;
   }
 
   table h4 {

@@ -59,14 +59,14 @@ export async function getPostsByUsername(username: string, page?: number, size?:
 }
 
 export async function getPostsNumberByUsername(username: string): Promise<number | null> {
-  let postNumber: number|null = null;
+  let postNumber: number | null = null;
   try {
     const data = await getPostsByUsername(username);
     postNumber = data?.page?.totalElements ?? null;
   } catch (e) {
-    console.error('getPostsNumberByUsername error')
+    console.error('getPostsNumberByUsername error');
   }
-  return postNumber
+  return postNumber;
 }
 
 export async function getPostFavoritesByUsername(
@@ -81,12 +81,12 @@ export async function getPostFavoritesByUsername(
 }
 
 export async function getPostFavoritesNumberByUsername(username: string): Promise<number | null> {
-  let number: number|null = null;
+  let number: number | null = null;
   try {
     const data = await getPostFavoritesByUsername(username);
     number = data?.page?.totalElements ?? null;
   } catch (e) {
-    console.error('getPostsNumberByUsername error')
+    console.error('getPostsNumberByUsername error');
   }
-  return number
+  return number;
 }

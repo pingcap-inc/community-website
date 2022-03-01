@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 // @ts-ignore
-import Layout from '~/pages/vip-center/layout';
+import Layout from '~/pages/member/layout';
 import useSWR from 'swr';
 import { api } from '@tidb-community/datasource';
 // @ts-ignore
@@ -75,13 +75,13 @@ const Page = () => {
               <Styled.Product>
                 <Styled.ProductImage src={product.cover_url} />
                 <Styled.ProductLine>{product.name}</Styled.ProductLine>
-                <Styled.ProductLine red={pointsData.current_points < product.points} gray>
+                <Styled.ProductLine red={product.remains > 0} gray>
                   {product.points} 积分 (剩余 {product.remains} 件)
                 </Styled.ProductLine>
                 <Button
                   type="default"
                   onClick={showModal(product.id)}
-                  disabled={pointsData.current_points < product.points}
+                  disabled={pointsData.current_points < product.points || product.remains === 0}
                 >
                   立即兑换
                 </Button>

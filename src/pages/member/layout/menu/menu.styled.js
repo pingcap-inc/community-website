@@ -17,27 +17,33 @@ export const MobileMenu = styled(Menu)`
 export const Container = styled.ul`
   ${mixins.reset()};
   ${mixins.typography('p2')};
-  background: ${colors.M1};
   list-style: none;
   border: 1px solid ${colors.T2};
 `;
 
 export const Item = styled.li`
-  ${mixins.flexVerticalCenter()};
-  ${mixins.verticalLineMiddle('2.5rem')};
-  justify-content: space-between;
-  padding: 0 1rem;
+  font-size: 1rem;
+  display: block;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
   cursor: pointer;
-
-  &:hover {
-    background: ${colors.M2};
+  padding: 0 1rem;
+  transition: color 0.25s ease;
+  color: ${colors.F1} !important;
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
   }
+  &:hover {
+    color: ${colors.B1} !important;
+  }
+  height: 40px;
+  line-height: 40px;
 
   ${(props) =>
     props.isActive &&
     css`
       cursor: default;
-      border-left: 3px solid ${colors.B1};
+      border-left: 4px solid ${colors.B1};
       background: ${colors.M1} !important;
     `}
 `;

@@ -1,5 +1,5 @@
 import * as mock from './index.mock';
-import { getCascaderDefaultValue } from '.';
+import { getCascaderDefaultValue } from './index';
 
 describe('common/utils/form', () => {
   describe('getCascaderDefaultValue', () => {

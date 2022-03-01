@@ -11,6 +11,7 @@ import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 // @ts-ignore
 import { FormModalContext } from '../index.page';
+import { CountDown } from 'packages/ui/src';
 
 const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -55,11 +56,19 @@ const FormComponent = () => {
     validationSchema: schema,
   };
 
+  const [codeAvailable, setCodeAvailable] = useState(true);
+
   const sendCode = (formik) => {
     return api.points
       .sendCode(formik.values['phoneNumber'])
-      .then(() => message.success('发送成功'))
-      .catch(() => message.error('发送失败'));
+      .then(() => {
+        setCodeAvailable(false);
+        message.success('发送成功');
+      })
+      .catch(() => {
+        setCodeAvailable(false);
+        message.error('发送失败');
+      });
   };
 
   return (
@@ -100,10 +109,18 @@ const FormComponent = () => {
                   <Col>
                     <Button
                       size="small"
-                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined}
+                      disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined || !codeAvailable}
                       onClick={() => sendCode(formik)}
                     >
-                      获取验证码
+                      {codeAvailable ? (
+                        '发送验证码'
+                      ) : (
+                        <CountDown
+                          total={60 * 1000}
+                          onFinished={() => setCodeAvailable(true)}
+                          formatter={(s) => s / 1000}
+                        />
+                      )}
                     </Button>
                   </Col>
                 </Row>

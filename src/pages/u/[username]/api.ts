@@ -127,19 +127,18 @@ export interface IQuestions {
 }
 
 export enum ESolved {
-  /*eslint-disable no-unused-vars*/
   all = '',
   solved = 'yes',
   unsolved = 'no',
-  /*eslint-enable no-unused-vars*/
 }
 
-export async function getQuestionsByUsername(
-  username: string,
-  solved: ESolved = ESolved.all,
-  page = 1,
-  per_page = 10
-): Promise<IQuestions[]> {
+export async function getQuestionsByUsername(input: {
+  username: string;
+  solved?: ESolved;
+  page?: number;
+  per_page?: number;
+}): Promise<IQuestions[]> {
+  const { username, solved = ESolved.all, page = 1, per_page = 10 } = input;
   const url = `${askTugApiDomain}/topics/created-by/${username}.json?page=${
     page - 1
   }&per_page=${per_page}&solved=${solved}`;

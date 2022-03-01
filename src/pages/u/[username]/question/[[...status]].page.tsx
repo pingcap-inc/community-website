@@ -31,8 +31,6 @@ import { filterSelectWidth } from '../common.styled';
 import EmptyStatus from '~/components/EmptyStatus';
 import { forumUrl } from '~/pages/u/[username]/constant.data';
 
-const solved: ESolved = ESolved.all;
-
 interface IProps {
   username: string;
   badges: IRawBadges[];
@@ -44,21 +42,23 @@ interface IProps {
 }
 interface IQuery extends ParsedUrlQuery {
   username: string;
+  status: ESolved[];
   page?: string;
   size?: string;
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  const { username } = ctx.params;
+  const { username, status } = ctx.params;
   const pageInfo = getPageQuery(ctx.query);
+  const solved: ESolved = status?.[0] ?? ESolved.all;
   const [i18nProps, badges, profile, summary, questions, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
     getBadgesByUsername(username),
     getUserProfileByUsername(username),
     getSummaryByUsername(username),
-    getQuestionsByUsername(username, solved, pageInfo.page),
-    getPostsNumberByUsername({username}),
+    getQuestionsByUsername({ username, solved, page: pageInfo.page, per_page: pageInfo.size }),
+    getPostsNumberByUsername({ username }),
     getPostFavoritesNumberByUsername(username),
   ]);
   return {
@@ -79,8 +79,12 @@ export default function ProfileQuestionIndexPage(props: IProps) {
   const { username, badges, profile, summary, questions, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
+
   const router = useRouter();
   const pageInfo = getPageQuery(router.query);
+  const { status } = router.query;
+  const solved: ESolved = (status?.[0] as ESolved) ?? ESolved.all;
+
   const [page, setPage] = useState(pageInfo.page);
   const [data, setData] = useState(questions);
   const [hasMore, setHasMore] = useState(data.length !== 0);
@@ -90,7 +94,7 @@ export default function ProfileQuestionIndexPage(props: IProps) {
     try {
       const nextPage = page + 1;
       setPage(nextPage);
-      const newData = await getQuestionsByUsername(username, solved, nextPage);
+      const newData = await getQuestionsByUsername({ username, solved, page: nextPage });
       setData((data) => [...data, ...newData]);
       setHasMore(newData.length !== 0);
     } catch (e) {
@@ -120,9 +124,9 @@ export default function ProfileQuestionIndexPage(props: IProps) {
           }}
         />
         <Select
-          defaultValue={''}
-          value={''}
-          onChange={(value) => router.push(`/u/${username}/question/${value}`)}
+          defaultValue={solved}
+          value={solved}
+          onChange={(value) => router.push(`/u/${username}/question/${value}`, undefined, { shallow: true })}
           style={{ width: filterSelectWidth }}
         >
           <Select.Option value={''}>全部</Select.Option>

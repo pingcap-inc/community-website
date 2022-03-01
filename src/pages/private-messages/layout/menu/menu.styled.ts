@@ -4,6 +4,7 @@ import { colors, mixins } from '@tidb-community/ui';
 
 export const Container = styled.ul`
   ${mixins.reset()};
+  margin-top: 1rem;
   ${mixins.typography('p2')};
   background: ${colors.M1};
   list-style: none;

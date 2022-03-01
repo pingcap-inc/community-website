@@ -99,6 +99,7 @@ export interface AsktugPrivateMessage {
   posters: {
     user_id: number;
   }[];
+  last_posted_at: string;
 }
 
 export interface AsktugUser {
@@ -116,6 +117,7 @@ export interface PrivateMessages {
 }
 
 export interface GetPrivateMessagesParams {
+  username: string;
   unread?: 1;
 }
 
@@ -123,3 +125,9 @@ export const getNotifications = (params: GetNotificationParams = {}): Promise<No
   asktugClient.get('/notifications', { params });
 
 export const readNotification = (id: number) => asktugClient.put('/notifications/mark-read', { params: { id } });
+
+export const getPrivateMessages = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
+  asktugClient.get(`/topics/private-messages/${params.username}`, { params });
+
+export const getPrivateMessagesSent = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
+  asktugClient.get(`/topics/private-messages-sent/${params.username}`, { params });

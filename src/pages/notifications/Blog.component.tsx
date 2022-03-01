@@ -5,8 +5,10 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { BlogFilter } from './layout/menu';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConfigProvider, List, Skeleton } from 'antd';
+import { ConfigProvider, List } from 'antd';
 import { SpringPage } from '~/api/blog';
+import { ListPlaceholder } from '~/pages/private-messages/PrivateMessages.component';
+import { ListLoader } from '~/pages/notifications/Asktug.component';
 
 type Notification = BlogNotificationProps['notification'];
 
@@ -48,7 +50,9 @@ const Blog = ({ filter }: BlogProps) => {
     if (size === 0) {
       return true;
     }
-    return data[size - 1]?.content.length > 0;
+    console.log(data);
+    const lastPage = data[data.length - 1];
+    return lastPage.page.number < lastPage.page.totalPages;
   }, [data, size, isValidating]);
 
   const loadMoreData = useCallback(async () => {
@@ -85,17 +89,16 @@ const Blog = ({ filter }: BlogProps) => {
         height: 600,
         overflow: 'auto',
         padding: '0 16px',
-        border: '1px solid rgba(140, 140, 140, 0.35)',
       }}
     >
       <InfiniteScroll
         dataLength={notifications.length}
         next={loadMoreData}
         hasMore={hasMore}
-        loader={<Skeleton paragraph={{ rows: 1 }} active />}
+        loader={<ListLoader />}
         scrollableTarget="scrollableDiv"
       >
-        <ConfigProvider renderEmpty={() => undefined}>
+        <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'还没有通知哦'} />}>
           <List
             dataSource={notifications}
             renderItem={(item) => (

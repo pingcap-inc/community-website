@@ -32,7 +32,7 @@
     "npm": "8.3.1"
   },
   "dependencies": {
-    "@ant-design/icons": "4.6.4",
+    "@ant-design/icons": "4.7.0",
     "@formatjs/intl-numberformat": "7.2.3",
     "@fullcalendar/core": "^5.5.1",
     "@fullcalendar/daygrid": "^5.5.0",
@@ -74,7 +74,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "7.15.4",
     "@pingcap-inc/tidb-community-editor": "0.4.1",
-    "@pingcap-inc/tidb-community-site-components": "1.0.0",
+    "@pingcap-inc/tidb-community-site-components": "1.1.0",
     "@pingcap-inc/tidb-community-ui": "1.1.0",
     "@sentry/webpack-plugin": "1.17.1",
     "@svgr/webpack": "5.5.0",

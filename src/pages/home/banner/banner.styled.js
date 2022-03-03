@@ -154,7 +154,9 @@ export const TooltipContainer = styled.div`
 export const StarButtonTooltip = styled(Tooltip).attrs({
   visible: true,
   color: colors.M2,
-})``;
+})`
+  z-index: 10;
+`;
 
 export const NavItem = styled(Col).attrs({
   span: 6,

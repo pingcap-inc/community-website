@@ -44,20 +44,21 @@ const filterKey = (filter: Filter) => `${filter.from}|${filter.type}`;
 export interface MenuProps {
   filter: Filter;
   onFilterChange: (filter: Filter) => void;
+  initIdx: number;
 }
 
-const Menu = ({ filter, onFilterChange }: MenuProps) => {
+const Menu = ({ filter, onFilterChange, initIdx = 0 }: MenuProps) => {
   useEffect(() => {
     if (!filter) {
-      click(list[0].filter)();
+      click(list[initIdx].filter)();
     }
-  }, [filter]);
+  }, [filter, initIdx]);
 
   useEffect(() => {
     if (!filter) {
-      onFilterChange(list[0].filter);
+      onFilterChange(list[initIdx].filter);
     }
-  }, [filter, onFilterChange]);
+  }, [filter, onFilterChange, initIdx]);
 
   const click = (filter: Filter) => {
     return () => {

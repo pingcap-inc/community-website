@@ -63,7 +63,6 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   return {
     props: {
       ...i18nProps,
-      username,
       badges,
       profile,
       summary,
@@ -75,12 +74,12 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfileAnswerSolutionPage(props: IProps) {
-  const { badges, profile, summary, answers: answersFromSSR, username, postsNumber, postFavoritesNumber } = props;
+  const { badges, profile, summary, answers: answersFromSSR, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
 
   const router = useRouter();
-  const { status } = router.query;
+  const { status, username } = router.query;
   const statusPathInfo: string = status?.[0] ?? '';
   const markedSolution: boolean = status?.[0] === 'solution';
 
@@ -89,15 +88,17 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
 
   const {
     data: infiniteData,
+    error,
+    size,
     setSize,
     isValidating,
     mutate,
-  } = useSWRInfinite((page) => ({ pageNumber: page + 1, pageSize, username, markedSolution }), {
+  } = useSWRInfinite((pageNumber) => ({ pageNumber, pageSize, username, markedSolution }), {
     fallbackData,
     initialSize: 1,
-    revalidateOnMount: false,
-    revalidateFirstPage: false,
-    revalidateIfStale: true,
+    //revalidateOnMount: false,
+    //revalidateFirstPage: false,
+    //revalidateIfStale: true,
     fetcher: getAnswersByUsername,
   });
 
@@ -108,24 +109,20 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
     return result;
   }, [infiniteData]);
 
-  const hasMore = useMemo(() => {
+  const isLoading = !data && !error;
+
+  const hasMore: boolean = useMemo<boolean>(() => {
     // if not loaded, has more
     if (!infiniteData) {
       return true;
     }
-    const pageData = infiniteData[infiniteData.length - 1];
-
-    if (isValidating) {
+    if (isLoading) {
       return true;
-    } else if (!pageData) {
-      return false;
     }
-    return pageData.length < pageSize;
+    return infiniteData[infiniteData.length - 1] !== undefined;
   }, [infiniteData, isValidating]);
 
-  const loadMoreData = useCallback(() => {
-    setSize((size) => size + 1).then();
-  }, [setSize]);
+  const loadMoreData = () => setSize((size) => size + 1);
 
   useEffect(() => {
     mutate([]).then();
@@ -134,7 +131,7 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
   console.log('!!fallbackData', fallbackData);
   console.log('!!infiniteData', infiniteData);
 
-  const isEmpty: boolean = isValidating === false && data.length === 0;
+  const isEmpty: boolean = !isLoading && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}

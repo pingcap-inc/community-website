@@ -32,7 +32,6 @@ import { forumUrl } from '~/pages/u/[username]/constant.data';
 import useSWRInfinite from 'swr/infinite';
 
 interface IProps {
-  username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;

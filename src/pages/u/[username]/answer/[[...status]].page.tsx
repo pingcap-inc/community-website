@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ParsedUrlQuery } from 'querystring';
 // import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useState } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
@@ -29,6 +29,7 @@ import { useRouter } from 'next/router';
 import { filterSelectWidth } from '../common.styled';
 import EmptyStatus from '~/components/EmptyStatus';
 import { forumUrl } from '~/pages/u/[username]/constant.data';
+import useSWRInfinite from 'swr/infinite';
 
 interface IProps {
   username: string;
@@ -74,7 +75,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfileAnswerSolutionPage(props: IProps) {
-  const { badges, profile, summary, answers, username, postsNumber, postFavoritesNumber } = props;
+  const { badges, profile, summary, answers: answersFromSSR, username, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
 
@@ -83,25 +84,57 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
   const statusPathInfo: string = status?.[0] ?? '';
   const markedSolution: boolean = status?.[0] === 'solution';
 
-  // const pageInfo = getPageQuery(router.query);
-  const [page, setPage] = useState(1);
-  const [data, setData] = useState(answers);
-  const [hasMore, setHasMore] = useState(data.length !== 0);
-  const [loading, setLoading] = useState(false);
-  const loadMoreData = async () => {
-    setLoading(true);
-    try {
-      const nextPage = page + 1;
-      setPage(nextPage);
-      const newData = await getAnswersByUsername({ username, markedSolution, pageNumber: nextPage });
-      setData((data) => [...data, ...newData]);
-      setHasMore(newData.length !== 0);
-    } catch (e) {
-      console.error(e);
+  const pageSize = 20;
+  const fallbackData: IUserAction[][] = [answersFromSSR];
+
+  const {
+    data: infiniteData,
+    setSize,
+    isValidating,
+    mutate,
+  } = useSWRInfinite((page) => ({ pageNumber: page + 1, pageSize, username, markedSolution }), {
+    fallbackData,
+    initialSize: 1,
+    revalidateOnMount: false,
+    revalidateFirstPage: false,
+    revalidateIfStale: true,
+    fetcher: getAnswersByUsername,
+  });
+
+  // use swr infinite holds all the resp lists
+  const data = useMemo(() => {
+    const result: IUserAction[] = [];
+    infiniteData?.forEach((value) => result.push(...value));
+    return result;
+  }, [infiniteData]);
+
+  const hasMore = useMemo(() => {
+    // if not loaded, has more
+    if (!infiniteData) {
+      return true;
     }
-    setLoading(false);
-  };
-  const isEmpty: boolean = loading === false && data.length === 0;
+    const pageData = infiniteData[infiniteData.length - 1];
+
+    if (isValidating) {
+      return true;
+    } else if (!pageData) {
+      return false;
+    }
+    return pageData.length < pageSize;
+  }, [infiniteData, isValidating]);
+
+  const loadMoreData = useCallback(() => {
+    setSize((size) => size + 1).then();
+  }, [setSize]);
+
+  useEffect(() => {
+    mutate([]).then();
+  }, [status, mutate]);
+
+  console.log('!!fallbackData', fallbackData);
+  console.log('!!infiniteData', infiniteData);
+
+  const isEmpty: boolean = isValidating === false && data.length === 0;
   return (
     <ProfileLayout
       badges={badges}
@@ -147,11 +180,9 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
           next={loadMoreData}
           hasMore={hasMore}
           loader={
-            loading && (
-              <div style={{ marginTop: '16px' }}>
-                <Skeleton avatar paragraph={{ rows: 1 }} active />
-              </div>
-            )
+            <div style={{ marginTop: '16px' }}>
+              <Skeleton avatar paragraph={{ rows: 1 }} active />
+            </div>
           }
           endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
@@ -162,7 +193,7 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
           ) : (
             <List
               dataSource={data}
-              loading={loading}
+              //loading={loading}
               locale={{ emptyText: '暂无数据' }}
               renderItem={(value) => {
                 return (

@@ -19,7 +19,7 @@ const PlaceHolder = styled.div`
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  height: 180px;
+  height: 120px;
   margin-top: 4rem;
   width: 100%;
 `;

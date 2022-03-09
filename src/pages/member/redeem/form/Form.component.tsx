@@ -1,5 +1,5 @@
 import * as R from 'ramda';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button, Col, message, Row } from 'antd';
 import { Form, FormItem, Input } from 'formik-antd';
 import { Formik } from 'formik';
@@ -11,7 +11,6 @@ import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 // @ts-ignore
 import { FormModalContext } from '../index.page';
-import { CountDown } from 'packages/ui/src';
 
 const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -58,14 +57,27 @@ const FormComponent = () => {
 
   const [codeAvailable, setCodeAvailable] = useState(true);
 
+  const [timeLeft, setTimeLeft] = useState(0);
+  useEffect(() => {
+    if (timeLeft === 0) {
+      setCodeAvailable(true);
+      return;
+    }
+    setTimeout(() => {
+      setTimeLeft(timeLeft - 1);
+    }, 1000);
+  }, [timeLeft]);
+
   const sendCode = (formik) => {
     return api.points
       .sendCode(formik.values['phoneNumber'])
       .then(() => {
+        setTimeLeft(60);
         setCodeAvailable(false);
         message.success('发送成功');
       })
       .catch(() => {
+        setTimeLeft(60);
         setCodeAvailable(false);
         message.error('发送失败');
       });
@@ -112,15 +124,7 @@ const FormComponent = () => {
                       disabled={phoneNumber.validate(formik.values['phoneNumber']) !== undefined || !codeAvailable}
                       onClick={() => sendCode(formik)}
                     >
-                      {codeAvailable ? (
-                        '发送验证码'
-                      ) : (
-                        <CountDown
-                          total={60 * 1000}
-                          onFinished={() => setCodeAvailable(true)}
-                          formatter={(s) => s / 1000}
-                        />
-                      )}
+                      {codeAvailable ? '发送验证码' : timeLeft}
                     </Button>
                   </Col>
                 </Row>

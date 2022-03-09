@@ -152,6 +152,14 @@ const list: MenuItemProps[] = [
     title: '收藏我的',
     indent: true,
   },
+  {
+    filter: {
+      from: 'blog',
+      type: BlogNotificationType.POST,
+    },
+    title: '系统通知',
+    indent: true,
+  },
 ];
 
 export default Menu;

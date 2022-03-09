@@ -21,6 +21,7 @@ const Blog = ({ filter }: BlogProps) => {
     (n) => ['blog.getNotifications', { page: n + 1, type: filter.type }],
     { fetcher, dedupingInterval: 100 }
   );
+  console.log(data);
 
   const [notifications, setNotifications] = useState<Notification[]>([]);
 

@@ -123,7 +123,7 @@ const Asktug = ({ filter }: AsktugProps) => {
         loader={<ListLoader />}
         scrollableTarget="scrollableDiv"
       >
-        <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'还没有通知哦'} />}>
+        <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'暂时还没有消息'} />}>
           <List
             dataSource={notifications}
             renderItem={(item: AsktugNotification) => (

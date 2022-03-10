@@ -28,10 +28,12 @@ export function ListPlaceholder({ text }: { text: string }) {
   return (
     <div
       style={{
+        fontSize: 14,
         textAlign: 'center',
         width: '100%',
         height: 600,
         background: '#F7F8F9',
+        borderRadius: 6,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

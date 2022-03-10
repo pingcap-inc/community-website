@@ -18,21 +18,21 @@ import {
   IProfileSummary,
   IRawBadges,
   IUserAction,
-} from '../api';
+} from '~/api/asktug/profile';
 import { ParsedUrlQuery } from 'querystring';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 // import { useRouter } from 'next/router';
 // import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
-import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
+import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/api/blog';
 import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 import ErrorPage from '~/components/errorPage';
 import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl, forumUrl } from '~/pages/u/[username]/constant.data';
+import { useRouter } from 'next/router';
 
 interface IProps {
-  username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
@@ -51,16 +51,15 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   const [i18nProps, badges, profile, summary, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesByUsername(username),
-    getUserProfileByUsername(username),
-    getSummaryByUsername(username),
-    getPostsNumberByUsername({username}),
-    getPostFavoritesNumberByUsername(username),
+    getBadgesByUsername({ username }),
+    getUserProfileByUsername({ username }),
+    getSummaryByUsername({ username }),
+    getPostsNumberByUsername({ username }),
+    getPostFavoritesNumberByUsername({ username }),
   ]);
   return {
     props: {
       ...i18nProps,
-      username,
       badges,
       profile,
       summary,
@@ -71,10 +70,11 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfileFavoriteTopicPage(props: IProps) {
-  const { username, badges, profile, summary, postsNumber, postFavoritesNumber } = props;
+  const { badges, profile, summary, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
-  // const router = useRouter();
+  const router = useRouter();
+  const { username } = router.query as { username: string };
   // const pageInfo = getPageQuery(router.query);
   const [page, setPage] = useState(0);
   const [data, setData] = useState<IUserAction[]>([]);

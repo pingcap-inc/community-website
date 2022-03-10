@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as Styled from './index.styled';
 import { BulbFilled } from '@ant-design/icons';
-import { IRawBadges } from '../../api';
+import { IRawBadges } from '~/api/asktug/profile';
 import { Tooltip } from 'antd';
 import { colors } from '@tidb-community/ui';
 

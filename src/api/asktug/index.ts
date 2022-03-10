@@ -3,7 +3,7 @@ import { asktugClient } from '../clients';
 import * as profile from './profile';
 export { profile };
 
-export const asktugDomain = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL;
+export const askTugDomain = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL;
 
 export enum NotificationType {
   mentioned = 1,

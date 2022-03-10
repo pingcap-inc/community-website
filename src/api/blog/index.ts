@@ -1,5 +1,5 @@
 import { blogClient } from '~/api';
-import { IPost, IPostFavorite, IResponse } from '~/pages/u/[username]/username';
+import { IPost, IPostFavorite, IResponse } from '../asktug/profile';
 import { IResponseList } from '../../../packages/datasource/src/api/blog';
 
 export enum NotificationType {

@@ -130,12 +130,12 @@ export default function ProfileAnswerPage(props: IProps) {
   const { data: profileData, error: profileError } = useSWR(['asktug.profile.getUserProfileByUsername', { username }], {
     fallbackData: profileFromSSR,
   });
-  console.error('profileError', profileError);
+  if (profileError) console.error('profileError', profileError);
 
   const { data: badgesData, error: badgesError } = useSWR(['asktug.profile.getBadgesByUsername', { username }], {
     fallbackData: badgesFromSSR,
   });
-  console.error('badgesError', badgesError);
+  if (badgesError) console.error('badgesError', badgesError);
 
   const { data: postFavoritesNumberData, error: postFavoritesNumberError } = useSWR(
     ['blog.getPostFavoritesNumberByUsername', { username }],
@@ -143,11 +143,15 @@ export default function ProfileAnswerPage(props: IProps) {
       fallbackData: postFavoritesNumberFromSSR,
     }
   );
+  if (postFavoritesNumberError) console.error('postFavoritesNumberError', postFavoritesNumberError);
+
   const postFavoritesNumber: number | null = postFavoritesNumberError ? null : postFavoritesNumberData;
 
   const { data: summaryData, error: summaryError } = useSWR(['asktug.profile.getSummaryByUsername', { username }], {
     fallbackData: summaryFromSSR,
   });
+  if (summaryError) console.error('summaryError', summaryError);
+
   const askTugFavoritesNumber: number | null = summaryError ? null : summaryData?.user_summary?.bookmark_count ?? 0;
   const allFavoritesNumber: number | null = summaryError ? null : askTugFavoritesNumber + (postFavoritesNumber ?? 0);
   const likeNumber: number | null = summaryData?.user_summary?.likes_received ?? null;
@@ -157,7 +161,9 @@ export default function ProfileAnswerPage(props: IProps) {
   const { data: postsNumberData, error: postsNumberError } = useSWR(['blog.getPostsNumberByUsername', { username }], {
     fallbackData: postsNumberFromSSR,
   });
-  const postsNumber: number | null = postsNumberError ? null : postsNumberData;
+  if (postsNumberError) console.error('postsNumberError', postsNumberError);
+
+  const postsNumber: number | null = postsNumberData;
 
   if (profileData === null) {
     return <ErrorPage statusCode={404} errorMsg={`用户 ${username} 不存在`} />;

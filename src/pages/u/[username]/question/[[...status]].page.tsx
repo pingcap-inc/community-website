@@ -157,7 +157,8 @@ export default function ProfileQuestionIndexPage(props: IProps) {
     fallbackData: postsNumberFromSSR,
   });
   if (postsNumberError) console.error('postsNumberError', postsNumberError);
-  const postsNumber: number | null = postsNumberError ? null : postsNumberData;
+
+  const postsNumber: number | null = postsNumberData;
 
   if (profileData === null) {
     return <ErrorPage statusCode={404} errorMsg={`用户 ${username} 不存在`} />;

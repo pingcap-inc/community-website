@@ -1,4 +1,4 @@
-import axios from 'axios';
+import { asktugClient } from '../clients';
 
 const asktugProdDomain = 'https://asktug.com';
 const askTugApiDomain = process.env.NEXT_PUBLIC_ASKTUG_PROXY_BASE_URL ?? asktugProdDomain;
@@ -18,18 +18,17 @@ export interface IRawBadges {
 }
 
 async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
-  const result = await axios.get(`${askTugApiDomain}/badges.json`);
-  const { badges } = result.data;
+  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/badges.json`);
   const badgesMap = new Map<IRawBadges['id'], IRawBadges>();
-  badges.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: false }));
+  result.badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: false }));
   return badgesMap;
 }
 
-export async function getBadgesByUsername(username: string): Promise<IRawBadges[]> {
+export async function getBadgesByUsername(input: { username: string }): Promise<IRawBadges[]> {
+  const { username } = input;
   const badgesMap = await getAllBadges();
-  const result = await axios.get(`${askTugApiDomain}/user-badges/${username}.json`);
-  const { badges } = result.data;
-  badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
+  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/user-badges/${username}.json`);
+  result.badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
   const badgesArr: IRawBadges[] = [];
   badgesMap.forEach((value) => badgesArr.push(value));
   return badgesArr;
@@ -51,10 +50,10 @@ export interface IProfile {
   can_edit: boolean;
 }
 
-export async function getUserProfileByUsername(username: string): Promise<IProfile> {
-  const result = await axios.get(`${accountsDomain}/api/users/${username}`);
-  const { data } = result.data;
-  return data;
+export async function getUserProfileByUsername(input: { username: string }): Promise<IProfile | null> {
+  const { username } = input;
+  const result: { data: IProfile } = await asktugClient.get(`${accountsDomain}/api/users/${username}`);
+  return result.data ?? null;
 }
 
 export enum EUserActionFilter {
@@ -99,9 +98,8 @@ export async function getAnswersByUsername(input: {
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
     markedSolution ? EUserActionFilter.SOLVED : EUserActionFilter.REPLY
   }`;
-  const result = await axios.get(url);
-  const { user_actions } = result.data;
-  return user_actions.slice(0, pageSize - 1) ?? [];
+  const result: { user_actions: IUserAction[] } = await asktugClient.get(url);
+  return result.user_actions?.slice(0, pageSize - 1) ?? [];
 }
 
 export async function getAskTugFavoritesByUsername(
@@ -111,9 +109,8 @@ export async function getAskTugFavoritesByUsername(
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
-  const result = await axios.get(url);
-  const { user_actions } = result.data;
-  return user_actions.slice(0, pageSize - 1) ?? [];
+  const result: { user_actions: IUserAction[] } = await asktugClient.get(url);
+  return result.user_actions?.slice(0, pageSize - 1) ?? [];
 }
 
 export interface IQuestions {
@@ -139,21 +136,21 @@ export async function getQuestionsByUsername(input: {
   per_page?: number;
 }): Promise<IQuestions[]> {
   const { username, solved = ESolved.all, page = 1, per_page = 10 } = input;
-  let result: IQuestions[];
+  let data: IQuestions[];
   if (solved === ESolved.all) {
     const url = `${askTugApiDomain}/topics/created-by/${username}.json`;
     const params = { solved: 1, page: page - 1, per_page };
-    const data = await axios.get(url, { params });
-    result = (data.data.topic_list?.topics as IQuestions[]) ?? [];
+    const result: { topic_list?: { topics: IQuestions[] } } = await asktugClient.get(url, { params });
+    data = result.topic_list?.topics ?? [];
   } else {
     const unsolved = solved === ESolved.unsolved ? 1 : 0;
     const url = `${askTugApiDomain}/user_actions.json`;
     const offset = (page - 1) * per_page;
     const params = { username, unsolved, offset };
-    const data = await axios.get(url, { params });
-    result = (data.data.user_actions as IQuestions[]) ?? [];
+    const result: { user_actions: IQuestions[] } = await asktugClient.get(url, { params });
+    data = result.user_actions ?? [];
   }
-  return result;
+  return data;
 }
 
 export interface IProfileSummary {
@@ -170,8 +167,9 @@ export interface IProfileSummary {
   };
 }
 
-export async function getSummaryByUsername(username: string): Promise<IProfileSummary> {
+export async function getSummaryByUsername(input: { username: string }): Promise<IProfileSummary | null> {
+  const { username } = input;
   const url = `${askTugApiDomain}/u/${username}/summary.json`;
-  const result = await axios.get(url);
-  return result.data;
+  const result: IProfileSummary = await asktugClient.get(url);
+  return result ?? null;
 }

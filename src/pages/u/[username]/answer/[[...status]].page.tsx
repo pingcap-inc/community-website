@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ParsedUrlQuery } from 'querystring';
 // import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useEffect, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
@@ -22,14 +22,17 @@ import {
   IProfileSummary,
   IRawBadges,
   IUserAction,
-} from '../api';
+} from '~/api/asktug/profile';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
-import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/pages/u/[username]/username';
 import { useRouter } from 'next/router';
 import { filterSelectWidth } from '../common.styled';
 import EmptyStatus from '~/components/EmptyStatus';
 import { forumUrl } from '~/pages/u/[username]/constant.data';
 import useSWRInfinite from 'swr/infinite';
+import { fetcher } from '~/api';
+import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/api/blog';
+import useSWR from 'swr';
+import { ErrorPage } from '~/components';
 
 interface IProps {
   badges: IRawBadges[];
@@ -46,18 +49,21 @@ interface IQuery extends ParsedUrlQuery {
   size?: string;
 }
 
+const pageNumber = 0;
+const pageSize = 20;
+
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
   const { username, status } = ctx.params;
   const markedSolution: boolean = status?.[0] === 'solution';
   const [i18nProps, badges, profile, summary, answers, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesByUsername(username),
-    getUserProfileByUsername(username),
-    getSummaryByUsername(username),
-    getAnswersByUsername({ username, markedSolution }),
+    getBadgesByUsername({ username }),
+    getUserProfileByUsername({ username }),
+    getSummaryByUsername({ username }),
+    getAnswersByUsername({ pageNumber: pageNumber + 1, pageSize, username, markedSolution }),
     getPostsNumberByUsername({ username }),
-    getPostFavoritesNumberByUsername(username),
+    getPostFavoritesNumberByUsername({ username }),
   ]);
   return {
     props: {
@@ -72,71 +78,106 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   };
 };
 
-export default function ProfileAnswerSolutionPage(props: IProps) {
-  const { badges, profile, summary, answers: answersFromSSR, postsNumber, postFavoritesNumber } = props;
-  const askTugFavoritesNumber = summary.user_summary.bookmark_count;
-  const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
+export default function ProfileAnswerPage(props: IProps) {
+  const {
+    badges: badgesFromSSR,
+    profile: profileFromSSR,
+    summary: summaryFromSSR,
+    answers: answersFromSSR,
+    postsNumber: postsNumberFromSSR,
+    postFavoritesNumber: postFavoritesNumberFromSSR,
+  } = props;
 
   const router = useRouter();
   const { status, username } = router.query;
   const statusPathInfo: string = status?.[0] ?? '';
   const markedSolution: boolean = status?.[0] === 'solution';
 
-  const pageSize = 20;
-  const fallbackData: IUserAction[][] = [answersFromSSR];
+  const fallbackData = [answersFromSSR];
 
-  const {
-    data: infiniteData,
-    error,
-    setSize,
-    isValidating,
-    mutate,
-  } = useSWRInfinite((pageNumber) => ({ pageNumber, pageSize, username, markedSolution }), {
-    fallbackData,
-    initialSize: 1,
-    //revalidateOnMount: false,
-    //revalidateFirstPage: false,
-    //revalidateIfStale: true,
-    fetcher: getAnswersByUsername,
-  });
+  const { data, error, setSize } = useSWRInfinite<IUserAction[]>(
+    (pageNumber) => [
+      'asktug.profile.getAnswersByUsername',
+      { pageNumber: pageNumber + 1, pageSize, username, markedSolution },
+    ],
+    {
+      fetcher,
+      fallbackData,
+    }
+  );
 
   // use swr infinite holds all the resp lists
-  const data = useMemo(() => {
+  const answers = useMemo(() => {
     const result: IUserAction[] = [];
-    infiniteData?.forEach((value) => result.push(...value));
+    data?.flatMap((value) => result.push(...value));
     return result;
-  }, [infiniteData]);
+  }, [data]);
+
+  const loadMoreData = useCallback(async () => {
+    await setSize((size) => size + 1);
+  }, [setSize]);
+
+  //useEffect(() => {
+  //  mutate([]).then();
+  //}, [status, mutate]);
 
   const isLoading = !data && !error;
 
   const hasMore: boolean = useMemo<boolean>(() => {
     // if not loaded, has more
-    if (!infiniteData) {
+    if (!data) {
       return true;
     }
-    if (isLoading) {
-      return true;
+    return data[data.length - 1].length >= pageSize;
+  }, [data]);
+
+  const { data: profileData, error: profileError } = useSWR(['asktug.profile.getUserProfileByUsername', { username }], {
+    fallbackData: profileFromSSR,
+  });
+  console.error('profileError', profileError);
+
+  const { data: badgesData, error: badgesError } = useSWR(['asktug.profile.getBadgesByUsername', { username }], {
+    fallbackData: badgesFromSSR,
+  });
+  console.error('badgesError', badgesError);
+
+  const { data: postFavoritesNumberData, error: postFavoritesNumberError } = useSWR(
+    ['blog.getPostFavoritesNumberByUsername', { username }],
+    {
+      fallbackData: postFavoritesNumberFromSSR,
     }
-    return infiniteData[infiniteData.length - 1] !== undefined;
-  }, [infiniteData, isValidating]);
+  );
+  const postFavoritesNumber: number | null = postFavoritesNumberError ? null : postFavoritesNumberData;
 
-  const loadMoreData = () => setSize((size) => size + 1);
+  const { data: summaryData, error: summaryError } = useSWR(['asktug.profile.getSummaryByUsername', { username }], {
+    fallbackData: summaryFromSSR,
+  });
+  const askTugFavoritesNumber: number | null = summaryError ? null : summaryData?.user_summary?.bookmark_count ?? 0;
+  const allFavoritesNumber: number | null = summaryError ? null : askTugFavoritesNumber + (postFavoritesNumber ?? 0);
+  const likeNumber: number | null = summaryData?.user_summary?.likes_received ?? null;
+  const answerNumber: number | null = summaryData?.user_summary?.post_count ?? null;
+  const questionNumber: number | null = summaryData?.user_summary?.topic_count ?? null;
 
-  useEffect(() => {
-    mutate([]).then();
-  }, [status, mutate]);
+  const { data: postsNumberData, error: postsNumberError } = useSWR(['blog.getPostsNumberByUsername', { username }], {
+    fallbackData: postsNumberFromSSR,
+  });
+  const postsNumber: number | null = postsNumberError ? null : postsNumberData;
 
-  console.log('!!fallbackData', fallbackData);
-  console.log('!!infiniteData', infiniteData);
+  if (profileData === null) {
+    return <ErrorPage statusCode={404} errorMsg={`用户 ${username} 不存在`} />;
+  }
 
-  const isEmpty: boolean = !isLoading && data.length === 0;
+  const isEmpty: boolean = !isLoading && answers.length === 0;
+
+  console.log('!!summaryData, profileData', summaryData, profileData);
+
   return (
     <ProfileLayout
-      badges={badges}
-      profile={profile}
+      badges={badgesData}
+      profile={profileData}
       nums={{
-        like: summary.user_summary.likes_received,
-        answer: summary.user_summary.post_count,
+        like: likeNumber,
+        answer: answerNumber,
         post: postsNumber,
       }}
     >
@@ -144,8 +185,8 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
         <Tab
           selected={EUgcType.answer}
           nums={{
-            answer: summary.user_summary.post_count,
-            question: summary.user_summary.topic_count,
+            answer: answerNumber,
+            question: questionNumber,
             post: postsNumber,
             favorite: allFavoritesNumber,
           }}
@@ -161,17 +202,8 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>
-        {/*{answers.map((value) => (*/}
-        {/*  <ListItem*/}
-        {/*    key={value.post_id}*/}
-        {/*    url={getTopicUrl(value.topic_id, value.post_number)}*/}
-        {/*    title={value.title}*/}
-        {/*    summary={value.excerpt}*/}
-        {/*    metadataEnd={getRelativeDatetime(value.created_at)}*/}
-        {/*  />*/}
-        {/*))}*/}
         <InfiniteScroll
-          dataLength={data.length}
+          dataLength={answers.length}
           next={loadMoreData}
           hasMore={hasMore}
           loader={
@@ -179,7 +211,7 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
               <Skeleton avatar paragraph={{ rows: 1 }} active />
             </div>
           }
-          endMessage={data.length !== 0 && <Divider plain>没有更多内容了</Divider>}
+          endMessage={answers.length !== 0 && <Divider plain>没有更多内容了</Divider>}
         >
           {isEmpty ? (
             <EmptyStatus description={'你还没有回答过任何问题'}>
@@ -187,7 +219,7 @@ export default function ProfileAnswerSolutionPage(props: IProps) {
             </EmptyStatus>
           ) : (
             <List
-              dataSource={data}
+              dataSource={answers}
               //loading={loading}
               locale={{ emptyText: '暂无数据' }}
               renderItem={(value) => {

@@ -117,10 +117,6 @@ export default function ProfileAnswerPage(props: IProps) {
     await setSize((size) => size + 1);
   }, [setSize]);
 
-  //useEffect(() => {
-  //  mutate([]).then();
-  //}, [status, mutate]);
-
   const isLoading = !data && !error;
 
   const hasMore: boolean = useMemo<boolean>(() => {
@@ -168,8 +164,6 @@ export default function ProfileAnswerPage(props: IProps) {
   }
 
   const isEmpty: boolean = !isLoading && answers.length === 0;
-
-  console.log('!!summaryData, profileData', summaryData, profileData);
 
   return (
     <ProfileLayout

@@ -115,6 +115,7 @@ export async function getAskTugFavoritesByUsername(
 
 export interface IQuestions {
   id: number;
+  topic_id: number;
   title: string;
   posts_count: number;
   reply_count: number;
@@ -125,8 +126,8 @@ export interface IQuestions {
 
 export enum ESolved {
   all = '',
-  solved = 'yes',
-  unsolved = 'no',
+  solved = 'solved',
+  unsolved = 'unsolved',
 }
 
 export async function getQuestionsByUsername(input: {
@@ -143,10 +144,14 @@ export async function getQuestionsByUsername(input: {
     const result: { topic_list?: { topics: IQuestions[] } } = await asktugClient.get(url, { params });
     data = result.topic_list?.topics ?? [];
   } else {
-    const unsolved = solved === ESolved.unsolved ? 1 : 0;
     const url = `${askTugApiDomain}/user_actions.json`;
     const offset = (page - 1) * per_page;
-    const params = { username, unsolved, offset };
+    const params: any = { username, offset };
+    if (solved === ESolved.solved) {
+      params.filter = EUserActionFilter.SOLVED;
+    } else if (solved === ESolved.unsolved) {
+      params.unsolved = 1;
+    }
     const result: { user_actions: IQuestions[] } = await asktugClient.get(url, { params });
     data = result.user_actions ?? [];
   }

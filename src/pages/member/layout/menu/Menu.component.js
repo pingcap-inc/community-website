@@ -35,7 +35,7 @@ const Menu = ({ isMobile }) => {
     <Styled.Container>
       {Object.keys(routes).map((path) => (
         <Styled.Item
-          isActive={pathPrefix + path === asPath || pathPrefix + path + '/records' === asPath}
+          isActive={pathPrefix + path === asPath || (path !== '' && pathPrefix + path + '/records' === asPath)}
           onClick={(e) => {
             e.preventDefault();
             router.push(pathPrefix + path);

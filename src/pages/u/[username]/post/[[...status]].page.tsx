@@ -15,12 +15,12 @@ import {
   IProfile,
   IProfileSummary,
   IRawBadges,
-} from '../api';
+} from '~/api/asktug/profile';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import { ParsedUrlQuery } from 'querystring';
 import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { getPostUrlBySlug, getPostFavoritesNumberByUsername, getListNumberFromResponse } from '../username';
+import { getPostUrlBySlug, getPostFavoritesNumberByUsername, getListNumberFromResponse } from '~/api/blog';
 import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl } from '~/pages/u/[username]/constant.data';
 import { api } from '@tidb-community/datasource';
@@ -34,7 +34,6 @@ import { useContext } from 'react';
 import { MeContext } from '~/context';
 
 interface IProps {
-  username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
@@ -56,16 +55,15 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   const [i18nProps, badges, profile, summary, posts, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesByUsername(username),
-    getUserProfileByUsername(username),
-    getSummaryByUsername(username),
+    getBadgesByUsername({ username }),
+    getUserProfileByUsername({ username }),
+    getSummaryByUsername({ username }),
     api.blog.username.getPostsByUsername({ status: pageInfo.status, username }),
-    getPostFavoritesNumberByUsername(username),
+    getPostFavoritesNumberByUsername({ username }),
   ]);
   return {
     props: {
       ...i18nProps,
-      username,
       badges,
       profile,
       summary,
@@ -76,12 +74,12 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfilePostPage(props: IProps): JSX.Element {
-  const { username, badges, profile, summary, posts: postsFromSSR, postFavoritesNumber } = props;
+  const { badges, profile, summary, posts: postsFromSSR, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
 
   const router = useRouter();
-  const { status } = router.query;
+  const { status, username } = router.query;
   const pageInfo = getPageInfo(status as string[]);
 
   const { hasAuthority } = usePrincipal();

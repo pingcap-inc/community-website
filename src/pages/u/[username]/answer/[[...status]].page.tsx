@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ParsedUrlQuery } from 'querystring';
 // import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useCallback, useEffect, useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';

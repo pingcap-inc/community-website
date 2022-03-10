@@ -5,7 +5,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { BlogFilter } from './layout/menu';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConfigProvider, List } from 'antd';
+import { ConfigProvider } from 'antd';
+import { List } from './Asktug.component';
 import { SpringPage } from '~/api/blog';
 import { ListPlaceholder } from '~/pages/private-messages/PrivateMessages.component';
 import { ListLoader } from '~/pages/notifications/Asktug.component';
@@ -21,6 +22,7 @@ const Blog = ({ filter }: BlogProps) => {
     (n) => ['blog.getNotifications', { page: n + 1, type: filter.type }],
     { fetcher, dedupingInterval: 100 }
   );
+  console.log(data);
 
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
@@ -98,10 +100,10 @@ const Blog = ({ filter }: BlogProps) => {
         loader={<ListLoader />}
         scrollableTarget="scrollableDiv"
       >
-        <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'还没有通知哦'} />}>
+        <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'暂时还没有消息'} />}>
           <List
             dataSource={notifications}
-            renderItem={(item) => (
+            renderItem={(item: Notification) => (
               <BlogNotification
                 key={item.id}
                 notification={item}

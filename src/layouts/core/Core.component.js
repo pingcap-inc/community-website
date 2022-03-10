@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import React, { useContext } from 'react';
 import useSWR from 'swr';
-import { ActivityBanner, Footer, Header, UserProfile, utils } from '@tidb-community/ui';
+import { ActivityBanner, UserProfile, utils } from '@tidb-community/ui';
+import { Footer, Header } from '@pingcap-inc/tidb-community-site-components';
 import { getData } from '@tidb-community/datasource';
 import { useRouter } from 'next/router';
 

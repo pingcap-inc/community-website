@@ -121,13 +121,36 @@ export interface GetPrivateMessagesParams {
   unread?: 1;
 }
 
+const tryJson = (data: string) => {
+  const trimmedData = data.trim();
+  try {
+    const json = JSON.parse(trimmedData);
+    if (typeof json === 'object') {
+      return json;
+    } else {
+      return data;
+    }
+  } catch (e) {
+    return data;
+  }
+};
+
+const parseJsonString = <T>(params: any): T => {
+  if (typeof params === 'string') params = tryJson(params);
+  return params;
+};
+
 export const getNotifications = (params: GetNotificationParams = {}): Promise<Notifications> =>
   asktugClient.get('/notifications', { params });
 
 export const readNotification = (id: number) => asktugClient.put('/notifications/mark-read', { params: { id } });
 
-export const getPrivateMessages = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
-  asktugClient.get(`/topics/private-messages/${params.username}`, { params });
+export const getPrivateMessages = (params: GetPrivateMessagesParams): Promise<PrivateMessages> => {
+  params = parseJsonString(params);
+  return asktugClient.get(`/topics/private-messages/${params.username}`, { params });
+};
 
-export const getPrivateMessagesSent = (params: GetPrivateMessagesParams): Promise<PrivateMessages> =>
-  asktugClient.get(`/topics/private-messages-sent/${params.username}`, { params });
+export const getPrivateMessagesSent = (params: GetPrivateMessagesParams): Promise<PrivateMessages> => {
+  params = parseJsonString(params);
+  return asktugClient.get(`/topics/private-messages-sent/${params.username}`, { params });
+};

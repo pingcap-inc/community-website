@@ -8,6 +8,7 @@ import { SiteLayout } from '~/layouts';
 import { MailOutlined } from '@ant-design/icons';
 
 import { useRouter } from 'next/router';
+import { CommunityHead } from '~/components';
 
 const Layout: React.FC = ({ children }) => {
   const { isAnonymous, login } = useContext(AuthContext);
@@ -20,6 +21,7 @@ const Layout: React.FC = ({ children }) => {
   return (
     <>
       <SiteLayout>
+        <CommunityHead title="私信" />
         <Styled.Container>
           <Row gutter={[32, 32]}>
             <Col xs={24} sm={8} md={6}>

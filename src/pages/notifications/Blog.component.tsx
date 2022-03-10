@@ -5,7 +5,8 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { BlogFilter } from './layout/menu';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConfigProvider, List } from 'antd';
+import { ConfigProvider } from 'antd';
+import { List } from './Asktug.component';
 import { SpringPage } from '~/api/blog';
 import { ListPlaceholder } from '~/pages/private-messages/PrivateMessages.component';
 import { ListLoader } from '~/pages/notifications/Asktug.component';
@@ -102,7 +103,7 @@ const Blog = ({ filter }: BlogProps) => {
         <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'还没有通知哦'} />}>
           <List
             dataSource={notifications}
-            renderItem={(item) => (
+            renderItem={(item: Notification) => (
               <BlogNotification
                 key={item.id}
                 notification={item}

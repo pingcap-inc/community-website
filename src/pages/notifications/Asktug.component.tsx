@@ -5,8 +5,10 @@ import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { AsktugFilter } from './layout/menu';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { ConfigProvider, List, Spin } from 'antd';
+import { ConfigProvider, List as RawList, Spin } from 'antd';
 import { ListPlaceholder } from '~/pages/private-messages/PrivateMessages.component';
+import styled from 'styled-components';
+import { AsktugNotification } from '~/api/asktug';
 
 type Notification = DiscourseNotificationProps['notification'];
 
@@ -34,6 +36,12 @@ export const ListLoader = () => (
     <Spin />
   </div>
 );
+
+export const List = styled(RawList)`
+  .ant-list-empty-text {
+    padding: 0;
+  }
+`;
 
 const Asktug = ({ filter }: AsktugProps) => {
   const { data, mutate, size, setSize, isValidating } = useSWRInfinite<Notifications>(
@@ -118,7 +126,7 @@ const Asktug = ({ filter }: AsktugProps) => {
         <ConfigProvider renderEmpty={() => !isValidating && <ListPlaceholder text={'还没有通知哦'} />}>
           <List
             dataSource={notifications}
-            renderItem={(item) => (
+            renderItem={(item: AsktugNotification) => (
               <DiscourseNotification
                 key={item.id}
                 notification={item}

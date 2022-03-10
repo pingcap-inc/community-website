@@ -20,15 +20,27 @@ const PlaceHolder = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   height: 120px;
-  margin-top: 4rem;
+  //margin-top: 4rem;
   width: 100%;
 `;
 
 export function ListPlaceholder({ text }: { text: string }) {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <PlaceHolder />
-      <div style={{ fontSize: 16, color: colors.F2, marginTop: '1rem' }}>{text}</div>
+    <div
+      style={{
+        textAlign: 'center',
+        width: '100%',
+        height: 600,
+        background: '#F7F8F9',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <div>
+        <PlaceHolder />
+        <div style={{ fontSize: 16, color: colors.F2, marginTop: '1rem' }}>{text}</div>
+      </div>
     </div>
   );
 }

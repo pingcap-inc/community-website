@@ -25,7 +25,7 @@ import { ParsedUrlQuery } from 'querystring';
 import { getPageQuery } from '~/utils/pagination.utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { useRouter } from 'next/router';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 import { getPostFavoritesNumberByUsername, getPostsNumberByUsername } from '~/api/blog';
 import { filterSelectWidth } from '../common.styled';
 import EmptyStatus from '~/components/EmptyStatus';
@@ -94,7 +94,7 @@ export default function ProfileQuestionIndexPage(props: IProps) {
 
   const fallbackData = [questionsFromSSR];
 
-  const { data, error, setSize } = useSWRInfinite<IQuestions[]>(
+  const { data, error, setSize, mutate } = useSWRInfinite<IQuestions[]>(
     (page) => ['asktug.profile.getQuestionsByUsername', { username, solved, page: page + 1, per_page: pageInfo.size }],
     {
       fetcher,
@@ -102,6 +102,10 @@ export default function ProfileQuestionIndexPage(props: IProps) {
     }
   );
   if (error) console.error('error', error);
+
+  useEffect(() => {
+    mutate(() => undefined, false).then();
+  }, [mutate, solved]);
 
   // use swr infinite holds all the resp lists
   const questions = useMemo(() => {
@@ -193,9 +197,9 @@ export default function ProfileQuestionIndexPage(props: IProps) {
           onChange={(value) => router.push(`/u/${username}/question/${value}`, undefined, { shallow: true })}
           style={{ width: filterSelectWidth }}
         >
-          <Select.Option value={''}>全部</Select.Option>
-          <Select.Option value={'solved'}>已解决</Select.Option>
-          <Select.Option value={'unsolved'}>未解决</Select.Option>
+          <Select.Option value={ESolved.all}>全部</Select.Option>
+          <Select.Option value={ESolved.solved}>已解决</Select.Option>
+          <Select.Option value={ESolved.unsolved}>未解决</Select.Option>
         </Select>
       </CommonStyled.Action>
       <CommonStyled.List>

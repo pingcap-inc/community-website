@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ParsedUrlQuery } from 'querystring';
 // import { useRouter } from 'next/router';
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { useCallback, useMemo } from 'react';
+import { useCallback, useEffect, useMemo } from 'react';
 // import * as Styled from './index.styled';
 import * as CommonStyled from '../common.styled';
 import { getI18nProps } from '~/utils/i18n.utils';
@@ -95,7 +95,7 @@ export default function ProfileAnswerPage(props: IProps) {
 
   const fallbackData = [answersFromSSR];
 
-  const { data, error, setSize } = useSWRInfinite<IUserAction[]>(
+  const { data, error, setSize, mutate } = useSWRInfinite<IUserAction[]>(
     (pageNumber) => [
       'asktug.profile.getAnswersByUsername',
       { pageNumber: pageNumber + 1, pageSize, username, markedSolution },
@@ -105,6 +105,10 @@ export default function ProfileAnswerPage(props: IProps) {
       fallbackData,
     }
   );
+
+  useEffect(() => {
+    mutate(() => undefined, false).then();
+  }, [mutate, markedSolution]);
 
   // use swr infinite holds all the resp lists
   const answers = useMemo(() => {

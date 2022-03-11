@@ -30,7 +30,7 @@ import { getPageInfo } from '~/pages/blog/user/[id]/posts/page-info';
 import StatusSelect from './StatusSelect.component';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { IResponseList, IResponsePostDetail } from '../../../../../packages/datasource/src/api/blog';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { MeContext } from '~/context';
 
 interface IProps {
@@ -98,10 +98,16 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
     error: postsError,
     size,
     setSize,
+    mutate,
   } = useSWRInfinite<IResponseList<IResponsePostDetail>>(getKey, {
     fallbackData: [postsFromSSR],
     revalidateOnMount: true,
   });
+
+  useEffect(() => {
+    mutate(() => undefined, false).then();
+  }, [mutate, pageInfo.status]);
+
   const error = postsError;
   const loading = !postsResp;
   if (error) return <ErrorPage statusCode={500} errorMsg={'暂时无法获取专栏数据，请稍候再试'} />;

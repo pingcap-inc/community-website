@@ -14,7 +14,7 @@ const BlogList = ({ blogs, usernameExtends, bottomExtends, api, params }) => {
     isValidating,
     mutate,
   } = useSWRInfinite((page) => ({ page: page + 1, size: 20, ...params }), {
-    fallbackData: blogs,
+    fallbackData: [blogs],
     initialSize: blogs.page.number + 1,
     revalidateOnMount: false,
     revalidateFirstPage: false,

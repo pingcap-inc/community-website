@@ -98,6 +98,7 @@ if (process.env.ENABLE_SENTRY === 'true') {
     // https://github.com/getsentry/sentry-webpack-plugin#options.
     silent: process.env.NODE_ENV === 'development',
     release: process.env.SENTRY_RELEASE,
+    authToken: process.env.SENTRY_TOKEN,
     setCommits: {
       auto: true,
     },

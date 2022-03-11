@@ -53,7 +53,7 @@ jobs:
           echo ${{ secrets.SENTRY_TOKEN }}
 
         env:
-          SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
           SENTRY_RELEASE: tug-website@${{ github.sha }}
   
       - name: Copy locales

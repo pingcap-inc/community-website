@@ -50,12 +50,12 @@ export const getServerSideProps = async (ctx) => {
   const { page, size } = getPageQuery(ctx.query);
 
   const [category, tag] = await Promise.all([
-    type === 'category' ? api.blog.getCategoryBySlug(slug) : Promise.resolve(null),
-    type === 'tag' ? api.blog.getTagBySlug(slug) : Promise.resolve(null),
+    type === 'category' ? api.blog.getCategoryBySlug({ slug }) : Promise.resolve(null),
+    type === 'tag' ? api.blog.getTagBySlug({ slug }) : Promise.resolve(null),
   ]);
 
   const [blogs, categories, hotTags] = await Promise.all([
-    api.blog.getList({ latest, categoryID: category?.id, tagID: tag?.id, page, size }),
+    api.blog.getPostList({ latest, categoryID: category?.id, tagID: tag?.id, page, size }),
     api.blog.getCategories(),
     api.blog.getHotTags(),
   ]);
@@ -129,7 +129,6 @@ export default function CategoryPage({
           filter = CATEGORY_ALL;
           break;
       }
-      console.log('chose', filter);
       if (filter) {
         setFilter(filter);
       }
@@ -253,7 +252,7 @@ export default function CategoryPage({
               {filter ? (
                 <BlogListInfiniteScroll
                   blogs={blogsFromSSR}
-                  api={api.blog.getList}
+                  api={api.blog.getPostList}
                   params={{ latest: info.latest, [`${info.type}ID`]: filter.id }}
                 />
               ) : (

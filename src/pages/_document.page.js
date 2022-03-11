@@ -1,6 +1,7 @@
 // Copied from the offical example for the integration with styled-components:
 // https://github.com/vercel/next.js/blob/master/examples/with-styled-components/pages/_document.js
 import React from 'react';
+// eslint-disable-next-line @next/next/no-document-import-in-page
 import Document from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 export default class MyDocument extends Document {

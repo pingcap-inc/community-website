@@ -3,7 +3,7 @@ import { List } from 'antd';
 import { Link as RawLink } from '@tidb-community/ui';
 import styled from 'styled-components';
 import { colors } from '@pingcap-inc/tidb-community-ui';
-import { askTugDomain } from '~/pages/u/[username]/api';
+import { askTugDomain } from '~/api/asktug';
 
 interface PrivateMessagesProp {
   messages: (AsktugPrivateMessage & { users: AsktugUser[] })[];

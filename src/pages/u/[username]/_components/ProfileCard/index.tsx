@@ -3,15 +3,15 @@ import * as Styled from './index.styled';
 // import Image from 'next/image';
 import { EditFilled, MailFilled } from '@ant-design/icons';
 import Link from 'next/link';
-import { askTugDomain } from '~/pages/u/[username]/api';
+import { askTugDomain } from '~/api/asktug/profile';
 import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 
 export interface IProfileCard {
-  avatarUrl: string;
-  name: string;
-  level: number;
-  description: string;
-  joinDate: string;
+  avatarUrl?: string;
+  name?: string;
+  level?: number;
+  description?: string;
+  joinDate?: string;
   nums: {
     like?: number;
     answer?: number;

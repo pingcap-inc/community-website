@@ -1,17 +1,17 @@
-import { Page, Pagination, Post, PostStatus, UserInfo } from '../posts/[id]';
+import { Page, Pagination, IPost, PostStatus, UserInfo } from '../posts/[id]';
 
 interface Query extends Pagination {
   status?: PostStatus;
 }
 
 interface Favorite {
-  post: Post;
+  post: IPost;
   user: UserInfo;
   favoritedAt: string;
 }
 
 interface Like {
-  post: Post;
+  post: IPost;
   user: UserInfo;
   likedAt: string;
 }
@@ -34,7 +34,7 @@ interface UserDetails extends UserInfo {
   comments: 0;
 }
 
-export function getPosts(param: { userId: number; status?: string; query?: Query }): Promise<Page<Post>>;
+export function getPosts(param: { userId: number; status?: string; query?: Query }): Promise<Page<IPost>>;
 
 export function getLikes(param: { userId: number; query?: Pagination }): Promise<Page<Like>>;
 

@@ -15,7 +15,9 @@ import {
   IProfile,
   IProfileSummary,
   IRawBadges,
-} from '../api';
+  IResponse,
+  IPostFavorite,
+} from '~/api/asktug/profile';
 import { ParsedUrlQuery } from 'querystring';
 import { getRelativeDatetime } from '~/utils/datetime.utils';
 import InfiniteScroll from 'react-infinite-scroll-component';
@@ -24,19 +26,16 @@ import { getPageQuery } from '~/utils/pagination.utils';
 import FavoriteTypeTab, { EFavoriteType } from '~/pages/u/[username]/favorite/_component/FavoriteTypeTab';
 import {
   getPostUrlBySlug,
-  IResponse,
   getPostFavoritesByUsername,
   getPostsNumberByUsername,
   getPostFavoritesNumberByUsername,
-  IPostFavorite,
-} from '../username';
+} from '~/api/blog';
 import { useCurrentLogonUser } from '~/pages/u/[username]/profile.hook';
 import ErrorPage from '~/components/errorPage';
 import EmptyStatus from '~/components/EmptyStatus';
 import { blogUrl, forumUrl } from '~/pages/u/[username]/constant.data';
 
 interface IProps {
-  username: string;
   badges: IRawBadges[];
   profile: IProfile;
   summary: IProfileSummary;
@@ -56,17 +55,16 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
   const [i18nProps, badges, profile, summary, posts, postsNumber, postFavoritesNumber] = await Promise.all([
     // @ts-ignore
     getI18nProps(['common'])(ctx),
-    getBadgesByUsername(username),
-    getUserProfileByUsername(username),
-    getSummaryByUsername(username),
+    getBadgesByUsername({ username }),
+    getUserProfileByUsername({ username }),
+    getSummaryByUsername({ username }),
     getPostFavoritesByUsername(username, pageInfo.page, pageInfo.size),
-    getPostsNumberByUsername(username),
-    getPostFavoritesNumberByUsername(username),
+    getPostsNumberByUsername({ username }),
+    getPostFavoritesNumberByUsername({ username }),
   ]);
   return {
     props: {
       ...i18nProps,
-      username,
       badges,
       profile,
       summary,
@@ -78,10 +76,11 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 };
 
 export default function ProfileFavoriteArticlePage(props: IProps) {
-  const { username, badges, profile, summary, posts, postsNumber, postFavoritesNumber } = props;
+  const { badges, profile, summary, posts, postsNumber, postFavoritesNumber } = props;
   const askTugFavoritesNumber = summary.user_summary.bookmark_count;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
   const router = useRouter();
+  const { username } = router.query as { username: string };
   const pageInfo = getPageQuery(router.query);
   const [pageNumber, setPageNumber] = useState(pageInfo.page);
   const [data, setData] = useState(posts.content);

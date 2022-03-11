@@ -3,8 +3,20 @@ import { colors } from '@tidb-community/ui';
 
 export const Tab = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   overflow: auto;
-  margin-right: 1rem;
+  width: 100%;
+`;
+
+export const Start = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
+
+export const End = styled.div`
+  display: flex;
+  align-items: flex-end;
 `;
 
 export const TabItem = styled.a<{ selected?: boolean }>`

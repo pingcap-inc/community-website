@@ -107,7 +107,7 @@ export default function ProfileAnswerPage(props: IProps) {
   );
 
   useEffect(() => {
-    mutate(() => undefined, false).then();
+    mutate(() => [[]], false).then();
   }, [mutate, markedSolution]);
 
   // use swr infinite holds all the resp lists

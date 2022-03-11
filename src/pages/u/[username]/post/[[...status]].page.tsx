@@ -104,7 +104,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   });
 
   useEffect(() => {
-    mutate(() => undefined, false).then();
+    mutate(() => [], false).then();
   }, [mutate, pageInfo.status]);
 
   const error = postsError;
@@ -115,7 +115,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
   const loadMoreData = async () => {
     await setSize((size) => size + 1);
   };
-  const hasMore = postsResp[0].page.totalPages > size;
+  const hasMore: boolean = postsResp[0]?.page.totalPages > size ?? false;
   const posts: IResponsePostDetail[] = [];
   postsResp.forEach(({ content }) => posts.push(...content));
   const isEmpty: boolean = loading === false && posts.length === 0;

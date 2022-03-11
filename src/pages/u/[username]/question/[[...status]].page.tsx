@@ -104,7 +104,7 @@ export default function ProfileQuestionIndexPage(props: IProps) {
   if (error) console.error('error', error);
 
   useEffect(() => {
-    mutate(() => undefined, false).then();
+    mutate(() => [[]], false).then();
   }, [mutate, solved]);
 
   // use swr infinite holds all the resp lists

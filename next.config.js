@@ -100,6 +100,7 @@ if (process.env.ENABLE_SENTRY === 'true') {
     release: process.env.SENTRY_RELEASE,
     setCommits: {
       auto: true,
+      ignoreMissing: true,
     },
   };
   nextConfig = withSentryConfig(config, SentryWebpackPluginOptions);

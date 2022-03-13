@@ -193,7 +193,7 @@ export default function CategoryPage({
   if (!info) return <ErrorPage statusCode={404} />;
   if (error) {
     console.error(error);
-    return <ErrorPage />;
+    return <ErrorPage error={error} />;
   }
   if (loading) return <Skeleton active />;
 

@@ -88,7 +88,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     [reload]
   );
 
-  if (error) return <ErrorPage />;
+  if (error) return <ErrorPage error={error} />;
   if (loading) return <Skeleton active />;
 
   if (!hasPermission && isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;

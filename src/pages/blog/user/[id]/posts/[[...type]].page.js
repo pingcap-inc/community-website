@@ -59,7 +59,7 @@ const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) =>
 
   const error = userError || blogsError;
   const loading = !blogs || !user;
-  if (error) return <ErrorPage />;
+  if (error) return <ErrorPage error={error} />;
   if (loading) return <Skeleton active />;
 
   const isCurrentUser = logonUserId === Number(userId);

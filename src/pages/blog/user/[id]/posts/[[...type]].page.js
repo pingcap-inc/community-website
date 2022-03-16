@@ -62,7 +62,9 @@ const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) =>
   if (error) return <ErrorPage />;
   if (loading) return <Skeleton active />;
 
-  const showFilter = logonUserId === Number(userId) || hasAuthority('READ_OTHERS_POST');
+  const isCurrentUser = logonUserId === Number(userId);
+  const showFilter = isCurrentUser || hasAuthority('READ_OTHERS_POST');
+  const showBadge = isCurrentUser && pageInfo.showBadge;
   const tabExtendDOM = showFilter && <StatusSelect value={pageInfo.status} shallow />;
 
   return (
@@ -80,7 +82,7 @@ const PostsPendingPage = ({ userId, user: userFromSSR, blogs: blogsFromSSR }) =>
           快前往 <a href={blogUrl}>【社区专栏】</a> 撰写技术文章吧～
         </EmptyStatus>
       ) : (
-        <BlogList blogs={blogs} showStatusBadge={pageInfo.showBadge ?? false} />
+        <BlogList blogs={blogs} showStatusBadge={showBadge ?? false} />
       )}
     </UserDetailsLayout>
   );

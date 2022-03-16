@@ -28,7 +28,7 @@ const PageContent = () => {
 
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
-  const { data: blogs, error: blogsError } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
+  const { data: blogs, error: blogsError } = useSWR(['blog.getAllPostList', { status, page, size }], {
     revalidateOnMount: true,
   });
 

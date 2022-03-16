@@ -13,11 +13,11 @@
     },
     "card": [
       {
-        "title": "TiDB Hackathon 2021 专区",
-        "desc": "本次 Hackathon 主题为「Explore the Sky」，尽情发挥天马行空的想象，用 TiDB 创造无限可能。",
+        "title": "TiDB 社区专栏第一届征文大赛",
+        "desc": "【征文大赛】TiDB 社区专栏第一届征文大赛，快来一次性集齐所有周边吧！",
         "button": "前往查看",
-        "link": "https://tidb.io/events/hackathon2021",
-        "image": "/images/activities/hackathon2021.jpg"
+        "link": "https://tidb.io/blog/ab7959f4",
+        "image": "/images/activities/tidb-blog-1.jpg"
       },
       {
         "title": "TUG 企业行",

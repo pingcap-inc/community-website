@@ -18,10 +18,13 @@ export const isAdmin = (meData) => {
 
 export const getStrapiImgProps = (imgObj) => {
   const img = imgObj[0];
-  return {
-    src: `${process.env.NEXT_PUBLIC_CDN_BASE_URL || process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${img.url}`,
-    ...R.pick(['width', 'height'], img),
-  };
+  let result = {
+    src: `${process.env.NEXT_PUBLIC_CDN_BASE_URL || process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${img?.url ?? ''}`
+  }
+  if (img) {
+    result = {...result, ...R.pick(['width', 'height'], img)}
+  }
+  return result
 };
 
 export const genOptionValues = (values) =>

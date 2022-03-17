@@ -2,6 +2,7 @@ import * as polished from 'polished';
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 import { CaretUpOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 
 const calendarGrey = '#b6b9c3';
 
@@ -16,7 +17,7 @@ export const Calendar = styled.div`
   }
 `;
 
-export const Container = styled.div`
+export const Container = styled(Link)`
   display: flex;
   cursor: pointer;
   padding: 1rem 0;

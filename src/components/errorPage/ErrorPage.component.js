@@ -3,7 +3,7 @@
 // https://github.com/vercel/next.js/blob/canary/packages/next/pages/_error.tsx
 
 import * as R from 'ramda';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';
 import { useRouter } from 'next/router';
@@ -27,9 +27,15 @@ const errorMsgs = {
   500: '服务器异常，请稍后重试',
 };
 
-const ErrorPage = ({ statusCode, errorMsg }) => {
+const ErrorPage = ({ statusCode, errorMsg, error = undefined }) => {
   const router = useRouter();
   const Icon = R.propOr(icons[500], statusCode)(icons);
+
+  useEffect(() => {
+    if (error) {
+      console.error(error);
+    }
+  }, [error]);
 
   errorMsg = errorMsg || R.propOr('未知错误，请稍后重试', statusCode)(errorMsgs);
 

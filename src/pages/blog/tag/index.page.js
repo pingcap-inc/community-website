@@ -38,7 +38,7 @@ const TagPage = ({ tags: tagsFromSSR }) => {
 
   const error = tagsError;
   const loading = !tags;
-  if (error) return <ErrorPage />;
+  if (error) return <ErrorPage error={error} />;
   if (loading) return <Skeleton active />;
 
   return (

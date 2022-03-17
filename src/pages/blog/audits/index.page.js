@@ -28,13 +28,13 @@ const PageContent = () => {
 
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
-  const { data: blogs, error: blogsError } = useSWR(['blog.getPosts', JSON.stringify({ status, page, size })], {
+  const { data: blogs, error: blogsError } = useSWR(['blog.getAllPostList', { status, page, size }], {
     revalidateOnMount: true,
   });
 
   const error = blogsError;
   const loading = !blogs || hasPermission === undefined;
-  if (error) return <ErrorPage />;
+  if (error) return <ErrorPage error={error} />;
   if (loading) return <Skeleton active />;
 
   if (hasPermission === false) <ErrorPage statusCode={403} errorMsg={'您没有 REVIEW_POST 权限，无法查看本页面'} />;

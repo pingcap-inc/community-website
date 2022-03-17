@@ -27,6 +27,13 @@ const config = {
   },
 
   styledComponents: true,
+  
+  /**
+   * because it is an open-source project, 
+   * so we could allow next.js to build the source-maps files and publish them to the production environment, 
+   * it will help us debug more efficiently
+   */
+  productionBrowserSourceMaps: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {
@@ -100,6 +107,7 @@ if (process.env.ENABLE_SENTRY === 'true') {
     release: process.env.SENTRY_RELEASE,
     setCommits: {
       auto: true,
+      ignoreMissing: true,
     },
   };
   nextConfig = withSentryConfig(config, SentryWebpackPluginOptions);

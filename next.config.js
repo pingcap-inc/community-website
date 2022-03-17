@@ -27,6 +27,8 @@ const config = {
   },
 
   styledComponents: true,
+  
+  productionBrowserSourceMaps: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {

@@ -19,6 +19,12 @@ export interface IMeta {
   slug: string;
 }
 
+export interface IAuthor {
+  id: number;
+  username: string;
+  avatarURL: string;
+}
+
 export interface IResponsePostDetail {
   creatorId: number;
   modifierId: number;
@@ -32,7 +38,7 @@ export interface IResponsePostDetail {
   title: string;
   summary: string;
   content: string;
-  category: IMeta;
+  category: IMeta[];
   tags: IMeta[];
   origin: TPostOrigin;
   status: TPostStatus;
@@ -44,6 +50,7 @@ export interface IResponsePostDetail {
   public: boolean;
   likes: number;
   comments: number;
+  author: IAuthor;
 }
 
 export interface IPage {

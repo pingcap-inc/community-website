@@ -31,7 +31,6 @@ const Blogs = () => {
     size: 'large',
     icon: <EditFilled />,
     children: lang.writeBlog,
-    onClick: onClick('https://tidb.io/blog/new/edit'),
   };
 
   return (
@@ -65,7 +64,9 @@ const Blogs = () => {
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
               <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
-                <Button {...writeBlogButtonProps} />
+                <Link href={'/blog/new/edit'}>
+                  <Button {...writeBlogButtonProps} />
+                </Link>
               </Styled.CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>

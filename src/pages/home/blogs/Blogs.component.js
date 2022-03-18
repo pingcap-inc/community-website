@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { EditFilled } from '@ant-design/icons';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './blogs.styled';
@@ -10,21 +9,14 @@ import Categories from '~/pages/home/forum/categories';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
-import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const Blogs = () => {
-  const router = useRouter();
   const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home', 'common');
 
   const lang = t('blogs', { returnObjects: true });
-
-  const onClick = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
 
   const writeBlogButtonProps = {
     type: 'primary',
@@ -44,7 +36,6 @@ const Blogs = () => {
               {data.blogs.map((blog, idx) => {
                 const props = {
                   key: idx,
-                  onClick,
                   ...blog,
                 };
 

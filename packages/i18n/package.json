@@ -1,23 +1,18 @@
 {
-  "name": "@tidb-community/i18n",
-  "private": true,
-  "scripts": {
-    "genExcels": "node ./src/genExcels",
-    "genLocales": "node ./src/genLocales",
-    "start": "serve --cors ./locales"
-  },
-  "description": "Locale JSON and PO files for i18n",
-  "dependencies": {
-    "chalk": "4.1.1",
-    "exceljs": "4.2.1",
-    "glob": "7.1.7",
-    "json-pointer": "0.6.1",
-    "lodash": "4.17.21",
-    "mkdirp": "1.0.4",
-    "ramda": "0.27.1",
-    "rimraf": "3.0.2"
-  },
-  "devDependencies": {
-    "serve": "12.0.0"
-  }
+	"name": "@tidb-community/i18n",
+	"private": true,
+	"description": "Locale JSON and PO files for i18n",
+	"dependencies": {
+		"chalk": "4.1.1",
+		"exceljs": "4.2.1",
+		"glob": "7.1.7",
+		"json-pointer": "0.6.1",
+		"lodash": "4.17.21",
+		"mkdirp": "1.0.4",
+		"ramda": "0.27.1",
+		"rimraf": "3.0.2"
+	},
+	"devDependencies": {
+		"serve": "12.0.0"
+	}
 }

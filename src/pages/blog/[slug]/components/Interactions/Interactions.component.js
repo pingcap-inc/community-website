@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import * as Styled from './interactions.styled';
 import {
   CommentOutlined,
+  DeleteOutlined,
   EditOutlined,
   HeartFilled,
   HeartOutlined,
+  PushpinFilled,
+  PushpinOutlined,
   SendOutlined,
   ShareAltOutlined,
   StarFilled,
   StarOutlined,
   StopOutlined,
-  DeleteOutlined,
-  PushpinFilled,
-  PushpinOutlined,
 } from '@ant-design/icons';
 import { scroller } from 'react-scroll';
 import { useEdit, useFavorites, useLikes, useRecommend, useRemove, useReview, useShares } from './interactions.hooks';
@@ -135,7 +135,7 @@ const Interaction = ({ icon, count, onClick, name, ...rest }) => {
     return (
       <Popconfirm
         placement="topLeft"
-        title={'请确认是否删除？（此操作不可撤销）'}
+        title={'是否确定删除该文章？删除后将自动扣减该文章带来的所有积分&经验值（此操作不可撤销）'}
         onConfirm={onClick}
         okText="确认"
         cancelText="取消"

@@ -52,7 +52,7 @@ const Blogs = () => {
                 return <Blog {...props} />;
               })}
             </Styled.Blogs>
-            <Link href="https://tidb.io/blog/latest" passHref>
+            <Link href="/blog/latest" passHref>
               {t('common:viewAll')}
             </Link>
           </>
@@ -73,7 +73,7 @@ const Blogs = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.articleCategories}
-                <Link href="https://tidb.io/blog/">{t('common:viewAll')}</Link>
+                <Link href="/blog">{t('common:viewAll')}</Link>
               </Styled.ModuleTitle>
               <Categories categories={lang.categories} />
             </Styled.Module>

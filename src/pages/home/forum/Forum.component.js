@@ -38,7 +38,6 @@ const Forum = () => {
                 const props = {
                   key: idx,
                   lang,
-                  onClick,
                   ...post,
                   isSmallScreen,
                 };

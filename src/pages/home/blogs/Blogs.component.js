@@ -52,9 +52,7 @@ const Blogs = () => {
                 return <Blog {...props} />;
               })}
             </Styled.Blogs>
-            <Link href="/blog/latest" passHref>
-              {t('common:viewAll')}
-            </Link>
+            <Link href="/blog/latest">{t('common:viewAll')}</Link>
           </>
         }
         rightPanel={

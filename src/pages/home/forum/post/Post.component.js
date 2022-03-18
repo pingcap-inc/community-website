@@ -1,12 +1,12 @@
 import React from 'react';
-import Link from 'next/link';
 import dayjs from 'dayjs';
 
+import Anchor from '~/components/Anchor';
 import * as Styled from './post.styled.js';
 
 const Post = ({ title, link, creator, categories, postNum, createdAt, lang, isSmallScreen }) => (
-  <Link href={link} passHref>
-    <Styled.Container>
+  <Styled.Container>
+    <Anchor href={link}>
       <Styled.TitleRow>
         <h3 title={title}>{title}</h3>
         {!isSmallScreen && (
@@ -41,8 +41,8 @@ const Post = ({ title, link, creator, categories, postNum, createdAt, lang, isSm
           <span>{dayjs(createdAt).fromNow()}</span>
         </span>
       </Styled.InformationRow>
-    </Styled.Container>
-  </Link>
+    </Anchor>
+  </Styled.Container>
 );
 
 export default Post;

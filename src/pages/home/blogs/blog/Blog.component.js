@@ -5,8 +5,8 @@ import Anchor from '~/components/Anchor';
 // import AsktugIcon from './asktug.svg';
 
 const Blog = ({ title, link, creator, createdAt }) => (
-  <Anchor href={link}>
-    <Styled.Container>
+  <Styled.Container>
+    <Anchor href={link}>
       <Styled.TitleRow>
         <h3 title={title}>{title}</h3>
         {/*<AsktugIcon />*/}
@@ -19,8 +19,8 @@ const Blog = ({ title, link, creator, createdAt }) => (
         </Styled.User>
         <span>{dayjs(createdAt).format('YYYY.MM.DD')}</span>
       </Styled.InformationRow>
-    </Styled.Container>
-  </Anchor>
+    </Anchor>
+  </Styled.Container>
 );
 
 export default Blog;

@@ -25,7 +25,8 @@
     "test": "jest",
     "test:changed": "npm test -- --changedSince=origin/main",
     "test:cov": "npm test -- --coverage",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "remove:cache": "rm -rf ./packages/**/node_modules ./node_modules ./.next"
   },
   "engines": {
     "node": "16.14.0",

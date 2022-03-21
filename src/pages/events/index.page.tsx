@@ -121,6 +121,7 @@ export interface IProps {
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
+  //@ts-ignore
   const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
   const isEnabled = process.env.NEXT_PUBLIC_FT_ACTIVITIES;
   if (!isEnabled) {

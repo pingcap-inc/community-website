@@ -132,7 +132,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 
   const { query } = ctx;
   const params = getParamsFromQueryString(query);
-  const paramsForCalendar = getCalendarParamsFromQueryString(query);
+  const paramsForCalendar = getCalendarParamsFromQueryString();
   const [events, total, calendarEvents] = await Promise.all([
     fetcher<IEvent[]>('tidbio-activitiespage-activities', params),
     fetcher<number>('tidbio-activitiespage-activities/count', params),

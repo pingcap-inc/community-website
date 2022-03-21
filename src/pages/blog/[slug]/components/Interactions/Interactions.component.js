@@ -124,7 +124,7 @@ const Interactions = ({ blog, reload }) => {
         okText="确认"
         cancelText="取消"
       >
-        <Input.TextArea onChange={(event) => setRejectReason(event.target.value)} />
+        <Input.TextArea showCount onChange={(event) => setRejectReason(event.target.value)} maxLength={1000} />
       </Modal>
     </>
   );

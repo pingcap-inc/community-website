@@ -56,7 +56,7 @@ const getParamsFromQueryString = (query) => {
   };
 };
 
-const getCalendarParamsFromQueryString = (query) => {
+const getCalendarParamsFromQueryString = () => {
   //const {calendarYearStr} = query
   //const calendarYear = getNumberFromQuery(calendarYearStr, (new Date()).getFullYear())
   return {

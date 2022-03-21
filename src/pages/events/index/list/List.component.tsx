@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
-import { Button, Col, Empty, Form, Row, Select } from 'antd';
+import { Button, Col, Empty, Form, Row, Select, Tooltip } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
 
 import * as Styled from './list.styled';
@@ -64,12 +64,28 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
         <h3>{title}</h3>
         <ul>
           <li>
-            <EnvironmentOutlined />
-            {location}
+            <Tooltip placement="topLeft" title="活动类型" arrowPointAtCenter>
+              <EnvironmentOutlined />
+              {location}
+            </Tooltip>
           </li>
-          <li>{type}</li>
-          <li>{dayjs(dateObj).format('YYYY.MM.DD')}</li>
-          {durationObj && <li>{durationObj} 天</li>}
+          <li>
+            <Tooltip placement="topLeft" title="活动形式" arrowPointAtCenter>
+              {type}
+            </Tooltip>
+          </li>
+          <li>
+            <Tooltip placement="topLeft" title="活动时间" arrowPointAtCenter>
+              {dayjs(dateObj).format('YYYY.MM.DD')}
+            </Tooltip>
+          </li>
+          {durationObj && (
+            <li>
+              <Tooltip placement="topLeft" title="活动持续天数" arrowPointAtCenter>
+                {durationObj} 天
+              </Tooltip>
+            </li>
+          )}
         </ul>
       </PlainLink>
     </Styled.EventCard>

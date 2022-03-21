@@ -42,7 +42,7 @@ const Blogs = () => {
                 return <Blog {...props} />;
               })}
             </Styled.Blogs>
-            <Link href="/blog/latest">{t('common:viewAll')}</Link>
+            <Link href={{ pathname: '/blog', query: { latest: true } }}>{t('common:viewAll')}</Link>
           </>
         }
         rightPanel={

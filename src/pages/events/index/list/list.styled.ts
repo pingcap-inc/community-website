@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { Col, Form, Pagination as AntPagination } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 import { Link } from '~/components';
 
 const { Content, Section, Title } = Styled;

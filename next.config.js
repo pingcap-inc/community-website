@@ -77,6 +77,8 @@ const config = {
     return [{ source: '/next-api/:path*', destination: '/api/:path*' }];
   },
 
+  //TODO: move the redirection rules to the {path}/index.tsx file using getStaticProps(context).
+  // it will be high cohesion and easily to maintenance
   async redirects() {
     return [
       {

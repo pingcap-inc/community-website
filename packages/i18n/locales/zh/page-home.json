@@ -110,7 +110,7 @@
     ]
   },
   "blogs": {
-    "title": "社区专栏",
+    "title": "专栏文章",
     "shareExperience": "想分享经验？",
     "writeBlog": "写专栏",
     "articleCategories": "热门标签",
@@ -123,35 +123,35 @@
     "categories": [
       {
         "name": "实践案例",
-        "link": "https://tidb.io/blog/tag/practical-case"
+        "link": "/blog/tag/practical-case"
       },
       {
         "name": "TiDB 底层架构",
-        "link": "https://tidb.io/blog/tag/tidb-underlying-architecture"
+        "link": "/blog/tag/tidb-underlying-architecture"
       },
       {
         "name": "故障排查/诊断",
-        "link": "https://tidb.io/blog/tag/troubleshooting-and-diagnosis"
+        "link": "/blog/tag/troubleshooting-and-diagnosis"
       },
       {
         "name": "管理与运维",
-        "link": "https://tidb.io/blog/tag/management-and-operation-and-maintenance"
+        "link": "/blog/tag/management-and-operation-and-maintenance"
       },
       {
         "name": "性能调优",
-        "link": "https://tidb.io/blog/tag/performance-tuning"
+        "link": "/blog/tag/performance-tuning"
       },
       {
         "name": "安装 & 部署",
-        "link": "https://tidb.io/blog/tag/install-and-deploy"
+        "link": "/blog/tag/install-and-deploy"
       },
       {
         "name": "数据库架构选型",
-        "link": "https://tidb.io/blog/tag/database-architecture-selection"
+        "link": "/blog/tag/database-architecture-selection"
       },
       {
         "name": "监控",
-        "link": "https://tidb.io/blog/tag/monitor"
+        "link": "/blog/tag/monitor"
       },
       {
         "name": "版本测评",

@@ -9,7 +9,7 @@
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",
     "deploy:production": "shipit production deploy",
     "deploy:preview": "shipit preview deploy",
-    "dev": "npm run start:i18n & next dev",
+    "dev": "npm run start:i18n && npm run next:dev",
     "lint": "next lint && eslint . --ext .js,.jsx,.ts,.tsx",
     "postinstall": "lerna bootstrap",
     "prepare": "husky install",
@@ -17,7 +17,7 @@
     "server:reload": "pm2 reload pm2.config.js",
     "server:start": "pm2 start pm2.config.js",
     "start": "next start",
-    "next:dev": "next dev",
+    "next:dev": "cross-env NODE_OPTIONS='--inspect' next dev",
     "start:i18n": "lerna run --scope @tidb-community/i18n start",
     "storybook": "lerna run --scope @tidb-community/ui storybook -- -- -s $(pwd)/public",
     "pretest": "cp babel.config.js.old babel.config.js",
@@ -25,7 +25,8 @@
     "test": "jest",
     "test:changed": "npm test -- --changedSince=origin/main",
     "test:cov": "npm test -- --coverage",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "remove:cache": "rm -rf ./packages/**/node_modules ./node_modules ./.next"
   },
   "engines": {
     "node": "16.14.0",
@@ -90,6 +91,7 @@
     "babel-plugin-styled-components": "1.13.2",
     "babel-plugin-transform-import-ignore": "^1.1.0",
     "babel-preset-react-app": "10.0.0",
+    "cross-env": "7.0.3",
     "eslint": "7.32.0",
     "eslint-config-next": "11.1.2",
     "eslint-config-react-app": "6.0.0",

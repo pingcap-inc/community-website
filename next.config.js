@@ -27,13 +27,18 @@ const config = {
   },
 
   styledComponents: true,
-  
+
   /**
-   * because it is an open-source project, 
-   * so we could allow next.js to build the source-maps files and publish them to the production environment, 
+   * because it is an open-source project,
+   * so we could allow next.js to build the source-maps files and publish them to the production environment,
    * it will help us debug more efficiently
    */
   productionBrowserSourceMaps: true,
+
+  /**
+   * using the Next.js compiler for minification. This is 7x faster than Terser.
+   */
+  swcMinify: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {
@@ -72,13 +77,10 @@ const config = {
     return [{ source: '/next-api/:path*', destination: '/api/:path*' }];
   },
 
+  //TODO: move the redirection rules to the {path}/index.tsx file using getStaticProps(context).
+  // it will be high cohesion and easily to maintenance
   async redirects() {
     return [
-      {
-        source: '/blog/user/:id',
-        destination: '/blog/user/:id/posts',
-        permanent: false,
-      },
       {
         source: '/u/:username',
         destination: '/u/:username/answer',

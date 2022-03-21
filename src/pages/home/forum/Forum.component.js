@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { EditFilled } from '@ant-design/icons';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './forum.styled';
@@ -10,11 +9,9 @@ import Post from './post';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
-import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
 const Forum = () => {
-  const router = useRouter();
   const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home', 'common');
@@ -22,17 +19,11 @@ const Forum = () => {
   const lang = t('forum', { returnObjects: true });
   const viewAllLang = t('common:viewAll');
 
-  const onClick = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
-
   const writePostButtonProps = {
     type: 'primary',
     size: 'large',
     icon: <EditFilled />,
     children: lang.writePost,
-    onClick: onClick('https://asktug.com'),
   };
 
   return (
@@ -47,7 +38,6 @@ const Forum = () => {
                 const props = {
                   key: idx,
                   lang,
-                  onClick,
                   ...post,
                   isSmallScreen,
                 };
@@ -71,7 +61,9 @@ const Forum = () => {
                 <Link href={lang.doc.link}>{lang.doc.text}</Link>
               </p>
               <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
-                <Button {...writePostButtonProps} />
+                <a href="https://asktug.com/new-topic">
+                  <Button {...writePostButtonProps} />
+                </a>
               </Styled.CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>

@@ -15,6 +15,7 @@ import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { getLatestBlog } from '~/pages/home/blogs/api';
 
 // FIXME: temporily rollback ISR back to SSR due to a CI build error
 // We need to fix the circular dependencies issue with i18n locales
@@ -33,7 +34,8 @@ export const getServerSideProps = async (ctx) => {
   const data = await Promise.all([
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
-    client.get('tidbio-asktug-blogs'),
+    // client.get('tidbio-asktug-blogs'),
+    getLatestBlog(),
     client.get('tidbio-blibli-recent-videos'),
     client.get('tidbio-homepage-banner-promotions', strapiQuery),
     client.get('tidbio-homepage-main-activities', strapiQuery),
@@ -50,7 +52,7 @@ export const getServerSideProps = async (ctx) => {
         {
           githubInfo: data[0].data,
           forumPosts: data[1].data,
-          blogs: data[2].data,
+          blogs: data[2],
           videos: data[3].data,
           promotions: data[4],
           activities: data[5],

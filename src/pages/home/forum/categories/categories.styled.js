@@ -1,14 +1,13 @@
 import styled from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
-
-import { Link } from '~/components';
+import Anchor from '~/components/Anchor';
 
 export const Container = styled.div`
   margin-right: -1rem;
   margin-bottom: -1rem;
 `;
 
-export const Tag = styled(Link)`
+export const Tag = styled(Anchor)`
   ${mixins.verticalLineMiddle('36px')};
   text-decoration: none;
   font-size: 14px;

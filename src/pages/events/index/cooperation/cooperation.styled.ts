@@ -4,9 +4,16 @@ import { ActionButton, Container, TwoColumns as RawTwoColumns } from '~/pages/ho
 
 export { ActionButton, Container };
 
-export const TwoColumns = styled(RawTwoColumns)`
+export const TwoColumns = styled(RawTwoColumns)<{
+  title: any;
+  className: any;
+  leftPanel: any;
+  rightPanel: any;
+  reverseOnSmallScreen: any;
+  $isSmallScreen: boolean;
+}>`
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       ${RightPanel} {
         text-align: center;

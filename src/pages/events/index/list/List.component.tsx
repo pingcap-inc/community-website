@@ -34,17 +34,6 @@ const Dropdown = ({ name, placeholder, options, setFiltersValue }) => {
 };
 
 const Event = ({ title, link, location, type, date, endDate, startDate, image }) => {
-  const imgProps = {
-    alt: title,
-    src: image,
-    layout: 'fill',
-    objectFit: 'cover',
-    priority: true,
-    placeholder: 'blur',
-    blurDataURL:
-      'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII=',
-  };
-
   const dateObj = startDate ?? date;
   let durationObj;
   if (endDate && startDate) {
@@ -59,7 +48,15 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
     <Styled.EventCard>
       <Anchor href={link}>
         <Styled.ImageWrapper>
-          <Image {...imgProps} />
+          <Image
+            alt={title}
+            src={image}
+            layout={'fill'}
+            objectFit={'cover'}
+            priority={true}
+            placeholder={'blur'}
+            blurDataURL={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII='}
+          />
         </Styled.ImageWrapper>
         <h3>{title}</h3>
         <ul>

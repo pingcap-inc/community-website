@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
 import useSWR from 'swr';
-import { ActivityBanner, UserProfile, utils } from '@tidb-community/ui';
-import { Footer, Header } from '@pingcap-inc/tidb-community-site-components';
-import { getData } from '@tidb-community/datasource';
-import { useRouter } from 'next/router';
+import {ActivityBanner, UserProfile, utils} from '@tidb-community/ui';
+import {Footer, Header} from '@pingcap-inc/tidb-community-site-components';
+import {getData} from '@tidb-community/datasource';
+import {useRouter} from 'next/router';
 
 import * as Styled from './core.styled';
-import { AuthContext, MeContext, NavContext } from '~/context';
-import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
+import {AuthContext, MeContext, NavContext} from '~/context';
+import {link as linkUtils, redDots as redDotsUtils} from '~/utils';
 
 // disabled for operation reasons
 // const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
@@ -61,7 +61,7 @@ const Core = ({
   domain = 'tidb.io',
   hasMargin,
   locale = 'zh',
-  backgroundColor,
+  backgroundColor = undefined,
 }) => {
   const router = useRouter();
   const { login, logout, isLoggedIn } = useContext(AuthContext);

@@ -28,7 +28,7 @@ const PageContent = () => {
 
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
-  const sort = 'posts,desc';
+  const sort = 'lastModifiedAt,desc';
   const { data: blogs, error: blogsError } = useSWR(['blog.getAllPostList', { status, page, size, sort }], {
     revalidateOnMount: true,
   });

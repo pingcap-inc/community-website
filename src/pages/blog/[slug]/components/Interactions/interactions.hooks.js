@@ -110,6 +110,7 @@ export const useReview = (blogInfo, reload) => {
     return api.blog.posts.post
       .publish(blogInfo.id)
       .then(reload)
+      .catch((error) => message.error(error.message))
       .finally(() => {
         setReviewing(false);
       });
@@ -118,6 +119,7 @@ export const useReview = (blogInfo, reload) => {
     api.blog.posts.post
       .reject(blogInfo.id, rejectReason)
       .then(reload)
+      .catch((error) => message.error(error.message))
       .finally(() => {
         setReviewing(false);
       });
@@ -130,7 +132,10 @@ export const useRemove = (blogInfo) => {
   const router = useRouter();
   const { id } = usePrincipal();
   const remove = () => {
-    return api.blog.posts.post.del(blogInfo.id).then(() => router.replace(`/blog/user/${id}/posts`));
+    return api.blog.posts.post
+      .del(blogInfo.id)
+      .then(() => router.replace(`/blog/user/${id}/posts`))
+      .catch((error) => message.error(error.message));
   };
 
   return { remove };

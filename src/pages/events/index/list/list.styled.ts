@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import { Col, Form, Pagination as AntPagination } from 'antd';
 import { colors, mixins, Styled } from '@tidb-community/ui';
-import { Link } from '~/components';
 
 const { Content, Section, Title } = Styled;
 
@@ -81,8 +80,4 @@ export const Pagination = styled(AntPagination).attrs({
 })`
   margin-top: 2rem;
   text-align: center;
-`;
-
-export const PlainLink = styled(Link)`
-  text-decoration: none;
 `;

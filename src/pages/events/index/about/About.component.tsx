@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { Button, Row } from 'antd';
 import { useSize } from 'ahooks';
 import { common as commonUtils } from '~/utils';
@@ -56,11 +55,11 @@ export default function EventsIndexAbout(props: IProps) {
                     <Styled.CardInfo $isVertical={isVerticalCard}>
                       <h3>{v.title}</h3>
                       <p>{getDesc(v.desc)}</p>
-                      <Link href={v.link} passHref>
+                      <Anchor href={v.link}>
                         <Button type="primary" size="small">
                           {v.button}
                         </Button>
-                      </Link>
+                      </Anchor>
                     </Styled.CardInfo>
                   </Styled.Card>
                 ))}

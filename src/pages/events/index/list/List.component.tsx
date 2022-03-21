@@ -5,13 +5,13 @@ import { Button, Col, Empty, Form, Row, Select, Tooltip } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
 
 import * as Styled from './list.styled';
-import { PlainLink } from './list.styled';
 import constant from '../constant.json';
 import { CATEGORIES, DATES, LOCATIONS, TYPES } from './list.constants';
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 import { useRouter } from 'next/router';
 import { getNumberFromQuery, setUndefinedWhenItemIsEmpty } from '~/utils/request.utils';
+import Anchor from '~/components/Anchor';
 
 const { Option } = Select;
 export const defaultPageSize = 8;
@@ -57,7 +57,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
 
   return (
     <Styled.EventCard>
-      <PlainLink href={link}>
+      <Anchor href={link}>
         <Styled.ImageWrapper>
           <Image {...imgProps} />
         </Styled.ImageWrapper>
@@ -87,7 +87,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
             </li>
           )}
         </ul>
-      </PlainLink>
+      </Anchor>
     </Styled.EventCard>
   );
 };

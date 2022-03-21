@@ -43,7 +43,7 @@
     "ahooks": "2.10.9",
     "antd": "4.15.6",
     "antd-img-crop": "3.14.2",
-    "axios": "0.21.4",
+    "axios": "^0.26.1",
     "classnames": "2.3.1",
     "dayjs": "1.10.6",
     "formik": "2.2.9",

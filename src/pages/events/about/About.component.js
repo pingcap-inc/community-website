@@ -6,11 +6,11 @@ import { useSize } from 'ahooks';
 import { common as commonUtils, link as linkUtils } from '~/utils';
 
 import * as Styled from './about.styled';
+import { LeftPanel, RightPanel } from './about.styled';
 import { Link, MyFullCalendar } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 import { PageDataContext } from '~/context';
 import { useRouter } from 'next/router';
-import { LeftPanel, RightPanel } from './about.styled';
 
 const About = () => {
   const cardRef = useRef();
@@ -25,7 +25,7 @@ const About = () => {
   const about = t('about', { returnObjects: true });
   const { card } = about;
 
-  const isVerticalCard = cardSize.width < 500;
+  const isVerticalCard = cardSize?.width < 500;
 
   const { data } = useContext(PageDataContext);
   const { calendarData } = data;

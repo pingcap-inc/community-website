@@ -137,11 +137,12 @@ const Interaction = ({ icon, count, onClick, name, ...rest }) => {
         placement="topLeft"
         title={
           <>
-            是否确定删除该文章？
-            <br />
-            删除后将自动扣减该文章带来的所有积分&经验值
-            <br />
-            （此操作不可撤销）
+            <p>是否确定删除该文章？</p>
+            <p>
+              删除后将自动扣减该文章带来的所有积分&经验值
+              <br />
+              （此操作不可撤销）
+            </p>
           </>
         }
         onConfirm={onClick}

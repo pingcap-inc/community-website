@@ -53,13 +53,13 @@ export const Card = styled(Row)`
 
 export const CardImg = styled(Col).attrs((props: { $isVertical: boolean }) => ({
   span: props.$isVertical ? 24 : 12,
-}))`
+}))<{ $isVertical: boolean }>`
   min-height: 150px;
 `;
 
 export const CardInfo = styled(Col).attrs((props: { $isVertical: boolean }) => ({
   span: props.$isVertical ? 24 : 12,
-}))`
+}))<{ $isVertical: boolean }>`
   padding: 1rem 2rem;
   max-height: 250px;
 

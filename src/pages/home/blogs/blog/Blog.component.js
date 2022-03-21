@@ -4,7 +4,7 @@ import * as Styled from './blog.styled';
 import Anchor from '~/components/Anchor';
 // import AsktugIcon from './asktug.svg';
 
-const Blog = ({ title, link, creator, createdAt }) => (
+const Blog = ({ title, link, creator, updatedAt }) => (
   <Styled.Container>
     <Anchor href={link}>
       <Styled.TitleRow>
@@ -17,7 +17,7 @@ const Blog = ({ title, link, creator, createdAt }) => (
           <img alt={creator.username} src={creator.avatarUrl} />
           {creator.username}
         </Styled.User>
-        <span>{dayjs(createdAt).format('YYYY.MM.DD')}</span>
+        <span>{dayjs(updatedAt).format('YYYY.MM.DD')}</span>
       </Styled.InformationRow>
     </Anchor>
   </Styled.Container>

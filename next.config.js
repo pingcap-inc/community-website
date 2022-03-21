@@ -27,13 +27,18 @@ const config = {
   },
 
   styledComponents: true,
-  
+
   /**
-   * because it is an open-source project, 
-   * so we could allow next.js to build the source-maps files and publish them to the production environment, 
+   * because it is an open-source project,
+   * so we could allow next.js to build the source-maps files and publish them to the production environment,
    * it will help us debug more efficiently
    */
   productionBrowserSourceMaps: true,
+
+  /**
+   * using the Next.js compiler for minification. This is 7x faster than Terser.
+   */
+  swcMinify: true,
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {

@@ -82,11 +82,6 @@ const config = {
   async redirects() {
     return [
       {
-        source: '/blog/user/:id',
-        destination: '/blog/user/:id/posts',
-        permanent: false,
-      },
-      {
         source: '/u/:username',
         destination: '/u/:username/answer',
         permanent: false,

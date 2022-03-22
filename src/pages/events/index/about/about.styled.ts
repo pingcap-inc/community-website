@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Col, Row } from 'antd';
-import { colors, mixins, Styled } from '@tidb-community/ui';
+import {Col, Row} from 'antd';
+import {colors, mixins, Styled} from '@tidb-community/ui';
 
 const { Content, Section, Title } = Styled;
 
@@ -35,6 +35,10 @@ export const Desc = styled.div`
     &:last-child {
       margin-bottom: 0;
     }
+  }
+  
+  a {
+    text-decoration: underline;
   }
 `;
 

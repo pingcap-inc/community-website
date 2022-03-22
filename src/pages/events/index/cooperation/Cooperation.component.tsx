@@ -11,9 +11,6 @@ export default function Cooperation() {
   return (
     <Styled.Container>
       <Styled.TwoColumns
-        title={''}
-        className={''}
-        reverseOnSmallScreen={false}
         $isSmallScreen={isSmallScreen}
         leftPanel={
           <Styled.LeftPanel>

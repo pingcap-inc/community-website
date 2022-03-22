@@ -1,17 +1,15 @@
 import styled, { css } from 'styled-components';
 
 import { ActionButton, Container, TwoColumns as RawTwoColumns } from '~/pages/home/subscription/subscription.styled';
+import { IProps } from '~/layouts/twoColumnsSection/TwoColumnsSection.component';
 
 export { ActionButton, Container };
 
-export const TwoColumns = styled(RawTwoColumns)<{
-  title: any;
-  className: any;
-  leftPanel: any;
-  rightPanel: any;
-  reverseOnSmallScreen: any;
-  $isSmallScreen: boolean;
-}>`
+export const TwoColumns = styled(RawTwoColumns)<
+  {
+    $isSmallScreen: boolean;
+  } & IProps
+>`
   ${(props) =>
     props.$isSmallScreen &&
     css`

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { Button, Col, Empty, Form, Row, Select, Tooltip } from 'antd';
@@ -55,7 +56,9 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
             objectFit={'cover'}
             priority={true}
             placeholder={'blur'}
-            blurDataURL={'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII='}
+            blurDataURL={
+              'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8WQ8AAjcBWtrfQHkAAAAASUVORK5CYII='
+            }
           />
         </Styled.ImageWrapper>
         <h3>{title}</h3>
@@ -189,6 +192,11 @@ export default function List({ events, total }) {
         pageSize={defaultPageSize}
         onChange={handleChangePage}
         hideOnSinglePage={true}
+        itemRender={(page, type, originalElement) => (
+          <Link href={{ pathname: '/events', query: { ...router.query, pageNumber: page } }} passHref>
+            {originalElement}
+          </Link>
+        )}
       />
     </Styled.Container>
   );

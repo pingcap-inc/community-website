@@ -3,13 +3,21 @@ import { Row } from 'antd';
 
 import * as Styled from './twoColumnsSection.styled';
 
-const TwoColumnsSection = ({ className, title, leftPanel, rightPanel, reverseOnSmallScreen }) => {
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+  title?: string;
+  leftPanel?: React.ReactNode;
+  rightPanel?: React.ReactNode;
+  $reverseOnSmallScreen?: boolean;
+}
+
+const TwoColumnsSection = (props: IProps) => {
+  const { title, leftPanel, rightPanel, $reverseOnSmallScreen, ...rest } = props;
   const panelProps = {
-    $reverseOnSmallScreen: reverseOnSmallScreen,
+    $reverseOnSmallScreen,
   };
 
   return (
-    <Styled.Content className={className}>
+    <Styled.Content {...rest}>
       {title && <Styled.Title>{title}</Styled.Title>}
       <Row justify="space-between">
         <Styled.LeftPanel {...panelProps}>{leftPanel}</Styled.LeftPanel>

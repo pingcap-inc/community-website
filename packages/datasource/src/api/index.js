@@ -10,6 +10,7 @@ export * as tug from './tug';
 export * as blog from './blog';
 export * as asktug from './asktug';
 export * as points from './points';
+export * as cms from './cms';
 
 export { default as client } from './client';
 export { default as blogClient } from './blogClient';

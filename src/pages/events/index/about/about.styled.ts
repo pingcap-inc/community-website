@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { Col, Row } from 'antd';
-import { colors, mixins, Styled } from '@tidb-community/ui';
+import {Col, Row} from 'antd';
+import {colors, mixins, Styled} from '@tidb-community/ui';
 
 const { Content, Section, Title } = Styled;
 
@@ -36,6 +36,10 @@ export const Desc = styled.div`
       margin-bottom: 0;
     }
   }
+  
+  a {
+    text-decoration: underline;
+  }
 `;
 
 export const CardList = styled.div``;
@@ -51,15 +55,15 @@ export const Card = styled(Row)`
   }
 `;
 
-export const CardImg = styled(Col).attrs((props) => ({
+export const CardImg = styled(Col).attrs((props: { $isVertical: boolean }) => ({
   span: props.$isVertical ? 24 : 12,
-}))`
+}))<{ $isVertical: boolean }>`
   min-height: 150px;
 `;
 
-export const CardInfo = styled(Col).attrs((props) => ({
+export const CardInfo = styled(Col).attrs((props: { $isVertical: boolean }) => ({
   span: props.$isVertical ? 24 : 12,
-}))`
+}))<{ $isVertical: boolean }>`
   padding: 1rem 2rem;
   max-height: 250px;
 

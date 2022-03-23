@@ -8,6 +8,7 @@ export * as blog from './blog';
 export * as asktug from './asktug';
 export * as points from './points';
 export { me } from './me';
+export * as cms from './cms';
 
 export type ApiResponse<T, Detail> = {
   detail: Detail;

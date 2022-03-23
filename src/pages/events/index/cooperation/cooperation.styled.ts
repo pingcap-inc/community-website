@@ -1,12 +1,17 @@
 import styled, { css } from 'styled-components';
 
 import { ActionButton, Container, TwoColumns as RawTwoColumns } from '~/pages/home/subscription/subscription.styled';
+import { IProps } from '~/layouts/twoColumnsSection/TwoColumnsSection.component';
 
 export { ActionButton, Container };
 
-export const TwoColumns = styled(RawTwoColumns)`
+export const TwoColumns = styled(RawTwoColumns)<
+  {
+    $isSmallScreen: boolean;
+  } & IProps
+>`
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       ${RightPanel} {
         text-align: center;

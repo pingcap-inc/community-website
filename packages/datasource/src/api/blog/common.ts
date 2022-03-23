@@ -12,8 +12,11 @@ export interface FileAuth {
 }
 
 export function principal(): Promise<Principal> {
+  // @ts-ignore
   return blogClient.get('/api/principal', {
+    // @ts-ignore
     isDispatchApiError: ({ status }) => status !== 403 && status !== 401,
+    // @ts-ignore
     isReturnErrorResponse: true,
   });
 }

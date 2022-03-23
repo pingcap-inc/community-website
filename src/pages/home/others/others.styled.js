@@ -1,8 +1,8 @@
-import styled, { css } from 'styled-components';
-import { Row } from 'antd';
-import { Styled, colors } from '@tidb-community/ui';
+import styled, {css} from 'styled-components';
+import {Row} from 'antd';
+import {colors, Styled} from '@tidb-community/ui';
 
-import { Link as RawLink } from '~/components';
+import Anchor from "~/components/Anchor";
 
 const { ModuleTitle, Section, Text } = Styled;
 
@@ -12,8 +12,14 @@ export const SmallerText = styled(Text)`
   font-size: 14px;
 `;
 
-export const Link = styled(RawLink)`
+export const Link = styled(Anchor)`
   display: inline-block;
+  font-size: 16px;
+  text-decoration: underline;
+  &:hover {
+    color: ${colors.B1};
+    text-decoration: underline;
+  }
 `;
 
 export const SmallerLink = styled(Link)`

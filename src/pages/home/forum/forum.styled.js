@@ -1,7 +1,8 @@
 import styled from 'styled-components';
-import { Styled, colors } from '@tidb-community/ui';
+import { colors, Styled } from '@tidb-community/ui';
 
 import AsktugSvg from './asktug.svg';
+import Anchor from '~/components/Anchor';
 
 const { ModuleTitle, Section, CenterOnSmallScreen } = Styled;
 
@@ -39,4 +40,13 @@ export const AsktugLogo = styled(AsktugSvg)`
   margin-right: 1rem;
   position: relative;
   top: 8px;
+`;
+
+export const Link = styled(Anchor)`
+  font-size: 16px;
+  text-decoration: underline;
+  &:hover {
+    color: ${colors.B1};
+    text-decoration: underline;
+  }
 `;

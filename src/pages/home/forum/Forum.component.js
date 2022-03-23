@@ -58,7 +58,7 @@ const Forum = () => {
               </p>
               <p>
                 {lang.comply}
-                <Anchor href={lang.doc.link}>{lang.doc.text}</Anchor>
+                <Styled.Link href={lang.doc.link}>{lang.doc.text}</Styled.Link>
               </p>
               <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
                 <Anchor href="https://asktug.com/new-topic">
@@ -69,7 +69,7 @@ const Forum = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.hotCategories}
-                <Anchor href="https://asktug.com/">{viewAllLang}</Anchor>
+                <Styled.Link href="https://asktug.com/">{viewAllLang}</Styled.Link>
               </Styled.ModuleTitle>
               <Categories categories={lang.categories} />
             </Styled.Module>

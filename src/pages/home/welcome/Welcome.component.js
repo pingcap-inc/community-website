@@ -8,6 +8,7 @@ import { PageDataContext } from '~/context';
 import { formatNumber } from './welcome.utils';
 import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
+import Anchor from '~/components/Anchor';
 
 const Welcome = () => {
   const router = useRouter();
@@ -74,9 +75,15 @@ const Welcome = () => {
         <Styled.Content>
           <h2>{howToLang.title}</h2>
           <ul>
-            <li onClick={onClick('https://docs.pingcap.com/zh/tidb/stable/overview')}>{howToLang.what}</li>
-            <li onClick={onClick('#learning')}>{howToLang.use}</li>
-            <li onClick={onClick('#contribution')}>{howToLang.contribute}</li>
+            <li>
+              <Anchor href={'https://docs.pingcap.com/zh/tidb/stable/overview'}>{howToLang.what}</Anchor>
+            </li>
+            <li>
+              <Anchor href={'#learning'}>{howToLang.use}</Anchor>
+            </li>
+            <li>
+              <Anchor href={'#contribution'}>{howToLang.contribute}</Anchor>
+            </li>
           </ul>
         </Styled.Content>
       </Styled.HowTo>

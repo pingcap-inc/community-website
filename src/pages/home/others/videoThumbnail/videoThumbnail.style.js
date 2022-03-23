@@ -1,13 +1,15 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
+import Anchor from '~/components/Anchor';
 
 export const PreviewWrapper = styled.div`
   max-width: 100%;
   position: relative;
 `;
 
-export const VideoBox = styled.div`
+export const VideoBox = styled(Anchor)`
   cursor: pointer;
+  display: block;
   padding-bottom: 1rem;
 
   &:hover {

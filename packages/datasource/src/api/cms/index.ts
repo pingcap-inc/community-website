@@ -28,7 +28,7 @@ export async function getInstanceOnServer(
   });
 
   instance.interceptors.request.use(
-    function (config) {
+    (config) => {
       //console.log('[strapi on server] request config: ', config);
       return config;
     },
@@ -38,7 +38,7 @@ export async function getInstanceOnServer(
     }
   );
   instance.interceptors.response.use(
-    function (response) {
+    (response) => {
       //console.log('[strapi on server] response config: ', response);
       return response;
     },
@@ -51,6 +51,11 @@ export async function getInstanceOnServer(
   return instance;
 }
 
+/**
+ * getInstanceOnClient()
+ * used to get a strapi proxy axios instance on client
+ * may use it in the future
+ */
 /*export async function getInstanceOnClient(
   baseURL = (process.env.NEXT_PUBLIC_API_BASE_URL ?? '') + '/next-api/cms'
 ): Promise<AxiosInstance> {
@@ -58,7 +63,7 @@ export async function getInstanceOnServer(
   instance.interceptors.response.use(({ data }) => data);
 
   instance.interceptors.request.use(
-    function (config) {
+    (config) => {
       //console.log('[strapi on server] request config: ', config);
       return config;
     },
@@ -68,7 +73,7 @@ export async function getInstanceOnServer(
     }
   );
   instance.interceptors.response.use(
-    function (response) {
+    (response) => {
       //console.log('[strapi on server] response config: ', response);
       return response;
     },

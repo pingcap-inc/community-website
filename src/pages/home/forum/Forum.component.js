@@ -7,9 +7,9 @@ import * as Styled from './forum.styled';
 import Categories from './categories';
 import Post from './post';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { useIsSmallScreen } from '~/hooks';
+import Anchor from '~/components/Anchor';
 
 const Forum = () => {
   const { data } = useContext(PageDataContext);
@@ -45,7 +45,7 @@ const Forum = () => {
                 return <Post {...props} />;
               })}
             </Styled.Posts>
-            <Link href="https://asktug.com/">{viewAllLang}</Link>
+            <Anchor href="https://asktug.com/">{viewAllLang}</Anchor>
           </>
         }
         rightPanel={
@@ -58,18 +58,18 @@ const Forum = () => {
               </p>
               <p>
                 {lang.comply}
-                <Link href={lang.doc.link}>{lang.doc.text}</Link>
+                <Anchor href={lang.doc.link}>{lang.doc.text}</Anchor>
               </p>
               <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
-                <a href="https://asktug.com/new-topic">
+                <Anchor href="https://asktug.com/new-topic">
                   <Button {...writePostButtonProps} />
-                </a>
+                </Anchor>
               </Styled.CenterOnSmallScreen>
             </Styled.Module>
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.hotCategories}
-                <Link href="https://asktug.com/">{viewAllLang}</Link>
+                <Anchor href="https://asktug.com/">{viewAllLang}</Anchor>
               </Styled.ModuleTitle>
               <Categories categories={lang.categories} />
             </Styled.Module>

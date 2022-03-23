@@ -23,7 +23,12 @@ const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
 export const defaultPageSize = 8;
 
-const getStrapiDateParams = (date) => {
+/**
+ * get years range by input date parameter
+ * @param date
+ * @returns {{date_lt: number} | {date_gte: number, date_lte: number}}
+ */
+const getStrapiDateParams = (date): { date_lt: number } | { date_gte: number; date_lte: number } => {
   let year;
   if (!date || date === R.head(DATES)) {
     return;

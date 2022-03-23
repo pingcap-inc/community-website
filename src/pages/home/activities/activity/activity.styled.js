@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Col, Row } from 'antd';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 const { ModuleTitle, Text } = Styled;
 
@@ -9,7 +9,6 @@ export { ModuleTitle, Text };
 export const Container = styled(Row).attrs((props) => ({
   gutter: !props.$isSmallScreen && 64,
 }))`
-  cursor: pointer;
   padding: 1rem 0;
   border-bottom: 1px solid ${colors.T2};
   margin: 0 !important;

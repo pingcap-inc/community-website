@@ -50,7 +50,7 @@ const Activities = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.meetupTitle}
-                <Link href="/events">{viewAllLang}</Link>
+                <Link href="/events?category=meetup#all-events">{viewAllLang}</Link>
               </Styled.ModuleTitle>
               <Meetups meetups={data.meetups} />
             </Styled.Module>
@@ -58,7 +58,7 @@ const Activities = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.devActivitiesTitle}
-                <Link href="/events">{viewAllLang}</Link>
+                <Link href="/events?category=开发者活动%2F竞赛#all-events">{viewAllLang}</Link>
               </Styled.ModuleTitle>
               <Meetups meetups={data.devActivities} />
             </Styled.Module>

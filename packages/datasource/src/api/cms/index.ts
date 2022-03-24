@@ -15,7 +15,7 @@ export function getStrapiPaginationParams(page = 1, size = 10): IStrapiRequestPa
 }
 
 export async function getInstanceOnServer(baseURL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL): Promise<AxiosInstance> {
-  const token = await getStrapiTokenFromGlobal();
+  const token = await getStrapiToken();
 
   const instance = axios.create({ baseURL });
   instance.interceptors.request.use((config) => {
@@ -99,12 +99,18 @@ export interface IStrapiToken {
   refreshAt: number;
 }
 
+/**
+ * TODO: this function still has bug, may occur stack overflow
+ * @param {number} expireSecond
+ * @returns {Promise<string>}
+ */
+/*
 async function getStrapiTokenFromGlobal(expireSecond = 60 * 60 * 24 * 1000): Promise<string> {
   //@ts-ignore
   const { strapiToken } = global;
   if (strapiToken) {
     const { token, refreshAt } = strapiToken;
-    const isExpire = new Date().getTime() - refreshAt > expireSecond;
+    const isExpire = refreshAt && new Date().getTime() - refreshAt > expireSecond;
     if (token && !isExpire) {
       //eslint-disable-next-line no-console
       console.debug('strapi token cache hint!');
@@ -114,7 +120,8 @@ async function getStrapiTokenFromGlobal(expireSecond = 60 * 60 * 24 * 1000): Pro
   //eslint-disable-next-line no-console
   console.debug('strapi token cache NOT hint!');
   const token = await getStrapiToken();
-  global.strapiToken.token = token;
-  global.strapiToken.refreshAt = new Date().getTime();
+  const refreshAt = new Date().getTime();
+  global.strapiToken = {token, refreshAt}
   return token;
 }
+*/

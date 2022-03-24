@@ -13,11 +13,11 @@
       },
       "article": {
         "label": "文章",
-        "link": "https://tidb.io/blog"
+        "link": "/blog"
       },
       "activity": {
         "label": "活动",
-        "link": "https://tidb.io/events"
+        "link": "/events"
       }
     }
   },
@@ -89,7 +89,7 @@
       },
       {
         "name": "技术⽂章",
-        "link": "https://tidb.io/blog"
+        "link": "/blog"
       },
       {
         "name": "TUG 社区活动",
@@ -118,7 +118,7 @@
     "comply": "发表、分享技术文章请参考",
     "doc": {
       "text": "技术文章撰写&发布指引",
-      "link": "https://tidb.io/blog/66c5e81b"
+      "link": "/blog/66c5e81b"
     },
     "categories": [
       {
@@ -155,11 +155,11 @@
       },
       {
         "name": "版本测评",
-        "link": "https://tidb.io/blog/tag/version-evaluation"
+        "link": "/blog/tag/version-evaluation"
       },
       {
         "name": "新版本/特性发布",
-        "link": "https://tidb.io/blog/tag/new-version-features-released"
+        "link": "/blog/tag/new-version-features-released"
       }
     ]
   },
@@ -233,7 +233,7 @@
         "title": "想了解更多实践案例？",
         "links": [
           {
-            "link": "https://tidb.io/blog/",
+            "link": "/blog",
             "label": "专栏"
           }
         ]
@@ -242,11 +242,11 @@
         "title": "想和其他伙伴交流学习？",
         "links": [
           {
-            "link": "https://tidb.io/tug",
+            "link": "/tug",
             "label": "TiDB User Group"
           },
           {
-            "link": "https://tidb.io/events",
+            "link": "/events",
             "label": "参与活动"
           }
         ]
@@ -331,7 +331,7 @@
     "contact": {
       "label": "技术合作、社区活动合作，欢迎",
       "linkText": "联系我们",
-      "link": "https://tidb.io/contact-us/cooperation"
+      "link": "/contact-us/cooperation"
     }
   },
   "subscription": {

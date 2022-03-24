@@ -34,8 +34,7 @@ export const getServerSideProps = async (ctx) => {
   const data = await Promise.all([
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
-    // client.get('tidbio-asktug-blogs'),
-    getLatestBlog(),
+    getLatestBlog(), // client.get('tidbio-asktug-blogs'),
     client.get('tidbio-blibli-recent-videos'),
     client.get('tidbio-homepage-banner-promotions', strapiQuery),
     client.get('tidbio-homepage-main-activities', strapiQuery),

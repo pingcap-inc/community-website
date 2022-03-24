@@ -1,9 +1,10 @@
 import * as polished from 'polished';
-import styled, { css } from 'styled-components';
-import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
-import { colors, mixins, Styled } from '@tidb-community/ui';
+import styled, {css} from 'styled-components';
+import {Button, Carousel as AntCarousel, Col, Row, Tooltip} from 'antd';
+import {colors, mixins, Styled} from '@tidb-community/ui';
 
 import LogoSvg from './logo.svg';
+import Anchor from "~/components/Anchor";
 
 const githubBlack = '#24292e';
 
@@ -158,9 +159,7 @@ export const StarButtonTooltip = styled(Tooltip).attrs({
   z-index: 10;
 `;
 
-export const NavItem = styled(Col).attrs({
-  span: 6,
-})`
+export const NavItem = styled(Anchor)`
   ${mixins.flexCenter()};
   height: 40px;
   border-right: 1px solid ${colors.T2};

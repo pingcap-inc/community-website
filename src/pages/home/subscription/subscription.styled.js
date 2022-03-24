@@ -3,8 +3,8 @@ import { Button, Checkbox, Input } from 'antd';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import { Link as LinkComp } from '~/components';
 import { getImage } from '~/pages/home/home.utils';
+import Anchor from '~/components/Anchor';
 
 export const TwoColumns = styled(TwoColumnsSection)`
   color: ${colors.F1};
@@ -39,10 +39,13 @@ export const TermCaption = styled.div`
   line-height: 1;
 `;
 
-export const Link = styled(LinkComp)`
+export const Link = styled(Anchor)`
   color: inherit;
   font-size: inherit;
   text-decoration: underline;
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 export const ActionButton = styled(Button).attrs({

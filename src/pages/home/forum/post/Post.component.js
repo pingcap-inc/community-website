@@ -19,6 +19,7 @@ const Post = ({ title, link, creator, categories, postNum, createdAt, lang, isSm
       <Styled.InformationRow>
         <div>
           <Styled.User>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img alt={creator.username} src={creator.avatarUrl} />
             {creator.username}
           </Styled.User>

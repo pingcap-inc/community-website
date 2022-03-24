@@ -1,9 +1,8 @@
-import styled, { css } from 'styled-components';
-import { Col, Row } from 'antd';
-import { PlayCircleFilled } from '@ant-design/icons';
-import { Styled, colors, mixins } from '@tidb-community/ui';
-
-import { Link as RawLink } from '~/components';
+import styled, {css} from 'styled-components';
+import {Col, Row} from 'antd';
+import {PlayCircleFilled} from '@ant-design/icons';
+import {colors, mixins, Styled} from '@tidb-community/ui';
+import Anchor from '~/components/Anchor';
 
 const { Section, Text, ModuleTitle } = Styled;
 
@@ -13,7 +12,7 @@ export const Container = styled(Section)`
 
 export { Text, ModuleTitle };
 
-export const Link = styled(RawLink)`
+export const Link = styled(Anchor)`
   color: ${colors.F2};
   text-decoration: underline;
 
@@ -23,7 +22,7 @@ export const Link = styled(RawLink)`
   }
 `;
 
-export const TitleLink = styled(RawLink)`
+export const TitleLink = styled(Anchor)`
   color: inherit;
   font-size: revert;
   &:hover {
@@ -60,7 +59,7 @@ export const VideoBox = styled.div`
   border-color: ${colors.M1};
 
   ${(props) =>
-    !props.isSmallScreen &&
+    !props.$isSmallScreen &&
     css`
       box-shadow: inset 0 0 0 8px ${colors.M1};
     `}
@@ -92,7 +91,7 @@ export const VideoPlayButton = styled.div`
   bottom: 0;
 `;
 
-export const VideoOverlay = styled.div`
+export const VideoOverlay = styled(Anchor)`
   ${mixins.flexCenter};
   ${mixins.flexVerticalCenter()};
   position: absolute;
@@ -130,7 +129,7 @@ export const VideoPlayIcon = styled(PlayCircleFilled)`
 
 export const VideoBoxWrapper = styled.div`
   ${(props) =>
-    !props.isSmallScreen &&
+    !props.$isSmallScreen &&
     css`
       transform: translateX(-8px);
     `}
@@ -146,12 +145,17 @@ export const VideosRow = styled(Row)`
   margin-bottom: 1rem;
 `;
 
-export const More = styled(RawLink)`
+export const More = styled(Anchor)`
   display: block;
   margin-top: 1rem;
+  text-decoration: underline;
+  &:hover {
+    color: ${colors.B1};
+    text-decoration: underline;
+  }
 
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       margin-bottom: 3rem;
     `}

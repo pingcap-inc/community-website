@@ -14,16 +14,13 @@ export function getStrapiPaginationParams(page = 1, size = 10): IStrapiRequestPa
   return { _start: (page - 1) * size, _limit: size };
 }
 
-export async function getInstanceOnServer(
-  baseURL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL,
-  email = process.env.NEXT_PUBLIC_STRAPI_EMAIL,
-  password = process.env.NEXT_PUBLIC_STRAPI_PASSWORD
-): Promise<AxiosInstance> {
+export async function getInstanceOnServer(baseURL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL): Promise<AxiosInstance> {
+  const token = await getStrapiToken();
+
   const instance = axios.create({ baseURL });
-  const authResponse = await instance.post('/admin/login', { email, password });
   instance.interceptors.request.use((config) => {
     //config.headers.Authorization = `Bearer ${authResponse.data.token}`;
-    config.headers = { ...config.headers, Authorization: `Bearer ${authResponse.data.data.token}` };
+    config.headers = { ...config.headers, Authorization: `Bearer ${token}` };
     return config;
   });
 
@@ -85,3 +82,46 @@ export async function getInstanceOnServer(
 
   return instance;
 }*/
+
+async function getStrapiToken(
+  baseURL = process.env.NEXT_PUBLIC_STRAPI_BASE_URL,
+  email = process.env.NEXT_PUBLIC_STRAPI_EMAIL,
+  password = process.env.NEXT_PUBLIC_STRAPI_PASSWORD
+): Promise<string> {
+  const instance = axios.create({ baseURL });
+  const authResponse = await instance.post('/admin/login', { email, password });
+  const { token } = authResponse.data.data;
+  return token;
+}
+
+export interface IStrapiToken {
+  token: string;
+  refreshAt: number;
+}
+
+/**
+ * TODO: this function still has bug, may occur stack overflow
+ * @param {number} expireSecond
+ * @returns {Promise<string>}
+ */
+/*
+async function getStrapiTokenFromGlobal(expireSecond = 60 * 60 * 24 * 1000): Promise<string> {
+  //@ts-ignore
+  const { strapiToken } = global;
+  if (strapiToken) {
+    const { token, refreshAt } = strapiToken;
+    const isExpire = refreshAt && new Date().getTime() - refreshAt > expireSecond;
+    if (token && !isExpire) {
+      //eslint-disable-next-line no-console
+      console.debug('strapi token cache hint!');
+      return token;
+    }
+  }
+  //eslint-disable-next-line no-console
+  console.debug('strapi token cache NOT hint!');
+  const token = await getStrapiToken();
+  const refreshAt = new Date().getTime();
+  global.strapiToken = {token, refreshAt}
+  return token;
+}
+*/

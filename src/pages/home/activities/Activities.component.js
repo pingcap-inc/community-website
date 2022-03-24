@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { useRouter } from 'next/router';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './activities.styled';
@@ -8,16 +7,14 @@ import Meetup from './meetup';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
-import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 
-const Meetups = ({ onClick, meetups }) => (
+const Meetups = ({ meetups }) => (
   <>
     {meetups.map((item, idx) => {
       const props = {
         key: idx,
         ...item,
-        onClick,
       };
       return <Meetup {...props} />;
     })}
@@ -25,18 +22,12 @@ const Meetups = ({ onClick, meetups }) => (
 );
 
 const Activities = () => {
-  const router = useRouter();
   const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('activities', { returnObjects: true });
   const viewAllLang = t('common:viewAll');
-
-  const onClick = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
@@ -48,7 +39,6 @@ const Activities = () => {
               const props = {
                 key: item.id,
                 ...item,
-                onClick,
                 isSmallScreen,
               };
               return <Activity {...props} />;
@@ -60,17 +50,17 @@ const Activities = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.meetupTitle}
-                <Link href="/events">{viewAllLang}</Link>
+                <Link href="/events?category=meetup#all-events">{viewAllLang}</Link>
               </Styled.ModuleTitle>
-              <Meetups onClick={onClick} meetups={data.meetups} />
+              <Meetups meetups={data.meetups} />
             </Styled.Module>
 
             <Styled.Module>
               <Styled.ModuleTitle>
                 {lang.devActivitiesTitle}
-                <Link href="/events">{viewAllLang}</Link>
+                <Link href="/events?category=开发者活动%2F竞赛#all-events">{viewAllLang}</Link>
               </Styled.ModuleTitle>
-              <Meetups onClick={onClick} meetups={data.devActivities} />
+              <Meetups meetups={data.devActivities} />
             </Styled.Module>
           </>
         }

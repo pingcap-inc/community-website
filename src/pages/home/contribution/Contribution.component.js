@@ -4,9 +4,9 @@ import { useTranslation } from 'next-i18next';
 
 import * as Styled from './contribution.styled';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import { Link } from '~/components';
 import { getImage as getHomeImage } from '~/pages/home/home.utils';
 import { useIsSmallScreen } from '~/hooks';
+import Anchor from '~/components/Anchor';
 
 const getImage = (name) => getHomeImage(`contribution-${name}`);
 
@@ -55,9 +55,9 @@ const Contribution = () => {
               {forkLang.map((el) => (
                 <Tooltip key={el.label} title={el.label} placement={'bottom'}>
                   <Col>
-                    <Link href={el.link}>
+                    <Anchor href={el.link}>
                       <img height={36} src={getImage(el.icon)} alt={`${el.name} logo`} />
-                    </Link>
+                    </Anchor>
                   </Col>
                 </Tooltip>
               ))}

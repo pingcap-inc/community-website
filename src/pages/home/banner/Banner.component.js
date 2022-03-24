@@ -1,18 +1,18 @@
-import React, { useContext, useState, useRef } from 'react';
-import { Col, Row } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
-import { useMount } from 'ahooks';
-import { useRouter } from 'next/router';
-import { useTranslation } from 'next-i18next';
+import React, {useContext, useRef, useState} from 'react';
+import {Col, Row} from 'antd';
+import {GithubOutlined} from '@ant-design/icons';
+import {useMount} from 'ahooks';
+import {useTranslation} from 'next-i18next';
 
 import * as Styled from './banner.styled';
 import ActivityIcon from './activity.svg';
 import ArticleIcon from './article.svg';
 import AsktugIcon from './asktug.svg';
 import DocIcon from './doc.svg';
-import { PageDataContext } from '~/context';
-import { common as commonUtils, link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '~/hooks';
+import {PageDataContext} from '~/context';
+import {common as commonUtils} from '~/utils';
+import {useIsSmallScreen} from '~/hooks';
+import Anchor from '~/components/Anchor';
 
 const navItems = [
   {
@@ -34,7 +34,6 @@ const navItems = [
 ];
 
 const Banner = () => {
-  const router = useRouter();
   const tooltipContainerRef = useRef(null);
   const [mounted, setMounted] = useState(false);
   const { t } = useTranslation('page-home');
@@ -58,11 +57,6 @@ const Banner = () => {
     getPopupContainer: () => tooltipContainerRef?.current,
   };
 
-  const onClick = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
-
   return (
     <Styled.Container>
       <Styled.Content isSmallScreen={isSmallScreen}>
@@ -72,20 +66,22 @@ const Banner = () => {
             <Styled.Intro>{lang.intro}</Styled.Intro>
             <Row gutter={32} justify={isSmallScreen ? 'space-around' : 'space-between'} align="bottom">
               <Col flex="none">
-                <Styled.TryButton onClick={onClick('https://pingcap.com/zh/product-community/')}>
-                  {lang.tryButton}
-                </Styled.TryButton>
+                <Anchor href={'https://pingcap.com/zh/product-community/'}>
+                  <Styled.TryButton>{lang.tryButton}</Styled.TryButton>
+                </Anchor>
               </Col>
               <Col flex="auto">
-                <Styled.StarButton onClick={onClick('https://github.com/pingcap/tidb')}>
-                  <GithubOutlined />
-                  Star
-                  {mounted && (
-                    <Styled.StarButtonTooltip {...tooltipProps}>
-                      <Styled.TooltipContainer ref={tooltipContainerRef} />
-                    </Styled.StarButtonTooltip>
-                  )}
-                </Styled.StarButton>
+                <Anchor href={'https://github.com/pingcap/tidb'}>
+                  <Styled.StarButton>
+                    <GithubOutlined />
+                    Star
+                    {mounted && (
+                      <Styled.StarButtonTooltip {...tooltipProps}>
+                        <Styled.TooltipContainer ref={tooltipContainerRef} />
+                      </Styled.StarButtonTooltip>
+                    )}
+                  </Styled.StarButton>
+                </Anchor>
               </Col>
             </Row>
           </Styled.LeftPanel>
@@ -96,8 +92,7 @@ const Banner = () => {
                 const imgProps = commonUtils.getStrapiImgProps(image);
                 const props = {
                   title,
-                  key: id,
-                  onClick: onClick(link),
+                  link,
                   image: imgProps.src,
                   height: (() => {
                     if (breakpoint.lg) {
@@ -116,9 +111,11 @@ const Banner = () => {
                 };
 
                 return (
-                  <Styled.Promotion {...props}>
-                    <Styled.PromotionOverlay>{title}</Styled.PromotionOverlay>
-                  </Styled.Promotion>
+                  <Anchor key={id} href={link}>
+                    <Styled.Promotion {...props}>
+                      <Styled.PromotionOverlay>{title}</Styled.PromotionOverlay>
+                    </Styled.Promotion>
+                  </Anchor>
                 );
               })}
             </Styled.Carousel>
@@ -126,11 +123,13 @@ const Banner = () => {
         </Row>
 
         <Styled.Navs $isSmallScreen={isSmallScreen}>
-          {navItems.map(({ icon: Icon, langKey }, idx) => (
-            <Styled.NavItem key={idx} onClick={onClick(navsLang[langKey].link)}>
-              <Icon />
-              <span>{navsLang[langKey].label}</span>
-            </Styled.NavItem>
+          {navItems.map(({ icon: Icon, langKey }) => (
+            <Col span={6} key={langKey}>
+              <Styled.NavItem href={navsLang[langKey].link}>
+                <Icon />
+                <span>{navsLang[langKey].label}</span>
+              </Styled.NavItem>
+            </Col>
           ))}
         </Styled.Navs>
       </Styled.Content>

@@ -1,26 +1,19 @@
 import React from 'react';
-import { Col } from 'antd';
-import { Trans, useTranslation } from 'next-i18next';
-import { useRouter } from 'next/router';
+import {Col} from 'antd';
+import {Trans, useTranslation} from 'next-i18next';
 
 import * as Styled from './learning.styled';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import { getImage } from '~/pages/home/home.utils';
-import { link as linkUtils } from '~/utils';
-import { useIsSmallScreen } from '~/hooks';
+import {getImage} from '~/pages/home/home.utils';
+import {useIsSmallScreen} from '~/hooks';
+import Anchor from '~/components/Anchor';
 
 const Learning = () => {
-  const router = useRouter();
   const { isSmallScreen } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('learning', { returnObjects: true });
   const { majorVideo: majorVideoLang } = lang;
-
-  const redirect = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
 
   return (
     <Styled.Container id="learning" isSmallScreen={isSmallScreen}>
@@ -44,10 +37,12 @@ const Learning = () => {
 
             <Styled.VideosRow wrap={false}>
               <Col xs={24} md={18}>
-                <Styled.VideoBoxWrapper isSmallScreen={isSmallScreen}>
-                  <Styled.VideoBox isSmallScreen={isSmallScreen} src={majorVideoLang.coverUrl}>
+                <Styled.VideoBoxWrapper $isSmallScreen={isSmallScreen}>
+                  <Styled.VideoBox $isSmallScreen={isSmallScreen} src={majorVideoLang.coverUrl}>
                     <Styled.VideoPlayButton>
-                      <Styled.VideoPlayIcon onClick={redirect(majorVideoLang.link)} color="white" height="48px" />
+                      <Anchor href={majorVideoLang.link}>
+                        <Styled.VideoPlayIcon color="white" height="48px" />
+                      </Anchor>
                     </Styled.VideoPlayButton>
                     {!isSmallScreen && (
                       <Styled.VideoCaption isSmallScreen={isSmallScreen}>{majorVideoLang.desc}</Styled.VideoCaption>
@@ -58,8 +53,8 @@ const Learning = () => {
               <Col xs={0} md={6}>
                 {lang.minorVideos.map((video, idx) => (
                   <Styled.VideoBoxWrapperSmall key={idx}>
-                    <Styled.VideoBox isSmallScreen={isSmallScreen} src={video.coverUrl}>
-                      <Styled.VideoOverlay onClick={redirect(video.link)}>
+                    <Styled.VideoBox $isSmallScreen={isSmallScreen} src={video.coverUrl}>
+                      <Styled.VideoOverlay href={video.link}>
                         <Styled.VideoOverlayText>{video.title}</Styled.VideoOverlayText>
                       </Styled.VideoOverlay>
                     </Styled.VideoBox>
@@ -70,7 +65,7 @@ const Learning = () => {
 
             {isSmallScreen && <Styled.Text>{majorVideoLang.desc}</Styled.Text>}
 
-            <Styled.More href={lang.moreLink} isSmallScreen={isSmallScreen}>
+            <Styled.More href={lang.moreLink} $isSmallScreen={isSmallScreen}>
               {lang.more}
             </Styled.More>
           </>

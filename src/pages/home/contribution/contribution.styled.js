@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Styled, colors, mixins } from '@tidb-community/ui';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
-import { Link as RawLink } from '~/components';
+import Anchor from '~/components/Anchor';
 
 const { ModuleTitle, Section, Text } = Styled;
 
@@ -9,8 +9,9 @@ export { ModuleTitle, Section, Text };
 
 export const Container = styled(Section)``;
 
-export const Link = styled(RawLink)`
+export const Link = styled(Anchor)`
   font-size: revert;
+  text-decoration: underline;
   &:hover {
     color: ${colors.B1};
     text-decoration: underline;

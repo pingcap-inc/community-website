@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import { Col, Row } from 'antd';
-import { useTranslation } from 'next-i18next';
+import React, {useContext} from 'react';
+import {Col, Row} from 'antd';
+import {useTranslation} from 'next-i18next';
 
 import * as Styled from './others.styled';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import VideoThumbnail from './videoThumbnail';
-import { PageDataContext } from '~/context';
-import { getImage } from '~/pages/home/home.utils';
-import { useIsSmallScreen } from '~/hooks';
+import {PageDataContext} from '~/context';
+import {getImage} from '~/pages/home/home.utils';
+import {useIsSmallScreen} from '~/hooks';
 
 const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map((el) =>
   getImage(`others-${el}-logo.png`)
@@ -27,7 +27,7 @@ const Others = () => {
   } = lang;
 
   return (
-    <Styled.Container isSmallScreen={isSmallScreen}>
+    <Styled.Container $isSmallScreen={isSmallScreen}>
       <TwoColumnsSection
         title={lang.title}
         leftPanel={
@@ -39,7 +39,7 @@ const Others = () => {
             <Row gutter={16}>
               {data.videos.slice(0, isSmallScreen ? 3 : 6).map((video, idx) => (
                 <Col key={idx} xs={24} md={8}>
-                  <VideoThumbnail {...video} isSmallScreen={isSmallScreen} />
+                  <VideoThumbnail {...video} $isSmallScreen={isSmallScreen} />
                 </Col>
               ))}
             </Row>

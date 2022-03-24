@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { Col, Row } from 'antd';
-import { PlayCircleFilled } from '@ant-design/icons';
-import { colors, mixins, Styled } from '@tidb-community/ui';
+import styled, {css} from 'styled-components';
+import {Col, Row} from 'antd';
+import {PlayCircleFilled} from '@ant-design/icons';
+import {colors, mixins, Styled} from '@tidb-community/ui';
 import Anchor from '~/components/Anchor';
 
 const { Section, Text, ModuleTitle } = Styled;
@@ -59,7 +59,7 @@ export const VideoBox = styled.div`
   border-color: ${colors.M1};
 
   ${(props) =>
-    !props.isSmallScreen &&
+    !props.$isSmallScreen &&
     css`
       box-shadow: inset 0 0 0 8px ${colors.M1};
     `}
@@ -129,7 +129,7 @@ export const VideoPlayIcon = styled(PlayCircleFilled)`
 
 export const VideoBoxWrapper = styled.div`
   ${(props) =>
-    !props.isSmallScreen &&
+    !props.$isSmallScreen &&
     css`
       transform: translateX(-8px);
     `}
@@ -155,7 +155,7 @@ export const More = styled(Anchor)`
   }
 
   ${(props) =>
-    props.isSmallScreen &&
+    props.$isSmallScreen &&
     css`
       margin-bottom: 3rem;
     `}

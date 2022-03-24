@@ -1,10 +1,10 @@
-import { ClockCircleOutlined, PlaySquareOutlined } from '@ant-design/icons';
+import {ClockCircleOutlined, PlaySquareOutlined} from '@ant-design/icons';
 
 import * as Styled from './videoThumbnail.style';
 
-const VideoThumbnail = ({ isSmallScreen, coverImage, length, title, playCount, created, link }) => {
+const VideoThumbnail = ({ $isSmallScreen, coverImage, length, title, playCount, created, link }) => {
   return (
-    <Styled.VideoBox isSmallScreen={isSmallScreen} href={link}>
+    <Styled.VideoBox $isSmallScreen={$isSmallScreen} href={link}>
       <Styled.PreviewWrapper>
         <Styled.Preview src={coverImage} />
         <Styled.Length>{length}</Styled.Length>

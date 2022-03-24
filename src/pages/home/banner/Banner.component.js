@@ -92,7 +92,6 @@ const Banner = () => {
                 const imgProps = commonUtils.getStrapiImgProps(image);
                 const props = {
                   title,
-                  key: id,
                   link,
                   image: imgProps.src,
                   height: (() => {
@@ -112,7 +111,7 @@ const Banner = () => {
                 };
 
                 return (
-                  <Anchor href={link}>
+                  <Anchor key={id} href={link}>
                     <Styled.Promotion {...props}>
                       <Styled.PromotionOverlay>{title}</Styled.PromotionOverlay>
                     </Styled.Promotion>

@@ -79,22 +79,22 @@ export default function CategoryPage({
   blogs: blogsFromSSR,
   tag: tagFromSSR,
   hotTags: hotTagsFromSSR,
-  slug: slugFromSSR, // https://github.com/vercel/swr/issues/284#issuecomment-609727071
+  // slug: slugFromSSR, // https://github.com/vercel/swr/issues/284#issuecomment-609727071
 }) {
   const router = useRouter();
   const { slugs, latest: queryLatest } = router.query;
-  const info = useMemo(() => parseSlugs(slugs, queryLatest), [JSON.stringify(slugs), queryLatest]);
+  const info = useMemo(() => parseSlugs(slugs, queryLatest), [slugs, queryLatest]);
 
   const { data: category, error: categoryError } = useSWR(
-    info.slug === 'category' ? ['blog.getCategoryBySlug', info?.slug || ''] : null,
+    info.slug === 'category' ? ['blog.getCategoryBySlug', info] : null,
     {
-      fallbackData: info.type === 'all' ? CATEGORY_ALL : info?.slug === slugFromSSR ? categoryFromSSR : undefined,
+      fallbackData: info.type === 'all' ? CATEGORY_ALL : categoryFromSSR,
       revalidateOnMount: true,
     }
   );
 
-  const { data: tag, error: tagError } = useSWR(info.type === 'tag' ? ['blog.getTagBySlug', info?.slug || ''] : null, {
-    fallbackData: info?.slug === slugFromSSR ? tagFromSSR : undefined,
+  const { data: tag, error: tagError } = useSWR(info.type === 'tag' ? ['blog.getTagBySlug', info] : null, {
+    fallbackData: tagFromSSR,
     revalidateOnMount: true,
   });
 
@@ -188,7 +188,7 @@ export default function CategoryPage({
   }, [info]);
 
   const error = categoryError || categoriesError || tagError || hotTagsError;
-  const loading = !categories || !hotTags;
+  const loading = !categories && !hotTags;
 
   if (!info) return <ErrorPage statusCode={404} />;
   if (error) {

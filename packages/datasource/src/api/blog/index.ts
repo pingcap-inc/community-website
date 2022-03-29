@@ -162,7 +162,8 @@ export async function getTagById(params: { id: number }): Promise<ITagDetails> {
 }
 
 export async function getTagBySlug(params: { slug: string }): Promise<ITagDetails> {
-  return await blogClient.get(`/api/tags/search/bySlug?slug=${params.slug}`);
+  const url = `/api/tags/search/bySlug?slug=${params.slug}`;
+  return await blogClient.get(url);
 }
 
 export async function getCategories(params: { pagination?: IRequestPagination }): Promise<IResponseList<ICategory>> {

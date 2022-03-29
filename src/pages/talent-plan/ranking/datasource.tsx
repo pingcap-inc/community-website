@@ -14,14 +14,14 @@ export const tikv_data = [
     //
     // 清华大学
     // 清华大学
-    // LebronAl
+    // OneSizeFitsQuorum
     // Vendredimatin
     //  95.7
     {
       name: '好好学习',
       college: ['清华大学', '清华大学'],
       score: 95.7,
-      github: ['LebronAl', 'Vendredimatin'],
+      github: ['OneSizeFitsQuorum', 'Vendredimatin'],
     },
     // 嘻嘻哈哈
     // 华东师范大学

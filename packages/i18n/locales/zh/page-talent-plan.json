@@ -211,6 +211,62 @@
         "org": "华中科技大学",
         "role": "Mentor",
         "github": "LX-676655103"
+      },
+      {
+        "nameEN": "Zhang Jiakun",
+        "nameZH": "张家坤",
+        "org": "中国科学技术大学",
+        "role": "Mentor",
+        "github": "JK1Zhang"
+      },
+      {
+        "nameEN": "Zhang Qingyang",
+        "nameZH": "张擎洋",
+        "org": "中国科学技术大学",
+        "role": "Mentor",
+        "github": "QingyangZ"
+      },
+      {
+        "nameEN": "Li Xing",
+        "nameZH": "李鑫",
+        "org": "电子科技大学",
+        "role": "Mentor",
+        "github": "oocococo"
+      },
+      {
+        "nameEN": "Tang Ruilin",
+        "nameZH": "汤瑞麟",
+        "org": "华中科技大学",
+        "role": "Mentor",
+        "github": "Tangruilin"
+      },
+      {
+        "nameEN": "Hu Yu",
+        "nameZH": "胡煜",
+        "org": "浙江大学",
+        "role": "Mentor",
+        "github": "charstal"
+      },
+      {
+        "nameEN": "Tan Xinyu",
+        "nameZH": "谭新宇",
+        "org": "清华大学",
+        "role": "Mentor",
+        "github": "OneSizeFitsQuorum"
+      },
+      {
+        "nameEN": "Tan Shun",
+        "nameZH": "谭顺",
+        "org": "山西大学",
+        "role": "Mentor",
+        "github": "madao756"
+      },
+      {
+        "nameEN": "Huang Zhanghen",
+        "nameZH": "黄章衡",
+        "org": "福州大学",
+        "role": "Mentor",
+        "github": "hzh0425"
       }
     ]
   },

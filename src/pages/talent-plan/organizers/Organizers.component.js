@@ -15,10 +15,10 @@ const Others = () => {
     <Styled.Container>
       <Styled.Content>
         <CommonStyled.Title>{lang.title}</CommonStyled.Title>
-        <Row gutter={16}>
-          {[1, 2, 3, 4].map((idx) => (
+        <Row gutter={[16, 32]}>
+          {['hust', 'ecnu', 'digitalchina', 'pingcap', 'ustc', 'whu'].map((name) => (
             <Styled.ImageContainer xs={12} md={6}>
-              <Styled.LogoImage preview={false} height="64px" src={getImage(`organizers-logo-${idx}.png`)} />
+              <Styled.LogoImage preview={false} height="64px" src={getImage(`organization-${name}.png`)} />
             </Styled.ImageContainer>
           ))}
         </Row>

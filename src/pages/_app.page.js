@@ -69,7 +69,7 @@ const WrapLink = ({ url, children, ...attrs }) => {
 // define global configs for @pingcap-inc/tidb-community-site-components
 defineSiteComponentsConfig({
   site: Site.home,
-  env: Env[process.env.NEXT_PUBLIC_RUNTIME_ENV],
+  env: Env[process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production' ? 'prod' : process.env.NEXT_PUBLIC_RUNTIME_ENV],
   wrapRouteLink: (key, url, node) => {
     return (
       <WrapLink url={url} key={key}>

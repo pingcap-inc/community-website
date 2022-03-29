@@ -18,7 +18,7 @@ const Team = () => {
           {lang.members.map((member) => (
             <Styled.CardWrapper lg={6} xs={12} key={member.nameEN}>
               <Styled.MemberCard>
-                <Styled.MemberCardAvatar size={48} src={getImage(`team-${member.nameZH}.png`)} />
+                <Styled.MemberCardAvatar size={48} src={getImage(`team-${member.nameZH}.jpg`)} />
                 <Styled.MemberCardContent>
                   {member.nameZH && <Styled.MemberCardHeader>{member.nameZH}</Styled.MemberCardHeader>}
                   {member.org && <Styled.MemberCardLine>Org: {member.org}</Styled.MemberCardLine>}

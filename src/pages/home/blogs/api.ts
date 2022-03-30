@@ -23,7 +23,7 @@ export async function getLatestBlog(size = 6): Promise<ILatestBlogForHomePage[]>
       created_at: value.createdAt,
       creator: {
         username: value.author.username,
-        profile_link: `/blog/user/${value.author.id}`,
+        profile_link: `/u/${value.author.username}`,
         avatar_url: value.author.avatarURL,
       },
       categories: value.category,

@@ -23,7 +23,7 @@ export default function PostItem({
         {/*</Styled.StatusBadge>*/}
       </Styled.Title>
       {!isDeleted && (
-        <Styled.Author href={`/blog/user/${blogInfo?.author.id}`}>
+        <Styled.Author href={`/u/${blogInfo?.author.username}`}>
           <Styled.AuthorAvatar>
             <img src={blogInfo?.author.avatarURL} alt={blogInfo?.author.username} />
           </Styled.AuthorAvatar>

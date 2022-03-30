@@ -5,7 +5,7 @@ import { Avatar } from 'antd';
 import moment from 'moment';
 
 const AuthorInfo = ({ blog }) => {
-  const userPageURL = `/blog/user/${blog.author.id}`;
+  const userPageURL = `/u/${blog.author.username}`;
 
   return (
     <Styled.AuthorContainer>

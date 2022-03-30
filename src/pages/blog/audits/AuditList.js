@@ -24,7 +24,7 @@ const AuditList = ({ data }) => {
               </Styled.Title>
               <Styled.Author>
                 <img src={item.author.avatarURL} alt="" />
-                <a href={`/blog/user/${item.author.id}`} target="_blank" rel="noreferrer">
+                <a href={`/u/${item.author.username}`} target="_blank" rel="noreferrer">
                   {item.author.name}
                 </a>
               </Styled.Author>

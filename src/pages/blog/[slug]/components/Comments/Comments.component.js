@@ -145,7 +145,7 @@ const CommentList = ({ blog, tick, onClickReply, onClickDelete, onTotalCommentsC
         dataSource={comments}
         locale={{ emptyText: '暂无评论' }}
         renderItem={(item) => {
-          const commenterUserURL = `/blog/user/${item.commenter.id}`;
+          const commenterUserURL = `/u/${item.commenter.username}`;
           return (
             <li>
               <Comment

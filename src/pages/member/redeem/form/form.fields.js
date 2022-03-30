@@ -58,6 +58,12 @@ export const fields = {
     placeholder: '订单备注',
     maxLength: 128,
     labelInValue: false,
+    validate: (value) => {
+      if (!value) {
+        return '请输入订单备注';
+      }
+      return null;
+    },
   },
 };
 

@@ -3,7 +3,6 @@ import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
 import { useRouter } from 'next/router';
 import copy from 'copy-to-clipboard';
-import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { MeContext } from '~/context';
 
 export const useLikes = (blogInfo, isLogin) => {

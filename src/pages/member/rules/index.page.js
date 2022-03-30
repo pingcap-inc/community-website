@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '~/pages/member/layout';
 import * as Styled from './index.styled';
+import Anchor from '~/components/Anchor';
 
 const Page = () => (
   <Layout>
@@ -96,13 +97,16 @@ const Page = () => (
           </tr>
           <tr>
             <td rowSpan="8">社区官网</td>
-            <td>完成团队认证，并审核通过</td>
+            <td>
+              完成<Anchor href="/account/organization/new">团队认证</Anchor>，并审核通过
+            </td>
             <td>200</td>
             <td>200</td>
             <td>仅第一次企业认证奖励</td>
             <td>
               如果你需要获得快速 “加急”处理问题的权限，加快问题响应速度，
-              点击完成认证，获得“加急”处理问题的权限，方便你更快速地解决问题。 认证后在
+              <Anchor href="/account/organization/new">点击完成认证</Anchor>
+              ，获得“加急”处理问题的权限，方便你更快速地解决问题。 认证后在
               导航栏：我的团队-全部主题-加急，直接加急你的问题 。
             </td>
           </tr>
@@ -111,31 +115,46 @@ const Page = () => (
             <td>20</td>
             <td>20</td>
             <td>不限制</td>
-            <td>认证团队中邀请一位从未加入过团队的用户成功加入团队时奖励邀请人。 邀请入口: 我的团队-成员-添加成员</td>
+            <td>
+              <Anchor href="/account/organization/new">认证团队</Anchor>
+              中邀请一位从未加入过团队的用户成功加入团队时奖励邀请人。 邀请入口:{' '}
+              <Anchor href="/account/organization/new">我的团队</Anchor>-成员-添加成员
+            </td>
           </tr>
           <tr>
-            <td>完成公司信息填写</td>
+            <td>
+              完成<Anchor href="/my/company">公司信息</Anchor>填写
+            </td>
             <td>50</td>
             <td>50</td>
             <td>仅第一次完善信息奖励</td>
             <td />
           </tr>
           <tr>
-            <td>完成个人信息填写</td>
+            <td>
+              完成<Anchor href="/my/profile">个人信息</Anchor>填写
+            </td>
             <td>20</td>
             <td>20</td>
             <td>仅第一次完善信息奖励</td>
             <td />
           </tr>
           <tr>
-            <td>绑定 Github 账号</td>
+            <td>
+              绑定 <Anchor href="/my/settings">Github</Anchor> 账号
+            </td>
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定账号奖励</td>
-            <td>Contributor 在绑定成功后将自动授予：Contributor 专属徽章</td>
+            <td>
+              Contributor 在绑定成功后将自动授予：
+              <Anchor href="https://asktug.com/badges/111/-">Contributor 专属徽章</Anchor>
+            </td>
           </tr>
           <tr>
-            <td>绑定邮箱</td>
+            <td>
+              绑定<Anchor href="/my/settings">邮箱</Anchor>
+            </td>
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定邮箱奖励</td>
@@ -145,24 +164,30 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>绑定手机号码</td>
+            <td>
+              绑定<Anchor href="/my/settings">手机号码</Anchor>
+            </td>
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定手机号码奖励</td>
             <td>绑定手机号码是为了方便紧急情况下，社区技术老师可以第一时间与你取得联系，协助解决技术问题。</td>
           </tr>
           <tr>
-            <td>签到</td>
+            <td>
+              <Anchor href="/member#/summary">签到</Anchor>
+            </td>
             <td>2 ~ 5</td>
             <td>2 ~ 5</td>
             <td>1</td>
             <td>
-              点击『签到』领取奖励, 签到 1 天奖励 2 分；连续签到 2 天奖励 3 分；连续签到 3 天及以上奖励 5
-              分，断签重新开始。
+              <Anchor href="/member#/summary">点击『签到』</Anchor>领取奖励, 签到 1 天奖励 2 分；连续签到 2 天奖励 3
+              分；连续签到 3 天及以上奖励 5 分，断签重新开始。
             </td>
           </tr>
           <tr>
-            <td rowSpan="10">AskTUG</td>
+            <td rowSpan="10">
+              <Anchor href="https://asktug.com">AskTUG</Anchor>
+            </td>
             <td>发布问题帖子</td>
             <td>5</td>
             <td>5</td>
@@ -233,12 +258,17 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="7">专栏</td>
+            <td rowSpan="7">
+              <Anchor href="/blog">专栏</Anchor>
+            </td>
             <td>发布技术文章&amp;专栏</td>
             <td>100 ~ 200</td>
             <td>100 ~ 200</td>
             <td>不限制</td>
-            <td>专栏：发布入口，发布规则参考：专栏技术文章发布指南&amp;指引</td>
+            <td>
+              <Anchor href="/blog">专栏：发布入口</Anchor>，发布规则参考：
+              <Anchor href="/blog/66c5e81b">专栏技术文章发布指南&amp;指引</Anchor>
+            </td>
           </tr>
           <tr>
             <td>文章被点赞</td>
@@ -283,19 +313,25 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="2">认证</td>
+            <td rowSpan="2">
+              <Anchor href="https://learn.pingcap.com/learner/certification-center">认证</Anchor>
+            </td>
             <td>通过 PCTA 认证</td>
             <td>200</td>
             <td>200</td>
             <td>仅 1 次</td>
-            <td>PCTA考试</td>
+            <td>
+              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCTA">PCTA 考试</Anchor>
+            </td>
           </tr>
           <tr>
             <td>通过 PCTP 认证</td>
             <td>500</td>
             <td>500</td>
             <td>仅 1 次</td>
-            <td>PCTP 考试</td>
+            <td>
+              <Anchor href="https://learn.pingcap.com/learner/certification-center/syllabus/pctp">PCTP 考试</Anchor>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -418,7 +454,10 @@ const Page = () => (
             <td>100</td>
             <td>100</td>
             <td>不限制</td>
-            <td>在【建议&amp;反馈·产品缺陷】提交BUG复现步骤，后经确认为BUG，并无其他成员提交相同BUG时奖励</td>
+            <td>
+              在<Anchor href="https://asktug.com/c/advice-feedback/bugs">【建议&amp;反馈·产品缺陷】</Anchor>
+              提交BUG复现步骤，后经确认为BUG，并无其他成员提交相同BUG时奖励
+            </td>
           </tr>
           <tr>
             <td>协助产品缺陷优化</td>
@@ -432,7 +471,10 @@ const Page = () => (
             <td>10</td>
             <td>10</td>
             <td>不限制</td>
-            <td>在【建议&amp;反馈·产品需求】按提示提交完整的产品需求</td>
+            <td>
+              在<Anchor href="https://asktug.com/c/advice-feedback/requirements">【建议&amp;反馈·产品需求】</Anchor>
+              按提示提交完整的产品需求
+            </td>
           </tr>
           <tr>
             <td>协助产品需求开发及验证</td>

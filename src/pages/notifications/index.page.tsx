@@ -5,15 +5,16 @@ import { Filter } from './layout/menu';
 import Asktug from './Asktug.component';
 import Blog from './Blog.component';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { GetServerSideProps } from 'next';
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   //@ts-ignore
   const i18nProps = await getI18nProps(['common'])(context);
 
   return {
     props: {
       ...i18nProps,
-      initIdx: context.query.from === 'blog' ? 4 : 0,
+      initIdx: context.params.from === 'blog' ? 4 : 0,
     },
   };
 };

@@ -3,8 +3,9 @@ import Layout from './layout';
 import PrivateMessages from './PrivateMessages.component';
 import { usePrivateMessages } from '~/pages/private-messages/hooks';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { GetServerSideProps } from 'next';
 
-export const getStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   //@ts-ignore
   const i18nProps = await getI18nProps(['common'])(context);
 

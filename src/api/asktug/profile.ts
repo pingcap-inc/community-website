@@ -145,8 +145,16 @@ export async function getAnswersByUsername(input: {
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
     markedSolution ? EUserActionFilter.SOLVED : EUserActionFilter.REPLY
   }`;
-  const result: { user_actions: IUserAction[] } = await asktugClient.get(url);
-  return result.user_actions?.slice(0, pageSize - 1) ?? [];
+  try {
+    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, { isReturnErrorResponse: true });
+    return result.user_actions?.slice(0, pageSize - 1) ?? [];
+  } catch (response) {
+    if (response?.status && response.status === 404) {
+      return [];
+    } else {
+      throw response?.data;
+    }
+  }
 }
 
 export async function getAskTugFavoritesByUsername(
@@ -156,8 +164,16 @@ export async function getAskTugFavoritesByUsername(
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
-  const result: { user_actions: IUserAction[] } = await asktugClient.get(url);
-  return result.user_actions?.slice(0, pageSize - 1) ?? [];
+  try {
+    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, { isReturnErrorResponse: true });
+    return result.user_actions?.slice(0, pageSize - 1) ?? [];
+  } catch (response) {
+    if (response?.status && response.status === 404) {
+      return [];
+    } else {
+      throw response?.data;
+    }
+  }
 }
 
 export interface IQuestions {
@@ -199,8 +215,19 @@ export async function getQuestionsByUsername(input: {
     } else if (solved === ESolved.unsolved) {
       params.unsolved = 1;
     }
-    const result: { user_actions: IQuestions[] } = await asktugClient.get(url, { params });
-    data = result.user_actions ?? [];
+    try {
+      const result: { user_actions: IQuestions[] } = await asktugClient.get(url, {
+        params,
+        isReturnErrorResponse: true,
+      });
+      data = result.user_actions ?? [];
+    } catch (response) {
+      if (response?.status && response.status === 404) {
+        data = [];
+      } else {
+        throw response?.data;
+      }
+    }
   }
   return data;
 }

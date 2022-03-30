@@ -1,10 +1,13 @@
 import styled from 'styled-components';
-import { mixins, colors, Styled, constants } from '@tidb-community/ui';
-import { Row, Col } from 'antd';
+import { colors, constants, mixins, Styled } from '@tidb-community/ui';
+import { Col, Row } from 'antd';
 
 const { Content } = Styled;
 
 export { Content };
+
+const headerHeightPx = 56;
+const topPx = headerHeightPx + 32;
 
 export const Background = styled.div`
   background-color: ${colors.M2};
@@ -27,7 +30,7 @@ export const Start = styled(Col).attrs(({ $forTag }) => ({
   md: $forTag ? 6 : 4,
 }))`
   position: sticky !important;
-  top: 2rem;
+  top: ${topPx}px;
   height: 100%;
 `;
 
@@ -41,7 +44,7 @@ export const End = styled(Col).attrs({
   md: 6,
 })`
   position: sticky !important;
-  top: 2rem;
+  top: ${topPx}px;
   height: 100%;
 `;
 

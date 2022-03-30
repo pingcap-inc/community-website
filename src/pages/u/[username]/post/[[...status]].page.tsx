@@ -75,7 +75,7 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 
 export default function ProfilePostPage(props: IProps): JSX.Element {
   const { badges, profile, summary, posts: postsFromSSR, postFavoritesNumber } = props;
-  const askTugFavoritesNumber = summary.user_summary.bookmark_count;
+  const askTugFavoritesNumber = summary?.user_summary?.bookmark_count ?? 0;
   const allFavoritesNumber: number = askTugFavoritesNumber + (postFavoritesNumber ?? 0);
 
   const router = useRouter();
@@ -127,8 +127,8 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
       badges={badges}
       profile={profile}
       nums={{
-        like: summary.user_summary.likes_received,
-        answer: summary.user_summary.post_count,
+        like: summary?.user_summary?.likes_received ?? 0,
+        answer: summary?.user_summary?.post_count ?? 0,
         post: postsNumber,
       }}
     >
@@ -136,8 +136,8 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
         <Tab
           selected={EUgcType.post}
           nums={{
-            answer: summary.user_summary.post_count,
-            question: summary.user_summary.topic_count,
+            answer: summary?.user_summary?.post_count ?? 0,
+            question: summary?.user_summary?.topic_count ?? 0,
             post: postsNumber,
             favorite: allFavoritesNumber,
           }}

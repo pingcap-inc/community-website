@@ -331,6 +331,17 @@ export async function getSummaryByUsername(
 ): Promise<IProfileSummary | null> {
   const { username } = input;
   const url = `${askTugApiDomain}/u/${encodeURIComponent(username)}/summary.json`;
-  const result: IProfileSummary = await asktugClient.get(url, withAccountsCookies({}, ssrCtx));
-  return result ?? null;
+  try {
+    const result: IProfileSummary = await asktugClient.get(
+      url,
+      withAccountsCookies({ isReturnErrorResponse: true }, ssrCtx)
+    );
+    return result ?? null;
+  } catch (response) {
+    if (response?.status && response.status === 404) {
+      return null;
+    } else {
+      throw response?.data;
+    }
+  }
 }

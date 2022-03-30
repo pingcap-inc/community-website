@@ -28,6 +28,8 @@ asktugClient.interceptors.response.use(
   (err) => {
     const { config, response } = err;
 
+    console.error(response.status, config.url);
+
     // Some errors may not have response, like the timeout error
     if (!response) {
       dispatchApiError(err);

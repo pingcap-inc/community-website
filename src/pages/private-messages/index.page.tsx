@@ -7,7 +7,7 @@ import { GetServerSideProps } from 'next';
 import React from 'react';
 import { CommunityHead } from '~/components';
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   //@ts-ignore
   const i18nProps = await getI18nProps(['common'])(context);
 

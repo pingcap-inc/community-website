@@ -78,11 +78,13 @@ const Page = () => (
       </table>
       ps：荣誉称号：不同的称号可以获得不同的权益及称号徽章（待上线）
       <h2 className="subtitle">二、积分的作用</h2>
-      社区成员获得积分后，可以在<a href="https://accounts.pingcap.com/points#/shop">积分商城中</a>兑换高端数码产品 TiDB
-      周边礼品、PCTA/PCTP 考证等，还可参与抽奖，资料下载、召唤 TiDB 社区专家答疑、参与活动等。
-      <a href="https://accounts.pingcap.com/points#/shop">可点击兑换入口</a>
+      社区成员获得积分后，可以在<Anchor href="https://accounts.pingcap.com/points#/shop">积分商城中</Anchor>
+      兑换高端数码产品 TiDB 周边礼品、PCTA/PCTP 考证等，还可参与抽奖，资料下载、召唤 TiDB 社区专家答疑、参与活动等。
+      <Anchor href="https://accounts.pingcap.com/points#/shop">可点击兑换入口</Anchor>
       直达兑换礼品页面，如果你对积分兑换有任何想法，
-      <a href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6">请点击参加周边定制意见征集</a>
+      <Anchor href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6">
+        请点击参加周边定制意见征集
+      </Anchor>
       ，想兑换什么，你说了算。
       <h2 className="subtitle">三、如何获得经验值 & 积分</h2>
       <table cellSpacing="0" cellPadding="0" border="1">

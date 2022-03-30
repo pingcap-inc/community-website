@@ -4,12 +4,12 @@ import Script from 'next/script';
 
 const Head = ({
   creator,
-  description,
+  description = "",
   faviconPathname,
   googleAnalyticsId,
-  keyword,
+  keyword = [],
   title,
-  titleSuffix,
+  titleSuffix = "TiDB 社区",
   isArticle = false,
   children,
 }) => {

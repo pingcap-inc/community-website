@@ -65,7 +65,9 @@ export interface IResponse<T> {
 }
 
 async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
-  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/badges.json`);
+  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/badges.json`, {
+    fallbackResponse: { badges: [] },
+  });
   const badgesMap = new Map<IRawBadges['id'], IRawBadges>();
   result.badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: false }));
   return badgesMap;
@@ -74,7 +76,9 @@ async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
 export async function getBadgesByUsername(input: { username: string }): Promise<IRawBadges[]> {
   const { username } = input;
   const badgesMap = await getAllBadges();
-  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/user-badges/${username}.json`);
+  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/user-badges/${username}.json`, {
+    fallbackResponse: { badges: [] },
+  });
   result.badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
   const badgesArr: IRawBadges[] = [];
   badgesMap.forEach((value) => badgesArr.push(value));
@@ -146,7 +150,10 @@ export async function getAnswersByUsername(input: {
     markedSolution ? EUserActionFilter.SOLVED : EUserActionFilter.REPLY
   }`;
   try {
-    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, { isReturnErrorResponse: true });
+    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, {
+      isReturnErrorResponse: true,
+      fallbackResponse: { user_actions: [] },
+    });
     return result.user_actions?.slice(0, pageSize - 1) ?? [];
   } catch (response) {
     if (response?.status && response.status === 404) {
@@ -165,7 +172,10 @@ export async function getAskTugFavoritesByUsername(
   const offset = (pageNumber - 1) * pageSize;
   const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
   try {
-    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, { isReturnErrorResponse: true });
+    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, {
+      isReturnErrorResponse: true,
+      fallbackResponse: { user_actions: [] },
+    });
     return result.user_actions?.slice(0, pageSize - 1) ?? [];
   } catch (response) {
     if (response?.status && response.status === 404) {
@@ -204,7 +214,10 @@ export async function getQuestionsByUsername(input: {
   if (solved === ESolved.all) {
     const url = `${askTugApiDomain}/topics/created-by/${username}.json`;
     const params = { solved: 1, page: page - 1, per_page };
-    const result: { topic_list?: { topics: IQuestions[] } } = await asktugClient.get(url, { params });
+    const result: { topic_list?: { topics: IQuestions[] } } = await asktugClient.get(url, {
+      params,
+      fallbackResponse: { topic_list: [] },
+    });
     data = result.topic_list?.topics ?? [];
   } else {
     const url = `${askTugApiDomain}/user_actions.json`;
@@ -219,6 +232,7 @@ export async function getQuestionsByUsername(input: {
       const result: { user_actions: IQuestions[] } = await asktugClient.get(url, {
         params,
         isReturnErrorResponse: true,
+        fallbackResponse: { user_actions: [] },
       });
       data = result.user_actions ?? [];
     } catch (response) {

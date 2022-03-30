@@ -7,6 +7,7 @@ declare module 'axios' {
   export interface AxiosRequestConfig {
     isDispatchApiError?(res: AxiosResponse): boolean;
     isReturnErrorResponse?: boolean;
+    fallbackResponse?: any;
   }
 }
 

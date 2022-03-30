@@ -51,6 +51,11 @@ asktugClient.interceptors.response.use(
       }
     }
 
+    // TODO: SSR requests does not contains cookie info
+    if (data?.error_type === 'invalid_access') {
+      return Promise.resolve(config.fallbackResponse);
+    }
+
     return Promise.reject(isReturnErrorResponse ? response : data);
   }
 );

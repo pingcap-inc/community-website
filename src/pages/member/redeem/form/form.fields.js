@@ -47,7 +47,7 @@ export const fields = {
     maxLength: 128,
     labelInValue: false,
     validate: (value) => {
-      if (!value) {
+      if (!value || value === '') {
         return '请输入详细地址';
       }
       return null;
@@ -59,7 +59,7 @@ export const fields = {
     maxLength: 128,
     labelInValue: false,
     validate: (value) => {
-      if (!value) {
+      if (!value || value === '') {
         return '请输入订单备注';
       }
       return null;

@@ -45,14 +45,14 @@ const BlogInfo = ({
       <Styled.Content>
         {actionText && actionText.length !== 0 && <Styled.ActionText>{actionText}</Styled.ActionText>}
         <Styled.Author>
-          <Link href={`/blog/user/${author.id}`} passHref>
+          <Link href={`/u/${author.username}`} passHref>
             <Styled.AuthorAvatar>
               <Avatar size={Styled.avatarSize} src={author.avatarURL} />
             </Styled.AuthorAvatar>
           </Link>
           <Styled.AuthorInfo>
             <Styled.AuthorName>
-              <Link href={`/blog/user/${author.id}`} passHref>
+              <Link href={`/u/${author.username}`} passHref>
                 <Styled.AuthorNameBase>{author.username || author.name}</Styled.AuthorNameBase>
               </Link>
               <Styled.AuthorNameExtend>{usernameExtends}</Styled.AuthorNameExtend>

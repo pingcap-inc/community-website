@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
@@ -19,6 +19,7 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
+import { MeContext } from '~/context';
 
 const noop = () => {};
 
@@ -48,7 +49,8 @@ export const getServerSideProps = async (ctx) => {
 };
 
 export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
-  const { id, isAuthor, hasAuthority } = usePrincipal();
+  const { isAuthor, hasAuthority } = usePrincipal();
+  const { meData } = useContext(MeContext);
 
   const router = useRouter();
   const { isReady, query } = router;
@@ -65,7 +67,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   });
   const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
   const error = blogError;
-  const loading = !blog || hasPermission === undefined;
+  const loading = !blog || hasPermission === undefined || !meData;
 
   const factory = useMemo(() => createFactory(), []);
 
@@ -96,15 +98,15 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const BreadcrumbDOM = [<Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>];
   switch (blog.status) {
     case 'DRAFT': {
-      BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/draft`}>草稿</Breadcrumb.Item>);
+      BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/draft`}>草稿</Breadcrumb.Item>);
       break;
     }
     case 'PENDING': {
-      BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/pending`}>审核中</Breadcrumb.Item>);
+      BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/pending`}>审核中</Breadcrumb.Item>);
       break;
     }
     case 'REJECTED': {
-      BreadcrumbDOM.push(<Breadcrumb.Item href={`/blog/user/${id}/posts/rejected`}>未审核通过</Breadcrumb.Item>);
+      BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/rejected`}>未审核通过</Breadcrumb.Item>);
       break;
     }
     default: {

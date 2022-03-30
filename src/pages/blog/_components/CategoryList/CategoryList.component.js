@@ -5,7 +5,7 @@ import { usePrincipal } from '../../blog.hooks';
 import Link from 'next/link';
 
 const CategoryList = ({ categories: { content }, shallow = false, current, type }) => {
-  const { isLogin, id, hasAuthority } = usePrincipal();
+  const { hasAuthority } = usePrincipal();
   const showAudits = hasAuthority('REVIEW_POST');
 
   return (
@@ -18,7 +18,6 @@ const CategoryList = ({ categories: { content }, shallow = false, current, type 
       </Styled.List>
       <Divider />
       {showAudits && <NextLink href={`/blog/audits`}>待审核</NextLink>}
-      {isLogin && <NextLink href={`/blog/user/${id}/posts/all`}>我的专栏</NextLink>}
       <div>
         <FixedLink href={'https://tidb.io/blog/66c5e81b'}>专栏发布指南</FixedLink>
         <FixedLink href={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>

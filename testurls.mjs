@@ -11,14 +11,14 @@ const checkingUrls = [
   '/blog/c/management-and-operation?latest=true',
   '/blog/tag/practical-case',
   '/blog/tag/practical-case?latest=true',
-  '/blog/user/644/posts/all',
-  '/blog/user/644/comments',
-  '/blog/user/644/like',
-  '/blog/user/644/favorites',
+  '/u/orgadmin/posts/all',
+  '/u/orgadmin/comments',
+  '/u/orgadmin/like',
+  '/u/orgadmin/favorites',
   // user home page
-  '/u/asktug-test/answer',
-  '/u/asktug-test/post',
-  '/u/asktug-test/question',
+  '/u/orgadmin/answer',
+  '/u/orgadmin/post',
+  '/u/orgadmin/question',
 ];
 
 const urls = [

@@ -155,6 +155,11 @@ export const getPrivateMessages = (params: GetPrivateMessagesParams): Promise<Pr
   return asktugClient.get(`/topics/private-messages/${params.username}`, { params });
 };
 
+export const getPrivateMessagesUnread = (params: GetPrivateMessagesParams): Promise<PrivateMessages> => {
+  params = parseJsonString(params);
+  return asktugClient.get(`/topics/private-messages-unread/${params.username}`, { params });
+};
+
 export const getPrivateMessagesSent = (params: GetPrivateMessagesParams): Promise<PrivateMessages> => {
   params = parseJsonString(params);
   return asktugClient.get(`/topics/private-messages-sent/${params.username}`, { params });

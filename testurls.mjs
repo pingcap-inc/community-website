@@ -16,9 +16,9 @@ const checkingUrls = [
   '/blog/user/644/like',
   '/blog/user/644/favorites',
   // user home page
-  '/u/asktug-test/answer',
-  '/u/asktug-test/post',
-  '/u/asktug-test/question',
+  '/u/orgadmin/answer',
+  '/u/orgadmin/post',
+  '/u/orgadmin/question',
 ];
 
 const urls = [

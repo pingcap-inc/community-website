@@ -4,6 +4,17 @@ import { useState } from 'react';
 import { Filter } from './layout/menu';
 import Asktug from './Asktug.component';
 import Blog from './Blog.component';
+import { getI18nProps } from '~/utils/i18n.utils';
+
+export const getStaticProps = async () => {
+  const i18nProps = await getI18nProps(['common'])();
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
 
 const Page = ({ initIdx }) => {
   const [filter, setFilter] = useState<Filter>();

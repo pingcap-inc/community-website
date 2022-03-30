@@ -47,6 +47,8 @@ const FormComponent = () => {
     [receiver.name]: '',
     [verificationCode.name]: '',
     [phoneNumber.name]: '',
+    [address.name]: '',
+    [comment.name]: '',
   };
 
   const formikProps = {
@@ -142,7 +144,11 @@ const FormComponent = () => {
             </Col>
 
             <Col xs={24}>
-              <FormItem label={<Styled.Label>{comment.placeholder}</Styled.Label>} name={comment.name}>
+              <FormItem
+                label={<Styled.Label>{comment.placeholder}</Styled.Label>}
+                name={comment.name}
+                validate={comment.validate}
+              >
                 <Input {...comment} />
               </FormItem>
             </Col>

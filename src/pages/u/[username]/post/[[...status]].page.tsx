@@ -26,7 +26,7 @@ import { blogUrl } from '~/pages/u/[username]/constant.data';
 import { api } from '@tidb-community/datasource';
 import { ErrorPage } from '~/components';
 import useSWRInfinite from 'swr/infinite';
-import { getPageInfo } from '~/pages/blog/user/[id]/posts/page-info';
+import { getPageInfo } from './post-info';
 import StatusSelect from './StatusSelect.component';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { IResponseList, IResponsePostDetail } from '../../../../../packages/datasource/src/api/blog';

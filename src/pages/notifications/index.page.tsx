@@ -6,12 +6,13 @@ import Asktug from './Asktug.component';
 import Blog from './Blog.component';
 import { getI18nProps } from '~/utils/i18n.utils';
 
-export const getStaticProps = async () => {
+export const getStaticProps = async (context) => {
   const i18nProps = await getI18nProps(['common'])();
 
   return {
     props: {
       ...i18nProps,
+      initIdx: context.query.from === 'blog' ? 4 : 0,
     },
   };
 };
@@ -26,12 +27,6 @@ const Page = ({ initIdx }) => {
       {filter?.from === 'blog' ? <Blog filter={filter} /> : undefined}
     </Layout>
   );
-};
-
-Page.getInitialProps = async (context) => {
-  return {
-    initIdx: context.query.from === 'blog' ? 4 : 0,
-  };
 };
 
 export default Page;

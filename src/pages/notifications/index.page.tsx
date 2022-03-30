@@ -7,7 +7,8 @@ import Blog from './Blog.component';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getStaticProps = async (context) => {
-  const i18nProps = await getI18nProps(['common'])();
+  //@ts-ignore
+  const i18nProps = await getI18nProps(['common'])(context);
 
   return {
     props: {

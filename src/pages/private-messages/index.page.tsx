@@ -5,7 +5,8 @@ import { usePrivateMessages } from '~/pages/private-messages/hooks';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 export const getStaticProps = async () => {
-  const i18nProps = await getI18nProps(['common'])();
+  //@ts-ignore
+  const i18nProps = await getI18nProps(['common'])(context);
 
   return {
     props: {

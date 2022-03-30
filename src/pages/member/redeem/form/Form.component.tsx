@@ -18,7 +18,7 @@ const FormComponent = () => {
 
   const { receiver, verificationCode, phoneNumber, address, comment } = fields;
 
-  const onSubmit = formUtils.wrapFormikSubmitFunction((values, { resetForm }) => {
+  const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
     setIsSubmitting(true);
     // @ts-ignore
     return api.points
@@ -33,7 +33,6 @@ const FormComponent = () => {
       .then((res) => {
         (res.data.redeem_success ? message.success : message.error).call(message, res.data.comment);
         setOpen(false);
-        resetForm();
       })
       .catch((err) => {
         if (typeof err.errors != undefined) message.error(R.values(err.errors).join(', '));

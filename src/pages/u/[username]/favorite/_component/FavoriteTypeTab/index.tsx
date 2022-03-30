@@ -24,7 +24,7 @@ export default function FavoriteTypeTab({ username, currentType, nums }: IProps)
   const [activeKey, setActiveKey] = useState(currentType);
   const router = useRouter();
   const handleChange = async (key: EFavoriteType) => {
-    await router.push(`/u/${username}/favorite/${key}`);
+    await router.push(`/u/${encodeURIComponent(username)}/favorite/${key}`);
     setActiveKey(key);
   };
   return (

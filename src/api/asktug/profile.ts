@@ -1,4 +1,6 @@
 import { asktugClient } from '../clients';
+import { AxiosRequestConfig } from 'axios';
+import { GetServerSidePropsContext } from 'next';
 
 const asktugProdDomain = 'https://asktug.com';
 const askTugApiDomain = process.env.NEXT_PUBLIC_ASKTUG_PROXY_BASE_URL ?? asktugProdDomain;
@@ -64,21 +66,58 @@ export interface IResponse<T> {
   page: IPage;
 }
 
-async function getAllBadges(): Promise<Map<IRawBadges['id'], IRawBadges>> {
-  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/badges.json`, {
-    fallbackResponse: { badges: [] },
-  });
+function withAccountsCookies(config: AxiosRequestConfig, ssrCtx?: GetServerSidePropsContext) {
+  if (!ssrCtx) {
+    return config;
+  }
+  const cookies = ssrCtx.req.cookies;
+  const headers = (config.headers = config.headers || {});
+
+  if (headers.cookie) {
+    headers.cookie += ';';
+  } else {
+    headers.cookie = '';
+  }
+
+  headers.cookie += ['ssid', 'dev_sid']
+    .map((name) => [name, cookies[name]])
+    .filter(([, value]) => value)
+    .map(([name, value]) => `${name}=${encodeURIComponent(value)}`)
+    .join(';');
+
+  return config;
+}
+
+async function getAllBadges(ssrCtx?: GetServerSidePropsContext): Promise<Map<IRawBadges['id'], IRawBadges>> {
+  const result: { badges: any[] } = await asktugClient.get(
+    `${askTugApiDomain}/badges.json`,
+    withAccountsCookies(
+      {
+        fallbackResponse: { badges: [] },
+      },
+      ssrCtx
+    )
+  );
   const badgesMap = new Map<IRawBadges['id'], IRawBadges>();
   result.badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: false }));
   return badgesMap;
 }
 
-export async function getBadgesByUsername(input: { username: string }): Promise<IRawBadges[]> {
+export async function getBadgesByUsername(
+  input: { username: string },
+  ssrCtx?: GetServerSidePropsContext
+): Promise<IRawBadges[]> {
   const { username } = input;
   const badgesMap = await getAllBadges();
-  const result: { badges: any[] } = await asktugClient.get(`${askTugApiDomain}/user-badges/${username}.json`, {
-    fallbackResponse: { badges: [] },
-  });
+  const result: { badges: any[] } = await asktugClient.get(
+    `${askTugApiDomain}/user-badges/${encodeURIComponent(username)}.json`,
+    withAccountsCookies(
+      {
+        fallbackResponse: { badges: [] },
+      },
+      ssrCtx
+    )
+  );
   result.badges?.forEach((value) => badgesMap.set(value.id, { ...value, has_badge: true }));
   const badgesArr: IRawBadges[] = [];
   badgesMap.forEach((value) => badgesArr.push(value));
@@ -101,9 +140,15 @@ export interface IProfile {
   can_edit: boolean;
 }
 
-export async function getUserProfileByUsername(input: { username: string }): Promise<IProfile | null> {
+export async function getUserProfileByUsername(
+  input: { username: string },
+  ssrCtx?: GetServerSidePropsContext
+): Promise<IProfile | null> {
   const { username } = input;
-  const result: { data: IProfile } = await asktugClient.get(`${accountsDomain}/api/users/${username}`);
+  const result: { data: IProfile } = await asktugClient.get(
+    `${accountsDomain}/api/users/${encodeURIComponent(username)}`,
+    withAccountsCookies({}, ssrCtx)
+  );
   return result.data ?? null;
 }
 
@@ -138,22 +183,31 @@ export interface IUserAction {
 export const getTopicUrl = (topic_id: number, post_number: number) =>
   `${askTugDomain}/t/topic/${topic_id}/${post_number}`;
 
-export async function getAnswersByUsername(input: {
-  username: string;
-  markedSolution?: boolean;
-  pageNumber?: number;
-  pageSize?: number;
-}): Promise<IUserAction[]> {
+export async function getAnswersByUsername(
+  input: {
+    username: string;
+    markedSolution?: boolean;
+    pageNumber?: number;
+    pageSize?: number;
+  },
+  ssrCtx?: GetServerSidePropsContext
+): Promise<IUserAction[]> {
   const { username, markedSolution = false, pageNumber = 1, pageSize = 10 } = input;
   const offset = (pageNumber - 1) * pageSize;
-  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${
+  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${encodeURIComponent(username)}&filter=${
     markedSolution ? EUserActionFilter.SOLVED : EUserActionFilter.REPLY
   }`;
   try {
-    const result: { user_actions: IUserAction[] } = await asktugClient.get(url, {
-      isReturnErrorResponse: true,
-      fallbackResponse: { user_actions: [] },
-    });
+    const result: { user_actions: IUserAction[] } = await asktugClient.get(
+      url,
+      withAccountsCookies(
+        {
+          isReturnErrorResponse: true,
+          fallbackResponse: { user_actions: [] },
+        },
+        ssrCtx
+      )
+    );
     return result.user_actions?.slice(0, pageSize - 1) ?? [];
   } catch (response) {
     if (response?.status && response.status === 404) {
@@ -170,7 +224,9 @@ export async function getAskTugFavoritesByUsername(
   pageSize = 10
 ): Promise<IUserAction[]> {
   const offset = (pageNumber - 1) * pageSize;
-  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${username}&filter=${EUserActionFilter.BOOKMARK}`;
+  const url = `${askTugApiDomain}/user_actions.json?offset=${offset}&username=${encodeURIComponent(username)}&filter=${
+    EUserActionFilter.BOOKMARK
+  }`;
   try {
     const result: { user_actions: IUserAction[] } = await asktugClient.get(url, {
       isReturnErrorResponse: true,
@@ -203,21 +259,30 @@ export enum ESolved {
   unsolved = 'unsolved',
 }
 
-export async function getQuestionsByUsername(input: {
-  username: string;
-  solved?: ESolved;
-  page?: number;
-  per_page?: number;
-}): Promise<IQuestions[]> {
+export async function getQuestionsByUsername(
+  input: {
+    username: string;
+    solved?: ESolved;
+    page?: number;
+    per_page?: number;
+  },
+  ssrCtx?: GetServerSidePropsContext
+): Promise<IQuestions[]> {
   const { username, solved = ESolved.all, page = 1, per_page = 10 } = input;
   let data: IQuestions[];
   if (solved === ESolved.all) {
-    const url = `${askTugApiDomain}/topics/created-by/${username}.json`;
+    const url = `${askTugApiDomain}/topics/created-by/${encodeURIComponent(username)}.json`;
     const params = { solved: 1, page: page - 1, per_page };
-    const result: { topic_list?: { topics: IQuestions[] } } = await asktugClient.get(url, {
-      params,
-      fallbackResponse: { topic_list: [] },
-    });
+    const result: { topic_list?: { topics: IQuestions[] } } = await asktugClient.get(
+      url,
+      withAccountsCookies(
+        {
+          params,
+          fallbackResponse: { topic_list: [] },
+        },
+        ssrCtx
+      )
+    );
     data = result.topic_list?.topics ?? [];
   } else {
     const url = `${askTugApiDomain}/user_actions.json`;
@@ -260,9 +325,12 @@ export interface IProfileSummary {
   };
 }
 
-export async function getSummaryByUsername(input: { username: string }): Promise<IProfileSummary | null> {
+export async function getSummaryByUsername(
+  input: { username: string },
+  ssrCtx?: GetServerSidePropsContext
+): Promise<IProfileSummary | null> {
   const { username } = input;
-  const url = `${askTugApiDomain}/u/${username}/summary.json`;
-  const result: IProfileSummary = await asktugClient.get(url);
+  const url = `${askTugApiDomain}/u/${encodeURIComponent(username)}/summary.json`;
+  const result: IProfileSummary = await asktugClient.get(url, withAccountsCookies({}, ssrCtx));
   return result ?? null;
 }

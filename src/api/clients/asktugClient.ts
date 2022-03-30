@@ -56,7 +56,7 @@ asktugClient.interceptors.response.use(
       return Promise.resolve(config.fallbackResponse);
     }
 
-    return Promise.reject(isReturnErrorResponse ? response : data);
+    return Promise.reject(isReturnErrorResponse ? response : data ?? err);
   }
 );
 

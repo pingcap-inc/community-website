@@ -26,7 +26,7 @@ export default function Tab(props: IPropsTab) {
   const { selected, nums, extendDom } = props;
   const router = useRouter();
   const { username } = router.query;
-  const prefix = `/u/${username}`;
+  const prefix = `/u/${encodeURIComponent(username as string)}`;
   const isCurrentLogonUser = useCurrentLogonUser(username as string);
   return (
     <Styled.Tab>

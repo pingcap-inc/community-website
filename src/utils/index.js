@@ -7,7 +7,7 @@ export function getTopicUrlById(id) {
 }
 
 export function getUserUrlByUsername(username) {
-  return `https://asktug.com/u/${username}`;
+  return `https://asktug.com/u/${encodeURIComponent(username)}`;
 }
 
 export function getCategoryById(site, id) {

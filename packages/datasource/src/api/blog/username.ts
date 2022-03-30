@@ -11,6 +11,6 @@ export async function getPostsByUsername(input: {
   input.sort = input.sort ?? 'id,desc';
   input.sort = input.status.toUpperCase();
   const { username, ...params } = input;
-  const url = `/api/users/username/${username}/posts`;
+  const url = `/api/users/username/${encodeURIComponent(username)}/posts`;
   return await blogClient.get(url, { params });
 }

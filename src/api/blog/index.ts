@@ -83,7 +83,7 @@ export async function getPostsByUsername(input: {
   size?: number;
 }): Promise<IResponse<IPost>> {
   const { username, ...params } = input;
-  const url = `/api/users/username/${username}/posts`;
+  const url = `/api/users/username/${encodeURIComponent(username)}/posts`;
   return await blogClient.get(url, { params });
 }
 
@@ -107,7 +107,7 @@ export async function getPostFavoritesByUsername(
 ): Promise<IResponse<IPostFavorite>> {
   const pageStr = page ?? '';
   const sizeStr = size ?? '';
-  const url = `/api/users/username/${username}/favorites?page=${pageStr}&size=${sizeStr}`;
+  const url = `/api/users/username/${encodeURIComponent(username)}/favorites?page=${pageStr}&size=${sizeStr}`;
   return await blogClient.get(url);
 }
 

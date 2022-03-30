@@ -194,7 +194,9 @@ export default function ProfileQuestionIndexPage(props: IProps) {
         <Select
           defaultValue={solved}
           value={solved}
-          onChange={(value) => router.push(`/u/${username}/question/${value}`, undefined, { shallow: true })}
+          onChange={(value) =>
+            router.push(`/u/${encodeURIComponent(username as string)}/question/${value}`, undefined, { shallow: true })
+          }
           style={{ width: filterSelectWidth }}
         >
           <Select.Option value={ESolved.all}>全部</Select.Option>

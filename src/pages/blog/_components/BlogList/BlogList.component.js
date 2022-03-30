@@ -1,7 +1,7 @@
 import React from 'react';
 import * as Styled from './index.styled';
 // import BlogInfo from '../blogInfo';
-import PostItem from '~/pages/blog/user/_component/PostItem';
+import PostItem from '~/pages/blog/_components/PostItem';
 import { List, Skeleton } from 'antd';
 import { useRouterPage } from '~/utils/pagination.utils';
 import BlogStatusBadge from '~/pages/blog/_components/BlogStatusBadge/BlogStatusBadge';

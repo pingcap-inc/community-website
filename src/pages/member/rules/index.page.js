@@ -79,7 +79,7 @@ const Page = () => (
       ps：荣誉称号：不同的称号可以获得不同的权益及称号徽章（待上线）
       <h2 className="subtitle">二、积分的作用</h2>
       社区成员获得积分后，可以在<Anchor href="https://accounts.pingcap.com/points#/shop">积分商城中</Anchor>
-      兑换高端数码产品 TiDB 周边礼品、PCTA/PCTP 考证等，还可参与抽奖，资料下载、召唤 TiDB 社区专家答疑、参与活动等。
+      兑换 TiDB 周边礼品、PCTA/PCTP 考证等，还可参与抽奖，资料下载、召唤 TiDB 社区专家答疑、参与活动等。
       <Anchor href="https://accounts.pingcap.com/points#/shop">可点击兑换入口</Anchor>
       直达兑换礼品页面，如果你对积分兑换有任何想法，
       <Anchor href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6">
@@ -512,14 +512,14 @@ const Page = () => (
             <td>300</td>
             <td>300</td>
             <td>评选上年度 MVA 时奖励，不限次数</td>
-            <td>参加 TUG 并成为 MVA</td>
+            <td>在一年内（自然年）为 TiDB 社区贡献优质技术内容分享达到 3 个及以上，即可当选 TiDB 社区年度 MVA。</td>
           </tr>
           <tr>
             <td>年度 MOA</td>
             <td>500</td>
             <td>500</td>
             <td>评选上年度 MOA 时奖励，不限次数</td>
-            <td>参加 TUG 并成为 MOA</td>
+            <td>在一年内（自然年）为 TiDB 社区贡献优质技术内容达到 10 个及以上，即可当选 TiDB 社区年度 MOA。</td>
           </tr>
         </tbody>
       </table>

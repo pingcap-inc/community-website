@@ -39,9 +39,9 @@ const config = {
    * using the Next.js compiler for minification. This is 7x faster than Terser.
    */
   swcMinify: true,
-  
+
   /**
-   * for building the docker image 
+   * for building the docker image
    */
   experimental: {
     outputStandalone: true,

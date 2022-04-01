@@ -41,10 +41,15 @@ jobs:
           ssh-private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
           
       - name: Deploy
-        run: |
-          ssh-keyscan "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
-          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
-          sudo docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG && sudo docker stop $DOCKER_CONTAINER_NAME && sudo docker rm $DOCKER_CONTAINER_NAME && sudo docker run -d --name $DOCKER_CONTAINER_NAME -p 3000:3000 ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+          script: |
+            ssh-keyscan "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
+            echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
+            sudo docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG && sudo docker stop $DOCKER_CONTAINER_NAME && sudo docker rm $DOCKER_CONTAINER_NAME && sudo docker run -d --name $DOCKER_CONTAINER_NAME -p 3000:3000 ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
         env:
           MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
           MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}

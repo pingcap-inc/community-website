@@ -39,6 +39,13 @@ const config = {
    * using the Next.js compiler for minification. This is 7x faster than Terser.
    */
   swcMinify: true,
+  
+  /**
+   * for building the docker image 
+   */
+  experimental: {
+    outputStandalone: true,
+  },
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {

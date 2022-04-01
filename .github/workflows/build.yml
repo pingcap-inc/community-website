@@ -13,11 +13,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-      
-    env:
-      DOCKER_IMAGE_NAME: tidb-community-website
-      DOCKER_IMAGE_TAG: ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
-
     steps:
       - uses: actions/checkout@v2.4.0
 
@@ -59,7 +54,7 @@ jobs:
         env:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
           SENTRY_RELEASE: tug-website@${{ github.sha }}
-  
+
       - name: Copy locales
         run: npm run copy:locales
 
@@ -79,26 +74,26 @@ jobs:
       - name: Install production deps
         run: npm ci --no-audit --production --ignore-scripts --unsafe-perm
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
-
+          
 #      - name: Bundle docker image
-#        run: docker build . --compress -t ${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
+#        run: docker build . --compress -t tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
 #
 #      - name: Push docker image to self-hosted docker hub
 #        run: |
 #          docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-#          docker push ${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
-          
+#          docker push tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
+
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
           registry: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
           username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
-          
+
       - name: Build and push
         uses: docker/build-push-action@v2
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
+          tags: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
 

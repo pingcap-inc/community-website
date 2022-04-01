@@ -74,13 +74,13 @@ jobs:
       - name: Install production deps
         run: npm ci --no-audit --production --ignore-scripts --unsafe-perm
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
-          
+
       - name: Bundle docker image
         run: docker build . --compress -t tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
 
       - name: Push docker image to self-hosted docker hub
         run: |
-          docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
           docker push tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
 
 #      - name: Login to DockerHub

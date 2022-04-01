@@ -15,6 +15,10 @@ COPY ./next.config.js ./
 COPY ./public ./public
 COPY ./package.json ./package.json
 
+COPY ./.env ./package.json/.env
+COPY ./.env.preview ./package.json/.env.preview
+COPY ./.env.production ./package.json/.env.production
+
 # Automatically leverage output traces to reduce image size 
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --chown=nextjs:nodejs ./.next/standalone ./

@@ -56,7 +56,7 @@ jobs:
           key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
           script: |
             ssh-keyscan "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
-            echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
+            echo '${{ secrets.DOCKER_REGISTRY_PASSWORD }}' | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
             sudo docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG && sudo docker stop $DOCKER_CONTAINER_NAME && sudo docker rm $DOCKER_CONTAINER_NAME && sudo docker run -d --name $DOCKER_CONTAINER_NAME -p 3000:3000 ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/$DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG
         env:
           MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}

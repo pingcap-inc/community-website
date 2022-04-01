@@ -29,6 +29,14 @@ on:
         required: true
       DEPLOY_PRIVATE_KEY:
         required: true
+      DOCKER_REGISTRY_ADDRESS:
+        required: true
+      DOCKER_REGISTRY_NAMESPACE:
+        required: true
+      DOCKER_REGISTRY_USERNAME:
+        required: true
+      DOCKER_REGISTRY_PASSWORD:
+        required: true
 
 jobs:
   deploy:

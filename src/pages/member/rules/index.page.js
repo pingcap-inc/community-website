@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '~/pages/member/layout';
 import * as Styled from './index.styled';
+import Anchor from '~/components/Anchor';
 
 const Page = () => (
   <Layout>
@@ -77,11 +78,13 @@ const Page = () => (
       </table>
       ps：荣誉称号：不同的称号可以获得不同的权益及称号徽章（待上线）
       <h2 className="subtitle">二、积分的作用</h2>
-      社区成员获得积分后，可以在<a href="https://accounts.pingcap.com/points#/shop">积分商城中</a>兑换高端数码产品 TiDB
-      周边礼品、PCTA/PCTP 考证等，还可参与抽奖，资料下载、召唤 TiDB 社区专家答疑、参与活动等。
-      <a href="https://accounts.pingcap.com/points#/shop">可点击兑换入口</a>
+      社区成员获得积分后，可以在<Anchor href="https://accounts.pingcap.com/points#/shop">积分商城中</Anchor>
+      兑换 TiDB 周边礼品、PCTA/PCTP 考证等，还可参与抽奖，资料下载、召唤 TiDB 社区专家答疑、参与活动等。
+      <Anchor href="https://accounts.pingcap.com/points#/shop">可点击兑换入口</Anchor>
       直达兑换礼品页面，如果你对积分兑换有任何想法，
-      <a href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6">请点击参加周边定制意见征集</a>
+      <Anchor href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6">
+        请点击参加周边定制意见征集
+      </Anchor>
       ，想兑换什么，你说了算。
       <h2 className="subtitle">三、如何获得经验值 & 积分</h2>
       <table cellSpacing="0" cellPadding="0" border="1">
@@ -96,13 +99,16 @@ const Page = () => (
           </tr>
           <tr>
             <td rowSpan="8">社区官网</td>
-            <td>完成团队认证，并审核通过</td>
+            <td>
+              完成<Anchor href="/account/organization/new">团队认证</Anchor>，并审核通过
+            </td>
             <td>200</td>
             <td>200</td>
             <td>仅第一次企业认证奖励</td>
             <td>
               如果你需要获得快速 “加急”处理问题的权限，加快问题响应速度，
-              点击完成认证，获得“加急”处理问题的权限，方便你更快速地解决问题。 认证后在
+              <Anchor href="/account/organization/new">点击完成认证</Anchor>
+              ，获得“加急”处理问题的权限，方便你更快速地解决问题。 认证后在
               导航栏：我的团队-全部主题-加急，直接加急你的问题 。
             </td>
           </tr>
@@ -111,31 +117,46 @@ const Page = () => (
             <td>20</td>
             <td>20</td>
             <td>不限制</td>
-            <td>认证团队中邀请一位从未加入过团队的用户成功加入团队时奖励邀请人。 邀请入口: 我的团队-成员-添加成员</td>
+            <td>
+              <Anchor href="/account/organization/new">认证团队</Anchor>
+              中邀请一位从未加入过团队的用户成功加入团队时奖励邀请人。 邀请入口:{' '}
+              <Anchor href="/account/organization/new">我的团队</Anchor>-成员-添加成员
+            </td>
           </tr>
           <tr>
-            <td>完成公司信息填写</td>
+            <td>
+              完成<Anchor href="/my/company">公司信息</Anchor>填写
+            </td>
             <td>50</td>
             <td>50</td>
             <td>仅第一次完善信息奖励</td>
             <td />
           </tr>
           <tr>
-            <td>完成个人信息填写</td>
+            <td>
+              完成<Anchor href="/my/profile">个人信息</Anchor>填写
+            </td>
             <td>20</td>
             <td>20</td>
             <td>仅第一次完善信息奖励</td>
             <td />
           </tr>
           <tr>
-            <td>绑定 Github 账号</td>
+            <td>
+              绑定 <Anchor href="/my/settings">Github</Anchor> 账号
+            </td>
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定账号奖励</td>
-            <td>Contributor 在绑定成功后将自动授予：Contributor 专属徽章</td>
+            <td>
+              Contributor 在绑定成功后将自动授予：
+              <Anchor href="https://asktug.com/badges/111/-">Contributor 专属徽章</Anchor>
+            </td>
           </tr>
           <tr>
-            <td>绑定邮箱</td>
+            <td>
+              绑定<Anchor href="/my/settings">邮箱</Anchor>
+            </td>
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定邮箱奖励</td>
@@ -145,24 +166,30 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>绑定手机号码</td>
+            <td>
+              绑定<Anchor href="/my/settings">手机号码</Anchor>
+            </td>
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定手机号码奖励</td>
             <td>绑定手机号码是为了方便紧急情况下，社区技术老师可以第一时间与你取得联系，协助解决技术问题。</td>
           </tr>
           <tr>
-            <td>签到</td>
+            <td>
+              <Anchor href="/member#/summary">签到</Anchor>
+            </td>
             <td>2 ~ 5</td>
             <td>2 ~ 5</td>
             <td>1</td>
             <td>
-              点击『签到』领取奖励, 签到 1 天奖励 2 分；连续签到 2 天奖励 3 分；连续签到 3 天及以上奖励 5
-              分，断签重新开始。
+              <Anchor href="/member#/summary">点击『签到』</Anchor>领取奖励, 签到 1 天奖励 2 分；连续签到 2 天奖励 3
+              分；连续签到 3 天及以上奖励 5 分，断签重新开始。
             </td>
           </tr>
           <tr>
-            <td rowSpan="10">AskTUG</td>
+            <td rowSpan="10">
+              <Anchor href="https://asktug.com">AskTUG</Anchor>
+            </td>
             <td>发布问题帖子</td>
             <td>5</td>
             <td>5</td>
@@ -233,12 +260,17 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="7">专栏</td>
+            <td rowSpan="7">
+              <Anchor href="/blog">专栏</Anchor>
+            </td>
             <td>发布技术文章&amp;专栏</td>
             <td>100 ~ 200</td>
             <td>100 ~ 200</td>
             <td>不限制</td>
-            <td>专栏：发布入口，发布规则参考：专栏技术文章发布指南&amp;指引</td>
+            <td>
+              <Anchor href="/blog">专栏：发布入口</Anchor>，发布规则参考：
+              <Anchor href="/blog/66c5e81b">专栏技术文章发布指南&amp;指引</Anchor>
+            </td>
           </tr>
           <tr>
             <td>文章被点赞</td>
@@ -283,19 +315,25 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="2">认证</td>
+            <td rowSpan="2">
+              <Anchor href="https://learn.pingcap.com/learner/certification-center">认证</Anchor>
+            </td>
             <td>通过 PCTA 认证</td>
             <td>200</td>
             <td>200</td>
             <td>仅 1 次</td>
-            <td>PCTA考试</td>
+            <td>
+              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCTA">PCTA 考试</Anchor>
+            </td>
           </tr>
           <tr>
             <td>通过 PCTP 认证</td>
             <td>500</td>
             <td>500</td>
             <td>仅 1 次</td>
-            <td>PCTP 考试</td>
+            <td>
+              <Anchor href="https://learn.pingcap.com/learner/certification-center/syllabus/pctp">PCTP 考试</Anchor>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -418,7 +456,10 @@ const Page = () => (
             <td>100</td>
             <td>100</td>
             <td>不限制</td>
-            <td>在【建议&amp;反馈·产品缺陷】提交BUG复现步骤，后经确认为BUG，并无其他成员提交相同BUG时奖励</td>
+            <td>
+              在<Anchor href="https://asktug.com/c/advice-feedback/bugs">【建议&amp;反馈·产品缺陷】</Anchor>
+              提交BUG复现步骤，后经确认为BUG，并无其他成员提交相同BUG时奖励
+            </td>
           </tr>
           <tr>
             <td>协助产品缺陷优化</td>
@@ -432,7 +473,10 @@ const Page = () => (
             <td>10</td>
             <td>10</td>
             <td>不限制</td>
-            <td>在【建议&amp;反馈·产品需求】按提示提交完整的产品需求</td>
+            <td>
+              在<Anchor href="https://asktug.com/c/advice-feedback/requirements">【建议&amp;反馈·产品需求】</Anchor>
+              按提示提交完整的产品需求
+            </td>
           </tr>
           <tr>
             <td>协助产品需求开发及验证</td>
@@ -468,14 +512,14 @@ const Page = () => (
             <td>300</td>
             <td>300</td>
             <td>评选上年度 MVA 时奖励，不限次数</td>
-            <td>参加 TUG 并成为 MVA</td>
+            <td>在一年内（自然年）为 TiDB 社区贡献优质技术内容分享达到 3 个及以上，即可当选 TiDB 社区年度 MVA。</td>
           </tr>
           <tr>
             <td>年度 MOA</td>
             <td>500</td>
             <td>500</td>
             <td>评选上年度 MOA 时奖励，不限次数</td>
-            <td>参加 TUG 并成为 MOA</td>
+            <td>在一年内（自然年）为 TiDB 社区贡献优质技术内容达到 10 个及以上，即可当选 TiDB 社区年度 MOA。</td>
           </tr>
         </tbody>
       </table>

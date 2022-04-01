@@ -13,6 +13,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+      
+    env:
+      DOCKER_IMAGE_NAME: tidb-community-website
+      DOCKER_IMAGE_TAG: ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
 
     steps:
       - uses: actions/checkout@v2.4.0
@@ -76,13 +80,25 @@ jobs:
         run: npm ci --no-audit --production --ignore-scripts --unsafe-perm
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
-      - name: Bundle target
-        run: tar --exclude .next/cache -zcf target.tar .next public/locales
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v2
+#      - name: Bundle docker image
+#        run: docker build . --compress -t ${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
+#
+#      - name: Push docker image to self-hosted docker hub
+#        run: |
+#          docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+#          docker push ${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
+          
+      - name: Login to DockerHub
+        uses: docker/login-action@v1
         with:
-          name: target-${{ inputs.build-env }}
-          path: target.tar
-          if-no-files-found: error
+          registry: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
+          username: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+          password: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+          
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
 

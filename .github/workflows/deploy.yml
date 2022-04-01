@@ -34,59 +34,27 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: ${{ inputs.build-env }}
+    env:
+      DOCKER_IMAGE_NAME: tidb-community-website
+      DOCKER_IMAGE_TAG: ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
+      DOCKER_CONTAINER_NAME: tidb-community-website
 
     steps:
-      - uses: actions/checkout@v2.4.0
-
-      - name: Use Node.js 16.14.0
-        uses: actions/setup-node@v2.5.1
-        with:
-          node-version: 16.14.0
-
-      - name: Resolve prod dependencies
-        id: prod-dep-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-          key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-production
-
-      - uses: actions/download-artifact@v2
-        name: Download ${{ inputs.build-env }} artifact
-        with:
-          name: target-${{ inputs.build-env }}
-
-      - name: Un-compress target
-        run: tar -zxf target.tar && rm target.tar
-
-      - name: Dump envs
-        run: |
-          cat .env.${{ inputs.build-env }} >> .env.local
-          echo MAILCHIMP_DC=${{ secrets.MAILCHIMP_DC }} >> .env.local
-          echo MAILCHIMP_KEY=${{ secrets.MAILCHIMP_KEY }} >> .env.local
-          echo MAILCHIMP_LIST_ID=${{ secrets.MAILCHIMP_LIST_ID }} >> .env.local
-          echo NEXT_PUBLIC_RECAPTCHA_KEY=${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }} >> .env.local
-          echo NEXT_PUBLIC_STRAPI_EMAIL=${{ secrets.NEXT_PUBLIC_STRAPI_EMAIL }} >> .env.local
-          echo NEXT_PUBLIC_STRAPI_PASSWORD=${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }} >> .env.local
-
       - uses: webfactory/ssh-agent@v0.5.4
         name: Setup SSH Agent
         with:
           ssh-private-key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-
-      - name: Install shipit
-        run: npm i -g shipit-cli@5.3.0 shipit-deploy@5.3.0
-
+          
       - name: Deploy
         run: |
           ssh-keyscan "${{ secrets.DEPLOY_HOST }}" >> ~/.ssh/known_hosts 2>/dev/null
-          npm run deploy:${{ inputs.build-env }}
+          echo ${{ secrets.DOCKER_REGISTRY_PASSWORD }} | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
+          sudo docker pull ${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }} && sudo docker stop ${{ DOCKER_CONTAINER_NAME }} && sudo docker rm ${{ DOCKER_CONTAINER_NAME }} && sudo docker run -d --name ${{ DOCKER_CONTAINER_NAME }} -p 3000:3000 ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/${{ DOCKER_IMAGE_NAME }}:${{ DOCKER_IMAGE_TAG }}
         env:
-          NODE_PATH: /opt/hostedtoolcache/node/16.14.0/x64/lib/node_modules
-          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
-          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
-          DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
-          DEPLOY_INSTANCES_NUM: ${{ secrets.DEPLOY_INSTANCES_NUM }}
+          MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
+          MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}
+          MAILCHIMP_LIST_ID: ${{ secrets.MAILCHIMP_LIST_ID }}
+          NEXT_PUBLIC_RECAPTCHA_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }}
+          NEXT_PUBLIC_STRAPI_EMAIL: ${{ secrets.NEXT_PUBLIC_STRAPI_EMAIL }}
+          NEXT_PUBLIC_STRAPI_PASSWORD: ${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }}
 

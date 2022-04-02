@@ -1,20 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Checkbox, Form as AntForm } from 'formik-antd';
 import { Link } from '@tidb-community/ui';
 
 import data from '../form.data';
-import { NavContext } from '~/context';
 
 const { sla, privacy, prefixText, ...agreementsProps } = data.form.agreements;
+const orgVerificationAgreementsUrl = 'https://tidb.io/docs/org-verification-agreement';
+const orgPrivacyAgreementsUrl = 'https://pingcap.com/zh/privacy-policy/';
 
 const Agreements = () => {
-  const { navData } = useContext(NavContext);
   return (
     <AntForm.Item name={agreementsProps.name} valuePropName="checked">
       <Checkbox {...agreementsProps}>
         {prefixText}
-        <Link href={navData.resources.orgVerificationAgreementsUrl}>{sla.title}</Link>、
-        <Link href={navData.resources.orgPrivacyAgreementsUrl}>{privacy.title}</Link>
+        <Link href={orgVerificationAgreementsUrl}>{sla.title}</Link>、
+        <Link href={orgPrivacyAgreementsUrl}>{privacy.title}</Link>
       </Checkbox>
     </AntForm.Item>
   );

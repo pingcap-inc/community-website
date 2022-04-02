@@ -1,7 +1,12 @@
 import styled from 'styled-components';
 import { colors, mixins } from '../../index';
 
-export const Banner = styled.div`
+interface BannerProps {
+  $backgroundImage: string;
+  $backgroundColor: string;
+}
+
+export const Banner = styled.div<BannerProps>`
   ${mixins.typography('p2')};
   ${mixins.flexVerticalCenter()};
   justify-content: center;

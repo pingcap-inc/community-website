@@ -23,3 +23,4 @@ type Data = {
 };
 
 export const me: ApiRequestFunction<void, { data: Data }>;
+export type MeData = Data;

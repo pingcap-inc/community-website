@@ -1,6 +1,7 @@
 import { Footer, Header } from '@pingcap-inc/tidb-community-site-components';
 import { FC, PropsWithChildren } from 'react';
 import * as Styled from './site.styled';
+import ActivityBanner from '~/layouts/site/ActivityBanner.component';
 
 interface SiteLayoutProps {
   MainWrapper?: FC;
@@ -10,6 +11,7 @@ interface SiteLayoutProps {
 const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: PropsWithChildren<SiteLayoutProps>) => {
   return (
     <Styled.Container style={{ backgroundColor }}>
+      <ActivityBanner />
       <Header />
       <MainWrapper>{children}</MainWrapper>
       <Footer

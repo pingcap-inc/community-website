@@ -10,8 +10,6 @@ export {
   ActivityCards,
   BenefitCards,
   CountDown,
-  Footer,
-  Header,
   Link,
   PlainMenu,
   RemoteSelect,

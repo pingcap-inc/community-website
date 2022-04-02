@@ -15,7 +15,6 @@ export {
   RemoteSelect,
   RemoteAutoComplete,
   Upload,
-  UserProfile,
   ViewMoreButton,
   withActionMenu,
   withVerifyCode,

@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { Breadcrumb } from 'antd';
+import { Breadcrumb, Skeleton } from 'antd';
 import NextHead from 'next/head';
 import Link from 'next/link';
 import * as Styled from './blog.styled';
@@ -90,33 +90,64 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     [reload]
   );
 
+  const BreadcrumbDOM = useMemo(() => {
+    const BreadcrumbDOM = [<Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>];
+    if (!blog) {
+      return BreadcrumbDOM;
+    }
+    if (!meData) {
+      BreadcrumbDOM.push(<Breadcrumb.Item>...</Breadcrumb.Item>);
+    } else {
+      switch (blog.status) {
+        case 'DRAFT': {
+          BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/draft`}>草稿</Breadcrumb.Item>);
+          break;
+        }
+        case 'PENDING': {
+          BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/pending`}>审核中</Breadcrumb.Item>);
+          break;
+        }
+        case 'REJECTED': {
+          BreadcrumbDOM.push(
+            <Breadcrumb.Item href={`/u/${meData.username}/post/rejected`}>未审核通过</Breadcrumb.Item>
+          );
+          break;
+        }
+        default: {
+          BreadcrumbDOM.push(
+            <Breadcrumb.Item href={`/blog/c/${blog.category?.slug}`}>{blog.category?.name}</Breadcrumb.Item>
+          );
+        }
+      }
+    }
+    return BreadcrumbDOM;
+  }, [blog, meData]);
+
+  const keyword = useMemo(() => {
+    if (!blog) {
+      return '';
+    }
+    return [blog.category?.name ?? '', ...(blog.tags ?? []).map((tag) => tag.name)];
+  }, [blog]);
+
   if (error) return <ErrorPage error={error} />;
   // if (loading) return <Skeleton active />;
 
-  if (!hasPermission && isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
-
-  const BreadcrumbDOM = [<Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>];
-  switch (blog.status) {
-    case 'DRAFT': {
-      BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/draft`}>草稿</Breadcrumb.Item>);
-      break;
-    }
-    case 'PENDING': {
-      BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/pending`}>审核中</Breadcrumb.Item>);
-      break;
-    }
-    case 'REJECTED': {
-      BreadcrumbDOM.push(<Breadcrumb.Item href={`/u/${meData.username}/post/rejected`}>未审核通过</Breadcrumb.Item>);
-      break;
-    }
-    default: {
-      BreadcrumbDOM.push(
-        <Breadcrumb.Item href={`/blog/c/${blog.category?.slug}`}>{blog.category?.name}</Breadcrumb.Item>
-      );
-    }
+  if (!blog) {
+    return (
+      <CoreLayout MainWrapper={Styled.MainWrapper}>
+        <CommunityHead title={`专栏 - 加载中`} isArticle />
+        <Skeleton active />
+      </CoreLayout>
+    );
   }
 
-  const keyword = [blog.category?.name ?? '', ...(blog.tags ?? []).map((tag) => tag.name)];
+  if (isPending) {
+    if (hasPermission) {
+    } else {
+      return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
+    }
+  }
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>

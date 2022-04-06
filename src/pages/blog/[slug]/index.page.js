@@ -67,7 +67,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   });
   const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
   const error = blogError;
-  const loading = !blog || hasPermission === undefined || !meData;
+  const loading = !blog || hasPermission === undefined;
 
   const factory = useMemo(() => createFactory(), []);
 

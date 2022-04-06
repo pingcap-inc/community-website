@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
-import { Breadcrumb, Skeleton } from 'antd';
+import { Breadcrumb } from 'antd';
 import NextHead from 'next/head';
 import Link from 'next/link';
 import * as Styled from './blog.styled';
@@ -67,7 +67,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   });
   const hasPermission = isAuthor(blog) || hasAuthority('REVIEW_POST');
   const error = blogError;
-  const loading = !blog || hasPermission === undefined;
+  // const loading = !blog || hasPermission === undefined;
 
   const factory = useMemo(() => createFactory(), []);
 
@@ -91,7 +91,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   );
 
   if (error) return <ErrorPage error={error} />;
-  if (loading) return <Skeleton active />;
+  // if (loading) return <Skeleton active />;
 
   if (!hasPermission && isPending) return <ErrorPage statusCode={403} errorMsg="该文章正在审核中" />;
 

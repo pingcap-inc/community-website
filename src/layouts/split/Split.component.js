@@ -9,8 +9,8 @@ const Split = ({ dividerColor, marginTop, marginBottom, children }) => {
   const ref = useRef();
   const size = useSize(ref);
 
-  const isLargeSize = size.width > 1200;
-  const isSmallSize = size.width <= 588;
+  const isLargeSize = size?.width > 1200;
+  const isSmallSize = size?.width <= 588;
 
   const newChildren = wrapElements({
     elements: children,

@@ -17,7 +17,7 @@ const EmailVerificationOption = ({ hidden }) => {
   const ref = useRef();
   const size = useSize(ref);
 
-  const isSmall = size.width <= 538;
+  const isSmall = size?.width <= 538;
 
   const { values, errors, touched, setFieldError, setFieldTouched } = useFormikContext();
 

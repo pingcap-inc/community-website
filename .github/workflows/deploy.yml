@@ -72,7 +72,7 @@ jobs:
           key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
           script: |
             echo '${{ secrets.DOCKER_REGISTRY_PASSWORD }}' | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
-            cd ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }} && sh ./deploy.sh
+            cd ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }} && chmod +x ./deploy.sh && sh ./deploy.sh preview ${{ DOCKER_CONTAINER_NAME }} ${{ secrets.DOCKER_REGISTRY_ADDRESS }} ${{ secrets.DOCKER_REGISTRY_NAMESPACE }} ${{ DOCKER_IMAGE_NAME }} ${{ DOCKER_IMAGE_TAG }}
         env:
           MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
           MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}

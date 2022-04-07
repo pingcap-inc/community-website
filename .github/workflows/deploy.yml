@@ -43,6 +43,16 @@ jobs:
     runs-on: ubuntu-latest
     environment: ${{ inputs.build-env }}
     steps:
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete
+          path: deploy/
+          remote_path: ${{ secrets.DEPLOY_PATH }}/deploy
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+#          remote_port: ${{ secrets.DEPLOY_PORT }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
       - name: Deploy
         uses: appleboy/ssh-action@v0.1.4
         with:

@@ -1,12 +1,12 @@
 version: "3.9"  # optional since v1.27.0
 services:
   tidb-community-website:
-    build: ..
+    build: ../..
     container_name: ${DOCKER_CONTAINER_NAME}
     image: ${DOCKER_REGISTRY_ADDRESS}/${DOCKER_REGISTRY_NAMESPACE}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}
     ports:
       - "3000:3000"
     env_file:
-      - ./.env
-      - ./.env.preview
-      - ./.env.production
+      - .env
+      - .env.preview
+      - .env.production

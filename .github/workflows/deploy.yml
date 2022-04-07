@@ -59,7 +59,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: .env.*
-          remote_path: ${{ secrets.DEPLOY_PATH }}/deploy
+          remote_path: ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }}
           remote_host: ${{ secrets.DEPLOY_HOST }}
 #          remote_port: ${{ secrets.DEPLOY_PORT }}
           remote_user: ${{ secrets.DEPLOY_USER }}
@@ -72,7 +72,7 @@ jobs:
           key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
           script: |
             echo '${{ secrets.DOCKER_REGISTRY_PASSWORD }}' | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
-            sudo docker pull $DOCKER_IMAGE_NAME:$DOCKER_IMAGE_TAG && docker-compose down -f ${{ secrets.DEPLOY_PATH }}/deploy/docker-compose-${{ inputs.build-env }}.yaml && docker-compose up -d -f ${{ secrets.DEPLOY_PATH }}/deploy/docker-compose-${{ inputs.build-env }}.yaml
+            cd ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }} && sh ./deploy.sh
         env:
           MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}
           MAILCHIMP_KEY: ${{ secrets.MAILCHIMP_KEY }}

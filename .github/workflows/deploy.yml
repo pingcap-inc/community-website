@@ -51,7 +51,6 @@ jobs:
       NEXT_PUBLIC_STRAPI_PASSWORD: ${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }}
       DOCKER_CONTAINER_NAME: tidb-community-website
       DOCKER_IMAGE_NAME: tidb-community-website
-      DOCKER_IMAGE_TAG: tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
     steps:
       - uses: actions/checkout@v2.4.0
       - name: rsync deploy directory
@@ -83,4 +82,4 @@ jobs:
           envs: MAILCHIMP_DC,MAILCHIMP_KEY,MAILCHIMP_LIST_ID,NEXT_PUBLIC_RECAPTCHA_KEY,NEXT_PUBLIC_STRAPI_EMAIL,NEXT_PUBLIC_STRAPI_PASSWORD,DOCKER_CONTAINER_NAME,DOCKER_IMAGE_NAME,DOCKER_IMAGE_TAG
           script: |
             echo '${{ secrets.DOCKER_REGISTRY_PASSWORD }}' | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
-            cd ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }} && chmod +x ./deploy.sh && sh ./deploy.sh preview ${{ DOCKER_CONTAINER_NAME }} ${{ secrets.DOCKER_REGISTRY_ADDRESS }} ${{ secrets.DOCKER_REGISTRY_NAMESPACE }} ${{ DOCKER_IMAGE_NAME }} ${{ DOCKER_IMAGE_TAG }}
+            cd ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }} && chmod +x ./deploy.sh && sh ./deploy.sh preview ${DOCKER_CONTAINER_NAME} ${{ secrets.DOCKER_REGISTRY_ADDRESS }} ${{ secrets.DOCKER_REGISTRY_NAMESPACE }} ${DOCKER_IMAGE_NAME} ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}

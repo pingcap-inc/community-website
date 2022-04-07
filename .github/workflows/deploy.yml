@@ -44,11 +44,21 @@ jobs:
     environment: ${{ inputs.build-env }}
     steps:
       - uses: actions/checkout@v2.4.0
-      - name: rsync deployments
+      - name: rsync deploy directory
         uses: burnett01/rsync-deployments@5.2
         with:
           switches: -avzr --delete
           path: deploy/
+          remote_path: ${{ secrets.DEPLOY_PATH }}/deploy
+          remote_host: ${{ secrets.DEPLOY_HOST }}
+#          remote_port: ${{ secrets.DEPLOY_PORT }}
+          remote_user: ${{ secrets.DEPLOY_USER }}
+          remote_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+      - name: rsync env files
+        uses: burnett01/rsync-deployments@5.2
+        with:
+          switches: -avzr --delete
+          path: .env.*
           remote_path: ${{ secrets.DEPLOY_PATH }}/deploy
           remote_host: ${{ secrets.DEPLOY_HOST }}
 #          remote_port: ${{ secrets.DEPLOY_PORT }}

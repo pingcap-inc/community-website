@@ -21,7 +21,7 @@ COPY ./.env.production ./.env.production
 
 # Automatically leverage output traces to reduce image size 
 # https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --chown=nextjs:nodejs ./.next/standalone ./standalone
+COPY --chown=nextjs:nodejs ./.next/standalone ./
 COPY --chown=nextjs:nodejs ./.next/static ./.next/static
 
 USER nextjs

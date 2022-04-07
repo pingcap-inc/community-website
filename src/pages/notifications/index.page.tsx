@@ -15,7 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       ...i18nProps,
-      initIdx: context.params.from === 'blog' ? 4 : 0,
+      initIdx: context.params?.from === 'blog' ? 4 : 0,
     },
   };
 };

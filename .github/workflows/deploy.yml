@@ -80,7 +80,6 @@ jobs:
           NEXT_PUBLIC_RECAPTCHA_KEY: ${{ secrets.NEXT_PUBLIC_RECAPTCHA_KEY }}
           NEXT_PUBLIC_STRAPI_EMAIL: ${{ secrets.NEXT_PUBLIC_STRAPI_EMAIL }}
           NEXT_PUBLIC_STRAPI_PASSWORD: ${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }}
+          DOCKER_CONTAINER_NAME: tidb-community-website
           DOCKER_IMAGE_NAME: tidb-community-website
           DOCKER_IMAGE_TAG: tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
-          DOCKER_CONTAINER_NAME: tidb-community-website
-

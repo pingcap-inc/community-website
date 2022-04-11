@@ -91,4 +91,4 @@ jobs:
           envs: DOCKER_CONTAINER_NAME,DOCKER_IMAGE_NAME,DOCKER_IMAGE_TAG
           script: |
             echo '${{ secrets.DOCKER_REGISTRY_PASSWORD }}' | sudo docker login ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }} --username ${{ secrets.DOCKER_REGISTRY_USERNAME }} --password-stdin
-            cd ${{ secrets.DEPLOY_PATH }}/deploy && chmod +x ./deploy.sh && sh ./deploy.sh ${{ inputs.build-env }} ${DOCKER_CONTAINER_NAME} ${{ secrets.DOCKER_REGISTRY_ADDRESS }} ${{ secrets.DOCKER_REGISTRY_NAMESPACE }} ${DOCKER_IMAGE_NAME} ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
+            cd ${{ secrets.DEPLOY_PATH }}/deploy && chmod +x ./deploy.sh && sh ./deploy.sh server ${DOCKER_CONTAINER_NAME} ${{ secrets.DOCKER_REGISTRY_ADDRESS }} ${{ secrets.DOCKER_REGISTRY_NAMESPACE }} ${DOCKER_IMAGE_NAME} ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}

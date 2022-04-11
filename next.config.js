@@ -23,7 +23,7 @@ const config = {
   pageExtensions: ['page.js', 'page.jsx', 'page.tsx'],
 
   images: {
-    domains: ['localhost', 'tidb.io', 'contributor.tidb.io', 'cms.tidb.io', 'img3.pingcap.com'],
+    domains: ['localhost', 'tidb.net', 'contributor.tidb.io', 'cms.tidb.net', 'img3.pingcap.com'],
   },
 
   styledComponents: true,

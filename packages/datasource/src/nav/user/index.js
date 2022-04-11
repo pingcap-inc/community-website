@@ -3,11 +3,11 @@ const genUserMenu = (meData) =>
     ? [
         {
           title: '个人信息',
-          link: `https://tidb.io/user/${meData.id}/info`,
+          link: `https://tidb.net/user/${meData.id}/info`,
         },
         {
           title: '团队信息',
-          link: `https://tidb.io/user/${meData.id}/org`,
+          link: `https://tidb.net/user/${meData.id}/org`,
         },
       ]
     : [];

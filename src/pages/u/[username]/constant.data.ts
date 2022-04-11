@@ -1,2 +1,2 @@
 export const forumUrl = 'https://asktug.com';
-export const blogUrl = 'https://tidb.io/blog';
+export const blogUrl = 'https://tidb.net/blog';

@@ -1,7 +1,7 @@
 export const navItems = [
   {
     title: 'Home',
-    link: 'https://tidb.io',
+    link: 'https://tidb.net',
   },
   {
     title: 'Learning',
@@ -54,11 +54,11 @@ export const navItems = [
   },
   {
     title: 'Events',
-    link: 'https://tidb.io/events',
+    link: 'https://tidb.net/events',
   },
   {
     title: 'Blog',
-    link: 'https://tidb.io/blog',
+    link: 'https://tidb.net/blog',
   },
   {
     title: 'Community',
@@ -69,15 +69,15 @@ export const navItems = [
       },
       {
         title: 'User Group',
-        link: 'https://tidb.io/tug',
+        link: 'https://tidb.net/tug',
         items: [
           {
             title: 'Join TiDB User Group',
-            link: 'https://tidb.io/tug/apply',
+            link: 'https://tidb.net/tug/apply',
           },
           {
             title: 'MVA',
-            link: 'https://tidb.io/tug/mva',
+            link: 'https://tidb.net/tug/mva',
           },
         ],
       },
@@ -172,12 +172,12 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     },
     {
       title: 'Profile',
-      link: `https://tidb.io/my/profile`,
+      link: `https://tidb.net/my/profile`,
       badge: redDots.companyInfo,
     },
     {
       title: 'Account Settings',
-      link: `https://tidb.io/my/settings`,
+      link: `https://tidb.net/my/settings`,
     },
   ];
 
@@ -185,12 +185,12 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   if (meData.org) {
     items.push({
       title: 'My Org',
-      link: `https://tidb.io/orgs/${meData.org.slug}/home`,
+      link: `https://tidb.net/orgs/${meData.org.slug}/home`,
     });
   } else {
     items.splice(1, 0, {
       title: 'Create Org',
-      link: 'https://tidb.io/account/organization/new',
+      link: 'https://tidb.net/account/organization/new',
       badge: redDots.orgEnroll,
     });
   }
@@ -198,7 +198,7 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   if (meData.org_invitations?.length) {
     items.push({
       title: 'Invitations',
-      link: 'https://tidb.io/account/organization/invitations',
+      link: 'https://tidb.net/account/organization/invitations',
       badge: meData.org_invitations.some((item) => item.valid),
     });
   }
@@ -206,7 +206,7 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   items.push(
     {
       title: 'Org Benefits',
-      link: 'https://tidb.io/account/organization/benefits',
+      link: 'https://tidb.net/account/organization/benefits',
     },
     {
       title: 'Logout',

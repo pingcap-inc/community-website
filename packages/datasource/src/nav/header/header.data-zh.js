@@ -1,7 +1,7 @@
 export const navItems = [
   {
     title: '社区首页',
-    link: 'https://tidb.io',
+    link: 'https://tidb.net',
   },
   {
     title: '学习',
@@ -54,18 +54,18 @@ export const navItems = [
   },
   {
     title: '专栏',
-    link: 'https://tidb.io/blog',
+    link: 'https://tidb.net/blog',
   },
   {
     title: '活动',
-    link: 'https://tidb.io/events',
+    link: 'https://tidb.net/events',
   },
   {
     title: '社区',
     items: [
       {
         title: 'Talent Plan',
-        link: 'https://tidb.io/talent-plan',
+        link: 'https://tidb.net/talent-plan',
       },
       {
         title: '社区行为准则',
@@ -73,15 +73,15 @@ export const navItems = [
       },
       {
         title: '用户组',
-        link: 'https://tidb.io/tug',
+        link: 'https://tidb.net/tug',
         items: [
           {
             title: '加入用户组',
-            link: 'https://tidb.io/tug/apply',
+            link: 'https://tidb.net/tug/apply',
           },
           {
             title: 'MVA',
-            link: 'https://tidb.io/tug/mva',
+            link: 'https://tidb.net/tug/mva',
           },
         ],
       },
@@ -176,12 +176,12 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     },
     {
       title: '个人信息',
-      link: `https://tidb.io/my/profile`,
+      link: `https://tidb.net/my/profile`,
       badge: redDots.companyInfo,
     },
     {
       title: '账号设置',
-      link: `https://tidb.io/my/settings`,
+      link: `https://tidb.net/my/settings`,
     },
   ];
 
@@ -189,12 +189,12 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   if (meData.org) {
     items.push({
       title: '我的团队',
-      link: `https://tidb.io/orgs/${meData.org.slug}/home`,
+      link: `https://tidb.net/orgs/${meData.org.slug}/home`,
     });
   } else {
     items.splice(1, 0, {
       title: '团队认证',
-      link: 'https://tidb.io/account/organization/new',
+      link: 'https://tidb.net/account/organization/new',
       badge: redDots.orgEnroll,
     });
   }
@@ -202,7 +202,7 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   if (meData.org_invitations?.length) {
     items.push({
       title: '团队邀请',
-      link: 'https://tidb.io/account/organization/invitations',
+      link: 'https://tidb.net/account/organization/invitations',
       badge: meData.org_invitations.some((item) => item.valid),
     });
   }
@@ -210,7 +210,7 @@ export const genUserProfileItems = ({ meData, redDots }) => {
   items.push(
     {
       title: '团队权益',
-      link: 'https://tidb.io/account/organization/benefits',
+      link: 'https://tidb.net/account/organization/benefits',
     },
     {
       title: '退出登录',

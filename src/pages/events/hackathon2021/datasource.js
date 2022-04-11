@@ -215,17 +215,17 @@ export const judgesData = [
 export const carouselData = [
   {
     img: getImage('prev-20.jpg'),
-    url: 'https://tidb.io/archived/events/hackathon2020/',
+    url: 'https://tidb.net/archived/events/hackathon2020/',
     desc: 'TiDB Hackathon 2020',
   },
   {
     img: getImage('prev-19.jpg'),
-    url: 'https://tidb.io/archived/events/hackathon2019/',
+    url: 'https://tidb.net/archived/events/hackathon2019/',
     desc: 'TiDB Hackathon 2019',
   },
   {
     img: getImage('prev-18.jpg'),
-    url: 'https://tidb.io/archived/events/hackathon2018/',
+    url: 'https://tidb.net/archived/events/hackathon2018/',
     desc: 'TiDB Hackathon 2018',
   },
 ];

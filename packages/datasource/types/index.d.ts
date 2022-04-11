@@ -6,7 +6,7 @@ import { form } from './form';
 
 type Locale = 'en' | 'zh';
 type Env = 'production' | 'development';
-type Domain = 'tidb.io' | 'contributor.tidb.io';
+type Domain = 'tidb.net' | 'contributor.tidb.io';
 
 type EnvDomainConfig = Record<Env, Record<Domain, string>>;
 

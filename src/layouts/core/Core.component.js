@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types';
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import useSWR from 'swr';
-import {ActivityBanner, UserProfile, utils} from '@tidb-community/ui';
-import {Footer, Header} from '@pingcap-inc/tidb-community-site-components';
-import {getData} from '@tidb-community/datasource';
-import {useRouter} from 'next/router';
+import { ActivityBanner, UserProfile, utils } from '@tidb-community/ui';
+import { Footer, Header } from '@pingcap-inc/tidb-community-site-components';
+import { getData } from '@tidb-community/datasource';
+import { useRouter } from 'next/router';
 
 import * as Styled from './core.styled';
-import {AuthContext, MeContext, NavContext} from '~/context';
-import {link as linkUtils, redDots as redDotsUtils} from '~/utils';
+import { AuthContext, MeContext, NavContext } from '~/context';
+import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
 
 // disabled for operation reasons
 // const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
@@ -47,10 +47,10 @@ const ActivityBannerComponent = () => {
           社区专栏全新上线~ 点击进来围观！
         </>
       }
-      // backgroundImage={'https://tidb.io/images/activity/banner.svg'}
-      // buttonImage={'https://tidb.io/images/activity/button.svg'}
+      // backgroundImage={'https://tidb.net/images/activity/banner.svg'}
+      // buttonImage={'https://tidb.net/images/activity/button.svg'}
       link={'/blog'}
-      // onClick={() => onNavClick({ link: 'https://tidb.io/blog', target: '_blank' })}
+      // onClick={() => onNavClick({ link: 'https://tidb.net/blog', target: '_blank' })}
     />
   );
 };
@@ -58,7 +58,7 @@ const ActivityBannerComponent = () => {
 const Core = ({
   MainWrapper = Styled.Main,
   children,
-  domain = 'tidb.io',
+  domain = 'tidb.net',
   hasMargin,
   locale = 'zh',
   backgroundColor = undefined,

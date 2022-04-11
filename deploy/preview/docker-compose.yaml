@@ -7,6 +7,6 @@ services:
     ports:
       - "3000:3000"
     env_file:
-#      - .env
+      - .env.local
       - .env.preview
       - .env.production

@@ -11,11 +11,8 @@ const checkingUrls = [
   '/blog/c/management-and-operation?latest=true',
   '/blog/tag/practical-case',
   '/blog/tag/practical-case?latest=true',
-  '/u/orgadmin/posts/all',
-  '/u/orgadmin/comments',
-  '/u/orgadmin/like',
-  '/u/orgadmin/favorites',
   // user home page
+  '/u/orgadmin/post/all',
   '/u/orgadmin/answer',
   '/u/orgadmin/post',
   '/u/orgadmin/question',

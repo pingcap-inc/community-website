@@ -3,3 +3,5 @@ Dockerfile
 npm-debug.log
 README.md
 .git
+.env
+.env.*

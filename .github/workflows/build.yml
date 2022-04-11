@@ -63,9 +63,6 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
           SENTRY_RELEASE: tug-website@${{ github.sha }}
 
-      - name: Copy locales
-        run: npm run copy:locales
-
       - name: Remove node_modules
         run: rm -rf node_modules packages/*/node_modules
 

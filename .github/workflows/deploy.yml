@@ -77,7 +77,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: .env.local
-          remote_path: ${{ secrets.DEPLOY_PATH }}/deploy/${{ inputs.build-env }}
+          remote_path: ${{ secrets.DEPLOY_PATH }}/deploy/server
           remote_host: ${{ secrets.DEPLOY_HOST }}
 #          remote_port: ${{ secrets.DEPLOY_PORT }}
           remote_user: ${{ secrets.DEPLOY_USER }}

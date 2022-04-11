@@ -18,6 +18,10 @@ jobs:
       build-env: preview
     secrets:
       SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+      DOCKER_REGISTRY_ADDRESS: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}
+      DOCKER_REGISTRY_NAMESPACE: ${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
+      DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+      DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
   build-production:
     needs: [ verify ]
@@ -27,6 +31,10 @@ jobs:
       build-env: production
     secrets:
       SENTRY_TOKEN: ${{ secrets.SENTRY_TOKEN }}
+      DOCKER_REGISTRY_ADDRESS: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}
+      DOCKER_REGISTRY_NAMESPACE: ${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
+      DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+      DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
   deploy-preview:
     needs: [ build-preview ]
@@ -42,9 +50,13 @@ jobs:
       NEXT_PUBLIC_STRAPI_PASSWORD: ${{ secrets.NEXT_PUBLIC_STRAPI_PASSWORD }}
       DEPLOY_HOST: ${{ secrets.HOST_PREVIEW_IP }}
       DEPLOY_USER: ${{ secrets.HOST_PREVIEW_USER }}
-      DEPLOY_PATH: ${{ secrets.DEPLOY_SERVICE_PATH }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
       DEPLOY_INSTANCES_NUM: ${{ secrets.INSTANCES_NUM }}
       DEPLOY_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      DOCKER_REGISTRY_ADDRESS: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}
+      DOCKER_REGISTRY_NAMESPACE: ${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
+      DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+      DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
   deploy-production:
     needs: [ build-production ]
@@ -63,6 +75,10 @@ jobs:
       DEPLOY_PATH: ${{ secrets.DEPLOY_SERVICE_PATH }}
       DEPLOY_INSTANCES_NUM: ${{ secrets.INSTANCES_NUM }}
       DEPLOY_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+      DOCKER_REGISTRY_ADDRESS: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}
+      DOCKER_REGISTRY_NAMESPACE: ${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
+      DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
+      DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
   preview-pages-test:
     needs: [ deploy-preview ]

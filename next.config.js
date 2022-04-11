@@ -40,6 +40,13 @@ const config = {
    */
   swcMinify: true,
 
+  /**
+   * for building the docker image
+   */
+  experimental: {
+    outputStandalone: true,
+  },
+
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config
   webpack: (config, options) => {
     const { alias } = config.resolve;

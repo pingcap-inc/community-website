@@ -14,8 +14,12 @@ RUN adduser --system --uid 1001 nextjs
 COPY ./next.config.js ./next.config.js
 COPY ./public ./public
 COPY ./package.json ./package.json
+COPY ./next-i18next.config.js ./next-i18next.config.js
+COPY ./sentry.server.config.js ./sentry.server.config.js ./
+COPY ./sentry.client.config.js ./sentry.client.config.js ./
+COPY ./sentry.properties ./sentry.properties
 
-# Automatically leverage output traces to reduce image size 
+# Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --chown=nextjs:nodejs ./.next/standalone ./
 COPY --chown=nextjs:nodejs ./.next/static ./.next/static

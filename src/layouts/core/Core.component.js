@@ -131,7 +131,14 @@ const Core = ({
           }
         />
         <MainWrapper>{children}</MainWrapper>
-        <Footer {...footerProps} />
+        <Footer
+          {...footerProps}
+          copyright="©2021 TiDB Community"
+          icp="京ICP备16046278号-7"
+          icpUrl="https://beian.miit.gov.cn"
+          number="京公网安备 11010802039111号"
+          numberUrl="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
+        />
       </Styled.Container>
     </NavContext.Provider>
   );

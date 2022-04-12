@@ -22,6 +22,8 @@ jobs:
       DOCKER_REGISTRY_NAMESPACE: ${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
       DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
       DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      OSS_ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
+      OSS_ACCESS_SECRET: ${{ secrets.OSS_ACCESS_SECRET }}
 
   build-production:
     needs: [ verify ]
@@ -35,6 +37,8 @@ jobs:
       DOCKER_REGISTRY_NAMESPACE: ${{ secrets.DOCKER_REGISTRY_NAMESPACE }}
       DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
       DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
+      OSS_ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
+      OSS_ACCESS_SECRET: ${{ secrets.OSS_ACCESS_SECRET }}
 
   deploy-preview:
     needs: [ build-preview ]

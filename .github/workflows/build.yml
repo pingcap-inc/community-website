@@ -17,6 +17,10 @@ on:
         required: true
       DOCKER_REGISTRY_PASSWORD:
         required: true
+      OSS_ACCESS_KEY:
+        required: true
+      OSS_ACCESS_SECRET:
+        required: true
 
 jobs:
   build:
@@ -101,3 +105,14 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
+
+      - name: Deploy to Ali OSS
+        uses: Menci/upload-to-oss@beta-v3
+        with:
+          access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
+          access-key-secret: ${{ secrets.OSS_ACCESS_SECRET }}
+          bucket: tidb-community-site
+          endpoint: oss-cn-beijing.aliyuncs.com
+          local-path: .next/static
+          remote-path: tidb.net/${{ inputs.build-env }}
+          no-delete-remote-files: true

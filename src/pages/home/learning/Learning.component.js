@@ -1,11 +1,11 @@
 import React from 'react';
-import {Col} from 'antd';
-import {Trans, useTranslation} from 'next-i18next';
+import { Col } from 'antd';
+import { Trans, useTranslation } from 'next-i18next';
 
 import * as Styled from './learning.styled';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import {getImage} from '~/pages/home/home.utils';
-import {useIsSmallScreen} from '~/hooks';
+import { getImage } from '~/pages/home/home.utils';
+import { useIsSmallScreen } from '~/hooks';
 import Anchor from '~/components/Anchor';
 
 const Learning = () => {
@@ -38,7 +38,7 @@ const Learning = () => {
             <Styled.VideosRow wrap={false}>
               <Col xs={24} md={18}>
                 <Styled.VideoBoxWrapper $isSmallScreen={isSmallScreen}>
-                  <Styled.VideoBox $isSmallScreen={isSmallScreen} src={majorVideoLang.coverUrl}>
+                  <Styled.VideoBox $isSmallScreen={isSmallScreen} src={getImage(majorVideoLang.coverUrl)}>
                     <Styled.VideoPlayButton>
                       <Anchor href={majorVideoLang.link}>
                         <Styled.VideoPlayIcon color="white" height="48px" />
@@ -53,7 +53,7 @@ const Learning = () => {
               <Col xs={0} md={6}>
                 {lang.minorVideos.map((video, idx) => (
                   <Styled.VideoBoxWrapperSmall key={idx}>
-                    <Styled.VideoBox $isSmallScreen={isSmallScreen} src={video.coverUrl}>
+                    <Styled.VideoBox $isSmallScreen={isSmallScreen} src={getImage(video.coverUrl)}>
                       <Styled.VideoOverlay href={video.link}>
                         <Styled.VideoOverlayText>{video.title}</Styled.VideoOverlayText>
                       </Styled.VideoOverlay>

@@ -179,23 +179,23 @@
     "majorVideo": {
       "desc": "学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
       "link": "https://learn.pingcap.com/learner/course/6",
-      "coverUrl": "/images/home/learn-main-video-cover.jpg"
+      "coverUrl": "learn-main-video-cover.jpg"
     },
     "minorVideos": [
       {
         "title": "TiDB 系统管理基础",
         "link": "https://learn.pingcap.com/learner/course/30002",
-        "coverUrl": "/images/home/learn-minor-video-1-cover.jpg"
+        "coverUrl": "learn-minor-video-1-cover.jpg"
       },
       {
         "title": "TiDB 故障排除",
         "link": "https://learn.pingcap.com/learner/course/150002",
-        "coverUrl": "/images/home/learn-minor-video-2-cover.jpg"
+        "coverUrl": "learn-minor-video-2-cover.jpg"
       },
       {
         "title": "TiDB 高级系统管理",
         "link": "https://learn.pingcap.com/learner/course/120005",
-        "coverUrl": "/images/home/learn-minor-video-3-cover.jpg"
+        "coverUrl": "learn-minor-video-3-cover.jpg"
       }
     ],
     "linkSections": [

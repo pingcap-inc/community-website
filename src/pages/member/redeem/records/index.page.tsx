@@ -8,7 +8,6 @@ import { api } from '@tidb-community/datasource';
 import { PageLoader } from '~/components';
 import * as Styled from './index.styled';
 import { ConfigProvider, Empty } from 'antd';
-import { getImage } from '~/pages/home/home.utils';
 
 const Page = () => {
   const { isReady } = useRouter();
@@ -40,7 +39,9 @@ const Page = () => {
   return (
     <Layout>
       <ConfigProvider
-        renderEmpty={() => <Empty image={getImage('/images/list-placeholder.svg')} description={'暂无数据'} />}
+        renderEmpty={() => (
+          <Empty image={`${process.env.NEXT_PUBLIC_CDN_URL}/images/list-placeholder.svg`} description={'暂无数据'} />
+        )}
       >
         <Styled.Table columns={columns} dataSource={tableData} pagination={false} />
       </ConfigProvider>

@@ -9,7 +9,6 @@ import { useRouter } from 'next/router';
 import * as Styled from './core.styled';
 import { AuthContext, MeContext, NavContext } from '~/context';
 import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
-import { getImage } from '~/pages/home/home.utils';
 
 // disabled for operation reasons
 // const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
@@ -139,7 +138,7 @@ const Core = ({
           icpUrl="https://beian.miit.gov.cn"
           number={
             <span>
-              <img src={getImage('/images/beian.png')} alt="beian" />
+              <img src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/beian.png`} alt="beian" />
               京公网安备 11010802039111号
             </span>
           }

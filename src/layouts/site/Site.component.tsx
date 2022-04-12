@@ -1,6 +1,7 @@
 import { Footer, Header } from '@pingcap-inc/tidb-community-site-components';
 import { FC, PropsWithChildren } from 'react';
 import * as Styled from './site.styled';
+import { getImage } from '~/pages/home/home.utils';
 
 interface SiteLayoutProps {
   MainWrapper?: FC;
@@ -19,7 +20,7 @@ const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: Pr
         number={
           (
             <span>
-              <img src="/images/beian.png" alt="beian" />
+              <img src={getImage('/images/beian.png')} alt="beian" />
               京公网安备 11010802039111号
             </span>
           ) as any

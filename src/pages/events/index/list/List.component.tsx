@@ -50,6 +50,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
       <Anchor href={link}>
         <Styled.ImageWrapper>
           <Image
+            unoptimized
             alt={title}
             src={image}
             layout={'fill'}

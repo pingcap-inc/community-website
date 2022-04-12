@@ -18,7 +18,7 @@ const Activity = ({ title, image, link, location, type, date, intro, isSmallScre
     <Styled.Container {...props}>
       <Styled.ImageWrapper>
         <Anchor href={link}>
-          <Image alt={title} src={imgProps.src} layout="fill" objectFit="cover" />
+          <Image unoptimized alt={title} src={imgProps.src} layout="fill" objectFit="cover" />
         </Anchor>
       </Styled.ImageWrapper>
       <Styled.Content>

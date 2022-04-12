@@ -136,7 +136,12 @@ const Core = ({
           copyright="©2021 TiDB Community"
           icp="京ICP备16046278号-7"
           icpUrl="https://beian.miit.gov.cn"
-          number="京公网安备 11010802039111号"
+          number={
+            <span>
+              <img src="/images/beian.png" alt="beian" />
+              京公网安备 11010802039111号
+            </span>
+          }
           numberUrl="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
         />
       </Styled.Container>

@@ -125,8 +125,8 @@ if (process.env.ENABLE_SENTRY === 'true') {
   nextConfig = config;
 }
 
-if (process.env.CDN_URL) {
-  nextConfig.assetPrefix = process.env.CDN_URL;
+if (process.env.NEXT_PUBLIC_CDN_URL) {
+  nextConfig.assetPrefix = process.env.NEXT_PUBLIC_CDN_URL;
 }
 
 // for transpiling all ESM @fullcalendar/* packages

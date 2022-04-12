@@ -13,7 +13,7 @@ import mvaData from './data';
 import { CoreLayout } from '~/layouts';
 import { TugHead } from '~/components';
 
-const getImage = (filename) => `/images/tug/mva/${filename}`;
+const getImage = (filename) => `${process.env.NEXT_PUBLIC_CDN_URL}/images/tug/mva/${filename}`;
 
 const { mva2021, mva2020, mva2019 } = mvaData;
 

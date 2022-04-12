@@ -30,6 +30,6 @@ export const RightPanel = styled.div`
   text-align: right;
 `;
 
-export const Logo = styled.img.attrs({ src: '/images/events/event-logos.png' })`
+export const Logo = styled.img.attrs({ src: `${process.env.NEXT_PUBLIC_CDN_URL}/images/events/event-logos.png` })`
   height: 150px;
 `;

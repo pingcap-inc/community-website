@@ -14,7 +14,7 @@ const textColor = '#fff';
 
 export const getImage = (name) =>
   process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local'
-    ? `https://img4.pingcap.com/images/hackathon/${name}`
+    ? `${process.env.NEXT_PUBLIC_CDN_URL}/${name}`
     : `/images/hackathon/${name}`;
 
 const horizontalPadding = css`

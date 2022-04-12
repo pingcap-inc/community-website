@@ -106,7 +106,7 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_REGISTRY_ADDRESS }}/${{ secrets.DOCKER_REGISTRY_NAMESPACE }}/tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
 
-      - name: Deploy to Ali OSS
+      - name: Deploy `.next/static` to Ali OSS
         uses: Menci/upload-to-oss@beta-v3
         with:
           access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
@@ -114,5 +114,16 @@ jobs:
           bucket: tidb-community-site
           endpoint: oss-cn-beijing.aliyuncs.com
           local-path: .next/static
+          remote-path: tidb.net/${{ inputs.build-env }}/_next/static
+          no-delete-remote-files: true
+
+      - name: Deploy `public` to Ali OSS
+        uses: Menci/upload-to-oss@beta-v3
+        with:
+          access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
+          access-key-secret: ${{ secrets.OSS_ACCESS_SECRET }}
+          bucket: tidb-community-site
+          endpoint: oss-cn-beijing.aliyuncs.com
+          local-path: public
           remote-path: tidb.net/${{ inputs.build-env }}
           no-delete-remote-files: true

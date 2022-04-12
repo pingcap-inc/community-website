@@ -9,6 +9,7 @@ import { PageLoader } from '~/components';
 import * as Styled from './index.styled';
 import { Link, Tutorial } from '../index.styled';
 import { ConfigProvider, Empty } from 'antd';
+import { getImage } from '~/pages/home/home.utils';
 
 const Page = () => {
   const { isReady } = useRouter();
@@ -83,7 +84,9 @@ const Page = () => {
           </Tutorial>
         </div>
       </Styled.PointsContainer>
-      <ConfigProvider renderEmpty={() => <Empty image={'/images/list-placeholder.svg'} description={'暂无数据'} />}>
+      <ConfigProvider
+        renderEmpty={() => <Empty image={getImage('/images/list-placeholder.svg')} description={'暂无数据'} />}
+      >
         <Styled.Table
           columns={columns}
           dataSource={tableData}

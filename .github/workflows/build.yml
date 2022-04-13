@@ -111,10 +111,10 @@ jobs:
         with:
           access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
           access-key-secret: ${{ secrets.OSS_ACCESS_SECRET }}
-          bucket: tidb-community-site
+          bucket: tidb-net-${{ inputs.build-env }}
           endpoint: oss-cn-beijing.aliyuncs.com
           local-path: .next/static
-          remote-path: tidb.net/${{ inputs.build-env }}/_next/static
+          remote-path: _next/static
           no-delete-remote-files: true
 
       - name: Deploy `public` to Ali OSS
@@ -122,8 +122,8 @@ jobs:
         with:
           access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
           access-key-secret: ${{ secrets.OSS_ACCESS_SECRET }}
-          bucket: tidb-community-site
+          bucket: tidb-net-${{ inputs.build-env }}
           endpoint: oss-cn-beijing.aliyuncs.com
           local-path: public
-          remote-path: tidb.net/${{ inputs.build-env }}
+          remote-path: /
           no-delete-remote-files: true

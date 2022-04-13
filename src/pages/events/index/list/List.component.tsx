@@ -52,7 +52,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
           <Image
             unoptimized
             alt={title}
-            src={image}
+            src={`${process.env.NEXT_PUBLIC_CDN_URL}${image}`}
             layout={'fill'}
             objectFit={'cover'}
             priority={true}

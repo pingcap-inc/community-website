@@ -50,7 +50,13 @@ export default function EventsIndexAbout(props: IProps) {
                 {constant.about.card.map((v) => (
                   <Styled.Card key={v.title} ref={cardRef}>
                     <Styled.CardImg $isVertical={isVerticalCard}>
-                      <Image unoptimized alt={v.title} src={v.image} layout="fill" objectFit="cover" />
+                      <Image
+                        unoptimized
+                        alt={v.title}
+                        src={`${process.env.NEXT_PUBLIC_CDN_URL}${v.image}`}
+                        layout="fill"
+                        objectFit="cover"
+                      />
                     </Styled.CardImg>
                     <Styled.CardInfo $isVertical={isVerticalCard}>
                       <h3>{v.title}</h3>

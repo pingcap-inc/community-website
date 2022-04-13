@@ -7,7 +7,13 @@ export default function TMCItem({ name, role, company, title }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.avatar}>
-        <Image unoptimized src={`/images/avatar/${encodeURIComponent(name)}.jpg`} alt={name} width={150} height={150} />
+        <Image
+          unoptimized
+          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/avatar/${encodeURIComponent(name)}.jpg`}
+          alt={name}
+          width={150}
+          height={150}
+        />
       </div>
       <div className={styles.name}>{name}</div>
       <div className={styles.role}>{role}</div>

@@ -11,7 +11,7 @@ export default function MVAItem({ name, company, title, links }) {
         <div className={styles.avatar}>
           <Image
             unoptimized
-            src={`/images/avatar/${encodeURIComponent(name)}.jpg`}
+            src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/avatar/${encodeURIComponent(name)}.jpg`}
             alt={name}
             width={100}
             height={100}

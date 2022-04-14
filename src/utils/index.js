@@ -27,4 +27,3 @@ export * as errors from './errors.utils';
 export * as form from './form.utils';
 export * as link from './link.utils';
 export * as redDots from './redDots.utils';
-export * as redux from './redux.utils';

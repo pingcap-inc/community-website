@@ -7,7 +7,6 @@ import React, { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import useSWR, { SWRConfig } from 'swr';
-import { Provider } from 'react-redux';
 import { api, useApiErrorListener } from '@tidb-community/datasource';
 import { appWithTranslation } from 'next-i18next';
 import { constants, createAppGlobalStyle, utils } from '@tidb-community/ui';
@@ -22,7 +21,6 @@ import ErrorPage from './_error.page';
 import nextI18NextConfig from '@/next-i18next.config';
 import { authContext, AuthContext, MeContext } from '~/context';
 import { isEmptyOrNil } from '~/utils/common.utils';
-import { store } from '~/redux';
 
 import '@fullcalendar/common/main.css';
 import '@fullcalendar/daygrid/main.css';
@@ -161,16 +159,14 @@ const App = ({ Component, pageProps, router }) => {
         revalidateOnFocus: false,
       }}
     >
-      <Provider store={store}>
-        <GlobalStyle />
-        <AuthContext.Provider value={authContext}>
-          <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
-            <SiteComponentsContext.Provider value={siteFetchers}>
-              <WrappedComponent {...pageProps} />
-            </SiteComponentsContext.Provider>
-          </MeContext.Provider>
-        </AuthContext.Provider>
-      </Provider>
+      <GlobalStyle />
+      <AuthContext.Provider value={authContext}>
+        <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
+          <SiteComponentsContext.Provider value={siteFetchers}>
+            <WrappedComponent {...pageProps} />
+          </SiteComponentsContext.Provider>
+        </MeContext.Provider>
+      </AuthContext.Provider>
     </SWRConfig>
   );
 };

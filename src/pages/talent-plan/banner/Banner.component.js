@@ -5,7 +5,7 @@ import { useIsSmallScreen } from '~/hooks';
 import { useTranslation } from 'next-i18next';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
-import { Link } from '~/components';
+import Anchor from '~/components/Anchor';
 
 const Banner = () => {
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
@@ -21,9 +21,9 @@ const Banner = () => {
             <Styled.LeftPanel>
               <Styled.Title>{lang.title}</Styled.Title>
               <Styled.Intro>{lang.intro}</Styled.Intro>
-              <Link href="#learn">
+              <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
                 <Styled.LearnButton>{lang.start}</Styled.LearnButton>
-              </Link>
+              </Anchor>
             </Styled.LeftPanel>
           }
           rightPanel={

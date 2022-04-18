@@ -5,4 +5,4 @@ export DOCKER_REGISTRY_NAMESPACE=$4
 export DOCKER_IMAGE_NAME=$5
 export DOCKER_IMAGE_TAG=$6
 
-cd ${ENVIRONMENT} && docker-compose pull && docker stop -f ${DOCKER_CONTAINER_NAME} && docker-compose up -d
+cd ${ENVIRONMENT} && docker-compose pull && docker rm -f ${DOCKER_CONTAINER_NAME} && docker-compose up -d

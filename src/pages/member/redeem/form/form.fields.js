@@ -43,7 +43,8 @@ export const fields = {
   },
   address: {
     name: 'address',
-    placeholder: '详细地址',
+    label: '详细地址',
+    placeholder: '国家-省份-城市-区/县-街道-小区-楼栋号-单元室',
     maxLength: 128,
     labelInValue: false,
     validate: (value) => {

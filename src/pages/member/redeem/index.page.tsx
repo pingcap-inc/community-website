@@ -11,6 +11,7 @@ import * as Styled from './index.styled';
 import { Link, Tutorial } from '../index.styled';
 import { Button, Col, Modal, Row } from 'antd';
 import FormComponent from './form';
+import { ProductDataEntry } from '../../../../packages/datasource/src/api/points';
 
 export const FormModalContext = React.createContext<any>({
   productId: '',
@@ -44,7 +45,19 @@ const Page = () => {
     );
 
   const pointsData = data?.data;
-  const productsData = products?.data;
+  const productsData: ProductDataEntry[] = products?.data ?? [];
+
+  const productsDataOutOfStock: ProductDataEntry[] = [];
+  const productsDataInStock: ProductDataEntry[] = [];
+  //console.log('!!productsData', productsData)
+  productsData.forEach((value) => {
+    if (value.remains === 0) {
+      productsDataOutOfStock.push(value);
+    } else {
+      productsDataInStock.push(value);
+    }
+  });
+  const productsDataOrdered: ProductDataEntry[] = [...productsDataInStock, ...productsDataOutOfStock];
 
   return (
     <FormModalContext.Provider value={{ productId: currentProductId, setOpen: setIsModalVisible }}>
@@ -70,7 +83,7 @@ const Page = () => {
         </Modal>
 
         <Row gutter={[16, 16]}>
-          {productsData.map((product) => (
+          {productsDataOrdered.map((product) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Product>
                 <Styled.ProductImage src={product.cover_url} />

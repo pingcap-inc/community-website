@@ -135,7 +135,7 @@ const FormComponent = () => {
 
             <Col xs={24}>
               <FormItem
-                label={<Styled.Label>{address.placeholder}</Styled.Label>}
+                label={<Styled.Label>{address.label}</Styled.Label>}
                 name={address.name}
                 validate={address.validate}
               >
@@ -145,7 +145,7 @@ const FormComponent = () => {
 
             <Col xs={24}>
               <FormItem
-                label={<Styled.Label>{comment.placeholder}</Styled.Label>}
+                label={<Styled.Label>{comment.label}</Styled.Label>}
                 name={comment.name}
                 validate={comment.validate}
               >

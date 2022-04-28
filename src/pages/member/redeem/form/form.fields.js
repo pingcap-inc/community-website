@@ -43,7 +43,8 @@ export const fields = {
   },
   address: {
     name: 'address',
-    placeholder: '详细地址',
+    label: '详细地址',
+    placeholder: '国家-省份-城市-区/县-街道-小区-楼栋号-单元室',
     maxLength: 128,
     labelInValue: false,
     validate: (value) => {
@@ -55,7 +56,8 @@ export const fields = {
   },
   comment: {
     name: 'comment',
-    placeholder: '订单备注',
+    label: '订单备注',
+    placeholder: '服装类礼品请务必备注尺码（S,M,L,XL,XXL），其他品类可填无',
     maxLength: 128,
     labelInValue: false,
     validate: (value) => {

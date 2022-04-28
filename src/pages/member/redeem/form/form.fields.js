@@ -55,7 +55,8 @@ export const fields = {
   },
   comment: {
     name: 'comment',
-    placeholder: '订单备注',
+    label: '订单备注',
+    placeholder: '服装类礼品请务必备注尺码（S,M,L,XL,XXL），其他品类可填无',
     maxLength: 128,
     labelInValue: false,
     validate: (value) => {

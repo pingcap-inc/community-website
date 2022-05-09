@@ -50,6 +50,7 @@ export interface IResponsePostDetail {
   public: boolean;
   likes: number;
   comments: number;
+  visits: number;
   author: IAuthor;
 }
 

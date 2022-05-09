@@ -7,7 +7,7 @@ import ProfileLayout from '../_components/ProfileLayout';
 import { GetServerSideProps } from 'next';
 import { Divider, List, Skeleton, Space } from 'antd';
 import ListItem from '../_components/ListItem';
-import { HeartOutlined, MessageOutlined } from '@ant-design/icons';
+import { EyeOutlined, HeartOutlined, MessageOutlined } from '@ant-design/icons';
 import {
   getBadgesByUsername,
   getSummaryByUsername,
@@ -176,6 +176,9 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
                   status={isShowStatusBadge ? value.status : undefined}
                   metadataStart={
                     <Space size={24}>
+                      <div>
+                        <EyeOutlined /> {value.visits}
+                      </div>
                       <div>
                         <HeartOutlined /> {value.likes}
                       </div>

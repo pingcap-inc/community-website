@@ -1,7 +1,7 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input, message } from 'antd';
-import React, { useCallback, useMemo } from 'react';
+import { Alert, Button, Checkbox, Input, message, notification, Spin } from 'antd';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 // import ImgCrop from 'antd-img-crop';
 // import { DeleteOutlined } from '@ant-design/icons';
@@ -9,6 +9,9 @@ import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
+import { LoadingOutlined } from '@ant-design/icons';
+
+const spinIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
 const Editing = ({ blogInfo }) => {
   const {
@@ -97,6 +100,23 @@ const Editing = ({ blogInfo }) => {
     return downloadURL;
   }, []);
 
+  const [hanging, setHanging] = useState(false);
+
+  const onAlert = useCallback((title, content) => {
+    notification.warn({
+      message: title,
+      description: content,
+    });
+  }, []);
+
+  const isCdnHost = useCallback((url) => {
+    return /tidb-blog/.test(url);
+  }, []);
+
+  const setHang = useCallback((val) => {
+    setHanging(val);
+  }, []);
+
   if (!process.browser) {
     return <></>;
   }
@@ -147,15 +167,20 @@ const Editing = ({ blogInfo }) => {
             labelInValue
           />
         </Styled.Meta>
-        <Styled.Editor>
-          <TiEditor
-            value={content}
-            onChange={setContent}
-            factory={factory}
-            placeholder="请在此处开始撰写正文……"
-            uploadFile={uploadFile}
-          />
-        </Styled.Editor>
+        <Spin spinning={hanging} indicator={spinIcon}>
+          <Styled.Editor>
+            <TiEditor
+              value={content}
+              onChange={setContent}
+              factory={factory}
+              placeholder="请在此处开始撰写正文……"
+              uploadFile={uploadFile}
+              onAlert={onAlert}
+              isCdnHost={isCdnHost}
+              setHang={setHang}
+            />
+          </Styled.Editor>
+        </Spin>
       </Styled.Content>
       <Styled.Footer>
         <Checkbox checked={origin === false} onChange={() => setOrigin(false)}>

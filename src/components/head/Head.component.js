@@ -1,6 +1,6 @@
 import React from 'react';
 import NextHead from 'next/head';
-import Script from 'next/script';
+// import Script from 'next/script';
 
 const Head = ({
   creator,
@@ -63,10 +63,10 @@ const Head = ({
       <meta name="theme-color" content="#ffffff" />
 
       {/* GA setup: https://stackoverflow.com/a/62552263/14257627 */}
-      <Script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
-      <Script
+      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
+      <script
         id="gtag-init-script"
-        strategy="beforeInteractive"
+        // strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -77,9 +77,9 @@ const Head = ({
         }}
       />
 
-      <Script
+      <script
         id="baidu-init-script"
-        strategy="beforeInteractive"
+        // strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             var _hmt = _hmt || [];

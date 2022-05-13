@@ -66,7 +66,7 @@ const Head = ({
       <Script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
       <Script
         id="gtag-init-script"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             window.dataLayer = window.dataLayer || [];
@@ -79,7 +79,7 @@ const Head = ({
 
       <Script
         id="baidu-init-script"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
             var _hmt = _hmt || [];

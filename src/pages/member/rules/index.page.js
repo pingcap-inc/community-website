@@ -187,7 +187,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td rowSpan="10">
+            <td rowSpan="8">
               <Anchor href="https://asktug.com">AskTUG</Anchor>
             </td>
             <td>发布问题帖子</td>
@@ -232,20 +232,6 @@ const Page = () => (
             <td>自己收藏自己的帖子不给分。</td>
           </tr>
           <tr>
-            <td>点赞帖子</td>
-            <td>1</td>
-            <td>1</td>
-            <td>10</td>
-            <td>给别人的帖子点赞可获得积分。</td>
-          </tr>
-          <tr>
-            <td>收藏帖子</td>
-            <td>1</td>
-            <td>1</td>
-            <td>10</td>
-            <td>收藏别人的优质帖子可获得积分。</td>
-          </tr>
-          <tr>
             <td>帖子被引用</td>
             <td>5</td>
             <td>10</td>
@@ -285,20 +271,6 @@ const Page = () => (
             <td>5</td>
             <td>10</td>
             <td>自己收藏自己的专栏（技术文章）不给分。</td>
-          </tr>
-          <tr>
-            <td>点赞文章</td>
-            <td>1</td>
-            <td>1</td>
-            <td>10</td>
-            <td>给别人的专栏（技术文章）点赞可获得积分。</td>
-          </tr>
-          <tr>
-            <td>收藏文章</td>
-            <td>1</td>
-            <td>1</td>
-            <td>10</td>
-            <td>收藏别人的优质专栏（技术文章）可获得积分。</td>
           </tr>
           <tr>
             <td>文章被引用</td>

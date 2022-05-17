@@ -246,7 +246,7 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="7">
+            <td rowSpan="5">
               <Anchor href="/blog">专栏</Anchor>
             </td>
             <td>发布技术文章&amp;专栏</td>
@@ -287,7 +287,123 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="2">
+            <td rowSpan="8">课程学习</td>
+            <td>完成 101-TiDB 快速起步课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/6">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 201-TiDB 集群的架构与特点课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/600003">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 301-TiDB 系统管理基础课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/30002">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 302-TiDB 高级系统管理课程学习</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/120005">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 304-TiDB 性能调优案例课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/570012">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 307-TiDB 性能调优课程学习</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/540005">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 305-TiDB 故障排除案例课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+            <Anchor href="https://learn.pingcap.com/learner/course/690007">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 308-TiDB 故障排除课程学习</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td>暂未上线</td>
+          </tr>
+          <tr>
+            <td rowSpan="6">
+              <Anchor href="https://tidb.net/talent-plan">Talent Plan</Anchor>
+            </td>
+            <td>参加 Talent Plan</td>
+            <td>20</td>
+            <td>20</td>
+            <td>仅 1 次</td>
+            <td>授予 “Talent Plan”徽章</td>
+          </tr>
+          <tr>
+            <td>提出有价值 BUG 功能建议</td>
+            <td>30</td>
+            <td>30</td>
+            <td>5</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>解决 ISSUE</td>
+            <td>80</td>
+            <td>80</td>
+            <td>无上限</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>通过 Talent Plan 某个完整路径作业</td>
+            <td>100 ~ 500</td>
+            <td>100 ~ 500</td>
+            <td>仅 1 次</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>成为 Talent Plan 分享导师</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>参加 Talent Plan 辅导活动</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td rowSpan="3">
               <Anchor href="https://learn.pingcap.com/learner/certification-center">认证</Anchor>
             </td>
             <td>通过 PCTA 认证</td>
@@ -306,6 +422,13 @@ const Page = () => (
             <td>
               <Anchor href="https://learn.pingcap.com/learner/certification-center/syllabus/pctp">PCTP 考试</Anchor>
             </td>
+          </tr>
+          <tr>
+            <td>通过 PCAD 认证</td>
+            <td>350</td>
+            <td>350</td>
+            <td>仅 1 次</td>
+            <td>暂未上线</td>
           </tr>
         </tbody>
       </table>

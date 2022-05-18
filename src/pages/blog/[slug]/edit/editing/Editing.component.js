@@ -37,12 +37,20 @@ const Editing = ({ blogInfo }) => {
       message.warn('请输入标题');
       return;
     }
+    if (content.length === 1 && content[0].children.length === 1 && content[0].children[0].text === '') {
+      message.warn('正文内容不能为空');
+      return;
+    }
     if (category === undefined || category === null) {
       message.warn('请选择分类');
       return;
     }
     if (origin === undefined) {
       message.warn('请选择是否原创');
+      return;
+    }
+    if (origin === '') {
+      message.warn('必须填写转载来源');
       return;
     }
     return callback();
@@ -53,8 +61,16 @@ const Editing = ({ blogInfo }) => {
       message.warn('请输入标题');
       return;
     }
+    if (content.length === 1 && content[0].children.length === 1 && content[0].children[0].text === '') {
+      message.warn('正文内容不能为空');
+      return;
+    }
     if (origin === undefined) {
       message.warn('请选择是否原创');
+      return;
+    }
+    if (origin === '') {
+      message.warn('必须填写转载来源');
       return;
     }
     return callback();

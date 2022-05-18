@@ -112,6 +112,16 @@ export const Actions = styled.div`
   }
 `;
 
+export const Definition = styled.div`
+  margin: 16px 0;
+  div {
+    color: #707070;
+    a {
+      color: #73061c;
+    }
+  }
+`;
+
 export const Editor = styled.div`
   margin-top: 12px;
   padding: 0 11px;

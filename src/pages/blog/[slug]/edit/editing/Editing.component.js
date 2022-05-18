@@ -1,15 +1,16 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input, message, notification, Spin } from 'antd';
+import { Alert, Button, Radio, Input, message, notification, Spin } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 // import ImgCrop from 'antd-img-crop';
-// import { DeleteOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { LoadingOutlined } from '@ant-design/icons';
+import Anchor from '~/components/Anchor';
 
 const spinIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -36,8 +37,20 @@ const Editing = ({ blogInfo }) => {
       message.warn('请输入标题');
       return;
     }
+    if (content.length === 1 && content[0].children.length === 1 && content[0].children[0].text === '') {
+      message.warn('正文内容不能为空');
+      return;
+    }
     if (category === undefined || category === null) {
       message.warn('请选择分类');
+      return;
+    }
+    if (origin === undefined) {
+      message.warn('请选择是否原创');
+      return;
+    }
+    if (origin === '') {
+      message.warn('必须填写转载来源');
       return;
     }
     return callback();
@@ -46,6 +59,18 @@ const Editing = ({ blogInfo }) => {
   const validationSaveDraft = (callback) => {
     if (title === '') {
       message.warn('请输入标题');
+      return;
+    }
+    if (content.length === 1 && content[0].children.length === 1 && content[0].children[0].text === '') {
+      message.warn('正文内容不能为空');
+      return;
+    }
+    if (origin === undefined) {
+      message.warn('请选择是否原创');
+      return;
+    }
+    if (origin === '') {
+      message.warn('必须填写转载来源');
       return;
     }
     return callback();
@@ -183,19 +208,35 @@ const Editing = ({ blogInfo }) => {
         </Spin>
       </Styled.Content>
       <Styled.Footer>
-        <Checkbox checked={origin === false} onChange={() => setOrigin(false)}>
+        {/*<Radio.Group onChange={(e) => setOrigin(e.target.value ? '' : false)} value={origin !== false}>*/}
+        {/*  <Radio value={false}>原创</Radio>*/}
+        {/*  <Radio value={true}>转载</Radio>*/}
+        {/*</Radio.Group>*/}
+        <Radio checked={origin === false} onChange={() => setOrigin(false)}>
           原创
-        </Checkbox>
-        <Checkbox checked={origin !== false} onChange={() => setOrigin('')}>
-          转载自
-        </Checkbox>
-        <Input
-          value={origin === false ? '' : origin}
-          disabled={origin === false}
-          onChange={onChangeOrigin}
-          placeholder="原文章链接"
-        />
+        </Radio>
+        <Radio checked={typeof origin === 'string'} onChange={() => setOrigin('')}>
+          转载
+        </Radio>
       </Styled.Footer>
+      <Styled.Definition>
+        {origin === undefined ? (
+          <></>
+        ) : origin !== false ? (
+          <Input
+            value={origin === false ? '' : origin}
+            disabled={origin === false}
+            onChange={onChangeOrigin}
+            placeholder="请填写原文链接"
+          />
+        ) : (
+          <div>
+            <InfoCircleOutlined /> 申请原创将启用{' '}
+            <Anchor href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</Anchor>{' '}
+            版权协议，如果不是原创文章，请选择转载。
+          </div>
+        )}
+      </Styled.Definition>
       <Styled.Actions>
         <div className="btns">
           {hasPermission ? (

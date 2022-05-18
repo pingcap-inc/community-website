@@ -4,7 +4,7 @@ import { Alert, Button, Checkbox, Input, message, notification, Spin } from 'ant
 import React, { useCallback, useMemo, useState } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 // import ImgCrop from 'antd-img-crop';
-// import { DeleteOutlined } from '@ant-design/icons';
+import { InfoCircleOutlined } from '@ant-design/icons';
 import { api } from '@tidb-community/datasource';
 import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
@@ -189,13 +189,23 @@ const Editing = ({ blogInfo }) => {
         <Checkbox checked={origin !== false} onChange={() => setOrigin('')}>
           转载自
         </Checkbox>
-        <Input
-          value={origin === false ? '' : origin}
-          disabled={origin === false}
-          onChange={onChangeOrigin}
-          placeholder="原文章链接"
-        />
       </Styled.Footer>
+      <Styled.Definition>
+        {origin !== false ? (
+          <Input
+            value={origin === false ? '' : origin}
+            disabled={origin === false}
+            onChange={onChangeOrigin}
+            placeholder="请填写原文链接"
+          />
+        ) : (
+          <div>
+            <InfoCircleOutlined /> 申请原创将启用{' '}
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>{' '}
+            版权协议，如果不是原创文章，请选择转载。
+          </div>
+        )}
+      </Styled.Definition>
       <Styled.Actions>
         <div className="btns">
           {hasPermission ? (

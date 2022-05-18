@@ -97,7 +97,7 @@ export const Declaration = styled.p`
   margin-bottom: 16px;
   color: ${transparentize(0.5, colors.F2)};
   a {
-    color: ${colors.B2};
+    color: #73061c;
   }
 `;
 

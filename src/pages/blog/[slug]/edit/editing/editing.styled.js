@@ -117,7 +117,7 @@ export const Definition = styled.div`
   div {
     color: #707070;
     a {
-      color: ${colors.B2};
+      color: #73061c;
     }
   }
 `;

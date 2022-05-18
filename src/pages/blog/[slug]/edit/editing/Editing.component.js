@@ -1,6 +1,6 @@
 import * as Styled from './editing.styled';
 import TiEditor from '@pingcap-inc/tidb-community-editor';
-import { Alert, Button, Checkbox, Input, message, notification, Spin } from 'antd';
+import { Alert, Button, Radio, Input, message, notification, Spin } from 'antd';
 import React, { useCallback, useMemo, useState } from 'react';
 import { useEditContext, useEditMethods } from '../edit.context';
 // import ImgCrop from 'antd-img-crop';
@@ -10,7 +10,7 @@ import Axios from 'axios';
 import { useCategories, useTags } from './editing.hooks';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { LoadingOutlined } from '@ant-design/icons';
-import Anchor from "~/components/Anchor";
+import Anchor from '~/components/Anchor';
 
 const spinIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -184,12 +184,16 @@ const Editing = ({ blogInfo }) => {
         </Spin>
       </Styled.Content>
       <Styled.Footer>
-        <Checkbox checked={origin === false} onChange={() => setOrigin(false)}>
-          原创
-        </Checkbox>
-        <Checkbox checked={origin !== false} onChange={() => setOrigin('')}>
-          转载自
-        </Checkbox>
+        <Radio.Group onChange={(e) => setOrigin(e.target.value ? '' : false)} value={origin !== false}>
+          <Radio value={false}>原创</Radio>
+          <Radio value={true}>转载</Radio>
+        </Radio.Group>
+        {/*<Checkbox checked={origin === false} onChange={() => setOrigin(false)}>*/}
+        {/*  原创*/}
+        {/*</Checkbox>*/}
+        {/*<Checkbox checked={origin !== false} onChange={() => setOrigin('')}>*/}
+        {/*  转载自*/}
+        {/*</Checkbox>*/}
       </Styled.Footer>
       <Styled.Definition>
         {origin !== false ? (

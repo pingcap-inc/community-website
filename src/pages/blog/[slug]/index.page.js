@@ -20,6 +20,7 @@ import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
 import { MeContext } from '~/context';
+import Anchor from '~/components/Anchor';
 
 const noop = () => {};
 
@@ -207,7 +208,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             ) : (
               <>
                 版权声明：本文为 TiDB 社区用户原创文章，遵循{' '}
-                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>{' '}
+                <Anchor href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</Anchor>{' '}
                 版权协议，转载请附上原文出处链接和本声明。
               </>
             )}

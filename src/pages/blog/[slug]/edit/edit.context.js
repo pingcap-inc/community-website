@@ -7,7 +7,7 @@ import Axios from 'axios';
 
 const EditContext = createContext({
   title: '',
-  origin: false,
+  origin: undefined,
   category: undefined,
   tags: [],
   content: [],
@@ -28,7 +28,7 @@ export function useEditContextProvider() {
   const factory = useMemo(() => createFactory(), []);
   const [title, setTitle] = useState('');
   const [coverImageURL, setCoverImageURL] = useState(undefined);
-  const [origin, setOrigin] = useState(false);
+  const [origin, setOrigin] = useState(undefined);
   const [category, setCategory] = useState(undefined);
   const [tags, setTags] = useState([]);
   const [content, setContent] = useState([{ type: 'paragraph', children: [{ text: '' }] }]);
@@ -49,7 +49,7 @@ export function useEditContextProvider() {
   const reload = useCallback((slug) => {
     if (slug === 'new') {
       setTitle('');
-      setOrigin(false);
+      // setOrigin(false);
       setCategory(undefined);
       setContent([{ type: 'paragraph', children: [{ text: '' }] }]);
       setTags([]);

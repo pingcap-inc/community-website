@@ -41,12 +41,20 @@ const Editing = ({ blogInfo }) => {
       message.warn('请选择分类');
       return;
     }
+    if (origin === undefined) {
+      message.warn('请选择是否原创');
+      return;
+    }
     return callback();
   };
 
   const validationSaveDraft = (callback) => {
     if (title === '') {
       message.warn('请输入标题');
+      return;
+    }
+    if (origin === undefined) {
+      message.warn('请选择是否原创');
       return;
     }
     return callback();
@@ -184,19 +192,21 @@ const Editing = ({ blogInfo }) => {
         </Spin>
       </Styled.Content>
       <Styled.Footer>
-        <Radio.Group onChange={(e) => setOrigin(e.target.value ? '' : false)} value={origin !== false}>
-          <Radio value={false}>原创</Radio>
-          <Radio value={true}>转载</Radio>
-        </Radio.Group>
-        {/*<Checkbox checked={origin === false} onChange={() => setOrigin(false)}>*/}
-        {/*  原创*/}
-        {/*</Checkbox>*/}
-        {/*<Checkbox checked={origin !== false} onChange={() => setOrigin('')}>*/}
-        {/*  转载自*/}
-        {/*</Checkbox>*/}
+        {/*<Radio.Group onChange={(e) => setOrigin(e.target.value ? '' : false)} value={origin !== false}>*/}
+        {/*  <Radio value={false}>原创</Radio>*/}
+        {/*  <Radio value={true}>转载</Radio>*/}
+        {/*</Radio.Group>*/}
+        <Radio checked={origin === false} onChange={() => setOrigin(false)}>
+          原创
+        </Radio>
+        <Radio checked={typeof origin === 'string'} onChange={() => setOrigin('')}>
+          转载
+        </Radio>
       </Styled.Footer>
       <Styled.Definition>
-        {origin !== false ? (
+        {origin === undefined ? (
+          <></>
+        ) : origin !== false ? (
           <Input
             value={origin === false ? '' : origin}
             disabled={origin === false}

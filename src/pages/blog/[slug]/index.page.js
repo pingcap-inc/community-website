@@ -201,9 +201,17 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             </Styled.BottomActions>
           </Styled.Body>
 
-          {blog.origin !== 'ORIGINAL' ? (
-            <Styled.Declaration>声明：本文转载于 {blog.sourceURL}</Styled.Declaration>
-          ) : undefined}
+          <Styled.Declaration>
+            {blog.origin !== 'ORIGINAL' ? (
+              <>声明：本文转载于 {blog.sourceURL}</>
+            ) : (
+              <>
+                版权声明：本文为 TiDB 社区用户原创文章，遵循{' '}
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>{' '}
+                版权协议，转载请附上原文出处链接和本声明。
+              </>
+            )}
+          </Styled.Declaration>
 
           {blog.status === 'PUBLISHED' ? (
             <Comments blog={blog} onTotalCommentsChange={onTotalCommentsChange} />

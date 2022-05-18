@@ -96,6 +96,9 @@ export const Declaration = styled.p`
   margin-top: 16px;
   margin-bottom: 16px;
   color: ${transparentize(0.5, colors.F2)};
+  a {
+    color: ${colors.B2};
+  }
 `;
 
 export const Tag = styled.span`

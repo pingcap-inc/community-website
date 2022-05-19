@@ -20,7 +20,7 @@ const Labs = () => {
               <Styled.LabCard>
                 <Styled.Row gutter={4}>
                   <Styled.LabCardImgWrapper span={12}>
-                    <Image preview={false} src={org.img} />
+                    <Image preview={false} src={`${process.env.NEXT_PUBLIC_CDN_URL}/${org.img}`} />
                   </Styled.LabCardImgWrapper>
                   <Col span={12}>
                     <Styled.LabCardTitle> {org.name} </Styled.LabCardTitle>

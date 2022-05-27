@@ -62,6 +62,8 @@ const Core = ({
   hasMargin,
   locale = 'zh',
   backgroundColor = undefined,
+  style,
+  props,
 }) => {
   const router = useRouter();
   const { login, logout, isLoggedIn } = useContext(AuthContext);
@@ -113,7 +115,7 @@ const Core = ({
 
   return (
     <NavContext.Provider value={{ navData: data, onNavClick, currentNav }}>
-      <Styled.Container style={{ backgroundColor }}>
+      <Styled.Container style={{ backgroundColor, ...style }} {...props}>
         {/*{renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}*/}
         {!isBlogPage && <ActivityBannerComponent />}
         <Header

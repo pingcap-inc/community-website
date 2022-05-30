@@ -30,7 +30,13 @@ const Page = () => {
   return (
     <>
       {/*<CommunityHead title={lang.title} />*/}
-      <CommunityHead title={'联系我们'} />
+      <CommunityHead
+        title={'联系我们'}
+        description={
+          '我们为每一位来到 TiDB 社区的小伙伴提供帮助。如果你遇到技术问题，想要获得商业支持，或者是想进行社区合作，欢迎在这里联系我们！'
+        }
+        keyoword={['TiDB 社区', '联系我们', '咨询', '提问', '商业支持', '社区合作']}
+      />
       {/*<Layout {...R.pick(['title', 'subtitle'], lang)}>*/}
       <CoreLayout backgroundColor={'#e9eaee'}>
         <Styled.Content>

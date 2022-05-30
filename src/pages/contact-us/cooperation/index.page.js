@@ -31,11 +31,11 @@ const Page = () => {
                 <Styled.CardTitle>遇到技术问题</Styled.CardTitle>
                 <Styled.CardParagraph>你可以在论坛和 2w+ 社区⼩伙伴互相交流问题</Styled.CardParagraph>
                 <Styled.CardParagraph>
-                  <Anchor>&gt; 去发帖</Anchor>
+                  <Anchor href={'https://asktug.com/new-topic'}>&gt; 去发帖</Anchor>
                 </Styled.CardParagraph>
                 <Styled.CardParagraph>如果你想看看别⼈是否遇到相似的问题，并且已有了解决⽅案</Styled.CardParagraph>
                 <Styled.CardParagraph>
-                  <Anchor>&gt; 去搜索</Anchor>
+                  <Anchor href={'https://search.asktug.com/'}>&gt; 去搜索</Anchor>
                 </Styled.CardParagraph>
               </Styled.Card>
             </Col>
@@ -45,7 +45,9 @@ const Page = () => {
                 <Styled.CardParagraph>想要获得商业专家产品最⾼响应级别 7*24 ⽀持服务</Styled.CardParagraph>
                 <Styled.CardComment>规划/实施/主动式巡检/故障协查/知识转移/重要时期保障</Styled.CardComment>
                 <Styled.CardParagraph>
-                  <Anchor>&gt; 联系 PingCAP</Anchor>
+                  <Anchor href={'https://pingcap.com/zh/contact/?utm_source=tidb-community&utm_medium=referral'}>
+                    &gt; 联系 PingCAP
+                  </Anchor>
                 </Styled.CardParagraph>
               </Styled.Card>
             </Col>
@@ -57,7 +59,7 @@ const Page = () => {
                 </Styled.CardParagraph>
                 <Styled.CardParagraph>欢迎来和我们⼀起做更多有意思的事！</Styled.CardParagraph>
                 <Styled.CardParagraph>
-                  <Anchor>&gt; 填写合作表单</Anchor>
+                  <Anchor href={'/contact-us/cooperation'}>&gt; 填写合作表单</Anchor>
                 </Styled.CardParagraph>
               </Styled.Card>
             </Col>

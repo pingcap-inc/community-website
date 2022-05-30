@@ -8,8 +8,18 @@ import { CommunityHead } from '~/components';
 import { Row, Col } from 'antd';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
+import { getI18nProps } from '~/utils/i18n.utils';
 
 // export { getServerSideProps } from '../utils';
+export const getServerSideProps = async (ctx) => {
+  const i18nProps = await getI18nProps(['common'])(ctx);
+
+  return {
+    props: {
+      ...i18nProps,
+    },
+  };
+};
 
 const Page = () => {
   // const { t } = useTranslation('page-contact-us');
@@ -20,7 +30,7 @@ const Page = () => {
   return (
     <>
       {/*<CommunityHead title={lang.title} />*/}
-      <CommunityHead />
+      <CommunityHead title={'联系我们'} />
       {/*<Layout {...R.pick(['title', 'subtitle'], lang)}>*/}
       <CoreLayout backgroundColor={'#e9eaee'}>
         <Styled.Content>

@@ -23,7 +23,7 @@ const Others = () => {
     jobs: jobsLang,
     businessSupport: supportLang,
     communityCollaboration: collaborationLang,
-    contact: contactLang,
+    // contact: contactLang,
   } = lang;
 
   return (

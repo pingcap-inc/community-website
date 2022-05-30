@@ -57,7 +57,7 @@ const Welcome = () => {
                 {navsLang.codeOfConduct}
               </Radio.Button>
               <Radio.Button onClick={onClick('https://accounts.pingcap.com/')}>{navsLang.join}</Radio.Button>
-              <Radio.Button onClick={onClick('mailto:community@tidb.io')}>{navsLang.contactUs}</Radio.Button>
+              {/*<Radio.Button onClick={onClick('mailto:community@tidb.io')}>{navsLang.contactUs}</Radio.Button>*/}
             </Styled.Navs>
             <Styled.Numbers gutter={32} justify="center">
               {numbers.map(({ num, text }, idx) => (

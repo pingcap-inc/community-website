@@ -22,7 +22,7 @@ const Others = () => {
                 <Styled.StoryCard>
                   {story.content}
                   <Styled.StoryCardBottom>
-                    <Avatar src={getImage(`team-${story.name}.png`)} size={48} />
+                    <Avatar src={getImage(`team-${story.name}.jpg`)} size={48} />
                     <Styled.StoryCardInfo>
                       <Styled.StoryCardInfoName> {story.name} </Styled.StoryCardInfoName>
                       <Styled.StoryCardInfoDesc> {story.desc} </Styled.StoryCardInfoDesc>

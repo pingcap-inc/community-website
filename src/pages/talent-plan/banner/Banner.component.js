@@ -24,7 +24,7 @@ const Banner = () => {
               <Styled.Intro>{lang.intro}</Styled.Intro>
               <Space>
                 <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
-                  <Styled.LearnButton>{lang.start}</Styled.LearnButton>
+                  <Styled.LearnButton>报名学习</Styled.LearnButton>
                 </Anchor>
                 <Anchor href="https://github.com/pingcap/talent-plan">
                   <Styled.LearnButton>Github 代码</Styled.LearnButton>

@@ -65,7 +65,7 @@ const Page = () => {
             </Col>
           </Row>
           <Styled.Image>
-            <img src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/contact-us/cooperation.svg`} alt="" />
+            <img src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/contact-us/contact-us.png`} alt="" />
           </Styled.Image>
         </Styled.Content>
       </CoreLayout>

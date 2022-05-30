@@ -62,7 +62,9 @@ const Page = () => {
               </Styled.Card>
             </Col>
           </Row>
-          {/* image */}
+          <Styled.Image>
+            <img src="/images/contact-us/cooperation.svg" alt="" />
+          </Styled.Image>
         </Styled.Content>
       </CoreLayout>
     </>

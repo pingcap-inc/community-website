@@ -19,7 +19,7 @@ export const Title = styled.h1`
 
 export const Card = styled.div`
   ${mixins.boxShadow()};
-  background-color: #FFF;
+  background-color: #fff;
   border-top: 4px solid ${(props) => props.color};
   border-bottom: 4px solid ${(props) => props.color};
   padding: 1.75rem;
@@ -45,4 +45,9 @@ export const CardComment = styled.p`
   font-size: 12px;
   margin-bottom: 0.5rem;
   color: gray;
+`;
+
+export const Image = styled.div`
+  margin-top: 4rem;
+  text-align: center;
 `;

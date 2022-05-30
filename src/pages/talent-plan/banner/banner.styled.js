@@ -1,6 +1,6 @@
 import * as polished from 'polished';
 import styled, { css } from 'styled-components';
-import { Button, Carousel as AntCarousel } from 'antd';
+import { Carousel as AntCarousel } from 'antd';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 

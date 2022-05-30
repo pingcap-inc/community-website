@@ -7,6 +7,7 @@ import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 import Anchor from '~/components/Anchor';
 import { Button, Space } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
 
 const Banner = () => {
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
@@ -27,7 +28,7 @@ const Banner = () => {
                   <Button type={'primary'}>报名学习</Button>
                 </Anchor>
                 <Anchor href="https://github.com/pingcap/talent-plan">
-                  <Button type={'primary'} ghost>
+                  <Button type={'primary'} ghost icon={<GithubOutlined />}>
                     Github 代码
                   </Button>
                 </Anchor>

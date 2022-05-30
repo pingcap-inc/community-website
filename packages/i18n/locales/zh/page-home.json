@@ -320,7 +320,7 @@
       "desc": "是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
     },
     "communityCollaboration": {
-      "subtitle": "社区合作",
+      "subtitle": "合作社区",
       "name1": "Apache Flink",
       "link1": "https://flink-learning.org.cn",
       "desc1": " 是一个针对无界和有界数据流进行有状态计算的框架与分布式处理引擎，以数据并行和流水线方式执行任意流数据程序。Flink 能在所有常见集群环境中运行，并能以内存速度和任意规模进行计算。",

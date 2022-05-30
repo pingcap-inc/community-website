@@ -57,13 +57,13 @@ const ActivityBannerComponent = () => {
 
 const Core = ({
   MainWrapper = Styled.Main,
-  children,
+  children = undefined,
   domain = 'tidb.net',
   hasMargin,
   locale = 'zh',
   backgroundColor = undefined,
-  style,
-  props,
+  style = undefined,
+  props = {},
 }) => {
   const router = useRouter();
   const { login, logout, isLoggedIn } = useContext(AuthContext);

@@ -50,4 +50,7 @@ export const CardComment = styled.p`
 export const Image = styled.div`
   margin-top: 4rem;
   text-align: center;
+  img {
+    max-width: 600px;
+  }
 `;

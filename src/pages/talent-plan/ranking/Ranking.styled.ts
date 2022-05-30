@@ -28,3 +28,13 @@ export const Banner = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { sm: bool
 
   margin-bottom: 1rem;
 `;
+
+export const Link = styled.div`
+  margin: 2rem 0;
+  a {
+    color: ${colors.B1};
+    :hover: {
+      text-decoration: underline;
+    }
+  }
+`;

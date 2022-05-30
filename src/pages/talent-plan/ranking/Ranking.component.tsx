@@ -3,6 +3,7 @@ import * as Styled from './Ranking.styled';
 import { useIsSmallScreen } from '~/hooks';
 import { Table } from 'antd';
 import { tikv_columns, tikv_columns_participation, tikv_data } from './datasource';
+import Anchor from '~/components/Anchor';
 
 const Ranking = () => {
   const { isSmallScreen } = useIsSmallScreen();
@@ -10,7 +11,12 @@ const Ranking = () => {
   return (
     <Styled.Container>
       <Styled.Content>
-        <Styled.Banner sm={isSmallScreen} />
+        {/*<Styled.Banner sm={isSmallScreen} />*/}
+        <Styled.Link>
+          <Anchor href={'https://asktug.com/t/topic/665106'}>
+            2022年分布式事务短训营（https://asktug.com/t/topic/665106）
+          </Anchor>
+        </Styled.Link>
         {['一等奖', '二等奖', '三等奖'].map((prize, idx) => (
           <>
             <h3>{prize}</h3>

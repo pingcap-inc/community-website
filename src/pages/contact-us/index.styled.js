@@ -23,9 +23,11 @@ export const List = styled.div`
   justify-content: center;
   ${mixins.onDesktop(css`
     flex-direction: row;
+    align-items: flex-start;
   `)};
   ${mixins.onMobile(css`
     flex-direction: column;
+    align-items: center;
   `)};
 `;
 

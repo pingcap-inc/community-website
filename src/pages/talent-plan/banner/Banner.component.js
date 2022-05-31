@@ -23,14 +23,12 @@ const Banner = () => {
             <Styled.LeftPanel>
               <Styled.Title>{lang.title}</Styled.Title>
               <Styled.Intro>{lang.intro}</Styled.Intro>
-              <Space size={32}>
+              <Space size={24}>
                 <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
                   <Button type={'primary'}>报名学习</Button>
                 </Anchor>
-                <Anchor href="https://github.com/pingcap/talent-plan">
-                  <Button type={'primary'} ghost icon={<GithubOutlined />}>
-                    Github 代码
-                  </Button>
+                <Anchor href="https://github.com/pingcap/talent-plan" style={{ fontSize: 24 }}>
+                  <GithubOutlined />
                 </Anchor>
               </Space>
             </Styled.LeftPanel>

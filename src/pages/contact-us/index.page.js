@@ -8,6 +8,7 @@ import { CommunityHead } from '~/components';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { CardGroup } from './index.styled';
 
 // export { getServerSideProps } from '../utils';
 export const getServerSideProps = async (ctx) => {
@@ -43,14 +44,18 @@ const Page = () => {
           <Styled.List>
             <Styled.Card color={'#F8C200'}>
               <Styled.CardTitle>遇到技术问题</Styled.CardTitle>
-              <Styled.CardParagraph>你可以在论坛和 2w+ 社区⼩伙伴互相交流问题</Styled.CardParagraph>
-              <Styled.CardParagraph>
-                <Anchor href={'https://asktug.com/new-topic'}>&gt; 去发帖</Anchor>
-              </Styled.CardParagraph>
-              <Styled.CardParagraph>如果你想看看别⼈是否遇到相似的问题，并且已有了解决⽅案</Styled.CardParagraph>
-              <Styled.CardParagraph>
-                <Anchor href={'https://search.asktug.com/'}>&gt; 去搜索</Anchor>
-              </Styled.CardParagraph>
+              <Styled.CardGroup>
+                <Styled.CardParagraph>你可以在论坛和 2w+ 社区⼩伙伴互相交流问题</Styled.CardParagraph>
+                <Styled.CardParagraph>
+                  <Anchor href={'https://asktug.com/new-topic'}>&gt; 去发帖</Anchor>
+                </Styled.CardParagraph>
+              </Styled.CardGroup>
+              <Styled.CardGroup>
+                <Styled.CardParagraph>如果你想看看别⼈是否遇到相似的问题，并且已有了解决⽅案</Styled.CardParagraph>
+                <Styled.CardParagraph>
+                  <Anchor href={'https://search.asktug.com/'}>&gt; 去搜索</Anchor>
+                </Styled.CardParagraph>
+              </Styled.CardGroup>
             </Styled.Card>
             <Styled.Card color={'#F15A24'}>
               <Styled.CardTitle>商业⽀持</Styled.CardTitle>

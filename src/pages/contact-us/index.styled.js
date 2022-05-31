@@ -50,6 +50,10 @@ export const CardTitle = styled.h2`
   margin-bottom: 1rem;
 `;
 
+export const CardGroup = styled.div`
+  margin-bottom: 1.5rem;
+`;
+
 export const CardParagraph = styled.p`
   font-size: 16px;
   color: #565656;

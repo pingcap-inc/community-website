@@ -69,6 +69,7 @@ export const Image = styled.div`
   margin-top: 4rem;
   text-align: center;
   img {
+    width: 100%;
     max-width: 600px;
   }
 `;

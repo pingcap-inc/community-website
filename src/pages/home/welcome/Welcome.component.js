@@ -52,13 +52,13 @@ const Welcome = () => {
           <Col span={isSmallScreen ? 24 : 18}>
             <Styled.Title>{lang.title}</Styled.Title>
             <Styled.Intro>{lang.intro}</Styled.Intro>
-            <Styled.Navs>
-              <Radio.Button onClick={onClick('https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md')}>
-                {navsLang.codeOfConduct}
-              </Radio.Button>
-              <Radio.Button onClick={onClick('https://accounts.pingcap.com/')}>{navsLang.join}</Radio.Button>
-              {/*<Radio.Button onClick={onClick('mailto:community@tidb.io')}>{navsLang.contactUs}</Radio.Button>*/}
-            </Styled.Navs>
+            {/*<Styled.Navs>*/}
+            {/*  <Radio.Button onClick={onClick('https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md')}>*/}
+            {/*    {navsLang.codeOfConduct}*/}
+            {/*  </Radio.Button>*/}
+            {/*  <Radio.Button onClick={onClick('https://accounts.pingcap.com/')}>{navsLang.join}</Radio.Button>*/}
+            {/*  <Radio.Button onClick={onClick('mailto:community@tidb.io')}>{navsLang.contactUs}</Radio.Button>*/}
+            {/*</Styled.Navs>*/}
             <Styled.Numbers gutter={32} justify="center">
               {numbers.map(({ num, text }, idx) => (
                 <Col key={idx} span={isSmallScreen ? 12 : 6}>

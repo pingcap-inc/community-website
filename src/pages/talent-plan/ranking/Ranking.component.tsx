@@ -1,6 +1,6 @@
 import * as Styled from './Ranking.styled';
-import { Table } from 'antd';
-import { tikv_columns, tikv_columns_participation, tikv_data } from './datasource';
+//import { Table } from 'antd';
+//import { tikv_columns, tikv_columns_participation, tikv_data } from './datasource';
 import Anchor from '~/components/Anchor';
 
 const Ranking = () => {

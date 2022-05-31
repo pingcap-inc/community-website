@@ -35,7 +35,6 @@ const Page = ({ data }) => (
     />
     <CoreLayout>
       <Banner />
-      <Stories />
       <Ranking />
       <Labs />
       <Institutes />
@@ -44,6 +43,7 @@ const Page = ({ data }) => (
       <NextSteps />
       <Organizers />
       <Others />
+      <Stories />
     </CoreLayout>
   </PageDataContext.Provider>
 );

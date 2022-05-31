@@ -18,7 +18,12 @@ export const Title = styled.h1`
   font-size: 24px;
   color: #2c2c2c;
   margin-top: 2rem;
-  width: calc(966px - 2rem);
+  ${mixins.onDesktop(css`
+    width: calc(966px - 2rem);
+  `)};
+  ${mixins.onMobile(css`
+    width: auto;
+  `)};
 `;
 
 export const List = styled.div`

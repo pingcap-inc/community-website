@@ -1,17 +1,27 @@
 import * as Styled from './Ranking.styled';
 //import { Table } from 'antd';
 //import { tikv_columns, tikv_columns_participation, tikv_data } from './datasource';
+import { Styled as CommonStyled } from '@tidb-community/ui';
 import Anchor from '~/components/Anchor';
+import React from 'react';
 
 const Ranking = () => {
   return (
     <Styled.Container>
       <Styled.Content>
+        <CommonStyled.Title>学习活动</CommonStyled.Title>
         {/*<Styled.Banner sm={isSmallScreen} />*/}
         <Styled.Link>
-          <Anchor href={'https://asktug.com/t/topic/665106'}>
-            2022年分布式事务短训营（https://asktug.com/t/topic/665106）
-          </Anchor>
+          <li>
+            <Anchor href={'https://asktug.com/t/topic/665106'}>
+              2022年分布式事务短训营（https://asktug.com/t/topic/665106）
+            </Anchor>
+          </li>
+          <li>
+            <Anchor href={'https://asktug.com/t/topic/665106'}>
+              2022年分布式事务短训营（https://asktug.com/t/topic/665106）
+            </Anchor>
+          </li>
         </Styled.Link>
         {/*  {['一等奖', '二等奖', '三等奖'].map((prize, idx) => (*/}
         {/*    <>*/}

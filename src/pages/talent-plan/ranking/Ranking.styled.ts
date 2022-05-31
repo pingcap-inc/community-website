@@ -11,7 +11,7 @@ export const Container = styled(Styled.Section)`
 `;
 
 export const Content = styled(Styled.Content)`
-  margin-top: 1rem;
+  margin-top: 4rem;
   position: relative;
 `;
 
@@ -29,7 +29,7 @@ export const Banner = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { sm: bool
   margin-bottom: 1rem;
 `;
 
-export const Link = styled.div`
+export const Link = styled.ul`
   margin: 2rem 0;
   a {
     color: ${colors.B1};

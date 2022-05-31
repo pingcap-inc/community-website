@@ -6,6 +6,8 @@ import { useTranslation } from 'next-i18next';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 import Anchor from '~/components/Anchor';
+import { Button, Space } from 'antd';
+import { GithubOutlined } from '@ant-design/icons';
 
 const Banner = () => {
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
@@ -21,9 +23,14 @@ const Banner = () => {
             <Styled.LeftPanel>
               <Styled.Title>{lang.title}</Styled.Title>
               <Styled.Intro>{lang.intro}</Styled.Intro>
-              <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
-                <Styled.LearnButton>{lang.start}</Styled.LearnButton>
-              </Anchor>
+              <Space size={24}>
+                <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
+                  <Button type={'primary'}>报名学习</Button>
+                </Anchor>
+                <Anchor href="https://github.com/pingcap/talent-plan" style={{ fontSize: 24 }}>
+                  <GithubOutlined />
+                </Anchor>
+              </Space>
             </Styled.LeftPanel>
           }
           rightPanel={

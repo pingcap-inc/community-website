@@ -1,6 +1,6 @@
 import * as polished from 'polished';
 import styled, { css } from 'styled-components';
-import { Button, Carousel as AntCarousel } from 'antd';
+import { Carousel as AntCarousel } from 'antd';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 
@@ -45,8 +45,6 @@ export const Title = styled.h1`
     font-size: 30px;
   }
 `;
-
-export const LearnButton = styled(Button).attrs({ type: 'primary' })``;
 
 export const LeftPanel = styled.div`
   padding-top: 2.5rem;

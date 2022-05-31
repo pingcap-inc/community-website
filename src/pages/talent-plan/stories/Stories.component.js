@@ -16,13 +16,13 @@ const Others = () => {
       <Styled.Content>
         <CommonStyled.Title>{lang.title}</CommonStyled.Title>
         <Row gutter={16}>
-          {lang.stories.map((story, index) => (
-            <Col xs={24} md={12} lg={8}>
+          {lang.stories.map((story) => (
+            <Col key={story.name} xs={24} md={12} lg={8}>
               <Styled.CardWrap>
                 <Styled.StoryCard>
                   {story.content}
                   <Styled.StoryCardBottom>
-                    <Avatar src={getImage(`stories-avatar-${index + 1}.png`)} size={48} />
+                    <Avatar src={getImage(`team-${story.name}.jpg`)} size={48} />
                     <Styled.StoryCardInfo>
                       <Styled.StoryCardInfoName> {story.name} </Styled.StoryCardInfoName>
                       <Styled.StoryCardInfoDesc> {story.desc} </Styled.StoryCardInfoDesc>

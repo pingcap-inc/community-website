@@ -81,14 +81,14 @@ const Participation = () => {
         <Styled.Content>
           <CommonStyled.Title id="learn">{lang.title}</CommonStyled.Title>
           <Tabs onChange={(idx) => setIsOnFirstTab(idx === '1')}>
-            <TabPane tab={lang.tab1} key={1}>
-              <Image preview={false} src={getImage('participation-org.jpg')} />
-            </TabPane>
-            <TabPane tab={lang.tab2} key={2}>
+            <TabPane tab={lang.tab2} key={1}>
               <Row gutter={32}>
                 <Col lg={12}>{stepBoxes[0]}</Col>
                 <Col lg={12}>{stepBoxes.slice(1)}</Col>
               </Row>
+            </TabPane>
+            <TabPane tab={lang.tab1} key={2}>
+              <Image preview={false} src={getImage('participation-org.jpg')} />
             </TabPane>
           </Tabs>
         </Styled.Content>

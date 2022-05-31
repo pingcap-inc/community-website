@@ -8,7 +8,6 @@ import { CommunityHead } from '~/components';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
 import { getI18nProps } from '~/utils/i18n.utils';
-import { CardGroup } from './index.styled';
 
 // export { getServerSideProps } from '../utils';
 export const getServerSideProps = async (ctx) => {

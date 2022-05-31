@@ -13,10 +13,14 @@ const Ranking = () => {
         {/*<Styled.Banner sm={isSmallScreen} />*/}
         <Styled.Link>
           <li>
-            <Anchor href={'https://asktug.com/t/topic/665106'}>2022 年 Talent Plan 分布式事务短训营</Anchor>
+            <Anchor href={'https://asktug.com/t/topic/665861'}>2022 年 Talent Plan tinyKV 学习营</Anchor>{' '}
+            （报名结束，学习营进行中）
           </li>
           <li>
-            <Anchor href={'https://asktug.com/t/topic/393068'}>2021 年 Talent Plan tinyKV 学习营</Anchor>
+            <Anchor href={'https://asktug.com/t/topic/665106'}>2022 年 Talent Plan 分布式事务短训营</Anchor> （已结束）
+          </li>
+          <li>
+            <Anchor href={'https://asktug.com/t/topic/393068'}>2021 年 Talent Plan tinyKV 学习营</Anchor> （已结束）
           </li>
         </Styled.Link>
         {/*  {['一等奖', '二等奖', '三等奖'].map((prize, idx) => (*/}

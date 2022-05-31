@@ -33,7 +33,7 @@ export const Link = styled.div`
   margin: 2rem 0;
   a {
     color: ${colors.B1};
-    :hover: {
+    :hover {
       text-decoration: underline;
     }
   }

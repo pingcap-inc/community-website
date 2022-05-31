@@ -30,7 +30,7 @@ export const Banner = styled.div<FC<HTMLAttributes<HTMLDivElement>> & { sm: bool
 `;
 
 export const Link = styled.ul`
-  margin: 2rem 0;
+  color: #2c2c2c;
   a {
     color: ${colors.B1};
     :hover {

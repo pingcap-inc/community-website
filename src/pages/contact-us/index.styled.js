@@ -1,9 +1,11 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 
-const { Content } = Styled;
-
-export { Content };
+export const Content = styled(Styled.Content)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const Container = styled.div`
   background: ${colors.M2};
@@ -16,6 +18,7 @@ export const Title = styled.h1`
   font-size: 24px;
   color: #2c2c2c;
   margin-top: 2rem;
+  width: calc(966px - 2rem);
 `;
 
 export const List = styled.div`

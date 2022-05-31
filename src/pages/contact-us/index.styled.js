@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { colors, mixins, Styled } from '@tidb-community/ui';
 
 const { Content } = Styled;
@@ -15,7 +15,18 @@ export const Container = styled.div`
 export const Title = styled.h1`
   font-size: 24px;
   color: #2c2c2c;
-  margin: 2rem 0;
+  margin-top: 2rem;
+`;
+
+export const List = styled.div`
+  display: flex;
+  justify-content: center;
+  ${mixins.onDesktop(css`
+    flex-direction: row;
+  `)};
+  ${mixins.onMobile(css`
+    flex-direction: column;
+  `)};
 `;
 
 export const Card = styled.div`
@@ -23,6 +34,7 @@ export const Card = styled.div`
   background-color: #fff;
   border-top: 4px solid ${(props) => props.color};
   border-bottom: 4px solid ${(props) => props.color};
+  margin: 1rem;
   padding: 1.75rem;
   border-radius: 4px;
   overflow: hidden;
@@ -41,9 +53,9 @@ export const CardParagraph = styled.p`
   color: #565656;
   margin-bottom: 0.5rem;
   a {
-      //color: ${colors.B1};
-      font-size: 16px;
-      color: #be1d32;
+    //color: ${colors.B1};
+    font-size: 16px;
+    color: #be1d32;
   }
 `;
 

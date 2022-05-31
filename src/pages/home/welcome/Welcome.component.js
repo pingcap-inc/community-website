@@ -1,23 +1,20 @@
 import React, { useContext } from 'react';
-import { Col, Radio, Row } from 'antd';
-import { useRouter } from 'next/router';
+import { Col, Row } from 'antd';
 import { useTranslation } from 'next-i18next';
 
 import * as Styled from './welcome.styled';
 import { PageDataContext } from '~/context';
 import { formatNumber } from './welcome.utils';
-import { link as linkUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 import Anchor from '~/components/Anchor';
 
 const Welcome = () => {
-  const router = useRouter();
   const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
   const { t } = useTranslation('page-home');
 
   const lang = t('welcome', { returnObjects: true });
-  const { navs: navsLang, numbers: numbersLang, howTo: howToLang } = lang;
+  const { /*navs: navsLang,*/ numbers: numbersLang, howTo: howToLang } = lang;
 
   const { githubInfo } = data;
 
@@ -39,11 +36,6 @@ const Welcome = () => {
       text: numbersLang.contributor,
     },
   ];
-
-  const onClick = (link) => (e) => {
-    e.preventDefault();
-    linkUtils.handleRedirect(router, link);
-  };
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>

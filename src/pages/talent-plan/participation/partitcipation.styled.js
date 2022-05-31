@@ -3,6 +3,7 @@ import { colors, Styled } from '@tidb-community/ui';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 
 export const Container = styled(Styled.Section)`
+  margin: 4rem 0;
   && {
     color: ${colors.M1};
     padding: 0;

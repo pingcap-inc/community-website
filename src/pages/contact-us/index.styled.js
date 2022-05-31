@@ -13,7 +13,8 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.5rem;
+  font-size: 24px;
+  color: #2c2c2c;
   margin: 2rem 0;
 `;
 
@@ -25,19 +26,24 @@ export const Card = styled.div`
   padding: 1.75rem;
   border-radius: 4px;
   overflow: hidden;
-  height: 260px;
+  width: 290px;
+  height: 320px;
 `;
 
 export const CardTitle = styled.h2`
-  font-size: 1rem;
+  font-size: 20px;
+  color: #2c2c2c;
   margin-bottom: 1rem;
 `;
 
 export const CardParagraph = styled.p`
-  font-size: 14px;
+  font-size: 16px;
+  color: #565656;
   margin-bottom: 0.5rem;
   a {
-    color: ${colors.B1};
+      //color: ${colors.B1};
+      font-size: 16px;
+      color: #be1d32;
   }
 `;
 

@@ -5,7 +5,6 @@ import React from 'react';
 // import Layout from '../layout';
 import * as Styled from './index.styled';
 import { CommunityHead } from '~/components';
-import { Row, Col } from 'antd';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
 import { getI18nProps } from '~/utils/i18n.utils';

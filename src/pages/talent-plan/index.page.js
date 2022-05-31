@@ -35,11 +35,11 @@ const Page = ({ data }) => (
     />
     <CoreLayout>
       <Banner />
+      <Participation />
       <Ranking />
       <Labs />
       <Institutes />
       <Team />
-      <Participation />
       <NextSteps />
       <Organizers />
       <Others />

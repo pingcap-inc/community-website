@@ -1,13 +1,13 @@
-import React, {useContext} from 'react';
-import {Col, Row} from 'antd';
-import {useTranslation} from 'next-i18next';
+import React, { useContext } from 'react';
+import { Col, Row } from 'antd';
+import { useTranslation } from 'next-i18next';
 
 import * as Styled from './others.styled';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import VideoThumbnail from './videoThumbnail';
-import {PageDataContext} from '~/context';
-import {getImage} from '~/pages/home/home.utils';
-import {useIsSmallScreen} from '~/hooks';
+import { PageDataContext } from '~/context';
+import { getImage } from '~/pages/home/home.utils';
+import { useIsSmallScreen } from '~/hooks';
 
 const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map((el) =>
   getImage(`others-${el}-logo.png`)
@@ -23,7 +23,7 @@ const Others = () => {
     jobs: jobsLang,
     businessSupport: supportLang,
     communityCollaboration: collaborationLang,
-    contact: contactLang,
+    // contact: contactLang,
   } = lang;
 
   return (
@@ -85,11 +85,11 @@ const Others = () => {
               <Styled.SmallerLink href={collaborationLang.link2}>{collaborationLang.name2}</Styled.SmallerLink>
               {collaborationLang.desc2}
             </Styled.SmallerText>
-            <Styled.Divider />
-            <Styled.SmallerText>
-              {contactLang.label}
-              <Styled.SmallerLink href={contactLang.link}>{contactLang.linkText}</Styled.SmallerLink>！
-            </Styled.SmallerText>
+            {/*<Styled.Divider />*/}
+            {/*<Styled.SmallerText>*/}
+            {/*  {contactLang.label}*/}
+            {/*  <Styled.SmallerLink href={contactLang.link}>{contactLang.linkText}</Styled.SmallerLink>！*/}
+            {/*</Styled.SmallerText>*/}
           </>
         }
       />

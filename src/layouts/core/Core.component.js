@@ -57,11 +57,13 @@ const ActivityBannerComponent = () => {
 
 const Core = ({
   MainWrapper = Styled.Main,
-  children,
+  children = undefined,
   domain = 'tidb.net',
   hasMargin,
   locale = 'zh',
   backgroundColor = undefined,
+  style = undefined,
+  props = {},
 }) => {
   const router = useRouter();
   const { login, logout, isLoggedIn } = useContext(AuthContext);
@@ -113,7 +115,7 @@ const Core = ({
 
   return (
     <NavContext.Provider value={{ navData: data, onNavClick, currentNav }}>
-      <Styled.Container style={{ backgroundColor }}>
+      <Styled.Container style={{ backgroundColor, ...style }} {...props}>
         {/*{renderActivityBanner({ meData, isMeValidating }, data.activity, onNavClick, router.pathname)}*/}
         {!isBlogPage && <ActivityBannerComponent />}
         <Header

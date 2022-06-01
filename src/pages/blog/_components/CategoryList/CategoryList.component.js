@@ -25,7 +25,7 @@ const CategoryList = ({ categories: { content }, shallow = false, current, type 
         {meData?.username && !isMeValidating && <FixedLink href={`/u/${meData?.username}`}>我的专栏</FixedLink>}
         <FixedLink href={'https://tidb.net/blog/66c5e81b'}>专栏发布指南</FixedLink>
         <FixedLink href={'https://pingcap.com/zh/privacy-policy/'}>隐私协议</FixedLink>
-        <FixedLink href={'mailto:community@tidb.io'}>联系我们</FixedLink>
+        {/*<FixedLink href={'mailto:community@tidb.io'}>联系我们</FixedLink>*/}
       </div>
     </Styled.Container>
   );

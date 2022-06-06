@@ -42,8 +42,8 @@ export const List = styled.div`
 export const Card = styled.div`
   ${mixins.boxShadow()};
   background-color: #fff;
-  border-top: 4px solid ${(props) => props.color};
-  border-bottom: 4px solid ${(props) => props.color};
+  border-top: 4px solid ${(props) => props.$color};
+  border-bottom: 4px solid ${(props) => props.$color};
   margin: 1rem;
   padding: 1.75rem;
   border-radius: 4px;

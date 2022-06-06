@@ -41,7 +41,7 @@ const Page = () => {
         <Styled.Content>
           <Styled.Title>Hello! 欢迎来到 TiDB 社区，有什么能帮到你？</Styled.Title>
           <Styled.List>
-            <Styled.Card color={'#F8C200'}>
+            <Styled.Card $color={'#F8C200'}>
               <Styled.CardTitle>遇到技术问题</Styled.CardTitle>
               <Styled.CardGroup>
                 <Styled.CardParagraph>你可以在论坛和 2w+ 社区小伙伴互相交流问题</Styled.CardParagraph>
@@ -56,7 +56,7 @@ const Page = () => {
                 </Styled.CardParagraph>
               </Styled.CardGroup>
             </Styled.Card>
-            <Styled.Card color={'#F15A24'}>
+            <Styled.Card $color={'#F15A24'}>
               <Styled.CardTitle>商业支持</Styled.CardTitle>
               <Styled.CardParagraph>想要获得商业专家产品最高响应级别 7*24 支持服务</Styled.CardParagraph>
               <Styled.CardComment>规划/实施/主动式巡检/故障协查/知识转移/重要时期保障</Styled.CardComment>
@@ -66,7 +66,7 @@ const Page = () => {
                 </Anchor>
               </Styled.CardParagraph>
             </Styled.Card>
-            <Styled.Card color={'#E30C34'}>
+            <Styled.Card $color={'#E30C34'}>
               <Styled.CardTitle>社区合作</Styled.CardTitle>
               <Styled.CardParagraph>
                 TiDB 社区已经和多家社区建立了合作关系，如：思否、开源中国、开源社、infoQ 等。

@@ -93,7 +93,7 @@ const Participation = () => {
           </Tabs>
         </Styled.Content>
       </Styled.Container>
-      {isOnFirstTab && (
+      {!isOnFirstTab && (
         <Styled.ContainerGray>
           <Styled.Content>
             <Styled.Becomings isSmallScreen={isSmallScreen}>

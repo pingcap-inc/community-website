@@ -8,6 +8,7 @@ import { CommunityHead } from '~/components';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { cdn } from '~/utils';
 
 // export { getServerSideProps } from '../utils';
 export const getServerSideProps = async (ctx) => {
@@ -78,7 +79,7 @@ const Page = () => {
             </Styled.Card>
           </Styled.List>
           <Styled.Image>
-            <img src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/contact-us/contact-us.png`} alt="" />
+            <img src={cdn.getImageUrl('/images/contact-us/contact-us.png')} alt="" />
           </Styled.Image>
         </Styled.Content>
       </CoreLayout>

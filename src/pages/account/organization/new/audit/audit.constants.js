@@ -1,3 +1,5 @@
+import { cdn } from '~/utils';
+
 export const AUDIT_STATUS = {
   PENDING: 0,
   PASS: 1,
@@ -6,17 +8,17 @@ export const AUDIT_STATUS = {
 
 export const IMAGES = {
   [AUDIT_STATUS.PENDING]: {
-    src: `${process.env.NEXT_PUBLIC_CDN_URL}/images/account/organization-audit-pending.png`,
+    src: cdn.getImageUrl('/images/account/organization-audit-pending.png'),
     alt: 'pending',
     $width: 346 / 2,
   },
   [AUDIT_STATUS.PASS]: {
-    src: `${process.env.NEXT_PUBLIC_CDN_URL}/images/account/organization-audit-pass.png`,
+    src: cdn.getImageUrl('/images/account/organization-audit-pass.png'),
     alt: 'pass',
     $width: 310 / 2,
   },
   [AUDIT_STATUS.DENY]: {
-    src: `${process.env.NEXT_PUBLIC_CDN_URL}/images/account/organization-audit-deny.png`,
+    src: cdn.getImageUrl('/images/account/organization-audit-deny.png'),
     alt: 'deny',
     $width: 350 / 2,
   },

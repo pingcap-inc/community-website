@@ -4,6 +4,7 @@ import { Link as RawLink } from '@tidb-community/ui';
 import styled from 'styled-components';
 import { colors } from '@pingcap-inc/tidb-community-ui';
 import { askTugDomain } from '~/api/asktug';
+import { cdn } from '~/utils';
 
 interface PrivateMessagesProp {
   messages: (AsktugPrivateMessage & { users: AsktugUser[] })[];
@@ -15,7 +16,7 @@ const Link = styled(RawLink)`
 
 const PlaceHolder = styled.div`
   // center a placeholder image
-  background-image: url('/images/list-placeholder.svg');
+  background-image: url('${cdn.getImageUrl('/images/list-placeholder.svg')}');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;

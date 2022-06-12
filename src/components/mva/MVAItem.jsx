@@ -3,6 +3,7 @@ import React from 'react';
 
 import MyLink from '~/components/MyLink';
 import styles from './MVAItem.module.scss';
+import { cdn } from '~/utils';
 
 export default function MVAItem({ name, company, title, links }) {
   return (
@@ -11,7 +12,7 @@ export default function MVAItem({ name, company, title, links }) {
         <div className={styles.avatar}>
           <Image
             unoptimized
-            src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/avatar/${encodeURIComponent(name)}.jpg`}
+            src={cdn.getImageUrl(`/images/avatar/${encodeURIComponent(name)}.jpg`)}
             alt={name}
             width={100}
             height={100}

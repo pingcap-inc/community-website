@@ -4,6 +4,7 @@ import { Col, Image, Row } from 'antd';
 import * as Styled from './labs.styled';
 import { Styled as CommonStyled } from '@tidb-community/ui';
 import { useTranslation } from 'next-i18next';
+import { cdn } from '~/utils';
 
 const Labs = () => {
   const { t } = useTranslation('page-talent-plan');
@@ -20,7 +21,7 @@ const Labs = () => {
               <Styled.LabCard>
                 <Styled.Row gutter={4}>
                   <Styled.LabCardImgWrapper span={12}>
-                    <Image preview={false} src={`${process.env.NEXT_PUBLIC_CDN_URL}/${org.img}`} />
+                    <Image preview={false} src={cdn.getImageUrl(org.img)} />
                   </Styled.LabCardImgWrapper>
                   <Col span={12}>
                     <Styled.LabCardTitle> {org.name} </Styled.LabCardTitle>

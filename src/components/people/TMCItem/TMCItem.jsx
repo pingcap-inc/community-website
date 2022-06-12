@@ -2,6 +2,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import styles from './TMCItem.module.scss';
+import { cdn } from '~/utils';
 
 export default function TMCItem({ name, role, company, title }) {
   return (
@@ -9,7 +10,7 @@ export default function TMCItem({ name, role, company, title }) {
       <div className={styles.avatar}>
         <Image
           unoptimized
-          src={`${process.env.NEXT_PUBLIC_CDN_URL}/images/avatar/${encodeURIComponent(name)}.jpg`}
+          src={cdn.getImageUrl(`/images/avatar/${encodeURIComponent(name)}.jpg`)}
           alt={name}
           width={150}
           height={150}

@@ -15,7 +15,7 @@ import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
 
-const getImageUrl = (filename) => process.env.NEXT_PUBLIC_CDN_URL + '/images/people/' + filename;
+const getImageUrl = (filename) => cdn.getImageUrl('/images/people/' + filename);
 
 const title = 'TiDB User Group 会员';
 const description =

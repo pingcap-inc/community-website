@@ -59,21 +59,6 @@ const Head = ({
           `,
         }}
       />
-      <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`} />
-
-      {/* GA setup: https://stackoverflow.com/a/62552263/14257627 */}
-      <script
-        id="gtag-init-script"
-        // strategy="beforeInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${googleAnalyticsId}');
-        `,
-        }}
-      />
 
       <script
         id="baidu-init-script"

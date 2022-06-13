@@ -8,13 +8,13 @@ export const defaultEnvDomains = {
   preview: {
     'tidb.net': 'community-preview.tidb.io',
     'contributor.tidb.io': 'community-preview-contributor.tidb.io',
-    'asktug.com': 'new.asktug.com',
-    'accounts.pingcap.com': 'dev-accounts.pingcap.com',
+    'asktug.com': 'community-preview.asktug.com',
+    'accounts.pingcap.com': 'accounts-preview.pingcap.com',
   },
   local: {
     'tidb.net': 'localhost:3000',
     'contributor.tidb.io': 'contributor.tidb-local.io',
-    'asktug.com': 'new.asktug.com',
-    'accounts.pingcap.com': 'dev-accounts.pingcap.com',
+    'asktug.com': 'community-preview.asktug.com',
+    'accounts.pingcap.com': 'accounts-preview.pingcap.com',
   },
 };

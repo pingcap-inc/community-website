@@ -80,10 +80,14 @@ const Page = () => {
             <Styled.Card $color={'#BE1D32'}>
               <Styled.CardTitle>云数据库 TiDB</Styled.CardTitle>
               <Styled.CardParagraph>
-                一栈式 HTAP 数据库，加速释放数据价值，云数据库 TiDB 上线阿里云心选市场。
+                TiDB 上线阿里云心选商城，带来新一代 HTAP 数据库的云端体验，享受 PingCAP 原厂服务支持。
               </Styled.CardParagraph>
               <Styled.CardParagraph>
-                <Anchor href={'https://pingcap.com/zh/tidb-on-aliyun'}>&gt; 联系我们</Anchor>
+                <Anchor
+                  href={'https://pingcap.com/zh/events/tidb-on-aliyun/?utm_source=tidb-community&utm_medium=referral'}
+                >
+                  &gt; 了解更多详情
+                </Anchor>
               </Styled.CardParagraph>
             </Styled.Card>
           </Styled.List>

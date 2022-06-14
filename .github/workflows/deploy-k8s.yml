@@ -32,6 +32,6 @@ jobs:
           host: ${{ secrets.JUMP_SERVER_IP }}
           username: ${{ secrets.JUMP_SERVER_USER }}
           key: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
-          envs: JUMP_SERVER_PATH,DOCKER_IMAGE_TAG
+          envs: JUMP_SERVER_PATH
           script: |
-            sh ${JUMP_SERVER_PATH}/deploy_preview.sh ${DOCKER_IMAGE_TAG}
+            sh ${JUMP_SERVER_PATH}/deploy_preview.sh ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}

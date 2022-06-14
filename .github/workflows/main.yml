@@ -40,7 +40,7 @@ jobs:
       OSS_ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
       OSS_ACCESS_SECRET: ${{ secrets.OSS_ACCESS_SECRET }}
 
-  deploy-preview-k8s:
+  deploy-preview:
     needs: [ build-preview ]
     uses: ./.github/workflows/deploy-k8s.yml
     with:

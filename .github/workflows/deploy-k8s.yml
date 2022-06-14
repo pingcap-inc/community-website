@@ -1,0 +1,37 @@
+name: Reusable build
+
+on:
+  workflow_call:
+    inputs:
+      build-env:
+        required: true
+        type: string
+    secrets:
+      JUMP_SERVER_IP:
+        required: true
+      JUMP_SERVER_USER:
+        required: true
+      JUMP_SERVER_PATH:
+        required: true
+      JUMP_SERVER_PRIVATE_KEY:
+        required: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: ${{ inputs.build-env }}
+    env:
+      JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}
+      JUMP_SERVER_USER: ${{ secrets.JUMP_SERVER_USER }}
+      JUMP_SERVER_PATH: ${{ secrets.JUMP_SERVER_PATH }}
+      JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v0.1.4
+        with:
+          host: ${{ secrets.JUMP_SERVER_IP }}
+          username: ${{ secrets.JUMP_SERVER_USER }}
+          key: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
+          envs: JUMP_SERVER_PATH,DOCKER_IMAGE_TAG
+          script: |
+            sh ${JUMP_SERVER_PATH}/deploy_preview.sh ${DOCKER_IMAGE_TAG}

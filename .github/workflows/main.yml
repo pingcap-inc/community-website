@@ -62,6 +62,17 @@ jobs:
       DOCKER_REGISTRY_USERNAME: ${{ secrets.DOCKER_REGISTRY_USERNAME }}
       DOCKER_REGISTRY_PASSWORD: ${{ secrets.DOCKER_REGISTRY_PASSWORD }}
 
+  deploy-preview-k8s:
+    needs: [ build-preview ]
+    uses: ./.github/workflows/deploy-k8s.yml
+    with:
+      build-env: preview
+    secrets:
+      JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}
+      JUMP_SERVER_USER: ${{ secrets.JUMP_SERVER_USER }}
+      JUMP_SERVER_PATH: ${{ secrets.JUMP_SERVER_PATH }}
+      JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
+
   deploy-production:
     needs: [ build-production ]
     uses: ./.github/workflows/deploy.yml

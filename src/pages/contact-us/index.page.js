@@ -83,7 +83,7 @@ const Page = () => {
                 一栈式 HTAP 数据库，加速释放数据价值，云数据库 TiDB 上线阿里云心选市场。
               </Styled.CardParagraph>
               <Styled.CardParagraph>
-                <Anchor href={'/contact-us/cooperation'}>&gt; 联系我们</Anchor>
+                <Anchor href={'https://pingcap.com/zh/tidb-on-aliyun'}>&gt; 联系我们</Anchor>
               </Styled.CardParagraph>
             </Styled.Card>
           </Styled.List>

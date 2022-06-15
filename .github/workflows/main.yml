@@ -98,4 +98,4 @@ jobs:
       - name: Run page tests
         run: node testurls.mjs
         env:
-          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.io
+          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.net

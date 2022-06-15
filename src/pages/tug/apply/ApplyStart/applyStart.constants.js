@@ -1,4 +1,6 @@
-const getImage = (filename) => `${process.env.NEXT_PUBLIC_CDN_URL}/images/people/apply/${filename}`;
+import { cdn } from '~/utils';
+
+const getImage = (filename) => cdn.getImageUrl(`/images/people/apply/${filename}`);
 
 export const title = 'TiDB User Group 会员申请';
 

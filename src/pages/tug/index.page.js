@@ -4,7 +4,7 @@ import { Button } from 'antd';
 import { useRouter } from 'next/router';
 
 import { getI18nProps } from '~/utils/i18n.utils';
-import { link as linkUtils } from '~/utils';
+import { cdn, link as linkUtils } from '~/utils';
 import Container from '~/components/Container/Container';
 import HowToBecome from '~/components/people/HowToBecome/HowToBecome';
 import MyLink from '~/components/MyLink';
@@ -15,7 +15,7 @@ import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 import HomeMVA from '~/components/home/HomeMVA/HomeMVA';
 
-const getImageUrl = (filename) => process.env.NEXT_PUBLIC_CDN_URL + '/images/people/' + filename;
+const getImageUrl = (filename) => cdn.getImageUrl('/images/people/' + filename);
 
 const title = 'TiDB User Group 会员';
 const description =
@@ -25,7 +25,7 @@ const description =
 const applyUrl = '/tug/apply#form';
 
 const tugOrganizationChartTitle = 'TUG 组织架构';
-const tugOrganizationChartUrl = `${process.env.NEXT_PUBLIC_CDN_URL}/images/people/tug-organization-chart.svg`;
+const tugOrganizationChartUrl = cdn.getImageUrl(`/images/people/tug-organization-chart.svg`);
 
 const howToBecomeTitle = '如何成为 TUG 会员';
 const howToBecome = [

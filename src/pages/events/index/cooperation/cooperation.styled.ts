@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 import { ActionButton, Container, TwoColumns as RawTwoColumns } from '~/pages/home/subscription/subscription.styled';
 import { IProps } from '~/layouts/twoColumnsSection/TwoColumnsSection.component';
+import { cdn } from '~/utils';
 
 export { ActionButton, Container };
 
@@ -30,6 +31,6 @@ export const RightPanel = styled.div`
   text-align: right;
 `;
 
-export const Logo = styled.img.attrs({ src: `${process.env.NEXT_PUBLIC_CDN_URL}/images/events/event-logos.png` })`
+export const Logo = styled.img.attrs({ src: cdn.getImageUrl('/images/events/event-logos.png') })`
   height: 150px;
 `;

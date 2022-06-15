@@ -1,1 +1,3 @@
-export const getImage = (name) => `${process.env.NEXT_PUBLIC_CDN_URL}/images/home/${name}`;
+import { cdn } from '~/utils';
+
+export const getImage = (name) => cdn.getImageUrl(`/images/home/${name}`);

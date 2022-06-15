@@ -77,6 +77,19 @@ const Page = () => {
                 <Anchor href={'/contact-us/cooperation'}>&gt; 填写合作表单</Anchor>
               </Styled.CardParagraph>
             </Styled.Card>
+            <Styled.Card $color={'#BE1D32'}>
+              <Styled.CardTitle>云数据库 TiDB</Styled.CardTitle>
+              <Styled.CardParagraph>
+                TiDB 上线阿里云心选商城，带来新一代 HTAP 数据库的云端体验，享受 PingCAP 原厂服务支持。
+              </Styled.CardParagraph>
+              <Styled.CardParagraph>
+                <Anchor
+                  href={'https://pingcap.com/zh/events/tidb-on-aliyun/?utm_source=tidb-community&utm_medium=referral'}
+                >
+                  &gt; 了解更多详情
+                </Anchor>
+              </Styled.CardParagraph>
+            </Styled.Card>
           </Styled.List>
           <Styled.Image>
             <img src={cdn.getImageUrl('/images/contact-us/contact-us.png')} alt="" />

@@ -25,7 +25,7 @@ export const Side = styled.div`
     position: sticky;
     height: 100%;
     margin-top: 4rem;
-    top: 2rem;
+    top: 5rem;
   `)};
   ${mixins.onMobile(css`
     display: none;
@@ -137,5 +137,31 @@ export const Editor = styled.div`
   }
   table {
     width: 100% !important;
+  }
+`;
+
+export const Contents = styled.div`
+  ${mixins.onDesktop(css`
+    position: sticky;
+    height: 100%;
+    margin-top: 4rem;
+    top: 5rem;
+  `)};
+  ${mixins.onMobile(css`
+    display: none;
+  `)};
+  //padding: 0 1rem;
+`;
+
+export const ContentsItem = styled.div`
+  padding-left: ${({ $level }) => 12 * $level}px;
+  font-size: 16px;
+  line-height: 2;
+  cursor: pointer;
+  color: ${({ $selected }) => ($selected ? colors.B1 : '#565656')};
+  border-left: 3px solid ${({ $selected }) => ($selected ? colors.B1 : '#E0E0E0')};
+  &:hover {
+    color: ${colors.B1};
+    border-left: 3px solid ${colors.B1};
   }
 `;

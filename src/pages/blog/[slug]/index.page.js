@@ -238,19 +238,15 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   );
 };
 
-const Content = ({ factory, fragment, onChange }) => {
+const Content = ({ factory, fragment, ...props }) => {
   const html = useMemo(() => {
     if (!process.browser) {
       return factory.generateHtml(fragment);
     }
   }, [factory, fragment]);
 
-  // const handleChange = (descendants) => {
-  //   console.log('descendants', descendants)
-  // }
-
   if (process.browser) {
-    return <TiEditor value={fragment} onChange={onChange} factory={factory} disabled />;
+    return <TiEditor value={fragment} factory={factory} disabled {...props} />;
   } else {
     return <article dangerouslySetInnerHTML={{ __html: html }} />;
   }

@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
@@ -21,8 +21,6 @@ import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
 import { MeContext } from '~/context';
 import Anchor from '~/components/Anchor';
-
-const noop = () => {};
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -131,6 +129,15 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     return [blog.category?.name ?? '', ...(blog.tags ?? []).map((tag) => tag.name)];
   }, [blog]);
 
+  const contents = useMemo(() => {
+    return fragment
+      .filter((value) => value.type === 'heading')
+      .map((value) => ({
+        level: value.depth,
+        title: value.children?.reduce((title, value) => `${title} ${value?.text}`, ''),
+      }));
+  }, [fragment]);
+
   if (error) return <ErrorPage error={error} />;
   // if (loading) return <Skeleton active />;
 
@@ -219,16 +226,11 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
           ) : undefined}
         </Styled.Main>
         <Styled.Contents>
-          <Styled.ContentsItem $level={1}>PD 调度原理</Styled.ContentsItem>
-          <Styled.ContentsItem $level={2}>PD 调度原理PD 调度原理PD 调度原理PD 调度原理PD 调度原理</Styled.ContentsItem>
-          <Styled.ContentsItem $level={2}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={3}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={2}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={3}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={4}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={5}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={5}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
-          <Styled.ContentsItem $level={1}>PD 调fdsafsafsafsafasfas</Styled.ContentsItem>
+          {contents.map((value, index) => (
+            <Styled.ContentsItem key={index} $level={value.level}>
+              {value.title}
+            </Styled.ContentsItem>
+          ))}
         </Styled.Contents>
       </Styled.Content>
       {/*</Styled.VisualContainer>*/}
@@ -236,15 +238,19 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   );
 };
 
-const Content = ({ factory, fragment }) => {
+const Content = ({ factory, fragment, onChange }) => {
   const html = useMemo(() => {
     if (!process.browser) {
       return factory.generateHtml(fragment);
     }
   }, [factory, fragment]);
 
+  // const handleChange = (descendants) => {
+  //   console.log('descendants', descendants)
+  // }
+
   if (process.browser) {
-    return <TiEditor value={fragment} onChange={noop} factory={factory} disabled />;
+    return <TiEditor value={fragment} onChange={onChange} factory={factory} disabled />;
   } else {
     return <article dangerouslySetInnerHTML={{ __html: html }} />;
   }

@@ -11,11 +11,7 @@ const TooltipContent = () => (
     <br />
     工作时间：周一至周五 10:00 - 18:00 一小时内响应
     <br />
-    非工作时间（含法定节假日）：顺延至下一个工作日 11:00 前响应（如遇线上紧急事故，请
-    <Link href="/contact-us/incident" target="_blank" rel="noreferrer">
-      联系社区专家
-    </Link>
-    ）
+    非工作时间（含法定节假日）：顺延至下一个工作日 11:00 前响应
   </Styled.Tooltips>
 );
 

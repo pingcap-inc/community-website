@@ -98,10 +98,6 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData, redDo
       ...restActivityData,
     },
     resources: {
-      orgVerificationAgreementsUrl: replaceLink({
-        link: resourcesData.orgVerificationAgreementsUrl,
-        rules,
-      }),
       orgPrivacyAgreementsUrl: replaceLink({
         link: resourcesData.orgPrivacyAgreementsUrl,
         rules,

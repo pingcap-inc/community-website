@@ -8,17 +8,14 @@ export { default as createAppGlobalStyle } from './globalStyle';
 export {
   ActivityBanner,
   ActivityCards,
-  BenefitCards,
   CountDown,
   Footer,
   Header,
   Link,
-  PlainMenu,
   RemoteSelect,
   RemoteAutoComplete,
   Upload,
   UserProfile,
   ViewMoreButton,
-  withActionMenu,
   withVerifyCode,
 } from './components';

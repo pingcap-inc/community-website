@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';
@@ -50,18 +49,7 @@ const PageContent = ({ title }) => {
 
   return (
     <Layout title={title}>
-      {redDots.joinOrg && (
-        <Styled.Alert
-          type="info"
-          showIcon
-          message={
-            <>
-              完成公司信息填写可 +20 积分，完成认证可以获得 +200 经验值，+200 积分
-              <Link href="/account/organization/new">点击完成认证</Link>
-            </>
-          }
-        />
-      )}
+      {redDots.joinOrg && <Styled.Alert type="info" showIcon message={<>完成公司信息填写可 +20 积分</>} />}
       <Form />
     </Layout>
   );

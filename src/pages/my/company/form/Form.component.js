@@ -1,6 +1,5 @@
 import * as R from 'ramda';
-import Link from 'next/link';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
 import { Form, FormItem, Select } from 'formik-antd';
@@ -8,14 +7,12 @@ import { Formik } from 'formik';
 import { api } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
-import { MeContext } from '~/context';
 import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 import { fetchOrganizationOptions } from '~/utils/form.utils';
 import { RemoteSelect } from '@tidb-community/ui';
 
 const FormComponent = () => {
-  const { meData } = useContext(MeContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: profileResp, error } = useSWR('profile.fetch');
   const isLoading = !error && !profileResp;
@@ -63,14 +60,7 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24} md={12}>
-              <FormItem
-                label={
-                  <Styled.Label>
-                    公司名称 {!isEditable && <Link href={`/orgs/${meData.org.slug}/home`}>前往团队主页</Link>}
-                  </Styled.Label>
-                }
-                name={companyName.name}
-              >
+              <FormItem label={<Styled.Label>公司名称</Styled.Label>} name={companyName.name}>
                 <RemoteSelect {...companyName} {...fetchOpt} disabled={!isEditable} />
               </FormItem>
 

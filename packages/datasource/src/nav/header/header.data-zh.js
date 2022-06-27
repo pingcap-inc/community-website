@@ -185,38 +185,10 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     },
   ];
 
-  // has been logged in and joined an org
-  if (meData.org) {
-    items.push({
-      title: '我的团队',
-      link: `https://tidb.net/orgs/${meData.org.slug}/home`,
-    });
-  } else {
-    items.splice(1, 0, {
-      title: '团队认证',
-      link: 'https://tidb.net/account/organization/new',
-      badge: redDots.orgEnroll,
-    });
-  }
-
-  if (meData.org_invitations?.length) {
-    items.push({
-      title: '团队邀请',
-      link: 'https://tidb.net/account/organization/invitations',
-      badge: meData.org_invitations.some((item) => item.valid),
-    });
-  }
-
-  items.push(
-    {
-      title: '团队权益',
-      link: 'https://tidb.net/account/organization/benefits',
-    },
-    {
-      title: '退出登录',
-      event: 'onLogoutClick',
-    }
-  );
+  items.push({
+    title: '退出登录',
+    event: 'onLogoutClick',
+  });
 
   return items;
 };

@@ -63,14 +63,7 @@ const FormComponent = () => {
         <Form layout="vertical">
           <Row gutter={32}>
             <Col xs={24} md={12}>
-              <FormItem
-                label={
-                  <Styled.Label>
-                    公司名称 {!isEditable && <Link href={`/orgs/${meData.org.slug}/home`}>前往团队主页</Link>}
-                  </Styled.Label>
-                }
-                name={companyName.name}
-              >
+              <FormItem label={<Styled.Label>公司名称</Styled.Label>} name={companyName.name}>
                 <RemoteSelect {...companyName} {...fetchOpt} disabled={!isEditable} />
               </FormItem>
 

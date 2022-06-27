@@ -98,32 +98,6 @@ const Page = () => (
             <td>说明</td>
           </tr>
           <tr>
-            <td rowSpan="8">社区官网</td>
-            <td>
-              完成<Anchor href="/account/organization/new">团队认证</Anchor>，并审核通过
-            </td>
-            <td>200</td>
-            <td>200</td>
-            <td>仅第一次企业认证奖励</td>
-            <td>
-              如果你需要获得快速 “加急”处理问题的权限，加快问题响应速度，
-              <Anchor href="/account/organization/new">点击完成认证</Anchor>
-              ，获得“加急”处理问题的权限，方便你更快速地解决问题。 认证后在
-              导航栏：我的团队-全部主题-加急，直接加急你的问题 。
-            </td>
-          </tr>
-          <tr>
-            <td>邀请新用户加入团队</td>
-            <td>20</td>
-            <td>20</td>
-            <td>不限制</td>
-            <td>
-              <Anchor href="/account/organization/new">认证团队</Anchor>
-              中邀请一位从未加入过团队的用户成功加入团队时奖励邀请人。 邀请入口:{' '}
-              <Anchor href="/account/organization/new">我的团队</Anchor>-成员-添加成员
-            </td>
-          </tr>
-          <tr>
             <td>
               完成<Anchor href="/my/company">公司信息</Anchor>填写
             </td>
@@ -293,7 +267,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/6">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/6">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -302,7 +276,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/600003">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/600003">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -311,7 +285,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/30002">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/30002">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -320,7 +294,7 @@ const Page = () => (
             <td>100</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/120005">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/120005">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -329,7 +303,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/570012">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/570012">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -338,7 +312,7 @@ const Page = () => (
             <td>100</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/540005">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/540005">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -347,7 +321,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-            <Anchor href="https://learn.pingcap.com/learner/course/690007">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/course/690007">点击学习</Anchor>
             </td>
           </tr>
           <tr>

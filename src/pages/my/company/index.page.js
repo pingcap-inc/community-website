@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import React, { useContext, useEffect } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';

@@ -1,6 +1,5 @@
 import * as R from 'ramda';
-import Link from 'next/link';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
 import { Form, FormItem, Select } from 'formik-antd';
@@ -8,14 +7,12 @@ import { Formik } from 'formik';
 import { api } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
-import { MeContext } from '~/context';
 import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 import { fetchOrganizationOptions } from '~/utils/form.utils';
 import { RemoteSelect } from '@tidb-community/ui';
 
 const FormComponent = () => {
-  const { meData } = useContext(MeContext);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { data: profileResp, error } = useSWR('profile.fetch');
   const isLoading = !error && !profileResp;

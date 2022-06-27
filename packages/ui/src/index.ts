@@ -17,6 +17,5 @@ export {
   Upload,
   UserProfile,
   ViewMoreButton,
-  withActionMenu,
   withVerifyCode,
 } from './components';

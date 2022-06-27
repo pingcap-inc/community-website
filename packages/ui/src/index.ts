@@ -12,7 +12,6 @@ export {
   Footer,
   Header,
   Link,
-  PlainMenu,
   RemoteSelect,
   RemoteAutoComplete,
   Upload,

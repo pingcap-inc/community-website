@@ -808,6 +808,7 @@ export const NewsCard = styled(DummyNewsCard)`
 `;
 
 export const WinnerCardOverlay = styled.div`
+  display: none;
   top: 0;
   left: 0;
   right: 0;
@@ -817,7 +818,7 @@ export const WinnerCardOverlay = styled.div`
   font-weight: 300;
   position: absolute;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   text-align: start;
@@ -845,13 +846,7 @@ export const WinnerCard = styled(DummyNewsCard)`
     }
 
     ${WinnerCardOverlay} {
-      display: inherit;
-    }
-  }
-
-  &:not(:hover) {
-    ${WinnerCardOverlay} {
-      display: none;
+      display: block !important;
     }
   }
 `;

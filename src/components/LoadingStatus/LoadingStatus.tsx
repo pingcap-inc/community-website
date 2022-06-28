@@ -8,8 +8,8 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 export default function LoadingStatus(props: IProps) {
   const { children, ...rest } = props;
   return (
-    <Spin spinning {...rest}>
-      {children}
-    </Spin>
+    <div {...rest}>
+      <Spin spinning>{children}</Spin>
+    </div>
   );
 }

@@ -845,7 +845,7 @@ export const WinnerCard = styled(DummyNewsCard)`
       display: none;
     }
 
-    ${WinnerCardOverlay} {
+    .winner-card-overlay {
       display: block !important;
     }
   }

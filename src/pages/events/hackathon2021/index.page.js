@@ -76,7 +76,7 @@ const WinnerCard = ({ github, intro, video, name, prize, rfc, src, sm }) => {
           <Styled.WinnerCardContent sm={sm}>
             {prize} <br /> {name}
           </Styled.WinnerCardContent>
-          <Styled.WinnerCardOverlay>{intro}</Styled.WinnerCardOverlay>
+          <Styled.WinnerCardOverlay className={'winner-card-overlay'}>{intro}</Styled.WinnerCardOverlay>
         </Styled.WinnerCard>
       </div>
       <Styled.WinnerRow justify="center" gutter={16}>

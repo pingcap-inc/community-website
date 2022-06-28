@@ -14,7 +14,7 @@ const textColor = '#fff';
 
 export const getImage = (name) =>
   process.env.NEXT_PUBLIC_RUNTIME_ENV !== 'local'
-    ? `${process.env.NEXT_PUBLIC_CDN_URL}/${name}`
+    ? `${process.env.NEXT_PUBLIC_CDN_URL}/images/hackathon/${name}`
     : `/images/hackathon/${name}`;
 
 const horizontalPadding = css`
@@ -491,7 +491,7 @@ export const JudgeCardOverlay = styled.div`
   position: absolute;
   bottom: 2rem;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   ${(props) =>
     props.sm
       ? css`
@@ -817,7 +817,7 @@ export const WinnerCardOverlay = styled.div`
   font-weight: 300;
   position: absolute;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   text-align: start;

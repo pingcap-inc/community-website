@@ -199,7 +199,7 @@ const Page = ({ data }) => {
                 <WinnerCard
                   name={item.name}
                   prize={item.prize}
-                  src={`/images/hackathon/winner-${item.name}.jpg`}
+                  src={getImage(`winner-${item.name}.jpg`)}
                   sm={isSmallScreen}
                   intro={item.intro}
                   github={item.github}

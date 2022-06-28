@@ -491,7 +491,7 @@ export const JudgeCardOverlay = styled.div`
   position: absolute;
   bottom: 2rem;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   ${(props) =>
     props.sm
       ? css`

@@ -817,7 +817,7 @@ export const WinnerCardOverlay = styled.div`
   font-weight: 300;
   position: absolute;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem;
   text-align: start;

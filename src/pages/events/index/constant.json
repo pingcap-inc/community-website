@@ -7,11 +7,11 @@
     "title": "特色专区",
     "card": [
       {
-        "title": "TiDB 社区专栏第一届征文大赛",
-        "desc": "【征文大赛】TiDB 社区专栏第一届征文大赛，快来一次性集齐所有周边吧！",
+        "title": "Talent Plan 2022 TinySQL 学习营",
+        "desc": "和南大同学一起学习，动手搭建一个 mini 分布式关系型数据库吧！",
         "button": "前往查看",
-        "link": "https://tidb.net/blog/ab7959f4",
-        "image": "/images/activities/tidb-blog-1.jpg"
+        "link": "https://asktug.com/t/topic/694591",
+        "image": "/images/activities/talent-plan-2022-tinysql-learning-post"
       },
       {
         "title": "TUG 企业行",

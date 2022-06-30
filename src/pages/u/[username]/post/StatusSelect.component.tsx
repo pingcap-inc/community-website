@@ -49,5 +49,6 @@ export default function StatusSelect({ shallow, ...props }: IProps): JSX.Element
     const newUrl = `/u/${encodeURIComponent(username as string)}/post/${url}`;
     await router.push(newUrl, newUrl, { shallow: shallow ?? false });
   };
+  //@ts-ignore
   return <Select style={{ width: '8rem' }} options={statuses} onChange={onChangeFilter} {...props} />;
 }

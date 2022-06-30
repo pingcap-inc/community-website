@@ -1,5 +1,5 @@
 import * as Yup from 'yup';
-import { api, getFormData } from '@tidb-community/datasource';
+import { getFormData } from '@tidb-community/datasource';
 import { utils } from '@tidb-community/common';
 import { enums } from './fields';
 import * as Styled from './form.styled';
@@ -8,14 +8,6 @@ const { stageOfCompanyUseOfTidb, preferredWayOfSharing, rolesWantToPlay, channel
 const { buildSchema } = utils.form;
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
-
-export const fetchOrganizationOptions = (word) =>
-  api.orgs.searchCompany({ word }).then((result) =>
-    result.data.map(({ name }) => ({
-      label: name,
-      value: name,
-    }))
-  );
 
 const data = {
   form: {

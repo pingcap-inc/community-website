@@ -5,6 +5,10 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const { i18n } = require('./next-i18next.config');
 
+const os = require('os');
+const platform = os.platform();
+const outputStandaloneEnable = platform === 'win32' ? false : true;
+
 const unifyNodeModules = (names) =>
   names.reduce(
     (acc, name) => ({
@@ -44,7 +48,7 @@ const config = {
    * for building the docker image
    */
   experimental: {
-    outputStandalone: true,
+    outputStandalone: outputStandaloneEnable,
   },
 
   // https://nextjs.org/docs/api-reference/next.config.js/custom-webpack-config

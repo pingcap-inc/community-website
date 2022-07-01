@@ -8,7 +8,7 @@ export const postImageUrl = getImage('post.png');
 
 export const question = 'TUG 是什么';
 
-export const answer = 'TUG 是汇聚全球数据库、⼤数据技术从业者的社区，是⼀个独⽴、⾃发、不以盈利为⽬的的组织。';
+export const answer = 'TUG 是汇聚全球数据库、大数据技术从业者的社区，是一个独立、自发、不以盈利为目的的组织。';
 
 export const whyJoinTitle = '加⼊TUG ，你能获得什么？';
 

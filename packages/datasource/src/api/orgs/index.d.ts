@@ -1,1 +1,0 @@
-export { searchCompany } from './searchCompany';

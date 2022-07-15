@@ -153,8 +153,9 @@ export const Contents = styled.div`
   //padding: 0 1rem;
 `;
 
-export const ContentsItem = styled.div`
-  padding-left: ${({ $level }) => 12 * $level}px;
+export const ContentsItem = styled.a`
+  display: block;
+  padding-left: ${({ $level }) => 8 * $level}px;
   font-size: 16px;
   line-height: 2;
   cursor: pointer;

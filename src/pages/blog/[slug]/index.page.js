@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useMemo, useState } from 'react';
+import React, { useCallback, useContext, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
@@ -68,11 +68,26 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const error = blogError;
   // const loading = !blog || hasPermission === undefined;
 
-  const factory = useMemo(() => createFactory(), []);
-
   const fragment = useMemo(() => {
     return JSON.parse(blog?.content ?? '[]');
   }, [blog]);
+
+  const factory = useMemo(
+    () =>
+      createFactory((factory) => {
+        factory.onEditorMounted((editor) => {
+          factory.generateHeadingId(fragment);
+          // setTimeout(() => {
+          //   HistoryEditor.withoutSaving(editor, () => {
+          //     // Transforms.select(editor, [0])
+          //     factory.generateHeadingId(fragment);
+          //     editor.insertFragment(fragment)
+          //   })
+          // }, 0)
+        });
+      }),
+    []
+  );
 
   const onTotalCommentsChange = useCallback(
     (count) => {
@@ -134,7 +149,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
       .filter((value) => value.type === 'heading')
       .map((value) => ({
         level: value.depth,
-        title: value.children?.reduce((title, value) => `${title} ${value?.text}`, ''),
+        title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
       }));
   }, [fragment]);
 
@@ -227,7 +242,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
         </Styled.Main>
         <Styled.Contents>
           {contents.map((value, index) => (
-            <Styled.ContentsItem key={index} $level={value.level}>
+            <Styled.ContentsItem key={index} $level={value.level} href={`#${value.title}`}>
               {value.title}
             </Styled.ContentsItem>
           ))}

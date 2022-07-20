@@ -155,12 +155,16 @@ export const Contents = styled.div`
 
 export const ContentsItem = styled.a`
   display: block;
-  padding-left: ${({ $level }) => 8 * $level}px;
+  padding-left: ${({ $level }) => 12 * $level}px;
   font-size: 16px;
   line-height: 2;
   cursor: pointer;
   color: ${({ $selected }) => ($selected ? colors.B1 : '#565656')};
   border-left: 3px solid ${({ $selected }) => ($selected ? colors.B1 : '#E0E0E0')};
+  .is-active {
+    color: ${colors.B1};
+    border-left-color: ${colors.B1};
+  }
   &:hover {
     color: ${colors.B1};
     border-left: 3px solid ${colors.B1};

@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
 import NextHead from 'next/head';
 import Link from 'next/link';
+
 import * as Styled from './blog.styled';
 import { CoreLayout } from '~/layouts';
 import { OriginLabel, RepostLabel } from './components/labels';
@@ -21,6 +22,7 @@ import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
 import { MeContext } from '~/context';
 import Anchor from '~/components/Anchor';
+import { throttle } from 'lodash';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -76,7 +78,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     () =>
       createFactory((factory) => {
         factory.onEditorMounted((editor) => {
-          factory.generateHeadingId(fragment);
+          factory.generateHeadingId(fragment, 6);
           // setTimeout(() => {
           //   HistoryEditor.withoutSaving(editor, () => {
           //     // Transforms.select(editor, [0])
@@ -86,7 +88,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
           // }, 0)
         });
       }),
-    []
+    [fragment]
   );
 
   const onTotalCommentsChange = useCallback(
@@ -152,6 +154,37 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
         title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
       }));
   }, [fragment]);
+
+  useEffect(() => {
+    const handler = throttle(() => {
+      contents.forEach((value) => {
+        const id = value.title;
+        const contentsElement = document.getElementById(`contents-${id}`);
+        if (contentsElement) {
+          contentsElement.style.color = '#565656';
+          contentsElement.style.borderLeftColor = '#E0E0E0';
+        }
+      });
+      for (let i = contents.length - 1; i >= 0; --i) {
+        const value = contents[i];
+        const id = value.title;
+        const element = document.getElementById(id);
+        if (element) {
+          const topDiff = element.getBoundingClientRect().top;
+          if (topDiff < 84) {
+            const contentsElement = document.getElementById(`contents-${id}`);
+            if (contentsElement) {
+              contentsElement.style.color = '#be1d32';
+              contentsElement.style.borderLeftColor = '#be1d32';
+            }
+            return;
+          }
+        }
+      }
+    }, 250);
+    window.document.addEventListener('scroll', handler);
+    return () => window.document.removeEventListener('scroll', handler);
+  }, [contents]);
 
   if (error) return <ErrorPage error={error} />;
   // if (loading) return <Skeleton active />;
@@ -240,11 +273,20 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             <Comments blog={blog} onTotalCommentsChange={onTotalCommentsChange} />
           ) : undefined}
         </Styled.Main>
+
         <Styled.Contents>
           {contents.map((value, index) => (
-            <Styled.ContentsItem key={index} $level={value.level} href={`#${value.title}`}>
+            <Styled.ContentsItem
+              key={index}
+              $level={value.level}
+              href={`#${value.title}`}
+              id={`contents-${value.title}`}
+            >
               {value.title}
             </Styled.ContentsItem>
+            // <a key={index} href={`#${value.title}`}>
+            //   {value.level} - {value.title}
+            // </a>
           ))}
         </Styled.Contents>
       </Styled.Content>

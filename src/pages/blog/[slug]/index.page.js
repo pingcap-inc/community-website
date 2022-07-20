@@ -77,15 +77,8 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const factory = useMemo(
     () =>
       createFactory((factory) => {
-        factory.onEditorMounted((editor) => {
+        factory.onEditorMounted(() => {
           factory.generateHeadingId(fragment, 6);
-          // setTimeout(() => {
-          //   HistoryEditor.withoutSaving(editor, () => {
-          //     // Transforms.select(editor, [0])
-          //     factory.generateHeadingId(fragment);
-          //     editor.insertFragment(fragment)
-          //   })
-          // }, 0)
         });
       }),
     [fragment]

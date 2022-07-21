@@ -22,7 +22,7 @@ import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
 import { MeContext } from '~/context';
 import Anchor from '~/components/Anchor';
-import { throttle } from 'lodash';
+import { cloneDeep, throttle } from 'lodash';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -71,13 +71,19 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   // const loading = !blog || hasPermission === undefined;
 
   // { type: "paragraph", children: [{ "text": "" }]}
-  const fragment = useMemo(() => JSON.parse(blog?.content ?? '[]'), [blog]);
+  const fragment = useMemo(() => JSON.parse(blog?.content ?? '[]'), [blog?.content]);
 
   const factory = useMemo(() => createFactory(() => {}), []);
 
-  useEffect(() => {
-    factory.generateHeadingId(fragment, 6);
-  }, [fragment, factory]);
+  const clonedFragment = useMemo(() => {
+    const cloned = cloneDeep(fragment);
+    factory.generateHeadingId(cloned);
+    return cloned;
+  }, [factory, fragment]);
+
+  // useEffect(() => {
+  //   factory.generateHeadingId(clonedFragment)
+  // }, [clonedFragment])
 
   const onTotalCommentsChange = useCallback(
     (count) => {
@@ -135,18 +141,25 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   }, [blog]);
 
   const contents = useMemo(() => {
-    return fragment
+    return clonedFragment
       .filter((value) => value.type === 'heading')
-      .map((value) => ({
-        level: value.depth,
-        title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
-      }));
-  }, [fragment]);
+      .map((value) => {
+        console.log({ value });
+        return {
+          ...value,
+          level: value.depth,
+          title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
+        };
+      });
+  }, [clonedFragment]);
+
+  console.log({ clonedFragment });
+  console.log({ contents });
 
   useEffect(() => {
     const handler = throttle(() => {
       contents.forEach((value) => {
-        const id = value.title;
+        const id = value.id;
         const contentsElement = document.getElementById(`contents-${id}`);
         if (contentsElement) {
           contentsElement.style.color = '#565656';
@@ -155,7 +168,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
       });
       for (let i = contents.length - 1; i >= 0; --i) {
         const value = contents[i];
-        const id = value.title;
+        const id = value.id;
         const element = document.getElementById(id);
         if (element) {
           const topDiff = element.getBoundingClientRect().top;
@@ -237,7 +250,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             </Styled.Meta>
 
             <Styled.Editor>
-              <Content fragment={fragment} factory={factory} />
+              <Content fragment={clonedFragment} factory={factory} />
             </Styled.Editor>
 
             <Styled.BottomActions>
@@ -264,12 +277,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
         <Styled.Contents>
           {contents.map((value, index) => (
-            <Styled.ContentsItem
-              key={index}
-              $level={value.level}
-              href={`#${value.title}`}
-              id={`contents-${value.title}`}
-            >
+            <Styled.ContentsItem key={index} $level={value.level} href={`#${value.id}`} id={`contents-${value.id}`}>
               {value.title}
             </Styled.ContentsItem>
             // <a key={index} href={`#${value.title}`}>

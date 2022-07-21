@@ -138,6 +138,16 @@ export const Editor = styled.div`
   table {
     width: 100% !important;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    &:target {
+      padding-top: 84px;
+    }
+  }
 `;
 
 export const Contents = styled.div`

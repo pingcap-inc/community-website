@@ -70,9 +70,8 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const error = blogError;
   // const loading = !blog || hasPermission === undefined;
 
-  const fragment = useMemo(() => {
-    return JSON.parse(blog?.content ?? '[]');
-  }, [blog]);
+  // { type: "paragraph", children: [{ "text": "" }]}
+  const fragment = useMemo(() => JSON.parse(blog?.content ?? '[]'), [blog]);
 
   const factory = useMemo(
     () =>

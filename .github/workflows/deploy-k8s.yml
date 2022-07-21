@@ -34,4 +34,4 @@ jobs:
           key: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
           envs: JUMP_SERVER_PATH
           script: |
-            sh ${JUMP_SERVER_PATH}/deploy_preview.sh ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}
+            sh ${JUMP_SERVER_PATH}/deploy_${{ inputs.build-env }}.sh ${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}

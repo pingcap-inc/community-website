@@ -73,15 +73,11 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   // { type: "paragraph", children: [{ "text": "" }]}
   const fragment = useMemo(() => JSON.parse(blog?.content ?? '[]'), [blog]);
 
-  const factory = useMemo(
-    () =>
-      createFactory((factory) => {
-        factory.onEditorMounted(() => {
-          factory.generateHeadingId(fragment, 6);
-        });
-      }),
-    [fragment]
-  );
+  const factory = useMemo(() => createFactory(() => {}), []);
+
+  useEffect(() => {
+    factory.generateHeadingId(fragment, 6);
+  }, [fragment, factory]);
 
   const onTotalCommentsChange = useCallback(
     (count) => {

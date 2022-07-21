@@ -14,7 +14,7 @@ export const Title = styled.h1`
   ${mixins.typography('p1')};
   ${mixins.reset()};
   font-weight: bold;
-  colors: ${colors.F1};
+  color: ${colors.F1};
   padding: 0.8rem 1rem;
   border-bottom: 1px solid ${colors.T2};
 `;

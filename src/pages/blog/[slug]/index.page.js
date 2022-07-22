@@ -153,9 +153,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
       });
   }, [clonedFragment]);
 
-  console.log({ clonedFragment });
-  console.log({ contents });
-
   useEffect(() => {
     const handler = throttle(() => {
       contents.forEach((value) => {
@@ -280,9 +277,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             <Styled.ContentsItem key={index} $level={value.level} href={`#${value.id}`} id={`contents-${value.id}`}>
               {value.title}
             </Styled.ContentsItem>
-            // <a key={index} href={`#${value.title}`}>
-            //   {value.level} - {value.title}
-            // </a>
           ))}
         </Styled.Contents>
       </Styled.Content>

@@ -3,6 +3,8 @@ import { transparentize } from 'polished';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
+const sidebarTopPadding = '72px'
+
 export const MainWrapper = styled.div`
   background: #e9eaee;
 `;
@@ -24,7 +26,7 @@ export const Side = styled.div`
   ${mixins.onDesktop(css`
     position: sticky;
     height: 100%;
-    margin-top: 4rem;
+    margin-top: ${sidebarTopPadding};
     top: 5rem;
   `)};
   ${mixins.onMobile(css`
@@ -154,7 +156,7 @@ export const Contents = styled.div`
   ${mixins.onDesktop(css`
     position: sticky;
     height: 100%;
-    margin-top: 4rem;
+    margin-top: ${sidebarTopPadding};
     top: 5rem;
   `)};
   ${mixins.onMobile(css`

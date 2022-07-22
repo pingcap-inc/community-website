@@ -178,7 +178,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
           }
         }
       }
-    }, 250);
+    }, 200);
     window.document.addEventListener('scroll', handler);
     return () => window.document.removeEventListener('scroll', handler);
   }, [contents]);

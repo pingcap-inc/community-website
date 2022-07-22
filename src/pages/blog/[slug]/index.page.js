@@ -144,7 +144,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     return clonedFragment
       .filter((value) => value.type === 'heading')
       .map((value) => {
-        console.log({ value });
         return {
           ...value,
           level: value.depth,

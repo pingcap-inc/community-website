@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
@@ -152,16 +152,18 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
       }));
   }, [clonedFragment]);
 
+  const [currentHighlightId, setCurrentHighlightId] = useState('');
+
   useEffect(() => {
     const handler = throttle(() => {
-      contents.forEach((value) => {
-        const id = value.id;
-        const contentsElement = document.getElementById(`contents-${id}`);
-        if (contentsElement) {
-          contentsElement.style.color = '#565656';
-          contentsElement.style.borderLeftColor = '#E0E0E0';
-        }
-      });
+      // contents.forEach((value) => {
+      //   const id = value.id;
+      //   const contentsElement = document.getElementById(`contents-${id}`);
+      //   if (contentsElement) {
+      //     contentsElement.style.color = '#565656';
+      //     contentsElement.style.borderLeftColor = '#E0E0E0';
+      //   }
+      // });
       for (let i = contents.length - 1; i >= 0; --i) {
         const value = contents[i];
         const id = value.id;
@@ -169,11 +171,12 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
         if (element) {
           const topDiff = element.getBoundingClientRect().top;
           if (topDiff < 84) {
-            const contentsElement = document.getElementById(`contents-${id}`);
-            if (contentsElement) {
-              contentsElement.style.color = '#be1d32';
-              contentsElement.style.borderLeftColor = '#be1d32';
-            }
+            setCurrentHighlightId(id);
+            // const contentsElement = document.getElementById(`contents-${id}`);
+            // if (contentsElement) {
+            //   contentsElement.style.color = '#be1d32';
+            //   contentsElement.style.borderLeftColor = '#be1d32';
+            // }
             return;
           }
         }
@@ -273,7 +276,12 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
         <Styled.Contents>
           {contents.map((value, index) => (
-            <Styled.ContentsItem key={index} $level={value.level} href={`#${value.id}`} id={`contents-${value.id}`}>
+            <Styled.ContentsItem
+              key={index}
+              $level={value.level}
+              $selected={value.id === currentHighlightId}
+              href={`#${value.id}`}
+            >
               {value.title}
             </Styled.ContentsItem>
           ))}

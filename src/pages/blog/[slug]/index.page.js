@@ -75,9 +75,11 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
   const factory = useMemo(() => createFactory(() => {}), []);
 
+  const maxLevel = 3;
+
   const clonedFragment = useMemo(() => {
     const cloned = cloneDeep(fragment);
-    factory.generateHeadingId(cloned);
+    factory.generateHeadingId(cloned, maxLevel);
     return cloned;
   }, [factory, fragment]);
 
@@ -142,14 +144,12 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
   const contents = useMemo(() => {
     return clonedFragment
-      .filter((value) => value.type === 'heading')
-      .map((value) => {
-        return {
-          ...value,
-          level: value.depth,
-          title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
-        };
-      });
+      .filter((value) => value.type === 'heading' && value.depth <= maxLevel)
+      .map((value) => ({
+        ...value,
+        level: value.depth,
+        title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
+      }));
   }, [clonedFragment]);
 
   useEffect(() => {

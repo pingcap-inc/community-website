@@ -3,7 +3,7 @@ import { transparentize } from 'polished';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
-const sidebarTopPadding = '72px'
+const sidebarTopPadding = '72px';
 
 export const MainWrapper = styled.div`
   background: #e9eaee;
@@ -163,6 +163,7 @@ export const Contents = styled.div`
     display: none;
   `)};
   //padding: 0 1rem;
+  max-width: 300px;
 `;
 
 export const ContentsItem = styled.a`
@@ -180,4 +181,9 @@ export const ContentsItem = styled.a`
     color: ${colors.B1};
     border-left-color: ${colors.B1};
   }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `;

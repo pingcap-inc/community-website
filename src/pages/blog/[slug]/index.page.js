@@ -83,10 +83,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     return cloned;
   }, [factory, fragment]);
 
-  // useEffect(() => {
-  //   factory.generateHeadingId(clonedFragment)
-  // }, [clonedFragment])
-
   const onTotalCommentsChange = useCallback(
     (count) => {
       reload(

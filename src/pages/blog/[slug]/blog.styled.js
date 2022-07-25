@@ -3,7 +3,8 @@ import { transparentize } from 'polished';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
-const sidebarTopPadding = '72px';
+const sidebarTopMargin = 88;
+const sidebarTop = 88;
 
 export const anchorScrollOffset = 64;
 
@@ -28,8 +29,8 @@ export const Side = styled.div`
   ${mixins.onDesktop(css`
     position: sticky;
     height: 100%;
-    margin-top: ${sidebarTopPadding};
-    top: 5rem;
+    margin-top: ${sidebarTopMargin}px;
+    top: ${sidebarTop}px;
   `)};
   ${mixins.onMobile(css`
     display: none;
@@ -56,11 +57,16 @@ export const Main = styled.div`
   `)};
 `;
 
+export const Center = styled.div`
+  display: flex;
+`;
+
 export const Body = styled.main`
   ${mixins.onMobile(css`
     padding: 2rem 1rem;
     border-radius: 0;
   `)};
+  width: 100%;
   margin-top: 16px;
   padding: 30px 37px;
   border-radius: 6px;
@@ -157,8 +163,8 @@ export const Contents = styled.div`
   ${mixins.onDesktop(css`
     position: sticky;
     height: 100%;
-    margin-top: ${sidebarTopPadding};
-    top: 5rem;
+    margin-top: ${sidebarTopMargin}px;
+    top: ${sidebarTop}px;
   `)};
   ${mixins.onMobile(css`
     display: none;

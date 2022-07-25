@@ -156,14 +156,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
   useEffect(() => {
     const handler = throttle(() => {
-      // contents.forEach((value) => {
-      //   const id = value.id;
-      //   const contentsElement = document.getElementById(`contents-${id}`);
-      //   if (contentsElement) {
-      //     contentsElement.style.color = '#565656';
-      //     contentsElement.style.borderLeftColor = '#E0E0E0';
-      //   }
-      // });
       for (let i = contents.length - 1; i >= 0; --i) {
         const value = contents[i];
         const id = value.id;
@@ -172,11 +164,6 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
           const topDiff = element.getBoundingClientRect().top;
           if (topDiff < 84) {
             setCurrentHighlightId(id);
-            // const contentsElement = document.getElementById(`contents-${id}`);
-            // if (contentsElement) {
-            //   contentsElement.style.color = '#be1d32';
-            //   contentsElement.style.borderLeftColor = '#be1d32';
-            // }
             return;
           }
         }

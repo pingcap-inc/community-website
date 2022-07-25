@@ -175,8 +175,6 @@ export const ContentsItem = styled.a`
   cursor: pointer;
   color: ${({ $selected }) => ($selected ? colors.B1 : '#565656')};
   border-left: 3px solid ${({ $selected }) => ($selected ? colors.B1 : '#E0E0E0')};
-  //color: #565656;
-  //border-left: 3px solid #e0e0e0;
   &:hover {
     color: ${colors.B1};
     border-left-color: ${colors.B1};

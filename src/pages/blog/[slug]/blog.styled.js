@@ -141,6 +141,7 @@ export const Editor = styled.div`
   margin-top: 12px;
   padding: 0 11px;
   a {
+    word-break: break-all;
     color: #73061c;
     &:hover {
       text-decoration: underline;

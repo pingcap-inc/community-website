@@ -201,60 +201,44 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
       {/*<Styled.VisualContainer>*/}
       <Styled.Content>
+        <Styled.Side>
+          <Interactions blog={blog} reload={reload} />
+        </Styled.Side>
         <Styled.Main>
           <Styled.Breadcrumb>{BreadcrumbDOM}</Styled.Breadcrumb>
           <Styled.StatusAlert>
             <StatusAlert blog={blog} />
           </Styled.StatusAlert>
 
-          <Styled.Center>
-            <Styled.Side>
-              <Interactions blog={blog} reload={reload} />
-            </Styled.Side>
+          <Styled.Body>
+            {blog.coverImageURL ? (
+              <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blog.coverImageURL)})` }} />
+            ) : undefined}
 
-            <Styled.Body>
-              {blog.coverImageURL ? (
-                <Styled.CoverImage style={{ backgroundImage: `url(${JSON.stringify(blog.coverImageURL)})` }} />
-              ) : undefined}
+            <Styled.Title>{blog.title}</Styled.Title>
 
-              <Styled.Title>{blog.title}</Styled.Title>
+            <Styled.Meta>
+              <AuthorInfo blog={blog} />
+            </Styled.Meta>
 
-              <Styled.Meta>
-                <AuthorInfo blog={blog} />
-              </Styled.Meta>
+            <Styled.Meta>
+              {blog.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
 
-              <Styled.Meta>
-                {blog.origin !== 'ORIGINAL' ? <RepostLabel>转载</RepostLabel> : <OriginLabel>原创</OriginLabel>}
-
-                {blog.tags.map((tag) => (
-                  <Link href={`/blog/tag/${tag.slug}`} passHref>
-                    <BlogInfo.Tag key={tag.slug}>{tag.name}</BlogInfo.Tag>
-                  </Link>
-                ))}
-              </Styled.Meta>
-
-              <Styled.Editor>
-                <Content fragment={clonedFragment} factory={factory} />
-              </Styled.Editor>
-
-              <Styled.BottomActions>
-                <Interactions blog={blog} reload={reload} />
-              </Styled.BottomActions>
-            </Styled.Body>
-
-            <Styled.Contents>
-              {contents.map((value, index) => (
-                <Styled.ContentsItem
-                  key={index}
-                  $level={value.level}
-                  $selected={value.id === currentHighlightId}
-                  href={`#${value.id}`}
-                >
-                  {value.title}
-                </Styled.ContentsItem>
+              {blog.tags.map((tag) => (
+                <Link href={`/blog/tag/${tag.slug}`} passHref>
+                  <BlogInfo.Tag key={tag.slug}>{tag.name}</BlogInfo.Tag>
+                </Link>
               ))}
-            </Styled.Contents>
-          </Styled.Center>
+            </Styled.Meta>
+
+            <Styled.Editor>
+              <Content fragment={clonedFragment} factory={factory} />
+            </Styled.Editor>
+
+            <Styled.BottomActions>
+              <Interactions blog={blog} reload={reload} />
+            </Styled.BottomActions>
+          </Styled.Body>
 
           <Styled.Declaration>
             {blog.origin !== 'ORIGINAL' ? (
@@ -272,6 +256,19 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             <Comments blog={blog} onTotalCommentsChange={onTotalCommentsChange} />
           ) : undefined}
         </Styled.Main>
+
+        <Styled.Contents>
+          {contents.map((value, index) => (
+            <Styled.ContentsItem
+              key={index}
+              $level={value.level}
+              $selected={value.id === currentHighlightId}
+              href={`#${value.id}`}
+            >
+              {value.title}
+            </Styled.ContentsItem>
+          ))}
+        </Styled.Contents>
       </Styled.Content>
       {/*</Styled.VisualContainer>*/}
     </CoreLayout>

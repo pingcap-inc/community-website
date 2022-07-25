@@ -1,9 +1,10 @@
-import React, { useCallback, useContext, useMemo } from 'react';
+import React, { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
 import NextHead from 'next/head';
 import Link from 'next/link';
+
 import * as Styled from './blog.styled';
 import { CoreLayout } from '~/layouts';
 import { OriginLabel, RepostLabel } from './components/labels';
@@ -21,8 +22,7 @@ import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
 import { MeContext } from '~/context';
 import Anchor from '~/components/Anchor';
-
-const noop = () => {};
+import { cloneDeep, throttle } from 'lodash';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -70,11 +70,18 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   const error = blogError;
   // const loading = !blog || hasPermission === undefined;
 
-  const factory = useMemo(() => createFactory(), []);
+  // { type: "paragraph", children: [{ "text": "" }]}
+  const fragment = useMemo(() => JSON.parse(blog?.content ?? '[]'), [blog?.content]);
 
-  const fragment = useMemo(() => {
-    return JSON.parse(blog?.content ?? '[]');
-  }, [blog]);
+  const factory = useMemo(() => createFactory(() => {}), []);
+
+  const maxLevel = 3;
+
+  const clonedFragment = useMemo(() => {
+    const cloned = cloneDeep(fragment);
+    factory.generateHeadingId(cloned, maxLevel);
+    return cloned;
+  }, [factory, fragment]);
 
   const onTotalCommentsChange = useCallback(
     (count) => {
@@ -130,6 +137,37 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
     }
     return [blog.category?.name ?? '', ...(blog.tags ?? []).map((tag) => tag.name)];
   }, [blog]);
+
+  const contents = useMemo(() => {
+    return clonedFragment
+      .filter((value) => value.type === 'heading' && value.depth <= maxLevel)
+      .map((value) => ({
+        ...value,
+        level: value.depth,
+        title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
+      }));
+  }, [clonedFragment]);
+
+  const [currentHighlightId, setCurrentHighlightId] = useState('');
+
+  useEffect(() => {
+    const handler = throttle(() => {
+      for (let i = contents.length - 1; i >= 0; --i) {
+        const value = contents[i];
+        const id = value.id;
+        const element = document.getElementById(id);
+        if (element) {
+          const topDiff = element.getBoundingClientRect().top;
+          if (i === 0 || topDiff < Styled.anchorScrollOffset) {
+            setCurrentHighlightId(id);
+            return;
+          }
+        }
+      }
+    }, 50);
+    window.document.addEventListener('scroll', handler);
+    return () => window.document.removeEventListener('scroll', handler);
+  }, [contents]);
 
   if (error) return <ErrorPage error={error} />;
   // if (loading) return <Skeleton active />;
@@ -194,7 +232,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             </Styled.Meta>
 
             <Styled.Editor>
-              <Content fragment={fragment} factory={factory} />
+              <Content fragment={clonedFragment} factory={factory} />
             </Styled.Editor>
 
             <Styled.BottomActions>
@@ -218,13 +256,26 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
             <Comments blog={blog} onTotalCommentsChange={onTotalCommentsChange} />
           ) : undefined}
         </Styled.Main>
+
+        <Styled.Contents>
+          {contents.map((value, index) => (
+            <Styled.ContentsItem
+              key={index}
+              $level={value.level}
+              $selected={value.id === currentHighlightId}
+              href={`#${value.id}`}
+            >
+              {value.title}
+            </Styled.ContentsItem>
+          ))}
+        </Styled.Contents>
       </Styled.Content>
       {/*</Styled.VisualContainer>*/}
     </CoreLayout>
   );
 };
 
-const Content = ({ factory, fragment }) => {
+const Content = ({ factory, fragment, ...props }) => {
   const html = useMemo(() => {
     if (!process.browser) {
       return factory.generateHtml(fragment);
@@ -232,7 +283,7 @@ const Content = ({ factory, fragment }) => {
   }, [factory, fragment]);
 
   if (process.browser) {
-    return <TiEditor value={fragment} onChange={noop} factory={factory} disabled />;
+    return <TiEditor value={fragment} factory={factory} disabled {...props} />;
   } else {
     return <article dangerouslySetInnerHTML={{ __html: html }} />;
   }

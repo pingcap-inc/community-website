@@ -3,6 +3,11 @@ import { transparentize } from 'polished';
 import { Breadcrumb as AntdBreadcrumb } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
+const sidebarTopMargin = 88;
+const sidebarTop = 88;
+
+export const anchorScrollOffset = 64;
+
 export const MainWrapper = styled.div`
   background: #e9eaee;
 `;
@@ -24,8 +29,8 @@ export const Side = styled.div`
   ${mixins.onDesktop(css`
     position: sticky;
     height: 100%;
-    margin-top: 4rem;
-    top: 2rem;
+    margin-top: ${sidebarTopMargin}px;
+    top: ${sidebarTop}px;
   `)};
   ${mixins.onMobile(css`
     display: none;
@@ -52,11 +57,16 @@ export const Main = styled.div`
   `)};
 `;
 
+export const Center = styled.div`
+  display: flex;
+`;
+
 export const Body = styled.main`
   ${mixins.onMobile(css`
     padding: 2rem 1rem;
     border-radius: 0;
   `)};
+  width: 100%;
   margin-top: 16px;
   padding: 30px 37px;
   border-radius: 6px;
@@ -138,4 +148,48 @@ export const Editor = styled.div`
   table {
     width: 100% !important;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    padding-top: ${anchorScrollOffset}px;
+    margin-top: -${anchorScrollOffset}px;
+  }
+`;
+
+export const Contents = styled.div`
+  ${mixins.onDesktop(css`
+    position: sticky;
+    height: 100%;
+    margin-top: ${sidebarTopMargin}px;
+    padding-bottom: 16px;
+    top: ${sidebarTop}px;
+  `)};
+  ${mixins.onMobile(css`
+    display: none;
+  `)};
+  //padding: 0 1rem;
+  max-width: 300px;
+`;
+
+export const ContentsItem = styled.a`
+  transition: none;
+  display: block;
+  padding-left: ${({ $level }) => 12 * $level}px;
+  font-size: 16px;
+  line-height: 2;
+  cursor: pointer;
+  color: ${({ $selected }) => ($selected ? colors.B1 : '#565656')};
+  border-left: 3px solid ${({ $selected }) => ($selected ? colors.B1 : '#E0E0E0')};
+  &:hover {
+    color: ${colors.B1};
+    border-left-color: ${colors.B1};
+  }
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 `;

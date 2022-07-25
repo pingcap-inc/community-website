@@ -162,13 +162,13 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
         const element = document.getElementById(id);
         if (element) {
           const topDiff = element.getBoundingClientRect().top;
-          if (topDiff < 84) {
+          if (topDiff < Styled.anchorScrollOffset) {
             setCurrentHighlightId(id);
             return;
           }
         }
       }
-    }, 200);
+    }, 100);
     window.document.addEventListener('scroll', handler);
     return () => window.document.removeEventListener('scroll', handler);
   }, [contents]);

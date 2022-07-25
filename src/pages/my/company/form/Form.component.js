@@ -2,10 +2,11 @@ import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
+import {SafetyOutlined} from "@ant-design/icons";
 import { Form, FormItem, Select } from 'formik-antd';
 import { Formik } from 'formik';
-import { api } from '@tidb-community/datasource';
 
+import { api } from '@tidb-community/datasource';
 import * as Styled from './form.styled';
 import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
@@ -77,10 +78,14 @@ const FormComponent = () => {
               >
                 更新信息
               </Button>
+  
             </Col>
 
             <Col xs={24} md={12} />
           </Row>
+          <Styled.Description>
+            <SafetyOutlined /> TiDB 社区保护你的个人隐私，此信息为非公开状态
+          </Styled.Description>
         </Form>
       )}
     </Formik>

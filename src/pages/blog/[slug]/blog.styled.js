@@ -5,7 +5,7 @@ import { colors, mixins } from '@tidb-community/ui';
 
 const sidebarTopPadding = '72px';
 
-export const anchorScrollOffset = 84;
+export const anchorScrollOffset = 64;
 
 export const MainWrapper = styled.div`
   background: #e9eaee;
@@ -150,9 +150,6 @@ export const Editor = styled.div`
   h6 {
     padding-top: ${anchorScrollOffset}px;
     margin-top: -${anchorScrollOffset}px;
-    //&:target {
-    //  padding-top: ${anchorScrollOffset}px;
-    //}
   }
 `;
 

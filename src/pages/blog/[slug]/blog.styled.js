@@ -31,6 +31,7 @@ export const Side = styled.div`
     height: 100%;
     margin-top: ${sidebarTopMargin}px;
     top: ${sidebarTop}px;
+    padding-bottom: 2rem;
   `)};
   ${mixins.onMobile(css`
     display: none;
@@ -164,7 +165,7 @@ export const Contents = styled.div`
     position: sticky;
     height: 100%;
     margin-top: ${sidebarTopMargin}px;
-    padding-bottom: 16px;
+    padding-bottom: 2rem;
     top: ${sidebarTop}px;
   `)};
   ${mixins.onMobile(css`

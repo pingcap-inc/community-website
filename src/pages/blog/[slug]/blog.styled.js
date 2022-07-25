@@ -146,9 +146,11 @@ export const Editor = styled.div`
   h4,
   h5,
   h6 {
-    &:target {
-      padding-top: 84px;
-    }
+    padding-top: 84px;
+    margin-top: -84px;
+    //&:target {
+    //  padding-top: 84px;
+    //}
   }
 `;
 

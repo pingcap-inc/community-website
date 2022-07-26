@@ -102,10 +102,10 @@ export const Meta = styled.div`
 `;
 
 export const Declaration = styled.p`
+  word-break: break-all;
   font-size: 14px;
   line-height: 30px;
-  margin-top: 16px;
-  margin-bottom: 16px;
+  padding: 1rem;
   color: ${transparentize(0.5, colors.F2)};
   a {
     color: #73061c;

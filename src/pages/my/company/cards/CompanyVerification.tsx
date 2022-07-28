@@ -24,6 +24,14 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const handleCancel = (event: React.MouseEvent) => {
     setVisible(false);
   };
+
+  const [sendVerifyCodeLoading, setSendVerifyCodeLoading] = useState(false);
+  const handleSendVerifyCode = async (event: React.MouseEvent) => {
+    setSendVerifyCodeLoading(true);
+    await sleep(2000);
+    setSendVerifyCodeLoading(false);
+  };
+
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
   const validateByEmailNode = (
     <Row gutter={16}>
@@ -33,7 +41,11 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       <Col span={12}>
         <Input
           placeholder={'请输入验证码'}
-          suffix={<Styled.SendVerifyCodeButton>获取验证码</Styled.SendVerifyCodeButton>}
+          suffix={
+            <Styled.SendVerifyCodeButton onClick={handleSendVerifyCode} loading={sendVerifyCodeLoading}>
+              获取验证码
+            </Styled.SendVerifyCodeButton>
+          }
         />
       </Col>
     </Row>

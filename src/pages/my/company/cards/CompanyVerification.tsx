@@ -5,7 +5,8 @@ import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space, Upload } from '
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { Description, SendVerifyCodeButton, UploadBox } from './CompanyVerification.styled';
-import {sleep} from "~/utils/datetime.utils";
+import { sleep } from '~/utils/datetime.utils';
+import Anchor from '~/components/Anchor';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -15,10 +16,10 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleOk = async (event: React.MouseEvent) => {
-    setConfirmLoading(true)
-    await sleep(2000)
-    setVisible(false)
-    setConfirmLoading(false)
+    setConfirmLoading(true);
+    await sleep(2000);
+    setVisible(false);
+    setConfirmLoading(false);
   };
   const handleCancel = (event: React.MouseEvent) => {
     setVisible(false);
@@ -64,14 +65,24 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         </Styled.End>
       </Styled.Container>
 
-      <Modal visible={visible} title="认证信息" onOk={handleOk} onCancel={handleCancel} okText="提交" cancelText="取消" confirmLoading={confirmLoading}>
+      <Modal
+        visible={visible}
+        title="认证信息"
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="提交"
+        cancelText="取消"
+        confirmLoading={confirmLoading}
+      >
         <Space size={16} direction={'vertical'}>
           <Radio.Group value={validateBy} onChange={(event) => setValidateBy(event.target.value)}>
             <Radio value={'email'}>企业邮箱认证</Radio>
             <Radio value={'file'}>飞书、钉钉、企业微信、工牌、在职证明</Radio>
           </Radio.Group>
           {validateBy === 'email' ? validateByEmailNode : validateByFileNode}
-          <Checkbox>我已阅读并同意《隐私协议》</Checkbox>
+          <Checkbox>
+            我已阅读并同意 <Anchor href={'https://pingcap.com/zh/privacy-policy'}>《隐私协议》</Anchor>
+          </Checkbox>
         </Space>
       </Modal>
     </>

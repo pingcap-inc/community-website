@@ -13,6 +13,7 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 const CompanyVerification: React.FC<IProps> = (props) => {
   //function Verification.component(props: IProps) {
   const { children, ...rest } = props;
+  const status: 'unverified' | 'pending' | 'verified' = 'pending';
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleOk = async (event: React.MouseEvent) => {
@@ -62,6 +63,33 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       </Styled.Description>
     </div>
   );
+  let buttonNode: React.ReactNode = undefined;
+  switch (status) {
+    case 'unverified': {
+      buttonNode = (
+        <Button type={'primary'} onClick={() => setVisible(true)}>
+          立即认证
+        </Button>
+      );
+      break;
+    }
+    case 'pending': {
+      buttonNode = (
+        <Button type={'primary'} disabled>
+          审核中
+        </Button>
+      );
+      break;
+    }
+    case 'verified': {
+      buttonNode = (
+        <Button type={'primary'} onClick={() => setVisible(true)}>
+          已认证
+        </Button>
+      );
+      break;
+    }
+  }
   return (
     <>
       <Styled.Container {...rest}>
@@ -70,11 +98,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
           <Styled.Title>认证公司信息</Styled.Title>
           <Styled.Description>需要 1~3 个工作日，认证后可获得 200 积分</Styled.Description>
         </Styled.Center>
-        <Styled.End>
-          <Button type={'primary'} onClick={() => setVisible(true)}>
-            立即认证
-          </Button>
-        </Styled.End>
+        <Styled.End>{buttonNode}</Styled.End>
       </Styled.Container>
 
       <Modal

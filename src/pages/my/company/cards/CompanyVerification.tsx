@@ -5,6 +5,7 @@ import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space, Upload } from '
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { Description, SendVerifyCodeButton, UploadBox } from './CompanyVerification.styled';
+import {sleep} from "~/utils/datetime.utils";
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -12,8 +13,12 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   //function Verification.component(props: IProps) {
   const { children, ...rest } = props;
   const [visible, setVisible] = useState(false);
-  const handleOk = (event: React.MouseEvent) => {
-    setVisible(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const handleOk = async (event: React.MouseEvent) => {
+    setConfirmLoading(true)
+    await sleep(2000)
+    setVisible(false)
+    setConfirmLoading(false)
   };
   const handleCancel = (event: React.MouseEvent) => {
     setVisible(false);
@@ -59,7 +64,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         </Styled.End>
       </Styled.Container>
 
-      <Modal visible={visible} title="认证信息" onOk={handleOk} onCancel={handleCancel} okText="提交" cancelText="取消">
+      <Modal visible={visible} title="认证信息" onOk={handleOk} onCancel={handleCancel} okText="提交" cancelText="取消" confirmLoading={confirmLoading}>
         <Space size={16} direction={'vertical'}>
           <Radio.Group value={validateBy} onChange={(event) => setValidateBy(event.target.value)}>
             <Radio value={'email'}>企业邮箱认证</Radio>

@@ -1,10 +1,9 @@
 import * as React from 'react';
+import { useState } from 'react';
+import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 
 import * as Styled from './CompanyVerification.styled';
-import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space, Upload } from 'antd';
-import { UploadOutlined } from '@ant-design/icons';
-import { useState } from 'react';
-import { Description, SendVerifyCodeButton, UploadBox } from './CompanyVerification.styled';
 import { sleep } from '~/utils/datetime.utils';
 import Anchor from '~/components/Anchor';
 

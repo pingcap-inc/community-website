@@ -16,6 +16,27 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const handleCancel = (event: React.MouseEvent) => {
     setVisible(false);
   };
+  const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
+  const validateByEmailNode = (
+    <Row gutter={16}>
+      <Col span={12}>
+        <Input placeholder={'请输入企业邮箱'} />
+      </Col>
+      <Col span={12}>
+        <Input placeholder={'请输入验证码'} suffix={<div>获取验证码</div>} />
+      </Col>
+    </Row>
+  );
+  const validateByFileNode = (
+    <Row gutter={16}>
+      <Col span={12}>
+        <Input placeholder={'请输入企业邮箱'} />
+      </Col>
+      <Col span={12}>
+        <Input placeholder={'请输入验证码'} suffix={<div>获取验证码</div>} />
+      </Col>
+    </Row>
+  );
   return (
     <>
       <Styled.Container {...rest}>
@@ -31,44 +52,13 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         </Styled.End>
       </Styled.Container>
 
-      <Modal
-        visible={visible}
-        title="认证信息"
-        onOk={handleOk}
-        onCancel={handleCancel}
-        okText="确认"
-        cancelText="取消"
-        //footer={[
-        //  <Button key="back" onClick={handleCancel}>
-        //    Return
-        //  </Button>,
-        //  <Button key="submit" type="primary" loading={loading} onClick={handleOk}>
-        //    Submit
-        //  </Button>,
-        //  <Button
-        //    key="link"
-        //    href="https://google.com"
-        //    type="primary"
-        //    loading={loading}
-        //    onClick={handleOk}
-        //  >
-        //    Search on Google
-        //  </Button>,
-        //]}
-      >
+      <Modal visible={visible} title="认证信息" onOk={handleOk} onCancel={handleCancel} okText="提交" cancelText="取消">
         <Space size={16} direction={'vertical'}>
-          <Radio.Group>
-            <Radio value={1}>企业邮箱认证</Radio>
-            <Radio value={2}>飞书、钉钉、企业微信、工牌、在职证明</Radio>
+          <Radio.Group value={validateBy} onChange={(event) => setValidateBy(event.target.value)}>
+            <Radio value={'email'}>企业邮箱认证</Radio>
+            <Radio value={'file'}>飞书、钉钉、企业微信、工牌、在职证明</Radio>
           </Radio.Group>
-          <Row gutter={16}>
-            <Col span={12}>
-              <Input placeholder={'请输入企业邮箱'} />
-            </Col>
-            <Col span={12}>
-              <Input placeholder={'请输入验证码'} suffix={<div>获取验证码</div>} />
-            </Col>
-          </Row>
+          {validateBy === 'email' ? validateByEmailNode : validateByFileNode}
           <Checkbox>我已阅读并同意《隐私协议》</Checkbox>
         </Space>
       </Modal>

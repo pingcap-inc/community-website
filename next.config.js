@@ -7,7 +7,7 @@ const { i18n } = require('./next-i18next.config');
 
 const os = require('os');
 const platform = os.platform();
-const outputStandaloneEnable = platform === 'win32' ? false : true;
+const outputStandaloneEnable = platform === 'linux';
 
 const unifyNodeModules = (names) =>
   names.reduce(

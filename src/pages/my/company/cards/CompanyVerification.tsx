@@ -15,18 +15,18 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const status: 'unverified' | 'pending' | 'verified' = 'pending';
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
-  const handleOk = async (event: React.MouseEvent) => {
+  const handleOk = async () => {
     setConfirmLoading(true);
     await sleep(2000);
     setVisible(false);
     setConfirmLoading(false);
   };
-  const handleCancel = (event: React.MouseEvent) => {
+  const handleCancel = () => {
     setVisible(false);
   };
 
   const [sendVerifyCodeLoading, setSendVerifyCodeLoading] = useState(false);
-  const handleSendVerifyCode = async (event: React.MouseEvent) => {
+  const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
     await sleep(2000);
     setSendVerifyCodeLoading(false);

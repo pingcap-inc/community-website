@@ -29,6 +29,11 @@ export const Description = styled.div`
   margin-top: 1rem;
 `;
 
+export const SendVerifyCodeButton = styled.div`
+  cursor: pointer;
+  color: ${colors.B1};
+`;
+
 export const UploadBox = styled(Upload.Dragger)`
   .ant-upload {
     padding: .5rem 1rem !important;

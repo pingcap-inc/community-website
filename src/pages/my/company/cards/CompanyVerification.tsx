@@ -4,7 +4,7 @@ import * as Styled from './CompanyVerification.styled';
 import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space, Upload } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import { Description, UploadBox } from './CompanyVerification.styled';
+import { Description, SendVerifyCodeButton, UploadBox } from './CompanyVerification.styled';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -25,7 +25,10 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         <Input placeholder={'请输入企业邮箱'} />
       </Col>
       <Col span={12}>
-        <Input placeholder={'请输入验证码'} suffix={<div>获取验证码</div>} />
+        <Input
+          placeholder={'请输入验证码'}
+          suffix={<Styled.SendVerifyCodeButton>获取验证码</Styled.SendVerifyCodeButton>}
+        />
       </Col>
     </Row>
   );

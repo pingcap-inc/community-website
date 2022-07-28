@@ -1,8 +1,10 @@
 import * as React from 'react';
 
 import * as Styled from './CompanyVerification.styled';
-import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space } from 'antd';
+import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space, Upload } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
 import { useState } from 'react';
+import { Description, UploadBox } from './CompanyVerification.styled';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -28,14 +30,16 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     </Row>
   );
   const validateByFileNode = (
-    <Row gutter={16}>
-      <Col span={12}>
-        <Input placeholder={'请输入企业邮箱'} />
-      </Col>
-      <Col span={12}>
-        <Input placeholder={'请输入验证码'} suffix={<div>获取验证码</div>} />
-      </Col>
-    </Row>
+    <div>
+      <Styled.UploadBox>
+        <UploadOutlined /> 上传文件
+      </Styled.UploadBox>
+      <Styled.Description>
+        请提供飞书、钉钉、企业微信等办公软件的名片截图，或工牌照片，或在职证明（需手写仅用于 TiDB Community
+        认证字样，并加盖企业公章）；信息清晰可见，内容真实有效，不得做任何修改；支持 .jpg .jpeg .bmp .png
+        格式，大小不超过 5 M。
+      </Styled.Description>
+    </div>
   );
   return (
     <>

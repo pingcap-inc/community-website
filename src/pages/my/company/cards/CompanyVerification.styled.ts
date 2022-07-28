@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
+import { Upload } from 'antd';
 
 export const Container = styled.div`
   ${mixins.boxShadow()};
@@ -25,7 +26,14 @@ export const Title = styled.div`
 
 export const Description = styled.div`
   color: ${colors.C4};
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+`;
+
+export const UploadBox = styled(Upload.Dragger)`
+  .ant-upload {
+    padding: .5rem 1rem !important;
+    text-align: left;
+  }
 `;
 
 export const End = styled.div``;

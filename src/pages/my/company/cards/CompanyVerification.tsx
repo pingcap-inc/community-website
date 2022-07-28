@@ -2,12 +2,20 @@ import * as React from 'react';
 
 import * as Styled from './CompanyVerification.styled';
 import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space } from 'antd';
+import { useState } from 'react';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const CompanyVerification: React.FC<IProps> = (props) => {
   //function Verification.component(props: IProps) {
   const { children, ...rest } = props;
+  const [visible, setVisible] = useState(false);
+  const handleOk = (event: React.MouseEvent) => {
+    setVisible(false);
+  };
+  const handleCancel = (event: React.MouseEvent) => {
+    setVisible(false);
+  };
   return (
     <>
       <Styled.Container {...rest}>
@@ -17,15 +25,19 @@ const CompanyVerification: React.FC<IProps> = (props) => {
           <Styled.Description>需要 1~3 个工作日，认证后可获得 200 积分</Styled.Description>
         </Styled.Center>
         <Styled.End>
-          <Button type={'primary'}>立即认证</Button>
+          <Button type={'primary'} onClick={() => setVisible(true)}>
+            立即认证
+          </Button>
         </Styled.End>
       </Styled.Container>
 
       <Modal
-        visible={true}
+        visible={visible}
         title="认证信息"
-        //onOk={handleOk}
-        //onCancel={handleCancel}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        okText="确认"
+        cancelText="取消"
         //footer={[
         //  <Button key="back" onClick={handleCancel}>
         //    Return

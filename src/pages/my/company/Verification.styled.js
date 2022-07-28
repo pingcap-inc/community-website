@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { colors, mixins } from '@tidb-community/ui';
+import { colors } from '@tidb-community/ui';
 import { Space } from 'antd';
 export const Container = styled.div`
   margin-top: 1.5rem;

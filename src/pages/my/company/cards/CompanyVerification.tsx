@@ -144,7 +144,8 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         </Styled.Start>
         <Styled.Center>
           <Styled.Title>认证公司信息</Styled.Title>
-          <Styled.Description>需要 1~3 个工作日，认证后可获得 200 积分</Styled.Description>
+          <Styled.Description>首次认证成功可获得 100 积分奖励；</Styled.Description>
+          <Styled.Description>更新认证信息，审核通过后可获得 50 积分奖励。</Styled.Description>
         </Styled.Center>
         <Styled.End>{buttonNode}</Styled.End>
       </Styled.Container>

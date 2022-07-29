@@ -29,11 +29,11 @@ export const Center = styled.div`
 
 export const Title = styled.div`
   ${mixins.typography('h3')};
+  margin-bottom: 0.25rem;
 `;
 
 export const Description = styled.div`
   color: ${colors.C4};
-  margin-top: 0.25rem;
 `;
 
 export const SendVerifyCodeButton = styled(Button).attrs({

@@ -1,58 +1,69 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 import * as Styled from './CompanyVerification.styled';
 import { sleep } from '~/utils/datetime.utils';
-import Anchor from '~/components/Anchor';
+import type { UploadFile } from 'antd/es/upload/interface';
+import { useTimer } from '~/hooks/timer';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const CompanyVerification: React.FC<IProps> = (props) => {
   //function Verification.component(props: IProps) {
   const { children, ...rest } = props;
-  const status: 'unverified' | 'pending' | 'verified' = 'pending';
-  const [visible, setVisible] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
-  const handleOk = async () => {
-    setConfirmLoading(true);
-    await sleep(2000);
-    setVisible(false);
-    setConfirmLoading(false);
-  };
-  const handleCancel = () => {
-    setVisible(false);
-  };
+
+  const [email, setEmail] = useState('');
+  const [verifyCode, setVerifyCode] = useState('');
 
   const [sendVerifyCodeLoading, setSendVerifyCodeLoading] = useState(false);
+  const { remainSecond, reset, hasRemain } = useTimer();
   const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
     await sleep(2000);
+    reset();
     setSendVerifyCodeLoading(false);
   };
 
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
   const validateByEmailNode = (
-    <Row gutter={16}>
-      <Col span={12}>
-        <Input placeholder={'请输入企业邮箱'} />
+    <Row gutter={[16, 16]}>
+      <Col sm={24} md={12}>
+        <Input placeholder={'请输入企业邮箱'} value={email} onChange={(event) => setEmail(event.target.value)} />
       </Col>
-      <Col span={12}>
+      <Col sm={24} md={12}>
         <Input
           placeholder={'请输入验证码'}
+          value={verifyCode}
+          onChange={(event) => setVerifyCode(event.target.value)}
           suffix={
-            <Styled.SendVerifyCodeButton onClick={handleSendVerifyCode} loading={sendVerifyCodeLoading}>
-              获取验证码
+            <Styled.SendVerifyCodeButton
+              onClick={handleSendVerifyCode}
+              loading={sendVerifyCodeLoading}
+              disabled={hasRemain}
+            >
+              {hasRemain ? `重新获取(${remainSecond}秒)` : '获取验证码'}
             </Styled.SendVerifyCodeButton>
           }
         />
       </Col>
     </Row>
   );
+
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
   const validateByFileNode = (
     <div>
-      <Styled.UploadBox>
+      <Styled.UploadBox
+        maxCount={1}
+        multiple={false}
+        beforeUpload={() => false}
+        fileList={fileList}
+        onChange={(event) => {
+          console.log({ event });
+          setFileList(event.fileList);
+        }}
+      >
         <UploadOutlined /> 上传文件
       </Styled.UploadBox>
       <Styled.Description>
@@ -62,6 +73,39 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       </Styled.Description>
     </div>
   );
+
+  const [checked, setChecked] = useState(false);
+  const disabled = useMemo(() => {
+    const emailValid = validateBy === 'email' && email !== '' && verifyCode !== '';
+    const fileValid = validateBy === 'file' && fileList.length === 1;
+    return !(checked && (emailValid || fileValid));
+  }, [checked, email, fileList.length, validateBy, verifyCode]);
+
+  const [visible, setVisible] = useState(false);
+  const [confirmLoading, setConfirmLoading] = useState(false);
+  const handleOk = async () => {
+    setConfirmLoading(true);
+    switch (validateBy) {
+      case 'email': {
+        //axios post email and verify code
+        break;
+      }
+      case 'file': {
+        const formData = new FormData();
+        formData.append('file', fileList[0]);
+        //post formData
+        break;
+      }
+    }
+    await sleep(2000);
+    setVisible(false);
+    setConfirmLoading(false);
+  };
+  const handleCancel = () => {
+    setVisible(false);
+  };
+
+  const status: 'unverified' | 'pending' | 'verified' = 'unverified';
   let buttonNode: React.ReactNode = undefined;
   switch (status) {
     case 'unverified': {
@@ -89,6 +133,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       break;
     }
   }
+
   return (
     <>
       <Styled.Container {...rest}>
@@ -108,6 +153,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         okText="提交"
         cancelText="取消"
         confirmLoading={confirmLoading}
+        okButtonProps={{ disabled }}
       >
         <Space size={16} direction={'vertical'}>
           <Radio.Group value={validateBy} onChange={(event) => setValidateBy(event.target.value)}>
@@ -115,8 +161,11 @@ const CompanyVerification: React.FC<IProps> = (props) => {
             <Radio value={'file'}>飞书、钉钉、企业微信、工牌、在职证明</Radio>
           </Radio.Group>
           {validateBy === 'email' ? validateByEmailNode : validateByFileNode}
-          <Checkbox>
-            我已阅读并同意 <Anchor href={'https://pingcap.com/zh/privacy-policy'}>《隐私协议》</Anchor>
+          <Checkbox value={checked} onChange={(event) => setChecked(event.target.value)}>
+            我已阅读并同意{' '}
+            <Styled.PrivacyPolicyAnchor href={'https://pingcap.com/zh/privacy-policy'}>
+              《隐私协议》
+            </Styled.PrivacyPolicyAnchor>
           </Checkbox>
         </Space>
       </Modal>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMemo, useState } from 'react';
-import { Button, Checkbox, Col, Input, Modal, Radio, Row, Space } from 'antd';
+import { Button, Checkbox, Col, Input, message, Modal, Radio, Row, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 import * as Styled from './CompanyVerification.styled';
@@ -23,6 +23,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     setSendVerifyCodeLoading(true);
     await sleep(2000);
     reset();
+    message.success('验证码已发送成功');
     setSendVerifyCodeLoading(false);
   };
 

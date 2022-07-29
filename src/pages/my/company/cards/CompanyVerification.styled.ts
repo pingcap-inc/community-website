@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 import { Upload, Button } from 'antd';
-import Anchor from "~/components/Anchor";
+import Anchor from '~/components/Anchor';
 
 export const Container = styled.div`
   ${mixins.boxShadow()};
@@ -15,7 +15,13 @@ export const Container = styled.div`
   `)};
 `;
 
-export const Start = styled.div``;
+const iconSize = 50;
+export const Start = styled.div`
+  svg {
+    width: ${iconSize}px;
+    height: ${iconSize}px;
+  }
+`;
 
 export const Center = styled.div`
   margin: 0 1rem;
@@ -27,7 +33,7 @@ export const Title = styled.div`
 
 export const Description = styled.div`
   color: ${colors.C4};
-  margin-top: 1rem;
+  margin-top: 0.25rem;
 `;
 
 export const SendVerifyCodeButton = styled(Button).attrs({
@@ -46,11 +52,11 @@ export const UploadBox = styled(Upload.Dragger)`
     padding: 0.5rem 1rem !important;
     text-align: left;
   }
-`
+`;
 
 export const PrivacyPolicyAnchor = styled(Anchor)`
   color: ${colors.B1};
   //text-decoration: underline;
-`
+`;
 
 export const End = styled.div``;

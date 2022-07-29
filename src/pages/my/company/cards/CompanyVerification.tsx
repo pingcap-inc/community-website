@@ -7,6 +7,7 @@ import * as Styled from './CompanyVerification.styled';
 import { sleep } from '~/utils/datetime.utils';
 import type { UploadFile } from 'antd/es/upload/interface';
 import { useTimer } from '~/hooks/timer';
+import VerificationIcon from './verification_icon.svg';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -138,7 +139,9 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   return (
     <>
       <Styled.Container {...rest}>
-        <Styled.Start></Styled.Start>
+        <Styled.Start>
+          <VerificationIcon />
+        </Styled.Start>
         <Styled.Center>
           <Styled.Title>认证公司信息</Styled.Title>
           <Styled.Description>需要 1~3 个工作日，认证后可获得 200 积分</Styled.Description>
@@ -162,7 +165,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
             <Radio value={'file'}>飞书、钉钉、企业微信、工牌、在职证明</Radio>
           </Radio.Group>
           {validateBy === 'email' ? validateByEmailNode : validateByFileNode}
-          <Checkbox value={checked} onChange={(event) => setChecked(event.target.value)}>
+          <Checkbox value={checked} onChange={(event) => setChecked(event.target.checked)}>
             我已阅读并同意{' '}
             <Styled.PrivacyPolicyAnchor href={'https://pingcap.com/zh/privacy-policy'}>
               《隐私协议》

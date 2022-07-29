@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 import { colors, mixins } from '@tidb-community/ui';
 import { Upload, Button } from 'antd';
+import Anchor from "~/components/Anchor";
 
 export const Container = styled.div`
   ${mixins.boxShadow()};
@@ -45,6 +46,11 @@ export const UploadBox = styled(Upload.Dragger)`
     padding: 0.5rem 1rem !important;
     text-align: left;
   }
-`;
+`
+
+export const PrivacyPolicyAnchor = styled(Anchor)`
+  color: ${colors.B1};
+  //text-decoration: underline;
+`
 
 export const End = styled.div``;

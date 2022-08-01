@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Col, Row, Skeleton, message } from 'antd';
-import {SafetyOutlined} from "@ant-design/icons";
+import { SafetyOutlined } from '@ant-design/icons';
 import { Form, FormItem, Select } from 'formik-antd';
 import { Formik } from 'formik';
 
@@ -71,6 +71,7 @@ const FormComponent = () => {
 
               <Button
                 type="primary"
+                ghost
                 htmlType="submit"
                 size="small"
                 disabled={!R.isEmpty(errors)}
@@ -78,7 +79,6 @@ const FormComponent = () => {
               >
                 更新信息
               </Button>
-  
             </Col>
 
             <Col xs={24} md={12} />

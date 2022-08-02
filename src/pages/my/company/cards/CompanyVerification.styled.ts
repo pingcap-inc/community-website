@@ -59,4 +59,27 @@ export const PrivacyPolicyAnchor = styled(Anchor)`
   //text-decoration: underline;
 `;
 
+export const UnVerifiedButton = styled(Button).attrs({
+  type: 'primary',
+})`
+  //color: ${colors.B1};
+  //text-decoration: underline;
+`;
+
+export const VerifyPendingButton = styled(Button).attrs({
+  disabled: true,
+})`
+  color: ${colors.M1} !important;
+  background-color: #c7c7c7 !important;
+  border-color: #c7c7c7 !important;
+`;
+
+export const VerifiedButton = styled(Button).attrs({
+  disabled: true,
+})`
+  color: ${colors.M1} !important;
+  background-color: #f8c200 !important;
+  border-color: #f8c200 !important;
+`;
+
 export const End = styled.div``;

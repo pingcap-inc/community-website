@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMemo, useState } from 'react';
-import { Button, Checkbox, Col, Input, message, Modal, Radio, Row, Space } from 'antd';
+import { Checkbox, Col, Input, message, Modal, Radio, Row, Space } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
 import * as Styled from './CompanyVerification.styled';
@@ -112,26 +112,18 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   switch (status) {
     case 'unverified': {
       buttonNode = (
-        <Button type={'primary'} onClick={() => setVisible(true)}>
+        <Styled.UnVerifiedButton type={'primary'} onClick={() => setVisible(true)}>
           立即认证
-        </Button>
+        </Styled.UnVerifiedButton>
       );
       break;
     }
     case 'pending': {
-      buttonNode = (
-        <Button type={'primary'} disabled>
-          审核中
-        </Button>
-      );
+      buttonNode = <Styled.VerifyPendingButton>审核中</Styled.VerifyPendingButton>;
       break;
     }
     case 'verified': {
-      buttonNode = (
-        <Button type={'primary'} onClick={() => setVisible(true)}>
-          已认证
-        </Button>
-      );
+      buttonNode = <Styled.VerifiedButton>已认证</Styled.VerifiedButton>;
       break;
     }
   }

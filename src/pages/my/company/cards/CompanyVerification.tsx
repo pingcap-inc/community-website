@@ -53,6 +53,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   );
 
   const [fileList, setFileList] = useState<File[]>([]);
+  //@ts-ignore
   const validateByFileNode = (
     <div>
       <Styled.UploadBox
@@ -93,7 +94,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       case 'file': {
         if (fileList[0]) {
           const formData = new FormData();
-          formData.append('file', fileList[0]);
+          formData.append('file', fileList[0] as File);
           //post formData
         }
         break;

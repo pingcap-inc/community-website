@@ -7,6 +7,7 @@ import * as Styled from './CompanyVerification.styled';
 import { sleep } from '~/utils/datetime.utils';
 import { useTimer } from '~/hooks/timer';
 import VerificationIcon from './verification_icon.svg';
+import type { UploadFile } from 'antd/es/upload/interface';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -52,8 +53,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     </Row>
   );
 
-  const [fileList, setFileList] = useState<File[]>([]);
-  //@ts-ignore
+  const [fileList, setFileList] = useState<UploadFile<any>[]>([]);
   const validateByFileNode = (
     <div>
       <Styled.UploadBox
@@ -94,7 +94,8 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       case 'file': {
         if (fileList[0]) {
           const formData = new FormData();
-          formData.append('file', fileList[0] as File);
+          //@ts-ignore
+          formData.append('file', fileList[0]);
           //post formData
         }
         break;

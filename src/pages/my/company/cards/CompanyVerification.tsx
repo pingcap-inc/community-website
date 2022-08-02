@@ -5,7 +5,6 @@ import { UploadOutlined } from '@ant-design/icons';
 
 import * as Styled from './CompanyVerification.styled';
 import { sleep } from '~/utils/datetime.utils';
-import type { UploadFile } from 'antd/es/upload/interface';
 import { useTimer } from '~/hooks/timer';
 import VerificationIcon from './verification_icon.svg';
 
@@ -53,7 +52,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     </Row>
   );
 
-  const [fileList, setFileList] = useState<UploadFile[]>([]);
+  const [fileList, setFileList] = useState<File[]>([]);
   const validateByFileNode = (
     <div>
       <Styled.UploadBox
@@ -61,8 +60,8 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         multiple={false}
         beforeUpload={() => false}
         fileList={fileList}
-        onChange={({ file }) => {
-          setFileList([file]);
+        onChange={({ file: { originFileObj } }) => {
+          setFileList([originFileObj]);
         }}
       >
         <UploadOutlined /> 上传文件

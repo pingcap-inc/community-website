@@ -61,9 +61,8 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         multiple={false}
         beforeUpload={() => false}
         fileList={fileList}
-        onChange={(event) => {
-          console.log({ event });
-          setFileList(event.fileList);
+        onChange={({ file }) => {
+          setFileList([file]);
         }}
       >
         <UploadOutlined /> 上传文件
@@ -93,9 +92,11 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         break;
       }
       case 'file': {
-        const formData = new FormData();
-        formData.append('file', fileList[0]);
-        //post formData
+        if (fileList[0]) {
+          const formData = new FormData();
+          formData.append('file', fileList[0]);
+          //post formData
+        }
         break;
       }
     }

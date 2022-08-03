@@ -45,12 +45,12 @@ const ActivityBannerComponent = () => {
               p-id="8487"
             ></path>
           </svg>
-          社区专栏全新上线~ 点击进来围观！
+          《TiDB 6.x in Action》发布，点击查看 6.x 实践汇总！
         </>
       }
       // backgroundImage={'https://tidb.net/images/activity/banner.svg'}
       // buttonImage={'https://tidb.net/images/activity/button.svg'}
-      link={'/blog'}
+      link={'https://tidb.net/book/book-rush/catalog'}
       // onClick={() => onNavClick({ link: 'https://tidb.net/blog', target: '_blank' })}
     />
   );

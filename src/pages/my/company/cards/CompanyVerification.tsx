@@ -53,7 +53,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     </Row>
   );
 
-  const [fileList, setFileList] = useState<UploadFile<any>[]>([]);
+  const [fileList, setFileList] = useState<UploadFile[]>([]);
   const validateByFileNode = (
     <div>
       <Styled.UploadBox
@@ -61,8 +61,8 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         multiple={false}
         beforeUpload={() => false}
         fileList={fileList}
-        onChange={({ file: { originFileObj } }) => {
-          setFileList([originFileObj]);
+        onChange={({ file }) => {
+          setFileList([file]);
         }}
       >
         <UploadOutlined /> 上传文件
@@ -94,8 +94,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       case 'file': {
         if (fileList[0]) {
           const formData = new FormData();
-          //@ts-ignore
-          formData.append('file', fileList[0]);
+          formData.append('file', fileList[0].originFileObj);
           //post formData
         }
         break;

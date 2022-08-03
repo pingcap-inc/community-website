@@ -24,7 +24,10 @@ export const Start = styled.div`
 `;
 
 export const Center = styled.div`
-  margin: 0 1rem;
+  margin: 0 1.5rem;
+  ${mixins.onMobile(css`
+    margin: 1rem 0;
+  `)};
 `;
 
 export const Title = styled.div`

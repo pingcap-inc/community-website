@@ -160,7 +160,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
             <Radio value={'file'}>飞书、钉钉、企业微信、工牌、在职证明</Radio>
           </Radio.Group>
           {validateBy === 'email' ? validateByEmailNode : validateByFileNode}
-          <Checkbox value={checked} onChange={(event) => setChecked(event.target.checked)}>
+          <Checkbox checked={checked} onChange={(event) => setChecked(event.target.checked)}>
             我已阅读并同意{' '}
             <Styled.PrivacyPolicyAnchor href={'https://pingcap.com/zh/privacy-policy'}>
               《隐私协议》

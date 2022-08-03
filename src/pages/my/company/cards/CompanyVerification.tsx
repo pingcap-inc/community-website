@@ -120,14 +120,14 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       );
       break;
     }
-    case 'pending': {
-      buttonNode = <Styled.VerifyPendingButton>审核中</Styled.VerifyPendingButton>;
-      break;
-    }
-    case 'verified': {
-      buttonNode = <Styled.VerifiedButton>已认证</Styled.VerifiedButton>;
-      break;
-    }
+    //case 'pending': {
+    //  buttonNode = <Styled.VerifyPendingButton>审核中</Styled.VerifyPendingButton>;
+    //  break;
+    //}
+    //case 'verified': {
+    //  buttonNode = <Styled.VerifiedButton>已认证</Styled.VerifiedButton>;
+    //  break;
+    //}
   }
 
   return (

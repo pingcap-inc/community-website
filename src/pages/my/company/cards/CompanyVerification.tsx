@@ -119,14 +119,15 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         break;
       }
       case 'file': {
-        const file = fileList[0].originFileObj;
+        const file = fileList[0];
         if (file) {
+          //@ts-ignore
           result = await companyVerifyByFile(file);
         }
         break;
       }
     }
-    const { detail } = result.data;
+    const { detail } = result?.data;
     switch (detail) {
       case 'success': {
         message.success('认证申请提交成功');

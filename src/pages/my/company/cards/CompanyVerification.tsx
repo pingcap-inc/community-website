@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { useMemo, useState } from 'react';
 import { Checkbox, Col, Input, message, Modal, Radio, Row, Space } from 'antd';
+import useSWR from 'swr';
 import { UploadOutlined } from '@ant-design/icons';
 
 import * as Styled from './CompanyVerification.styled';
-import { sleep } from '~/utils/datetime.utils';
 import { useTimer } from '~/hooks/timer';
 import VerificationIcon from './verification_icon.svg';
 import type { UploadFile } from 'antd/es/upload/interface';
+import { companySendCode, companyVerifyByEmail, companyVerifyByFile, ECompanyVerifiedStatus, profile } from '~/api/me';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const CompanyVerification: React.FC<IProps> = (props) => {
-  //function Verification.component(props: IProps) {
   const { children, ...rest } = props;
 
   const [email, setEmail] = useState('');
@@ -22,13 +22,38 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const { remainSecond, reset, hasRemain } = useTimer();
   const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
-    await sleep(2000);
-    reset();
-    message.success('验证码已发送成功');
+    const result = await companySendCode(email);
+    const { detail } = result.data;
+    switch (detail) {
+      case 'success': {
+        message.success('验证码已发送成功');
+        reset();
+        break;
+      }
+      case 'rate limit': {
+        message.error('发送频率过快，请稍候再试');
+        break;
+      }
+      case 'params error': {
+        message.error('Email 错误');
+        break;
+      }
+      case 'application has already been submitted': {
+        message.error('公司认证状态不是 “未认证”, 无法操作申请相关接口');
+        break;
+      }
+      default: {
+        message.error('未知错误');
+        break;
+      }
+    }
     setSendVerifyCodeLoading(false);
   };
 
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
+
+  const { data } = useSWR('/api/profile', profile);
+
   const validateByEmailNode = (
     <Row gutter={[16, 16]}>
       <Col sm={24} md={12}>
@@ -86,32 +111,51 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleOk = async () => {
     setConfirmLoading(true);
+    let result;
     switch (validateBy) {
       case 'email': {
         //axios post email and verify code
+        result = await companyVerifyByEmail(email, verifyCode);
         break;
       }
       case 'file': {
-        if (fileList[0]) {
-          const formData = new FormData();
-          formData.append('file', fileList[0].originFileObj);
-          //post formData
+        const file = fileList[0].originFileObj;
+        if (file) {
+          result = await companyVerifyByFile(file);
         }
         break;
       }
     }
-    await sleep(2000);
-    setVisible(false);
+    const { detail } = result.data;
+    switch (detail) {
+      case 'success': {
+        message.success('认证申请提交成功');
+        setVisible(false);
+        break;
+      }
+      case 'params error': {
+        message.error('Email 错误');
+        break;
+      }
+      case 'application has already been submitted': {
+        message.error('公司认证状态不是 “未认证”, 无法操作申请相关接口');
+        break;
+      }
+      default: {
+        message.error('未知错误');
+        break;
+      }
+    }
     setConfirmLoading(false);
   };
   const handleCancel = () => {
     setVisible(false);
   };
 
-  const status: 'unverified' | 'pending' | 'verified' = 'unverified';
+  const status: ECompanyVerifiedStatus = data?.data.company_verified_status;
   let buttonNode: React.ReactNode = undefined;
   switch (status) {
-    case 'unverified': {
+    case ECompanyVerifiedStatus.unVerified: {
       buttonNode = (
         <Styled.UnVerifiedButton type={'primary'} onClick={() => setVisible(true)}>
           立即认证
@@ -119,14 +163,14 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       );
       break;
     }
-    //case 'pending': {
-    //  buttonNode = <Styled.VerifyPendingButton>审核中</Styled.VerifyPendingButton>;
-    //  break;
-    //}
-    //case 'verified': {
-    //  buttonNode = <Styled.VerifiedButton>已认证</Styled.VerifiedButton>;
-    //  break;
-    //}
+    case ECompanyVerifiedStatus.pending: {
+      buttonNode = <Styled.VerifyPendingButton>审核中</Styled.VerifyPendingButton>;
+      break;
+    }
+    case ECompanyVerifiedStatus.verified: {
+      buttonNode = <Styled.VerifiedButton>已认证</Styled.VerifiedButton>;
+      break;
+    }
   }
 
   return (

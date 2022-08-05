@@ -1,4 +1,4 @@
-FROM node:16.15.1-alpine AS runner
+FROM node:16.16.0-alpine AS runner
 WORKDIR /app
 
 MAINTAINER tidb-community

@@ -24,6 +24,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     setSendVerifyCodeLoading(true);
     const result = await companySendCode(email);
     const { status, data } = result;
+    console.log({ result });
     switch (status) {
       case 200: {
         message.success(data.detail);

@@ -122,24 +122,22 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const handleOk = async () => {
     setConfirmLoading(true);
     let result;
-    switch (validateBy) {
-      case 'email': {
-        //axios post email and verify code
-        result = await companyVerifyByEmail(email, verifyCode);
-        break;
-      }
-      case 'file': {
-        const file = fileList[0];
-        if (file) {
-          //@ts-ignore
-          result = await companyVerifyByFile(file);
-        }
-        break;
-      }
-    }
-    let result;
     try {
-      result = await companySendCode(email);
+      switch (validateBy) {
+        case 'email': {
+          //axios post email and verify code
+          result = await companyVerifyByEmail(email, verifyCode);
+          break;
+        }
+        case 'file': {
+          const file = fileList[0];
+          if (file) {
+            //@ts-ignore
+            result = await companyVerifyByFile(file);
+          }
+          break;
+        }
+      }
       setVisible(false);
       message.success('公司认证提交成功');
     } catch (e) {

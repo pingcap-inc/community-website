@@ -22,11 +22,14 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const { remainSecond, reset, hasRemain } = useTimer();
   const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
+    let result;
     try {
-      await companySendCode(email);
+      result = await companySendCode(email);
       reset();
+      message.success('验证码发送成功');
     } catch (e) {
-      console.error(`send verify code for company verification, email: [${email}], error: [${e}]`);
+      console.error(`send verify code for company verification, email: [${email}], error: `, e);
+      message.error(`${result.detail}${result.errors ? '. ' + result.errors.email.join(', ') : ''}`);
     } finally {
       setSendVerifyCodeLoading(false);
     }
@@ -134,26 +137,37 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         break;
       }
     }
-    const { status, data } = result;
-    switch (status) {
-      case 200: {
-        message.success(data.detail);
-        setVisible(false);
-        break;
-      }
-      case 400: {
-        message.error(data.errors.email.join(', '));
-        break;
-      }
-      case 409: {
-        message.error(data.detail);
-        break;
-      }
-      default: {
-        message.error('未知错误');
-        break;
-      }
+    let result;
+    try {
+      result = await companySendCode(email);
+      setVisible(false);
+      message.success('公司认证提交成功');
+    } catch (e) {
+      console.error(`submit company verification, error: `, e);
+      message.error(`${result.detail}${result.errors ? '. ' + result.errors.email.join(', ') : ''}`);
+    } finally {
+      setConfirmLoading(false);
     }
+    //const { status, data } = result;
+    //switch (status) {
+    //  case 200: {
+    //    message.success(data.detail);
+    //    setVisible(false);
+    //    break;
+    //  }
+    //  case 400: {
+    //    message.error(data.errors.email.join(', '));
+    //    break;
+    //  }
+    //  case 409: {
+    //    message.error(data.detail);
+    //    break;
+    //  }
+    //  default: {
+    //    message.error('未知错误');
+    //    break;
+    //  }
+    //}
     setConfirmLoading(false);
   };
   const handleCancel = () => {

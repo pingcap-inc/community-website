@@ -53,8 +53,6 @@ const FormComponent = () => {
     validationSchema: schema,
   };
 
-  const { company_name_editable: isEditable } = data;
-
   return (
     <Formik {...formikProps}>
       {({ errors }) => (
@@ -62,7 +60,7 @@ const FormComponent = () => {
           <Row gutter={32}>
             <Col xs={24} md={12}>
               <FormItem label={<Styled.Label>公司名称</Styled.Label>} name={companyName.name}>
-                <RemoteSelect {...companyName} {...fetchOpt} disabled={!isEditable} />
+                <RemoteSelect {...companyName} {...fetchOpt} />
               </FormItem>
 
               <FormItem label="职位" name={position.name}>

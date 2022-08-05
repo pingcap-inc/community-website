@@ -114,7 +114,10 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       message.success('公司认证提交成功');
     } catch (error) {
       console.error(`submit company verification, error: `, error);
-      message.error(`${error.detail}${error.errors ? '. ' + error.errors.email.join(', ') : ''}`);
+      const errorMessage = Object.values(error.errors)
+        .map((value: string[]) => value.join(', '))
+        .join(', ');
+      message.error(`${error.detail}${errorMessage !== '' ? '，' + errorMessage : ''}`);
     } finally {
       setConfirmLoading(false);
     }

@@ -22,42 +22,16 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const { remainSecond, reset, hasRemain } = useTimer();
   const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
-    let result;
     try {
-      result = await companySendCode(email);
+      await companySendCode(email);
       reset();
       message.success('验证码发送成功');
-    } catch (e) {
-      console.error(`send verify code for company verification, email: [${email}], error: `, e);
-      message.error(`${result.detail}${result.errors ? '. ' + result.errors.email.join(', ') : ''}`);
+    } catch (error) {
+      console.error(`send verify code for company verification, email: [${email}], error: `, error);
+      message.error(`${error.detail}${error.errors ? '. ' + error.errors.email.join(', ') : ''}`);
     } finally {
       setSendVerifyCodeLoading(false);
     }
-    //const { status, data } = result;
-    //console.log({ result });
-    //switch (status) {
-    //  case 200: {
-    //    message.success(data.detail);
-    //    reset();
-    //    break;
-    //  }
-    //  case 429: {
-    //    message.error(data.detail);
-    //    break;
-    //  }
-    //  case 400: {
-    //    message.error(data.errors.email.join(', '));
-    //    break;
-    //  }
-    //  case 409: {
-    //    message.error(data.detail);
-    //    break;
-    //  }
-    //  default: {
-    //    message.error('未知错误');
-    //    break;
-    //  }
-    //}
   };
 
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
@@ -121,52 +95,28 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleOk = async () => {
     setConfirmLoading(true);
-    let result;
     try {
       switch (validateBy) {
         case 'email': {
-          //axios post email and verify code
-          result = await companyVerifyByEmail(email, verifyCode);
+          await companyVerifyByEmail(email, verifyCode);
           break;
         }
         case 'file': {
           const file = fileList[0];
           if (file) {
-            //@ts-ignore
-            result = await companyVerifyByFile(file);
+            await companyVerifyByFile(file);
           }
           break;
         }
       }
       setVisible(false);
       message.success('公司认证提交成功');
-    } catch (e) {
-      console.error(`submit company verification, error: `, e);
-      message.error(`${result.detail}${result.errors ? '. ' + result.errors.email.join(', ') : ''}`);
+    } catch (error) {
+      console.error(`submit company verification, error: `, error);
+      message.error(`${error.detail}${error.errors ? '. ' + error.errors.email.join(', ') : ''}`);
     } finally {
       setConfirmLoading(false);
     }
-    //const { status, data } = result;
-    //switch (status) {
-    //  case 200: {
-    //    message.success(data.detail);
-    //    setVisible(false);
-    //    break;
-    //  }
-    //  case 400: {
-    //    message.error(data.errors.email.join(', '));
-    //    break;
-    //  }
-    //  case 409: {
-    //    message.error(data.detail);
-    //    break;
-    //  }
-    //  default: {
-    //    message.error('未知错误');
-    //    break;
-    //  }
-    //}
-    setConfirmLoading(false);
   };
   const handleCancel = () => {
     setVisible(false);

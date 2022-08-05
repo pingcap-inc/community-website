@@ -60,7 +60,7 @@ export const navItems = [
     items: [
       {
         title: '文档',
-        link: 'https://docs.pingcap.com/zh/tidb/stable',
+        link: 'https://docs.pingcap.com/zh',
       },
       {
         title: '案例学习',

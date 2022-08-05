@@ -5,7 +5,7 @@
     "navs": {
       "doc": {
         "label": "文档手册",
-        "link": "https://docs.pingcap.com/zh/tidb/stable"
+        "link": "https://docs.pingcap.com/zh"
       },
       "asktug": {
         "label": "问答",
@@ -224,7 +224,7 @@
             "label": "版本发布历史"
           },
           {
-            "link": "https://docs.pingcap.com/zh/tidb/stable",
+            "link": "https://docs.pingcap.com/zh",
             "label": "更多文档资料"
           }
         ]

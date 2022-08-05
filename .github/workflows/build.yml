@@ -33,10 +33,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Use Node.js 16.15.1
+      - name: Use Node.js 16.16.0
         uses: actions/setup-node@v2.5.1
         with:
-          node-version: 16.15.1
+          node-version: 16.16.0
           cache: 'npm'
 
       - name: Cache dependencies

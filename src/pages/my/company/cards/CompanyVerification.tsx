@@ -104,6 +104,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         case 'file': {
           const file = fileList[0];
           if (file) {
+            //@ts-ignore
             await companyVerifyByFile(file);
           }
           break;

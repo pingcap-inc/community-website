@@ -22,33 +22,39 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const { remainSecond, reset, hasRemain } = useTimer();
   const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
-    const result = await companySendCode(email);
-    const { status, data } = result;
-    console.log({ result });
-    switch (status) {
-      case 200: {
-        message.success(data.detail);
-        reset();
-        break;
-      }
-      case 429: {
-        message.error(data.detail);
-        break;
-      }
-      case 400: {
-        message.error(data.errors.email.join(', '));
-        break;
-      }
-      case 409: {
-        message.error(data.detail);
-        break;
-      }
-      default: {
-        message.error('未知错误');
-        break;
-      }
+    try {
+      await companySendCode(email);
+      reset();
+    } catch (e) {
+      console.error(`send verify code for company verification, email: [${email}], error: [${e}]`);
+    } finally {
+      setSendVerifyCodeLoading(false);
     }
-    setSendVerifyCodeLoading(false);
+    //const { status, data } = result;
+    //console.log({ result });
+    //switch (status) {
+    //  case 200: {
+    //    message.success(data.detail);
+    //    reset();
+    //    break;
+    //  }
+    //  case 429: {
+    //    message.error(data.detail);
+    //    break;
+    //  }
+    //  case 400: {
+    //    message.error(data.errors.email.join(', '));
+    //    break;
+    //  }
+    //  case 409: {
+    //    message.error(data.detail);
+    //    break;
+    //  }
+    //  default: {
+    //    message.error('未知错误');
+    //    break;
+    //  }
+    //}
   };
 
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');

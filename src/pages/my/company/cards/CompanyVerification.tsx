@@ -23,23 +23,23 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const handleSendVerifyCode = async () => {
     setSendVerifyCodeLoading(true);
     const result = await companySendCode(email);
-    const { detail } = result.data;
-    switch (detail) {
-      case 'success': {
-        message.success('验证码已发送成功');
+    const { status, data } = result;
+    switch (status) {
+      case 200: {
+        message.success(data.detail);
         reset();
         break;
       }
-      case 'rate limit': {
-        message.error('发送频率过快，请稍候再试');
+      case 429: {
+        message.error(data.detail);
         break;
       }
-      case 'params error': {
-        message.error('Email 错误');
+      case 400: {
+        message.error(data.errors.email.join(', '));
         break;
       }
-      case 'application has already been submitted': {
-        message.error('公司认证状态不是 “未认证”, 无法操作申请相关接口');
+      case 409: {
+        message.error(data.detail);
         break;
       }
       default: {
@@ -127,19 +127,19 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         break;
       }
     }
-    const { detail } = result?.data;
-    switch (detail) {
-      case 'success': {
-        message.success('认证申请提交成功');
+    const { status, data } = result;
+    switch (status) {
+      case 200: {
+        message.success(data.detail);
         setVisible(false);
         break;
       }
-      case 'params error': {
-        message.error('Email 错误');
+      case 400: {
+        message.error(data.errors.email.join(', '));
         break;
       }
-      case 'application has already been submitted': {
-        message.error('公司认证状态不是 “未认证”, 无法操作申请相关接口');
+      case 409: {
+        message.error(data.detail);
         break;
       }
       default: {

@@ -66,7 +66,13 @@ export function companySendCode(email: string) {
 
 export function companyVerifyByEmail(email: string, email_code: string) {
   const verification_method = ECompanyVerifiedBy.email;
-  return client.post('/api/profile/company/verify', { verification_method, email, email_code });
+  const data = new FormData();
+  data.append('verification_method', String(verification_method));
+  data.append('email', email);
+  data.append('email_code', email_code);
+  return client.post('/api/profile/company/verify', data, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
 }
 
 export function companyVerifyByFile(incumbency_cert: File) {

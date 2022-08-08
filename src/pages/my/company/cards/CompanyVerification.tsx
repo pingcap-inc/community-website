@@ -3,11 +3,11 @@ import { useMemo, useState } from 'react';
 import { Checkbox, Col, Input, message, Modal, Radio, Row, Space } from 'antd';
 import useSWR from 'swr';
 import { UploadOutlined } from '@ant-design/icons';
+import type { UploadFile } from 'antd/es/upload/interface';
 
 import * as Styled from './CompanyVerification.styled';
 import { useTimer } from '~/hooks/timer';
 import VerificationIcon from './verification_icon.svg';
-import type { UploadFile } from 'antd/es/upload/interface';
 import { companySendCode, companyVerifyByEmail, companyVerifyByFile, ECompanyVerifiedStatus, profile } from '~/api/me';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}

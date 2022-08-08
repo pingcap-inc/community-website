@@ -36,7 +36,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
 
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
 
-  const { data } = useSWR('/api/profile', profile);
+  const { data, mutate } = useSWR('/api/profile', profile);
 
   const validateByEmailNode = (
     <Row gutter={[16, 16]}>
@@ -112,6 +112,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
       }
       setVisible(false);
       message.success('公司认证提交成功');
+      await mutate();
     } catch (error) {
       console.error(`submit company verification, error: `, error);
       const errorMessage = Object.values(error.errors)
@@ -127,7 +128,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   };
 
   const status: ECompanyVerifiedStatus = data?.data.company_verified_status;
-  let buttonNode: React.ReactNode = undefined;
+  let buttonNode: React.ReactNode;
   switch (status) {
     case ECompanyVerifiedStatus.unVerified: {
       buttonNode = (
@@ -143,6 +144,10 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     }
     case ECompanyVerifiedStatus.verified: {
       buttonNode = <Styled.VerifiedButton>已认证</Styled.VerifiedButton>;
+      break;
+    }
+    default: {
+      buttonNode = <Styled.VerifyPendingButton loading={true}>加载中</Styled.VerifyPendingButton>;
       break;
     }
   }

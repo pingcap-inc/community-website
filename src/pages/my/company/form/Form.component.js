@@ -12,10 +12,11 @@ import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
 import { fetchOrganizationOptions } from '~/utils/form.utils';
 import { RemoteSelect } from '@tidb-community/ui';
+import { profile } from '~/api/me';
 
 const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const { data: profileResp, error } = useSWR('profile.fetch');
+  const { data: profileResp, error, mutate } = useSWR('/api/profile', profile);
   const isLoading = !error && !profileResp;
 
   if (isLoading) return <Skeleton active />;
@@ -40,6 +41,7 @@ const FormComponent = () => {
         ...values,
       })
       .then(() => {
+        mutate().then();
         message.success('公司信息更新成功');
       })
       .finally(() => {

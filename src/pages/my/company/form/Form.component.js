@@ -1,8 +1,8 @@
 import * as R from 'ramda';
 import React, { useState } from 'react';
 import useSWR from 'swr';
-import { Button, Col, Row, Skeleton, message } from 'antd';
-import { SafetyOutlined } from '@ant-design/icons';
+import { Button, Col, Row, Skeleton, message, Modal } from 'antd';
+import { ExclamationCircleOutlined, SafetyOutlined } from '@ant-design/icons';
 import { Form, FormItem, Select } from 'formik-antd';
 import { Formik } from 'formik';
 
@@ -35,18 +35,27 @@ const FormComponent = () => {
   };
 
   const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
-    setIsSubmitting(true);
-    return api.profile
-      .update({
-        ...values,
-      })
-      .then(() => {
-        mutate().then();
-        message.success('公司信息更新成功');
-      })
-      .finally(() => {
-        setIsSubmitting(false);
-      });
+    Modal.confirm({
+      title: '更新公司信息',
+      icon: <ExclamationCircleOutlined />,
+      content: '更新公司信息需要重新进行认证，确认更新吗？',
+      okText: '确认',
+      cancelText: '取消',
+      onOk: () => {
+        setIsSubmitting(true);
+        return api.profile
+          .update({
+            ...values,
+          })
+          .then(() => {
+            mutate().then();
+            message.success('公司信息更新成功');
+          })
+          .finally(() => {
+            setIsSubmitting(false);
+          });
+      },
+    });
   });
 
   const formikProps = {

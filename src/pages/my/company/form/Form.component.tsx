@@ -1,28 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { Form, FormItem, Select, Button, Col, Row, Skeleton, message, Modal, AutoComplete } from 'antd';
+import { Form, Select, Button, Col, Row, Skeleton, message, Modal, AutoComplete } from 'antd';
 import { ExclamationCircleOutlined, SafetyOutlined } from '@ant-design/icons';
 
-import { api, getFormData } from '@tidb-community/datasource';
+import { getFormData } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
-import { profile } from '~/api/me';
+import { profile, update } from '~/api/me';
+import { fetchOrganizationOptions } from '~/utils/form.utils';
 
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
 
 const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [companyName, setCompanyName] = useState('');
   const [jobTitle, setJobTitle] = useState('');
-  const { data: profileResp, error, mutate } = useSWR('/api/profile', profile);
-  const isLoading = !error && !profileResp;
+  const [companyOptions, setCompanyOptions] = useState<{ label: string; value: string }[]>([]);
 
-  const { data } = profileResp;
+  const { data, error, mutate } = useSWR('/api/profile', profile);
+  const isLoading = !error && !data;
 
   useEffect(() => {
-    setCompanyName(data.companyName);
-    setJobTitle(data.jobTitle);
+    setCompanyName(data?.data?.company_name ?? '');
+    setJobTitle(data?.data?.job_title ?? '');
   }, [data]);
 
   const handleSubmit = () => {
@@ -35,7 +37,7 @@ const FormComponent = () => {
       onOk: async () => {
         setIsSubmitting(true);
         try {
-          await api.profile.update({
+          await update({
             company_name: companyName,
             job_title: jobTitle,
           });
@@ -50,24 +52,36 @@ const FormComponent = () => {
     });
   };
 
+  const handleSearch = async (keyword: string) => {
+    const options = await fetchOrganizationOptions(keyword);
+    setCompanyOptions(options);
+  };
+
   if (isLoading) return <Skeleton active />;
 
   return (
     <Form layout="vertical">
       <Row gutter={32}>
         <Col xs={24} md={12}>
-          <FormItem label={<Styled.Label>公司名称</Styled.Label>}>
-            <AutoComplete value={companyName} onChange={setCompanyName} placeholder={'请输入'} maxLength={128} />
-          </FormItem>
+          <Form.Item label={<Styled.Label>公司名称</Styled.Label>}>
+            <AutoComplete
+              value={companyName}
+              onChange={setCompanyName}
+              placeholder={'请输入'}
+              maxLength={128}
+              onSearch={handleSearch}
+              options={companyOptions}
+            />
+          </Form.Item>
 
-          <FormItem label="职位">
+          <Form.Item label="职位">
             <Select
               value={jobTitle}
-              onChange={(event) => setJobTitle(event.value)}
+              onChange={(value) => setJobTitle(value)}
               placeholder={'请选择'}
               options={personalPositions}
             />
-          </FormItem>
+          </Form.Item>
 
           <Button
             type="primary"

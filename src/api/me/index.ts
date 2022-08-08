@@ -56,9 +56,9 @@ export type IProfile = {
   company_verified_status: ECompanyVerifiedStatus;
 };
 
-export async function profile() {
-  return await client.get<IProfile>('/api/profile');
-}
+export const profile = () => client.get<IProfile>('/api/profile');
+
+export const update = (data) => client.patch('/api/profile', data);
 
 export function companySendCode(email: string) {
   return client.post('/api/profile/company/send-code', { email });

@@ -1,103 +1,93 @@
-import * as R from 'ramda';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { Button, Col, Row, Skeleton, message, Modal } from 'antd';
+import { Form, FormItem, Select, Button, Col, Row, Skeleton, message, Modal, AutoComplete } from 'antd';
 import { ExclamationCircleOutlined, SafetyOutlined } from '@ant-design/icons';
-import { Form, FormItem, Select } from 'formik-antd';
-import { Formik } from 'formik';
 
-import { api } from '@tidb-community/datasource';
+import { api, getFormData } from '@tidb-community/datasource';
+
 import * as Styled from './form.styled';
-import { fields, schema } from './form.fields';
-import { form as formUtils } from '~/utils';
-import { fetchOrganizationOptions } from '~/utils/form.utils';
-import { RemoteSelect } from '@tidb-community/ui';
 import { profile } from '~/api/me';
+
+const formData = getFormData();
+const { personalPositions } = formData.org.enums;
 
 const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [companyName, setCompanyName] = useState('');
+  const [jobTitle, setJobTitle] = useState('');
   const { data: profileResp, error, mutate } = useSWR('/api/profile', profile);
   const isLoading = !error && !profileResp;
 
-  if (isLoading) return <Skeleton active />;
-
   const { data } = profileResp;
-  const { companyName, position } = fields;
 
-  const initialValues = {
-    [companyName.name]: data.company_name,
-    [position.name]: data.job_title,
-  };
+  useEffect(() => {
+    setCompanyName(data.companyName);
+    setJobTitle(data.jobTitle);
+  }, [data]);
 
-  const fetchOpt = {
-    fetchOptions: fetchOrganizationOptions,
-    Select,
-  };
-
-  const onSubmit = formUtils.wrapFormikSubmitFunction((values) => {
+  const handleSubmit = () => {
     Modal.confirm({
       title: '更新公司信息',
       icon: <ExclamationCircleOutlined />,
       content: '更新公司信息需要重新进行认证，确认更新吗？',
       okText: '确认',
       cancelText: '取消',
-      onOk: () => {
+      onOk: async () => {
         setIsSubmitting(true);
-        return api.profile
-          .update({
-            ...values,
-          })
-          .then(() => {
-            mutate().then();
-            message.success('公司信息更新成功');
-          })
-          .finally(() => {
-            setIsSubmitting(false);
+        try {
+          await api.profile.update({
+            company_name: companyName,
+            job_title: jobTitle,
           });
+        } catch (error) {
+          console.error(error);
+          await message.success('公司信息更新失败，错误原因：', error);
+        }
+        await mutate();
+        await message.success('公司信息更新成功');
+        setIsSubmitting(false);
       },
     });
-  });
-
-  const formikProps = {
-    initialValues,
-    onSubmit,
-    validationSchema: schema,
   };
 
+  if (isLoading) return <Skeleton active />;
+
   return (
-    <Formik {...formikProps}>
-      {({ errors }) => (
-        <Form layout="vertical">
-          <Row gutter={32}>
-            <Col xs={24} md={12}>
-              <FormItem label={<Styled.Label>公司名称</Styled.Label>} name={companyName.name}>
-                <RemoteSelect {...companyName} {...fetchOpt} />
-              </FormItem>
+    <Form layout="vertical">
+      <Row gutter={32}>
+        <Col xs={24} md={12}>
+          <FormItem label={<Styled.Label>公司名称</Styled.Label>}>
+            <AutoComplete value={companyName} onChange={setCompanyName} placeholder={'请输入'} maxLength={128} />
+          </FormItem>
 
-              <FormItem label="职位" name={position.name}>
-                <Select {...position} />
-              </FormItem>
+          <FormItem label="职位">
+            <Select
+              value={jobTitle}
+              onChange={(event) => setJobTitle(event.value)}
+              placeholder={'请选择'}
+              options={personalPositions}
+            />
+          </FormItem>
 
-              <Button
-                type="primary"
-                ghost
-                htmlType="submit"
-                size="small"
-                disabled={!R.isEmpty(errors)}
-                loading={isSubmitting}
-              >
-                更新信息
-              </Button>
-            </Col>
+          <Button
+            type="primary"
+            ghost
+            htmlType="submit"
+            size="small"
+            // disabled={!R.isEmpty(errors)}
+            loading={isSubmitting}
+            onClick={handleSubmit}
+          >
+            更新信息
+          </Button>
+        </Col>
 
-            <Col xs={24} md={12} />
-          </Row>
-          <Styled.Description>
-            <SafetyOutlined /> TiDB 社区保护你的个人隐私，此信息为非公开状态
-          </Styled.Description>
-        </Form>
-      )}
-    </Formik>
+        <Col xs={24} md={12} />
+      </Row>
+      <Styled.Description>
+        <SafetyOutlined /> TiDB 社区保护你的个人隐私，此信息为非公开状态
+      </Styled.Description>
+    </Form>
   );
 };
 

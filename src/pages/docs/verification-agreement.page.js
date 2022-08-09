@@ -2,21 +2,23 @@ import React from 'react';
 
 import Layout from './layout';
 import { CommunityHead } from '~/components';
+import Anchor from '~/components/Anchor';
 
 const Page = () => (
   <>
-    <CommunityHead title="团队认证服务协议" />
+    <CommunityHead title="认证服务协议" />
     <Layout>
-      <h1>TiDB Community 团队认证服务协议</h1>
-      <p>欢迎您加入 TiDB Community 并申请成为团队会员！</p>
+      <h1>TiDB Community 认证服务协议</h1>
+      <p>欢迎您加入 TiDB Community 并申请成为会员！</p>
       <p>
         TiDB Community
-        团队认证服务（以下简称“本服务”）是北京平凯星辰科技发展有限公司（简称“PingCAP”）提供给您的一项用户资质审核服务。由您发起申请，PingCAP
+        认证服务（以下简称“本服务”）是北京平凯星辰科技发展有限公司（简称“PingCAP”）提供给您的一项用户资质审核服务。由您发起申请，PingCAP
         根据您的申请及其提交的资料和信息审核，并根据审核情况确定认证结果和认证信息的服务。
       </p>
       <p>
-        为使用本服务，您应当阅读并遵守《TiDB Community 团队认证服务协议》（以下简称“本协议”）、《TiDB Community
-        服务条款》、《TiDB Community 隐私政策》以及相关规则、制度等。
+        为使用本服务，您应当阅读并遵守《TiDB Community 认证服务协议》（以下简称“本协议”）、
+        <Anchor href={'https://pingcap.com/zh/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
+        <Anchor href={'https://pingcap.com/zh/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>以及相关规则、制度等。
       </p>
       <p>请注意本服务不提供给未满18周岁之人，如果您未满18周岁，请不要使用本服务。</p>
 
@@ -24,19 +26,20 @@ const Page = () => (
         <li>
           <h2>1. 协议的范围</h2>
           <p>
-            本协议为《TiDB Community 服务条款》《TiDB Community
-            隐私政策》的补充协议，本协议与前述内容冲突时，以本协议为准。
+            本协议为<Anchor href={'https://pingcap.com/zh/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
+            <Anchor href={'https://pingcap.com/zh/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>
+            的补充协议，本协议与前述内容冲突时，以本协议为准。
           </p>
         </li>
 
         <li>
           <h2>2. 您的权利义务</h2>
           <ol>
-            <li>2.1 您可以根据自身需求，对您的 TiDB Community 账号发起团队认证审核申请。</li>
+            <li>2.1 您可以根据自身需求，对您的 TiDB Community 账号发起认证审核申请。</li>
             <ol>
               <li>
-                2.1.1 若您对您的 TiDB Community 账号发起认证审核申请，认证审核成功后，您有权享受团队认证权益，PingCAP
-                将不定期调整团队认证权益并于发布后生效。
+                2.1.1 若您对您的 TiDB Community 账号发起认证审核申请，认证审核成功后，您有权享受认证权益，PingCAP
+                将不定期调整认证权益并于发布后生效。
               </li>
               <li>
                 2.1.2 若您对您的 TiDB Community 账号发起认证审核申请，认证审核成功后，您的 TiDB Community
@@ -49,11 +52,18 @@ const Page = () => (
             </ol>
             <li>
               2.2 您应保证提供给 PingCAP
-              的所有资料和信息是真实、合法、准确的，且不侵犯第三方合法权利。任何资料和信息的变更将可能影响认证结果，您应当在资料和信息变更时及时提出补充认证申请。
+              的所有资料和信息是真实、合法、准确的，不侵犯第三方合法权利。任何资料和信息的变更将可能影响认证结果，您应当在资料和信息变更时及时提出补充认证申请。
             </li>
             <li>
-              2.3 您同意并授权 PingCAP 对您提交的资料和信息进行甄别核实，PingCAP
-              有权出于认证审核之必要查阅、使用及保存上述资料及信息，并有权与您就认证审核事宜进行联系。
+              2.3 您保证您有权将相关资料和信息提交给PingCAP以按照本协议、《PingCAP 使用条款》、《PingCAP
+              隐私政策》等约定的方式加以使用。您保证该等行为不违反您与第三方之间的约定、您对第三方做出的承诺或其他您应遵守的规章、制度，并保证您的该等行为不会给PingCAP招致第三方异议或纠纷。
+            </li>
+            <li>
+              2.4 您同意并授权 PingCAP 对您提交的资料和信息进行甄别核实，PingCAP
+              有权出于认证审核之必要查阅、使用及保存上述资料及信息，并有权与您就认证审核事宜进行联系。、
+              <Anchor href={'https://pingcap.com/zh/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
+              <Anchor href={'https://pingcap.com/zh/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>
+              等约定的方式加以使用。您保证该等行为不违反您与第三方之间的约定、您对第三方做出的承诺或其他您应遵守的规章、制度，并保证您的该等行为不会给PingCAP招致第三方异议或纠纷。
             </li>
           </ol>
         </li>
@@ -93,7 +103,7 @@ const Page = () => (
               <ol>
                 <li>
                   4.2.1 您理解并同意：TiDB Community
-                  团队认证服务内容仅限于对您提交的资料及信息进行合理、谨慎的形式审查，但在 PingCAP
+                  认证服务内容仅限于对您提交的资料及信息进行合理、谨慎的形式审查，但在 PingCAP
                   的合法权限和合理能力范围内，PingCAP
                   无法实质审查您的实际经营、运营以及推广等行为，并不为此提供任何担保。
                 </li>
@@ -101,7 +111,7 @@ const Page = () => (
                   4.2.2 PingCAP 有权核实包括但不限于以下内容：
                   <ol>
                     <li>4.2.2.1 您所服务的公司或企业是否拥有合法主体资质；</li>
-                    <li>4.2.2.2 团队账号管理员主体身份，以及是否经过该企业授权；</li>
+                    <li>4.2.2.2 账号管理员主体身份，以及是否经过该企业授权；</li>
                     <li>4.2.2.3 其他 PingCAP 认为需要审核的内容。</li>
                   </ol>
                 </li>
@@ -140,8 +150,8 @@ const Page = () => (
             <li>
               7.1 您使用本服务即视为您已阅读并同意受本协议的约束。PingCAP
               有权在必要时修改本协议条款。您可以在相关服务页面查阅最新版本的条款。本协议条款变更后，如果您继续使用 TiDB
-              Community 团队认证服务，即视为您已接受修改后的协议。如果您不接受修改后的协议，应当停止使用 TiDB Community
-              团队认证服务。
+              Community 认证服务，即视为您已接受修改后的协议。如果您不接受修改后的协议，应当停止使用 TiDB Community
+              认证服务。
             </li>
             <li>
               7.2
@@ -153,7 +163,7 @@ const Page = () => (
 
       <br />
       <div>北京平凯星辰科技发展有限公司</div>
-      <div>2021年5月1日</div>
+      <div>2022年8月10日</div>
     </Layout>
   </>
 );

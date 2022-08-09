@@ -96,7 +96,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const handleOk = async () => {
     if (data?.data.company_name === '' || data?.data.job_title === '') {
       message.error('请先完善公司信息');
-      return
+      return;
     }
     setConfirmLoading(true);
     try {
@@ -131,12 +131,20 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     setVisible(false);
   };
 
+  const handleClickVerify = async () => {
+    if (companyName === '' || jobTitle === '') {
+      message.error('请先完善公司信息');
+    } else {
+      setVisible(true);
+    }
+  };
+
   const status: ECompanyVerifiedStatus = data?.data.company_verified_status;
   let buttonNode: React.ReactNode;
   switch (status) {
     case ECompanyVerifiedStatus.unVerified: {
       buttonNode = (
-        <Styled.UnVerifiedButton type={'primary'} onClick={() => setVisible(true)}>
+        <Styled.UnVerifiedButton type={'primary'} onClick={handleClickVerify}>
           立即认证
         </Styled.UnVerifiedButton>
       );

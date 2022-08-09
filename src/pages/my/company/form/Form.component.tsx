@@ -46,8 +46,8 @@ const FormComponent = () => {
           console.error(error);
           await message.success('公司信息更新失败，错误原因：', error);
         }
+        await mutate();
         setIsSubmitting(false);
-        mutate();
         message.success('公司信息更新成功');
       },
     });

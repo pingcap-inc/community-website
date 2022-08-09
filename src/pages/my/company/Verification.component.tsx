@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import * as Styled from './Verification.styled';
 import CompanyVerification from '~/pages/my/company/cards/CompanyVerification';
-import useSWR from 'swr';
-import { ECompanyVerifiedStatus, profile } from '~/api/me';
 import Anchor from '~/components/Anchor';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}

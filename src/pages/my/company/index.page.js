@@ -58,7 +58,7 @@ const PageContent = ({ title }) => {
 
   return (
     <Layout title={titleNode}>
-      {redDots.joinOrg && <Styled.Alert type="info" showIcon message={<>完成公司信息填写可 +20 积分</>} />}
+      {redDots.companyInfo && <Styled.Alert type="info" showIcon message={<>完成公司信息填写可 +20 积分</>} />}
       <Form />
       <Verification />
     </Layout>

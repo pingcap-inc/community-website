@@ -28,32 +28,32 @@ const FormComponent = () => {
   }, [data]);
 
   const handleSubmit = () => {
-    Modal.confirm({
-      title: '更新公司信息',
-      icon: <ExclamationCircleOutlined />,
-      content: '更新公司信息需要重新进行认证，确认更新吗？',
-      okText: '确认',
-      cancelText: '取消',
-      onOk: async () => {
-        if (companyName === '' || jobTitle === '') {
-          message.error('请先完善公司信息');
-          return;
-        }
-        setIsSubmitting(true);
-        try {
-          await update({
-            company_name: companyName,
-            job_title: jobTitle,
-          });
-        } catch (error) {
-          console.error(error);
-          await message.success('公司信息更新失败，错误原因：', error);
-        }
-        await mutate();
-        setIsSubmitting(false);
-        await message.success('公司信息更新成功');
-      },
-    });
+    if (companyName === '' || jobTitle === '') {
+      message.error('请先完善公司信息');
+    } else {
+      Modal.confirm({
+        title: '更新公司信息',
+        icon: <ExclamationCircleOutlined />,
+        content: '更新公司信息需要重新进行认证，确认更新吗？',
+        okText: '确认',
+        cancelText: '取消',
+        onOk: async () => {
+          setIsSubmitting(true);
+          try {
+            await update({
+              company_name: companyName,
+              job_title: jobTitle,
+            });
+          } catch (error) {
+            console.error(error);
+            await message.success('公司信息更新失败，错误原因：', error);
+          }
+          setIsSubmitting(false);
+          mutate();
+          message.success('公司信息更新成功');
+        },
+      });
+    }
   };
 
   const handleSearch = async (keyword: string) => {

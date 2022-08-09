@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import useSWR from 'swr';
-import { Form, Select, Button, Col, Row, Skeleton, message, Modal, AutoComplete } from 'antd';
+import { Form, Select, Button, Col, Row, Skeleton, message, Modal, Input, Spin } from 'antd';
 import { ExclamationCircleOutlined, SafetyOutlined } from '@ant-design/icons';
 
 import { getFormData } from '@tidb-community/datasource';
@@ -8,6 +8,7 @@ import { getFormData } from '@tidb-community/datasource';
 import * as Styled from './form.styled';
 import { profile, update } from '~/api/me';
 import { fetchOrganizationOptions } from '~/utils/form.utils';
+import debounce from 'lodash/debounce';
 
 const formData = getFormData();
 const { personalPositions } = formData.org.enums;
@@ -16,8 +17,8 @@ const FormComponent = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const [companyName, setCompanyName] = useState('');
+  const [companyNameOther, setCompanyNameOther] = useState('');
   const [jobTitle, setJobTitle] = useState('');
-  const [companyOptions, setCompanyOptions] = useState<{ label: string; value: string }[]>([]);
 
   const { data, error, mutate } = useSWR('/api/profile', profile);
   const isLoading = !error && !data;
@@ -38,7 +39,7 @@ const FormComponent = () => {
         setIsSubmitting(true);
         try {
           await update({
-            company_name: companyName,
+            company_name: companyName === '其它' ? companyNameOther : companyName,
             job_title: jobTitle,
           });
         } catch (error) {
@@ -52,10 +53,31 @@ const FormComponent = () => {
     });
   };
 
-  const handleSearch = async (keyword: string) => {
-    const options = await fetchOrganizationOptions(keyword);
-    setCompanyOptions(options);
-  };
+  const fetchOptions = fetchOrganizationOptions;
+  const debounceTimeout = 800;
+  const [isFetching, setIsFetching] = useState(false);
+  const [options, setOptions] = useState<{ value: string; label: string }[]>([]);
+  const fetchRef = useRef(0);
+  const handleSearch = useMemo(() => {
+    const loadOptions = (value) => {
+      fetchRef.current += 1;
+      const fetchId = fetchRef.current;
+
+      setOptions([]);
+      setIsFetching(true);
+
+      fetchOptions(value).then((options) => {
+        // fetch is asynchronous, so the condition will make sure the
+        // callback only updates for its own fetcher
+        if (fetchId !== fetchRef.current) {
+          return;
+        }
+        setOptions(options.concat({ value: '其它' }));
+        setIsFetching(false);
+      });
+    };
+    return debounce(loadOptions, debounceTimeout);
+  }, [fetchOptions]);
 
   if (isLoading) return <Skeleton active />;
 
@@ -64,15 +86,29 @@ const FormComponent = () => {
       <Row gutter={32}>
         <Col xs={24} md={12}>
           <Form.Item label={<Styled.Label>公司名称</Styled.Label>}>
-            <AutoComplete
+            <Select
+              showSearch
+              filterOption={false}
+              notFoundContent={isFetching ? <Spin size="small" /> : null}
               value={companyName}
-              onChange={setCompanyName}
               placeholder={'请输入'}
               maxLength={128}
+              onChange={(value) => setCompanyName(value)}
               onSearch={handleSearch}
-              options={companyOptions}
+              options={options}
             />
           </Form.Item>
+
+          {companyName === '其它' && (
+            <Form.Item>
+              <Input
+                value={companyNameOther}
+                onChange={(event) => setCompanyNameOther(event.target.value)}
+                placeholder={'请输入'}
+                maxLength={128}
+              />
+            </Form.Item>
+          )}
 
           <Form.Item label="职位">
             <Select

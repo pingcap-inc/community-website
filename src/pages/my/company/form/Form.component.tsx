@@ -35,6 +35,10 @@ const FormComponent = () => {
       okText: '确认',
       cancelText: '取消',
       onOk: async () => {
+        if (companyName === '' || jobTitle === '') {
+          message.error('请先完善公司信息');
+          return;
+        }
         setIsSubmitting(true);
         try {
           await update({

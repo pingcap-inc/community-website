@@ -204,9 +204,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
           {validateBy === 'email' ? validateByEmailNode : validateByFileNode}
           <Checkbox checked={checked} onChange={(event) => setChecked(event.target.checked)}>
             我已阅读并同意{' '}
-            <Styled.PrivacyPolicyAnchor href={'https://pingcap.com/zh/privacy-policy'}>
-              《隐私协议》
-            </Styled.PrivacyPolicyAnchor>
+            <Styled.PrivacyPolicyAnchor href={'/docs/verification-agreement'}>《隐私协议》</Styled.PrivacyPolicyAnchor>
           </Checkbox>
         </Space>
       </Modal>

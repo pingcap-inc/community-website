@@ -37,6 +37,7 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const [validateBy, setValidateBy] = useState<'email' | 'file'>('email');
 
   const { data, mutate } = useSWR('/api/profile', profile);
+  const status: ECompanyVerifiedStatus = data?.data.company_verified_status;
 
   const validateByEmailNode = (
     <Row gutter={[16, 16]}>
@@ -133,13 +134,14 @@ const CompanyVerification: React.FC<IProps> = (props) => {
 
   const handleClickVerify = async () => {
     if (
-      data === undefined ||
-      data.data.company_name === '' ||
-      data.data.job_title === '' ||
-      data.data.company_name === null ||
-      data.data.job_title === null ||
-      data.data.company_name === undefined ||
-      data.data.job_title === undefined
+      status === ECompanyVerifiedStatus.verified &&
+      (data === undefined ||
+        data.data.company_name === '' ||
+        data.data.job_title === '' ||
+        data.data.company_name === null ||
+        data.data.job_title === null ||
+        data.data.company_name === undefined ||
+        data.data.job_title === undefined)
     ) {
       message.error('请先完善公司信息');
     } else {
@@ -147,7 +149,6 @@ const CompanyVerification: React.FC<IProps> = (props) => {
     }
   };
 
-  const status: ECompanyVerifiedStatus = data?.data.company_verified_status;
   let buttonNode: React.ReactNode;
   switch (status) {
     case ECompanyVerifiedStatus.unVerified: {

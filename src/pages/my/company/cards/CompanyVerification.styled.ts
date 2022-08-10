@@ -59,7 +59,9 @@ export const UploadBox = styled(Upload.Dragger)`
 
 export const PrivacyPolicyAnchor = styled(Anchor)`
   color: ${colors.B1};
-  //text-decoration: underline;
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
 export const UnVerifiedButton = styled(Button).attrs({

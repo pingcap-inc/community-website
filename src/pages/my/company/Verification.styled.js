@@ -9,6 +9,12 @@ export const Container = styled.div`
 
 export const Description = styled.div`
   color: ${colors.C4};
+  a {
+    color: ${colors.B1};
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `;
 
 export const List = styled(Space)`

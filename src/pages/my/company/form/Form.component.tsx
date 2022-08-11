@@ -20,8 +20,6 @@ const FormComponent = () => {
   const [companyNameOther, setCompanyNameOther] = useState('');
   const [jobTitle, setJobTitle] = useState('');
 
-  console.log({ companyName, jobTitle });
-
   const { data, error, mutate } = useSWR('/api/profile', profile);
   const isLoading = !error && !data;
 

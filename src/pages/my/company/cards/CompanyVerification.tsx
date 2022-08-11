@@ -71,9 +71,8 @@ const CompanyVerification: React.FC<IProps> = (props) => {
         multiple={false}
         beforeUpload={() => false}
         fileList={fileList}
-        onChange={({ file }) => {
-          if (file) setFileList([file]);
-          else setFileList([]);
+        onChange={({ fileList }) => {
+          setFileList(fileList);
         }}
       >
         <UploadOutlined /> 上传文件

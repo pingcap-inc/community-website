@@ -87,11 +87,12 @@ const FormComponent = () => {
         <Col xs={24} md={12}>
           <Form.Item label={<Styled.Label>公司名称</Styled.Label>}>
             <Select
+              allowClear
               showSearch
               filterOption={false}
               notFoundContent={isFetching ? <Spin size="small" /> : null}
               value={companyName}
-              placeholder={'请输入'}
+              placeholder={'请选择所在的公司'}
               maxLength={128}
               onChange={(value) => setCompanyName(value)}
               onSearch={handleSearch}
@@ -104,7 +105,7 @@ const FormComponent = () => {
               <Input
                 value={companyNameOther}
                 onChange={(event) => setCompanyNameOther(event.target.value)}
-                placeholder={'请输入'}
+                placeholder={'请输入所在的公司'}
                 maxLength={128}
               />
             </Form.Item>

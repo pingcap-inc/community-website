@@ -112,6 +112,7 @@ const FormComponent = () => {
 
           <Form.Item label="职位">
             <Select
+              allowClear
               value={jobTitle}
               onChange={(value) => setJobTitle(value)}
               placeholder={'请选择'}

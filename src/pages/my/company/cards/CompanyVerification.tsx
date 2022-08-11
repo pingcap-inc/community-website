@@ -95,10 +95,6 @@ const CompanyVerification: React.FC<IProps> = (props) => {
   const [visible, setVisible] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
   const handleOk = async () => {
-    if (data?.data.company_name === '' || data?.data.job_title === '') {
-      message.error('请先完善公司信息');
-      return;
-    }
     setConfirmLoading(true);
     try {
       switch (validateBy) {
@@ -134,14 +130,13 @@ const CompanyVerification: React.FC<IProps> = (props) => {
 
   const handleClickVerify = async () => {
     if (
-      status === ECompanyVerifiedStatus.verified &&
-      (data === undefined ||
-        data.data.company_name === '' ||
-        data.data.job_title === '' ||
-        data.data.company_name === null ||
-        data.data.job_title === null ||
-        data.data.company_name === undefined ||
-        data.data.job_title === undefined)
+      data === undefined ||
+      data.data.company_name === '' ||
+      data.data.job_title === '' ||
+      data.data.company_name === null ||
+      data.data.job_title === null ||
+      data.data.company_name === undefined ||
+      data.data.job_title === undefined
     ) {
       message.error('请先完善公司信息');
     } else {

@@ -20,6 +20,8 @@ const FormComponent = () => {
   const [companyNameOther, setCompanyNameOther] = useState('');
   const [jobTitle, setJobTitle] = useState('');
 
+  console.log({ companyName, jobTitle });
+
   const { data, error, mutate } = useSWR('/api/profile', profile);
   const isLoading = !error && !data;
 
@@ -39,7 +41,7 @@ const FormComponent = () => {
         setIsSubmitting(true);
         try {
           await update({
-            company_name: companyName === '其它' ? companyNameOther : (companyName ?? ''),
+            company_name: companyName === '其它' ? companyNameOther : companyName ?? '',
             job_title: jobTitle ?? '',
           });
         } catch (error) {
@@ -91,7 +93,7 @@ const FormComponent = () => {
               showSearch
               filterOption={false}
               notFoundContent={isFetching ? <Spin size="small" /> : null}
-              value={companyName}
+              value={companyName === '' ? undefined : companyName}
               placeholder={'请选择所在的公司'}
               maxLength={128}
               onChange={(value) => setCompanyName(value)}
@@ -114,7 +116,7 @@ const FormComponent = () => {
           <Form.Item label="职位">
             <Select
               allowClear
-              value={jobTitle}
+              value={jobTitle === '' ? undefined : jobTitle}
               onChange={(value) => setJobTitle(value)}
               placeholder={'请选择'}
               options={personalPositions}

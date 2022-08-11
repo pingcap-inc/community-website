@@ -6,7 +6,7 @@ import { ExclamationCircleOutlined, SafetyOutlined } from '@ant-design/icons';
 import { getFormData } from '@tidb-community/datasource';
 
 import * as Styled from './form.styled';
-import { profile, update } from '~/api/me';
+import { ECompanyVerifiedStatus, profile, update } from '~/api/me';
 import { fetchOrganizationOptions } from '~/utils/form.utils';
 import debounce from 'lodash/debounce';
 
@@ -31,28 +31,35 @@ const FormComponent = () => {
   }, [data]);
 
   const handleSubmit = () => {
-    Modal.confirm({
-      title: '更新公司信息',
-      icon: <ExclamationCircleOutlined />,
-      content: '更新公司信息需要重新进行认证，确认更新吗？',
-      okText: '确认',
-      cancelText: '取消',
-      onOk: async () => {
-        setIsSubmitting(true);
-        try {
-          await update({
-            company_name: companyName === '其它' ? companyNameOther : companyName ?? '',
-            job_title: jobTitle ?? '',
-          });
-        } catch (error) {
-          console.error(error);
-          await message.success('公司信息更新失败，错误原因：', error);
-        }
-        await mutate();
-        setIsSubmitting(false);
-        message.success('公司信息更新成功');
-      },
-    });
+    const onOk = async () => {
+      setIsSubmitting(true);
+      try {
+        await update({
+          company_name: companyName === '其它' ? companyNameOther : companyName ?? '',
+          job_title: jobTitle ?? '',
+        });
+      } catch (error) {
+        console.error(error);
+        await message.success('公司信息更新失败，错误原因：', error);
+      }
+      await mutate();
+      setIsSubmitting(false);
+      message.success('公司信息更新成功');
+    };
+
+    const status: ECompanyVerifiedStatus = data?.data.company_verified_status;
+    if (status === ECompanyVerifiedStatus.verified) {
+      Modal.confirm({
+        title: '更新公司信息',
+        icon: <ExclamationCircleOutlined />,
+        content: '更新公司信息需要重新进行认证，确认更新吗？',
+        okText: '确认',
+        cancelText: '取消',
+        onOk,
+      });
+    } else {
+      onOk();
+    }
   };
 
   const fetchOptions = fetchOrganizationOptions;

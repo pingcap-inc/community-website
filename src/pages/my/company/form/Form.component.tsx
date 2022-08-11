@@ -39,8 +39,8 @@ const FormComponent = () => {
         setIsSubmitting(true);
         try {
           await update({
-            company_name: companyName === '其它' ? companyNameOther : companyName,
-            job_title: jobTitle,
+            company_name: companyName === '其它' ? companyNameOther : (companyName ?? ''),
+            job_title: jobTitle ?? '',
           });
         } catch (error) {
           console.error(error);

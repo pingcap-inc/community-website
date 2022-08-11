@@ -144,7 +144,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
       .map((value) => ({
         ...value,
         level: value.depth,
-        title: value.children?.reduce((title, value) => `${title}${value?.text}`, ''),
+        title: value.children?.reduce((title, value) => `${title}${value?.text ?? ''}`, ''),
       }));
   }, [clonedFragment]);
 

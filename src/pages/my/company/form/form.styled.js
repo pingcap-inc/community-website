@@ -14,3 +14,8 @@ export const Label = styled.div`
     }
   }
 `;
+
+export const Description = styled.div`
+  margin-top: .5rem;
+  color: ${colors.C4};
+`;

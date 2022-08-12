@@ -10,6 +10,8 @@ import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 import { redDots as redDotsUtils } from '~/utils';
+import Verification from '~/pages/my/company/Verification.component';
+import { Space } from 'antd';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -47,10 +49,18 @@ const PageContent = ({ title }) => {
     return <PageLoader />;
   }
 
+  const titleNode = (
+    <Space>
+      <div>{title}</div>
+      <Styled.TitleBadge>非公开</Styled.TitleBadge>
+    </Space>
+  );
+
   return (
-    <Layout title={title}>
-      {redDots.joinOrg && <Styled.Alert type="info" showIcon message={<>完成公司信息填写可 +20 积分</>} />}
+    <Layout title={titleNode}>
+      {redDots.companyInfo && <Styled.Alert type="info" showIcon message={<>完成公司信息填写可 +20 积分</>} />}
       <Form />
+      <Verification />
     </Layout>
   );
 };

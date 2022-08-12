@@ -263,7 +263,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
               key={index}
               $level={value.level}
               $selected={value.id === currentHighlightId}
-              href={`#${value.id}`}
+              href={`#${encodeURI(value.id)}`}
             >
               {value.title}
             </Styled.ContentsItem>

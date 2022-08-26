@@ -11,7 +11,7 @@
     "deploy:preview": "shipit preview deploy",
     "dev": "npm run start:i18n && npm run next:dev",
     "lint": "next lint && eslint . --ext .js,.jsx,.ts,.tsx",
-    "postinstall": "lerna bootstrap",
+    "postinstall": "lerna bootstrap --ignore=@tidb-community/ui",
     "prepare": "husky install",
     "server:init": "next build && npm run server:start",
     "server:reload": "pm2 reload pm2.config.js",

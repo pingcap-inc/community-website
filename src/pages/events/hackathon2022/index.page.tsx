@@ -1,13 +1,14 @@
 import * as React from 'react';
 import classNames from 'classnames';
+import { Space } from 'antd';
 import type { NextPage } from 'next';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 
 import styles from './index.module.scss';
-import titleImage from './title.svg';
-import bannerImage from './banner_image.svg';
+import TitleImage from './title.svg';
+import BannerImage from './banner_image.svg';
 import { getI18nProps } from '~/utils/i18n.utils';
 
 const seo = {
@@ -26,23 +27,35 @@ const Hackathon2022: NextPage = () => {
         <header className={styles.header}>
           <div className={styles.header_start}>
             <div className={styles.header_start_title}>
-              <img src={titleImage} alt={seo.title} />
+              {/*<img src={titleImage} alt={seo.title} />*/}
+              <TitleImage />
             </div>
-            <div className={styles.header_start_button}>
-              <div className={styles.header_start_button_signup}>立即报名</div>
-              <div className={styles.header_start_button_join_group}>加入官方群</div>
-              <div className={styles.header_start_button_ask}>我要咨询</div>
-            </div>
-            <div className={styles.header_start_nav}>
-              <div className={styles.header_start_nav_item}>介绍</div>
-              <div className={styles.header_start_nav_item}>奖项</div>
-              <div className={styles.header_start_nav_item}>评委</div>
-              <div className={styles.header_start_nav_item}>常见问题</div>
-              <div className={styles.header_start_nav_item}>合作伙伴</div>
-            </div>
+            <Space className={styles.header_start_button} size={22}>
+              <button className={styles.header_start_button_signup}>立即报名</button>
+              <button className={styles.header_start_button_join_group}>加入官方群</button>
+              <button className={styles.header_start_button_ask}>我要咨询</button>
+            </Space>
+            <Space className={styles.header_start_nav} split={<span style={{ color: '#FFF' }}>|</span>} size={24}>
+              <a className={styles.header_start_nav_item} href={'intro'}>
+                介绍
+              </a>
+              <a className={styles.header_start_nav_item} href={'prize'}>
+                奖项
+              </a>
+              <a className={styles.header_start_nav_item} href={'judges'}>
+                评委
+              </a>
+              <a className={styles.header_start_nav_item} href={'faq'}>
+                常见问题
+              </a>
+              <a className={styles.header_start_nav_item} href={'partner'}>
+                合作伙伴
+              </a>
+            </Space>
           </div>
           <div className={styles.header_end}>
-            <img src={bannerImage} alt="" />
+            {/*<img src={bannerImage} alt="" />*/}
+            <BannerImage />
           </div>
         </header>
       </div>

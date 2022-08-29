@@ -1,3 +1,55 @@
 .container {
   background: #20222b;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 52px 0;
+  background: url('./banner_background.png') center no-repeat;
+  &_start {
+    &_title {
+      padding-left: 100px;
+      display: flex;
+      align-items: center;
+    }
+    &_button {
+      padding-left: 100px;
+      margin-top: 52px;
+      color: #fff;
+      &_signup {
+        padding: 6px 16px;
+        border: none;
+        cursor: pointer;
+        background: #f67200;
+      }
+      &_join_group {
+        padding: 6px 16px;
+        border: none;
+        cursor: pointer;
+        background: #3c26b5;
+      }
+      &_ask {
+        padding: 6px 16px;
+        border: none;
+        cursor: pointer;
+        background: #00cf71;
+      }
+    }
+    &_nav {
+      margin-top: 70px;
+      padding-left: 100px;
+      display: flex;
+      align-items: center;
+      height: 48px;
+      background: linear-gradient(90deg, #3940ea 0%, rgba(57, 64, 234, 0) 100%);
+      a {
+        color: #fff;
+      }
+    }
+  }
+  &_end {
+    padding: 0 100px;
+  }
+}

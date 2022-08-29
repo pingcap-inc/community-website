@@ -36,19 +36,19 @@ const Hackathon2022: NextPage = () => {
               <button className={styles.header_start_button_ask}>我要咨询</button>
             </Space>
             <Space className={styles.header_start_nav} split={<span style={{ color: '#FFF' }}>|</span>} size={24}>
-              <a className={styles.header_start_nav_item} href={'intro'}>
+              <a className={styles.header_start_nav_item} href={'#intro'}>
                 介绍
               </a>
-              <a className={styles.header_start_nav_item} href={'prize'}>
+              <a className={styles.header_start_nav_item} href={'#prize'}>
                 奖项
               </a>
-              <a className={styles.header_start_nav_item} href={'judges'}>
+              <a className={styles.header_start_nav_item} href={'#judges'}>
                 评委
               </a>
-              <a className={styles.header_start_nav_item} href={'faq'}>
+              <a className={styles.header_start_nav_item} href={'#faq'}>
                 常见问题
               </a>
-              <a className={styles.header_start_nav_item} href={'partner'}>
+              <a className={styles.header_start_nav_item} href={'#partner'}>
                 合作伙伴
               </a>
             </Space>

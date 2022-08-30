@@ -87,5 +87,6 @@ export const FAQ = styled.div`
 `;
 
 export const FAQBody = styled.div`
+  max-width: 960px;
   margin-top: 56px;
 `;

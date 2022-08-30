@@ -14,8 +14,10 @@ import { getI18nProps } from '~/utils/i18n.utils';
 import SectionTitle from '~/pages/events/hackathon2022/SectionTitle';
 import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
 import TitleCornerGreenIcon from './title_icon_corner_green.svg';
+import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
 import ParticipationWelfare from '~/pages/events/hackathon2022/ParticipationWelfare';
 import Judge from '~/pages/events/hackathon2022/Judge';
+import FAQ from '~/pages/events/hackathon2022/FAQ';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -113,6 +115,13 @@ const Hackathon2022: NextPage = () => {
             <Judge />
           </Styled.JudgeBody>
         </Styled.Judge>
+
+        <Styled.FAQ>
+          <SectionTitle icon={<TitleCubeSkyBlueIcon />}>FAQ</SectionTitle>
+          <Styled.FAQBody>
+            <FAQ />
+          </Styled.FAQBody>
+        </Styled.FAQ>
       </div>
     </CoreLayout>
   );

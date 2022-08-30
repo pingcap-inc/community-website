@@ -221,6 +221,6 @@ export const anchor = (color = colors.B1, textDecoration = 'underline') => css`
   }
 `;
 
-export const transition = (property = 'all', duration = '250ms') => css`
-  transition: ${property} ${duration};
+export const transition = (property = 'all', duration = '250ms', timingFunction = '', delay = 0) => css`
+  transition: ${property} ${duration} ${timingFunction} ${delay};
 `;

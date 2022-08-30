@@ -78,3 +78,14 @@ export const Judge = styled.div`
 export const JudgeBody = styled.div`
   margin-top: 48px;
 `;
+
+export const FAQ = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 78px;
+`;
+
+export const FAQBody = styled.div`
+  margin-top: 56px;
+`;

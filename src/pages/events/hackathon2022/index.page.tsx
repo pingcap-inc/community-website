@@ -19,6 +19,7 @@ import ParticipationWelfare from '~/pages/events/hackathon2022/ParticipationWelf
 import Judge from '~/pages/events/hackathon2022/Judge';
 import FAQ from '~/pages/events/hackathon2022/FAQ';
 import Partner from '~/pages/events/hackathon2022/Partner';
+import PastReview from '~/pages/events/hackathon2022/PastReview';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -130,6 +131,13 @@ const Hackathon2022: NextPage = () => {
             <Partner />
           </Styled.PartnerBody>
         </Styled.Partner>
+
+        <Styled.PastReview>
+          <SectionTitle icon={<TitleCubeSkyBlueIcon />}>往期回顾</SectionTitle>
+          <Styled.PastReviewBody>
+            <PastReview />
+          </Styled.PastReviewBody>
+        </Styled.PastReview>
       </div>
     </CoreLayout>
   );

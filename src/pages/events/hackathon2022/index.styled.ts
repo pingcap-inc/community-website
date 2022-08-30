@@ -102,3 +102,15 @@ export const PartnerBody = styled.div`
   //max-width: 960px;
   margin-top: 56px;
 `;
+
+export const PastReview = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 78px;
+`;
+
+export const PastReviewBody = styled.div`
+  //max-width: 960px;
+  margin-top: 48px;
+`;

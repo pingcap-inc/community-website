@@ -56,3 +56,17 @@ export const ThemeRaceListItemBody = styled.div`
   /* or 175% */
   color: #ffffff;
 `;
+
+export const ParticipationWelfare = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+`;
+
+export const ParticipationWelfareBody = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 70px;
+`;

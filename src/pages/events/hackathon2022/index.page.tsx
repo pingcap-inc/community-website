@@ -13,6 +13,7 @@ import BannerImage from './banner_image.svg';
 import { getI18nProps } from '~/utils/i18n.utils';
 import SectionTitle from '~/pages/events/hackathon2022/SectionTitle';
 import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
+import ParticipationWelfare from '~/pages/events/hackathon2022/ParticipationWelfare';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -96,6 +97,13 @@ const Hackathon2022: NextPage = () => {
             ))}
           </Styled.ThemeRaceList>
         </Styled.ThemeRace>
+
+        <Styled.ParticipationWelfare>
+          <SectionTitle>其他参赛福利</SectionTitle>
+          <Styled.ParticipationWelfareBody>
+            <ParticipationWelfare />
+          </Styled.ParticipationWelfareBody>
+        </Styled.ParticipationWelfare>
       </div>
     </CoreLayout>
   );

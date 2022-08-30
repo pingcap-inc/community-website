@@ -90,3 +90,15 @@ export const FAQBody = styled.div`
   max-width: 960px;
   margin-top: 56px;
 `;
+
+export const Partner = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 78px;
+`;
+
+export const PartnerBody = styled.div`
+  //max-width: 960px;
+  margin-top: 56px;
+`;

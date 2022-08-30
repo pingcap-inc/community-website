@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { useState } from 'react';
 
 import * as Styled from './index.styled';
-import { Column } from './index.styled';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 

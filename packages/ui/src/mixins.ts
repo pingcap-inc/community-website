@@ -220,3 +220,7 @@ export const anchor = (color = colors.B1, textDecoration = 'underline') => css`
     }
   }
 `;
+
+export const transition = (property = 'all', duration = '250ms') => css`
+  transition: ${property} ${duration};
+`;

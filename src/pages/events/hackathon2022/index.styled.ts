@@ -65,8 +65,16 @@ export const ParticipationWelfare = styled.div`
 `;
 
 export const ParticipationWelfareBody = styled.div`
+  margin-top: 70px;
+`;
+
+export const Judge = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 96px;
+`;
+
+export const JudgeBody = styled.div`
+  margin-top: 48px;
 `;

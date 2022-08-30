@@ -7,9 +7,12 @@ import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 
 import styles from './index.module.scss';
+import * as Styled from './index.styled';
 import TitleImage from './title.svg';
 import BannerImage from './banner_image.svg';
 import { getI18nProps } from '~/utils/i18n.utils';
+import SectionTitle from '~/pages/events/hackathon2022/SectionTitle';
+import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -17,6 +20,19 @@ const seo = {
   description: '',
   keywords: ['黑客马拉松', 'TiDB', 'Hackathon'],
 };
+
+const dataThemeRace = [
+  {
+    color: '#F67200',
+    name: '应用组',
+    body: '本次 Hackathon 主题为「Possibility at Scale」，打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。',
+  },
+  {
+    color: '#00CF71',
+    name: 'TiDB 产品组',
+    body: '本次 Hackathon 主题为「Possibility at Scale」，打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。',
+  },
+];
 
 const Hackathon2022: NextPage = () => {
   return (
@@ -58,6 +74,28 @@ const Hackathon2022: NextPage = () => {
             <BannerImage />
           </div>
         </header>
+
+        <Styled.Intro>
+          <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛介绍</SectionTitle>
+          <Styled.IntroContent>
+            本次 Hackathon 主题为「Possibility at Scale」，打破传统技术边界，突破固有思维局限，用 TiDB
+            释放创新的更多可能性。
+          </Styled.IntroContent>
+        </Styled.Intro>
+
+        <Styled.ThemeRace>
+          <SectionTitle>主题赛道</SectionTitle>
+          <Styled.ThemeRaceList>
+            {dataThemeRace.map((value) => (
+              <Styled.ThemeRaceListItem key={value.name}>
+                <Styled.ThemeRaceListItemContainer $color={value.color}>
+                  <Styled.ThemeRaceListItemName $color={value.color}>{value.name}</Styled.ThemeRaceListItemName>
+                  <Styled.ThemeRaceListItemBody>{value.body}</Styled.ThemeRaceListItemBody>
+                </Styled.ThemeRaceListItemContainer>
+              </Styled.ThemeRaceListItem>
+            ))}
+          </Styled.ThemeRaceList>
+        </Styled.ThemeRace>
       </div>
     </CoreLayout>
   );

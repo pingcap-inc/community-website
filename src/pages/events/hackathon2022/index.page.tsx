@@ -13,8 +13,10 @@ import BannerImage from './banner_image.svg';
 import { getI18nProps } from '~/utils/i18n.utils';
 import SectionTitle from '~/pages/events/hackathon2022/SectionTitle';
 import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
+import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
 import TitleCornerGreenIcon from './title_icon_corner_green.svg';
 import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
+import CompetitionProcess from '~/pages/events/hackathon2022/CompetitionProcess';
 import ParticipationWelfare from '~/pages/events/hackathon2022/ParticipationWelfare';
 import Judge from '~/pages/events/hackathon2022/Judge';
 import FAQ from '~/pages/events/hackathon2022/FAQ';
@@ -103,6 +105,13 @@ const Hackathon2022: NextPage = () => {
             ))}
           </Styled.ThemeRaceList>
         </Styled.ThemeRace>
+
+        <Styled.CompetitionProcess>
+          <SectionTitle icon={<TitleCornerSkyBlueIcon />}>参赛流程</SectionTitle>
+          <Styled.CompetitionProcessBody>
+            <CompetitionProcess />
+          </Styled.CompetitionProcessBody>
+        </Styled.CompetitionProcess>
 
         <Styled.ParticipationWelfare>
           <SectionTitle>其他参赛福利</SectionTitle>

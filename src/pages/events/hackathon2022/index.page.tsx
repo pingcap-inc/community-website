@@ -16,12 +16,14 @@ import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
 import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
 import TitleCornerGreenIcon from './title_icon_corner_green.svg';
 import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
+import TitleCloudDeepBlue from './title_icon_cloud_deepblue.svg';
 import CompetitionProcess from '~/pages/events/hackathon2022/CompetitionProcess';
 import ParticipationWelfare from '~/pages/events/hackathon2022/ParticipationWelfare';
 import Judge from '~/pages/events/hackathon2022/Judge';
 import FAQ from '~/pages/events/hackathon2022/FAQ';
 import Partner from '~/pages/events/hackathon2022/Partner';
 import PastReview from '~/pages/events/hackathon2022/PastReview';
+import Prize from '~/pages/events/hackathon2022/Prize';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -112,6 +114,13 @@ const Hackathon2022: NextPage = () => {
             <CompetitionProcess />
           </Styled.CompetitionProcessBody>
         </Styled.CompetitionProcess>
+
+        <Styled.Prize>
+          <SectionTitle icon={<TitleCloudDeepBlue />}>大赛奖项</SectionTitle>
+          <Styled.PrizeBody>
+            <Prize />
+          </Styled.PrizeBody>
+        </Styled.Prize>
 
         <Styled.ParticipationWelfare>
           <SectionTitle>其他参赛福利</SectionTitle>

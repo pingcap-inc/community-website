@@ -69,6 +69,18 @@ export const CompetitionProcessBody = styled.div`
   margin-top: 48px;
 `;
 
+export const Prize = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 78px;
+`;
+
+export const PrizeBody = styled.div`
+  //max-width: 960px;
+  margin-top: 48px;
+`;
+
 export const ParticipationWelfare = styled.div`
   display: flex;
   flex-direction: column;

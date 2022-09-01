@@ -11,21 +11,20 @@ import * as Styled from './index.styled';
 import TitleImage from './title.svg';
 import BannerImage from './banner_image.svg';
 import { getI18nProps } from '~/utils/i18n.utils';
-import SectionTitle from '~/pages/events/hackathon2022/SectionTitle';
+import SectionTitle from './SectionTitle';
 import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
 import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
 import TitleCornerGreenIcon from './title_icon_corner_green.svg';
 import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
 import TitleCloudDeepBlue from './title_icon_cloud_deepblue.svg';
-import CompetitionProcess from '~/pages/events/hackathon2022/CompetitionProcess';
-import ParticipationWelfare from '~/pages/events/hackathon2022/ParticipationWelfare';
-import Judge from '~/pages/events/hackathon2022/Judge';
-import FAQ from '~/pages/events/hackathon2022/FAQ';
-import Partner from '~/pages/events/hackathon2022/Partner';
-import PastReview from '~/pages/events/hackathon2022/PastReview';
-import Prize from '~/pages/events/hackathon2022/Prize';
-import ThemeRace from '~/pages/events/hackathon2022/ThemeRace';
-import { ThemeRaceBody } from './index.styled';
+import ThemeRace from './ThemeRace';
+import CompetitionProcess from './CompetitionProcess';
+import ParticipationWelfare from './ParticipationWelfare';
+import Prize from './Prize';
+import Judge from './Judge';
+import FAQ from './FAQ';
+import Partner from './Partner';
+import PastReview from './PastReview';
 
 const seo = {
   title: 'TiDB Hackathon 2022',

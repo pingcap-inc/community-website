@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Container from 'src/components/Container';
 
 export const Intro = styled.div`
   display: flex;
@@ -18,7 +19,7 @@ export const IntroContent = styled.div`
   color: #ffffff;
 `;
 
-export const ThemeRace = styled.div`
+export const ThemeRace = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +30,7 @@ export const ThemeRaceBody = styled.div`
   margin-top: 60px;
 `;
 
-export const CompetitionProcess = styled.div`
+export const CompetitionProcess = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -41,7 +42,7 @@ export const CompetitionProcessBody = styled.div`
   margin-top: 48px;
 `;
 
-export const Prize = styled.div`
+export const Prize = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,7 +54,7 @@ export const PrizeBody = styled.div`
   margin-top: 48px;
 `;
 
-export const ParticipationWelfare = styled.div`
+export const ParticipationWelfare = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -64,7 +65,7 @@ export const ParticipationWelfareBody = styled.div`
   margin-top: 70px;
 `;
 
-export const Judge = styled.div`
+export const Judge = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -75,7 +76,7 @@ export const JudgeBody = styled.div`
   margin-top: 48px;
 `;
 
-export const FAQ = styled.div`
+export const FAQ = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,7 +88,7 @@ export const FAQBody = styled.div`
   margin-top: 56px;
 `;
 
-export const Partner = styled.div`
+export const Partner = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,7 +100,7 @@ export const PartnerBody = styled.div`
   margin-top: 56px;
 `;
 
-export const PastReview = styled.div`
+export const PastReview = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;

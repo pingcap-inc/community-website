@@ -3,6 +3,7 @@ import Container from 'src/components/Container';
 
 export const MyContainer = styled.div`
   background: #20222b;
+  padding-bottom: 128px;
 `;
 
 export const Intro = styled.div`

@@ -1,15 +1,11 @@
 import * as React from 'react';
 import classNames from 'classnames';
-import { Space } from 'antd';
 import type { NextPage } from 'next';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 
-import styles from './index.module.scss';
 import * as Styled from './index.styled';
-import TitleImage from './title.svg';
-import BannerImage from './banner_image.svg';
 import { getI18nProps } from '~/utils/i18n.utils';
 import SectionTitle from './SectionTitle';
 import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
@@ -17,6 +13,7 @@ import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
 import TitleCornerGreenIcon from './title_icon_corner_green.svg';
 import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
 import TitleCloudDeepBlue from './title_icon_cloud_deepblue.svg';
+import Header from './Header';
 import ThemeRace from './ThemeRace';
 import CompetitionProcess from './CompetitionProcess';
 import ParticipationWelfare from './ParticipationWelfare';
@@ -38,41 +35,8 @@ const Hackathon2022: NextPage = () => {
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
 
-      <div className={classNames(styles.container)}>
-        <header className={styles.header}>
-          <div className={styles.header_start}>
-            <div className={styles.header_start_title}>
-              {/*<img src={titleImage} alt={seo.title} />*/}
-              <TitleImage />
-            </div>
-            <Space className={styles.header_start_button} size={22}>
-              <button className={styles.header_start_button_signup}>立即报名</button>
-              <button className={styles.header_start_button_join_group}>加入官方群</button>
-              <button className={styles.header_start_button_ask}>我要咨询</button>
-            </Space>
-            <Space className={styles.header_start_nav} split={<span style={{ color: '#FFF' }}>|</span>} size={24}>
-              <a className={styles.header_start_nav_item} href={'#intro'}>
-                介绍
-              </a>
-              <a className={styles.header_start_nav_item} href={'#prize'}>
-                奖项
-              </a>
-              <a className={styles.header_start_nav_item} href={'#judges'}>
-                评委
-              </a>
-              <a className={styles.header_start_nav_item} href={'#faq'}>
-                常见问题
-              </a>
-              <a className={styles.header_start_nav_item} href={'#partner'}>
-                合作伙伴
-              </a>
-            </Space>
-          </div>
-          <div className={styles.header_end}>
-            {/*<img src={bannerImage} alt="" />*/}
-            <BannerImage />
-          </div>
-        </header>
+      <Styled.MyContainer>
+        <Header />
 
         <Styled.Intro>
           <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛介绍</SectionTitle>
@@ -137,7 +101,7 @@ const Hackathon2022: NextPage = () => {
             <PastReview />
           </Styled.PastReviewBody>
         </Styled.PastReview>
-      </div>
+      </Styled.MyContainer>
     </CoreLayout>
   );
 };

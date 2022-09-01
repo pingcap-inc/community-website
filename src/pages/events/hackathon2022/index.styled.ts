@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import Container from 'src/components/Container';
 
+export const MyContainer = styled.div`
+  background: #20222b;
+`;
+
 export const Intro = styled.div`
   display: flex;
   flex-direction: column;

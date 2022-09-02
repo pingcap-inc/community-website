@@ -39,7 +39,7 @@ const Hackathon2022: NextPage = () => {
       <Styled.MyContainer>
         <Header />
 
-        <Styled.Intro>
+        <Styled.Intro id={'intro'}>
           <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛介绍</SectionTitle>
           <Styled.IntroContent>{description}</Styled.IntroContent>
         </Styled.Intro>
@@ -58,7 +58,7 @@ const Hackathon2022: NextPage = () => {
           </Styled.CompetitionProcessBody>
         </Styled.CompetitionProcess>
 
-        <Styled.Prize>
+        <Styled.Prize id={'prize'}>
           <SectionTitle icon={<TitleCloudDeepBlue />}>大赛奖项</SectionTitle>
           <Styled.PrizeBody>
             <Prize />
@@ -72,21 +72,21 @@ const Hackathon2022: NextPage = () => {
           </Styled.ParticipationWelfareBody>
         </Styled.ParticipationWelfare>
 
-        <Styled.Judge>
+        <Styled.Judge id={'judges'}>
           <SectionTitle icon={<TitleCornerGreenIcon />}>评委导师阵容</SectionTitle>
           <Styled.JudgeBody>
             <Judge />
           </Styled.JudgeBody>
         </Styled.Judge>
 
-        <Styled.FAQ>
+        <Styled.FAQ id={'faq'}>
           <SectionTitle icon={<TitleCubeSkyBlueIcon />}>FAQ</SectionTitle>
           <Styled.FAQBody>
             <FAQ />
           </Styled.FAQBody>
         </Styled.FAQ>
 
-        <Styled.Partner>
+        <Styled.Partner id={'partner'}>
           <SectionTitle icon={<TitleCubeOrangeIcon />}>合作伙伴</SectionTitle>
           <Styled.PartnerBody>
             <Partner />

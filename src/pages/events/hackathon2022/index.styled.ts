@@ -14,7 +14,7 @@ export const Intro = styled.div`
 `;
 
 export const IntroContent = styled.div`
-  margin-top: 40px;
+  padding-top: 40px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -28,7 +28,7 @@ export const ThemeRace = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 66px;
+  padding-top: 66px;
 `;
 
 export const ThemeRaceBody = styled.div`
@@ -39,7 +39,7 @@ export const CompetitionProcess = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 78px;
+  padding-top: 78px;
 `;
 
 export const CompetitionProcessBody = styled.div`
@@ -51,7 +51,7 @@ export const Prize = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 78px;
+  padding-top: 78px;
 `;
 
 export const PrizeBody = styled.div`
@@ -63,7 +63,7 @@ export const ParticipationWelfare = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  padding-top: 80px;
 `;
 
 export const ParticipationWelfareBody = styled.div`
@@ -74,7 +74,7 @@ export const Judge = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 96px;
+  padding-top: 96px;
 `;
 
 export const JudgeBody = styled.div`
@@ -85,7 +85,7 @@ export const FAQ = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 78px;
+  padding-top: 78px;
 `;
 
 export const FAQBody = styled.div`
@@ -97,7 +97,7 @@ export const Partner = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 78px;
+  padding-top: 78px;
 `;
 
 export const PartnerBody = styled.div`
@@ -109,7 +109,7 @@ export const PastReview = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 78px;
+  padding-top: 78px;
 `;
 
 export const PastReviewBody = styled.div`

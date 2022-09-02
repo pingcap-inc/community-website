@@ -42,7 +42,9 @@ export const HeaderStartButtonSignUp = styled(Anchor)`
   }
 `;
 
-export const HeaderStartButtonJoinGroup = styled(Anchor)``;
+export const HeaderStartButtonJoinGroup = styled.div`
+  cursor: pointer;
+`;
 
 export const HeaderStartButtonAsk = styled(Anchor)``;
 

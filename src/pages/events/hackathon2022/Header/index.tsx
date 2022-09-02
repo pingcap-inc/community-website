@@ -3,7 +3,10 @@ import * as React from 'react';
 import * as Styled from './index.styled';
 import TitleImage from './title.svg';
 import BannerImage from './banner_image.svg';
+import qrCodeImage from './qrcode.png';
 import { signUpFormUrl } from '../data';
+import { Tooltip } from 'antd';
+import Image from 'next/image';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -20,7 +23,9 @@ const Header: React.FC<IProps> = (props) => {
           </Styled.HeaderStartTitle>
           <Styled.HeaderStartButton>
             <Styled.HeaderStartButtonSignUp href={signUpFormUrl}>立即报名</Styled.HeaderStartButtonSignUp>
-            <Styled.HeaderStartButtonJoinGroup>加入官方群</Styled.HeaderStartButtonJoinGroup>
+            <Tooltip placement="leftTop" color={'#FFF'} trigger={['click', 'focus']} title={<Image {...qrCodeImage} />}>
+              <Styled.HeaderStartButtonJoinGroup>加入官方群</Styled.HeaderStartButtonJoinGroup>
+            </Tooltip>
             <Styled.HeaderStartButtonAsk>我要咨询</Styled.HeaderStartButtonAsk>
           </Styled.HeaderStartButton>
           <Styled.HeaderStartNav>

@@ -11,24 +11,24 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 const data = [
   {
-    name: 'TiDB_Hackathon_2018',
-    image: TiDB_Hackathon_2018,
-    url: 'https://tidb.net/events/hackathon2021',
-  },
-  {
-    name: 'TiDB_Hackathon_2019',
-    image: TiDB_Hackathon_2019,
-    url: 'https://tidb.net/archived/events/hackathon2020/',
+    name: 'TiDB_Hackathon_2021',
+    image: TiDB_Hackathon_2021,
+    url: 'https://tidb.net/archived/events/hackathon2021',
   },
   {
     name: 'TiDB_Hackathon_2020',
     image: TiDB_Hackathon_2020,
-    url: 'https://tidb.net/archived/events/hackathon2019/',
+    url: 'https://tidb.net/archived/events/hackathon2020',
   },
   {
-    name: 'TiDB_Hackathon_2021',
-    image: TiDB_Hackathon_2021,
-    url: 'https://tidb.net/archived/events/hackathon2018/',
+    name: 'TiDB_Hackathon_2019',
+    image: TiDB_Hackathon_2019,
+    url: 'https://tidb.net/archived/events/hackathon2019',
+  },
+  {
+    name: 'TiDB_Hackathon_2018',
+    image: TiDB_Hackathon_2018,
+    url: 'https://tidb.net/events/hackathon2018',
   },
 ];
 

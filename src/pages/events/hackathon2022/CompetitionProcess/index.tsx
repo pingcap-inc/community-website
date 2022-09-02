@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
+import { signUpFormUrl, joinGroupFormUrl, RfcSubmitFormUrl, pptTemplateUrl } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -19,10 +20,10 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
           </Styled.Start>
           <Styled.End>
             <Styled.Link>
-              <Anchor href={'#'}>立即报名</Anchor>
+              <Anchor href={signUpFormUrl}>立即报名</Anchor>
             </Styled.Link>
             <Styled.Link>
-              <Anchor href={'#'}>完成组队</Anchor>
+              <Anchor href={joinGroupFormUrl}>完成组队</Anchor>
             </Styled.Link>
           </Styled.End>
         </Styled.Item>
@@ -50,7 +51,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
           </Styled.Start>
           <Styled.End>
             <Styled.Link>
-              <Anchor href={'#'}>提交 RFC</Anchor>
+              <Anchor href={RfcSubmitFormUrl}>提交 RFC</Anchor>
             </Styled.Link>
           </Styled.End>
         </Styled.Item>
@@ -88,7 +89,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
           </Styled.Start>
           <Styled.End>
             <Styled.Link>
-              <Anchor href={'#'}>下载答辩 PPT 模板 （待上线）</Anchor>
+              <Anchor href={pptTemplateUrl}>下载答辩 PPT 模板 （待上线）</Anchor>
             </Styled.Link>
           </Styled.End>
         </Styled.Item>

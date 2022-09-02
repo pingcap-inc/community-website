@@ -1,12 +1,11 @@
 import * as React from 'react';
-import classNames from 'classnames';
 import type { NextPage } from 'next';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
+import { getI18nProps } from '~/utils/i18n.utils';
 
 import * as Styled from './index.styled';
-import { getI18nProps } from '~/utils/i18n.utils';
 import SectionTitle from './SectionTitle';
 import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
 import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
@@ -23,10 +22,12 @@ import FAQ from './FAQ';
 import Partner from './Partner';
 import PastReview from './PastReview';
 
+const description =
+  '本次 Hackathon 主题为「Possibility at Scale」，打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
+
 const seo = {
   title: 'TiDB Hackathon 2022',
-  //TODO
-  description: '',
+  description,
   keywords: ['黑客马拉松', 'TiDB', 'Hackathon'],
 };
 
@@ -40,10 +41,7 @@ const Hackathon2022: NextPage = () => {
 
         <Styled.Intro>
           <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛介绍</SectionTitle>
-          <Styled.IntroContent>
-            本次 Hackathon 主题为「Possibility at Scale」，打破传统技术边界，突破固有思维局限，用 TiDB
-            释放创新的更多可能性。
-          </Styled.IntroContent>
+          <Styled.IntroContent>{description}</Styled.IntroContent>
         </Styled.Intro>
 
         <Styled.ThemeRace>

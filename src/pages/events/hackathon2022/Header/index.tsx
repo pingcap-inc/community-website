@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as Styled from './index.styled';
 import TitleImage from './title.svg';
 import BannerImage from './banner_image.svg';
+import { signUpFormUrl } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -18,7 +19,7 @@ const Header: React.FC<IProps> = (props) => {
             <TitleImage />
           </Styled.HeaderStartTitle>
           <Styled.HeaderStartButton>
-            <Styled.HeaderStartButtonSignUp>立即报名</Styled.HeaderStartButtonSignUp>
+            <Styled.HeaderStartButtonSignUp href={signUpFormUrl}>立即报名</Styled.HeaderStartButtonSignUp>
             <Styled.HeaderStartButtonJoinGroup>加入官方群</Styled.HeaderStartButtonJoinGroup>
             <Styled.HeaderStartButtonAsk>我要咨询</Styled.HeaderStartButtonAsk>
           </Styled.HeaderStartButton>

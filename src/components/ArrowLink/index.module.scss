@@ -1,0 +1,23 @@
+@import '~/styles/common';
+
+.container {
+  //position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  &:hover {
+    .icon {
+      transform: translate(8px, 0);
+    }
+  }
+}
+
+.label {
+}
+
+.icon {
+  @include transition();
+  position: relative;
+  margin-left: 8px;
+}

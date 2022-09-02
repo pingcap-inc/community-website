@@ -43,10 +43,12 @@ export const HeaderStartButtonSignUp = styled(Anchor)`
 `;
 
 export const HeaderStartButtonJoinGroup = styled.div`
-  cursor: pointer;
+  color: #f67200;
 `;
 
-export const HeaderStartButtonAsk = styled(Anchor)``;
+export const HeaderStartButtonAsk = styled.div`
+  color: #f67200;
+`;
 
 export const HeaderStartNav = styled(Space).attrs({
   size: [24, 24],

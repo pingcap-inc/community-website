@@ -81,8 +81,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
               <Styled.Title>决赛现场 coding</Styled.Title>
               <Styled.Date>日期：10 月 22 日 - 10 月 23 日</Styled.Date>
               <Styled.Paragraph>
-                现场 coding，实现你的创意想法。北京、上海、广州、成都、新加坡任选一处决赛参赛点，还可以走进 PingCAP Office
-                感受 P 社文化
+                现场 coding，实现你的创意想法。北京、上海、广州、成都、新加坡任选一处决赛参赛点，还可以走进 PingCAP
+                Office 感受 P 社文化
               </Styled.Paragraph>
             </Styled.Start>
           </Styled.Item>
@@ -111,20 +111,26 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
 
 export default CompetitionProcess;
 
-function StepLine(props: {children: string, showLeft?: boolean, color?: string, showRight?: boolean}) {
-  const showLeft: boolean = props.showLeft ?? true
-  const color: string = props.color ?? '#82C1ED'
-  const showRight: boolean = props.showRight ?? true
+function StepLine(props: { children: string; showLeft?: boolean; color?: string; showRight?: boolean }) {
+  const showLeft: boolean = props.showLeft ?? true;
+  const color: string = props.color ?? '#82C1ED';
+  const showRight: boolean = props.showRight ?? true;
   return (
     <Styled.Step>
-      <Styled.StepText $color={color}>
-        {props.children}
-      </Styled.StepText>
+      <Styled.StepText $color={color}>{props.children}</Styled.StepText>
       <Styled.StepLine>
-        <Styled.StepLineItem $show={showLeft} style={{transform: `scaleX(${showLeft ? '1.25' : '0'}) translateX(${showLeft ? '-16px' : '0'})`}} />
+        <Styled.StepLineItem
+          $show={
+            showLeft
+          } /*style={{transform: `scaleX(${showLeft ? '1.25' : '0'}) translateX(${showLeft ? '-16px' : '0'})`}}*/
+        />
         <Styled.StepPoint $color={color} />
-        <Styled.StepLineItem $show={showRight} style={{transform: `scaleX(${showRight ? '1.25' : '0'}) translateX(${showRight ? '16px' : '0'})`}} />
+        <Styled.StepLineItem
+          $show={
+            showRight
+          } /*style={{transform: `scaleX(${showRight ? '1.25' : '0'}) translateX(${showRight ? '16px' : '0'})`}}*/
+        />
       </Styled.StepLine>
     </Styled.Step>
-  )
+  );
 }

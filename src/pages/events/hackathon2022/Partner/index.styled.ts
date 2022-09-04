@@ -21,7 +21,7 @@ export const Title = styled.div`
 `;
 
 export const List = styled(Row).attrs({
-  gutter: [64, 64],
+  gutter: [32, 32],
 })`
   margin-top: 26px;
 `;
@@ -36,4 +36,8 @@ export const Item = styled.div`
   width: 160px;
   height: 80px;
   background-color: #fff;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;

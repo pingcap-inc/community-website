@@ -30,7 +30,7 @@ const Prize: React.FC<IProps> = (props) => {
   return (
     <Styled.Container {...rest}>
       <Styled.Description>
-        各赛道 <span style={{ color: '#00CF71' }}>Top 6</span> 均可获得现金奖项
+        各赛道 <span style={{ color: '#00CF71' }}>Top 6</span> 均可获得现金奖励
       </Styled.Description>
 
       <Styled.SpecialPrizeList>

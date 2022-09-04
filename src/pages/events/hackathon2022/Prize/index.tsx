@@ -97,7 +97,8 @@ const Prize: React.FC<IProps> = (props) => {
       </Styled.SpecialPrizeList>
 
       <Styled.Footer>
-        注：所有奖项奖金均为税前金额，奖项评选规则可参考<Anchor href={'#'}>评分规则</Anchor>。
+        注：所有奖项奖金均为税前金额，奖项评选规则可参考
+        <Anchor href={'https://asktug.com/t/topic/273513'}>评分规则</Anchor>。
       </Styled.Footer>
     </Styled.Container>
   );

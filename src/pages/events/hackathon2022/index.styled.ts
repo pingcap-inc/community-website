@@ -58,6 +58,7 @@ export const Prize = styled(Container)`
 export const PrizeBody = styled.div`
   //max-width: 960px;
   margin-top: 48px;
+  width: 100%;
 `;
 
 export const ParticipationWelfare = styled(Container)`

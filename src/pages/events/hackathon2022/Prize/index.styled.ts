@@ -6,7 +6,9 @@ import goldImage from './gold.png';
 import sliverImage from './sliver.png';
 import bronzeImage from './bronze.png';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  width: 100%;
+`;
 
 export const Description = styled.div`
   margin-top: 8px;
@@ -55,10 +57,11 @@ export const SpecialPrizeTitleSecond = styled.div`
 `;
 
 export const SpecialPrizeList = styled(Row).attrs({
-  gutter: [118, 118],
-  justify: 'center',
+  gutter: [16, 16],
+  justify: 'space-between',
 })`
   margin-top: 56px;
+  width: 100%;
 `;
 
 export const SpecialPrizeTopListColumn = styled(Col).attrs({

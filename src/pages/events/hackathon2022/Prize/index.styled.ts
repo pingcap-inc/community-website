@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { Col, Row } from 'antd';
 
-import normalImage from './normal.png'
+import normalImage from './normal.png';
+import goldImage from './gold.png';
+import sliverImage from './sliver.png';
+import bronzeImage from './bronze.png';
 
 export const Container = styled.div``;
 
@@ -51,9 +54,9 @@ export const SpecialPrizeTitleSecond = styled.div`
   color: #999999;
 `;
 
-export const SpecialPrizeTopList = styled(Row).attrs({
+export const SpecialPrizeList = styled(Row).attrs({
   gutter: [118, 118],
-  align: 'center',
+  justify: 'center',
 })`
   margin-top: 56px;
 `;
@@ -64,7 +67,9 @@ export const SpecialPrizeTopListColumn = styled(Col).attrs({
   sm: 12,
   xs: 24,
 })`
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export const SpecialPrizeTopListColumnItem = styled.div`
@@ -86,7 +91,7 @@ export const SpecialPrizeTopListColumnItemName = styled.div`
   height: 22px;
   text-align: center;
   letter-spacing: 0.2em;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 
 export const SpecialPrizeTopListColumnItemThing = styled.div`
@@ -94,9 +99,10 @@ export const SpecialPrizeTopListColumnItemThing = styled.div`
   font-weight: 500;
   font-size: 24px;
   line-height: 34px;
+  height: 34px;
   /* identical to box height */
   text-align: center;
-  color: #FFFFFF;
+  color: #ffffff;
 `;
 
 export const SpecialPrizeTopListColumnItemTarget = styled.div`
@@ -104,22 +110,44 @@ export const SpecialPrizeTopListColumnItemTarget = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #FFFFFF;
+  height: 22px;
+  color: #ffffff;
 `;
 
 export const SpecialPrizeTopListItemGold = styled.div`
-  background-image: url("./gold.png");
-  
+  background-image: url(${goldImage.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 252px;
+  height: 334px;
+  text-align: center;
+  padding-top: 44px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 export const SpecialPrizeTopListItemSliver = styled.div`
-  background-image: url("./sliver.png");
-  
+  background-image: url(${sliverImage.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 252px;
+  height: 334px;
+  text-align: center;
+  padding-top: 44px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 export const SpecialPrizeTopListItemBronze = styled.div`
-  background-image: url("./bronze.png");
-  
+  background-image: url(${bronzeImage.src});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 252px;
+  height: 334px;
+  text-align: center;
+  padding-top: 44px;
+  padding-left: 24px;
+  padding-right: 24px;
 `;
 
 export const SpecialPrizeDescription = styled.div`
@@ -173,8 +201,9 @@ export const Footer = styled.div`
   text-align: center;
   /* F3 */
   color: #999999;
-  a, a:hover {
-    color: #888DFF;
+  a,
+  a:hover {
+    color: #888dff;
     text-decoration: underline;
   }
 `;

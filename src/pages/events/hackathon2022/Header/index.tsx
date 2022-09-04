@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import * as Styled from './index.styled';
-import TitleImage from './title.svg';
-import BannerImage from './banner_image.svg';
+import TitleImage from './title.png';
+import BannerImage from './banner_image.png';
 import qrCodeImage from './qrcode.png';
 import { signUpFormUrl } from '../data';
 import { Tooltip } from 'antd';
@@ -20,8 +20,11 @@ const Header: React.FC<IProps> = (props) => {
         <Styled.HeaderStart>
           <Styled.HeaderStartTitle>
             {/*<img src={titleImage} alt={seo.title} />*/}
-            <TitleImage />
+            <img {...TitleImage} alt={'TiDB Hackathon 2022'} />
           </Styled.HeaderStartTitle>
+          <Styled.HeaderStartImage>
+            <img {...BannerImage} alt={''} />
+          </Styled.HeaderStartImage>
           <Styled.HeaderStartButton>
             <Styled.HeaderStartButtonSignUp href={signUpFormUrl}>立即报名</Styled.HeaderStartButtonSignUp>
             <Tooltip
@@ -48,7 +51,7 @@ const Header: React.FC<IProps> = (props) => {
         </Styled.HeaderStart>
         <Styled.HeaderEnd>
           {/*<img src={bannerImage} alt="" />*/}
-          <BannerImage />
+          <img {...BannerImage} alt={''} />
         </Styled.HeaderEnd>
       </Styled.Header>
     </Styled.Container>

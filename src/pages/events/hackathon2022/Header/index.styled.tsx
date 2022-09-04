@@ -70,6 +70,7 @@ export const HeaderStartImage = styled.div`
 
 export const HeaderStartButton = styled(Space).attrs({
   size: [44, 44],
+  wrap: true,
 })`
   ${mixins.onDesktop(css`
     padding-left: 100px;

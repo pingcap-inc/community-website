@@ -11,6 +11,7 @@ export const Intro = styled.div`
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
+  padding: 0 16px;
 `;
 
 export const IntroContent = styled.div`

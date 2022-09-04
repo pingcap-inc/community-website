@@ -36,6 +36,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
               <Styled.Date>日期：9 月 17 日</Styled.Date>
               <Styled.Paragraph>这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一</Styled.Paragraph>
               <Styled.Date>提交项目想法：9 月 17 日 - 9 月 28 日（待定）</Styled.Date>
+              <Styled.Paragraph>无需报名，也非常欢迎分享天马行空的想法</Styled.Paragraph>
             </Styled.Start>
           </Styled.Item>
           <StepLine color={'#00CF71'}>PLUS 环节</StepLine>

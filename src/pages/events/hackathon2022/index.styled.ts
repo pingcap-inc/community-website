@@ -92,6 +92,7 @@ export const FAQ = styled(Container)`
 
 export const FAQBody = styled.div`
   max-width: 960px;
+  width: 100%;
   margin-top: 56px;
 `;
 

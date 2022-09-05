@@ -12,6 +12,10 @@ import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
 import TitleCornerGreenIcon from './title_icon_corner_green.svg';
 import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
 import TitleCloudDeepBlue from './title_icon_cloud_deepblue.svg';
+import backgroundCornerSkyblueImage from './background_corner_skyblue.png';
+import backgroundCornerGreenImage from './background_corner_green.png';
+import backgroundCornerBlueImage from './background_corner_blue.png';
+import backgroundCornerSkyblueReverseImage from './background_corner_skyblue_reverse.png';
 import Header from './Header';
 import ThemeRace from './ThemeRace';
 import CompetitionProcess from './CompetitionProcess';
@@ -44,61 +48,85 @@ const Hackathon2022: NextPage = () => {
           <Styled.IntroContent>{description}</Styled.IntroContent>
         </Styled.Intro>
 
-        <Styled.ThemeRace>
-          <SectionTitle>主题赛道</SectionTitle>
-          <Styled.ThemeRaceBody>
-            <ThemeRace />
-          </Styled.ThemeRaceBody>
-        </Styled.ThemeRace>
+        <div style={{
+          backgroundImage: `url(${backgroundCornerSkyblueImage.src})`,
+          backgroundRepeat: 'no-repeat',
+        }}>
+          <Styled.ThemeRace>
+            <SectionTitle>主题赛道</SectionTitle>
+            <Styled.ThemeRaceBody>
+              <ThemeRace />
+            </Styled.ThemeRaceBody>
+          </Styled.ThemeRace>
 
-        <Styled.CompetitionProcess>
-          <SectionTitle icon={<TitleCornerSkyBlueIcon />}>参赛流程</SectionTitle>
-          <Styled.CompetitionProcessBody>
-            <CompetitionProcess />
-          </Styled.CompetitionProcessBody>
-        </Styled.CompetitionProcess>
+          <Styled.CompetitionProcess>
+            <SectionTitle icon={<TitleCornerSkyBlueIcon />}>参赛流程</SectionTitle>
+            <Styled.CompetitionProcessBody>
+              <CompetitionProcess />
+            </Styled.CompetitionProcessBody>
+          </Styled.CompetitionProcess>
+        </div>
 
-        <Styled.Prize id={'prize'}>
-          <SectionTitle icon={<TitleCloudDeepBlue />}>大赛奖项</SectionTitle>
-          <Styled.PrizeBody>
-            <Prize />
-          </Styled.PrizeBody>
-        </Styled.Prize>
+        <div style={{
+          backgroundImage: `url(${backgroundCornerGreenImage.src})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'right',
+        }}>
+          <Styled.Prize id={'prize'}>
+            <SectionTitle icon={<TitleCloudDeepBlue />}>大赛奖项</SectionTitle>
+            <Styled.PrizeBody>
+              <Prize />
+            </Styled.PrizeBody>
+          </Styled.Prize>
 
-        <Styled.ParticipationWelfare>
-          <SectionTitle>其他参赛福利</SectionTitle>
-          <Styled.ParticipationWelfareBody>
-            <ParticipationWelfare />
-          </Styled.ParticipationWelfareBody>
-        </Styled.ParticipationWelfare>
+          <Styled.ParticipationWelfare>
+            <SectionTitle>其他参赛福利</SectionTitle>
+            <Styled.ParticipationWelfareBody>
+              <ParticipationWelfare />
+            </Styled.ParticipationWelfareBody>
+          </Styled.ParticipationWelfare>
+        </div>
 
-        <Styled.Judge id={'judges'}>
-          <SectionTitle icon={<TitleCornerGreenIcon />}>评委导师阵容</SectionTitle>
-          <Styled.JudgeBody>
-            <Judge />
-          </Styled.JudgeBody>
-        </Styled.Judge>
+        <div style={{
+          backgroundImage: `url(${backgroundCornerBlueImage.src})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'left',
+        }}>
+          <Styled.Judge id={'judges'}>
+            <SectionTitle icon={<TitleCornerGreenIcon />}>评委导师阵容</SectionTitle>
+            <Styled.JudgeBody>
+              <Judge />
+            </Styled.JudgeBody>
+          </Styled.Judge>
 
-        <Styled.FAQ id={'faq'}>
-          <SectionTitle icon={<TitleCubeSkyBlueIcon />}>FAQ</SectionTitle>
-          <Styled.FAQBody>
-            <FAQ />
-          </Styled.FAQBody>
-        </Styled.FAQ>
+          <Styled.FAQ id={'faq'}>
+            <SectionTitle icon={<TitleCubeSkyBlueIcon />}>FAQ</SectionTitle>
+            <Styled.FAQBody>
+              <FAQ />
+            </Styled.FAQBody>
+          </Styled.FAQ>
+        </div>
 
-        <Styled.Partner id={'partner'}>
-          <SectionTitle icon={<TitleCubeOrangeIcon />}>合作伙伴</SectionTitle>
-          <Styled.PartnerBody>
-            <Partner />
-          </Styled.PartnerBody>
-        </Styled.Partner>
+        <div style={{
+          backgroundImage: `url(${backgroundCornerSkyblueReverseImage.src})`,
+          backgroundRepeat: 'no-repeat',
+          backgroundPosition: 'right',
+        }}>
+          <Styled.Partner id={'partner'}>
+            <SectionTitle icon={<TitleCubeOrangeIcon />}>合作伙伴</SectionTitle>
+            <Styled.PartnerBody>
+              <Partner />
+            </Styled.PartnerBody>
+          </Styled.Partner>
 
-        <Styled.PastReview>
-          <SectionTitle icon={<TitleCubeSkyBlueIcon />}>往期回顾</SectionTitle>
-          <Styled.PastReviewBody>
-            <PastReview />
-          </Styled.PastReviewBody>
-        </Styled.PastReview>
+          <Styled.PastReview>
+            <SectionTitle icon={<TitleCubeSkyBlueIcon />}>往期回顾</SectionTitle>
+            <Styled.PastReviewBody>
+              <PastReview />
+            </Styled.PastReviewBody>
+          </Styled.PastReview>
+        </div>
+
       </Styled.MyContainer>
     </CoreLayout>
   );

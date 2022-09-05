@@ -100,6 +100,10 @@ export const HeaderStartButtonJoinGroup = styled.div`
 
 export const HeaderStartButtonAsk = styled.div`
   color: #f67200;
+  a,
+  a:hover {
+    color: #f67200;
+  }
 `;
 
 export const HeaderStartNav = styled(Space).attrs({

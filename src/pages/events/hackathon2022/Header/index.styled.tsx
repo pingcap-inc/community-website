@@ -41,8 +41,9 @@ export const HeaderStartTitle = styled.div`
     padding: 16px;
   `)};
   //width: 100%;
-  display: flex;
-  align-items: center;
+  //display: flex;
+  //flex-direction: column;
+  //align-items: center;
   img {
     z-index: 1;
     width: 100%;

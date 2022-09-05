@@ -22,11 +22,15 @@ export const Item = styled.div`
   align-items: center;
   text-align: center;
   max-width: 304px;
+  height: 100%;
   margin: 0 auto;
-  padding: 50px 16px 16px 28px;
+  padding: 50px 24px 24px 28px;
   /* M5 */
   background: #282a36;
   border: 1px solid rgba(0, 207, 113, 0.5);
+`;
+
+export const Profile = styled.div`
 `;
 
 const avatarSize = '150px';
@@ -66,13 +70,15 @@ export const Title = styled.div`
 `;
 
 export const OverLayer = styled.div`
-  ${mixins.transition()};
+  //${mixins.transition()};
   position: absolute;
-  top: 0;
-  left: 0;
-  max-width: 304px;
-  padding: 60px 38px;
+  //top: 0;
+  //left: 0;
+  //max-width: 304px;
+  //padding: 60px 38px;
+  padding: 0 32px;
   text-align: left;
+  //width: 100%;
   overflow: auto;
 `;
 
@@ -87,7 +93,7 @@ export const OverLayerName = styled.div`
 `;
 
 export const OverLayerTitle = styled.div`
-  margin-top: 8px;
+  padding-top: 8px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -99,7 +105,7 @@ export const OverLayerTitle = styled.div`
 `;
 
 export const OverLayerQuotation = styled.div`
-  margin-top: 48px;
+  //margin-top: 48px;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

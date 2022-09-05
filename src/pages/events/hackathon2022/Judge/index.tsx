@@ -23,7 +23,7 @@ const data = [
     avatar: AvatarImage,
     name: '刘奇',
     title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
+    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
   },
   {
     avatar: AvatarImage,
@@ -65,16 +65,21 @@ function JudgeItem({ value }) {
   const [showOverLayer, setShowOverLayer] = useState(false);
   return (
     <Styled.Item onMouseOver={() => setShowOverLayer(true)} onMouseOut={() => setShowOverLayer(false)}>
-      <Styled.Avatar style={{ opacity: !showOverLayer ? 1 : 0 }}>
-        <img {...value.avatar} alt={value.name} />
-      </Styled.Avatar>
-      <Styled.Name style={{ opacity: !showOverLayer ? 1 : 0 }}>{value.name}</Styled.Name>
-      <Styled.Title style={{ opacity: !showOverLayer ? 1 : 0 }}>{value.title}</Styled.Title>
-      <Styled.OverLayer style={{ opacity: showOverLayer ? 1 : 0, display: showOverLayer ? 'block' : 'none' }}>
-        <Styled.OverLayerName>{value.name}</Styled.OverLayerName>
-        <Styled.OverLayerTitle>{value.title}</Styled.OverLayerTitle>
-        <Styled.OverLayerQuotation>{value.quotation}</Styled.OverLayerQuotation>
-      </Styled.OverLayer>
+      {showOverLayer ? (
+        <Styled.OverLayer>
+          <Styled.OverLayerName>{value.name}</Styled.OverLayerName>
+          <Styled.OverLayerTitle>{value.title}</Styled.OverLayerTitle>
+          <Styled.OverLayerQuotation>{value.quotation}</Styled.OverLayerQuotation>
+        </Styled.OverLayer>
+        ) : (
+        <Styled.Profile>
+          <Styled.Avatar>
+            <img {...value.avatar} alt={value.name} />
+          </Styled.Avatar>
+          <Styled.Name>{value.name}</Styled.Name>
+          <Styled.Title>{value.title}</Styled.Title>
+        </Styled.Profile>
+      )}
     </Styled.Item>
   );
 }

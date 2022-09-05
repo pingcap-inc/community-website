@@ -4,10 +4,11 @@ import * as Styled from './index.styled';
 import TitleImage from './title.png';
 import BannerImage from './banner_image.png';
 import qrCodeImage from './qrcode.png';
-import { signUpFormUrl } from '../data';
+import { askCompetitionUrl, signUpFormUrl } from '../data';
 import { Tooltip } from 'antd';
 import Image from 'next/image';
 import ArrowLink from '~/components/ArrowLink';
+import Anchor from '~/components/Anchor';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -38,7 +39,9 @@ const Header: React.FC<IProps> = (props) => {
               </Styled.HeaderStartButtonJoinGroup>
             </Tooltip>
             <Styled.HeaderStartButtonAsk>
-              <ArrowLink>我要咨询</ArrowLink>
+              <ArrowLink>
+                <Anchor href={askCompetitionUrl}>我要咨询</Anchor>
+              </ArrowLink>
             </Styled.HeaderStartButtonAsk>
           </Styled.HeaderStartButton>
           <Styled.HeaderStartNav>

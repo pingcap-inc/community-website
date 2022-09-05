@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
-import { signUpFormUrl, joinGroupFormUrl, RfcSubmitFormUrl, pptTemplateUrl } from '../data';
+import { signUpFormUrl, joinGroupFormUrl, RfcSubmitFormUrl, pptTemplateUrl, guideUrl } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -16,8 +16,10 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
           <Styled.Item>
             <Styled.Start>
               <Styled.Title>报名</Styled.Title>
-              <Styled.Date>截止日期：10 月 17 日</Styled.Date>
-              <Styled.Paragraph>只要你对编程、开发感兴趣，都可以报名参加，点击查看参赛指南</Styled.Paragraph>
+              <Styled.Date>即日起 - 10 月 17 日</Styled.Date>
+              <Styled.Paragraph>
+                只要你对某个赛道感兴趣，热爱创造、勇于探索，都可以报名参加，点击<Anchor href={guideUrl}>参赛指南</Anchor>
+              </Styled.Paragraph>
             </Styled.Start>
             <Styled.End>
               <Anchor href={signUpFormUrl}>立即报名</Anchor>
@@ -32,12 +34,17 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
         <Styled.ItemWrap>
           <Styled.Item>
             <Styled.Start>
-              <Styled.Title>线上创意脑暴会</Styled.Title>
+              <Styled.Title>PLUS 环节 ：宇宙漫游预备营</Styled.Title>
               <Styled.Date>日期：9 月 17 日</Styled.Date>
-              <Styled.Paragraph>这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一</Styled.Paragraph>
-              <Styled.Date>提交项目想法：9 月 17 日 - 9 月 28 日（待定）</Styled.Date>
-              <Styled.Paragraph>无需报名，也非常欢迎分享天马行空的想法</Styled.Paragraph>
+              <Styled.Paragraph>资深架构师在线脑暴，超多创意 idea，可能是项目灵感来源之一</Styled.Paragraph>
+              <Styled.Date style={{marginTop: 34, marginBottom: 0}}>提交项目想法：9 月 17 日 - 9 月 28 日（待定）</Styled.Date>
+              <Styled.Paragraph style={{marginTop: 12}}>如果你有一些实现灵感，无需报名，也非常欢迎分享天马行空的创意</Styled.Paragraph>
             </Styled.Start>
+            <Styled.End>
+              {/*TODO: links*/}
+              <Anchor href={'#'}>预约会议</Anchor>
+              <Anchor href={'#'}>我有想法</Anchor>
+            </Styled.End>
           </Styled.Item>
           <StepLine color={'#00CF71'}>PLUS 环节</StepLine>
         </Styled.ItemWrap>
@@ -47,8 +54,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
         <Styled.ItemWrap>
           <Styled.Item>
             <Styled.Start>
-              <Styled.Title>提交项目想法</Styled.Title>
-              <Styled.Date>截止日期：10 月 17 日</Styled.Date>
+              <Styled.Title>提交项目 RFC</Styled.Title>
+              <Styled.Date>报名后 - 10 月 17 日</Styled.Date>
               <Styled.Paragraph>
                 提交团队项目想法以及具体实现方案，这将是你通往决赛的入场券，点击查看 RFC 模板
               </Styled.Paragraph>

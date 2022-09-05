@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
+import { askCompetitionUrl } from '~/pages/events/hackathon2022/data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -102,7 +103,7 @@ const FAQ: React.FC<IProps> = (props) => {
         ))}
       </Styled.List>
       <Styled.Description>
-        更多问答，请点击<Anchor href={'https://asktug.com/c/Mutual-communication/Hackathon'}>赛事 FAQ</Anchor>
+        更多问答，请点击<Anchor href={askCompetitionUrl}>赛事 FAQ</Anchor>
       </Styled.Description>
     </Styled.Container>
   );

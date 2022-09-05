@@ -73,7 +73,7 @@ const Prize: React.FC<IProps> = (props) => {
       <Styled.SpecialPrizeTitleFirst>仅应用组</Styled.SpecialPrizeTitleFirst>
       <Styled.SpecialPrizeList>
         {data.onlyApplicationGroup.map((value) => (
-          <Styled.SpecialPrizeTopListColumn>
+          <Styled.SpecialPrizeTopListColumn key={value.name}>
             <Styled.SpecialPrizeTopListColumnItem>
               <Styled.SpecialPrizeTopListColumnItemName>{value.name}</Styled.SpecialPrizeTopListColumnItemName>
               <Styled.SpecialPrizeTopListColumnItemThing>{value.thing}</Styled.SpecialPrizeTopListColumnItemThing>
@@ -86,7 +86,7 @@ const Prize: React.FC<IProps> = (props) => {
       <Styled.SpecialPrizeTitleSecond>应用组 & TiDB 产品组</Styled.SpecialPrizeTitleSecond>
       <Styled.SpecialPrizeList>
         {data.applicationAndTiDBProductGroup.map((value) => (
-          <Styled.SpecialPrizeTopListColumn>
+          <Styled.SpecialPrizeTopListColumn key={value.name}>
             <Styled.SpecialPrizeTopListColumnItem>
               <Styled.SpecialPrizeTopListColumnItemName>{value.name}</Styled.SpecialPrizeTopListColumnItemName>
               <Styled.SpecialPrizeTopListColumnItemThing>{value.thing}</Styled.SpecialPrizeTopListColumnItemThing>

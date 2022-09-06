@@ -1,21 +1,20 @@
 import * as React from 'react';
 
 import * as Styled from './index.styled';
-import Anchor from '~/components/Anchor';
 
 export type TPrizeItem = {
-  name: string
-  thing: string
-  target: string
-}
+  name: string;
+  thing: string;
+  target: string;
+};
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
-    top: TPrizeItem[]
-    onlyApplicationGroup: TPrizeItem[]
-    applicationAndTiDBProductGroup: TPrizeItem[]
-    footer: React.ReactNode
-  }
+    top: TPrizeItem[];
+    onlyApplicationGroup: TPrizeItem[];
+    applicationAndTiDBProductGroup: TPrizeItem[];
+    footer: React.ReactNode;
+  };
 }
 
 const Prize: React.FC<IProps> = (props) => {
@@ -90,9 +89,7 @@ const Prize: React.FC<IProps> = (props) => {
         ))}
       </Styled.SpecialPrizeList>
 
-      <Styled.Footer>
-        {data.footer}
-      </Styled.Footer>
+      <Styled.Footer>{data.footer}</Styled.Footer>
     </Styled.Container>
   );
 };

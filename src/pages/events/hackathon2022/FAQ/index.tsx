@@ -2,14 +2,15 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import * as Styled from './index.styled';
-import Anchor from '~/components/Anchor';
-import { askCompetitionUrl } from '~/pages/events/hackathon2022/data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
-    question: string;
-    answer: React.ReactNode;
-  }[];
+    items: {
+      question: string;
+      answer: React.ReactNode;
+    }[];
+    footer: React.ReactNode;
+  };
 }
 
 const FAQ: React.FC<IProps> = (props) => {
@@ -18,13 +19,11 @@ const FAQ: React.FC<IProps> = (props) => {
   return (
     <Styled.Container {...rest}>
       <Styled.List>
-        {data.map((value) => (
+        {data.items.map((value) => (
           <Item key={value.question} value={value} />
         ))}
       </Styled.List>
-      <Styled.Description>
-        更多问答，请点击<Anchor href={askCompetitionUrl}>赛事 FAQ</Anchor>
-      </Styled.Description>
+      <Styled.Description>{data.footer}</Styled.Description>
     </Styled.Container>
   );
 };

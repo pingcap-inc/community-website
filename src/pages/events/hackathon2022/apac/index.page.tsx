@@ -7,41 +7,41 @@ import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
 
-import * as Styled from './index.styled';
-import * as StyledHeader from './Header/index.styled';
-import SectionTitle from './SectionTitle';
-import TitleCubeOrangeIcon from './title_icon_cube_orange.svg';
-import TitleCornerSkyBlueIcon from './title_icon_corner_skyblue.svg';
-import TitleCornerGreenIcon from './title_icon_corner_green.svg';
-import TitleCubeSkyBlueIcon from './title_icon_cube_skyblue.svg';
-import TitleCloudDeepBlue from './title_icon_cloud_deepblue.svg';
-import backgroundCornerSkyblueImage from './background_corner_skyblue.png';
-import backgroundCornerGreenImage from './background_corner_green.png';
-import backgroundCornerBlueImage from './background_corner_blue.png';
-import backgroundCornerSkyblueReverseImage from './background_corner_skyblue_reverse.png';
-import Header from './Header';
-import ThemeRace from './ThemeRace';
-import CompetitionProcess from './CompetitionProcess';
-import Prize from './Prize';
-import ParticipationWelfare from './ParticipationWelfare';
-import Icon0 from './ParticipationWelfare/icon-0.svg';
-import Icon1 from './ParticipationWelfare/icon-1.svg';
-import Icon2 from './ParticipationWelfare/icon-2.svg';
-import Icon3 from './ParticipationWelfare/icon-3.svg';
-import Icon4 from './ParticipationWelfare/icon-4.svg';
-import Icon5 from './ParticipationWelfare/icon-5.svg';
-import Judge from './Judge';
-import AvatarImage from './Judge/avatar.png';
-import FAQ from './FAQ';
-import Partner from './Partner';
-import PastReview from './PastReview';
+import * as Styled from '../index.styled';
+import * as StyledHeader from '../Header/index.styled';
+import SectionTitle from '../SectionTitle';
+import TitleCubeOrangeIcon from '../title_icon_cube_orange.svg';
+import TitleCornerSkyBlueIcon from '../title_icon_corner_skyblue.svg';
+import TitleCornerGreenIcon from '../title_icon_corner_green.svg';
+import TitleCubeSkyBlueIcon from '../title_icon_cube_skyblue.svg';
+import TitleCloudDeepBlue from '../title_icon_cloud_deepblue.svg';
+import backgroundCornerSkyblueImage from '../background_corner_skyblue.png';
+import backgroundCornerGreenImage from '../background_corner_green.png';
+import backgroundCornerBlueImage from '../background_corner_blue.png';
+import backgroundCornerSkyblueReverseImage from '../background_corner_skyblue_reverse.png';
+import Header from '../Header';
+//import ThemeRace from '../ThemeRace';
+import CompetitionProcess from '../CompetitionProcess';
+import Prize from '../Prize';
+import ParticipationWelfare from '../ParticipationWelfare';
+import Icon0 from '../ParticipationWelfare/icon-0.svg';
+import Icon1 from '../ParticipationWelfare/icon-1.svg';
+import Icon2 from '../ParticipationWelfare/icon-2.svg';
+import Icon3 from '../ParticipationWelfare/icon-3.svg';
+import Icon4 from '../ParticipationWelfare/icon-4.svg';
+import Icon5 from '../ParticipationWelfare/icon-5.svg';
+import Judge from '../Judge';
+import AvatarImage from '../Judge/avatar.png';
+import FAQ from '../FAQ';
+import Partner from '../Partner';
+import PastReview from '../PastReview';
 import Anchor from '~/components/Anchor';
 import ArrowLink from '~/components/ArrowLink';
-import { askCompetitionUrl, signUpFormUrl } from './data';
-import qrCodeImage from './Header/qrcode.png';
+import qrCodeImage from '../Header/qrcode.png';
+import { signUpFormUrl, askCompetitionUrl } from './data';
 
 const description =
-  '本次 Hackathon 主题为「Possibility at Scale」，打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
+  'Welcome to TiDB Hackathon 2022, "Possibility at Scale." This year, our Hackathon goals are to break the boundaries of traditional technologies, expand our thinking, and use TiDB to unlock more possibilities for innovation.';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -53,7 +53,7 @@ const dataHeader = {
   buttonItems: [
     {
       children: (
-        <StyledHeader.HeaderStartButtonSignUp href={signUpFormUrl}>立即报名</StyledHeader.HeaderStartButtonSignUp>
+        <StyledHeader.HeaderStartButtonSignUp href={signUpFormUrl}>Register now</StyledHeader.HeaderStartButtonSignUp>
       ),
     },
     {
@@ -69,39 +69,39 @@ const dataHeader = {
       children: (
         <StyledHeader.HeaderStartButtonAsk>
           <ArrowLink>
-            <Anchor href={askCompetitionUrl}>我要咨询</Anchor>
+            <Anchor href={askCompetitionUrl}>Learn more</Anchor>
           </ArrowLink>
         </StyledHeader.HeaderStartButtonAsk>
       ),
     },
   ],
   navItems: [
-    { children: '介  绍', href: '#intro' },
-    { children: '奖  项', href: '#prize' },
-    { children: '评  委', href: '#judges' },
-    { children: '常见问题', href: '#faq' },
-    { children: '合作伙伴', href: '#partner' },
+    { children: 'Overview', href: '#intro' },
+    { children: 'Prizes', href: '#prize' },
+    { children: 'Judges', href: '#judges' },
+    { children: 'FAQs', href: '#faq' },
+    { children: 'Supporters', href: '#partner' },
   ],
 };
 
-const dataThemeRace = [
-  {
-    color: '#F67200',
-    name: '应用组',
-    body: '以体现 TiDB 产品价值为主，基于 TiDB 之上实现代码开源的产品、工具、应用等均可。部署方式上，更推荐基于 Cloud 构建 TiDB 相关应用。',
-  },
-  {
-    color: '#00CF71',
-    name: 'TiDB 产品组',
-    body: '为 TiDB 内核产品以及 TiCDC、TiDB Lightning、TiUP 等周边工具的性能、稳定性、易用性或功能等各方面做出提升。',
-  },
-];
+//const dataThemeRace = [
+//  {
+//    color: '#F67200',
+//    name: '应用组',
+//    body: '以体现 TiDB 产品价值为主，基于 TiDB 之上实现代码开源的产品、工具、应用等均可。部署方式上，更推荐基于 Cloud 构建 TiDB 相关应用。',
+//  },
+//  {
+//    color: '#00CF71',
+//    name: 'TiDB 产品组',
+//    body: '为 TiDB 内核产品以及 TiCDC、TiDB Lightning、TiUP 等周边工具的性能、稳定性、易用性或功能等各方面做出提升。',
+//  },
+//];
 
 const dataPrize = {
   top: [
-    { name: '冠军', thing: '¥ 50,000', target: '1 支队伍 / 赛道' },
-    { name: '亚军', thing: '¥ 25,000', target: '2 支队伍 / 赛道' },
-    { name: '季军', thing: '¥ 15,000', target: '3 支队伍 / 赛道' },
+    { name: '1st Prize', thing: 'S$ 10,000', target: 'one team' },
+    { name: '2nd Prize', thing: 'S$ 5,000', target: 'two teams' },
+    { name: '3rd Prize', thing: 'S$ 3,000', target: 'three teams' },
   ],
   onlyApplicationGroup: [
     { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
@@ -117,12 +117,12 @@ const dataPrize = {
 };
 
 const dataParticipationWelfare = [
-  { icon: <Icon0 />, text: '专业导师赛前辅导' },
-  { icon: <Icon1 />, text: '技术同好现场交流' },
-  { icon: <Icon2 />, text: '评委大咖深度点评' },
-  { icon: <Icon3 />, text: '万元丰厚现金奖励' },
-  { icon: <Icon4 />, text: '参赛专属周边礼包' },
-  { icon: <Icon5 />, text: '优秀项目多重曝光' },
+  { icon: <Icon0 />, text: 'Professional mentorship' },
+  { icon: <Icon1 />, text: 'On-site communication with tech enthusiasts' },
+  { icon: <Icon2 />, text: 'Professional guidance from seasoned judges' },
+  { icon: <Icon3 />, text: 'Substantial prize money' },
+  { icon: <Icon4 />, text: 'Contestant-exclusive swag bag' },
+  { icon: <Icon5 />, text: 'Branding exposures for excellent projects' },
 ];
 
 const dataJudge = [
@@ -168,98 +168,118 @@ const dataJudge = [
 const dataFAQ = {
   items: [
     {
-      question: '1. 每支参赛队伍最多几个人？',
+      question: '1. How many team members can we have in each team?',
       answer: (
         <ul>
-          <li>团队参赛最多 4 人为一个小组。单人参赛也支持哦～</li>
+          <li>You can have at most four members in your team. You can also join the contest alone.</li>
         </ul>
       ),
     },
     {
-      question: '2. 没有队友怎么办？',
+      question: '2. What can I do to find my teammates?',
       answer: (
         <ul>
-          <li>可以在社区链接（跳转链接）发布寻找队友、自我推荐，找到团队缺少的队友，也可以找到合适的队伍加入。</li>
+          <li>You can post in the community to find teammates or recommend yourself as a team member.</li>
         </ul>
       ),
     },
     {
-      question: '3. 想不到好的创意想法怎么办？',
+      question: "3. What should I do if I can't think of a creative idea?",
       answer: (
         <ul>
-          <li>锁定 9 月 17 日宇宙漫游预备营，听听资深架构师们的创意想法，找到属于你的灵感</li>
-          <li>也可以在社区链接（跳转链接）看看社区开发者们的想法，激发你的创意</li>
+          <li>You can see the ideas of community developers in the community to get inspiration.</li>
         </ul>
       ),
     },
     {
-      question: '4. 主办方提供餐饮和住宿吗？',
+      question: '4. Does the host provide meals and accommodation?',
       answer: (
         <ul>
           <li>
-            我们提供参赛者和志愿者比赛期间的餐饮（两份午餐、一份早餐、两份晚餐），参赛选手可留在比赛场地过夜，如需在场地附近租住宾馆请自行解决～
+            We provide catering (one breakfast, two lunches, and two dinners) for contestants and volunteers during the
+            final. You can stay at the PingCAP office overnight. If you want to live in a hotel nearby, please pay for
+            it yourself.
           </li>
         </ul>
       ),
     },
     {
-      question: '5. 比赛会由于疫情取消吗？',
-      answer: (
-        <ul>
-          <li>我们会密切关注疫情动向，如有不可抗力则比赛会改为全程线上，不会取消哦～</li>
-        </ul>
-      ),
-    },
-    {
-      question: '6. 会场分别在哪些城市？',
-      answer: (
-        <ul>
-          <li>上海、北京、广州、成都、新加坡，上述地区进入决赛队伍超过五组时，该场地将开启线下会场。</li>
-        </ul>
-      ),
-    },
-    {
-      question: '7. 什么时候可以开始编写代码？',
+      question: '5. Will the final be cancelled due to the epidemic?',
       answer: (
         <ul>
           <li>
-            决赛现场
-            coding。本次活动不允许偷跑哟，决赛现场评委会严格审查参赛选手的作品是否符合“第一行代码提交时间需在初赛结果公示后”这一规则。
-          </li>
-          <li>
-            如果遇到学习资料中尚未解答的问题，可以加入 Hackathon 2022
-            参赛群，群内将有导师不定期线上答疑，以及集中直播分享。
+            We'll pay close attention to the trend of the epidemic. If we can't hold the final on site due to the
+            epidemic, we won't cancel it and will hold it online.
           </li>
         </ul>
       ),
     },
     {
-      question: '8. 最佳校园奖参与评奖的人群是？',
+      question: '6. Where is the PingCAP office in Singapore?',
       answer: (
         <ul>
-          <li>团队成员需要全员皆为：在校本科生、硕士研究生、博士研究生。</li>
+          <li>It's at 1 One North Crescent, Razer SEA HQ, Level 7, Singapore 138538</li>
         </ul>
       ),
     },
     {
-      question: '9. 报名参赛就可以获得本次获得的参赛大礼包吗？',
+      question: '7. When can I start writing code?',
       answer: (
         <ul>
-          <li>参赛开发者需要提交 RFC 后，RFC 通过初审，进入决赛就可以现场领取参赛大礼包哟～</li>
+          <li>
+            <strong>You can't submit your first line of code until we announce the pre-selection results.</strong> The
+            final jury will strictly check whether you meet this rule.
+          </li>
+          <li>
+            If you have questions for the reference materials, you can join the Hackathon 2022 group, where our mentors
+            will answer your questions online.
+          </li>
+        </ul>
+      ),
+    },
+    {
+      question: '8. Who are the candidates for the Web3 Special Award?',
+      answer: (
+        <ul>
+          <li>If your project belongs to the Web3 field, you are eligible for the Web3 Special Award.</li>
+        </ul>
+      ),
+    },
+    {
+      question: '9. What are the candidate requirements for the Best Campus Award?',
+      answer: (
+        <ul>
+          <li>All team members should be undergraduate, master's, and doctoral students.</li>
+        </ul>
+      ),
+    },
+    {
+      question: '10. Can we win a special award and a top 6 award at the same time?',
+      answer: (
+        <ul>
+          <li>Yes.</li>
+        </ul>
+      ),
+    },
+    {
+      question: '11. Can I get a swag bag by registering for the contest?',
+      answer: (
+        <ul>
+          <li>After your RFC passes the pre-selection, you can get the swag bag at the final.</li>
         </ul>
       ),
     },
   ],
   footer: (
     <>
-      更多问答，请点击<Anchor href={askCompetitionUrl}>赛事 FAQ</Anchor>
+      See more <Anchor href={askCompetitionUrl}>Q&As</Anchor>
     </>
   ),
 };
 
 const dataPartner = [
   {
-    name: '赞助方',
+    name: 'Patron',
     items: [
       { image: '' },
       { image: '' },
@@ -274,7 +294,7 @@ const dataPartner = [
     ],
   },
   {
-    name: '云资源赞助/云技术服务支持',
+    name: 'Co-patrons',
     items: [
       { image: '' },
       { image: '' },
@@ -289,22 +309,7 @@ const dataPartner = [
     ],
   },
   {
-    name: '协办方',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
-  },
-  {
-    name: '合作伙伴',
+    name: 'Partners',
     items: [
       { image: '' },
       { image: '' },
@@ -320,7 +325,7 @@ const dataPartner = [
   },
 ];
 
-const Hackathon2022: NextPage = () => {
+const Hackathon2022Apac: NextPage = () => {
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -329,8 +334,15 @@ const Hackathon2022: NextPage = () => {
         <Header data={dataHeader} />
 
         <Styled.Intro id={'intro'}>
-          <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛介绍</SectionTitle>
-          <Styled.IntroContent>{description}</Styled.IntroContent>
+          <SectionTitle icon={<TitleCubeOrangeIcon />}>Overview</SectionTitle>
+          <Styled.IntroContent>
+            <p>{description}</p>
+            <p>
+              Would you like to join? You could demonstrate the value of TiDB by implementing open source products,
+              tools, or applications based on TiDB in Web3, public welfare, games, and other fields. As for the
+              deployment method, we recommend building TiDB-related applications based on TiDB Cloud.
+            </p>
+          </Styled.IntroContent>
         </Styled.Intro>
 
         <div
@@ -339,15 +351,15 @@ const Hackathon2022: NextPage = () => {
             backgroundRepeat: 'no-repeat',
           }}
         >
-          <Styled.ThemeRace>
-            <SectionTitle>主题赛道</SectionTitle>
-            <Styled.ThemeRaceBody>
-              <ThemeRace data={dataThemeRace} />
-            </Styled.ThemeRaceBody>
-          </Styled.ThemeRace>
+          {/*<Styled.ThemeRace>*/}
+          {/*  <SectionTitle>主题赛道</SectionTitle>*/}
+          {/*  <Styled.ThemeRaceBody>*/}
+          {/*    <ThemeRace data={dataThemeRace} />*/}
+          {/*  </Styled.ThemeRaceBody>*/}
+          {/*</Styled.ThemeRace>*/}
 
           <Styled.CompetitionProcess>
-            <SectionTitle icon={<TitleCornerSkyBlueIcon />}>参赛流程</SectionTitle>
+            <SectionTitle icon={<TitleCornerSkyBlueIcon />}>Timeline (SGT)</SectionTitle>
             <Styled.CompetitionProcessBody>
               <CompetitionProcess />
             </Styled.CompetitionProcessBody>
@@ -362,14 +374,14 @@ const Hackathon2022: NextPage = () => {
           }}
         >
           <Styled.Prize id={'prize'}>
-            <SectionTitle icon={<TitleCloudDeepBlue />}>大赛奖项</SectionTitle>
+            <SectionTitle icon={<TitleCloudDeepBlue />}>Prizes</SectionTitle>
             <Styled.PrizeBody>
               <Prize data={dataPrize} />
             </Styled.PrizeBody>
           </Styled.Prize>
 
           <Styled.ParticipationWelfare>
-            <SectionTitle>其他参赛福利</SectionTitle>
+            <SectionTitle>Participation benefits</SectionTitle>
             <Styled.ParticipationWelfareBody>
               <ParticipationWelfare data={dataParticipationWelfare} />
             </Styled.ParticipationWelfareBody>
@@ -384,14 +396,14 @@ const Hackathon2022: NextPage = () => {
           }}
         >
           <Styled.Judge id={'judges'}>
-            <SectionTitle icon={<TitleCornerGreenIcon />}>评委导师阵容</SectionTitle>
+            <SectionTitle icon={<TitleCornerGreenIcon />}>Judges and mentors</SectionTitle>
             <Styled.JudgeBody>
               <Judge data={dataJudge} />
             </Styled.JudgeBody>
           </Styled.Judge>
 
           <Styled.FAQ id={'faq'}>
-            <SectionTitle icon={<TitleCubeSkyBlueIcon />}>FAQ</SectionTitle>
+            <SectionTitle icon={<TitleCubeSkyBlueIcon />}>FAQs</SectionTitle>
             <Styled.FAQBody>
               <FAQ data={dataFAQ} />
             </Styled.FAQBody>
@@ -406,14 +418,14 @@ const Hackathon2022: NextPage = () => {
           }}
         >
           <Styled.Partner id={'partner'}>
-            <SectionTitle icon={<TitleCubeOrangeIcon />}>合作伙伴</SectionTitle>
+            <SectionTitle icon={<TitleCubeOrangeIcon />}>Supporters</SectionTitle>
             <Styled.PartnerBody>
               <Partner data={dataPartner} />
             </Styled.PartnerBody>
           </Styled.Partner>
 
           <Styled.PastReview>
-            <SectionTitle icon={<TitleCubeSkyBlueIcon />}>往期回顾</SectionTitle>
+            <SectionTitle icon={<TitleCubeSkyBlueIcon />}>Previous TiDB Hackathons</SectionTitle>
             <Styled.PastReviewBody>
               <PastReview />
             </Styled.PastReviewBody>
@@ -424,7 +436,7 @@ const Hackathon2022: NextPage = () => {
   );
 };
 
-export default Hackathon2022;
+export default Hackathon2022Apac;
 
 export const getServerSideProps = async (ctx) => {
   //const client = await api.initStrapiClient();

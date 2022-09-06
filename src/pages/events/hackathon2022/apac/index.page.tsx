@@ -46,7 +46,7 @@ const description =
 const seo = {
   title: 'TiDB Hackathon 2022',
   description,
-  keywords: ['黑客马拉松', 'TiDB', 'Hackathon'],
+  keywords: ['TiDB', 'Hackathon'],
 };
 
 const dataHeader = {

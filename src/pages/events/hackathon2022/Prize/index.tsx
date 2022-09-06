@@ -3,30 +3,23 @@ import * as React from 'react';
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
 
-export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
+export type TPrizeItem = {
+  name: string
+  thing: string
+  target: string
+}
 
-const data = {
-  top: [
-    { name: '冠军', thing: '¥ 50,000', target: '1 支队伍 / 赛道' },
-    { name: '亚军', thing: '¥ 25,000', target: '2 支队伍 / 赛道' },
-    { name: '季军', thing: '¥ 15,000', target: '3 支队伍 / 赛道' },
-  ],
-  onlyApplicationGroup: [
-    { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: '公益贡献奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: 'Cloud 应用生态奖（API）', thing: '¥ 5,000', target: '1 支队伍' },
-  ],
-  applicationAndTiDBProductGroup: [
-    { name: '最佳人气奖', thing: '键鼠套装 / 人 ', target: '1 支队伍 / 赛道' },
-    { name: '最佳校园奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
-    { name: '用户之选奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
-  ],
-};
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+  data: {
+    top: TPrizeItem[]
+    onlyApplicationGroup: TPrizeItem[]
+    applicationAndTiDBProductGroup: TPrizeItem[]
+  }
+}
 
 const Prize: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { children, ...rest } = props;
+  const { data, ...rest } = props;
   return (
     <Styled.Container {...rest}>
       <Styled.Description>

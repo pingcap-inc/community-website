@@ -2,74 +2,18 @@ import * as React from 'react';
 
 import * as Styled from './index.styled';
 
-export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-const data = [
-  {
-    name: '赞助方',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
-  },
-  {
-    name: '云资源赞助/云技术服务支持',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
-  },
-  {
-    name: '协办方',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
-  },
-  {
-    name: '合作伙伴',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
-  },
-];
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+  data: {
+    name: string;
+    items: {
+      image: string;
+    }[];
+  }[];
+}
 
 const Partner: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { children, ...rest } = props;
+  const { data, ...rest } = props;
   return (
     <Styled.Container {...rest}>
       {data.map((value) => (

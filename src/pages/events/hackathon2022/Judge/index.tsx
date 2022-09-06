@@ -1,53 +1,21 @@
 import * as React from 'react';
 import { useState } from 'react';
+import type { StaticImageData } from 'next/image';
 
 import * as Styled from './index.styled';
-import AvatarImage from './avatar.png';
 
-export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
-
-const data = [
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-];
+export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
+  data: {
+    avatar: StaticImageData;
+    name: string;
+    title: string;
+    quotation: string;
+  }[];
+}
 
 const Judge: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { children, ...rest } = props;
+  const { data, ...rest } = props;
   return (
     <Styled.Container {...rest}>
       {data.map((value) => (
@@ -71,7 +39,7 @@ function JudgeItem({ value }) {
           <Styled.OverLayerTitle>{value.title}</Styled.OverLayerTitle>
           <Styled.OverLayerQuotation>{value.quotation}</Styled.OverLayerQuotation>
         </Styled.OverLayer>
-        ) : (
+      ) : (
         <Styled.Profile>
           <Styled.Avatar>
             <img {...value.avatar} alt={value.name} />

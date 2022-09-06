@@ -21,6 +21,21 @@ const data = [
     ],
   },
   {
+    name: '云资源赞助/云技术服务支持',
+    items: [
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+      { image: '' },
+    ],
+  },
+  {
     name: '协办方',
     items: [
       { image: '' },

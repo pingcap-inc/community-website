@@ -14,6 +14,7 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
     top: TPrizeItem[]
     onlyApplicationGroup: TPrizeItem[]
     applicationAndTiDBProductGroup: TPrizeItem[]
+    footer: React.ReactNode
   }
 }
 
@@ -90,8 +91,7 @@ const Prize: React.FC<IProps> = (props) => {
       </Styled.SpecialPrizeList>
 
       <Styled.Footer>
-        注：所有奖项奖金均为税前金额，奖项评选规则可参考
-        <Anchor href={'https://asktug.com/t/topic/273513'}>评分规则</Anchor>。
+        {data.footer}
       </Styled.Footer>
     </Styled.Container>
   );

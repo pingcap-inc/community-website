@@ -114,6 +114,12 @@ const dataPrize = {
     { name: '最佳校园奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
     { name: '用户之选奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
   ],
+  footer: (
+    <>
+      <p>Please note that we'll issue the prize money according to the exchange rate. Taxes are not included.</p>
+      <p>See evaluation criteria. <Anchor href={'https://asktug.com/t/topic/273513'} /></p>
+    </>
+  ),
 };
 
 const dataParticipationWelfare = [

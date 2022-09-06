@@ -17,7 +17,7 @@ const Partner: React.FC<IProps> = (props) => {
   return (
     <Styled.Container {...rest}>
       {data.map((value) => (
-        <Category value={value} />
+        <Category key={value.name} value={value} />
       ))}
     </Styled.Container>
   );

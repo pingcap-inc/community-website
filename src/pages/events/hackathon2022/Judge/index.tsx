@@ -19,7 +19,7 @@ const Judge: React.FC<IProps> = (props) => {
   return (
     <Styled.Container {...rest}>
       {data.map((value) => (
-        <Styled.Column>
+        <Styled.Column key={value.name}>
           <JudgeItem value={value} />
         </Styled.Column>
       ))}

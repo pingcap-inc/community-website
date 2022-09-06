@@ -98,23 +98,48 @@ const dataThemeRace = [
 ];
 
 const dataPrize = {
-  top: [
-    { name: '冠军', thing: '¥ 50,000', target: '1 支队伍 / 赛道' },
-    { name: '亚军', thing: '¥ 25,000', target: '2 支队伍 / 赛道' },
-    { name: '季军', thing: '¥ 15,000', target: '3 支队伍 / 赛道' },
+  topPrize: {
+    description: (
+      <>
+        各赛道 <span style={{ color: '#00CF71' }}>Top 6</span> 均可获得现金奖励
+      </>
+    ),
+    items: [
+      { name: '冠军', thing: '¥ 50,000', target: '1 支队伍 / 赛道' },
+      { name: '亚军', thing: '¥ 25,000', target: '2 支队伍 / 赛道' },
+      { name: '季军', thing: '¥ 15,000', target: '3 支队伍 / 赛道' },
+    ],
+  },
+  prizes: [
+    {
+      name: '特别奖项',
+      categories: [
+        {
+          name: '仅应用组',
+          items: [
+            { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
+            { name: '公益贡献奖', thing: '¥ 5,000', target: '1 支队伍' },
+            { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍' },
+            { name: 'Cloud 应用生态奖（API）', thing: '¥ 5,000', target: '1 支队伍' },
+          ],
+        },
+        {
+          name: '应用组 & TiDB 产品组',
+          items: [
+            { name: '最佳人气奖', thing: '键鼠套装 / 人 ', target: '1 支队伍 / 赛道' },
+            { name: '最佳校园奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
+            { name: '用户之选奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
+          ],
+        },
+      ],
+    },
   ],
-  onlyApplicationGroup: [
-    { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: '公益贡献奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: 'Cloud 应用生态奖（API）', thing: '¥ 5,000', target: '1 支队伍' },
-  ],
-  applicationAndTiDBProductGroup: [
-    { name: '最佳人气奖', thing: '键鼠套装 / 人 ', target: '1 支队伍 / 赛道' },
-    { name: '最佳校园奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
-    { name: '用户之选奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
-  ],
-  footer: <>注：所有奖项奖金均为税前金额，奖项评选规则可参考<Anchor href={'https://asktug.com/t/topic/273513'}>评分规则</Anchor>。</>,
+  footer: (
+    <>
+      注：所有奖项奖金均为税前金额，奖项评选规则可参考
+      <Anchor href={'https://asktug.com/t/topic/273513'}>评分规则</Anchor>。
+    </>
+  ),
 };
 
 const dataParticipationWelfare = [

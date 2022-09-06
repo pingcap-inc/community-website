@@ -98,26 +98,48 @@ const dataHeader = {
 //];
 
 const dataPrize = {
-  top: [
-    { name: '1st Prize', thing: 'S$ 10,000', target: 'one team' },
-    { name: '2nd Prize', thing: 'S$ 5,000', target: 'two teams' },
-    { name: '3rd Prize', thing: 'S$ 3,000', target: 'three teams' },
-  ],
-  onlyApplicationGroup: [
-    { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: '公益贡献奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍' },
-    { name: 'Cloud 应用生态奖（API）', thing: '¥ 5,000', target: '1 支队伍' },
-  ],
-  applicationAndTiDBProductGroup: [
-    { name: '最佳人气奖', thing: '键鼠套装 / 人 ', target: '1 支队伍 / 赛道' },
-    { name: '最佳校园奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
-    { name: '用户之选奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
+  topPrize: {
+    description: (
+      <>
+        <span style={{ color: '#00CF71' }}>Top six</span> winners will receive cash prizes
+      </>
+    ),
+    items: [
+      { name: '1st Prize', thing: 'S$ 10,000', target: 'one team' },
+      { name: '2nd Prize', thing: 'S$ 5,000', target: 'two teams' },
+      { name: '3rd Prize', thing: 'S$ 3,000', target: 'three teams' },
+    ],
+  },
+  prizes: [
+    {
+      name: 'Special awards',
+      categories: [
+        {
+          //name: '仅应用组',
+          items: [
+            { name: 'Web3 Special Award', thing: 'S$ 2,000', target: '(one team)' },
+            { name: 'Best Creative Award', thing: 'S$ 1,000', target: '(one team)' },
+            { name: 'Public Welfare Contribution Award', thing: 'S$ 1,000', target: '(one team)' },
+            { name: 'Technology Trends Award', thing: 'S$ 1,000', target: '(one team)' },
+            { name: 'TiDB Cloud Application (API) Award', thing: 'S$ 1,000', target: '(one team)' },
+            {
+              name: 'Best Popularity Award',
+              thing: 'one set of keyboard and mouse for each team member',
+              target: '(one team)',
+            },
+            { name: 'Best Campus Award', thing: 'S$ 1,000', target: '(one team)' },
+            { name: "Users' Choice Award", thing: 'S$ 1,000', target: '(one team)' },
+          ],
+        },
+      ],
+    },
   ],
   footer: (
     <>
       <p>Please note that we'll issue the prize money according to the exchange rate. Taxes are not included.</p>
-      <p>See evaluation criteria. <Anchor href={'https://asktug.com/t/topic/273513'} /></p>
+      <p>
+        See evaluation criteria. <Anchor href={'https://asktug.com/t/topic/273513'} />
+      </p>
     </>
   ),
 };

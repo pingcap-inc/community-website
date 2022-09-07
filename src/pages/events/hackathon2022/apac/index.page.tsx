@@ -21,7 +21,7 @@ import backgroundCornerBlueImage from '../background_corner_blue.png';
 import backgroundCornerSkyblueReverseImage from '../background_corner_skyblue_reverse.png';
 import Header from '../Header';
 //import ThemeRace from '../ThemeRace';
-import CompetitionProcess from '../CompetitionProcess';
+import CompetitionProcess from './CompetitionProcess';
 import Prize from '../Prize';
 import ParticipationWelfare from '../ParticipationWelfare';
 import Icon0 from '../ParticipationWelfare/icon-0.svg';

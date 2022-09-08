@@ -136,7 +136,7 @@ const dataPrize = {
           items: [
             { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
             { name: '公益贡献奖', thing: '¥ 5,000', target: '1 支队伍' },
-            { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍' },
+            { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍【由华创资本冠名赞助】' },
             { name: 'Cloud 应用生态奖（API）', thing: '¥ 5,000', target: '1 支队伍' },
           ],
         },

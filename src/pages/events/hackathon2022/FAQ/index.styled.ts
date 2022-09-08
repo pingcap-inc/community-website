@@ -60,6 +60,10 @@ export const Body = styled.div<{ $show: boolean }>`
   ul {
     margin-bottom: 0;
   }
+  a,
+  a:hover {
+    color: #82c1ed;
+  }
 `;
 
 export const Description = styled.div`

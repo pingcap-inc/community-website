@@ -54,7 +54,16 @@ import Partner from './Partner';
 import PastReview from './PastReview';
 import Anchor from '~/components/Anchor';
 import ArrowLink from '~/components/ArrowLink';
-import { askCompetitionUrl, scoreRule, signUpFormUrl } from './data';
+import {
+  askCompetitionUrl,
+  scoreRule,
+  signUpFormUrl,
+  joinGroupHelpUrl,
+  liveUrl,
+  ideaUrl,
+  studyResourceUrl,
+  RfcSubmitFormUrl,
+} from './data';
 import qrCodeImage from './Header/qrcode.png';
 
 const description =
@@ -319,7 +328,10 @@ const dataFAQ = {
       question: '2. 没有队友怎么办？',
       answer: (
         <ul>
-          <li>可以在社区链接（跳转链接）发布寻找队友、自我推荐，找到团队缺少的队友，也可以找到合适的队伍加入。</li>
+          <li>
+            可以在<Anchor href={joinGroupHelpUrl}>组队指南</Anchor>
+            发布寻找队友、自我推荐，找到团队缺少的队友，也可以找到合适的队伍加入。
+          </li>
         </ul>
       ),
     },
@@ -329,9 +341,11 @@ const dataFAQ = {
         <ul>
           <li>
             锁定 9 月 17 日「TiDB Hackathon 2022 非正式会谈 —
-            东旭创意脑暴会」，听听资深架构师们的创意想法，找到属于你的灵感
+            东旭创意脑暴会」，听听资深架构师们的创意想法，找到属于你的灵感。<Anchor href={liveUrl}>预约直播</Anchor>
           </li>
-          <li>也可以在社区链接（跳转链接）看看社区开发者们的想法，激发你的创意</li>
+          <li>
+            也可以在<Anchor href={ideaUrl}>创意库</Anchor>看看社区开发者们的想法，激发你的创意
+          </li>
         </ul>
       ),
     },
@@ -370,7 +384,8 @@ const dataFAQ = {
             coding。本次活动不允许偷跑哟，决赛现场评委会严格审查参赛选手的作品是否符合“第一行代码提交时间需在初赛结果公示后”这一规则。
           </li>
           <li>
-            如果遇到学习资料中尚未解答的问题，可以加入 Hackathon 2022
+            如果遇到<Anchor href={studyResourceUrl}>学习资料</Anchor>
+            中尚未解答的问题，可以添加小助手微信：dbasupport，加入 Hackathon 2022
             参赛群，群内将有导师不定期线上答疑，以及集中直播分享。
           </li>
         </ul>
@@ -389,6 +404,15 @@ const dataFAQ = {
       answer: (
         <ul>
           <li>参赛开发者需要提交 RFC 后，RFC 通过初审，进入决赛就可以现场领取参赛大礼包哟～</li>
+          <li>
+            <Anchor href={RfcSubmitFormUrl}>完成 RFC 提交</Anchor>，可参与抽奖 ：比赛开始后，将从特定时间段内成功提交
+            RFC 的团队抽取若干支团队，送出 TiDB 社区神秘礼包
+            <ul>
+              <li>9/13 - 9/22 ：抽取 4 支</li>
+              <li>9/22 - 9/30 ：抽取 3 支</li>
+              <li>10/1 - 10/14：抽取 2 支</li>
+            </ul>
+          </li>
         </ul>
       ),
     },

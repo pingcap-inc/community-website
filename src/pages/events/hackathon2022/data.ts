@@ -8,3 +8,6 @@ export const pptTemplateUrl =
   'https://docs.google.com/presentation/d/1OcIpL5MEZPPbjiSnbpnqHPwoO1cE5nBBq2oyVllmQ_4/edit?usp=sharing';
 export const askCompetitionUrl = 'https://asktug.com/c/Mutual-communication/Hackathon';
 export const scoreRule = 'https://asktug.com/t/topic/273513';
+export const liveUrl = 'https://live.bilibili.com/4630260';
+export const ideaUrl = 'https://asktug.com/t/topic/933124';
+export const studyResourceUrl = 'https://asktug.com/t/topic/903772';

@@ -2,7 +2,16 @@ import * as React from 'react';
 
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
-import { signUpFormUrl, joinGroupFormUrl, RfcSubmitFormUrl, pptTemplateUrl, guideUrl, scoreRule } from '../data';
+import {
+  signUpFormUrl,
+  joinGroupFormUrl,
+  RfcSubmitFormUrl,
+  pptTemplateUrl,
+  guideUrl,
+  scoreRule,
+  liveUrl,
+  ideaUrl,
+} from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -47,8 +56,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
             </Styled.Start>
             <Styled.End>
               {/*TODO: links*/}
-              <Anchor href={'https://live.bilibili.com/4630260'}>预约直播</Anchor>
-              <Anchor href={'https://asktug.com/t/topic/933124'}>我有想法</Anchor>
+              <Anchor href={liveUrl}>预约直播</Anchor>
+              <Anchor href={ideaUrl}>我有想法</Anchor>
             </Styled.End>
           </Styled.Item>
           <StepLine color={'#00CF71'}>PLUS 环节</StepLine>

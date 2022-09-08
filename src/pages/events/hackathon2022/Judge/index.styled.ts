@@ -30,8 +30,7 @@ export const Item = styled.div`
   border: 1px solid rgba(0, 207, 113, 0.5);
 `;
 
-export const Profile = styled.div`
-`;
+export const Profile = styled.div``;
 
 const avatarSize = '150px';
 export const Avatar = styled.div`
@@ -77,6 +76,7 @@ export const OverLayer = styled.div`
   //max-width: 304px;
   //padding: 60px 38px;
   padding: 0 32px;
+  padding-bottom: 32px;
   text-align: left;
   //width: 100%;
   overflow: auto;

@@ -86,7 +86,7 @@ const dataHeader = {
       children: (
         <StyledHeader.HeaderStartButtonAsk>
           <ArrowLink>
-            <Anchor href={askCompetitionUrl}>我要咨询</Anchor>
+            <Anchor href={askCompetitionUrl}>赛事咨询</Anchor>
           </ArrowLink>
         </StyledHeader.HeaderStartButtonAsk>
       ),

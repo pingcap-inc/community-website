@@ -134,9 +134,27 @@ const dataPrize = {
         {
           name: '仅应用组',
           items: [
-            { name: '最佳创意奖', thing: '¥ 5,000', target: '1 支队伍' },
+            {
+              name: (
+                <>
+                  <div>最佳创意奖</div>
+                  <div style={{ fontSize: 14, color: '#CCC' }}>由初心资本冠名赞助</div>
+                </>
+              ),
+              thing: '¥ 5,000',
+              target: '1 支队伍',
+            },
             { name: '公益贡献奖', thing: '¥ 5,000', target: '1 支队伍' },
-            { name: '技术趋势奖', thing: '¥ 5,000', target: '1 支队伍【由华创资本冠名赞助】' },
+            {
+              name: (
+                <>
+                  <div>技术趋势奖</div>
+                  <div style={{ fontSize: 14, color: '#CCC' }}>由华创资本冠名赞助</div>
+                </>
+              ),
+              thing: '¥ 5,000',
+              target: '1 支队伍',
+            },
             { name: 'Cloud 应用生态奖（API）', thing: '¥ 5,000', target: '1 支队伍' },
           ],
         },

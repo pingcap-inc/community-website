@@ -15,8 +15,8 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
       items: TPrizeItem[];
     };
     prizes: {
-      name: string;
-      categories: { name?: string; items: TPrizeItem[] }[];
+      name: React.ReactNode;
+      categories: { name?: React.ReactNode; items: TPrizeItem[] }[];
     }[];
     footer: React.ReactNode;
   };

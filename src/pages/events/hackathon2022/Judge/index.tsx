@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
+import Image from 'next/image';
 import type { StaticImageData } from 'next/image';
 
 import * as Styled from './index.styled';
@@ -42,7 +43,7 @@ function JudgeItem({ value }) {
       ) : (
         <Styled.Profile>
           <Styled.Avatar>
-            <img {...value.avatar} alt={value.name} />
+            <Image {...value.avatar} alt={value.name} />
           </Styled.Avatar>
           <Styled.Name>{value.name}</Styled.Name>
           <Styled.Title>{value.title}</Styled.Title>

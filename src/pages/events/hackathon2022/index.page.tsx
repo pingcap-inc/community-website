@@ -31,7 +31,24 @@ import Icon3 from './ParticipationWelfare/icon-3.svg';
 import Icon4 from './ParticipationWelfare/icon-4.svg';
 import Icon5 from './ParticipationWelfare/icon-5.svg';
 import Judge from './Judge';
-import AvatarImage from './Judge/avatar.png';
+import ChuangPeiHanImage from './Judge/avatar/Chuang Pei-Han-特约嘉宾.png';
+import 陈昱Image from './Judge/avatar/陈昱.png';
+import 高斌Image from './Judge/avatar/高斌.png';
+import 郭磊涛Image from './Judge/avatar/郭磊涛.png';
+import 黄东旭Image from './Judge/avatar/黄东旭.png';
+import 黄潇Image from './Judge/avatar/黄潇.png';
+import 李雨来Image from './Judge/avatar/李雨来.png';
+import 刘聪Image from './Judge/avatar/刘聪.png';
+import 刘子东Image from './Judge/avatar/刘子东.png';
+import 马洪宾Image from './Judge/avatar/马洪宾.png';
+import 沈旸Image from './Judge/avatar/沈旸.png';
+import 孙晓光Image from './Judge/avatar/孙晓光.png';
+import 唐刘Image from './Judge/avatar/唐刘.png';
+import 王聪Image from './Judge/avatar/王聪.png';
+import 吴海燕Image from './Judge/avatar/吴海燕.png';
+import 谢孟军Image from './Judge/avatar/谢孟军.png';
+import 徐成选Image from './Judge/avatar/徐成选.png';
+import 张东晖Image from './Judge/avatar/张东晖.png';
 import FAQ from './FAQ';
 import Partner from './Partner';
 import PastReview from './PastReview';
@@ -153,41 +170,120 @@ const dataParticipationWelfare = [
 
 const dataJudge = [
   {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
-  },
-  {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
+    avatar: ChuangPeiHanImage,
+    name: 'Chuang Pei-Han（特约专项评委）',
+    title: 'Chief Exective Officer',
     quotation:
-      '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
+      'a serial entrepreneur with years of experience in business development, product marketing and partnership management. He has successfully raised series of fundings for his businesses, including a USD 7 digits seed funding round. One of the earliest adopters of blockchain technology',
   },
   {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
+    avatar: 陈昱Image,
+    name: '陈昱',
+    title: '云启资本合伙人',
+    quotation:
+      '云启资本合伙人，重点关注基础软件、大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了 PingCAP、Zilliz、Jina AI、Singularity、TigerGraph、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、一造机器人等优秀企业。',
   },
   {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
+    avatar: 高斌Image,
+    name: '高斌',
+    title: 'PingCAP 数据平台 PM Lead',
+    quotation:
+      'PingCAP 公司数据平台团队 PM Lead， 数据库领域从业20年老兵，对于关系型数据库相关领域有深入了解。出版过专著《Oracle RAC 核心技术详解》',
   },
   {
-    avatar: AvatarImage,
-    name: '刘奇',
-    title: 'PingCAP ｜ 创始人兼CEO',
-    quotation: '这里有超多创意，资深架构师在线脑暴，超多 idea ，你的灵感来源之一',
+    avatar: 郭磊涛Image,
+    name: '郭磊涛',
+    title: '爱奇艺数据库服务负责人',
+    quotation: '爱奇艺数据库服务负责人',
+  },
+  {
+    avatar: 黄东旭Image,
+    name: '黄东旭',
+    title: 'PingCAP 联合创始人兼 CTO',
+    quotation:
+      'PingCAP 联合创始人兼 CTO，资深基础软件工程师，架构师，曾就职于微软亚洲研究院，网易有道及豌豆荚，擅长分布式系统以及数据库开发，在分布式存储领域有丰富的经验和独到的见解。狂热的开源爱好者以及开源软件作者，代表作品分布式 Redis 缓存方案 Codis，以及分布式关系型数据库 TiDB。2015 年创业，成立 PingCAP，在 PingCAP 的主要工作是从零开始设计并研发开源 NewSQL 数据库 TiDB，目前 GitHub 上该项目累积 star 数超过 29000+，成为本领域全球顶级的开源项目。',
+  },
+  {
+    avatar: 黄潇Image,
+    name: '黄潇',
+    title: 'PingCAP OPM',
+    quotation: 'PingCAP OPM，前开水团 DBA Leader 和前 TUG 北京区 Leader，10+ 年 DBA、DevOps 经验',
+  },
+  {
+    avatar: 李雨来Image,
+    name: '李雨来',
+    title: 'TiDB Committer, Seaweedfs Contributor',
+    quotation: 'TiDB Committer, Seaweedfs Contributor',
+  },
+  {
+    avatar: 刘聪Image,
+    name: '刘聪',
+    title: 'PingCAP 资深开发工程师',
+    quotation: 'PingCAP 资深开发工程师，做了十多年存储的菜鸟',
+  },
+  {
+    avatar: 刘子东Image,
+    name: '刘子东',
+    title: '小米数据库工程师，TiDB Committer',
+    quotation: '小米数据库工程师，TiDB Committer',
+  },
+  {
+    avatar: 马洪宾Image,
+    name: '马洪宾',
+    organization: 'kyligence',
+    title: 'Kyligence 技术合伙人，Apache kylin 社区 PMC 成员',
+    quotation: 'Kyligence 技术合伙人，Apache kylin 社区 PMC 成员',
+  },
+  {
+    avatar: 沈旸Image,
+    name: '沈旸',
+    title: '联易融副总裁',
+    quotation:
+      '联易融副总裁，前神州数码集团副总裁兼 CIO。在集团数字化转型、SAP咨询、数字中台、营销私域运营、分布式数据库、开源 ERP、SAAS 等领域的开发管理工作有丰富的经验，领导 Tidb4PG 开源项目。',
+  },
+  {
+    avatar: 孙晓光Image,
+    name: '孙晓光',
+    organization: 'PingCAP',
+    title: 'TiDB Cloud Ecosystem 团队负责人',
+    quotation: 'TiDB Cloud Ecosystem 团队负责人',
+  },
+  {
+    avatar: 唐刘Image,
+    name: '唐刘',
+    title: 'PingCAP 研发副总裁',
+    quotation: 'PingCAP 研发副总裁，TiDB Maintainer ，目前主要负责构建 TiDB Cloud。',
+  },
+  {
+    avatar: 王聪Image,
+    name: '王聪',
+    title: 'PingCAP SQL team tech leader',
+    quotation: 'PingCAP SQL team tech leader',
+  },
+  {
+    avatar: 吴海燕Image,
+    name: '吴海燕',
+    title: '华创资本管理合伙人',
+    quotation: '华创资本管理合伙人，负责华创资本基金管理工作，并牵头负责华创企业软件领域的投资，毕业于清华大学。',
+  },
+  {
+    avatar: 谢孟军Image,
+    name: '谢孟军',
+    title: '积梦智能 CEO，GoCN 社区发起人',
+    quotation: '积梦智能 CEO，GoCN 社区发起人',
+  },
+  {
+    avatar: 徐成选Image,
+    name: '徐成选',
+    title: 'PingCAP DM 研发 Leader',
+    quotation: 'PingCAP DM 研发 Leader，Kingshard 核心开发，Gaea（分库分表中间件）作者，TiDB ToC 成员',
+  },
+  {
+    avatar: 张东晖Image,
+    name: '张东晖',
+    title: 'PingCAP 产研顾问',
+    quotation:
+      'PingCAP 产研顾问，曾在微软从事产品研发 15 年，之后在阿里云参与飞天、大数据平台、和云计算平台的开发和产品工作。经历了开源软件改变软件行业的历史，对开源社区和数据库、云计算、人工智能技术有持久的兴趣。',
   },
 ];
 

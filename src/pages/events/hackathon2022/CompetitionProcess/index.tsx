@@ -39,7 +39,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
               <Styled.Date>日期：9 月 17 日</Styled.Date>
               <Styled.Paragraph>资深架构师在线脑暴，超多创意 idea，可能是项目灵感来源之一</Styled.Paragraph>
               <Styled.Date style={{ marginTop: 34, marginBottom: 0 }}>
-                提交项目想法：9 月 17 日 - 9 月 28 日（待定）
+                贡献项目创意：9 月 17 日 - 9 月 28 日
               </Styled.Date>
               <Styled.Paragraph style={{ marginTop: 12 }}>
                 如果你有一些实现灵感，无需报名，也非常欢迎分享天马行空的创意
@@ -47,8 +47,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
             </Styled.Start>
             <Styled.End>
               {/*TODO: links*/}
-              <Anchor href={'#'}>预约会议</Anchor>
-              <Anchor href={'#'}>我有想法</Anchor>
+              <Anchor href={'https://live.bilibili.com/4630260'}>预约直播</Anchor>
+              <Anchor href={'https://asktug.com/t/topic/933124'}>我有想法</Anchor>
             </Styled.End>
           </Styled.Item>
           <StepLine color={'#00CF71'}>PLUS 环节</StepLine>
@@ -90,14 +90,14 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
         <Styled.ItemWrap>
           <Styled.Item>
             <Styled.Start>
-              <Styled.Title>决赛现场 coding</Styled.Title>
+              <Styled.Title>决赛现场 Coding</Styled.Title>
               <Styled.Date>日期：10 月 22 日 - 10 月 23 日</Styled.Date>
               <Styled.Paragraph>
                 现场 coding，实现你的创意想法。北京、上海、广州、成都、新加坡任选一处决赛参赛点，还可以走进 PingCAP
                 Office 感受 P 社文化
               </Styled.Paragraph>
               <Styled.Paragraph>
-                【本次活动不允许偷跑哟，详见<Anchor href={scoreRule}>评分规则</Anchor>】
+                本次活动不允许偷跑哟，详见<Anchor href={scoreRule}>评分规则</Anchor>
               </Styled.Paragraph>
             </Styled.Start>
           </Styled.Item>
@@ -114,7 +114,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
               <Styled.Paragraph>决赛现场如火如荼，20+ 奖项等你拿！</Styled.Paragraph>
             </Styled.Start>
             <Styled.End>
-              <Anchor href={pptTemplateUrl}>下载答辩 PPT 模板 （待上线）</Anchor>
+              <Anchor href={pptTemplateUrl}>下载答辩 PPT 模板</Anchor>
             </Styled.End>
           </Styled.Item>
           <StepLine showRight={false}>STEP 5</StepLine>

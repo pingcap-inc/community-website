@@ -91,6 +91,9 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
                 现场 coding，实现你的创意想法。北京、上海、广州、成都、新加坡任选一处决赛参赛点，还可以走进 PingCAP
                 Office 感受 P 社文化
               </Styled.Paragraph>
+              <Styled.Paragraph>
+                【本次活动不允许偷跑哟，详见评分规则】
+              </Styled.Paragraph>
             </Styled.Start>
           </Styled.Item>
           <StepLine>STEP 4</StepLine>

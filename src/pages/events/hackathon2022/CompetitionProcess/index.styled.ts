@@ -50,6 +50,9 @@ export const End = styled(Space).attrs({
   size: [40, 40],
 })`
   margin-top: 20px;
+  a:hover {
+    color: #00CF71;
+  }
 `;
 
 export const Title = styled.div`

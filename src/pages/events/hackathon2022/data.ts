@@ -6,3 +6,4 @@ export const guideUrl = 'https://asktug.com/t/topic/903772';
 export const joinGroupHelpUrl = 'https://asktug.com/t/topic/903781';
 export const pptTemplateUrl = '#';
 export const askCompetitionUrl = 'https://asktug.com/c/Mutual-communication/Hackathon';
+export const scoreRule = 'https://asktug.com/t/topic/273513';

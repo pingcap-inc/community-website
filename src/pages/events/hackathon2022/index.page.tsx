@@ -54,7 +54,7 @@ import Partner from './Partner';
 import PastReview from './PastReview';
 import Anchor from '~/components/Anchor';
 import ArrowLink from '~/components/ArrowLink';
-import { askCompetitionUrl, signUpFormUrl } from './data';
+import { askCompetitionUrl, scoreRule, signUpFormUrl } from './data';
 import qrCodeImage from './Header/qrcode.png';
 
 const description =
@@ -105,7 +105,7 @@ const dataThemeRace = [
   {
     color: '#F67200',
     name: '应用组',
-    body: '以体现 TiDB 产品价值为主，基于 TiDB 之上实现代码开源的产品、工具、应用等均可。部署方式上，更推荐基于 Cloud 构建 TiDB 相关应用。',
+    body: '以体现 TiDB 产品价值为主，基于 TiDB 之上实现代码开源的产品、工具、应用等均可。部署方式上，更推荐基于 Cloud 构建 TiDB 相关应用。推荐领域： 游戏、电商、金融科技、公益等',
   },
   {
     color: '#00CF71',
@@ -118,7 +118,7 @@ const dataPrize = {
   topPrize: {
     description: (
       <>
-        各赛道 <span style={{ color: '#00CF71' }}>Top 6</span> 均可获得现金奖励
+        各赛道 <span style={{ color: '#00CF71' }}>Top 6</span> 均可获得现金
       </>
     ),
     items: [
@@ -154,7 +154,7 @@ const dataPrize = {
   footer: (
     <>
       注：所有奖项奖金均为税前金额，奖项评选规则可参考
-      <Anchor href={'https://asktug.com/t/topic/273513'}>评分规则</Anchor>。
+      <Anchor href={scoreRule}>评分规则</Anchor>。
     </>
   ),
 };
@@ -162,7 +162,7 @@ const dataPrize = {
 const dataParticipationWelfare = [
   { icon: <Icon0 />, text: '专业导师赛前辅导' },
   { icon: <Icon1 />, text: '技术同好现场交流' },
-  { icon: <Icon2 />, text: '评委大咖深度点评' },
+  { icon: <Icon2 />, text: '评委大咖专业指导' },
   { icon: <Icon3 />, text: '万元丰厚现金奖励' },
   { icon: <Icon4 />, text: '参赛专属周边礼包' },
   { icon: <Icon5 />, text: '优秀项目多重曝光' },
@@ -309,7 +309,10 @@ const dataFAQ = {
       question: '3. 想不到好的创意想法怎么办？',
       answer: (
         <ul>
-          <li>锁定 9 月 17 日宇宙漫游预备营，听听资深架构师们的创意想法，找到属于你的灵感</li>
+          <li>
+            锁定 9 月 17 日「TiDB Hackathon 2022 非正式会谈 —
+            东旭创意脑暴会」，听听资深架构师们的创意想法，找到属于你的灵感
+          </li>
           <li>也可以在社区链接（跳转链接）看看社区开发者们的想法，激发你的创意</li>
         </ul>
       ),

@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
-import { signUpFormUrl, joinGroupFormUrl, RfcSubmitFormUrl, pptTemplateUrl, guideUrl } from '../data';
+import { signUpFormUrl, joinGroupFormUrl, RfcSubmitFormUrl, pptTemplateUrl, guideUrl, scoreRule } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -18,7 +18,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
               <Styled.Title>报名</Styled.Title>
               <Styled.Date>即日起 - 10 月 17 日</Styled.Date>
               <Styled.Paragraph>
-                只要你对某个赛道感兴趣，热爱创造、勇于探索，都可以报名参加，点击<Anchor href={guideUrl}>参赛指南</Anchor>
+                只要你对某个赛道感兴趣，热爱创造、勇于探索，都可以报名参加，点击
+                <Anchor href={guideUrl}>参赛指南</Anchor>
               </Styled.Paragraph>
             </Styled.Start>
             <Styled.End>
@@ -34,11 +35,15 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
         <Styled.ItemWrap>
           <Styled.Item>
             <Styled.Start>
-              <Styled.Title>PLUS 环节 ：宇宙漫游预备营</Styled.Title>
+              <Styled.Title>PLUS 环节 ：非正式会谈 — 东旭创意脑暴会</Styled.Title>
               <Styled.Date>日期：9 月 17 日</Styled.Date>
               <Styled.Paragraph>资深架构师在线脑暴，超多创意 idea，可能是项目灵感来源之一</Styled.Paragraph>
-              <Styled.Date style={{marginTop: 34, marginBottom: 0}}>提交项目想法：9 月 17 日 - 9 月 28 日（待定）</Styled.Date>
-              <Styled.Paragraph style={{marginTop: 12}}>如果你有一些实现灵感，无需报名，也非常欢迎分享天马行空的创意</Styled.Paragraph>
+              <Styled.Date style={{ marginTop: 34, marginBottom: 0 }}>
+                提交项目想法：9 月 17 日 - 9 月 28 日（待定）
+              </Styled.Date>
+              <Styled.Paragraph style={{ marginTop: 12 }}>
+                如果你有一些实现灵感，无需报名，也非常欢迎分享天马行空的创意
+              </Styled.Paragraph>
             </Styled.Start>
             <Styled.End>
               {/*TODO: links*/}
@@ -92,7 +97,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
                 Office 感受 P 社文化
               </Styled.Paragraph>
               <Styled.Paragraph>
-                【本次活动不允许偷跑哟，详见评分规则】
+                【本次活动不允许偷跑哟，详见<Anchor href={scoreRule}>评分规则</Anchor>】
               </Styled.Paragraph>
             </Styled.Start>
           </Styled.Item>

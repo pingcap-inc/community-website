@@ -139,4 +139,7 @@ export const HeaderStartNavItem = styled.a`
   font-size: 18px;
   line-height: 25px;
   letter-spacing: 0.3em;
+  &:hover {
+    color: #00CF71;
+  }
 `;

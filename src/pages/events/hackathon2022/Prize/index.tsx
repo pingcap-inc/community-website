@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as Styled from './index.styled';
 
 export type TPrizeItem = {
-  name: string;
+  name: React.ReactNode;
   thing: string;
   target: string;
 };

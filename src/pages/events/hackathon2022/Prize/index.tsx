@@ -78,8 +78,8 @@ const Prize: React.FC<IProps> = (props) => {
             <div key={index}>
               {category.name && <Styled.SpecialPrizeTitleSecond>{category.name}</Styled.SpecialPrizeTitleSecond>}
               <Styled.SpecialPrizeList>
-                {category.items.map((item) => (
-                  <Styled.SpecialPrizeTopListColumn key={item.name}>
+                {category.items.map((item, index) => (
+                  <Styled.SpecialPrizeTopListColumn key={index}>
                     <Styled.SpecialPrizeTopListColumnItem>
                       <Styled.SpecialPrizeTopListColumnItemName>{item.name}</Styled.SpecialPrizeTopListColumnItemName>
                       <Styled.SpecialPrizeTopListColumnItemThing>

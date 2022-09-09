@@ -65,6 +65,7 @@ import {
   RfcSubmitFormUrl,
 } from './data';
 import qrCodeImage from './Header/qrcode.png';
+import SideBar from '~/pages/events/hackathon2022/SideBar';
 
 const description =
   'TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
@@ -468,6 +469,8 @@ const Hackathon2022: NextPage = () => {
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
+
+      <SideBar />
 
       <Styled.MyContainer>
         <Header data={dataHeader} />

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
 import { Tooltip } from 'antd';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
@@ -424,66 +424,43 @@ const dataFAQ = {
   ),
 };
 
+const imagePathPrefix = `/images/hackathon2022`;
+
+const 金牌赞助Items: { image: { src: string } }[] = [];
+for (let i = 1; i <= 2; i++) 金牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
+
+const 银牌赞助Items: { image: { src: string } }[] = [];
+for (let i = 3; i <= 4; i++) 银牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
+
+const 云资源赞助Items: { image: { src: string } }[] = [];
+for (let i = 1; i <= 3; i++) 云资源赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
+
+const 云技术服务支持Items: { image: { src: string } }[] = [];
+for (let i = 4; i <= 5; i++) 云技术服务支持Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
+
+const 合作社区媒体Items: { image: { src: string } }[] = [];
+for (let i = 1; i <= 34; i++) 合作社区媒体Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
+
 const dataPartner = [
   {
-    name: '赞助方',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
+    name: '金牌赞助',
+    items: 金牌赞助Items,
   },
   {
-    name: '云资源赞助/云技术服务支持',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
+    name: '银牌赞助',
+    items: 银牌赞助Items,
   },
   {
-    name: '协办方',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
+    name: '云资源赞助',
+    items: 云资源赞助Items,
   },
   {
-    name: '合作伙伴',
-    items: [
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-      { image: '' },
-    ],
+    name: '云技术服务支持',
+    items: 云技术服务支持Items,
+  },
+  {
+    name: '合作社区媒体',
+    items: 合作社区媒体Items,
   },
 ];
 

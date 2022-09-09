@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { NextPage } from 'next';
 import { Tooltip } from 'antd';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';

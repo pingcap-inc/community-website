@@ -1,10 +1,16 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { mixins } from '@tidb-community/ui';
 
 export const Container = styled.div.attrs({})`
   z-index: 1;
   position: fixed;
-  right: 56px;
   top: 50%;
+  ${mixins.onDesktop(css`
+    right: 56px;
+  `)};
+  ${mixins.onMobile(css`
+    right: 16px;
+  `)};
 `;
 
 export const Item = styled.div.attrs({})`

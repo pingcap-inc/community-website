@@ -1,11 +1,11 @@
-import Image from 'next/image';
 import React from 'react';
-
-import { link as linkUtils } from '~/utils';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Button } from 'antd';
+
+import { cdn, link as linkUtils } from '~/utils';
 import Container from '~/components/Container/Container';
 import styles from './HomeMVA.module.scss';
-import { useRouter } from 'next/router';
 
 export default function HomeMVA() {
   const router = useRouter();
@@ -30,7 +30,7 @@ export default function HomeMVA() {
         </div>
       </Container>
       <div className={styles.image}>
-        <Image unoptimized src="/images/tug/home-mva.png" alt="" width={2733 / 2} height={360 / 2} />
+        <Image unoptimized src={cdn.getImageUrl('/images/tug/home-mva.png')} alt="" width={2733 / 2} height={360 / 2} />
       </div>
     </div>
   );

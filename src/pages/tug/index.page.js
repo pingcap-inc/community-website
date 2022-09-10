@@ -25,7 +25,7 @@ const description =
 const applyUrl = '/tug/apply#form';
 
 const tugOrganizationChartTitle = 'TUG 组织架构';
-const tugOrganizationChartUrl = cdn.getImageUrl(`/images/people/tug-organization-chart.svg`);
+const tugOrganizationChartUrl = getImageUrl(`tug-organization-chart.svg`);
 
 const howToBecomeTitle = '如何成为 TUG 会员';
 const howToBecome = [

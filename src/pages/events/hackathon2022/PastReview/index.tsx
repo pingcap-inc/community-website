@@ -13,7 +13,7 @@ const data = [
   {
     name: 'TiDB_Hackathon_2021',
     image: TiDB_Hackathon_2021,
-    url: 'https://tidb.net/archived/events/hackathon2021',
+    url: 'https://tidb.net/events/hackathon2021',
   },
   {
     name: 'TiDB_Hackathon_2020',
@@ -28,7 +28,7 @@ const data = [
   {
     name: 'TiDB_Hackathon_2018',
     image: TiDB_Hackathon_2018,
-    url: 'https://tidb.net/events/hackathon2018',
+    url: 'https://tidb.net/archived/events/hackathon2018',
   },
 ];
 

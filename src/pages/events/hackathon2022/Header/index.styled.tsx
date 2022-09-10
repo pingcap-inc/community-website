@@ -12,7 +12,7 @@ export const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  //flex-wrap: wrap;
   padding: 52px 0;
   background: url(${bannerBackgroundImage.src}) center no-repeat;
 `;
@@ -140,6 +140,6 @@ export const HeaderStartNavItem = styled.a`
   line-height: 25px;
   letter-spacing: 0.3em;
   &:hover {
-    color: #00CF71;
+    color: #00cf71;
   }
 `;

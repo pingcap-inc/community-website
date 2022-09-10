@@ -65,7 +65,8 @@ import {
   RfcSubmitFormUrl,
 } from './data';
 import qrCodeImage from './Header/qrcode.png';
-import SideBar from '~/pages/events/hackathon2022/SideBar';
+import SideBar from './SideBar';
+import { getImageUrl } from '~/utils/cdn.utils';
 
 const description =
   'TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
@@ -425,7 +426,7 @@ const dataFAQ = {
   ),
 };
 
-const imagePathPrefix = `/images/hackathon2022`;
+const imagePathPrefix = getImageUrl(`/images/hackathon2022`);
 
 const 金牌赞助Items: { image: { src: string } }[] = [];
 for (let i = 1; i <= 2; i++) 金牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });

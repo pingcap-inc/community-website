@@ -22,7 +22,7 @@ const Verification: React.FC<IProps> = (props) => {
     default: {
       descriptionNode = (
         <>
-          认证结果会通过 <Anchor href={'/notifications/private-messages'}>系统通知</Anchor> 及时告知，请注意查看
+          认证结果会通过 <Anchor href={'/private-messages'}>系统通知</Anchor> 及时告知，请注意查看
         </>
       );
       break;

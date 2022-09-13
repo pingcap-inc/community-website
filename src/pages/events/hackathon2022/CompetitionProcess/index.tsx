@@ -25,7 +25,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
       <Styled.Column>
         <Styled.Item>
           <Styled.Start>
-            <Styled.Step $active>STEP 1</Styled.Step>
+            <Styled.Step $active={true}>STEP 1</Styled.Step>
             <Styled.Title>报名</Styled.Title>
             <Styled.Date>
               <DateIconSVG /> 即日起 - 10 月 17 日
@@ -45,7 +45,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
       <Styled.Column>
         <Styled.Item>
           <Styled.Start>
-            <Styled.Step $active>PLUS 环节</Styled.Step>
+            <Styled.Step $active={true}>PLUS 环节</Styled.Step>
             <Styled.Title>非正式会谈 —— 创意脑暴会</Styled.Title>
             <Styled.Date>
               <DateIconSVG /> 日期：9 月 17 日 10:30-12:00（GTM+8）
@@ -67,7 +67,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
       <Styled.Column>
         <Styled.Item>
           <Styled.Start>
-            <Styled.Step $active>STEP 2</Styled.Step>
+            <Styled.Step $active={true}>STEP 2</Styled.Step>
             <Styled.Title>提交项目 RFC</Styled.Title>
             <Styled.Date>
               <DateIconSVG /> 报名后 - 10 月 17 日
@@ -86,7 +86,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
       <Styled.Column>
         <Styled.Item>
           <Styled.Start>
-            <Styled.Step>STEP 3</Styled.Step>
+            <Styled.Step $active={false}>STEP 3</Styled.Step>
             <Styled.Title>初赛结果公示</Styled.Title>
             <Styled.Date>
               <DateIconSVG /> 日期：10 月 19 日
@@ -99,7 +99,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
       <Styled.Column>
         <Styled.Item>
           <Styled.Start>
-            <Styled.Step>STEP 4</Styled.Step>
+            <Styled.Step $active={false}>STEP 4</Styled.Step>
             <Styled.Title>决赛现场 Coding</Styled.Title>
             <Styled.Date>
               <DateIconSVG /> 日期：10 月 22 日 - 10 月 23 日
@@ -118,7 +118,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
       <Styled.Column>
         <Styled.Item>
           <Styled.Start>
-            <Styled.Step>STEP 5</Styled.Step>
+            <Styled.Step $active={false}>STEP 5</Styled.Step>
             <Styled.Title>决赛答辩+颁奖</Styled.Title>
             <Styled.Date>
               <DateIconSVG /> 日期：10 月 23 日

@@ -81,7 +81,7 @@ export const End = styled(Space).attrs({
   }
 `;
 
-export const Step = styled.div`
+export const Step = styled.div<{ $active: boolean }>`
   font-weight: 700;
   font-size: 28px;
   line-height: 42px;

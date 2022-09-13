@@ -40,7 +40,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: ${{ inputs.build-env }}
     env:
       MAILCHIMP_DC: ${{ secrets.MAILCHIMP_DC }}

@@ -451,7 +451,7 @@ for (let i = 1; i <= 3; i++)
   云资源赞助and云技术服务支持Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
 
 const 协办方Items: { image: { src: string } }[] = [];
-for (let i = 4; i <= 5; i++) 协办方Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
+for (let i = 4; i <= 6; i++) 协办方Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
 
 const 合作社区媒体Items: { image: { src: string } }[] = [];
 for (let i = 1; i <= 34; i++) 合作社区媒体Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });

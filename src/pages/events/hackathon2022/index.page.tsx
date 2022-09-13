@@ -64,7 +64,7 @@ import {
   studyResourceUrl,
   RfcSubmitFormUrl,
 } from './data';
-import qrCodeImage from './Header/qrcode.png';
+import qrCodeImage from './Header/qrcode.jpg';
 import SideBar from './SideBar';
 import { getImageUrl } from '~/utils/cdn.utils';
 

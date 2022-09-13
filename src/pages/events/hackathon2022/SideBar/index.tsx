@@ -10,7 +10,7 @@ import * as Styled from './index.styled';
 import SignupSvg from './signup.svg';
 import WechatSvg from './wechat.svg';
 import { signUpFormUrl } from '../data';
-import qrCodeImage from '../Header/qrcode.png';
+import qrCodeImage from '../Header/qrcode.jpg';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 

@@ -217,7 +217,12 @@ const dataJudge = [
   },
   {
     avatar: ChuangPeiHanImage,
-    name: 'Chuang Pei-Han（特约专项评委）',
+    name: (
+      <>
+        <div>Chuang Pei-Han</div>
+        <div style={{ color: '#00CF71' }}>（特约专项评委）</div>
+      </>
+    ),
     title: 'Morpheus Labs CEO',
     quotation:
       'a serial entrepreneur with years of experience in business development, product marketing and partnership management. He has successfully raised series of fundings for his businesses, including a USD 7 digits seed funding round. One of the earliest adopters of blockchain technology',

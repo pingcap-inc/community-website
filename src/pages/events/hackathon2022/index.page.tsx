@@ -209,18 +209,18 @@ const dataParticipationWelfare = [
 
 const dataJudge = [
   {
-    avatar: ChuangPeiHanImage,
-    name: 'Chuang Pei-Han（特约专项评委）',
-    title: 'Morpheus Labs CEO',
-    quotation:
-      'a serial entrepreneur with years of experience in business development, product marketing and partnership management. He has successfully raised series of fundings for his businesses, including a USD 7 digits seed funding round. One of the earliest adopters of blockchain technology',
-  },
-  {
     avatar: 陈昱Image,
     name: '陈昱',
     title: '云启资本合伙人',
     quotation:
       '云启资本合伙人，重点关注基础软件、大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了 PingCAP、Zilliz、Jina AI、Singularity、TigerGraph、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、一造机器人等优秀企业。',
+  },
+  {
+    avatar: ChuangPeiHanImage,
+    name: 'Chuang Pei-Han（特约专项评委）',
+    title: 'Morpheus Labs CEO',
+    quotation:
+      'a serial entrepreneur with years of experience in business development, product marketing and partnership management. He has successfully raised series of fundings for his businesses, including a USD 7 digits seed funding round. One of the earliest adopters of blockchain technology',
   },
   {
     avatar: 高斌Image,

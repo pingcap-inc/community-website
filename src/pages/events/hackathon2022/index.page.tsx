@@ -565,7 +565,7 @@ const Hackathon2022: NextPage = () => {
           }}
         >
           <Styled.Partner id={'partner'}>
-            <SectionTitle icon={<TitleCubeOrangeIcon />}>合作伙伴</SectionTitle>
+            <SectionTitle icon={<TitleCubeOrangeIcon />}>赞助商与合作伙伴</SectionTitle>
             <Styled.PartnerBody>
               <Partner data={dataPartner} />
             </Styled.PartnerBody>

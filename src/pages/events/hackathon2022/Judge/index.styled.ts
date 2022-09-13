@@ -19,6 +19,7 @@ export const Item = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  //justify-content: center;
   align-items: center;
   text-align: center;
   max-width: 304px;
@@ -30,15 +31,23 @@ export const Item = styled.div`
   border: 1px solid rgba(0, 207, 113, 0.5);
 `;
 
-export const Profile = styled.div``;
+export const Profile = styled.div`
+  display: flex;
+  flex-direction: column;
+  //justify-content: center;
+  align-items: center;
+  text-align: center;
+`;
 
 const avatarSize = '150px';
 export const Avatar = styled.div`
   ${mixins.transition()};
+  width: ${avatarSize};
+  height: ${avatarSize};
   img,
   svg {
-    width: ${avatarSize};
-    height: ${avatarSize};
+    width: 100%;
+    height: 100%;
   }
 `;
 

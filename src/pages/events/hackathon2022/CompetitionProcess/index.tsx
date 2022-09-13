@@ -44,9 +44,9 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
         <Styled.ItemWrap>
           <Styled.Item>
             <Styled.Start>
-              <Styled.Title>PLUS 环节 ：非正式会谈 —— 东旭创意脑暴会</Styled.Title>
-              <Styled.Date>日期：9 月 17 日</Styled.Date>
-              <Styled.Paragraph>资深架构师在线脑暴，超多创意 idea，可能是项目灵感来源之一</Styled.Paragraph>
+              <Styled.Title>PLUS 环节 ：非正式会谈 —— 创意脑暴会</Styled.Title>
+              <Styled.Date>日期：9 月 17 日 10:30-12:00（GTM+8）</Styled.Date>
+              <Styled.Paragraph>特邀东旭以及资深架构师们在线脑暴，超多创意 idea，给你超丰富项目灵感</Styled.Paragraph>
               <Styled.Date style={{ marginTop: 34, marginBottom: 0 }}>
                 贡献项目创意：9 月 17 日 - 9 月 28 日
               </Styled.Date>

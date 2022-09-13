@@ -246,7 +246,7 @@ const dataJudge = [
     avatar: 黄潇Image,
     name: '黄潇',
     title: 'PingCAP OPM',
-    quotation: 'PingCAP OPM，前开水团 DBA Leader 和前 TUG 北京区 Leader，10+ 年 DBA、DevOps 经验',
+    quotation: 'PingCAP OPM，前美团 DBA Leader 和前 TUG 北京区 Leader，10+ 年 DBA、DevOps 经验',
   },
   {
     avatar: 李雨来Image,

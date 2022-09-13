@@ -458,8 +458,8 @@ for (let i = 1; i <= 3; i++)
 const 协办方Items: { image: { src: string } }[] = [];
 for (let i = 4; i <= 6; i++) 协办方Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
 
-const 合作社区媒体Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 34; i++) 合作社区媒体Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
+const 合作社区Items: { image: { src: string } }[] = [];
+for (let i = 1; i <= 34; i++) 合作社区Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
 
 const dataPartner = [
   {
@@ -479,8 +479,8 @@ const dataPartner = [
     items: 协办方Items,
   },
   {
-    name: '合作社区媒体',
-    items: 合作社区媒体Items,
+    name: '合作社区',
+    items: 合作社区Items,
   },
 ];
 

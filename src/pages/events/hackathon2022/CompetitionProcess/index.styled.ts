@@ -1,6 +1,27 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { mixins } from '@tidb-community/ui';
 import { Row, Col, Space } from 'antd';
+
+export const button = () => css`
+  padding: 6px 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 175% */
+  color: #82c1ed;
+  border: 1px solid #82c1ed; ;
+`;
+
+export const buttonPrimary = () => css`
+  padding: 6px 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 175% */
+  background-color: #82c1ed;
+  color: #ffffff;
+  border: 1px solid #82c1ed; ;
+`;
 
 export const Container = styled(Row).attrs({
   gutter: [32, 32],

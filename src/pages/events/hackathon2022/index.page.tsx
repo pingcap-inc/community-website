@@ -434,11 +434,12 @@ for (let i = 1; i <= 2; i++) 金牌赞助Items.push({ image: { src: `${imagePath
 const 银牌赞助Items: { image: { src: string } }[] = [];
 for (let i = 3; i <= 4; i++) 银牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
 
-const 云资源赞助Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 3; i++) 云资源赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
+const 云资源赞助and云技术服务支持Items: { image: { src: string } }[] = [];
+for (let i = 1; i <= 3; i++)
+  云资源赞助and云技术服务支持Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
 
-const 云技术服务支持Items: { image: { src: string } }[] = [];
-for (let i = 4; i <= 5; i++) 云技术服务支持Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
+const 协办方Items: { image: { src: string } }[] = [];
+for (let i = 4; i <= 5; i++) 协办方Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
 
 const 合作社区媒体Items: { image: { src: string } }[] = [];
 for (let i = 1; i <= 34; i++) 合作社区媒体Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
@@ -453,12 +454,12 @@ const dataPartner = [
     items: 银牌赞助Items,
   },
   {
-    name: '云资源赞助',
-    items: 云资源赞助Items,
+    name: '云资源赞助/云技术服务支持',
+    items: 云资源赞助and云技术服务支持Items,
   },
   {
-    name: '云技术服务支持',
-    items: 云技术服务支持Items,
+    name: '协办方',
+    items: 协办方Items,
   },
   {
     name: '合作社区媒体',

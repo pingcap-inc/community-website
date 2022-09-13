@@ -8,7 +8,7 @@ import * as Styled from './index.styled';
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
     avatar: StaticImageData;
-    name: string;
+    name: React.ReactNode;
     title: string;
     quotation: string;
   }[];
@@ -19,8 +19,8 @@ const Judge: React.FC<IProps> = (props) => {
   const { data, ...rest } = props;
   return (
     <Styled.Container {...rest}>
-      {data.map((value) => (
-        <Styled.Column key={value.name}>
+      {data.map((value, index) => (
+        <Styled.Column key={index}>
           <JudgeItem value={value} />
         </Styled.Column>
       ))}

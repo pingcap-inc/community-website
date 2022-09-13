@@ -33,7 +33,12 @@ const SideBar: React.FC<IProps> = (props) => {
           placement="left"
           color={'#FFF'}
           trigger={['click', 'focus']}
-          title={<Image {...qrCodeImage} />}
+          title={
+            <div style={{ textAlign: 'center' }}>
+              <Image {...qrCodeImage} />
+              <p style={{ color: '#000' }}>扫码添加小助手进群</p>
+            </div>
+          }
           getPopupContainer={() => tooltipContainerRef.current}
         >
           <Styled.Item>

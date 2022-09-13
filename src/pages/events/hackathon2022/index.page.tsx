@@ -86,7 +86,17 @@ const dataHeader = {
     },
     {
       children: (
-        <Tooltip placement="bottomLeft" color={'#FFF'} trigger={['click', 'focus']} title={<Image {...qrCodeImage} />}>
+        <Tooltip
+          placement="bottomLeft"
+          color={'#FFF'}
+          trigger={['click', 'focus']}
+          title={
+            <div style={{ textAlign: 'center' }}>
+              <Image {...qrCodeImage} />
+              <p style={{ color: '#000' }}>扫码添加小助手进群</p>
+            </div>
+          }
+        >
           <StyledHeader.HeaderStartButtonJoinGroup>
             <ArrowLink>加入官方群</ArrowLink>
           </StyledHeader.HeaderStartButtonJoinGroup>

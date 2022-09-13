@@ -51,7 +51,7 @@ export const End = styled(Space).attrs({
 })`
   margin-top: 20px;
   a:hover {
-    color: #00CF71;
+    color: #00cf71;
   }
 `;
 
@@ -65,6 +65,12 @@ export const Title = styled.div`
 `;
 
 export const Date = styled.div`
+  //display: flex;
+  //align-items: flex-start;
+  svg {
+    position: relative;
+    top: 4px;
+  }
   margin-top: 6px;
   margin-bottom: 34px;
   font-style: normal;
@@ -85,19 +91,18 @@ export const Paragraph = styled.div`
   color: #ffffff;
 `;
 
-
 export const Step = styled.div`
   margin-top: 26px;
 `;
 
-export const StepText = styled.div<{$color: string}>`
+export const StepText = styled.div<{ $color: string }>`
   text-align: center;
   font-weight: 400;
   font-size: 24px;
   line-height: 34px;
   /* identical to box height */
   letter-spacing: 0.2em;
-  color: ${({$color}) => $color};
+  color: ${({ $color }) => $color};
 `;
 
 const pointInnerSizePx = 12;
@@ -113,20 +118,20 @@ export const StepLine = styled.div`
   align-items: center;
 `;
 
-export const StepLineItem = styled.div<{$show: boolean}>`
+export const StepLineItem = styled.div<{ $show: boolean }>`
   //position: relative;
   //transform: scaleX(1.25) translateX(0px);
   width: calc((100% - ${pointOuterWidthPx}px) / 2);
   //width: 100%;
-  border-bottom: ${({$show}) => $show ? 1 : 0}px solid #82C1ED;
+  border-bottom: ${({ $show }) => ($show ? 1 : 0)}px solid #82c1ed;
 `;
 
-export const StepPoint = styled.div<{$color: string}>`
+export const StepPoint = styled.div<{ $color: string }>`
   width: ${pointInnerSizePx}px;
   height: ${pointInnerSizePx}px;
-  background: ${({$color}) => $color};
+  background: ${({ $color }) => $color};
   outline-offset: ${pointPaddingSizePx}px;
-  outline: ${pointBorderSizePx}px dashed ${({$color}) => $color};
+  outline: ${pointBorderSizePx}px dashed ${({ $color }) => $color};
   border-radius: ${pointInnerWidthPx}px;
   overflow: hidden;
 `;

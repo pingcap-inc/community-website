@@ -12,6 +12,7 @@ import {
   scoreRule,
   liveUrl,
   ideaUrl,
+  RfcTemplateUrl,
 } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
@@ -78,7 +79,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
                 <DateIconSVG /> 报名后 - 10 月 17 日
               </Styled.Date>
               <Styled.Paragraph>
-                提交团队项目想法以及具体实现方案，这将是你通往决赛的入场券，点击查看 RFC 模板
+                提交团队项目想法以及具体实现方案，这将是你通往决赛的入场券，点击查看{' '}
+                <Anchor href={RfcTemplateUrl}>RFC 模板</Anchor>
               </Styled.Paragraph>
             </Styled.Start>
             <Styled.End>

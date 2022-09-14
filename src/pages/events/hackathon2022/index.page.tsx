@@ -550,6 +550,7 @@ const Hackathon2022: NextPage = () => {
         >
           <Styled.Judge id={'judges'}>
             <SectionTitle icon={<TitleCornerGreenIcon />}>评委导师阵容</SectionTitle>
+            <Styled.JudgeDescription>按姓名字母排序</Styled.JudgeDescription>
             <Styled.JudgeBody>
               <Judge data={dataJudge} />
             </Styled.JudgeBody>

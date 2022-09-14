@@ -79,6 +79,17 @@ export const Judge = styled(Container)`
   padding-top: 96px;
 `;
 
+export const JudgeDescription = styled.div`
+  padding-top: 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 175% */
+  text-align: center;
+  /* F3 */
+  color: #999999;
+`;
+
 export const JudgeBody = styled.div`
   margin-top: 48px;
 `;

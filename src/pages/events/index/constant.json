@@ -7,11 +7,11 @@
     "title": "特色专区",
     "card": [
       {
-        "title": "Talent Plan 2022 TinySQL 学习营",
-        "desc": "和南大同学一起学习，动手搭建一个 mini 分布式关系型数据库吧！",
+        "title": "TiDB Hackathon 2022",
+        "desc": "TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性！",
         "button": "前往查看",
-        "link": "https://asktug.com/t/topic/694591",
-        "image": "/images/activities/talent-plan-2022-tinysql-learning-post.jpg"
+        "link": "https://tidb.net/events/hackathon2022",
+        "image": "/images/activities/hackathon2022.jpg"
       },
       {
         "title": "TUG 企业行",

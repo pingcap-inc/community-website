@@ -14,6 +14,10 @@ import {
   ideaUrl,
   RfcTemplateUrl,
 } from '../data';
+import Image from 'next/image';
+import bilibiliLiveQrCodeImage from './bilibili_live_qrcode.png';
+import * as StyledHeader from '../Header/index.styled';
+import { Tooltip } from 'antd';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -58,7 +62,28 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
           </Styled.Start>
           <Styled.End>
             {/*TODO: links*/}
-            <Styled.Button href={liveUrl}>预约直播</Styled.Button>
+            <Tooltip
+              placement="bottomLeft"
+              color={'#FFF'}
+              //trigger={['click', 'focus']}
+              title={
+                <div style={{ textAlign: 'center', paddingTop: 16 }}>
+                  <p style={{ color: '#000' }}>扫码预约视频号直播</p>
+                  <Image {...bilibiliLiveQrCodeImage} />
+                  <p style={{ color: '#000', fontSize: 16 }}>
+                    点击
+                    <Anchor href={liveUrl} style={{ color: '#888DFF', fontWeight: 'bolder' }}>
+                      这里
+                    </Anchor>
+                    预约 B 站直播
+                  </p>
+                </div>
+              }
+            >
+              <StyledHeader.HeaderStartButtonJoinGroup>
+                <Styled.ButtonDiv>预约直播</Styled.ButtonDiv>
+              </StyledHeader.HeaderStartButtonJoinGroup>
+            </Tooltip>
             <Styled.Button href={ideaUrl}>我有想法</Styled.Button>
           </Styled.End>
         </Styled.Item>

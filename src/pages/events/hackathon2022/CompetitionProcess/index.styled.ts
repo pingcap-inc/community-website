@@ -19,6 +19,24 @@ export const ButtonPrimary = styled(Anchor)`
     background-color: #00cf71;
     border-color: #00cf71;
   }
+  a {
+  }
+`;
+
+export const ButtonDiv = styled.div`
+  ${mixins.transition()};
+  padding: 6px 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* identical to box height, or 175% */
+  color: #82c1ed;
+  border: 1px solid #82c1ed;
+  cursor: pointer;
+  &:hover {
+    color: #00cf71;
+    border-color: #00cf71;
+  }
 `;
 
 export const Button = styled(Anchor)`

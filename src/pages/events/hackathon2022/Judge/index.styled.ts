@@ -24,6 +24,7 @@ export const Item = styled.div`
   text-align: center;
   max-width: 304px;
   height: 100%;
+  min-height: 402px;
   margin: 0 auto;
   padding: 50px 24px 24px 28px;
   /* M5 */

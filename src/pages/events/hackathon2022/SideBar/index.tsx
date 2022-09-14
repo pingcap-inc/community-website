@@ -7,8 +7,8 @@ import { Space, Tooltip } from 'antd';
 import Anchor from '~/components/Anchor';
 
 import * as Styled from './index.styled';
-import SignupSvg from './signup.svg';
-import WechatSvg from './wechat.svg';
+import SignupImage from './signup.png';
+import WechatImage from './wechat.png';
 import { signUpFormUrl } from '../data';
 import qrCodeImage from '../Header/qrcode.jpg';
 
@@ -24,7 +24,7 @@ const SideBar: React.FC<IProps> = (props) => {
         <Anchor href={signUpFormUrl}>
           <Styled.Item>
             <Styled.ItemIcon>
-              <SignupSvg />
+              <Image {...SignupImage} alt={'立即报名'} />
             </Styled.ItemIcon>
             <Styled.ItemLabel>立即报名</Styled.ItemLabel>
           </Styled.Item>
@@ -43,7 +43,7 @@ const SideBar: React.FC<IProps> = (props) => {
         >
           <Styled.Item>
             <Styled.ItemIcon>
-              <WechatSvg />
+              <Image {...WechatImage} alt={'加入官方群'} />
             </Styled.ItemIcon>
             <Styled.ItemLabel>加入官方群</Styled.ItemLabel>
           </Styled.Item>

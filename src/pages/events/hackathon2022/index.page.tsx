@@ -288,7 +288,7 @@ const dataJudge = [
     avatar: 孙晓光Image,
     name: '孙晓光',
     organization: 'PingCAP',
-    title: 'TiDB 首席架构师，TiDB Cloud Ecosystem 团队负责人',
+    title: 'TiDB Cloud Ecosystem 研发负责人',
     quotation: '',
   },
   {
@@ -300,7 +300,7 @@ const dataJudge = [
   {
     avatar: 王聪Image,
     name: '王聪',
-    title: 'PingCAP SQL team tech leader',
+    title: 'PingCAP SQL 研发负责人',
     quotation: '',
   },
   {

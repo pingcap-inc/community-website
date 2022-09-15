@@ -2,7 +2,6 @@ import * as R from 'ramda';
 
 import * as footerData from './footer/footer.data';
 import * as headerData from './header/header.data';
-import * as activityData from './activity/activity.data';
 import * as resourcesData from './resources';
 import genUserMenu from './user';
 
@@ -20,13 +19,6 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData, redDo
     homeUrl,
     ...restHeaderData
   } = R.propOr(headerData[defaultLocale], locale)(headerData);
-
-  const {
-    link: activityLink,
-    backgroundImage: activityBackgroundImage,
-    buttonImage: activityButtonImage,
-    ...restActivityData
-  } = R.propOr(activityData[defaultLocale], locale)(activityData);
 
   let rules = [
     // replaces all current URLs' prefix at current domain
@@ -81,21 +73,6 @@ export const getData = ({ domain, domainConfig, env, locale, path, meData, redDo
         rules,
       }),
       ...restHeaderData,
-    },
-    activity: {
-      link: replaceLink({
-        link: activityLink,
-        rules,
-      }),
-      backgroundImage: replaceLink({
-        link: activityBackgroundImage,
-        rules,
-      }),
-      buttonImage: replaceLink({
-        link: activityButtonImage,
-        rules,
-      }),
-      ...restActivityData,
     },
     resources: {
       orgPrivacyAgreementsUrl: replaceLink({

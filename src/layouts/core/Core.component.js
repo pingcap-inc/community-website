@@ -10,6 +10,7 @@ import * as Styled from './core.styled';
 import { AuthContext, MeContext, NavContext } from '~/context';
 import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
 import { cdn } from '~/utils';
+import * as bannerData from '~/data/banner';
 
 // disabled for operation reasons
 // const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
@@ -45,12 +46,12 @@ const ActivityBannerComponent = () => {
               p-id="8487"
             ></path>
           </svg>
-          《TiDB 6.x in Action》发布，点击查看 6.x 实践汇总！
+          {bannerData.text}
         </>
       }
       // backgroundImage={'https://tidb.net/images/activity/banner.svg'}
       // buttonImage={'https://tidb.net/images/activity/button.svg'}
-      link={'https://tidb.net/book/book-rush/catalog'}
+      link={bannerData.link}
       // onClick={() => onNavClick({ link: 'https://tidb.net/blog', target: '_blank' })}
     />
   );

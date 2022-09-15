@@ -46,7 +46,7 @@ jobs:
           npm config set sentrycli_cdnurl https://npm.taobao.org/mirrors/sentry-cli/
           npm config set sqlite3_binary_site https://npm.taobao.org/mirrors/sqlite3/
           npm config set python_mirror https://npm.taobao.org/mirrors/python/
-          npm ci --no-audit --unsafe-perm
+          npm ci --no-audit --unsafe-perm --verbose
         if: steps.dep-caches.outputs.cache-hit != 'true'
 
       - name: Lint

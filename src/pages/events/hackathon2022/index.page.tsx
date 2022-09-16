@@ -246,7 +246,7 @@ const dataJudge = [
     avatar: 郭磊涛Image,
     name: '郭磊涛',
     title: '爱奇艺数据库服务负责人',
-    quotation: '',
+    quotation: '目前致力于爱奇艺混合云数据库建设及云原生架构落地。',
   },
   {
     avatar: 黄东旭Image,

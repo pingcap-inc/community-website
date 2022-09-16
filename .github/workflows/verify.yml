@@ -37,8 +37,6 @@ jobs:
       - name: Install
         run: |
           npm config set sentrycli_cdnurl "https://npm.taobao.org/mirrors/sentry-cli/"
-          npm config set sharp_binary_host "https://npm.taobao.org/mirrors/sharp"
-          npm config set sharp_libvips_binary_host "https://npm.taobao.org/mirrors/sharp-libvips"
           npm ci --no-audit --verbose
         if: steps.dep-caches.outputs.cache-hit != 'true'
 

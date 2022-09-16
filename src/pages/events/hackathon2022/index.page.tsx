@@ -182,7 +182,16 @@ const dataPrize = {
         {
           name: '应用组 & TiDB 产品组',
           items: [
-            { name: '最佳人气奖', thing: '键鼠套装 / 人 ', target: '1 支队伍 / 赛道' },
+            {
+              name: (
+                <>
+                  <div>最佳人气奖</div>
+                  <div style={{ fontSize: 14, color: '#CCC' }}>由 GGV 资本冠名赞助</div>
+                </>
+              ),
+              thing: '键鼠套装 / 人 ',
+              target: '1 支队伍 / 赛道',
+            },
             { name: '最佳校园奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
             { name: '用户之选奖', thing: '¥ 5,000', target: '1 支队伍 / 赛道' },
           ],

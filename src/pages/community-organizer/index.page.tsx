@@ -6,6 +6,7 @@ import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 
 import Header from './Header';
+import VideoRecord from '~/pages/community-organizer/VideoRecord';
 
 const title = '地区组织者';
 const description =
@@ -23,6 +24,7 @@ const Hackathon2022: NextPage = () => {
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
 
       <Header data={{ title, description }} />
+      <VideoRecord data={{}} />
     </CoreLayout>
   );
 };

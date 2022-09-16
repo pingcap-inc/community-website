@@ -445,10 +445,10 @@ const dataFAQ = {
 const imagePathPrefix = getImageUrl(`/images/hackathon2022`);
 
 const 金牌赞助Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 2; i++) 金牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
+for (let i = 1; i <= 3; i++) 金牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
 
 const 银牌赞助Items: { image: { src: string } }[] = [];
-for (let i = 3; i <= 4; i++) 银牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
+for (let i = 4; i <= 4; i++) 银牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
 
 const 云资源赞助and云技术服务支持Items: { image: { src: string } }[] = [];
 for (let i = 1; i <= 3; i++)

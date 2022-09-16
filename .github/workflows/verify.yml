@@ -18,16 +18,16 @@ jobs:
           node-version: 16.17.0
           cache: 'npm'
 
-      - name: Resolve build dependencies
-        id: dep-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-            !packages/ui/node_modules
-          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
-          restore-keys: ${{ runner.os }}-build
+#      - name: Resolve build dependencies
+#        id: dep-caches
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            node_modules
+#            packages/*/node_modules
+#            !packages/ui/node_modules
+#          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
+#          restore-keys: ${{ runner.os }}-build
 
       - name: Config npm token
         run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
@@ -36,7 +36,7 @@ jobs:
 
       - name: Install
         run: npm ci --no-audit --unsafe-perm
-        if: steps.dep-caches.outputs.cache-hit != 'true'
+#        if: steps.dep-caches.outputs.cache-hit != 'true'
 
       - name: Lint
         run: npm run lint

@@ -8,6 +8,7 @@ import { CommunityHead } from '~/components';
 import Header from './Header';
 import VideoRecord from './VideoRecord';
 import HowToJoin from './HowToJoin';
+import SharedContent from '~/pages/community-organizer/SharedContent';
 
 const title = '地区组织者';
 const description =
@@ -27,6 +28,7 @@ const Hackathon2022: NextPage = () => {
       <Header data={{ title, description }} />
       <VideoRecord data={{}} />
       <HowToJoin data={{}} />
+      <SharedContent data={{}} />
     </CoreLayout>
   );
 };

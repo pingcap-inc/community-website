@@ -18,7 +18,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
     <Styled.Container {...rest}>
       <Styled.Title>精选活动现场</Styled.Title>
 
-      <Styled.Recommend wrap justify={'center'} align={'middle'} gutter={[84, 28]}>
+      <Styled.Recommend wrap justify={'center'} align={'middle'} gutter={[32, 32]}>
         <Col sm={24} md={12}>
           <Image {...videoCover1Image} />
         </Col>

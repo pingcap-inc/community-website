@@ -19,15 +19,16 @@ export const ContainerInner = styled.div`
   background: linear-gradient(180deg, #f7f8f9 0%, rgba(247, 248, 249, 0) 129.56%);
   border-radius: 6px;
   padding: 70px 0;
+  ${mixins.onMobile(css`
+    padding: 32px 0;
+  `)};
 `;
 
 export const Main = styled(MyContainer)`
   //background-color: #FFFFFF;
 `;
 
-export const Header = styled(Row)`
-  margin-top: 48px;
-`;
+export const Header = styled(Row)``;
 
 export const Title = styled.div`
   font-weight: 500;

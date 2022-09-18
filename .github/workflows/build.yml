@@ -28,27 +28,27 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
 
-      - name: Config npm token
-        run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Use Node.js 16.17.0
         uses: actions/setup-node@v2.5.1
         with:
           node-version: 16.17.0
           cache: 'npm'
 
-      - name: Cache dependencies
-        id: dep-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-            !packages/ui/node_modules
-          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
-          restore-keys: ${{ runner.os }}-build
+      - name: Config npm token
+        run: npm config set //npm.pkg.github.com/:_authToken "${GITHUB_TOKEN}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#      - name: Cache dependencies
+#        id: dep-caches
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            node_modules
+#            packages/*/node_modules
+#            !packages/ui/node_modules
+#          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
+#          restore-keys: ${{ runner.os }}-build
 
       - name: Cache build result
         uses: actions/cache@v2
@@ -71,19 +71,19 @@ jobs:
       - name: Remove node_modules
         run: rm -rf node_modules packages/*/node_modules
 
-      - name: Cache prod dependencies
-        id: prod-dep-caches
-        uses: actions/cache@v2
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-          key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
-          restore-keys: ${{ runner.os }}-production
+#      - name: Cache prod dependencies
+#        id: prod-dep-caches
+#        uses: actions/cache@v2
+#        with:
+#          path: |
+#            node_modules
+#            packages/*/node_modules
+#          key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+#          restore-keys: ${{ runner.os }}-production
 
       - name: Install production deps
         run: npm ci --no-audit --production --ignore-scripts --unsafe-perm
-        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
+#        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
 #      - name: Bundle docker image
 #        run: docker build . --compress -t tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}

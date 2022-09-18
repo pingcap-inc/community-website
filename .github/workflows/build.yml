@@ -91,7 +91,8 @@ jobs:
           name: dist
           path: |
             next.config.js
-            package.json
+            .dockerignore
+            Dockerfile
             sentry.server.config.js
             sentry.client.config.js
             sentry.properties
@@ -123,6 +124,11 @@ jobs:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
+      - name: Download dist artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: dist
+
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -141,6 +147,11 @@ jobs:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
+      - name: Download static artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: static
+
       - name: Deploy `.next/static` to Ali OSS
         uses: Menci/upload-to-oss@beta-v3
         with:
@@ -156,6 +167,11 @@ jobs:
     needs: [ build ]
     runs-on: ubuntu-latest
     steps:
+      - name: Download public artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: public
+
       - name: Deploy `public` to Ali OSS
         uses: Menci/upload-to-oss@beta-v3
         with:

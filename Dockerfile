@@ -12,7 +12,6 @@ RUN adduser --system --uid 1001 nextjs
 
 # You only need to copy next.config.js if you are NOT using the default configuration
 COPY ./next.config.js ./next.config.js
-COPY ./package.json ./package.json
 COPY ./sentry.server.config.js ./sentry.server.config.js ./
 COPY ./sentry.client.config.js ./sentry.client.config.js ./
 COPY ./sentry.properties ./sentry.properties

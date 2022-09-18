@@ -18,7 +18,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     environment: ${{ inputs.build-env }}
     env:
       JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}

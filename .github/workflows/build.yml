@@ -91,12 +91,13 @@ jobs:
           name: dist
           path: |
             next.config.js
-            .dockerignore
-            Dockerfile
             sentry.server.config.js
             sentry.client.config.js
             sentry.properties
             .next/standalone
+            ./packages/i18n/locales
+            .dockerignore
+            Dockerfile
 
       - name: Archive static artifacts
         uses: actions/upload-artifact@v3
@@ -151,7 +152,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: static
-          path: public
+          path: .next/static
 
       - name: Deploy `.next/static` to Ali OSS
         uses: Menci/upload-to-oss@beta-v3

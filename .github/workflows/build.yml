@@ -151,6 +151,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: static
+          path: public
 
       - name: Deploy `.next/static` to Ali OSS
         uses: Menci/upload-to-oss@beta-v3
@@ -171,6 +172,7 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: public
+          path: public
 
       - name: Deploy `public` to Ali OSS
         uses: Menci/upload-to-oss@beta-v3

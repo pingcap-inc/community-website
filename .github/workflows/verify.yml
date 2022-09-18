@@ -35,12 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install
-        run: |
-          npm config get sharp_binary_host
-          npm config get sharp_libvips_binary_host
-          npm config get npm_config_sharp_dist_base_url 
-          echo $SHARP_DIST_BASE_URL
-          npm ci --no-audit --unsafe-perm
+        run: npm ci --no-audit
 #        if: steps.dep-caches.outputs.cache-hit != 'true'
 
       - name: Lint

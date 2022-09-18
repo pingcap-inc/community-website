@@ -39,6 +39,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Install production deps
+        run: npm ci --no-audit --production --ignore-scripts
+      #        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
+
 #      - name: Cache dependencies
 #        id: dep-caches
 #        uses: actions/cache@v2
@@ -68,9 +72,9 @@ jobs:
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_TOKEN }}
           SENTRY_RELEASE: tug-website@${{ github.sha }}
 
-      - name: Remove node_modules
-        run: rm -rf node_modules packages/*/node_modules
-
+#      - name: Remove node_modules
+#        run: rm -rf node_modules packages/*/node_modules
+#
 #      - name: Cache prod dependencies
 #        id: prod-dep-caches
 #        uses: actions/cache@v2
@@ -80,10 +84,6 @@ jobs:
 #            packages/*/node_modules
 #          key: ${{ runner.os }}-production-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
 #          restore-keys: ${{ runner.os }}-production
-
-      - name: Install production deps
-        run: npm ci --no-audit --production --ignore-scripts --unsafe-perm
-#        if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
 #      - name: Bundle docker image
 #        run: docker build . --compress -t tidb-community-website:${{ inputs.build-env }}-${{ runner.os }}-${{ github.sha }}

@@ -10,7 +10,7 @@ import {
   pptTemplateUrl,
   guideUrl,
   scoreRule,
-  liveUrl,
+  recordUrl,
   ideaUrl,
   RfcTemplateUrl,
 } from '../data';
@@ -72,7 +72,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
                   <Image {...bilibiliLiveQrCodeImage} />
                   <p style={{ color: '#000', fontSize: 16 }}>
                     点击
-                    <Anchor href={liveUrl} style={{ color: '#888DFF', fontWeight: 'bolder' }}>
+                    <Anchor href={recordUrl} style={{ color: '#888DFF', fontWeight: 'bolder' }}>
                       这里
                     </Anchor>
                     预约 B 站直播
@@ -81,7 +81,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
               }
             >
               <StyledHeader.HeaderStartButtonJoinGroup>
-                <Styled.ButtonDiv>预约直播</Styled.ButtonDiv>
+                <Styled.ButtonDiv>查看回放</Styled.ButtonDiv>
               </StyledHeader.HeaderStartButtonJoinGroup>
             </Tooltip>
             <Styled.Button href={ideaUrl}>我有想法</Styled.Button>

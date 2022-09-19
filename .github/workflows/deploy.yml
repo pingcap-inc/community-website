@@ -52,7 +52,7 @@ jobs:
       DOCKER_CONTAINER_NAME: tidb-community-website
       DOCKER_IMAGE_NAME: tidb-community-website
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - name: rsync deploy directory
         uses: burnett01/rsync-deployments@5.2
         with:

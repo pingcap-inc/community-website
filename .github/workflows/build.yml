@@ -34,7 +34,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Use Node.js 16.17.0
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3
         with:
           node-version: 16.17.0
           cache: 'npm'

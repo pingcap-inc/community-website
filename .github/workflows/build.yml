@@ -41,7 +41,7 @@ jobs:
 
       - name: Cache dependencies
         id: dep-caches
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
@@ -51,7 +51,7 @@ jobs:
           restore-keys: ${{ runner.os }}-build
 
       - name: Cache build result
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             .next/cache
@@ -73,7 +73,7 @@ jobs:
 
       - name: Cache prod dependencies
         id: prod-dep-caches
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules

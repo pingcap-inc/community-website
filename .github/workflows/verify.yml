@@ -20,7 +20,7 @@ jobs:
 
       - name: Resolve build dependencies
         id: dep-caches
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules

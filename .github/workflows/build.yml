@@ -160,7 +160,7 @@ jobs:
           access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
           access-key-secret: ${{ secrets.OSS_ACCESS_SECRET }}
           bucket: tidb-net-${{ inputs.build-env }}
-          endpoint: oss-cn-beijing.aliyuncs.com
+          endpoint: oss-accelerate.aliyuncs.com
           local-path: .next/static
           remote-path: _next/static
           no-delete-remote-files: true
@@ -181,7 +181,7 @@ jobs:
           access-key-id: ${{ secrets.OSS_ACCESS_KEY }}
           access-key-secret: ${{ secrets.OSS_ACCESS_SECRET }}
           bucket: tidb-net-${{ inputs.build-env }}
-          endpoint: oss-cn-beijing.aliyuncs.com
+          endpoint: oss-accelerate.aliyuncs.com
           local-path: public
           remote-path: /
           no-delete-remote-files: true

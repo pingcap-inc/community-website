@@ -81,7 +81,8 @@ jobs:
           path: |
             node_modules
             packages/*/node_modules
-          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+            !packages/ui/node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
           restore-keys: ${{ runner.os }}-build
 
       - name: Run page tests

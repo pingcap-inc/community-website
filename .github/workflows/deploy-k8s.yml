@@ -27,7 +27,7 @@ jobs:
       JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
     steps:
       - name: Deploy
-        uses: appleboy/ssh-action@v0.1.4
+        uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.JUMP_SERVER_IP }}
           username: ${{ secrets.JUMP_SERVER_USER }}

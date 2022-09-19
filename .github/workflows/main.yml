@@ -66,22 +66,23 @@ jobs:
     needs: [ deploy-preview ]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
 
       - name: Use Node.js 16.17.0
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3
         with:
           node-version: 16.17.0
           cache: 'npm'
 
       - name: Cache dependencies
         id: dep-caches
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
             packages/*/node_modules
-          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json') }}
+            !packages/ui/node_modules
+          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
           restore-keys: ${{ runner.os }}-build
 
       - name: Run page tests

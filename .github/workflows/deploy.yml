@@ -52,7 +52,7 @@ jobs:
       DOCKER_CONTAINER_NAME: tidb-community-website
       DOCKER_IMAGE_NAME: tidb-community-website
     steps:
-      - uses: actions/checkout@v2.4.0
+      - uses: actions/checkout@v3
       - name: rsync deploy directory
         uses: burnett01/rsync-deployments@5.2
         with:
@@ -83,7 +83,7 @@ jobs:
           remote_user: ${{ secrets.DEPLOY_USER }}
           remote_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
       - name: Deploy
-        uses: appleboy/ssh-action@v0.1.4
+        uses: appleboy/ssh-action@v0.1.5
         with:
           host: ${{ secrets.DEPLOY_HOST }}
           username: ${{ secrets.DEPLOY_USER }}

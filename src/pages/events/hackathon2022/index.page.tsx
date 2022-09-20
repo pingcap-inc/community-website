@@ -159,7 +159,7 @@ const dataPrize = {
               name: (
                 <>
                   <div>最佳创意奖</div>
-                  <div style={{ fontSize: 14, color: '#CCC' }}>由初心资本冠名赞助</div>
+                  <div style={{ fontSize: 14, color: '#CCC' }}>由云启资本冠名赞助</div>
                 </>
               ),
               thing: '¥ 5,000',

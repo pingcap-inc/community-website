@@ -10,14 +10,10 @@ import {
   pptTemplateUrl,
   guideUrl,
   scoreRule,
-  recordUrl,
+  replayUrl,
   ideaUrl,
   RfcTemplateUrl,
 } from '../data';
-import Image from 'next/image';
-import bilibiliLiveQrCodeImage from './bilibili_live_qrcode.png';
-import * as StyledHeader from '../Header/index.styled';
-import { Tooltip } from 'antd';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -61,29 +57,7 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
             </Styled.Paragraph>
           </Styled.Start>
           <Styled.End>
-            {/*TODO: links*/}
-            <Tooltip
-              placement="bottomLeft"
-              color={'#FFF'}
-              //trigger={['click', 'focus']}
-              title={
-                <div style={{ textAlign: 'center', paddingTop: 16 }}>
-                  <p style={{ color: '#000' }}>扫码预约视频号直播</p>
-                  <Image {...bilibiliLiveQrCodeImage} />
-                  <p style={{ color: '#000', fontSize: 16 }}>
-                    点击
-                    <Anchor href={recordUrl} style={{ color: '#888DFF', fontWeight: 'bolder' }}>
-                      这里
-                    </Anchor>
-                    预约 B 站直播
-                  </p>
-                </div>
-              }
-            >
-              <StyledHeader.HeaderStartButtonJoinGroup>
-                <Styled.ButtonDiv>查看回放</Styled.ButtonDiv>
-              </StyledHeader.HeaderStartButtonJoinGroup>
-            </Tooltip>
+            <Styled.Button href={replayUrl}>查看回放</Styled.Button>
             <Styled.Button href={ideaUrl}>我有想法</Styled.Button>
           </Styled.End>
         </Styled.Item>

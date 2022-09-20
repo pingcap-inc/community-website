@@ -88,7 +88,7 @@ jobs:
       - name: Archive dist artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: dist
+          name: dist-${{ inputs.build-env }}
           path: |
             next.config.js
             sentry.server.config.js
@@ -102,14 +102,14 @@ jobs:
       - name: Archive static artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: static
+          name: static-${{ inputs.build-env }}
           path: |
             .next/static
 
       - name: Archive public artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: public
+          name: public-${{ inputs.build-env }}
           path: |
             public
 
@@ -128,7 +128,7 @@ jobs:
       - name: Download dist artifacts
         uses: actions/download-artifact@v3
         with:
-          name: dist
+          name: dist-${{ inputs.build-env }}
 
       - name: Login to DockerHub
         uses: docker/login-action@v2
@@ -151,7 +151,7 @@ jobs:
       - name: Download static artifacts
         uses: actions/download-artifact@v3
         with:
-          name: static
+          name: static-${{ inputs.build-env }}
           path: .next/static
 
       - name: Deploy `.next/static` to Ali OSS
@@ -172,7 +172,7 @@ jobs:
       - name: Download public artifacts
         uses: actions/download-artifact@v3
         with:
-          name: public
+          name: public-${{ inputs.build-env }}
           path: public
 
       - name: Deploy `public` to Ali OSS

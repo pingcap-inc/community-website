@@ -5,12 +5,12 @@ import * as Styled from './index.styled';
 import Container from '~/components/Container';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {};
+  //data: {};
 }
 
 const JoinNow: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { data, ...rest } = props;
+  const { ...rest } = props;
   return (
     <Styled.Container {...rest}>
       <Container>

@@ -13,7 +13,7 @@ import photo7Image from './photos/photo-7.png';
 import giftsImage from './gifts.png';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {};
+  //data: {};
 }
 
 const data = {

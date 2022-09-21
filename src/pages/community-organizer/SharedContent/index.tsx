@@ -9,7 +9,7 @@ import icon12mage from './icons/icon-2.png';
 import icon13mage from './icons/icon-3.png';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {};
+  //data: {};
 }
 
 const data = {

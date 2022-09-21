@@ -4,7 +4,7 @@ import * as Styled from './index.styled';
 import Container from '~/components/Container';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {};
+  //data: {};
 }
 
 const data = {

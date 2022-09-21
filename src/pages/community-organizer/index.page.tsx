@@ -28,11 +28,11 @@ const Hackathon2022: NextPage = () => {
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
 
       <Header data={{ title, description }} />
-      <VideoRecord data={{}} />
-      <HowToJoin data={{}} />
-      <SharedContent data={{}} />
-      <QandA data={{}} />
-      <JoinNow data={{}} />
+      <VideoRecord />
+      <HowToJoin />
+      <SharedContent />
+      <QandA />
+      <JoinNow />
     </CoreLayout>
   );
 };

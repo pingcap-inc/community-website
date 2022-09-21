@@ -8,12 +8,12 @@ import videoCover1Image from './video_cover_1.png';
 import videoCover2Image from './video_cover_2.png';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {};
+  //data: {};
 }
 
 const VideoRecord: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { data, ...rest } = props;
+  const { ...rest } = props;
   return (
     <Styled.Container {...rest}>
       <Styled.Title>精选活动现场</Styled.Title>

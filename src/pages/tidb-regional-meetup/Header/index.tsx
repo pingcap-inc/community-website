@@ -18,27 +18,25 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   };
 }
 
+const images = [
+  { image: photo广州Image },
+  { image: photo天津Image },
+  { image: photo武汉Image },
+  { image: photo济南Image },
+  { image: photo石家庄Image },
+];
+
 const Header: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
   const { data, ...rest } = props;
   return (
     <Styled.Container {...rest}>
       <Carousel autoplay>
-        <div>
-          <Image {...photo广州Image} />
-        </div>
-        <div>
-          <Image {...photo天津Image} />
-        </div>
-        <div>
-          <Image {...photo武汉Image} />
-        </div>
-        <div>
-          <Image {...photo济南Image} />
-        </div>
-        <div>
-          <Image {...photo石家庄Image} />
-        </div>
+        {images.map((value) => (
+          <div key={value.image}>
+            <Image {...value.image} layout={'responsive'} />
+          </div>
+        ))}
       </Carousel>
 
       <Styled.CardContainer>

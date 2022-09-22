@@ -19,7 +19,7 @@ const description =
 const seo = {
   title,
   description,
-  keywords: [],
+  keywords: ['TiDB', 'Meetup', 'HTAP', '地区分享'],
 };
 
 const Hackathon2022: NextPage = () => {

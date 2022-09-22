@@ -7,7 +7,10 @@ import { mixins } from '@tidb-community/ui';
 
 export const Container = styled.div`
   position: relative;
-  width: 100%;
+  //width: 100vw;
+  img {
+    width: 100vw;
+  }
 `;
 
 export const CardContainer = styled.div`

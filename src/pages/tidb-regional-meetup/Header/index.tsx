@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Carousel } from 'antd';
-import Image from 'next/image';
+import Image, { StaticImageData } from 'next/image';
 
 import * as Styled from './index.styled';
 
@@ -18,7 +18,7 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   };
 }
 
-const images = [
+const images: { image: StaticImageData }[] = [
   { image: photo广州Image },
   { image: photo天津Image },
   { image: photo武汉Image },
@@ -33,7 +33,7 @@ const Header: React.FC<IProps> = (props) => {
     <Styled.Container {...rest}>
       <Carousel autoplay>
         {images.map((value) => (
-          <div key={value.image}>
+          <div key={value.image.src}>
             <Image {...value.image} layout={'responsive'} />
           </div>
         ))}

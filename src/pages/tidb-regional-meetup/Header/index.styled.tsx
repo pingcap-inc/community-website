@@ -3,8 +3,6 @@ import { Button, Space } from 'antd';
 
 import { mixins } from '@tidb-community/ui';
 
-//import MyContainer from '~/components/Container'
-
 export const Container = styled.div`
   position: relative;
   //width: 100vw;

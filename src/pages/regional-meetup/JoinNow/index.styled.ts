@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   padding: 48px 0;
-  background: #fff7f0;
+  background: #2b0000;
 `;
 
 export const Title = styled.div`
@@ -10,7 +10,7 @@ export const Title = styled.div`
   font-size: 24px;
   line-height: 34px;
   text-align: center;
-  color: #2c2c2c;
+  color: #fff;
 `;
 
 export const Action = styled.div`

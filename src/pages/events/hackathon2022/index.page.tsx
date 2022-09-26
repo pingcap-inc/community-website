@@ -93,7 +93,11 @@ const dataHeader = {
           title={
             <div style={{ textAlign: 'center' }}>
               <Image {...qrCodeImage} alt={'扫码添加小助手进群，回复 2022 进群'} />
-              <p style={{ color: '#000' }}>扫码添加小助手进群，回复 2022 进群</p>
+              <p style={{ color: '#000' }}>
+                扫码添加小助手进群
+                <br />
+                回复 2022 进群
+              </p>
             </div>
           }
         >

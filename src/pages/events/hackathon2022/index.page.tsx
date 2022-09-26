@@ -92,8 +92,8 @@ const dataHeader = {
           trigger={['click', 'focus']}
           title={
             <div style={{ textAlign: 'center' }}>
-              <Image {...qrCodeImage} />
-              <p style={{ color: '#000' }}>扫码添加小助手进群</p>
+              <Image {...qrCodeImage} alt={'扫码添加小助手进群，回复 2022 进群'} />
+              <p style={{ color: '#000' }}>扫码添加小助手进群，回复 2022 进群</p>
             </div>
           }
         >

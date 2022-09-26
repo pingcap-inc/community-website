@@ -1,39 +1,13 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import { Button, Space } from 'antd';
 
-import { mixins } from '@tidb-community/ui';
-
 export const Container = styled.div`
-  position: relative;
-  //width: 100vw;
-  img {
-    width: 100vw;
-  }
+  width: 100%;
+  background-color: #f7f8f9;
+  padding: 64px 0;
 `;
 
-export const CardContainer = styled.div`
-  width: 100%;
-  position: absolute;
-  left: 0;
-  top: 64px;
-  ${mixins.onMobile(css`
-    position: relative;
-    top: 0;
-    margin: 16px auto;
-  `)};
-`;
-
-export const Card = styled.div`
-  padding: 64px 56px;
-  max-width: 1024px;
-  width: 100%;
-  ${mixins.onMobile(css`
-    padding: 32px 16px;
-  `)};
-  background: rgba(247, 248, 249, 0.9);
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-`;
+export const Card = styled.div``;
 
 export const Title = styled.h1`
   font-weight: 500;

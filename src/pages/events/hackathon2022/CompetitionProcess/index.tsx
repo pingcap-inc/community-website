@@ -57,8 +57,8 @@ const CompetitionProcess: React.FC<IProps> = (props) => {
             </Styled.Paragraph>
           </Styled.Start>
           <Styled.End>
-            <Styled.Button href={replayUrl}>查看回放</Styled.Button>
-            <Styled.Button href={ideaUrl}>我有想法</Styled.Button>
+            <Styled.Button href={replayUrl}>寻找 idea</Styled.Button>
+            <Styled.Button href={ideaUrl}>项目公示</Styled.Button>
           </Styled.End>
         </Styled.Item>
       </Styled.Column>

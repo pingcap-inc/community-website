@@ -95,7 +95,7 @@ export const AdvantageIcon = styled.div`
 `;
 export const AdvantageText = styled.div`
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 28px;
   /* identical to box height */
   color: #565656;

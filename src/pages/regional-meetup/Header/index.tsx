@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Container from '~/components/Container';
 
 import * as Styled from './index.styled';
-import { headerImages, joinUrl } from '~/data/regional-meetup';
+import { headerImages, joinUrl, recommendUrl } from '~/data/regional-meetup';
 import Anchor from '~/components/Anchor';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -30,7 +30,9 @@ const Header: React.FC<IProps> = (props) => {
                 <Anchor href={joinUrl}>
                   <Styled.JoinButton>🙋‍ 我要成为地区组织者</Styled.JoinButton>
                 </Anchor>
-                <Styled.NominateButton>我要提名 TA</Styled.NominateButton>
+                <Anchor href={recommendUrl}>
+                  <Styled.NominateButton>我要提名 TA</Styled.NominateButton>
+                </Anchor>
               </Styled.Actions>
             </Styled.Card>
           </Col>

@@ -9,7 +9,8 @@ import photo石家庄Image from './石家庄.jpg';
 import React from 'react';
 import Anchor from '~/components/Anchor';
 
-export const joinUrl = '#';
+export const joinUrl = 'https://forms.pingcap.com/f/regional-meetup-organizer';
+export const recommendUrl = 'https://asktug.com/t/topic/664366';
 
 // 顶部轮播图
 export const headerImages: { image: StaticImageData }[] = [

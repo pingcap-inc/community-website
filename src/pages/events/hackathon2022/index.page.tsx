@@ -471,7 +471,7 @@ const 协办方Items: { image: { src: string } }[] = [];
 for (let i = 4; i <= 5; i++) 协办方Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
 
 const 合作社区Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 36; i++) 合作社区Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
+for (let i = 1; i <= 37; i++) 合作社区Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
 
 const dataPartner = [
   {

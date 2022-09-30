@@ -113,6 +113,7 @@ import partnerLogo_3_34_Image from './Partner/logo/logo-3-34.png'
 import partnerLogo_3_35_Image from './Partner/logo/logo-3-35.png'
 import partnerLogo_3_36_Image from './Partner/logo/logo-3-36.png'
 import partnerLogo_3_37_Image from './Partner/logo/logo-3-37.png'
+import partnerLogo_3_38_Image from './Partner/logo/logo-3-38.png'
 
 const description =
   'TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
@@ -571,6 +572,7 @@ const dataPartner = [
       {image: partnerLogo_3_35_Image},
       {image: partnerLogo_3_36_Image},
       {image: partnerLogo_3_37_Image},
+      {image: partnerLogo_3_38_Image},
     ],
   },
 ];

@@ -66,7 +66,53 @@ import {
 } from './data';
 import qrCodeImage from './Header/qrcode.jpg';
 import SideBar from './SideBar';
-import { getImageUrl } from '~/utils/cdn.utils';
+
+import partnerLogo_1_1_Image from './Partner/logo/logo-1-1.png'
+import partnerLogo_1_2_Image from './Partner/logo/logo-1-2.png'
+import partnerLogo_1_3_Image from './Partner/logo/logo-1-3.png'
+import partnerLogo_1_4_Image from './Partner/logo/logo-1-4.png'
+import partnerLogo_2_1_Image from './Partner/logo/logo-2-1.png'
+import partnerLogo_2_2_Image from './Partner/logo/logo-2-2.png'
+import partnerLogo_2_3_Image from './Partner/logo/logo-2-3.png'
+import partnerLogo_2_4_Image from './Partner/logo/logo-2-4.png'
+import partnerLogo_2_5_Image from './Partner/logo/logo-2-5.png'
+import partnerLogo_3_1_Image from './Partner/logo/logo-3-1.png'
+import partnerLogo_3_2_Image from './Partner/logo/logo-3-2.png'
+import partnerLogo_3_3_Image from './Partner/logo/logo-3-3.png'
+import partnerLogo_3_4_Image from './Partner/logo/logo-3-4.png'
+import partnerLogo_3_5_Image from './Partner/logo/logo-3-5.png'
+import partnerLogo_3_6_Image from './Partner/logo/logo-3-6.png'
+import partnerLogo_3_7_Image from './Partner/logo/logo-3-7.png'
+import partnerLogo_3_8_Image from './Partner/logo/logo-3-8.png'
+import partnerLogo_3_9_Image from './Partner/logo/logo-3-9.png'
+import partnerLogo_3_10_Image from './Partner/logo/logo-3-10.png'
+import partnerLogo_3_11_Image from './Partner/logo/logo-3-11.png'
+import partnerLogo_3_12_Image from './Partner/logo/logo-3-12.png'
+import partnerLogo_3_13_Image from './Partner/logo/logo-3-13.png'
+import partnerLogo_3_14_Image from './Partner/logo/logo-3-14.png'
+import partnerLogo_3_15_Image from './Partner/logo/logo-3-15.png'
+import partnerLogo_3_16_Image from './Partner/logo/logo-3-16.png'
+import partnerLogo_3_17_Image from './Partner/logo/logo-3-17.png'
+import partnerLogo_3_18_Image from './Partner/logo/logo-3-18.png'
+import partnerLogo_3_19_Image from './Partner/logo/logo-3-19.png'
+import partnerLogo_3_20_Image from './Partner/logo/logo-3-20.png'
+import partnerLogo_3_21_Image from './Partner/logo/logo-3-21.png'
+import partnerLogo_3_22_Image from './Partner/logo/logo-3-22.png'
+import partnerLogo_3_23_Image from './Partner/logo/logo-3-23.png'
+import partnerLogo_3_24_Image from './Partner/logo/logo-3-24.png'
+import partnerLogo_3_25_Image from './Partner/logo/logo-3-25.png'
+import partnerLogo_3_26_Image from './Partner/logo/logo-3-26.png'
+import partnerLogo_3_27_Image from './Partner/logo/logo-3-27.png'
+import partnerLogo_3_28_Image from './Partner/logo/logo-3-28.png'
+import partnerLogo_3_29_Image from './Partner/logo/logo-3-29.png'
+import partnerLogo_3_30_Image from './Partner/logo/logo-3-30.png'
+import partnerLogo_3_31_Image from './Partner/logo/logo-3-31.png'
+import partnerLogo_3_32_Image from './Partner/logo/logo-3-32.png'
+import partnerLogo_3_33_Image from './Partner/logo/logo-3-33.png'
+import partnerLogo_3_34_Image from './Partner/logo/logo-3-34.png'
+import partnerLogo_3_35_Image from './Partner/logo/logo-3-35.png'
+import partnerLogo_3_36_Image from './Partner/logo/logo-3-36.png'
+import partnerLogo_3_37_Image from './Partner/logo/logo-3-37.png'
 
 const description =
   'TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
@@ -455,44 +501,77 @@ const dataFAQ = {
   ),
 };
 
-const imagePathPrefix = getImageUrl(`/images/hackathon2022`);
-
-const 金牌赞助Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 3; i++) 金牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
-
-const 银牌赞助Items: { image: { src: string } }[] = [];
-for (let i = 4; i <= 4; i++) 银牌赞助Items.push({ image: { src: `${imagePathPrefix}/partner/logo-1-${i}.png` } });
-
-const 云资源赞助and云技术服务支持Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 3; i++)
-  云资源赞助and云技术服务支持Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
-
-const 协办方Items: { image: { src: string } }[] = [];
-for (let i = 4; i <= 5; i++) 协办方Items.push({ image: { src: `${imagePathPrefix}/partner/logo-2-${i}.png` } });
-
-const 合作社区Items: { image: { src: string } }[] = [];
-for (let i = 1; i <= 37; i++) 合作社区Items.push({ image: { src: `${imagePathPrefix}/partner/logo-3-${i}.png` } });
-
 const dataPartner = [
   {
     name: '金牌赞助',
-    items: 金牌赞助Items,
+    items: [
+      {image: partnerLogo_1_1_Image},
+      {image: partnerLogo_1_2_Image},
+      {image: partnerLogo_1_3_Image},
+    ],
   },
   {
     name: '银牌赞助',
-    items: 银牌赞助Items,
+    items: [
+      {image: partnerLogo_1_4_Image},
+    ],
   },
   {
     name: '云资源赞助/云技术服务支持',
-    items: 云资源赞助and云技术服务支持Items,
+    items: [
+      {image: partnerLogo_2_1_Image},
+      {image: partnerLogo_2_2_Image},
+      {image: partnerLogo_2_3_Image},
+    ],
   },
   {
     name: '协办方',
-    items: 协办方Items,
+    items: [
+      {image: partnerLogo_2_4_Image},
+      {image: partnerLogo_2_5_Image},
+    ],
   },
   {
     name: '合作社区',
-    items: 合作社区Items,
+    items: [
+      {image: partnerLogo_3_1_Image},
+      {image: partnerLogo_3_2_Image},
+      {image: partnerLogo_3_3_Image},
+      {image: partnerLogo_3_4_Image},
+      {image: partnerLogo_3_5_Image},
+      {image: partnerLogo_3_6_Image},
+      {image: partnerLogo_3_7_Image},
+      {image: partnerLogo_3_8_Image},
+      {image: partnerLogo_3_9_Image},
+      {image: partnerLogo_3_10_Image},
+      {image: partnerLogo_3_11_Image},
+      {image: partnerLogo_3_12_Image},
+      {image: partnerLogo_3_13_Image},
+      {image: partnerLogo_3_14_Image},
+      {image: partnerLogo_3_15_Image},
+      {image: partnerLogo_3_16_Image},
+      {image: partnerLogo_3_17_Image},
+      {image: partnerLogo_3_18_Image},
+      {image: partnerLogo_3_19_Image},
+      {image: partnerLogo_3_20_Image},
+      {image: partnerLogo_3_21_Image},
+      {image: partnerLogo_3_22_Image},
+      {image: partnerLogo_3_23_Image},
+      {image: partnerLogo_3_24_Image},
+      {image: partnerLogo_3_25_Image},
+      {image: partnerLogo_3_26_Image},
+      {image: partnerLogo_3_27_Image},
+      {image: partnerLogo_3_28_Image},
+      {image: partnerLogo_3_29_Image},
+      {image: partnerLogo_3_30_Image},
+      {image: partnerLogo_3_31_Image},
+      {image: partnerLogo_3_32_Image},
+      {image: partnerLogo_3_33_Image},
+      {image: partnerLogo_3_34_Image},
+      {image: partnerLogo_3_35_Image},
+      {image: partnerLogo_3_36_Image},
+      {image: partnerLogo_3_37_Image},
+    ],
   },
 ];
 

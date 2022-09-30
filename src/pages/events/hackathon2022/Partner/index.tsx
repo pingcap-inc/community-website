@@ -1,6 +1,6 @@
 import * as React from 'react';
-//import type {StaticImageData} from "next/image";
-//import Image from "next/image";
+import type {StaticImageData} from "next/image";
+import Image from "next/image";
 
 import * as Styled from './index.styled';
 
@@ -8,7 +8,7 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
     name: string;
     items: {
-      image: { src: string };
+      image: StaticImageData;
     }[];
   }[];
 }
@@ -33,9 +33,9 @@ function Category({ value }) {
       <Styled.Title>{value.name}</Styled.Title>
       <Styled.List>
         {value.items.map((item) => (
-          <Styled.Column key={item.image}>
+          <Styled.Column key={item.image.src}>
             <Styled.Item>
-              <img {...item.image} alt="" />
+              <Image {...item.image} alt="" />
             </Styled.Item>
           </Styled.Column>
         ))}

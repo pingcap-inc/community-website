@@ -50,7 +50,7 @@ export const RecommendPeople = styled.div`
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
-  color: #000000;
+  color: #565656;
 `;
 
 export const RecommendSummary = styled.div`
@@ -75,8 +75,9 @@ export const RecommendAction = styled.div`
 
 export const List = styled(Row)`
   margin-top: 54px;
-  ${mixins.onMobile(css`
-    display: none;
+  //${mixins.onMobile(css`
+    //  display: none;
+    //
   `)};
 `;
 

@@ -18,6 +18,11 @@ export const Content = styled(Space)`
   margin-top: 54px;
 `;
 
+export const More = styled.div`
+  padding-top: 32px;
+  text-align: center;
+`;
+
 export const Item = styled(Space)``;
 
 export const Question = styled(Space)``;

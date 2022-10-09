@@ -126,8 +126,6 @@ export interface IProps {
 }
 
 export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx) => {
-  //@ts-ignore
-  const i18nProps = await getI18nProps(['common', 'page-events'])(ctx);
   const isEnabled = process.env.NEXT_PUBLIC_FT_ACTIVITIES;
   if (!isEnabled) {
     return {
@@ -146,7 +144,6 @@ export const getServerSideProps: GetServerSideProps<IProps, IQuery> = async (ctx
 
   return {
     props: {
-      ...i18nProps,
       events,
       total,
       calendarEvents,
@@ -159,7 +156,7 @@ export default function EventsIndexPage(props: IProps) {
   return (
     <>
       <CommunityHead
-        title={constants.pageTitle}
+        title={'社区活动'}
         description={
           'TiDB 社区自成立以来，每年都会举办各类丰富多彩的活动，覆盖了全球几万名来自不同领域的开发者、TiDB 用户和爱好者。在这里你可以了解 TiDB 社区即将举办的线上、线下的活动、meetup 和竞赛等信息。'
         }

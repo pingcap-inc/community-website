@@ -99,7 +99,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
   </Styled.SpinContainer>
 )*/
 
-const htmlId = 'all-events';
+export const htmlId = 'all-events';
 
 export default function List({ events, total }) {
   const router = useRouter();

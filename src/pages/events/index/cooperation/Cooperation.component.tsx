@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import * as Styled from './cooperation.styled';
 import { useIsSmallScreen } from '~/hooks';
-import constant from '../constant.json';
+
+import * as Styled from './cooperation.styled';
 
 export default function Cooperation() {
   const { isSmallScreen } = useIsSmallScreen();
@@ -14,9 +14,11 @@ export default function Cooperation() {
         $isSmallScreen={isSmallScreen}
         leftPanel={
           <Styled.LeftPanel>
-            <p>{constant.cooperation.desc}</p>
-            <Link href={constant.cooperation.button.link} passHref>
-              <Styled.ActionButton>{constant.cooperation.button.label}</Styled.ActionButton>
+            <p>
+              TiDB 社区致力于新技术新思想的发展与传播，如果你正在组织一场 TiDB 相关的活动，欢迎联系我们提供合作与支持。
+            </p>
+            <Link href={'/contact-us/cooperation'} passHref>
+              <Styled.ActionButton>活动合作</Styled.ActionButton>
             </Link>
           </Styled.LeftPanel>
         }

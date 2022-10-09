@@ -158,7 +158,12 @@ export default function EventsIndexPage(props: IProps) {
   const { events, total, calendarEvents } = props;
   return (
     <>
-      <CommunityHead title={constants.pageTitle} />
+      <CommunityHead
+        title={constants.pageTitle}
+        description={
+          'TiDB 社区自成立以来，每年都会举办各类丰富多彩的活动，覆盖了全球几万名来自不同领域的开发者、TiDB 用户和爱好者。在这里你可以了解 TiDB 社区即将举办的线上、线下的活动、meetup 和竞赛等信息。'
+        }
+      />
       <CoreLayout>
         <About events={calendarEvents} />
         <List events={events} total={total} />

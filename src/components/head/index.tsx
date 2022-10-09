@@ -29,7 +29,8 @@ export const CommunityHead: React.FC<IProps> = (props) => {
 
   const googleAnalyticsId = 'GTM-K338LSD';
 
-  const getFaviconsPath = (relativePath) => cdn.getImageUrl('/favicons/' + props.faviconPathname ?? '' + relativePath);
+  const getFaviconsPath = (relativePath: string): string =>
+    cdn.getImageUrl('/favicons/' + props.faviconPathname ?? '' + relativePath);
 
   return (
     <NextHead>

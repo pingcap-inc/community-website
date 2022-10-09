@@ -1,10 +1,10 @@
 import React from 'react';
+import type { NextPage } from 'next';
 
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import Banner from '~/pages/talent-plan/banner';
 import Institutes from '~/pages/talent-plan/institutes';
-import { PageDataContext } from '~/context';
 import Labs from '~/pages/talent-plan/labs';
 import Team from '~/pages/talent-plan/team';
 import Participation from '~/pages/talent-plan/participation';
@@ -13,7 +13,6 @@ import Organizers from '~/pages/talent-plan/organizers';
 import Stories from '~/pages/talent-plan/stories';
 import Others from '~/pages/talent-plan/others';
 import Ranking from '~/pages/talent-plan/ranking';
-import { NextPage } from 'next';
 
 export const getServerSideProps = async () => {
   return {

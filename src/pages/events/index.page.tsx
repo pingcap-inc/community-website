@@ -1,17 +1,17 @@
 import * as R from 'ramda';
 import React from 'react';
+import { ParsedUrlQuery } from 'querystring';
+import type { GetServerSideProps } from 'next';
+
 import { api } from '@tidb-community/datasource';
-import constants from './index/constant.json';
+
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { setUndefinedWhenItemIsEmpty } from '~/utils/request.utils';
+
 import About from './index/about';
 import Cooperation from './index/cooperation';
 import List from './index/list';
-import { CATEGORIES, DATES, LOCATIONS, TYPES } from './index/list/list.constants';
-import { CommunityHead } from '~/components';
-import { CoreLayout } from '~/layouts';
-import { getI18nProps } from '~/utils/i18n.utils';
-import { GetServerSideProps } from 'next';
-import { ParsedUrlQuery } from 'querystring';
-import { setUndefinedWhenItemIsEmpty } from '~/utils/request.utils';
 
 async function fetcher<T>(path, params): Promise<T> {
   const instance = await api.cms.getInstanceOnServer();
@@ -22,6 +22,11 @@ async function fetcher<T>(path, params): Promise<T> {
 const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
 export const defaultPageSize = 8;
+
+export const CATEGORIES = ['所有类型', 'meetup', '开发者活动/竞赛'];
+export const TYPES = ['线上/线下', '线上', '线下'];
+export const DATES = ['所有时间', '2021', '2020', '2019', '更早'];
+export const LOCATIONS = ['全球', '北京', '上海', '杭州', '深圳', '广州', '成都', '其他'];
 
 /**
  * get years range by input date parameter

@@ -161,7 +161,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td rowSpan="8">
+            <td rowSpan="7">
               <Anchor href="https://asktug.com">AskTUG</Anchor>
             </td>
             <td>发布问题帖子</td>
@@ -197,13 +197,6 @@ const Page = () => (
             <td>2</td>
             <td>10</td>
             <td>不可给自己点赞，赞被取消后，也会扣除对应的积分及经验。</td>
-          </tr>
-          <tr>
-            <td>帖子被收藏</td>
-            <td>5</td>
-            <td>5</td>
-            <td>10</td>
-            <td>自己收藏自己的帖子不给分。</td>
           </tr>
           <tr>
             <td>帖子被引用</td>

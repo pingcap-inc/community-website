@@ -66,7 +66,7 @@ const Card: React.FC<IPropsCard> = (props) => {
       </Styled.CardAuthorInfo>
       <Styled.CardIcons>
         {data.iconImages.map((value) => (
-          <Image {...value} width={36} height={36} />
+          <Image key={value.src} {...value} width={36} height={36} />
         ))}
       </Styled.CardIcons>
       <Styled.CardMore>

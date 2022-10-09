@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import { Button } from 'antd';
-import { DownOutlined, UpOutlined } from '@ant-design/icons';
+import { DownOutlined } from '@ant-design/icons';
 
 import * as Styled from './index.styled';
 import Container from '~/components/Container';

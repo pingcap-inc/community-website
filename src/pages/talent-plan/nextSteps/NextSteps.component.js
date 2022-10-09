@@ -2,10 +2,11 @@ import React from 'react';
 import { Col, Row } from 'antd';
 import { useRouter } from 'next/router';
 
-import * as Styled from './nextSteps.styled';
-import { useTranslation } from 'next-i18next';
-import { link as linkUtils } from '~/utils';
 import { Styled as CommonStyled } from '@tidb-community/ui';
+
+import { link as linkUtils } from '~/utils';
+
+import * as Styled from './nextSteps.styled';
 
 const NextSteps = () => {
   const router = useRouter();
@@ -15,14 +16,10 @@ const NextSteps = () => {
     linkUtils.handleRedirect(router, link);
   };
 
-  const { t } = useTranslation('page-talent-plan');
-
-  const lang = t('nextSteps', { returnObjects: true });
-
   return (
     <Styled.Container>
       <Styled.Content>
-        <CommonStyled.Title>{lang.title}</CommonStyled.Title>
+        <CommonStyled.Title>进一步探索</CommonStyled.Title>
         {/* Since the data for this section are richly formatted, I decided
        not to use the i18n patter*/}
         <Row gutter={16}>

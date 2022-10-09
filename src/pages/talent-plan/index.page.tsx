@@ -2,7 +2,6 @@ import React from 'react';
 
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
-import { getI18nProps } from '~/utils/i18n.utils';
 import Banner from '~/pages/talent-plan/banner';
 import Institutes from '~/pages/talent-plan/institutes';
 import { PageDataContext } from '~/context';
@@ -14,19 +13,16 @@ import Organizers from '~/pages/talent-plan/organizers';
 import Stories from '~/pages/talent-plan/stories';
 import Others from '~/pages/talent-plan/others';
 import Ranking from '~/pages/talent-plan/ranking';
+import { NextPage } from 'next';
 
-export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common', 'page-talent-plan'])(ctx);
-
+export const getServerSideProps = async () => {
   return {
-    props: {
-      ...i18nProps,
-    },
+    props: {},
   };
 };
 
-const Page = ({ data }) => (
-  <PageDataContext.Provider value={{ data }}>
+const Page: NextPage = () => (
+  <>
     <CommunityHead
       title={'Talent Plan'}
       description={
@@ -45,7 +41,7 @@ const Page = ({ data }) => (
       <Others />
       <Stories />
     </CoreLayout>
-  </PageDataContext.Provider>
+  </>
 );
 
 export default Page;

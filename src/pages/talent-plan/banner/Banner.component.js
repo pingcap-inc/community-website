@@ -1,19 +1,16 @@
 import React from 'react';
-
-import * as Styled from './banner.styled';
-import { useIsSmallScreen } from '~/hooks';
-import { useTranslation } from 'next-i18next';
-import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import { getImage } from '~/pages/talent-plan/talent-plan.utils';
-import Anchor from '~/components/Anchor';
 import { Button, Space } from 'antd';
 import { GithubOutlined } from '@ant-design/icons';
 
+import { useIsSmallScreen } from '~/hooks';
+import TwoColumnsSection from '~/layouts/twoColumnsSection';
+import { getImage } from '~/pages/talent-plan/talent-plan.utils';
+import Anchor from '~/components/Anchor';
+
+import * as Styled from './banner.styled';
+
 const Banner = () => {
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
-  const { t } = useTranslation('page-talent-plan');
-
-  const lang = t('banner', { returnObjects: true });
 
   return (
     <Styled.Container>
@@ -21,8 +18,11 @@ const Banner = () => {
         <TwoColumnsSection
           leftPanel={
             <Styled.LeftPanel>
-              <Styled.Title>{lang.title}</Styled.Title>
-              <Styled.Intro>{lang.intro}</Styled.Intro>
+              <Styled.Title>Talent Plan</Styled.Title>
+              <Styled.Intro>
+                以 Talent Plan
+                开源数据库开发课程为依托，联合优秀高校和企业，建设成对全国各高校数据库开发人才培养的最佳实践平台。既能帮助学习者掌握数据库开发的理论知识，进行实际数据库开发锻炼，又能给与学习者使用开源资源，开发开源软件的培养。
+              </Styled.Intro>
               <Space size={24}>
                 <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
                   <Button type={'primary'}>报名学习</Button>

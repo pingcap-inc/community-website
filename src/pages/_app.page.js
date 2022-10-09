@@ -27,6 +27,10 @@ import { store } from '~/redux';
 import '@fullcalendar/common/main.css';
 import '@fullcalendar/daygrid/main.css';
 
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+
 import {
   SiteComponentsContext,
   defineSiteComponentsConfig,

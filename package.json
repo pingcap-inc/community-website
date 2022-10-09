@@ -71,6 +71,7 @@
     "react-transition-group": "~4.4.2",
     "sharp": "~0.30.3",
     "styled-components": "~5.3.3",
+    "swiper": "8.4.3",
     "swr": "~1.2.2",
     "tslib": "~2.3.1",
     "uuid": "~8.3.2",

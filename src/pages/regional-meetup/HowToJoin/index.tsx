@@ -75,7 +75,7 @@ const HowToJoin: React.FC<IProps> = (props) => {
                 <Col sm={24} md={6}>
                   <Space direction={'vertical'} size={32}>
                     {advantages.slice(0, 3).map((value) => (
-                      <Styled.Advantage>
+                      <Styled.Advantage key={value}>
                         <Styled.AdvantageIcon>√</Styled.AdvantageIcon>
                         <Styled.AdvantageText>{value}</Styled.AdvantageText>
                       </Styled.Advantage>
@@ -85,7 +85,7 @@ const HowToJoin: React.FC<IProps> = (props) => {
                 <Col sm={24} md={6}>
                   <Space direction={'vertical'} size={32}>
                     {advantages.slice(3, 6).map((value) => (
-                      <Styled.Advantage>
+                      <Styled.Advantage key={value}>
                         <Styled.AdvantageIcon>√</Styled.AdvantageIcon>
                         <Styled.AdvantageText>{value}</Styled.AdvantageText>
                       </Styled.Advantage>

@@ -11,8 +11,8 @@ import YearSwitch from '~/components/mva/YearSwitch';
 import styles from './mva.module.scss';
 import mvaData from './data';
 import { CoreLayout } from '~/layouts';
-import { TugHead } from '~/components';
 import { cdn } from '~/utils';
+import { CommunityHead } from '~/components';
 
 const getImage = (filename) => cdn.getImageUrl(`/images/tug/mva/${filename}`);
 
@@ -53,7 +53,7 @@ const MostValuableAdvocate = () => {
 
   return (
     <>
-      <TugHead
+      <CommunityHead
         title="MVA"
         description="TiDB MOA（Most Outstanding  Advocate）、TiDB MVA （Most Valuable Advocate）是为 TUG 贡献高质量技术内容的 TiDB 用户，他们帮助他人充分了解 TiDB，是 TUG 社区认定的 TiDB 技术先驱者与技术领袖，享受极高的社区荣誉和权益。"
       />

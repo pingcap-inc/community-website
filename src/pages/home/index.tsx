@@ -14,14 +14,10 @@ import Welcome from './welcome';
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
 import { PageDataContext } from '~/context';
-import { getI18nProps } from '~/utils/i18n.utils';
 import { getLatestBlog } from '~/pages/home/blogs/api';
+import { GetServerSideProps, NextPage } from 'next';
 
-// FIXME: temporily rollback ISR back to SSR due to a CI build error
-// We need to fix the circular dependencies issue with i18n locales
-// const TEN_MINS = 10 * 60;
-
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const client = await api.initStrapiClient();
   const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
@@ -42,11 +38,8 @@ export const getServerSideProps = async (ctx) => {
     client.get('tidbio-homepage-dev-activities', strapiQuery),
   ]);
 
-  const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
-
   return {
     props: {
-      ...i18nProps,
       data: jsConvert.camelKeys(
         {
           githubInfo: data[0].data,
@@ -64,11 +57,11 @@ export const getServerSideProps = async (ctx) => {
         }
       ),
     },
-    // revalidate: TEN_MINS,
+    revalidate: 60,
   };
 };
 
-const Page = ({ data }) => (
+const Page: NextPage<{ data: any }> = ({ data }) => (
   <PageDataContext.Provider value={{ data }}>
     <CommunityHead />
 

@@ -47,7 +47,7 @@ export const CardTitle = styled.div`
 export const CardDescription = styled.div`
   margin-top: 16px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 22px;
   color: #565656;
 `;

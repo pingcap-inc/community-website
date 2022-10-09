@@ -81,6 +81,11 @@ export const List = styled(Row)`
   `)};
 `;
 
+export const More = styled.div`
+  padding-top: 32px;
+  text-align: center;
+`;
+
 export const VideoCover = styled.div``;
 
 export const Info = styled.div``;

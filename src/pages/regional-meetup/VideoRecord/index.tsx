@@ -1,11 +1,13 @@
 import * as React from 'react';
 import Image from 'next/image';
-import { Col, Space } from 'antd';
+import { Button, Col, Space } from 'antd';
 
 import * as Styled from './index.styled';
 
 import { videoRecords } from '~/data/regional-meetup/video-record';
 import Anchor from '~/components/Anchor';
+import { useState } from 'react';
+import { DownOutlined, UpOutlined } from '@ant-design/icons';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   //data: {};
@@ -14,6 +16,7 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 const VideoRecord: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
   const { ...rest } = props;
+  const [showMore, setShowMore] = useState(false);
   return (
     <Styled.Container {...rest}>
       <Styled.Title>精选活动现场</Styled.Title>
@@ -43,7 +46,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
       </Styled.Recommend>
 
       <Styled.List wrap gutter={[36, 36]}>
-        {videoRecords.slice(1).map((value) => (
+        {videoRecords.slice(1, showMore ? undefined : 7).map((value) => (
           <Col key={value.moreLinkUrl} sm={24} md={12} lg={8}>
             <Space size={10} align={'start'}>
               <Styled.VideoCover>
@@ -65,6 +68,17 @@ const VideoRecord: React.FC<IProps> = (props) => {
           </Col>
         ))}
       </Styled.List>
+      <Styled.More>
+        {showMore ? (
+          <Button type={'link'} icon={<UpOutlined />} onClick={() => setShowMore(false)}>
+            收起
+          </Button>
+        ) : (
+          <Button type={'link'} icon={<DownOutlined />} onClick={() => setShowMore(true)}>
+            展开更多
+          </Button>
+        )}
+      </Styled.More>
     </Styled.Container>
   );
 };

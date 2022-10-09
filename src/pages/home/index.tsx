@@ -27,7 +27,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     },
   };
 
-  const data = await Promise.all([
+  const [githubInfo, forumPosts, blogs, videos, promotions, activities, meetups, devActivities] = await Promise.all([
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
     getLatestBlog(), // client.get('tidbio-asktug-blogs'),
@@ -42,14 +42,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
     props: {
       data: jsConvert.camelKeys(
         {
-          githubInfo: data[0].data,
-          forumPosts: data[1].data,
-          blogs: data[2],
-          videos: data[3].data,
-          promotions: data[4],
-          activities: data[5],
-          meetups: data[6],
-          devActivities: data[7],
+          githubInfo: githubInfo.data,
+          forumPosts: forumPosts.data,
+          blogs,
+          videos: videos.data,
+          promotions,
+          activities,
+          meetups,
+          devActivities,
         },
         {
           recursive: true,
@@ -57,7 +57,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
         }
       ),
     },
-    revalidate: 60,
+    // TODO: prop revalidate is moved to getStaticProps at latest version of next.js
+    //revalidate: 60,
   };
 };
 

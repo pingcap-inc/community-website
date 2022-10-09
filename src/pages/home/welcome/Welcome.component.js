@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { Col, Row } from 'antd';
-import { useTranslation } from 'next-i18next';
 
 import * as Styled from './welcome.styled';
 import { PageDataContext } from '~/context';
@@ -11,29 +10,25 @@ import Anchor from '~/components/Anchor';
 const Welcome = () => {
   const { data } = useContext(PageDataContext);
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
-  const { t } = useTranslation('page-home');
-
-  const lang = t('welcome', { returnObjects: true });
-  const { /*navs: navsLang,*/ numbers: numbersLang, howTo: howToLang } = lang;
 
   const { githubInfo } = data;
 
   const numbers = [
     {
       num: formatNumber(githubInfo.prNum),
-      text: numbersLang.pr,
+      text: 'Pull Requests',
     },
     {
       num: formatNumber(githubInfo.topicNum),
-      text: numbersLang.topic,
+      text: '主题',
     },
     {
       num: formatNumber(githubInfo.postNum),
-      text: numbersLang.post,
+      text: '帖子',
     },
     {
       num: formatNumber(githubInfo.contributorNum),
-      text: numbersLang.contributor,
+      text: '贡献者',
     },
   ];
 
@@ -42,8 +37,11 @@ const Welcome = () => {
       <Styled.Content>
         <Row gutter={[32, 32]} justify="center">
           <Col span={isSmallScreen ? 24 : 18}>
-            <Styled.Title>{lang.title}</Styled.Title>
-            <Styled.Intro>{lang.intro}</Styled.Intro>
+            <Styled.Title>Hi, 欢迎来到 TiDB 社区!</Styled.Title>
+            <Styled.Intro>
+              TiDB 社区是由 TiDB
+              生态中的开发者、用户、Contributor、合作伙伴一起建立的分享、学习平台。在这里，我们可以自由发声，互相协助解决问题。
+            </Styled.Intro>
             {/*<Styled.Navs>*/}
             {/*  <Radio.Button onClick={onClick('https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md')}>*/}
             {/*    {navsLang.codeOfConduct}*/}
@@ -65,16 +63,16 @@ const Welcome = () => {
 
       <Styled.HowTo isSmallScreen={!breakpoint.lg}>
         <Styled.Content>
-          <h2>{howToLang.title}</h2>
+          <h2>TiDB 新手？点击切换探索路径</h2>
           <ul>
             <li>
-              <Anchor href={'https://docs.pingcap.com/zh/tidb/stable/overview'}>{howToLang.what}</Anchor>
+              <Anchor href={'https://docs.pingcap.com/zh/tidb/stable/overview'}>什么是 TiDB ？</Anchor>
             </li>
             <li>
-              <Anchor href={'#learning'}>{howToLang.use}</Anchor>
+              <Anchor href={'#learning'}>如何使用 TiDB ？</Anchor>
             </li>
             <li>
-              <Anchor href={'#contribution'}>{howToLang.contribute}</Anchor>
+              <Anchor href={'#contribution'}>如何贡献代码 ？</Anchor>
             </li>
           </ul>
         </Styled.Content>

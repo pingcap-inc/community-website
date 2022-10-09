@@ -1,8 +1,8 @@
 import * as yup from 'yup';
 import React, { useState } from 'react';
-import { api } from '@tidb-community/datasource';
 import { message } from 'antd';
-import { useTranslation } from 'next-i18next';
+
+import { api } from '@tidb-community/datasource';
 
 import * as Styled from './subscription.styled';
 import { useIsSmallScreen } from '~/hooks';
@@ -15,32 +15,23 @@ const schema = yup.object().shape({
 const Subscription = () => {
   const [email, setEmail] = useState('');
   const { isSmallScreen } = useIsSmallScreen();
-  const { t } = useTranslation('page-home');
-
-  const lang = t('subscription', { returnObjects: true });
-  const {
-    contributorList: contributorListLang,
-    emailInput: emailInputLang,
-    joinButton: joinButtonLang,
-    terms: termsLang,
-  } = lang;
 
   // validate and subscribe
   const subscribeEmail = () => {
     schema.isValid({ email }).then(async (valid) => {
       if (!legalConfirmation) {
-        message.warn(emailInputLang.legalMsg);
+        message.warn('请确认隐私条款');
       } else if (valid) {
         try {
           await api.subscribe.addEmail(email);
-          message.success(emailInputLang.successMsg);
+          message.success('订阅成功');
         } catch (e) {
           // when API call returns an error
           message.error(e.response.data.detail);
         }
       } else {
         // when yup validation fails
-        message.error(emailInputLang.invalidMsg);
+        message.error('请输入合法的邮件地址');
       }
     });
   };
@@ -56,28 +47,28 @@ const Subscription = () => {
         leftPanel={
           <>
             <Styled.Slogan>
-              {lang.slogan}
-              <Styled.Link href={contributorListLang.link}>{contributorListLang.label}</Styled.Link>
+              TiDB 及其生态项目由来自全球各地的 1400+ 位贡献者共同建设与维护，由此查看
+              <Styled.Link href={'https://contributor.tidb.io/people/contributor'}>贡献者列表</Styled.Link>
             </Styled.Slogan>
-            <Anchor href={joinButtonLang.link}>
-              <Styled.ActionButton>{joinButtonLang.label}</Styled.ActionButton>
+            <Anchor href={'https://pingcap.com/zh/privacy-policy'}>
+              <Styled.ActionButton>隐私政策</Styled.ActionButton>
             </Anchor>
           </>
         }
         rightPanel={
           <>
-            <Styled.Slogan>{lang.subscribe}</Styled.Slogan>
+            <Styled.Slogan>订阅 TiDB 社区的最新资讯</Styled.Slogan>
             <Styled.EmailInput
               $submitDisabled={!legalConfirmation}
-              enterButton={emailInputLang.submit}
+              enterButton={'提交'}
               onChange={(e) => setEmail(e.target.value)}
               onSubmit={subscribeEmail}
-              placeholder={emailInputLang.placeHolder}
+              placeholder={'电子邮箱地址'}
             />
             <Styled.TermCaption>
               <Styled.LegalCheckbox checked={legalConfirmation} onChange={checkLegal} />
-              {lang.termsDesc}
-              <Styled.Link href={termsLang.link}>{termsLang.label}</Styled.Link>
+              本人已阅读并同意 TiDB Community 的
+              <Styled.Link href={'https://pingcap.com/zh/privacy-policy'}>隐私政策</Styled.Link>
             </Styled.TermCaption>
           </>
         }

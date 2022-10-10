@@ -89,7 +89,7 @@ const Learning = () => {
         title={'如何使用 TiDB'}
         leftPanel={
           <>
-            <Styled.Logo src={getImage('learning-pingcap-education.svg')} />
+            <Styled.Logo src={getImage('learning-pingcap-education.svg')} alt={'PingCAP Education'} />
 
             <Styled.Text>
               <Styled.Link href={'https://pingcap.com/zh/education'} />

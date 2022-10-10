@@ -92,8 +92,10 @@ const Learning = () => {
             <Styled.Logo src={getImage('learning-pingcap-education.svg')} alt={'PingCAP Education'} />
 
             <Styled.Text>
-              <Styled.Link href={'https://pingcap.com/zh/education'} />
-              <Styled.Link href={'https://learn.pingcap.com/learner/certification-center'} />
+              <Styled.Link href={'https://pingcap.com/zh/education'}>PingCAP Education</Styled.Link>{' '}
+              致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得
+              <Styled.Link href={'https://learn.pingcap.com/learner/certification-center'}>能力认证</Styled.Link>的 TiDB
+              人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。
             </Styled.Text>
 
             <Styled.VideoHeader>

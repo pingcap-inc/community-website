@@ -1,17 +1,31 @@
 import React, { useContext } from 'react';
 import { Col, Row } from 'antd';
+import Image from 'next/image';
 
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import VideoThumbnail from './videoThumbnail';
 import { PageDataContext } from '~/context';
-import { getImage } from '~/pages/home/home.utils';
 import { useIsSmallScreen } from '~/hooks';
 
 import * as Styled from './others.styled';
+import zhihuLogoImage from './others-zhihu-logo.png';
+import xiaomiLogoImage from './others-xiaomi-logo.png';
+import iqiyiLogoImage from './others-iqiyi-logo.png';
+import ucloudLogoImage from './others-ucloud-logo.png';
+import bilibiliLogoImage from './others-bilibili-logo.png';
+import pingcapLogoImage from './others-pingcap-logo.png';
+import PingcapLogoSvg from './others-pingcap-logo.svg';
+import flinkLogoImage from './others-flink-logo.png';
+import actionLogoImage from './others-action-logo.png';
 
-const jobLogos = ['zhihu', 'xiaomi', 'iqiyi', 'ucloud', 'bilibili', 'pingcap'].map((el) =>
-  getImage(`others-${el}-logo.png`)
-);
+const jobLogos = [
+  { name: 'zhihu', image: zhihuLogoImage },
+  { name: 'xiaomi', image: xiaomiLogoImage },
+  { name: 'iqiyi', image: iqiyiLogoImage },
+  { name: 'ucloud', image: ucloudLogoImage },
+  { name: 'bilibili', image: bilibiliLogoImage },
+  { name: 'pingcap', image: pingcapLogoImage },
+];
 
 const Others = () => {
   const { data } = useContext(PageDataContext);
@@ -45,11 +59,9 @@ const Others = () => {
                 社区联合了相关生态企业为你提供了就业的机会，帮助你在工作中实践 TiDB 知识，获得职业上的成长。
               </Styled.Text>
             </Row>
-            <Styled.LogosBox gutter={36} justify="left" $isSmallScreen={isSmallScreen}>
-              {jobLogos.map((url, idx) => (
-                <Col key={idx}>
-                  <Styled.Logo height={36} src={url} />
-                </Col>
+            <Styled.LogosBox size={36} justify="left" wrap $isSmallScreen={isSmallScreen}>
+              {jobLogos.map(({ name, image }) => (
+                <img key={name} {...image} alt={`${name} logo`} />
               ))}
             </Styled.LogosBox>
           </>
@@ -58,7 +70,7 @@ const Others = () => {
           <>
             <Styled.Subtitle>寻找商业支持</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo height={36} src={getImage('others-pingcap-logo.svg')} />
+              <PingcapLogoSvg height={36} />
             </Styled.LogoWrapper>
             <Styled.SmallerText>
               <Styled.SmallerLink href={'https://pingcap.com/zh'}>PingCAP</Styled.SmallerLink>{' '}
@@ -68,7 +80,9 @@ const Others = () => {
             <Styled.Divider />
             <Styled.Subtitle>合作社区</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <Styled.Logo height={64} src={getImage('others-flink-logo.png')} />
+              <div style={{ maxHeight: 64 }}>
+                <Image {...flinkLogoImage} width={81} height={64} alt={'flink logo'} />
+              </div>
             </Styled.LogoWrapper>
             <Styled.SmallerText>
               <Styled.SmallerLink href={'https://flink-learning.org.cn'}>Apache Flink</Styled.SmallerLink>{' '}
@@ -76,7 +90,9 @@ const Others = () => {
               能在所有常见集群环境中运行，并能以内存速度和任意规模进行计算。
             </Styled.SmallerText>
             <Styled.LogoWrapper>
-              <Styled.Logo height={36} src={getImage('others-action-logo.png')} />
+              <div style={{ maxHeight: 36 }}>
+                <Image {...actionLogoImage} width={133} height={36} alt={'action logo'} />
+              </div>
             </Styled.LogoWrapper>
             <Styled.SmallerText>
               <Styled.SmallerLink href={'https://opensource.actionsky.com'}>爱可生社区</Styled.SmallerLink>

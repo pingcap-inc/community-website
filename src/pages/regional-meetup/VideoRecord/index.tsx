@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button, Col, Space } from 'antd';
-import { DownOutlined, UpOutlined } from '@ant-design/icons';
+import { DownOutlined, PlayCircleOutlined, UpOutlined } from '@ant-design/icons';
 
 import * as Styled from './index.styled';
 
@@ -39,9 +39,13 @@ const VideoRecord: React.FC<IProps> = (props) => {
           {/*  套用现在文雅的说法，2021 Dev Conf 是故事开始的地方，去年我阴差阳错的跟着朋友参加了 TiDB Dev Conf......*/}
           {/*</Styled.RecommendSummary>*/}
           {/*<Styled.RecommendDate>2022.05.18</Styled.RecommendDate>*/}
-          {/*<Styled.RecommendAction>*/}
-          {/*  <Button type={'primary'}>查看所有视频</Button>*/}
-          {/*</Styled.RecommendAction>*/}
+          <Styled.RecommendAction>
+            <Anchor href={'https://space.bilibili.com/86485707'}>
+              <Button type={'primary'} icon={<PlayCircleOutlined />}>
+                查看所有视频
+              </Button>
+            </Anchor>
+          </Styled.RecommendAction>
         </Col>
       </Styled.Recommend>
 

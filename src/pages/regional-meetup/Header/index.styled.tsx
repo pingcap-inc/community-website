@@ -9,6 +9,15 @@ export const Container = styled.div`
 
 export const Card = styled.div``;
 
+export const Carousel = styled.div`
+  .slick-dots {
+    right: -12px;
+    button {
+      background-color: #aaa !important;
+    }
+  }
+`;
+
 export const Title = styled.h1`
   font-weight: 500;
   font-size: 40px;

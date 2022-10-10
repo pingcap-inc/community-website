@@ -37,13 +37,15 @@ const Header: React.FC<IProps> = (props) => {
             </Styled.Card>
           </Col>
           <Col sm={24} md={12}>
-            <Carousel autoplay dotPosition={'right'}>
-              {headerImages.map((value) => (
-                <div key={value.image.src}>
-                  <Image {...value.image} layout={'responsive'} />
-                </div>
-              ))}
-            </Carousel>
+            <Styled.Carousel>
+              <Carousel autoplay dotPosition={'right'}>
+                {headerImages.map((value) => (
+                  <div key={value.image.src}>
+                    <Image {...value.image} layout={'responsive'} />
+                  </div>
+                ))}
+              </Carousel>
+            </Styled.Carousel>
           </Col>
         </Row>
       </Container>

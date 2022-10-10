@@ -74,7 +74,7 @@ const Contribution = () => {
                 <Row gutter={32} wrap={false} justify={isSmallScreen && 'space-between'}>
                   <Col xs={{ order: 2 }} md={{ order: 1 }}>
                     <Styled.StepIconWrapper>
-                      <Styled.StepIcon src={getImage(`step-${idx + 1}.svg`)} />
+                      <Styled.StepIcon src={getImage(`step-${idx + 1}.svg`)} alt={''} />
                     </Styled.StepIconWrapper>
                   </Col>
                   <Col xs={{ order: 1 }} md={{ order: 2 }}>

@@ -1,6 +1,12 @@
 import React from 'react';
 import jsConvert from 'js-convert-case';
 import { api } from '@tidb-community/datasource';
+import type { GetServerSideProps, NextPage } from 'next';
+
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { PageDataContext } from '~/context';
+import { getLatestBlog } from '~/pages/home/blogs/api';
 
 import Activities from './activities';
 import Banner from './banner';
@@ -11,11 +17,6 @@ import Learning from './learning';
 import Others from './others';
 import Subscription from './subscription';
 import Welcome from './welcome';
-import { CommunityHead } from '~/components';
-import { CoreLayout } from '~/layouts';
-import { PageDataContext } from '~/context';
-import { getLatestBlog } from '~/pages/home/blogs/api';
-import { GetServerSideProps, NextPage } from 'next';
 
 export const getServerSideProps: GetServerSideProps = async () => {
   const client = await api.initStrapiClient();

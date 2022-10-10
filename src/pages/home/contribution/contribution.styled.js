@@ -38,15 +38,11 @@ export const StepIconWrapper = styled.div`
   ${mixins.size(iconSize)}
 `;
 
-export const StepIcon = styled.img`
-  height: ${iconSize};
-`;
-
 export const EngageCallBox = styled.div`
   margin-top: 2rem;
 `;
 
-export const IssueList = styled.img`
+export const IssueList = styled.div`
   max-width: 100%;
   border-radius: 6px;
   margin-bottom: 2.5rem;

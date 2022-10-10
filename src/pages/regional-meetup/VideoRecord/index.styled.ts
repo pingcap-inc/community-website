@@ -6,11 +6,7 @@ import { mixins } from '@tidb-community/ui';
 import MyContainer from '~/components/Container';
 
 export const Container = styled(MyContainer)`
-  padding-top: 80px;
-  padding-bottom: 134px;
-  ${mixins.onMobile(css`
-    padding: 32px 16px;
-  `)};
+  padding: 32px 16px;
 `;
 
 export const Recommend = styled(Row)`

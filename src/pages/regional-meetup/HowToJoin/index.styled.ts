@@ -6,8 +6,7 @@ import { mixins } from '@tidb-community/ui';
 import MyContainer from '~/components/Container';
 
 export const Container = styled.div`
-  padding-top: 80px;
-  padding-bottom: 134px;
+  padding: 32px 0;
 `;
 
 export const ContainerOuter = styled.div`

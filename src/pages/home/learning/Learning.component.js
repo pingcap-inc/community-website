@@ -3,25 +3,29 @@ import { Col } from 'antd';
 
 import * as Styled from './learning.styled';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
-import { getImage } from '~/pages/home/home.utils';
 import { useIsSmallScreen } from '~/hooks';
 import Anchor from '~/components/Anchor';
+
+import learn_minor_video_1_cover_image from './learn-minor-video-1-cover.jpg';
+import learn_minor_video_2_cover_image from './learn-minor-video-2-cover.jpg';
+import learn_minor_video_3_cover_image from './learn-minor-video-3-cover.jpg';
+import LearningPingcapEducationSVG from './learning-pingcap-education.svg';
 
 const minorVideos = [
   {
     title: 'TiDB 系统管理基础',
     link: 'https://learn.pingcap.com/learner/course/30002',
-    coverUrl: 'learn-minor-video-1-cover.jpg',
+    coverImage: learn_minor_video_1_cover_image,
   },
   {
     title: 'TiDB 故障排除',
     link: 'https://learn.pingcap.com/learner/course/150002',
-    coverUrl: 'learn-minor-video-2-cover.jpg',
+    coverImage: learn_minor_video_2_cover_image,
   },
   {
     title: 'TiDB 高级系统管理',
     link: 'https://learn.pingcap.com/learner/course/120005',
-    coverUrl: 'learn-minor-video-3-cover.jpg',
+    coverImage: learn_minor_video_3_cover_image,
   },
 ];
 
@@ -89,7 +93,9 @@ const Learning = () => {
         title={'如何使用 TiDB'}
         leftPanel={
           <>
-            <Styled.Logo src={getImage('learning-pingcap-education.svg')} alt={'PingCAP Education'} />
+            <Styled.Logo>
+              <LearningPingcapEducationSVG />
+            </Styled.Logo>
 
             <Styled.Text>
               <Styled.Link href={'https://pingcap.com/zh/education'}>PingCAP Education</Styled.Link>{' '}
@@ -107,7 +113,7 @@ const Learning = () => {
             <Styled.VideosRow wrap={false}>
               <Col xs={24} md={18}>
                 <Styled.VideoBoxWrapper $isSmallScreen={isSmallScreen}>
-                  <Styled.VideoBox $isSmallScreen={isSmallScreen} src={getImage('learn-main-video-cover.jpg')}>
+                  <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={learn_minor_video_1_cover_image.src}>
                     <Styled.VideoPlayButton>
                       <Anchor href={'https://learn.pingcap.com/learner/course/6'}>
                         <Styled.VideoPlayIcon color="white" height="48px" />
@@ -125,7 +131,7 @@ const Learning = () => {
               <Col xs={0} md={6}>
                 {minorVideos.map((video, idx) => (
                   <Styled.VideoBoxWrapperSmall key={idx}>
-                    <Styled.VideoBox $isSmallScreen={isSmallScreen} src={getImage(video.coverUrl)}>
+                    <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={video.coverImage.src}>
                       <Styled.VideoOverlay href={video.link}>
                         <Styled.VideoOverlayText>{video.title}</Styled.VideoOverlayText>
                       </Styled.VideoOverlay>

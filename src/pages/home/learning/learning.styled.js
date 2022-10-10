@@ -1,7 +1,7 @@
-import styled, {css} from 'styled-components';
-import {Col, Row} from 'antd';
-import {PlayCircleFilled} from '@ant-design/icons';
-import {colors, mixins, Styled} from '@tidb-community/ui';
+import styled, { css } from 'styled-components';
+import { Col, Row } from 'antd';
+import { PlayCircleFilled } from '@ant-design/icons';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 import Anchor from '~/components/Anchor';
 
 const { Section, Text, ModuleTitle } = Styled;
@@ -31,7 +31,7 @@ export const TitleLink = styled(Anchor)`
   }
 `;
 
-export const Logo = styled.img`
+export const Logo = styled.div`
   margin-bottom: 2rem;
   width: 300px;
 `;
@@ -55,7 +55,7 @@ export const VideoBox = styled.div`
   background-size: auto 100%;
   padding-bottom: 62.8%;
   width: 100%;
-  background-image: url(${(props) => props.src});
+  background-image: url(${({ $src }) => $src});
   border-color: ${colors.M1};
 
   ${(props) =>

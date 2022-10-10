@@ -1,10 +1,10 @@
 import * as polished from 'polished';
-import styled, {css} from 'styled-components';
-import {Button, Carousel as AntCarousel, Col, Row, Tooltip} from 'antd';
-import {colors, mixins, Styled} from '@tidb-community/ui';
+import styled, { css } from 'styled-components';
+import { Button, Carousel as AntCarousel, Col, Row, Tooltip } from 'antd';
+import { colors, mixins, Styled } from '@tidb-community/ui';
 
 import LogoSvg from './logo.svg';
-import Anchor from "~/components/Anchor";
+import Anchor from '~/components/Anchor';
 
 const githubBlack = '#24292e';
 
@@ -242,13 +242,14 @@ export const PromotionOverlay = styled.div`
 
 export const Carousel = styled(AntCarousel).attrs((props) => ({
   dotPosition: props.isSmallScreen ? 'bottom' : 'right',
-  autoplay: true,
+  autoplay: false,
   speed: 1000,
   autoplaySpeed: 3000,
 }))`
   .slick-slide {
     padding-right: 2.5rem;
     cursor: pointer;
+    height: ${({ height }) => height}px !important;
   }
 
   .slick-track {

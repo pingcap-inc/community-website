@@ -61,6 +61,21 @@ const Banner = () => {
     getPopupContainer: () => tooltipContainerRef?.current,
   };
 
+  const height = (() => {
+    if (breakpoint.lg) {
+      return 250;
+    }
+    if (breakpoint.md) {
+      return 200;
+    }
+    if (breakpoint.sm) {
+      return 250;
+    }
+    if (breakpoint.xs) {
+      return 200;
+    }
+  })();
+
   return (
     <Styled.Container>
       <Styled.Content isSmallScreen={isSmallScreen}>
@@ -91,27 +106,14 @@ const Banner = () => {
           </Styled.LeftPanel>
 
           <Styled.RightPanel>
-            <Styled.Carousel isSmallScreen={isSmallScreen}>
+            <Styled.Carousel isSmallScreen={isSmallScreen} height={height}>
               {data.promotions.map(({ id, title, link, image }) => {
                 const imgProps = commonUtils.getStrapiImgProps(image);
                 const props = {
                   title,
                   link,
                   image: imgProps.src,
-                  height: (() => {
-                    if (breakpoint.lg) {
-                      return 250;
-                    }
-                    if (breakpoint.md) {
-                      return 200;
-                    }
-                    if (breakpoint.sm) {
-                      return 250;
-                    }
-                    if (breakpoint.xs) {
-                      return 200;
-                    }
-                  })(),
+                  height,
                 };
 
                 return (

@@ -1,35 +1,18 @@
 // import * as R from 'ramda';
 import React from 'react';
-// import { useTranslation } from 'next-i18next';
+import Image from 'next/image';
 
 // import Layout from '../layout';
 import * as Styled from './index.styled';
 import { CommunityHead } from '~/components';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
-import { getI18nProps } from '~/utils/i18n.utils';
-import { cdn } from '~/utils';
 
-// export { getServerSideProps } from '../utils';
-export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
-
-  return {
-    props: {
-      ...i18nProps,
-    },
-  };
-};
+import image from './contact-us.png';
 
 const Page = () => {
-  // const { t } = useTranslation('page-contact-us');
-  // const lang = t('cooperation', {
-  //   returnObjects: true,
-  // });
-
   return (
     <>
-      {/*<CommunityHead title={lang.title} />*/}
       <CommunityHead
         title={'联系我们'}
         description={
@@ -37,7 +20,7 @@ const Page = () => {
         }
         keyoword={['TiDB 社区', '联系我们', '咨询', '提问', '商业支持', '社区合作']}
       />
-      {/*<Layout {...R.pick(['title', 'subtitle'], lang)}>*/}
+
       <CoreLayout backgroundColor={'#e9eaee'}>
         <Styled.Content>
           <Styled.Title>Hello! 欢迎来到 TiDB 社区，有什么能帮到你？</Styled.Title>
@@ -92,7 +75,7 @@ const Page = () => {
             </Styled.Card>
           </Styled.List>
           <Styled.Image>
-            <img src={cdn.getImageUrl('/images/contact-us/contact-us.png')} alt="" />
+            <Image {...image} width={600} height={260} alt="" />
           </Styled.Image>
         </Styled.Content>
       </CoreLayout>

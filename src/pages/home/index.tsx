@@ -1,6 +1,12 @@
 import React from 'react';
 import jsConvert from 'js-convert-case';
 import { api } from '@tidb-community/datasource';
+import type { GetServerSideProps, NextPage } from 'next';
+
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { PageDataContext } from '~/context';
+import { getLatestBlog } from '~/pages/home/blogs/api';
 
 import Activities from './activities';
 import Banner from './banner';
@@ -11,17 +17,8 @@ import Learning from './learning';
 import Others from './others';
 import Subscription from './subscription';
 import Welcome from './welcome';
-import { CommunityHead } from '~/components';
-import { CoreLayout } from '~/layouts';
-import { PageDataContext } from '~/context';
-import { getI18nProps } from '~/utils/i18n.utils';
-import { getLatestBlog } from '~/pages/home/blogs/api';
 
-// FIXME: temporily rollback ISR back to SSR due to a CI build error
-// We need to fix the circular dependencies issue with i18n locales
-// const TEN_MINS = 10 * 60;
-
-export const getServerSideProps = async (ctx) => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const client = await api.initStrapiClient();
   const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
@@ -31,7 +28,7 @@ export const getServerSideProps = async (ctx) => {
     },
   };
 
-  const data = await Promise.all([
+  const [githubInfo, forumPosts, blogs, videos, promotions, activities, meetups, devActivities] = await Promise.all([
     client.get('tidbio-github-info'),
     client.get('tidbio-asktug-qa-topics'),
     getLatestBlog(), // client.get('tidbio-asktug-blogs'),
@@ -42,21 +39,18 @@ export const getServerSideProps = async (ctx) => {
     client.get('tidbio-homepage-dev-activities', strapiQuery),
   ]);
 
-  const i18nProps = await getI18nProps(['common', 'page-home'])(ctx);
-
   return {
     props: {
-      ...i18nProps,
       data: jsConvert.camelKeys(
         {
-          githubInfo: data[0].data,
-          forumPosts: data[1].data,
-          blogs: data[2],
-          videos: data[3].data,
-          promotions: data[4],
-          activities: data[5],
-          meetups: data[6],
-          devActivities: data[7],
+          githubInfo: githubInfo.data,
+          forumPosts: forumPosts.data,
+          blogs,
+          videos: videos.data,
+          promotions,
+          activities,
+          meetups,
+          devActivities,
         },
         {
           recursive: true,
@@ -64,11 +58,12 @@ export const getServerSideProps = async (ctx) => {
         }
       ),
     },
-    // revalidate: TEN_MINS,
+    // TODO: prop revalidate is moved to getStaticProps at latest version of next.js
+    //revalidate: 60,
   };
 };
 
-const Page = ({ data }) => (
+const Page: NextPage<{ data: any }> = ({ data }) => (
   <PageDataContext.Provider value={{ data }}>
     <CommunityHead />
 

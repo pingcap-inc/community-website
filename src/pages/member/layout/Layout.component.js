@@ -29,7 +29,6 @@ const Layout = ({ children }) => {
         <CommunityHead
           title="会员中心"
           description="欢迎来到会员中心！来这里查看升级小攻略，获取更多积分和经验，解锁更高级的荣誉成就！"
-          titleSuffix="TiDB 社区"
         />
         <Styled.Container>
           <Row gutter={[32, 32]}>

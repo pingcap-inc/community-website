@@ -94,6 +94,7 @@ export const CardComment = styled.p`
 
 export const Image = styled.div`
   margin-top: 4rem;
+  margin-bottom: -8px;
   text-align: center;
   img {
     width: 100%;

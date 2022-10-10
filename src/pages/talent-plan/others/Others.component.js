@@ -1,18 +1,14 @@
 import React from 'react';
 
-import * as Styled from './others.styled';
-import { useTranslation } from 'next-i18next';
 import { Styled as CommonStyled } from '@tidb-community/ui';
 
+import * as Styled from './others.styled';
+
 const Others = () => {
-  const { t } = useTranslation('page-talent-plan');
-
-  const lang = t('others', { returnObjects: true });
-
   return (
     <Styled.Container>
       <Styled.Content>
-        <CommonStyled.Title>{lang.title}</CommonStyled.Title>
+        <CommonStyled.Title>其他资源</CommonStyled.Title>
         <ul>
           <li>
             如果你对分布式数据库比较陌生，建议先从 PingCAP Education 学习网站{' '}

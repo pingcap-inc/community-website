@@ -4,16 +4,12 @@ import dayjs from 'dayjs';
 import Anchor from '~/components/Anchor';
 import * as Styled from './post.styled.js';
 
-const Post = ({ title, link, creator, categories, postNum, createdAt, lang, isSmallScreen }) => (
+const Post = ({ title, link, creator, categories, postNum, createdAt, isSmallScreen }) => (
   <Styled.Container>
     <Anchor href={link}>
       <Styled.TitleRow>
         <h3 title={title}>{title}</h3>
-        {!isSmallScreen && (
-          <span>
-            {postNum} {lang.reply}
-          </span>
-        )}
+        {!isSmallScreen && <span>{postNum} 回复</span>}
       </Styled.TitleRow>
 
       <Styled.InformationRow>
@@ -34,11 +30,7 @@ const Post = ({ title, link, creator, categories, postNum, createdAt, lang, isSm
             })}
         </div>
         <span>
-          {isSmallScreen && (
-            <span>
-              {postNum} {lang.reply}
-            </span>
-          )}
+          {isSmallScreen && <span>{postNum} 回复</span>}
           <span>{dayjs(createdAt).fromNow()}</span>
         </span>
       </Styled.InformationRow>

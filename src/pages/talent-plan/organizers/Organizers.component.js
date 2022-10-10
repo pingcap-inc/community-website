@@ -1,20 +1,17 @@
 import React from 'react';
 import { Row } from 'antd';
 
-import * as Styled from './organizers.styled';
-import { useTranslation } from 'next-i18next';
-import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 import { Styled as CommonStyled } from '@tidb-community/ui';
 
+import { getImage } from '~/pages/talent-plan/talent-plan.utils';
+
+import * as Styled from './organizers.styled';
+
 const Others = () => {
-  const { t } = useTranslation('page-talent-plan');
-
-  const lang = t('organizers', { returnObjects: true });
-
   return (
     <Styled.Container>
       <Styled.Content>
-        <CommonStyled.Title>{lang.title}</CommonStyled.Title>
+        <CommonStyled.Title>发起/组织者</CommonStyled.Title>
         <Row gutter={[16, 32]}>
           {['hust', 'ecnu', 'digitalchina', 'pingcap', 'ustc', 'whu'].map((name) => (
             <Styled.ImageContainer xs={12} md={6}>

@@ -1,8 +1,8 @@
-import styled, {css} from 'styled-components';
-import {Row} from 'antd';
-import {colors, Styled} from '@tidb-community/ui';
+import styled, { css } from 'styled-components';
+import { Space } from 'antd';
+import { colors, Styled } from '@tidb-community/ui';
 
-import Anchor from "~/components/Anchor";
+import Anchor from '~/components/Anchor';
 
 const { ModuleTitle, Section, Text } = Styled;
 
@@ -40,11 +40,7 @@ export const LogoWrapper = styled.div`
   margin-bottom: 2rem;
 `;
 
-export const Logo = styled.img`
-  max-height: ${(props) => props.height}px;
-`;
-
-export const LogosBox = styled(Row)`
+export const LogosBox = styled(Space)`
   margin-top: 2rem;
 
   ${(props) =>
@@ -52,6 +48,11 @@ export const LogosBox = styled(Row)`
     css`
       margin-bottom: 1rem;
     `}
+
+  img {
+    width: auto;
+    height: 40px;
+  }
 `;
 
 export const Divider = styled.hr`

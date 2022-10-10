@@ -6,8 +6,7 @@ import { Button, Col, Empty, Form, Row, Select, Tooltip } from 'antd';
 import { EnvironmentOutlined } from '@ant-design/icons';
 
 import * as Styled from './list.styled';
-import constant from '../constant.json';
-import { CATEGORIES, DATES, LOCATIONS, TYPES } from './list.constants';
+import { CATEGORIES, DATES, LOCATIONS, TYPES } from '../data'
 import { common as commonUtils } from '~/utils';
 import { useIsSmallScreen } from '~/hooks';
 import { useRouter } from 'next/router';
@@ -99,7 +98,7 @@ const Event = ({ title, link, location, type, date, endDate, startDate, image })
   </Styled.SpinContainer>
 )*/
 
-const htmlId = 'all-events';
+export const htmlId = 'all-events';
 
 export default function List({ events, total }) {
   const router = useRouter();
@@ -130,7 +129,7 @@ export default function List({ events, total }) {
 
   return (
     <Styled.Container id={htmlId} isSmallScreen={isSmallScreen}>
-      <Styled.Title>{constant.list.title}</Styled.Title>
+      <Styled.Title>所有活动</Styled.Title>
 
       <Styled.Filters>
         <Row gutter={[16, 16]}>
@@ -138,25 +137,25 @@ export default function List({ events, total }) {
             <Row gutter={[16, 16]}>
               <Dropdown
                 name="category"
-                placeholder={constant.list.filters.category}
+                placeholder={'活动类型'}
                 options={CATEGORIES}
                 setFiltersValue={setFiltersValue}
               />
               <Dropdown
                 name="type"
-                placeholder={constant.list.filters.type}
+                placeholder={'活动形式'}
                 options={TYPES}
                 setFiltersValue={setFiltersValue}
               />
               <Dropdown
                 name="date"
-                placeholder={constant.list.filters.date}
+                placeholder={'活动时间'}
                 options={DATES}
                 setFiltersValue={setFiltersValue}
               />
               <Dropdown
                 name="location"
-                placeholder={constant.list.filters.location}
+                placeholder={'活动地点'}
                 options={LOCATIONS}
                 setFiltersValue={setFiltersValue}
               />
@@ -164,7 +163,7 @@ export default function List({ events, total }) {
           </Col>
           <Col {...buttonColProps}>
             <Button type="primary" size="small" block={isMobile} onClick={handleFilter}>
-              {constant.list.filters.button}
+              筛选
             </Button>
           </Col>
         </Row>
@@ -183,7 +182,7 @@ export default function List({ events, total }) {
           })}
         </Row>
       ) : (
-        <Empty description={constant.list.empty} />
+        <Empty description={'没有符合条件的活动'} />
       )}
 
       <Styled.Pagination

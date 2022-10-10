@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 
-import { getI18nProps } from '~/utils/i18n.utils';
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 
@@ -22,7 +21,7 @@ const seo = {
   keywords: ['TiDB', 'Meetup', 'HTAP', '地区分享'],
 };
 
-const Hackathon2022: NextPage = () => {
+const RegionalMeetupPage: NextPage = () => {
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -37,31 +36,10 @@ const Hackathon2022: NextPage = () => {
   );
 };
 
-export default Hackathon2022;
+export default RegionalMeetupPage;
 
-export const getServerSideProps = async (ctx) => {
-  //const client = await api.initStrapiClient();
-  //
-  //const data = await Promise.all([
-  //  client.get('tidbio-hackathon-2021-leaderboards'),
-  //  client.get('tidbio-hackathon-2021-news'),
-  //]);
-  //@ts-ignore
-  const i18nProps = await getI18nProps(['common'])(ctx);
-
+export const getServerSideProps: GetServerSideProps = async () => {
   return {
-    props: {
-      ...i18nProps,
-      //data: jsConvert.camelKeys(
-      //  {
-      //    leaderboard: data[0],
-      //    news: data[1],
-      //  },
-      //  {
-      //    recursive: true,
-      //    recursiveInArray: true,
-      //  }
-      //),
-    },
+    props: {},
   };
 };

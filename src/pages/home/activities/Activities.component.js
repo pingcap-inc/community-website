@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
-import { useTranslation } from 'next-i18next';
 
-import * as Styled from './activities.styled';
-import Activity from './activity';
-import Meetup from './meetup';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { Link } from '~/components';
 import { PageDataContext } from '~/context';
 import { useIsSmallScreen } from '~/hooks';
+
+import * as Styled from './activities.styled';
+import Activity from './activity';
+import Meetup from './meetup';
 
 const Meetups = ({ meetups }) => (
   <>
@@ -24,15 +24,11 @@ const Meetups = ({ meetups }) => (
 const Activities = () => {
   const { data } = useContext(PageDataContext);
   const { isSmallScreen } = useIsSmallScreen();
-  const { t } = useTranslation('page-home');
-
-  const lang = t('activities', { returnObjects: true });
-  const viewAllLang = t('common:viewAll');
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsSection
-        title={lang.title}
+        title={'活动'}
         leftPanel={
           <Styled.ActivitiesBox isSmallScreen={isSmallScreen}>
             {data.activities.map((item) => {
@@ -49,16 +45,16 @@ const Activities = () => {
           <>
             <Styled.Module>
               <Styled.ModuleTitle>
-                {lang.meetupTitle}
-                <Link href="/events?category=meetup#all-events">{viewAllLang}</Link>
+                Meetup 相关活动专区
+                <Link href="/events?category=meetup#all-events">查看全部</Link>
               </Styled.ModuleTitle>
               <Meetups meetups={data.meetups} />
             </Styled.Module>
 
             <Styled.Module>
               <Styled.ModuleTitle>
-                {lang.devActivitiesTitle}
-                <Link href="/events?category=开发者活动%2F竞赛#all-events">{viewAllLang}</Link>
+                开发者活动/竞赛专区
+                <Link href="/events?category=开发者活动%2F竞赛#all-events">查看全部</Link>
               </Styled.ModuleTitle>
               <Meetups meetups={data.devActivities} />
             </Styled.Module>

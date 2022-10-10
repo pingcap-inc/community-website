@@ -6,8 +6,6 @@ import { cdn } from '~/utils';
 export type IProps = {
   creator?: string;
   description?: string;
-  faviconPathname?: string;
-  googleAnalyticsId?: string;
   keyword?: string | string[];
   title?: string;
   titleSuffix?: string;

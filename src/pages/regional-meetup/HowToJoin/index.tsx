@@ -2,11 +2,13 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Button, Col, Row, Space } from 'antd';
 
+import { advantages, applyDescription, joinUrl } from '~/data/regional-meetup';
+import Anchor from '~/components/Anchor';
+
 import * as Styled from './index.styled';
 import photoImage from './photo.png';
 import giftsImage from './gifts.png';
-import { advantages, applyDescription, joinUrl } from '~/data/regional-meetup';
-import Anchor from '~/components/Anchor';
+import vectorImage from './vector.png';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -48,7 +50,9 @@ const HowToJoin: React.FC<IProps> = (props) => {
                   <Space direction={'vertical'} size={32}>
                     {advantages.slice(0, 3).map((value) => (
                       <Styled.Advantage key={value}>
-                        <Styled.AdvantageIcon>√</Styled.AdvantageIcon>
+                        <Styled.AdvantageIcon>
+                          <Image {...vectorImage} />
+                        </Styled.AdvantageIcon>
                         <Styled.AdvantageText>{value}</Styled.AdvantageText>
                       </Styled.Advantage>
                     ))}
@@ -58,7 +62,9 @@ const HowToJoin: React.FC<IProps> = (props) => {
                   <Space direction={'vertical'} size={32}>
                     {advantages.slice(3, 6).map((value) => (
                       <Styled.Advantage key={value}>
-                        <Styled.AdvantageIcon>√</Styled.AdvantageIcon>
+                        <Styled.AdvantageIcon>
+                          <Image {...vectorImage} />
+                        </Styled.AdvantageIcon>
                         <Styled.AdvantageText>{value}</Styled.AdvantageText>
                       </Styled.Advantage>
                     ))}

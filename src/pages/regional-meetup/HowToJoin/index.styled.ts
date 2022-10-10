@@ -81,7 +81,7 @@ export const GiftsImage = styled.div`
 
 export const Advantage = styled(Space)``;
 export const AdvantageIcon = styled.div`
-  background: #f9d34f;
+  //background: #f9d34f;
   width: 28px;
   height: 28px;
   line-height: 28px;

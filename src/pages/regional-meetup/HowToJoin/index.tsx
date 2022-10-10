@@ -3,13 +3,7 @@ import Image from 'next/image';
 import { Button, Col, Row, Space } from 'antd';
 
 import * as Styled from './index.styled';
-import photo1Image from './photos/photo-1.png';
-import photo2Image from './photos/photo-2.png';
-import photo3Image from './photos/photo-3.png';
-import photo4Image from './photos/photo-4.png';
-import photo5Image from './photos/photo-5.png';
-import photo6Image from './photos/photo-6.png';
-import photo7Image from './photos/photo-7.png';
+import photoImage from './photo.png';
 import giftsImage from './gifts.png';
 import { advantages, applyDescription, joinUrl } from '~/data/regional-meetup';
 import Anchor from '~/components/Anchor';
@@ -37,29 +31,7 @@ const HowToJoin: React.FC<IProps> = (props) => {
                 </Styled.Action>
               </Col>
               <Col sm={24} md={12}>
-                <Space wrap align={'end'}>
-                  <Styled.Image>
-                    <Image {...photo1Image} />
-                  </Styled.Image>
-                  <Styled.Image>
-                    <Image {...photo2Image} />
-                  </Styled.Image>
-                  <Styled.Image>
-                    <Image {...photo3Image} />
-                  </Styled.Image>
-                  <Styled.Image>
-                    <Image {...photo4Image} />
-                  </Styled.Image>
-                  <Styled.Image>
-                    <Image {...photo5Image} />
-                  </Styled.Image>
-                  <Styled.Image>
-                    <Image {...photo6Image} />
-                  </Styled.Image>
-                  <Styled.Image>
-                    <Image {...photo7Image} />
-                  </Styled.Image>
-                </Space>
+                <Image {...photoImage} alt={'地区组织者照片墙'} />
               </Col>
             </Styled.Header>
 

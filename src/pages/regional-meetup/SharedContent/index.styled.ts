@@ -24,6 +24,18 @@ export const Title = styled.div`
   color: #2c2c2c;
 `;
 
+export const Content = styled.div`
+  width: 100%;
+  margin-top: 54px;
+  .swiper-pagination-bullet {
+    width: 32px;
+    border-radius: 4px;
+    &-active {
+      background-color: #777;
+    }
+  }
+`;
+
 export const List = styled(Row)``;
 
 export const Card = styled.div`

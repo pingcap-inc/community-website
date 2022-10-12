@@ -20,7 +20,7 @@ const SharedContent: React.FC<IProps> = (props) => {
     <Styled.Container {...rest}>
       <Styled.Main>
         <Styled.Title>优质分享内容</Styled.Title>
-        <div style={{ width: '100%', marginTop: 54 }}>
+        <Styled.Content>
           <Swiper
             slidesPerView={1}
             spaceBetween={10}
@@ -54,7 +54,7 @@ const SharedContent: React.FC<IProps> = (props) => {
               </SwiperSlide>
             ))}
           </Swiper>
-        </div>
+        </Styled.Content>
       </Styled.Main>
     </Styled.Container>
   );

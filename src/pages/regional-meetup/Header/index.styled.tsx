@@ -20,16 +20,15 @@ export const Carousel = styled.div`
 
 export const Title = styled.h1`
   font-weight: 500;
-  font-size: 40px;
-  line-height: 56px;
+  font-size: 30px;
+  line-height: 42px;
   color: #890707;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
 `;
 
 export const Description = styled.p`
   font-weight: 400;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 22px;
   color: #2c2c2c;
 `;
 

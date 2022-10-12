@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
-import { Row } from 'antd';
+import { Row, Space } from 'antd';
 
-import { mixins } from '@tidb-community/ui';
+import { colors, mixins } from '@tidb-community/ui';
 
 import MyContainer from '~/components/Container';
 
@@ -42,7 +42,7 @@ export const RecommendTag = styled.div`
 `;
 
 export const RecommendPeople = styled.div`
-  margin-top: 36px;
+  margin-top: 16px;
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -122,4 +122,37 @@ export const InfoDate = styled.div`
   line-height: 17px;
   /* identical to box height */
   color: #565656;
+`;
+
+export const IconWrapper = styled(Space)`
+  font-size: 14px;
+  color: ${colors.C4};
+`;
+
+export const VideoCoverItem = styled.div`
+  position: relative;
+`;
+
+export const VideoCoverItemDuration = styled.div`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  text-align: right;
+  padding: 0 8px;
+  width: 50px;
+  //height: 32px;
+  font-size: 14px;
+  background-color: #00000080;
+  color: #fff;
+  margin-bottom: 8px;
+`;
+
+export const VideoCoverItemImage = styled.div`
+  position: relative;
+  left: 0;
+  top: 0;
+  //width: 160px;
+  //height: 100px;
+  //background-color: rgba(#000, .5);
+  //color: #FFF;
 `;

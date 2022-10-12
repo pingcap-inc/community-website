@@ -2,7 +2,13 @@ import * as React from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
 import { Button, Col, Space } from 'antd';
-import { DownOutlined, PlayCircleOutlined, UpOutlined } from '@ant-design/icons';
+import {
+  ClockCircleOutlined,
+  DownOutlined,
+  PlayCircleOutlined,
+  PlaySquareOutlined,
+  UpOutlined,
+} from '@ant-design/icons';
 
 import * as Styled from './index.styled';
 
@@ -23,9 +29,10 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
       <Styled.Recommend gutter={[32, 32]}>
         <Col sm={24} md={12}>
-          <Anchor href={videoRecords[0].moreLinkUrl}>
-            <Image {...videoRecords[0].videCoverImage} />
-          </Anchor>
+          <VideoCoverItem url={videoRecords[0].moreLinkUrl} videCoverImage={videoRecords[0].videCoverImage} />
+          {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
+          {/*  <Image {...videoRecords[0].videCoverImage} />*/}
+          {/*</Anchor>*/}
         </Col>
         <Col sm={24} md={12}>
           <Space>
@@ -35,6 +42,14 @@ const VideoRecord: React.FC<IProps> = (props) => {
             <Styled.RecommendTitle>{videoRecords[0].title}</Styled.RecommendTitle>
           </Anchor>
           <Styled.RecommendPeople>{videoRecords[0].authorName}</Styled.RecommendPeople>
+          <Styled.IconWrapper>
+            <div>
+              <PlaySquareOutlined /> {156}
+            </div>
+            <div>
+              <ClockCircleOutlined /> 2022-10-12
+            </div>
+          </Styled.IconWrapper>
           {/*<Styled.RecommendSummary>*/}
           {/*  套用现在文雅的说法，2021 Dev Conf 是故事开始的地方，去年我阴差阳错的跟着朋友参加了 TiDB Dev Conf......*/}
           {/*</Styled.RecommendSummary>*/}
@@ -51,12 +66,19 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
       <Styled.List wrap gutter={[36, 36]}>
         {videoRecords.slice(1, showMore ? undefined : 7).map((value) => (
-          <Col key={value.moreLinkUrl} sm={24} md={12} lg={8}>
+          <Col key={value.moreLinkUrl} sm={24} md={12} lg={12} xl={8}>
             <Space size={10} align={'start'}>
               <Styled.VideoCover>
-                <Anchor href={value.moreLinkUrl}>
-                  <Image {...value.videCoverImage} width={160} height={100} layout={'fixed'} />
-                </Anchor>
+                <VideoCoverItem
+                  url={value.moreLinkUrl}
+                  videCoverImage={value.videCoverImage}
+                  width={160}
+                  height={100}
+                  layout={'fixed'}
+                />
+                {/*<Anchor href={value.moreLinkUrl}>*/}
+                {/*  <Image {...value.videCoverImage} width={160} height={100} layout={'fixed'} />*/}
+                {/*</Anchor>*/}
               </Styled.VideoCover>
               <Styled.Info>
                 <Space>
@@ -67,6 +89,14 @@ const VideoRecord: React.FC<IProps> = (props) => {
                 </Anchor>
                 <Styled.InfoPeople>{value.authorName}</Styled.InfoPeople>
                 {/*<Styled.InfoDate>2022.05.18</Styled.InfoDate>*/}
+                <Styled.IconWrapper>
+                  <div>
+                    <PlaySquareOutlined /> {156}
+                  </div>
+                  <div>
+                    <ClockCircleOutlined /> 2022-10-12
+                  </div>
+                </Styled.IconWrapper>
               </Styled.Info>
             </Space>
           </Col>
@@ -88,3 +118,16 @@ const VideoRecord: React.FC<IProps> = (props) => {
 };
 
 export default VideoRecord;
+
+function VideoCoverItem({ url, videCoverImage, ...props }) {
+  return (
+    <Styled.VideoCoverItem>
+      <Styled.VideoCoverItemImage>
+        <Anchor href={url}>
+          <Image {...videCoverImage} {...props} />
+        </Anchor>
+      </Styled.VideoCoverItemImage>
+      <Styled.VideoCoverItemDuration>13:26</Styled.VideoCoverItemDuration>
+    </Styled.VideoCoverItem>
+  );
+}

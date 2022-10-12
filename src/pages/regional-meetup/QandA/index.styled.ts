@@ -39,7 +39,7 @@ export const QuestionIcon = styled.div`
 
 export const QuestionText = styled.div`
   font-weight: 500;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 28px;
   /* identical to box height */
   color: #2c2c2c;
@@ -59,7 +59,7 @@ export const AnswerIcon = styled.div`
 
 export const AnswerText = styled.div`
   font-weight: 400;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 28px;
   color: #2c2c2c;
 `;

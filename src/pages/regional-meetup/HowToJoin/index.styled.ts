@@ -49,7 +49,7 @@ export const Action = styled(Row)`
 export const Image = styled.div``;
 
 export const ApplyDescription = styled.p`
-  margin-top: 136px;
+  margin-top: 64px;
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;

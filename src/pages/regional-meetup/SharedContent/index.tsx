@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Image, { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Button } from 'antd';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -7,15 +7,18 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper';
 
 import * as Styled from './index.styled';
-import { sharedContents } from '~/data/regional-meetup/shared-content';
+import Anchor from '~/components/Anchor';
+import type { TSharedContentCard } from '../index.page';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  //data: {};
+  data: {
+    sharedContentCards: TSharedContentCard[];
+  };
 }
 
 const SharedContent: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { ...rest } = props;
+  const { data, ...rest } = props;
   return (
     <Styled.Container {...rest}>
       <Styled.Main>
@@ -48,7 +51,7 @@ const SharedContent: React.FC<IProps> = (props) => {
             modules={[Pagination]}
             className="mySwiper"
           >
-            {sharedContents.map((value) => (
+            {data.sharedContentCards.map((value) => (
               <SwiperSlide key={value.title}>
                 <Card data={value} />
               </SwiperSlide>
@@ -63,39 +66,33 @@ const SharedContent: React.FC<IProps> = (props) => {
 export default SharedContent;
 
 export interface IPropsCard extends React.HTMLAttributes<HTMLDivElement> {
-  data: {
-    title: string;
-    description: React.ReactNode;
-    avatarImage: StaticImageData;
-    authorName: string;
-    authorTitle: string;
-    iconImages: StaticImageData[];
-    moreLinkUrl: string;
-  };
+  data: TSharedContentCard;
 }
 
 const Card: React.FC<IPropsCard> = (props) => {
   //function SectionTitle(props: IProps) {
   const { data, ...rest } = props;
   return (
-    <div style={{ paddingBottom: 64 }}>
+    <div style={{ paddingBottom: 64, height: '100%' }}>
       <Styled.Card {...rest}>
         <Styled.CardTitle>{data.title}</Styled.CardTitle>
         <Styled.CardDescription>{data.description}</Styled.CardDescription>
         <Styled.CardSplitLine />
         <Styled.CardAuthorAvatar>
-          <Image {...data.avatarImage} width={120} height={120} />
+          <img {...data.avatarImage} width={120} height={120} alt={''} />
         </Styled.CardAuthorAvatar>
         <Styled.CardAuthorInfo>
           {data.authorName} | {data.authorTitle}
         </Styled.CardAuthorInfo>
         <Styled.CardIcons>
           {data.iconImages.map((value) => (
-            <Image key={value.src} {...value} width={36} height={36} />
+            <img key={value.src} {...value} width={36} height={36} alt={''} />
           ))}
         </Styled.CardIcons>
         <Styled.CardMore>
-          <Button type={'primary'}>TA 的更多分享</Button>
+          <Anchor href={`/u/${data.username}`}>
+            <Button type={'primary'}>TA 的更多分享</Button>
+          </Anchor>
         </Styled.CardMore>
       </Styled.Card>
     </div>

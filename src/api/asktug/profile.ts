@@ -124,6 +124,75 @@ export async function getBadgesByUsername(
   return badgesArr;
 }
 
+export type TUserBadgeItem = {
+  id: number; // 115,
+  name: string; // "PCTA",
+  description: string; // "PCTA （PingCAP Certified TiDB Associate）是 PingCAP 公司认证 TiDB 数据库专员的缩写。PCTA 要求具备安装部署及日常运维分布式关系型数据库的能力。",
+  grant_count: number; // 3094,
+  allow_title: boolean; // false,
+  multiple_grant: boolean; // false,
+  icon: string; // "fa-certificate",
+  image: string; // "https://img2.pingcap.com/forms/6/1/6110a807f783019b46d4a9ec1a522afcd92183fd.png",
+  listable: boolean; // true,
+  enabled: boolean; // true,
+  badge_grouping_id: number; // 30013,
+  system: boolean; // false,
+  slug: string; // "-",
+  manually_grantable: string; // true,
+  badge_type_id: number; // 2
+};
+
+export type TUserBadges = {
+  badges: TUserBadgeItem[];
+};
+
+export type TUserDetail = {
+  id: number; // 601596,
+  username: string; // "ShawnYan",
+  name: string; // "",
+  avatar_template: string; // "/user_avatar/asktug.com/shawnyan/{size}/702678_2.png",
+  last_posted_at: string; // "2022-10-12T13:55:52.000Z",
+  last_seen_at: string; // "2022-10-13T07:09:52.000Z",
+  created_at: string; // "2021-10-15T11:12:52.000Z",
+  can_edit: boolean; // false,
+  can_edit_username: boolean; // false,
+  can_edit_email: boolean; // false,
+  can_edit_name: boolean; // false,
+  ignored: boolean; // false,
+  muted: boolean; // false,
+  can_ignore_user: boolean; // false,
+  can_mute_user: boolean; // true,
+  can_send_private_messages: boolean; // true,
+  can_send_private_message_to_user: boolean; // true,
+  trust_level: number; // 3,
+  moderator: boolean; // false,
+  admin: boolean; // false,
+  title: string; // "TiExplorer",
+  uploaded_avatar_id: number; // 702678,
+  badge_count: number; // 16,
+  custom_fields: string; // {},
+  pending_count: number; // 0,
+  profile_view_count: number; // 457,
+  time_read: number; // 294929,
+  recent_time_read: number; // 46498,
+  primary_group_name: string; // null,
+  primary_group_flair_url: string; // null,
+  primary_group_flair_bg_color: string; // null,
+  primary_group_flair_color: string; // null,
+  custom_avatar_upload_id: number; // 702678,
+  custom_avatar_template: string; // "/user_avatar/asktug.com/shawnyan/{size}/702678_2.png",
+  is_verified: boolean; // true,
+  invited_by: number | null; // null,
+};
+
+export async function getUserBadgesByUsername(input: { username: string }): Promise<TUserBadges> {
+  const { username } = input;
+  const result: TUserBadges = await asktugClient.get(
+    `${askTugApiDomain}/user-badges/${encodeURIComponent(username)}.json`
+  );
+  return result;
+}
+
 export interface IProfile {
   username: string;
   avatar_url: string;
@@ -138,6 +207,16 @@ export interface IProfile {
     progress: number;
   };
   can_edit: boolean;
+}
+
+export interface IUser {
+  id: number; // 601596,
+  username: string; // "ShawnYan",
+  name: string; // "",
+  avatar_template: string; // "/user_avatar/asktug.com/shawnyan/{size}/702678_2.png",
+  moderator: boolean; // false,
+  admin: boolean; // false,
+  is_verified: boolean; // true
 }
 
 export async function getUserProfileByUsername(
@@ -323,6 +402,8 @@ export interface IProfileSummary {
     time_read: number;
     bookmark_count: number;
   };
+  badges: IRawBadges[];
+  users: IUser[];
 }
 
 export async function getSummaryByUsername(
@@ -336,6 +417,47 @@ export async function getSummaryByUsername(
       url,
       withAccountsCookies({ isReturnErrorResponse: true }, ssrCtx)
     );
+    return result ?? null;
+  } catch (response) {
+    if (response?.status && response.status === 404) {
+      return null;
+    } else {
+      throw response?.data;
+    }
+  }
+}
+
+export type userBadge = {
+  id: number; // 1622062,
+  granted_at: string; // "2022-01-27T17:20:07.000Z",
+  count: number; // 1,
+  is_verified: boolean; // true,
+  badge_id: number; // 116,
+  user_id: number; // 601596,
+  granted_by_id: number; // -1
+};
+
+export type badge = {
+  id: number; // 1622062,
+  granted_at: string; // "2022-01-27T17:20:07.000Z",
+  count: number; // 1,
+  is_verified: boolean; // true,
+  badge_id: number; // 116,
+  user_id: number; // 601596,
+  granted_by_id: number; // -1
+};
+
+export type TUser = {
+  user_badges: userBadge[];
+  badges: TUserBadgeItem[];
+  user: TUserDetail;
+};
+
+export async function getUserByUsername(input: { username: string }): Promise<TUser | null> {
+  const { username } = input;
+  const url = `${askTugApiDomain}/u/${encodeURIComponent(username)}.json`;
+  try {
+    const result: TUser = await asktugClient.get(url);
     return result ?? null;
   } catch (response) {
     if (response?.status && response.status === 404) {

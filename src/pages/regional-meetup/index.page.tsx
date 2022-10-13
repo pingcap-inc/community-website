@@ -10,6 +10,9 @@ import HowToJoin from './HowToJoin';
 import SharedContent from './SharedContent';
 import QandA from './QandA';
 import JoinNow from './JoinNow';
+import { sharedContents } from '~/data/regional-meetup/shared-content';
+import { getUserByUsername } from '~/api/asktug/profile';
+import { StaticImageData } from 'next/image';
 
 const title = '地区活动';
 const description =
@@ -21,7 +24,21 @@ const seo = {
   keywords: ['TiDB', 'Meetup', 'HTAP', '地区分享'],
 };
 
-const RegionalMeetupPage: NextPage = () => {
+export type TSharedContentCard = {
+  username: string;
+  title: string;
+  description: React.ReactNode;
+  authorName: string;
+  authorTitle: string;
+  avatarImage: StaticImageData;
+  iconImages: StaticImageData[];
+};
+
+export type TProps = {
+  sharedContentCards: TSharedContentCard[];
+};
+
+const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards }) => {
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -29,7 +46,7 @@ const RegionalMeetupPage: NextPage = () => {
       <Header data={{ title, description }} />
       <VideoRecord />
       <HowToJoin />
-      <SharedContent />
+      <SharedContent data={{ sharedContentCards }} />
       <QandA />
       <JoinNow />
     </CoreLayout>
@@ -39,7 +56,30 @@ const RegionalMeetupPage: NextPage = () => {
 export default RegionalMeetupPage;
 
 export const getServerSideProps: GetServerSideProps = async () => {
+  const sharedContentCards: TSharedContentCard[] = [];
+  for (const username of Object.keys(sharedContents)) {
+    try {
+      const user = await getUserByUsername({ username });
+      sharedContentCards.push({
+        username,
+        title: sharedContents[username].title,
+        description: sharedContents[username].description,
+        authorName: sharedContents[username].authorName,
+        authorTitle: sharedContents[username].authorTitle,
+        avatarImage: {
+          src: process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL + user.user.avatar_template.replace('{size}', '64'),
+          width: 64,
+          height: 64,
+        },
+        iconImages: user.badges.map((value) => ({ src: value.image, width: 32, height: 32 })),
+      });
+    } catch (e) {
+      console.error('[Error] [/regional-meetup] [getServerSideProps]', e);
+    }
+  }
   return {
-    props: {},
+    props: {
+      sharedContentCards,
+    },
   };
 };

@@ -27,6 +27,9 @@ export const Title = styled.div`
 export const Content = styled.div`
   width: 100%;
   margin-top: 54px;
+  .swiper-slide {
+    height: 100%;
+  }
   .swiper-pagination-bullet {
     width: 32px;
     border-radius: 4px;
@@ -50,6 +53,8 @@ export const Card = styled.div`
   height: 100%;
 `;
 export const CardTitle = styled.div`
+  ${mixins.lineClamp(2)};
+  height: 64px;
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
@@ -57,6 +62,7 @@ export const CardTitle = styled.div`
   color: #000000;
 `;
 export const CardDescription = styled.div`
+  ${mixins.lineClamp(2)};
   margin-top: 16px;
   font-weight: 400;
   font-size: 14px;

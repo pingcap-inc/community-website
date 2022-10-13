@@ -37,6 +37,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
           <VideoCoverItem
             url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
             videCoverImageUrl={videoRecordItems[0].videCoverImageUrl}
+            duration={videoRecordItems[0].duration}
             width={160 * 4}
             height={100 * 4}
           />
@@ -82,6 +83,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
                 <VideoCoverItem
                   url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
                   videCoverImageUrl={value.videCoverImageUrl}
+                  duration={value.duration}
                   width={160}
                   height={100}
                   layout={'fixed'}
@@ -129,7 +131,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
 export default VideoRecord;
 
-function VideoCoverItem({ url, videCoverImageUrl, ...props }) {
+function VideoCoverItem({ url, videCoverImageUrl, duration, ...props }) {
   return (
     <Styled.VideoCoverItem>
       <Styled.VideoCoverItemImage>
@@ -137,7 +139,7 @@ function VideoCoverItem({ url, videCoverImageUrl, ...props }) {
           <Image src={videCoverImageUrl.replace('http://', 'https://')} alt={''} {...props} />
         </Anchor>
       </Styled.VideoCoverItemImage>
-      <Styled.VideoCoverItemDuration>13:26</Styled.VideoCoverItemDuration>
+      <Styled.VideoCoverItemDuration>{duration}</Styled.VideoCoverItemDuration>
     </Styled.VideoCoverItem>
   );
 }

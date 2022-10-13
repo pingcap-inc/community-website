@@ -1,5 +1,7 @@
 import * as React from 'react';
 import type { GetServerSideProps, NextPage } from 'next';
+import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
@@ -14,8 +16,9 @@ import { sharedContents } from '~/data/regional-meetup/shared-content';
 import { getUserByUsername } from '~/api/asktug/profile';
 import { StaticImageData } from 'next/image';
 import { getVideoBasicInfo } from '~/utils/bilibili';
-import { TVideoRecord, videoRecords } from '~/data/regional-meetup/video-record';
-import dayjs from 'dayjs';
+import { videoRecords } from '~/data/regional-meetup/video-record';
+
+dayjs.extend(duration);
 
 const title = '地区活动';
 const description =
@@ -43,7 +46,7 @@ export type TVideoRecordFull = {
   bvid: string;
   title: string;
   videCoverImageUrl: string;
-  duration: number;
+  duration: string;
   playCount: number;
   createDatetime: string;
 };
@@ -98,14 +101,15 @@ export const getServerSideProps: GetServerSideProps = async () => {
     try {
       const videoBasicInfo = await getVideoBasicInfo(bvid);
       if (videoBasicInfo.code === 0) {
+        console.log('videoBasicInfo.data.duration', videoBasicInfo.data.duration);
         videoRecordItems.push({
           bvid,
           region: videoRecords[bvid].region,
           authorName: videoRecords[bvid].authorName,
           title: videoBasicInfo.data.title,
-          duration: videoBasicInfo.data.duration,
+          duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(videoBasicInfo.data.duration % 60).toFixed()}`,
           playCount: videoBasicInfo.data.stat.view,
-          createDatetime: dayjs(videoBasicInfo.data.ctime).format('YYYY-MM-DD'),
+          createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
           videCoverImageUrl: videoBasicInfo.data.pic,
         });
       }

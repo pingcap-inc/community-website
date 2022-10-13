@@ -43,5 +43,5 @@ export type TVideoBasicInfo = {
 
 export async function getVideoBasicInfo(bvid: string) {
   const url = 'https://api.bilibili.com/x/web-interface/view?bvid=' + bvid;
-  return (await axios.get<TVideoBasicInfo>(url)).data;
+  return (await axios.get<TBilibiliCommonResponse<TVideoBasicInfo>>(url)).data;
 }

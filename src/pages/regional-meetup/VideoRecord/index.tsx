@@ -36,7 +36,9 @@ const VideoRecord: React.FC<IProps> = (props) => {
         <Col sm={24} md={12}>
           <VideoCoverItem
             url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
-            videCoverImage={videoRecordItems[0].videCoverImage}
+            videCoverImageUrl={videoRecordItems[0].videCoverImageUrl}
+            width={160 * 4}
+            height={100 * 4}
           />
           {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
           {/*  <Image {...videoRecords[0].videCoverImage} />*/}
@@ -79,7 +81,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
               <Styled.VideoCover>
                 <VideoCoverItem
                   url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
-                  videCoverImage={value.videCoverImage}
+                  videCoverImageUrl={value.videCoverImageUrl}
                   width={160}
                   height={100}
                   layout={'fixed'}
@@ -127,12 +129,12 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
 export default VideoRecord;
 
-function VideoCoverItem({ url, videCoverImage, ...props }) {
+function VideoCoverItem({ url, videCoverImageUrl, ...props }) {
   return (
     <Styled.VideoCoverItem>
       <Styled.VideoCoverItemImage>
         <Anchor href={url}>
-          <Image {...videCoverImage} {...props} />
+          <Image src={videCoverImageUrl.replace('http://', 'https://')} alt={''} {...props} />
         </Anchor>
       </Styled.VideoCoverItemImage>
       <Styled.VideoCoverItemDuration>13:26</Styled.VideoCoverItemDuration>

@@ -460,10 +460,10 @@ export async function getUserByUsername(input: { username: string }): Promise<TU
     const result: TUser = await asktugClient.get(url);
     return result ?? null;
   } catch (response) {
-    if (response?.status && response.status === 404) {
+    if (response?.status === 404) {
       return null;
     } else {
-      throw response?.data;
+      throw response;
     }
   }
 }

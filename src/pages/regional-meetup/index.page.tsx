@@ -15,6 +15,7 @@ import { getUserByUsername } from '~/api/asktug/profile';
 import { StaticImageData } from 'next/image';
 import { getVideoBasicInfo } from '~/utils/bilibili';
 import { TVideoRecord, videoRecords } from '~/data/regional-meetup/video-record';
+import dayjs from 'dayjs';
 
 const title = '地区活动';
 const description =
@@ -36,13 +37,15 @@ export type TSharedContentCard = {
   iconImages: StaticImageData[];
 };
 
-export type TVideoRecordFull = TVideoRecord & {
+export type TVideoRecordFull = {
+  region: string;
+  authorName: string;
   bvid: string;
   title: string;
-  videCoverImage: StaticImageData;
+  videCoverImageUrl: string;
   duration: number;
   playCount: number;
-  createDatetime: number;
+  createDatetime: string;
 };
 
 export type TProps = {
@@ -86,7 +89,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
         iconImages: user.badges.map((value) => ({ src: value.image, width: 32, height: 32 })),
       });
     } catch (e) {
-      console.error('[Error] [/regional-meetup] [getServerSideProps]', e);
+      console.error('[Error] [/regional-meetup] [getServerSideProps] [sharedContentCards]', e);
     }
   }
 
@@ -94,24 +97,23 @@ export const getServerSideProps: GetServerSideProps = async () => {
   for (const bvid of Object.keys(videoRecords)) {
     try {
       const videoBasicInfo = await getVideoBasicInfo(bvid);
-      videoRecordItems.push({
-        bvid,
-        region: videoRecords[bvid].region,
-        authorName: videoRecords[bvid].authorName,
-        title: videoBasicInfo.title,
-        duration: videoBasicInfo.duration,
-        playCount: videoBasicInfo.stat.view,
-        createDatetime: videoBasicInfo.ctime,
-        videCoverImage: {
-          src: videoBasicInfo.pic,
-          width: undefined,
-          height: undefined,
-        },
-      });
+      if (videoBasicInfo.code === 0) {
+        videoRecordItems.push({
+          bvid,
+          region: videoRecords[bvid].region,
+          authorName: videoRecords[bvid].authorName,
+          title: videoBasicInfo.data.title,
+          duration: videoBasicInfo.data.duration,
+          playCount: videoBasicInfo.data.stat.view,
+          createDatetime: dayjs(videoBasicInfo.data.ctime).format('YYYY-MM-DD'),
+          videCoverImageUrl: videoBasicInfo.data.pic,
+        });
+      }
     } catch (e) {
-      console.error('[Error] [/regional-meetup] [getServerSideProps]', e);
+      console.error('[Error] [/regional-meetup] [getServerSideProps] [videoRecordItems]', e);
     }
   }
+  console.log({ videoRecordItems });
   return {
     props: {
       sharedContentCards,

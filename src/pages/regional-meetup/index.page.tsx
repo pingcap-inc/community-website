@@ -13,6 +13,8 @@ import JoinNow from './JoinNow';
 import { sharedContents } from '~/data/regional-meetup/shared-content';
 import { getUserByUsername } from '~/api/asktug/profile';
 import { StaticImageData } from 'next/image';
+import { getVideoBasicInfo } from '~/utils/bilibili';
+import { TVideoRecord, videoRecords } from '~/data/regional-meetup/video-record';
 
 const title = '地区活动';
 const description =
@@ -34,17 +36,27 @@ export type TSharedContentCard = {
   iconImages: StaticImageData[];
 };
 
-export type TProps = {
-  sharedContentCards: TSharedContentCard[];
+export type TVideoRecordFull = TVideoRecord & {
+  bvid: string;
+  title: string;
+  videCoverImage: StaticImageData;
+  duration: number;
+  playCount: number;
+  createDatetime: number;
 };
 
-const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards }) => {
+export type TProps = {
+  sharedContentCards: TSharedContentCard[];
+  videoRecordItems: TVideoRecordFull[];
+};
+
+const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards, videoRecordItems }) => {
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
 
       <Header data={{ title, description }} />
-      <VideoRecord />
+      <VideoRecord data={{ videoRecordItems }} />
       <HowToJoin />
       <SharedContent data={{ sharedContentCards }} />
       <QandA />
@@ -77,9 +89,33 @@ export const getServerSideProps: GetServerSideProps = async () => {
       console.error('[Error] [/regional-meetup] [getServerSideProps]', e);
     }
   }
+
+  const videoRecordItems: TVideoRecordFull[] = [];
+  for (const bvid of Object.keys(videoRecords)) {
+    try {
+      const videoBasicInfo = await getVideoBasicInfo(bvid);
+      videoRecordItems.push({
+        bvid,
+        region: videoRecords[bvid].region,
+        authorName: videoRecords[bvid].authorName,
+        title: videoBasicInfo.title,
+        duration: videoBasicInfo.duration,
+        playCount: videoBasicInfo.stat.view,
+        createDatetime: videoBasicInfo.ctime,
+        videCoverImage: {
+          src: videoBasicInfo.pic,
+          width: undefined,
+          height: undefined,
+        },
+      });
+    } catch (e) {
+      console.error('[Error] [/regional-meetup] [getServerSideProps]', e);
+    }
+  }
   return {
     props: {
       sharedContentCards,
+      videoRecordItems,
     },
   };
 };

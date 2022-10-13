@@ -12,16 +12,21 @@ import {
 
 import * as Styled from './index.styled';
 
-import { videoRecords } from '~/data/regional-meetup/video-record';
 import Anchor from '~/components/Anchor';
+import type { TVideoRecordFull } from '../index.page';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  //data: {};
+  data: {
+    videoRecordItems: TVideoRecordFull[];
+  };
 }
 
 const VideoRecord: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
-  const { ...rest } = props;
+  const {
+    data: { videoRecordItems },
+    ...rest
+  } = props;
   const [showMore, setShowMore] = useState(false);
   return (
     <Styled.Container {...rest}>
@@ -29,25 +34,28 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
       <Styled.Recommend gutter={[32, 32]}>
         <Col sm={24} md={12}>
-          <VideoCoverItem url={videoRecords[0].moreLinkUrl} videCoverImage={videoRecords[0].videCoverImage} />
+          <VideoCoverItem
+            url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
+            videCoverImage={videoRecordItems[0].videCoverImage}
+          />
           {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
           {/*  <Image {...videoRecords[0].videCoverImage} />*/}
           {/*</Anchor>*/}
         </Col>
         <Col sm={24} md={12}>
           <Space>
-            <Styled.RecommendTag>{videoRecords[0].region}</Styled.RecommendTag>
+            <Styled.RecommendTag>{videoRecordItems[0].region}</Styled.RecommendTag>
           </Space>
-          <Anchor href={videoRecords[0].moreLinkUrl}>
-            <Styled.RecommendTitle>{videoRecords[0].title}</Styled.RecommendTitle>
+          <Anchor href={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}>
+            <Styled.RecommendTitle>{videoRecordItems[0].title}</Styled.RecommendTitle>
           </Anchor>
-          <Styled.RecommendPeople>{videoRecords[0].authorName}</Styled.RecommendPeople>
+          <Styled.RecommendPeople>{videoRecordItems[0].authorName}</Styled.RecommendPeople>
           <Styled.IconWrapper>
             <div>
-              <PlaySquareOutlined /> {156}
+              <PlaySquareOutlined /> {videoRecordItems[0].playCount}
             </div>
             <div>
-              <ClockCircleOutlined /> 2022-10-12
+              <ClockCircleOutlined /> {videoRecordItems[0].createDatetime}
             </div>
           </Styled.IconWrapper>
           {/*<Styled.RecommendSummary>*/}
@@ -65,12 +73,12 @@ const VideoRecord: React.FC<IProps> = (props) => {
       </Styled.Recommend>
 
       <Styled.List wrap gutter={[36, 36]}>
-        {videoRecords.slice(1, showMore ? undefined : 7).map((value) => (
-          <Col key={value.moreLinkUrl} sm={24} md={12} lg={12} xl={8}>
+        {videoRecordItems.slice(1, showMore ? undefined : 7).map((value) => (
+          <Col key={value.bvid} sm={24} md={12} lg={12} xl={8}>
             <Space size={10} align={'start'}>
               <Styled.VideoCover>
                 <VideoCoverItem
-                  url={value.moreLinkUrl}
+                  url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
                   videCoverImage={value.videCoverImage}
                   width={160}
                   height={100}
@@ -84,17 +92,17 @@ const VideoRecord: React.FC<IProps> = (props) => {
                 <Space>
                   <Styled.InfoTag>{value.region}</Styled.InfoTag>
                 </Space>
-                <Anchor href={value.moreLinkUrl}>
+                <Anchor href={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}>
                   <Styled.InfoTitle>{value.title}</Styled.InfoTitle>
                 </Anchor>
                 <Styled.InfoPeople>{value.authorName}</Styled.InfoPeople>
                 {/*<Styled.InfoDate>2022.05.18</Styled.InfoDate>*/}
                 <Styled.IconWrapper>
                   <div>
-                    <PlaySquareOutlined /> {156}
+                    <PlaySquareOutlined /> {value.playCount}
                   </div>
                   <div>
-                    <ClockCircleOutlined /> 2022-10-12
+                    <ClockCircleOutlined /> {value.createDatetime}
                   </div>
                 </Styled.IconWrapper>
               </Styled.Info>

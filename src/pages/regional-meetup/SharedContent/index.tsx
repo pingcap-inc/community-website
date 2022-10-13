@@ -1,5 +1,4 @@
 import * as React from 'react';
-import Image from 'next/image';
 import { Button } from 'antd';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';

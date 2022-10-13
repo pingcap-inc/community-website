@@ -62,7 +62,7 @@ export const CardTitle = styled.div`
   color: #000000;
 `;
 export const CardDescription = styled.div`
-  ${mixins.lineClamp(2)};
+  ${mixins.lineClamp(3)};
   margin-top: 16px;
   font-weight: 400;
   font-size: 14px;

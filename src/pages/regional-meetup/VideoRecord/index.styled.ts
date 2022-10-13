@@ -4,6 +4,7 @@ import { Row, Space } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
 import MyContainer from '~/components/Container';
+import { PlayCircleFilled } from '@ant-design/icons';
 
 export const Container = styled(MyContainer)`
   padding: 32px 16px;
@@ -129,30 +130,39 @@ export const IconWrapper = styled(Space)`
   color: ${colors.C4};
 `;
 
-export const VideoCoverItem = styled.div`
+export const VideoBox = styled.div<{ $src: string; $isSmallScreen: boolean }>`
   position: relative;
+  background-size: auto 100%;
+  padding-bottom: 62.8%;
+  width: 100%;
+  background-image: url(${({ $src }) => $src});
+  border-color: ${colors.M1};
+
+  ${(props) =>
+    !props.$isSmallScreen &&
+    css`
+      box-shadow: inset 0 0 0 8px ${colors.M1};
+    `}
 `;
 
-export const VideoCoverItemDuration = styled.div`
+export const VideoPlayButton = styled.div`
+  ${mixins.flexCenter};
+  ${mixins.flexVerticalCenter()};
   position: absolute;
+  z-index: 3;
+  left: 0;
   right: 0;
+  top: 0;
   bottom: 0;
-  text-align: right;
-  padding: 0 8px;
-  width: 50px;
-  //height: 32px;
-  font-size: 14px;
-  background-color: #00000080;
-  color: #fff;
-  margin-bottom: 8px;
 `;
 
-export const VideoCoverItemImage = styled.div`
-  position: relative;
-  left: 0;
-  top: 0;
-  //width: 160px;
-  //height: 100px;
-  //background-color: rgba(#000, .5);
-  //color: #FFF;
+export const VideoPlayIcon = styled(PlayCircleFilled)`
+  font-size: 2rem;
+  color: ${colors.F1};
+  opacity: 46%;
+
+  &:hover {
+    color: ${colors.F2};
+    cursor: pointer;
+  }
 `;

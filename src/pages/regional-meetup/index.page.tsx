@@ -14,7 +14,7 @@ import QandA from './QandA';
 import JoinNow from './JoinNow';
 import { sharedContents } from '~/data/regional-meetup/shared-content';
 import { getUserByUsername } from '~/api/asktug/profile';
-import { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
 import { getVideoBasicInfo } from '~/utils/bilibili';
 import { videoRecords } from '~/data/regional-meetup/video-record';
 
@@ -45,7 +45,8 @@ export type TVideoRecordFull = {
   authorName: string;
   bvid: string;
   title: string;
-  videCoverImageUrl: string;
+  //videCoverImageUrl: string;
+  videCoverImage: StaticImageData;
   duration: string;
   playCount: number;
   createDatetime: string;
@@ -101,7 +102,6 @@ export const getServerSideProps: GetServerSideProps = async () => {
     try {
       const videoBasicInfo = await getVideoBasicInfo(bvid);
       if (videoBasicInfo.code === 0) {
-        console.log('videoBasicInfo.data.duration', videoBasicInfo.data.duration);
         videoRecordItems.push({
           bvid,
           region: videoRecords[bvid].region,
@@ -110,14 +110,14 @@ export const getServerSideProps: GetServerSideProps = async () => {
           duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(videoBasicInfo.data.duration % 60).toFixed()}`,
           playCount: videoBasicInfo.data.stat.view,
           createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
-          videCoverImageUrl: videoBasicInfo.data.pic,
+          //videCoverImage: videoRecords[bvid].videCoverImage,
+          videCoverImage: { src: videoBasicInfo.data.pic, width: null, height: null },
         });
       }
     } catch (e) {
       console.error('[Error] [/regional-meetup] [getServerSideProps] [videoRecordItems]', e);
     }
   }
-  console.log({ videoRecordItems });
   return {
     props: {
       sharedContentCards,

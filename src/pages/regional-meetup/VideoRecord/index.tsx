@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useState } from 'react';
-import Image from 'next/image';
 import { Button, Col, Space } from 'antd';
 import {
   ClockCircleOutlined,
@@ -14,6 +13,7 @@ import * as Styled from './index.styled';
 
 import Anchor from '~/components/Anchor';
 import type { TVideoRecordFull } from '../index.page';
+import { useIsSmallScreen } from '~/hooks';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
@@ -36,10 +36,10 @@ const VideoRecord: React.FC<IProps> = (props) => {
         <Col sm={24} md={12}>
           <VideoCoverItem
             url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
-            videCoverImageUrl={videoRecordItems[0].videCoverImageUrl}
-            duration={videoRecordItems[0].duration}
-            width={160 * 4}
-            height={100 * 4}
+            videCoverImage={videoRecordItems[0].videCoverImage}
+            //duration={videoRecordItems[0].duration}
+            //width={160 * 4}
+            //height={100 * 4}
           />
           {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
           {/*  <Image {...videoRecords[0].videCoverImage} />*/}
@@ -82,11 +82,11 @@ const VideoRecord: React.FC<IProps> = (props) => {
               <Styled.VideoCover>
                 <VideoCoverItem
                   url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
-                  videCoverImageUrl={value.videCoverImageUrl}
-                  duration={value.duration}
-                  width={160}
-                  height={100}
-                  layout={'fixed'}
+                  videCoverImage={value.videCoverImage}
+                  //duration={value.duration}
+                  //width={160}
+                  //height={100}
+                  //layout={'fixed'}
                 />
                 {/*<Anchor href={value.moreLinkUrl}>*/}
                 {/*  <Image {...value.videCoverImage} width={160} height={100} layout={'fixed'} />*/}
@@ -131,15 +131,26 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
 export default VideoRecord;
 
-function VideoCoverItem({ url, videCoverImageUrl, duration, ...props }) {
+function VideoCoverItem({ url, videCoverImage }) {
+  const { isSmallScreen } = useIsSmallScreen();
   return (
-    <Styled.VideoCoverItem>
-      <Styled.VideoCoverItemImage>
+    <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={encodeURI(videCoverImage.src)}>
+      <Styled.VideoPlayButton>
         <Anchor href={url}>
-          <Image src={videCoverImageUrl.replace('http://', 'https://')} alt={''} {...props} />
+          <Styled.VideoPlayIcon color="white" height="48px" />
         </Anchor>
-      </Styled.VideoCoverItemImage>
-      <Styled.VideoCoverItemDuration>{duration}</Styled.VideoCoverItemDuration>
-    </Styled.VideoCoverItem>
+      </Styled.VideoPlayButton>
+    </Styled.VideoBox>
+    //<Styled.VideoCoverItem>
+    //  <Styled.VideoCoverItemImage>
+    //    <Anchor href={url}>
+    //      <Image src={videCoverImageUrl.replace('http://', 'https://')} alt={''} {...props} />
+    //    </Anchor>
+    //  </Styled.VideoCoverItemImage>
+    //  <Styled.VideoCoverItemPlayIcon>
+    //    <PlayCircleOutlined />
+    //  </Styled.VideoCoverItemPlayIcon>
+    //  <Styled.VideoCoverItemDuration>{duration}</Styled.VideoCoverItemDuration>
+    //</Styled.VideoCoverItem>
   );
 }

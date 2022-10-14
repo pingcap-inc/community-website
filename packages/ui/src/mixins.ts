@@ -84,6 +84,11 @@ export const flexVerticalCenter = (type = 'block') => css`
   align-items: center;
 `;
 
+export const flexVerticalEnd = (type = 'block') => css`
+  display: ${type === 'inline' ? 'inline-flex' : 'flex'};
+  align-items: flex-end;
+`;
+
 export const flexCenter = (type = 'block') => css`
   ${flexVerticalCenter(type)};
   justify-content: center;

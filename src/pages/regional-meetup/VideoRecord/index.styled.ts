@@ -130,12 +130,17 @@ export const IconWrapper = styled(Space)`
   color: ${colors.C4};
 `;
 
-export const VideoBox = styled.div<{ $src: string; $isSmallScreen: boolean }>`
+export const VideoBox = styled.div<{
+  $src: string;
+  $isSmallScreen: boolean;
+  $width: number;
+  $height: number;
+}>`
   position: relative;
   background-size: 100% 100%;
   //padding-bottom: 62.8%;
-  width: 160px;
-  height: 100px;
+  width: ${({ $width }) => $width}px;
+  height: ${({ $height }) => $height}px;
   background-image: url(${({ $src }) => $src});
   border-color: ${colors.M1};
 
@@ -159,11 +164,11 @@ export const VideoPlayButton = styled.div`
 
 export const VideoPlayIcon = styled(PlayCircleFilled)`
   font-size: 2rem;
-  color: ${colors.F1};
+  color: ${colors.T2};
   opacity: 46%;
 
   &:hover {
-    color: ${colors.F2};
+    color: ${colors.M2};
     cursor: pointer;
   }
 `;

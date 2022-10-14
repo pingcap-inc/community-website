@@ -38,8 +38,8 @@ const VideoRecord: React.FC<IProps> = (props) => {
             url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
             videCoverImage={videoRecordItems[0].videCoverImage}
             //duration={videoRecordItems[0].duration}
-            //width={160 * 4}
-            //height={100 * 4}
+            width={160 * 3}
+            height={100 * 3}
           />
           {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
           {/*  <Image {...videoRecords[0].videCoverImage} />*/}
@@ -84,8 +84,8 @@ const VideoRecord: React.FC<IProps> = (props) => {
                   url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
                   videCoverImage={value.videCoverImage}
                   //duration={value.duration}
-                  //width={160}
-                  //height={100}
+                  width={160}
+                  height={100}
                   //layout={'fixed'}
                 />
                 {/*<Anchor href={value.moreLinkUrl}>*/}
@@ -144,10 +144,15 @@ export default VideoRecord;
 //  );
 //}
 
-function VideoCoverItem({ url, videCoverImage }) {
+function VideoCoverItem({ url, videCoverImage, width, height }) {
   const { isSmallScreen } = useIsSmallScreen();
   return (
-    <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={encodeURI(videCoverImage.src)}>
+    <Styled.VideoBox
+      $isSmallScreen={isSmallScreen}
+      $src={encodeURI(videCoverImage.src)}
+      $width={width}
+      $height={height}
+    >
       <Styled.VideoPlayButton>
         <Anchor href={url}>
           <Styled.VideoPlayIcon color="white" height="48px" />

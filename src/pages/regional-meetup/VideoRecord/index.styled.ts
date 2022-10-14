@@ -132,9 +132,10 @@ export const IconWrapper = styled(Space)`
 
 export const VideoBox = styled.div<{ $src: string; $isSmallScreen: boolean }>`
   position: relative;
-  background-size: auto 100%;
-  padding-bottom: 62.8%;
-  width: 100%;
+  background-size: 100% 100%;
+  //padding-bottom: 62.8%;
+  width: 160px;
+  height: 100px;
   background-image: url(${({ $src }) => $src});
   border-color: ${colors.M1};
 
@@ -146,7 +147,7 @@ export const VideoBox = styled.div<{ $src: string; $isSmallScreen: boolean }>`
 `;
 
 export const VideoPlayButton = styled.div`
-  ${mixins.flexCenter};
+  ${mixins.flexCenter()};
   ${mixins.flexVerticalCenter()};
   position: absolute;
   z-index: 3;

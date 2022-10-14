@@ -1,3 +1,5 @@
+import type { StaticImageData } from 'next/image';
+
 import cover1Image from './cover_images/网易互娱在 TiDB  SaaS 运维平台的建设.jpg';
 import cover2Image from './cover_images/TiDB 冷热存储分离方案.jpg';
 import cover3Image from './cover_images/TiKV 架构及原理介绍.jpg';
@@ -12,7 +14,6 @@ import cover11Image from './cover_images/基于 Oracle DBSAT 的实践总结及�
 import cover12Image from './cover_images/MySQL 和 TiDB CDC 原理对比.jpg';
 import cover13Image from './cover_images/MySQL MGR + 自研脚本实现高可用切换.jpg';
 import cover14Image from './cover_images/新型数仓 Databend 的存储层设计.jpg';
-import type { StaticImageData } from 'next/image';
 
 export type TVideoRecord = {
   region: string;

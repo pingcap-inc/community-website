@@ -131,6 +131,19 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
 export default VideoRecord;
 
+//function VideoCoverLarge({ url, videCoverImage }) {
+//  const { isSmallScreen } = useIsSmallScreen();
+//  return (
+//    <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={encodeURI(videCoverImage.src)}>
+//      <Styled.VideoPlayButton>
+//        <Anchor href={url}>
+//          <Styled.VideoPlayIcon color="white" height="48px" />
+//        </Anchor>
+//      </Styled.VideoPlayButton>
+//    </Styled.VideoBox>
+//  );
+//}
+
 function VideoCoverItem({ url, videCoverImage }) {
   const { isSmallScreen } = useIsSmallScreen();
   return (

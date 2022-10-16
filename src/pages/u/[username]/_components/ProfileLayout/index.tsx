@@ -17,8 +17,8 @@ export interface IProps {
 
 export default function ProfileLayout({ children, badges, profile, nums }: IProps) {
   return (
-    <PageDataContext.Provider value={{ data: undefined }}>
-      <CommunityHead />
+    <>
+      <CommunityHead title={`个人资料 - ${profile.username}`} />
       <CoreLayout backgroundColor={'#e9eaee'}>
         <Styled.Content>
           <Styled.Container>
@@ -39,6 +39,6 @@ export default function ProfileLayout({ children, badges, profile, nums }: IProp
           </Styled.Container>
         </Styled.Content>
       </CoreLayout>
-    </PageDataContext.Provider>
+    </>
   );
 }

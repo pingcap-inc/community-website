@@ -5,11 +5,8 @@ import { DownOutlined, UserOutlined } from '@ant-design/icons';
 
 import * as Styled from './userProfile.styled';
 import { menu as menuUtils } from '../../utils';
-import { t } from './userProfile.locale';
 
-const UserProfile = ({ avatarUrl, currentNav, items, locale, onLoginClick, onLogoutClick, onNavClick }) => {
-  const _t = t(locale);
-
+const UserProfile = ({ avatarUrl, currentNav, items, onLoginClick, onLogoutClick, onNavClick }) => {
   if (items) {
     const isShowBadge = items.some((item) => !!item.badge);
 
@@ -17,7 +14,7 @@ const UserProfile = ({ avatarUrl, currentNav, items, locale, onLoginClick, onLog
       <Dropdown
         arrow
         placement="bottomRight"
-        overlay={<Menu>{menuUtils.genMenu({ items, currentNav, onNavClick, onLogoutClick, _t })}</Menu>}
+        overlay={<Menu>{menuUtils.genMenu({ items, currentNav, onNavClick, onLogoutClick })}</Menu>}
       >
         <Styled.UserButton type="text" size="small">
           <Badge dot={isShowBadge}>
@@ -33,7 +30,7 @@ const UserProfile = ({ avatarUrl, currentNav, items, locale, onLoginClick, onLog
 
   return (
     <Styled.LoginButton type="primary" size="small" icon={<UserOutlined />} onClick={onLoginClick}>
-      {_t('login')}
+      注册 / 登录
     </Styled.LoginButton>
   );
 };
@@ -42,7 +39,6 @@ UserProfile.propTypes = {
   avatarUrl: PropTypes.string,
   currentNav: PropTypes.string,
   items: PropTypes.array,
-  locale: PropTypes.oneOf(['zh', 'en']),
   onLoginClick: PropTypes.func,
   onLogoutClick: PropTypes.func,
   onNavClick: PropTypes.func,

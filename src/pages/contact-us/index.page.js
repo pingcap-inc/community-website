@@ -1,13 +1,11 @@
-// import * as R from 'ramda';
 import React from 'react';
 import Image from 'next/image';
 
-// import Layout from '../layout';
-import * as Styled from './index.styled';
 import { CommunityHead } from '~/components';
 import Anchor from '~/components/Anchor';
 import { CoreLayout } from '~/layouts';
 
+import * as Styled from './index.styled';
 import image from './contact-us.png';
 
 const Page = () => {

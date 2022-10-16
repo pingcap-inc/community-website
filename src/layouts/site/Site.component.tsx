@@ -9,13 +9,12 @@ interface SiteLayoutProps {
 }
 
 const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: PropsWithChildren<SiteLayoutProps>) => {
-  let copyright =`©${(new Date()).getFullYear()} TiDB Community`
   return (
     <Styled.Container style={{ backgroundColor }}>
       <Header />
       <MainWrapper>{children}</MainWrapper>
       <Footer
-        copyright={copyright}
+        copyright={`©${(new Date()).getFullYear()} TiDB Community`}
         icp="京ICP备16046278号-7"
         icpUrl="https://beian.miit.gov.cn"
         number={

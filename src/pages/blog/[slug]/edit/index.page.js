@@ -1,16 +1,17 @@
 import React, { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Tabs } from 'antd';
+import '@pingcap-inc/tidb-community-editor/dist/style.css';
+
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { AuthContext } from '~/context';
 
 import * as Styled from './edit.styled';
-import { CoreLayout } from '~/layouts';
-import '@pingcap-inc/tidb-community-editor/dist/style.css';
-import { Tabs } from 'antd';
 import Editing from './editing/Editing.component';
 import EditContext, { useEditContextProvider } from './edit.context';
 import Previewing from './previewing/Previewing.component';
-import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
-import { AuthContext } from '~/context';
-import { CommunityHead } from '~/components';
 
 const BlogEditPage = () => {
   const editContextValue = useEditContextProvider();

@@ -2,26 +2,15 @@ import React, { useContext, useEffect } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';
 
+import { AuthContext, MeContext } from '~/context';
+import { CommunityHead, PageLoader } from '~/components';
+import { redDots as redDotsUtils } from '~/utils';
+
 import * as Styled from './company.styled';
 import Form from './form';
-import Layout from '~/pages/my/layout';
-import { AuthContext, MeContext } from '~/context';
-import { CommunityHead } from '~/components';
-import { PageLoader } from '~/components';
-import { getI18nProps } from '~/utils/i18n.utils';
-import { redDots as redDotsUtils } from '~/utils';
-import Verification from '~/pages/my/company/Verification.component';
+import Layout from '../layout';
+import Verification from '../company/Verification.component';
 import { Space } from 'antd';
-
-export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
-
-  return {
-    props: {
-      ...i18nProps,
-    },
-  };
-};
 
 const PageContent = ({ title }) => {
   const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);

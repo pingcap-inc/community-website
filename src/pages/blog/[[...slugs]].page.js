@@ -1,13 +1,19 @@
 import * as React from 'react';
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import { Breadcrumb, Skeleton } from 'antd';
 
 import { api } from '@tidb-community/datasource';
 
 import { CommunityHead, ErrorPage } from '~/components';
 import { PageDataContext } from '~/context';
+import { getPageQuery } from '~/utils/pagination.utils';
+import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
 
-import BlogLayout from './BlogLayout.component';
 import * as styled from './_components/BlogHomepage/index.styled';
+import BlogLayout from './BlogLayout.component';
 import CategoryList from './_components/CategoryList';
 import CategoryListMobile from './_components/CategoryListMobile';
 // import SearchOnMobile from './_components/SearchOnMobile';
@@ -15,14 +21,8 @@ import OrderBySwitch from './_components/OrderBySwitch';
 import { BlogListInfiniteScroll } from './_components/BlogList';
 import WriteBlogButton from './_components/WriteBlogButton';
 import HotTagList from './_components/HotTagList';
-import { getPageQuery } from '~/utils/pagination.utils';
-import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import { Breadcrumb, Skeleton } from 'antd';
 import { parseSlugs } from './_components/BlogHomepage/utils';
-import TagItem from '~/pages/blog/tag/TagItem.component';
-import Link from 'next/link';
+import TagItem from './tag/TagItem.component';
 
 const CATEGORY_ALL = { name: '首页', slug: '' };
 

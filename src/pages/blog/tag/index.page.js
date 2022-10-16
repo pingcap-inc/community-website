@@ -1,30 +1,26 @@
 import React from 'react';
 import Link from 'next/link';
 import { Breadcrumb, Skeleton } from 'antd';
-
-import * as Styled from './index.styled';
+import useSWR from 'swr';
 
 import { api } from '@tidb-community/datasource';
 
-import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead, ErrorPage } from '~/components';
 import { PageDataContext } from '~/context';
 
+import * as Styled from './index.styled';
 import TagItem from './TagItem.component';
 import BlogLayout from '../BlogLayout.component';
-import useSWR from 'swr';
 
 const page = 1;
 const size = 99999;
 const sort = 'posts,desc';
 
-export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
+export const getServerSideProps = async () => {
   // const { page = 1, size = 999 } = getPageQuery(ctx.query);
   const tags = await api.blog.getTags({ page, size, sort });
   return {
     props: {
-      ...i18nProps,
       tags,
     },
   };

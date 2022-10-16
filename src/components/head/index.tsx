@@ -7,7 +7,7 @@ export type IProps = {
   creator?: string;
   description?: string;
   keyword?: string | string[];
-  title?: string;
+  title: string;
   titleSuffix?: string;
   isArticle?: boolean;
 };

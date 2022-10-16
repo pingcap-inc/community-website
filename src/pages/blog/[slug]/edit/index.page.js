@@ -10,18 +10,7 @@ import Previewing from './previewing/Previewing.component';
 import { useRouter } from 'next/router';
 import { usePrincipal } from '../../blog.hooks';
 import { AuthContext } from '~/context';
-import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
-
-export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
-
-  return {
-    props: {
-      ...i18nProps,
-    },
-  };
-};
 
 const BlogEditPage = () => {
   const editContextValue = useEditContextProvider();

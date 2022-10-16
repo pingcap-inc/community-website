@@ -137,7 +137,7 @@ const Core = ({
         <MainWrapper>{children}</MainWrapper>
         <Footer
           {...footerProps}
-          copyright="©2021 TiDB Community"
+          copyright= {`©${(new Date()).getFullYear()} TiDB Community`}
           icp="京ICP备16046278号-7"
           icpUrl="https://beian.miit.gov.cn"
           number={
@@ -146,7 +146,7 @@ const Core = ({
               京公网安备 11010802039111号
             </span>
           }
-          numberUrl="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
+          numberUrl="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
         />
       </Styled.Container>
     </NavContext.Provider>

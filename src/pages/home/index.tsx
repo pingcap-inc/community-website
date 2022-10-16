@@ -1,7 +1,7 @@
 import React from 'react';
 import jsConvert from 'js-convert-case';
 import { api } from '@tidb-community/datasource';
-import type { GetStaticProps, NextPage } from 'next';
+import type { GetServerSideProps, NextPage } from 'next';
 
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
@@ -18,7 +18,7 @@ import Others from './others';
 import Subscription from './subscription';
 import Welcome from './welcome';
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const client = await api.initStrapiClient();
   const isProd = process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production';
 
@@ -59,7 +59,7 @@ export const getStaticProps: GetStaticProps = async () => {
       ),
     },
     // TODO: prop revalidate is moved to getStaticProps at latest version of next.js
-    revalidate: 60 * 10,
+    //revalidate: 60,
   };
 };
 

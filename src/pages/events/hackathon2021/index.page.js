@@ -1,32 +1,31 @@
-import * as Styled from './index.styled';
-import { getImage, TableCellContentInner } from './index.styled';
-import { CoreLayout } from '~/layouts';
-import { Col, Image, Row } from 'antd';
-import { useIsSmallScreen } from '~/hooks';
-import _ from 'lodash';
-import { handleRedirect } from '~/utils/link.utils';
-import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { carouselData, finalists, groupsData, judgesData, seo, winners } from '~/pages/events/hackathon2021/datasource';
-import { CommunityHead } from '~/components';
-import { getI18nProps } from '~/utils/i18n.utils';
-import { api } from '@tidb-community/datasource';
+import { useRouter } from 'next/router';
 import jsConvert from 'js-convert-case';
-import Leaderboard from '~/pages/events/hackathon2021/leaderboard';
+import { Col, Image, Row } from 'antd';
+import _ from 'lodash';
+import { api } from '@tidb-community/datasource';
+
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { useIsSmallScreen } from '~/hooks';
+import { handleRedirect } from '~/utils/link.utils';
 import { common as commonUtils } from '~/utils';
 
-export const getServerSideProps = async (ctx) => {
+import * as Styled from './index.styled';
+import { getImage, TableCellContentInner } from './index.styled';
+import { carouselData, finalists, groupsData, judgesData, seo, winners } from './datasource';
+import Leaderboard from './leaderboard';
+
+export const getServerSideProps = async () => {
   const client = await api.initStrapiClient();
 
   const data = await Promise.all([
     client.get('tidbio-hackathon-2021-leaderboards'),
     client.get('tidbio-hackathon-2021-news'),
   ]);
-  const i18nProps = await getI18nProps(['common'])(ctx);
 
   return {
     props: {
-      ...i18nProps,
       data: jsConvert.camelKeys(
         {
           leaderboard: data[0],

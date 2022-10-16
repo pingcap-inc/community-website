@@ -139,7 +139,7 @@ const Core = ({
         <MainWrapper>{children}</MainWrapper>
         <Footer
           {...footerProps}
-          copyright=`©${currentYear} TiDB Community`
+          copyright={`©${currentYear} TiDB Community`}
           icp="京ICP备16046278号-7"
           icpUrl="https://beian.miit.gov.cn"
           number={

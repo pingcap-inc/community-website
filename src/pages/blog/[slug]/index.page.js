@@ -16,7 +16,6 @@ import Interactions from './components/Interactions';
 import Comments from './components/Comments';
 import StatusAlert from './components/StatusAlert';
 import { api } from '@tidb-community/datasource';
-import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
 import ErrorPage from '../../../components/errorPage';
@@ -25,7 +24,6 @@ import Anchor from '~/components/Anchor';
 import { cloneDeep, throttle } from 'lodash';
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
   const { req } = ctx;
   const ip = req.headers['X-Forwarded-For'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
 
@@ -42,7 +40,6 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
-      ...i18nProps,
       blog,
       isPending,
     },

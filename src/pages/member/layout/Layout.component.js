@@ -1,27 +1,15 @@
-import React, { useContext, useEffect } from 'react';
+import React from 'react';
 import { Col, Row } from 'antd';
 
 import * as Styled from './layout.styled';
 import Sidebar from './menu';
-import { AuthContext } from '~/context';
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
+import { useRequestLoggedIn, withAuthentication } from '~/utils/auth.utils';
 
 const Layout = ({ children }) => {
-  const { setIsAuthRequired, isAnonymous, login } = useContext(AuthContext);
-
-  useEffect(() => {
-    setIsAuthRequired(true);
-    return () => setIsAuthRequired(false);
-  }, [setIsAuthRequired]);
-
   const { isSmallScreen } = useIsSmallScreen();
-
-  if (isAnonymous) {
-    login();
-    return null;
-  }
 
   return (
     <>
@@ -45,4 +33,7 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+Layout.displayName = 'MemberLayout';
+Layout.useAuthenticated = useRequestLoggedIn;
+
+export default withAuthentication(Layout);

@@ -27,7 +27,7 @@ const errorMsgs = {
   500: '服务器异常，请稍后重试',
 };
 
-const ErrorPage = ({ statusCode, errorMsg, error = undefined }) => {
+const ErrorPage = ({ statusCode, errorMsg = undefined, error = undefined }) => {
   const router = useRouter();
   const Icon = R.propOr(icons[500], statusCode)(icons);
 

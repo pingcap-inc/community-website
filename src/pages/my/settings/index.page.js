@@ -2,10 +2,11 @@ import React, { useContext } from 'react';
 
 import Content from './content';
 import Layout from '~/pages/my/layout';
-import { AuthContext, MeContext } from '~/context';
+import { MeContext } from '~/context';
 import { CommunityHead } from '~/components';
 import { PageLoader } from '~/components';
 import { getI18nProps } from '~/utils/i18n.utils';
+import { useRequestLoggedIn } from '~/utils/auth.utils';
 
 export const getServerSideProps = async (ctx) => {
   const i18nProps = await getI18nProps(['common'])(ctx);
@@ -18,13 +19,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const PageContent = ({ title }) => {
-  const { login, isAnonymous } = useContext(AuthContext);
   const { meData } = useContext(MeContext);
-
-  if (isAnonymous) {
-    login();
-    return null;
-  }
 
   if (!meData) {
     return <PageLoader />;
@@ -47,5 +42,7 @@ const Page = () => {
     </>
   );
 };
+
+Page.useAuthenticated = useRequestLoggedIn;
 
 export default Page;

@@ -2,7 +2,7 @@ import useSWR from "swr";
 import axios, {AxiosResponse} from "axios";
 import {useEffect} from "react";
 
-type TMe = {
+export type TMe = {
   "detail": string // "成功",
   "data": {
     "id": number // 3699,
@@ -23,7 +23,7 @@ export const login = (redirectUrl?: string) => {
   location.href = `${loginUrl}?redirect_to=${encodeURIComponent(redirectUrl ?? window.location.href)}`;
 }
 
-/*const logout = function (redirectUrl) {
+/*export const logout = (redirectUrl?: string) => {
   const { location } = window;
   redirectUrl = redirectUrl ?? this.isAuthRequired ? homeUrl : location.href;
   location.href = `${logoutUrl}?redirect_to=${encodeURIComponent(redirectUrl)}`;
@@ -51,4 +51,13 @@ export const useAccount = (requireAuth = true) => {
     }
   }, [requireAuth, swrResponse.isValidating, swrResponse.data?.status, swrResponse.error])
   return swrResponse
+}
+
+export const useIsLoggedIn = (): null|boolean => {
+  const swrResponse = useSWR(['account'], fetcher, {
+    revalidateOnReconnect: true,
+    revalidateOnFocus: true,
+  })
+  if (swrResponse.isValidating) return null
+  return swrResponse.data?.status === 200
 }

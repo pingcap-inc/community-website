@@ -4,7 +4,7 @@ import { Button, Col, Row } from 'antd';
 import * as Styled from './layout.styled';
 import Menu from './menu';
 import { AuthContext } from '~/context';
-import { SiteLayout } from '~/layouts';
+import { CoreLayout } from '~/layouts';
 import { MailOutlined } from '@ant-design/icons';
 
 import { useRouter } from 'next/router';
@@ -20,7 +20,7 @@ const Layout: React.FC = ({ children }) => {
   }
   return (
     <>
-      <SiteLayout>
+      <CoreLayout>
         <CommunityHead title="私信" />
         <Styled.Container>
           <Row gutter={[32, 32]}>
@@ -42,7 +42,7 @@ const Layout: React.FC = ({ children }) => {
             </Col>
           </Row>
         </Styled.Container>
-      </SiteLayout>
+      </CoreLayout>
     </>
   );
 };

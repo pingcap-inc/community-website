@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { Row, Space } from 'antd';
+import { Row } from 'antd';
 
 import { mixins } from '@tidb-community/ui';
 
@@ -92,8 +92,9 @@ export const CardAuthorInfo = styled.div`
   line-height: 22px;
   color: #2c2c2c;
 `;
-export const CardIcons = styled(Space)`
+export const CardIcons = styled.div`
   margin-top: 12px;
+  height: 36px;
 `;
 export const CardMore = styled.div`
   margin-top: 24px;

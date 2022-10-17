@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from 'antd';
+import { Button, Space } from 'antd';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -48,7 +48,7 @@ const SharedContent: React.FC<IProps> = (props) => {
               },
             }}
             modules={[Pagination]}
-            className="mySwiper"
+            //className="mySwiper"
           >
             {data.sharedContentCards.map((value) => (
               <SwiperSlide key={value.title}>
@@ -84,9 +84,11 @@ const Card: React.FC<IPropsCard> = (props) => {
           {data.authorName} | {data.authorTitle}
         </Styled.CardAuthorInfo>
         <Styled.CardIcons>
-          {data.iconImages.map((value) => (
-            <img key={value.src} {...value} width={36} height={36} alt={''} />
-          ))}
+          <Space>
+            {data.iconImages.map((value) => (
+              <img key={value.src} {...value} width={36} height={36} alt={''} />
+            ))}
+          </Space>
         </Styled.CardIcons>
         <Styled.CardMore>
           <Anchor href={`/u/${data.username}`}>

@@ -32,12 +32,13 @@ export const sharedContents: TSharedContents = {
     authorName: '李文杰',
     authorTitle: '网易游戏计费组 TiDB 负责人',
   },
-  //'阿福Chiris': {
-  //  title: '这一年，我和 TiDB 的故事',
-  //  description: '套用现在文雅的说法，2021 Dev Conf 是故事开始的地方，去年我阴差阳错的跟着朋友参加了 TiDB Dev Conf，那时候新冠还不叫奥密克戎，很多人天真的以为，过了2021年夏天，新冠就结束了。扯远了，回到正题，2021年7月24日，坐着高铁，我来到了 Dev Conf 会场，拿着 “争做Contributor” 的牌子，假装自己也是一枚 SQL BOY。',
-  //  authorName: '阿福Chiris',
-  //  authorTitle: '济南地区活动组织者',
-  //},
+  阿福chris: {
+    title: '这一年，我和 TiDB 的故事',
+    description:
+      '套用现在文雅的说法，2021 Dev Conf 是故事开始的地方，去年我阴差阳错的跟着朋友参加了 TiDB Dev Conf，那时候新冠还不叫奥密克戎，很多人天真的以为，过了2021年夏天，新冠就结束了。扯远了，回到正题，2021年7月24日，坐着高铁，我来到了 Dev Conf 会场，拿着 “争做Contributor” 的牌子，假装自己也是一枚 SQL BOY。',
+    authorName: '阿福chris',
+    authorTitle: '济南地区活动组织者',
+  },
   数据小黑: {
     title: '命里有时终须有--记与TiDB的一次次擦肩而过',
     description:

@@ -7,8 +7,12 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/zh';
 
+import type {FC} from 'react'
+import type {AppProps} from 'next/app'
+
 import {api} from '@tidb-community/datasource';
 import {constants, createAppGlobalStyle} from '@tidb-community/ui';
+//@ts-ignore
 import {logPageView} from '@tidb-community/tracking-script';
 import {withLayout} from '@tidb-community/common';
 import {
@@ -82,7 +86,7 @@ defineSiteComponentsConfig({
 //   },
 // };
 
-const App = ({ Component, pageProps, router }) => {
+const App: FC<AppProps> = ({ Component, pageProps, router }) => {
   useEffect(() => {
     const handleRouteChange = () => {
       if (process.env.NEXT_PUBLIC_RUNTIME_ENV === 'production') {

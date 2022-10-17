@@ -6,10 +6,10 @@ import Link from 'next/link';
 import BlogLayout from '../BlogLayout.component';
 import * as Styled from './index.styled';
 import BlogList from '../_components/BlogList';
-import { usePrincipal } from '../blog.hooks';
 import { getPageQuery } from '~/utils/pagination.utils';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
+import { AuthenticateState, blogAuthenticated, useAuthenticatedState } from '~/utils/auth.utils';
 
 const status = 'PENDING';
 
@@ -23,9 +23,7 @@ export const getServerSideProps = async (ctx) => {
 };
 
 const PageContent = () => {
-  const { hasAuthority } = usePrincipal();
-  const hasPermission = hasAuthority('REVIEW_POST');
-
+  const authenticatedState = useAuthenticatedState();
   const router = useRouter();
   const { page, size } = getPageQuery(router.query);
   const sort = 'lastModifiedAt,desc';
@@ -34,11 +32,9 @@ const PageContent = () => {
   });
 
   const error = blogsError;
-  const loading = !blogs || hasPermission === undefined;
+  const loading = !blogs || authenticatedState === AuthenticateState.LOADING;
   if (error) return <ErrorPage error={error} />;
   if (loading) return <Skeleton active />;
-
-  if (hasPermission === false) <ErrorPage statusCode={403} errorMsg={'您没有 REVIEW_POST 权限，无法查看本页面'} />;
 
   return (
     <BlogLayout>
@@ -63,5 +59,7 @@ const Page = (props) => (
     <PageContent {...props} />
   </>
 );
+
+Page.useAuthenticated = blogAuthenticated(['REVIEW_POST'], []);
 
 export default Page;

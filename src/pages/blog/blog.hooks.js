@@ -13,6 +13,7 @@ const usePrincipalSsr = () => {
     hasRole: () => false,
     isAuthor: () => false,
     isLogin: false,
+    isPrincipalValidating: false,
   };
 };
 
@@ -24,7 +25,7 @@ const UNAUTHORIZED = {
 
 const usePrincipalBrowser = () => {
   const { meData, isMeValidating } = useContext(MeContext);
-  const { data: principal } = useSWR([meData?.username], {
+  const { data: principal, isValidating: isPrincipalValidating } = useSWR([meData?.username], {
     fetcher: () => api.blog.common.principal(),
   });
 
@@ -64,7 +65,7 @@ const usePrincipalBrowser = () => {
     }
   }, [meData, principal, isMeValidating]);
 
-  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading };
+  return { roles, authorities, hasRole, hasAuthority, isAuthor, isLogin, id, loading, isPrincipalValidating };
 };
 
 export const usePrincipal = typeof window === 'undefined' ? usePrincipalSsr : usePrincipalBrowser;

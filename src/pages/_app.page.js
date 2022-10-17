@@ -37,6 +37,7 @@ import '@pingcap-inc/tidb-community-site-components/dist/index.css';
 import Link from 'next/link';
 
 import { fetcher as newFetcher } from '~/api';
+import { withAuthentication } from '~/utils/auth.utils';
 
 dayjs.extend(relativeTime);
 // TODO: Need to sync with NextJS locale value
@@ -100,7 +101,7 @@ const App = ({ Component, pageProps, router }) => {
     const { status, statusText, data } = err;
     const errorMsg = data?.detail || statusText;
 
-    if ([403, 404].includes(status)) {
+    if ([404].includes(status)) {
       setErrorStatus(status);
       setErrorMsg(errorMsg);
     } else {
@@ -152,7 +153,7 @@ const App = ({ Component, pageProps, router }) => {
     return <ErrorPage statusCode={errorStatus} errorMsg={errorMsg} />;
   }
 
-  const WrappedComponent = withLayout(Component);
+  const WrappedComponent = withLayout(withAuthentication(Component));
 
   return (
     <SWRConfig

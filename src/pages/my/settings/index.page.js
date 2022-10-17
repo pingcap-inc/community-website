@@ -1,30 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { CommunityHead, PageLoader } from '~/components';
-import { AuthContext, MeContext } from '~/context';
+import { CommunityHead } from '~/components';
 
 import Content from './content';
 import Layout from '../layout';
-
-const PageContent = ({ title }) => {
-  const { login, isAnonymous } = useContext(AuthContext);
-  const { meData } = useContext(MeContext);
-
-  if (isAnonymous) {
-    login();
-    return null;
-  }
-
-  if (!meData) {
-    return <PageLoader />;
-  }
-
-  return (
-    <Layout title={title}>
-      <Content />
-    </Layout>
-  );
-};
 
 const Page = () => {
   const title = '账号设置';
@@ -32,7 +11,10 @@ const Page = () => {
   return (
     <>
       <CommunityHead title={title} />
-      <PageContent title={title} />
+
+      <Layout title={title}>
+        <Content />
+      </Layout>
     </>
   );
 };

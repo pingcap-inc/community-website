@@ -2,7 +2,6 @@
 // https://nextjs.org/docs/advanced-features/custom-error-page
 // https://github.com/vercel/next.js/blob/canary/packages/next/pages/_error.tsx
 
-import * as R from 'ramda';
 import React, {useEffect, useState} from 'react';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Button } from 'antd';

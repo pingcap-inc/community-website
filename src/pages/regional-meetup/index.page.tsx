@@ -90,7 +90,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
           width: 64,
           height: 64,
         },
-        iconImages: user.badges.map((value) => ({ src: value.image, width: 32, height: 32 })),
+        iconImages: (user.badges ?? []).map((value) => ({ src: value.image, width: 32, height: 32 })),
       });
     } catch (e) {
       console.error('[Error] [/regional-meetup] [getServerSideProps] [sharedContentCards]', e);

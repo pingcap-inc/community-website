@@ -1,14 +1,19 @@
 import * as React from 'react';
 import { useEffect, useMemo, useState } from 'react';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import { Breadcrumb, Skeleton } from 'antd';
 
 import { api } from '@tidb-community/datasource';
 
-import { getI18nProps } from '~/utils/i18n.utils';
 import { CommunityHead, ErrorPage } from '~/components';
 import { PageDataContext } from '~/context';
+import { getPageQuery } from '~/utils/pagination.utils';
+import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
 
-import BlogLayout from './BlogLayout.component';
 import * as styled from './_components/BlogHomepage/index.styled';
+import BlogLayout from './BlogLayout.component';
 import CategoryList from './_components/CategoryList';
 import CategoryListMobile from './_components/CategoryListMobile';
 // import SearchOnMobile from './_components/SearchOnMobile';
@@ -16,14 +21,8 @@ import OrderBySwitch from './_components/OrderBySwitch';
 import { BlogListInfiniteScroll } from './_components/BlogList';
 import WriteBlogButton from './_components/WriteBlogButton';
 import HotTagList from './_components/HotTagList';
-import { getPageQuery } from '~/utils/pagination.utils';
-import FeedbackCard from '~/pages/blog/_components/FeedbackCard';
-import { useRouter } from 'next/router';
-import useSWR from 'swr';
-import { Breadcrumb, Skeleton } from 'antd';
 import { parseSlugs } from './_components/BlogHomepage/utils';
-import TagItem from '~/pages/blog/tag/TagItem.component';
-import Link from 'next/link';
+import TagItem from './tag/TagItem.component';
 
 const CATEGORY_ALL = { name: '首页', slug: '' };
 
@@ -32,8 +31,6 @@ const CATEGORY_ALL = { name: '首页', slug: '' };
 // - /blog/c/slug: info.type is 'category'
 // - /blog/tag/slug: info.type is 'tag'
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
-
   const { slugs } = ctx.params;
   const { latest: queryLatest } = ctx.query;
   const info = parseSlugs(slugs, queryLatest);
@@ -62,7 +59,6 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
-      ...i18nProps,
       category,
       tag,
       categories,
@@ -200,7 +196,7 @@ export default function CategoryPage({
   return (
     <PageDataContext.Provider value={{ showRecommendedIcon: true }}>
       <CommunityHead
-        title={`专栏 - ${filter?.name ?? '加载中...'}`}
+        title={filter?.name == null ? '专栏' : `专栏 - ${filter?.name}`}
         description={
           '这里有来自 TiDB 社区用户分享的管理与运维、实践案例、架构选型、原理解读、应用开发、社区动态等一系列技术文章，也期待你的分享~'
         }

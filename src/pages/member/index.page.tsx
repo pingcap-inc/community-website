@@ -1,14 +1,14 @@
-import * as Styled from './index.styled';
 import React, { useContext, useState } from 'react';
-// @ts-ignore
-import Layout from '~/pages/member/layout';
+import { useRouter } from 'next/router';
 import { Button, Col, Modal, Row } from 'antd';
 import useSWR from 'swr';
-import { useRouter } from 'next/router';
 import { api } from '@tidb-community/datasource';
-// @ts-ignore
+
 import { PageLoader } from '~/components';
-import { MeContext } from '../../context';
+import { MeContext } from '~/context';
+
+import * as Styled from './index.styled';
+import Layout from './layout';
 
 const Page = () => {
   const { isReady } = useRouter();

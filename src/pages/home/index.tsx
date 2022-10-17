@@ -65,7 +65,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 
 const Page: NextPage<{ data: any }> = ({ data }) => (
   <PageDataContext.Provider value={{ data }}>
-    <CommunityHead />
+    <CommunityHead title={'首页'} />
 
     <CoreLayout>
       <Banner />

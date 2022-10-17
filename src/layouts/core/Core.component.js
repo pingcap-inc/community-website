@@ -62,7 +62,6 @@ const Core = ({
   children = undefined,
   domain = 'tidb.net',
   hasMargin,
-  locale = 'zh',
   backgroundColor = undefined,
   style = undefined,
   props = {},
@@ -76,7 +75,6 @@ const Core = ({
   const data = getData({
     domain,
     path: router.basePath,
-    locale,
     meData,
     redDots,
   }).nav;
@@ -132,7 +130,6 @@ const Core = ({
               currentNav={currentNav}
               items={userProfileNavItems}
               avatarUrl={meData?.avatar_url}
-              locale={locale}
             />
           }
         />

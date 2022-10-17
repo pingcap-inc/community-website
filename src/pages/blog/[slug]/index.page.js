@@ -4,28 +4,28 @@ import useSWR from 'swr';
 import { Breadcrumb, Skeleton } from 'antd';
 import NextHead from 'next/head';
 import Link from 'next/link';
+import { cloneDeep, throttle } from 'lodash';
 
-import * as Styled from './blog.styled';
-import { CoreLayout } from '~/layouts';
-import { OriginLabel, RepostLabel } from './components/labels';
-import BlogInfo from '../_components/BlogInfo';
+import { api } from '@tidb-community/datasource';
 import TiEditor, { createFactory } from '@pingcap-inc/tidb-community-editor';
 import '@pingcap-inc/tidb-community-editor/dist/style.css';
+
+import { CommunityHead } from '~/components';
+import { CoreLayout } from '~/layouts';
+import { MeContext } from '~/context';
+import Anchor from '~/components/Anchor';
+import ErrorPage from '~/components/errorPage';
+
+import * as Styled from './blog.styled';
+import { OriginLabel, RepostLabel } from './components/labels';
+import BlogInfo from '../_components/BlogInfo';
 import AuthorInfo from './components/AuthorInfo';
 import Interactions from './components/Interactions';
 import Comments from './components/Comments';
 import StatusAlert from './components/StatusAlert';
-import { api } from '@tidb-community/datasource';
-import { getI18nProps } from '~/utils/i18n.utils';
-import { CommunityHead } from '~/components';
 import { usePrincipal } from '../blog.hooks';
-import ErrorPage from '../../../components/errorPage';
-import { MeContext } from '~/context';
-import Anchor from '~/components/Anchor';
-import { cloneDeep, throttle } from 'lodash';
 
 export const getServerSideProps = async (ctx) => {
-  const i18nProps = await getI18nProps(['common'])(ctx);
   const { req } = ctx;
   const ip = req.headers['X-Forwarded-For'] || req.headers['x-real-ip'] || req.connection.remoteAddress;
 
@@ -42,7 +42,6 @@ export const getServerSideProps = async (ctx) => {
 
   return {
     props: {
-      ...i18nProps,
       blog,
       isPending,
     },

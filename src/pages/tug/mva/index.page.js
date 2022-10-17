@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import { Col, Row } from 'antd';
 
+import { CoreLayout } from '~/layouts';
+import { cdn } from '~/utils';
+import { CommunityHead } from '~/components';
+
 import BecomeMVA from '~/components/mva/BecomeMVA';
 import Container from '~/components/Container/Container';
 import MVAItem from '~/components/mva/MVAItem';
@@ -10,9 +14,6 @@ import WelfareItem from '~/components/mva/WelfareItem';
 import YearSwitch from '~/components/mva/YearSwitch';
 import styles from './mva.module.scss';
 import mvaData from './data';
-import { CoreLayout } from '~/layouts';
-import { cdn } from '~/utils';
-import { CommunityHead } from '~/components';
 
 const getImage = (filename) => cdn.getImageUrl(`/images/tug/mva/${filename}`);
 

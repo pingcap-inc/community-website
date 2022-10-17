@@ -1,12 +1,13 @@
 import * as React from 'react';
-import * as Styled from './index.styled';
+import { Space } from 'antd';
+
 import { CommunityHead } from '~/components';
 import { CoreLayout } from '~/layouts';
-import { PageDataContext } from '~/context';
+import { IProfile, IRawBadges } from '~/api/asktug/profile';
+
+import * as Styled from './index.styled';
 import ProfileCard from '../ProfileCard';
 import BadgeCard from '../BadgeCard';
-import { Space } from 'antd';
-import { IProfile, IRawBadges } from '~/api/asktug/profile';
 
 export interface IProps {
   children: React.ReactNode;
@@ -17,8 +18,8 @@ export interface IProps {
 
 export default function ProfileLayout({ children, badges, profile, nums }: IProps) {
   return (
-    <PageDataContext.Provider value={{ data: undefined }}>
-      <CommunityHead />
+    <>
+      <CommunityHead title={`个人资料 - ${profile.username}`} />
       <CoreLayout backgroundColor={'#e9eaee'}>
         <Styled.Content>
           <Styled.Container>
@@ -39,6 +40,6 @@ export default function ProfileLayout({ children, badges, profile, nums }: IProp
           </Styled.Container>
         </Styled.Content>
       </CoreLayout>
-    </PageDataContext.Provider>
+    </>
   );
 }

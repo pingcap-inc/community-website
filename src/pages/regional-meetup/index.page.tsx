@@ -85,11 +85,12 @@ export const getServerSideProps: GetServerSideProps = async () => {
         description: sharedContents[username].description,
         authorName: sharedContents[username].authorName,
         authorTitle: sharedContents[username].authorTitle,
-        avatarImage: {
-          src: process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL + user.user.avatar_template.replace('{size}', '64'),
-          width: 64,
-          height: 64,
-        },
+        //avatarImage: {
+        //  src: process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL + user.user.avatar_template.replace('{size}', '64'),
+        //  width: 64,
+        //  height: 64,
+        //},
+        avatarImage: sharedContents[username].avatarImage,
         iconImages: (user.badges ?? []).map((value) => ({ src: value.image, width: 32, height: 32 })),
       });
     } catch (e) {

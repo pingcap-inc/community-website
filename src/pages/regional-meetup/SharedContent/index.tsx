@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Button, Space } from 'antd';
+import Image from 'next/image'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
 import { Pagination } from 'swiper';
 
-import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
+
+import * as Styled from './index.styled';
 import type { TSharedContentCard } from '../index.page';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -78,7 +80,7 @@ const Card: React.FC<IPropsCard> = (props) => {
         <Styled.CardDescription>{data.description}</Styled.CardDescription>
         <Styled.CardSplitLine />
         <Styled.CardAuthorAvatar>
-          <img {...data.avatarImage} width={120} height={120} alt={''} />
+          <Image {...data.avatarImage} width={120} height={120} alt={''} />
         </Styled.CardAuthorAvatar>
         <Styled.CardAuthorInfo>
           {data.authorName} | {data.authorTitle}

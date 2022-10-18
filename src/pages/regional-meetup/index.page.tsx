@@ -111,8 +111,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
           duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(videoBasicInfo.data.duration % 60).toFixed()}`,
           playCount: videoBasicInfo.data.stat.view,
           createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
-          videCoverImage: videoRecords[bvid].videCoverImage,
-          //videCoverImage: { src: videoBasicInfo.data.pic, width: null, height: null },
+          //videCoverImage: videoRecords[bvid].videCoverImage,
+          videCoverImage: { src: videoBasicInfo.data.pic, width: 160, height: 100 },
         });
       }
     } catch (e) {

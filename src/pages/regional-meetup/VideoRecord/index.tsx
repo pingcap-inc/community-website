@@ -96,7 +96,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
                 <Space>
                   <Styled.InfoTag>{value.region}</Styled.InfoTag>
                 </Space>
-                <Anchor href={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}>
+                <Anchor href={`https://www.bilibili.com/video/${value.bvid}`}>
                   <Styled.InfoTitle>{value.title}</Styled.InfoTitle>
                 </Anchor>
                 <Styled.InfoPeople>{value.authorName}</Styled.InfoPeople>

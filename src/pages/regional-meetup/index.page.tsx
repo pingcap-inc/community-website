@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { GetServerSideProps, NextPage } from 'next';
+import type { GetServerSideProps, GetStaticProps, NextPage } from 'next';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 
@@ -15,7 +15,7 @@ import JoinNow from './JoinNow';
 import { sharedContents } from '~/data/regional-meetup/shared-content';
 import { getUserByUsername } from '~/api/asktug/profile';
 import type { StaticImageData } from 'next/image';
-import { getVideoBasicInfo } from '~/utils/bilibili';
+import { downloadVideoCoverImage, getVideoBasicInfo } from '~/utils/bilibili';
 import { videoRecords } from '~/data/regional-meetup/video-record';
 
 dayjs.extend(duration);
@@ -74,7 +74,7 @@ const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards, videoRecordI
 
 export default RegionalMeetupPage;
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps<TProps> = async () => {
   const sharedContentCards: TSharedContentCard[] = [];
   for (const username of Object.keys(sharedContents)) {
     try {
@@ -103,6 +103,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
     try {
       const videoBasicInfo = await getVideoBasicInfo(bvid);
       if (videoBasicInfo.code === 0) {
+        const { extensionName } = await downloadVideoCoverImage(bvid, videoBasicInfo.data.pic);
         videoRecordItems.push({
           bvid,
           region: videoRecords[bvid].region,
@@ -112,7 +113,8 @@ export const getServerSideProps: GetServerSideProps = async () => {
           playCount: videoBasicInfo.data.stat.view,
           createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
           //videCoverImage: videoRecords[bvid].videCoverImage,
-          videCoverImage: { src: videoBasicInfo.data.pic, width: 160, height: 100 },
+          //videCoverImage: { src: videoBasicInfo.data.pic, width: 160, height: 100 },
+          videCoverImage: { src: `/images/bilibili_video_cover/${bvid}.${extensionName}`, width: 160, height: 100 },
         });
       }
     } catch (e) {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import * as fs from 'fs';
 
 export type TBilibiliCommonResponse<T> = {
   code: number; // 0,
@@ -44,4 +45,18 @@ export type TVideoBasicInfo = {
 export async function getVideoBasicInfo(bvid: string) {
   const url = 'https://api.bilibili.com/x/web-interface/view?bvid=' + bvid;
   return (await axios.get<TBilibiliCommonResponse<TVideoBasicInfo>>(url)).data;
+}
+
+export async function downloadVideoCoverImage(bvid: string, url: string) {
+  const extensionName = url.split('.').reverse()[0];
+  const filePath = `${process.cwd()}/public/images/bilibili_video_cover/${bvid}.${extensionName}`;
+  const response = await axios.get(url, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+    responseType: 'arraybuffer',
+  });
+  const data = response.data;
+  fs.writeFileSync(filePath, data);
+  return { filePath, extensionName };
 }

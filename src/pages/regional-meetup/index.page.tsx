@@ -1,5 +1,5 @@
 import * as React from 'react';
-import type { GetServerSideProps, GetStaticProps, NextPage } from 'next';
+import type { GetStaticProps, NextPage } from 'next';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 

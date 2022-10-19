@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Space } from 'antd';
-import Image from 'next/image'
+import Image from 'next/image';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules

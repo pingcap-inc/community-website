@@ -81,7 +81,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
             <Space size={10} align={'start'}>
               <Styled.VideoCover>
                 <VideoCoverItem
-                  url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
+                  url={`https://www.bilibili.com/video/${value.bvid}`}
                   videCoverImage={value.videCoverImage}
                   //duration={value.duration}
                   width={160}

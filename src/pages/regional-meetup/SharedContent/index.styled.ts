@@ -54,7 +54,7 @@ export const Card = styled.div`
 `;
 export const CardTitle = styled.div`
   ${mixins.lineClamp(2)};
-  height: 64px;
+  height: 56px;
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;

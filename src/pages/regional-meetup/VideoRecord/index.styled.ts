@@ -164,11 +164,14 @@ export const VideoPlayButton = styled.div`
 
 export const VideoPlayIcon = styled(PlayCircleFilled)`
   font-size: 2rem;
-  color: ${colors.T2};
-  opacity: 46%;
+  color: ${colors.C4};
+  opacity: 75%;
 
   &:hover {
     color: ${colors.M2};
     cursor: pointer;
   }
+
+  border-radius: 2rem;
+  box-shadow: 2px 2px 12px 0px rgb(0 0 0 / 25%);
 `;

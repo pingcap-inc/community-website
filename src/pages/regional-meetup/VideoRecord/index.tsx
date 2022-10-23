@@ -36,13 +36,13 @@ const VideoRecord: React.FC<IProps> = (props) => {
         <Col sm={24} md={12}>
           <VideoCoverItem
             url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
-            videCoverImage={videoRecordItems[0].videCoverImage}
+            videoCoverImage={videoRecordItems[0].videoCoverImage}
             //duration={videoRecordItems[0].duration}
             width={160 * 3}
             height={100 * 3}
           />
           {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
-          {/*  <Image {...videoRecords[0].videCoverImage} />*/}
+          {/*  <Image {...videoRecords[0].videoCoverImage} />*/}
           {/*</Anchor>*/}
         </Col>
         <Col sm={24} md={12}>
@@ -82,14 +82,14 @@ const VideoRecord: React.FC<IProps> = (props) => {
               <Styled.VideoCover>
                 <VideoCoverItem
                   url={`https://www.bilibili.com/video/${value.bvid}`}
-                  videCoverImage={value.videCoverImage}
+                  videoCoverImage={value.videoCoverImage}
                   //duration={value.duration}
                   width={160}
                   height={100}
                   //layout={'fixed'}
                 />
                 {/*<Anchor href={value.moreLinkUrl}>*/}
-                {/*  <Image {...value.videCoverImage} width={160} height={100} layout={'fixed'} />*/}
+                {/*  <Image {...value.videoCoverImage} width={160} height={100} layout={'fixed'} />*/}
                 {/*</Anchor>*/}
               </Styled.VideoCover>
               <Styled.Info>
@@ -131,10 +131,10 @@ const VideoRecord: React.FC<IProps> = (props) => {
 
 export default VideoRecord;
 
-//function VideoCoverLarge({ url, videCoverImage }) {
+//function VideoCoverLarge({ url, videoCoverImage }) {
 //  const { isSmallScreen } = useIsSmallScreen();
 //  return (
-//    <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={encodeURI(videCoverImage.src)}>
+//    <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={encodeURI(videoCoverImage.src)}>
 //      <Styled.VideoPlayButton>
 //        <Anchor href={url}>
 //          <Styled.VideoPlayIcon color="white" height="48px" />
@@ -144,12 +144,12 @@ export default VideoRecord;
 //  );
 //}
 
-function VideoCoverItem({ url, videCoverImage, width, height }) {
+function VideoCoverItem({ url, videoCoverImage, width, height }) {
   const { isSmallScreen } = useIsSmallScreen();
   return (
     <Styled.VideoBox
       $isSmallScreen={isSmallScreen}
-      $src={encodeURI(videCoverImage.src)}
+      $src={encodeURI(videoCoverImage.src)}
       $width={width}
       $height={height}
     >

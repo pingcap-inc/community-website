@@ -46,7 +46,7 @@ export type TVideoRecordFull = {
   bvid: string;
   title: string;
   //videCoverImageUrl: string;
-  videCoverImage: StaticImageData;
+  videoCoverImage: StaticImageData;
   duration: string;
   playCount: number;
   createDatetime: string;
@@ -112,9 +112,9 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
           duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(videoBasicInfo.data.duration % 60).toFixed()}`,
           playCount: videoBasicInfo.data.stat.view,
           createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
-          //videCoverImage: videoRecords[bvid].videCoverImage,
-          //videCoverImage: { src: videoBasicInfo.data.pic, width: 160, height: 100 },
-          videCoverImage: { src: `/images/bilibili_video_cover/${bvid}.${extensionName}`, width: 160, height: 100 },
+          //videoCoverImage: videoRecords[bvid].videoCoverImage,
+          //videoCoverImage: { src: videoBasicInfo.data.pic, width: 160, height: 100 },
+          videoCoverImage: { src: `/images/bilibili_video_cover/${bvid}.${extensionName}`, width: 160, height: 100 },
         });
       }
     } catch (e) {

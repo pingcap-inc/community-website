@@ -98,6 +98,7 @@ jobs:
             ./packages/i18n/locales
             .dockerignore
             Dockerfile
+            ./public
 
       - name: Archive static artifacts
         uses: actions/upload-artifact@v3

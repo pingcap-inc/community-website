@@ -3,9 +3,9 @@
   "private": true,
   "scripts": {
     "build": "next build --no-lint",
-    "postbuild": "npm run build:sitemap",
+    "build:local": "cat .env.local > .env.production && npm run build",
     "build:preview": "cat .env.preview > .env.production && npm run build",
-    "build:production": "npm run build",
+    "build:production": "npm run build && npm run build:sitemap",
     "build:watch": "lerna run --no-bail build:watch",
     "build:sitemap": "next-sitemap",
     "copy:locales": "rm -rf public/locales && cp -r packages/i18n/locales public",

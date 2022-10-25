@@ -23,7 +23,7 @@ COPY ./packages/i18n/locales ./packages/i18n/locales
 # Automatically leverage output traces to reduce image size
 # https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --chown=nextjs:nodejs ./.next/standalone ./
-COPY --chown=nextjs:nodejs ./public ./
+COPY --chown=nextjs:nodejs ./public ./public/
 
 USER nextjs
 

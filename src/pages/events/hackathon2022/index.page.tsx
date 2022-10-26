@@ -185,6 +185,67 @@ const dataThemeRace = [
   },
 ];
 
+const dataWinnerTeam = {
+  application: {
+    name: '应用组',
+    item: [
+      {
+        name: '图一乐',
+        description: 'Data Dance，Try TiDB online~',
+        prize: '一等奖 + 用户之选奖',
+        bonus: '"奖金 ¥50,000'
+      },
+      {
+        name: '不上班你养我啊',
+        description: '云迹，解决企业在云上部署架构下统一成本分析、关键指标监控告警的问题',
+        prize: '二等奖 + 最佳人气奖"',
+        bonus: '奖金 ¥50,000 + 奖金 ¥5,000'
+      },
+      {
+        name: '6c0c6375-462b-4320-9af2-03593d55b227',
+        description: 'Mirror-魔镜，不用写复杂 SQL 就可以简单获得分析结果',
+        prize: '"二等奖 + 最佳创意奖',
+        bonus: '奖金 ¥25,000 + 键鼠套装/人',
+      },
+      {
+
+        name: 'cloud naive',
+        description: 'My Life，记录我们的生活轨迹，存储到 TiDB 中，最终以各种方式展现',
+        prize: '三等奖',
+        bonus: '奖金 ¥25,000 + 奖金 ¥5,000',
+      },
+      {
+        name: '一天一个项目',
+        description: 'HTAP Charts，在 TiDB 层设计与实现 charts 组件， 用户可以基于配置和拖拽的方式生成自己的图表，然后在网站上获取相应图标的 iframe 代码，嵌入至自己的应用内即完成了图表的相关构建',
+        prize: '三等奖',
+        bonus: '奖金 ¥15,000',
+      },
+      {
+        name: '敲代码不喊我是吧',
+        description: 'TiCat，项目着眼于实现从 MySQL 迁移到 TiDB 的迁移校验工具',
+        prize: '+ 三等奖 + 最佳校园奖"',
+        bonus: '奖金 ¥15,000 + 奖金 ¥5,000',
+      },
+      {
+        name: '莫慌！有我！',
+        description: 'NFTips，直接使用公链数据对 NFT 数字藏品的“一生”做可视化分析',
+        prize: '区块链专项奖 + 技术趋势奖',
+        bonus: '奖金 ¥10,000 + 奖金 ¥5,000',
+      },
+      {
+        name: '贵司贵组',
+        description: 'TiDB Cloud VS Code extension，用 VS Code 直接管理 TiDB Cloud cluster，赋能开发者进行一站式数据处理和应用开发',
+        prize: 'Cloud 应用生态奖',
+        bonus: '奖金 ¥5,000',
+      },
+    ],
+  },
+  production: {
+    name: '产品组',
+    item: [],
+  },
+}
+
 const dataPrize = {
   topPrize: {
     description: (

@@ -1,13 +1,10 @@
 import * as React from 'react';
 
 import * as Styled from './index.styled';
+import { IThemeRace } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {
-    color: string;
-    name: string;
-    body: string;
-  }[];
+  data: IThemeRace[];
 }
 
 const ThemeRace: React.FC<IProps> = (props) => {

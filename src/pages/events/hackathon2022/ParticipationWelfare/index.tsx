@@ -1,12 +1,10 @@
 import * as React from 'react';
 
 import * as Styled from './index.styled';
+import { IParticipationWelfareItem } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {
-    icon: React.ReactNode;
-    text: string;
-  }[];
+  data: IParticipationWelfareItem[];
 }
 
 const ParticipationWelfare: React.FC<IProps> = (props) => {

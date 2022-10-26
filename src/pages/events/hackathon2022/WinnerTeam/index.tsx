@@ -1,5 +1,4 @@
 import * as React from 'react';
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import { Space } from 'antd';
 import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
@@ -7,35 +6,12 @@ import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
 import Anchor from '~/components/Anchor';
 
 import * as Styled from './index.styled';
+import { IWinnerTeamRace } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
-    application: {
-      name: string;
-      color: string;
-      items: {
-        pictureImage: StaticImageData;
-        githubLink: string;
-        playbackLink: string;
-        rfcLink: string;
-        name: React.ReactNode;
-        title: React.ReactNode;
-        description: React.ReactNode;
-      }[];
-    };
-    production: {
-      name: string;
-      color: string;
-      items: {
-        pictureImage: StaticImageData;
-        githubLink: string;
-        playbackLink: string;
-        rfcLink: string;
-        name: React.ReactNode;
-        title: React.ReactNode;
-        description: React.ReactNode;
-      }[];
-    };
+    application: IWinnerTeamRace;
+    production: IWinnerTeamRace;
   };
 }
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { dispatchApiError } from './events';
+import { applyDebugInterceptor } from '~/api/clients/debug';
 
 const isDispatchGlobalApiError = (status) => {
   return ![400, 409, 428].includes(status);
@@ -21,14 +22,14 @@ const asktugClient = axios.create({
 // }, error => {
 //   return Promise.reject(error);
 // });
+applyDebugInterceptor(asktugClient);
+
 asktugClient.interceptors.response.use(
   ({ data }) => {
     return data;
   },
   (err) => {
     const { config, response } = err;
-
-    console.error(response?.status ?? 'unknown', config.url);
 
     // Some errors may not have response, like the timeout error
     if (!response) {

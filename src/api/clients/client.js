@@ -4,6 +4,7 @@ import { createCaptchaInterceptor } from '@tidb-community/common/utils/axios';
 import { getCaptchaToken } from '@tidb-community/common/utils/form';
 
 import { dispatchApiError } from './events';
+import { applyDebugInterceptor } from '~/api/clients/debug';
 
 const CSRF_MSG = 'CSRF Failed: CSRF token missing or incorrect.';
 
@@ -32,6 +33,8 @@ client.interceptors.request.use((config) => {
 
   return config;
 });
+
+applyDebugInterceptor(client);
 
 client.interceptors.response.use(
   ({ data }) => data,

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { dispatchApiError } from './events';
+import { applyDebugInterceptor } from '~/api/clients/debug';
 
 const isDispatchGlobalApiError = (status) => {
   return ![400, 409, 428].includes(status);
@@ -18,6 +19,8 @@ const blogClient = axios.create({
 // }, error => {
 //   return Promise.reject(error);
 // });
+applyDebugInterceptor(blogClient);
+
 blogClient.interceptors.response.use(
   ({ data }) => {
     return data;

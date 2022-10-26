@@ -391,11 +391,13 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>通过 PCAD 认证</td>
+            <td>通过 PCSD 认证</td>
             <td>350</td>
             <td>350</td>
             <td>仅 1 次</td>
-            <td>暂未上线</td>
+            <td>
+              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCSD">PCSD 考试</Anchor>
+            </td>
           </tr>
         </tbody>
       </table>

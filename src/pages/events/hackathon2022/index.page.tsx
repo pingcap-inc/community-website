@@ -115,7 +115,7 @@ import partnerLogo_3_37_Image from './Partner/logo/logo-3-37.png';
 import partnerLogo_3_38_Image from './Partner/logo/logo-3-38.png';
 
 const description =
-  'TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性。';
+  '本届大赛主题为「Possibility at Scale」，规模创历史之最，共有 303 名选手报名 ，86 支队伍参赛，有来自微软、蚂蚁集团、字节跳动、网易有道、浪潮、明朝万达、B 站、思科、太极图形等企业的选手，也有来自清华大学、北京邮电大学、华东师范大学、浙江理工大学、新加坡国立大学等高校的学生。选手们围绕着 TiDB 产品组和应用组两大赛道，展开了一场技术的比拼和创意的碰撞。';
 
 const seo = {
   title: 'TiDB Hackathon 2022',
@@ -574,8 +574,32 @@ const Hackathon2022: NextPage = () => {
         <Header data={dataHeader} />
 
         <Styled.Intro id={'intro'}>
-          <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛介绍</SectionTitle>
-          <Styled.IntroContent>{description}</Styled.IntroContent>
+          <SectionTitle icon={<TitleCubeOrangeIcon />}>大赛回顾</SectionTitle>
+          <Styled.IntroContent>
+            <p>
+              本届大赛主题为「Possibility at Scale」，
+              <strong>
+                规模创历史之最，共有 303 名选手报名 ，86
+                支队伍参赛，有来自微软、蚂蚁集团、字节跳动、网易有道、浪潮、明朝万达、B 站、思科、太极图形等企业的选手
+              </strong>
+              ，也有来自清华大学、北京邮电大学、华东师范大学、浙江理工大学、新加坡国立大学等高校的学生。选手们围绕着
+              TiDB 产品组和应用组两大赛道，展开了一场技术的比拼和创意的碰撞。
+            </p>
+            <p>
+              Hackathon，即“黑客马拉松”，是程序员非常喜闻乐见的赛事活动。它有着自由的形式：Hacker
+              们聚集在一起，紧密合作，发挥创意，持续编程，实现创想。编程马拉松的精髓在于：
+              <strong>一群志同道合的伙伴，在特定的时间内，相聚在一起，去做他们想做的事情</strong>
+              ——整个编程的过程几乎没有任何限制。
+            </p>
+            <p>
+              在两天一夜的 Hacking Time 后，选手们进行了精彩的展示，开发者们对 TiDB 的理解和使用越来越纯熟，Hackathon
+              的质量也在不断进化。本次{' '}
+              <strong>
+                有 16 支队伍瓜分了总计 35 万元的奖金，其中有 10 支队伍分获最佳创意奖、公益贡献奖、技术趋势奖、Cloud
+                应用生态奖、最佳人气奖、最佳校园奖、用户之选奖。
+              </strong>
+            </p>
+          </Styled.IntroContent>
         </Styled.Intro>
 
         <div

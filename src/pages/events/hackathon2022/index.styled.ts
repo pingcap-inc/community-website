@@ -6,7 +6,7 @@ export const MyContainer = styled.div`
   padding-bottom: 128px;
 `;
 
-export const Intro = styled.div`
+export const Intro = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;

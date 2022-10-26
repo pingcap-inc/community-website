@@ -36,6 +36,16 @@ export const ThemeRaceBody = styled.div`
   margin-top: 60px;
 `;
 
+export const WinnerTeam = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 66px;
+`;
+export const WinnerTeamBody = styled.div`
+  margin-top: 60px;
+`;
+
 export const CompetitionProcess = styled(Container)`
   display: flex;
   flex-direction: column;

@@ -1,10 +1,20 @@
 import styled from 'styled-components';
 import { mixins } from '@tidb-community/ui';
-import { Row, Col } from 'antd';
+import { Col, Row } from 'antd';
 
 export const Container = styled(Row).attrs({
   gutter: [32, 32],
 })``;
+
+export const Section = styled.div``;
+
+export const SectionTitle = styled.div`
+  text-align: center;
+`;
+
+export const SectionBody = styled(Row)`
+  margin-top: 32px;
+`;
 
 export const Column = styled(Col).attrs({
   lg: 6,
@@ -27,12 +37,19 @@ export const Card = styled.div`
 
 export const Picture = styled.div`
   ${mixins.transition()};
+  //width: 285px;
+  height: 190px;
+  background: #a56161;
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const Name = styled.div`
   ${mixins.transition()};
   margin-top: 16px;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 16px;
   color: #ffffff;
 `;
@@ -60,8 +77,17 @@ export const OverLayer = styled.div`
   overflow: auto;
 `;
 
-export const Action = styled.div``;
+export const Action = styled.div<{ $color: string }>`
+  margin-top: 24px;
+  a {
+    color: #fff;
+    height: 24px;
+    line-height: 1;
+  }
+  svg:hover,
+  a:hover {
+    color: ${({ $color }) => $color};
+  }
+`;
 
-export const ActionGitHub = styled.div``;
-
-export const ActionPlay = styled.div``;
+export const ActionItem = styled.div``;

@@ -20,6 +20,8 @@ import backgroundCornerBlueImage from './background_corner_blue.png';
 import backgroundCornerSkyblueReverseImage from './background_corner_skyblue_reverse.png';
 import Header from './Header';
 import ThemeRace from './ThemeRace';
+import TitleWinnerIcon from './title-winner-icon.svg';
+import WinnerTeam from './WinnerTeam';
 import CompetitionProcess from './CompetitionProcess';
 import Prize from './Prize';
 import ParticipationWelfare from './ParticipationWelfare';
@@ -188,7 +190,8 @@ const dataThemeRace = [
 const dataWinnerTeam = {
   application: {
     name: '应用组',
-    item: [
+    color: '#F67200',
+    items: [
       {
         name: '图一乐',
         description: 'Data Dance，Try TiDB online~',
@@ -243,7 +246,8 @@ const dataWinnerTeam = {
   },
   production: {
     name: 'TiDB 产品组',
-    item: [
+    color: '#00CF71',
+    items: [
       {
         name: '摸鱼就是',
         description: 'Double My QPS，一键变强',
@@ -727,6 +731,13 @@ const Hackathon2022: NextPage = () => {
               <ThemeRace data={dataThemeRace} />
             </Styled.ThemeRaceBody>
           </Styled.ThemeRace>
+
+          <Styled.WinnerTeam>
+            <SectionTitle icon={<TitleWinnerIcon />}>获奖团队</SectionTitle>
+            <Styled.WinnerTeamBody>
+              <WinnerTeam data={dataWinnerTeam} />
+            </Styled.WinnerTeamBody>
+          </Styled.WinnerTeam>
 
           <Styled.CompetitionProcess>
             <SectionTitle icon={<TitleCornerSkyBlueIcon />}>参赛流程</SectionTitle>

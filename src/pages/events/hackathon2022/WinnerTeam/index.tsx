@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import { Space } from 'antd';
 import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
 
@@ -13,7 +14,10 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
       name: string;
       color: string;
       items: {
-        picture: StaticImageData;
+        pictureImage: StaticImageData;
+        githubLink: string;
+        playbackLink: string;
+        rfcLink: string;
         name: React.ReactNode;
         title: React.ReactNode;
         description: React.ReactNode;
@@ -23,7 +27,10 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
       name: string;
       color: string;
       items: {
-        picture: StaticImageData;
+        pictureImage: StaticImageData;
+        githubLink: string;
+        playbackLink: string;
+        rfcLink: string;
         name: React.ReactNode;
         title: React.ReactNode;
         description: React.ReactNode;
@@ -70,7 +77,9 @@ function TeamItem({ value, color }) {
     <Styled.Item>
       <Styled.Card>
         <div id={'basic'}>
-          <Styled.Picture>{/*<Image {...value.picture} alt={value.name} />*/}</Styled.Picture>
+          <Styled.Picture>
+            <Image {...value.pictureImage} alt={value.name} />
+          </Styled.Picture>
           <Styled.Name>{value.name}</Styled.Name>
           <Styled.Bonus>{value.bonus}</Styled.Bonus>
         </div>
@@ -80,17 +89,17 @@ function TeamItem({ value, color }) {
       </Styled.Card>
       <Styled.Action $color={color}>
         <Space size={16}>
-          <Anchor href={'#'}>
+          <Anchor href={value.githubLink}>
             <Styled.ActionItem>
               <GithubFilled style={{ fontSize: 24 }} />
             </Styled.ActionItem>
           </Anchor>
-          <Anchor href={'#'}>
+          <Anchor href={value.playbackLink}>
             <Styled.ActionItem>
               <PlayCircleFilled style={{ fontSize: 24 }} />
             </Styled.ActionItem>
           </Anchor>
-          <Anchor href={'#'}>
+          <Anchor href={value.rfcLink}>
             <Styled.ActionItem>RFC</Styled.ActionItem>
           </Anchor>
         </Space>

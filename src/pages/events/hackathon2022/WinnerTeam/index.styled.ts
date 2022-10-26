@@ -12,7 +12,9 @@ export const SectionTitle = styled.div`
   text-align: center;
 `;
 
-export const SectionBody = styled(Row)`
+export const SectionBody = styled(Row).attrs({
+  size: [24, 24],
+})`
   margin-top: 32px;
 `;
 
@@ -25,14 +27,29 @@ export const Column = styled(Col).attrs({
 
 export const Item = styled.div`
   ${mixins.transition()};
-  overflow: auto;
+  //overflow: auto;
   position: relative;
   padding: 16px 24px;
+  #description {
+    display: none;
+    position: absolute;
+    width: calc(100% - (3 * 24px));
+  }
+  &:hover {
+    #basic {
+      display: none;
+    }
+    #description {
+      display: unset;
+    }
+  }
 `;
 
 export const Card = styled.div`
   padding: 12px;
   border: 1px solid rgba(237, 237, 237, 0.2);
+  //height: 100%;
+  height: 320px;
 `;
 
 export const Picture = styled.div`
@@ -63,21 +80,15 @@ export const Bonus = styled.div`
   color: #ffffff;
 `;
 
-export const OverLayer = styled.div`
-  //${mixins.transition()};
-  position: absolute;
-  //top: 0;
-  //left: 0;
-  //max-width: 304px;
-  //padding: 60px 38px;
-  padding: 0 32px;
-  padding-bottom: 32px;
-  text-align: left;
-  //width: 100%;
-  overflow: auto;
+export const Description = styled.div`
+  ${mixins.transition()};
+  font-size: 16px;
+  line-height: 2;
+  color: #ffffff;
 `;
 
 export const Action = styled.div<{ $color: string }>`
+  //position: relative;
   margin-top: 24px;
   a {
     color: #fff;

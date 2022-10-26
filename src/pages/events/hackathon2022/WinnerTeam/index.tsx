@@ -69,9 +69,14 @@ function TeamItem({ value, color }) {
   return (
     <Styled.Item>
       <Styled.Card>
-        <Styled.Picture>{/*<Image {...value.picture} alt={value.name} />*/}</Styled.Picture>
-        <Styled.Name>{value.name}</Styled.Name>
-        <Styled.Bonus>{value.bonus}</Styled.Bonus>
+        <div id={'basic'}>
+          <Styled.Picture>{/*<Image {...value.picture} alt={value.name} />*/}</Styled.Picture>
+          <Styled.Name>{value.name}</Styled.Name>
+          <Styled.Bonus>{value.bonus}</Styled.Bonus>
+        </div>
+        <div id={'description'}>
+          <Styled.Description>{value.description}</Styled.Description>
+        </div>
       </Styled.Card>
       <Styled.Action $color={color}>
         <Space size={16}>

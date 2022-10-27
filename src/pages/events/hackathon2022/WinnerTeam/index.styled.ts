@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { mixins } from '@tidb-community/ui';
-import { Col, Row } from 'antd';
+import { Col } from 'antd';
+
 import Container from '~/components/Container';
 
 export const MyContainer = styled(Container)``;

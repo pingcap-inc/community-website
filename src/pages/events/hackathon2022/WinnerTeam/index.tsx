@@ -19,14 +19,12 @@ const WinnerTeam: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
   const { data, ...rest } = props;
   return (
-    <Styled.Container {...rest}>
+    <Styled.MyContainer {...rest}>
       <Styled.Section>
         <Styled.SectionTitle style={{ color: data.application.color }}>{data.application.name}</Styled.SectionTitle>
         <Styled.SectionBody>
           {data.application.items.map((value, index) => (
-            <Styled.Column key={index}>
-              <TeamItem value={value} color={data.application.color} />
-            </Styled.Column>
+            <TeamItem key={index} value={value} color={data.application.color} />
           ))}
         </Styled.SectionBody>
       </Styled.Section>
@@ -35,13 +33,11 @@ const WinnerTeam: React.FC<IProps> = (props) => {
         <Styled.SectionTitle style={{ color: data.production.color }}>{data.production.name}</Styled.SectionTitle>
         <Styled.SectionBody>
           {data.production.items.map((value, index) => (
-            <Styled.Column key={index}>
-              <TeamItem value={value} color={data.production.color} />
-            </Styled.Column>
+            <TeamItem key={index} value={value} color={data.production.color} />
           ))}
         </Styled.SectionBody>
       </Styled.Section>
-    </Styled.Container>
+    </Styled.MyContainer>
   );
 };
 
@@ -54,7 +50,8 @@ function TeamItem({ value, color }) {
       <Styled.Card>
         <div id={'basic'}>
           <Styled.Picture>
-            <Image {...value.pictureImage} width={320} height={180} /*layout={'fixed'}*/ alt={value.name} />
+            <Image {...value.pictureImage} width={282} height={158} alt={value.name} />
+            {/*<img {...value.pictureImage} alt={value.name} />*/}
           </Styled.Picture>
           <Styled.Name>{value.name}</Styled.Name>
           <Styled.Bonus>{value.bonus}</Styled.Bonus>

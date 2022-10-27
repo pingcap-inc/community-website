@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import { mixins } from '@tidb-community/ui';
 import { Col, Row } from 'antd';
+import Container from '~/components/Container';
 
-export const Container = styled(Row).attrs({
-  gutter: [32, 32],
-})``;
+export const MyContainer = styled(Container)``;
 
 export const Section = styled.div``;
 
@@ -12,10 +11,11 @@ export const SectionTitle = styled.div`
   text-align: center;
 `;
 
-export const SectionBody = styled(Row).attrs({
-  size: [24, 24],
-})`
+export const SectionBody = styled.div`
   margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 `;
 
 export const Column = styled(Col).attrs({
@@ -49,18 +49,24 @@ export const Card = styled.div`
   padding: 12px;
   border: 1px solid rgba(237, 237, 237, 0.2);
   //height: 100%;
-  height: 320px;
+  //height: 320px;
+  //width: 320px + 2 * 12px;
+  width: 304px;
+  height: 300px;
 `;
 
 export const Picture = styled.div`
   ${mixins.transition()};
   //width: 285px;
-  height: 190px;
+  //width: 160px * 1.25;
+  //height: 90px * 1.25;
+  width: 282px;
+  height: 158px;
   background: #a56161;
-  img {
-    width: 100%;
-    height: 100%;
-  }
+  //img {
+  //  width: 100%;
+  //  height: 100%;
+  //}
 `;
 
 export const Name = styled.div`

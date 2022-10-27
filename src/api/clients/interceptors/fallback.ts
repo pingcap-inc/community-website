@@ -1,4 +1,4 @@
-import { AxiosError, AxiosInstance } from 'axios';
+import { AxiosError, AxiosInstance, AxiosResponse } from 'axios';
 import * as Sentry from '@sentry/browser';
 
 function isAxiosError(error: unknown): error is AxiosError {
@@ -13,9 +13,16 @@ export function addFallbackDataInterceptors(client: AxiosInstance) {
     if (!error.config.fallbackResponse) {
       return Promise.reject(error);
     }
-    console.error(`Error occurred in http request, returns fallback response instead.`, error);
+    console.error(
+      `Error occurred in http request ${error.response?.request.path}, returns fallback response instead.`,
+      error.message
+    );
+    // The error was not thrown, so sentry needs to capture it manually.
     Sentry.captureException(error);
 
-    return Promise.resolve(error.config.fallbackResponse);
+    return Promise.resolve({
+      ...error.response,
+      data: error.config.fallbackResponse,
+    } as AxiosResponse);
   });
 }

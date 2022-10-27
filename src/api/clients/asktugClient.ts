@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { dispatchApiError } from './events';
-import { applyDebugInterceptor } from '~/api/clients/debug';
+import { applyDebugInterceptor } from './interceptors/debug';
+import { passThroughCookies } from '~/api/clients/interceptors/ssr';
 
 const isDispatchGlobalApiError = (status) => {
   return ![400, 409, 428].includes(status);
@@ -12,6 +13,7 @@ const asktugClient = axios.create({
   headers: {
     accept: 'application/json',
   },
+  passThroughCookies: 'asktug',
   isDispatchApiError({ status }) {
     return status !== 404;
   },
@@ -22,6 +24,7 @@ const asktugClient = axios.create({
 // }, error => {
 //   return Promise.reject(error);
 // });
+axios.interceptors.request.use(passThroughCookies);
 applyDebugInterceptor(asktugClient);
 
 asktugClient.interceptors.response.use(

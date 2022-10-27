@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { dispatchApiError } from './events';
+import { addFallbackDataInterceptors } from './interceptors/fallback';
 
 const isDispatchGlobalApiError = (status) => {
   return ![400, 409, 428].includes(status);
@@ -15,6 +16,8 @@ const asktugClient = axios.create({
     return status !== 404;
   },
 });
+
+addFallbackDataInterceptors(asktugClient);
 // axios.interceptors.request.use((config) => {
 //   console.log('request params：', config);
 //   return config;
@@ -51,11 +54,6 @@ asktugClient.interceptors.response.use(
       if (isDispatch) {
         dispatchApiError(response);
       }
-    }
-
-    // TODO: SSR requests does not contains cookie info
-    if (data?.error_type === 'invalid_access') {
-      return Promise.resolve(config.fallbackResponse);
     }
 
     return Promise.reject(isReturnErrorResponse ? response : data ?? err);

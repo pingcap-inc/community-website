@@ -4,10 +4,17 @@ import _client from './client';
 import _nextClient from './nextClient';
 
 declare module 'axios' {
-  export interface AxiosRequestConfig {
+  export interface AxiosRequestConfig<D> {
     isDispatchApiError?(res: AxiosResponse): boolean;
     isReturnErrorResponse?: boolean;
-    fallbackResponse?: any;
+
+    /**
+     * Prevent breaking pages while some error occurred.
+     * If the fallbackResponse is used, the error would be sent to sentry.
+     *
+     * @see import('./interceptors/fallback').addFallbackDataInterceptors
+     */
+    fallbackResponse?: D;
   }
 }
 

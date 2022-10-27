@@ -4,6 +4,7 @@ import { createCaptchaInterceptor } from '@tidb-community/common/utils/axios';
 import { getCaptchaToken } from '@tidb-community/common/utils/form';
 
 import { dispatchApiError } from './events';
+import { addFallbackDataInterceptors } from './interceptors/fallback';
 
 const CSRF_MSG = 'CSRF Failed: CSRF token missing or incorrect.';
 
@@ -32,6 +33,7 @@ client.interceptors.request.use((config) => {
 
   return config;
 });
+addFallbackDataInterceptors(client);
 
 client.interceptors.response.use(
   ({ data }) => data,

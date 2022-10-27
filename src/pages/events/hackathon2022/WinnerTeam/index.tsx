@@ -54,7 +54,7 @@ function TeamItem({ value, color }) {
       <Styled.Card>
         <div id={'basic'}>
           <Styled.Picture>
-            <Image {...value.pictureImage} alt={value.name} />
+            <Image {...value.pictureImage} width={320} height={180} /*layout={'fixed'}*/ alt={value.name} />
           </Styled.Picture>
           <Styled.Name>{value.name}</Styled.Name>
           <Styled.Bonus>{value.bonus}</Styled.Bonus>

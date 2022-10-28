@@ -375,6 +375,90 @@ export const dataWinnerTeam: {
   },
 };
 
+export interface IFinalistTeamItem {
+  teamName: string
+  projectName: string
+  score: string
+  rank: number
+}
+export interface IFinalistGroupItem {
+  name: string
+  color: string
+  items: IFinalistTeamItem[]
+}
+export const dateFinalist: IFinalistGroupItem[] = [
+  {
+    name: '应用组',
+    color: '#F67200',
+    items: [
+      {teamName: "图一乐", projectName: 'Data Dance', score: '88.94', rank: 1, },
+      {teamName: "不上班你养我啊", projectName: '云迹', score: '86.54', rank: 2, },
+      {teamName: "6c0c6375-462b-4320-9af2-03593d55b227", projectName: 'Mirror-魔镜', score: '84.08', rank: 3, },
+      {teamName: "cloud naive", projectName: 'My Life', score: '83.23', rank: 4, },
+      {teamName: "一天一个项目", projectName: 'HTAP Charts', score: '82.88', rank: 5, },
+      {teamName: "敲代码不喊我是吧", projectName: 'TiCat', score: '82.54', rank: 6, },
+      {teamName: "Ti 流批", projectName: 'Ti 流批', score: '81.66', rank: 7, },
+      {teamName: "开心就好", projectName: 'cool', score: '81.63', rank: 8, },
+      {teamName: "自己写 自己查 自己网站上挂", projectName: 'OSSInsight Marketplace', score: '81.61', rank: 9, },
+      {teamName: "1' or '1' = '1", projectName: 'TiSQLi', score: '81.44', rank: 10, },
+      {teamName: "莫慌！有我！", projectName: 'NFTips', score: '81.41', rank: 11, },
+      {teamName: "Ti可立刻", projectName: 'Ti-Click++', score: '81.32', rank: 12, },
+      {teamName: "Second State", projectName: 'A serverless ETL runtime for the TiDB Cloud', score: '79.75', rank: 13, },
+      {teamName: "三人行", projectName: 'Python Playground', score: '79.27', rank: 14, },
+      {teamName: "贵司贵组", projectName: 'TiDB Cloud VS Code extension', score: '78.78', rank: 15, },
+      {teamName: "三恒诸浪", projectName: 'SSO 实现 TiDB 登录权限校验', score: '78.61', rank: 16, },
+      {teamName: "Cloooudy", projectName: 'ETiCD', score: '78.31', rank: 17, },
+      {teamName: "KubeBrain", projectName: 'KubeBrain', score: '77.91', rank: 18, },
+      {teamName: "42", projectName: 'ETCD with TiDB ', score: '77.35', rank: 19, },
+      {teamName: "HOTPOOR", projectName: 'FindMaster', score: '77.21', rank: 20, },
+      {teamName: "MindBase", projectName: 'MindBase', score: '76.43', rank: 21, },
+      {teamName: "Give Me Five", projectName: 'Public Data Market Service', score: '75.75', rank: 22, },
+      {teamName: "发际线保护协会", projectName: '基于kine加入适配层后端使用tidb扩展etcd', score: '74.97', rank: 23, },
+      {teamName: "中杯 大杯 超大杯", projectName: 'TiTicket', score: '74.56', rank: 24, },
+      {teamName: "TINOCO", projectName: 'TiNocoDB', score: '73.84', rank: 25, },
+      {teamName: "五湖四海", projectName: 'SSO 实现 TiDB 登录权限校验', score: '71.56', rank: 26, },
+      {teamName: "大明湖畔的小天台", projectName: 'MIXED HTAP ON K8S', score: '69.49', rank: 27, },
+    ],
+  },
+  {
+    name: 'TiDB 产品组',
+    color: '#00CF71',
+    items: [
+      {teamName: '摸鱼就是', projectName: 'Double My QPS', score: '83.49', rank: 1, },
+      {teamName: '我垫你们蹲', projectName: 'TiFlash Collocated Optimization', score: '82.20', rank: 2, },
+      {teamName: '12只喵', projectName: 'MoreCat', score: '81.59', rank: 3, },
+      {teamName: 'TiFancy', projectName: 'TiFancy', score: '79.65', rank: 4, },
+      {teamName: '彦青说得队', projectName: 'Optimizer trace', score: '79.25', rank: 5, },
+      {teamName: '鸡你太美', projectName: 'Sibyl', score: '79.12', rank: 6, },
+      {teamName: 'The Powerful Elephants', projectName: 'make table cache a little better', score: '77.09', rank: 7, },
+      {teamName: 'Canopus', projectName: 'TiDB 计算微服务', score: '76.55', rank: 8, },
+      {teamName: 'go.unwrap()', projectName: 'ticli-rs', score: '76.05', rank: 9, },
+      {teamName: 'BLEACH', projectName: 'BLEACH', score: '75.95', rank: 10, },
+      {teamName: '热点清零', projectName: 'Fearless Write Hotspot', score: '75.59', rank: 11, },
+      {teamName: 'Leonardo', projectName: 'WAY@TiDB GIS support', score: '74.42', rank: 12, },
+      {teamName: '你说都对', projectName: '配置兼容性看护', score: '74.15', rank: 13, },
+      {teamName: '龙哥说的都', projectName: 'Placement Rules 可视化配置', score: '74.06', rank: 14, },
+      {teamName: '更实用，更易用', projectName: 'Tidb holding hands with S3', score: '73.27', rank: 15, },
+      {teamName: 'P2T', projectName: 'Postegre sql to TiDB', score: '72.55', rank: 16, },
+      {teamName: '你说了算', projectName: 'AutoIndex', score: '72.50', rank: 17, },
+      {teamName: 'Jiekun', projectName: 'FSDS', score: '72.43', rank: 18, },
+      {teamName: 'cdc-plg', projectName: 'cdc sink plugin', score: '71.25', rank: 19, },
+      {teamName: '爱吃苦瓜和大米', projectName: 'TiPipeline', score: '71.05', rank: 20, },
+      {teamName: 'TiDB, YES！', projectName: 'fiberpunk', score: '70.85', rank: 21, },
+      {teamName: '周边真好看', projectName: '周边真好看', score: '68.80', rank: 22, },
+      {teamName: '小灰灰yyds', projectName: 'TiDB Unified Execution Engine', score: '67.40', rank: 23, },
+      {teamName: '黑马警长', projectName: '迁移一条龙', score: '66.85', rank: 24, },
+      {teamName: '队长负责带饭', projectName: 'TiBee', score: '66.80', rank: 25, },
+      {teamName: 'Sightseeing', projectName: '基于eBPF的TiDB数据流监控工具', score: '66.60', rank: 26, },
+      {teamName: 'BetterTP', projectName: 'BetterTP', score: '65.45', rank: 27, },
+      {teamName: 'ng-raft-engine', projectName: 'ng-raft-engine', score: '64.12', rank: 28, },
+      {teamName: '煮酒论英雄', projectName: 'TiInverted', score: '63.47', rank: 29, },
+      {teamName: '苍蝇腿也是肉', projectName: '优化器支持 INDEX SKIP SCAN', score: '61.10', rank: 30, },
+      {teamName: '小蝌蚪找妈妈', projectName: 'TiQ', score: '60.20', rank: 31, },
+    ],
+  },
+]
+
 export const dataPrize = {
   topPrize: {
     description: (

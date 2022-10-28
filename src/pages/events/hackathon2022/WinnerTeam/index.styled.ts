@@ -2,9 +2,7 @@ import styled from 'styled-components';
 import { mixins } from '@tidb-community/ui';
 import { Col } from 'antd';
 
-import Container from '~/components/Container';
-
-export const MyContainer = styled(Container)``;
+export const MyContainer = styled.div``;
 
 export const Section = styled.div``;
 
@@ -46,34 +44,39 @@ export const Item = styled.div`
   }
 `;
 
+const sizePxPadding = 10;
+const sizePxWidth = 320;
+const sizePxHeight = 180;
 export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 12px;
+  padding: ${sizePxPadding}px;
   border: 1px solid rgba(237, 237, 237, 0.2);
   //height: 100%;
   //height: 320px;
-  //width: 320px + 2 * 12px;
-  width: 304px;
+  width: ${sizePxWidth + 2 * sizePxPadding}px;
+  //width: 304px;
   //height: 300px;
   height: 100%;
 `;
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  width: 100%;
+`;
 
 export const Picture = styled.div`
   ${mixins.transition()};
   //width: 285px;
   //width: 160px * 1.25;
   //height: 90px * 1.25;
-  width: 282px;
-  height: 158px;
+  width: ${sizePxWidth}px;
+  height: ${sizePxHeight}px;
   background: #a56161;
-  //img {
-  //  width: 100%;
-  //  height: 100%;
-  //}
+  img {
+    width: 100%;
+    height: 100%;
+  }
 `;
 
 export const Name = styled.div`
@@ -95,6 +98,7 @@ export const Bonus = styled.div`
 
 export const Description = styled.div`
   ${mixins.transition()};
+  width: 100%;
   font-size: 16px;
   line-height: 2;
   color: #ffffff;

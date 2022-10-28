@@ -51,7 +51,7 @@ function TeamItem({ value, color }) {
         <Styled.Content>
           <div id={'basic'}>
             <Styled.Picture>
-              <Image {...value.pictureImage} width={282} height={158} alt={value.name} />
+              <Image {...value.pictureImage} alt={value.name} />
               {/*<img {...value.pictureImage} alt={value.name} />*/}
             </Styled.Picture>
             <Styled.Name>{value.name}</Styled.Name>

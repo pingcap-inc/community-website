@@ -48,35 +48,37 @@ function TeamItem({ value, color }) {
   return (
     <Styled.Item>
       <Styled.Card>
-        <div id={'basic'}>
-          <Styled.Picture>
-            <Image {...value.pictureImage} width={282} height={158} alt={value.name} />
-            {/*<img {...value.pictureImage} alt={value.name} />*/}
-          </Styled.Picture>
-          <Styled.Name>{value.name}</Styled.Name>
-          <Styled.Bonus>{value.bonus}</Styled.Bonus>
-        </div>
-        <div id={'description'}>
-          <Styled.Description>{value.description}</Styled.Description>
-        </div>
+        <Styled.Content>
+          <div id={'basic'}>
+            <Styled.Picture>
+              <Image {...value.pictureImage} width={282} height={158} alt={value.name} />
+              {/*<img {...value.pictureImage} alt={value.name} />*/}
+            </Styled.Picture>
+            <Styled.Name>{value.name}</Styled.Name>
+            <Styled.Bonus>{value.bonus}</Styled.Bonus>
+          </div>
+          <div id={'description'}>
+            <Styled.Description>{value.description}</Styled.Description>
+          </div>
+        </Styled.Content>
+        <Styled.Action $color={color}>
+          <Space size={16}>
+            <Anchor href={value.githubLink}>
+              <Styled.ActionItem>
+                <GithubFilled style={{ fontSize: 24 }} />
+              </Styled.ActionItem>
+            </Anchor>
+            <Anchor href={value.playbackLink}>
+              <Styled.ActionItem>
+                <PlayCircleFilled style={{ fontSize: 24 }} />
+              </Styled.ActionItem>
+            </Anchor>
+            <Anchor href={value.rfcLink}>
+              <Styled.ActionItem>RFC</Styled.ActionItem>
+            </Anchor>
+          </Space>
+        </Styled.Action>
       </Styled.Card>
-      <Styled.Action $color={color}>
-        <Space size={16}>
-          <Anchor href={value.githubLink}>
-            <Styled.ActionItem>
-              <GithubFilled style={{ fontSize: 24 }} />
-            </Styled.ActionItem>
-          </Anchor>
-          <Anchor href={value.playbackLink}>
-            <Styled.ActionItem>
-              <PlayCircleFilled style={{ fontSize: 24 }} />
-            </Styled.ActionItem>
-          </Anchor>
-          <Anchor href={value.rfcLink}>
-            <Styled.ActionItem>RFC</Styled.ActionItem>
-          </Anchor>
-        </Space>
-      </Styled.Action>
     </Styled.Item>
   );
 }

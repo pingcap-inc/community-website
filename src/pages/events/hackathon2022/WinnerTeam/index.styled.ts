@@ -47,14 +47,20 @@ export const Item = styled.div`
 `;
 
 export const Card = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: 12px;
   border: 1px solid rgba(237, 237, 237, 0.2);
   //height: 100%;
   //height: 320px;
   //width: 320px + 2 * 12px;
   width: 304px;
-  height: 300px;
+  //height: 300px;
+  height: 100%;
 `;
+
+export const Content = styled.div``;
 
 export const Picture = styled.div`
   ${mixins.transition()};

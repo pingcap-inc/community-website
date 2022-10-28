@@ -211,7 +211,7 @@ export const dataWinnerTeam: {
         name: '图一乐',
         description: 'Data Dance，Try TiDB online~',
         prize: '一等奖 + 用户之选奖',
-        bonus: '"奖金 ¥50,000',
+        bonus: '奖金 ¥50,000',
       },
       {
         pictureImage: 应用组_二等奖_不上班你养我啊,
@@ -220,7 +220,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/VelocityLight/ccb4c50e569b1ee733f23a2bb97e8439',
         name: '不上班你养我啊',
         description: '云迹，解决企业在云上部署架构下统一成本分析、关键指标监控告警的问题',
-        prize: '二等奖 + 最佳人气奖"',
+        prize: '二等奖 + 最佳人气奖',
         bonus: '奖金 ¥50,000 + 奖金 ¥5,000',
       },
       {
@@ -230,7 +230,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/wph95/bcb6f9fe3401a5978cedf3389afa7f75',
         name: '6c0c6375-462b-4320-9af2-03593d55b227',
         description: 'Mirror-魔镜，不用写复杂 SQL 就可以简单获得分析结果',
-        prize: '"二等奖 + 最佳创意奖',
+        prize: '二等奖 + 最佳创意奖',
         bonus: '奖金 ¥25,000 + 键鼠套装/人',
       },
       {
@@ -261,7 +261,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/cutecutecat/17e12ec4d5f677ff74482468221e34f9',
         name: '敲代码不喊我是吧',
         description: 'TiCat，项目着眼于实现从 MySQL 迁移到 TiDB 的迁移校验工具',
-        prize: '+ 三等奖 + 最佳校园奖"',
+        prize: '三等奖 + 最佳校园奖',
         bonus: '奖金 ¥15,000 + 奖金 ¥5,000',
       },
       {

@@ -19,6 +19,7 @@ import Header from './Header';
 import ThemeRace from './ThemeRace';
 import TitleWinnerIcon from './title-winner-icon.svg';
 import WinnerTeam from './WinnerTeam';
+import FinalistTeam from './FinalistTeam';
 import CompetitionProcess from './CompetitionProcess';
 import Prize from './Prize';
 import ParticipationWelfare from './ParticipationWelfare';
@@ -29,12 +30,13 @@ import PastReview from './PastReview';
 import {
   dataFAQ,
   dataHeader,
+  dataWinnerTeam,
+  dateFinalist,
   dataJudge,
   dataParticipationWelfare,
   dataPartner,
   dataPrize,
   dataThemeRace,
-  dataWinnerTeam,
 } from './data';
 import SideBar from './SideBar';
 
@@ -105,6 +107,13 @@ const Hackathon2022: NextPage = () => {
               <WinnerTeam data={dataWinnerTeam} />
             </Styled.WinnerTeamBody>
           </Styled.WinnerTeam>
+
+          <Styled.FinalistTeam>
+            <SectionTitle icon={<TitleWinnerIcon />}>入围项目</SectionTitle>
+            <Styled.FinalistTeamBody>
+              <FinalistTeam data={dateFinalist} />
+            </Styled.FinalistTeamBody>
+          </Styled.FinalistTeam>
 
           <Styled.CompetitionProcess>
             <SectionTitle icon={<TitleCornerSkyBlueIcon />}>参赛流程</SectionTitle>

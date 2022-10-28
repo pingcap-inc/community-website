@@ -6,25 +6,22 @@ import Anchor from '~/components/Anchor';
 import ArrowLink from '~/components/ArrowLink';
 import * as StyledHeader from './Header/index.styled';
 //import pictureImage from './WinnerTeam/picture.jpg';
-import 应用组_一等奖_图一乐 from './WinnerTeam/pictures/应用组-一等奖-图一乐.jpg';
-import 应用组_二等奖_不上班你养我啊 from './WinnerTeam/pictures/应用组-二等奖-不上班你养我啊.jpg';
-import 应用组_二等奖_最长名字 from './WinnerTeam/pictures/应用组-二等奖-最长名字.jpg';
-import 应用组_三等奖_cloud_naive from './WinnerTeam/pictures/应用组-三等奖-cloud naive.jpeg';
-import 应用组_三等奖_一天一个项目 from './WinnerTeam/pictures/应用组-三等奖-一天一个项目.jpg';
-import 应用组_三等奖_最佳校园奖_敲代码不喊我是吧 from './WinnerTeam/pictures/应用组-三等奖_最佳校园奖-敲代码不喊我是吧.jpg';
-import 应用组_技术趋势奖_区块链特别奖_莫慌_有我_ from './WinnerTeam/pictures/应用组-技术趋势奖_区块链特别奖-莫慌！有我！.jpg';
-import 应用组_Cloud应用生态奖_贵司贵组 from './WinnerTeam/pictures/应用组-Cloud应用生态奖-贵司贵组.jpg';
-//import 应用组_最佳人气奖_不上班你养我啊 from './WinnerTeam/pictures/应用组-最佳人气奖-不上班你养我啊.jpg'
-//import 应用组_最佳创意奖 from './WinnerTeam/pictures/应用组-最佳创意奖.jpg'
-//import 应用组_用户之选奖_图一乐 from './WinnerTeam/pictures/应用组-用户之选奖-图一乐.jpg'
-import TiDB_产品组_一等奖_摸鱼就是 from './WinnerTeam/pictures/TiDB 产品组-一等奖-摸鱼就是.jpg';
-import TiDB_产品组_三等奖_TiFancy from './WinnerTeam/pictures/TiDB 产品组-三等奖-TiFancy.jpg';
-import TiDB_产品组_三等奖_彦青说得队 from './WinnerTeam/pictures/TiDB 产品组-三等奖-彦青说得队.jpg';
-import TiDB_产品组_三等奖_鸡你太美 from './WinnerTeam/pictures/TiDB 产品组-三等奖-鸡你太美.jpg';
-import TiDB_产品组_二等奖_12只喵 from './WinnerTeam/pictures/TiDB 产品组-二等奖-12只喵.jpg';
-import TiDB_产品组_二等奖_我垫你们蹲 from './WinnerTeam/pictures/TiDB 产品组-二等奖-我垫你们蹲.jpg';
-import TiDB_产品组_最佳人气奖_黑马警长 from './WinnerTeam/pictures/TiDB 产品组-最佳人气奖-黑马警长.jpg';
-import TiDB_产品组_最佳校园奖_热点清零 from './WinnerTeam/pictures/TiDB 产品组-最佳校园奖-热点清零.jpg';
+import productionGroup_0_Image from './WinnerTeam/pictures/production-0.jpg';
+import productionGroup_1_Image from './WinnerTeam/pictures/production-1.jpg';
+import productionGroup_2_Image from './WinnerTeam/pictures/production-2.jpg';
+import productionGroup_3_Image from './WinnerTeam/pictures/production-3.jpg';
+import productionGroup_4_Image from './WinnerTeam/pictures/production-4.jpg';
+import productionGroup_5_Image from './WinnerTeam/pictures/production-5.jpg';
+import productionGroup_6_Image from './WinnerTeam/pictures/production-6.jpg';
+import productionGroup_7_Image from './WinnerTeam/pictures/production-7.jpg';
+import applicationGroup_0_Image from './WinnerTeam/pictures/application-0.jpg';
+import applicationGroup_1_Image from './WinnerTeam/pictures/application-1.jpg';
+import applicationGroup_2_Image from './WinnerTeam/pictures/application-2.jpg';
+import applicationGroup_3_Image from './WinnerTeam/pictures/application-3.jpg';
+import applicationGroup_4_Image from './WinnerTeam/pictures/application-4.jpg';
+import applicationGroup_5_Image from './WinnerTeam/pictures/application-5.jpg';
+import applicationGroup_6_Image from './WinnerTeam/pictures/application-6.jpg';
+import applicationGroup_7_Image from './WinnerTeam/pictures/application-7.jpg';
 import Icon0 from './ParticipationWelfare/icon-0.svg';
 import Icon1 from './ParticipationWelfare/icon-1.svg';
 import Icon2 from './ParticipationWelfare/icon-2.svg';
@@ -204,7 +201,7 @@ export const dataWinnerTeam: {
     color: '#F67200',
     items: [
       {
-        pictureImage: 应用组_一等奖_图一乐,
+        pictureImage: productionGroup_0_Image,
         githubLink: 'https://github.com/Lloyd-Pottiger/DataDance',
         playbackLink: 'https://www.bilibili.com/video/BV1we411G75H/',
         rfcLink: 'https://gist.github.com/Lloyd-Pottiger/2f9bfabcfd0e86230251ebb54315cf3d',
@@ -214,7 +211,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥50,000',
       },
       {
-        pictureImage: 应用组_二等奖_不上班你养我啊,
+        pictureImage: productionGroup_1_Image,
         githubLink: 'https://github.com/VelocityLight/yunji',
         playbackLink: 'https://www.bilibili.com/video/BV1ZK411D7xG/',
         rfcLink: 'https://gist.github.com/VelocityLight/ccb4c50e569b1ee733f23a2bb97e8439',
@@ -224,7 +221,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥50,000 + 奖金 ¥5,000',
       },
       {
-        pictureImage: 应用组_二等奖_最长名字,
+        pictureImage: productionGroup_2_Image,
         githubLink: 'https://github.com/mirror-data/mirror',
         playbackLink: 'https://www.bilibili.com/video/BV1D14y157U4/',
         rfcLink: 'https://gist.github.com/wph95/bcb6f9fe3401a5978cedf3389afa7f75',
@@ -234,7 +231,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥25,000 + 键鼠套装/人',
       },
       {
-        pictureImage: 应用组_三等奖_cloud_naive,
+        pictureImage: productionGroup_3_Image,
         githubLink: 'https://github.com/Daemonxiao/n8n/tree/tidb/packages/nodes-base/nodes/TiDB',
         playbackLink: 'https://www.bilibili.com/video/BV1784y1B7oB/',
         rfcLink: 'https://gist.github.com/shiyuhang0/ae6d9deab4c8e1708b80bea1de9df279',
@@ -244,7 +241,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥25,000 + 奖金 ¥5,000',
       },
       {
-        pictureImage: 应用组_三等奖_一天一个项目,
+        pictureImage: productionGroup_4_Image,
         githubLink: 'https://github.com/sydpz/pingcap_hackthon',
         playbackLink: 'https://www.bilibili.com/video/BV1Ue4y177vv/',
         rfcLink: 'https://gist.github.com/sydpz/2d5791eabb47058fdd377d4bdd4af775#file-md',
@@ -255,7 +252,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥15,000',
       },
       {
-        pictureImage: 应用组_三等奖_最佳校园奖_敲代码不喊我是吧,
+        pictureImage: productionGroup_5_Image,
         githubLink: 'https://github.com/cutecutecat/TiKey',
         playbackLink: 'https://www.bilibili.com/video/BV1Q14y157qk/',
         rfcLink: 'https://gist.github.com/cutecutecat/17e12ec4d5f677ff74482468221e34f9',
@@ -265,7 +262,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥15,000 + 奖金 ¥5,000',
       },
       {
-        pictureImage: 应用组_技术趋势奖_区块链特别奖_莫慌_有我_,
+        pictureImage: productionGroup_6_Image,
         githubLink: '#',
         playbackLink: 'https://www.bilibili.com/video/BV1WP4y1S7S8/',
         rfcLink: 'https://github.com/ChenlingLu/NFTips',
@@ -275,7 +272,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥10,000 + 奖金 ¥5,000',
       },
       {
-        pictureImage: 应用组_Cloud应用生态奖_贵司贵组,
+        pictureImage: productionGroup_7_Image,
         githubLink: '#',
         playbackLink: 'https://www.bilibili.com/video/BV1Re4y1e7NW/',
         rfcLink: 'https://gist.github.com/shizn/9d95122027d06b319fd1a8f97a2754e8',
@@ -292,7 +289,7 @@ export const dataWinnerTeam: {
     color: '#00CF71',
     items: [
       {
-        pictureImage: TiDB_产品组_一等奖_摸鱼就是,
+        pictureImage: applicationGroup_0_Image,
         githubLink: 'https://github.com/tangenta/tidb/tree/batch-point-get',
         playbackLink: '#',
         rfcLink: 'https://github.com/flowbehappy/double_my_tps',
@@ -302,7 +299,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥50,000',
       },
       {
-        pictureImage: TiDB_产品组_三等奖_TiFancy,
+        pictureImage: applicationGroup_1_Image,
         githubLink: 'https://github.com/zanmato1984/tidb/commit/33dc07bfc0c0bbce7ae1951bfa445374dcda15e9',
         playbackLink: '#',
         rfcLink: 'https://gist.github.com/zanmato1984/e9177d3f9b30023c16765d0161b4f43f',
@@ -312,7 +309,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥25,000',
       },
       {
-        pictureImage: TiDB_产品组_三等奖_彦青说得队,
+        pictureImage: applicationGroup_2_Image,
         githubLink: '#',
         playbackLink: '#',
         rfcLink: 'https://github.com/12Cat-TiDB/FRC#readme',
@@ -322,7 +319,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥25,000',
       },
       {
-        pictureImage: TiDB_产品组_三等奖_鸡你太美,
+        pictureImage: applicationGroup_3_Image,
         githubLink: '#',
         playbackLink: '#',
         rfcLink: 'Hackathon2022 - TiFancy RFC',
@@ -333,7 +330,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥15,000',
       },
       {
-        pictureImage: TiDB_产品组_二等奖_12只喵,
+        pictureImage: applicationGroup_4_Image,
         githubLink: '#',
         playbackLink: '#',
         rfcLink: 'Optimizer trace RFC',
@@ -343,7 +340,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥15,000 + 奖金 ¥5,000',
       },
       {
-        pictureImage: TiDB_产品组_二等奖_我垫你们蹲,
+        pictureImage: applicationGroup_5_Image,
         githubLink: '#',
         playbackLink: '#',
         rfcLink: 'https://github.com/Sibyl-TiDB/FRC/blob/main/README.md',
@@ -353,7 +350,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥15,000',
       },
       {
-        pictureImage: TiDB_产品组_最佳人气奖_黑马警长,
+        pictureImage: applicationGroup_6_Image,
         githubLink: '#',
         playbackLink: '#',
         rfcLink: 'https://gist.github.com/OneSizeFitsQuorum/da4b1e12b9f216fd3b42e88c57fd9e55',
@@ -364,7 +361,7 @@ export const dataWinnerTeam: {
         bonus: '奖金 ¥5,000',
       },
       {
-        pictureImage: TiDB_产品组_最佳校园奖_热点清零,
+        pictureImage: applicationGroup_7_Image,
         githubLink: '#',
         playbackLink: '#',
         rfcLink: 'https://gist.github.com/mikechengwei/d206ebf2f66c013a5ddf7740301dbba4',

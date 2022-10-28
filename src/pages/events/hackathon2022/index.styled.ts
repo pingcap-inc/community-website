@@ -46,6 +46,17 @@ export const WinnerTeamBody = styled.div`
   margin-top: 60px;
 `;
 
+export const FinalistTeam = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 66px;
+`;
+export const FinalistTeamBody = styled.div`
+  margin-top: 60px;
+  overflow: hidden;
+`;
+
 export const CompetitionProcess = styled(Container)`
   display: flex;
   flex-direction: column;

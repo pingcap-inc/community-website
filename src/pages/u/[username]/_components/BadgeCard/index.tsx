@@ -39,7 +39,7 @@ export default function ProfileCard(props: IProfileCard) {
                 value.long_description ? `(${value.long_description})` : ''
               }`}
             >
-              <img src={`${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image}`} alt={value.name} />
+              <img src={`${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image_url}`} alt={value.name} />
             </Tooltip>
           </Styled.Badge>
         ))}

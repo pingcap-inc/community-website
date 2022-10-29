@@ -12,7 +12,7 @@ export interface IRawBadges {
   name: string;
   description: string;
   grant_count: number;
-  image: string;
+  image_url: string;
   listable: boolean;
   enabled: boolean;
   has_badge: boolean;

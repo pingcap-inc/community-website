@@ -9,6 +9,8 @@ export interface IProfileCard {
   badges: IRawBadges[];
 }
 
+const NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? 'https://asktug.com';
+
 export default function ProfileCard(props: IProfileCard) {
   const { badges } = props;
   const hasBadges = badges.filter((value) => value.has_badge === true);
@@ -24,7 +26,7 @@ export default function ProfileCard(props: IProfileCard) {
             {nums.current}/{nums.total}
           </Styled.TitleNums>
         </Styled.Title>
-        <Styled.ActiveMore href={'https://asktug.com/badges'}>
+        <Styled.ActiveMore href={`${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/badges`}>
           <BulbFilled style={{ color: colors.T5 }} /> 点亮更多徽章
         </Styled.ActiveMore>
       </Styled.Header>
@@ -37,7 +39,7 @@ export default function ProfileCard(props: IProfileCard) {
                 value.long_description ? `(${value.long_description})` : ''
               }`}
             >
-              <img src={value.image} alt={value.name} />
+              <img src={`${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image}`} alt={value.name} />
             </Tooltip>
           </Styled.Badge>
         ))}

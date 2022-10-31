@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Col, Row, Tooltip } from 'antd';
+import { Col, Row, Space, Tooltip } from 'antd';
 
 import * as Styled from './index.styled';
 import { dataFinalist, IFinalistGroupItem } from '../data';
+import Anchor from '~/components/Anchor';
+import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: IFinalistGroupItem[];
@@ -37,7 +39,32 @@ const FinalistTeam: React.FC<IProps> = (props) => {
                           </Tooltip>
                         </td>
                         <td style={{ color: group.color }}>
-                          <Tooltip placement={'topLeft'} title={value.projectName}>
+                          <Tooltip
+                            placement={'bottomLeft'}
+                            title={
+                              <Styled.Tooltip>
+                                <Styled.TooltipProjectName>{value.projectName}</Styled.TooltipProjectName>
+                                <Styled.TooltipIntroduction>{value.introduction}</Styled.TooltipIntroduction>
+                                <Styled.TooltipAction $color={group.color}>
+                                  <Space size={16}>
+                                    <Anchor href={value.githubUrl}>
+                                      <Styled.TooltipActionItem>
+                                        <GithubFilled style={{ fontSize: 24 }} />
+                                      </Styled.TooltipActionItem>
+                                    </Anchor>
+                                    <Anchor href={value.playbackUrl}>
+                                      <Styled.TooltipActionItem>
+                                        <PlayCircleFilled style={{ fontSize: 24 }} />
+                                      </Styled.TooltipActionItem>
+                                    </Anchor>
+                                    <Anchor href={value.rfcUrl}>
+                                      <Styled.TooltipActionItem>RFC</Styled.TooltipActionItem>
+                                    </Anchor>
+                                  </Space>
+                                </Styled.TooltipAction>
+                              </Styled.Tooltip>
+                            }
+                          >
                             <div>{value.projectName}</div>
                           </Tooltip>
                         </td>

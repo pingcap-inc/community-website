@@ -49,3 +49,29 @@ export const SectionBody = styled.div`
     }
   }
 `;
+
+export const Tooltip = styled.div`
+  color: #ffffff;
+`;
+export const TooltipProjectName = styled.div`
+  font-size: 24px;
+  letter-spacing: 0.2em;
+`;
+export const TooltipIntroduction = styled.div`
+  color: #efefef;
+  margin-top: 24px;
+  font-size: 16px;
+`;
+export const TooltipAction = styled.div<{ $color: string }>`
+  margin-top: 24px;
+  a {
+    color: #fff;
+    height: 24px;
+    line-height: 1;
+  }
+  svg:hover,
+  a:hover {
+    color: ${({ $color }) => $color};
+  }
+`;
+export const TooltipActionItem = styled.div``;

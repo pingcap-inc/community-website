@@ -57,8 +57,7 @@ export const Card = styled.div`
   //height: 320px;
   width: ${sizePxWidth + 2 * sizePxPadding}px;
   //width: 304px;
-  //height: 300px;
-  height: 100%;
+  min-height: 356px;
 `;
 
 export const Content = styled.div`

@@ -43,7 +43,7 @@ const FinalistTeam: React.FC<IProps> = (props) => {
                             placement={'bottomLeft'}
                             title={
                               <Styled.Tooltip>
-                                <Styled.TooltipProjectName>{value.projectName}</Styled.TooltipProjectName>
+                                {/*<Styled.TooltipProjectName>{value.projectName}</Styled.TooltipProjectName>*/}
                                 <Styled.TooltipIntroduction>{value.introduction}</Styled.TooltipIntroduction>
                                 <Styled.TooltipAction $color={group.color}>
                                   <Space size={16}>

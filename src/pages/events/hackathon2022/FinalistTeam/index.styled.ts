@@ -59,7 +59,7 @@ export const TooltipProjectName = styled.div`
 `;
 export const TooltipIntroduction = styled.div`
   color: #efefef;
-  margin-top: 24px;
+  //margin-top: 24px;
   font-size: 16px;
 `;
 export const TooltipAction = styled.div<{ $color: string }>`

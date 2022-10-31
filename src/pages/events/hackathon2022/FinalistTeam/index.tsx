@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Col, Row, Tooltip } from 'antd';
 
 import * as Styled from './index.styled';
-import { dateFinalist, IFinalistGroupItem } from '../data';
+import { dataFinalist, IFinalistGroupItem } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: IFinalistGroupItem[];
@@ -14,7 +14,7 @@ const FinalistTeam: React.FC<IProps> = (props) => {
   return (
     <Styled.MyContainer {...rest}>
       <Row gutter={[24, 24]}>
-        {dateFinalist.map((group) => (
+        {dataFinalist.map((group) => (
           <Col md={24} lg={12}>
             <Styled.Section>
               <Styled.SectionTitle style={{ color: group.color }}>{group.name}</Styled.SectionTitle>

@@ -31,7 +31,7 @@ import {
   dataFAQ,
   dataHeader,
   dataWinnerTeam,
-  dateFinalist,
+  dataFinalist,
   dataJudge,
   dataParticipationWelfare,
   dataPartner,
@@ -111,7 +111,7 @@ const Hackathon2022: NextPage = () => {
           <Styled.FinalistTeam>
             <SectionTitle icon={<TitleWinnerIcon />}>入围项目</SectionTitle>
             <Styled.FinalistTeamBody>
-              <FinalistTeam data={dateFinalist} />
+              <FinalistTeam data={dataFinalist} />
             </Styled.FinalistTeamBody>
           </Styled.FinalistTeam>
 

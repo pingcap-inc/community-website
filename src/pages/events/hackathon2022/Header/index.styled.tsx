@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
-import { mixins } from '@tidb-community/ui';
+import { mixins, colors } from '@tidb-community/ui';
 import { Space } from 'antd';
 import * as React from 'react';
 
-import Anchor from '~/components/Anchor';
 import bannerBackgroundImage from './banner_background.png';
 
 export const Container = styled.div.attrs({})``;
@@ -83,12 +82,12 @@ export const HeaderStartButton = styled(Space).attrs({
   color: #fff;
 `;
 
-export const HeaderStartButtonSignUp = styled(Anchor)`
+export const HeaderStartButtonSignUp = styled.div`
   padding: 6px 16px;
   font-size: 16px;
   border: none;
-  cursor: pointer;
-  background: #f67200;
+  cursor: not-allowed;
+  background: ${colors.F2};
   color: #fff;
   &:hover {
     color: #fff;

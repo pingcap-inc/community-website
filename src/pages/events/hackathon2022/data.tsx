@@ -113,42 +113,40 @@ export const studyResourceUrl = 'https://asktug.com/t/topic/903772';
 export const dataHeader = {
   buttonItems: [
     {
-      children: (
-        <StyledHeader.HeaderStartButtonSignUp href={signUpFormUrl}>立即报名</StyledHeader.HeaderStartButtonSignUp>
-      ),
+      children: <StyledHeader.HeaderStartButtonSignUp>报名已截止</StyledHeader.HeaderStartButtonSignUp>,
     },
-    {
-      children: (
-        <Tooltip
-          placement="bottomLeft"
-          color={'#FFF'}
-          trigger={['click', 'focus']}
-          title={
-            <div style={{ textAlign: 'center' }}>
-              <Image {...qrCodeImage} alt={'扫码添加小助手进群，回复 2022 进群'} />
-              <p style={{ color: '#000' }}>
-                扫码添加小助手进群
-                <br />
-                回复 2022 进群
-              </p>
-            </div>
-          }
-        >
-          <StyledHeader.HeaderStartButtonJoinGroup>
-            <ArrowLink>加入官方群</ArrowLink>
-          </StyledHeader.HeaderStartButtonJoinGroup>
-        </Tooltip>
-      ),
-    },
-    {
-      children: (
-        <StyledHeader.HeaderStartButtonAsk>
-          <ArrowLink>
-            <Anchor href={askCompetitionUrl}>赛事咨询</Anchor>
-          </ArrowLink>
-        </StyledHeader.HeaderStartButtonAsk>
-      ),
-    },
+    //{
+    //  children: (
+    //    <Tooltip
+    //      placement="bottomLeft"
+    //      color={'#FFF'}
+    //      trigger={['click', 'focus']}
+    //      title={
+    //        <div style={{ textAlign: 'center' }}>
+    //          <Image {...qrCodeImage} alt={'扫码添加小助手进群，回复 2022 进群'} />
+    //          <p style={{ color: '#000' }}>
+    //            扫码添加小助手进群
+    //            <br />
+    //            回复 2022 进群
+    //          </p>
+    //        </div>
+    //      }
+    //    >
+    //      <StyledHeader.HeaderStartButtonJoinGroup>
+    //        <ArrowLink>加入官方群</ArrowLink>
+    //      </StyledHeader.HeaderStartButtonJoinGroup>
+    //    </Tooltip>
+    //  ),
+    //},
+    //{
+    //  children: (
+    //    <StyledHeader.HeaderStartButtonAsk>
+    //      <ArrowLink>
+    //        <Anchor href={askCompetitionUrl}>赛事咨询</Anchor>
+    //      </ArrowLink>
+    //    </StyledHeader.HeaderStartButtonAsk>
+    //  ),
+    //},
   ],
   navItems: [
     { children: '介  绍', href: '#intro' },

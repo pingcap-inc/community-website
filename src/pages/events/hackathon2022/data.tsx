@@ -1,9 +1,7 @@
 import * as React from 'react';
-import Image, { StaticImageData } from 'next/image';
-import { Tooltip } from 'antd';
+import { StaticImageData } from 'next/image';
 
 import Anchor from '~/components/Anchor';
-import ArrowLink from '~/components/ArrowLink';
 import * as StyledHeader from './Header/index.styled';
 //import pictureImage from './WinnerTeam/picture.jpg';
 import productionGroup_0_Image from './WinnerTeam/pictures/production-0.jpg';
@@ -93,7 +91,6 @@ import partnerLogo_3_35_Image from './Partner/logo/logo-3-35.png';
 import partnerLogo_3_36_Image from './Partner/logo/logo-3-36.png';
 import partnerLogo_3_37_Image from './Partner/logo/logo-3-37.png';
 import partnerLogo_3_38_Image from './Partner/logo/logo-3-38.png';
-import qrCodeImage from './Header/qrcode.jpg';
 
 export const signUpFormUrl = 'https://forms.pingcap.com/f/hackathon-2022';
 export const joinGroupFormUrl = 'https://pingcap.feishu.cn/share/base/shrcnaTxgdc234p8s9ri0xCXM9g';

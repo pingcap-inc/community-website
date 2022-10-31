@@ -38,7 +38,7 @@ import {
   dataPrize,
   dataThemeRace,
 } from './data';
-import SideBar from './SideBar';
+//import SideBar from './SideBar';
 
 const description =
   '本届大赛主题为「Possibility at Scale」，规模创历史之最，共有 303 名选手报名 ，86 支队伍参赛，有来自微软、蚂蚁集团、字节跳动、网易有道、浪潮、明朝万达、B 站、思科、太极图形等企业的选手，也有来自清华大学、北京邮电大学、华东师范大学、浙江理工大学、新加坡国立大学等高校的学生。选手们围绕着 TiDB 产品组和应用组两大赛道，展开了一场技术的比拼和创意的碰撞。';
@@ -54,7 +54,7 @@ const Hackathon2022: NextPage = () => {
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
 
-      <SideBar />
+      {/*<SideBar />*/}
 
       <Styled.MyContainer>
         <Header data={dataHeader} />

@@ -55,7 +55,7 @@ export const Card = styled.div`
   padding: ${sizePxPadding}px;
   border: 1px solid rgba(237, 237, 237, 0.2);
   //height: 100%;
-  min-height: 332px;
+  min-height: 360px;
   width: ${sizePxWidth + 2 * sizePxPadding}px;
 `;
 

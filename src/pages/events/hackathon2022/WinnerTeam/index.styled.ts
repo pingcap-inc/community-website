@@ -15,6 +15,7 @@ export const SectionBody = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  align-items: stretch;
 `;
 
 export const Column = styled(Col).attrs({
@@ -54,10 +55,8 @@ export const Card = styled.div`
   padding: ${sizePxPadding}px;
   border: 1px solid rgba(237, 237, 237, 0.2);
   //height: 100%;
-  //height: 320px;
+  min-height: 332px;
   width: ${sizePxWidth + 2 * sizePxPadding}px;
-  //width: 304px;
-  min-height: 356px;
 `;
 
 export const Content = styled.div`

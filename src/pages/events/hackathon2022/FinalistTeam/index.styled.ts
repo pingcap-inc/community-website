@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from '@pingcap-inc/tidb-community-ui';
 
 export const MyContainer = styled.div`
   width: 100%;

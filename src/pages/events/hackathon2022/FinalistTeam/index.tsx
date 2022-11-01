@@ -5,7 +5,6 @@ import * as Styled from './index.styled';
 import { dataFinalist, IFinalistGroupItem } from '../data';
 import Anchor from '~/components/Anchor';
 import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
-import { colors } from '@pingcap-inc/tidb-community-ui';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: IFinalistGroupItem[];
@@ -51,7 +50,7 @@ const FinalistTeam: React.FC<IProps> = (props) => {
                         </td>
                         <td style={{ color: group.color }}>
                           <Tooltip
-                            placement={'bottomLeft'}
+                            placement={'bottom'}
                             color={'#20222B'}
                             overlayInnerStyle={{
                               padding: 16,

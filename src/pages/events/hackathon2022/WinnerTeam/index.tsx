@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Image from 'next/image';
-import { Space } from 'antd';
+import { Space, Tooltip } from 'antd';
 import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
 
 import Anchor from '~/components/Anchor';
@@ -68,11 +68,22 @@ function TeamItem({ value, color }) {
                 <GithubFilled style={{ fontSize: 24 }} />
               </Styled.ActionItem>
             </Anchor>
-            <Anchor href={value.playbackUrl}>
-              <Styled.ActionItem>
-                <PlayCircleFilled style={{ fontSize: 24 }} />
-              </Styled.ActionItem>
-            </Anchor>
+            {value.playbackUrl === '#' ? (
+              <Tooltip title={'该团队答辩视频不对外'}>
+                <a>
+                  <Styled.ActionItem>
+                    <PlayCircleFilled style={{ fontSize: 24 }} />
+                  </Styled.ActionItem>
+                </a>
+              </Tooltip>
+            ) : (
+              <Anchor href={value.playbackUrl}>
+                <Styled.ActionItem>
+                  <PlayCircleFilled style={{ fontSize: 24 }} />
+                </Styled.ActionItem>
+              </Anchor>
+            )}
+
             <Anchor href={value.rfcUrl}>
               <Styled.ActionItem>RFC</Styled.ActionItem>
             </Anchor>

@@ -5,6 +5,7 @@ import * as Styled from './index.styled';
 import { dataFinalist, IFinalistGroupItem } from '../data';
 import Anchor from '~/components/Anchor';
 import { GithubFilled, PlayCircleFilled } from '@ant-design/icons';
+import { colors } from '@pingcap-inc/tidb-community-ui';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: IFinalistGroupItem[];
@@ -34,13 +35,30 @@ const FinalistTeam: React.FC<IProps> = (props) => {
                     {group.items.map((value) => (
                       <tr key={value.teamName}>
                         <td>
-                          <Tooltip placement={'topLeft'} title={value.teamName}>
-                            <div>{value.teamName}</div>
+                          <Tooltip
+                            placement={'topLeft'}
+                            title={value.teamName}
+                            color={'#20222B'}
+                            overlayInnerStyle={{
+                              padding: 16,
+                              color: '#FFF',
+                              fontSize: 12,
+                              boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.25)',
+                            }}
+                          >
+                            <Styled.TeamName>{value.teamName}</Styled.TeamName>
                           </Tooltip>
                         </td>
                         <td style={{ color: group.color }}>
                           <Tooltip
                             placement={'bottomLeft'}
+                            color={'#20222B'}
+                            overlayInnerStyle={{
+                              padding: 16,
+                              color: '#FFF',
+                              fontSize: 12,
+                              boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.25)',
+                            }}
                             title={
                               <Styled.Tooltip>
                                 {/*<Styled.TooltipProjectName>{value.projectName}</Styled.TooltipProjectName>*/}

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from '@pingcap-inc/tidb-community-ui';
 
 export const MyContainer = styled.div`
   width: 100%;
@@ -53,6 +54,7 @@ export const SectionBody = styled.div`
 export const Tooltip = styled.div`
   color: #ffffff;
 `;
+export const TeamName = styled.div``;
 export const TooltipProjectName = styled.div`
   font-size: 24px;
   letter-spacing: 0.2em;
@@ -60,7 +62,8 @@ export const TooltipProjectName = styled.div`
 export const TooltipIntroduction = styled.div`
   color: #efefef;
   //margin-top: 24px;
-  font-size: 16px;
+  font-size: 12px;
+  line-height: 2;
 `;
 export const TooltipAction = styled.div<{ $color: string }>`
   margin-top: 24px;

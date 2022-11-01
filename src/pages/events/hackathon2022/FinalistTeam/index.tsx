@@ -47,15 +47,7 @@ const FinalistTeam: React.FC<IProps> = (props) => {
                                 <Styled.TooltipIntroduction>{value.introduction}</Styled.TooltipIntroduction>
                                 <Styled.TooltipAction $color={group.color}>
                                   <Space size={16}>
-                                    {value.githubUrl.length === 0 ? (
-                                      <Tooltip title={'仅提供获奖团队的 GitHub 链接'}>
-                                        <a>
-                                          <Styled.TooltipActionItem>
-                                            <GithubFilled style={{ fontSize: 24 }} />
-                                          </Styled.TooltipActionItem>
-                                        </a>
-                                      </Tooltip>
-                                    ) : (
+                                    {value.githubUrl.length !== 0 && (
                                       <Anchor href={value.githubUrl}>
                                         <Styled.TooltipActionItem>
                                           <GithubFilled style={{ fontSize: 24 }} />

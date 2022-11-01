@@ -63,17 +63,17 @@ function TeamItem({ value, color }) {
         </Styled.Content>
         <Styled.Action $color={color}>
           <Space size={16}>
-            <Anchor href={value.githubLink}>
+            <Anchor href={value.githubUrl}>
               <Styled.ActionItem>
                 <GithubFilled style={{ fontSize: 24 }} />
               </Styled.ActionItem>
             </Anchor>
-            <Anchor href={value.playbackLink}>
+            <Anchor href={value.playbackUrl}>
               <Styled.ActionItem>
                 <PlayCircleFilled style={{ fontSize: 24 }} />
               </Styled.ActionItem>
             </Anchor>
-            <Anchor href={value.rfcLink}>
+            <Anchor href={value.rfcUrl}>
               <Styled.ActionItem>RFC</Styled.ActionItem>
             </Anchor>
           </Space>

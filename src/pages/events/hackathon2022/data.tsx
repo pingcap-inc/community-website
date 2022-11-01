@@ -206,7 +206,7 @@ export const dataWinnerTeam: {
       {
         pictureImage: productionGroup_1_Image,
         githubUrl: 'https://github.com/VelocityLight/yunji',
-        playbackUrl: 'https://www.bilibili.com/video/BV1ZK411D7xG/',
+        playbackUrl: '',
         rfcUrl: 'https://gist.github.com/VelocityLight/ccb4c50e569b1ee733f23a2bb97e8439',
         name: '不上班你养我啊',
         description: '云迹，解决企业在云上部署架构下统一成本分析、关键指标监控告警的问题',
@@ -251,7 +251,7 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: productionGroup_6_Image,
-        githubUrl: '#',
+        githubUrl: 'https://github.com/ChenlingLu/NFTips',
         playbackUrl: 'https://www.bilibili.com/video/BV1WP4y1S7S8/',
         rfcUrl: 'https://github.com/ChenlingLu/NFTips',
         name: '莫慌！有我！',
@@ -260,7 +260,7 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: productionGroup_7_Image,
-        githubUrl: '#',
+        githubUrl: 'https://github.com/shizn/vscode-tidb-cloud',
         playbackUrl: 'https://www.bilibili.com/video/BV1Re4y1e7NW/',
         rfcUrl: 'https://gist.github.com/shizn/9d95122027d06b319fd1a8f97a2754e8',
         name: '贵司贵组',
@@ -277,7 +277,7 @@ export const dataWinnerTeam: {
       {
         pictureImage: applicationGroup_0_Image,
         githubUrl: 'https://github.com/tangenta/tidb/tree/batch-point-get',
-        playbackUrl: '#',
+        playbackUrl: 'https://www.bilibili.com/video/BV1YK411D7ek/',
         rfcUrl: 'https://github.com/flowbehappy/double_my_tps',
         name: '摸鱼就是',
         description: 'Double My QPS，一键变强',
@@ -286,7 +286,7 @@ export const dataWinnerTeam: {
       {
         pictureImage: applicationGroup_1_Image,
         githubUrl: 'https://github.com/zanmato1984/tidb/commit/33dc07bfc0c0bbce7ae1951bfa445374dcda15e9',
-        playbackUrl: '#',
+        playbackUrl: 'https://www.bilibili.com/video/BV1uD4y1k7WD/',
         rfcUrl: 'https://gist.github.com/zanmato1984/e9177d3f9b30023c16765d0161b4f43f',
         name: '我垫你们蹲',
         description: 'TiFlash Collocated Optimization，TiFlash 支持 Collocated Join',
@@ -294,8 +294,8 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: applicationGroup_2_Image,
-        githubUrl: '#',
-        playbackUrl: '#',
+        githubUrl: 'https://github.com/12Cat-TiDB',
+        playbackUrl: 'https://www.bilibili.com/video/BV1ed4y1y7AU/',
         rfcUrl: 'https://github.com/12Cat-TiDB/FRC#readme',
         name: '12只喵',
         description: 'MoreCat，让所有人都能通过 tiup 个人镜像向 TiDB 贡献组件，打造组件市场的雏形',
@@ -303,9 +303,9 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: applicationGroup_3_Image,
-        githubUrl: '#',
-        playbackUrl: '#',
-        rfcUrl: 'Hackathon2022 - TiFancy RFC',
+        githubUrl: 'https://github.com/tifancy2022/tidb',
+        playbackUrl: 'https://www.bilibili.com/video/BV1H84y1i78k/',
+        rfcUrl: 'https://pingcap.feishu.cn/docx/MvJOd0F7SoktdIxFvLacHKJVnDg',
         name: 'TiFancy',
         description:
           'Fast at Scale，受 OSSInsight.io 启发，加强 TiDB HTAP 中对于 AP 请求的 Serving 能力，通过补全 AP 的 Serving 能力，让类似 OSSInsight 这类的 DaaS 应用直接受益，为用户从海量数据中获取实时精准的业务洞察',
@@ -313,17 +313,17 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: applicationGroup_4_Image,
-        githubUrl: '#',
-        playbackUrl: '#',
-        rfcUrl: 'Optimizer trace RFC',
+        githubUrl: 'https://github.com/yisaer/tidb/tree/2022_hackathon',
+        playbackUrl: 'https://www.bilibili.com/video/BV1oe4y117vc/',
+        rfcUrl: 'https://pingcap.feishu.cn/docx/ZwhQdo5gNoKkEGxp7wCc9h0snCp',
         name: '彦青说得队',
         description: 'Optimizer trace，对 TiDB 优化器决策过程进行可视化展示',
         prize: '三等奖 ¥15,000 ，用户之选奖 ¥5,000',
       },
       {
         pictureImage: applicationGroup_5_Image,
-        githubUrl: '#',
-        playbackUrl: '#',
+        githubUrl: 'https://github.com/Sibyl-TiDB',
+        playbackUrl: 'https://www.bilibili.com/video/BV1sV4y1G7zS/',
         rfcUrl: 'https://github.com/Sibyl-TiDB/FRC/blob/main/README.md',
         name: '鸡你太美',
         description: '"Sibyl is an Easier-to-use SQL Diagnostics tool for TiDB.',
@@ -331,8 +331,8 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: applicationGroup_6_Image,
-        githubUrl: '#',
-        playbackUrl: '#',
+        githubUrl: 'https://github.com/orgs/FWH-TiKV/repositories',
+        playbackUrl: 'https://www.bilibili.com/video/BV1cP4y1S7Xo/',
         rfcUrl: 'https://gist.github.com/OneSizeFitsQuorum/da4b1e12b9f216fd3b42e88c57fd9e55',
         name: '热点清零',
         description:
@@ -341,9 +341,10 @@ export const dataWinnerTeam: {
       },
       {
         pictureImage: applicationGroup_7_Image,
-        githubUrl: '#',
-        playbackUrl: '#',
-        rfcUrl: 'https://gist.github.com/mikechengwei/d206ebf2f66c013a5ddf7740301dbba4',
+        githubUrl: 'https://github.com/mikechengwei/Hack-2022',
+        playbackUrl: 'https://www.bilibili.com/video/BV1yd4y1y78M/',
+        rfcUrl:
+          'https://github.com/mikechengwei/Hackathon-2022/blob/main/Hackathon%202022%20-%20%E9%BB%91%E9%A9%AC%E8%AD%A6%E9%95%BF%20team%E2%80%98s%20RFC.md',
         name: '黑马警长',
         description:
           '迁移一条龙，用心连接导出导入。租户的隔离需求有的是强需求有的是弱需求，有的租户暂时只需要逻辑隔离，有的一开始就需要强隔离，有的会随着业务场景的转变由弱转强，会产生迁移的需求。',

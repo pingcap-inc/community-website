@@ -47,16 +47,36 @@ const FinalistTeam: React.FC<IProps> = (props) => {
                                 <Styled.TooltipIntroduction>{value.introduction}</Styled.TooltipIntroduction>
                                 <Styled.TooltipAction $color={group.color}>
                                   <Space size={16}>
-                                    <Anchor href={value.githubUrl}>
-                                      <Styled.TooltipActionItem>
-                                        <GithubFilled style={{ fontSize: 24 }} />
-                                      </Styled.TooltipActionItem>
-                                    </Anchor>
-                                    <Anchor href={value.playbackUrl}>
-                                      <Styled.TooltipActionItem>
-                                        <PlayCircleFilled style={{ fontSize: 24 }} />
-                                      </Styled.TooltipActionItem>
-                                    </Anchor>
+                                    {value.githubUrl.length === 0 ? (
+                                      <Tooltip title={'仅提供获奖团队的 GitHub 链接'}>
+                                        <a>
+                                          <Styled.TooltipActionItem>
+                                            <GithubFilled style={{ fontSize: 24 }} />
+                                          </Styled.TooltipActionItem>
+                                        </a>
+                                      </Tooltip>
+                                    ) : (
+                                      <Anchor href={value.githubUrl}>
+                                        <Styled.TooltipActionItem>
+                                          <GithubFilled style={{ fontSize: 24 }} />
+                                        </Styled.TooltipActionItem>
+                                      </Anchor>
+                                    )}
+                                    {!value.playbackUrl.startsWith('http') ? (
+                                      <Tooltip title={value.playbackUrl}>
+                                        <a>
+                                          <Styled.TooltipActionItem>
+                                            <PlayCircleFilled style={{ fontSize: 24 }} />
+                                          </Styled.TooltipActionItem>
+                                        </a>
+                                      </Tooltip>
+                                    ) : (
+                                      <Anchor href={value.playbackUrl}>
+                                        <Styled.TooltipActionItem>
+                                          <PlayCircleFilled style={{ fontSize: 24 }} />
+                                        </Styled.TooltipActionItem>
+                                      </Anchor>
+                                    )}
                                     <Anchor href={value.rfcUrl}>
                                       <Styled.TooltipActionItem>RFC</Styled.TooltipActionItem>
                                     </Anchor>

@@ -68,8 +68,8 @@ function TeamItem({ value, color }) {
                 <GithubFilled style={{ fontSize: 24 }} />
               </Styled.ActionItem>
             </Anchor>
-            {value.playbackUrl === '#' ? (
-              <Tooltip title={'该团队答辩视频不对外'}>
+            {!value.playbackUrl.startsWith('http') ? (
+              <Tooltip title={value.playbackUrl}>
                 <a>
                   <Styled.ActionItem>
                     <PlayCircleFilled style={{ fontSize: 24 }} />
@@ -83,7 +83,6 @@ function TeamItem({ value, color }) {
                 </Styled.ActionItem>
               </Anchor>
             )}
-
             <Anchor href={value.rfcUrl}>
               <Styled.ActionItem>RFC</Styled.ActionItem>
             </Anchor>

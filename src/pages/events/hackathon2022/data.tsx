@@ -206,7 +206,7 @@ export const dataWinnerTeam: {
       {
         pictureImage: productionGroup_1_Image,
         githubUrl: 'https://github.com/VelocityLight/yunji',
-        playbackUrl: '#',
+        playbackUrl: '该团队答辩视频不对外',
         rfcUrl: 'https://gist.github.com/VelocityLight/ccb4c50e569b1ee733f23a2bb97e8439',
         name: '不上班你养我啊',
         description: '云迹，解决企业在云上部署架构下统一成本分析、关键指标监控告警的问题',

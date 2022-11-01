@@ -180,7 +180,6 @@ export interface IWinnerTeamItem {
   name: React.ReactNode;
   description: React.ReactNode;
   prize: React.ReactNode;
-  bonus: React.ReactNode;
 }
 export interface IWinnerTeamRace {
   name: string;
@@ -202,8 +201,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/Lloyd-Pottiger/2f9bfabcfd0e86230251ebb54315cf3d',
         name: '图一乐',
         description: 'Data Dance，Try TiDB online~',
-        prize: '一等奖 + 用户之选奖',
-        bonus: '奖金 ¥50,000',
+        prize: '一等奖  ¥50,000，用户之选奖 ¥5,000',
       },
       {
         pictureImage: productionGroup_1_Image,
@@ -212,8 +210,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/VelocityLight/ccb4c50e569b1ee733f23a2bb97e8439',
         name: '不上班你养我啊',
         description: '云迹，解决企业在云上部署架构下统一成本分析、关键指标监控告警的问题',
-        prize: '二等奖 + 最佳人气奖',
-        bonus: '奖金 ¥50,000 + 奖金 ¥5,000',
+        prize: '二等奖 ¥25,000 ，最佳人气奖 键鼠套装/人',
       },
       {
         pictureImage: productionGroup_2_Image,
@@ -222,8 +219,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/wph95/bcb6f9fe3401a5978cedf3389afa7f75',
         name: '6c0c6375-462b-4320-9af2-03593d55b227',
         description: 'Mirror-魔镜，不用写复杂 SQL 就可以简单获得分析结果',
-        prize: '二等奖 + 最佳创意奖',
-        bonus: '奖金 ¥25,000 + 键鼠套装/人',
+        prize: '二等奖 ¥25,000 ，最佳创意奖 ¥5,000',
       },
       {
         pictureImage: productionGroup_3_Image,
@@ -232,8 +228,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/shiyuhang0/ae6d9deab4c8e1708b80bea1de9df279',
         name: 'cloud naive',
         description: 'My Life，记录我们的生活轨迹，存储到 TiDB 中，最终以各种方式展现',
-        prize: '三等奖',
-        bonus: '奖金 ¥25,000 + 奖金 ¥5,000',
+        prize: '三等奖 ¥15,000',
       },
       {
         pictureImage: productionGroup_4_Image,
@@ -243,8 +238,7 @@ export const dataWinnerTeam: {
         name: '一天一个项目',
         description:
           'HTAP Charts，在 TiDB 层设计与实现 charts 组件， 用户可以基于配置和拖拽的方式生成自己的图表，然后在网站上获取相应图标的 iframe 代码，嵌入至自己的应用内即完成了图表的相关构建',
-        prize: '三等奖',
-        bonus: '奖金 ¥15,000',
+        prize: '三等奖 ¥15,000',
       },
       {
         pictureImage: productionGroup_5_Image,
@@ -253,8 +247,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/cutecutecat/17e12ec4d5f677ff74482468221e34f9',
         name: '敲代码不喊我是吧',
         description: 'TiCat，项目着眼于实现从 MySQL 迁移到 TiDB 的迁移校验工具',
-        prize: '三等奖 + 最佳校园奖',
-        bonus: '奖金 ¥15,000 + 奖金 ¥5,000',
+        prize: '三等奖 ¥15,000 ，最佳校园奖 ¥5,000',
       },
       {
         pictureImage: productionGroup_6_Image,
@@ -263,8 +256,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://github.com/ChenlingLu/NFTips',
         name: '莫慌！有我！',
         description: 'NFTips，直接使用公链数据对 NFT 数字藏品的“一生”做可视化分析',
-        prize: '区块链专项奖 + 技术趋势奖',
-        bonus: '奖金 ¥10,000 + 奖金 ¥5,000',
+        prize: '区块链专项奖 ¥10,000 ，技术趋势奖 ¥5,000',
       },
       {
         pictureImage: productionGroup_7_Image,
@@ -274,8 +266,7 @@ export const dataWinnerTeam: {
         name: '贵司贵组',
         description:
           'TiDB Cloud VS Code extension，用 VS Code 直接管理 TiDB Cloud cluster，赋能开发者进行一站式数据处理和应用开发',
-        prize: 'Cloud 应用生态奖',
-        bonus: '奖金 ¥5,000',
+        prize: 'Cloud 应用生态奖 ¥5,000',
       },
     ],
   },
@@ -290,8 +281,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://github.com/flowbehappy/double_my_tps',
         name: '摸鱼就是',
         description: 'Double My QPS，一键变强',
-        prize: '一等奖',
-        bonus: '奖金 ¥50,000',
+        prize: '一等奖 ¥50,000',
       },
       {
         pictureImage: applicationGroup_1_Image,
@@ -300,8 +290,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://gist.github.com/zanmato1984/e9177d3f9b30023c16765d0161b4f43f',
         name: '我垫你们蹲',
         description: 'TiFlash Collocated Optimization，TiFlash 支持 Collocated Join',
-        prize: '二等奖',
-        bonus: '奖金 ¥25,000',
+        prize: '二等奖 ¥25,000',
       },
       {
         pictureImage: applicationGroup_2_Image,
@@ -310,8 +299,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://github.com/12Cat-TiDB/FRC#readme',
         name: '12只喵',
         description: 'MoreCat，让所有人都能通过 tiup 个人镜像向 TiDB 贡献组件，打造组件市场的雏形',
-        prize: '二等奖',
-        bonus: '奖金 ¥25,000',
+        prize: '二等奖 ¥25,000',
       },
       {
         pictureImage: applicationGroup_3_Image,
@@ -321,8 +309,7 @@ export const dataWinnerTeam: {
         name: 'TiFancy',
         description:
           'Fast at Scale，受 OSSInsight.io 启发，加强 TiDB HTAP 中对于 AP 请求的 Serving 能力，通过补全 AP 的 Serving 能力，让类似 OSSInsight 这类的 DaaS 应用直接受益，为用户从海量数据中获取实时精准的业务洞察',
-        prize: '三等奖',
-        bonus: '奖金 ¥15,000',
+        prize: '三等奖 ¥15,000',
       },
       {
         pictureImage: applicationGroup_4_Image,
@@ -331,8 +318,7 @@ export const dataWinnerTeam: {
         rfcLink: 'Optimizer trace RFC',
         name: '彦青说得队',
         description: 'Optimizer trace，对 TiDB 优化器决策过程进行可视化展示',
-        prize: '三等奖 + 用户之选奖',
-        bonus: '奖金 ¥15,000 + 奖金 ¥5,000',
+        prize: '三等奖 ¥15,000 ，用户之选奖 ¥5,000',
       },
       {
         pictureImage: applicationGroup_5_Image,
@@ -341,8 +327,7 @@ export const dataWinnerTeam: {
         rfcLink: 'https://github.com/Sibyl-TiDB/FRC/blob/main/README.md',
         name: '鸡你太美',
         description: '"Sibyl is an Easier-to-use SQL Diagnostics tool for TiDB.',
-        prize: '三等奖',
-        bonus: '奖金 ¥15,000',
+        prize: '三等奖 ¥15,000',
       },
       {
         pictureImage: applicationGroup_6_Image,
@@ -352,8 +337,7 @@ export const dataWinnerTeam: {
         name: '热点清零',
         description:
           'Fearless Write Hotspot，本项目将采用 bottom-up 的设计思路，从更好地利用 CPU、磁盘等资源的角度出发，考虑如何自底向上解决 TiKV 的写热点问题。',
-        prize: '最佳校园奖',
-        bonus: '奖金 ¥5,000',
+        prize: '最佳校园奖 ¥5,000',
       },
       {
         pictureImage: applicationGroup_7_Image,
@@ -363,8 +347,7 @@ export const dataWinnerTeam: {
         name: '黑马警长',
         description:
           '迁移一条龙，用心连接导出导入。租户的隔离需求有的是强需求有的是弱需求，有的租户暂时只需要逻辑隔离，有的一开始就需要强隔离，有的会随着业务场景的转变由弱转强，会产生迁移的需求。',
-        prize: '最佳人气奖',
-        bonus: '键鼠套装/人',
+        prize: '最佳人气奖 键鼠套装/人',
       },
     ],
   },

@@ -1,17 +1,12 @@
 import * as React from 'react';
 import { useState } from 'react';
 import Image from 'next/image';
-import type { StaticImageData } from 'next/image';
 
 import * as Styled from './index.styled';
+import { IJudgeItem } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
-  data: {
-    avatar: StaticImageData;
-    name: React.ReactNode;
-    title: string;
-    quotation: string;
-  }[];
+  data: IJudgeItem[];
 }
 
 const Judge: React.FC<IProps> = (props) => {

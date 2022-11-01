@@ -2,13 +2,11 @@ import * as React from 'react';
 import { useState } from 'react';
 
 import * as Styled from './index.styled';
+import { IFaq } from '~/pages/events/hackathon2022/data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {
-    items: {
-      question: string;
-      answer: React.ReactNode;
-    }[];
+    items: IFaq[];
     footer: React.ReactNode;
   };
 }

@@ -6,7 +6,7 @@ export const MyContainer = styled.div`
   padding-bottom: 128px;
 `;
 
-export const Intro = styled.div`
+export const Intro = styled(Container)`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +34,27 @@ export const ThemeRace = styled(Container)`
 
 export const ThemeRaceBody = styled.div`
   margin-top: 60px;
+`;
+
+export const WinnerTeam = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 66px;
+`;
+export const WinnerTeamBody = styled.div`
+  margin-top: 60px;
+`;
+
+export const FinalistTeam = styled(Container)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 66px;
+`;
+export const FinalistTeamBody = styled.div`
+  margin-top: 60px;
+  overflow: hidden;
 `;
 
 export const CompetitionProcess = styled(Container)`

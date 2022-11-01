@@ -758,7 +758,7 @@ export const dataFinalist: IFinalistGroupItem[] = [
         score: '79.65',
         rank: 4,
         playbackUrl: '等待视频内容',
-        rfcUrl: 'Hackathon2022 - TiFancy RFC ',
+        rfcUrl: 'https://pingcap.feishu.cn/docx/MvJOd0F7SoktdIxFvLacHKJVnDg',
         githubUrl: 'https://github.com/tifancy2022/tidb',
         introduction: (
           <>
@@ -776,7 +776,7 @@ export const dataFinalist: IFinalistGroupItem[] = [
         score: '79.25',
         rank: 5,
         playbackUrl: 'https://www.bilibili.com/video/BV1oe4y117vc/',
-        rfcUrl: 'Optimizer trace RFC',
+        rfcUrl: 'https://pingcap.feishu.cn/docx/ZwhQdo5gNoKkEGxp7wCc9h0snCp',
         githubUrl: 'https://github.com/yisaer/tidb/tree/2022_hackathon',
         introduction: (
           <>

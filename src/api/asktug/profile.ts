@@ -132,7 +132,7 @@ export type TUserBadgeItem = {
   allow_title: boolean; // false,
   multiple_grant: boolean; // false,
   icon: string; // "fa-certificate",
-  image: string; // "https://img2.pingcap.com/forms/6/1/6110a807f783019b46d4a9ec1a522afcd92183fd.png",
+  image_url: string; // "https://img2.pingcap.com/forms/6/1/6110a807f783019b46d4a9ec1a522afcd92183fd.png",
   listable: boolean; // true,
   enabled: boolean; // true,
   badge_grouping_id: number; // 30013,

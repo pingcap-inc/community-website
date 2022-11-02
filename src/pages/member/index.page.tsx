@@ -113,7 +113,7 @@ const Page = () => {
           {badgesData.map((badge) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>
-                <Styled.BadgeIcon src={badge.image} />
+                <Styled.BadgeIcon src={badge.image_url} />
                 <Styled.BadgeName>{badge.name}</Styled.BadgeName>
               </Styled.Badge>
             </Col>

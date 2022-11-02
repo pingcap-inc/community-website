@@ -80,7 +80,7 @@ const Card: React.FC<IPropsCard> = (props) => {
         <Styled.CardDescription>{data.description}</Styled.CardDescription>
         <Styled.CardSplitLine />
         <Styled.CardAuthorAvatar>
-          <Image {...data.avatarImage} width={120} height={120} alt={''} />
+          <Image {...data.avatarImage} width={120} height={120} alt={data.authorName} />
         </Styled.CardAuthorAvatar>
         <Styled.CardAuthorInfo>
           {data.authorName} | {data.authorTitle}

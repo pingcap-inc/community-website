@@ -39,7 +39,7 @@ export type TSharedContentCard = {
   authorName: string;
   authorTitle: string;
   avatarImage: StaticImageData;
-  iconImages: StaticImageData[];
+  iconImages: (StaticImageData & { alt?: string })[];
 };
 
 export type TVideoRecordFull = {
@@ -93,7 +93,8 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
         //  height: 64,
         //},
         avatarImage: sharedContents[username].avatarImage,
-        iconImages: (user.badges.slice(0, 5) ?? []).map((value) => ({
+        iconImages: (user.badges.filter((value) => value.image_url !== null).slice(0, 5) ?? []).map((value) => ({
+          alt: value.name,
           src: `${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image_url}`,
           width: 32,
           height: 32,

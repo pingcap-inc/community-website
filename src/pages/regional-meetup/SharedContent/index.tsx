@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Space } from 'antd';
+import { Button, Space, Tooltip } from 'antd';
 import Image from 'next/image';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -88,7 +88,9 @@ const Card: React.FC<IPropsCard> = (props) => {
         <Styled.CardIcons>
           <Space>
             {data.iconImages.map((value) => (
-              <img key={value.src} {...value} width={36} height={36} alt={''} />
+              <Tooltip key={value.src} title={value.alt}>
+                <img {...value} width={36} height={36} />
+              </Tooltip>
             ))}
           </Space>
         </Styled.CardIcons>

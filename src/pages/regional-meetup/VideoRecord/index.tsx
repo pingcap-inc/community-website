@@ -48,7 +48,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
           {/*  <Image {...videoRecords[0].videoCoverImage} />*/}
           {/*</Anchor>*/}
         </Styled.RecommendStart>
-        <Col sm={24} md={12}>
+        <div>
           <Space>
             <Styled.RecommendTag>{videoRecordItems[0].region}</Styled.RecommendTag>
           </Space>
@@ -75,7 +75,7 @@ const VideoRecord: React.FC<IProps> = (props) => {
               </Button>
             </Anchor>
           </Styled.RecommendAction>
-        </Col>
+        </div>
       </Styled.Recommend>
 
       <Styled.List wrap gutter={[36, 36]}>

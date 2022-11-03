@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button, Space, Tooltip } from 'antd';
-import Image from 'next/image';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
@@ -80,7 +79,7 @@ const Card: React.FC<IPropsCard> = (props) => {
         <Styled.CardDescription>{data.description}</Styled.CardDescription>
         <Styled.CardSplitLine />
         <Styled.CardAuthorAvatar>
-          <Image {...data.avatarImage} width={120} height={120} alt={data.authorName} />
+          <img {...data.avatarImage} width={120} height={120} alt={data.authorName} />
         </Styled.CardAuthorAvatar>
         <Styled.CardAuthorInfo>
           {data.authorName} | {data.authorTitle}

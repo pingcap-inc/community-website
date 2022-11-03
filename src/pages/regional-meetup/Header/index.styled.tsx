@@ -1,5 +1,5 @@
 import * as polished from 'polished';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Button, Space } from 'antd';
 import { colors, mixins } from '@tidb-community/ui';
 
@@ -11,15 +11,15 @@ export const Container = styled.div`
 
 export const Card = styled.div``;
 
-export const Carousel = styled.div`
-  //.slick-dots {
-  //  right: -12px;
-  //  button {
-  //    background-color: #aaa !important;
-  //  }
-  //}
+export const Carousel = styled.div<{ $isSmallScreen: boolean }>`
+  ${(props) =>
+    !props.$isSmallScreen &&
+    css`
+      .slick-list {
+        width: calc(100% - 24px) !important;
+      }
+    `}
   .slick-dots {
-    right: -24px;
     li {
       margin: 8px 3px;
 
@@ -38,6 +38,43 @@ export const Carousel = styled.div`
         }
       }
     }
+  }
+  ${(props) =>
+    props.$isSmallScreen &&
+    css`
+      margin-bottom: 3rem;
+
+      .slick-slide {
+        padding-right: 0;
+      }
+
+      .slick-dots {
+        margin: 0 auto;
+        bottom: -32px;
+
+        li {
+          margin: 3px 8px;
+
+          &,
+          button {
+            ${mixins.size('40px', '6px')}
+          }
+
+          &.slick-active {
+            &,
+            button {
+              ${mixins.size('50px', '6px')}
+            }
+          }
+        }
+      }
+    `};
+`;
+
+export const CarouselItem = styled.div`
+  //width: 100%;
+  img {
+    width: 100%;
   }
 `;
 

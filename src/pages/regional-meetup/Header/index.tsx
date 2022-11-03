@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Carousel, Col, Row } from 'antd';
-import Image from 'next/image';
 
 import Container from '~/components/Container';
+import { useIsSmallScreen } from '~/hooks';
 
 import * as Styled from './index.styled';
 import { headerImages, joinUrl, recommendUrl } from '~/data/regional-meetup';
@@ -18,6 +18,9 @@ export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
 const Header: React.FC<IProps> = (props) => {
   //function SectionTitle(props: IProps) {
   const { data, ...rest } = props;
+
+  const { isSmallScreen } = useIsSmallScreen();
+
   return (
     <Styled.Container {...rest}>
       <Container>
@@ -37,12 +40,12 @@ const Header: React.FC<IProps> = (props) => {
             </Styled.Card>
           </Col>
           <Col sm={24} md={12}>
-            <Styled.Carousel>
-              <Carousel autoplay dotPosition={'right'}>
+            <Styled.Carousel $isSmallScreen={isSmallScreen}>
+              <Carousel autoplay dotPosition={isSmallScreen ? 'bottom' : 'right'}>
                 {headerImages.map((value) => (
-                  <div key={value.image.src}>
-                    <Image {...value.image} layout={'responsive'} />
-                  </div>
+                  <Styled.CarouselItem key={value.image.src}>
+                    <img src={value.image.src} alt={''} />
+                  </Styled.CarouselItem>
                 ))}
               </Carousel>
             </Styled.Carousel>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import useSWR from 'swr';
 import { Button, Modal, Skeleton, message } from 'antd';
 import { ExclamationCircleOutlined } from '@ant-design/icons';
@@ -6,16 +6,17 @@ import { api } from '@tidb-community/datasource';
 
 import * as Styled from './content.styled';
 import Box from './box';
-import { AuthContext } from '~/context';
 import { MODALS, SetPasswordModal, UpdateEmailModal, UpdatePasswordModal, UpdatePhoneModal } from './modals';
+import { login } from '~/hooks/account';
+import ErrorStatus from '~/components/errorPage/ErrorStatus';
 
 const Content = () => {
   const [visibleModal, setVisibleModal] = useState();
-  const { data: settingsResp, error, mutate } = useSWR('account.settings');
-  const { login } = useContext(AuthContext);
+  const { data: settingsResp, error, mutate, isValidating } = useSWR('account.settings');
 
-  const isLoading = !error && !settingsResp;
-  if (isLoading) return <Skeleton active />;
+  if (isValidating) return <Skeleton active />;
+  if (error) return <ErrorStatus error={500} errorMsg={'获取个人设置数据时发生错误 ' + error} />;
+  if (!settingsResp) return <ErrorStatus error={500} errorMsg={'数据不存在'} />;
 
   const { data } = settingsResp;
   const {

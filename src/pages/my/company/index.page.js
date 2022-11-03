@@ -1,9 +1,7 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import useSWR, { useSWRConfig } from 'swr';
 import { api } from '@tidb-community/datasource';
-
-import { AuthContext, MeContext } from '~/context';
-import { CommunityHead, PageLoader } from '~/components';
+import { CommunityHead } from '~/components';
 import { redDots as redDotsUtils } from '~/utils';
 
 import * as Styled from './company.styled';
@@ -11,11 +9,11 @@ import Form from './form';
 import Layout from '../layout';
 import Verification from '../company/Verification.component';
 import { Space } from 'antd';
+import { useIsLoggedIn } from '~/hooks/account';
 
 const PageContent = ({ title }) => {
-  const { login, isAnonymous, isLoggedIn } = useContext(AuthContext);
+  const isLoggedIn = useIsLoggedIn();
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
-  const { meData } = useContext(MeContext);
   const { mutate } = useSWRConfig();
 
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
@@ -24,19 +22,10 @@ const PageContent = ({ title }) => {
     (async () => {
       if (redDots.companyInfo) {
         await api.operation.setRedDotRead('company-info');
-        mutate('operation.fetchRedDots');
+        await mutate('operation.fetchRedDots');
       }
     })();
   }, [redDots.companyInfo, mutate]);
-
-  if (isAnonymous) {
-    login();
-    return null;
-  }
-
-  if (!meData) {
-    return <PageLoader />;
-  }
 
   const titleNode = (
     <Space>

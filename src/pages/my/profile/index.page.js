@@ -1,24 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 
-import { CommunityHead, PageLoader } from '~/components';
-import { AuthContext, MeContext } from '~/context';
+import { CommunityHead } from '~/components';
 
 import Form from './form';
-import Layout from '~/pages/my/layout';
+import Layout from '../layout';
 
 const PageContent = ({ title }) => {
-  const { login, isAnonymous } = useContext(AuthContext);
-  const { meData } = useContext(MeContext);
-
-  if (isAnonymous) {
-    login();
-    return null;
-  }
-
-  if (!meData) {
-    return <PageLoader />;
-  }
-
   return (
     <Layout title={title}>
       <Form />

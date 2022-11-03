@@ -1,15 +1,15 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import useSWR from 'swr';
-import { Badge } from 'antd';
-import { useRouter } from 'next/router';
+import {Badge} from 'antd';
+import {useRouter} from 'next/router';
 
 import * as Styled from './menu.styled';
-import { AuthContext } from '~/context';
-import { redDots as redDotsUtils } from '~/utils';
+import {redDots as redDotsUtils} from '~/utils';
+import {useIsLoggedIn} from "~/hooks/account";
 
 const Menu = () => {
   const router = useRouter();
-  const { isLoggedIn } = useContext(AuthContext);
+  const isLoggedIn = useIsLoggedIn()
   const { data: redDotsResp } = useSWR(isLoggedIn && 'operation.fetchRedDots');
 
   const redDots = redDotsUtils.transformRespToMap(redDotsResp);
@@ -20,8 +20,8 @@ const Menu = () => {
   const companyPath = genPath('company');
   const settingsPath = genPath('settings');
 
-  const onClick = (path) => () => {
-    router.push(path);
+  const onClick = (path) => async () => {
+    await router.push(path);
   };
 
   return (

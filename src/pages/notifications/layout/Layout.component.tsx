@@ -4,7 +4,7 @@ import { Col, Row } from 'antd';
 import * as Styled from './layout.styled';
 import Menu, { MenuProps } from './menu';
 import { AuthContext } from '~/context';
-import { SiteLayout } from '~/layouts';
+import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -20,7 +20,7 @@ const Layout = ({ children, ...menuProps }: PropsWithChildren<LayoutProps>) => {
 
   return (
     <>
-      <SiteLayout>
+      <CoreLayout>
         <CommunityHead title="消息中心" />
         <Styled.Container>
           <Row gutter={[32, 32]}>
@@ -32,7 +32,7 @@ const Layout = ({ children, ...menuProps }: PropsWithChildren<LayoutProps>) => {
             </Col>
           </Row>
         </Styled.Container>
-      </SiteLayout>
+      </CoreLayout>
     </>
   );
 };

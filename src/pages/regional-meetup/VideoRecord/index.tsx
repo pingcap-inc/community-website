@@ -32,19 +32,22 @@ const VideoRecord: React.FC<IProps> = (props) => {
     <Styled.Container {...rest}>
       <Styled.Title>精选活动现场</Styled.Title>
 
-      <Styled.Recommend gutter={[32, 32]}>
-        <Col sm={24} md={12}>
-          <VideoCoverItem
-            url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}
-            videoCoverImage={videoRecordItems[0].videoCoverImage}
-            //duration={videoRecordItems[0].duration}
-            width={160 * 3}
-            height={100 * 3}
-          />
+      <Styled.Recommend size={32} wrap>
+        <Styled.RecommendStart>
+          <Anchor href={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}>
+            <img src={videoRecordItems[0].videoCoverImage.src} alt={videoRecordItems[0].title} />
+          </Anchor>
+          {/*<VideoCoverItem*/}
+          {/*  url={`https://www.bilibili.com/video/${videoRecordItems[0].bvid}`}*/}
+          {/*  videoCoverImage={videoRecordItems[0].videoCoverImage}*/}
+          {/*  //duration={videoRecordItems[0].duration}*/}
+          {/*  width={160 * 3}*/}
+          {/*  height={100 * 3}*/}
+          {/*/>*/}
           {/*<Anchor href={videoRecords[0].moreLinkUrl}>*/}
           {/*  <Image {...videoRecords[0].videoCoverImage} />*/}
           {/*</Anchor>*/}
-        </Col>
+        </Styled.RecommendStart>
         <Col sm={24} md={12}>
           <Space>
             <Styled.RecommendTag>{videoRecordItems[0].region}</Styled.RecommendTag>

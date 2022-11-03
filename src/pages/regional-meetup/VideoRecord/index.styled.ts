@@ -10,8 +10,15 @@ export const Container = styled(MyContainer)`
   padding: 32px 16px;
 `;
 
-export const Recommend = styled(Row)`
+export const Recommend = styled(Space)`
   margin-top: 48px;
+`;
+
+export const RecommendStart = styled.div`
+  max-width: 480px;
+  img {
+    width: 100%;
+  }
 `;
 
 export const Title = styled.div`

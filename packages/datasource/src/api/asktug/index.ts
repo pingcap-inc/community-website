@@ -9,7 +9,7 @@ export interface Badges {
 export interface BadgeEntity {
   id: number;
   name: string;
-  image: string;
+  image_url: string;
   icon: string;
   has_badge: boolean;
 }

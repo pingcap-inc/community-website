@@ -61,12 +61,15 @@ export const CardTitle = styled.div`
   /* identical to box height */
   color: #000000;
 `;
+const lineClamp = 3;
+const lineHeight = 22;
 export const CardDescription = styled.div`
-  ${mixins.lineClamp(3)};
+  ${mixins.lineClamp(lineClamp)};
+  height: ${lineClamp * lineHeight}px;
   margin-top: 16px;
   font-weight: 400;
   font-size: 14px;
-  line-height: 22px;
+  line-height: ${lineHeight}px;
   color: #565656;
 `;
 export const CardSplitLine = styled.div`

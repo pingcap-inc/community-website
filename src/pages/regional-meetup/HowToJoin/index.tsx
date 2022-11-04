@@ -2,10 +2,10 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Button, Col, Row, Space } from 'antd';
 
-import { advantages, applyDescription, joinUrl } from '~/data/regional-meetup';
 import Anchor from '~/components/Anchor';
 
 import * as Styled from './index.styled';
+import { advantages, applyDescription, joinUrl } from '../data';
 import photoImage from './photo.png';
 import giftsImage from './gifts.png';
 import vectorImage from './vector.png';

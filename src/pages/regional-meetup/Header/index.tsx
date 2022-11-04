@@ -3,10 +3,10 @@ import { Carousel, Col, Row } from 'antd';
 
 import Container from '~/components/Container';
 import { useIsSmallScreen } from '~/hooks';
+import Anchor from '~/components/Anchor';
 
 import * as Styled from './index.styled';
-import { headerImages, joinUrl, recommendUrl } from '~/data/regional-meetup';
-import Anchor from '~/components/Anchor';
+import { headerImages, joinUrl, recommendUrl } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   data: {

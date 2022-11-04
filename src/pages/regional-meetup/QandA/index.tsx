@@ -3,10 +3,11 @@ import { useState } from 'react';
 import { Button, Col, Row } from 'antd';
 import { DownOutlined } from '@ant-design/icons';
 
-import * as Styled from './index.styled';
 import Container from '~/components/Container';
-import { questionAndAnswer } from '~/data/regional-meetup';
 import { useIsSmallScreen } from '~/hooks';
+
+import * as Styled from './index.styled';
+import { questionAndAnswer } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}
 

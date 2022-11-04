@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Button } from 'antd';
 
-import * as Styled from './index.styled';
 import Container from '~/components/Container';
 import Anchor from '~/components/Anchor';
-import { joinUrl } from '~/data/regional-meetup';
+
+import * as Styled from './index.styled';
+import { joinUrl } from '../data';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   //data: {};

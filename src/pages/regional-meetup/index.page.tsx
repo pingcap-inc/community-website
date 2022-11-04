@@ -133,5 +133,7 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
       sharedContentCards,
       videoRecordItems,
     },
+    // revalidate per 1 hour
+    revalidate: 60 * 60,
   };
 };

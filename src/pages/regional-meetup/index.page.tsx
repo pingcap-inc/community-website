@@ -2,9 +2,12 @@ import * as React from 'react';
 import type { GetStaticProps, NextPage } from 'next';
 import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
+import type { StaticImageData } from 'next/image';
 
 import { CoreLayout } from '~/layouts';
 import { CommunityHead } from '~/components';
+import { getUserByUsername } from '~/api/asktug/profile';
+import { downloadVideoCoverImage, getVideoBasicInfo } from '~/utils/bilibili';
 
 import Header from './Header';
 import VideoRecord from './VideoRecord';
@@ -12,10 +15,7 @@ import HowToJoin from './HowToJoin';
 import SharedContent from './SharedContent';
 import QandA from './QandA';
 import JoinNow from './JoinNow';
-import { sharedContents } from '~/data/regional-meetup/shared-content';
-import { getUserByUsername } from '~/api/asktug/profile';
-import type { StaticImageData } from 'next/image';
-import { downloadVideoCoverImage, getVideoBasicInfo } from '~/utils/bilibili';
+import { sharedContents } from './SharedContent/data';
 import { videoRecords } from './VideoRecord/data';
 
 dayjs.extend(duration);
@@ -54,7 +54,7 @@ export type TVideoRecordFull = {
   createDatetime: string;
 };
 
-export type TVideoRecordFromSSR = {
+export type TVideoRecordFromServer = {
   [bvid: string]: {
     title: string;
     duration: string;
@@ -64,16 +64,24 @@ export type TVideoRecordFromSSR = {
   };
 };
 
-export type TProps = {
-  sharedContentCards: TSharedContentCard[];
-  videoRecordsFromServer: TVideoRecordFromSSR;
+export type TSharedContentFromServer = {
+  [username: string]: {
+    iconImages: (StaticImageData & { alt?: string })[];
+  };
 };
 
-const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards, videoRecordsFromServer }) => {
+export type TProps = {
+  sharedContentFromServer: TSharedContentFromServer;
+  videoRecordsFromServer: TVideoRecordFromServer;
+};
+
+const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentFromServer, videoRecordsFromServer }) => {
   const videoRecordItems: TVideoRecordFull[] = Object.keys(videoRecords).map((bvid) => {
-    const videoRecordInfo = videoRecords[bvid];
-    const videoBasicInfo = videoRecordsFromServer[bvid];
-    return { bvid, ...videoRecordInfo, ...videoBasicInfo };
+    return { bvid, ...videoRecords[bvid], ...videoRecordsFromServer[bvid] };
+  });
+
+  const sharedContentCards: TSharedContentCard[] = Object.keys(sharedContentFromServer).map((username) => {
+    return { username, ...sharedContents[username], ...sharedContentFromServer[username] };
   });
 
   return (
@@ -93,35 +101,24 @@ const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards, videoRecords
 export default RegionalMeetupPage;
 
 export const getStaticProps: GetStaticProps<TProps> = async () => {
-  const sharedContentCards: TSharedContentCard[] = [];
+  const sharedContentFromServer: TSharedContentFromServer = {};
   for (const username of Object.keys(sharedContents)) {
     try {
       const user = await getUserByUsername({ username });
-      sharedContentCards.push({
-        username,
-        title: sharedContents[username].title,
-        description: sharedContents[username].description,
-        authorName: sharedContents[username].authorName,
-        authorTitle: sharedContents[username].authorTitle,
-        //avatarImage: {
-        //  src: process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL + user.user.avatar_template.replace('{size}', '64'),
-        //  width: 64,
-        //  height: 64,
-        //},
-        avatarImage: sharedContents[username].avatarImage,
+      sharedContentFromServer[username] = {
         iconImages: (user.badges.filter((value) => value.image_url !== null).slice(0, 5) ?? []).map((value) => ({
           alt: value.name,
           src: `${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image_url}`,
           width: 32,
           height: 32,
         })),
-      });
+      };
     } catch (e) {
       console.error('[Error] [/regional-meetup] [getServerSideProps] [sharedContentCards]', e);
     }
   }
 
-  const videoRecordsFromServer: TVideoRecordFromSSR = {};
+  const videoRecordsFromServer: TVideoRecordFromServer = {};
   for (const bvid of Object.keys(videoRecords)) {
     try {
       const videoBasicInfo = await getVideoBasicInfo(bvid);
@@ -141,7 +138,7 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
   }
   return {
     props: {
-      sharedContentCards,
+      sharedContentFromServer,
       videoRecordsFromServer,
     },
     // revalidate per 1 hour

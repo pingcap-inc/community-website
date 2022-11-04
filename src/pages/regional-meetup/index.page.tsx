@@ -16,7 +16,7 @@ import { sharedContents } from '~/data/regional-meetup/shared-content';
 import { getUserByUsername } from '~/api/asktug/profile';
 import type { StaticImageData } from 'next/image';
 import { downloadVideoCoverImage, getVideoBasicInfo } from '~/utils/bilibili';
-import { videoRecords } from '~/data/regional-meetup/video-record';
+import { videoRecords } from './VideoRecord/data';
 
 dayjs.extend(duration);
 
@@ -54,12 +54,28 @@ export type TVideoRecordFull = {
   createDatetime: string;
 };
 
-export type TProps = {
-  sharedContentCards: TSharedContentCard[];
-  videoRecordItems: TVideoRecordFull[];
+export type TVideoRecordFromSSR = {
+  [bvid: string]: {
+    title: string;
+    duration: string;
+    playCount: number;
+    createDatetime: string;
+    videoCoverImage: StaticImageData;
+  };
 };
 
-const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards, videoRecordItems }) => {
+export type TProps = {
+  sharedContentCards: TSharedContentCard[];
+  videoRecordsFromServer: TVideoRecordFromSSR;
+};
+
+const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentCards, videoRecordsFromServer }) => {
+  const videoRecordItems: TVideoRecordFull[] = Object.keys(videoRecords).map((bvid) => {
+    const videoRecordInfo = videoRecords[bvid];
+    const videoBasicInfo = videoRecordsFromServer[bvid];
+    return { bvid, ...videoRecordInfo, ...videoBasicInfo };
+  });
+
   return (
     <CoreLayout>
       <CommunityHead title={seo.title} description={seo.description} keyword={seo.keywords} />
@@ -105,24 +121,19 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
     }
   }
 
-  const videoRecordItems: TVideoRecordFull[] = [];
+  const videoRecordsFromServer: TVideoRecordFromSSR = {};
   for (const bvid of Object.keys(videoRecords)) {
     try {
       const videoBasicInfo = await getVideoBasicInfo(bvid);
       if (videoBasicInfo.code === 0) {
         const { extensionName } = await downloadVideoCoverImage(bvid, videoBasicInfo.data.pic);
-        videoRecordItems.push({
-          bvid,
-          region: videoRecords[bvid].region,
-          authorName: videoRecords[bvid].authorName,
+        videoRecordsFromServer[bvid] = {
           title: videoBasicInfo.data.title,
           duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(videoBasicInfo.data.duration % 60).toFixed()}`,
           playCount: videoBasicInfo.data.stat.view,
           createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
-          //videoCoverImage: videoRecords[bvid].videoCoverImage,
-          //videoCoverImage: { src: videoBasicInfo.data.pic, width: 160, height: 100 },
           videoCoverImage: { src: `/images/bilibili_video_cover/${bvid}.${extensionName}`, width: 160, height: 100 },
-        });
+        };
       }
     } catch (e) {
       console.error('[Error] [/regional-meetup] [getServerSideProps] [videoRecordItems]', e);
@@ -131,7 +142,7 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
   return {
     props: {
       sharedContentCards,
-      videoRecordItems,
+      videoRecordsFromServer,
     },
     // revalidate per 1 hour
     revalidate: 60 * 60,

@@ -76,12 +76,12 @@ export type TProps = {
 };
 
 const RegionalMeetupPage: NextPage<TProps> = ({ sharedContentFromServer, videoRecordsFromServer }) => {
-  const videoRecordItems: TVideoRecordFull[] = Object.keys(videoRecords).map((bvid) => {
-    return { bvid, ...videoRecords[bvid], ...videoRecordsFromServer[bvid] };
-  });
-
   const sharedContentCards: TSharedContentCard[] = Object.keys(sharedContentFromServer).map((username) => {
     return { username, ...sharedContents[username], ...sharedContentFromServer[username] };
+  });
+
+  const videoRecordItems: TVideoRecordFull[] = Object.keys(videoRecords).map((bvid) => {
+    return { bvid, ...videoRecords[bvid], ...videoRecordsFromServer[bvid] };
   });
 
   return (

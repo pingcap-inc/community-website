@@ -32,8 +32,8 @@
     "remove:deps": "npm run remove:cache && rm -rf ./packages/**/package-lock.json ./package-lock.json"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=8.0.0"
+    "node": "16.17.0",
+    "npm": "8.15.0"
   },
   "dependencies": {
     "@ant-design/icons": "4.7.0",
@@ -80,7 +80,7 @@
   "devDependencies": {
     "@babel/eslint-parser": "~7.17.0",
     "@pingcap-inc/tidb-community-editor": "0.6.6",
-    "@pingcap-inc/tidb-community-site-components": "1.6.2",
+    "@pingcap-inc/tidb-community-site-components": "1.7.0",
     "@pingcap-inc/tidb-community-ui": "1.2.2",
     "@sentry/webpack-plugin": "~1.18.8",
     "@svgr/webpack": "~6.2.1",

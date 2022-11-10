@@ -246,7 +246,7 @@ export const dataWinnerTeam: {
         playbackUrl: 'https://www.bilibili.com/video/BV1Q14y157qk/',
         rfcUrl: 'https://gist.github.com/cutecutecat/17e12ec4d5f677ff74482468221e34f9',
         name: '敲代码不喊我是吧',
-        description: 'TiCat，项目着眼于实现从 MySQL 迁移到 TiDB 的迁移校验工具',
+        description: 'TiKey，项目着眼于实现从 MySQL 迁移到 TiDB 的迁移校验工具',
         prize: '三等奖 ¥15,000 ，最佳校园奖 ¥5,000',
       },
       {
@@ -452,7 +452,7 @@ export const dataFinalist: IFinalistGroupItem[] = [
       },
       {
         teamName: '敲代码不喊我是吧',
-        projectName: 'TiCat',
+        projectName: 'TiKey',
         score: '82.54',
         rank: 6,
         githubUrl: 'https://github.com/cutecutecat/TiKey',

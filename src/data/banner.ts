@@ -1,2 +1,2 @@
-export const text = 'TiDB Hackathon 2022，总奖金池超35万！点击查看详情';
-export const link = 'https://tidb.net/events/hackathon2022?utm_source=01&utm_medium=asktug';
+export const text = 'TiCDC 源码解读上线，让 TiDB 更好用的工具背后的原理是？';
+export const link = 'https://asktug.com/t/topic/995759';

@@ -21,7 +21,7 @@ export const headerImages: { image: StaticImageData }[] = [
   { image: photo石家庄Image },
 ];
 
-export const applyDescription: ReactNode = '申请成功可获得精美周边礼品 + 社区专属福利';
+export const applyDescription: ReactNode = '成为地区组织者可享有哪些社区福利？';
 
 // 社区专属福利
 export const advantages: string[] = [

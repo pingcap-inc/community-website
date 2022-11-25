@@ -108,6 +108,8 @@ export const VideoOverlay = styled(Anchor)`
 export const VideoOverlayText = styled.div`
   color: ${colors.M1};
   font-size: 14px;
+  padding: 16px;
+  text-align: center;
 `;
 
 export const VideoPlayIcon = styled(PlayCircleFilled)`

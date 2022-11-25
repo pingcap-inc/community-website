@@ -13,18 +13,18 @@ import LearningPingcapEducationSVG from './learning-pingcap-education.svg';
 
 const minorVideos = [
   {
-    title: 'TiDB 系统管理基础',
-    link: 'https://learn.pingcap.com/learner/course/30002',
+    title: 'TiDB 特有功能与事务控制',
+    link: 'https://learn.pingcap.com/learner/course/750002',
     coverImage: learn_minor_video_1_cover_image,
   },
   {
-    title: 'TiDB 故障排除',
-    link: 'https://learn.pingcap.com/learner/course/150002',
+    title: '在 TiDB 上开发应用的最佳实践',
+    link: 'https://learn.pingcap.com/learner/course/780002',
     coverImage: learn_minor_video_2_cover_image,
   },
   {
-    title: 'TiDB 高级系统管理',
-    link: 'https://learn.pingcap.com/learner/course/120005',
+    title: 'TiDB 数据库核心原理与架构',
+    link: 'https://learn.pingcap.com/learner/course/960001',
     coverImage: learn_minor_video_3_cover_image,
   },
 ];
@@ -105,8 +105,8 @@ const Learning = () => {
             </Styled.Text>
 
             <Styled.VideoHeader>
-              <Styled.TitleLink href="https://learn.pingcap.com/learner/course/6">
-                Get Started with TiDB
+              <Styled.TitleLink href="https://learn.pingcap.com/learner/course/600003">
+                TiDB 的架构与特点
               </Styled.TitleLink>
             </Styled.VideoHeader>
 
@@ -115,14 +115,13 @@ const Learning = () => {
                 <Styled.VideoBoxWrapper $isSmallScreen={isSmallScreen}>
                   <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={learn_minor_video_1_cover_image.src}>
                     <Styled.VideoPlayButton>
-                      <Anchor href={'https://learn.pingcap.com/learner/course/6'}>
+                      <Anchor href={'https://learn.pingcap.com/learner/course/600003'}>
                         <Styled.VideoPlayIcon color="white" height="48px" />
                       </Anchor>
                     </Styled.VideoPlayButton>
                     {!isSmallScreen && (
                       <Styled.VideoCaption isSmallScreen={isSmallScreen}>
-                        学习 TiDB 由来、发展与演进，理解 TiDB 5.0
-                        数据库的体系架构、技术创新、关键特性、应用案例与适用场景。
+                        学习构建 TiDB 分布式数据库集群的核心组件及其概念。
                       </Styled.VideoCaption>
                     )}
                   </Styled.VideoBox>
@@ -143,11 +142,11 @@ const Learning = () => {
 
             {isSmallScreen && (
               <Styled.Text>
-                学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。
+                学习构建 TiDB 分布式数据库集群的核心组件及其概念。
               </Styled.Text>
             )}
 
-            <Styled.More href={'https://learn.pingcap.com/learner/home'} $isSmallScreen={isSmallScreen}>
+            <Styled.More href={'https://cn.pingcap.com/courses-catalog'} $isSmallScreen={isSmallScreen}>
               更多课程
             </Styled.More>
           </>

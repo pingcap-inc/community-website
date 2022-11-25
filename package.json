@@ -32,8 +32,8 @@
     "remove:deps": "npm run remove:cache && rm -rf ./packages/**/package-lock.json ./package-lock.json"
   },
   "engines": {
-    "node": "16.17.0",
-    "npm": "8.15.0"
+    "node": "18.12.0",
+    "npm": "8.19.2"
   },
   "dependencies": {
     "@ant-design/icons": "4.7.0",

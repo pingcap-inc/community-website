@@ -2,6 +2,13 @@ import { api } from '@tidb-community/datasource';
 
 // This handler proxies request to
 const handler = async (req, res) => {
+  await NextCors(req, res, {
+    // Options
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    origin: '*',
+    optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+  });
+  
   const { dataset, ...params } = req.query;
 
   const client = await api.initStrapiClient();

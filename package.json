@@ -59,6 +59,7 @@
     "next": "~12.1.0",
     "next-i18next": "~10.5.0",
     "next-transpile-modules": "~9.0.0",
+    "nextjs-cors": "2.1.2",
     "polished": "~4.1.4",
     "prop-types": "~15.8.1",
     "ramda": "~0.28.0",

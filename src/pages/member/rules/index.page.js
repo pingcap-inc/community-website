@@ -387,7 +387,7 @@ const Page = () => (
             <td>500</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/certification-center/syllabus/pctp">PCTP 考试</Anchor>
+              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCTP">PCTP 考试</Anchor>
             </td>
           </tr>
           <tr>

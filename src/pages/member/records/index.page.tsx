@@ -16,8 +16,8 @@ const Page = () => {
 
   const { data } = useSWR<api.ApiResponse<{ data: api.points.GetMeData }, any>, any>(isReady && ['points.getMe']);
 
-  const perPage = 20;
   const [currentPage, setCurrentPage] = useState(1);
+  const [perPage, setPerPage] = useState(20);
   const [total, setTotal] = useState(0);
   // const { data: records } = useSWR<api.ApiResponse<{ data: api.points.AwardedPointEntry[] }, any>, any>(isReady && ['points.getAwardedPoints', {currentPage, perPage}]);
   // when currentPage changes, fetch new data
@@ -27,7 +27,7 @@ const Page = () => {
       setTableData(data.data);
       setTotal(data.total_num);
     });
-  }, [isReady, currentPage]);
+  }, [isReady, currentPage, perPage]);
 
   if (!data || !tableData)
     return (
@@ -61,8 +61,9 @@ const Page = () => {
     },
   ];
 
-  const onChange = (page: number) => {
+  const onChange = (page: number, pageSize: number) => {
     setCurrentPage(page);
+    setPerPage(pageSize);
   };
 
   return (

@@ -18,7 +18,7 @@ const Page = () => {
   );
   const { data: badges } = useSWR<api.ApiResponse<api.asktug.Badges, any>, any>(isReady && ['asktug.getBadgesList']);
   const pointsData = data?.data;
-  const badgesData = badges?.data;
+  const badgesData = badges?.badges;
 
   const [checkInMessage, setCheckInMessage] = useState('');
 

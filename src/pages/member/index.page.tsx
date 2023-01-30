@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, Col, Modal, Row } from 'antd';
 import useSWR from 'swr';
@@ -20,6 +20,12 @@ const Page = () => {
   const { data: badges } = useSWR<api.ApiResponse<api.asktug.Badges, any>, any>(isReady && ['asktug.getBadgesList']);
   const pointsData = data?.data;
   const badgesData = badges?.badges;
+
+  const badgesDataOrdered = useMemo(() => {
+    const has = badgesData?.filter((value) => value.has_badge) ?? [];
+    const notHas = badgesData?.filter((value) => !value.has_badge) ?? [];
+    return [...has, ...notHas];
+  }, [badgesData]);
 
   const [checkInMessage, setCheckInMessage] = useState('');
 
@@ -111,7 +117,7 @@ const Page = () => {
       </Styled.Title>
       <Styled.BadgesContainer>
         <Row gutter={[16, 8]}>
-          {badgesData.map((badge) => (
+          {badgesDataOrdered.map((badge) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>
                 <Styled.BadgeIcon src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`} />

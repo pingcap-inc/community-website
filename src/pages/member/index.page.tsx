@@ -9,6 +9,7 @@ import { MeContext } from '~/context';
 
 import * as Styled from './index.styled';
 import Layout from './layout';
+import * as process from 'process';
 
 const Page = () => {
   const { isReady } = useRouter();
@@ -113,7 +114,7 @@ const Page = () => {
           {badgesData.map((badge) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>
-                <Styled.BadgeIcon src={badge.image_url} />
+                <Styled.BadgeIcon src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`} />
                 <Styled.BadgeName>{badge.name}</Styled.BadgeName>
               </Styled.Badge>
             </Col>

@@ -3,7 +3,7 @@ import { ApiRequestFunction } from '../index';
 import client from '../client';
 
 export interface Badges {
-  data?: BadgeEntity[] | null;
+  badges?: BadgeEntity[] | null;
 }
 
 export interface BadgeEntity {
@@ -14,4 +14,4 @@ export interface BadgeEntity {
   has_badge: boolean;
 }
 
-export const getBadgesList: ApiRequestFunction<void, any> = () => client.get('/api/asktug/badges');
+export const getBadgesList: ApiRequestFunction<void, any> = () => client.get('/_asktug/badges');

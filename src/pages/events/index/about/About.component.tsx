@@ -23,11 +23,11 @@ const card = [
     image: '/images/activities/hackathon2022.jpg',
   },
   {
-    title: 'TUG 企业行',
-    desc: 'TUG 企业行系列活动是由 TiDB 社区主办，通过走进各互联网头部企业，与数据库/大数据专家面对面交流了解数据库/大数据前沿技术动态及应用实践。目前 TUG 企业行已成功在 VIPKID、爱奇艺、知乎、网易游戏、转转、喜马拉雅、UCloud、58同城、360 等十多家企业举办。',
+    title: 'TiDB 地区组织活动',
+    desc: '和本地的社区小伙伴一起聚聚，涨“姿势”！',
     button: '前往查看',
-    link: 'https://asktug.com/c/community-activities/go-to-users',
-    image: '/images/activities/TUG.jpg',
+    link: 'https://tidb.net/regional-meetup',
+    image: '/images/activities/regional-meetup.jpg',
   },
 ];
 

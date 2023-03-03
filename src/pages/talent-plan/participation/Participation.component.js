@@ -135,13 +135,13 @@ const Participation = () => {
         <Styled.Content>
           <CommonStyled.Title id="learn">深度参与 Talent Plan</CommonStyled.Title>
           <Tabs onChange={(idx) => setIsOnFirstTab(idx === '1')}>
-            <TabPane tab={'成为 Talent Plan 建设者'} key={1}>
+            <TabPane tab={'学习 Talent Plan'} key={1}>
               <Row gutter={32}>
                 <Col lg={12}>{stepBoxes[0]}</Col>
                 <Col lg={12}>{stepBoxes.slice(1)}</Col>
               </Row>
             </TabPane>
-            <TabPane tab={'学习 Talent Plan'} key={2}>
+            <TabPane tab={'成为 Talent Plan 建设者'} key={2}>
               <Image preview={false} src={getImage('participation-org.jpg')} />
             </TabPane>
           </Tabs>

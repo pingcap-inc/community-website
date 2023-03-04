@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Col, Image, Row, Tabs } from 'antd';
+import { Alert, Col, Image, Row, Tabs } from 'antd';
 
 import { Styled as CommonStyled } from '@tidb-community/ui';
 
@@ -9,6 +9,7 @@ import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
 
 import * as Styled from './partitcipation.styled';
+import Anchor from '~/components/Anchor';
 
 const { TabPane } = Tabs;
 
@@ -136,10 +137,30 @@ const Participation = () => {
           <CommonStyled.Title id="learn">深度参与 Talent Plan</CommonStyled.Title>
           <Tabs onChange={(idx) => setIsOnFirstTab(idx === '1')}>
             <TabPane tab={'学习 Talent Plan'} key={1}>
-              <Row gutter={32}>
-                <Col lg={12}>{stepBoxes[0]}</Col>
-                <Col lg={12}>{stepBoxes.slice(1)}</Col>
-              </Row>
+              <Styled.Link>
+                <li>
+                  <Anchor href={'https://talentplan.edu.pingcap.com/catalog/info/id:234'}>
+                    Talent Plan 301 课程 TinySQL
+                  </Anchor>
+                </li>
+                <li>实现一个 Mini 版本的分布式关系型数据库</li>
+                <li>
+                  <Anchor href={'https://talentplan.edu.pingcap.com/catalog/info/id:263'}>
+                    Talent Plan 302 课程 TinyKV
+                  </Anchor>
+                </li>
+                <li>实现一个 Mini 版本的分布式 Key-Value 数据库</li>
+              </Styled.Link>
+              <Alert
+                message={
+                  <>
+                    当注册 <Anchor href={'talentplan.edu.pingcap.com'} />{' '}
+                    时，我们鼓励使用真实姓名和单位/学校邮箱，否则会影响学习证书的颁发。
+                  </>
+                }
+                type="info"
+                showIcon
+              ></Alert>
             </TabPane>
             <TabPane tab={'成为 Talent Plan 建设者'} key={2}>
               <Image preview={false} src={getImage('participation-org.jpg')} />

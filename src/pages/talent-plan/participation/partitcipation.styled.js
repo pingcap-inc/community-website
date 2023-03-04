@@ -122,3 +122,16 @@ export const Becomings = styled.div`
     `};
   padding-bottom: 1rem;
 `;
+
+export const Link = styled.ul`
+  color: #2c2c2c;
+  li {
+    font-size: 16px;
+  }
+  a {
+    color: ${colors.B1};
+    :hover {
+      text-decoration: underline;
+    }
+  }
+`;

@@ -1,53 +1,15 @@
 import { useState } from 'react';
-import { useRouter } from 'next/router';
-import { Alert, Col, Image, Row, Tabs } from 'antd';
+import { Alert, Image, Tabs } from 'antd';
 
 import { Styled as CommonStyled } from '@tidb-community/ui';
 
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
-import { Link } from '~/components';
 import { useIsSmallScreen } from '~/hooks';
-
-import * as Styled from './partitcipation.styled';
 import Anchor from '~/components/Anchor';
 
+import * as Styled from './partitcipation.styled';
+
 const { TabPane } = Tabs;
-
-const steps = [
-  '结合个人兴趣爱好以及知识背景，从以下卡片中点击选择适合自己的学习路径',
-  '填写报名表单，加入课程学习小组，开始学习',
-  '完成课程作业并提交',
-  '通过线上课程考核，获得 Talent Plan 线上结业证书',
-];
-
-const paths = [
-  {
-    name: '路径（一）',
-    desc: '实现一个 Mini 版本的分布式关系型数据库',
-    url: 'https://github.com/tidb-incubator/tinysql',
-  },
-  {
-    name: '路径（二）',
-    desc: '实现一个 Mini 版本的 Key-value 数据库',
-    url: 'https://github.com/tidb-incubator/tinykv',
-  },
-  {
-    name: '路径（三）',
-    desc: '参与工业级开源分布式关系型数据库 TiDB 开发实践',
-    url: 'https://github.com/pingcap/community/blob/master/contributors/README.md',
-  },
-  {
-    name: '路径（四）',
-    desc: '参与工业级开源分布式 Key-value 数据库 TiKV 的开发实践',
-    url: 'https://github.com/pingcap/community/blob/master/contributors/README.md',
-  },
-  {
-    name: '路径（五）',
-    desc: 'Rust 编程原理与实践',
-    url: 'https://github.com/pingcap/talent-plan/blob/master/courses/rust/README.md',
-  },
-];
-
 const becomings = [
   {
     title: '成为 Contributor',
@@ -72,63 +34,8 @@ const becomings = [
 ];
 
 const Participation = () => {
-  const router = useRouter();
   const [isOnFirstTab, setIsOnFirstTab] = useState(true);
-
   const { isSmallScreen } = useIsSmallScreen();
-  const stepsContent = [
-    <Styled.StepBoxContent>
-      <Row gutter={16}>
-        {paths.map((path) => (
-          <Col span={12} key={path}>
-            <Styled.PathCardWrapper>
-              <Styled.PathCard onClick={() => router.push(path.url)}>
-                <Styled.PathCardHeader> {path.name} </Styled.PathCardHeader>
-                {path.desc}
-              </Styled.PathCard>
-            </Styled.PathCardWrapper>
-          </Col>
-        ))}
-      </Row>
-    </Styled.StepBoxContent>,
-    <Styled.StepBoxContent>
-      <Link href="https://forms.pingcap.com/f/talent-plan-application">
-        https://forms.pingcap.com/f/talent-plan-application
-      </Link>
-    </Styled.StepBoxContent>,
-    <Styled.StepBoxContent>
-      <ul>
-        <li>提交方式：发送邮件至 talent-plan@tidb.io,7*24 小时全年接受作业</li>
-        <li>邮件主题建议：【Talent Plan 作业评估申请】课程名称 - 申请人 - 联系方式</li>
-        <li>
-          邮件正文建议：
-          <ul>
-            <li>每个作业的解题思路阐述，请标明作业编号</li>
-            <li>所有代码按照原目录结构做成压缩文件附上</li>
-            <li>应届生可以考虑附上简历</li>
-          </ul>
-        </li>
-      </ul>
-    </Styled.StepBoxContent>,
-    <Styled.StepBoxContent>
-      <ul>
-        <li> 线上成绩 60 分以上（含 60 分），视为“通过”，发放结业证书，具有申请 TCP 项目的资格</li>
-        <li> 线上成绩 70 分以上（含 70 分），视为“良好”，发放结业证书，具有申请 TCP 项目的资格</li>
-        <li> 线上成绩 85 分以上（含 85 分），视为“优秀”，发放结业证书，具有申请 TCP 项目的资格</li>
-        <li>线上成绩低于 60 分，视为“不及格”，可在一周内对课程作业进行修改完善，若评估通过，亦可获得结业证书。</li>
-      </ul>
-    </Styled.StepBoxContent>,
-  ];
-
-  const stepBoxes = steps.map((step, idx) => (
-    <Styled.StepBox icon={getImage(`participation-step-icon-${idx + 1}.svg`)}>
-      <Styled.StepBoxInner>
-        <Styled.StepBoxHeader key={step}> Step {idx + 1} </Styled.StepBoxHeader>
-        {step}
-        {stepsContent[idx]}
-      </Styled.StepBoxInner>
-    </Styled.StepBox>
-  ));
 
   return (
     <>

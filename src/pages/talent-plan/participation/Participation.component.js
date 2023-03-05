@@ -49,14 +49,19 @@ const Participation = () => {
                   <Anchor href={'https://talentplan.edu.pingcap.com/catalog/info/id:234'}>
                     Talent Plan 301 课程 TinySQL
                   </Anchor>
+                  <ul>
+                    <li>实现一个 Mini 版本的分布式关系型数据库</li>
+                  </ul>
                 </li>
-                <li>实现一个 Mini 版本的分布式关系型数据库</li>
+
                 <li>
                   <Anchor href={'https://talentplan.edu.pingcap.com/catalog/info/id:263'}>
                     Talent Plan 302 课程 TinyKV
                   </Anchor>
+                  <ul>
+                    <li>实现一个 Mini 版本的分布式 Key-Value 数据库</li>
+                  </ul>
                 </li>
-                <li>实现一个 Mini 版本的分布式 Key-Value 数据库</li>
               </Styled.Link>
               <Alert
                 message={

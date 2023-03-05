@@ -66,7 +66,7 @@ const Participation = () => {
               <Alert
                 message={
                   <>
-                    当注册 <Anchor href={'talentplan.edu.pingcap.com'} />{' '}
+                    当注册 <Anchor href={'https://talentplan.edu.pingcap.com'} />{' '}
                     时，我们鼓励使用真实姓名和单位/学校邮箱，否则会影响学习证书的颁发。
                   </>
                 }

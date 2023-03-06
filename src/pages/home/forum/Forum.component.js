@@ -13,28 +13,25 @@ import Post from './post';
 
 const categories = [
   {
-    name: '新手区',
-    link: 'https://asktug.com/c/newcomer',
+    name: 'TiDB 技术问题',
+    link: 'https://asktug.com/c/administration/30022',
   },
   {
-    name: '部署 & 监控',
-    link: 'https://asktug.com/c/administration',
+    name: '应用开发者专区',
+    link: 'https://asktug.com/c/developer/30055',
   },
   {
-    name: '备份 & 数据迁移',
-    link: 'https://asktug.com/c/tools',
+    name: 其他技术问题',
+    link: 'https://asktug.com/c/ecosystem/150022',
+  },
+
+  {
+    name: '社区资讯及活动',
+    link: 'https://asktug.com/c/community-activities/30070',
   },
   {
-    name: '开发者 & 应用适配',
-    link: 'https://asktug.com/c/developer',
-  },
-  {
-    name: '性能调优',
-    link: 'https://asktug.com/c/performance',
-  },
-  {
-    name: 'Real-Time HTAP',
-    link: 'https://asktug.com/c/tispark-tiflash',
+    name: '资源中心',
+    link: 'https://asktug.com/c/resource/300022',
   },
   {
     name: '安全加固',
@@ -45,24 +42,20 @@ const categories = [
     link: 'https://asktug.com/c/Mutual-communication',
   },
   {
-    name: '技术⽂章',
-    link: '/blog',
-  },
-  {
-    name: 'TUG 社区活动',
-    link: 'https://asktug.com/c/community-activities',
-  },
-  {
-    name: '关于 TUG',
-    link: 'https://asktug.com/c/tug',
-  },
-  {
     name: '学习与认证',
     link: 'https://asktug.com/c/pu',
   },
   {
     name: '建议 & 反馈',
     link: 'https://asktug.com/c/advice-feedback',
+  },
+{
+    name: '社区互助指南',
+    link: 'https://asktug.com/t/topic/694770',
+  },
+{
+    name: '社区参与指南',
+    link: 'https://asktug.com/t/topic/695198',
   },
 ];
 

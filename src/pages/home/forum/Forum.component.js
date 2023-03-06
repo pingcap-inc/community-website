@@ -21,7 +21,7 @@ const categories = [
     link: 'https://asktug.com/c/developer/30055',
   },
   {
-    name: 其他技术问题',
+    name: '其他技术问题',
     link: 'https://asktug.com/c/ecosystem/150022',
   },
 

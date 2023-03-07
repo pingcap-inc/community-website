@@ -34,10 +34,6 @@ const categories = [
     link: 'https://asktug.com/c/resource/300022',
   },
   {
-    name: '安全加固',
-    link: 'https://asktug.com/c/90030-category',
-  },
-  {
     name: '互助交流区',
     link: 'https://asktug.com/c/Mutual-communication',
   },

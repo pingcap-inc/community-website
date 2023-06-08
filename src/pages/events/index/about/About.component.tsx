@@ -16,11 +16,11 @@ import { htmlId } from '../list/List.component';
 
 const card = [
   {
-    title: 'TiDB Hackathon 2022',
-    desc: 'TiDB Hackathon 2022 「Possibility at Scale」来啦，期待与你一起打破传统技术边界，突破固有思维局限，用 TiDB 释放创新的更多可能性！',
+    title: 'TiDB Future App Hackathon 2023',
+    desc: 'TiDB 首届全球黑客马拉松，一起coding 赢取 3.6 万美元！',
     button: '前往查看',
-    link: 'https://tidb.net/events/hackathon2022',
-    image: '/images/activities/hackathon2022.jpg',
+    link: 'https://asktug.com/t/topic/1007076',
+    image: '/images/activities/TiDB_Future_App_Hackathon_2023.jpg',
   },
   {
     title: 'TiDB 地区组织活动',

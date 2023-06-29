@@ -1,2 +1,2 @@
-export const text = '【TiDB v7.1 荣誉体验官招募】索尼PS5、索尼无线降噪耳机、倍轻松颈部按摩器等你拿！';
-export const link = 'https://asktug.com/t/topic/1006975';
+export const text = '【TiDB Future App Hackathon 2023 】TiDB 首届全球黑客马拉松，开发者的狂欢夏日盛会！快来一起 Coding 吧！';
+export const link = 'https://asktug.com/t/topic/1007076';

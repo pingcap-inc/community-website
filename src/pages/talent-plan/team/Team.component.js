@@ -31,7 +31,6 @@ const members = [
   {
     nameEN: 'Jian Zhang',
     nameZH: '张建',
-    org: 'PingCAP',
     role: 'PMC',
     github: 'zz-jason',
   },
@@ -87,7 +86,6 @@ const members = [
   {
     nameEN: 'Andy',
     nameZH: '骆迪安',
-    org: 'PingCAP',
     role: 'Senior Mentor',
     github: 'andylokandy',
   },

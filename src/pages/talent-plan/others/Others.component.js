@@ -14,8 +14,12 @@ const Others = () => {
             如果你对分布式数据库比较陌生，建议先从 PingCAP Education 学习网站{' '}
             <Styled.Link href="https://learn.pingcap.com/learner/course/600003">101 课程</Styled.Link>{' '}
             开始入手。你也可以通过神码制作的
-            <Styled.Link href="https://app.ma.scrmtech.com/meetings/MeetingPc/Detail?pf_uid=19697_1864&pf_type=3&id=34107">
-              分布式数据库实现入门课程
+            <Styled.Link href="https://www.bilibili.com/video/BV1Zh411i7Tp/?spm_id_from=333.337.search-card.all.click&vd_source=448ecb3691855b619da9f75851b12964">
+              分布式数据库应用
+            </Styled.Link>
+            和
+            <Styled.Link href="https://www.bilibili.com/video/BV1S14y1P7Mb/?spm_id_from=333.337.search-card.all.click&vd_source=448ecb3691855b619da9f75851b12964">
+              分布式数据库开发
             </Styled.Link>
             了解数据库实现。
           </li>

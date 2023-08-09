@@ -12,7 +12,7 @@ const Others = () => {
         <ul>
           <li>
             如果你对分布式数据库比较陌生，建议先从 PingCAP Education 学习网站{' '}
-            <Styled.Link href="https://learn.pingcap.com/learner/course/6">101 课程</Styled.Link>{' '}
+            <Styled.Link href="https://learn.pingcap.com/learner/course/600003">101 课程</Styled.Link>{' '}
             开始入手。你也可以通过神码制作的
             <Styled.Link href="https://app.ma.scrmtech.com/meetings/MeetingPc/Detail?pf_uid=19697_1864&pf_type=3&id=34107">
               分布式数据库实现入门课程

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Image, Tabs } from 'antd';
+import { Image, Tabs } from 'antd';
 
 import { Styled as CommonStyled } from '@tidb-community/ui';
 

@@ -26,24 +26,6 @@ const NextSteps = () => {
           <Col sm={24} lg={12}>
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
-                <Styled.ProjectCardTitle> 参加 TCP 项目 </Styled.ProjectCardTitle>
-                Talent Challenge Program 是为通过 Talent Plan 课程考核的高校学生提供的开源项目实训平台，每个赛季将持续
-                2~3 个月。 通过参与 Talent Challenge Program，你可以获得：
-                <ul>
-                  <li>亲身参与世界级开源项目的独特体验</li>
-                  <li>一对一 Mentor 辅导</li>
-                  <li>丰厚的项目奖金</li>
-                  <li>优质的实习/校招机会！</li>
-                </ul>
-                <Styled.ProjectCardButton
-                  onClick={onClick('https://github.com/pingcap/talent-plan/tree/master/talent-challenge-program2021')}
-                >
-                  立即关注
-                </Styled.ProjectCardButton>
-              </Styled.ProjectCardContent>
-            </Styled.ProjectCard>
-            <Styled.ProjectCard>
-              <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> 参与 TiDB 开发 </Styled.ProjectCardTitle>
                 <p>
                   本模块旨在帮助贡献者从新手成长为 TiDB 专家，熟悉 TiDB
@@ -74,19 +56,6 @@ const NextSteps = () => {
             </Styled.ProjectCard>
           </Col>
           <Col sm={24} lg={12}>
-            <Styled.ProjectCard>
-              <Styled.ProjectCardContent>
-                <Styled.ProjectCardTitle> 参与 TiDB Hackathon 年度比赛 </Styled.ProjectCardTitle>
-                TiDB Hackathon 是由 TiDB
-                社区举办的黑客马拉松大赛，选手需围绕组委会规定的主题做出一个完整的作品并由评审最终评选出获奖者。作为社区最硬核的保留项目，黑客马拉松每年都吸引大量的社区开发者、高校学生、用户等积极参与。丰厚的奖金，极客的项目，等你来挑战！2021
-                年 12 月 9 日 开启报名，敬请期待。
-                <Styled.ProjectCardButton onClick={onClick('https://tidb.net/events/hackathon2021')}>
-                  {' '}
-                  了解更多{' '}
-                </Styled.ProjectCardButton>
-              </Styled.ProjectCardContent>
-            </Styled.ProjectCard>
-
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> 探索更多社区玩法 </Styled.ProjectCardTitle>

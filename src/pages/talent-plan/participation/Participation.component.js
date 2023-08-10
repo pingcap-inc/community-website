@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Image, Tabs } from 'antd';
+import { Image, Tabs } from 'antd';
 
 import { Styled as CommonStyled } from '@tidb-community/ui';
 
@@ -46,33 +46,19 @@ const Participation = () => {
             <TabPane tab={'学习 Talent Plan'} key={1}>
               <Styled.Link>
                 <li>
-                  <Anchor href={'https://talentplan.edu.pingcap.com/catalog/info/id:234'}>
-                    Talent Plan 301 课程 TinySQL
-                  </Anchor>
+                  <Anchor href={'https://github.com/talent-plan/tinysql'}>Talent Plan 301 课程 TinySQL</Anchor>
                   <ul>
                     <li>实现一个 Mini 版本的分布式关系型数据库</li>
                   </ul>
                 </li>
 
                 <li>
-                  <Anchor href={'https://talentplan.edu.pingcap.com/catalog/info/id:263'}>
-                    Talent Plan 302 课程 TinyKV
-                  </Anchor>
+                  <Anchor href={'https://github.com/talent-plan/tinykv'}>Talent Plan 302 课程 TinyKV</Anchor>
                   <ul>
                     <li>实现一个 Mini 版本的分布式 Key-Value 数据库</li>
                   </ul>
                 </li>
               </Styled.Link>
-              <Alert
-                message={
-                  <>
-                    当注册 <Anchor href={'https://talentplan.edu.pingcap.com'} />{' '}
-                    时，我们鼓励使用真实姓名和单位/学校邮箱，否则会影响学习证书的颁发。
-                  </>
-                }
-                type="info"
-                showIcon
-              ></Alert>
             </TabPane>
             <TabPane tab={'成为 Talent Plan 建设者'} key={2}>
               <Image preview={false} src={getImage('participation-org.jpg')} />

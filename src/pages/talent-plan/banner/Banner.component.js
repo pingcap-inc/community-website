@@ -1,6 +1,6 @@
 import React from 'react';
-import { Button, Space } from 'antd';
-import { GithubOutlined } from '@ant-design/icons';
+import { Button, Space, Tooltip } from 'antd';
+import { GithubOutlined, MailOutlined } from '@ant-design/icons';
 
 import { useIsSmallScreen } from '~/hooks';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
@@ -24,11 +24,17 @@ const Banner = () => {
                 开源数据库开发课程为依托，联合优秀高校和企业，建设成对全国各高校数据库开发人才培养的最佳实践平台。既能帮助学习者掌握数据库开发的理论知识，进行实际数据库开发锻炼，又能给与学习者使用开源资源，开发开源软件的培养。
               </Styled.Intro>
               <Space size={24}>
-                <Anchor href="https://forms.pingcap.com/f/talent-plan-application">
-                  <Button type={'primary'}>报名学习</Button>
-                </Anchor>
                 <Anchor href="https://github.com/pingcap/talent-plan" style={{ fontSize: 24 }}>
-                  <GithubOutlined />
+                  <Button type={'text'} icon={<GithubOutlined />}>
+                    开始学习
+                  </Button>
+                </Anchor>
+                <Anchor href="mailto:talent-plan@tidb.io" style={{ fontSize: 24 }}>
+                  <Tooltip title={'Email: talent-plan@tidb.io'}>
+                    <Button type={'text'} icon={<MailOutlined />}>
+                      联系我们
+                    </Button>
+                  </Tooltip>
                 </Anchor>
               </Space>
             </Styled.LeftPanel>

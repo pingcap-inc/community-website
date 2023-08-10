@@ -12,8 +12,8 @@ const Others = () => {
         <ul>
           <li>
             如果你对分布式数据库比较陌生，建议先从 PingCAP Education 学习网站{' '}
-            <Styled.Link href="https://learn.pingcap.com/learner/course/600003">101 课程</Styled.Link>{' '}
-            开始入手。你也可以通过神码制作的
+            <Styled.Link href="https://learn.pingcap.com/learner/course/600003">TiDB 入门课程</Styled.Link>{' '}
+            开始入手。你也可以通过神州数码制作的
             <Styled.Link href="https://www.bilibili.com/video/BV1Zh411i7Tp/?spm_id_from=333.337.search-card.all.click&vd_source=448ecb3691855b619da9f75851b12964">
               分布式数据库应用
             </Styled.Link>

@@ -64,7 +64,7 @@ const Page = () => {
       <Layout>
         <Styled.PointsContainer>
           <Tutorial>
-            每周五统一寄送上周期兑换的礼品，约 3-7 个工作日左右可收到，如没有喜欢的礼品， 请点击参加
+            每两周处理一次兑换礼物，兑换后 30 天内可收到礼物。如没有喜欢的礼品， 请点击参加
             <Link href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6" fontSize="14px">
               周边定制意见征集
             </Link>

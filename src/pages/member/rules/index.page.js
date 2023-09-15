@@ -373,6 +373,15 @@ const Page = () => (
             <td rowSpan="3">
               <Anchor href="https://learn.pingcap.com/learner/certification-center">认证</Anchor>
             </td>
+            <td>通过从业者认证</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=%E4%BB%8E%E4%B8%9A%E8%80%85">从业者考试</Anchor>
+            </td>
+          </tr>
+          <tr>
             <td>通过 PCTA 认证</td>
             <td>200</td>
             <td>200</td>

@@ -370,7 +370,7 @@ const Page = () => (
             <td></td>
           </tr>
           <tr>
-            <td rowSpan="3">
+            <td rowSpan="4">
               <Anchor href="https://learn.pingcap.com/learner/certification-center">认证</Anchor>
             </td>
             <td>通过从业者认证</td>

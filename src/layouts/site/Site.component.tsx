@@ -14,7 +14,7 @@ const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: Pr
       <Header />
       <MainWrapper>{children}</MainWrapper>
       <Footer
-        copyright="©2021 TiDB Community"
+        copyright={`©${(new Date()).getFullYear()} TiDB Community`}
         icp="京ICP备16046278号-7"
         icpUrl="https://beian.miit.gov.cn"
         number={
@@ -25,7 +25,7 @@ const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: Pr
             </span>
           ) as any
         }
-        numberUrl="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
+        numberUrl="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
       />
     </Styled.Container>
   );

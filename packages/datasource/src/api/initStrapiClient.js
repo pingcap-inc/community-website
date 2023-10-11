@@ -3,11 +3,11 @@ import axios from 'axios';
 const sortCmsDataByCreatedDatetime = (data) => {
   // re-order dataset where it is array and item's created_at is after '2023-10-11'
   if (
-    Array.isArray(data) &&
-    data.length > 0 &&
-    data.filter(({ created_at }) => !(created_at == null) && created_at > new Date('2023-10-11'))
+    Array.isArray(data) && data.filter(({ created_at }) => !(created_at == null)).length > 0
   ) {
-    return data.sort((a, b) => (new Date(a.created_at) > new Date(b.created_at) ? -1 : 1));
+    const dataBefore = data.filter(({ created_at }) => !(created_at == null) && created_at < new Date('2023-10-11'))
+    const dataAfter = data.filter(({ created_at }) => !(created_at == null) && created_at >= new Date('2023-10-11'))
+    return [...dataBefore, ...dataAfter.sort((a, b) => (new Date(a.created_at) > new Date(b.created_at) ? -1 : 1))]
   } else {
     return data;
   }

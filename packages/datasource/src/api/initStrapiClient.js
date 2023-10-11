@@ -1,11 +1,24 @@
 import axios from 'axios';
 
+const sortCmsDataByCreatedDatetime = (data) => {
+  // re-order dataset where it is array and item's created_at is after '2023-10-11'
+  if (
+    Array.isArray(data) &&
+    data.length > 0 &&
+    data.filter(({ created_at }) => !(created_at == null) && created_at > new Date('2023-10-11'))
+  ) {
+    return data.sort((a, b) => (new Date(a.created_at) > new Date(b.created_at) ? -1 : 1));
+  } else {
+    return data;
+  }
+};
+
 const initStrapiClient = async ({ baseUrl, email, password } = {}) => {
   const client = axios.create({
     baseURL: baseUrl ?? process.env.NEXT_PUBLIC_STRAPI_BASE_URL,
   });
 
-  client.interceptors.response.use(({ data }) => data);
+  client.interceptors.response.use(({ data }) => sortCmsDataByCreatedDatetime(data));
 
   const authResp = await client.post('/admin/login', {
     email: email ?? process.env.NEXT_PUBLIC_STRAPI_EMAIL,

@@ -162,7 +162,7 @@ const Page = () => (
           </tr>
           <tr>
             <td rowSpan="7">
-              <Anchor href="https://asktug.com">AskTUG</Anchor>
+              <Anchor href="https://asktug.com">AskTUG 技术问题（TiDB 技术问题、应用开发者专区、其他技术问题）</Anchor>
             </td>
             <td>发布问题帖子</td>
             <td>5</td>

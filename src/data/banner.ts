@@ -1,2 +1,2 @@
-export const text = 'TiDB 社区第三届 1024 程序员心愿节｜你的心愿，我来实现，人均带着一个礼物的时刻到啦！';
-export const link = 'https://asktug.com/t/topic/1013747';
+export const text = '【TiDB 社区智慧合集】史上最全的 158 篇 TiDB 用户实践合集来啦！千万不要错过！';
+export const link = 'https://asktug.com/t/topic/1015183';

@@ -15,7 +15,7 @@ const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: Pr
       <MainWrapper>{children}</MainWrapper>
       <Footer
         copyright="©2021 TiDB Community"
-        icp="京ICP备16046278号-7"
+        icp="京ICP备20022552号-6"
         icpUrl="https://beian.miit.gov.cn"
         number={
           (

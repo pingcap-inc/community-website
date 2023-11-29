@@ -98,7 +98,7 @@ const Learning = () => {
             </Styled.Logo>
 
             <Styled.Text>
-              <Styled.Link href={'https://pingcap.com/zh/education'}>PingCAP Education</Styled.Link>{' '}
+              <Styled.Link href={'https://cn.pingcap.com/education'}>PingCAP Education</Styled.Link>{' '}
               致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得
               <Styled.Link href={'https://learn.pingcap.com/learner/certification-center'}>能力认证</Styled.Link>的 TiDB
               人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。
@@ -140,11 +140,7 @@ const Learning = () => {
               </Col>
             </Styled.VideosRow>
 
-            {isSmallScreen && (
-              <Styled.Text>
-                学习构建 TiDB 分布式数据库集群的核心组件及其概念。
-              </Styled.Text>
-            )}
+            {isSmallScreen && <Styled.Text>学习构建 TiDB 分布式数据库集群的核心组件及其概念。</Styled.Text>}
 
             <Styled.More href={'https://cn.pingcap.com/courses-catalog'} $isSmallScreen={isSmallScreen}>
               更多课程

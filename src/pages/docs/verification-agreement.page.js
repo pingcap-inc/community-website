@@ -17,8 +17,8 @@ const Page = () => (
       </p>
       <p>
         为使用本服务，您应当阅读并遵守《TiDB Community 认证服务协议》（以下简称“本协议”）、
-        <Anchor href={'https://pingcap.com/zh/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
-        <Anchor href={'https://pingcap.com/zh/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>以及相关规则、制度等。
+        <Anchor href={'https://cn.pingcap.com/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
+        <Anchor href={'https://cn.pingcap.com/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>以及相关规则、制度等。
       </p>
       <p>请注意本服务不提供给未满18周岁之人，如果您未满18周岁，请不要使用本服务。</p>
 
@@ -26,8 +26,8 @@ const Page = () => (
         <li>
           <h2>1. 协议的范围</h2>
           <p>
-            本协议为<Anchor href={'https://pingcap.com/zh/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
-            <Anchor href={'https://pingcap.com/zh/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>
+            本协议为<Anchor href={'https://cn.pingcap.com/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
+            <Anchor href={'https://cn.pingcap.com/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>
             的补充协议，本协议与前述内容冲突时，以本协议为准。
           </p>
         </li>
@@ -56,8 +56,8 @@ const Page = () => (
             </li>
             <li>
               2.3 您保证您有权将相关资料和信息提交给PingCAP以按照本协议、
-              <Anchor href={'https://pingcap.com/zh/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
-              <Anchor href={'https://pingcap.com/zh/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>
+              <Anchor href={'https://cn.pingcap.com/terms-of-use'}>《PingCAP 使用条款》</Anchor>、
+              <Anchor href={'https://cn.pingcap.com/privacy-policy/'}>《PingCAP 隐私政策》</Anchor>
               等约定的方式加以使用。您保证该等行为不违反您与第三方之间的约定、您对第三方做出的承诺或其他您应遵守的规章、制度，并保证您的该等行为不会给PingCAP招致第三方异议或纠纷。
             </li>
             <li>

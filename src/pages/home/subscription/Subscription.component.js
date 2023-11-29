@@ -50,7 +50,7 @@ const Subscription = () => {
               TiDB 及其生态项目由来自全球各地的 1400+ 位贡献者共同建设与维护，由此查看
               <Styled.Link href={'https://github.com/pingcap/tidb/graphs/contributors'}>贡献者列表</Styled.Link>
             </Styled.Slogan>
-            <Anchor href={'https://pingcap.com/zh/privacy-policy'}>
+            <Anchor href={'https://cn.pingcap.com/privacy-policy'}>
               <Styled.ActionButton>隐私政策</Styled.ActionButton>
             </Anchor>
           </>
@@ -68,7 +68,7 @@ const Subscription = () => {
             <Styled.TermCaption>
               <Styled.LegalCheckbox checked={legalConfirmation} onChange={checkLegal} />
               本人已阅读并同意 TiDB Community 的
-              <Styled.Link href={'https://pingcap.com/zh/privacy-policy'}>隐私政策</Styled.Link>
+              <Styled.Link href={'https://cn.pingcap.com/privacy-policy'}>隐私政策</Styled.Link>
             </Styled.TermCaption>
           </>
         }

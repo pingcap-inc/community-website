@@ -171,7 +171,7 @@
   "learning": {
     "title": "如何使用 TiDB",
     "desc": "<0>PingCAP Education</0> 致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得<1>能力认证</1>的 TiDB 人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。",
-    "educationLink": "https://pingcap.com/zh/education/",
+    "educationLink": "https://cn.pingcap.com/education/",
     "certificateLink": "https://learn.pingcap.com/learner/certification-center",
     "videosTitle": "Get Started with TiDB",
     "more": "更多课程",
@@ -316,7 +316,7 @@
     "businessSupport": {
       "subtitle": "寻找商业支持",
       "name": "PingCAP",
-      "link": "https://pingcap.com/zh/",
+      "link": "https://cn.pingcap.com/",
       "desc": "PingCAP 是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB 解决方案与咨询、技术支持与培训认证等服务。"
     },
     "communityCollaboration": {
@@ -357,7 +357,7 @@
     "termsDesc": "本人已阅读并同意 TiDB Community 的",
     "terms": {
       "label": "隐私政策",
-      "link": "https://pingcap.com/zh/privacy-policy/"
+      "link": "https://cn.pingcap.com/privacy-policy/"
     }
   }
 }

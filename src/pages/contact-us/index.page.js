@@ -43,7 +43,7 @@ const Page = () => {
               <Styled.CardParagraph>想要获得商业专家产品最高响应级别 7*24 支持服务</Styled.CardParagraph>
               <Styled.CardComment>规划/实施/主动式巡检/故障协查/知识转移/重要时期保障</Styled.CardComment>
               <Styled.CardParagraph>
-                <Anchor href={'https://pingcap.com/zh/contact/?utm_source=tidb-community&utm_medium=referral'}>
+                <Anchor href={'https://cn.pingcap.com/contact/?utm_source=tidb-community&utm_medium=referral'}>
                   &gt; 联系 PingCAP
                 </Anchor>
               </Styled.CardParagraph>
@@ -65,7 +65,7 @@ const Page = () => {
               </Styled.CardParagraph>
               <Styled.CardParagraph>
                 <Anchor
-                  href={'https://pingcap.com/zh/events/tidb-on-aliyun/?utm_source=tidb-community&utm_medium=referral'}
+                  href={'https://cn.pingcap.com/events/tidb-on-aliyun/?utm_source=tidb-community&utm_medium=referral'}
                 >
                   &gt; 了解更多详情
                 </Anchor>

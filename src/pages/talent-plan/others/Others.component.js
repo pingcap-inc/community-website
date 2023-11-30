@@ -24,7 +24,7 @@ const Others = () => {
             了解数据库实现。
           </li>
           <li>
-            <Styled.Link href="https://pingcap.com/zh/blog/?tag=TiDB%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB,TiKV%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90">
+            <Styled.Link href="https://cn.pingcap.com/blog/?tag=TiDB%20%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB,TiKV%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90">
               TiDB 源码阅读
             </Styled.Link>
             应该对你的 Talent Plan 学习有所帮助。

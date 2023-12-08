@@ -142,7 +142,7 @@ const Core = ({
           number={
             <span>
               <img src={cdn.getImageUrl('/images/beian.png')} alt="beian" />
-              京公网安备 11010802039111号
+              京公网安备 11010802043620号
             </span>
           }
           numberUrl="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"

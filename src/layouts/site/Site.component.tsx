@@ -21,7 +21,7 @@ const SiteLayout = ({ MainWrapper = Styled.Main, backgroundColor, children }: Pr
           (
             <span>
               <img src={cdn.getImageUrl(`/images/beian.png`)} alt="beian" />
-              京公网安备 11010802039111号
+              京公网安备 11010802043620号
             </span>
           ) as any
         }

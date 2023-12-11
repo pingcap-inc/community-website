@@ -145,7 +145,7 @@ const Core = ({
               京公网安备 11010802043620号
             </span>
           }
-          numberUrl="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802039111"
+          numberUrl="https://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010802043620"
         />
       </Styled.Container>
     </NavContext.Provider>

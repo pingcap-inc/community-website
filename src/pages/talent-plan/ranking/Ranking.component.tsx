@@ -13,6 +13,13 @@ const Ranking = () => {
         {/*<Styled.Banner sm={isSmallScreen} />*/}
         <Styled.Link>
           <li>
+            <Anchor href={'https://mp.weixin.qq.com/s/gn-hzLGXTqMG418evx98bw'}>
+              Talent Plan 子课程支持中国数据库暑期学校 2023
+            </Anchor>{' '}
+            （已结束）
+          </li>
+          <li>2023 Talent Plan 华中科技大学暑期训练营 （已结束）</li>
+          <li>
             <Anchor href={'https://asktug.com/t/topic/665861'}>2022 年 Talent Plan tinyKV 学习营</Anchor> （已结束）
           </li>
           <li>

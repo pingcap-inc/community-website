@@ -1,2 +1,2 @@
-export const text = '【TiDB 社区智慧合集】史上最全的 158 篇 TiDB 用户实践合集来啦！千万不要错过！';
-export const link = 'https://asktug.com/t/topic/1015183';
+export const text = '2023 年 TiDB 社区年终总结，喜迎 2024，祝大家新年胜旧年！抽 10 名送 PingCAP & TiDB 2024 年新年礼盒';
+export const link = 'https://asktug.com/t/topic/1020038';

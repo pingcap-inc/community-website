@@ -22,6 +22,30 @@ export type TVideoRecord = {
 };
 
 export const videoRecords: { [bvid: string]: TVideoRecord } = {
+  BV1w5411i7L3: {
+    region: '北京站',
+    authorName: '戴涛 | PingCAP 中国业务解决方案技术部总经理',
+  },
+  BV1o5411v7Sf: {
+    region: '北京站',
+    authorName: '徐礼佳 | PingCAP 北美大客户架构师',
+  },
+  BV1NW4y1A7AG: {
+    region: '北京站',
+    authorName: '张烨 | TiDB 内核产品经理',
+  },
+  BV1ce411v7EW: {
+    region: '北京站',
+    authorName: '黄漫绅 | TiDB 社区运营',
+  },
+  BV1FT4y1n7fn: {
+    region: '北京站',
+    authorName: '代晓磊 | 知乎数据库负责人',
+  },
+  BV1ie411U7wQ: {
+    region: '北京站',
+    authorName: '刘强 | 作业帮数据库架构师，分布式数据库负责人',
+  },
   BV1BC4y1K75s: {
     region: '上海站',
     authorName: '薛晓刚 | 欧冶云商首席数据库专家',
@@ -36,7 +60,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1se411z73s: {
     region: '上海站',
-    authorName: ' Eason 蒋皓楠 | TiDB 内核产品经理负责人',
+    authorName: 'Eason 蒋皓楠 | TiDB 内核产品经理负责人',
   },
   BV1sV4y1W7dg: {
     region: '广州站',

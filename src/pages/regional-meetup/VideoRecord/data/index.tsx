@@ -22,23 +22,6 @@ export type TVideoRecord = {
 };
 
 export const videoRecords: { [bvid: string]: TVideoRecord } = {
-  // 2023-12-30 update data
-  // BV1Ev4y1Y7Tx: {
-  //   region: '上海站',
-  //   authorName: '张粲宇 | PingCAP Outbound PM',
-  // },
-  // BV1FM41177CT: {
-  //   region: '上海站',
-  //   authorName: '薛晓刚 | 欧冶云商 数据库一级首席师',
-  // },
-  // BV1ZL411Z71C: {
-  //   region: '上海站',
-  //   authorName: '张政俊 | 中欧财富 DBA',
-  // },
-  // BV1QM4y1o72p: {
-  //   region: '上海站',
-  //   authorName: '王天宜 | SelectDB 解决方案架构师',
-  // },
   BV1BC4y1K75s: {
     region: '上海站',
     authorName: '薛晓刚 | 欧冶云商首席数据库专家',

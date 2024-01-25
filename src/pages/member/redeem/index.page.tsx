@@ -64,10 +64,16 @@ const Page = () => {
       <Layout>
         <Styled.PointsContainer>
           <Tutorial>
-            每两周处理一次兑换礼物，兑换后 30 天内可收到礼物。如没有喜欢的礼品， 请点击参加
+            由于快递陆续停运，在 2024年1月25日-2024年2月25日期间兑换的礼物将于
+            2024年2月26日进行统一寄送。兑换码查看流程：
+            <Link href="https://asktug.com/t/topic/1012912" fontSize="14px">
+              课程/考证兑换码
+            </Link>
+            。如没有喜欢的礼品， 请点击参加
             <Link href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6" fontSize="14px">
               周边定制意见征集
             </Link>
+            。
           </Tutorial>
           <Styled.PointsContainerInner>
             <div>

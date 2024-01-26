@@ -125,7 +125,7 @@ const FormComponent = () => {
                 <AntForm.Item label="头像">
                   <Styled.Avatar src={data.avatar_url} />
                 </AntForm.Item>
-                <Anchor href={`https://asktug.com/u/${window.encodeURIComponent(username.value)}/preferences/account`}>
+                <Anchor href={`https://asktug.com/u/${window.encodeURIComponent(data.username)}/preferences/account`}>
                   <Button>更换头像</Button>
                 </Anchor>
               </Space>

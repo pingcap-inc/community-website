@@ -121,7 +121,7 @@ const FormComponent = () => {
             </Col>
 
             <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }}>
-              <Space direction={'vertical'}>
+              <Space direction={'vertical'} size={8}>
                 <AntForm.Item label="头像">
                   <Styled.Avatar src={data.avatar_url} />
                 </AntForm.Item>

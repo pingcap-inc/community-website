@@ -2,7 +2,7 @@ import * as R from 'ramda';
 import React, { useState } from 'react';
 import moment from 'moment';
 import useSWR from 'swr';
-import { Button, Col, Row, Skeleton, Tooltip, Form as AntForm, message } from 'antd';
+import { Button, Col, Row, Skeleton, Tooltip, Form as AntForm, message, Space } from 'antd';
 import { Form, FormItem, Input, Select } from 'formik-antd';
 import { Formik } from 'formik';
 import { QuestionCircleOutlined } from '@ant-design/icons';
@@ -11,6 +11,7 @@ import { api } from '@tidb-community/datasource';
 import * as Styled from './form.styled';
 import { fields, schema } from './form.fields';
 import { form as formUtils } from '~/utils';
+import Anchor from '~/components/Anchor';
 
 const { Option } = Select;
 const dateUiFormat = 'YYYY/MM/DD';
@@ -120,9 +121,14 @@ const FormComponent = () => {
             </Col>
 
             <Col xs={{ span: 24, order: 1 }} md={{ span: 12, order: 2 }}>
-              <AntForm.Item label="头像">
-                <Styled.Avatar src={data.avatar_url} />
-              </AntForm.Item>
+              <Space direction={'vertical'} size={8}>
+                <AntForm.Item label="头像">
+                  <Styled.Avatar src={data.avatar_url} />
+                </AntForm.Item>
+                <Anchor href={`https://asktug.com/u/${window.encodeURIComponent(data.username)}/preferences/account`}>
+                  <Button>更换头像</Button>
+                </Anchor>
+              </Space>
             </Col>
           </Row>
 

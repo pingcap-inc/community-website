@@ -64,14 +64,9 @@ const Page = () => {
       <Layout>
         <Styled.PointsContainer>
           <Tutorial>
-            由于快递陆续停运，在 2024年1月25日-2024年2月25日期间兑换的礼物将于
-            2024年2月26日进行统一寄送。兑换码查看流程：
+            日常周边兑换约两周处理一次，如有周边兑换问题可联系 TiDB Robot 微信（tidbai）； 课程/考证兑换请查看流程：
             <Link href="https://asktug.com/t/topic/1012912" fontSize="14px">
               课程/考证兑换码
-            </Link>
-            。如没有喜欢的礼品， 请点击参加
-            <Link href="https://forms.pingcap.com/f/833aba14-99cd-48b9-a969-fc35e790fbe6" fontSize="14px">
-              周边定制意见征集
             </Link>
             。
           </Tutorial>

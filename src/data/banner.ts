@@ -1,2 +1,3 @@
-export const text = '【3月9日 TiDB 社区活动在深圳】你是不是也想知道 TiDB 在零售、互联网+、Saas、游戏、出海企业的降本增效方案呢？本周六，深圳见！速来！ ';
-export const link = 'https://asktug.com/t/topic/1022388';
+export const text =
+  '【TiDB 社区第三届专栏征文大赛】超丰富周边奖励、返场行李箱、BOSE 耳机、SKG颈椎按摩仪、新款冲锋衣等你来拿！';
+export const link = 'https://asktug.com/t/topic/1022105';

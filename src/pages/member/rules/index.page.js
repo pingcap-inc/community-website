@@ -414,7 +414,7 @@ const Page = () => (
       </table>
       <h2 className="subtitle">四、新增追加奖励入口</h2>
       在原有获得经验值&amp;积分奖励基础上，TiDB 社区追加奖励入口，新增奖励以下行为事件，请把对应的证据截图发到邮箱：
-      <a href="mailto:huangmanshen@pingcap.com">huangmanshen@pingcap.com</a>
+      <a href="mailto:huangmanshen@pingcap.cn">huangmanshen@pingcap.cn</a>
       ，相关工作人员会在1-3个工作日内审核，并给予一定的经验值&amp;积分奖励。
       <table cellSpacing="0" cellPadding="0" border="1">
         <tbody>

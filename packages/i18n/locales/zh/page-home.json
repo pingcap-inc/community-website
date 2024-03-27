@@ -172,29 +172,29 @@
     "title": "如何使用 TiDB",
     "desc": "<0>PingCAP Education</0> 致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得<1>能力认证</1>的 TiDB 人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。",
     "educationLink": "https://cn.pingcap.com/education/",
-    "certificateLink": "https://learn.pingcap.com/learner/certification-center",
+    "certificateLink": "https://learn.pingcap.cn/learner/certification-center",
     "videosTitle": "Get Started with TiDB",
     "more": "更多课程",
-    "moreLink": "https://learn.pingcap.com/learner/home",
+    "moreLink": "https://learn.pingcap.cn/learner/home",
     "majorVideo": {
       "desc": "学习 TiDB 由来、发展与演进，理解 TiDB 5.0 数据库的体系架构、技术创新、关键特性、应用案例与适用场景。",
-      "link": "https://learn.pingcap.com/learner/course/6",
+      "link": "https://learn.pingcap.cn/learner/course/6",
       "coverUrl": "learn-main-video-cover.jpg"
     },
     "minorVideos": [
       {
         "title": "TiDB 系统管理基础",
-        "link": "https://learn.pingcap.com/learner/course/30002",
+        "link": "https://learn.pingcap.cn/learner/course/30002",
         "coverUrl": "learn-minor-video-1-cover.jpg"
       },
       {
         "title": "TiDB 故障排除",
-        "link": "https://learn.pingcap.com/learner/course/150002",
+        "link": "https://learn.pingcap.cn/learner/course/150002",
         "coverUrl": "learn-minor-video-2-cover.jpg"
       },
       {
         "title": "TiDB 高级系统管理",
-        "link": "https://learn.pingcap.com/learner/course/120005",
+        "link": "https://learn.pingcap.cn/learner/course/120005",
         "coverUrl": "learn-minor-video-3-cover.jpg"
       }
     ],

@@ -19,7 +19,7 @@ export const navItems = [
         items: [
           {
             title: 'TiDB DBA 课程',
-            link: 'https://learn.pingcap.com/learner/course',
+            link: 'https://learn.pingcap.cn/learner/course',
           },
           {
             title: 'Talent Plan 课程',
@@ -32,11 +32,11 @@ export const navItems = [
         items: [
           {
             title: 'PingCAP Certified TiDB Associate (PCTA)',
-            link: 'https://learn.pingcap.com/learner/exam-market/list?category=PCTA',
+            link: 'https://learn.pingcap.cn/learner/exam-market/list?category=PCTA',
           },
           {
             title: 'PingCAP Certified TiDB Professional (PCTP)',
-            link: 'https://learn.pingcap.com/learner/exam-market/list?category=PCTP',
+            link: 'https://learn.pingcap.cn/learner/exam-market/list?category=PCTP',
           },
         ],
       },

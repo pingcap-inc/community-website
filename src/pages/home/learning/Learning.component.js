@@ -14,17 +14,17 @@ import LearningPingcapEducationSVG from './learning-pingcap-education.svg';
 const minorVideos = [
   {
     title: 'TiDB 特有功能与事务控制',
-    link: 'https://learn.pingcap.com/learner/course/750002',
+    link: 'https://learn.pingcap.cn/learner/course/750002',
     coverImage: learn_minor_video_1_cover_image,
   },
   {
     title: '在 TiDB 上开发应用的最佳实践',
-    link: 'https://learn.pingcap.com/learner/course/780002',
+    link: 'https://learn.pingcap.cn/learner/course/780002',
     coverImage: learn_minor_video_2_cover_image,
   },
   {
     title: 'TiDB 数据库核心原理与架构',
-    link: 'https://learn.pingcap.com/learner/course/960001',
+    link: 'https://learn.pingcap.cn/learner/course/960001',
     coverImage: learn_minor_video_3_cover_image,
   },
 ];
@@ -100,12 +100,12 @@ const Learning = () => {
             <Styled.Text>
               <Styled.Link href={'https://cn.pingcap.com/education'}>PingCAP Education</Styled.Link>{' '}
               致力于培养开发、管理及应用分布式关系型数据库系统的一流人才。获得
-              <Styled.Link href={'https://learn.pingcap.com/learner/certification-center'}>能力认证</Styled.Link>的 TiDB
+              <Styled.Link href={'https://learn.pingcap.cn/learner/certification-center'}>能力认证</Styled.Link>的 TiDB
               人才将在分布式数据库领域开启高亮职业生涯，拥抱无限可能。
             </Styled.Text>
 
             <Styled.VideoHeader>
-              <Styled.TitleLink href="https://learn.pingcap.com/learner/course/600003">
+              <Styled.TitleLink href="https://learn.pingcap.cn/learner/course/600003">
                 TiDB 的架构与特点
               </Styled.TitleLink>
             </Styled.VideoHeader>
@@ -115,7 +115,7 @@ const Learning = () => {
                 <Styled.VideoBoxWrapper $isSmallScreen={isSmallScreen}>
                   <Styled.VideoBox $isSmallScreen={isSmallScreen} $src={learn_minor_video_1_cover_image.src}>
                     <Styled.VideoPlayButton>
-                      <Anchor href={'https://learn.pingcap.com/learner/course/600003'}>
+                      <Anchor href={'https://learn.pingcap.cn/learner/course/600003'}>
                         <Styled.VideoPlayIcon color="white" height="48px" />
                       </Anchor>
                     </Styled.VideoPlayButton>

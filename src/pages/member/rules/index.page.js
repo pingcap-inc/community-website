@@ -260,7 +260,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/6">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/6">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -269,7 +269,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/600003">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/600003">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -278,7 +278,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/30002">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/30002">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -287,7 +287,7 @@ const Page = () => (
             <td>100</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/120005">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/120005">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -296,7 +296,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/570012">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/570012">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -305,7 +305,7 @@ const Page = () => (
             <td>100</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/540005">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/540005">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -314,7 +314,7 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/course/690007">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/690007">点击学习</Anchor>
             </td>
           </tr>
           <tr>
@@ -371,14 +371,16 @@ const Page = () => (
           </tr>
           <tr>
             <td rowSpan="4">
-              <Anchor href="https://learn.pingcap.com/learner/certification-center">认证</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/certification-center">认证</Anchor>
             </td>
             <td>通过从业者认证</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=%E4%BB%8E%E4%B8%9A%E8%80%85">从业者考试</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/exam-market/list?category=%E4%BB%8E%E4%B8%9A%E8%80%85">
+                从业者考试
+              </Anchor>
             </td>
           </tr>
           <tr>
@@ -387,7 +389,7 @@ const Page = () => (
             <td>200</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCTA">PCTA 考试</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/exam-market/list?category=PCTA">PCTA 考试</Anchor>
             </td>
           </tr>
           <tr>
@@ -396,7 +398,7 @@ const Page = () => (
             <td>500</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCTP">PCTP 考试</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/exam-market/list?category=PCTP">PCTP 考试</Anchor>
             </td>
           </tr>
           <tr>
@@ -405,7 +407,7 @@ const Page = () => (
             <td>350</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.com/learner/exam-market/list?category=PCSD">PCSD 考试</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/exam-market/list?category=PCSD">PCSD 考试</Anchor>
             </td>
           </tr>
         </tbody>

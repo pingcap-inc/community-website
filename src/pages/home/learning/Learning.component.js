@@ -142,7 +142,7 @@ const Learning = () => {
 
             {isSmallScreen && <Styled.Text>学习构建 TiDB 分布式数据库集群的核心组件及其概念。</Styled.Text>}
 
-            <Styled.More href={'https://cn.pingcap.com/courses-catalog'} $isSmallScreen={isSmallScreen}>
+            <Styled.More href={'https://learn.pingcap.cn/learner/course'} $isSmallScreen={isSmallScreen}>
               更多课程
             </Styled.More>
           </>

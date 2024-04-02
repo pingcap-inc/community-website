@@ -254,7 +254,9 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="13">课程学习</td>
+            <td rowSpan="13">
+              <Anchor href="https://learn.pingcap.cn/learner/course">课程学习</Anchor>
+            </td>
             <td>完成 TiDB 快速起步课程学习</td>
             <td>50</td>
             <td>50</td>

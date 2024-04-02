@@ -145,7 +145,7 @@ export const navItems = [
   },
   {
     title: 'Redeem Gifts',
-    link: 'https://accounts.pingcap.com/points#/shop',
+    link: 'https://accounts.pingcap.cn/points#/shop',
   },
   {
     title: 'About',

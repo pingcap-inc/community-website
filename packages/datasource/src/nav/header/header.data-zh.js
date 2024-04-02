@@ -149,7 +149,7 @@ export const navItems = [
   },
   {
     title: '兑换礼品',
-    link: 'https://accounts.pingcap.com/points#/shop',
+    link: 'https://accounts.pingcap.cn/points#/shop',
   },
   {
     title: '关于',

@@ -254,8 +254,10 @@ const Page = () => (
             <td>被管理员推荐置顶。</td>
           </tr>
           <tr>
-            <td rowSpan="8">课程学习</td>
-            <td>完成 101-TiDB 快速起步课程学习</td>
+            <td rowSpan="13">
+              <Anchor href="https://learn.pingcap.cn/learner/course">课程学习</Anchor>
+            </td>
+            <td>完成 TiDB 快速起步课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
@@ -264,7 +266,16 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 201-TiDB 集群的架构与特点课程学习</td>
+            <td>完成 TiDB 数据库核心原理与架构（101）课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/960001">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 TiDB 的架构与特点（201.1）课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
@@ -273,7 +284,43 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 301-TiDB 系统管理基础课程学习</td>
+            <td>完成 在 TiDB 上学习 SQL 语句（201.2）课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/1050001">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 TiDB 特有功能与事务控制（201.3）课程学习</td>
+            <td>50</td>
+            <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/750002">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 使用 Connector/J（201.4）课程学习</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/840002">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 在 TiDB 上开发应用的最佳实践（201.5）课程学习</td>
+            <td>100</td>
+            <td>100</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/780002">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 TiDB 系统管理基础 [TiDB v5.x] (301) 课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
@@ -282,7 +329,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 302-TiDB 高级系统管理课程学习</td>
+            <td>完成 TiDB 高级系统管理 [TiDB v5]（302）课程学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
@@ -291,38 +338,40 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 304-TiDB 性能调优案例课程学习</td>
+            <td>完成 TiDB 数据库管理（303）课程学习</td>
             <td>50</td>
             <td>50</td>
+            <td>仅 1 次</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/1110001">点击学习</Anchor>
+            </td>
+          </tr>
+          <tr>
+            <td>完成 TiDB 性能调优案例学习 [TiDB v5.x] (304) 课程学习</td>
+            <td>100</td>
+            <td>100</td>
             <td>仅 1 次</td>
             <td>
               <Anchor href="https://learn.pingcap.cn/learner/course/570012">点击学习</Anchor>
             </td>
           </tr>
           <tr>
-            <td>完成 307-TiDB 性能调优课程学习</td>
+            <td>完成 TiDB 故障排除案例学习 [TiDB v5.x] (305)课程学习</td>
             <td>100</td>
             <td>100</td>
-            <td>仅 1 次</td>
-            <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/540005">点击学习</Anchor>
-            </td>
-          </tr>
-          <tr>
-            <td>完成 305-TiDB 故障排除案例课程学习</td>
-            <td>50</td>
-            <td>50</td>
             <td>仅 1 次</td>
             <td>
               <Anchor href="https://learn.pingcap.cn/learner/course/690007">点击学习</Anchor>
             </td>
           </tr>
           <tr>
-            <td>完成 308-TiDB 故障排除课程学习</td>
+            <td>完成 TiDB 性能调优 [TiDB v5.x] (307)课程学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
-            <td>暂未上线</td>
+            <td>
+              <Anchor href="https://learn.pingcap.cn/learner/course/540005">点击学习</Anchor>
+            </td>
           </tr>
           <tr>
             <td rowSpan="6">

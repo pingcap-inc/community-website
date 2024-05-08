@@ -1,3 +1,3 @@
 export const text =
-  '【TiDB 社区第三届专栏征文大赛】超丰富周边奖励、返场行李箱、BOSE 耳机、SKG颈椎按摩仪、新款冲锋衣等你来拿！';
-export const link = 'https://asktug.com/t/topic/1022105';
+  '【5 月 18 号】TiDB 地区交流活动（北京站）！和社区大咖们聊聊全球视野下的 TiDB 应用实践！如何做到成本、效率两手抓！';
+export const link = 'https://asktug.com/t/topic/1025166';

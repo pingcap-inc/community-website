@@ -1,13 +1,16 @@
 import React from 'react';
 import { Button, Space, Tooltip } from 'antd';
-import { GithubOutlined, MailOutlined } from '@ant-design/icons';
+import Icon, { GithubOutlined, MailOutlined } from '@ant-design/icons';
 
 import { useIsSmallScreen } from '~/hooks';
 import TwoColumnsSection from '~/layouts/twoColumnsSection';
 import { getImage } from '~/pages/talent-plan/talent-plan.utils';
 import Anchor from '~/components/Anchor';
+import AtomGitSvg from './AtomGitSvg';
 
 import * as Styled from './banner.styled';
+
+const AtomGitIcon = (props) => <Icon component={AtomGitSvg} {...props} />;
 
 const Banner = () => {
   const { isSmallScreen, breakpoint } = useIsSmallScreen();
@@ -26,7 +29,12 @@ const Banner = () => {
               <Space size={24}>
                 <Anchor href="https://github.com/pingcap/talent-plan" style={{ fontSize: 24 }}>
                   <Button type={'text'} icon={<GithubOutlined />}>
-                    开始学习
+                    Github 入口
+                  </Button>
+                </Anchor>
+                <Anchor href="https://atomgit.com/pingcap/talent-plan#/" style={{ fontSize: 24 }}>
+                  <Button type={'text'} icon={<AtomGitIcon />}>
+                    AtomGit 入口
                   </Button>
                 </Anchor>
                 <Anchor href="mailto:talent-plan@tidb.io" style={{ fontSize: 24 }}>

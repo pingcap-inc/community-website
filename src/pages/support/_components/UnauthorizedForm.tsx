@@ -66,9 +66,9 @@ export function UnauthorizedForm() {
             为了更好地为您提供商业支持和个性化服务，请填写以下信息。我们承诺保护您的隐私，并仅将信息用于提供服务，我们将在
             1 个工作日内和您联系。
           </SupportFormDescription>
-          <Row gutter={[24, 24]}>
+          <Row gutter={8}>
             <Col xs={24}>
-              <Row gutter={[8, 8]}>
+              <Row gutter={16}>
                 <Col xs={18}>
                   <FormItem
                     name="phone"
@@ -131,10 +131,10 @@ export function UnauthorizedForm() {
               </FormItem>
             </Col>
           </Row>
-          <Button disabled={!agree || !formik.isValid} style={{ marginTop: 30 }} type="primary" htmlType="submit" block>
+          <Button disabled={!agree || !formik.isValid} style={{ marginTop: 16 }} type="primary" htmlType="submit" block>
             确认
           </Button>
-          <Checkbox style={{ marginTop: 12 }} checked={agree} onChange={(ev) => setAgree(ev.target.checked)}>
+          <Checkbox style={{ marginTop: 8 }} checked={agree} onChange={(ev) => setAgree(ev.target.checked)}>
             我已阅读并同意{' '}
             <a
               style={{ textDecoration: 'underline' }}

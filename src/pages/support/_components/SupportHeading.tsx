@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const SupportHeading = styled('div')`
   text-align: center;
-  margin-top: 72px;
+  margin-top: 24px;
 `;
 
 export const SupportHeadingTitle = styled('h1')`

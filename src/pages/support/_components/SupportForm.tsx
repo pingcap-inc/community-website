@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { RequiredFormItem } from '~/components';
 import { colors } from '@tidb-community/ui';
 
 export const SupportForm = styled('form')`

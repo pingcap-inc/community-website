@@ -83,7 +83,7 @@ export function SupportFormContent({ authorized }: { authorized: boolean }) {
       });
   });
 
-  if (!succeed) {
+  if (succeed) {
     return (
       <SupportContainer>
         <Result

@@ -9,6 +9,7 @@ export * as points from './points';
 export { me } from './me';
 export * as cms from './cms';
 export * as common from './common';
+export * as support from './support';
 
 export type ApiResponse<T, Detail> = {
   detail: Detail;

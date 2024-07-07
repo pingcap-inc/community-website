@@ -1,6 +1,18 @@
 import styled from 'styled-components';
 import { colors } from '@tidb-community/ui';
 
+export const SupportContainer = styled.div`
+  margin-top: 24px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 759px;
+  background: #ffffff;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  padding: 48px 76px;
+  position: relative;
+`;
+
 export const SupportForm = styled('form')`
   margin-top: 24px;
   margin-left: auto;

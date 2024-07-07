@@ -4,13 +4,12 @@ import { CommunityHead } from '~/components';
 import Container from '~/components/Container';
 import { MeContext } from '~/context';
 import { CoreLayout } from '~/layouts';
-import { AuthorizedForm } from '~/pages/support/_components/AuthorizedForm';
+import { SupportFormContent } from '~/pages/support/_components/SupportFormContent';
 import {
   SupportHeading,
   SupportHeadingHeadline,
   SupportHeadingTitle,
 } from '~/pages/support/_components/SupportHeading';
-import { UnauthorizedForm } from '~/pages/support/_components/UnauthorizedForm';
 import DecorateImg from './_components/decorate.png';
 
 function SupportPage() {
@@ -37,11 +36,7 @@ function SupportPage() {
           </SupportHeadingHeadline>
         </SupportHeading>
         <Spin spinning={isLoadingMeData} tip="加载中...">
-          {meData ? (
-            <AuthorizedForm key="authorized" name={meData.username} company={meData.username} />
-          ) : (
-            <UnauthorizedForm key="unauthorized" />
-          )}
+          <SupportFormContent authorized={!!meData} />
         </Spin>
         <img
           alt="装饰图片"

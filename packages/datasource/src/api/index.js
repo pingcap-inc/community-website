@@ -11,6 +11,7 @@ export * as asktug from './asktug';
 export * as points from './points';
 export * as cms from './cms';
 export * as common from './common';
+export * as support from './support';
 
 export { default as client } from './client';
 export { default as blogClient } from './blogClient';

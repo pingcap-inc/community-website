@@ -1,20 +1,3 @@
-//import type { StaticImageData } from 'next/image';
-//
-//import cover1Image from './cover_images/网易互娱在 TiDB  SaaS 运维平台的建设.jpg';
-//import cover2Image from './cover_images/TiDB 冷热存储分离方案.jpg';
-//import cover3Image from './cover_images/TiKV 架构及原理介绍.jpg';
-//import cover4Image from './cover_images/Demo Show-mini OSSInsight.jpg';
-//import cover5Image from './cover_images/实战 _ 如何做好一次 TiDB POC 测试.jpg';
-//import cover6Image from './cover_images/TiDB 开发操作的一些想法和展望.jpg';
-//import cover7Image from './cover_images/TiDB 介绍 & TiSpark 实践.jpg';
-//import cover8Image from './cover_images/TiSpark + Hudi + Kyuubi 混合数据湖方案.jpg';
-//import cover9Image from './cover_images/运维视角下的 Linux 避坑指南.jpg';
-//import cover10Image from './cover_images/Greenplum 的 MPP 特性分享及选型思考.jpg';
-//import cover11Image from './cover_images/基于 Oracle DBSAT 的实践总结及思考.jpg';
-//import cover12Image from './cover_images/MySQL 和 TiDB CDC 原理对比.jpg';
-//import cover13Image from './cover_images/MySQL MGR + 自研脚本实现高可用切换.jpg';
-//import cover14Image from './cover_images/新型数仓 Databend 的存储层设计.jpg';
-
 export type TVideoRecord = {
   region: string;
   authorName: string;
@@ -22,6 +5,138 @@ export type TVideoRecord = {
 };
 
 export const videoRecords: { [bvid: string]: TVideoRecord } = {
+  BV17Z421M73B: {
+    region: '武汉站',
+    authorName: '韦万 | TiDB 研发工程师，曾经参与 TiFlash，目前负责 TiCDC 的研发工作',
+  },
+  BV1Es421M7YB: {
+    region: '武汉站',
+    authorName: '何傲 | 神州数码 TiDB 团队技术负责人',
+  },
+  BV1rf421Q7o3: {
+    region: '武汉站',
+    authorName: '谭品学 | 丰巢科技有限公司数据库负责人',
+  },
+  BV1Q6421Z73E: {
+    region: '武汉站',
+    authorName: '肖飞 | 嘉里大通物流架构团队负责人',
+  },
+  BV15T421S7ZM: {
+    region: '北京站',
+    authorName: '董宇 | TiDB Compute 团队负责人',
+  },
+  BV1Ws421w7Cx: {
+    region: '北京站',
+    authorName: '管元峥 |  360 商业化数据库负责人',
+  },
+  BV1us421A7DX: {
+    region: '北京站',
+    authorName: '魏建强 | 竞技世界 DBA',
+  },
+  BV1r7421f7o3: {
+    region: '北京站',
+    authorName: '姜皓楠 |  TiDB 内核产品经理负责人',
+  },
+  /**
+   * 成都站
+   * 1. 标题：MySQL 又不是不能用，为什么用 TiDB?
+   *       冯光普 | 多点 DMALL 数据库团队负责人
+   *       视频链接：https://www.bilibili.com/video/BV1pb421Y74c/
+   *
+   * 2. 标题：TiDB vs MySQL：消费金融公司在高并发、跨中心热备场景下的实践探索
+   *      段勇 | 马上消费金融 DBA
+   *      视频链接：https://www.bilibili.com/video/BV1dD421J7Zv/
+   *
+   * 3. 标题：出海 + 多云架构丨多点 TiDB 运维实战分享
+   *      唐万民 | 多点 DMALL 国内数据库负责人
+   *      视频链接：https://www.bilibili.com/video/BV1vF4m1w7cT/
+   *
+   * 4. 标题：从 0-1 应用实践：互联网行业数字化选品服务场景下 MySQL 到 TiDB 的演进之旅
+   *      赵明中 | 大淘客科技 DBA、数据库架构师
+   *      视频链接：https://www.bilibili.com/video/BV1Rb421Y7S5/
+   *
+   * 5. 标题：稳定性增强！TiDB v8.1.0 LTS 新功能揭秘，聊聊适用场景及未来计划
+   *      宋日杰 | PingCAP 产品经理
+   *      视频链接：https://www.bilibili.com/video/BV1Vp421Q78p/
+   */
+  BV1pb421Y74c: {
+    region: '成都站',
+    authorName: '冯光普 | 多点 DMALL 数据库团队负责人',
+  },
+  BV1dD421J7Zv: {
+    region: '成都站',
+    authorName: '段勇 | 马上消费金融 DBA',
+  },
+  BV1vF4m1w7cT: {
+    region: '成都站',
+    authorName: '唐万民 | 多点 DMALL 国内数据库负责人',
+  },
+  BV1Rb421Y7S5: {
+    region: '成都站',
+    authorName: '赵明中 | 大淘客科技 DBA、数据库架构师',
+  },
+  BV1Vp421Q78p: {
+    region: '成都站',
+    authorName: '宋日杰 | PingCAP 产品经理',
+  },
+  /**
+   * 深圳站
+   * 1. 标题：从多套 MySQL 到 1 套 TiDB - 骏伯网络综合运营管理平台应用实践
+   *      唐帆 | 广州骏伯网络科技有限公司系统架构师
+   *      视频链接：https://www.bilibili.com/video/BV1cZ421Y7UL/
+   *
+   * 2. 标题：零售业 ToC 系统的数据库选型
+   *      崔文涛 | 云盛海宏架构师
+   *      视频链接：https://www.bilibili.com/video/BV1Yj421Z7eG/
+   *
+   * 3. 标题：网易游戏规模化 TiDB SaaS 服务建设
+   *      田维繁 | 网易游戏 SaaS 服务关系型数据库运维小组负责人
+   *      视频链接：https://www.bilibili.com/video/BV1t6421c7k6/
+   *
+   * 4. 标题：SHOPLINE TiDB 4.0 到 6.5 升级之路
+   *      车佳蔚 | Shopline 数据库/ TiDB 负责人
+   *      视频链接：https://www.bilibili.com/video/BV1Ht421V7zp/
+   *
+   * 5. 标题：NewSQL 分布式数据库选型和实践
+   *      苏程辉 | 趣丸科技数据库/中间件负责人
+   *      视频链接：https://www.bilibili.com/video/BV1ei421d7ew/
+   *
+   * 6. 标题：TiDB 7.5 LTS 高性能处理方案
+   *      汤博文 | PingCAP 售前顾问
+   *      视频链接：https://www.bilibili.com/video/BV1L2421N7xb/
+   *
+   * 7. 标题：TiDB 资源管控特性解读及应用探索
+   *      李文杰 | TiDB 社区版主，TiDB 华南地区组织者
+   *      视频链接：https://www.bilibili.com/video/BV1kw4m1Z7st/
+   */
+  BV1cZ421Y7UL: {
+    region: '深圳站',
+    authorName: '唐帆 | 广州骏伯网络科技有限公司系统架构师',
+  },
+  BV1Yj421Z7eG: {
+    region: '深圳站',
+    authorName: '崔文涛 | 云盛海宏架构师',
+  },
+  BV1t6421c7k6: {
+    region: '深圳站',
+    authorName: '田维繁 | 网易游戏 SaaS 服务关系型数据库运维小组负责人',
+  },
+  BV1Ht421V7zp: {
+    region: '深圳站',
+    authorName: '车佳蔚 | Shopline 数据库/ TiDB 负责人',
+  },
+  BV1ei421d7ew: {
+    region: '深圳站',
+    authorName: '苏程辉 | 趣丸科技数据库/中间件负责人',
+  },
+  BV1L2421N7xb: {
+    region: '深圳站',
+    authorName: '汤博文 | PingCAP 售前顾问',
+  },
+  BV1kw4m1Z7st: {
+    region: '深圳站',
+    authorName: '李文杰 | TiDB 社区版主，TiDB 华南地区组织者',
+  },
   BV1w5411i7L3: {
     region: '北京站',
     authorName: '戴涛 | PingCAP 中国业务解决方案技术部总经理',

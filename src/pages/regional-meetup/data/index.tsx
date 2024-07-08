@@ -1,11 +1,6 @@
 import type { ReactNode } from 'react';
 import type { StaticImageData } from 'next/image';
 
-import photo广州Image from './广州.jpg';
-import photo天津Image from './天津.jpg';
-import photo武汉Image from './武汉.jpg';
-import photo济南Image from './济南.jpg';
-import photo石家庄Image from './石家庄.jpg';
 import React from 'react';
 import Anchor from '~/components/Anchor';
 
@@ -14,11 +9,10 @@ export const recommendUrl = 'https://asktug.com/t/topic/664366';
 
 // 顶部轮播图
 export const headerImages: { image: StaticImageData }[] = [
-  { image: photo广州Image },
-  { image: photo天津Image },
-  { image: photo武汉Image },
-  { image: photo济南Image },
-  { image: photo石家庄Image },
+  { image: require('./2024-07-01 北京.png').default },
+  { image: require('./2024-07-01 成都.png').default },
+  { image: require('./2024-07-01 深圳.png').default },
+  { image: require('./2024-07-01 武汉.png').default },
 ];
 
 export const applyDescription: ReactNode = '成为地区组织者可享有哪些社区福利？';
@@ -39,7 +33,10 @@ export const questionAndAnswer: { Q: string; A: ReactNode }[] = [
     Q: '我想组织一场地区活动，但还没有找到合适的讲师怎么办？',
     A: (
       <>
-        <p>欢迎来 asktug 论坛（asktug.com）发帖介绍你的活动计划，并招募地区分享嘉宾，社区也会在各社群渠道协助推广寻找宝藏讲师~每一个积极参与地区交流并分享的同学我们都有丰厚的社区礼包赠送喔</p>
+        <p>
+          欢迎来 asktug
+          论坛（asktug.com）发帖介绍你的活动计划，并招募地区分享嘉宾，社区也会在各社群渠道协助推广寻找宝藏讲师~每一个积极参与地区交流并分享的同学我们都有丰厚的社区礼包赠送喔
+        </p>
         <p>
           帖子可参考：
           <Anchor href={'https://asktug.com/t/topic/662777'} />
@@ -70,7 +67,9 @@ export const questionAndAnswer: { Q: string; A: ReactNode }[] = [
     Q: '活动筹备中，临时遇到疫情影响，或者讲师没法来了怎么办？',
     A: (
       <>
-        <p>如果临时遇到疫情管控，建议与报名的小伙伴以及分享嘉宾沟通是否需要延期，一起延期日期可以通过投票的方式选择。</p>
+        <p>
+          如果临时遇到疫情管控，建议与报名的小伙伴以及分享嘉宾沟通是否需要延期，一起延期日期可以通过投票的方式选择。
+        </p>
       </>
     ),
   },
@@ -78,7 +77,9 @@ export const questionAndAnswer: { Q: string; A: ReactNode }[] = [
     Q: '我想组织地区活动，但怎么查看我所在的地区是否已有地区组织者？',
     A: (
       <>
-        <p>每举办一期地区技术交流活动，我们都将在地区活动页面及时更新相关信息，如果该地区已举办过地区交流活动，你可以通过站内信与地区组织者联系，共同商议下一场活动计划喔</p>
+        <p>
+          每举办一期地区技术交流活动，我们都将在地区活动页面及时更新相关信息，如果该地区已举办过地区交流活动，你可以通过站内信与地区组织者联系，共同商议下一场活动计划喔
+        </p>
       </>
     ),
   },

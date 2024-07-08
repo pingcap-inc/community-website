@@ -119,23 +119,28 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
   }
 
   const videoRecordsFromServer: TVideoRecordFromServer = {};
-  for (const bvid of Object.keys(videoRecords)) {
-    try {
-      const videoBasicInfo = await getVideoBasicInfo(bvid);
-      if (videoBasicInfo.code === 0) {
-        const { extensionName } = await downloadVideoCoverImage(bvid, videoBasicInfo.data.pic);
-        videoRecordsFromServer[bvid] = {
-          title: videoBasicInfo.data.title,
-          duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(videoBasicInfo.data.duration % 60).toFixed()}`,
-          playCount: videoBasicInfo.data.stat.view,
-          createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
-          videoCoverImage: { src: `/images/bilibili_video_cover/${bvid}.${extensionName}`, width: 160, height: 100 },
-        };
+  await Promise.all(
+    Object.keys(videoRecords).map(async (bvid) => {
+      try {
+        const videoBasicInfo = await getVideoBasicInfo(bvid);
+        if (videoBasicInfo.code === 0) {
+          const { extensionName } = await downloadVideoCoverImage(bvid, videoBasicInfo.data.pic);
+          videoRecordsFromServer[bvid] = {
+            title: videoBasicInfo.data.title,
+            duration: `${(videoBasicInfo.data.duration / 60).toFixed()}:${(
+              videoBasicInfo.data.duration % 60
+            ).toFixed()}`,
+            playCount: videoBasicInfo.data.stat.view,
+            createDatetime: dayjs.unix(videoBasicInfo.data.pubdate).format('YYYY-M-D'),
+            videoCoverImage: { src: `/images/bilibili_video_cover/${bvid}.${extensionName}`, width: 160, height: 100 },
+          };
+        }
+      } catch (e) {
+        console.error('[Error] [/regional-meetup] [getServerSideProps] [videoRecordItems]', e);
       }
-    } catch (e) {
-      console.error('[Error] [/regional-meetup] [getServerSideProps] [videoRecordItems]', e);
-    }
-  }
+    })
+  );
+
   return {
     props: {
       sharedContentFromServer,

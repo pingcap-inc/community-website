@@ -6,6 +6,10 @@ import { colors, mixins } from '@tidb-community/ui';
 import { Link as RawLink } from '~/components';
 import { Tooltip as RawTooltip, Progress as RawProgress } from 'antd';
 import { FC, HTMLAttributes } from 'react';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCertificate, faFileSignature } from '@fortawesome/free-solid-svg-icons';
+
+library.add(faCertificate, faFileSignature);
 
 export const Title = styled.div`
   ${mixins.typography('h3')};

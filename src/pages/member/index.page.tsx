@@ -1,3 +1,4 @@
+import type { IconName } from '@fortawesome/fontawesome-common-types';
 import React, { useContext, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, Col, Modal, Row } from 'antd';
@@ -125,7 +126,7 @@ const Page = () => {
                     src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`}
                   />
                 ) : (
-                  <Styled.BadgeFaIcon icon="file-signature" />
+                  <Styled.BadgeFaIcon icon={['fas', badge.icon as IconName]} />
                 )}
                 <Styled.BadgeName>{badge.name}</Styled.BadgeName>
               </Styled.Badge>

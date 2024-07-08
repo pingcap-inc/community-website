@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 // @ts-ignore
 import { colors, mixins } from '@tidb-community/ui';
@@ -95,6 +96,11 @@ export const BadgeIcon = styled.img`
   width: 64px;
   height: 64px;
   object-fit: contain;
+`;
+
+export const BadgeFaIcon = styled(FontAwesomeIcon)`
+  width: 64px;
+  height: 64px;
 `;
 
 export const BadgeName = styled.span`

@@ -120,7 +120,13 @@ const Page = () => {
           {badgesDataOrdered.map((badge) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>
-                <Styled.BadgeIcon src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`} />
+                {badge.image_url ? (
+                  <Styled.BadgeIcon
+                    src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`}
+                  />
+                ) : (
+                  <Styled.BadgeFaIcon icon="file-signature" />
+                )}
                 <Styled.BadgeName>{badge.name}</Styled.BadgeName>
               </Styled.Badge>
             </Col>

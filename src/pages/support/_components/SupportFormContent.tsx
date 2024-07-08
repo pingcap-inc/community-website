@@ -179,7 +179,7 @@ export function SupportFormContent({ authorized }: { authorized: boolean }) {
                 name="consult_detail"
                 colon={false}
                 labelCol={{ xs: 24 }}
-                label={<SupportFormRequiredLabel>咨询事宜（非必填）</SupportFormRequiredLabel>}
+                label="咨询事宜（非必填）"
                 labelAlign={'left'}
               >
                 <Input.TextArea

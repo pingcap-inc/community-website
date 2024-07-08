@@ -1,5 +1,9 @@
 import type { ReactNode } from 'react';
 import type { StaticImageData } from 'next/image';
+import _0 from './2024-07-01 北京.png';
+import _1 from './2024-07-01 成都.png';
+import _2 from './2024-07-01 深圳.png';
+import _3 from './2024-07-01 武汉.png';
 
 import React from 'react';
 import Anchor from '~/components/Anchor';
@@ -8,12 +12,7 @@ export const joinUrl = 'https://forms.pingcap.com/f/regional-meetup-organizer';
 export const recommendUrl = 'https://asktug.com/t/topic/664366';
 
 // 顶部轮播图
-export const headerImages: { image: StaticImageData }[] = [
-  { image: require('./2024-07-01 北京.png').default },
-  { image: require('./2024-07-01 成都.png').default },
-  { image: require('./2024-07-01 深圳.png').default },
-  { image: require('./2024-07-01 武汉.png').default },
-];
+export const headerImages: { image: StaticImageData }[] = [{ image: _0 }, { image: _1 }, { image: _2 }, { image: _3 }];
 
 export const applyDescription: ReactNode = '成为地区组织者可享有哪些社区福利？';
 

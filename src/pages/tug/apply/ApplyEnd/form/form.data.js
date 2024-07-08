@@ -100,7 +100,7 @@ const data = {
       content: (
         <>
           本人已阅读并同意 TiDB Community 的
-          <Styled.FormSubmitAgreement href="https://cn.pingcap.com/privacy-policy/" target="_blank" rel="noreferrer">
+          <Styled.FormSubmitAgreement href="https://www.pingcap.cn/privacy-policy" target="_blank" rel="noreferrer">
             《隐私政策》
           </Styled.FormSubmitAgreement>
         </>

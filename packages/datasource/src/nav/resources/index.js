@@ -1,1 +1,1 @@
-export const orgPrivacyAgreementsUrl = 'https://cn.pingcap.com/privacy-policy/';
+export const orgPrivacyAgreementsUrl = 'https://www.pingcap.cn/privacy-policy';

@@ -86,7 +86,7 @@ jobs:
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Archive dist artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: dist-${{ inputs.build-env }}
           path: |
@@ -101,14 +101,14 @@ jobs:
             ./public
 
       - name: Archive static artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: static-${{ inputs.build-env }}
           path: |
             .next/static
 
       - name: Archive public artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: public-${{ inputs.build-env }}
           path: |

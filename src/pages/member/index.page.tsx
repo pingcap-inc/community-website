@@ -1,4 +1,3 @@
-import type { IconName } from '@fortawesome/fontawesome-common-types';
 import React, { useContext, useMemo, useState } from 'react';
 import { useRouter } from 'next/router';
 import { Button, Col, Modal, Row } from 'antd';
@@ -121,13 +120,7 @@ const Page = () => {
           {badgesDataOrdered.map((badge) => (
             <Col xs={12} md={8} lg={6}>
               <Styled.Badge owned={badge.has_badge}>
-                {badge.image_url ? (
-                  <Styled.BadgeIcon
-                    src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`}
-                  />
-                ) : (
-                  <Styled.BadgeFaIcon icon={['fas', badge.icon as IconName]} />
-                )}
+                <Styled.BadgeIcon src={`${process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? ''}/${badge.image_url}`} />
                 <Styled.BadgeName>{badge.name}</Styled.BadgeName>
               </Styled.Badge>
             </Col>

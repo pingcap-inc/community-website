@@ -10,7 +10,6 @@ import { useIsSmallScreen } from '~/hooks';
 import * as Styled from './others.styled';
 import PingcapLogoSvg from './others-pingcap-logo.svg';
 import flinkLogoImage from './others-flink-logo.png';
-import actionLogoImage from './others-action-logo.png';
 
 const Others = () => {
   const { data } = useContext(PageDataContext);
@@ -58,11 +57,6 @@ const Others = () => {
               是一个针对无界和有界数据流进行有状态计算的框架与分布式处理引擎，以数据并行和流水线方式执行任意流数据程序。Flink
               能在所有常见集群环境中运行，并能以内存速度和任意规模进行计算。
             </Styled.SmallerText>
-            <Styled.LogoWrapper>
-              <div style={{ maxHeight: 36 }}>
-                <Image {...actionLogoImage} width={133} height={36} alt={'action logo'} />
-              </div>
-            </Styled.LogoWrapper>
             {/*<Styled.Divider />*/}
             {/*<Styled.SmallerText>*/}
             {/*  {contactLang.label}*/}

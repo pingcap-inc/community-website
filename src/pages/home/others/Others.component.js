@@ -41,7 +41,7 @@ const Others = () => {
               <PingcapLogoSvg height={36} />
             </Styled.LogoWrapper>
             <Styled.SmallerText>
-              <Styled.SmallerLink href={'https://cn.pingcap.com'}>PingCAP</Styled.SmallerLink>{' '}
+              <Styled.SmallerLink href={'/support'}>PingCAP</Styled.SmallerLink>{' '}
               是业界领先的企业级开源分布式数据库企业，提供开源分布式数据库产品 TiDB
               解决方案与咨询、技术支持与培训认证等服务。
             </Styled.SmallerText>

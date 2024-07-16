@@ -64,11 +64,11 @@ export const navItems = [
       },
       {
         title: '案例学习',
-        link: 'https://cn.pingcap.com/case/',
+        link: 'https://www.pingcap.cn/case',
       },
       {
         title: 'PingCAP Education',
-        link: 'https://cn.pingcap.com/education/',
+        link: 'https://learn.pingcap.cn',
       },
       {
         title: 'TiDB in Action',

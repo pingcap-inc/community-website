@@ -85,7 +85,7 @@ const Banner = () => {
             <Styled.Intro>TiDB 是一款同时支持在线事务处理与在线分析处理 (HTAP) 的融合型分布式数据库产品。</Styled.Intro>
             <Row gutter={32} justify={isSmallScreen ? 'space-around' : 'space-between'} align="bottom">
               <Col flex="none">
-                <Anchor href={'https://cn.pingcap.com/product-community/'}>
+                <Anchor href={'https://github.com/pingcap/tidb'}>
                   <Styled.TryButton>立即体验</Styled.TryButton>
                 </Anchor>
               </Col>

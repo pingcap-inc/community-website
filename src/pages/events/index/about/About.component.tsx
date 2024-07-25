@@ -16,6 +16,13 @@ import { htmlId } from '../list/List.component';
 
 const card = [
   {
+    title: '2024 TiDB AI 创新应用黑客马拉松',
+    desc: '一起来用 TiDB 构建未来的 AI 创新应用，瓜分超￥210,000 奖金池！',
+    button: '前往查看',
+    link: 'https://asktug.com/t/topic/1029569?utm_source=asktug&utm_medium=direct&utm_campaign=banner_04',
+    image: '/images/activities/Hackathon_2024.jpeg',
+  },
+  {
     title: 'TiDB Future App Hackathon 2023',
     desc: 'TiDB 首届全球黑客马拉松，一起coding 赢取 3.6 万美元！',
     button: '前往查看',

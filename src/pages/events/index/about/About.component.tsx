@@ -23,13 +23,6 @@ const card = [
     image: '/images/activities/Hackathon_2024.jpeg',
   },
   {
-    title: 'TiDB Future App Hackathon 2023',
-    desc: 'TiDB 首届全球黑客马拉松，一起coding 赢取 3.6 万美元！',
-    button: '前往查看',
-    link: 'https://asktug.com/t/topic/1007076',
-    image: '/images/activities/TiDB_Future_App_Hackathon_2023.jpg',
-  },
-  {
     title: 'TiDB 地区组织活动',
     desc: '和本地的社区小伙伴一起聚聚，涨“姿势”！',
     button: '前往查看',

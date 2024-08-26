@@ -156,8 +156,7 @@ export const Editor = styled.div`
   h4,
   h5,
   h6 {
-    padding-top: ${anchorScrollOffset}px;
-    margin-top: -${anchorScrollOffset}px;
+    offset: ${anchorScrollOffset}px;
   }
 `;
 

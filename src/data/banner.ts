@@ -1,3 +1,3 @@
 export const text =
-  '2024 TiDB AI 创新应用黑客马拉松火热进行中！一起来用 TiDB 构建未来的 AI 创新应用，瓜分超￥220,000 奖金池！';
-export const link = 'https://asktug.com/t/topic/1029569';
+  'TiDB 升级互助活动持续到 9 月 30 日！由 20 位社区版主、资深布道师及官方技术支持组成的升级导师天团为你升级保驾护航！';
+export const link = 'https://asktug.com/t/topic/1025499';

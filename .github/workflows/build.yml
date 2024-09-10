@@ -86,7 +86,7 @@ jobs:
         if: steps.prod-dep-caches.outputs.cache-hit != 'true'
 
       - name: Archive dist artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: dist-${{ inputs.build-env }}
           path: |
@@ -101,14 +101,14 @@ jobs:
             ./public
 
       - name: Archive static artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: static-${{ inputs.build-env }}
           path: |
             .next/static
 
       - name: Archive public artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v3
         with:
           name: public-${{ inputs.build-env }}
           path: |
@@ -127,7 +127,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download dist artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: dist-${{ inputs.build-env }}
 
@@ -150,7 +150,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download static artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: static-${{ inputs.build-env }}
           path: .next/static
@@ -171,7 +171,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Download public artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v3
         with:
           name: public-${{ inputs.build-env }}
           path: public

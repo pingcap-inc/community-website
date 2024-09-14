@@ -5,7 +5,10 @@ const { withSentryConfig } = require('@sentry/nextjs');
 
 const { i18n } = require('./next-i18next.config');
 
+const os = require('os');
+const platform = os.platform();
 const outputStandaloneEnable = !!process.env.CI;
+console.log(platform, outputStandaloneEnable);
 
 const unifyNodeModules = (names) =>
   names.reduce(

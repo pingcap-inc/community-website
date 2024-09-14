@@ -99,6 +99,7 @@ jobs:
             .dockerignore
             Dockerfile
             ./public
+          include-hidden-files: true
 
       - name: Archive static artifacts
         uses: actions/upload-artifact@v4

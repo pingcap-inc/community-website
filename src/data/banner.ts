@@ -1,3 +1,3 @@
 export const text =
-  'TiDB 升级互助活动持续到 9 月 30 日！由 20 位社区版主、资深布道师及官方技术支持组成的升级导师天团为你升级保驾护航！';
-export const link = 'https://asktug.com/t/topic/1025499';
+  '【TiDB Infra Meetup - 用户实践场】9 月 21 号下午 14:00，让我们相约 PingCAP 视频号，聊聊 TiDB 新版本使用体验，分享升级实战经验！';
+export const link = 'https://asktug.com/t/topic/1032014';

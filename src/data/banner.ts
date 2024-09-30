@@ -1,3 +1,3 @@
 export const text =
-  '【TiDB Infra Meetup - 用户实践场】9 月 21 号下午 14:00，让我们相约 PingCAP 视频号，聊聊 TiDB 新版本使用体验，分享升级实战经验！';
-export const link = 'https://asktug.com/t/topic/1032014';
+  '10 月 26 号！TiDB 地区交流活动（杭州站）-走进电魂网络｜一起聊聊核心系统上 TiDB 的收益和体验 & 多业务场景怎么在 TiDB 一站式实现！';
+export const link = 'https://asktug.com/t/topic/1032923';

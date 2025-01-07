@@ -9,6 +9,70 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
     region: '武汉站',
     authorName: '韦万 | TiDB 研发工程师，曾经参与 TiFlash，目前负责 TiCDC 的研发工作',
   },
+  BV184SqY9Edf: {
+    region: '杭州站',
+    authorName: '赵月顺 | 哔哩哔哩数据库负责人',
+  },
+  BV1h4SqY9EkA: {
+    region: '杭州站',
+    authorName: '邵健 | 杭州银行数据库专家',
+  },
+  BV1g4SqY9E2e: {
+    region: '杭州站',
+    authorName: '李家林 | 安能物流运维负责人',
+  },
+  BV134SqY9EN7: {
+    region: '杭州站',
+    authorName: '',
+  },
+  BV1g4SqY9Eto: {
+    region: '杭州站',
+    authorName: '宋日杰 | PingCAP 产品经理',
+  },
+  BV1yarfYnEiH: {
+    region: '大连站',
+    authorName: '严少安 | TiDB 社区版主',
+  },
+  BV1KbrfYWEqq: {
+    region: '大连站',
+    authorName: '李震 | Rakuten INPD 高级软件开发工程师',
+  },
+  BV18AkFYFEnG: {
+    region: '大连站',
+    authorName: '宋日杰 | TiDB 产品经理',
+  },
+  BV1N8rfYXE9m: {
+    region: '大连站',
+    authorName: '曹海峰 | 伊莱科技数据库专家',
+  },
+  BV118rfYQErw: {
+    region: '大连站',
+    authorName: '张纪宽 | 海信聚好看云平台开发部、大数据平台部部长',
+  },
+  BV1V3rVYMEqU: {
+    region: '上海站',
+    authorName: '蔡金龙 | 小红书关系数据库负责人',
+  },
+  BV15urVYzEpr: {
+    region: '上海站',
+    authorName: '郭灏 | 咪咕视讯数据库中间件技术专家',
+  },
+  BV15urVYzE2H: {
+    region: '上海站',
+    authorName: '杨赛峰 | 数禾科技资深 DBA',
+  },
+  BV15urVYzE6s: {
+    region: '上海站',
+    authorName: '孟维克 | 爱奇艺 DBA',
+  },
+  BV1VurVYzEdD: {
+    region: '上海站',
+    authorName: '郑圣瑜 | 华安基金大数据开发工程师',
+  },
+  BV15urVYzEVd: {
+    region: '上海站',
+    authorName: '姚春晖 | TiDB 社区版主',
+  },
   BV1Es421M7YB: {
     region: '武汉站',
     authorName: '何傲 | 神州数码 TiDB 团队技术负责人',

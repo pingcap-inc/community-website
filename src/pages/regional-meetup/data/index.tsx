@@ -4,7 +4,7 @@ import _4 from './20250107-114926.jpeg';
 import _3 from './20250107-180714.png';
 import _2 from './20250107-114938.jpeg';
 import _1 from './20250107-114946.jpeg';
-import _0 from './20250107-115038.jpeg';
+import _0 from './20250108-002530.png';
 
 import React from 'react';
 import Anchor from '~/components/Anchor';

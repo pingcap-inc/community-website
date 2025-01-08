@@ -22,7 +22,7 @@ dayjs.extend(duration);
 
 const NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? '';
 
-const title = '地区活动';
+const title = 'TiDB 地区交流活动';
 const description =
   'TiDB 地区活动是通过各地区组织者举办的地区技术交流活动，每期地区组织活动以“连接地区技术人，分享技术实践”为核心目的，目前我们已在天津、石家庄、济南、武汉、广州等地举办多场地区组织活动。';
 

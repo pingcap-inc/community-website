@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 import type { StaticImageData } from 'next/image';
-import _0 from './2024-07-01 北京.png';
-import _1 from './2024-07-01 成都.png';
-import _2 from './2024-07-01 深圳.png';
-import _3 from './2024-07-01 武汉.png';
+import _4 from './20250107-114926.jpeg';
+import _3 from './20250107-180714.png';
+import _2 from './20250107-114938.jpeg';
+import _1 from './20250107-114946.jpeg';
+import _0 from './20250108-002530.png';
 
 import React from 'react';
 import Anchor from '~/components/Anchor';
@@ -12,14 +13,20 @@ export const joinUrl = 'https://forms.pingcap.com/f/regional-meetup-organizer';
 export const recommendUrl = 'https://asktug.com/t/topic/664366';
 
 // 顶部轮播图
-export const headerImages: { image: StaticImageData }[] = [{ image: _0 }, { image: _1 }, { image: _2 }, { image: _3 }];
+export const headerImages: { image: StaticImageData }[] = [
+  { image: _0 },
+  { image: _1 },
+  { image: _2 },
+  { image: _3 },
+  { image: _4 },
+];
 
 export const applyDescription: ReactNode = '成为地区组织者可享有哪些社区福利？';
 
 // 社区专属福利
 export const advantages: string[] = [
   '地区组织者专属徽章',
-  '社区 ID 定制咖啡杯',
+  '定制地区组织者奖杯',
   '优先邀请参与 DevCon ',
   'TiDB 最新课程的尝鲜机会',
   '500 积分和经验值',

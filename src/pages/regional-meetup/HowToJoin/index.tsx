@@ -7,7 +7,7 @@ import Anchor from '~/components/Anchor';
 import * as Styled from './index.styled';
 import { advantages, applyDescription, joinUrl } from '../data';
 import photoImage from './photo.png';
-import giftsImage from './gifts.png';
+import giftsImage from './gifts.jpeg';
 import vectorImage from './vector.png';
 
 export interface IProps extends React.HTMLAttributes<HTMLDivElement> {}

@@ -64,7 +64,8 @@ const Page = () => {
       <Layout>
         <Styled.PointsContainer>
           <Tutorial>
-            日常周边兑换约两周处理一次，如有周边兑换问题可联系 TiDB Robot 微信（tidbai）； 课程/考证兑换请查看流程：
+            1.10-2.12 期间周边兑换统一于 2.13 后发货，如有周边兑换问题可联系 TiDB Robot 微信（tidbai）；
+            课程/考证兑换请查看流程：
             <Link href="https://asktug.com/t/topic/1012912" fontSize="14px">
               课程/考证兑换码
             </Link>

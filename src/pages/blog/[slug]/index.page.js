@@ -24,6 +24,7 @@ import Interactions from './components/Interactions';
 import Comments from './components/Comments';
 import StatusAlert from './components/StatusAlert';
 import { usePrincipal } from '../blog.hooks';
+import * as cdn from '~/utils/cdn.utils';
 
 export const getServerSideProps = async (ctx) => {
   const { req } = ctx;
@@ -204,6 +205,11 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
           <Interactions blog={blog} reload={reload} />
         </Styled.Side>
         <Styled.Main>
+          <img
+            style={{ position: 'absolute', visibility: 'hidden' }}
+            src={cdn.getImageUrl('favicons/android-chrome-512x512.png')}
+            alt=""
+          />
           <Styled.Breadcrumb>{BreadcrumbDOM}</Styled.Breadcrumb>
           <Styled.StatusAlert>
             <StatusAlert blog={blog} />

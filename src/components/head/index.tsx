@@ -39,10 +39,13 @@ export const CommunityHead: React.FC<IProps> = (props) => {
       {keywordStr && <meta name="keyword" content={keywordStr} />}
 
       {/* 'Open Graph protocol' enables rich sharing info on Facebook */}
-      <meta name="og:title" content={fullTitle} />
-      <meta name="og:description" content={description} />
-      <meta name="og:type" content={props.isArticle ? 'article' : 'website'} />
-      <meta name="og:image" content={getFaviconsPath('/android-chrome-512x512.png')} />
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:type" content={props.isArticle ? 'article' : 'website'} />
+      <meta property="og:image" content={getFaviconsPath('/android-chrome-512x512.png')} />
+      <meta property="og:image:type" content="image/png" />
+      <meta property="og:image:width" content="512" />
+      <meta property="og:image:height" content="512" />
 
       {/* for sharing to twitter */}
       <meta name="twitter:title" content={fullTitle} />

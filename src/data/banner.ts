@@ -1,3 +1,3 @@
 export const text =
-  '【2024 TiDB 社区用户案例合集白皮书】集结 40+ 金融、互联网、零售、制造、物流、游戏行业用户全场景实践！';
-export const link = 'https://asktug.com/t/topic/1038427'
+  '【火热报名中】4 月 12 日 TiDB 社区活动在南京！传统技术栈替换和 AI 浪潮正当时，面向未来的国产数据库怎么选择？ ';
+export const link = 'https://asktug.com/t/topic/1040421'

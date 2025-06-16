@@ -1,3 +1,3 @@
 export const text =
-  '6 月 14 日，TiDB 社区活动在沈阳！聚焦民生，TiDB 加速政企数字化转型！来看亿联银行、京东、辽宁联通、央国企等核心实践！';
-export const link = 'https://asktug.com/t/topic/1042772'
+  '【活动回顾 & PPT 下载】TiDB 社区活动沈阳站，聚焦民生，TiDB 加速政企数字化转型！活动帖评论区分享活动收获，参与社区新款周边抽奖！ ';
+export const link = 'https://asktug.com/t/topic/1043168'

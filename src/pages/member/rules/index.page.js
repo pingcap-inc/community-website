@@ -98,12 +98,12 @@ const Page = () => (
             <td>说明</td>
           </tr>
           <tr>
+            <td rowSpan="6">新手任务</td>
             <td>
               完成<Anchor href="/my/company">公司信息</Anchor>填写
             </td>
             <td>50</td>
             <td>50</td>
-            <td />
             <td>仅第一次完善信息奖励</td>
             <td />
           </tr>
@@ -115,7 +115,6 @@ const Page = () => (
             <td>20</td>
             <td>仅第一次完善信息奖励</td>
             <td />
-            <td />
           </tr>
           <tr>
             <td>
@@ -124,7 +123,6 @@ const Page = () => (
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定账号奖励</td>
-            <td />
             <td>
               Contributor 在绑定成功后将自动授予：
               <Anchor href="https://asktug.com/badges/111/-">Contributor 专属徽章</Anchor>
@@ -137,7 +135,6 @@ const Page = () => (
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定邮箱奖励</td>
-            <td />
             <td>
               绑定邮箱之后将可解锁 TiDB
               社区每周精选邮件推送功能，第一时间获得社区精选资讯(热门问答+干货技术文章+活动推荐)。
@@ -150,7 +147,6 @@ const Page = () => (
             <td>10</td>
             <td>20</td>
             <td>仅第一次绑定手机号码奖励</td>
-            <td />
             <td>绑定手机号码是为了方便紧急情况下，社区技术老师可以第一时间与你取得联系，协助解决技术问题。</td>
           </tr>
           <tr>
@@ -160,7 +156,6 @@ const Page = () => (
             <td>2 ~ 5</td>
             <td>2 ~ 5</td>
             <td>1</td>
-            <td />
             <td>
               <Anchor href="/member#/summary">点击『签到』</Anchor>领取奖励, 签到 1 天奖励 2 分；连续签到 2 天奖励 3
               分；连续签到 3 天及以上奖励 5 分，断签重新开始。

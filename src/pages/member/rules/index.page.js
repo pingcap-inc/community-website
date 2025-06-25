@@ -262,20 +262,20 @@ const Page = () => (
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/6">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/1290020">点击学习</Anchor>
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 数据库核心原理与架构（101）课程学习</td>
+            <td>完成 101-TiDB 数据库核心原理与架构课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/960001">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/1290025">点击学习</Anchor>
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 的架构与特点（201.1）课程学习</td>
+            <td>完成 201.1-TiDB 的架构与特点课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
@@ -284,7 +284,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 在 TiDB 上学习 SQL 语句（201.2）课程学习</td>
+            <td>完成 201.2-在 TiDB 上学SQL语句课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
@@ -293,7 +293,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 特有功能与事务控制（201.3）课程学习</td>
+            <td>完成 201.3-TiDB 特有功能与事务控制课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
@@ -302,7 +302,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 使用 Connector/J（201.4）课程学习</td>
+            <td>完成 201.4-使用 Connector/J课程学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
@@ -311,7 +311,7 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 在 TiDB 上开发应用的最佳实践（201.5）课程学习</td>
+            <td>完成 201.5-在 TiDB 上开发应用的最佳实践课程学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
@@ -320,34 +320,25 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 系统管理基础 [TiDB v5.x] (301) 课程学习</td>
-            <td>50</td>
-            <td>50</td>
-            <td>仅 1 次</td>
-            <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/30002">点击学习</Anchor>
-            </td>
-          </tr>
-          <tr>
-            <td>完成 TiDB 高级系统管理 [TiDB v5]（302）课程学习</td>
+            <td>完成 302-TiDB 高级系统管理课程学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/120005">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/1290019">点击学习</Anchor>
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 数据库管理（303）课程学习</td>
+            <td>完成 303-TiDB 数据库管理课程学习</td>
             <td>50</td>
             <td>50</td>
             <td>仅 1 次</td>
             <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/1110001">点击学习</Anchor>
+              <Anchor href="https://learn.pingcap.cn/learner/course/1290017">点击学习</Anchor>
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 性能调优案例学习 [TiDB v5.x] (304) 课程学习</td>
+            <td>完成 304-TiDB 性能调优案例学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
@@ -356,21 +347,12 @@ const Page = () => (
             </td>
           </tr>
           <tr>
-            <td>完成 TiDB 故障排除案例学习 [TiDB v5.x] (305)课程学习</td>
+            <td>完成 305-TiDB 故障排除案例学习</td>
             <td>100</td>
             <td>100</td>
             <td>仅 1 次</td>
             <td>
               <Anchor href="https://learn.pingcap.cn/learner/course/690007">点击学习</Anchor>
-            </td>
-          </tr>
-          <tr>
-            <td>完成 TiDB 性能调优 [TiDB v5.x] (307)课程学习</td>
-            <td>100</td>
-            <td>100</td>
-            <td>仅 1 次</td>
-            <td>
-              <Anchor href="https://learn.pingcap.cn/learner/course/540005">点击学习</Anchor>
             </td>
           </tr>
           <tr>

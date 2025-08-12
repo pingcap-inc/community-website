@@ -1,3 +1,3 @@
 export const text =
-  '【开启报名啦】8 月 9 日，TiDB 社区活动在厦门！瑞幸咖啡、美柚、美图、飞连、福建四大机场、厦门三甲医院的 TiDB 实践分享 & 数据库选型趋势！';
-export const link = 'https://asktug.com/t/topic/1044167'
+  '从 Oracle 到 TiDB 的收益与迁移全流程，8 月 21 日，TiDB vs Oracle 线上 Meetup 一起探讨！参与互动可获得积分 & 新款周边！';
+export const link = 'https://asktug.com/t/topic/1044643'

@@ -1,3 +1,3 @@
 export const text =
-  '从 Oracle 到 TiDB 的收益与迁移全流程，8 月 21 日，TiDB vs Oracle 线上 Meetup 一起探讨！参与互动可获得积分 & 新款周边！';
-export const link = 'https://asktug.com/t/topic/1044643'
+  '平凯数据库（TiDB 企业版）敏捷模式内测开启！报名即可获得 6 个月的企业版使用权限 & 领取考试课程券和积分奖励，更有社区定制款行李箱！';
+export const link = 'https://asktug.com/t/topic/1045496'

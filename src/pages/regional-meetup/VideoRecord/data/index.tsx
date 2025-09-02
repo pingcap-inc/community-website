@@ -5,6 +5,106 @@ export type TVideoRecord = {
 };
 
 export const videoRecords: { [bvid: string]: TVideoRecord } = {
+  BV1V3rVYMEqU: {
+    region: '上海站',
+    authorName: '蔡金龙，小红书关系数据库负责人',
+  },
+  BV1VurVYzEdD: {
+    region: '上海站',
+    authorName: '郑圣瑜，华安基金大数据开发工程师',
+  },
+  BV15urVYzE6s: {
+    region: '上海站',
+    authorName: '孟维克，爱奇艺 DBA',
+  },
+  BV15urVYzEpr: {
+    region: '上海站',
+    authorName: '郭灏，咪咕视讯数据库中间件技术专家',
+  },
+  BV15urVYzE2H: {
+    region: '上海站',
+    authorName: '杨赛峰，数禾科技资深 DBA',
+  },
+  BV15urVYzEVd: {
+    region: '上海站',
+    authorName: '姚春晖，TiDB 社区版主',
+  },
+  BV1bUoLYyEZZ: {
+    region: '南京站',
+    authorName: '白鳝 DBAIOPS 社区发起人',
+  },
+  BV18UoLYyEwF: {
+    region: '南京站',
+    authorName: '郭枫 南京证券 数据团队负责人',
+  },
+  BV18UoLYyEKW: {
+    region: '南京站',
+    authorName: '徐驰 恺恩泰（南京）科技有限公司 解决方案总监',
+  },
+  BV18UoLYyEgY: {
+    region: '南京站',
+    authorName: '刘杰 江苏广电 大数据开发工程师',
+  },
+  BV1yJoLYeEFz: {
+    region: '南京站',
+    authorName: '刘松 PingCAP 副总裁',
+  },
+  BV1QfjdzMEjg: {
+    region: '重庆站',
+    authorName: '谭清如 马上消费金融 技术专家',
+  },
+  BV13fjdzuEf3: {
+    region: '重庆站',
+    authorName: '刘攀 重庆富民银行 DBA',
+  },
+  BV1eXjdzGEB7: {
+    region: '重庆站',
+    authorName: '余长发 智慧之家科技 副总裁',
+  },
+  BV1XojdzzE29: {
+    region: '重庆站',
+    authorName: '雷宇 英科融合（重庆）科技 副总经理',
+  },
+  BV1eXjdzGEz5: {
+    region: '重庆站',
+    authorName: '赵伟 ZStack 解决方案总监',
+  },
+  BV1DFjozqE1f: {
+    region: '重庆站',
+    authorName: '王豪 杭州云猿生数据 解决方案架构师',
+  },
+  BV1hFjozqEwf: {
+    region: '重庆站',
+    authorName: '沈鑫 国家超级计算（无锡）中心、太初科技 行业总监',
+  },
+  BV1peKcz6EJS: {
+    region: '沈阳站',
+    authorName: '卢秀红 亿联银行科技管理部副总经理、运维中心负责人',
+  },
+  BV1VDKczfE1s: {
+    region: '沈阳站',
+    authorName: '向安杰 京东集团研发工程师',
+  },
+  BV1G9KczoEmG: {
+    region: '沈阳站',
+    authorName: '付昌昌 辽宁联通网络 IT 系统架构师',
+  },
+  BV16FKAzrERt: {
+    region: '沈阳站',
+    authorName: '穆佳良 新基集团信创产品部经理',
+  },
+  BV12CKFzyEfQ: {
+    region: '沈阳站',
+    authorName: '蓝功儒 TiDB 解决方案架构师',
+  },
+  BV1rvbazSEgC: {
+    region: '厦门站',
+    authorName: '赵丹｜美柚 DBA',
+  },
+  BV1rebaznEdP: {
+    region: '厦门站',
+    authorName: '杨镕恺｜厦门兆翔智能科技研发工程师',
+  },
   BV17Z421M73B: {
     region: '武汉站',
     authorName: '韦万 | TiDB 研发工程师，曾经参与 TiFlash，目前负责 TiCDC 的研发工作',

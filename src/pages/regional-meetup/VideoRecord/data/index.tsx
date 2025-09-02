@@ -149,30 +149,6 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
     region: '大连站',
     authorName: '张纪宽 | 海信聚好看云平台开发部、大数据平台部部长',
   },
-  BV1V3rVYMEqU: {
-    region: '上海站',
-    authorName: '蔡金龙 | 小红书关系数据库负责人',
-  },
-  BV15urVYzEpr: {
-    region: '上海站',
-    authorName: '郭灏 | 咪咕视讯数据库中间件技术专家',
-  },
-  BV15urVYzE2H: {
-    region: '上海站',
-    authorName: '杨赛峰 | 数禾科技资深 DBA',
-  },
-  BV15urVYzE6s: {
-    region: '上海站',
-    authorName: '孟维克 | 爱奇艺 DBA',
-  },
-  BV1VurVYzEdD: {
-    region: '上海站',
-    authorName: '郑圣瑜 | 华安基金大数据开发工程师',
-  },
-  BV15urVYzEVd: {
-    region: '上海站',
-    authorName: '姚春晖 | TiDB 社区版主',
-  },
   BV1Es421M7YB: {
     region: '武汉站',
     authorName: '何傲 | 神州数码 TiDB 团队技术负责人',

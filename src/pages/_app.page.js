@@ -36,9 +36,11 @@ import {
   Env,
 } from '@pingcap-inc/tidb-community-site-components';
 import '@pingcap-inc/tidb-community-site-components/dist/index.css';
+import App from 'next/app';
 import Link from 'next/link';
 
 import { fetcher as newFetcher } from '~/api';
+import { SiteContext } from '~/context/site.context';
 
 dayjs.extend(relativeTime);
 // TODO: Need to sync with NextJS locale value
@@ -89,7 +91,7 @@ const siteFetchers = {
   },
 };
 
-const App = ({ Component, pageProps, router }) => {
+const MyApp = ({ Component, pageProps, siteBanner, router }) => {
   const [errorStatus, setErrorStatus] = useState();
   const [errorMsg, setErrorMsg] = useState();
 
@@ -166,13 +168,26 @@ const App = ({ Component, pageProps, router }) => {
       <GlobalStyle />
       <AuthContext.Provider value={authContext}>
         <MeContext.Provider value={{ meData, mutateMe, isMeValidating }}>
-          <SiteComponentsContext.Provider value={siteFetchers}>
-            <WrappedComponent {...pageProps} />
-          </SiteComponentsContext.Provider>
+          <SiteContext.Provider value={{ banner: siteBanner }}>
+            <SiteComponentsContext.Provider value={siteFetchers}>
+              <WrappedComponent {...pageProps} />
+            </SiteComponentsContext.Provider>
+          </SiteContext.Provider>
         </MeContext.Provider>
       </AuthContext.Provider>
     </SWRConfig>
   );
 };
 
-export default appWithTranslation(App, nextI18NextConfig);
+MyApp.getInitialProps = async (context) => {
+  const ctx = await App.getInitialProps(context);
+
+  const banner = await fetch('https://tidb.net/api/asktug/site/config')
+    .then((res) => res.json())
+    .then((res) => res.data.banner)
+    .catch(() => null);
+
+  return { ...ctx, siteBanner: banner };
+};
+
+export default appWithTranslation(MyApp, nextI18NextConfig);

@@ -10,7 +10,7 @@ import * as Styled from './core.styled';
 import { AuthContext, MeContext, NavContext } from '~/context';
 import { link as linkUtils, redDots as redDotsUtils } from '~/utils';
 import { cdn } from '~/utils';
-import * as bannerData from '~/data/banner';
+import { SiteContext } from '~/context/site.context';
 
 // disabled for operation reasons
 // const renderActivityBanner = ({ meData, isMeValidating }, { link, ...data }, onNavClick, currentPathname) => {
@@ -26,6 +26,12 @@ import * as bannerData from '~/data/banner';
 // };
 
 const ActivityBannerComponent = () => {
+  const { banner } = useContext(SiteContext);
+
+  if (!banner) {
+    return null;
+  }
+
   return (
     <ActivityBanner
       // backgroundColor={'#2c2c2c'}
@@ -46,12 +52,12 @@ const ActivityBannerComponent = () => {
               p-id="8487"
             ></path>
           </svg>
-          {bannerData.text}
+          {banner.title}
         </>
       }
       // backgroundImage={'https://tidb.net/images/activity/banner.svg'}
       // buttonImage={'https://tidb.net/images/activity/button.svg'}
-      link={bannerData.link}
+      link={banner.link}
       // onClick={() => onNavClick({ link: 'https://tidb.net/blog', target: '_blank' })}
     />
   );

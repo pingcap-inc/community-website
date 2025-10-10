@@ -11,6 +11,7 @@ import { useCategories, useTags } from './editing.hooks';
 import { usePrincipal } from '~/pages/blog/blog.hooks';
 import { LoadingOutlined } from '@ant-design/icons';
 import Anchor from '~/components/Anchor';
+import ErrorBoundary from '~/pages/blog/[slug]/edit/editing/ErrorBoundary.component';
 
 const spinIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
@@ -193,18 +194,20 @@ const Editing = ({ blogInfo }) => {
           />
         </Styled.Meta>
         <Spin spinning={hanging} indicator={spinIcon}>
-          <Styled.Editor>
-            <TiEditor
-              value={content}
-              onChange={setContent}
-              factory={factory}
-              placeholder="请在此处开始撰写正文……"
-              uploadFile={uploadFile}
-              onAlert={onAlert}
-              isCdnHost={isCdnHost}
-              setHang={setHang}
-            />
-          </Styled.Editor>
+          <ErrorBoundary>
+            <Styled.Editor>
+              <TiEditor
+                value={content}
+                onChange={setContent}
+                factory={factory}
+                placeholder="请在此处开始撰写正文……"
+                uploadFile={uploadFile}
+                onAlert={onAlert}
+                isCdnHost={isCdnHost}
+                setHang={setHang}
+              />
+            </Styled.Editor>
+          </ErrorBoundary>
         </Spin>
       </Styled.Content>
       <Styled.Footer>

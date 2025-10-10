@@ -99,7 +99,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   );
 
   const BreadcrumbDOM = useMemo(() => {
-    const BreadcrumbDOM = [<Breadcrumb.Item href="/blog">专栏</Breadcrumb.Item>];
+    const BreadcrumbDOM = [<Breadcrumb.Item href="/blog">博客</Breadcrumb.Item>];
     if (!blog) {
       return BreadcrumbDOM;
     }
@@ -175,7 +175,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
   if (!blog) {
     return (
       <CoreLayout MainWrapper={Styled.MainWrapper}>
-        <CommunityHead title={`专栏 - 加载中`} isArticle />
+        <CommunityHead title={`博客 - 加载中`} isArticle />
         <Skeleton active />
       </CoreLayout>
     );
@@ -190,7 +190,7 @@ export const BlogPage = ({ blog: blogFromSSR, isPending }) => {
 
   return (
     <CoreLayout MainWrapper={Styled.MainWrapper}>
-      <CommunityHead title={`专栏 - ${blog.title}`} description={blog.summary} keyword={keyword} isArticle />
+      <CommunityHead title={`博客 - ${blog.title}`} description={blog.summary} keyword={keyword} isArticle />
 
       <NextHead>
         <meta name="twitter:label1" content="By" />

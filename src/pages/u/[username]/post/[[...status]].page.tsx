@@ -109,7 +109,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
 
   const error = postsError;
   const loading = !postsResp;
-  if (error) return <ErrorPage statusCode={500} errorMsg={'暂时无法获取专栏数据，请稍候再试'} />;
+  if (error) return <ErrorPage statusCode={500} errorMsg={'暂时无法获取博客数据，请稍候再试'} />;
   if (loading) return <Skeleton active />;
 
   const loadMoreData = async () => {
@@ -160,7 +160,7 @@ export default function ProfilePostPage(props: IProps): JSX.Element {
         >
           {isEmpty ? (
             <EmptyStatus description={`你还没有${pageInfo.statusText}文章`}>
-              快前往 <a href={blogUrl}>【社区专栏】</a> 撰写技术文章吧～
+              快前往 <a href={blogUrl}>【社区博客】</a> 撰写技术文章吧～
             </EmptyStatus>
           ) : (
             <List

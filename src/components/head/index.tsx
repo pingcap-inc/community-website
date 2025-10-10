@@ -22,7 +22,7 @@ export const CommunityHead: React.FC<IProps> = (props) => {
 
   const keyword =
     props.keyword ??
-    'TiDB,TiKV,HTAP,实时数仓,实时商业智能,实时数据分析,实时流处理,数据中台,弹性扩容,交易,数据服务和分析一体化,分布式数据库,社区,活动,问答,论坛,技术文章,专栏';
+    'TiDB,TiKV,HTAP,实时数仓,实时商业智能,实时数据分析,实时流处理,数据中台,弹性扩容,交易,数据服务和分析一体化,分布式数据库,社区,活动,问答,论坛,技术文章,博客';
   const keywordStr = Array.isArray(keyword) ? keyword.join(',') : keyword;
 
   const googleAnalyticsId = 'GTM-K338LSD';

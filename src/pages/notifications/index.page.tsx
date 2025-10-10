@@ -14,7 +14,7 @@ const Page = ({ initIdx }) => {
       case 'asktug':
         return 'AskTUG';
       case 'blog':
-        return '专栏';
+        return '博客';
       default:
         return undefined;
     }

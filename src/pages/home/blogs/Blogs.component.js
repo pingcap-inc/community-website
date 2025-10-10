@@ -62,13 +62,13 @@ const Blogs = () => {
     type: 'primary',
     size: 'large',
     icon: <EditFilled />,
-    children: '写专栏',
+    children: '写博客',
   };
 
   return (
     <Styled.Container isSmallScreen={isSmallScreen}>
       <TwoColumnsSection
-        title={'专栏文章'}
+        title={'博客文章'}
         reverseOnSmallScreen
         leftPanel={
           <>
@@ -89,7 +89,7 @@ const Blogs = () => {
           <>
             <Styled.Module>
               <Styled.ModuleTitle justify={isSmallScreen && 'center'}>想分享经验？</Styled.ModuleTitle>
-              <p>「专栏」是社区的技术文章集合地，用户可以在这里查看、分享高质量的专栏文章，学习干货。</p>
+              <p>「博客」是社区的技术文章集合地，用户可以在这里查看、分享高质量的博客文章，学习干货。</p>
               <p>
                 发表、分享技术文章请参考
                 <Link href={'/blog/66c5e81b'}>技术文章撰写&发布指引</Link>

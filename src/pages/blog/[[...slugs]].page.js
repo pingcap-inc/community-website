@@ -196,7 +196,7 @@ export default function CategoryPage({
   return (
     <PageDataContext.Provider value={{ showRecommendedIcon: true }}>
       <CommunityHead
-        title={filter?.name == null ? '专栏' : `专栏 - ${filter?.name}`}
+        title={filter?.name == null ? '博客' : `博客 - ${filter?.name}`}
         description={
           '这里有来自 TiDB 社区用户分享的管理与运维、实践案例、架构选型、原理解读、应用开发、社区动态等一系列技术文章，也期待你的分享~'
         }
@@ -209,7 +209,7 @@ export default function CategoryPage({
               <Breadcrumb>
                 <Breadcrumb.Item>
                   <Link href={'/blog'} shallow passHref>
-                    <a>专栏</a>
+                    <a>博客</a>
                   </Link>
                 </Breadcrumb.Item>
                 <Breadcrumb.Item>

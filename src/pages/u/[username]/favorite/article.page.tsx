@@ -161,7 +161,7 @@ export default function ProfileFavoriteArticlePage(props: IProps) {
         >
           {isEmpty ? (
             <EmptyStatus description={'你还没有收藏过任何内容'}>
-              快前往 <a href={forumUrl}>【问答论坛】</a> 和 <a href={blogUrl}>【社区专栏】</a> 发现更多技术干货吧～
+              快前往 <a href={forumUrl}>【问答论坛】</a> 和 <a href={blogUrl}>【社区博客】</a> 发现更多技术干货吧～
             </EmptyStatus>
           ) : (
             <List

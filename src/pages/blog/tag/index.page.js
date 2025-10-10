@@ -40,7 +40,7 @@ const TagPage = ({ tags: tagsFromSSR }) => {
   return (
     <PageDataContext.Provider value={{}}>
       <CommunityHead
-        title="专栏 - 标签"
+        title="博客 - 标签"
         // description
         // keyword
       />
@@ -50,7 +50,7 @@ const TagPage = ({ tags: tagsFromSSR }) => {
           <Styled.Breadcrumb>
             <Breadcrumb>
               <Breadcrumb.Item>
-                <Link href={'/blog'}>专栏</Link>
+                <Link href={'/blog'}>博客</Link>
               </Breadcrumb.Item>
               <Breadcrumb.Item>
                 <Link href={'/blog/tag'}>标签</Link>

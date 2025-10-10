@@ -125,7 +125,7 @@ const list: MenuItemProps[] = [
     filter: {
       from: 'blog',
     },
-    title: '专栏消息',
+    title: '博客消息',
     indent: false,
   },
   {

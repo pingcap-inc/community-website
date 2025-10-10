@@ -215,15 +215,15 @@ const Page = () => (
           </tr>
           <tr>
             <td rowSpan="5">
-              <Anchor href="/blog">专栏</Anchor>
+              <Anchor href="/blog">博客</Anchor>
             </td>
-            <td>发布技术文章&amp;专栏</td>
+            <td>发布技术文章&amp;博客</td>
             <td>100 ~ 200</td>
             <td>100 ~ 200</td>
             <td>不限制</td>
             <td>
-              <Anchor href="/blog">专栏：发布入口</Anchor>，发布规则参考：
-              <Anchor href="/blog/66c5e81b">专栏技术文章发布指南&amp;指引</Anchor>
+              <Anchor href="/blog">博客：发布入口</Anchor>，发布规则参考：
+              <Anchor href="/blog/66c5e81b">博客技术文章发布指南&amp;指引</Anchor>
             </td>
           </tr>
           <tr>
@@ -238,14 +238,14 @@ const Page = () => (
             <td>5</td>
             <td>5</td>
             <td>10</td>
-            <td>自己收藏自己的专栏（技术文章）不给分。</td>
+            <td>自己收藏自己的博客（技术文章）不给分。</td>
           </tr>
           <tr>
             <td>文章被引用</td>
             <td>5</td>
             <td>10</td>
             <td>10</td>
-            <td>被引用的专栏（技术文章）会给原作者增加积分。</td>
+            <td>被引用的博客（技术文章）会给原作者增加积分。</td>
           </tr>
           <tr>
             <td>文章被推荐置顶</td>
@@ -525,7 +525,7 @@ const Page = () => (
             <td>100 ~ 200</td>
             <td>不限制</td>
             <td>
-              传播渠道包括但不限制于以下渠道： 1、AskTUG 全栈置顶资源位 2、知乎「TiDB 后花园」专栏收录 3、TiDB
+              传播渠道包括但不限制于以下渠道： 1、AskTUG 全栈置顶资源位 2、知乎「TiDB 后花园」博客收录 3、TiDB
               社区其他渠道，如公众号、自媒体渠道、CSDN、掘金、思否、开源中国等技术社区
             </td>
           </tr>

@@ -65,7 +65,7 @@ const linkSections = [
     links: [
       {
         link: '/blog',
-        label: '专栏',
+        label: '博客',
       },
     ],
   },

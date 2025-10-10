@@ -46,7 +46,7 @@ const PageContent = () => {
         <Styled.Container>
           <Styled.Breadcrumb>
             <Breadcrumb.Item>
-              <Link href="/blog">专栏</Link>
+              <Link href="/blog">博客</Link>
             </Breadcrumb.Item>
             <Breadcrumb.Item>待审核</Breadcrumb.Item>
           </Styled.Breadcrumb>

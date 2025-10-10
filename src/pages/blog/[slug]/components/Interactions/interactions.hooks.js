@@ -81,7 +81,7 @@ export const useShares = (blogInfo) => {
           usp.set('shareId', String(shareID));
         }
         const url = `${window.location.origin + window.location.pathname}?${usp.toString()}`;
-        copy(`${title} - ${author} 的专栏 - ${url}`);
+        copy(`${title} - ${author} 的博客 - ${url}`);
         return shared;
       })
       .then((shared) => {

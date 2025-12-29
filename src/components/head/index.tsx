@@ -16,9 +16,7 @@ export const CommunityHead: React.FC<IProps> = (props) => {
   const titleSuffix = 'TiDB 社区';
   const fullTitle = [props.title, titleSuffix].filter((value) => value != null).join(' | ');
 
-  const description =
-    props.description ??
-    'TiDB 社区是由 TiDB 生态中的开发者、用户、Contributor、合作伙伴一起建立的分享、学习平台。在这里，我们可以自由发声，互相协助解决问题。';
+  const description = props.description ?? 'TiDB 社区——与40000+人一起交流学习 TiDB';
 
   const keyword =
     props.keyword ??

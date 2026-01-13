@@ -62,16 +62,18 @@ const NextSteps = () => {
                 <ol>
                   <li>
                     TiDB 社区每年举办上百场活动，覆盖开发者、用户上万人，欢迎
-                    <Styled.Link href="https://tidb.net/events">参与活动</Styled.Link>
+                    <Styled.Link href="https://pingkai.cn/tidbcommunity/events">参与活动</Styled.Link>
                   </li>
                   <li>
                     如果你对 TiDB 相关产品和技术的应用感兴趣，欢迎来
                     <Styled.Link href="https://asktug.com">用户论坛</Styled.Link>和{' '}
-                    <Styled.Link href="https://tidb.net/tug">TUG 交流学习</Styled.Link>
+                    <Styled.Link href="https://pingkai.cn/tidbcommunity/tug">TUG 交流学习</Styled.Link>
                   </li>
                   <li>更多技术内容请前往博客学习</li>
                 </ol>
-                <Styled.ProjectCardButton onClick={onClick('https://tidb.net')}>开始探索</Styled.ProjectCardButton>
+                <Styled.ProjectCardButton onClick={onClick('https://pingkai.cn/tidbcommunity')}>
+                  开始探索
+                </Styled.ProjectCardButton>
               </Styled.ProjectCardContent>
             </Styled.ProjectCard>
 

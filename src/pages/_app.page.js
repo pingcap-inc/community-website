@@ -182,7 +182,7 @@ const MyApp = ({ Component, pageProps, siteBanner, router }) => {
 MyApp.getInitialProps = async (context) => {
   const ctx = await App.getInitialProps(context);
 
-  const banner = await fetch('https://tidb.net/api/asktug/site/config')
+  const banner = await fetch('https://pingkai.cn/tidbcommunity/api/asktug/site/config')
     .then((res) => res.json())
     .then((res) => res.data.banner)
     .catch(() => null);

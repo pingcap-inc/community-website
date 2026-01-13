@@ -29,7 +29,7 @@ const config = {
   images: {
     domains: [
       'localhost',
-      'tidb.net',
+      'pingkai.cn/tidbcommunity',
       'contributor.tidb.io',
       'cms.tidb.net',
       'img3.pingcap.com',

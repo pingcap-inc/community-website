@@ -3,7 +3,7 @@ import * as Styled from './index.styled';
 import Anchor from '~/components/Anchor';
 import { FlagOutlined } from '@ant-design/icons';
 
-const feedbackUrl = 'https://asktug.com/t/topic/542917';
+const feedbackUrl = 'https://pingkai.cn/tidbcommunity/forum/t/topic/542917';
 
 export default function FeedbackCard() {
   return (

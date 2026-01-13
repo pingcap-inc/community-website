@@ -9,7 +9,8 @@ export interface IProfileCard {
   badges: IRawBadges[];
 }
 
-const NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? 'https://asktug.com';
+const NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL =
+  process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? 'https://pingkai.cn/tidbcommunity/forum';
 
 export default function ProfileCard(props: IProfileCard) {
   const { badges } = props;

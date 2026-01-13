@@ -1,8 +1,8 @@
 export const defaultEnvDomains = {
   production: {
-    'tidb.net': 'tidb.net',
+    'tidb.net': 'pingkai.cn/tidbcommunity',
     'contributor.tidb.io': 'contributor.tidb.io',
-    'asktug.com': 'asktug.com',
+    'asktug.com': 'pingkai.cn/tidbcommunity/forum',
     'accounts.pingcap.com': 'accounts.pingcap.com',
   },
   preview: {

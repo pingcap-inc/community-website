@@ -2,7 +2,7 @@ import { asktugClient } from '../clients';
 import { AxiosRequestConfig } from 'axios';
 import { GetServerSidePropsContext } from 'next';
 
-const asktugProdDomain = 'https://asktug.com';
+const asktugProdDomain = 'https://pingkai.cn/tidbcommunity/forum';
 const askTugApiDomain = process.env.NEXT_PUBLIC_ASKTUG_PROXY_BASE_URL ?? asktugProdDomain;
 export const askTugDomain = process.env.NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL ?? asktugProdDomain;
 const accountsDomain = process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '';
@@ -150,7 +150,7 @@ export type TUserDetail = {
   id: number; // 601596,
   username: string; // "ShawnYan",
   name: string; // "",
-  avatar_template: string; // "/user_avatar/asktug.com/shawnyan/{size}/702678_2.png",
+  avatar_template: string; // "/user_avatar/pingkai.cn/tidbcommunity/forum/shawnyan/{size}/702678_2.png",
   last_posted_at: string; // "2022-10-12T13:55:52.000Z",
   last_seen_at: string; // "2022-10-13T07:09:52.000Z",
   created_at: string; // "2021-10-15T11:12:52.000Z",
@@ -180,7 +180,7 @@ export type TUserDetail = {
   primary_group_flair_bg_color: string; // null,
   primary_group_flair_color: string; // null,
   custom_avatar_upload_id: number; // 702678,
-  custom_avatar_template: string; // "/user_avatar/asktug.com/shawnyan/{size}/702678_2.png",
+  custom_avatar_template: string; // "/user_avatar/pingkai.cn/tidbcommunity/forum/shawnyan/{size}/702678_2.png",
   is_verified: boolean; // true,
   invited_by: number | null; // null,
 };
@@ -213,7 +213,7 @@ export interface IUser {
   id: number; // 601596,
   username: string; // "ShawnYan",
   name: string; // "",
-  avatar_template: string; // "/user_avatar/asktug.com/shawnyan/{size}/702678_2.png",
+  avatar_template: string; // "/user_avatar/pingkai.cn/tidbcommunity/forum/shawnyan/{size}/702678_2.png",
   moderator: boolean; // false,
   admin: boolean; // false,
   is_verified: boolean; // true

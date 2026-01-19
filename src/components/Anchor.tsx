@@ -12,7 +12,7 @@ export default function Anchor({ target, rel, isHash, href, ...rest }: IProps) {
   props.rel = isHash ? '' : rel ?? 'noopener noreferrer';
 
   // Add path prefix
-  if (href && href.startsWith('/') && !href.startsWith('//')) {
+  if (href && href.startsWith('/') && !href.startsWith('//') && !href.startsWith('/tidbcommunity')) {
     href = '/tidbcommunity' + href;
   }
   props.href = href;

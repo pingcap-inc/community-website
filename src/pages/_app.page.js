@@ -63,8 +63,8 @@ const fetcher = (path, params) => {
 const WrapLink = ({ url, children, ...attrs }) => {
   return (
     // quick fix for new domain
-    <Link href={url?.startsWith('/tidbcommunity') ? url.slice('/tidbcommunity'.length) : url}>
-      <a href={url} {...attrs}>
+    <Link href={url}>
+      <a href={`/tidbcommunity` + url} {...attrs}>
         {children}
       </a>
     </Link>

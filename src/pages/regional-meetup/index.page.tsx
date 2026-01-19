@@ -104,7 +104,10 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
   const sharedContentFromServer: TSharedContentFromServer = {};
   const videoRecordsFromServer: TVideoRecordFromServer = {};
 
-  await Promise.all([
+  // This is a quick fix for github not resolving our new domain
+
+  // do not wait for request done.
+  void Promise.all([
     ...Object.keys(sharedContents).map(async (username) => {
       try {
         const user = await getUserByUsername({ username });
@@ -140,6 +143,11 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
       }
     }),
   ]);
+
+  // directly return results after timeout.
+  await new Promise((resolve) => {
+    setTimeout(resolve, 10000);
+  });
 
   return {
     props: {

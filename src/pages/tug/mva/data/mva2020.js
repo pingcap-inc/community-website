@@ -6,11 +6,11 @@ const data = [
     links: [
       {
         name: 'TiDB 在马上消费金融核心账务系统归档及跑批业务下的实践',
-        href: 'https://asktug.com/t/topic/2686',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/2686',
       },
       {
         name: '【Talk】TiDB 在马上消费金融总账系统的容器化实践之路',
-        href: 'https://asktug.com/t/topic/35399',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/35399',
       },
     ],
   },
@@ -21,19 +21,19 @@ const data = [
     links: [
       {
         name: 'TiDB 在 360 云平台的落地和实践经验',
-        href: 'https://asktug.com/t/topic/32849',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/32849',
       },
       {
         name: '一篇文章带你玩转 TiDB 灾难恢复',
-        href: 'https://asktug.com/t/topic/34246',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/34246',
       },
       {
         name: 'TiDB 大规模节点下线实践',
-        href: 'https://asktug.com/t/topic/37485',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/37485',
       },
       {
         name: 'DM 运维踩坑实践总结',
-        href: 'https://asktug.com/t/topic/63512',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/63512',
       },
     ],
   },
@@ -52,7 +52,7 @@ const data = [
       },
       {
         name: '初探 TiDB-TiFlash',
-        href: 'https://asktug.com/t/topic/33523',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/33523',
       },
     ],
   },
@@ -63,15 +63,15 @@ const data = [
     links: [
       {
         name: '一次解决读写冲突的案例',
-        href: 'https://asktug.com/t/topic/33205/4',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/33205/4',
       },
       {
         name: 'TiDB 分区表优化实践',
-        href: 'https://asktug.com/t/topic/33810',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/33810',
       },
       {
         name: 'TiDB 在汽车之家 818 台网互动项目中的应用',
-        href: 'https://asktug.com/t/topic/37016',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/37016',
       },
     ],
   },

@@ -130,7 +130,10 @@ const MostValuableAdvocate = () => {
               <div className={styles.welfare_header}>
                 <div className={styles.welfare_header_title}>专属福利</div>
                 <div className={styles.welfare_header_link}>
-                  <MyLink href="https://asktug.com/t/topic/633" className={styles.welfare_header_link_button}>
+                  <MyLink
+                    href="https://pingkai.cn/tidbcommunity/forum/t/topic/633"
+                    className={styles.welfare_header_link_button}
+                  >
                     <ArrowRightOutlined /> 查看全部
                   </MyLink>
                 </div>

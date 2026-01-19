@@ -3,7 +3,7 @@ const genUserMenu = (meData) =>
     ? [
         {
           title: '个人信息',
-          link: `https://tidb.net/user/${meData.id}/info`,
+          link: `https://pingkai.cn/tidbcommunity/user/${meData.id}/info`,
         },
       ]
     : [];

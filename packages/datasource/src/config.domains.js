@@ -1,15 +1,15 @@
 export const defaultEnvDomains = {
   production: {
-    'tidb.net': 'tidb.net',
+    'tidb.net': 'pingkai.cn/tidbcommunity',
     'contributor.tidb.io': 'contributor.tidb.io',
-    'asktug.com': 'asktug.com',
-    'accounts.pingcap.com': 'accounts.pingcap.com',
+    'asktug.com': 'pingkai.cn/tidbcommunity/forum',
+    'accounts.pingcap.com': 'pingkai.cn/accounts',
   },
   preview: {
-    'tidb.net': 'community-preview.tidb.io',
-    'contributor.tidb.io': 'community-preview-contributor.tidb.io',
-    'asktug.com': 'community-preview.asktug.com',
-    'accounts.pingcap.com': 'accounts-preview.pingcap.cn',
+    'tidb.net': 'community.pingkai.cn/tidbcommunity',
+    'contributor.tidb.io': 'contributor.tidb.io',
+    'asktug.com': 'community.pingkai.cn/tidbcommunity/forum',
+    'accounts.pingcap.com': 'community.pingkai.cn/accounts',
   },
   local: {
     'tidb.net': 'localhost:3000',

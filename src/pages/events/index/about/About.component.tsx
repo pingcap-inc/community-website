@@ -19,14 +19,14 @@ const card = [
     title: '2024 TiDB AI 创新应用黑客马拉松',
     desc: '一起来用 TiDB 构建未来的 AI 创新应用，瓜分超￥220,000 奖金池！',
     button: '前往查看',
-    link: 'https://asktug.com/t/topic/1029569?utm_source=asktug&utm_medium=direct&utm_campaign=banner_04',
+    link: 'https://pingkai.cn/tidbcommunity/forum/t/topic/1029569?utm_source=asktug&utm_medium=direct&utm_campaign=banner_04',
     image: '/images/activities/Hackathon_2024.jpeg',
   },
   {
     title: 'TiDB 地区组织活动',
     desc: '和本地的社区小伙伴一起聚聚，涨“姿势”！',
     button: '前往查看',
-    link: 'https://tidb.net/regional-meetup',
+    link: 'https://pingkai.cn/tidbcommunity/regional-meetup',
     image: '/images/activities/regional-meetup.jpg',
   },
 ];

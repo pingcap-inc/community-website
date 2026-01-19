@@ -23,7 +23,7 @@ export const navItems = [
       },
       {
         title: 'Forum',
-        link: 'https://asktug.com',
+        link: 'https://pingkai.cn/tidbcommunity/forum',
       },
       {
         title: 'Mailing List',

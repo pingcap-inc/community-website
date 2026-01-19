@@ -28,7 +28,7 @@ const Page = () => {
               <Styled.CardGroup>
                 <Styled.CardParagraph>你可以在论坛和 2w+ 社区小伙伴互相交流问题</Styled.CardParagraph>
                 <Styled.CardParagraph>
-                  <Anchor href={'https://asktug.com/new-topic'}>&gt; 去发帖</Anchor>
+                  <Anchor href={'https://pingkai.cn/tidbcommunity/forum/new-topic'}>&gt; 去发帖</Anchor>
                 </Styled.CardParagraph>
               </Styled.CardGroup>
               <Styled.CardGroup>

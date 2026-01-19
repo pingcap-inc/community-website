@@ -102,25 +102,28 @@ export default RegionalMeetupPage;
 
 export const getStaticProps: GetStaticProps<TProps> = async () => {
   const sharedContentFromServer: TSharedContentFromServer = {};
-  for (const username of Object.keys(sharedContents)) {
-    try {
-      const user = await getUserByUsername({ username });
-      sharedContentFromServer[username] = {
-        iconImages: (user.badges.filter((value) => value.image_url !== null).slice(0, 5) ?? []).map((value) => ({
-          alt: value.name,
-          src: `${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image_url}`,
-          width: 32,
-          height: 32,
-        })),
-      };
-    } catch (e) {
-      console.error('[Error] [/regional-meetup] [getServerSideProps] [sharedContentCards]', e);
-    }
-  }
-
   const videoRecordsFromServer: TVideoRecordFromServer = {};
-  await Promise.all(
-    Object.keys(videoRecords).map(async (bvid) => {
+
+  // This is a quick fix for github not resolving our new domain
+
+  // do not wait for request done.
+  void Promise.all([
+    ...Object.keys(sharedContents).map(async (username) => {
+      try {
+        const user = await getUserByUsername({ username });
+        sharedContentFromServer[username] = {
+          iconImages: (user.badges.filter((value) => value.image_url !== null).slice(0, 5) ?? []).map((value) => ({
+            alt: value.name,
+            src: `${NEXT_PUBLIC_ASKTUG_WEBSITE_BASE_URL}/${value.image_url}`,
+            width: 32,
+            height: 32,
+          })),
+        };
+      } catch (e) {
+        console.error('[Error] [/regional-meetup] [getServerSideProps] [sharedContentCards]', e);
+      }
+    }),
+    ...Object.keys(videoRecords).map(async (bvid) => {
       try {
         const videoBasicInfo = await getVideoBasicInfo(bvid);
         if (videoBasicInfo.code === 0) {
@@ -138,8 +141,13 @@ export const getStaticProps: GetStaticProps<TProps> = async () => {
       } catch (e) {
         console.error('[Error] [/regional-meetup] [getServerSideProps] [videoRecordItems]', e);
       }
-    })
-  );
+    }),
+  ]);
+
+  // directly return results after timeout.
+  await new Promise((resolve) => {
+    setTimeout(resolve, 10000);
+  });
 
   return {
     props: {

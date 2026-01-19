@@ -40,52 +40,53 @@ jobs:
       OSS_ACCESS_KEY: ${{ secrets.OSS_ACCESS_KEY }}
       OSS_ACCESS_SECRET: ${{ secrets.OSS_ACCESS_SECRET }}
 
-  deploy-preview:
-    needs: [ build-preview ]
-    uses: ./.github/workflows/deploy-k8s.yml
-    with:
-      build-env: preview
-    secrets:
-      JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}
-      JUMP_SERVER_USER: ${{ secrets.JUMP_SERVER_USER }}
-      JUMP_SERVER_PATH: ${{ secrets.JUMP_SERVER_PATH }}
-      JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
-
-  deploy-production:
-    needs: [ build-production ]
-    uses: ./.github/workflows/deploy-k8s.yml
-    with:
-      build-env: production
-    secrets:
-      JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}
-      JUMP_SERVER_USER: ${{ secrets.JUMP_SERVER_USER }}
-      JUMP_SERVER_PATH: ${{ secrets.JUMP_SERVER_PATH }}
-      JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
-
-  preview-pages-test:
-    needs: [ deploy-preview ]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Use Node.js 20.9.0
-        uses: actions/setup-node@v3
-        with:
-          node-version: 20.9.0
-          cache: 'npm'
-
-      - name: Cache dependencies
-        id: dep-caches
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            packages/*/node_modules
-            !packages/ui/node_modules
-          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
-          restore-keys: ${{ runner.os }}-build
-
-      - name: Run page tests
-        run: node testurls.mjs
-        env:
-          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.net
+## Disable old deployment scripts
+#  deploy-preview:
+#    needs: [ build-preview ]
+#    uses: ./.github/workflows/deploy-k8s.yml
+#    with:
+#      build-env: preview
+#    secrets:
+#      JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}
+#      JUMP_SERVER_USER: ${{ secrets.JUMP_SERVER_USER }}
+#      JUMP_SERVER_PATH: ${{ secrets.JUMP_SERVER_PATH }}
+#      JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
+#
+#  deploy-production:
+#    needs: [ build-production ]
+#    uses: ./.github/workflows/deploy-k8s.yml
+#    with:
+#      build-env: production
+#    secrets:
+#      JUMP_SERVER_IP: ${{ secrets.JUMP_SERVER_IP }}
+#      JUMP_SERVER_USER: ${{ secrets.JUMP_SERVER_USER }}
+#      JUMP_SERVER_PATH: ${{ secrets.JUMP_SERVER_PATH }}
+#      JUMP_SERVER_PRIVATE_KEY: ${{ secrets.JUMP_SERVER_PRIVATE_KEY }}
+#
+#  preview-pages-test:
+#    needs: [ deploy-preview ]
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: actions/checkout@v3
+#
+#      - name: Use Node.js 20.9.0
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: 20.9.0
+#          cache: 'npm'
+#
+#      - name: Cache dependencies
+#        id: dep-caches
+#        uses: actions/cache@v3
+#        with:
+#          path: |
+#            node_modules
+#            packages/*/node_modules
+#            !packages/ui/node_modules
+#          key: ${{ runner.os }}-build-${{ hashFiles('package-lock.json', 'packages/*/package-lock.json', '!packages/ui/node_modules') }}
+#          restore-keys: ${{ runner.os }}-build
+#
+#      - name: Run page tests
+#        run: node testurls.mjs
+#        env:
+#          NEXT_PUBLIC_HOME_URL: https://community-preview.tidb.net

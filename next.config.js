@@ -24,6 +24,8 @@ const unifyNodeModules = (names) =>
 const config = {
   i18n,
 
+  basePath: '/tidbcommunity',
+
   pageExtensions: ['page.js', 'page.jsx', 'page.tsx'],
 
   images: {

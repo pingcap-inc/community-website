@@ -1,11 +1,12 @@
 import React from 'react';
 import Link from 'next/link';
+import Anchor from '~/components/Anchor';
 
 export default function MyLink({ to, href, children, ...rest }) {
   return href ? (
-    <a {...rest} href={href} target="_blank" rel="noopener noreferrer">
+    <Anchor {...rest} href={href}>
       {children}
-    </a>
+    </Anchor>
   ) : (
     <Link {...rest} href={to}>
       {children}

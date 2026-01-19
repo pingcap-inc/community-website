@@ -16,7 +16,6 @@ export default function Anchor({ target, rel, isHash, href, ...rest }: IProps) {
     href = '/tidbcommunity' + href;
   }
   props.href = href;
-  console.log(props.href, href);
   const children = props.children ?? props.href;
   return <a {...props}>{children}</a>;
 }

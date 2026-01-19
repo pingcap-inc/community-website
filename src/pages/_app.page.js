@@ -62,7 +62,8 @@ const fetcher = (path, params) => {
 // some attributes would be passed through Link component like `className`
 const WrapLink = ({ url, children, ...attrs }) => {
   return (
-    <Link href={url}>
+    // quick fix for new domain
+    <Link href={url?.startsWith('/tidbcommunity') ? url.slice('/tidbcommunity'.length) : url}>
       <a href={url} {...attrs}>
         {children}
       </a>

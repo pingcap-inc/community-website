@@ -6,7 +6,7 @@ const isDispatchGlobalApiError = (status) => {
 };
 
 const blogClient = axios.create({
-  baseURL: (process.env.NEXT_PUBLIC_API_BASE_URL ?? '') + '/blog',
+  baseURL: process.env.NEXT_PUBLIC_BLOG_URL ?? '',
   withCredentials: true,
   headers: {
     accept: 'application/json',

@@ -6,7 +6,7 @@ const isDispatchGlobalApiError = (status) => {
 };
 
 const asktugClient = axios.create({
-  baseURL: (process.env.NEXT_PUBLIC_API_BASE_URL ?? '') + '/tidbcommunity/forum',
+  baseURL: process.env.NEXT_PUBLIC_ASKTUG_PROXY_BASE_URL ?? '',
   withCredentials: true,
   headers: {
     accept: 'application/json',

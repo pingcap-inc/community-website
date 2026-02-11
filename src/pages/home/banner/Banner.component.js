@@ -25,7 +25,7 @@ const navItems = [
     icon: AsktugIcon,
     langKey: 'asktug',
     label: '问答',
-    link: 'https://asktug.com/',
+    link: 'https://pingkai.cn/tidbcommunity/forum/',
   },
   {
     icon: ArticleIcon,

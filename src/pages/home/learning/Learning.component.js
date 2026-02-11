@@ -34,7 +34,7 @@ const linkSections = [
     title: '遇到问题，需要帮助？',
     links: [
       {
-        link: 'https://asktug.com/',
+        link: 'https://pingkai.cn/tidbcommunity/forum/',
         label: 'AskTUG 论坛',
       },
     ],

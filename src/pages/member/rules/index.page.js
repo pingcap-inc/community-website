@@ -125,7 +125,7 @@ const Page = () => (
             <td>仅第一次绑定账号奖励</td>
             <td>
               Contributor 在绑定成功后将自动授予：
-              <Anchor href="https://asktug.com/badges/111/-">Contributor 专属徽章</Anchor>
+              <Anchor href="https://pingkai.cn/tidbcommunity/forum/badges/111/-">Contributor 专属徽章</Anchor>
             </td>
           </tr>
           <tr>
@@ -564,7 +564,10 @@ const Page = () => (
             <td>100</td>
             <td>不限制</td>
             <td>
-              在<Anchor href="https://asktug.com/c/advice-feedback/bugs">【建议&amp;反馈·产品缺陷】</Anchor>
+              在
+              <Anchor href="https://pingkai.cn/tidbcommunity/forum/c/advice-feedback/bugs">
+                【建议&amp;反馈·产品缺陷】
+              </Anchor>
               提交BUG复现步骤，后经确认为BUG，并无其他成员提交相同BUG时奖励
             </td>
           </tr>
@@ -581,7 +584,10 @@ const Page = () => (
             <td>10</td>
             <td>不限制</td>
             <td>
-              在<Anchor href="https://asktug.com/c/advice-feedback/requirements">【建议&amp;反馈·产品需求】</Anchor>
+              在
+              <Anchor href="https://pingkai.cn/tidbcommunity/forum/c/advice-feedback/requirements">
+                【建议&amp;反馈·产品需求】
+              </Anchor>
               按提示提交完整的产品需求
             </td>
           </tr>

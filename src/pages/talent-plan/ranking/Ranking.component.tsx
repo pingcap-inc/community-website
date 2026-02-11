@@ -13,7 +13,9 @@ const Ranking = () => {
         {/*<Styled.Banner sm={isSmallScreen} />*/}
         <Styled.Link>
           <li>
-            <Anchor href={'https://asktug.com/t/topic/1026636/1'}>Talent Plan 2024 导学公开课</Anchor>
+            <Anchor href={'https://pingkai.cn/tidbcommunity/forum/t/topic/1026636/1'}>
+              Talent Plan 2024 导学公开课
+            </Anchor>
           </li>
           <li>
             <Anchor href={'https://mp.weixin.qq.com/s/aFgvpLz3NN15aGDmMwZ71w#/'}>
@@ -28,13 +30,22 @@ const Ranking = () => {
           </li>
           <li>2023 Talent Plan 华中科技大学暑期训练营 （已结束）</li>
           <li>
-            <Anchor href={'https://asktug.com/t/topic/665861'}>2022 年 Talent Plan tinyKV 学习营</Anchor> （已结束）
+            <Anchor href={'https://pingkai.cn/tidbcommunity/forum/t/topic/665861'}>
+              2022 年 Talent Plan tinyKV 学习营
+            </Anchor>{' '}
+            （已结束）
           </li>
           <li>
-            <Anchor href={'https://asktug.com/t/topic/665106'}>2022 年 Talent Plan 分布式事务短训营</Anchor> （已结束）
+            <Anchor href={'https://pingkai.cn/tidbcommunity/forum/t/topic/665106'}>
+              2022 年 Talent Plan 分布式事务短训营
+            </Anchor>{' '}
+            （已结束）
           </li>
           <li>
-            <Anchor href={'https://asktug.com/t/topic/393068'}>2021 年 Talent Plan tinyKV 学习营</Anchor> （已结束）
+            <Anchor href={'https://pingkai.cn/tidbcommunity/forum/t/topic/393068'}>
+              2021 年 Talent Plan tinyKV 学习营
+            </Anchor>{' '}
+            （已结束）
           </li>
         </Styled.Link>
         {/*  {['一等奖', '二等奖', '三等奖'].map((prize, idx) => (*/}

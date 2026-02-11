@@ -1,13 +1,13 @@
 export function getAvatarUrlByAvatarTemplateString(tplStr, size = 64) {
-  return 'https://asktug.com/' + tplStr.replace('{size}', size);
+  return 'https://pingkai.cn/tidbcommunity/forum/' + tplStr.replace('{size}', size);
 }
 
 export function getTopicUrlById(id) {
-  return `https://asktug.com/t/topic/${id}`;
+  return `https://pingkai.cn/tidbcommunity/forum/t/topic/${id}`;
 }
 
 export function getUserUrlByUsername(username) {
-  return `https://asktug.com/u/${encodeURIComponent(username)}`;
+  return `https://pingkai.cn/tidbcommunity/forum/u/${encodeURIComponent(username)}`;
 }
 
 export function getCategoryById(site, id) {

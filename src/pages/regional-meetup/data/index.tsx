@@ -10,7 +10,7 @@ import React from 'react';
 import Anchor from '~/components/Anchor';
 
 export const joinUrl = 'https://forms.pingcap.com/f/regional-meetup-organizer';
-export const recommendUrl = 'https://asktug.com/t/topic/664366';
+export const recommendUrl = 'https://pingkai.cn/tidbcommunity/forum/t/topic/664366';
 
 // 顶部轮播图
 export const headerImages: { image: StaticImageData }[] = [
@@ -45,7 +45,7 @@ export const questionAndAnswer: { Q: string; A: ReactNode }[] = [
         </p>
         <p>
           帖子可参考：
-          <Anchor href={'https://asktug.com/t/topic/662777'} />
+          <Anchor href={'https://pingkai.cn/tidbcommunity/forum/t/topic/662777'} />
           （武汉嘉宾招募帖）
         </p>
       </>

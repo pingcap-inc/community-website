@@ -34,7 +34,7 @@ const Page = () => {
               <Styled.CardGroup>
                 <Styled.CardParagraph>如果你想看看别人是否遇到相似的问题，并且已有了解决方案</Styled.CardParagraph>
                 <Styled.CardParagraph>
-                  <Anchor href={'https://search.asktug.com/'}>&gt; 去搜索</Anchor>
+                  <Anchor href={'https://search.pingkai.cn'}>&gt; 去搜索</Anchor>
                 </Styled.CardParagraph>
               </Styled.CardGroup>
             </Styled.Card>

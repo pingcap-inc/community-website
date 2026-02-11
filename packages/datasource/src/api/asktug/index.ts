@@ -13,4 +13,5 @@ export interface BadgeEntity {
   has_badge: boolean;
 }
 
-export const getBadgesList: ApiRequestFunction<void, any> = () => Axios.get('/badges').then(({ data }) => data);
+export const getBadgesList: ApiRequestFunction<void, any> = () =>
+  Axios.get('/tidbcommunity/forum/badges').then(({ data }) => data);

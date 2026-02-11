@@ -14,44 +14,44 @@ import Post from './post';
 const categories = [
   {
     name: 'TiDB 技术问题',
-    link: 'https://asktug.com/c/administration/30022',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/administration/30022',
   },
   {
     name: '应用开发者专区',
-    link: 'https://asktug.com/c/developer/30055',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/developer/30055',
   },
   {
     name: '其他技术问题',
-    link: 'https://asktug.com/c/ecosystem/150022',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/ecosystem/150022',
   },
 
   {
     name: '社区资讯及活动',
-    link: 'https://asktug.com/c/community-activities/30070',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/community-activities/30070',
   },
   {
     name: '资源中心',
-    link: 'https://asktug.com/c/resource/300022',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/resource/300022',
   },
   {
     name: '互助交流区',
-    link: 'https://asktug.com/c/Mutual-communication',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/Mutual-communication',
   },
   {
     name: '学习与认证',
-    link: 'https://asktug.com/c/pu',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/pu',
   },
   {
     name: '建议 & 反馈',
-    link: 'https://asktug.com/c/advice-feedback',
+    link: 'https://pingkai.cn/tidbcommunity/forum/c/advice-feedback',
   },
-{
+  {
     name: '社区互助指南',
-    link: 'https://asktug.com/t/topic/694770',
+    link: 'https://pingkai.cn/tidbcommunity/forum/t/topic/694770',
   },
-{
+  {
     name: '社区参与指南',
-    link: 'https://asktug.com/t/topic/695198',
+    link: 'https://pingkai.cn/tidbcommunity/forum/t/topic/695198',
   },
 ];
 
@@ -83,7 +83,7 @@ const Forum = () => {
                 return <Post {...props} />;
               })}
             </Styled.Posts>
-            <Anchor href="https://asktug.com/">查看全部</Anchor>
+            <Anchor href="https://pingkai.cn/tidbcommunity/forum/">查看全部</Anchor>
           </>
         }
         rightPanel={
@@ -96,10 +96,12 @@ const Forum = () => {
               </p>
               <p>
                 在论坛中发言请自觉遵守
-                <Styled.Link href={'https://asktug.com/t/topic/93912'}>《问题搜索指引&提问准则》</Styled.Link>
+                <Styled.Link href={'https://pingkai.cn/tidbcommunity/forum/t/topic/93912'}>
+                  《问题搜索指引&提问准则》
+                </Styled.Link>
               </p>
               <Styled.CenterOnSmallScreen isSmallScreen={isSmallScreen}>
-                <Anchor href="https://asktug.com/new-topic">
+                <Anchor href="https://pingkai.cn/tidbcommunity/forum/new-topic">
                   <Button {...writePostButtonProps} />
                 </Anchor>
               </Styled.CenterOnSmallScreen>
@@ -107,7 +109,7 @@ const Forum = () => {
             <Styled.Module>
               <Styled.ModuleTitle>
                 热门分类
-                <Styled.Link href="https://asktug.com/">查看全部</Styled.Link>
+                <Styled.Link href="https://pingkai.cn/tidbcommunity/forum/">查看全部</Styled.Link>
               </Styled.ModuleTitle>
               <Categories categories={categories} />
             </Styled.Module>

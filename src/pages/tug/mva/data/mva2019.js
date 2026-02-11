@@ -110,7 +110,7 @@ const data = [
       },
       {
         name: '再记一次业务优化',
-        href: 'https://asktug.com/t/topic/1818',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/1818',
       },
     ],
   },
@@ -121,7 +121,7 @@ const data = [
     links: [
       {
         name: '易果 TiDB 的使用以及数据中台的思考',
-        href: 'https://asktug.com/t/tidb/913',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/913',
       },
       {
         name: '【Talk】易果集团数据中台的转型和实践',
@@ -163,7 +163,7 @@ const data = [
     links: [
       {
         name: 'TiDB 在实时渠道转化分析的应用',
-        href: 'https://asktug.com/t/tidb/1060',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1060',
       },
       {
         name: '【Talk】TiDB 数仓在 360 金融渠道运营的应用',
@@ -171,7 +171,7 @@ const data = [
       },
       {
         name: '【Talk】TiDB 在实时渠道转化分析的应用',
-        href: 'https://asktug.com/t/tug/881',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug/881',
       },
     ],
   },
@@ -182,7 +182,7 @@ const data = [
     links: [
       {
         name: '转转数据库架构构建之道',
-        href: 'https://asktug.com/t/topic/1021',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/1021',
       },
       {
         name: '【Talk】All in！转转 TiDB 大规模实践之旅',
@@ -190,7 +190,7 @@ const data = [
       },
       {
         name: '【Talk】转转数据库架构构建之道',
-        href: 'https://asktug.com/t/tug-tidb/865',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-tidb/865',
       },
     ],
   },
@@ -201,7 +201,7 @@ const data = [
     links: [
       {
         name: '爱奇艺数据库技术选型思路',
-        href: 'https://asktug.com/t/topic/1396/1',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/1396/1',
       },
       {
         name: '【Talk】TiDB 在爱奇艺的应用实践',
@@ -209,7 +209,7 @@ const data = [
       },
       {
         name: '【Talk】爱奇艺的数据库技术选型思路',
-        href: 'https://asktug.com/t/tug/1043',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug/1043',
       },
     ],
   },
@@ -235,11 +235,11 @@ const data = [
     links: [
       {
         name: 'TiKV 开发环境单机部署',
-        href: 'https://asktug.com/t/tikv/452',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tikv/452',
       },
       {
         name: '技术选型中的非技术因素',
-        href: 'https://asktug.com/t/topic/1358',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/1358',
       },
       {
         name: 'DRDS vs TiDB',
@@ -258,11 +258,11 @@ const data = [
       },
       {
         name: '【Talk】TiDB 在网易互娱的选择与体验',
-        href: 'https://asktug.com/t/tug/1227',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug/1227',
       },
       {
         name: '【Talk】网易互娱的数据库技术选型思路',
-        href: 'https://asktug.com/t/tug-x-shopee/1550',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-x-shopee/1550',
       },
     ],
   },
@@ -273,7 +273,7 @@ const data = [
     links: [
       {
         name: 'TiDB 3.0：窗口函数初体验',
-        href: 'https://asktug.com/t/tidb-3-0/348',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-3-0/348',
       },
       {
         name: 'TiDB 的数据库技术选型思路',
@@ -281,7 +281,7 @@ const data = [
       },
       {
         name: '【Talk】TiDB 的数据库技术选型思路',
-        href: 'https://asktug.com/t/tug-x-shopee/1550',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-x-shopee/1550',
       },
     ],
   },
@@ -296,7 +296,7 @@ const data = [
       },
       {
         name: '【Talk】TiDB在360商业化业务的应用实践',
-        href: 'https://asktug.com/t/tug-tidb/1500',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-tidb/1500',
       },
     ],
   },
@@ -307,15 +307,15 @@ const data = [
     links: [
       {
         name: 'TiDB 私有云实践',
-        href: 'https://asktug.com/t/tidb/1059',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1059',
       },
       {
         name: 'TiDB 慢日志解析源码解读',
-        href: 'https://asktug.com/t/tidb/1902',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1902',
       },
       {
         name: '【Talk】TiDB 私有云实践',
-        href: 'https://asktug.com/t/tug-tidb-cloud/1041',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-tidb-cloud/1041',
       },
     ],
   },
@@ -326,19 +326,19 @@ const data = [
     links: [
       {
         name: '在 GCP 上使用 TiDB Operator 构建 TiDB 集群',
-        href: 'https://asktug.com/t/gcp-tidb-operator-tidb/437',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/gcp-tidb-operator-tidb/437',
       },
       {
         name: '在 minikube 上使用 TiDB Operator 构建 TiDB 集群',
-        href: 'https://asktug.com/t/minikube-tidb-operator-tidb/1382',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/minikube-tidb-operator-tidb/1382',
       },
       {
         name: 'PingCAP Talent Plan（广州） 第四期公开课笔记',
-        href: 'https://asktug.com/t/pingcap-talent-plan/1397',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/pingcap-talent-plan/1397',
       },
       {
         name: 'TiDB 中的全局唯一 ID',
-        href: 'https://asktug.com/t/tidb-id/1521',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-id/1521',
       },
     ],
   },
@@ -349,19 +349,19 @@ const data = [
     links: [
       {
         name: 'TiDB 追番手帐（上）',
-        href: 'https://asktug.com/t/tidb/1637',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1637',
       },
       {
         name: 'TiDB 追番手帐（中）',
-        href: 'https://asktug.com/t/tidb/1772',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1772',
       },
       {
         name: 'TiDB 追番手帐（下）',
-        href: 'https://asktug.com/t/tidb/1773',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1773',
       },
       {
         name: 'TiDB 追番手账（番外）TiDB Server 内核原理学习笔记',
-        href: 'https://asktug.com/t/tidb-tidb-server/2033',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-tidb-server/2033',
       },
     ],
   },
@@ -372,15 +372,15 @@ const data = [
     links: [
       {
         name: 'TiDB 实战优化之 SQL 常见问题与优化案例',
-        href: 'https://asktug.com/t/topic/33657',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/33657',
       },
       {
         name: '【Talk】TiDB 实战优化之 SQL 常见问题与优化案例',
-        href: 'https://asktug.com/t/tug-tidb/1500',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-tidb/1500',
       },
       {
         name: '【Talk】Oracle&TiDB 高可用技术最佳实践',
-        href: 'https://asktug.com/t/topic/2201',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/2201',
       },
     ],
   },
@@ -391,7 +391,7 @@ const data = [
     links: [
       {
         name: 'TiDB 在某餐饮 SaaS 服务商的实践及海外机房构建',
-        href: 'https://asktug.com/t/topic/33030',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/33030',
       },
       {
         name: '【Talk】 TiDB 在二维火的实践及海外机房构建',
@@ -406,15 +406,15 @@ const data = [
     links: [
       {
         name: 'TiDB 在 UCloud 公有云上的实践',
-        href: 'https://asktug.com/t/tidb-ucloud/1115',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-ucloud/1115',
       },
       {
         name: '【Talk】TiDB 在 UCloud 公有云上的实践',
-        href: 'https://asktug.com/t/tug-tidb-cloud/1041',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug-tidb-cloud/1041',
       },
       {
         name: '【Talk】TiDB Service 高可用架构',
-        href: 'https://asktug.com/t/topic/2201',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/2201',
       },
     ],
   },
@@ -425,19 +425,19 @@ const data = [
     links: [
       {
         name: 'TiDB 之 DDL 学习总结',
-        href: 'https://asktug.com/t/tidb-ddl/2036',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-ddl/2036',
       },
       {
         name: '使 pt-kil l和 pt-query-digest 工具兼容 TiDB',
-        href: 'https://asktug.com/t/pt-kill-pt-query-digest-tidb/2022',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/pt-kill-pt-query-digest-tidb/2022',
       },
       {
         name: 'PD 的时钟服务—— TSO',
-        href: 'https://asktug.com/t/pd-tso/2026',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/pd-tso/2026',
       },
       {
         name: 'DM 在 Docker 环境部署安装',
-        href: 'https://asktug.com/t/dm-docker/2027',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/dm-docker/2027',
       },
     ],
   },
@@ -452,7 +452,7 @@ const data = [
       },
       {
         name: 'TiDB MVCC 多版本保存机制及其对性能的影响',
-        href: 'https://asktug.com/t/tidb-mvcc/1350',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-mvcc/1350',
       },
       {
         name: '直击备份痛点：基于 TiDB Binlog 的快速时间点恢复',
@@ -467,7 +467,7 @@ const data = [
     links: [
       {
         name: 'VIPKID 的高可用架构设计与实践',
-        href: 'https://asktug.com/t/topic/33656',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/33656',
       },
       {
         name: '【Talk】TiDB 在 VIPKID 的展望',
@@ -475,7 +475,7 @@ const data = [
       },
       {
         name: '【Talk】VIPKID 的高可用架构设计与实践',
-        href: 'https://asktug.com/t/topic/2201',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/2201',
       },
     ],
   },
@@ -486,7 +486,7 @@ const data = [
     links: [
       {
         name: 'TiDB new feature max_execution_time',
-        href: 'https://asktug.com/t/tidb-new-feature-max-execution-time/309',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-new-feature-max-execution-time/309',
       },
       {
         name: 'TiDB 在丰巢核心支付平台百亿级数据的深度实践',
@@ -505,15 +505,15 @@ const data = [
     links: [
       {
         name: '58 集团的数据库技术选型思路',
-        href: 'https://asktug.com/t/topic/1784',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/1784',
       },
       {
         name: 'Elastic Stack处理TiDB慢日志',
-        href: 'https://asktug.com/t/elastic-stack-tidb/2051',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/elastic-stack-tidb/2051',
       },
       {
         name: '【Talk】58 集团的数据库技术选型思路',
-        href: 'https://asktug.com/t/tug/1043',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tug/1043',
       },
     ],
   },
@@ -524,7 +524,7 @@ const data = [
     links: [
       {
         name: 'TiDB 在新东方业务前台及中台的落地',
-        href: 'https://asktug.com/t/topic/2766',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/2766',
       },
       {
         name: '【Talk】新东方新一代报名系统数据库选型',

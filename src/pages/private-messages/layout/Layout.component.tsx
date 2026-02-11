@@ -30,7 +30,7 @@ const Layout: React.FC = ({ children }) => {
                   type="primary"
                   style={{ width: '100%' }}
                   icon={<MailOutlined />}
-                  onClick={() => router.push('https://asktug.com/new-message')}
+                  onClick={() => router.push('https://pingkai.cn/tidbcommunity/forum/new-message')}
                 >
                   写新私信
                 </Button>

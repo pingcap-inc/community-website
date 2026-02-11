@@ -60,7 +60,7 @@ export const stepsData = [
     date: '1 月 8 日（周六）',
     desc: <div>北京、上海、杭州、成都、深圳、广州任选一处决赛参赛点，还可以走进 PingCAP Office 感受 P 社文化。</div>,
     action: '下载答辩 PPT 模板',
-    url: 'https://asktug.com/t/topic/273653',
+    url: 'https://pingkai.cn/tidbcommunity/forum/t/topic/273653',
   },
   {
     title: 'STEP 5intro: "决赛答辩&颁奖',

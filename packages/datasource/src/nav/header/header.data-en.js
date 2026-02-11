@@ -12,7 +12,7 @@ export const navItems = [
       },
       {
         title: 'Blogs',
-        link: 'https://asktug.com/c/blog/l/latest',
+        link: 'https://pingkai.cn/tidbcommunity/forum/c/blog/l/latest',
       },
       {
         title: 'Online Courses',
@@ -48,7 +48,7 @@ export const navItems = [
     items: [
       {
         title: 'AskTUG Rankings',
-        link: 'https://asktug.com/x/ranking',
+        link: 'https://pingkai.cn/tidbcommunity/forum/x/ranking',
       },
     ],
   },

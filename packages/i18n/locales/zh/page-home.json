@@ -9,7 +9,7 @@
       },
       "asktug": {
         "label": "问答",
-        "link": "https://asktug.com/"
+        "link": "https://pingkai.cn/tidbcommunity/forum/"
       },
       "article": {
         "label": "文章",
@@ -52,40 +52,40 @@
     "comply": "在论坛中发言请自觉遵守",
     "doc": {
       "text": "《问题搜索指引&提问准则》",
-      "link": "https://asktug.com/t/topic/93912"
+      "link": "https://pingkai.cn/tidbcommunity/forum/t/topic/93912"
     },
     "categories": [
       {
         "name": "新手区",
-        "link": "https://asktug.com/c/newcomer"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/newcomer"
       },
       {
         "name": "部署 & 监控",
-        "link": "https://asktug.com/c/administration"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/administration"
       },
       {
         "name": "备份 & 数据迁移",
-        "link": "https://asktug.com/c/tools"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/tools"
       },
       {
         "name": "开发者 & 应用适配",
-        "link": "https://asktug.com/c/developer"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/developer"
       },
       {
         "name": "性能调优",
-        "link": "https://asktug.com/c/performance"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/performance"
       },
       {
         "name": "Real-Time HTAP",
-        "link": "https://asktug.com/c/tispark-tiflash"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/tispark-tiflash"
       },
       {
         "name": "安全加固",
-        "link": "https://asktug.com/c/90030-category"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/90030-category"
       },
       {
         "name": "互助交流区",
-        "link": "https://asktug.com/c/Mutual-communication"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/Mutual-communication"
       },
       {
         "name": "技术⽂章",
@@ -93,19 +93,19 @@
       },
       {
         "name": "TUG 社区活动",
-        "link": "https://asktug.com/c/community-activities"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/community-activities"
       },
       {
         "name": "关于 TUG",
-        "link": "https://asktug.com/c/tug"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/tug"
       },
       {
         "name": "学习与认证",
-        "link": "https://asktug.com/c/pu"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/pu"
       },
       {
         "name": "建议 & 反馈",
-        "link": "https://asktug.com/c/advice-feedback"
+        "link": "https://pingkai.cn/tidbcommunity/forum/c/advice-feedback"
       }
     ]
   },
@@ -203,7 +203,7 @@
         "title": "遇到问题，需要帮助？",
         "links": [
           {
-            "link": "https://asktug.com/",
+            "link": "https://pingkai.cn/tidbcommunity/forum/",
             "label": "AskTUG 论坛"
           }
         ]

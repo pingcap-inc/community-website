@@ -55,10 +55,10 @@ const ActivityBannerComponent = () => {
           {banner.title}
         </>
       }
-      // backgroundImage={'https://tidb.net/images/activity/banner.svg'}
-      // buttonImage={'https://tidb.net/images/activity/button.svg'}
+      // backgroundImage={'https://pingkai.cn/tidbcommunity/images/activity/banner.svg'}
+      // buttonImage={'https://pingkai.cn/tidbcommunity/images/activity/button.svg'}
       link={banner.link}
-      // onClick={() => onNavClick({ link: 'https://tidb.net/blog', target: '_blank' })}
+      // onClick={() => onNavClick({ link: 'https://pingkai.cn/tidbcommunity/blog', target: '_blank' })}
     />
   );
 };
@@ -66,7 +66,7 @@ const ActivityBannerComponent = () => {
 const Core = ({
   MainWrapper = Styled.Main,
   children = undefined,
-  domain = 'tidb.net',
+  domain = 'pingkai.cn/tidbcommunity',
   hasMargin,
   backgroundColor = undefined,
   style = undefined,

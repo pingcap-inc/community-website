@@ -16,7 +16,7 @@ const getCookie = (cname) => {
 export const getCurrentTS = () => new Date().getTime();
 
 export const sendLog = (logType, params) => {
-  let eventUrl = 'https://accounts.pingcap.cn/_analytics/event?';
+  let eventUrl = 'https://pingkai.cn/accounts/_analytics/event?';
 
   // version
   params.v = 1;

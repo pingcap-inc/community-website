@@ -6,19 +6,19 @@ const data = [
     links: [
       {
         name: 'TiDB for PostgreSQL—牛刀小试',
-        href: 'https://asktug.com/t/topic/93433',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93433',
       },
       {
         name: 'TiDB 5.0 异步事务特性体验——基于X86和ARM混合部署架构',
-        href: 'https://asktug.com/t/topic/93002',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93002',
       },
       {
         name: 'TiDB Parser 模块的简单解读与改造方法',
-        href: 'https://asktug.com/t/topic/93317',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93317',
       },
       {
         name: '以TiDB热点问题来谈Region的调度流程',
-        href: 'https://asktug.com/t/topic/69850',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69850',
       },
     ],
   },
@@ -29,15 +29,15 @@ const data = [
     links: [
       {
         name: 'TiDB 5.0 升级性能初体验',
-        href: 'https://asktug.com/t/topic/69855',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69855',
       },
       {
         name: 'TiFlash 5.x 与 4.x 对比测试',
-        href: 'https://asktug.com/t/topic/69933',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69933',
       },
       {
         name: '某报表业务升级 5.0 解决慢SQL问题',
-        href: 'https://asktug.com/t/topic/92876',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/92876',
       },
     ],
   },
@@ -48,27 +48,27 @@ const data = [
     links: [
       {
         name: 'TiCDC 使用心得',
-        href: 'https://asktug.com/t/topic/69259',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69259',
       },
       {
         name: 'TiCDC 应用场景解析',
-        href: 'https://asktug.com/t/topic/152954',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/152954',
       },
       {
         name: '关于 TiDB 性能优化的一些思考',
-        href: 'https://asktug.com/t/topic/153160',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/153160',
       },
       {
         name: '写冲突场景下的悲观/乐观事务模型选择',
-        href: 'https://asktug.com/t/topic/93470',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93470',
       },
       {
         name: '记一场 DM 同步引发的 Auto_Increment 主键冲突漫谈',
-        href: 'https://asktug.com/t/topic/68427',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68427',
       },
       {
         name: '记一次 Lightning 导入失败导致的 TiDB 集群重启失败事故处理',
-        href: 'https://asktug.com/t/topic/69826',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69826',
       },
     ],
   },
@@ -79,94 +79,94 @@ const data = [
     links: [
       {
         name: 'Flink + TiDB，体验实时数仓之美',
-        href: 'https://asktug.com/t/topic/182835',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/182835',
       },
       {
         name: 'Flink 最佳实践之 通过 TiCDC 将 TiDB 数据流入 Flink',
-        href: 'https://asktug.com/t/topic/68884',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68884',
       },
       {
         name: 'Flink 最佳实践之使用 Canal 同步 MySQL 数据至 TiDB',
-        href: 'https://asktug.com/t/topic/68731',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68731',
       },
       {
         name: 'TiDB 监控整合方案',
-        href: 'https://asktug.com/t/topic/93040',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93040',
       },
       {
         name: '构建实时数仓 - 当 TiDB 遇见 Pravega',
-        href: ' https://asktug.com/t/topic/92873',
+        href: ' https://pingkai.cn/tidbcommunity/forum/t/topic/92873',
       },
       {
         name: '如何使用 minio 进行 BR 备份',
-        href: 'https://asktug.com/t/topic/153129',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/153129',
       },
       {
         name: '如何在 Kubernetes 上部署 TiDB-Operator （上）',
-        href: 'https://asktug.com/t/topic/68208',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68208',
       },
       {
         name: '如何在 Kubernetes 上部署 TiDB-Operator （下）',
-        href: 'https://asktug.com/t/topic/68209',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68209',
       },
       {
         name: '如何多个 TiDB 集群共用一个 Grafana',
-        href: 'https://asktug.com/t/topic/68177',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68177',
       },
       {
         name: '通过 ProxySQL 在 TiDB 上实现 SQL 的规则化路由',
-        href: 'https://asktug.com/t/topic/95252',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/95252',
       },
     ],
   },
-   {
+  {
     name: '姬永飞',
     company: '天翼云',
     title: '高级后端开发工程师',
     links: [
       {
         name: 'CDC 同步到 S3 的故障',
-        href: 'https://asktug.com/t/topic/95744',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/95744',
       },
       {
         name: 'BR 备份到 S3 时 endpoint 参数加目录分隔符后缀问题排查',
-        href: 'https://asktug.com/t/topic/273002',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/273002',
       },
       {
         name: 'TiDB K8s 定时备份状态异常问题排查',
-        href: 'https://asktug.com/t/topic/272815',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/272815',
       },
       {
         name: 'TiDB 5.0 两阶段提交',
-        href: 'https://asktug.com/t/topic/243260',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/243260',
       },
       {
         name: '一条 like 条件的慢 SQL 语句优化',
-        href: 'https://asktug.com/t/topic/243259',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/243259',
       },
       {
         name: '悲观事务死锁检测',
-        href: 'https://asktug.com/t/topic/243258',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/243258',
       },
       {
         name: 'Placement Rules 原理',
-        href: 'https://asktug.com/t/topic/243257',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/243257',
       },
       {
         name: 'TiDB K8s 删除备份阻塞问题排查',
-        href: 'https://asktug.com/t/topic/243240',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/243240',
       },
       {
         name: '一个联合索引使用问题以及优化方案',
-        href: 'https://asktug.com/t/topic/152989',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/152989',
       },
       {
         name: 'TiDB AutoCommit OFF 问题',
-        href: 'https://asktug.com/t/topic/95647',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/95647',
       },
-       {
+      {
         name: 'TiDB 赋权问题',
-        href: 'https://asktug.com/t/topic/93968',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93968',
       },
     ],
   },
@@ -177,15 +177,15 @@ const data = [
     links: [
       {
         name: '数据库架构升级选型 - TiDB',
-        href: 'https://asktug.com/t/topic/69516',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69516',
       },
       {
         name: 'MySQL 与 TiDB 不同的 DDL 发展历程',
-        href: 'https://asktug.com/t/topic/69597',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69597',
       },
       {
         name: 'Raft 算法浅析',
-        href: 'https://asktug.com/t/topic/69645',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/69645',
       },
     ],
   },
@@ -196,15 +196,15 @@ const data = [
     links: [
       {
         name: 'SQL只是CRUD？',
-        href: 'https://asktug.com/t/topic/94060',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/94060',
       },
       {
         name: 'DELETE Statement，懂你不容易',
-        href: 'https://asktug.com/t/topic/95117',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/95117',
       },
       {
         name: '从 TiDB 中学习代码提交规范的重要性',
-        href: 'https://asktug.com/t/topic/95743',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/95743',
       },
     ],
   },
@@ -215,15 +215,15 @@ const data = [
     links: [
       {
         name: '使用 TiCDC 实时同步 TiDB 数据到备用逃生环境的实践',
-        href: 'https://asktug.com/t/topic/94194',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/94194',
       },
       {
         name: '基于 k8s 与 Chaos Mesh 构建数据库混沌实验日报系统',
-        href: 'https://asktug.com/t/topic/94980',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/94980',
       },
       {
         name: 'TiDB 5.0 部分新特性试用',
-        href: 'https://asktug.com/t/topic/94854',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/94854',
       },
     ],
   },
@@ -234,11 +234,11 @@ const data = [
     links: [
       {
         name: 'TiDB SQL 优化案例几则',
-        href: 'https://asktug.com/t/topic/68396',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/68396',
       },
       {
         name: 'TiDB 4.0 基于 Binlog 的跨机房集群部署',
-        href: 'https://asktug.com/t/topic/93165',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/93165',
       },
       {
         name: '一次热点问题排查经历',
@@ -404,7 +404,7 @@ const data = [
         name: 'TiDB 4.0 生产环境扩容 TiKV 节点详细步骤',
         href: 'https://asktug.com/t/topic/213017',
       },
-       {
+      {
         name: 'TiDB 目录结构分析',
         href: 'https://asktug.com/t/topic/152999',
       },
@@ -414,7 +414,7 @@ const data = [
       },
     ],
   },
-    {
+  {
     name: '闫彬彬',
     company: '联通软件研究院',
     title: '数据库运维',
@@ -431,7 +431,7 @@ const data = [
         name: 'TiDB 4.0 生产环境扩容 TiKV 节点详细步骤',
         href: 'https://asktug.com/t/topic/213017',
       },
-       {
+      {
         name: 'TiDB5.0.3-ARM 平台性能测试',
         href: 'https://asktug.com/t/topic/183732',
       },
@@ -441,7 +441,7 @@ const data = [
       },
     ],
   },
-   {
+  {
     name: '胡呈清',
     company: '爱可生',
     title: '华东区 DBA',
@@ -454,7 +454,7 @@ const data = [
         name: '如何理解TiDB允许广义上的幻读',
         href: 'https://asktug.com/t/topic/272797',
       },
-       {
+      {
         name: '使用Zabbix监控TiDB（一）',
         href: 'https://asktug.com/t/topic/272777',
       },
@@ -473,7 +473,7 @@ const data = [
         name: 'TiKV 节点磁盘耗尽恢复经验',
         href: 'https://asktug.com/t/topic/68516',
       },
-       {
+      {
         name: '记一次使用 TiUP 半自动升级 TiDB 集群经验',
         href: 'https://asktug.com/t/topic/68481',
       },
@@ -492,13 +492,13 @@ const data = [
         name: 'TiDB GC 之原理浅析',
         href: 'https://asktug.com/t/topic/67760',
       },
-       {
+      {
         name: 'TiDB GC 之处理案例 & FAQ',
         href: 'https://asktug.com/t/topic/67764',
       },
     ],
   },
-   {
+  {
     name: '苏志鹏',
     company: 'PingCAP',
     title: 'DBA',
@@ -511,13 +511,13 @@ const data = [
         name: 'TiDB run and debug on M1',
         href: 'https://asktug.com/t/topic/183125',
       },
-       {
+      {
         name: 'TIDB 不容易发现的 lightning tidb-backend 模式导入优化',
         href: 'https://asktug.com/t/topic/94981',
       },
     ],
   },
-   {
+  {
     name: '秦天爽',
     company: 'PingCAP',
     title: '高级解决方案架构师',
@@ -530,7 +530,7 @@ const data = [
         name: '同城双中心自适应同步方案：DR Auto-Sync 详解',
         href: 'https://asktug.com/t/topic/212812',
       },
-       {
+      {
         name: '使用 TiDB 时的连接池和负载均衡器配置策略',
         href: 'https://asktug.com/t/topic/182953',
       },
@@ -538,15 +538,15 @@ const data = [
         name: 'TiDB 数据库开发规范',
         href: 'https://asktug.com/t/topic/93819',
       },
-       {
+      {
         name: 'TiDB 集群的可用性详解及 TiKV Label 规划',
         href: 'https://asktug.com/t/topic/69435',
       },
-       {
+      {
         name: '如何在 TiDB 上高效运行序列号生成服务',
         href: 'https://asktug.com/t/topic/69478',
       },
-       {
+      {
         name: '还在用变量去实现多维度分组排序吗？你 out 了！',
         href: 'https://asktug.com/t/topic/69437',
       },
@@ -565,7 +565,7 @@ const data = [
         name: 'PD 启动主流程分析',
         href: 'https://asktug.com/t/topic/69399',
       },
-       {
+      {
         name: 'PD 调度器模块',
         href: 'https://asktug.com/t/topic/69397',
       },
@@ -573,15 +573,15 @@ const data = [
         name: 'PD 三类选主流程梳理',
         href: 'https://asktug.com/t/topic/69332',
       },
-       {
+      {
         name: 'PD 关于 TSO 分配源代码分析',
         href: 'https://asktug.com/t/topic/69336',
       },
-       {
+      {
         name: 'PD 关于 ID 分配的源码分析',
         href: 'https://asktug.com/t/topic/69335',
       },
-       {
+      {
         name: 'PD API 基础框架源码分析',
         href: 'https://asktug.com/t/topic/69334',
       },
@@ -589,7 +589,7 @@ const data = [
         name: 'PD 模块梳理',
         href: 'https://asktug.com/t/topic/69329',
       },
-       {
+      {
         name: 'PD 客户端源码分析',
         href: 'https://asktug.com/t/topic/69398',
       },
@@ -608,13 +608,13 @@ const data = [
         name: '数字化转型背后的 TiDB，以地产行业为例',
         href: 'https://asktug.com/t/topic/273771',
       },
-       {
+      {
         name: 'SQL Server 迁移 TiDB 场景的实践',
         href: 'https://asktug.com/t/topic/213030',
       },
     ],
   },
-  
+
   {
     name: '漆锐',
     company: '神州数码',
@@ -628,7 +628,7 @@ const data = [
         name: 'TiDB SQL 调优实战——索引问题',
         href: 'https://asktug.com/t/topic/213007',
       },
-       {
+      {
         name: '基于阿里云 ECS 部署的 TiDB 2.1.14 升级到 4.0.0-rc 实践',
         href: 'https://asktug.com/t/topic/153306',
       },

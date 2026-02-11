@@ -45,23 +45,23 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ### 列表公共信息
 
-- data/asktug_site.json ( download from https://asktug.com/site.json )
+- data/asktug_site.json ( download from https://pingkai.cn/tidbcommunity/forum/site.json )
 
 ### 精选文章列表
 
-- https://asktug.com/c/blog/how-to/l/latest.json?order=default&page=0&per_page=10
+- https://pingkai.cn/tidbcommunity/forum/c/blog/how-to/l/latest.json?order=default&page=0&per_page=10
 
 ### 用户实践列表
 
-- https://asktug.com/c/blog/practice/l/latest.json?order=default&page=0&per_page=10
+- https://pingkai.cn/tidbcommunity/forum/c/blog/practice/l/latest.json?order=default&page=0&per_page=10
 
 ### 原理解读列表
 
-- https://asktug.com/c/blog/theory/l/latest.json?order=default&page=0&per_page=10
+- https://pingkai.cn/tidbcommunity/forum/c/blog/theory/l/latest.json?order=default&page=0&per_page=10
 
 ### 热门问答列表
 
-- https://asktug.com/top/weekly.json?order=default&page=0&per_page=10
+- https://pingkai.cn/tidbcommunity/forum/top/weekly.json?order=default&page=0&per_page=10
 
 ### /mva
 
@@ -116,7 +116,7 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ### data/asktug_site.json
 
-该文件来源于 [https://asktug.com/site.json](https://asktug.com/site.json) 需要在 AskTUG 网站有相关论坛版块信息更新后手动更新（后续可考虑通过 CircleCI 定时更新该数据）
+该文件来源于 [https://pingkai.cn/tidbcommunity/forum/site.json](https://pingkai.cn/tidbcommunity/forum/site.json) 需要在 AskTUG 网站有相关论坛版块信息更新后手动更新（后续可考虑通过 CircleCI 定时更新该数据）
 
 首页问答中通过 API 获取的帖子信息中只包含论坛版块 ID，不包括具体版块信息，因此需要依赖该文件获取相关论坛板块信息。
 

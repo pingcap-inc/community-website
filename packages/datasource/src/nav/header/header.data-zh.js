@@ -1,7 +1,7 @@
 export const navItems = [
   {
     title: '社区首页',
-    link: 'https://tidb.net',
+    link: 'https://pingkai.cn/tidbcommunity',
   },
   {
     title: '学习',
@@ -12,7 +12,7 @@ export const navItems = [
       },
       {
         title: '博客',
-        link: 'https://asktug.com/c/blog/l/latest',
+        link: 'https://pingkai.cn/tidbcommunity/forum/c/blog/l/latest',
       },
       {
         title: '在线课程',
@@ -44,28 +44,28 @@ export const navItems = [
   },
   {
     title: '问答',
-    link: 'https://asktug.com',
+    link: 'https://pingkai.cn/tidbcommunity/forum',
     items: [
       {
         title: '问答之星',
-        link: 'https://asktug.com/x/ranking',
+        link: 'https://pingkai.cn/tidbcommunity/forum/x/ranking',
       },
     ],
   },
   {
     title: '博客',
-    link: 'https://tidb.net/blog',
+    link: 'https://pingkai.cn/tidbcommunity/blog',
   },
   {
     title: '活动',
-    link: 'https://tidb.net/events',
+    link: 'https://pingkai.cn/tidbcommunity/events',
   },
   {
     title: '社区',
     items: [
       {
         title: 'Talent Plan',
-        link: 'https://tidb.net/talent-plan',
+        link: 'https://pingkai.cn/tidbcommunity/talent-plan',
       },
       {
         title: '社区行为准则',
@@ -73,15 +73,15 @@ export const navItems = [
       },
       {
         title: '用户组',
-        link: 'https://tidb.net/tug',
+        link: 'https://pingkai.cn/tidbcommunity/tug',
         items: [
           {
             title: '加入用户组',
-            link: 'https://tidb.net/tug/apply',
+            link: 'https://pingkai.cn/tidbcommunity/tug/apply',
           },
           {
             title: 'MVA',
-            link: 'https://tidb.net/tug/mva',
+            link: 'https://pingkai.cn/tidbcommunity/tug/mva',
           },
         ],
       },
@@ -149,7 +149,7 @@ export const navItems = [
   },
   {
     title: '兑换礼品',
-    link: 'https://accounts.pingcap.cn/points#/shop',
+    link: 'https://pingkai.cn/accounts/points#/shop',
   },
   {
     title: '关于',
@@ -176,12 +176,12 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     },
     {
       title: '个人信息',
-      link: `https://tidb.net/my/profile`,
+      link: `https://pingkai.cn/tidbcommunity/my/profile`,
       badge: redDots.companyInfo,
     },
     {
       title: '账号设置',
-      link: `https://tidb.net/my/settings`,
+      link: `https://pingkai.cn/tidbcommunity/my/settings`,
     },
   ];
 

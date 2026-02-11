@@ -29,11 +29,11 @@ const data = [
       },
       {
         name: '知乎已读服务的前生今世与未来',
-        href: 'https://asktug.com/t/topic/312',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/topic/312',
       },
       {
         name: 'TiDB PD 组件代码阅读',
-        href: 'https://asktug.com/t/tidb-pd/1388',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-pd/1388',
       },
       {
         name: '拥抱 Elasticsearch：给 TiDB 插上全文检索的翅膀',
@@ -98,15 +98,15 @@ const data = [
       },
       {
         name: 'TiDB 拓扑查询工具 qtidb',
-        href: 'https://asktug.com/t/tidb-qtidb/908',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb-qtidb/908',
       },
       {
         name: 'TiDB监控实现--存活监控',
-        href: 'https://asktug.com/t/tidb/918',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/918',
       },
       {
         name: '记一次 TiDB 业务优化',
-        href: 'https://asktug.com/t/tidb/1781/2',
+        href: 'https://pingkai.cn/tidbcommunity/forum/t/tidb/1781/2',
       },
       {
         name: '再记一次业务优化',

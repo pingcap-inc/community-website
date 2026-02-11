@@ -1,7 +1,7 @@
 export const navItems = [
   {
     title: 'Home',
-    link: 'https://tidb.net',
+    link: 'https://pingkai.cn/tidbcommunity',
   },
   {
     title: 'Learning',
@@ -54,11 +54,11 @@ export const navItems = [
   },
   {
     title: 'Events',
-    link: 'https://tidb.net/events',
+    link: 'https://pingkai.cn/tidbcommunity/events',
   },
   {
     title: 'Blog',
-    link: 'https://tidb.net/blog',
+    link: 'https://pingkai.cn/tidbcommunity/blog',
   },
   {
     title: 'Community',
@@ -69,15 +69,15 @@ export const navItems = [
       },
       {
         title: 'User Group',
-        link: 'https://tidb.net/tug',
+        link: 'https://pingkai.cn/tidbcommunity/tug',
         items: [
           {
             title: 'Join TiDB User Group',
-            link: 'https://tidb.net/tug/apply',
+            link: 'https://pingkai.cn/tidbcommunity/tug/apply',
           },
           {
             title: 'MVA',
-            link: 'https://tidb.net/tug/mva',
+            link: 'https://pingkai.cn/tidbcommunity/tug/mva',
           },
         ],
       },
@@ -145,7 +145,7 @@ export const navItems = [
   },
   {
     title: 'Redeem Gifts',
-    link: 'https://accounts.pingcap.cn/points#/shop',
+    link: 'https://pingkai.cn/accounts/points#/shop',
   },
   {
     title: 'About',
@@ -172,12 +172,12 @@ export const genUserProfileItems = ({ meData, redDots }) => {
     },
     {
       title: 'Profile',
-      link: `https://tidb.net/my/profile`,
+      link: `https://pingkai.cn/tidbcommunity/my/profile`,
       badge: redDots.companyInfo,
     },
     {
       title: 'Account Settings',
-      link: `https://tidb.net/my/settings`,
+      link: `https://pingkai.cn/tidbcommunity/my/settings`,
     },
   ];
 

@@ -24,12 +24,14 @@ const unifyNodeModules = (names) =>
 const config = {
   i18n,
 
+  basePath: '/tidbcommunity',
+
   pageExtensions: ['page.js', 'page.jsx', 'page.tsx'],
 
   images: {
     domains: [
       'localhost',
-      'tidb.net',
+      'pingkai.cn/tidbcommunity',
       'contributor.tidb.io',
       'cms.tidb.net',
       'img3.pingcap.com',

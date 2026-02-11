@@ -14,4 +14,4 @@ export interface BadgeEntity {
   has_badge: boolean;
 }
 
-export const getBadgesList: ApiRequestFunction<void, any> = () => client.get('/_asktug/badges');
+export const getBadgesList: ApiRequestFunction<void, any> = () => client.get('/forum/badges');

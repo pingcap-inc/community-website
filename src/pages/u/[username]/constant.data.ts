@@ -1,2 +1,2 @@
-export const forumUrl = 'https://asktug.com';
-export const blogUrl = 'https://tidb.net/blog';
+export const forumUrl = 'https://pingkai.cn/tidbcommunity/forum';
+export const blogUrl = 'https://pingkai.cn/tidbcommunity/blog';

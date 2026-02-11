@@ -46,7 +46,7 @@ const Welcome = () => {
             {/*  <Radio.Button onClick={onClick('https://github.com/pingcap/community/blob/master/CODE_OF_CONDUCT.md')}>*/}
             {/*    {navsLang.codeOfConduct}*/}
             {/*  </Radio.Button>*/}
-            {/*  <Radio.Button onClick={onClick('https://accounts.pingcap.cn/')}>{navsLang.join}</Radio.Button>*/}
+            {/*  <Radio.Button onClick={onClick('https://pingkai.cn/accounts/')}>{navsLang.join}</Radio.Button>*/}
             {/*  <Radio.Button onClick={onClick('mailto:community@tidb.io')}>{navsLang.contactUs}</Radio.Button>*/}
             {/*</Styled.Navs>*/}
             <Styled.Numbers gutter={32} justify="center">

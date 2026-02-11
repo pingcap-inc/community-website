@@ -26,7 +26,7 @@ export default function ProfileCard(props: IProfileCard) {
     <Styled.Container>
       <Styled.Action>
         {isCurrentLogonUser ? (
-          <Link href={'https://tidb.net/my/profile'} passHref>
+          <Link href={'https://pingkai.cn/tidbcommunity/my/profile'} passHref>
             <Styled.Edit>
               <EditFilled />
             </Styled.Edit>

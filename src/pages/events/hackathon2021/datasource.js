@@ -29,7 +29,7 @@ export const stepsData = [
     desc: (
       <div>
         报名开始，只要你对 coding 感兴趣，都可以报名参加，点击
-        <Styled.Link href={'https://asktug.com/t/topic/273502'}>查看参赛指南。</Styled.Link>
+        <Styled.Link href={'https://pingkai.cn/tidbcommunity/forum/t/topic/273502'}>查看参赛指南。</Styled.Link>
       </div>
     ),
     action: '立即报名',
@@ -47,12 +47,13 @@ export const stepsData = [
     date: '截至 1 月 7 日（共 10 天）',
     desc: (
       <div>
-        我们给你准备了充分的<Styled.Link href={'https://asktug.com/t/topic/273503'}>学习资料</Styled.Link>
+        我们给你准备了充分的
+        <Styled.Link href={'https://pingkai.cn/tidbcommunity/forum/t/topic/273503'}>学习资料</Styled.Link>
         ，专业导师群内答疑等，让你学习无障碍。
       </div>
     ),
     action: '查看学习资料',
-    url: 'https://asktug.com/t/topic/273503',
+    url: 'https://pingkai.cn/tidbcommunity/forum/t/topic/273503',
   },
   {
     title: 'STEP 4intro: "预赛答辩',
@@ -215,17 +216,17 @@ export const judgesData = [
 export const carouselData = [
   {
     img: getImage('prev-20.jpg'),
-    url: 'https://tidb.net/archived/events/hackathon2020/',
+    url: 'https://pingkai.cn/tidbcommunity/archived/events/hackathon2020/',
     desc: 'TiDB Hackathon 2020',
   },
   {
     img: getImage('prev-19.jpg'),
-    url: 'https://tidb.net/archived/events/hackathon2019/',
+    url: 'https://pingkai.cn/tidbcommunity/archived/events/hackathon2019/',
     desc: 'TiDB Hackathon 2019',
   },
   {
     img: getImage('prev-18.jpg'),
-    url: 'https://tidb.net/archived/events/hackathon2018/',
+    url: 'https://pingkai.cn/tidbcommunity/archived/events/hackathon2018/',
     desc: 'TiDB Hackathon 2018',
   },
 ];

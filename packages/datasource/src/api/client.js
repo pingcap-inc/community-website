@@ -12,7 +12,7 @@ const isDispatchGlobalApiError = (status) => {
 };
 
 const client = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL ?? '',
+  baseURL: process.env.NEXT_PUBLIC_ACCOUNTS_BASE_URL ?? '',
   withCredentials: true,
 });
 

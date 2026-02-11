@@ -18,7 +18,7 @@ export const navItems = [
       },
       {
         title: '论坛',
-        link: 'https://asktug.com',
+        link: 'https://pingkai.cn/tidbcommunity/forum',
       },
       {
         title: '邮件列表',
@@ -47,7 +47,7 @@ export const navItems = [
       },
       {
         title: '博客',
-        link: 'https://asktug.com/c/blog/l/latest',
+        link: 'https://pingkai.cn/tidbcommunity/forum/c/blog/l/latest',
       },
       {
         title: 'Github',

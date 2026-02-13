@@ -64,7 +64,7 @@ const WrapLink = ({ url, children, ...attrs }) => {
   return (
     // quick fix for new domain
     <Link href={url}>
-      <a href={`/tidbcommunity` + url} {...attrs}>
+      <a href={url} {...attrs}>
         {children}
       </a>
     </Link>

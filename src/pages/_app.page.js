@@ -63,7 +63,7 @@ const fetcher = (path, params) => {
 const WrapLink = ({ url, children, ...attrs }) => {
   return (
     // quick fix for new domain
-    <Link href={url}>
+    <Link href={url === '/tidbcommunity' ? '/' : url.replace(/^\/tidbcommunity/, '')}>
       <a href={url} {...attrs}>
         {children}
       </a>

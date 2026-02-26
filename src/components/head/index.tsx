@@ -81,7 +81,7 @@ export const CommunityHead: React.FC<IProps> = (props) => {
             var _hmt = _hmt || [];
             (function() {
              var hm = document.createElement("script");
-             hm.src = "https://hm.baidu.com/hm.js?2321846dd5ff3a4f0ffeef2e2a25e218";
+             hm.src = "https://hm.baidu.com/hm.js?4898669ddb32c3447d1703a05e13137e";
              var s = document.getElementsByTagName("script")[0]; 
              s.parentNode.insertBefore(hm, s);
             })();

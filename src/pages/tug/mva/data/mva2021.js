@@ -74,7 +74,7 @@ const data = [
   },
   {
     name: '王天宜',
-    company: 'PingCAP',
+    company: '平凯星辰',
     title: 'TiDB 社区部门架构师',
     links: [
       {
@@ -332,11 +332,11 @@ const data = [
   },
   {
     name: '孙晓光',
-    company: 'PingCAP',
+    company: '平凯星辰',
     title: 'Community Development 团队负责人，TUG 顾问团成员',
     links: [
       {
-        name: '【PingCAP DevCon 2021】TIDB x Flink原生实时计算',
+        name: '【平凯星辰 DevCon 2021】TiDB x Flink 原生实时计算',
         href: 'https://www.bilibili.com/video/BV1tb4y1z7PY',
       },
       {
@@ -481,7 +481,7 @@ const data = [
   },
   {
     name: '高振娇',
-    company: 'PingCAP',
+    company: '平凯星辰',
     title: '社区技术专家',
     links: [
       {
@@ -500,7 +500,7 @@ const data = [
   },
   {
     name: '苏志鹏',
-    company: 'PingCAP',
+    company: '平凯星辰',
     title: 'DBA',
     links: [
       {
@@ -519,7 +519,7 @@ const data = [
   },
   {
     name: '秦天爽',
-    company: 'PingCAP',
+    company: '平凯星辰',
     title: '高级解决方案架构师',
     links: [
       {

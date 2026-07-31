@@ -3,7 +3,7 @@ const data = {
     {
       avatar: '',
       name: '房晓乐',
-      company: 'PingCAP',
+      company: '平凯星辰',
       title: '互联网首席架构师',
     },
     {
@@ -123,7 +123,7 @@ const data = {
     {
       avatar: '',
       name: 'Neil Han',
-      company: 'PingCAP',
+      company: '平凯星辰',
       title: 'Head of APAC',
       role: 'APAC 区域组 Leader',
     },
@@ -133,7 +133,7 @@ const data = {
     {
       avatar: '',
       name: '孙晓光',
-      company: 'PingCAP Community Development',
+      company: '平凯星辰 Community Development',
       title: '团队负责人',
       role: (
         <>

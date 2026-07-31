@@ -47,7 +47,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1yJoLYeEFz: {
     region: '南京站',
-    authorName: '刘松 PingCAP 副总裁',
+    authorName: '刘松 平凯星辰副总裁',
   },
   BV1QfjdzMEjg: {
     region: '重庆站',
@@ -127,7 +127,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1g4SqY9Eto: {
     region: '杭州站',
-    authorName: '宋日杰 | PingCAP 产品经理',
+    authorName: '宋日杰 | 平凯星辰产品经理',
   },
   BV1yarfYnEiH: {
     region: '大连站',
@@ -196,7 +196,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
    *      视频链接：https://www.bilibili.com/video/BV1Rb421Y7S5/
    *
    * 5. 标题：稳定性增强！TiDB v8.1.0 LTS 新功能揭秘，聊聊适用场景及未来计划
-   *      宋日杰 | PingCAP 产品经理
+   *      宋日杰 | 平凯星辰产品经理
    *      视频链接：https://www.bilibili.com/video/BV1Vp421Q78p/
    */
   BV1pb421Y74c: {
@@ -217,7 +217,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1Vp421Q78p: {
     region: '成都站',
-    authorName: '宋日杰 | PingCAP 产品经理',
+    authorName: '宋日杰 | 平凯星辰产品经理',
   },
   /**
    * 深圳站
@@ -242,7 +242,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
    *      视频链接：https://www.bilibili.com/video/BV1ei421d7ew/
    *
    * 6. 标题：TiDB 7.5 LTS 高性能处理方案
-   *      汤博文 | PingCAP 售前顾问
+   *      汤博文 | 平凯星辰售前顾问
    *      视频链接：https://www.bilibili.com/video/BV1L2421N7xb/
    *
    * 7. 标题：TiDB 资源管控特性解读及应用探索
@@ -271,7 +271,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1L2421N7xb: {
     region: '深圳站',
-    authorName: '汤博文 | PingCAP 售前顾问',
+    authorName: '汤博文 | 平凯星辰售前顾问',
   },
   BV1kw4m1Z7st: {
     region: '深圳站',
@@ -279,11 +279,11 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1w5411i7L3: {
     region: '北京站',
-    authorName: '戴涛 | PingCAP 中国业务解决方案技术部总经理',
+    authorName: '戴涛 | 平凯星辰中国业务解决方案技术部总经理',
   },
   BV1o5411v7Sf: {
     region: '北京站',
-    authorName: '徐礼佳 | PingCAP 北美大客户架构师',
+    authorName: '徐礼佳 | 平凯星辰北美大客户架构师',
   },
   BV1NW4y1A7AG: {
     region: '北京站',
@@ -311,7 +311,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
   },
   BV1si4y1h7xF: {
     region: '上海站',
-    authorName: '王军 | 5年+ PingCAPer',
+    authorName: '王军 | 5 年+ 平凯星辰员工',
   },
   BV1se411z73s: {
     region: '上海站',
@@ -338,7 +338,7 @@ export const videoRecords: { [bvid: string]: TVideoRecord } = {
     //title: 'TiKV 架构及原理介绍',
     //description: '',
     //videCoverImage: cover3Image,
-    authorName: '邓力铭 | PingCAP 高级开发工程师',
+    authorName: '邓力铭 | 平凯星辰高级开发工程师',
     //moreLinkUrl: 'https://www.bilibili.com/video/BV1Ba41157Wp',
   },
   BV1hg411r7iv: {

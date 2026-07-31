@@ -1299,7 +1299,7 @@ export const dataJudge = [
     name: '陈昱',
     title: '云启资本合伙人',
     quotation:
-      '重点关注基础软件、大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了 PingCAP、Zilliz、Jina AI、Singularity、TigerGraph、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、一造机器人等优秀企业。',
+      '重点关注基础软件、大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了平凯星辰、Zilliz、Jina AI、Singularity、TigerGraph、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、一造机器人等优秀企业。',
   },
   {
     avatar: ChuangPeiHanImage,
@@ -1316,7 +1316,7 @@ export const dataJudge = [
   {
     avatar: 高斌Image,
     name: '高斌',
-    title: 'PingCAP 数据平台产品负责人',
+    title: '平凯星辰数据平台产品负责人',
     quotation: '数据库领域从业20年老兵，对于关系型数据库相关领域有深入了解。出版过专著《Oracle RAC 核心技术详解》',
   },
   {
@@ -1328,14 +1328,14 @@ export const dataJudge = [
   {
     avatar: 黄东旭Image,
     name: '黄东旭',
-    title: 'PingCAP 联合创始人兼 CTO',
+    title: '平凯星辰联合创始人兼 CTO',
     quotation:
-      '资深基础软件工程师，架构师，曾就职于微软亚洲研究院，网易有道及豌豆荚，擅长分布式系统以及数据库开发，在分布式存储领域有丰富的经验和独到的见解。狂热的开源爱好者以及开源软件作者，代表作品分布式 Redis 缓存方案 Codis，以及分布式关系型数据库 TiDB。2015 年创业，成立 PingCAP，在 PingCAP 的主要工作是从零开始设计并研发开源 NewSQL 数据库 TiDB，目前 GitHub 上该项目累积 star 数超过 29000+，成为本领域全球顶级的开源项目。',
+      '资深基础软件工程师、架构师，曾就职于微软亚洲研究院、网易有道及豌豆荚，擅长分布式系统以及数据库开发，在分布式存储领域有丰富的经验和独到的见解。狂热的开源爱好者以及开源软件作者，代表作品分布式 Redis 缓存方案 Codis，以及分布式关系型数据库 TiDB。2015 年创业，成立平凯星辰，在平凯星辰的主要工作是从零开始设计并研发开源 NewSQL 数据库 TiDB，目前 GitHub 上该项目累积 star 数超过 29000+，成为本领域全球顶级的开源项目。',
   },
   {
     avatar: 黄潇Image,
     name: '黄潇',
-    title: 'PingCAP Outbound PM',
+    title: '平凯星辰 Outbound PM',
     quotation: '前美团 DBA Leader 和前 TUG 北京区 Leader，10+ 年 DBA、DevOps 经验',
   },
   {
@@ -1347,8 +1347,8 @@ export const dataJudge = [
   {
     avatar: 刘聪Image,
     name: '刘聪',
-    title: 'PingCAP 资深开发工程师',
-    quotation: '15 年存储领域技术专家，加入 PingCAP 后在 TiKV 、PD 等领域深入精耕多年',
+    title: '平凯星辰资深开发工程师',
+    quotation: '15 年存储领域技术专家，加入平凯星辰后在 TiKV、PD 等领域深入精耕多年',
   },
   {
     avatar: 刘子东Image,
@@ -1373,20 +1373,20 @@ export const dataJudge = [
   {
     avatar: 孙晓光Image,
     name: '孙晓光',
-    organization: 'PingCAP',
+    organization: '平凯星辰',
     title: 'TiDB Cloud Ecosystem 研发负责人',
     quotation: '',
   },
   {
     avatar: 唐刘Image,
     name: '唐刘',
-    title: 'PingCAP 研发副总裁',
+    title: '平凯星辰研发副总裁',
     quotation: 'TiDB Maintainer ，目前主要负责构建 TiDB Cloud。',
   },
   {
     avatar: 王聪Image,
     name: '王聪',
-    title: 'PingCAP SQL 研发负责人',
+    title: '平凯星辰 SQL 研发负责人',
     quotation: '',
   },
   {
@@ -1404,13 +1404,13 @@ export const dataJudge = [
   {
     avatar: 徐成选Image,
     name: '徐成选',
-    title: 'PingCAP DM 研发负责人',
+    title: '平凯星辰 DM 研发负责人',
     quotation: '10 年基础架构及数据平台研发经验，Kingshard 核心开发，Gaea（分库分表中间件）作者，TiDB ToC 成员',
   },
   {
     avatar: 张东晖Image,
     name: '张东晖',
-    title: 'PingCAP 产研顾问',
+    title: '平凯星辰产研顾问',
     quotation:
       '曾在微软从事产品研发 15 年，之后在阿里云参与飞天、大数据平台、和云计算平台的开发和产品工作。经历了开源软件改变软件行业的历史，对开源社区和数据库、云计算、人工智能技术有持久的兴趣。',
   },

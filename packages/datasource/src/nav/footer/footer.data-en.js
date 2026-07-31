@@ -72,7 +72,7 @@ export const navItems = [
         link: 'https://pingcap.com/case-studies',
       },
       {
-        title: 'PingCAP Education',
+        title: '平凯星辰 Education',
         link: 'https://university.pingcap.com',
       },
       {

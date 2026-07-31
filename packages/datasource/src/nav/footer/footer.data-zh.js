@@ -67,7 +67,7 @@ export const navItems = [
         link: 'https://www.pingcap.cn/case',
       },
       {
-        title: 'PingCAP Education',
+        title: '平凯星辰 Education',
         link: 'https://learn.pingcap.cn',
       },
       {

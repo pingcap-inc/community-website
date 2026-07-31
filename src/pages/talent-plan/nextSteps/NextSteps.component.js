@@ -80,7 +80,7 @@ const NextSteps = () => {
             <Styled.ProjectCard>
               <Styled.ProjectCardContent>
                 <Styled.ProjectCardTitle> 校园招聘 </Styled.ProjectCardTitle>
-                PingCAP 及 TiDB 生态企业向优秀高校毕业生敞开大门
+                平凯星辰及 TiDB 生态企业向优秀高校毕业生敞开大门
                 <Styled.ProjectCardButton
                   onClick={onClick(
                     'https://campus.pingcap.com/campus_apply/pingcap/39951/#/?anchorName=default_joblist&sourceToken='

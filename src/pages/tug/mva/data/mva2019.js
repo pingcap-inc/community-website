@@ -333,7 +333,7 @@ const data = [
         href: 'https://pingkai.cn/tidbcommunity/forum/t/minikube-tidb-operator-tidb/1382',
       },
       {
-        name: 'PingCAP Talent Plan（广州） 第四期公开课笔记',
+        name: '平凯星辰 Talent Plan（广州）第四期公开课笔记',
         href: 'https://pingkai.cn/tidbcommunity/forum/t/pingcap-talent-plan/1397',
       },
       {

@@ -59,7 +59,7 @@ const Page = () => {
             <Styled.Card $color={'#BE1D32'}>
               <Styled.CardTitle>云数据库 TiDB</Styled.CardTitle>
               <Styled.CardParagraph>
-                TiDB 上线阿里云心选商城，带来新一代 HTAP 数据库的云端体验，享受 PingCAP 原厂服务支持。
+                TiDB 上线阿里云心选商城，带来新一代 HTAP 数据库的云端体验，享受平凯星辰原厂服务支持。
               </Styled.CardParagraph>
               <Styled.CardParagraph>
                 <Anchor

@@ -127,7 +127,7 @@ export async function getBadgesByUsername(
 export type TUserBadgeItem = {
   id: number; // 115,
   name: string; // "PCTA",
-  description: string; // "PCTA （PingCAP Certified TiDB Associate）是 PingCAP 公司认证 TiDB 数据库专员的缩写。PCTA 要求具备安装部署及日常运维分布式关系型数据库的能力。",
+  description: string; // "PCTA （平凯星辰 Certified TiDB Associate）是平凯星辰公司认证 TiDB 数据库专员的缩写。PCTA 要求具备安装部署及日常运维分布式关系型数据库的能力。",
   grant_count: number; // 3094,
   allow_title: boolean; // false,
   multiple_grant: boolean; // false,

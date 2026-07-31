@@ -58,7 +58,7 @@ export const stepsData = [
   {
     title: 'STEP 4intro: "预赛答辩',
     date: '1 月 8 日（周六）',
-    desc: <div>北京、上海、杭州、成都、深圳、广州任选一处决赛参赛点，还可以走进 PingCAP Office 感受 P 社文化。</div>,
+    desc: <div>北京、上海、杭州、成都、深圳、广州任选一处决赛参赛点，还可以走进平凯星辰 Office 感受 P 社文化。</div>,
     action: '下载答辩 PPT 模板',
     url: 'https://pingkai.cn/tidbcommunity/forum/t/topic/273653',
   },
@@ -93,11 +93,11 @@ export const judgesData = [
     name: '陈昱',
     desc: '云启资本合伙人',
     detail:
-      '重点关注大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了 PingCAP、Zilliz、Jina AI、Singularity、TigerGraph、Graviti、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、数睿数据、追势科技和比瓴科技等优秀企业。',
+      '重点关注大数据、云计算、智能驾驶和机器人等领域的投资。主导投资了平凯星辰、Zilliz、Jina AI、Singularity、TigerGraph、Graviti、Cloudchef、元戎启行、擎朗智能、智齿科技、德风科技、新石器、数睿数据、追势科技和比瓴科技等优秀企业。',
   },
   {
     name: '代闻',
-    desc: 'PingCAP TiDB Cloud 负责人',
+    desc: '平凯星辰 TiDB Cloud 负责人',
     detail:
       '负责 TiDB Cloud 产品和业务，在大规模后台架构、物联网应用、媒体行业转型、企业混合IT和自动化运维等方面有丰富经验。',
   },
@@ -158,8 +158,8 @@ export const judgesData = [
   },
   {
     name: '唐刘',
-    desc: 'VP of Engineering, PingCAP',
-    detail: 'Chief Engineer, VP of Engineering, First Employee @PingCAP',
+    desc: 'VP of Engineering, 平凯星辰',
+    detail: 'Chief Engineer, VP of Engineering, First Employee at 平凯星辰',
   },
   {
     name: '吴晟',
@@ -170,19 +170,19 @@ export const judgesData = [
     name: '谢佳',
     desc: '华创资本合伙人',
     detail:
-      '专注于企业软件及服务领域的早期投资，2015 年加入华创资本，研究驱动型投资人，覆盖的领域包括 SaaS / Cloud Infra / AI&DataTech / Cybersecurity 等。在华创资本负责推动和执行的投资案例包括intro: "PingCAP、ONES、梦诚科技、天旦、中睿天下、FONE、石墨文档、JuiceData、百观科技、小满科技等。',
+      '专注于企业软件及服务领域的早期投资，2015 年加入华创资本，研究驱动型投资人，覆盖的领域包括 SaaS / Cloud Infra / AI&DataTech / Cybersecurity 等。在华创资本负责推动和执行的投资案例包括intro: "平凯星辰、ONES、梦诚科技、天旦、中睿天下、FONE、石墨文档、JuiceData、百观科技、小满科技等。',
   },
   {
     name: '徐之浩',
     desc: '明势资本执行董事',
     detail:
-      '徐之浩在明势资本负责企业服务、云计算与开源软件、全真互联网等领域，投资了 PingCAP、蔚领时代、StarRocks、Nothing 等初创企业。在加入投资行业之前，徐之浩有近 10 年研发工作经历，曾供职于微软、百度、微博、亚马逊云服务等科技公司。',
+      '徐之浩在明势资本负责企业服务、云计算与开源软件、全真互联网等领域，投资了平凯星辰、蔚领时代、StarRocks、Nothing 等初创企业。在加入投资行业之前，徐之浩有近 10 年研发工作经历，曾供职于微软、百度、微博、亚马逊云服务等科技公司。',
   },
   {
     name: '殷成文',
-    desc: 'PingCAP 混沌工程团队负责人',
+    desc: '平凯星辰混沌工程团队负责人',
     detail:
-      'PingCAP 混沌工程团队负责人，CNCF 开源项目 Chaos Mesh 的发起人和维护者。之前主要负责分布式数据库 TiDB 的稳定性测试框架的设计和开发任务，目前致力于探索混沌工程的实施和推广工作。开源爱好者，“KubeCon + CloudNativeCon Europe 2021” 和 “KubeCon + CloudNativeCon North America 2021” 计划委员会成员。',
+      '平凯星辰混沌工程团队负责人，CNCF 开源项目 Chaos Mesh 的发起人和维护者。之前主要负责分布式数据库 TiDB 的稳定性测试框架的设计和开发任务，目前致力于探索混沌工程的实施和推广工作。开源爱好者，“KubeCon + CloudNativeCon Europe 2021” 和 “KubeCon + CloudNativeCon North America 2021” 计划委员会成员。',
   },
   {
     name: '俞勇',
@@ -198,14 +198,14 @@ export const judgesData = [
   },
   {
     name: '翟玉龙',
-    desc: 'PingCAP Dataplatform 团队 PM',
-    detail: 'PingCAP 前软件开发工程师；现 Data Platform 团队 PM，业余时间会写代码的开源爱好者。',
+    desc: '平凯星辰 Dataplatform 团队 PM',
+    detail: '平凯星辰前软件开发工程师；现 Data Platform 团队 PM，业余时间会写代码的开源爱好者。',
   },
   {
     name: '张建',
-    desc: 'PingCAP 研发总监',
+    desc: '平凯星辰研发总监',
     detail:
-      '开源爱好者，PingCAP 研发总监，前阿里巴巴 ODPS 执行引擎研发工程师。在查询优化，分布式计算等方面有多年的研发经验。2017 年加入 PingCAP 从事 TiDB SQL 层的产品研发、架构改进、TiDB 社区建设等，目前在负责 TiKV 的产品研发与改进。',
+      '开源爱好者，平凯星辰研发总监，前阿里巴巴 ODPS 执行引擎研发工程师。在查询优化、分布式计算等方面有多年的研发经验。2017 年加入平凯星辰从事 TiDB SQL 层的产品研发、架构改进、TiDB 社区建设等，目前在负责 TiKV 的产品研发与改进。',
   },
   {
     name: '张雁飞',

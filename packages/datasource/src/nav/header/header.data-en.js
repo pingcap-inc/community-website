@@ -31,11 +31,11 @@ export const navItems = [
         title: 'Certification',
         items: [
           {
-            title: 'PingCAP Certified TiDB Associate (PCTA)',
+            title: '平凯星辰 Certified TiDB Associate (PCTA)',
             link: 'https://learn.pingcap.cn/learner/exam-market/list?category=PCTA',
           },
           {
-            title: 'PingCAP Certified TiDB Professional (PCTP)',
+            title: '平凯星辰 Certified TiDB Professional (PCTP)',
             link: 'https://learn.pingcap.cn/learner/exam-market/list?category=PCTP',
           },
         ],
@@ -151,7 +151,7 @@ export const navItems = [
     title: 'About',
     items: [
       {
-        title: 'TiDB and PingCAP',
+        title: 'TiDB and 平凯星辰',
         link: 'https://pingcap.com',
       },
       {

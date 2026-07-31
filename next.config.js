@@ -104,6 +104,11 @@ const config = {
   async redirects() {
     return [
       {
+        source: '/contact-us',
+        destination: 'https://pingkai.cn/contact?src_loc=tidbcommunity',
+        permanent: false,
+      },
+      {
         source: '/u/:username',
         destination: '/u/:username/answer',
         permanent: false,

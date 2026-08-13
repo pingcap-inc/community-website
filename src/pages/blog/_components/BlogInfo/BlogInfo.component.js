@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 import * as Styled from './blogInfo.styled';
 import { Avatar } from 'antd';
-import { HeartOutlined, MessageOutlined, PushpinOutlined } from '@ant-design/icons';
+import { EyeOutlined, HeartOutlined, MessageOutlined, PushpinOutlined } from '@ant-design/icons';
 import MyLink from '~/components/MyLink';
 import { PageDataContext } from '~/context';
 
@@ -17,6 +17,7 @@ const BlogInfo = ({
   titleExtends = undefined,
   category = undefined,
   tags,
+  visits,
   likes,
   comments,
   bottomExtends,
@@ -79,6 +80,10 @@ const BlogInfo = ({
         </Styled.Meta>
         <Styled.Interactions>
           <Styled.InteractionItem>
+            <EyeOutlined />
+            <span className="text">{visits}</span>
+          </Styled.InteractionItem>
+          <Styled.InteractionItem>
             <HeartOutlined />
             <span className="text">{likes}</span>
           </Styled.InteractionItem>
@@ -114,6 +119,7 @@ BlogInfo.propTypes = {
   category: MetaShape,
   tags: PropTypes.arrayOf(MetaShape.isRequired),
   publishedAt: PropTypes.string.isRequired,
+  visits: PropTypes.number.isRequired,
   likes: PropTypes.number.isRequired,
   comments: PropTypes.number.isRequired,
   coverImageURL: PropTypes.string,

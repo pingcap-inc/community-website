@@ -8,7 +8,7 @@ import { PageDataContext } from '~/context';
 import { useIsSmallScreen } from '~/hooks';
 
 import * as Styled from './others.styled';
-import PingcapLogoSvg from './others-pingcap-logo.svg';
+import PingkaiLogoImage from './others-pingcap-logo.png';
 import flinkLogoImage from './others-flink-logo.png';
 
 const Others = () => {
@@ -38,7 +38,7 @@ const Others = () => {
           <>
             <Styled.Subtitle>寻找商业支持</Styled.Subtitle>
             <Styled.LogoWrapper>
-              <PingcapLogoSvg height={36} />
+              <Image {...PingkaiLogoImage} width={176} height={36} alt={'平凯星辰 logo'} />
             </Styled.LogoWrapper>
             <Styled.SmallerText>
               <Styled.SmallerLink href={'/support'}>平凯星辰</Styled.SmallerLink>
